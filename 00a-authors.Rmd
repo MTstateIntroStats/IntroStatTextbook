@@ -1,4 +1,6 @@
-# Montana State University Authors {-}
+# About the Authors
+
+## Montana State University Authors {-}
 
 Nicole Carnegie <br>
 Associate Professor of Statistics <br>
@@ -28,7 +30,7 @@ melinda.yager@montana.edu <br>
 
 <br>
 
-# OpenIntro Authors {-}
+## OpenIntro Authors {-}
 
 Mine Çetinkaya-Rundel <br>
 mine@openintro.org <br>
