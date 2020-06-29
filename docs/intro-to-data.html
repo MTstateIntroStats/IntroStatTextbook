@@ -1,0 +1,2241 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 1 Introduction to data | STAT 216 Introduction to Statistics: Course Notes</title>
+  <meta name="description" content="Open resources textbook for Stat 216 at Montana State" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 1 Introduction to data | STAT 216 Introduction to Statistics: Course Notes" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Open resources textbook for Stat 216 at Montana State" />
+  <meta name="github-repo" content="MTstateIntroStats/IntroStatTextbook" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 1 Introduction to data | STAT 216 Introduction to Statistics: Course Notes" />
+  
+  <meta name="twitter:description" content="Open resources textbook for Stat 216 at Montana State" />
+  
+
+<meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager" />
+
+
+<meta name="date" content="2020-06-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="copyright.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">STAT 216 Introduction to Statistics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#textbook-overview"><i class="fa fa-check"></i>Textbook overview</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html"><i class="fa fa-check"></i>About the Authors</a><ul>
+<li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html#montana-state-university-authors"><i class="fa fa-check"></i>Montana State University Authors</a></li>
+<li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html#openintro-authors"><i class="fa fa-check"></i>OpenIntro Authors</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="copyright.html"><a href="copyright.html"><i class="fa fa-check"></i>Copyright</a></li>
+<li class="chapter" data-level="1" data-path="intro-to-data.html"><a href="intro-to-data.html"><i class="fa fa-check"></i><b>1</b> Introduction to data</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro-to-data.html"><a href="intro-to-data.html#basic-stents-strokes"><i class="fa fa-check"></i><b>1.1</b> Case Study: using stents to prevent strokes</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="intro-to-data.html"><a href="intro-to-data.html#basic-stents-strokes-exercises"><i class="fa fa-check"></i><b>1.1.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="intro-to-data.html"><a href="intro-to-data.html#data-basics"><i class="fa fa-check"></i><b>1.2</b> Data basics</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="intro-to-data.html"><a href="intro-to-data.html#observations-variables-and-data-matrices"><i class="fa fa-check"></i><b>1.2.1</b> Observations, variables, and data matrices</a></li>
+<li class="chapter" data-level="1.2.2" data-path="intro-to-data.html"><a href="intro-to-data.html#variable-types"><i class="fa fa-check"></i><b>1.2.2</b> Types of variables</a></li>
+<li class="chapter" data-level="1.2.3" data-path="intro-to-data.html"><a href="intro-to-data.html#variable-relations"><i class="fa fa-check"></i><b>1.2.3</b> Relationships between variables</a></li>
+<li class="chapter" data-level="1.2.4" data-path="intro-to-data.html"><a href="intro-to-data.html#explanatory-and-response-variables"><i class="fa fa-check"></i><b>1.2.4</b> Explanatory and response variables</a></li>
+<li class="chapter" data-level="1.2.5" data-path="intro-to-data.html"><a href="intro-to-data.html#introducing-observational-studies-and-experiments"><i class="fa fa-check"></i><b>1.2.5</b> Introducing observational studies and experiments</a></li>
+<li class="chapter" data-level="1.2.6" data-path="intro-to-data.html"><a href="intro-to-data.html#data-basics-exercises"><i class="fa fa-check"></i><b>1.2.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="intro-to-data.html"><a href="intro-to-data.html#sampling-principles-strategies"><i class="fa fa-check"></i><b>1.3</b> Sampling principles and strategies</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="intro-to-data.html"><a href="intro-to-data.html#populations-and-samples"><i class="fa fa-check"></i><b>1.3.1</b> Populations and samples</a></li>
+<li class="chapter" data-level="1.3.2" data-path="intro-to-data.html"><a href="intro-to-data.html#anecdotal-evidence"><i class="fa fa-check"></i><b>1.3.2</b> Anecdotal evidence</a></li>
+<li class="chapter" data-level="1.3.3" data-path="intro-to-data.html"><a href="intro-to-data.html#sampling-from-a-population"><i class="fa fa-check"></i><b>1.3.3</b> Sampling from a population</a></li>
+<li class="chapter" data-level="1.3.4" data-path="intro-to-data.html"><a href="intro-to-data.html#observational-studies"><i class="fa fa-check"></i><b>1.3.4</b> Observational studies</a></li>
+<li class="chapter" data-level="1.3.5" data-path="intro-to-data.html"><a href="intro-to-data.html#four-sampling-methods"><i class="fa fa-check"></i><b>1.3.5</b> Four sampling methods</a></li>
+<li class="chapter" data-level="1.3.6" data-path="intro-to-data.html"><a href="intro-to-data.html#sampling-principles-strategies-exercises"><i class="fa fa-check"></i><b>1.3.6</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro-to-data.html"><a href="intro-to-data.html#experiments"><i class="fa fa-check"></i><b>1.4</b> Experiments</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="intro-to-data.html"><a href="intro-to-data.html#principles-of-experimental-design"><i class="fa fa-check"></i><b>1.4.1</b> Principles of experimental design</a></li>
+<li class="chapter" data-level="1.4.2" data-path="intro-to-data.html"><a href="intro-to-data.html#reducing-bias-human-experiments"><i class="fa fa-check"></i><b>1.4.2</b> Reducing bias in human experiments</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro-to-data.html"><a href="intro-to-data.html#data-in-r"><i class="fa fa-check"></i><b>1.5</b> Data in <code>R</code></a><ul>
+<li class="chapter" data-level="1.5.1" data-path="intro-to-data.html"><a href="intro-to-data.html#dataframes-in-r"><i class="fa fa-check"></i><b>1.5.1</b> Dataframes in <code>R</code></a></li>
+<li class="chapter" data-level="1.5.2" data-path="intro-to-data.html"><a href="intro-to-data.html#datastruc"><i class="fa fa-check"></i><b>1.5.2</b> Tidy Structure of Data</a></li>
+<li class="chapter" data-level="1.5.3" data-path="intro-to-data.html"><a href="intro-to-data.html#using-the-pipe-to-chain"><i class="fa fa-check"></i><b>1.5.3</b> Using the pipe to chain</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="intro-to-data.html"><a href="intro-to-data.html#chapter-review"><i class="fa fa-check"></i><b>1.6</b> Chapter review</a><ul>
+<li class="chapter" data-level="1.6.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>1.6.1</b> Terms</a></li>
+<li class="chapter" data-level="1.6.2" data-path="intro-to-data.html"><a href="intro-to-data.html#chapter-exercises"><i class="fa fa-check"></i><b>1.6.2</b> Chapter exercises</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">STAT 216 Introduction to Statistics: Course Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intro-to-data" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Introduction to data</h1>
+
+<div class="chapterintro">
+Scientists seek to answer questions using rigorous methods and careful observations.
+These observations – collected from the likes of field notes, surveys, and experiments – form the backbone of a statistical investigation and are called <strong>data</strong>.
+Statistics is the study of how best to collect, analyze, and draw conclusions from data, and in this first chapter, we focus on both the properties of data and on the collection of data.
+</div>
+
+<div id="basic-stents-strokes" class="section level2">
+<h2><span class="header-section-number">1.1</span> Case Study: using stents to prevent strokes</h2>
+<p></p>
+<p>In this section we introduce a classic challenge in statistics: evaluating the efficacy of a medical treatment.
+Terms in this section, and indeed much of this chapter, will all be revisited later in the text.
+The plan for now is simply to get a sense of the role statistics can play in practice.</p>
+<p>In this section we will consider an experiment that studies effectiveness of stents in treating patients at risk of stroke <span class="citation">(Chimowitz et al. <a href="#ref-chimowitz2011stenting" role="doc-biblioref">2011</a>)</span>.
+Stents are small mesh tubes that are placed inside narrow or weak arteries to assist in patient recovery after cardiac events and reduce the risk of an additional heart attack or death.</p>
+<p>Many doctors have hoped that there would be similar benefits for patients at risk of stroke. We start by writing the principal question the researchers hope to answer:</p>
+<blockquote>
+<p>Does the use of stents reduce the risk of stroke?</p>
+</blockquote>
+<p>The researchers who asked this question conducted an experiment with 451 at-risk patients. Each volunteer patient was randomly assigned to one of two groups:</p>
+<ul>
+<li><strong>Treatment group</strong>. Patients in the treatment group received a stent and medical management.
+The medical management included medications, management of risk factors, and help in lifestyle modification.</li>
+<li><strong>Control group</strong>. Patients in the control group received the same medical management as the treatment group, but they did not receive stents.</li>
+</ul>
+<p>Researchers randomly assigned 224 patients to the treatment group and 227 to the control group.
+In this study, the control group provides a reference point against which we can measure the medical impact of stents in the treatment group.</p>
+<p>Researchers studied the effect of stents at two time points: 30 days after enrollment and 365 days after enrollment.
+The results of 5 patients are summarized in Table <a href="intro-to-data.html#tab:stentStudyResultsDF">1.1</a>.
+Patient outcomes are recorded as <code>stroke</code> or <code>no event</code>, representing whether or not the patient had a stroke during that time period.</p>
+
+<div class="data">
+The data from this study can be found in the <a href="http://openintrostat.github.io/openintro">openintro</a> package: <a href="http://openintrostat.github.io/openintro/reference/stent30.html"><code>stent30</code></a> and <a href="http://openintrostat.github.io/openintro/reference/stent365.html"><code>stent365</code></a>.
+</div>
+
+<table>
+<caption>
+<span id="tab:stentStudyResultsDF">Table 1.1: </span>Results for five patients from the stent study.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+group
+</th>
+<th style="text-align:left;">
+30 days
+</th>
+<th style="text-align:left;">
+365 days
+</th>
+<th style="text-align:right;">
+patient
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+treatment
+</td>
+<td style="text-align:left;">
+no event
+</td>
+<td style="text-align:left;">
+no event
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+treatment
+</td>
+<td style="text-align:left;">
+stroke
+</td>
+<td style="text-align:left;">
+stroke
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+treatment
+</td>
+<td style="text-align:left;">
+no event
+</td>
+<td style="text-align:left;">
+no event
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+treatment
+</td>
+<td style="text-align:left;">
+no event
+</td>
+<td style="text-align:left;">
+no event
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:left;">
+no event
+</td>
+<td style="text-align:left;">
+no event
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+</tbody>
+</table>
+<p>Considering data from each patient individually would be a long, cumbersome path towards answering the original research question.
+Instead, performing a statistical data analysis allows us to consider all of the data at once.
+Table <a href="intro-to-data.html#tab:stentStudyResultsDFsummary">1.2</a> summarizes the raw data in a more helpful way.
+In this table, we can quickly see what happened over the entire study.
+For instance, to identify the number of patients in the treatment group who had a stroke within 30 days after the treatment, we look in the leftmost column (30 days), at the intersection of treatment and stroke: 33.
+To identify the number of control patients who did not have a stroke after 365 days after receiving treatment, we look at the rightmost column (365 days), at the intersection of control and no event: 199.</p>
+<table>
+<caption>
+<span id="tab:stentStudyResultsDFsummary">Table 1.2: </span>Descriptive statistics for the stent study.
+</caption>
+<thead>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; border-bottom: 2px solid" colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+30 days
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; border-bottom: 2px solid" colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+365 days
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+stroke
+</th>
+<th style="text-align:right;">
+no event
+</th>
+<th style="text-align:right;">
+stroke
+</th>
+<th style="text-align:right;">
+no event
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;border-top: 2px solid">
+treatment
+</td>
+<td style="text-align:right;border-top: 2px solid">
+33
+</td>
+<td style="text-align:right;border-top: 2px solid">
+191
+</td>
+<td style="text-align:right;border-top: 2px solid">
+45
+</td>
+<td style="text-align:right;border-top: 2px solid">
+179
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+214
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+199
+</td>
+</tr>
+<tr>
+<td style="text-align:left;border-top: 2px solid">
+Total
+</td>
+<td style="text-align:right;border-top: 2px solid">
+46
+</td>
+<td style="text-align:right;border-top: 2px solid">
+405
+</td>
+<td style="text-align:right;border-top: 2px solid">
+73
+</td>
+<td style="text-align:right;border-top: 2px solid">
+378
+</td>
+</tr>
+</tbody>
+</table>
+
+<div class="guidedpractice">
+Of the 224 patients in the treatment group, 45 had a stroke by the end of the first year.
+Using these two numbers, compute the proportion of patients in the treatment group who had a stroke by the end of their first year.
+(Please note: answers to all Guided Practice exercises are provided using footnotes.)<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>
+</div>
+
+<p>We can compute summary statistics from the table to give us a better idea of how the impact of the stent treatment differed between the two groups.
+A <strong>summary statistic</strong> is a single number summarizing a large amount of data.
+For instance, the primary results of the study after 1 year could be described by two summary statistics: the proportion of people who had a stroke in the treatment and control groups.</p>
+<ul>
+<li>Proportion who had a stroke in the treatment (stent) group: <span class="math inline">\(45/224 = 0.20 = 20\%\)</span>.</li>
+<li>Proportion who had a stroke in the control group: <span class="math inline">\(28/227 = 0.12 = 12\%\)</span>.</li>
+</ul>
+<p>These two summary statistics are useful in looking for differences in the groups, and we are in for a surprise: an additional 8% of patients in the treatment group had a stroke!
+This is important for two reasons.
+First, it is contrary to what doctors expected, which was that stents would <em>reduce</em> the rate of strokes.
+Second, it leads to a statistical question: do the data show a “real” difference between the groups?</p>
+<p>This second question is subtle.
+Suppose you flip a coin 100 times. While the chance a coin lands heads in any given coin flip is 50%, we probably won’t observe exactly 50 heads.
+This type of fluctuation is part of almost any type of data generating process.
+It is possible that the 8% difference in the stent study is due to this natural variation.
+However, the larger the difference we observe (for a particular sample size), the less believable it is that the difference is due to chance.
+So what we are really asking is the following: is the difference so large that we should reject the notion that it was due to chance?</p>
+<p>While we don’t yet have our statistical tools to fully address this question on our own, we can comprehend the conclusions of the published analysis: there was compelling evidence of harm by stents in this study of stroke patients.</p>
+<p><strong>Be careful:</strong> Do not generalize the results of this study to all patients and all stents.
+This study looked at patients with very specific characteristics who volunteered to be a part of this study and who may not be representative of all stroke patients.
+In addition, there are many types of stents and this study only considered the self-expanding Wingspan stent (Boston Scientific).
+However, this study does leave us with an important lesson: we should keep our eyes open for surprises.</p>
+<p></p>
+<div id="basic-stents-strokes-exercises" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> Exercises</h3>
+
+<div class="rmdwarning">
+Exercise formatting is still work in progress! Any text here is just a placeholder.
+</div>
+
+
+<div class="todo">
+Update exercises.
+</div>
+
+<ol style="list-style-type: decimal">
+<li><strong>Migraine and acupuncture, Part I.</strong> A migraine is a particularly painful type of headache, which patients sometimes wish to treat with acupuncture.
+To determine whether acupuncture relieves migraine pain, researchers conducted a randomized controlled study where 89 females diagnosed with migraine headaches were randomly assigned to one of two groups: treatment or control.
+43 patients in the treatment group received acupuncture that is specifically designed to treat migraines.
+46 patients in the control group received placebo acupuncture (needle insertion at non-acupoint locations).
+24 hours after patients received acupuncture, they were asked
+if they were pain free.
+Results are summarized in the contingency table below.</li>
+</ol>
+<!--
+
+```
+#> [1] 4
+```
+
+(a) hi
+(b) mello 
+(c) jello
+-->
+</div>
+</div>
+<div id="data-basics" class="section level2">
+<h2><span class="header-section-number">1.2</span> Data basics</h2>
+<p>Effective presentation and description of data is a first step in most analyses. This section introduces one structure for organizing data as well as some terminology that will be used throughout this book.</p>
+<div id="observations-variables-and-data-matrices" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> Observations, variables, and data matrices</h3>
+<p></p>
+<p>Table <a href="intro-to-data.html#tab:loan50DF">1.3</a> displays six rows of a data set for 50 randomly sampled loans offered through Lending Club, which is a peer-to-peer lending company. These observations will be referred to as the <code>loan50</code> data set.</p>
+
+<div class="data">
+The data can be found in the <a href="http://openintrostat.github.io/openintro">openintro</a> package: <a href="http://openintrostat.github.io/openintro/reference/loan50.html"><code>loan50</code></a>.
+</div>
+
+<p>Each row in the table represents a single loan.
+The formal name for a row is a <strong>case</strong> or <strong>observational unit</strong>.
+The columns represent characteristics of each loan, where each column is referred to as a <strong>variable</strong>.
+For example, the first row represents a loan of $7,500 with an interest rate of 7.34%, where the borrower is based in Maryland (MD) and has an income of $70,000.</p>
+
+<div class="guidedpractice">
+What is the grade of the first loan in Table <a href="intro-to-data.html#tab:loan50DF">1.3</a>?
+And what is the home ownership status of the borrower for that first loan?
+Reminder: for these Guided Practice questions, you can check your answer in the footnote.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>
+</div>
+
+<p>In practice, it is especially important to ask clarifying questions to ensure important aspects of the data are understood.
+For instance, it is always important to be sure we know what each variable means and its units of measurement.
+Descriptions of the variables in the <code>loan50</code> dataset are given in Table <a href="intro-to-data.html#tab:loan50Variables">1.4</a>.</p>
+<table>
+<caption>
+<span id="tab:loan50DF">Table 1.3: </span>Six rows from the <code>loan50</code> data set
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+loan_amount
+</th>
+<th style="text-align:right;">
+interest_rate
+</th>
+<th style="text-align:right;">
+term
+</th>
+<th style="text-align:left;">
+grade
+</th>
+<th style="text-align:left;">
+state
+</th>
+<th style="text-align:right;">
+total_income
+</th>
+<th style="text-align:left;">
+homeownership
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+22000
+</td>
+<td style="text-align:right;">
+10.90
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+NJ
+</td>
+<td style="text-align:right;">
+59000
+</td>
+<td style="text-align:left;">
+rent
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+6000
+</td>
+<td style="text-align:right;">
+9.92
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+CA
+</td>
+<td style="text-align:right;">
+60000
+</td>
+<td style="text-align:left;">
+rent
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+25000
+</td>
+<td style="text-align:right;">
+26.30
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+E
+</td>
+<td style="text-align:left;">
+SC
+</td>
+<td style="text-align:right;">
+75000
+</td>
+<td style="text-align:left;">
+mortgage
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+6000
+</td>
+<td style="text-align:right;">
+9.92
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+CA
+</td>
+<td style="text-align:right;">
+75000
+</td>
+<td style="text-align:left;">
+rent
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:right;">
+25000
+</td>
+<td style="text-align:right;">
+9.43
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+254000
+</td>
+<td style="text-align:left;">
+mortgage
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:right;">
+6400
+</td>
+<td style="text-align:right;">
+9.92
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+IN
+</td>
+<td style="text-align:right;">
+67000
+</td>
+<td style="text-align:left;">
+mortgage
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:loan50Variables">Table 1.4: </span>Variables and their descriptions for the <code>loan50</code> data set.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+variable
+</th>
+<th style="text-align:left;">
+description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+loan_amount
+</td>
+<td style="text-align:left;">
+Amount of the loan received, in US dollars.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+interest_rate
+</td>
+<td style="text-align:left;">
+Interest rate on the loan, in an annual percentage.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+term
+</td>
+<td style="text-align:left;">
+The length of the loan, which is always set as a whole number of months.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+grade
+</td>
+<td style="text-align:left;">
+Loan grade, which takes a values A through G and represents the quality of the loan and its likelihood of being repaid.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+US state where the borrower resides.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+total_income
+</td>
+<td style="text-align:left;">
+Borrower’s total income, including any second income, in US dollars.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+homeownership
+</td>
+<td style="text-align:left;">
+Indicates whether the person owns, owns but has a mortgage, or rents.
+</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<p>The data in Table <a href="intro-to-data.html#tab:loan50DF">1.3</a> represent a <strong>data frame</strong>, which is a convenient and common way to organize data, especially if collecting data in a spreadsheet.
+Each row of a data frame corresponds to a unique case (observational unit), and each column corresponds to a variable.</p>
+<p>When recording data, use a data matrix unless you have a very good reason to use a different structure.
+This structure allows new cases to be added as rows or new variables as new columns.</p>
+
+<div class="guidedpractice">
+The grades for assignments, quizzes, and exams in a course are often recorded in a gradebook that takes the form of a data frame.
+How might you organize a course’s grade data using a data frame?<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>
+</div>
+
+<p></p>
+
+<div class="guidedpractice">
+We consider data for 3,142 counties in the United States,
+which includes the name of each county, the state where it resides, its population in 2017, how its population changed from 2010 to 2017, poverty rate, and nine additional characteristics.
+How might these data be organized in a data frame?<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>
+</div>
+
+<p>The data described in the Guided Practice above represents the <strong>county</strong> data set, which is shown as a data frame in Table <a href="intro-to-data.html#tab:countyDF">1.5</a>.
+The variables as well as the variables in the dataset that did not fit in Table <a href="intro-to-data.html#tab:countyDF">1.5</a> are described in Table <a href="intro-to-data.html#tab:countyVariables">1.6</a></p>
+<table>
+<caption>
+<span id="tab:countyDF">Table 1.5: </span>Six observations and six variables from the <code>county</code> data set.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+name
+</th>
+<th style="text-align:left;">
+state
+</th>
+<th style="text-align:right;">
+pop2017
+</th>
+<th style="text-align:right;">
+pop_change
+</th>
+<th style="text-align:right;">
+unemployment_rate
+</th>
+<th style="text-align:left;">
+median_edu
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Autauga County
+</td>
+<td style="text-align:left;">
+Alabama
+</td>
+<td style="text-align:right;">
+55504
+</td>
+<td style="text-align:right;">
+1.48
+</td>
+<td style="text-align:right;">
+3.86
+</td>
+<td style="text-align:left;">
+some_college
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Baldwin County
+</td>
+<td style="text-align:left;">
+Alabama
+</td>
+<td style="text-align:right;">
+212628
+</td>
+<td style="text-align:right;">
+9.19
+</td>
+<td style="text-align:right;">
+3.99
+</td>
+<td style="text-align:left;">
+some_college
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Barbour County
+</td>
+<td style="text-align:left;">
+Alabama
+</td>
+<td style="text-align:right;">
+25270
+</td>
+<td style="text-align:right;">
+-6.22
+</td>
+<td style="text-align:right;">
+5.90
+</td>
+<td style="text-align:left;">
+hs_diploma
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bibb County
+</td>
+<td style="text-align:left;">
+Alabama
+</td>
+<td style="text-align:right;">
+22668
+</td>
+<td style="text-align:right;">
+0.73
+</td>
+<td style="text-align:right;">
+4.39
+</td>
+<td style="text-align:left;">
+hs_diploma
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Blount County
+</td>
+<td style="text-align:left;">
+Alabama
+</td>
+<td style="text-align:right;">
+58013
+</td>
+<td style="text-align:right;">
+0.68
+</td>
+<td style="text-align:right;">
+4.02
+</td>
+<td style="text-align:left;">
+hs_diploma
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bullock County
+</td>
+<td style="text-align:left;">
+Alabama
+</td>
+<td style="text-align:right;">
+10309
+</td>
+<td style="text-align:right;">
+-2.28
+</td>
+<td style="text-align:right;">
+4.93
+</td>
+<td style="text-align:left;">
+hs_diploma
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:countyVariables">Table 1.6: </span>Variables and their descriptions for the <code>county</code> data set.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+variable
+</th>
+<th style="text-align:left;">
+description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+name
+</td>
+<td style="text-align:left;">
+Name of county.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+Name of state.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+pop2000
+</td>
+<td style="text-align:left;">
+Population in 2000.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+pop2010
+</td>
+<td style="text-align:left;">
+Population in 2010.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+pop2017
+</td>
+<td style="text-align:left;">
+Population in 2017.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+pop_change
+</td>
+<td style="text-align:left;">
+Population change from 2010 to 2017.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+poverty
+</td>
+<td style="text-align:left;">
+Percent of population in poverty in 2017.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+homeownership
+</td>
+<td style="text-align:left;">
+Homeownership rate, 2006-2010.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+multi_unit
+</td>
+<td style="text-align:left;">
+Percent of housing units in multi-unit structures, 2006-2010.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+unemployment_rate
+</td>
+<td style="text-align:left;">
+Unemployment rate in 2017.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+metro
+</td>
+<td style="text-align:left;">
+Whether the county contains a metropolitan area, taking one of the values <code>yes</code> or <code>no</code>.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+median_edu
+</td>
+<td style="text-align:left;">
+Median education level (2013-2017), taking one of the values <code>below_hs</code>, <code>hs_diploma</code>, <code>some_college</code>, or <code>bachelors</code>.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+per_capita_income
+</td>
+<td style="text-align:left;">
+Per capita (per person) income (2013-2017).
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+median_hh_income
+</td>
+<td style="text-align:left;">
+Median household income.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+smoking_ban
+</td>
+<td style="text-align:left;">
+Describes whether the type of county-level smoking ban in place in 2010, taking one of the values <code>none</code>, <code>partial</code>, or <code>comprehensive</code>.
+</td>
+</tr>
+</tbody>
+</table>
+
+<div class="data">
+These data can be found in the <a href="http://openintrostat.github.io/openintro">openintro</a> package: <a href="http://openintrostat.github.io/openintro/reference/county.html"><code>county</code></a>.
+</div>
+
+</div>
+<div id="variable-types" class="section level3">
+<h3><span class="header-section-number">1.2.2</span> Types of variables</h3>
+<p>Examine the <code>unemployment_rate</code>, <code>pop2017</code>, <code>state</code>, and <code>median_edu</code> variables in the <code>county</code> data set.
+Each of these variables is inherently different from the other three, yet some share certain characteristics.</p>
+<p>First consider <code>unemployment_rate</code>, which is said to be a <strong>numerical</strong> variable since it can take a wide range of numerical values, and it is sensible to add, subtract, or take averages with those values.
+On the other hand, we would not classify a variable reporting telephone area codes as numerical since the average, sum, and difference of area codes doesn’t have any clear meaning.</p>
+<p>The <code>pop2017</code> variable is also numerical, although it seems to be a little different than <code>unemployment_rate</code>.
+This variable of the population count can only take whole non-negative numbers (0, 1, 2, …).
+For this reason, the population variable is said to be <strong>discrete</strong> since it can only take numerical values with jumps.
+On the other hand, the unemployment rate variable is said to be <strong>continuous</strong>.</p>
+<p>The variable <code>state</code> can take up to 51 values after accounting for Washington, DC: AL, AK, …, and WY.
+Because the responses themselves are categories, <code>state</code> is called a <strong>categorical</strong> variable, and the possible values are called the variable’s <strong>levels</strong> .</p>
+<p>Finally, consider the <code>median_edu</code> variable, which describes the median education level of county residents and takes values <code>below_hs</code>, <code>hs_diploma</code>, <code>some_college</code>, or <code>bachelors</code> in each county.
+This variable seems to be a hybrid: it is a categorical variable but the levels have a natural ordering.
+A variable with these properties is called an <strong>ordinal</strong> variable, while a regular categorical variable without this type of special ordering is called a <strong>nominal</strong> variable.
+To simplify analyses, any ordinal variable in this book will be treated as a nominal (unordered) categorical variable.</p>
+<div class="figure" style="text-align: center"><span id="fig:variables"></span>
+<img src="01/figures/variables/variables.png" alt="Breakdown of variables into their respective types." width="75%" />
+<p class="caption">
+Figure 1.1: Breakdown of variables into their respective types.
+</p>
+</div>
+
+<div class="example">
+<p>Data were collected about students in a statistics course.
+Three variables were recorded for each student: number of siblings, student height, and whether the student had previously taken a statistics course.
+Classify each of the variables as continuous numerical, discrete numerical, or categorical.</p>
+<hr />
+The number of siblings and student height represent numerical variables.
+Because the number of siblings is a count, it is discrete.
+Height varies continuously, so it is a continuous numerical variable.
+The last variable classifies students into two categories – those who have and those who have not taken a statistics course – which makes this variable categorical.
+</div>
+
+<p></p>
+
+<div class="guidedpractice">
+An experiment is evaluating the effectiveness of a new drug in treating migraines.
+A <code>group</code> variable is used to indicate the experiment group for each patient: treatment or control.
+The <code>num_migraines</code> variable represents the number of migraines the patient experienced during a 3-month period. Classify each variable as either numerical or categorical?<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>
+</div>
+
+</div>
+<div id="variable-relations" class="section level3">
+<h3><span class="header-section-number">1.2.3</span> Relationships between variables</h3>
+<p>Many analyses are motivated by a researcher looking for a relationship between two or more variables.
+A social scientist may like to answer some of the following questions:</p>
+<blockquote>
+<p>Does a higher than average increase in county population tend to correspond to counties with higher or lower median household incomes?</p>
+</blockquote>
+<blockquote>
+<p>If homeownership is lower than the national average in one county, will the percent of multi-unit structures in that county tend to be above or below the national average?</p>
+</blockquote>
+<blockquote>
+<p>How useful a predictor is median education level for the median household income for US counties?</p>
+</blockquote>
+<p>To answer these questions, data must be collected, such as the <code>county</code> data set shown in Table <a href="intro-to-data.html#tab:countyDF">1.5</a>.
+Examining <strong>summary statistics</strong> could provide insights for each of the three questions about counties.
+Additionally, graphs can be used to visually exploring the data.</p>
+<p><strong>Scatterplots</strong> are one type of graph used to study the relationship between two numerical variables.
+Figure <a href="intro-to-data.html#fig:county-multi-unit-homeownership">1.2</a> displays the relationship between the variables <code>homeownership</code> and <code>multi_unit</code>, which is the percent of units in multi-unit structures (e.g. apartments, condos).
+Each point on the plot represents a single county.
+For instance, the highlighted dot corresponds to County 413 in the <code>county</code> data set: Chattahoochee County, Georgia, which has 39.4% of units in multi-unit structures and a homeownership rate of 31.3%.
+The scatterplot suggests a relationship between the two variables: counties with a higher rate of multi-units tend to have lower homeownership rates.
+We might brainstorm as to why this relationship exists and investigate each idea to determine which are the most reasonable explanations.</p>
+<div class="figure" style="text-align: center"><span id="fig:county-multi-unit-homeownership"></span>
+<img src="01-intro-to-data_files/figure-html/county-multi-unit-homeownership-1.png" alt="A scatterplot of homeownership versus the percent of units that are in multi-unit structures for US counties. The highlighted dot represents Chattahoochee County, Georgia, which has a multi-unit rate of 39.4% and a homeownership rate of 31.3%." width="70%" />
+<p class="caption">
+Figure 1.2: A scatterplot of homeownership versus the percent of units that are in multi-unit structures for US counties. The highlighted dot represents Chattahoochee County, Georgia, which has a multi-unit rate of 39.4% and a homeownership rate of 31.3%.
+</p>
+</div>
+<p>The multi-unit and homeownership rates are said to be associated because the plot shows a discernible pattern.
+When two variables show some connection with one another, they are called <strong>associated</strong> variables.
+Associated variables can also be called <strong>dependent</strong> variables and vice-versa.</p>
+
+<div class="guidedpractice">
+Examine the variables in the <code>loan50</code> data set, which are described in Table <a href="intro-to-data.html#tab:loan50Variables">1.4</a>.
+Create two questions about possible relationships between variables in <code>loan50</code> that are of interest to you.<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>
+</div>
+
+
+<div class="example">
+<p>This example examines the relationship between the change in population from 2010 to 2017 and median household income for counties, which is visualized as a scatterplot in Figure <a href="intro-to-data.html#fig:county-pop-change-med-hh-income">1.3</a>.
+Are these variables associated?</p>
+<hr />
+The larger the median household income for a county, the higher the population growth observed for the county.
+While this trend isn’t true for every county, the trend in the plot is evident. Since there is some relationship between the variables, they are associated.
+</div>
+
+<div class="figure" style="text-align: center"><span id="fig:county-pop-change-med-hh-income"></span>
+<img src="01-intro-to-data_files/figure-html/county-pop-change-med-hh-income-1.png" alt="A scatterplot showing `pop_change` against `median_hh_income`. Owsley County of Kentucky, is highlighted, which lost 3.63% of its population from 2010 to 2017 and had median household income of $22,736." width="70%" />
+<p class="caption">
+Figure 1.3: A scatterplot showing <code>pop_change</code> against <code>median_hh_income</code>. Owsley County of Kentucky, is highlighted, which lost 3.63% of its population from 2010 to 2017 and had median household income of $22,736.
+</p>
+</div>
+<p>Because there is a downward trend in Figure <a href="intro-to-data.html#fig:county-multi-unit-homeownership">1.2</a> – counties with more units in multi-unit structures are associated with lower homeownership – these variables are said to be <strong>negatively associated</strong>.
+A <strong>positive association</strong> is shown in the relationship between the <code>median_hh_income</code> and <code>pop_change</code> variables in Figure <a href="intro-to-data.html#fig:county-pop-change-med-hh-income">1.3</a>, where counties with higher median household income tend to have higher rates of population growth.</p>
+<p>If two variables are not associated, then they are said to be <strong>independent</strong>.
+That is, two variables are independent if there is no evident relationship between the two.</p>
+
+<div class="onebox">
+<strong>Associated or independent, not both.</strong>
+A pair of variables are either related in some way (associated) or not (independent).
+No pair of variables is both associated and independent.
+</div>
+
+</div>
+<div id="explanatory-and-response-variables" class="section level3">
+<h3><span class="header-section-number">1.2.4</span> Explanatory and response variables</h3>
+<p>When we ask questions about the relationship between two variables, we sometimes also want to determine if the change in one variable causes a change in the other.
+Consider the following rephrasing of an earlier question bout the <code>county</code> data set:</p>
+<blockquote>
+<p>If there is an increase in the median household income in a county, does this drive an increase in its population?</p>
+</blockquote>
+<p>In this question, we are asking whether one variable affects another.
+If this is our underlying belief, then <em>median household income</em> is the <strong>explanatory variable</strong> variable and the <em>population change</em> is the <strong>response variable</strong> variable in the hypothesized relationship.<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a></p>
+<p></p>
+
+<div class="onebox">
+<p><strong>Explanatory and response variables.</strong>
+When we suspect one variable might causally affect another, we label the first variable the explanatory variable and the second the response variable.</p>
+<center>
+explanatory variable <span class="math inline">\(\rightarrow\)</span> <em>might affect</em> <span class="math inline">\(\rightarrow\)</span> response variable
+</center>
+<br>
+For many pairs of variables, there is no hypothesized relationship, and these labels would not be applied to either variable in such cases.
+</div>
+
+<p>Bear in mind that the act of labeling the variables in this way does nothing to guarantee that a causal relationship exists.
+A formal evaluation to check whether one variable causes a change in another requires an experiment.</p>
+</div>
+<div id="introducing-observational-studies-and-experiments" class="section level3">
+<h3><span class="header-section-number">1.2.5</span> Introducing observational studies and experiments</h3>
+<p>There are two primary types of data collection: observational studies and experiments.</p>
+<p>Researchers perform an <strong>observational study</strong> when they collect data in a way that does not directly interfere with how the data arise.
+For instance, researchers may collect information via surveys, review medical or company records, or follow a <strong>cohort</strong> of many similar individuals to form hypotheses about why certain diseases might develop.
+In each of these situations, researchers merely observe the data that arise.
+In general, observational studies can provide evidence of a naturally occurring association between variables, but they cannot by themselves show a causal connection.</p>
+<p>When researchers want to investigate the possibility of a causal connection, they conduct an <strong>experiment</strong>.
+Usually there will be both an explanatory and a response variable.
+For instance, we may suspect administering a drug will reduce mortality in heart attack patients over the following year.
+To check if there really is a causal connection between the explanatory variable and the response, researchers will collect a sample of individuals and split them into groups.
+The individuals in each group are <em>assigned</em> a treatment.
+When individuals are randomly assigned to a group, the experiment is called a <strong>randomized experiment</strong>.
+For example, each heart attack patient in the drug trial could be randomly assigned, perhaps by flipping a coin, into one of two groups: the first group receives a <strong>placebo</strong> (fake treatment) and the second group receives the drug.
+See the case study in Section <a href="intro-to-data.html#basic-stents-strokes">1.1</a> for another example of an experiment, though that study did not employ a placebo.</p>
+
+<div class="onebox">
+<strong>Association <span class="math inline">\(\neq\)</span> Causation.</strong>
+In general, association does not imply causation, and causation can only be inferred from a randomized experiment.
+</div>
+
+</div>
+<div id="data-basics-exercises" class="section level3">
+<h3><span class="header-section-number">1.2.6</span> Exercises</h3>
+
+<div class="todo">
+Update exercises.
+</div>
+
+</div>
+</div>
+<div id="sampling-principles-strategies" class="section level2">
+<h2><span class="header-section-number">1.3</span> Sampling principles and strategies</h2>
+<p>
+</p>
+<p>The first step in conducting research is to identify topics or questions that are to be investigated.
+A clearly laid out research question is helpful in identifying what subjects or cases should be studied and what variables are important.
+It is also important to consider <em>how</em> data are collected so that they are reliable and help achieve the research goals.</p>
+<div id="populations-and-samples" class="section level3">
+<h3><span class="header-section-number">1.3.1</span> Populations and samples</h3>
+<p>Consider the following three research questions:</p>
+<ol style="list-style-type: decimal">
+<li>What is the average mercury content in swordfish in the Atlantic Ocean?</li>
+<li>Over the last 5 years, what is the average time to complete a degree for Duke undergrads?</li>
+<li>Does a new drug reduce the number of deaths in patients with severe heart disease?</li>
+</ol>
+<p>Each research question refers to a target <strong>population</strong>.
+In the first question, the target population is all swordfish in the Atlantic ocean, and each fish represents a case.
+Often times, it is too expensive to collect data for every case in a population.
+Instead, a sample is taken.
+A <strong>sample</strong> represents a subset of the cases and is often a small fraction of the population.
+For instance, 60 swordfish (or some other number) in the population might be selected, and this sample data may be used to provide an estimate of the population average and answer the research question.</p>
+
+<div class="guidedpractice">
+For the second and third questions above, identify the target population and what represents an individual case.<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>
+</div>
+
+</div>
+<div id="anecdotal-evidence" class="section level3">
+<h3><span class="header-section-number">1.3.2</span> Anecdotal evidence</h3>
+<p></p>
+<p>Consider the following possible responses to the three research questions:</p>
+<ol style="list-style-type: decimal">
+<li>A man on the news got mercury poisoning from eating swordfish, so the average mercury concentration in swordfish must be dangerously high.</li>
+<li>I met two students who took more than 7 years to graduate from Duke, so it must take longer to graduate at Duke than at many other colleges.</li>
+<li>My friend’s dad had a heart attack and died after they gave him a new heart disease drug, so the drug must not work.</li>
+</ol>
+<p>Each conclusion is based on data.
+However, there are two problems.
+First, the data only represent one or two cases.
+Second, and more importantly, it is unclear whether these cases are actually representative of the population. Data collected in this haphazard fashion are called <strong>anecdotal evidence</strong>.</p>
+
+<div class="onebox">
+<strong>Anecdotal evidence.</strong>
+Be careful of data collected in a haphazard fashion.
+Such evidence may be true and verifiable, but it may only represent extraordinary cases.
+</div>
+
+<div class="figure" style="text-align: center"><span id="fig:mn-winter"></span>
+<img src="01/images/mn-winter/mn-winter.jpg" alt="In February 2010, some media pundits cited one large snow storm as evidence against global warming. As comedian Jon Stewart pointed out, &quot;It is one storm, in one region, of one country.&quot;" width="80%" />
+<p class="caption">
+Figure 1.4: In February 2010, some media pundits cited one large snow storm as evidence against global warming. As comedian Jon Stewart pointed out, “It is one storm, in one region, of one country.”
+</p>
+</div>
+<p>Anecdotal evidence typically is composed of unusual cases that we recall based on their striking characteristics.
+For instance, we are more likely to remember the two people we met who took 7 years to graduate than the six others who graduated in four years.
+Instead of looking at the most unusual cases, we should examine a sample of many cases that better represent the population.</p>
+</div>
+<div id="sampling-from-a-population" class="section level3">
+<h3><span class="header-section-number">1.3.3</span> Sampling from a population</h3>
+<p>
+</p>
+<p>We might try to estimate the time to graduation for Duke undergraduates in the last 5 years by collecting a sample of students.
+All graduates in the last 5 years represent the <em>population</em>, and graduates who are selected for review are collectively called the <em>sample</em>.
+In general, we always seek to <em>randomly</em> select a sample from a population.
+The most basic type of random selection is equivalent to how raffles are conducted.
+For example, in selecting graduates, we could write each graduate’s name on a raffle ticket and draw 100 tickets.
+The selected names would represent a random sample of 100 graduates.
+We pick samples randomly to reduce the chance we introduce biases.</p>
+<div class="figure" style="text-align: center"><span id="fig:pop-to-sample"></span>
+<img src="01-intro-to-data_files/figure-html/pop-to-sample-1.png" alt="In this graphic, five graduates are randomly selected from the population to be included in the sample." width="70%" />
+<p class="caption">
+Figure 1.5: In this graphic, five graduates are randomly selected from the population to be included in the sample.
+</p>
+</div>
+
+<div class="example">
+<p>Suppose we ask a student who happens to be majoring in nutrition to select several graduates for the study.
+What kind of students do you think they might collect?
+Do you think their sample would be representative of all graduates?</p>
+<hr />
+Perhaps they would pick a disproportionate number of graduates from health-related fields. Or perhaps their selection would be a good representation of the population.
+When selecting samples by hand, we run the risk of picking a <strong>biased</strong> sample, even if our bias is unintended.
+</div>
+
+<div class="figure" style="text-align: center"><span id="fig:pop-to-sub-sample-graduates"></span>
+<img src="01-intro-to-data_files/figure-html/pop-to-sub-sample-graduates-1.png" alt="Asked to pick a sample of graduates, a nutrition major might inadvertently pick a disproportionate number of graduates from health-related majors." width="70%" />
+<p class="caption">
+Figure 1.6: Asked to pick a sample of graduates, a nutrition major might inadvertently pick a disproportionate number of graduates from health-related majors.
+</p>
+</div>
+<p>If someone was permitted to pick and choose exactly which graduates were included in the sample, it is entirely possible that the sample could be skewed to that person’s interests, which may be entirely unintentional.
+This introduces <strong>bias</strong> into a sample. Sampling randomly helps resolve this problem.
+The most basic random sample is called a <strong>simple random sample</strong>, and is equivalent to using a raffle to select cases.
+This means that each case in the population has an equal chance of being included and there is no implied connection between the cases in the sample.</p>
+<p>The act of taking a simple random sample helps minimize bias.
+However, bias can crop up in other ways.
+Even when people are picked at random, e.g. for surveys, caution must be exercised if the <strong>non-response rate</strong> is high.
+For instance, if only 30% of the people randomly sampled for a survey actually respond, then it is unclear whether the results are <strong>representative</strong> of the entire population.
+This <strong>non-response bias</strong> can skew results.</p>
+<div class="figure" style="text-align: center"><span id="fig:survey-sample"></span>
+<img src="01-intro-to-data_files/figure-html/survey-sample-1.png" alt="Due to the possibility of non-response, surveys studies may only reach a certain group within the population. It is difficult, and often times impossible, to completely fix this problem." width="70%" />
+<p class="caption">
+Figure 1.7: Due to the possibility of non-response, surveys studies may only reach a certain group within the population. It is difficult, and often times impossible, to completely fix this problem.
+</p>
+</div>
+<p>Another common downfall is a <strong>convenience sample</strong> , where individuals who are easily accessible are more likely to be included in the sample.
+For instance, if a political survey is done by stopping people walking in the Bronx, this will not represent all of New York City.
+It is often difficult to discern what sub-population a convenience sample represents.</p>
+
+<div class="guidedpractice">
+We can easily access ratings for products, sellers, and companies through websites. These ratings are based only on those people who go out of their way to provide a rating. If 50% of online reviews for a product are negative, do you think this means that 50% of buyers are dissatisfied with the product? Why or why not?<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>
+</div>
+
+<p>
+
+
+
+</p>
+</div>
+<div id="observational-studies" class="section level3">
+<h3><span class="header-section-number">1.3.4</span> Observational studies</h3>
+<p>Data where no treatment has been explicitly applied (or explicitly withheld) is called <strong>observational data</strong>.
+For instance, the loan data and county data described in Section <a href="intro-to-data.html#data-basics">1.2</a> are both examples of observational data.</p>
+<p>Making causal conclusions based on experiments is often reasonable.
+However, making the same causal conclusions based on observational data can be treacherous and is not recommended.
+Thus, observational studies are generally only sufficient to show associations or form hypotheses that can be later checked with experiments.</p>
+
+<div class="guidedpractice">
+Suppose an observational study tracked sunscreen use and skin cancer, and it was found that the more sunscreen someone used, the more likely the person was to have skin cancer. Does this mean sunscreen <em>causes</em> skin cancer?<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>
+</div>
+
+<p>Some previous research tells us that using sunscreen actually reduces skin cancer risk, so maybe there is another variable that can explain this hypothetical association between sunscreen usage and skin cancer.
+One important piece of information that is absent is sun exposure. If someone is out in the sun all day, they are more likely to use sunscreen <em>and</em> more likely to get skin cancer. Exposure to the sun is unaccounted for in the simple investigation.</p>
+<p><img src="01-intro-to-data_files/figure-html/sun-causes-cancer-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<!--
+Some studies:
+http://www.sciencedirect.com/science/article/pii/S0140673698121682
+http://archderm.ama-assn.org/cgi/content/abstract/122/5/537
+Study with a similar scenario to that described here:
+http://onlinelibrary.wiley.com/doi/10.1002/ijc.22745/full
+-->
+<p>Sun exposure is what is called a <strong>confounding variable</strong><a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a>, which is a variable that is associated with both the explanatory and response variables.
+While one method to justify making causal conclusions from observational studies is to exhaust the search for confounding variables, there is no guarantee that all confounding variables can be examined or measured.</p>
+
+<div class="guidedpractice">
+Figure <a href="intro-to-data.html#fig:county-multi-unit-homeownership">1.2</a> shows a negative association between the homeownership rate and the percentage of multi-unit structures in a county.
+However, it is unreasonable to conclude that there is a causal relationship between the two variables.
+Suggest a variable that might explain the negative relationship.<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a>
+</div>
+
+<p>Observational studies come in two forms: prospective and retrospective studies.
+A <strong>prospective study</strong> identifies individuals and collects information as events unfold.
+For instance, medical researchers may identify and follow a group of patients over many years to assess the possible influences of behavior on cancer risk.
+One example of such a study is The Nurses’ Health Study.
+Started in 1976 and expanded in 1989, the Nurses’ Health Study has collected data on over 275,000 nurses and is still enrolling participants.
+This prospective study recruits registered nurses and then collects data from them using questionnaires.
+<strong>Retrospective studies</strong> collect data after events have taken place, e.g. researchers may review past events in medical records.
+Some data sets may contain both prospectively- and retrospectively-collected variables, such as medical studies which gather information on participants’ lives before they enter the study and subsequently collect data on participants throughout the study.</p>
+</div>
+<div id="four-sampling-methods" class="section level3">
+<h3><span class="header-section-number">1.3.5</span> Four sampling methods</h3>
+<p>Almost all statistical methods are based on the notion of implied randomness.
+If observational data are not collected in a random framework from a population, these statistical methods – the estimates and errors associated with the estimates – are not reliable.
+Here we consider four random sampling techniques: simple, stratified, cluster, and multistage sampling. Figures <a href="intro-to-data.html#fig:simple-stratified">1.8</a> and <a href="intro-to-data.html#fig:cluster-multistage">1.9</a> provide graphical representations of these techniques.</p>
+<p>
+</p>
+<div class="figure" style="text-align: center"><span id="fig:simple-stratified"></span>
+<img src="01-intro-to-data_files/figure-html/simple-stratified-1.png" alt="Examples of simple random and stratified sampling. In the top panel, simple random sampling was used to randomly select the 18 cases (denoted in red). In the bottom panel, stratified sampling was used: cases were grouped into strata, then simple random sampling was employed to randomly select 3 cases within each stratum." width="70%" />
+<p class="caption">
+Figure 1.8: Examples of simple random and stratified sampling. In the top panel, simple random sampling was used to randomly select the 18 cases (denoted in red). In the bottom panel, stratified sampling was used: cases were grouped into strata, then simple random sampling was employed to randomly select 3 cases within each stratum.
+</p>
+</div>
+
+<div class="todo">
+Replace MLB example with something else below
+</div>
+
+<p><strong>Simple random sampling</strong> is probably the most intuitive form of random sampling.
+Consider the salaries of Major League Baseball (MLB) players, where each player is a member of one of the league’s 30 teams.
+To take a simple random sample of 120 baseball players and their salaries, we could write the names of that season’s several hundreds of players onto slips of paper, drop the slips into a bucket, shake the bucket around until we are sure the names are all mixed up, then draw out slips until we have the sample of 120 players.
+In general, a sample is referred to as “simple random” if each case in the population has an equal chance of being included in the final sample <em>and</em> knowing that a case is included in a sample does not provide useful information about which other cases are included.</p>
+<p></p>
+<p><strong>Stratified sampling</strong> is a divide-and-conquer sampling strategy.
+The population is divided into groups called <strong>strata</strong>.
+The strata are chosen so that similar cases are grouped together, then a second sampling method, usually simple random sampling, is employed within each stratum.
+In the baseball salary example, each of the 30 teams could represent a strata, since some teams have a lot more money (up to 4 times as much!).
+Then we might randomly sample 4 players from each team for our sample of 120 players.</p>
+<p><strong>Stratified sampling</strong> is especially useful when the cases in each stratum are very similar with respect to the outcome of interest.
+The downside is that analyzing data from a stratified sample is a more complex task than analyzing data from a simple random sample.
+The analysis methods introduced in this book would need to be extended to analyze data collected using stratified sampling.</p>
+
+<div class="example">
+<p>Why would it be good for cases within each stratum to be very similar?</p>
+<hr />
+We might get a more stable estimate for the subpopulation in a stratum if the cases are very similar, leading to more precise estimates within each group.
+When we combine these estimates into a single estimate for the full population, that population estimate will tend to be more precise since each individual group estimate is itself more precise.
+</div>
+
+<p>In a <strong>cluster sample</strong>, we break up the population into many groups, called <strong>clusters</strong>.
+Then we sample a fixed number of clusters and include all observations from each of those clusters in the sample.
+A <strong>multistage sample</strong> is like a cluster sample, but rather than keeping all observations in each cluster, we would collect a random sample within each selected cluster.</p>
+<p></p>
+<div class="figure" style="text-align: center"><span id="fig:cluster-multistage"></span>
+<img src="01-intro-to-data_files/figure-html/cluster-multistage-1.png" alt="Examples of cluster and multistage sampling. In the top panel, cluster sampling was used: data were binned into nine clusters, three of these clusters were sampled, and all observations within these three cluster were included in the sample. In the bottom panel, multistage sampling was used, which differs from cluster sampling only in that we randomly select a subset of each cluster to be included in the sample rather than measuring every case in each sampled cluster." width="70%" />
+<p class="caption">
+Figure 1.9: Examples of cluster and multistage sampling. In the top panel, cluster sampling was used: data were binned into nine clusters, three of these clusters were sampled, and all observations within these three cluster were included in the sample. In the bottom panel, multistage sampling was used, which differs from cluster sampling only in that we randomly select a subset of each cluster to be included in the sample rather than measuring every case in each sampled cluster.
+</p>
+</div>
+<p>Sometimes cluster or multistage sampling can be more economical than the alternative sampling techniques.
+Also, unlike stratified sampling, these approaches are most helpful when there is a lot of case-to-case variability within a cluster but the clusters themselves don’t look very different from one another.
+For example, if neighborhoods represented clusters, then cluster or multistage sampling work best when the neighborhoods are very diverse.
+A~downside of these methods is that more advanced techniques are typically required to analyze the data, though the methods in this book can be extended to handle such data.</p>
+
+<div class="example">
+<p>Suppose we are interested in estimating the malaria rate in a densely tropical portion of rural Indonesia.
+We learn that there are 30 villages in that part of the Indonesian jungle, each more or less similar to the next, but the distances between the villages is substantial. Our goal is to test 150 individuals for malaria.
+What sampling method should be employed?</p>
+<hr />
+A simple random sample would likely draw individuals from all 30 villages, which could make data collection extremely expensive.
+Stratified sampling would be a challenge since it is unclear how we would build strata of similar individuals.
+However, cluster sampling or multistage sampling seem like very good ideas.
+If we decided to use multistage sampling, we might randomly select half of the villages, then randomly select 10 people from each.
+This would probably reduce our data collection costs substantially in comparison to a simple random sample, and the cluster sample would still give us reliable information, even if we would need to analyze the data with slightly more advanced methods than we discuss in this book.
+</div>
+
+</div>
+<div id="sampling-principles-strategies-exercises" class="section level3">
+<h3><span class="header-section-number">1.3.6</span> Exercises</h3>
+
+<div class="todo">
+Update exercises.
+</div>
+
+</div>
+</div>
+<div id="experiments" class="section level2">
+<h2><span class="header-section-number">1.4</span> Experiments</h2>
+<p>Studies where the researchers assign treatments to cases are called <strong>experiments</strong>.
+When this assignment includes randomization, e.g. using a coin flip to decide which treatment a patient receives, it is called a <strong>randomized experiment</strong>.
+Randomized experiments are fundamentally important when trying to show a causal connection between two variables.</p>
+<div id="principles-of-experimental-design" class="section level3">
+<h3><span class="header-section-number">1.4.1</span> Principles of experimental design</h3>
+<ol style="list-style-type: decimal">
+<li><p><strong>Controlling.</strong> Researchers assign treatments to cases, and they do their best to <strong>control</strong> any other differences in the groups<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>.<br />
+For example, when patients take a drug in pill form, some patients take the pill with only a sip of water while others may have it with an entire glass of water.
+To control for the effect of water consumption, a doctor may instruct every patient to drink a 12 ounce glass of water with the pill.</p></li>
+<li><p><strong>Randomization.</strong> Researchers randomize patients into treatment groups to account for variables that cannot be controlled.
+For example, some patients may be more susceptible to a disease than others due to their dietary habits.
+Randomizing patients into the treatment or control group helps even out such differences, and it also prevents accidental bias from entering the study.</p></li>
+<li><p><strong>Replication.</strong> The more cases researchers observe, the more accurately they can estimate the effect of the explanatory variable on the response.
+In a single study, we <strong>replicate</strong> by collecting a sufficiently large sample.
+Alternatively, a group of scientists may replicate an entire study to verify an earlier finding.</p></li>
+<li><p><strong>Blocking.</strong> Researchers sometimes know or suspect that variables, other than the treatment, influence the response.
+Under these circumstances, they may first group individuals based on this variable into <strong>blocks</strong> and then randomize cases within each block to the treatment groups.
+This strategy is often referred to as <strong>blocking</strong>.
+For instance, if we are looking at the effect of a drug on heart attacks, we might first split patients in the study into low-risk and high-risk blocks, then randomly assign half the patients from each block to the control group and the other half to the treatment group, as shown in Figure <a href="intro-to-data.html#fig:blocking">1.10</a>.
+This strategy ensures each treatment group has an equal number of low-risk and high-risk patients.</p></li>
+</ol>
+<div class="figure" style="text-align: center"><span id="fig:blocking"></span>
+<img src="01-intro-to-data_files/figure-html/blocking-1.png" alt="Blocking using a variable depicting patient risk. Patients are first divided into low-risk and high-risk blocks, then each block is evenly separated into the treatment groups using randomization. This strategy ensures an equal representation of patients in each treatment group from both the low-risk and high-risk categories." width="70%" />
+<p class="caption">
+Figure 1.10: Blocking using a variable depicting patient risk. Patients are first divided into low-risk and high-risk blocks, then each block is evenly separated into the treatment groups using randomization. This strategy ensures an equal representation of patients in each treatment group from both the low-risk and high-risk categories.
+</p>
+</div>
+<p>It is important to incorporate the first three experimental design principles into any study, and this book describes applicable methods for analyzing data from such experiments.
+Blocking is a slightly more advanced technique, and statistical methods in this book may be extended to analyze data collected using blocking.</p>
+<p>Randomized experiments are generally built on four principles.</p>
+
+<div class="todo">
+Are the “four” principles the same as the enumerated list above?
+</div>
+
+</div>
+<div id="reducing-bias-human-experiments" class="section level3">
+<h3><span class="header-section-number">1.4.2</span> Reducing bias in human experiments</h3>
+<p>Randomized experiments have long been considered to be the gold standard for data collection, but they do not ensure an unbiased perspective into the cause and effect relationship in all cases.
+Human studies are perfect examples where bias can unintentionally arise.
+Here we reconsider a study where a new drug was used to treat heart attack patients.
+In particular, researchers wanted to know if the drug reduced deaths in patients.</p>
+<p>These researchers designed a randomized experiment because they wanted to draw causal conclusions about the drug’s effect.
+Study volunteers<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a> were randomly placed into two study groups.
+One group, the <strong>treatment group</strong>, received the drug.
+The other group, called the <strong>control group</strong>, did not receive any drug treatment.</p>
+<p>Put yourself in the place of a person in the study.
+If you are in the treatment group, you are given a fancy new drug that you anticipate will help you.
+On the other hand, a person in the other group doesn’t receive the drug and sits idly, hoping her participation doesn’t increase her risk of death.
+These perspectives suggest there are actually two effects in this study: the one of interest is the effectiveness of the drug, and the second is an emotional effect to (not) taking the drug, which is difficult to quantify.</p>
+<p>Researchers aren’t usually interested in the emotional effect, which might bias the study.
+To circumvent this problem, researchers do not want patients to know which group they are in.
+When researchers keep the patients uninformed about their treatment, the study is said to be <strong>blind</strong>.
+But there is one problem: if a patient doesn’t receive a treatment, they will know they’re in the control group.
+The solution to this problem is to give fake treatments to patients in the control group.
+A fake treatment is called a <strong>placebo</strong>, and an effective placebo is the key to making a study truly blind.
+A classic example of a placebo is a sugar pill that is made to look like the actual treatment pill.
+Often times, a placebo results in a slight but real improvement in patients.
+This effect has been dubbed the <strong>placebo effect</strong>.</p>
+<p>The patients are not the only ones who should be blinded: doctors and researchers can accidentally bias a study.
+When a doctor knows a patient has been given the real treatment, they might inadvertently give that patient more attention or care than a patient that they know is on the placebo.
+To guard against this bias, which again has been found to have a measurable effect in some instances, most modern studies employ a <strong>double-blind</strong> setup where doctors or researchers who interact with patients are, just like the patients, unaware of who is or is not receiving the treatment.<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a></p>
+
+<div class="guidedpractice">
+Look back to the study in Section <a href="intro-to-data.html#basic-stents-strokes">1.1</a> where researchers were testing whether stents were effective at reducing strokes in at-risk patients.
+Is this an experiment? Was the study blinded? Was it double-blinded?<a href="#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a>
+</div>
+
+
+<div class="guidedpractice">
+For the study in Section <a href="intro-to-data.html#basic-stents-strokes">1.1</a>, could the researchers have employed a placebo?
+If so, what would that placebo have looked like?<a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a>
+</div>
+
+<p>You may have many questions about the ethics of sham surgeries to create a placebo.
+These questions may have even arisen in your mind when in the general experiment context, where a possibly helpful treatment was withheld from individuals in the control group; the main difference is that a sham surgery tends to create additional risk, while withholding a treatment only maintains a person’s risk.</p>
+<p>There are always multiple viewpoints of experiments and placebos, and rarely is it obvious which is ethically “correct”.
+For instance, is it ethical to use a sham surgery when it creates a risk to the patient?
+However, if we don’t use sham surgeries, we may promote the use of a costly treatment that has no real effect; if this happens, money and other resources will be diverted away from other treatments that are known to be helpful.
+Ultimately, this is a difficult situation where we cannot perfectly protect both the patients who have volunteered for the study and the patients who may benefit (or not) from the treatment in the future.</p>
+
+<div class="uptohere">
+UPDATED UP TO HERE
+</div>
+
+</div>
+</div>
+<div id="data-in-r" class="section level2">
+<h2><span class="header-section-number">1.5</span> Data in <code>R</code></h2>
+<p><code>R</code> is a powerful and open source software tool for working with data.
+Throughout this text, we provide some guidance on how to use <code>R</code> within the
+context of the statistical content that is being covered.</p>
+<p>As educators, we see the value of teaching with modern software to
+empower students to take optimal advantage of the concepts they are learning.
+However, we understand the limitations of some educational structures, and we
+know that not every classroom will be able to implement <code>R</code> alongside the
+statistical concepts. Generally, we will present the <code>R</code> techniques at the end
+of each chapter. There are times in the text when the concepts are not
+distinguishable from the software, and in those cases, we have have provided the
+<code>R</code> code within the main body of the chapter.</p>
+<p>We start with an introduction to <code>R</code>, focused on how datasets are structured in
+<code>R</code> and how the user can work with a data object in <code>R</code>.</p>
+<div id="dataframes-in-r" class="section level3">
+<h3><span class="header-section-number">1.5.1</span> Dataframes in <code>R</code></h3>
+<p>Throughout the text, we will work with many different datasets. Some datasets
+are pre-loaded into <code>R</code>, some get loaded through <code>R</code> packages, and some datasets
+will be created by the student. Datasets can be viewed through the RStudio
+environment, but the data can also be investigated through the notebook features
+of an RMarkdown file.</p>
+<p>Consider the  data that was described previously in this chapter.<br />
+We can use the <code>glimpse()</code> function to see the variables included in the dataset
+and their data type. Or, we could use the <code>head()</code> function to see the first
+few rows of the dataset.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="intro-to-data.html#cb1-1"></a><span class="kw">data</span>(email50)</span>
+<span id="cb1-2"><a href="intro-to-data.html#cb1-2"></a><span class="kw">glimpse</span>(email50)</span>
+<span id="cb1-3"><a href="intro-to-data.html#cb1-3"></a><span class="co">#&gt; Rows: 50</span></span>
+<span id="cb1-4"><a href="intro-to-data.html#cb1-4"></a><span class="co">#&gt; Columns: 21</span></span>
+<span id="cb1-5"><a href="intro-to-data.html#cb1-5"></a><span class="co">#&gt; $ spam         &lt;dbl&gt; 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0,…</span></span>
+<span id="cb1-6"><a href="intro-to-data.html#cb1-6"></a><span class="co">#&gt; $ to_multiple  &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,…</span></span>
+<span id="cb1-7"><a href="intro-to-data.html#cb1-7"></a><span class="co">#&gt; $ from         &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…</span></span>
+<span id="cb1-8"><a href="intro-to-data.html#cb1-8"></a><span class="co">#&gt; $ cc           &lt;int&gt; 0, 0, 4, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,…</span></span>
+<span id="cb1-9"><a href="intro-to-data.html#cb1-9"></a><span class="co">#&gt; $ sent_email   &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1,…</span></span>
+<span id="cb1-10"><a href="intro-to-data.html#cb1-10"></a><span class="co">#&gt; $ time         &lt;dttm&gt; 2012-01-04 06:19:16, 2012-02-16 13:10:06, 2012-01-04 08…</span></span>
+<span id="cb1-11"><a href="intro-to-data.html#cb1-11"></a><span class="co">#&gt; $ image        &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</span></span>
+<span id="cb1-12"><a href="intro-to-data.html#cb1-12"></a><span class="co">#&gt; $ attach       &lt;dbl&gt; 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 0,…</span></span>
+<span id="cb1-13"><a href="intro-to-data.html#cb1-13"></a><span class="co">#&gt; $ dollar       &lt;dbl&gt; 0, 0, 0, 0, 9, 0, 0, 0, 0, 23, 4, 0, 3, 2, 0, 0, 0, 0, 0…</span></span>
+<span id="cb1-14"><a href="intro-to-data.html#cb1-14"></a><span class="co">#&gt; $ winner       &lt;fct&gt; no, no, no, no, no, no, no, no, no, no, no, no, yes, no,…</span></span>
+<span id="cb1-15"><a href="intro-to-data.html#cb1-15"></a><span class="co">#&gt; $ inherit      &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</span></span>
+<span id="cb1-16"><a href="intro-to-data.html#cb1-16"></a><span class="co">#&gt; $ viagra       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</span></span>
+<span id="cb1-17"><a href="intro-to-data.html#cb1-17"></a><span class="co">#&gt; $ password     &lt;dbl&gt; 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 8,…</span></span>
+<span id="cb1-18"><a href="intro-to-data.html#cb1-18"></a><span class="co">#&gt; $ num_char     &lt;dbl&gt; 21.705, 7.011, 0.631, 2.454, 41.623, 0.057, 0.809, 5.229…</span></span>
+<span id="cb1-19"><a href="intro-to-data.html#cb1-19"></a><span class="co">#&gt; $ line_breaks  &lt;int&gt; 551, 183, 28, 61, 1088, 5, 17, 88, 242, 578, 1167, 198, …</span></span>
+<span id="cb1-20"><a href="intro-to-data.html#cb1-20"></a><span class="co">#&gt; $ format       &lt;dbl&gt; 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1,…</span></span>
+<span id="cb1-21"><a href="intro-to-data.html#cb1-21"></a><span class="co">#&gt; $ re_subj      &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0,…</span></span>
+<span id="cb1-22"><a href="intro-to-data.html#cb1-22"></a><span class="co">#&gt; $ exclaim_subj &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</span></span>
+<span id="cb1-23"><a href="intro-to-data.html#cb1-23"></a><span class="co">#&gt; $ urgent_subj  &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</span></span>
+<span id="cb1-24"><a href="intro-to-data.html#cb1-24"></a><span class="co">#&gt; $ exclaim_mess &lt;dbl&gt; 8, 1, 2, 1, 43, 0, 0, 2, 22, 3, 13, 1, 2, 2, 21, 10, 0, …</span></span>
+<span id="cb1-25"><a href="intro-to-data.html#cb1-25"></a><span class="co">#&gt; $ number       &lt;fct&gt; small, big, none, small, small, small, small, small, sma…</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="intro-to-data.html#cb2-1"></a><span class="kw">head</span>(email50) </span>
+<span id="cb2-2"><a href="intro-to-data.html#cb2-2"></a><span class="co">#&gt; # A tibble: 6 x 21</span></span>
+<span id="cb2-3"><a href="intro-to-data.html#cb2-3"></a><span class="co">#&gt;    spam to_multiple  from    cc sent_email time                image attach</span></span>
+<span id="cb2-4"><a href="intro-to-data.html#cb2-4"></a><span class="co">#&gt;   &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;      &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span id="cb2-5"><a href="intro-to-data.html#cb2-5"></a><span class="co">#&gt; 1     0           0     1     0          1 2012-01-04 06:19:16     0      0</span></span>
+<span id="cb2-6"><a href="intro-to-data.html#cb2-6"></a><span class="co">#&gt; 2     0           0     1     0          0 2012-02-16 13:10:06     0      0</span></span>
+<span id="cb2-7"><a href="intro-to-data.html#cb2-7"></a><span class="co">#&gt; 3     1           0     1     4          0 2012-01-04 08:36:23     0      2</span></span>
+<span id="cb2-8"><a href="intro-to-data.html#cb2-8"></a><span class="co">#&gt; 4     0           0     1     0          0 2012-01-04 10:49:52     0      0</span></span>
+<span id="cb2-9"><a href="intro-to-data.html#cb2-9"></a><span class="co">#&gt; 5     0           0     1     0          0 2012-01-27 02:34:45     0      0</span></span>
+<span id="cb2-10"><a href="intro-to-data.html#cb2-10"></a><span class="co">#&gt; 6     0           0     1     0          0 2012-01-17 10:31:57     0      0</span></span>
+<span id="cb2-11"><a href="intro-to-data.html#cb2-11"></a><span class="co">#&gt; # … with 13 more variables: dollar &lt;dbl&gt;, winner &lt;fct&gt;, inherit &lt;dbl&gt;,</span></span>
+<span id="cb2-12"><a href="intro-to-data.html#cb2-12"></a><span class="co">#&gt; #   viagra &lt;dbl&gt;, password &lt;dbl&gt;, num_char &lt;dbl&gt;, line_breaks &lt;int&gt;,</span></span>
+<span id="cb2-13"><a href="intro-to-data.html#cb2-13"></a><span class="co">#&gt; #   format &lt;dbl&gt;, re_subj &lt;dbl&gt;, exclaim_subj &lt;dbl&gt;, urgent_subj &lt;dbl&gt;,</span></span>
+<span id="cb2-14"><a href="intro-to-data.html#cb2-14"></a><span class="co">#&gt; #   exclaim_mess &lt;dbl&gt;, number &lt;fct&gt;</span></span></code></pre></div>
+<p>Sometimes it is necessary to extract a column or a row from a data set.
+In <code>R</code>, the <code>$</code> operator can be used to extract a column from a dataset.
+For example, <code>data$variable</code> would extract the <code>variable</code> column from the <code>data</code> dataframe.
+When extracted, these columns can be thought of as vectors. With these vectors, if you desired to pull off a specific entry, you could use square brackets (<code>[ ]</code>), with the index (number) of the entry you wish to extract in the brackets.
+For example, <code>data$variable[2]</code> would extract the second entry (row) of the <code>variable</code> column.</p>
+<p>Because a dataframe can be (roughly) thought of as a set of many different vectors, you can extract rows and columns from a dataframe using familiar matrix notation (e.g. <code>[row, column]</code>.
+For example <code>data[i,j]</code> will extract the <span class="math inline">\((i,j)^{th}\)</span> entry of data, <code>data[i, ]</code> will extract the <span class="math inline">\(i^{th}\)</span> row, and <code>data[ , j]</code> will extract the <span class="math inline">\(j^{th}\)</span> column. Notice, when extracting an entire row (or column), you do not need to specify the columns (or rows) you would like, which is why the second entry does not contain a number.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="intro-to-data.html#cb3-1"></a>email50<span class="op">$</span>num_char</span>
+<span id="cb3-2"><a href="intro-to-data.html#cb3-2"></a><span class="co">#&gt;  [1] 21.705  7.011  0.631  2.454 41.623  0.057  0.809  5.229  9.277 17.170</span></span>
+<span id="cb3-3"><a href="intro-to-data.html#cb3-3"></a><span class="co">#&gt; [11] 64.401 10.368 42.793  0.451 29.233  9.794  2.139  0.130  4.945 11.533</span></span>
+<span id="cb3-4"><a href="intro-to-data.html#cb3-4"></a><span class="co">#&gt; [21]  5.682  6.768  0.086  3.070 26.520 26.255  5.259  2.780  5.864  9.928</span></span>
+<span id="cb3-5"><a href="intro-to-data.html#cb3-5"></a><span class="co">#&gt; [31] 25.209  6.563 24.599 25.757  0.409 11.223  3.778  1.493 10.613  0.493</span></span>
+<span id="cb3-6"><a href="intro-to-data.html#cb3-6"></a><span class="co">#&gt; [41]  4.415 14.156  9.491 24.837  0.684 13.502  2.789  1.169  8.937 15.829</span></span>
+<span id="cb3-7"><a href="intro-to-data.html#cb3-7"></a>email50[<span class="dv">47</span>,<span class="dv">3</span>]</span>
+<span id="cb3-8"><a href="intro-to-data.html#cb3-8"></a><span class="co">#&gt; # A tibble: 1 x 1</span></span>
+<span id="cb3-9"><a href="intro-to-data.html#cb3-9"></a><span class="co">#&gt;    from</span></span>
+<span id="cb3-10"><a href="intro-to-data.html#cb3-10"></a><span class="co">#&gt;   &lt;dbl&gt;</span></span>
+<span id="cb3-11"><a href="intro-to-data.html#cb3-11"></a><span class="co">#&gt; 1     1</span></span></code></pre></div>
+<table>
+<caption>
+<span id="tab:ca">Table 1.7: </span>Data from the 47th row of the email dataset.
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+spam
+</th>
+<th style="text-align:right;">
+to_multiple
+</th>
+<th style="text-align:right;">
+from
+</th>
+<th style="text-align:right;">
+cc
+</th>
+<th style="text-align:right;">
+sent_email
+</th>
+<th style="text-align:left;">
+time
+</th>
+<th style="text-align:right;">
+image
+</th>
+<th style="text-align:right;">
+attach
+</th>
+<th style="text-align:right;">
+dollar
+</th>
+<th style="text-align:left;">
+winner
+</th>
+<th style="text-align:right;">
+inherit
+</th>
+<th style="text-align:right;">
+viagra
+</th>
+<th style="text-align:right;">
+password
+</th>
+<th style="text-align:right;">
+num_char
+</th>
+<th style="text-align:right;">
+line_breaks
+</th>
+<th style="text-align:right;">
+format
+</th>
+<th style="text-align:right;">
+re_subj
+</th>
+<th style="text-align:right;">
+exclaim_subj
+</th>
+<th style="text-align:right;">
+urgent_subj
+</th>
+<th style="text-align:right;">
+exclaim_mess
+</th>
+<th style="text-align:left;">
+number
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+2012-01-02 14:24:21
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+no
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+8.72
+</td>
+<td style="text-align:right;">
+185
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+small
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="datastruc" class="section level3">
+<h3><span class="header-section-number">1.5.2</span> Tidy Structure of Data</h3>
+<p>For plotting, analyses, model building, etc., the data should be structured according to certain principles.<br />
+Hadley Wickham provides a thorough discussion and advice for cleaning up the data in <span class="citation">Wickham and others (<a href="#ref-Wickham2014" role="doc-biblioref">2014</a>)</span>.</p>
+<ul>
+<li><em>Tidy Data</em>: rows (cases/observational units) and columns (variables).<br />
+The key is that <em>every</em> row is a case and <em>every</em> column is a variable.<br />
+No exceptions.</li>
+<li>Creating tidy data is often not trivial.</li>
+</ul>
+<p>Within <code>R</code> (really within any type of computing language, Python, SQL, Java, etc.), it is important to understand how to build data using the patterns of the language.<br />
+Some things to consider:</p>
+<ul>
+<li><code>object_name &lt;- anything</code> is a way of assigning <code>anything</code> to the new <code>object_name</code>.</li>
+<li><code>object_name &lt;- function_name(data_table, arguments)</code> is a way of using a function to create a new object.</li>
+<li><code>object_name &lt;- data_table %&gt;% function_name(arguments)</code> uses chaining syntax as an extension of the ideas of functions.<br />
+In chaining, the value on the left side of <code>%&gt;%</code> becomes the <em>first argument</em> to the function on the right side.</li>
+</ul>
+<pre><code>object_name &lt;- data_table %&gt;%
+                    function_name(arguments) %&gt;% 
+                    another_function_name(other_arguments)</code></pre>
+<p>is extended chaining. <code>%&gt;%</code> is never at the front of the line, it is always connecting one idea with the continuation of that idea on the next line.
+* In <code>R</code>, all functions take arguments in round parentheses (as opposed to subsetting observations or variables from data objects which happen with square parentheses). Additionally, the spot to the left of <code>%&gt;%</code> is always a data table.
+* The pipe syntax should be read as <em>then</em>, <code>%&gt;%</code>.</p>
+</div>
+<div id="using-the-pipe-to-chain" class="section level3">
+<h3><span class="header-section-number">1.5.3</span> Using the pipe to chain</h3>
+<p>The pipe syntax (<code>%&gt;%</code>) takes a data frame (or data table) and sends it to the argument of a function. The mapping goes to the first available argument in the function.<br />
+For example:</p>
+<p><code>x %&gt;% f(y)</code> is the same as <code>f(x, y)</code></p>
+<p><code>y %&gt;% f(x, ., z)</code> is the same as <code>f(x,y,z)</code></p>
+<p>Pipes are used commonly with functions in the <code>dplyr</code> package (see <code>R</code> examples in Chapter <a href="#eda"><strong>??</strong></a>) and they allow us to sequentially build data wrangling operations.
+We’ll start with short pipes and throughout the course build up to longer pipes that perform multiple operations.</p>
+<p>Consider the  data, High School and Beyond survey.<br />
+Two hundred observations were randomly sampled from the High School and Beyond survey, a survey conducted on high school seniors by the National Center of Education Statistics.
+Of interest is the proportion of students at each of the two types of school, <code>public</code> and <code>privaate</code>.</p>
+<p>We use the <code>table</code> command to tabulate how many of each type of school are in the dataset. Notice that the same result is produced by the <code>$</code> command with <code>table</code> and the chaining syntax done with <code>%&gt;%</code>.</p>
+<div style="float: left; width: 49.5%;">
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="intro-to-data.html#cb5-1"></a><span class="kw">data</span>(hsb2)</span>
+<span id="cb5-2"><a href="intro-to-data.html#cb5-2"></a><span class="kw">table</span>(hsb2<span class="op">$</span>schtyp)  </span>
+<span id="cb5-3"><a href="intro-to-data.html#cb5-3"></a><span class="co">#&gt; </span></span>
+<span id="cb5-4"><a href="intro-to-data.html#cb5-4"></a><span class="co">#&gt;  public private </span></span>
+<span id="cb5-5"><a href="intro-to-data.html#cb5-5"></a><span class="co">#&gt;     168      32</span></span></code></pre></div>
+</div>
+<div style="float: left; width: 49.5%;">
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="intro-to-data.html#cb6-1"></a>hsb2 <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb6-2"><a href="intro-to-data.html#cb6-2"></a><span class="st">  </span><span class="kw">select</span>(schtyp) <span class="op">%&gt;%</span></span>
+<span id="cb6-3"><a href="intro-to-data.html#cb6-3"></a><span class="st">  </span><span class="kw">table</span>()</span>
+<span id="cb6-4"><a href="intro-to-data.html#cb6-4"></a><span class="co">#&gt; .</span></span>
+<span id="cb6-5"><a href="intro-to-data.html#cb6-5"></a><span class="co">#&gt;  public private </span></span>
+<span id="cb6-6"><a href="intro-to-data.html#cb6-6"></a><span class="co">#&gt;     168      32</span></span></code></pre></div>
+</div>
+<p>What if we are interested only in <code>public</code> schools?<br />
+First, we should take note of another piece of <code>R</code> syntax: the double equal sign.
+This is the logical test for “is equal to”.
+In other words, we first determine if school type is equal to public for each of the observations in the dataset and filter for those where this is true.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="intro-to-data.html#cb7-1"></a><span class="co"># Filter for public schools</span></span>
+<span id="cb7-2"><a href="intro-to-data.html#cb7-2"></a>hsb2_public &lt;-<span class="st"> </span>hsb2 <span class="op">%&gt;%</span></span>
+<span id="cb7-3"><a href="intro-to-data.html#cb7-3"></a><span class="st">  </span><span class="kw">filter</span>(schtyp <span class="op">==</span><span class="st"> &quot;public&quot;</span>)</span></code></pre></div>
+<p>We can read this as: “take the <code>hsb2</code> data frame and <code>pipe</code> it into the <code>filter</code> function. Filter the data for <code>cases where school type is equal to public</code>. Then, <code>assign</code> the resulting data frame to a new object called <code>hsb2 underscore public</code>.”</p>
+<p>Suppose we are not interested in the actual reading score of students, but instead whether their reading score is below average or at or above average.
+First, we need to calculate the average reading score with the mean function.
+This will give us the mean value, 52.23.
+However, in order to be able to refer back to this value later on, we might want to store it as an object that we can refer to by name.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="intro-to-data.html#cb8-1"></a><span class="co"># Calculate average reading score and show the value</span></span>
+<span id="cb8-2"><a href="intro-to-data.html#cb8-2"></a><span class="kw">mean</span>(hsb2<span class="op">$</span>read)</span>
+<span id="cb8-3"><a href="intro-to-data.html#cb8-3"></a><span class="co">#&gt; [1] 52.2</span></span></code></pre></div>
+<p>So instead of just printing the result, let’s save it as a new object called <code>avg_read</code>.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="intro-to-data.html#cb9-1"></a><span class="co"># Calculate average reading score and store as avg_read</span></span>
+<span id="cb9-2"><a href="intro-to-data.html#cb9-2"></a>avg_read &lt;-<span class="st"> </span><span class="kw">mean</span>(hsb2<span class="op">$</span>read)</span></code></pre></div>
+<p>Before we more on, a quick tip: most often you’ll want to do both; see the value and also store it for later use. The approach we used here, running the mean function twice, is redundant.</p>
+<p>Instead, you can simply wrap your assignment code in parentheses so that <code>R</code> will not only assign the average value of reading test scores to avg read, but it will also print out its value.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="intro-to-data.html#cb10-1"></a><span class="co"># Do both</span></span>
+<span id="cb10-2"><a href="intro-to-data.html#cb10-2"></a>(avg_read &lt;-<span class="st"> </span><span class="kw">mean</span>(hsb2<span class="op">$</span>read))</span>
+<span id="cb10-3"><a href="intro-to-data.html#cb10-3"></a><span class="co">#&gt; [1] 52.2</span></span></code></pre></div>
+<p>Next we need to determine whether each student is below or at or above average. For example, a reading score of 57 is above average, so is 68, but 44 is below.
+Obviously, going through each record like this would be tedious and error prone.</p>
+<p>Instead we can create this new variable with the mutate function from the <code>dplyr</code> package.</p>
+<p>We start with the data frame, <code>hsb2</code>, and pipe it into <code>mutate</code>, to create a new variable called <code>read_cat</code> (<code>cat</code> for <code>cat</code>egorical).
+Note that we are using a new variable name here in order to not overwrite the existing reading score variable.
+The new variable <code>read_cat</code> will be a column in the existing data frame <code>hsb2</code>.
+To indicate that the <code>mutate</code> function came from the <code>dplyr</code> package, we use the <code>pacakge::function</code> syntax.
+It is not usually necessary to provide the package name (unless there is ambiguity about where the function came from).</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="intro-to-data.html#cb11-1"></a>hsb2 &lt;-<span class="st"> </span>hsb2 <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">read_cat =</span> <span class="kw">ifelse</span>(read <span class="op">&lt;</span><span class="st"> </span>avg_read, </span>
+<span id="cb11-2"><a href="intro-to-data.html#cb11-2"></a>                                                 <span class="st">&quot;below average&quot;</span>, <span class="st">&quot;at or above average&quot;</span>))</span></code></pre></div>
+<p>The decision criteria for this new variable is based on a TRUE/FALSE question: if the reading score of the student is below the average reading score, label “below average”, otherwise, label “at or above average”.</p>
+<p>This can be accomplished using the <code>ifelse</code> function in <code>R</code>.</p>
+<p>The first argument of the function is the logical test.</p>
+<p>The second argument is what to do if the result of the logical test is TRUE, in other words, if the student’s score is below the average score, and the last argument is what to do if the result is FALSE.</p>
+<p>The <code>ifelse</code> function can be used for more complicated discretization rules as well, by nesting many <code>ifelse</code> statements within each other.
+This is not necessary for this example, but it will come up later in the course.</p>
+<!--
+# droplevels()  #???
+
+# SRS using sample_n
+# stratified sampling using group_by then sample_n
+# R code for blocking???
+
+# add case_when?
+-->
+
+<div class="todo">
+Add link to tutorial.
+</div>
+
+</div>
+</div>
+<div id="chapter-review" class="section level2">
+<h2><span class="header-section-number">1.6</span> Chapter review</h2>
+<div id="terms" class="section level3">
+<h3><span class="header-section-number">1.6.1</span> Terms</h3>
+<p>We introduced the following terms in the chapter.
+If you’re not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
+We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate.
+However you should be able to easily spot them as <strong>bolded text</strong>.</p>
+<table>
+<tbody>
+<tr>
+<td style="text-align:left;">
+anecdotal evidence
+</td>
+<td style="text-align:left;">
+convenience sample
+</td>
+<td style="text-align:left;">
+non-response rate
+</td>
+<td style="text-align:left;">
+response variable
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+associated
+</td>
+<td style="text-align:left;">
+data
+</td>
+<td style="text-align:left;">
+numerical
+</td>
+<td style="text-align:left;">
+retrospective study
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+bias
+</td>
+<td style="text-align:left;">
+data frame
+</td>
+<td style="text-align:left;">
+observational data
+</td>
+<td style="text-align:left;">
+sample
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+blind
+</td>
+<td style="text-align:left;">
+dependent
+</td>
+<td style="text-align:left;">
+observational study
+</td>
+<td style="text-align:left;">
+sample bias
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+blocking
+</td>
+<td style="text-align:left;">
+discrete
+</td>
+<td style="text-align:left;">
+observational unit
+</td>
+<td style="text-align:left;">
+simple random sample
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+case
+</td>
+<td style="text-align:left;">
+double-blind
+</td>
+<td style="text-align:left;">
+ordinal
+</td>
+<td style="text-align:left;">
+simple random sampling
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+categorical
+</td>
+<td style="text-align:left;">
+experiment
+</td>
+<td style="text-align:left;">
+placebo
+</td>
+<td style="text-align:left;">
+strata
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cluster
+</td>
+<td style="text-align:left;">
+explanatory variable
+</td>
+<td style="text-align:left;">
+placebo effect
+</td>
+<td style="text-align:left;">
+stratified sampling
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cluster sampling
+</td>
+<td style="text-align:left;">
+independent
+</td>
+<td style="text-align:left;">
+population
+</td>
+<td style="text-align:left;">
+summary statistic
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cohort
+</td>
+<td style="text-align:left;">
+level
+</td>
+<td style="text-align:left;">
+positive association
+</td>
+<td style="text-align:left;">
+treatment group
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+confounding variable
+</td>
+<td style="text-align:left;">
+multistage sample
+</td>
+<td style="text-align:left;">
+prospective study
+</td>
+<td style="text-align:left;">
+variable
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+continuous
+</td>
+<td style="text-align:left;">
+negative association
+</td>
+<td style="text-align:left;">
+randomized experiment
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:left;">
+nominal
+</td>
+<td style="text-align:left;">
+replicate
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+control group
+</td>
+<td style="text-align:left;">
+non-response bias
+</td>
+<td style="text-align:left;">
+representative
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="chapter-exercises" class="section level3">
+<h3><span class="header-section-number">1.6.2</span> Chapter exercises</h3>
+
+<div id="refs" class="references">
+<div>
+<p>Chimowitz, Marc I, Michael J Lynn, Colin P Derdeyn, Tanya N Turan, David Fiorella, Bethany F Lane, L Scott Janis, et al. 2011. “Stenting Versus Aggressive Medical Therapy for Intracranial Arterial Stenosis.” <em>New England Journal of Medicine</em> 365 (11): 993–1003. <a href="http://www.nejm.org/doi/full/10.1056/NEJMoa1105335">http://www.nejm.org/doi/full/10.1056/NEJMoa1105335</a>.</p>
+</div>
+<div>
+<p>Wickham, Hadley, and others. 2014. “Tidy Data.” <em>Journal of Statistical Software</em> 59 (10): 1–23.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-chimowitz2011stenting">
+<p>Chimowitz, Marc I, Michael J Lynn, Colin P Derdeyn, Tanya N Turan, David Fiorella, Bethany F Lane, L Scott Janis, et al. 2011. “Stenting Versus Aggressive Medical Therapy for Intracranial Arterial Stenosis.” <em>New England Journal of Medicine</em> 365 (11): 993–1003. <a href="http://www.nejm.org/doi/full/10.1056/NEJMoa1105335">http://www.nejm.org/doi/full/10.1056/NEJMoa1105335</a>.</p>
+</div>
+<div id="ref-Wickham2014">
+<p>Wickham, Hadley, and others. 2014. “Tidy Data.” <em>Journal of Statistical Software</em> 59 (10): 1–23.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>The proportion of the 224 patients who had a stroke within 365 days: <span class="math inline">\(45/224 = 0.20\)</span>.<a href="intro-to-data.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>The loan’s grade is A, and the borrower rents their residence.<a href="intro-to-data.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>There are multiple strategies that can be followed. One common strategy is to have each student represented by a row, and then add a column for each assignment, quiz, or exam. Under this setup, it is easy to review a single line to understand the grade history of a student. There should also be columns to include student information, such as one column to list student names.<a href="intro-to-data.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>Each county may be viewed as a case, and there are eleven pieces of information recorded for each case. A table with 3,142 rows and 14 columns could hold these data, where each row represents a county and each column represents a particular piece of information.<a href="intro-to-data.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>The <code>group</code> variable can take just one of two group names, making it categorical. The <code>num_migraines</code> variable describes a count of the number of migraines, which is an outcome where basic arithmetic is sensible, which means this is numerical outcome; more specifically, since it represents a count, <code>num_migraines</code> is a discrete numerical variable.<a href="intro-to-data.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>Two example questions: (1) What is the relationship between loan amount and total income? (2) If someone’s income is above the average, will their interest rate tend to be above or below the average?<a href="intro-to-data.html#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p>Sometimes the explanatory variable is called the <strong>independent</strong> variable and the response variable is called the <strong>dependent</strong> variable. However, this becomes confusing since a <em>pair</em> of variables might be independent or dependent, so we avoid this language.<a href="intro-to-data.html#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p>The question <em>“Over the last 5 years, what is the average time to complete a degree for Duke undergrads?”</em> is only relevant to students who complete their degree; the average cannot be computed using a student who never finished her degree. Thus, only Duke undergrads who graduated in the last five years represent cases in the population under consideration. Each such student is an individual case. For the question <em>“Does a new drug reduce the number of deaths in patients with severe heart disease?”</em>, a person with severe heart disease represents a case. The population includes all people with severe heart disease.<a href="intro-to-data.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p>Answers will vary. From our own anecdotal experiences, we believe people tend to rant more about products that fell below expectations than rave about those that perform as expected. For this reason, we suspect there is a negative bias in product ratings on sites like Amazon. However, since our experiences may not be representative, we also keep an open mind.<a href="intro-to-data.html#fnref9" class="footnote-back">↩︎</a></p></li>
+<li id="fn10"><p>No. See the paragraph following the exercise for an explanation.<a href="intro-to-data.html#fnref10" class="footnote-back">↩︎</a></p></li>
+<li id="fn11"><p>Also called a <strong>lurking variable</strong>, <strong>confounding factor</strong>, or a <strong>confounder</strong>.<a href="intro-to-data.html#fnref11" class="footnote-back">↩︎</a></p></li>
+<li id="fn12"><p>Answers will vary. Population density may be important. If a county is very dense, then this may require a larger fraction of residents to live in multi-unit structures. Additionally, the high density may contribute to increases in property value, making homeownership infeasible for many residents.<a href="intro-to-data.html#fnref12" class="footnote-back">↩︎</a></p></li>
+<li id="fn13"><p>This is a different concept than a <em>control group</em>, which we discuss in the second principle and in Section <a href="intro-to-data.html#reducing-bias-human-experiments">1.4.2</a>.<a href="intro-to-data.html#fnref13" class="footnote-back">↩︎</a></p></li>
+<li id="fn14"><p>Human subjects are often called <strong>patients</strong>, <strong>volunteers</strong>, or <strong>study participants</strong>.<a href="intro-to-data.html#fnref14" class="footnote-back">↩︎</a></p></li>
+<li id="fn15"><p>There are always some researchers involved in the study who do know which patients are receiving which treatment. However, they do not interact with the study’s patients and do not tell the blinded health care professionals who is receiving which treatment.<a href="intro-to-data.html#fnref15" class="footnote-back">↩︎</a></p></li>
+<li id="fn16"><p>The researchers assigned the patients into their treatment groups, so this study was an experiment. However, the patients could distinguish what treatment they received, so this study was not blind. The study could not be double-blind since it was not blind.<a href="intro-to-data.html#fnref16" class="footnote-back">↩︎</a></p></li>
+<li id="fn17"><p>Ultimately, can we make patients think they got treated from a surgery? In fact, we can, and some experiments use a <strong>sham surgery</strong>. In a sham surgery, the patient does undergo surgery, but the patient does not receive the full treatment, though they will still get a placebo effect.<a href="intro-to-data.html#fnref17" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="copyright.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/MTstateIntroStats/IntroStatTextbook/edit/master/01-intro-to-data.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["stat216-textbook.pdf", "stat216-textbook.epub"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
