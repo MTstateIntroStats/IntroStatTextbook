@@ -1,0 +1,21 @@
+bookdown::gitbook:
+  css: style.css
+  config:
+    toc:
+      collapse: section
+      before: |
+        <li><a href="./">STAT 216 Introduction to Statistics</a></li>
+    download: ["pdf", "epub"]
+    edit:
+      link: https://github.com/MTstateIntroStats/IntroStatTextbook/edit/master/%s
+      text: "Edit"
+    sharing: no
+bookdown::pdf_book:
+  includes:
+    in_header: preamble.tex
+  latex_engine: xelatex
+  citation_package: natbib
+  keep_tex: yes
+  highlight: tango
+bookdown::epub_book:
+  stylesheet: style.css

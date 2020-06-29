@@ -18,13 +18,20 @@ knitr::opts_chunk$set(
 
 # packages ---------------------------------------------------------------------
 
-#install_github("openintrostats/openintro")
+#---
+# Run the following two lines once to update openintro and dplyr
+# libraries within RStudio
+#devtools::install_github("OpenIntroStat/openintro")
+#devtools::install_github("OpenIntroStat/usdata")
+#devtools::install_github("tidyverse/dplyr")
+#---
 library(knitr)
 library(ggmosaic)
 library(skimr)
 library(kableExtra)
 library(janitor)
 library(openintro)
+library(usdata)
 library(tidyverse)
 library(scales)
 library(infer)
