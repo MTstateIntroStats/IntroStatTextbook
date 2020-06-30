@@ -188,6 +188,10 @@ Table \@ref(tab:loan50DF) displays six rows of a data set for 50 randomly sample
 Each row in the table represents a single loan. 
 The formal name for a row is a **case** or \index{unit of observation}**observational unit**.
 The columns represent characteristics of each loan, where each column is referred to as a **variable**.
+
+\BeginKnitrBlock{tip}<div class="tip">A variable is something that can be measured on an individual observational unit.
+Be careful not to confuse summary statistics---calculated from a *group* of observational units---with variables.</div>\EndKnitrBlock{tip}
+
 For example, the first row represents a loan of \$7,500 with an interest rate of 7.34\%, where the borrower is based in Maryland (MD) and has an income of \$70,000.
 
 

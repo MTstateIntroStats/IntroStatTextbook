@@ -1,7 +1,7 @@
 --- 
 title: "STAT 216 Introduction to Statistics: Course Notes"
 author: "Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager"
-date: "2020-06-29"
+date: "2020-06-30"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
