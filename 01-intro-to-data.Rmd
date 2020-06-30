@@ -86,6 +86,26 @@ stent %>%
   row_spec(3, extra_css = "border-top: 2px solid")
 ```
 
+The data summarized in this table can also be visualized with a **barplot**:
+
+```{r include=FALSE}
+terms_chp_1 <- c(terms_chp_1, "barplot")
+```
+
+```{r stentStudyResultsDFbarplot}
+stent %>%
+  pivot_longer(cols = c(`30 days`, `365 days`), 
+               names_to = "stage", 
+               values_to = "outcome") %>%
+  count(group, stage, outcome) %>%
+  mutate(outcome = factor(outcome, levels = c("no event", "stroke"))) %>%
+  ggplot(aes(x = group, y = n, fill = outcome)) +
+  facet_grid(. ~ stage) +
+  geom_bar(position = "fill", stat = "identity") +
+  scale_fill_brewer() + theme_classic() +
+  labs(y = "proportion")
+```
+
 ```{block2, type="guidedpractice", echo=TRUE}
 Of the 224 patients in the treatment group, 45 had a stroke by the end of the first year. 
 Using these two numbers, compute the proportion of patients in the treatment group who had a stroke by the end of their first year.

@@ -128,6 +128,12 @@ To identify the number of control patients who did not have a stroke after 365 d
 </tbody>
 </table>
 
+The data summarized in this table can also be visualized with a **barplot**:
+
+
+
+<img src="01-intro-to-data_files/figure-html/stentStudyResultsDFbarplot-1.png" width="70%" style="display: block; margin: auto;" />
+
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Of the 224 patients in the treatment group, 45 had a stroke by the end of the first year. 
 Using these two numbers, compute the proportion of patients in the treatment group who had a stroke by the end of their first year.
 (Please note: answers to all Guided Practice exercises are provided using footnotes.)^[The proportion of the 224 patients who had a stroke within 365 days: $45/224 = 0.20$.]</div>\EndKnitrBlock{guidedpractice}
@@ -1310,12 +1316,18 @@ However you should be able to easily spot them as **bolded text**.
 <tbody>
   <tr>
    <td style="text-align:left;"> anecdotal evidence </td>
+   <td style="text-align:left;"> control group </td>
+   <td style="text-align:left;"> non-response bias </td>
+   <td style="text-align:left;"> representative </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> associated </td>
    <td style="text-align:left;"> convenience sample </td>
    <td style="text-align:left;"> non-response rate </td>
    <td style="text-align:left;"> response variable </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> associated </td>
+   <td style="text-align:left;"> barplot </td>
    <td style="text-align:left;"> data </td>
    <td style="text-align:left;"> numerical </td>
    <td style="text-align:left;"> retrospective study </td>
@@ -1384,12 +1396,6 @@ However you should be able to easily spot them as **bolded text**.
    <td style="text-align:left;"> control </td>
    <td style="text-align:left;"> nominal </td>
    <td style="text-align:left;"> replicate </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> control group </td>
-   <td style="text-align:left;"> non-response bias </td>
-   <td style="text-align:left;"> representative </td>
    <td style="text-align:left;">  </td>
   </tr>
 </tbody>
