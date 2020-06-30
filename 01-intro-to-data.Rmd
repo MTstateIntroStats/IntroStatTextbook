@@ -86,13 +86,13 @@ stent %>%
   row_spec(3, extra_css = "border-top: 2px solid")
 ```
 
-The data summarized in this table can also be visualized with a **barplot**:
+The data summarized in this table can also be visualized with a \index{barplot}**barplot**, seen in Figure \@ref(fig:stentStudyResultsDFbarplot):
 
 ```{r include=FALSE}
 terms_chp_1 <- c(terms_chp_1, "barplot")
 ```
 
-```{r stentStudyResultsDFbarplot}
+```{r stentStudyResultsDFbarplot, fig.cap="Segmented barplot of outcomes in stent study by group and time."}
 stent %>%
   pivot_longer(cols = c(`30 days`, `365 days`), 
                names_to = "stage", 
@@ -102,7 +102,8 @@ stent %>%
   ggplot(aes(x = group, y = n, fill = outcome)) +
   facet_grid(. ~ stage) +
   geom_bar(position = "fill", stat = "identity") +
-  scale_fill_brewer() + theme_classic() +
+  scale_fill_brewer() + 
+  theme_classic() + theme(text = element_text(size = 12)) +
   labs(y = "proportion")
 ```
 

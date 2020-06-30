@@ -128,11 +128,14 @@ To identify the number of control patients who did not have a stroke after 365 d
 </tbody>
 </table>
 
-The data summarized in this table can also be visualized with a **barplot**:
+The data summarized in this table can also be visualized with a \index{barplot}**barplot**, seen in Figure \@ref(fig:stentStudyResultsDFbarplot):
 
 
 
-<img src="01-intro-to-data_files/figure-html/stentStudyResultsDFbarplot-1.png" width="70%" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+<img src="01-intro-to-data_files/figure-html/stentStudyResultsDFbarplot-1.png" alt="Segmented barplot of outcomes in stent study by group and time." width="70%" />
+<p class="caption">(\#fig:stentStudyResultsDFbarplot)Segmented barplot of outcomes in stent study by group and time.</p>
+</div>
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Of the 224 patients in the treatment group, 45 had a stroke by the end of the first year. 
 Using these two numbers, compute the proportion of patients in the treatment group who had a stroke by the end of their first year.
