@@ -162,30 +162,7 @@ However, this study does leave us with an important lesson: we should keep our e
 
 \index{data!stroke|)}
 
-### Exercises {#basic-stents-strokes-exercises}
 
-\BeginKnitrBlock{rmdwarning}<div class="rmdwarning">Exercise formatting is still work in progress! Any text here is just a placeholder.</div>\EndKnitrBlock{rmdwarning}
-
-\BeginKnitrBlock{todo}<div class="todo">Update exercises.</div>\EndKnitrBlock{todo}
-
-1. **Migraine and acupuncture, Part I.** A migraine is a particularly painful type of headache, which patients sometimes wish to treat with acupuncture.
-To determine whether acupuncture relieves migraine  pain, researchers conducted a randomized controlled study where 89 females diagnosed with migraine headaches were randomly assigned to one of two groups: treatment or control.
-43 patients in the treatment group received acupuncture  that is specifically designed to treat migraines.
-46 patients in the control group received placebo acupuncture (needle insertion at non-acupoint locations).
-24 hours after patients received acupuncture, they were asked 
-if they were pain free.
-Results are summarized in the contingency table below.
-
-<!--
-
-```
-#> [1] 4
-```
-
-(a) hi
-(b) mello 
-(c) jello
--->
 
 ## Data basics {#data-basics}
 
@@ -657,9 +634,6 @@ See the case study in Section \@ref(basic-stents-strokes) for another example of
 \BeginKnitrBlock{onebox}<div class="onebox">**Association $\neq$ Causation.**
 In general, association does not imply causation, and causation can only be inferred from a randomized experiment.</div>\EndKnitrBlock{onebox}
 
-### Exercises {#data-basics-exercises}
-
-\BeginKnitrBlock{todo}<div class="todo">Update exercises.</div>\EndKnitrBlock{todo}
 
 ## Sampling principles and strategies {#sampling-principles-strategies}
 
@@ -908,9 +882,6 @@ However, cluster sampling or multistage sampling seem like very good ideas.
 If we decided to use multistage sampling, we might randomly select half of the villages, then randomly select 10 people from each. 
 This would probably reduce our data collection costs substantially in comparison to a simple random sample, and the cluster sample would still give us reliable information, even if we would need to analyze the data with slightly more advanced methods than we discuss in this book.</div>\EndKnitrBlock{example}
 
-### Exercises {#sampling-principles-strategies-exercises}
-
-\BeginKnitrBlock{todo}<div class="todo">Update exercises.</div>\EndKnitrBlock{todo}
 
 ## Experiments
 
@@ -1424,5 +1395,4 @@ However you should be able to easily spot them as **bolded text**.
 </tbody>
 </table>
 
-### Chapter exercises
 
