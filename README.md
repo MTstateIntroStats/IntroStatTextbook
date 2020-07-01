@@ -1,6 +1,8 @@
 # IntroStatTextbook
 Open resources textbook for Stat 216 Introductory Statistics at Montana State University.
 
+For html: https://mtstateintrostats.github.io/IntroStatTextbook/
+
 To compile in RStudio,
 
 1. Clone, fork, or download this repository.
