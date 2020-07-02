@@ -4,7 +4,7 @@ bookdown::gitbook:
     toc:
       collapse: section
       before: |
-        <li><a href="./">STAT 216 Introduction to Statistics</a></li>
+        <li><a href="./">MSU Intro Stat with R</a></li>
     download: ["pdf", "epub"]
     edit:
       link: https://github.com/MTstateIntroStats/IntroStatTextbook/edit/master/%s
