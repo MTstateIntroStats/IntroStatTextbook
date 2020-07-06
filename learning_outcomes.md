@@ -13,6 +13,7 @@
 - Explain the purpose of random assignment and its effect on scope of inference
 - Identify whether a study is observational or an experiment
 - Identify potential types of sampling bias in a study (selection, response, non-response)
+- Identify confounding variables in observational studies and explain why they are confounding
 
 ## Probability
 - Recognize and simulate probabilities as long-run frequencies
