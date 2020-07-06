@@ -35,8 +35,10 @@
 - Plots for association between two categorical variables:
   segmented bar plot, mosaic plot
 - Plots for a single quantitative variable:
-  dotplots, histogram, boxplot, density plots
-- Plots for association between two quantitative variables: scatterplots
+  dotplot, histogram, boxplot, density plot
+- Plots for association between two quantitative variables: scatterplot
+- Plots for association between one quantitative and one categorical variable:
+  side-by-side boxplots; stacked histograms, density plots or dotplots
 - Multivariable plots (e.g., scatterplot with factor)
 - Given a plot or set of plots, describe and compare the distribution(s)
   of a single quantitative variable
