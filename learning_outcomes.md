@@ -8,7 +8,7 @@
   supported by the study results
 - Understand and explain the effects of multiple testing
 
-- This is Stacey's line
+- This is Stacey's line. Melinda editted.
 
 ## Study Design
 - Explain the purpose of random sampling and its effect on scope of inference
