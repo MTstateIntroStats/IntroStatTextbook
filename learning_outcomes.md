@@ -81,6 +81,6 @@ For each of the five scenarios:
 
 ## Statistical Computing
 - TODO
-- Learning github
 - Figuring it out!
+- This is Jade's line.
 
