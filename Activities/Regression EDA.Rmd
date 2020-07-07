@@ -1,0 +1,233 @@
+---
+title: "Regression Exploratory Data Analysis Activity"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(show.signif.stars = FALSE)
+library(car)
+library(readr)
+library(mosaic)
+```
+
+## Exploratory Data Analysis - Regression
+
+## Learning Objectives
+
+* Use scatterplots to assess the relationship between two quantitative variables
+
+* Find the correlation coefficient 
+
+* Plot a scatterplot 
+
+* Estimate slope using the correlation coefficient 
+
+* Find the estimated line of regression using summary statistics and R Linear Model Output
+
+* Understand what the slope coefficient represents
+
+* Understand what the coefficient of determination is
+
+* 
+
+## Association between two Quantitative Variables
+
+To plot two quantitative variables we will use a scatterplot.  If there is a clear relationship between these variables the variables are associated.  We will analyze four characteristics of scatterplots to assess this relationship.  
+
+* Pattern:  Is the relationship linear or non-linear.
+* Direction:  As the x variable increases is the y variable increasing (positive relationship) or decreasing (negative relationship).
+* Strength:  How strong is the association between the variables?  We will look at the measure of correlation to assess the strength.  When assessing the scatterplot we will see how close the individual data points are to the line of regression.  
+* Influential points:  We will also assess any data points that do not fit the pattern of the data.  These are called outliers or influential points.  
+
+
+## Movies Released in 2016
+
+A data set was collected on Movies released since 1916 to 2016.  Here is a list of some of the variables collected on these movies.
+
+*Year*: Year the movie was released
+*Budget*: The amount of money (in US $) budgeted for the production of the movie
+*Revenue*: The amount of money (in US $) the movie made after release
+*Duraton*: The length of the movie (in minutes)
+*Content Rating*: Rating of the movie (G, PG, PG-13, R, Not Rated)
+*IMBD Score*: User rating score from 1 to 10
+*Genre*: Category the movie falls into
+*Movie Facebook Likes*: Number of likes a movie receives on Facebook
+
+## Vocabulary Review
+
+1. What are the observational units in this data set?
+
+\vspace{1in}
+
+2. Which of the above listed variables are categorical?
+
+\vspace{1in}
+
+3. Which of the above listed variables are quantitative?
+
+\vspace{1in}
+
+We will look at the relationship between 'Budget' and 'Revenue' for movies released in 2016.
+
+
+```{r echo=F, fig.height=4}
+par(mfrow=c(1,2))
+movies <- read.csv("movies.csv")
+movies$content_rating <- factor(movies$content_rating)
+rating <- c("PG", "PG-13", "R")
+movies <- movies[movies$content_rating %in% rating,]
+movies$content_rating <- factor(movies$content_rating)
+movies$title_year <- factor(movies$title_year)
+year <- c("2016")
+movies <- movies[movies$title_year %in% year,]
+movies$title_year <- factor(movies$title_year)
+moviesa <- na.omit(movies)
+
+```
+
+## Using a Scatterplot to Assess the Association between Quantitative Variables
+This shows a scatterplot of 'Budget' as a predictor of 'Revenue'.  
+
+```{r echo=t, fig.height=5,fig.width=12}
+par(mfrow=c(1,2))
+scatterplot(revenue~budget, data=moviesa,pch=20,main="Revenue vs. Budget", smooth=F)
+```
+4. Assess the four characteristics of the scatterplot for this relationship.
+
+* Pattern (linear, non-linear)
+
+\vspace{1in}
+* Direction (positive, negative)
+
+\vspace{1in}
+
+* Strength
+
+\vspace{1in}
+
+* Influential Points
+
+\vspace{1in}
+
+5. Does there appear to be an association betwen 'Budget' and 'Revenue'? Explain.
+
+\vspace{1in}
+
+## Correlation 
+
+Correlation measures the strength and the direction between two quantitative variables.  The closer the value of correlation to + or - 1 the stronger the linear relationship.  Values close to zero indicate a very weak linear relationship between the two variables.  The following output shows a correlation matrix between several pairs of quantitative variables.  
+
+```{r}
+moviesb <- moviesa[,c("budget", "revenue", "duration", "imdb_score", "movie_facebook_likes")]
+round(cor(moviesb,use="pairwise.complete.obs"),4)
+```
+
+6.  Using the output above, which two variables have the strongest correlation?
+
+\vspace{1in}
+
+7.  What is the value of correlation between 'Budget' and 'Revenue'?
+
+\vspace{1in}
+
+8.  Based on the value of correlation what would the sign of the slope be? Positive or negative?  Explain.
+
+\vspace{1in}
+
+9.  Does your answer to question 8 match the direction you choose in question 4?
+
+\vspace{1in}
+
+## Slope
+
+The favstats code in R gives the five number summary (min, Q1, median, Q3, max), as well as the mean and the standard deviation. The slope of the least squares line can be estimated by 
+      $b_1 = \frac{s_y}{s_x}R$
+
+```{r}
+favstats(moviesa$budget)
+favstats(moviesa$revenue)
+```
+
+
+10.  What is the standard deviation for 'Budget'?  What is the standard deviation for 'Revenue'? Use proper notation.
+
+\vspace{1in}
+
+      
+11.  Calculate the slope of the least squares line between 'Budget' and 'Revenue'.
+
+\vspace{1in}
+
+The slope measures the change in y for each increase in x by 1.  In other words, as the x variable increases by 1 unit, the y variable changes (increaes/decreases) by the value of slope.
+
+12.  Interpret the value of slope in context of the problem.
+
+\vspace{1in}
+
+We can use the **point-slope** form of a line to find the least squares line using the estimate for slope and the mean of x and y. 
+        $y-\bar{y} = b_1(x - \bar{x})$
+        
+13.  Identify the least squares line using the summary statistics provided.
+
+\vspace{1in}
+
+The linear model function in R can also give us the summary of the least squares fit.  The estimate for (Intercept) is the y-intercept for the line of least squares and the estimate for budget is the value of $b_1$, the slope.
+
+```{r}
+revenueLM <- lm(revenue~budget,data=moviesa)
+summary(revenueLM)
+```
+14.  Does the least squares line found in Question 13 match the output from the linear model?  Write out this equation.
+
+\vspace{1in}
+
+15. Using the least squares line from Question 14, predict the revenue for a movie with a budget of 4,946,250.
+
+\vspace{1in}
+
+## Residuals:
+
+The model we are using assumes the relationship between the two variables follows a straight line. The residuals are the
+errors, or the part that hasn't been modeled by the line.
+
+\begin{center}
+Data = Model + Residual
+
+Residual = Data - Model
+
+$e_i=y_i-\hat{y}_i$
+\end{center}
+
+16.  The movie, Independence Day: Resurgence, had a budget of 165,000,000 and revenue of 102,315,545.  Find the residual for this movie.
+
+\vspace{1in}
+
+17.  Did the line of regression overestimate or underestimate the revenue for this movie? 
+
+\vspace{1in}
+
+## Coefficient of Determination
+
+The coefficient of determination, $R^2$, can also be used to describe the strength of the linear relationship between two quantitative variables. $R^2$ describes the amount of variation in the response that is explained by the least squares line with the explanatory variable.  
+
+18.  Calculate the coefficient of determination between 'Budget' and 'Revenue'.
+
+\vspace{1in}
+
+19.  Interpret the coefficient of determination in context of the problem.
+
+\vspace{1in}
+
+## Multiple Linear Regression
+Let's look at this linear relationship between 'Budget' and 'Revenue' for different ratings.
+
+```{r,fig.width=5,fig.height=4,fig.align='center'}
+scatterplot(revenue~budget|content_rating, data = moviesa, smooth=F)
+```
+
+20. Does the relationship between 'Budget' and 'Revenue' differ amount the different content ratings?  Explain.
+
+\vspace{1in}
+
+
