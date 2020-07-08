@@ -7,12 +7,12 @@ However, since this might be your first exposure to these concepts, we take our 
 Mastery of the content presented in this chapter will be crucial for understanding the methods and techniques introduced in rest of the book.
 ```
 
-## Examining numerical data {#numerical-data}
+## Examining quantitative data {#quantitative-data}
 
-In this section we will explore techniques for summarizing numerical variables.
+In this section we will explore techniques for summarizing quantitative variables.
 For example, consider the `loan_amount` variable from the `loan50` data set, which represents the loan size for all 50 loans in the data set.
-This variable is numerical since we can sensibly discuss the numerical difference of the size of two loans.
-On the other hand, area codes and zip codes are not numerical, but rather they are categorical variables.
+This variable is quantitative since we can sensibly discuss the numerical difference of the size of two loans.
+On the other hand, area codes and zip codes are not quantitative, but rather they are categorical variables.
 
 Throughout this section and the next, we will apply these methods using the `loan50` and `county` data sets, which were introduced in Section \@ref(data-basics).
 If you'd like to review the variables from either data set, see Tables \@ref(tab:loan50Variables) and \@ref(tab:countyVariables).
@@ -29,7 +29,7 @@ The [`loan50`](http://openintrostat.github.io/openintro/reference/loan50.html) d
 
 \index{data!loan50|(}
 
-A **scatterplot** provides a case-by-case view of data for two numerical variables.
+A **scatterplot** provides a case-by-case view of data for two quantitative variables.
 In Figure \@ref(fig:county-multi-unit-homeownership), a scatterplot was used to examine the homeownership rate against the fraction of housing units that were part of multi-unit properties (e.g. apartments) in the `county` data set.
 Another scatterplot is shown in Figure \@ref(fig:loan50-amount-income), comparing the total income of a borrower `total_income` and the amount they borrowed `loan_amount` for the `loan50` data set.
 In any scatterplot, each point represents a single case.
@@ -38,6 +38,22 @@ Since there are `r nrow(loan50)` cases in `loan50`, there are `r nrow(loan50)` p
 ```{r include=FALSE}
 terms_chp_2 <- c("scatterplot")
 ```
+
+When examining scatterplots, we describe four features:
+
+1. **Form** - If you were to trace the trend of the points,
+   would the trend be _linear_ or _nonlinear_?
+2. **Direction** - As values on the _x_-axis increase, do the _y_-values
+  tend to  increase (_positive_) or do they decrease (_negative_)?
+3. **Strength** - How closely to the points follow a trend?
+4. **Unusual observations** or **outliers**- Are there any unusual observations
+   that do not seem to match the overall pattern of the scatterplot?
+
+```{r include=FALSE}
+terms_chp_2 <- c(terms_chp_2, "form", "direction", "strength",
+                 "outliers")
+```
+
 
 ```{r loan50-amount-income, fig.cap = "A scatterplot of `loan_amount` versus `total_income` for the `loan50` data set.", warning=FALSE}
 ggplot(loan50, aes(x = total_income, y = loan_amount)) +
@@ -48,7 +64,14 @@ ggplot(loan50, aes(x = total_income, y = loan_amount)) +
   scale_y_continuous(labels = dollar_format(scale = 0.001, suffix = "K"))
 ```
 
-Looking at Figure \@ref(fig:loan50-amount-income), we see that there are many borrowers with income below \$100,000 on the left side of the graph, while there are a handful of borrowers with income above \$250,000.
+Looking at Figure \@ref(fig:loan50-amount-income), we see that there are many 
+borrowers with income below \$100,000 on the left side of the graph, while there 
+are a handful of borrowers with income above \$250,000. The loan amounts vary from
+below \$10,000 to around \$40,000. The data seem to have a _linear_ form, though
+the relationship between the two variables is quite _weak_. The direction is
+_positive_ -- as total income increases, the loan amount also tends to increase --
+and there may be a few unusual observations in the higher income range,
+though since the relationship is weak, it is hard to tell.
 
 ```{r median-hh-income-poverty, fig.cap = "A scatterplot of the median household income against the poverty rate for the `county` dataset. Data are from 2017. A statistical model has also been fit to the data and is shown as a dashed line.", warning=FALSE, message=FALSE}
 ggplot(county, aes(x = poverty/100, y = median_hh_income)) +
@@ -68,11 +91,10 @@ What can be said about the relationship between these variables?
 ---
 
 The relationship is evidently **nonlinear**, as highlighted by the dashed line. This is different from previous scatterplots we have seen, which show relationships that do not show much, if any, curvature in the trend.
+The relationship is moderate to strong, the direction is negative,
+and there does not appear to be any unusual observations.
 ```
 
-```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "nonlinear")
-```
 
 
 ```{block2, type="guidedpractice", echo=TRUE}
@@ -222,3 +244,37 @@ For more information on this topic, check out the following online supplement re
 ```{r include=FALSE}
 terms_chp_2 <- c(terms_chp_2, "weighted mean")
 ```
+
+### Boxplots and the five-number summary {#boxplots}
+
+
+
+### Histograms and density plots {#histograms}
+
+
+### Examining variability {#variability}
+
+
+### Comparing distributions {#distributions}
+
+- center, shape (symmetric, skewed, normal), spread, outliers
+- side-by-side boxplots, stacked dotplots/histograms
+
+## Examining categorical data {#categorical-data}
+
+- Define frequencies/counts and relative frequencies/proportions
+- Two-way/contingency tables 
+- Bayes theorem with tables and trees - conditional vs unconditional probabilities
+
+### Bar plots
+
+- one cat variable plot
+
+
+#### Segmented bar plots
+- two cat plot
+
+### Why not pie charts?
+
+
+

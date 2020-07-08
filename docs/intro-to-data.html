@@ -24,7 +24,7 @@
 <meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager" />
 
 
-<meta name="date" content="2020-07-01" />
+<meta name="date" content="2020-07-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="copyright.html"/>
-
+<link rel="next" href="eda.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -132,7 +132,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">STAT 216 Introduction to Statistics</a></li>
+<li><a href="./">MSU Intro Stat with R</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a><ul>
@@ -171,6 +171,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="intro-to-data.html"><a href="intro-to-data.html#chapter-review"><i class="fa fa-check"></i><b>1.6</b> Chapter review</a><ul>
 <li class="chapter" data-level="1.6.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>1.6.1</b> Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>2</b> Exploratory Data Analysis</a><ul>
+<li class="chapter" data-level="2.1" data-path="eda.html"><a href="eda.html#quantitative-data"><i class="fa fa-check"></i><b>2.1</b> Examining quantitative data</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="eda.html"><a href="eda.html#scatterplots"><i class="fa fa-check"></i><b>2.1.1</b> Scatterplots for paired data</a></li>
+<li class="chapter" data-level="2.1.2" data-path="eda.html"><a href="eda.html#dotplots"><i class="fa fa-check"></i><b>2.1.2</b> Dot plots and the mean</a></li>
+<li class="chapter" data-level="2.1.3" data-path="eda.html"><a href="eda.html#boxplots"><i class="fa fa-check"></i><b>2.1.3</b> Boxplots and the five-number summary</a></li>
+<li class="chapter" data-level="2.1.4" data-path="eda.html"><a href="eda.html#histograms"><i class="fa fa-check"></i><b>2.1.4</b> Histograms and density plots</a></li>
+<li class="chapter" data-level="2.1.5" data-path="eda.html"><a href="eda.html#variability"><i class="fa fa-check"></i><b>2.1.5</b> Examining variability</a></li>
+<li class="chapter" data-level="2.1.6" data-path="eda.html"><a href="eda.html#distributions"><i class="fa fa-check"></i><b>2.1.6</b> Comparing distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="eda.html"><a href="eda.html#categorical-data"><i class="fa fa-check"></i><b>2.2</b> Examining categorical data</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="eda.html"><a href="eda.html#bar-plots"><i class="fa fa-check"></i><b>2.2.1</b> Bar plots</a></li>
+<li class="chapter" data-level="2.2.2" data-path="eda.html"><a href="eda.html#why-not-pie-charts"><i class="fa fa-check"></i><b>2.2.2</b> Why not pie charts?</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -1066,9 +1080,9 @@ These data can be found in the <a href="http://openintrostat.github.io/openintro
 <h3><span class="header-section-number">1.2.2</span> Types of variables</h3>
 <p>Examine the <code>unemployment_rate</code>, <code>pop2017</code>, <code>state</code>, and <code>median_edu</code> variables in the <code>county</code> data set.
 Each of these variables is inherently different from the other three, yet some share certain characteristics.</p>
-<p>First consider <code>unemployment_rate</code>, which is said to be a <strong>numerical</strong> variable since it can take a wide range of numerical values, and it is sensible to add, subtract, or take averages with those values.
-On the other hand, we would not classify a variable reporting telephone area codes as numerical since the average, sum, and difference of area codes doesn’t have any clear meaning.</p>
-<p>The <code>pop2017</code> variable is also numerical, although it seems to be a little different than <code>unemployment_rate</code>.
+<p>First consider <code>unemployment_rate</code>, which is said to be a <strong>quantitative</strong> or <strong>numerical</strong> variable since it can take a wide range of numerical values, and it is sensible to add, subtract, or take averages with those values.
+On the other hand, we would not classify a variable reporting telephone area codes as quantitative since the average, sum, and difference of area codes doesn’t have any clear meaning.</p>
+<p>The <code>pop2017</code> variable is also quantitative, although it seems to be a little different than <code>unemployment_rate</code>.
 This variable of the population count can only take whole non-negative numbers (0, 1, 2, …).
 For this reason, the population variable is said to be <strong>discrete</strong> since it can only take numerical values with jumps.
 On the other hand, the unemployment rate variable is said to be <strong>continuous</strong>.</p>
@@ -1088,11 +1102,11 @@ Figure 1.2: Breakdown of variables into their respective types.
 <div class="example">
 <p>Data were collected about students in a statistics course.
 Three variables were recorded for each student: number of siblings, student height, and whether the student had previously taken a statistics course.
-Classify each of the variables as continuous numerical, discrete numerical, or categorical.</p>
+Classify each of the variables as continuous quantitative, discrete quantitative, or categorical.</p>
 <hr />
-The number of siblings and student height represent numerical variables.
+The number of siblings and student height represent quantitative variables.
 Because the number of siblings is a count, it is discrete.
-Height varies continuously, so it is a continuous numerical variable.
+Height varies continuously, so it is a continuous quantitative variable.
 The last variable classifies students into two categories – those who have and those who have not taken a statistics course – which makes this variable categorical.
 </div>
 
@@ -1101,7 +1115,7 @@ The last variable classifies students into two categories – those who have and
 <div class="guidedpractice">
 An experiment is evaluating the effectiveness of a new drug in treating migraines.
 A <code>group</code> variable is used to indicate the experiment group for each patient: treatment or control.
-The <code>num_migraines</code> variable represents the number of migraines the patient experienced during a 3-month period. Classify each variable as either numerical or categorical?<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>
+The <code>num_migraines</code> variable represents the number of migraines the patient experienced during a 3-month period. Classify each variable as either quantitative or categorical?<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>
 </div>
 
 </div>
@@ -1121,7 +1135,7 @@ A social scientist may like to answer some of the following questions:</p>
 <p>To answer these questions, data must be collected, such as the <code>county</code> data set shown in Table <a href="intro-to-data.html#tab:countyDF">1.5</a>.
 Examining <strong>summary statistics</strong> could provide insights for each of the three questions about counties.
 Additionally, graphs can be used to visually exploring the data.</p>
-<p><strong>Scatterplots</strong> are one type of graph used to study the relationship between two numerical variables.
+<p><strong>Scatterplots</strong> are one type of graph used to study the relationship between two quantitative variables.
 Figure <a href="intro-to-data.html#fig:county-multi-unit-homeownership">1.3</a> displays the relationship between the variables <code>homeownership</code> and <code>multi_unit</code>, which is the percent of units in multi-unit structures (e.g. apartments, condos).
 Each point on the plot represents a single county.
 For instance, the highlighted dot corresponds to County 413 in the <code>county</code> data set: Chattahoochee County, Georgia, which has 39.4% of units in multi-unit structures and a homeownership rate of 31.3%.
@@ -1786,7 +1800,7 @@ In chaining, the value on the left side of <code>%&gt;%</code> becomes the <em>f
 For example:</p>
 <p><code>x %&gt;% f(y)</code> is the same as <code>f(x, y)</code></p>
 <p><code>y %&gt;% f(x, ., z)</code> is the same as <code>f(x,y,z)</code></p>
-<p>Pipes are used commonly with functions in the <code>dplyr</code> package (see <code>R</code> examples in Chapter <a href="#eda"><strong>??</strong></a>) and they allow us to sequentially build data wrangling operations.
+<p>Pipes are used commonly with functions in the <code>dplyr</code> package (see <code>R</code> examples in Chapter <a href="eda.html#eda">2</a>) and they allow us to sequentially build data wrangling operations.
 We’ll start with short pipes and throughout the course build up to longer pipes that perform multiple operations.</p>
 <p>Consider the  data, High School and Beyond survey.<br />
 Two hundred observations were randomly sampled from the High School and Beyond survey, a survey conducted on high school seniors by the National Center of Education Statistics.
@@ -1908,7 +1922,7 @@ barplot
 data
 </td>
 <td style="text-align:left;">
-numerical
+observational data
 </td>
 <td style="text-align:left;">
 retrospective study
@@ -1922,7 +1936,7 @@ bias
 data frame
 </td>
 <td style="text-align:left;">
-observational data
+observational study
 </td>
 <td style="text-align:left;">
 sample
@@ -1936,7 +1950,7 @@ blind
 dependent
 </td>
 <td style="text-align:left;">
-observational study
+observational unit
 </td>
 <td style="text-align:left;">
 sample bias
@@ -1950,7 +1964,7 @@ blocking
 discrete
 </td>
 <td style="text-align:left;">
-observational unit
+ordinal
 </td>
 <td style="text-align:left;">
 simple random sample
@@ -1964,7 +1978,7 @@ case
 double-blind
 </td>
 <td style="text-align:left;">
-ordinal
+placebo
 </td>
 <td style="text-align:left;">
 simple random sampling
@@ -1978,7 +1992,7 @@ categorical
 experiment
 </td>
 <td style="text-align:left;">
-placebo
+placebo effect
 </td>
 <td style="text-align:left;">
 strata
@@ -1992,7 +2006,7 @@ cluster
 explanatory variable
 </td>
 <td style="text-align:left;">
-placebo effect
+population
 </td>
 <td style="text-align:left;">
 stratified sampling
@@ -2006,7 +2020,7 @@ cluster sampling
 independent
 </td>
 <td style="text-align:left;">
-population
+positive association
 </td>
 <td style="text-align:left;">
 summary statistic
@@ -2020,7 +2034,7 @@ cohort
 level
 </td>
 <td style="text-align:left;">
-positive association
+prospective study
 </td>
 <td style="text-align:left;">
 treatment group
@@ -2034,7 +2048,7 @@ confounding variable
 multistage sample
 </td>
 <td style="text-align:left;">
-prospective study
+quantitative
 </td>
 <td style="text-align:left;">
 variable
@@ -2069,39 +2083,9 @@ replicate
 </tbody>
 </table>
 
-<div id="refs" class="references">
-<div>
-<p>Chimowitz, Marc I, Michael J Lynn, Colin P Derdeyn, Tanya N Turan, David Fiorella, Bethany F Lane, L Scott Janis, et al. 2011. “Stenting Versus Aggressive Medical Therapy for Intracranial Arterial Stenosis.” <em>New England Journal of Medicine</em> 365 (11): 993–1003. <a href="http://www.nejm.org/doi/full/10.1056/NEJMoa1105335">http://www.nejm.org/doi/full/10.1056/NEJMoa1105335</a>.</p>
-</div>
-<div>
-<p>Wickham, Hadley, and others. 2014. “Tidy Data.” <em>Journal of Statistical Software</em> 59 (10): 1–23.</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <h3>References</h3>
 <div id="refs" class="references">
 <div id="ref-chimowitz2011stenting">
@@ -2118,7 +2102,7 @@ replicate
 <li id="fn2"><p>The loan’s grade is A, and the borrower rents their residence.<a href="intro-to-data.html#fnref2" class="footnote-back">↩︎</a></p></li>
 <li id="fn3"><p>There are multiple strategies that can be followed. One common strategy is to have each student represented by a row, and then add a column for each assignment, quiz, or exam. Under this setup, it is easy to review a single line to understand the grade history of a student. There should also be columns to include student information, such as one column to list student names.<a href="intro-to-data.html#fnref3" class="footnote-back">↩︎</a></p></li>
 <li id="fn4"><p>Each county may be viewed as a case, and there are eleven pieces of information recorded for each case. A table with 3,142 rows and 14 columns could hold these data, where each row represents a county and each column represents a particular piece of information.<a href="intro-to-data.html#fnref4" class="footnote-back">↩︎</a></p></li>
-<li id="fn5"><p>The <code>group</code> variable can take just one of two group names, making it categorical. The <code>num_migraines</code> variable describes a count of the number of migraines, which is an outcome where basic arithmetic is sensible, which means this is numerical outcome; more specifically, since it represents a count, <code>num_migraines</code> is a discrete numerical variable.<a href="intro-to-data.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>The <code>group</code> variable can take just one of two group names, making it categorical. The <code>num_migraines</code> variable describes a count of the number of migraines, which is an outcome where basic arithmetic is sensible, which means this is numerical outcome; more specifically, since it represents a count, <code>num_migraines</code> is a discrete quantitative variable.<a href="intro-to-data.html#fnref5" class="footnote-back">↩︎</a></p></li>
 <li id="fn6"><p>Two example questions: (1) What is the relationship between loan amount and total income? (2) If someone’s income is above the average, will their interest rate tend to be above or below the average?<a href="intro-to-data.html#fnref6" class="footnote-back">↩︎</a></p></li>
 <li id="fn7"><p>Sometimes the explanatory variable is called the <strong>independent</strong> variable and the response variable is called the <strong>dependent</strong> variable. However, this becomes confusing since a <em>pair</em> of variables might be independent or dependent, so we avoid this language.<a href="intro-to-data.html#fnref7" class="footnote-back">↩︎</a></p></li>
 <li id="fn8"><p>The question <em>“Over the last 5 years, what is the average time to complete a degree for Duke undergrads?”</em> is only relevant to students who complete their degree; the average cannot be computed using a student who never finished her degree. Thus, only Duke undergrads who graduated in the last five years represent cases in the population under consideration. Each such student is an individual case. For the question <em>“Does a new drug reduce the number of deaths in patients with severe heart disease?”</em>, a person with severe heart disease represents a case. The population includes all people with severe heart disease.<a href="intro-to-data.html#fnref8" class="footnote-back">↩︎</a></p></li>
@@ -2138,8 +2122,8 @@ replicate
           </div>
         </div>
       </div>
-<a href="copyright.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="copyright.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="eda.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
