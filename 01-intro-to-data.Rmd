@@ -279,14 +279,14 @@ These data can be found in the [openintro](http://openintrostat.github.io/openin
 Examine the `unemployment_rate`, `pop2017`, `state`, and `median_edu` variables in the `county` data set. 
 Each of these variables is inherently different from the other three, yet some share certain characteristics.
 
-First consider `unemployment_rate`, which is said to be a **numerical** variable since it can take a wide range of numerical values, and it is sensible to add, subtract, or take averages with those values.
-On the other hand, we would not classify a variable reporting telephone area codes as numerical since the average, sum, and difference of area codes doesn't have any clear meaning.
+First consider `unemployment_rate`, which is said to be a **quantitative** or **numerical** variable since it can take a wide range of numerical values, and it is sensible to add, subtract, or take averages with those values.
+On the other hand, we would not classify a variable reporting telephone area codes as quantitative since the average, sum, and difference of area codes doesn't have any clear meaning.
 
 ```{r include=FALSE}
-terms_chp_1 <- c(terms_chp_1, "numerical")
+terms_chp_1 <- c(terms_chp_1, "quantitative")
 ```
 
-The `pop2017` variable is also numerical, although it seems to be a little different than `unemployment_rate`.
+The `pop2017` variable is also quantitative, although it seems to be a little different than `unemployment_rate`.
 This variable of the population count can only take whole non-negative numbers (0, 1, 2, ...).
 For this reason, the population variable is said to be **discrete** since it can only take numerical values with jumps.
 On the other hand, the unemployment rate variable is said to be **continuous**.
@@ -318,13 +318,13 @@ include_graphics("01/figures/variables/variables.png")
 ```{block2, type="example", echo=TRUE}
 Data were collected about students in a statistics course.
 Three variables were recorded for each student: number of siblings, student height, and whether the student had previously taken a statistics course.
-Classify each of the variables as continuous numerical, discrete numerical, or categorical. 
+Classify each of the variables as continuous quantitative, discrete quantitative, or categorical. 
 
 ---
 
-The number of siblings and student height represent numerical variables.
+The number of siblings and student height represent quantitative variables.
 Because the number of siblings is a count, it is discrete.
-Height varies continuously, so it is a continuous numerical variable.
+Height varies continuously, so it is a continuous quantitative variable.
 The last variable classifies students into two categories -- those who have and those who have not taken a statistics course -- which makes this variable categorical.
 ```
 
@@ -333,7 +333,7 @@ The last variable classifies students into two categories -- those who have and 
 ```{block2, type="guidedpractice", echo=TRUE}
 An experiment is evaluating the effectiveness of a new drug in treating migraines.
 A `group` variable is used to indicate the experiment group for each patient: treatment or control.
-The `num_migraines` variable represents the number of migraines the patient experienced during a 3-month period. Classify each variable as either numerical or categorical?^[The `group` variable can take just one of two group names, making it categorical. The `num_migraines` variable describes a count of the number of migraines, which is an outcome where basic arithmetic is sensible, which means this is numerical outcome; more specifically, since it represents a count, `num_migraines` is a discrete numerical variable.]
+The `num_migraines` variable represents the number of migraines the patient experienced during a 3-month period. Classify each variable as either quantitative or categorical?^[The `group` variable can take just one of two group names, making it categorical. The `num_migraines` variable describes a count of the number of migraines, which is an outcome where basic arithmetic is sensible, which means this is numerical outcome; more specifically, since it represents a count, `num_migraines` is a discrete quantitative variable.]
 ```
 
 ### Relationships between variables {#variable-relations}
@@ -351,7 +351,7 @@ To answer these questions, data must be collected, such as the `county` data set
 Examining \index{summary statistic}**summary statistics** could provide insights for each of the three questions about counties.
 Additionally, graphs can be used to visually exploring the data.
 
-\index{scatterplot}**Scatterplots** are one type of graph used to study the relationship between two numerical variables.
+\index{scatterplot}**Scatterplots** are one type of graph used to study the relationship between two quantitative variables.
 Figure \@ref(fig:county-multi-unit-homeownership) displays the relationship between the variables `homeownership` and `multi_unit`, which is the percent of units in multi-unit structures (e.g. apartments, condos).
 Each point on the plot represents a single county.
 For instance, the highlighted dot corresponds to County 413 in the `county` data set: Chattahoochee County, Georgia, which has 39.4\% of units in multi-unit structures and a homeownership rate of 31.3\%.
