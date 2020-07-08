@@ -1,0 +1,224 @@
+# Exploratory Data Analysis {#eda}
+
+```{block2, chp1-intro, type="chapterintro", echo=TRUE}
+This chapter focuses on the mechanics and construction of summary statistics and graphs.
+We use statistical software for generating the summaries and graphs presented in this chapter and book.
+However, since this might be your first exposure to these concepts, we take our time in this chapter to detail how to create them.
+Mastery of the content presented in this chapter will be crucial for understanding the methods and techniques introduced in rest of the book.
+```
+
+## Examining numerical data {#numerical-data}
+
+In this section we will explore techniques for summarizing numerical variables.
+For example, consider the `loan_amount` variable from the `loan50` data set, which represents the loan size for all 50 loans in the data set.
+This variable is numerical since we can sensibly discuss the numerical difference of the size of two loans.
+On the other hand, area codes and zip codes are not numerical, but rather they are categorical variables.
+
+Throughout this section and the next, we will apply these methods using the `loan50` and `county` data sets, which were introduced in Section \@ref(data-basics).
+If you'd like to review the variables from either data set, see Tables \@ref(tab:loan50Variables) and \@ref(tab:countyVariables).
+
+```{block2, type="data", echo=TRUE}
+The [`county`](http://openintrostat.github.io/usdata/reference/county.html) data can be found in the [usdata](http://openintrostat.github.io/usdata) package.
+```
+
+```{block2, type="data", echo=TRUE}
+The [`loan50`](http://openintrostat.github.io/openintro/reference/loan50.html) data can be found in the [openintro](http://openintrostat.github.io/openintro) package.
+```
+
+### Scatterplots for paired data {#scatterplots}
+
+\index{data!loan50|(}
+
+A **scatterplot** provides a case-by-case view of data for two numerical variables.
+In Figure \@ref(fig:county-multi-unit-homeownership), a scatterplot was used to examine the homeownership rate against the fraction of housing units that were part of multi-unit properties (e.g. apartments) in the `county` data set.
+Another scatterplot is shown in Figure \@ref(fig:loan50-amount-income), comparing the total income of a borrower `total_income` and the amount they borrowed `loan_amount` for the `loan50` data set.
+In any scatterplot, each point represents a single case.
+Since there are `r nrow(loan50)` cases in `loan50`, there are `r nrow(loan50)` points in Figure \@ref(fig:loan50-amount-income).
+
+```{r include=FALSE}
+terms_chp_2 <- c("scatterplot")
+```
+
+```{r loan50-amount-income, fig.cap = "A scatterplot of `loan_amount` versus `total_income` for the `loan50` data set.", warning=FALSE}
+ggplot(loan50, aes(x = total_income, y = loan_amount)) +
+  geom_point(alpha = 0.6, color = COL["blue", "full"], 
+             fill = COL["blue", "full"], shape = 21, size = 3) +
+  labs(x = "Total income", y = "Loan amount") +
+  scale_x_continuous(labels = dollar_format(scale = 0.001, suffix = "K")) +
+  scale_y_continuous(labels = dollar_format(scale = 0.001, suffix = "K"))
+```
+
+Looking at Figure \@ref(fig:loan50-amount-income), we see that there are many borrowers with income below \$100,000 on the left side of the graph, while there are a handful of borrowers with income above \$250,000.
+
+```{r median-hh-income-poverty, fig.cap = "A scatterplot of the median household income against the poverty rate for the `county` dataset. Data are from 2017. A statistical model has also been fit to the data and is shown as a dashed line.", warning=FALSE, message=FALSE}
+ggplot(county, aes(x = poverty/100, y = median_hh_income)) +
+  geom_point(alpha = 0.3, color = COL["blue", "full"], 
+             fill = COL["black", "full"], shape = 21, size = 3) +
+  geom_smooth(linetype = "dashed", color = "gray", se = FALSE) +
+  labs(x = "Poverty rate",y = "Median household income") +
+  scale_x_continuous(labels = percent_format(accuracy = 1)) +
+  scale_y_continuous(labels = dollar_format(scale = 0.001, suffix = "K"))
+```
+
+
+```{block2, type="example", echo=TRUE}
+Figure \@ref(fig:median-hh-income-poverty) shows a plot of median household income against the poverty rate for `r nrow(county)` counties.
+What can be said about the relationship between these variables?
+
+---
+
+The relationship is evidently **nonlinear**, as highlighted by the dashed line. This is different from previous scatterplots we have seen, which show relationships that do not show much, if any, curvature in the trend.
+```
+
+```{r include=FALSE}
+terms_chp_2 <- c(terms_chp_2, "nonlinear")
+```
+
+
+```{block2, type="guidedpractice", echo=TRUE}
+What do scatterplots reveal about the data, and how are they useful?^[Answers may vary. Scatterplots are helpful in quickly spotting associations relating variables, whether those associations come in the form of simple trends or whether those relationships are more complex.]
+```
+
+```{block2, type="guidedpractice", echo=TRUE}
+Describe two variables that would have a horseshoe-shaped association in a scatterplot ($\cap$ or $\frown$)^[Consider the case where your vertical axis represents something "good" and your horizontal axis represents something that is only good in moderation. Health and water consumption fit this description: we require some water to survive, but consume too much and it become toxic and can kill a person.]
+```
+
+
+### Dot plots and the mean {#dotplots}
+
+Sometimes we are interested in the distribution of a single variable. 
+In these cases, a dot plot provides the most basic of displays.
+A **dot plot** is a one-variable scatterplot; an example using the interest rate of `r nrow(loan50)` loans is shown in Figure \@ref(fig:loan-int-rate-dotplot).
+
+```{r include=FALSE}
+terms_chp_2 <- c(terms_chp_2, "dot plot")
+```
+
+```{r loan-int-rate-dotplot, fig.cap="A dot plot of `interest_rate` for the `loan50` dataset. The rates have been rounded to the nearest percent in this plot, and the distribution's mean is shown as a red triangle."}
+mean_interest_rate <- mean(loan50$interest_rate) / 100
+
+ggplot(loan50, aes(x = interest_rate/100)) +
+  geom_dotplot(fill = COL["blue", "full"], color = COL["blue", "full"]) +
+  labs(x = "Interest rate") +
+  scale_x_continuous(labels = percent_format()) +
+  theme(axis.title.y = element_blank(),
+        axis.text.y  = element_blank(),
+        axis.ticks.y = element_blank()) +
+  geom_polygon(
+    data = data.frame(x = c(mean_interest_rate - 0.01, mean_interest_rate + 0.01, mean_interest_rate), 
+                      y = c(-0.1, -0.1, 0)),
+    aes(x = x, y = y),
+    fill = COL["red", "full"]
+  )
+```
+
+The **mean**, often called the **average** is a common way to measure the center of a **distribution** of data. 
+To compute the mean interest rate, we add up all the interest rates and divide by the number of observations.
+
+```{r include=FALSE}
+terms_chp_2 <- c(terms_chp_2, "mean", "average", "distribution")
+```
+
+```{r}
+loan50_mean_intrest_rate <- mean(loan50$interest_rate)
+```
+
+The sample mean is often labeled $\bar{x}$.
+The letter $x$ is being used as a generic placeholder for the variable of interest and the bar over the $x$ communicates we're looking at the average interest rate, which for these 50 loans is `r round(loan50_mean_intrest_rate, 2)`%.
+It's useful to think of the mean as the balancing point of the distribution, and it's shown as a triangle in Figure \@ref(fig:loan-int-rate-dotplot).
+
+```{block2, type="onebox", echo=TRUE}
+**Mean.**
+The sample mean can be calculated as the sum of the observed values divided by the number of observations:
+
+\[ \bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n} \]
+```
+
+```{block2, type="guidedpractice", echo=TRUE}
+Examine the equation for the mean. What does $x_1$ correspond to? And $x_2$ Can you infer a general meaning to what $n_i$ might represent?^[$x_1$ corresponds to the interest rate for the first loan in the sample, $x_2$ to the second loan's interest rate, and $x_i$ corresponds to the interest rate for the $i^{th}$ loan in the data set. For example, if $i = 4$, then we're examining $x_4$, which refers to the fourth observation in the data set.]
+```
+
+```{block2, type="guidedpractice", echo=TRUE}
+What was $n$ in this sample of loans?^[The sample size was $n = 50$.]
+```
+
+The `loan50` data set represents a sample from a larger population of loans made through Lending Club.
+We could compute a mean for this population in the same way as the sample mean.
+However, the population mean has a special label: $\mu$.
+The symbol $\mu$ is the Greek letter *mu* and represents the average of all observations in the population.
+Sometimes a subscript, such as $_x$, is used to represent which variable the population mean refers to, e.g. $\mu_x$.
+Often times it is too expensive to measure the population mean precisely, so we often estimate $\mu$ using the sample mean, $\bar{x}$.
+
+```{block2, type="pronunciation", echo=TRUE}
+The Greek letter $\mu$ is pronounced *mu*, listen to the pronunciation [here](https://youtu.be/PStgY5AcEIw?t=47).
+```
+
+```{block2, type="example", echo=TRUE}
+The average interest rate across all loans in the population can be estimated using the sample data. Based on the sample of 50 loans, what would be a reasonable estimate of $\mu_x$, the mean interest rate for all loans in the full data set?
+
+---
+  
+The sample mean, `r round(loan50_mean_intrest_rate, 2)`, provides a rough estimate of $\mu_x$. While it is not perfect, this is our single best guess **point estimate**\index{point estimate} of the average interest rate of all the loans in the population under study. In Chapter \@ref(inference-foundations) and beyond, we will develop tools to characterize the accuracy of point estimates, like the sample mean. As you might have guessed, point estimates based on larger samples tend to be more accurate than those based on smaller samples.
+```
+
+```{r include=FALSE}
+terms_chp_2 <- c(terms_chp_2, "point estimate")
+```
+
+The mean is useful because it allows us to rescale or standardize a metric into something more easily interpretable and comparable. 
+Suppose we would like to understand if a new drug is more effective at treating asthma attacks than the standard drug. 
+A trial of 1500 adults is set up, where 500 receive the new drug, and 1000 receive a standard drug in the control group:
+
+```{r}
+drug_asthma <- tribble(
+  ~x,                     ~`New drug`, ~`Standard drug`,
+  "Number of patients",   500,         1000,
+  "Total asthma attacks", 200,         300
+)
+drug_asthma %>%
+  kable(col.names = c("", "New drug", "Standard drug"),
+        align = c("lcc"))
+```
+
+Comparing the raw counts of 200 to 300 asthma attacks would make it appear that the new drug is better, but this is an artifact of the imbalanced group sizes.
+Instead, we should look at the average number of asthma attacks per patient in each group:
+
+- New drug: $200 / 500 = 0.4$ asthma attacks per patient
+- Standard drug: $300 / 1000 = 0.3$ asthma attacks per patient
+
+The standard drug has a lower average number of asthma attacks per patient than the average in the treatment group.
+
+```{block2, type="example", echo=TRUE}
+Provide another examples where the mean is useful for making comparisons.
+
+---
+  
+Emilio opened a food truck last year where he sells burritos, and his business has stabilized over the last 3 months.
+Over that 3 month period, he has made $11,000 while working 625 hours.
+Emilio's average hourly earnings provides a useful statistic for evaluating whether his venture is, at least from a financial perspective, worth it:
+
+\[ \frac{\$11000}{625\text{ hours}} = \$17.60\text{ per hour} \]
+  
+By knowing his average hourly wage,
+Emilio now has put his earnings into a standard unit that is easier to compare with many other jobs that he might consider.
+```
+
+```{block2, type="example", echo=TRUE}
+Suppose we want to compute the average income per person in the US. To do so, we might first think to take the mean of the per capita incomes across the 3,142 counties in the \data{county} data set. What would be a better approach?
+
+---
+  
+The `county` data set is special in that each county actually represents many individual people.
+If we were to simply average across the `income` variable, we would be treating counties with 5,000 and 5,000,000 residents equally in the calculations.
+Instead, we should compute the total income for each county, add up all the counties' totals, and then divide by the number of people in all the counties.
+If we completed these steps with the \data{county} data, we would find that the per capita income for the US is $30,861.
+Had we computed the *simple* mean of per capita income across counties, the result would have been just $26,093!
+
+This example used what is called a **weighted mean**.
+For more information on this topic, check out the following online supplement regarding [weighted means](https://www.openintro.org/go/?id=stat_extra_weighted_mean).
+```
+
+
+```{r include=FALSE}
+terms_chp_2 <- c(terms_chp_2, "weighted mean")
+```
