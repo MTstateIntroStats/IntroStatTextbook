@@ -73,7 +73,7 @@ We will look at the relationship between 'Budget' and 'Revenue' for movies relea
 
 ```{r echo=F, fig.height=4}
 par(mfrow=c(1,2))
-movies <- read.csv("movies.csv")
+movies <- read.csv("data/movies.csv")
 movies$content_rating <- factor(movies$content_rating)
 rating <- c("PG", "PG-13", "R")
 movies <- movies[movies$content_rating %in% rating,]
