@@ -1,12 +1,14 @@
 # STAT 216 Learning Outcomes by Topic
 
+By the end of this course, students should be able to...
+
 ## Data Literacy
 - Describe the statistical investigation process
 - Identify observational units, variables, and variable types in a statistical study
-- Identify key elements of a statistical study from a research article or news story
-- Determine whether statements in a research article or news story are
-  supported by the study results
+- Develop skills needed to evaluate, analyze, prioritize and synthesize information in research articles
 - Understand and explain the effects of multiple testing
+- Understand and explain the role variability plays in statistics
+- Demonstrate an awareness of ethical issues associated with sound statistical practice
 
 ## Study Design
 - Explain the purpose of random sampling and its effect on scope of inference
@@ -16,6 +18,7 @@
 - Identify confounding variables in observational studies and explain why they are confounding
 
 ## Probability
+- Understand and explain the role of randomness in designing studies and drawing conclusions
 - Recognize and simulate probabilities as long-run frequencies
 - Construct two-way tables and tree diagrams to evaluate
   marginal, joint, and conditional probabilities
@@ -27,6 +30,14 @@
   median, lower quartile, upper quartile,
   standard deviation, inter-quartile range,
   coefficient of determination, regression line slope
+- Given a plot or set of plots, describe and compare the distribution(s)
+  of a single quantitative variable
+  (center, variability, shape, outliers)
+- Given a plot or set of plots, describe the association between
+  two quantitative variables
+  (form, direction, strength, outliers)
+
+_Create and interpret the following summary statistics and plots:_
 - Summary statistics for a single categorical variable: frequencies, relative frequencies
 - Summary statistics for a single quantitative variable: mean, median,
   percentiles, standard deviation, inter-quartile range, range, 5-number summary
@@ -36,17 +47,11 @@
 - Plots for association between two categorical variables:
   segmented bar plot, mosaic plot
 - Plots for a single quantitative variable:
-  dotplot, histogram, boxplot, density plot
+  dotplot, boxplot, histogram, density plot
 - Plots for association between two quantitative variables: scatterplot
 - Plots for association between one quantitative and one categorical variable:
   side-by-side boxplots; stacked histograms, density plots or dotplots
 - Multivariable plots (e.g., scatterplot with factor)
-- Given a plot or set of plots, describe and compare the distribution(s)
-  of a single quantitative variable
-  (center, variability, shape, outliers)
-- Given a plot or set of plots, describe the association between
-  two quantitative variables
-  (form, direction, strength, outliers)
 
 ## Statistical Inference
 
@@ -80,5 +85,6 @@ For each of the five scenarios:
 - Use a confidence interval to determine the conclusion of a hypothesis test
 
 ## Statistical Computing
-- TODO
+- Conduct exploratory data analyses and inferential statistical analyses in R
+  in a reproducible manner through R Markdown
 
