@@ -35,6 +35,7 @@ library(usdata)
 library(tidyverse)
 library(scales)
 library(infer)
+library(pander)
 
 # dplyr options ----------------------------------------------------------------
 
@@ -55,3 +56,16 @@ make_terms_table <- function(x, n_cols = 4){
   matrix(x_updated, nrow = n_rows) %>%
     kable()
 }
+
+# function to print in color ------------------------------------------------------
+
+colorize <- function(x, color="red") {
+  if (knitr::is_latex_output()) {
+    sprintf("\\textcolor{%s}{%s}", color, x)
+  } else if (knitr::is_html_output()) {
+    sprintf("<span style='color: %s;'>%s</span>", color,
+            x)
+  } else x
+}
+
+

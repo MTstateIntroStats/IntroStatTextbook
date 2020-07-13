@@ -24,7 +24,7 @@
 <meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager" />
 
 
-<meta name="date" content="2020-07-08" />
+<meta name="date" content="2020-07-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -54,70 +54,6 @@
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 
 
-<style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
@@ -183,7 +119,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.6" data-path="eda.html"><a href="eda.html#distributions"><i class="fa fa-check"></i><b>2.1.6</b> Comparing distributions</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="eda.html"><a href="eda.html#categorical-data"><i class="fa fa-check"></i><b>2.2</b> Examining categorical data</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="eda.html"><a href="eda.html#bar-plots"><i class="fa fa-check"></i><b>2.2.1</b> Bar plots</a></li>
+<li class="chapter" data-level="2.2.1" data-path="eda.html"><a href="eda.html#contingency-tables-and-bar-plots"><i class="fa fa-check"></i><b>2.2.1</b> Contingency tables and bar plots</a></li>
 <li class="chapter" data-level="2.2.2" data-path="eda.html"><a href="eda.html#why-not-pie-charts"><i class="fa fa-check"></i><b>2.2.2</b> Why not pie charts?</a></li>
 </ul></li>
 </ul></li>
@@ -221,7 +157,7 @@ For example, consider the <code>loan_amount</code> variable from the <code>loan5
 This variable is quantitative since we can sensibly discuss the numerical difference of the size of two loans.
 On the other hand, area codes and zip codes are not quantitative, but rather they are categorical variables.</p>
 <p>Throughout this section and the next, we will apply these methods using the <code>loan50</code> and <code>county</code> data sets, which were introduced in Section <a href="intro-to-data.html#data-basics">1.2</a>.
-If you’d like to review the variables from either data set, see Tables <a href="intro-to-data.html#tab:loan50Variables">1.4</a> and <a href="intro-to-data.html#tab:countyVariables">1.6</a>.</p>
+If you’d like to review the variables from either data set, see Tables <a href="#tab:loan50Variables"><strong>??</strong></a> and <a href="#tab:countyVariables"><strong>??</strong></a>.</p>
 
 <div class="data">
 The <a href="http://openintrostat.github.io/usdata/reference/county.html"><code>county</code></a> data can be found in the <a href="http://openintrostat.github.io/usdata">usdata</a> package.
@@ -236,7 +172,7 @@ The <a href="http://openintrostat.github.io/openintro/reference/loan50.html"><co
 <h3><span class="header-section-number">2.1.1</span> Scatterplots for paired data</h3>
 <p></p>
 <p>A <strong>scatterplot</strong> provides a case-by-case view of data for two quantitative variables.
-In Figure <a href="intro-to-data.html#fig:county-multi-unit-homeownership">1.3</a>, a scatterplot was used to examine the homeownership rate against the fraction of housing units that were part of multi-unit properties (e.g. apartments) in the <code>county</code> data set.
+In Figure <a href="#fig:county-multi-unit-homeownership"><strong>??</strong></a>, a scatterplot was used to examine the homeownership rate against the fraction of housing units that were part of multi-unit properties (e.g. apartments) in the <code>county</code> data set.
 Another scatterplot is shown in Figure <a href="eda.html#fig:loan50-amount-income">2.1</a>, comparing the total income of a borrower <code>total_income</code> and the amount they borrowed <code>loan_amount</code> for the <code>loan50</code> data set.
 In any scatterplot, each point represents a single case.
 Since there are 50 cases in <code>loan50</code>, there are 50 points in Figure <a href="eda.html#fig:loan50-amount-income">2.1</a>.</p>
@@ -282,12 +218,12 @@ and there does not appear to be any unusual observations.
 
 
 <div class="guidedpractice">
-What do scatterplots reveal about the data, and how are they useful?<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a>
+What do scatterplots reveal about the data, and how are they useful?<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>
 </div>
 
 
 <div class="guidedpractice">
-Describe two variables that would have a horseshoe-shaped association in a scatterplot (<span class="math inline">\(\cap\)</span> or <span class="math inline">\(\frown\)</span>)<a href="#fn19" class="footnote-ref" id="fnref19"><sup>19</sup></a>
+Describe two variables that would have a horseshoe-shaped association in a scatterplot (<span class="math inline">\(\cap\)</span> or <span class="math inline">\(\frown\)</span>)<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>
 </div>
 
 </div>
@@ -317,12 +253,12 @@ The sample mean can be calculated as the sum of the observed values divided by t
 
 
 <div class="guidedpractice">
-Examine the equation for the mean. What does <span class="math inline">\(x_1\)</span> correspond to? And <span class="math inline">\(x_2\)</span> Can you infer a general meaning to what <span class="math inline">\(n_i\)</span> might represent?<a href="#fn20" class="footnote-ref" id="fnref20"><sup>20</sup></a>
+Examine the equation for the mean. What does <span class="math inline">\(x_1\)</span> correspond to? And <span class="math inline">\(x_2\)</span> Can you infer a general meaning to what <span class="math inline">\(n_i\)</span> might represent?<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>
 </div>
 
 
 <div class="guidedpractice">
-What was <span class="math inline">\(n\)</span> in this sample of loans?<a href="#fn21" class="footnote-ref" id="fnref21"><sup>21</sup></a>
+What was <span class="math inline">\(n\)</span> in this sample of loans?<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>
 </div>
 
 <p>The <code>loan50</code> data set represents a sample from a larger population of loans made through Lending Club.
@@ -436,18 +372,147 @@ For more information on this topic, check out the following online supplement re
 </div>
 <div id="categorical-data" class="section level2">
 <h2><span class="header-section-number">2.2</span> Examining categorical data</h2>
-<ul>
-<li>Define frequencies/counts and relative frequencies/proportions</li>
-<li>Two-way/contingency tables</li>
-<li>Bayes theorem with tables and trees - conditional vs unconditional probabilities</li>
-</ul>
-<div id="bar-plots" class="section level3">
-<h3><span class="header-section-number">2.2.1</span> Bar plots</h3>
-<ul>
-<li>one cat variable plot</li>
-</ul>
-<div id="segmented-bar-plots" class="section level4">
-<h4><span class="header-section-number">2.2.1.1</span> Segmented bar plots</h4>
+<p>Like numerical data, categorical data can also be organized
+and analyzed. This section introduces tables and other basic
+tools for categorical data that are used throughout this book.
+The <code>email</code> data set contains information
+on 3,921 emails. In this section, we will examine whether the
+presence of numbers, small or large, in an email provides any
+useful value in classifying email as spam or not spam.</p>
+<div id="contingency-tables-and-bar-plots" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> Contingency tables and bar plots</h3>
+<p><span style="color: red;">-one cat variable plot
+- Define frequencies/counts and relative frequencies/proportions
+- Two-way/contingency tables
+- Bayes theorem with tables and trees - conditional vs unconditional probabilities</span></p>
+<p>Table <a href="eda.html#tab:emailTable">2.1</a> summarizes two variables:
+<code>Type</code> (spam or not spam) and <code>Number</code>. <code>Number</code> is a
+categorical variable that describes whether an email
+contains no numbers, only small numbers (values under 1 million),
+or at least one big number (a value of 1 million or more).
+A table that summarizes data for two categorical variables
+in this way is called a <strong>contingency table</strong> or <strong>two-way table</strong>.
+Each value in the table represents the number of times, or <strong>frequency</strong>
+a particular combination of variable outcomes occurred.
+For example, the value 149 corresponds to the number of emails
+in the data set that are spam <em>and</em> had no number listed in the email.
+Row and column totals are also included.
+The <strong>row totals</strong> provide the total counts across each row
+(e.g., <span class="math inline">\(149 + 168 + 50 = 367\)</span>), and <strong>column totals</strong> are total
+counts down each column.</p>
+<p>A table for a single variable is called a <strong>frequency table</strong>. Table
+<a href="eda.html#tab:emailTableNumber">2.2</a> is a frequency table for the <code>Number</code> variable.
+If we replaced the counts with percentages or proportions,
+the table would be called a <strong>relative frequency table</strong>.</p>
+<table>
+<caption>
+<span id="tab:emailTable">Table 2.1: </span>Contingency table of <code>Type</code> and <code>Number</code> variables.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+none
+</th>
+<th style="text-align:right;">
+small
+</th>
+<th style="text-align:right;">
+big
+</th>
+<th style="text-align:right;">
+Total
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+spam
+</td>
+<td style="text-align:right;">
+149
+</td>
+<td style="text-align:right;">
+168
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+367
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not spam
+</td>
+<td style="text-align:right;">
+400
+</td>
+<td style="text-align:right;">
+2659
+</td>
+<td style="text-align:right;">
+495
+</td>
+<td style="text-align:right;">
+3554
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:right;">
+549
+</td>
+<td style="text-align:right;">
+2827
+</td>
+<td style="text-align:right;">
+545
+</td>
+<td style="text-align:right;">
+3921
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>
+<span id="tab:emailTableNumber">Table 2.2: </span>Frequency table of <code>Number</code> variable.
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+none
+</th>
+<th style="text-align:right;">
+small
+</th>
+<th style="text-align:right;">
+big
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+549
+</td>
+<td style="text-align:right;">
+2827
+</td>
+<td style="text-align:right;">
+545
+</td>
+</tr>
+</tbody>
+</table>
+<div id="segmented-bar-and-mosaic-plots" class="section level4">
+<h4><span class="header-section-number">2.2.1.1</span> Segmented bar and mosaic plots</h4>
 <ul>
 <li>two cat plot</li>
 </ul>
@@ -456,34 +521,9 @@ For more information on this topic, check out the following online supplement re
 <div id="why-not-pie-charts" class="section level3">
 <h3><span class="header-section-number">2.2.2</span> Why not pie charts?</h3>
 
-<div id="refs" class="references">
-<div>
-<p>Chimowitz, Marc I, Michael J Lynn, Colin P Derdeyn, Tanya N Turan, David Fiorella, Bethany F Lane, L Scott Janis, et al. 2011. “Stenting Versus Aggressive Medical Therapy for Intracranial Arterial Stenosis.” <em>New England Journal of Medicine</em> 365 (11): 993–1003. <a href="http://www.nejm.org/doi/full/10.1056/NEJMoa1105335">http://www.nejm.org/doi/full/10.1056/NEJMoa1105335</a>.</p>
-</div>
-<div>
-<p>Wickham, Hadley, and others. 2014. “Tidy Data.” <em>Journal of Statistical Software</em> 59 (10): 1–23.</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -495,11 +535,11 @@ For more information on this topic, check out the following online supplement re
 
 <div class="footnotes">
 <hr />
-<ol start="18">
-<li id="fn18"><p>Answers may vary. Scatterplots are helpful in quickly spotting associations relating variables, whether those associations come in the form of simple trends or whether those relationships are more complex.<a href="eda.html#fnref18" class="footnote-back">↩︎</a></p></li>
-<li id="fn19"><p>Consider the case where your vertical axis represents something “good” and your horizontal axis represents something that is only good in moderation. Health and water consumption fit this description: we require some water to survive, but consume too much and it become toxic and can kill a person.<a href="eda.html#fnref19" class="footnote-back">↩︎</a></p></li>
-<li id="fn20"><p><span class="math inline">\(x_1\)</span> corresponds to the interest rate for the first loan in the sample, <span class="math inline">\(x_2\)</span> to the second loan’s interest rate, and <span class="math inline">\(x_i\)</span> corresponds to the interest rate for the <span class="math inline">\(i^{th}\)</span> loan in the data set. For example, if <span class="math inline">\(i = 4\)</span>, then we’re examining <span class="math inline">\(x_4\)</span>, which refers to the fourth observation in the data set.<a href="eda.html#fnref20" class="footnote-back">↩︎</a></p></li>
-<li id="fn21"><p>The sample size was <span class="math inline">\(n = 50\)</span>.<a href="eda.html#fnref21" class="footnote-back">↩︎</a></p></li>
+<ol start="1">
+<li id="fn1"><p>Answers may vary. Scatterplots are helpful in quickly spotting associations relating variables, whether those associations come in the form of simple trends or whether those relationships are more complex.<a href="eda.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Consider the case where your vertical axis represents something “good” and your horizontal axis represents something that is only good in moderation. Health and water consumption fit this description: we require some water to survive, but consume too much and it become toxic and can kill a person.<a href="eda.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p><span class="math inline">\(x_1\)</span> corresponds to the interest rate for the first loan in the sample, <span class="math inline">\(x_2\)</span> to the second loan’s interest rate, and <span class="math inline">\(x_i\)</span> corresponds to the interest rate for the <span class="math inline">\(i^{th}\)</span> loan in the data set. For example, if <span class="math inline">\(i = 4\)</span>, then we’re examining <span class="math inline">\(x_4\)</span>, which refers to the fourth observation in the data set.<a href="eda.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>The sample size was <span class="math inline">\(n = 50\)</span>.<a href="eda.html#fnref4" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

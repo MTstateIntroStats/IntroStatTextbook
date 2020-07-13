@@ -215,16 +215,99 @@ For more information on this topic, check out the following online supplement re
 
 ## Examining categorical data {#categorical-data}
 
+Like numerical data, categorical data can also be organized
+and analyzed. This section introduces tables and other basic
+tools for categorical data that are used throughout this book.
+The `email` data set contains information
+on 3,921 emails. In this section, we will examine whether the
+presence of numbers, small or large, in an email provides any
+useful value in classifying email as spam or not spam.
+
+### Contingency tables and bar plots
+
+<span style='color: red;'>-one cat variable plot
 - Define frequencies/counts and relative frequencies/proportions
 - Two-way/contingency tables 
-- Bayes theorem with tables and trees - conditional vs unconditional probabilities
+- Bayes theorem with tables and trees - conditional vs unconditional probabilities</span>
 
-### Bar plots
+Table \@ref(tab:emailTable) summarizes two variables:
+`Type` (spam or not spam) and `Number`. `Number` is a
+categorical variable that describes whether an email
+contains no numbers, only small numbers (values under 1 million),
+or at least one big number (a value of 1 million or more).
+A table that summarizes data for two categorical variables
+in this way is called a **contingency table** or **two-way table**.
+Each value in the table represents the number of times, or **frequency**
+a particular combination of variable outcomes occurred.
+For example, the value 149 corresponds to the number of emails
+in the data set that are spam _and_ had no number listed in the email.
+Row and column totals are also included.
+The **row totals** provide the total counts across each row
+(e.g., $149 + 168 + 50 = 367$), and **column totals** are total
+counts down each column.
 
-- one cat variable plot
+A table for a single variable is called a **frequency table**. Table
+\@ref(tab:emailTableNumber) is a frequency table for the `Number` variable.
+If we replaced the counts with percentages or proportions,
+the table would be called a **relative frequency table**.
 
 
-#### Segmented bar plots
+
+<table>
+<caption>(\#tab:emailTable)Contingency table of `Type` and `Number` variables.</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> none </th>
+   <th style="text-align:right;"> small </th>
+   <th style="text-align:right;"> big </th>
+   <th style="text-align:right;"> Total </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> spam </td>
+   <td style="text-align:right;"> 149 </td>
+   <td style="text-align:right;"> 168 </td>
+   <td style="text-align:right;"> 50 </td>
+   <td style="text-align:right;"> 367 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> not spam </td>
+   <td style="text-align:right;"> 400 </td>
+   <td style="text-align:right;"> 2659 </td>
+   <td style="text-align:right;"> 495 </td>
+   <td style="text-align:right;"> 3554 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Total </td>
+   <td style="text-align:right;"> 549 </td>
+   <td style="text-align:right;"> 2827 </td>
+   <td style="text-align:right;"> 545 </td>
+   <td style="text-align:right;"> 3921 </td>
+  </tr>
+</tbody>
+</table>
+
+<table>
+<caption>(\#tab:emailTableNumber)Frequency table of `Number` variable.</caption>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> none </th>
+   <th style="text-align:right;"> small </th>
+   <th style="text-align:right;"> big </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 549 </td>
+   <td style="text-align:right;"> 2827 </td>
+   <td style="text-align:right;"> 545 </td>
+  </tr>
+</tbody>
+</table>
+
+#### Segmented bar and mosaic plots
 - two cat plot
 
 ### Why not pie charts?
