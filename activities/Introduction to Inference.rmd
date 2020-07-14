@@ -83,7 +83,8 @@ barplot(table(handedness_sub$Stance)/nrow(handedness_sub), #divide the frequency
 
 ## Simulation of the Null Distribution
 
-When testing data we must first identify the null hypothesis.  The null hypothesis is written about the parameter of interest, the true value of interest.  
+When testing data there are two possibilities: either the null hypothesis is true and our results occurred just by random chance or the alternative hypothesis is true and our results show evidence against the null hypothesis. 
+To explore these ideas we must first identify the null hypothesis.  The null hypothesis is written about the parameter of interest, the true value of interest.  
 
 5.  Write out the parameter of interest. (Hint: the true proportion of....)
 
@@ -111,6 +112,10 @@ The alternative hypothesis is the claim to be tested and is based on the researc
 10.  Write out the alterantive hypothesis in notation.
 
 \vspace{1in}
+
+For this study the **two possibilities** are either...
+  * The true proportion of male boxers who are left handed is 0.1 and our results just occurred by random chance or
+  * The true proportion of male boxers who are left handed is greater than 0.1 and our results give evidence against the null hypothesis
 
 The null distribution is created under the assumption the null hypothesis is true.  In this case, we assume the true proprotion of male boxers who are left handed is 0.1 so we will create a 1000 different simulations of 500 boxers under this assumption.
 
