@@ -73,7 +73,7 @@ We will look at the relationship between 'Budget' and 'Revenue' for movies relea
 
 ```{r echo=F, fig.height=4}
 par(mfrow=c(1,2))
-movies <- read.csv("data/movies.csv")
+movies <- read.csv("data/Movies.csv")
 movies$content_rating <- factor(movies$content_rating)
 rating <- c("PG", "PG-13", "R")
 movies <- movies[movies$content_rating %in% rating,]
@@ -91,7 +91,7 @@ This shows a scatterplot of 'Budget' as a predictor of 'Revenue'.
 
 ```{r echo=t, fig.height=5,fig.width=12}
 par(mfrow=c(1,2))
-scatterplot(revenue~budget, data=moviesa,pch=20,main="Revenue vs. Budget", smooth=F)
+scatterplot(revenue_mil~budget_mil, data=moviesa,pch=20,main="Revenue vs. Budget", smooth=F)
 ```
 4. Assess the four characteristics of the scatterplot for this relationship.
 
@@ -119,7 +119,7 @@ scatterplot(revenue~budget, data=moviesa,pch=20,main="Revenue vs. Budget", smoot
 Correlation measures the strength and the direction between two quantitative variables.  The closer the value of correlation to + or - 1 the stronger the linear relationship.  Values close to zero indicate a very weak linear relationship between the two variables.  The following output shows a correlation matrix between several pairs of quantitative variables.  
 
 ```{r}
-moviesb <- moviesa[,c("budget", "revenue", "duration", "imdb_score", "movie_facebook_likes")]
+moviesb <- moviesa[,c("budget_mil", "revenue_mil", "duration", "imdb_score", "movie_facebook_likes")]
 round(cor(moviesb,use="pairwise.complete.obs"),4)
 ```
 
@@ -145,8 +145,8 @@ The favstats code in R gives the five number summary (min, Q1, median, Q3, max),
       $b_1 = \frac{s_y}{s_x}R$
 
 ```{r}
-favstats(moviesa$budget)
-favstats(moviesa$revenue)
+favstats(moviesa$budget_mil)
+favstats(moviesa$revenue_mil)
 ```
 
 
@@ -175,14 +175,14 @@ We can use the **point-slope** form of a line to find the least squares line usi
 The linear model function in R can also give us the summary of the least squares fit.  The estimate for (Intercept) is the y-intercept for the line of least squares and the estimate for budget is the value of $b_1$, the slope.
 
 ```{r}
-revenueLM <- lm(revenue~budget,data=moviesa)
+revenueLM <- lm(revenue_mil~budget_mil,data=moviesa)
 summary(revenueLM)
 ```
 14.  Does the least squares line found in Question 13 match the output from the linear model?  Write out this equation.
 
 \vspace{1in}
 
-15. Using the least squares line from Question 14, predict the revenue for a movie with a budget of 4,946,250.
+15. Using the least squares line from Question 14, predict the revenue for a movie with a budget of 165 million.
 
 \vspace{1in}
 
@@ -199,7 +199,7 @@ Residual = Data - Model
 $e_i=y_i-\hat{y}_i$
 \end{center}
 
-16.  The movie, Independence Day: Resurgence, had a budget of 165,000,000 and revenue of 102,315,545.  Find the residual for this movie.
+16.  The movie, Independence Day: Resurgence, had a budget of 165 million and revenue of 102.315 million.  Find the residual for this movie.
 
 \vspace{1in}
 
@@ -223,7 +223,7 @@ The coefficient of determination, $R^2$, can also be used to describe the streng
 Let's look at this linear relationship between 'Budget' and 'Revenue' for different ratings.
 
 ```{r,fig.width=5,fig.height=4,fig.align='center'}
-scatterplot(revenue~budget|content_rating, data = moviesa, smooth=F)
+scatterplot(revenue_mil~budget_mil|content_rating, data = moviesa, smooth=F)
 ```
 
 20. Does the relationship between 'Budget' and 'Revenue' differ amount the different content ratings?  Explain.
