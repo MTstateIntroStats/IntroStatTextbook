@@ -1,0 +1,120 @@
+---
+title: "Introduction to Inference"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(show.signif.stars = FALSE)
+library(car)
+library(readr)
+library(mosaic)
+library(ggplot2)
+```
+
+## Introduction to Inference
+
+## Learning Objectives
+
+* Identify the Null and Alternative Hypotheses 
+
+* Simulate the Null Distribution to find the p-value 
+
+* Use a p-value to Assess the Strength of Evidence
+
+* Calculate the Z Score
+
+* Create a 95% Confidence Interval
+
+
+
+Left-handedness is a trait that is found in about 10% of the population. The fighting hypothesis states that left-handed men have an advantage in competition.  Past studies have shown that left-handed men are overrepresented among professional fighters. In this sample of 500 male boxers we will see if there is an overprevalence of left-handed fighters.
+
+```{r echo=F, fig.height=4}
+par(mfrow=c(1,2))
+handedness <- read.csv("data/Male_boxers.csv")
+handedness$Stance <- factor(handedness$Stance)
+set.seed(12980)
+handedness_sub <- handedness[sample(nrow(handedness), 500), ]
+```
+
+## Summary Statistics Review
+```{r}
+# Counts for Handedness
+tally(~Stance, data=handedness_sub, margins=T)
+```
+
+```{r}
+# Percentages of Handedness
+tally(~Stance, data=handedness_sub, format="proportion", margins=T)
+```
+
+```{r}
+barchart(handedness_sub$Stance, #This specifies the dataset and the variable
+         horizontal = FALSE, #Turn the bars so they are vertical
+         main = "Frequency Bar Graph of Handedness in Male Boxers", #Give your chart a title
+         xlab = "Handedness", #Label the x axis
+         ylab = "Frequency", #Label the y axis 
+         col = "darkgreen") #change the color of the bars
+```
+```{r}
+barplot(table(handedness_sub$Stance)/nrow(handedness_sub), #divide the frequency counts by the total
+        main = "Relative Frequency Bar Graph of Handedness in Male Boxers", #Give your chart a title
+        xlab = "Handedness", #Label the x axis
+        ylab = "Relative Frequency", #Label the y axis 
+        col = "darkgreen")
+```
+
+1.  What are the observational units?
+
+\vspace{1in}
+
+2.  What variable are we testing?  Is it categorical or quantitative?
+
+\vspace{1in}
+
+3.  What proportion of Male Boxers in the sample are left-handed?
+
+\vspace{1in}
+
+4.  What notation is used for the value in Question 3?
+
+\vspace{1in}
+
+## Simulation of the Null Distribution
+
+When testing data we must first identify the null hypothesis.  The null hypothesis is written about the parameter of interest, the true value of interest.  
+
+5.  Write out the parameter of interest. (Hint: the true proportion of....)
+
+\vspace{1in}
+
+6.  We will assume that the true proporiton of male boxers who are left handed is the same as the general population, 0.1. Using the parameter of interest in question 4, write out the null hypothesis in words.
+
+\vspace{1in}
+
+The notation used for a categorical parameter is, $p$.  When writing the null hypothesis is notation we set the parameter equal to the null value, $H_0: p = p_0$
+
+7. Write the null hypothesis in notation.
+
+
+The alternative hypothesis is the claim to be tested and is based on the research question.
+
+8.  Identify the research question for this study?
+
+\vspace{1in}
+
+9.  Write out the alternative hypothesis in words.
+
+\vspace{1in}
+
+10.  Write out the alterantive hypothesis in notation.
+
+\vspace{1in}
+
+The null distribution is created under the assumption the null hypothesis is true.  In this case, we assume the true proprotion of male boxers who are left handed is 0.1 so we will create a 1000 different simulations of 500 boxers under this assumption.
+
+## Use Rossman Chance applets????
+
+
+

@@ -1,0 +1,55 @@
+---
+title: "Probability and Inference for a Difference in Proportion"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE,
+                      warnings = FALSE, 
+                      eval = T)
+options(show.signif.stars = FALSE)
+library(mosaic)
+library(yarrr)
+```
+
+
+## Probability
+
+## Learning Objectives.
+
+* Understand and explain the role of randomness in designing studies and drawing conclusions
+* Recognize and simulate probabilities as long-run frequencies
+* Construct two-way tables and tree diagrams to evaluate
+  marginal, joint, and conditional probabilities
+
+## Background
+Does saftey helmet use reduce the risk of head injury for skiiers and snowboarders? In “Helmet Use and Risk of Head Injuries in Alpine Skiers and Snowboarders” by Sullheim et. al., Journal of the American Medical Association, Vol. 295, No. 8, we can see the results from a random sample 3562 skiers and snowboarders involved in accidents. 
+
+``````{r}
+# Set-up
+
+library(readr)
+library(car)
+injury <- read.csv("data/head_injury.csv")
+injury$Helmet <- factor(injury$Helmet)
+injury$Injury <- factor(injury$Injury)
+```
+
+```{r}
+table1 <- table()
+```
+
+## Inference for a Difference in Proportions
+
+## Learning Objectives.
+
+* Write out the null and alternative hypothesis for Two Categorical Variables
+
+* Simulate the Null Distribution
+
+* Find the p-value and Assess the Strength of Evidence
+
+* Calculate the z test statistic
+
+* Create and Interpret a Confidence Interval for the difference in proportions
