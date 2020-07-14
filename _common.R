@@ -35,7 +35,6 @@ library(usdata)
 library(tidyverse)
 library(scales)
 library(infer)
-library(pander)
 
 # dplyr options ----------------------------------------------------------------
 
