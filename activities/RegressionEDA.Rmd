@@ -1,6 +1,8 @@
 ---
 title: "Regression Exploratory Data Analysis Activity"
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
 ---
 
 ```{r setup, include=FALSE}
@@ -73,7 +75,7 @@ We will look at the relationship between 'Budget' and 'Revenue' for movies relea
 
 ```{r echo=F, fig.height=4}
 par(mfrow=c(1,2))
-movies <- read.csv("data/Movies.csv")
+movies <- read.csv("../data/Movies.csv")
 movies$content_rating <- factor(movies$content_rating)
 rating <- c("PG", "PG-13", "R")
 movies <- movies[movies$content_rating %in% rating,]
