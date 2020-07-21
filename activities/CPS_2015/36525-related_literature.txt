@@ -1,0 +1,41 @@
+Bibliography
+Current Population Survey: Annual Social and Economic (ASEC) Supplement
+Survey, 2015
+
+This bibliography includes published and unpublished works that are related 
+to ICPSR study 36525. It includes works that are based on primary
+or secondary analysis of the data, or which describe or critique those
+data or the collection methodology. 
+
+If you publish a work or know of other works that are based on these data,
+please send the complete citation and name of the ICPSR study used to:
+icpsr-biblio-notify@umich.edu 
+
+
+1. Abraham, Katharine G.; Haltiwanger, John C.; Sandusky, Kristin;
+Spletzer, James R., "Measuring the Gig Economy: Current knowledge and Open
+Issues." NBER Working Paper No. 24950. Cambridge, MA: National Bureau of
+Economic Research, Aug 2018.
+Full text PDF: http://www.nber.org/papers/w24950.pdf
+
+2. Abramowitz, Joelle; O'Hara, Brett, "New estimates of offer and take-up
+of employer-sponsored insurance." Medical Care Research and Review. 2016,
+74, (5), 595 - 612. DOI: 10.1177/1077558716654630
+Full text: https://journals.sagepub.com/doi/abs/10.1177/1077558716654630
+
+3. Barnett, Jessica C; Vornovitsky, Marina S, "Health insurance coverage in
+the United States: 2015." Current Population Reports. Washington, DC: US
+Government Printing Office Washington, DC, Sept 2016.
+Full text PDF: https://www.khi.org/assets/uploads/news/14561/p60-257.pdf
+
+4. Blavin, Fredric; Karpman, Michael; Kenney, Genevieve M.; Sommers,
+Benjamin D., "Medicaid versus marketplace coverage for near-poor adults:
+Effects on out-of-pocket spending and coverage." Health Affairs. 2018, 37,
+(2), 299 - 307. DOI: 10.1377/hlthaff.2017.1166
+Full text PDF: https://www.khi.org/assets/uploads/news/14561/p60-257.pdf
+
+5. Kleven, Henrik; Landais, Camille; Munoz, Mathilde; Stantcheva, Stefanie,
+"Taxation and Migration: Evidence and Policy Implications." NBER Working
+Paper No. 25740. Cambridge, MA: National Bureau of Economic Research, Apr
+2019.
+Full text PDF: https://www.henrikkleven.com/uploads/3/7/3/1/37310663/jep_mobility_april2019_full.pdf
