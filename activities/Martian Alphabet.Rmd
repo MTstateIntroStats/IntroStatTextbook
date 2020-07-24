@@ -17,7 +17,9 @@ How well can humans distinguish one “Martian” letter from another? In today�
 
 \vspace{0.5in}
 
-The first step of any statistical investigation is to ask a research question.  Our question here is: can we as a class read Martian? (we will refine this later on!).  To answer any research question, we must design a study and collect data. (This will normally be provided for you in class.)  For our question, the study consisted of each of you being presented with two Martian letters and asking which was bumba.  Now your responses will become our observed data which we will use to explore.  To answer the research question we will look at the variability of the summary statistic using randomization..... 
+Steps of Statistical Investigation
+
+The first step of any statistical investigation is to frame a research question.  Our question here is: can we as a class read Martian? (we will refine this later on!).  To answer any research question, we must design a study and collect data. (This will normally be provided for you in class.)  For our question, the study consisted of each of you being presented with two Martian letters and asking which was bumba.  Now your responses will become our observed data which we will use to explore.  To answer the research question we will look at the variability of the summary statistic using randomization and analyze the data to form a conclusion.
 
 Let’s explore the data.
 **Observational units** or **cases** are the subjects data is collected on. In a dataset the rows will represent a single observational unit.  
