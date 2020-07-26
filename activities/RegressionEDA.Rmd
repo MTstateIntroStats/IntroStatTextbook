@@ -232,4 +232,31 @@ scatterplot(revenue_mil~budget_mil|content_rating, data = moviesa, smooth=F)
 
 \vspace{1in}
 
+```{r}
+imdbLM <- lm(imdb_score~duration, data=moviesa)
+summary(imdbLM)
+```
+
+```{r,fig.width=5,fig.height=4,fig.align='center'}
+scatterplot(imdb_score~duration|content_rating, data = moviesa, smooth=F)
+```
+
+```{r}
+imdbLM2 <- lm(imdb_score~duration+content_rating, data=moviesa)
+summary(imdbLM2)
+```
+
+```{r,fig.width=5,fig.height=4,fig.align='center'}
+scatterplot(revenue_mil~movie_facebook_likes, data = moviesa, smooth=F)
+```
+
+```{r,fig.width=5,fig.height=4,fig.align='center'}
+scatterplot(revenue_mil~movie_facebook_likes|content_rating, data = moviesa, smooth=F)
+
+```
+
+```{r}
+facebookLM <- lm(revenue_mil~movie_facebook_likes+content_rating, data=moviesa)
+summary(facebookLM)
+```
 
