@@ -12,12 +12,12 @@ For example, consider the `loan_amount` variable from the `loan50` data set, whi
 This variable is quantitative since we can sensibly discuss the numerical difference of the size of two loans.
 On the other hand, area codes and zip codes are not quantitative, but rather they are categorical variables.
 
-Throughout this section and the next, we will apply these methods using the `loan50` and `county` data sets, which were introduced in Section \@ref(data-basics).
+Throughout this section and the next, we will apply these methods using the `loan50`, `county`, and `email50` data sets, which were introduced in Section \@ref(data-basics).
 If you'd like to review the variables from either data set, see Tables \@ref(tab:loan50Variables) and \@ref(tab:countyVariables).
 
-\BeginKnitrBlock{data}<div class="data">The [`county`](http://openintrostat.github.io/usdata/reference/county.html) data can be found in the [usdata](http://openintrostat.github.io/usdata) package.</div>\EndKnitrBlock{data}
+\BeginKnitrBlock{data}<div class="data">The `loan50` and `email50` data sets can be found in the [openintro](http://openintrostat.github.io/openintro) package.
+The `county` data can be found in the [usdata](https://openintrostat.github.io/usdata/) package.</div>\EndKnitrBlock{data}
 
-\BeginKnitrBlock{data}<div class="data">The [`loan50`](http://openintrostat.github.io/openintro/reference/loan50.html) data can be found in the [openintro](http://openintrostat.github.io/openintro) package.</div>\EndKnitrBlock{data}
 
 ### Scatterplots for paired data {#scatterplots}
 
@@ -198,7 +198,104 @@ For more information on this topic, check out the following online supplement re
 
 
 
-### Boxplots and the five-number summary {#boxplots}
+### Boxplots and the median {#boxplots}
+
+A **boxplot**\index{boxplot} (or box-and-whisker plot) summarizes a data set using five statistics while
+also plotting unusual observations. The five statistics---minimum, first quartile, 
+median, third quartile, maximum---together are called the **five number summary**\index{five number summary}. 
+Figure \@ref(fig:boxPlotLayoutNumVar) provides a vertical dot plot alongside a box plot of the \var{num\_\hspace{0.3mm}char} variable from the \data{email50} data set.
+
+
+
+<div class="figure" style="text-align: center">
+<img src="02/figures/boxPlotLayoutNumVar/boxPlotLayoutNumVar.png" alt="A vertical dot plot next to a labeled box plot for the number of characters in 50 emails. The median (6.89), splits the data into the bottom 50% and the top 50%, marked in the dot plot by horizontal dashes and open circles, respectively." width="75%" />
+<p class="caption">(\#fig:boxPlotLayoutNumVar)A vertical dot plot next to a labeled box plot for the number of characters in 50 emails. The median (6.89), splits the data into the bottom 50% and the top 50%, marked in the dot plot by horizontal dashes and open circles, respectively.</p>
+</div>
+
+
+The first step in building a box plot is drawing a dark line denoting the 
+**median**\index{median}, which splits the data in half. Figure 
+\@ref(fig:boxPlotLayoutNumVar) shows 50% of the data falling below
+the median (dashes) and other 50% falling above the median (open circles).
+There are 50 character counts in the data set (an even number) so the data are 
+perfectly split into two groups of 25. We take the median in this case to be the 
+average of the two observations closest to the 50^th^ percentile: $(6.768 + 7.012)/2 = 6.890$. When there are an odd number of observations, there will be exactly one observation that splits the data into two halves, and in this case that observation is the median (no average needed). 
+
+
+
+\BeginKnitrBlock{onebox}<div class="onebox">**Median.**  If the data are ordered from smallest to largest, the sample median is the observation 
+right in the middle. If there are an even number of observations, there will be two 
+values in the middle, and the median is taken as their average.
+
+If we denote the sample size by $n$, then
+
+* if $n$ is odd, the median is the $[(n+1)/2]^{th}$ smallest value in the data set, and
+* if $n$ is even, the median is the average of the $(n/2)^{th}$ and $(n/2+1)^{th}$ smallest values in the data set.</div>\EndKnitrBlock{onebox}
+
+The second step in building a box plot is drawing a rectangle to represent
+the area of the middle 50% of the data. The total length of the box,
+shown vertically in Figure \@ref(fig:boxPlotLayoutNumVar), is called the
+**interquartile range** (IQR, for short)\index(interquartile range, IQR). It is a 
+measure of **variability** in data. The more variable the data, the larger the IQR.
+The two boundaries of the box are called the **first quartile**\index{first quartile} 
+(the 25^th^ percentile, i.e., 25% of the data fall below this value) and the **third 
+quartile**\index{third quartile} (the 75^th^ percentile), and these are often labeled 
+$Q_1$  and $Q_3$, respectively. (In case you're wondering, the median is the 2^nd^ quartile! These three quartiles break the data into four groups of equal size.)
+
+
+
+\BeginKnitrBlock{onebox}<div class="onebox">**Interquartile range (IQR).**  The IQR is the length of the box in a box plot---the
+range of the middle 50% of the data.
+It is computed as
+
+\[IQR = Q_3 - Q_1,\]
+  
+where $Q_1$ and $Q_3$ are the 25^th^ and 75^th^ percentiles.</div>\EndKnitrBlock{onebox}
+
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">What percent of the data fall between $Q_1$ and the median?
+What percent is between the median and $Q_3$?^[Since $Q_1$ and $Q_3$ capture the middle 50% of the data, and the median splits the data in the middle, 25% of the data fall between $Q_1$ and the median, and another 25% falls between the median and $Q_3$.]</div>\EndKnitrBlock{guidedpractice}
+
+Extending out from the box, the **whiskers** attempt to capture the data
+outside of the box; however, their reach is never allowed to be more than $1.5\times IQR$.^[While the choice of exactly 1.5 is arbitrary, it is the most commonly used value for box plots.]
+They capture everything within this reach. In Figure \@ref(fig:boxPlotLayoutNumVar), 
+the upper whisker does not extend to the last three points, which are beyond
+$Q_3 + 1.5\times IQR$, and so it extends only to the last point below this limit.
+The lower whisker stops at the lowest value, 33, since there is no additional data
+to reach; the lower whisker's limit is not shown in the figure because the plot does not extend down to $Q_1 - 1.5\times IQR$. In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data.
+
+\BeginKnitrBlock{tip}<div class="tip">The whiskers extend to actual data points---not the limits for outliers. That is,
+the values $Q_1 - 1.5\times IQR$ and $Q_3 + 1.5\times IQR$ should not be shown
+on the plot.</div>\EndKnitrBlock{tip}
+
+Any observation that lies beyond the whiskers is labeled with a dot. The purpose of 
+labeling these points---instead of just extending the whiskers to the minimum and 
+maximum observed values---is to help identify any observations that appear to be 
+unusually distant from the rest of the data. Unusually distant observations are called 
+**outliers**\index{outlier}. In this case, it would be reasonable to classify the 
+emails with character counts of 41.623, 42.793, and 64.401 as outliers
+since they are numerically distant from most of the data.
+
+
+
+\BeginKnitrBlock{onebox}<div class="onebox">**Outliers are extreme.** An outlier is an observation that is extreme, relative to the rest of the data.</div>\EndKnitrBlock{onebox}
+
+
+\BeginKnitrBlock{tip}<div class="tip">Examination of data for possible outliers serves many useful purposes, including:
+  
+* Identifying strong skewness in the distribution
+* Identifying data collection or entry errors. For instance, we re-examined the email purported to have 64.401 characters to ensure this value was accurate.
+* Providing insight into interesting properties of the data.</div>\EndKnitrBlock{tip}
+
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">The observation 64.401, an outlier, was found to be an accurate observation.
+What would such an observation suggest about the nature of character counts in 
+emails?^[That occasionally there may be very long emails.]</div>\EndKnitrBlock{guidedpractice}
+
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Using Figure \@ref(fig:boxPlotLayoutNumVar), estimate the following values for `num_char` in the `email50` data set: 
+  
+a. $Q_1$
+b. $Q_3$
+c. $IQR$.^[These visual estimates will vary a little from one person to the next: 
+           $Q_1\approx$ 3.000, $Q_3\approx$ 15.000, $IQR = Q_3 - Q_1 \approx$ 12.000. (The true values: $Q_1=$ 2.536, $Q_3=$ 15.411, $IQR=$ 12.875.)]</div>\EndKnitrBlock{guidedpractice}
 
 
 

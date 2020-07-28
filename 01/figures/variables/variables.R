@@ -1,7 +1,7 @@
 library(openintro)
 data(COL)
 
-myPDF('variables.pdf', 4.2, 1.5, mar=rep(0,4))
+myPDF("variables.pdf", 4.2, 1.5, mar=rep(0,4))
 plot(c(-0.15,1.3),0:1,type='n',axes=FALSE)
 
 text(0.6, 0.9, 'all variables')

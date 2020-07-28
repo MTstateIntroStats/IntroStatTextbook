@@ -312,7 +312,7 @@ terms_chp_1 <- c(terms_chp_1, "ordinal", "nominal")
 ```
 
 ```{r variables, out.width="75%", fig.cap="Breakdown of variables into their respective types."}
-include_graphics("01/figures/variables/variables.pdf")
+include_graphics("01/figures/variables/variables.png")
 ```
 
 ```{block2, type="example", echo=TRUE}

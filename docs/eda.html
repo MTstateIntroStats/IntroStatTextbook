@@ -24,7 +24,7 @@
 <meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager" />
 
 
-<meta name="date" content="2020-07-13" />
+<meta name="date" content="2020-07-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="intro-to-data.html"/>
 
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,10 +51,72 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
@@ -71,54 +134,65 @@
 <li><a href="./">MSU Intro Stat with R</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#textbook-overview"><i class="fa fa-check"></i>Textbook overview</a></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html"><i class="fa fa-check"></i>About the Authors</a><ul>
+<li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html"><i class="fa fa-check"></i>About the Authors</a>
+<ul>
 <li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html#montana-state-university-authors"><i class="fa fa-check"></i>Montana State University Authors</a></li>
 <li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html#openintro-authors"><i class="fa fa-check"></i>OpenIntro Authors</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="copyright.html"><a href="copyright.html"><i class="fa fa-check"></i>Copyright</a></li>
-<li class="chapter" data-level="1" data-path="intro-to-data.html"><a href="intro-to-data.html"><i class="fa fa-check"></i><b>1</b> Introduction to data</a><ul>
+<li class="chapter" data-level="1" data-path="intro-to-data.html"><a href="intro-to-data.html"><i class="fa fa-check"></i><b>1</b> Introduction to data</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="intro-to-data.html"><a href="intro-to-data.html#basic-stents-strokes"><i class="fa fa-check"></i><b>1.1</b> Case Study: using stents to prevent strokes</a></li>
-<li class="chapter" data-level="1.2" data-path="intro-to-data.html"><a href="intro-to-data.html#data-basics"><i class="fa fa-check"></i><b>1.2</b> Data basics</a><ul>
+<li class="chapter" data-level="1.2" data-path="intro-to-data.html"><a href="intro-to-data.html#data-basics"><i class="fa fa-check"></i><b>1.2</b> Data basics</a>
+<ul>
 <li class="chapter" data-level="1.2.1" data-path="intro-to-data.html"><a href="intro-to-data.html#observations-variables-and-data-matrices"><i class="fa fa-check"></i><b>1.2.1</b> Observations, variables, and data matrices</a></li>
 <li class="chapter" data-level="1.2.2" data-path="intro-to-data.html"><a href="intro-to-data.html#variable-types"><i class="fa fa-check"></i><b>1.2.2</b> Types of variables</a></li>
 <li class="chapter" data-level="1.2.3" data-path="intro-to-data.html"><a href="intro-to-data.html#variable-relations"><i class="fa fa-check"></i><b>1.2.3</b> Relationships between variables</a></li>
 <li class="chapter" data-level="1.2.4" data-path="intro-to-data.html"><a href="intro-to-data.html#explanatory-and-response-variables"><i class="fa fa-check"></i><b>1.2.4</b> Explanatory and response variables</a></li>
 <li class="chapter" data-level="1.2.5" data-path="intro-to-data.html"><a href="intro-to-data.html#introducing-observational-studies-and-experiments"><i class="fa fa-check"></i><b>1.2.5</b> Introducing observational studies and experiments</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="intro-to-data.html"><a href="intro-to-data.html#sampling-principles-strategies"><i class="fa fa-check"></i><b>1.3</b> Sampling principles and strategies</a><ul>
+<li class="chapter" data-level="1.3" data-path="intro-to-data.html"><a href="intro-to-data.html#sampling-principles-strategies"><i class="fa fa-check"></i><b>1.3</b> Sampling principles and strategies</a>
+<ul>
 <li class="chapter" data-level="1.3.1" data-path="intro-to-data.html"><a href="intro-to-data.html#populations-and-samples"><i class="fa fa-check"></i><b>1.3.1</b> Populations and samples</a></li>
 <li class="chapter" data-level="1.3.2" data-path="intro-to-data.html"><a href="intro-to-data.html#anecdotal-evidence"><i class="fa fa-check"></i><b>1.3.2</b> Anecdotal evidence</a></li>
 <li class="chapter" data-level="1.3.3" data-path="intro-to-data.html"><a href="intro-to-data.html#sampling-from-a-population"><i class="fa fa-check"></i><b>1.3.3</b> Sampling from a population</a></li>
 <li class="chapter" data-level="1.3.4" data-path="intro-to-data.html"><a href="intro-to-data.html#observational-studies"><i class="fa fa-check"></i><b>1.3.4</b> Observational studies</a></li>
 <li class="chapter" data-level="1.3.5" data-path="intro-to-data.html"><a href="intro-to-data.html#four-sampling-methods"><i class="fa fa-check"></i><b>1.3.5</b> Four sampling methods</a></li>
 </ul></li>
-<li class="chapter" data-level="1.4" data-path="intro-to-data.html"><a href="intro-to-data.html#experiments"><i class="fa fa-check"></i><b>1.4</b> Experiments</a><ul>
+<li class="chapter" data-level="1.4" data-path="intro-to-data.html"><a href="intro-to-data.html#experiments"><i class="fa fa-check"></i><b>1.4</b> Experiments</a>
+<ul>
 <li class="chapter" data-level="1.4.1" data-path="intro-to-data.html"><a href="intro-to-data.html#principles-of-experimental-design"><i class="fa fa-check"></i><b>1.4.1</b> Principles of experimental design</a></li>
 <li class="chapter" data-level="1.4.2" data-path="intro-to-data.html"><a href="intro-to-data.html#reducing-bias-human-experiments"><i class="fa fa-check"></i><b>1.4.2</b> Reducing bias in human experiments</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="intro-to-data.html"><a href="intro-to-data.html#data-in-r"><i class="fa fa-check"></i><b>1.5</b> Data in <code>R</code></a><ul>
+<li class="chapter" data-level="1.5" data-path="intro-to-data.html"><a href="intro-to-data.html#data-in-r"><i class="fa fa-check"></i><b>1.5</b> Data in <code>R</code></a>
+<ul>
 <li class="chapter" data-level="1.5.1" data-path="intro-to-data.html"><a href="intro-to-data.html#dataframes-in-r"><i class="fa fa-check"></i><b>1.5.1</b> Dataframes in <code>R</code></a></li>
 <li class="chapter" data-level="1.5.2" data-path="intro-to-data.html"><a href="intro-to-data.html#datastruc"><i class="fa fa-check"></i><b>1.5.2</b> Tidy Structure of Data</a></li>
 <li class="chapter" data-level="1.5.3" data-path="intro-to-data.html"><a href="intro-to-data.html#using-the-pipe-to-chain"><i class="fa fa-check"></i><b>1.5.3</b> Using the pipe to chain</a></li>
 </ul></li>
-<li class="chapter" data-level="1.6" data-path="intro-to-data.html"><a href="intro-to-data.html#chapter-review"><i class="fa fa-check"></i><b>1.6</b> Chapter review</a><ul>
+<li class="chapter" data-level="1.6" data-path="intro-to-data.html"><a href="intro-to-data.html#chapter-review"><i class="fa fa-check"></i><b>1.6</b> Chapter review</a>
+<ul>
 <li class="chapter" data-level="1.6.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>1.6.1</b> Terms</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>2</b> Exploratory Data Analysis</a><ul>
-<li class="chapter" data-level="2.1" data-path="eda.html"><a href="eda.html#quantitative-data"><i class="fa fa-check"></i><b>2.1</b> Examining quantitative data</a><ul>
+<li class="chapter" data-level="2" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>2</b> Exploratory Data Analysis</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="eda.html"><a href="eda.html#quantitative-data"><i class="fa fa-check"></i><b>2.1</b> Examining quantitative data</a>
+<ul>
 <li class="chapter" data-level="2.1.1" data-path="eda.html"><a href="eda.html#scatterplots"><i class="fa fa-check"></i><b>2.1.1</b> Scatterplots for paired data</a></li>
 <li class="chapter" data-level="2.1.2" data-path="eda.html"><a href="eda.html#dotplots"><i class="fa fa-check"></i><b>2.1.2</b> Dot plots and the mean</a></li>
-<li class="chapter" data-level="2.1.3" data-path="eda.html"><a href="eda.html#boxplots"><i class="fa fa-check"></i><b>2.1.3</b> Boxplots and the five-number summary</a></li>
+<li class="chapter" data-level="2.1.3" data-path="eda.html"><a href="eda.html#boxplots"><i class="fa fa-check"></i><b>2.1.3</b> Boxplots and the median</a></li>
 <li class="chapter" data-level="2.1.4" data-path="eda.html"><a href="eda.html#histograms"><i class="fa fa-check"></i><b>2.1.4</b> Histograms and density plots</a></li>
 <li class="chapter" data-level="2.1.5" data-path="eda.html"><a href="eda.html#variability"><i class="fa fa-check"></i><b>2.1.5</b> Examining variability</a></li>
 <li class="chapter" data-level="2.1.6" data-path="eda.html"><a href="eda.html#distributions"><i class="fa fa-check"></i><b>2.1.6</b> Comparing distributions</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="eda.html"><a href="eda.html#categorical-data"><i class="fa fa-check"></i><b>2.2</b> Examining categorical data</a><ul>
+<li class="chapter" data-level="2.2" data-path="eda.html"><a href="eda.html#categorical-data"><i class="fa fa-check"></i><b>2.2</b> Examining categorical data</a>
+<ul>
 <li class="chapter" data-level="2.2.1" data-path="eda.html"><a href="eda.html#contingency-tables-and-bar-plots"><i class="fa fa-check"></i><b>2.2.1</b> Contingency tables and bar plots</a></li>
 <li class="chapter" data-level="2.2.2" data-path="eda.html"><a href="eda.html#why-not-pie-charts"><i class="fa fa-check"></i><b>2.2.2</b> Why not pie charts?</a></li>
 </ul></li>
@@ -140,7 +214,7 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="eda" class="section level1">
+<div id="eda" class="section level1" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Exploratory Data Analysis</h1>
 
 <div class="chapterintro">
@@ -149,30 +223,24 @@ We use statistical software for generating the summaries and graphs presented in
 However, since this might be your first exposure to these concepts, we take our time in this chapter to detail how to create them.
 Mastery of the content presented in this chapter will be crucial for understanding the methods and techniques introduced in rest of the book.
 </div>
-
-<div id="quantitative-data" class="section level2">
+<div id="quantitative-data" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Examining quantitative data</h2>
 <p>In this section we will explore techniques for summarizing quantitative variables.
 For example, consider the <code>loan_amount</code> variable from the <code>loan50</code> data set, which represents the loan size for all 50 loans in the data set.
 This variable is quantitative since we can sensibly discuss the numerical difference of the size of two loans.
 On the other hand, area codes and zip codes are not quantitative, but rather they are categorical variables.</p>
-<p>Throughout this section and the next, we will apply these methods using the <code>loan50</code> and <code>county</code> data sets, which were introduced in Section <a href="intro-to-data.html#data-basics">1.2</a>.
-If you’d like to review the variables from either data set, see Tables <a href="#tab:loan50Variables"><strong>??</strong></a> and <a href="#tab:countyVariables"><strong>??</strong></a>.</p>
+<p>Throughout this section and the next, we will apply these methods using the <code>loan50</code>, <code>county</code>, and <code>email50</code> data sets, which were introduced in Section <a href="intro-to-data.html#data-basics">1.2</a>.
+If you’d like to review the variables from either data set, see Tables <a href="intro-to-data.html#tab:loan50Variables">1.4</a> and <a href="intro-to-data.html#tab:countyVariables">1.6</a>.</p>
 
 <div class="data">
-The <a href="http://openintrostat.github.io/usdata/reference/county.html"><code>county</code></a> data can be found in the <a href="http://openintrostat.github.io/usdata">usdata</a> package.
+The <code>loan50</code> and <code>email50</code> data sets can be found in the <a href="http://openintrostat.github.io/openintro">openintro</a> package.
+The <code>county</code> data can be found in the <a href="https://openintrostat.github.io/usdata/">usdata</a> package.
 </div>
-
-
-<div class="data">
-The <a href="http://openintrostat.github.io/openintro/reference/loan50.html"><code>loan50</code></a> data can be found in the <a href="http://openintrostat.github.io/openintro">openintro</a> package.
-</div>
-
-<div id="scatterplots" class="section level3">
+<div id="scatterplots" class="section level3" number="2.1.1">
 <h3><span class="header-section-number">2.1.1</span> Scatterplots for paired data</h3>
 <p></p>
 <p>A <strong>scatterplot</strong> provides a case-by-case view of data for two quantitative variables.
-In Figure <a href="#fig:county-multi-unit-homeownership"><strong>??</strong></a>, a scatterplot was used to examine the homeownership rate against the fraction of housing units that were part of multi-unit properties (e.g. apartments) in the <code>county</code> data set.
+In Figure <a href="intro-to-data.html#fig:county-multi-unit-homeownership">1.3</a>, a scatterplot was used to examine the homeownership rate against the fraction of housing units that were part of multi-unit properties (e.g. apartments) in the <code>county</code> data set.
 Another scatterplot is shown in Figure <a href="eda.html#fig:loan50-amount-income">2.1</a>, comparing the total income of a borrower <code>total_income</code> and the amount they borrowed <code>loan_amount</code> for the <code>loan50</code> data set.
 In any scatterplot, each point represents a single case.
 Since there are 50 cases in <code>loan50</code>, there are 50 points in Figure <a href="eda.html#fig:loan50-amount-income">2.1</a>.</p>
@@ -216,18 +284,15 @@ The relationship is moderate to strong, the direction is negative,
 and there does not appear to be any unusual observations.
 </div>
 
+<div class="guidedpractice">
+What do scatterplots reveal about the data, and how are they useful?<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a>
+</div>
 
 <div class="guidedpractice">
-What do scatterplots reveal about the data, and how are they useful?<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>
+Describe two variables that would have a horseshoe-shaped association in a scatterplot (<span class="math inline">\(\cap\)</span> or <span class="math inline">\(\frown\)</span>)<a href="#fn19" class="footnote-ref" id="fnref19"><sup>19</sup></a>
 </div>
-
-
-<div class="guidedpractice">
-Describe two variables that would have a horseshoe-shaped association in a scatterplot (<span class="math inline">\(\cap\)</span> or <span class="math inline">\(\frown\)</span>)<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>
 </div>
-
-</div>
-<div id="dotplots" class="section level3">
+<div id="dotplots" class="section level3" number="2.1.2">
 <h3><span class="header-section-number">2.1.2</span> Dot plots and the mean</h3>
 <p>Sometimes we are interested in the distribution of a single variable.
 In these cases, a dot plot provides the most basic of displays.
@@ -251,16 +316,13 @@ The sample mean can be calculated as the sum of the observed values divided by t
 <span class="math display">\[ \bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n} \]</span>
 </div>
 
-
 <div class="guidedpractice">
-Examine the equation for the mean. What does <span class="math inline">\(x_1\)</span> correspond to? And <span class="math inline">\(x_2\)</span> Can you infer a general meaning to what <span class="math inline">\(n_i\)</span> might represent?<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>
+Examine the equation for the mean. What does <span class="math inline">\(x_1\)</span> correspond to? And <span class="math inline">\(x_2\)</span> Can you infer a general meaning to what <span class="math inline">\(n_i\)</span> might represent?<a href="#fn20" class="footnote-ref" id="fnref20"><sup>20</sup></a>
 </div>
 
-
 <div class="guidedpractice">
-What was <span class="math inline">\(n\)</span> in this sample of loans?<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>
+What was <span class="math inline">\(n\)</span> in this sample of loans?<a href="#fn21" class="footnote-ref" id="fnref21"><sup>21</sup></a>
 </div>
-
 <p>The <code>loan50</code> data set represents a sample from a larger population of loans made through Lending Club.
 We could compute a mean for this population in the same way as the sample mean.
 However, the population mean has a special label: <span class="math inline">\(\mu\)</span>.
@@ -272,13 +334,11 @@ Often times it is too expensive to measure the population mean precisely, so we 
 The Greek letter <span class="math inline">\(\mu\)</span> is pronounced <em>mu</em>, listen to the pronunciation <a href="https://youtu.be/PStgY5AcEIw?t=47">here</a>.
 </div>
 
-
 <div class="example">
 <p>The average interest rate across all loans in the population can be estimated using the sample data. Based on the sample of 50 loans, what would be a reasonable estimate of <span class="math inline">\(\mu_x\)</span>, the mean interest rate for all loans in the full data set?</p>
 <hr />
 The sample mean, <code>r round(loan50_mean_intrest_rate, 2)</code>, provides a rough estimate of <span class="math inline">\(\mu_x\)</span>. While it is not perfect, this is our single best guess <strong>point estimate</strong> of the average interest rate of all the loans in the population under study. In Chapter <a href="#inference-foundations"><strong>??</strong></a> and beyond, we will develop tools to characterize the accuracy of point estimates, like the sample mean. As you might have guessed, point estimates based on larger samples tend to be more accurate than those based on smaller samples.
 </div>
-
 <p>The mean is useful because it allows us to rescale or standardize a metric into something more easily interpretable and comparable.
 Suppose we would like to understand if a new drug is more effective at treating asthma attacks than the standard drug.
 A trial of 1500 adults is set up, where 500 receive the new drug, and 1000 receive a standard drug in the control group:</p>
@@ -339,7 +399,6 @@ By knowing his average hourly wage,
 Emilio now has put his earnings into a standard unit that is easier to compare with many other jobs that he might consider.
 </div>
 
-
 <div class="example">
 <p>Suppose we want to compute the average income per person in the US. To do so, we might first think to take the mean of the per capita incomes across the 3,142 counties in the  data set. What would be a better approach?</p>
 <hr />
@@ -351,18 +410,115 @@ Had we computed the <em>simple</em> mean of per capita income across counties, t
 This example used what is called a <strong>weighted mean</strong>.
 For more information on this topic, check out the following online supplement regarding <a href="https://www.openintro.org/go/?id=stat_extra_weighted_mean">weighted means</a>.
 </div>
+</div>
+<div id="boxplots" class="section level3" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Boxplots and the median</h3>
+<p>A <strong>boxplot</strong> (or box-and-whisker plot) summarizes a data set using five statistics while
+also plotting unusual observations. The five statistics—minimum, first quartile,
+median, third quartile, maximum—together are called the <strong>five number summary</strong>.
+Figure <a href="eda.html#fig:boxPlotLayoutNumVar">2.4</a> provides a vertical dot plot alongside a box plot of the  variable from the  data set.</p>
+<div class="figure" style="text-align: center"><span id="fig:boxPlotLayoutNumVar"></span>
+<img src="02/figures/boxPlotLayoutNumVar/boxPlotLayoutNumVar.png" alt="A vertical dot plot next to a labeled box plot for the number of characters in 50 emails. The median (6.89), splits the data into the bottom 50% and the top 50%, marked in the dot plot by horizontal dashes and open circles, respectively." width="75%" />
+<p class="caption">
+Figure 2.4: A vertical dot plot next to a labeled box plot for the number of characters in 50 emails. The median (6.89), splits the data into the bottom 50% and the top 50%, marked in the dot plot by horizontal dashes and open circles, respectively.
+</p>
+</div>
+<p>The first step in building a box plot is drawing a dark line denoting the
+<strong>median</strong>, which splits the data in half. Figure
+<a href="eda.html#fig:boxPlotLayoutNumVar">2.4</a> shows 50% of the data falling below
+the median (dashes) and other 50% falling above the median (open circles).
+There are 50 character counts in the data set (an even number) so the data are
+perfectly split into two groups of 25. We take the median in this case to be the
+average of the two observations closest to the 50<sup>th</sup> percentile: <span class="math inline">\((6.768 + 7.012)/2 = 6.890\)</span>. When there are an odd number of observations, there will be exactly one observation that splits the data into two halves, and in this case that observation is the median (no average needed).</p>
 
+<div class="onebox">
+<p><strong>Median.</strong> If the data are ordered from smallest to largest, the sample median is the observation
+right in the middle. If there are an even number of observations, there will be two
+values in the middle, and the median is taken as their average.</p>
+<p>If we denote the sample size by <span class="math inline">\(n\)</span>, then</p>
+<ul>
+<li>if <span class="math inline">\(n\)</span> is odd, the median is the <span class="math inline">\([(n+1)/2]^{th}\)</span> smallest value in the data set, and</li>
+<li>if <span class="math inline">\(n\)</span> is even, the median is the average of the <span class="math inline">\((n/2)^{th}\)</span> and <span class="math inline">\((n/2+1)^{th}\)</span> smallest values in the data set.
+</div></li>
+</ul>
+<p>The second step in building a box plot is drawing a rectangle to represent
+the area of the middle 50% of the data. The total length of the box,
+shown vertically in Figure <a href="eda.html#fig:boxPlotLayoutNumVar">2.4</a>, is called the
+<strong>interquartile range</strong> (IQR, for short)(interquartile range, IQR). It is a
+measure of <strong>variability</strong> in data. The more variable the data, the larger the IQR.
+The two boundaries of the box are called the <strong>first quartile</strong>
+(the 25<sup>th</sup> percentile, i.e., 25% of the data fall below this value) and the <strong>third
+quartile</strong> (the 75<sup>th</sup> percentile), and these are often labeled
+<span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span>, respectively. (In case you’re wondering, the median is the 2<sup>nd</sup> quartile! These three quartiles break the data into four groups of equal size.)</p>
+
+<div class="onebox">
+<p><strong>Interquartile range (IQR).</strong> The IQR is the length of the box in a box plot—the
+range of the middle 50% of the data.
+It is computed as</p>
+<p><span class="math display">\[IQR = Q_3 - Q_1,\]</span></p>
+where <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span> are the 25<sup>th</sup> and 75<sup>th</sup> percentiles.
 </div>
-<div id="boxplots" class="section level3">
-<h3><span class="header-section-number">2.1.3</span> Boxplots and the five-number summary</h3>
+
+<div class="guidedpractice">
+What percent of the data fall between <span class="math inline">\(Q_1\)</span> and the median?
+What percent is between the median and <span class="math inline">\(Q_3\)</span>?<a href="#fn22" class="footnote-ref" id="fnref22"><sup>22</sup></a>
 </div>
-<div id="histograms" class="section level3">
+<p>Extending out from the box, the <strong>whiskers</strong> attempt to capture the data
+outside of the box; however, their reach is never allowed to be more than <span class="math inline">\(1.5\times IQR\)</span>.<a href="#fn23" class="footnote-ref" id="fnref23"><sup>23</sup></a>
+They capture everything within this reach. In Figure <a href="eda.html#fig:boxPlotLayoutNumVar">2.4</a>,
+the upper whisker does not extend to the last three points, which are beyond
+<span class="math inline">\(Q_3 + 1.5\times IQR\)</span>, and so it extends only to the last point below this limit.
+The lower whisker stops at the lowest value, 33, since there is no additional data
+to reach; the lower whisker’s limit is not shown in the figure because the plot does not extend down to <span class="math inline">\(Q_1 - 1.5\times IQR\)</span>. In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data.</p>
+
+<div class="tip">
+The whiskers extend to actual data points—not the limits for outliers. That is,
+the values <span class="math inline">\(Q_1 - 1.5\times IQR\)</span> and <span class="math inline">\(Q_3 + 1.5\times IQR\)</span> should not be shown
+on the plot.
+</div>
+<p>Any observation that lies beyond the whiskers is labeled with a dot. The purpose of
+labeling these points—instead of just extending the whiskers to the minimum and
+maximum observed values—is to help identify any observations that appear to be
+unusually distant from the rest of the data. Unusually distant observations are called
+<strong>outliers</strong>. In this case, it would be reasonable to classify the
+emails with character counts of 41.623, 42.793, and 64.401 as outliers
+since they are numerically distant from most of the data.</p>
+
+<div class="onebox">
+<strong>Outliers are extreme.</strong> An outlier is an observation that is extreme, relative to the rest of the data.
+</div>
+
+<div class="tip">
+<p>Examination of data for possible outliers serves many useful purposes, including:</p>
+<ul>
+<li>Identifying strong skewness in the distribution</li>
+<li>Identifying data collection or entry errors. For instance, we re-examined the email purported to have 64.401 characters to ensure this value was accurate.</li>
+<li>Providing insight into interesting properties of the data.
+</div></li>
+</ul>
+
+<div class="guidedpractice">
+The observation 64.401, an outlier, was found to be an accurate observation.
+What would such an observation suggest about the nature of character counts in
+emails?<a href="#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a>
+</div>
+
+<div class="guidedpractice">
+<p>Using Figure <a href="eda.html#fig:boxPlotLayoutNumVar">2.4</a>, estimate the following values for <code>num_char</code> in the <code>email50</code> data set:</p>
+<ol style="list-style-type: lower-alpha">
+<li><span class="math inline">\(Q_1\)</span></li>
+<li><span class="math inline">\(Q_3\)</span></li>
+<li><span class="math inline">\(IQR\)</span>.<a href="#fn25" class="footnote-ref" id="fnref25"><sup>25</sup></a>
+</div></li>
+</ol>
+</div>
+<div id="histograms" class="section level3" number="2.1.4">
 <h3><span class="header-section-number">2.1.4</span> Histograms and density plots</h3>
 </div>
-<div id="variability" class="section level3">
+<div id="variability" class="section level3" number="2.1.5">
 <h3><span class="header-section-number">2.1.5</span> Examining variability</h3>
 </div>
-<div id="distributions" class="section level3">
+<div id="distributions" class="section level3" number="2.1.6">
 <h3><span class="header-section-number">2.1.6</span> Comparing distributions</h3>
 <ul>
 <li>center, shape (symmetric, skewed, normal), spread, outliers</li>
@@ -370,7 +526,7 @@ For more information on this topic, check out the following online supplement re
 </ul>
 </div>
 </div>
-<div id="categorical-data" class="section level2">
+<div id="categorical-data" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Examining categorical data</h2>
 <p>Like numerical data, categorical data can also be organized
 and analyzed. This section introduces tables and other basic
@@ -379,7 +535,7 @@ The <code>email</code> data set contains information
 on 3,921 emails. In this section, we will examine whether the
 presence of numbers, small or large, in an email provides any
 useful value in classifying email as spam or not spam.</p>
-<div id="contingency-tables-and-bar-plots" class="section level3">
+<div id="contingency-tables-and-bar-plots" class="section level3" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Contingency tables and bar plots</h3>
 <p><span style="color: red;">-one cat variable plot
 - Define frequencies/counts and relative frequencies/proportions
@@ -511,19 +667,49 @@ big
 </tr>
 </tbody>
 </table>
-<div id="segmented-bar-and-mosaic-plots" class="section level4">
+<div id="segmented-bar-and-mosaic-plots" class="section level4" number="2.2.1.1">
 <h4><span class="header-section-number">2.2.1.1</span> Segmented bar and mosaic plots</h4>
 <ul>
 <li>two cat plot</li>
 </ul>
 </div>
 </div>
-<div id="why-not-pie-charts" class="section level3">
+<div id="why-not-pie-charts" class="section level3" number="2.2.2">
 <h3><span class="header-section-number">2.2.2</span> Why not pie charts?</h3>
 
+<div id="refs" class="references hanging-indent">
+<div>
+<p>Chimowitz, Marc I, Michael J Lynn, Colin P Derdeyn, Tanya N Turan, David Fiorella, Bethany F Lane, L Scott Janis, et al. 2011. “Stenting Versus Aggressive Medical Therapy for Intracranial Arterial Stenosis.” <em>New England Journal of Medicine</em> 365 (11): 993–1003. <a href="http://www.nejm.org/doi/full/10.1056/NEJMoa1105335">http://www.nejm.org/doi/full/10.1056/NEJMoa1105335</a>.</p>
+</div>
+<div>
+<p>Wickham, Hadley, and others. 2014. “Tidy Data.” <em>Journal of Statistical Software</em> 59 (10): 1–23.</p>
 </div>
 </div>
 </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -535,11 +721,16 @@ big
 
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p>Answers may vary. Scatterplots are helpful in quickly spotting associations relating variables, whether those associations come in the form of simple trends or whether those relationships are more complex.<a href="eda.html#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>Consider the case where your vertical axis represents something “good” and your horizontal axis represents something that is only good in moderation. Health and water consumption fit this description: we require some water to survive, but consume too much and it become toxic and can kill a person.<a href="eda.html#fnref2" class="footnote-back">↩︎</a></p></li>
-<li id="fn3"><p><span class="math inline">\(x_1\)</span> corresponds to the interest rate for the first loan in the sample, <span class="math inline">\(x_2\)</span> to the second loan’s interest rate, and <span class="math inline">\(x_i\)</span> corresponds to the interest rate for the <span class="math inline">\(i^{th}\)</span> loan in the data set. For example, if <span class="math inline">\(i = 4\)</span>, then we’re examining <span class="math inline">\(x_4\)</span>, which refers to the fourth observation in the data set.<a href="eda.html#fnref3" class="footnote-back">↩︎</a></p></li>
-<li id="fn4"><p>The sample size was <span class="math inline">\(n = 50\)</span>.<a href="eda.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<ol start="18">
+<li id="fn18"><p>Answers may vary. Scatterplots are helpful in quickly spotting associations relating variables, whether those associations come in the form of simple trends or whether those relationships are more complex.<a href="eda.html#fnref18" class="footnote-back">↩︎</a></p></li>
+<li id="fn19"><p>Consider the case where your vertical axis represents something “good” and your horizontal axis represents something that is only good in moderation. Health and water consumption fit this description: we require some water to survive, but consume too much and it become toxic and can kill a person.<a href="eda.html#fnref19" class="footnote-back">↩︎</a></p></li>
+<li id="fn20"><p><span class="math inline">\(x_1\)</span> corresponds to the interest rate for the first loan in the sample, <span class="math inline">\(x_2\)</span> to the second loan’s interest rate, and <span class="math inline">\(x_i\)</span> corresponds to the interest rate for the <span class="math inline">\(i^{th}\)</span> loan in the data set. For example, if <span class="math inline">\(i = 4\)</span>, then we’re examining <span class="math inline">\(x_4\)</span>, which refers to the fourth observation in the data set.<a href="eda.html#fnref20" class="footnote-back">↩︎</a></p></li>
+<li id="fn21"><p>The sample size was <span class="math inline">\(n = 50\)</span>.<a href="eda.html#fnref21" class="footnote-back">↩︎</a></p></li>
+<li id="fn22"><p>Since <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span> capture the middle 50% of the data, and the median splits the data in the middle, 25% of the data fall between <span class="math inline">\(Q_1\)</span> and the median, and another 25% falls between the median and <span class="math inline">\(Q_3\)</span>.<a href="eda.html#fnref22" class="footnote-back">↩︎</a></p></li>
+<li id="fn23"><p>While the choice of exactly 1.5 is arbitrary, it is the most commonly used value for box plots.<a href="eda.html#fnref23" class="footnote-back">↩︎</a></p></li>
+<li id="fn24"><p>That occasionally there may be very long emails.<a href="eda.html#fnref24" class="footnote-back">↩︎</a></p></li>
+<li id="fn25"><p>These visual estimates will vary a little from one person to the next:
+<span class="math inline">\(Q_1\approx\)</span> 3.000, <span class="math inline">\(Q_3\approx\)</span> 15.000, <span class="math inline">\(IQR = Q_3 - Q_1 \approx\)</span> 12.000. (The true values: <span class="math inline">\(Q_1=\)</span> 2.536, <span class="math inline">\(Q_3=\)</span> 15.411, <span class="math inline">\(IQR=\)</span> 12.875.)<a href="eda.html#fnref25" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

@@ -835,7 +835,6 @@ Here we consider four random sampling techniques: simple, stratified, cluster, a
 <p class="caption">(\#fig:simple-stratified)Examples of simple random and stratified sampling. In the top panel, simple random sampling was used to randomly select the 18 cases (denoted in red). In the bottom panel, stratified sampling was used: cases were grouped into strata, then simple random sampling was employed to randomly select 3 cases within each stratum.</p>
 </div>
 
-\BeginKnitrBlock{todo}<div class="todo">Replace MLB example with something else below</div>\EndKnitrBlock{todo}
 
 **Simple random sampling** is probably the most intuitive form of random sampling. 
 Consider the salaries of Major League Baseball (MLB) players, where each player is a member of one of the league's 30 teams. 
@@ -899,7 +898,7 @@ This would probably reduce our data collection costs substantially in comparison
 ## Experiments
 
 Studies where the researchers assign treatments to cases are called **experiments**. 
-When this assignment includes randomization, e.g. using a coin flip to decide which treatment a patient receives, it is called a **randomized experiment**. 
+When this assignment includes randomization, e.g., using a coin flip to decide which treatment a patient receives, it is called a **randomized experiment**. 
 Randomized experiments are fundamentally important when trying to show a causal connection between two variables.
 
 
@@ -922,6 +921,8 @@ Alternatively, a group of scientists may replicate an entire study to verify an 
 
 
 
+Randomized experiments are generally built on four principles:
+
 1. **Blocking.** Researchers sometimes know or suspect that variables, other than the treatment, influence the response. 
 Under these circumstances, they may first group individuals based on this variable into **blocks** and then randomize cases within each block to the treatment groups. 
 This strategy is often referred to as **blocking**. 
@@ -938,9 +939,6 @@ This strategy ensures each treatment group has an equal number of low-risk and h
 It is important to incorporate the first three experimental design principles into any study, and this book describes applicable methods for analyzing data from such experiments.
 Blocking is a slightly more advanced technique, and statistical methods in this book may be extended to analyze data collected using blocking.
 
-Randomized experiments are generally built on four principles.
-
-\BeginKnitrBlock{todo}<div class="todo">Are the "four" principles the same as the enumerated list above?</div>\EndKnitrBlock{todo}
 
 ### Reducing bias in human experiments {#reducing-bias-human-experiments}
 
@@ -992,8 +990,6 @@ There are always multiple viewpoints of experiments and placebos, and rarely is 
 For instance, is it ethical to use a sham surgery when it creates a risk to the patient?
 However, if we don't use sham surgeries, we may promote the use of a costly treatment that has no real effect; if this happens, money and other resources will be diverted away from other treatments that are known to be helpful.
 Ultimately, this is a difficult situation where we cannot perfectly protect both the patients who have volunteered for the study and the patients who may benefit (or not) from the treatment in the future.
-
-\BeginKnitrBlock{uptohere}<div class="uptohere">UPDATED UP TO HERE</div>\EndKnitrBlock{uptohere}
 
 
 ## Data in `R`
