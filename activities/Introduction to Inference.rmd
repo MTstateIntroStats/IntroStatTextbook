@@ -52,25 +52,25 @@ handedness_sub <- handedness[sample(nrow(handedness), 500), ]
 ## Summary Statistics Review
 ```{r}
 # Counts for Handedness
-tally(~Stance, data=handedness_sub, margins=T)
+tally(~Stance, data=handedness_sub, margins=T) #Tally creates a table with a count in each level of the variable
 ```
 
 ```{r}
 # Percentages of Handedness
-tally(~Stance, data=handedness_sub, format="proportion", margins=T)
+tally(~Stance, data=handedness_sub, format="proportion", margins=T) #Using the format proportion creates a table showing the proportions in each level of the variable
 ```
 
 ```{r}
 barchart(handedness_sub$Stance, #This specifies the dataset and the variable
          horizontal = FALSE, #Turn the bars so they are vertical
-         main = "Frequency Bar Graph of Handedness in Male Boxers", #Give your graph a title
+         main = "Frequency Bar Chart of Handedness in Male Boxers", #Give your graph a title
          xlab = "Handedness", #Label the x axis
          ylab = "Frequency", #Label the y axis
          )
 ```
 ```{r}
 barplot(table(handedness_sub$Stance)/nrow(handedness_sub), #divide the frequency counts by the total
-        main = "Relative Frequency Bar Graph of Handedness in Male Boxers", #Give your chart a title
+        main = "Relative Frequency Bar Chart of Handedness in Male Boxers", #Give your chart a title
         xlab = "Handedness", #Label the x axis
         ylab = "Relative Frequency", #Label the y axis
         )
@@ -84,13 +84,14 @@ barplot(table(handedness_sub$Stance)/nrow(handedness_sub), #divide the frequency
 
 \vspace{1in}
 
-3.  What proportion of Male Boxers in the sample are left-handed?  Remember this is the statistic calculated from the data.
+3.  What is the difference between the two plots above?  
 
 \vspace{1in}
 
-4.  What notation is used for the value in Question 3?
+4. What proportion of Male Boxers in the sample are left-handed?  Remember this is the statistic calculated from the data.  Give the proper notation for this value.
 
 \vspace{1in}
+
 
 # Frame the research question.
 
@@ -108,65 +109,72 @@ The notation used for a categorical parameter is, $p$.  When writing the null hy
 
 7. Write the null hypothesis in notation using the null value of 0.1.
 
+\vspace{0.5in}
 
-The alternative hypothesis is the claim to be tested and is based on the research question.
+The alternative hypothesis is the claim to be tested and the direction is based on the research question.  
 
-8.  Identify the research question for this study?
-
-\vspace{1in}
-
-9.  Write out the alternative hypothesis in words.
+8.  Identify the research question for this study.
 
 \vspace{1in}
 
-10.  Write out the alternative hypothesis in notation.
+9.  Based on the research question, are we testing that the parameter is greater than 0.1, less than 0.1 or different than 0.1? 
+
+\vspace{0.5}
+
+10. Write out the alternative hypothesis in words.
 
 \vspace{1in}
 
-For this study the **two possibilities** are either...
+11.  Write out the alternative hypothesis in notation.
+
+\vspace{0.5in}
+
+Remember that when utilizing a hypothesis test, we are evaluating two competing possibilities. For this study the **two possibilities** are either...
   * The true proportion of male boxers who are left handed is 0.1 and our results just occurred by random chance or
-  * The true proportion of male boxers who are left handed is greater than 0.1 and our results give evidence against the null hypothesis *work on*
+  * The true proportion of male boxers who are left handed is greater than 0.1 and our results give evidence against the null hypothesis
+  
+Notice that these two competing possibilities represent the null and alternative hypotheses.
   
 # Collect Data
-11. What is the summary statistic for this data? Write using proper notation.
+12. What is the summary statistic for this data? Write using proper notation. **repeat question??**
 
 \vspace{0.5in}
 
 # Model the Randomness
 
-The null distribution is created under the assumption the null hypothesis is true.  In this case, we assume the true proportion of male boxers who are left handed is 0.1 so we will create a 1000 different simulations of 500 boxers under this assumption.
+The null distribution is created under the assumption the null hypothesis is true.  In this case, we assume the true proportion of male boxers who are left handed is 0.1 so we will create 1000 different simulations of 500 boxers under this assumption.
 
-To create one simulation we could have 50 blue cards and 450 red cards, where a blue card represents left-handed.  Mix cards, draw 1 card, write down if it's red or blue, replace the card, repeat 499 times. 
+To create one simulation we could have 50 blue cards and 450 red cards, where a blue card represents left-handed.  Mix cards, draw 1 card, write down if it's red or blue, replace the card, repeat 499 times. The proportion of blue cards out of the 500 draws represents the simulated proportion of male boxers who are left handed and will be plotted on the simulated null distribution. 
 
-We will use the computer to simulate...
+We will use the computer to simulate 1000 simulated proportions of male boxers who are left handed for a sample size of 500 based on the assumption that the true proportion of male boxers who are left handed is 0.1.  This is called the null distribution because it is created based on the assumption that the null hypothesis is true.
 
-## Add simulation here
+**Add simulation here**
 
-12.  At what value is the null distribution centered?  Why does that make sense?
-
-\vspace{1in}
-
-13. Where does the statistic (value from question 3) fall in the null distribution?  Is it towards the center or in one of the tails?  
+13.  At what value is the null distribution centered?  Why does that make sense?
 
 \vspace{1in}
 
-14.  Is the statistic likely to happen or unlikely to happen if the true proportion of male boxers is 0.1?
+14. Where does the statistic (value from question 3) fall in the null distribution?  Is it towards the center or in one of the tails?  
+
+\vspace{1in}
+
+15.  Is the statistic likely to happen or unlikely to happen if the true proportion of male boxers is 0.1?  Explain your answer.
 
 \vspace{1in}
 
 # Analyze the data
 
-14.  Using the simulation, what is the probability that we find this statistic if the true proprotion of male boxers is 0.1?
+16.  Using the simulation, what is the probability that we find this summary statistic or greater, if the true proprotion of male boxers is 0.1?
 
 \vspace{1in}
 
 This is the p-value.  The smaller the p-value the more evidence we have against the null hypothesis.
 
-15. Using the following guidelines for the strength of evidence, how much evidence does the statistic provide against the null hypothesis?
+17. Using the following guidelines for the strength of evidence, how much evidence does the statistic provide against the null hypothesis?
 
 **Add image of guidelines**
 
-16.  Is there evidence that there is a higher proportion of male boxers that are left handed than the general population?  Explain your answer.
+18.  Is there evidence that there is a higher proportion of male boxers that are left handed than the general population?  Explain your answer.
 
 \vspace{1in}
 
@@ -177,13 +185,21 @@ This plausible range of values for the population parameter is called a confiden
 
 To calculate a 95% confidence interval, we will build the interval around the point estimate.  
 
+**Add conditions?**
+
 $\hat{p}\pm SE(\hat{p})$ where $SE(\hat{p}) = \sqrt[\frac{p(1-p)}{n}$
+
+The standard error of $\hat{p}$ measures the uncertainity or variability associated with the point estimate.
      
-17.  Using the multiplier of 1.96, calculate a 95% confidence interval.
+19.  Calculate the $SE(\hat{p})$.  
 
 \vspace{1in}
 
-18.  What are we 95% confident is contained within this interval?
+20. Using the multiplier of 1.96 and the standard error found in question 17, calculate a 95% confidence interval.
+
+\vspace{1in}
+
+21.  What are we 95% confident is contained within this interval?
 
 \vspace{1in}
 
