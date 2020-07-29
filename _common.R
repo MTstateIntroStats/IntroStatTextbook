@@ -1,3 +1,17 @@
+# function to print in color ------------------------------------------------------
+
+colorize <- function(x, color="red") {
+  if (knitr::is_latex_output()) {
+    sprintf("\\textcolor{%s}{%s}", color, x)
+  } else if (knitr::is_html_output()) {
+    sprintf("<span style='color: %s;'>%s</span>", color,
+            x)
+  } else x
+}
+
+
+
+################## Update from ims repo from here down -
 # _common.R based on R4DS: https://github.com/hadley/r4ds/blob/master/_common.R
 set.seed(25)
 options(digits = 3)
@@ -7,34 +21,31 @@ options(digits = 3)
 knitr::opts_chunk$set(
   comment = "#>",
   collapse = TRUE,
+  message = FALSE,
   #cache = TRUE,
   echo = FALSE, # hide code unless otherwise noted in chunk options
   out.width = "70%",
   fig.align = 'center',
   fig.width = 6,
   fig.asp = 0.618,  # 1 / phi
-  fig.show = "hold"
+  fig.show = "hold",
+  message = FALSE
 )
 
 # packages ---------------------------------------------------------------------
 
-#---
-# Run the following two lines once to update openintro and dplyr
-# libraries within RStudio
-#devtools::install_github("OpenIntroStat/openintro")
-#devtools::install_github("OpenIntroStat/usdata")
-#devtools::install_github("tidyverse/dplyr")
-#---
-library(knitr)
-library(ggmosaic)
-library(skimr)
-library(kableExtra)
-library(janitor)
-library(openintro)
-library(usdata)
-library(tidyverse)
-library(scales)
-library(infer)
+suppressMessages(library(knitr))
+suppressMessages(library(ggmosaic))
+suppressMessages(library(skimr))
+suppressMessages(library(kableExtra))
+suppressMessages(library(janitor))
+suppressMessages(library(openintro))
+suppressMessages(library(tidyverse))
+suppressMessages(library(scales))
+suppressMessages(library(infer))
+suppressMessages(library(patchwork))
+suppressMessages(library(gghighlight))
+suppressMessages(library(maps))
 
 # dplyr options ----------------------------------------------------------------
 
@@ -55,16 +66,3 @@ make_terms_table <- function(x, n_cols = 4){
   matrix(x_updated, nrow = n_rows) %>%
     kable()
 }
-
-# function to print in color ------------------------------------------------------
-
-colorize <- function(x, color="red") {
-  if (knitr::is_latex_output()) {
-    sprintf("\\textcolor{%s}{%s}", color, x)
-  } else if (knitr::is_html_output()) {
-    sprintf("<span style='color: %s;'>%s</span>", color,
-            x)
-  } else x
-}
-
-

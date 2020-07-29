@@ -5,7 +5,7 @@ We use statistical software for generating the summaries and graphs presented in
 However, since this might be your first exposure to these concepts, we take our time in this chapter to detail how to create them.
 Mastery of the content presented in this chapter will be crucial for understanding the methods and techniques introduced in rest of the book.</div>\EndKnitrBlock{chapterintro}
 
-## Examining quantitative data {#quantitative-data}
+## Exploring quantitative data {#quantitative-data}
 
 In this section we will explore techniques for summarizing quantitative variables.
 For example, consider the `loan_amount` variable from the `loan50` data set, which represents the loan size for all 50 loans in the data set.
@@ -88,11 +88,6 @@ A **dot plot** is a one-variable scatterplot; an example using the interest rate
 
 
 
-
-```
-#> `stat_bindot()` using `bins = 30`. Pick better value with `binwidth`.
-```
-
 <div class="figure" style="text-align: center">
 <img src="02-eda_files/figure-html/loan-int-rate-dotplot-1.png" alt="A dot plot of `interest_rate` for the `loan50` dataset. The rates have been rounded to the nearest percent in this plot, and the distribution's mean is shown as a red triangle." width="70%" />
 <p class="caption">(\#fig:loan-int-rate-dotplot)A dot plot of `interest_rate` for the `loan50` dataset. The rates have been rounded to the nearest percent in this plot, and the distribution's mean is shown as a red triangle.</p>
@@ -131,7 +126,7 @@ Often times it is too expensive to measure the population mean precisely, so we 
 
 ---
   
-The sample mean, `r round(loan50_mean_intrest_rate, 2)`, provides a rough estimate of $\mu_x$. While it is not perfect, this is our single best guess **point estimate**\index{point estimate} of the average interest rate of all the loans in the population under study. In Chapter \@ref(inference-foundations) and beyond, we will develop tools to characterize the accuracy of point estimates, like the sample mean. As you might have guessed, point estimates based on larger samples tend to be more accurate than those based on smaller samples.</div>\EndKnitrBlock{example}
+The sample mean, `r {round(loan50_mean_intrest_rate, 2)}`, provides a rough estimate of $\mu_x$. While it is not perfect, this is our single best guess **point estimate**\index{point estimate} of the average interest rate of all the loans in the population under study. In Chapter \@ref(inference-foundations) and beyond, we will develop tools to characterize the accuracy of point estimates, like the sample mean. As you might have guessed, point estimates based on larger samples tend to be more accurate than those based on smaller samples.</div>\EndKnitrBlock{example}
 
 
 
@@ -196,6 +191,88 @@ This example used what is called a **weighted mean**.
 For more information on this topic, check out the following online supplement regarding [weighted means](https://www.openintro.org/go/?id=stat_extra_weighted_mean).</div>\EndKnitrBlock{example}
 
 
+
+
+### Histograms and shape {#histograms}
+
+Dot plots show the exact value for each observation. This is useful for small data sets, but they can become hard to read with larger samples. Rather than showing the value of each observation, we prefer to think of the value as belonging to a *bin*. For example, in the `loan50` data set, we created a table of counts for the number of loans with interest rates between 5.0% and 7.5%, then the number of loans with rates between 7.5% and 10.0%, and so on. Observations that fall on the boundary of a bin (e.g. 10.00%) are allocated to the lower bin. This tabulation is shown in Table \@ref(tab:binnedIntRateAmountTable). These binned counts are plotted as bars in Figure \@ref(fig:loan50IntRateHist) into what is called a **histogram**, which resembles a more heavily binned version of the stacked dot plot shown in Figure \@ref(fig:loan-int-rate-dotplot).
+
+
+
+<table>
+<caption>(\#tab:binnedIntRateAmountTable)Counts for the binned `interest_rate` data.</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Interest rate </th>
+   <th style="text-align:center;"> 5% - 7.5% </th>
+   <th style="text-align:center;"> 7.5% - 10% </th>
+   <th style="text-align:center;"> 10% - 12.5% </th>
+   <th style="text-align:center;"> 12.5% - 15% </th>
+   <th style="text-align:center;"> 15% - 17.5% </th>
+   <th style="text-align:center;"> 17.5% - 20% </th>
+   <th style="text-align:center;"> 20% - 22.5% </th>
+   <th style="text-align:center;"> 22.5% - 25% </th>
+   <th style="text-align:center;"> 25% - 27.5% </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Count </td>
+   <td style="text-align:center;"> 11 </td>
+   <td style="text-align:center;"> 15 </td>
+   <td style="text-align:center;"> 8 </td>
+   <td style="text-align:center;"> 4 </td>
+   <td style="text-align:center;"> 5 </td>
+   <td style="text-align:center;"> 4 </td>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:center;"> 1 </td>
+  </tr>
+</tbody>
+</table>
+
+<div class="figure" style="text-align: center">
+<img src="02-eda_files/figure-html/loan50IntRateHist-1.png" alt="A histogram of `interest_rate`. This distribution is strongly skewed to the right." width="70%" />
+<p class="caption">(\#fig:loan50IntRateHist)A histogram of `interest_rate`. This distribution is strongly skewed to the right.</p>
+</div>
+
+Histograms provide a view of the **data density**. Higher bars represent where the data are relatively more common. For instance, there are many more loans with rates between 5% and 10% than loans with rates between 20% and 25% in the data set. The bars make it easy to see how the density of the data changes relative to the interest rate.
+
+
+
+Histograms are especially convenient for understanding the shape of the data distribution. Figure \@ref(fig:loan50IntRateHist) suggests that most loans have rates under 15%, while only a handful of loans have rates above 20%. When data trail off to the right in this way and has a longer right **tail**, the shape is said to be **right skewed**[^1]
+
+[^1]: Other ways to describe data that are right skewed: skewed to the right, skewed to the high end, or skewed to the positive end.
+
+Data sets with the reverse characteristic -- a long, thinner tail to the left -- are said to be **left skewed**. We also say that such a distribution has a long left tail. Data sets that show roughly equal trailing off in both directions are called **symmetric**.
+
+
+
+\BeginKnitrBlock{onebox}<div class="onebox">When data trail off in one direction, the distribution has a **long tail**.
+If a distribution has a long left tail, it is left skewed.
+If a distribution has a long right tail, it is right skewed.</div>\EndKnitrBlock{onebox}
+
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Besides the mean (since it was labeled), what can you see in the dot plot in Figure \@ref(fig:loan-int-rate-dotplot) that you cannot see in the histogram in Figure \@ref(fig:loan50IntRateHist)?^[The interest rates for individual loans.]</div>\EndKnitrBlock{guidedpractice}
+
+In addition to looking at whether a distribution is skewed or symmetric, histograms can be used to identify modes. A **mode** is represented by a prominent peak in the distribution. There is only one prominent peak in the histogram of `interest_rate`.
+
+A definition of *mode* sometimes taught in math classes is the value with the most occurrences in the data set. However, for many real-world data sets, it is common to have *no* observations with the same value in a data set, making this definition impractical in data analysis.
+
+Figure \@ref(fig:singleBiMultiModalPlots) shows histograms that have one, two, or three prominent peaks. Such distributions are called **unimodal**, **bimodal**, and **multimodal**, respectively. Any distribution with more than 2\~prominent peaks is called multimodal. Notice that there was one prominent peak in the unimodal distribution with a second less prominent peak that was not counted since it only differs from its neighboring bins by a few observations.
+
+
+
+<div class="figure" style="text-align: center">
+<img src="02-eda_files/figure-html/singleBiMultiModalPlots-1.png" alt="Counting only prominent peaks, the distributions are (left to right) unimodal, bimodal, and multimodal. Note that the left plot is unimodal because we are counting prominent peaks, not just any peak." width="90%" />
+<p class="caption">(\#fig:singleBiMultiModalPlots)Counting only prominent peaks, the distributions are (left to right) unimodal, bimodal, and multimodal. Note that the left plot is unimodal because we are counting prominent peaks, not just any peak.</p>
+</div>
+
+\BeginKnitrBlock{example}<div class="example">Figure \@ref(fig:loan50IntRateHist) reveals only one prominent mode in the interest rate. Is the distribution unimodal, bimodal, or multimodal?^[Unimodal Remember that *uni* stands for 1 (think *uni*cycles). Similarly, *bi* stands for 2 (think *bi*cycles). We are hoping a *multi*cycle will be invented to complete this analogy.]</div>\EndKnitrBlock{example}
+
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Height measurements of young students and adult teachers at a K-3 elementary school were taken.
+How many modes would you expect in this height data set?^[There might be two height groups visible in the data set: one of the students and one of the adults. That is, the data are probably bimodal.].</div>\EndKnitrBlock{guidedpractice}
+
+Looking for modes isn't about finding a clear and correct answer about the number of modes in a distribution, which is why *prominent*\index{prominent} is not rigorously defined in this book. The most important part of this examination is to better understand your data.
 
 
 ### Boxplots and the median {#boxplots}
@@ -298,11 +375,50 @@ c. $IQR$.^[These visual estimates will vary a little from one person to the next
            $Q_1\approx$ 3.000, $Q_3\approx$ 15.000, $IQR = Q_3 - Q_1 \approx$ 12.000. (The true values: $Q_1=$ 2.536, $Q_3=$ 15.411, $IQR=$ 12.875.)]</div>\EndKnitrBlock{guidedpractice}
 
 
+### Robust statistics
 
-### Histograms and density plots {#histograms}
+<!-- How are the \indexthis{sample statistics}{sample statistic} of the \data{num\_\hspace{0.3mm}char} data set affected by the observation, 64,401? What would have happened if this email wasn't observed? What would happen to these \indexthis{summary statistics}{summary statistic} if the observation at 64,401 had been even larger, say 150,000? These scenarios are plotted alongside the original data in Figure~\ref{email50NumCharDotPlotRobustEx}, and sample statistics are computed under each scenario in Table~\ref{robustOrNotTable}. -->
 
+<!-- \begin{figure}[ht] -->
+<!-- \centering -->
+<!-- \includegraphics[width=\textwidth]{01/figures/email50NumCharDotPlotRobustEx/email50NumCharDotPlotRobustEx} -->
+<!-- \caption{Dot plots of the original character count data and two modified data sets.} -->
+<!-- \label{email50NumCharDotPlotRobustEx} -->
+<!-- \end{figure} -->
 
-### Examining variability {#variability}
+<!-- \begin{table}[ht] -->
+<!-- \centering -->
+<!-- \begin{tabular}{l c cc c cc} -->
+<!--   \hline -->
+<!-- & \hspace{0mm} & \multicolumn{2}{c}{\bf robust} & \hspace{2mm} & \multicolumn{2}{c}{\bf not robust} \\ -->
+<!-- scenario && median & IQR && $\bar{x}$ & $s$ \\  -->
+<!--   \hline -->
+<!-- original \var{num\_\hspace{0.3mm}char} data 	&& 6,890 & 12,875 && 11,600 & 13,130 \\ -->
+<!-- % library(openintro); data(email50); d <- email50$num_char; median(d); diff(quantile(d, c(0.25,0.75))); mean(d); sd(d) -->
+<!-- drop 66,924 observation		&& 6,768 & 11,702 && 10,521 & 10,798 \\ -->
+<!-- % library(openintro); data(email50); d <- email50$num_char; d <- d[-which.max(d)]; median(d); diff(quantile(d, c(0.25,0.75))); mean(d); sd(d) -->
+<!-- move 66,924 to 150,000		&& 6,890 & 12,875 && 13,310 & 22,434 \\ -->
+<!-- % library(openintro); data(email50); d <- email50$num_char; d[which.max(d)] <- 100000; median(d); diff(quantile(d, c(0.25,0.75))); mean(d); sd(d) -->
+<!--    \hline -->
+<!-- \end{tabular} -->
+<!-- \caption{A comparison of how the median, IQR, mean ($\bar{x}$), and standard deviation ($s$) change when extreme observations are present.} -->
+<!-- \label{robustOrNotTable} -->
+<!-- \end{table} -->
+
+<!-- \begin{exercise} \label{numCharWhichIsMoreRobust} -->
+<!-- (a) Which is more affected by extreme observations, the mean or median? Table~\ref{robustOrNotTable} may be helpful. (b) Is the standard deviation or IQR more affected by extreme observations?\footnote{(a) Mean is affected more. (b) Standard deviation is affected more. Complete explanations are provided in the material following Guided Practice~\ref{numCharWhichIsMoreRobust}.} -->
+<!-- \end{exercise} -->
+
+<!-- The median and IQR are called \term{robust estimates} because extreme observations have little effect on their values. The mean and standard deviation are much more affected by changes in extreme observations. -->
+
+<!-- \begin{example}{The median and IQR do not change much under the three scenarios in Table~\ref{robustOrNotTable}. Why might this be the case?} -->
+<!-- The median and IQR are only sensitive to numbers near $Q_1$, the median, and $Q_3$. Since values in these regions are relatively stable -- there aren't large jumps between observations -- the median and IQR estimates are also quite stable. -->
+<!-- \end{example} -->
+
+<!-- \begin{exercise} -->
+<!-- The distribution of vehicle prices tends to be right skewed, with a few luxury and sports cars lingering out into the right tail. If you were searching for a new car and cared about price, should you be more interested in the mean or median price of vehicles sold, assuming you are in the market for a regular car?\footnote{Buyers of a ``regular car'' should be concerned about the median price. High-end car sales can drastically inflate the mean price while the median will be more robust to the influence of those sales.} -->
+<!-- \end{exercise} -->
+
 
 
 ### Comparing distributions {#distributions}
@@ -310,7 +426,38 @@ c. $IQR$.^[These visual estimates will vary a little from one person to the next
 - center, shape (symmetric, skewed, normal), spread, outliers
 - side-by-side boxplots, stacked dotplots/histograms
 
-## Examining categorical data {#categorical-data}
+### Mapping data (special topic)
+
+<!-- The \data{county} data set offers many numerical variables that we could plot using dot plots, scatterplots, or box plots, but these miss the true nature of the data. Rather, when we encounter geographic data, we should map it using an \term{intensity map}, where colors are used to show higher and lower values of a variable. Figures~\ref{countyIntensityMaps1} and~\ref{countyIntensityMaps2} shows intensity maps for federal spending per capita (\var{fed\_\hspace{0.3mm}spend}), poverty rate in percent (\var{poverty}), homeownership rate in percent (\var{homeownership}), and median household income (\var{med\_\hspace{0.3mm}income}). The color key indicates which colors correspond to which values. Note that the intensity maps are not generally very helpful for getting precise values in any given county, but they are very helpful for seeing geographic trends and generating interesting research questions. -->
+
+<!-- \begin{figure} -->
+<!-- \centering -->
+<!-- \subfigure[]{\includegraphics[width=\textwidth]{01/figures/countyIntensityMaps/countyFedSpendMap}\label{countyFedSpendMap}} -->
+<!-- \subfigure[]{\includegraphics[width=\textwidth]{01/figures/countyIntensityMaps/countyPovertyMap}\label{countyPovertyMap}} -->
+<!-- \caption{\subref{countyFedSpendMap} Map of federal spending (dollars per capita). \subref{countyPovertyMap} Intensity map of poverty rate (percent).} -->
+<!-- \label{countyIntensityMaps1} -->
+<!-- \end{figure} -->
+
+<!-- \begin{figure} -->
+<!-- \centering -->
+<!-- \subfigure[]{\includegraphics[width=\textwidth]{01/figures/countyIntensityMaps/countyHomeownershipMap}\label{countyHomeownershipMap}} -->
+<!-- \subfigure[]{\includegraphics[width=\textwidth]{01/figures/countyIntensityMaps/countyMedIncomeMap}\label{countyMedIncomeMap}} -->
+<!-- \caption{\subref{countyHomeownershipMap} Intensity map of homeownership rate (percent). \subref{countyMedIncomeMap} Intensity map of median household income (\$1000s).} -->
+<!-- \label{countyIntensityMaps2} -->
+<!-- \end{figure} -->
+
+<!-- \begin{example}{What interesting features are evident in the \var{fed\_\hspace{0.3mm}spend} and \var{poverty} intensity maps?} -->
+<!-- The federal spending intensity map shows substantial spending in the Dakotas and along the central-to-western part of the Canadian border, which may be related to the oil boom in this region. There are several other patches of federal spending, such as a vertical strip in eastern Utah and Arizona and the area where Colorado, Nebraska, and Kansas meet. There are also seemingly random counties with very high federal spending relative to their neighbors. If we did not cap the federal spending range at \$18 per capita, we would actually find that some counties have extremely high federal spending while there is almost no federal spending in the neighboring counties. These high-spending counties might contain military bases, companies with large government contracts, or other government facilities with many employees. -->
+
+<!-- Poverty rates are evidently higher in a few locations. Notably, the deep south shows higher poverty rates, as does the southwest border of Texas. The vertical strip of eastern Utah and Arizona, noted above for its higher federal spending, also appears to have higher rates of poverty (though generally little correspondence is seen between the two variables).  High poverty rates are evident in the Mississippi flood plains a little north of New Orleans and also in a large section of Kentucky and West Virginia. -->
+<!-- \end{example} -->
+
+<!-- \begin{exercise} -->
+<!-- What interesting features are evident in the \var{med\_\hspace{0.3mm}income} intensity map?\footnote{Note: answers will vary. There is a very strong correspondence between high earning and metropolitan areas. You might look for large cities you are familiar with and try to spot them on the map as dark spots.} -->
+<!-- \end{exercise} -->
+
+
+## Exploring categorical data {#categorical-data}
 
 Like numerical data, categorical data can also be organized
 and analyzed. This section introduces tables and other basic
