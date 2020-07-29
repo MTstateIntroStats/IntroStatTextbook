@@ -1,0 +1,142 @@
+---
+title: "Inference for a Difference in Means"
+output:
+  pdf_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE,
+                      warnings = FALSE, 
+                      eval = T)
+options(show.signif.stars = FALSE)
+library(mosaic)
+```
+
+## Inference for a Difference in Means
+
+## Learning Objectives.
+
+* Write out the null and alternative hypothesis for One Categorical and One Quantitative Variable
+* Calculate and carry-out theory-based hypothesis tests
+* Interpret and evaluate a p-value
+* Calculate and interpret a standardized statistic
+* Construct and interpret a theory-based confidence interval
+* Use a confidence interval to determine the conclusion of a hypothesis test
+
+## Background
+
+
+In the winter of 2018-2019, Bozeman had a record snowfall which resulted in the collapse of two flat-roofed buildings on the MSU campus.  A writer for the Washington Post predicted the heavy snowfall for 2018-2019 due to the El Nino weather pattern that occurred in that season. A meteorologist in Montana wanted to see if the weather pattern really was associated with total snowfall. She obtained historical data from 44 years on the weather pattern (El Nino or La Nina) and snowfall (in inches) at the Billings Weather Station.  
+
+
+``````{r}
+# Set-up
+library(readr)
+library(car)
+Snow <- read.csv("../data/SnowfallbyWeatherPattern.csv")
+Snow$WeatherPattern <- factor(Snow$WeatherPattern)
+```
+
+
+```{r}
+favstats(Snowfall~WeatherPattern, data=Snow)
+```
+
+```{r}
+boxplot(Snowfall~WeatherPattern, data=Snow)
+```
+
+## Quantitative Variables Review
+
+1. The two variables assessed in this the type of weather pattern and snowfall.  Identify the role for each variable (explanatory, response).
+
+\vspace{1in}
+
+2. Which group (El Nino or La Nina) has the highest center? Explain what measure you are using?
+
+\vspace{1in}
+
+3.  Using the side-by-side boxplots, which group has the largest spread?  How did you make that choice?
+
+\vspace{1in}
+
+4.  Is this an experiment or an observational study? Explain your reasoning.
+
+\vspace{1in}
+
+### Frame the research question.
+
+5.  Write out the parameter of interest in context of the study.
+
+\vspace{1in}
+
+6.  Write out the null hypothesis in notation.
+
+\vspace{1in}
+
+7. Based on the research question, what is the direction of the alternative hypothesis?
+
+\vspace{1in}
+
+# Collect Data
+
+8. Calculate the summary statistic.  Use El Nino minus La Nina as the order of subtraction. What is the appropriate notation for the statistic?
+
+\vspace{0.5in}
+
+### Model the Randomness
+
+The T score measures the number of standard deviations the statistic is from the null value.  
+
+ d$T = \frac{\bar{x_1}-\bar{x_2}-0}{SE_{(\bar{x_1}-\bar{x_2})}}$, where $SE_{(\bar{x_1}-\bar{x_2})}=\sqrt{\frac{s^2_1}{n_1}+{\frac{s^2_2}{n_2}}}$
+
+Remember to use the t distribution the following conditions must be met.
+
+* The observations for each group must be normal for sample sizes less than 15.  For sample sizes greater than 60....
+
+* The observations in each group must be independent
+
+9. Are these conditions met to use the t-distribuion?
+
+\vspace{1in}
+
+10. Calculate the point estimate.
+
+\vspace{1in}
+
+11. Calculate the $SE_{(\bar{x_1}-\bar{x_2})}$. 
+
+\vspace{1in}
+
+12.  Calculate the test statistic.
+
+\vspace{1in}
+
+
+13. Interpret the value found in question 12.  
+
+\vspace{1in}
+
+### Analyze the data
+
+14.  **Use R to find the p-value???***
+
+\vspace{1in}
+
+
+15.  How much evidence does the p-value provide against the null hypothesis?
+
+\vspace{1in}
+
+### Form Conclusions
+
+16.  Calculate the confidence interval using the general formula, point estimate $\pm t^*_{df}SE$.  **Do we want them to find the t* mulipliers???**
+
+\vspace{1in}
+
+17. Interpret the interval you calculated in Question 16. 
+
+\vspace{1in}
+

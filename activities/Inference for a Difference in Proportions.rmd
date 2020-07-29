@@ -1,0 +1,154 @@
+---
+title: "Inference for a Difference in Proportion"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE,
+                      warnings = FALSE, 
+                      eval = T)
+options(show.signif.stars = FALSE)
+library(mosaic)
+library(yarrr)
+```
+
+## Inference for a Difference in Proportions
+
+## Learning Objectives.
+
+* Write out the null and alternative hypothesis for Two Categorical Variables
+
+* Simulate the Null Distribution
+
+* Find the p-value and Assess the Strength of Evidence
+
+* Calculate the z test statistic
+
+* Create and Interpret a Confidence Interval for the difference in proportions
+
+## Background
+In “Helmet Use and Risk of Head Injuries in Alpine Skiers and Snowboarders” by Sullheim et. al., Journal of the American Medical Association, Vol. 295, No. 8, we can see the results from a random sample 3562 skiers and snowboarders involved in accidents. 
+
+Is there evidence that saftey helmet use reduces the risk of head injury for skiiers and snowboarders? 
+
+## Vocabulary Review
+
+1.  What is the explanatory variable?
+
+\vspace{0.5in}
+
+2. What is the response variable?
+
+\vspace{0.5in}
+
+3. Is this an experiment or observational study?
+
+\vspace{0.5in}
+
+4.  What is the scope of inference for this study?
+
+\vspace{1in}
+
+5. What is the conditional proportion of skiiers/snowboarders with a head injury that wore a helmet?
+
+\vspace{1in}
+
+6. What is the conditional proportion of skiiers/snowboarders with a head injury that did not wear a helmet?
+
+\vspace{1in}
+
+``````{r}
+library(readr)
+library(car)
+injury <- read.csv("../data/head_injury.csv")
+injury$Helmet <- factor(injury$Helmet)
+injury$Injury <- factor(injury$Injury)
+```
+
+# Observed Data
+
+```{r}
+plot(Injury~Helmet 
+     , data = injury, main="####" #Make sure to title your graph
+     )
+```
+ 
+7.  Fill in the #### with the appropriate variables to plot a segmented bar plot of injury by helmet use.
+
+\vspace{1in}
+
+8.  Based on the bar plot, Does there appear to be an association between helmet use and head injury?  Explain.
+
+\vspace{1in}
+
+# Creating the Null Distribution
+
+In this study we are looking at the relationship between two groups or two parameters ($\pi_1$ and $\pi_2$).  Remember we define the parameter as the true proportion of observational units that represent the variable of interest.  
+
+9. What is the variable of interest in this study?
+
+\vspace{in}
+
+10. Write the two parameters of interest for this study.
+
+$\pi_1$ - 
+
+\vspace{0.5in}
+
+$\pi_2$ - 
+
+\vspace{0.5in}
+
+When comparing two groups, we assume the two parameters are equal in the null hypothesis.  There is no association between the variables.
+
+11.  Write the null hypothesis out in words using your answers to question 10.
+
+\vspace{1in}
+
+12.  What is the research question?
+
+\vspace{1in}
+
+13. Based on the research question fill in the appropriate sign for the alternative hypothesis:
+
+Ha: $\pi_1$       $\pi_2$
+
+14.  Calculate the point estimate for this study.  We will use helmet use minus no helmet use as the order of subtraction.
+
+\vspace{1in}
+
+
+15. What is the notation used for the value calculated in question 14?
+
+
+Before looking at the simulation, where do you expect the null distribution to be centered?  Explain your reasoning.
+
+\vspace{1in}
+
+**simulation**
+
+16.  Circle the area on the above simulation that you will look to find the p-value. Are you counting observations above or below the point estimate?
+
+\vspace{1in}
+
+17. Report the p-value from the simulation.  How much evidence does this provide against the null hypothesis?
+
+\vspace{1in}
+
+**r code to find multiplier**
+
+18. Using the multiplier found above calculate the 95% confidence interval for the difference in true proportion of head injuries for those that used helmets minus those who did not.
+
+\vspace{1in}
+
+19. Interpret the confidence interval found in question 18 in context of the problem.
+
+\vspace{1in}
+
+20. Write a conclusion to the research question.
+
+\vspace{1in}
+
+
+
