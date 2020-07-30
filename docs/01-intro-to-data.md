@@ -6,15 +6,15 @@ Statistics is the study of how best to collect, analyze, and draw conclusions fr
 
 
 
-## Case Study: using stents to prevent strokes {#basic-stents-strokes}
+## Case study: using stents to prevent strokes {#basic-stents-strokes}
 
 \index{data!stroke|(}
 
-In this section we introduce a classic challenge in statistics: evaluating the efficacy of a medical treatment. 
+In this section, we introduce a classic challenge in statistics: evaluating the efficacy of a medical treatment. 
 Terms in this section, and indeed much of this chapter, will all be revisited later in the text. 
 The plan for now is simply to get a sense of the role statistics can play in practice.
 
-In this section we will consider an experiment that studies effectiveness of stents in treating patients at risk of stroke [@chimowitz2011stenting].
+Here, we will consider an experiment that studies effectiveness of stents in treating patients at risk of stroke [@chimowitz2011stenting].
 Stents are small mesh tubes that are placed inside narrow or weak arteries to assist in patient recovery after cardiac events and reduce the risk of an additional heart attack or death. 
 
 Many doctors have hoped that there would be similar benefits for patients at risk of stroke. We start by writing the principal question the researchers hope to answer:
@@ -31,10 +31,10 @@ Researchers randomly assigned 224 patients to the treatment group and 227 to the
 In this study, the control group provides a reference point against which we can measure the medical impact of stents in the treatment group.
 
 Researchers studied the effect of stents at two time points: 30 days after enrollment and 365 days after enrollment. 
-The results of 5 patients are summarized in Table \@ref(tab:stentStudyResultsDF). 
+The data collected on 5 of these patients are summarized in Table \@ref(tab:stentStudyResultsDF). 
 Patient outcomes are recorded as `stroke` or `no event`, representing whether or not the patient had a stroke during that time period.
 
-\BeginKnitrBlock{data}<div class="data">The data from this study can be found in the [openintro](http://openintrostat.github.io/openintro) package: [`stent30`](http://openintrostat.github.io/openintro/reference/stent30.html) and [`stent365`](http://openintrostat.github.io/openintro/reference/stent365.html).</div>\EndKnitrBlock{data}
+\BeginKnitrBlock{data}<div class="data">The `stent30` and `stent365` data sets from this study can be found in the [openintro](http://openintrostat.github.io/openintro/reference/index.html) package.</div>\EndKnitrBlock{data}
 
 <table>
 <caption>(\#tab:stentStudyResultsDF)Results for five patients from the stent study.</caption>
@@ -155,7 +155,7 @@ This is important for two reasons.
 First, it is contrary to what doctors expected, which was that stents would *reduce* the rate of strokes. 
 Second, it leads to a statistical question: do the data show a "real" difference between the groups?
 
-This second question is subtle. 
+This second question is subtle, and is the basis of what we call **statistical inference**. 
 Suppose you flip a coin 100 times. While the chance a coin lands heads in any given coin flip is 50%, we probably won't observe exactly 50 heads. 
 This type of fluctuation is part of almost any type of data generating process. 
 It is possible that the 8% difference in the stent study is due to this natural variation. 
@@ -177,13 +177,13 @@ However, this study does leave us with an important lesson: we should keep our e
 
 Effective presentation and description of data is a first step in most analyses. This section introduces one structure for organizing data as well as some terminology that will be used throughout this book.
 
-### Observations, variables, and data matrices
+### Observations, variables, and data frames
 
 \index{data!loan50|(}
 
 Table \@ref(tab:loan50DF) displays six rows of a data set for 50 randomly sampled loans offered through Lending Club, which is a peer-to-peer lending company. These observations will be referred to as the `loan50` data set.
 
-\BeginKnitrBlock{data}<div class="data">The data can be found in the [openintro](http://openintrostat.github.io/openintro) package: [`loan50`](http://openintrostat.github.io/openintro/reference/loan50.html).</div>\EndKnitrBlock{data}
+\BeginKnitrBlock{data}<div class="data">The `loan50` data can be found in the [openintro](http://openintrostat.github.io/openintro/reference/index.html) package.</div>\EndKnitrBlock{data}
 
 Each row in the table represents a single loan. 
 The formal name for a row is a **case** or \index{unit of observation}**observational unit**.
@@ -198,11 +198,11 @@ For example, the first row represents a loan of \$7,500 with an interest rate of
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">What is the grade of the first loan in Table \@ref(tab:loan50DF)?
 And what is the home ownership status of the borrower for that first loan?
-Reminder: for these Guided Practice questions, you can check your answer in the footnote.^[The loan's grade is A, and the borrower rents their residence.]</div>\EndKnitrBlock{guidedpractice}
+Reminder: for these Guided Practice questions, you can check your answer in the footnote.^[The loan's grade is B, and the borrower rents their residence.]</div>\EndKnitrBlock{guidedpractice}
 
 In practice, it is especially important to ask clarifying questions to ensure important aspects of the data are understood.
 For instance, it is always important to be sure we know what each variable means and its units of measurement.
-Descriptions of the variables in the `loan50` dataset are given in Table \@ref(tab:loan50Variables).
+Descriptions of the variables in the `loan50` data set are given in Table \@ref(tab:loan50Variables).
 
 <table>
 <caption>(\#tab:loan50DF)Six rows from the `loan50` data set</caption>
@@ -324,12 +324,12 @@ Descriptions of the variables in the `loan50` dataset are given in Table \@ref(t
 
 \index{data!loan50|)}
 
-The data in Table \@ref(tab:loan50DF) represent a **data frame**, which is a convenient and common way to organize data, especially if collecting data in a spreadsheet.
+The data in Table \@ref(tab:loan50DF) represent a **data frame**\index{data frame} (or data matrix), which is a convenient and common way to organize data, especially if collecting data in a spreadsheet.
 Each row of a data frame corresponds to a unique case (observational unit), and each column corresponds to a variable.
 
 
 
-When recording data, use a data matrix unless you have a very good reason to use a different structure.
+When recording data, use a data frame unless you have a very good reason to use a different structure.
 This structure allows new cases to be added as rows or new variables as new columns.
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">The grades for assignments, quizzes, and exams in a course are often recorded in a gradebook that takes the form of a data frame. 
@@ -338,11 +338,11 @@ How might you organize a course's grade data using a data frame?^[There are mult
 \index{data!county|(}
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">We consider data for 3,142 counties in the United States,
-which includes the name of each county, the state where it resides, its population in 2017, how its population changed from 2010 to 2017, poverty rate, and nine additional characteristics.
+which include the name of each county, the state where it resides, its population in 2017, how its population changed from 2010 to 2017, poverty rate, and nine additional characteristics.
 How might these data be organized in a data frame?^[Each county may be viewed as a case, and there are eleven pieces of information recorded for each case. A table with 3,142 rows and 14 columns could hold these data, where each row represents a county and each column represents a particular piece of information.]</div>\EndKnitrBlock{guidedpractice}
 
-The data described in the Guided Practice above represents the **county** data set, which is shown as a data frame in Table \@ref(tab:countyDF).
-The variables as well as the variables in the dataset that did not fit in Table \@ref(tab:countyDF) are described in Table \@ref(tab:countyVariables)
+The data described in the Guided Practice above represent the **county** data set, which is shown as a data frame in Table \@ref(tab:countyDF).
+The variables as well as the variables in the data set that did not fit in Table \@ref(tab:countyDF) are described in Table \@ref(tab:countyVariables)
 
 <table>
 <caption>(\#tab:countyDF)Six observations and six variables from the `county` data set.</caption>
@@ -480,7 +480,7 @@ The variables as well as the variables in the dataset that did not fit in Table 
 </tbody>
 </table>
 
-\BeginKnitrBlock{data}<div class="data">These data can be found in the [openintro](http://openintrostat.github.io/openintro) package: [`county`](http://openintrostat.github.io/openintro/reference/county.html).</div>\EndKnitrBlock{data}
+\BeginKnitrBlock{data}<div class="data">The `county` data can be found in the [openintro](http://openintrostat.github.io/openintro/reference/index.html) package.</div>\EndKnitrBlock{data}
 
 ### Types of variables {#variable-types}
 
@@ -546,11 +546,11 @@ A social scientist may like to answer some of the following questions:
 
 To answer these questions, data must be collected, such as the `county` data set shown in Table \@ref(tab:countyDF).
 Examining \index{summary statistic}**summary statistics** could provide insights for each of the three questions about counties.
-Additionally, graphs can be used to visually exploring the data.
+Additionally, graphs can be used to visually explore the data.
 
 \index{scatterplot}**Scatterplots** are one type of graph used to study the relationship between two quantitative variables.
-Figure \@ref(fig:county-multi-unit-homeownership) displays the relationship between the variables `homeownership` and `multi_unit`, which is the percent of units in multi-unit structures (e.g. apartments, condos).
-Each point on the plot represents a single county.
+Figure \@ref(fig:county-multi-unit-homeownership) displays the relationship between the variables `homeownership` and `multi_unit`, which is the percent of units in multi-unit structures (e.g., apartments, condos).
+Each point on the plot represents a single county (a single observational unit).
 For instance, the highlighted dot corresponds to County 413 in the `county` data set: Chattahoochee County, Georgia, which has 39.4\% of units in multi-unit structures and a homeownership rate of 31.3\%.
 The scatterplot suggests a relationship between the two variables: counties with a higher rate of multi-units tend to have lower homeownership rates.
 We might brainstorm as to why this relationship exists and investigate each idea to determine which are the most reasonable explanations.
@@ -1007,21 +1007,21 @@ of each chapter. There are times in the text when the concepts are not
 distinguishable from the software, and in those cases, we have have provided the
 `R` code within the main body of the chapter.
 
-We start with an introduction to `R`, focused on how datasets are structured in
+We start with an introduction to `R`, focused on how data sets are structured in
 `R` and how the user can work with a data object in `R`.
 
 ### Dataframes in `R`
 
-Throughout the text, we will work with many different datasets. Some datasets
-are pre-loaded into `R`, some get loaded through `R` packages, and some datasets
-will be created by the student. Datasets can be viewed through the RStudio
+Throughout the text, we will work with many different data sets. Some data sets
+are pre-loaded into `R`, some get loaded through `R` packages, and some data sets
+will be created by the student. data sets can be viewed through the RStudio
 environment, but the data can also be investigated through the notebook features
 of an RMarkdown file.
 
 Consider the \data{email50} data that was described previously in this chapter.  
-We can use the `glimpse()` function to see the variables included in the dataset
+We can use the `glimpse()` function to see the variables included in the data set
 and their data type. Or, we could use the `head()` function to see the first
-few rows of the dataset.
+few rows of the data set.
 
 
 ```r
@@ -1071,7 +1071,7 @@ head(email50)
 ```
 
 Sometimes it is necessary to extract a column or a row from a data set. 
-In `R`, the `$` operator can be used to extract a column from a dataset. 
+In `R`, the `$` operator can be used to extract a column from a data set. 
 For example, `data$variable` would extract the `variable` column from the `data` dataframe.
 When extracted, these columns can be thought of as vectors. With these vectors, if you desired to pull off a specific entry, you could use square brackets (`[ ]`), with the index (number) of the entry you wish to extract in the brackets. 
 For example, `data$variable[2]` would extract the second entry (row) of the `variable` column. 
@@ -1095,7 +1095,7 @@ email50[47,3]
 ```
 
 <table>
-<caption>(\#tab:ca)Data from the 47th row of the email dataset.</caption>
+<caption>(\#tab:ca)Data from the 47th row of the email data set.</caption>
  <thead>
   <tr>
    <th style="text-align:right;"> spam </th>
@@ -1193,7 +1193,7 @@ Consider the \data{hsb2} data, High School and Beyond survey.
 Two hundred observations were randomly sampled from the High School and Beyond survey, a survey conducted on high school seniors by the National Center of Education Statistics.
 Of interest is the proportion of students at each of the two types of school, `public` and `privaate`.
 
-We use the `table` command to tabulate how many of each type of school are in the dataset.  Notice that the same result is produced by the `$` command with `table` and the chaining syntax done with `%>%`.
+We use the `table` command to tabulate how many of each type of school are in the data set.  Notice that the same result is produced by the `$` command with `table` and the chaining syntax done with `%>%`.
 
 <div style="float: left; width: 49.5%;">
 
@@ -1222,7 +1222,7 @@ hsb2 %>%
 What if we are interested only in `public` schools?  
 First, we should take note of another piece of `R` syntax: the double equal sign. 
 This is the logical test for “is equal to”. 
-In other words, we first determine if school type is equal to public for each of the observations in the dataset and filter for those where this is true.
+In other words, we first determine if school type is equal to public for each of the observations in the data set and filter for those where this is true.
 
 
 ```r

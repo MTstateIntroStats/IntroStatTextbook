@@ -12,11 +12,7 @@
 
 - Visualization of higher-dimensional models (rgl demo)
 
-## Logistic regression
 
-- Binary vs. num/whatever
-- Three scales interpretation (e.g. probability, odds, log-odds)
-- “parallel” logistic curves? 
 
 ## Chapter 4 review {#chp4-review}
 

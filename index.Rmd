@@ -17,19 +17,19 @@ We hope readers will take away three ideas from this book in addition to forming
 
 1. Statistics is an applied field with a wide range of practical applications.
 2. You don't have to be a math guru to learn from interesting, real data.
-3. Data are messy, and statistical tools are imperfect. However, when you understand the strengths and weaknesses of these tools, you can use them to learn interesting things about the~world.
+3. Data are messy, and statistical tools are imperfect. However, when you understand the strengths and weaknesses of these tools, you can use them to learn interesting things about the world.
 
 
 ## Textbook overview {-}
 
-1. **Introduction to data.** Data structures, variables, summaries, graphics, and basic data collection techniques.
-2. **Exploratory data analysis.** Data visualization and summarisation, with a taste of probability.
-3. **Correlation and regression.** Visualising relationships between many variables and descriptive summaries for quantifying the relationship between two variables.
-4. **Multiple regression.** Descriptive summaries for quantifying the relationship between two variables.
+1. **Introduction to data.** Data structures, variables, and basic data collection techniques.
+2. **Exploratory data analysis.** Data visualization and summarisation for one and two variables, with a taste of probability.
+3. **Correlation and regression.** Visualizing, describing, and quantifying relationships between two quantitative variables.
+4. **Multiple regression.** Descriptive summaries for quantifying the relationship between many variables.
 5. **Foundations for inference.** Case studies are used to introduce the ideas of statistical inference with randomization and simulations. 
-6. **Inference for categorical data.** Inference for proportions using simulation and randomization techniques as well as the normal and chi-square distributions.
-7. **Inference for numerical data.** Inference for one or two sample means using simulation and randomization techniques as well as the normal and F distributions.
-8. **Inference for regression.** Extending inference techniques presented thus-far to regression settings.
+6. **Inference for categorical data.** Inference for one or two proportions using simulation and randomization techniques as well as the normal distribution.
+7. **Inference for numerical data.** Inference for one or two means using simulation and randomization techniques as well as the $t$-distribution.
+8. **Inference for regression.** Inference for a regression slope or correlation using simulation and randomization techniques as well as the $t$-distribution.
 
 
 ## Acknowledgements {-}

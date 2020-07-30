@@ -1,25 +1,8 @@
 # Inference for regression {#inference-reg}
 
-\BeginKnitrBlock{uptohere}<div class="uptohere">The content in this chapter is currently just placeholder. We will remove this banner once the chapter content has been updated and ready for review.</div>\EndKnitrBlock{uptohere}
+- Randomization for slope/correlation
+- t-distribution for regression coefficients - test/CI
 
-## Inference for linear regression
-
-- Randomization
-- Bootstrap for regression coefficients
-- t-distribution for regression coefficients
-- Model Comparison: Occam’s Razor and $R^2 > R^2_{adj}$
-
-## Checking model assumptions using graphs
-
-- L-I-N-E
-
-## Inference for multiple regression
-
-- residuals vs. fitted instead of residuals vs. x
-
-## Inference for logistic regression
-
-- t-dist only
 
 ## Chapter 8 review {#chp8-review}
 

@@ -467,12 +467,12 @@ on 3,921 emails. In this section, we will examine whether the
 presence of numbers, small or large, in an email provides any
 useful value in classifying email as spam or not spam.
 
-### Contingency tables and bar plots
+### Contingency tables and conditional proportions
 
-<span style='color: red;'>-one cat variable plot
+- One-way and Two-way/contingency tables 
 - Define frequencies/counts and relative frequencies/proportions
-- Two-way/contingency tables 
-- Bayes theorem with tables and trees - conditional vs unconditional probabilities</span>
+- association vs no association in conditional proportions
+- Bayes theorem with tables and trees - conditional vs unconditional probabilities
 
 Table \@ref(tab:emailTable) summarizes two variables:
 `Type` (spam or not spam) and `Number`. `Number` is a
@@ -551,8 +551,11 @@ the table would be called a **relative frequency table**.
 </tbody>
 </table>
 
-#### Segmented bar and mosaic plots
-- two cat plot
+### Bar plots and mosaic plots
+- one cat bar plot
+- two cat bar plot
+- two cat mosaic plot
+- association vs no association in bar plots
 
 ### Why not pie charts?
 

@@ -2,7 +2,7 @@ bookdown::gitbook:
   css: css/style.css
   config:
     toc:
-      collapse: section
+      collapse: subsection
       before: |
         <li><a href="./">MSU Intro Stat with R</a></li>
     download: ["pdf", "epub"]
