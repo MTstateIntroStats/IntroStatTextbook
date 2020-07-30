@@ -164,10 +164,11 @@ So what we are really asking is the following: is the difference so large that w
 
 While we don't yet have our statistical tools to fully address this question on our own, we can comprehend the conclusions of the published analysis: there was compelling evidence of harm by stents in this study of stroke patients.
 
-**Be careful:** Do not generalize the results of this study to all patients and all stents.
+\BeginKnitrBlock{importantbox}<div class="importantbox">**Be careful.**
+Do not generalize the results of this study to all patients and all stents.
 This study looked at patients with very specific characteristics who volunteered to be a part of this study and who may not be representative of all stroke patients.
 In addition, there are many types of stents and this study only considered the self-expanding Wingspan stent (Boston Scientific).
-However, this study does leave us with an important lesson: we should keep our eyes open for surprises.
+However, this study does leave us with an important lesson: we should keep our eyes open for surprises.</div>\EndKnitrBlock{importantbox}
 
 \index{data!stroke|)}
 
@@ -592,9 +593,9 @@ That is, two variables are independent if there is no evident relationship betwe
 
 
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Associated or independent, not both.**
+\BeginKnitrBlock{importantbox}<div class="importantbox">**Associated or independent, not both.**
 A pair of variables are either related in some way (associated) or not (independent).
-No pair of variables is both associated and independent.</div>\EndKnitrBlock{onebox}
+No pair of variables is both associated and independent.</div>\EndKnitrBlock{importantbox}
 
 ### Explanatory and response variables
 
@@ -644,8 +645,8 @@ See the case study in Section \@ref(basic-stents-strokes) for another example of
 
 
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Association $\neq$ Causation.**
-In general, association does not imply causation, and causation can only be inferred from a randomized experiment.</div>\EndKnitrBlock{onebox}
+\BeginKnitrBlock{importantbox}<div class="importantbox">**Association $\neq$ Causation.**
+In general, association does not imply causation, and causation can only be inferred from a randomized experiment.</div>\EndKnitrBlock{importantbox}
 
 
 ## Sampling principles and strategies {#sampling-principles-strategies}

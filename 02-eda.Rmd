@@ -293,8 +293,8 @@ terms_chp_2 <- c(terms_chp_2, "tail", "right skewed", "left skewed", "symmetric"
 
 ```{block2, type="onebox", echo=TRUE}
 When data trail off in one direction, the distribution has a **long tail**.
-If a distribution has a long left tail, it is left skewed.
-If a distribution has a long right tail, it is right skewed.
+If a distribution has a long left tail, it is **left skewed** or **negatively skewed**.
+If a distribution has a long right tail, it is **right skewed** or **positively skewed**.
 ```
 
 ```{block2, type="guidedpractice", echo=TRUE}
@@ -425,7 +425,7 @@ $Q_3 + 1.5\times IQR$, and so it extends only to the last point below this limit
 The lower whisker stops at the lowest value, 33, since there is no additional data
 to reach; the lower whisker's limit is not shown in the figure because the plot does not extend down to $Q_1 - 1.5\times IQR$. In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data.
 
-```{block2, type="tip", echo=TRUE}
+```{block2, type="protip", echo=TRUE}
 The whiskers extend to actual data points---not the limits for outliers. That is,
 the values $Q_1 - 1.5\times IQR$ and $Q_3 + 1.5\times IQR$ should not be shown
 on the plot.
@@ -448,7 +448,7 @@ terms_chp_2 <- c(terms_chp_2,"outlier")
 ```
 
 
-```{block2, type="tip", echo=TRUE}
+```{block2, type="protip", echo=TRUE}
 Examination of data for possible outliers serves many useful purposes, including:
   
 * Identifying strong skewness in the distribution

@@ -249,8 +249,8 @@ Data sets with the reverse characteristic -- a long, thinner tail to the left --
 
 
 \BeginKnitrBlock{onebox}<div class="onebox">When data trail off in one direction, the distribution has a **long tail**.
-If a distribution has a long left tail, it is left skewed.
-If a distribution has a long right tail, it is right skewed.</div>\EndKnitrBlock{onebox}
+If a distribution has a long left tail, it is **left skewed** or **negatively skewed**.
+If a distribution has a long right tail, it is **right skewed** or **positively skewed**.</div>\EndKnitrBlock{onebox}
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Besides the mean (since it was labeled), what can you see in the dot plot in Figure \@ref(fig:loan-int-rate-dotplot) that you cannot see in the histogram in Figure \@ref(fig:loan50IntRateHist)?^[The interest rates for individual loans.]</div>\EndKnitrBlock{guidedpractice}
 
@@ -340,9 +340,9 @@ $Q_3 + 1.5\times IQR$, and so it extends only to the last point below this limit
 The lower whisker stops at the lowest value, 33, since there is no additional data
 to reach; the lower whisker's limit is not shown in the figure because the plot does not extend down to $Q_1 - 1.5\times IQR$. In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data.
 
-\BeginKnitrBlock{tip}<div class="tip">The whiskers extend to actual data points---not the limits for outliers. That is,
+\BeginKnitrBlock{protip}<div class="protip">The whiskers extend to actual data points---not the limits for outliers. That is,
 the values $Q_1 - 1.5\times IQR$ and $Q_3 + 1.5\times IQR$ should not be shown
-on the plot.</div>\EndKnitrBlock{tip}
+on the plot.</div>\EndKnitrBlock{protip}
 
 Any observation that lies beyond the whiskers is labeled with a dot. The purpose of 
 labeling these points---instead of just extending the whiskers to the minimum and 
@@ -357,11 +357,11 @@ since they are numerically distant from most of the data.
 \BeginKnitrBlock{onebox}<div class="onebox">**Outliers are extreme.** An outlier is an observation that is extreme, relative to the rest of the data.</div>\EndKnitrBlock{onebox}
 
 
-\BeginKnitrBlock{tip}<div class="tip">Examination of data for possible outliers serves many useful purposes, including:
+\BeginKnitrBlock{protip}<div class="protip">Examination of data for possible outliers serves many useful purposes, including:
   
 * Identifying strong skewness in the distribution
 * Identifying data collection or entry errors. For instance, we re-examined the email purported to have 64.401 characters to ensure this value was accurate.
-* Providing insight into interesting properties of the data.</div>\EndKnitrBlock{tip}
+* Providing insight into interesting properties of the data.</div>\EndKnitrBlock{protip}
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">The observation 64.401, an outlier, was found to be an accurate observation.
 What would such an observation suggest about the nature of character counts in 

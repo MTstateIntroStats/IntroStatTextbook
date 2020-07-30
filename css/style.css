@@ -1,3 +1,24 @@
+.protip {
+  padding: 1em 1em 1em 4em;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background: #f5f5f5 5px center/3em no-repeat;
+  border-top: 1px solid #569BBD;    /* openintro::COL[1,1] */
+  border-bottom: 1px solid #569BBD; /* openintro::COL[1,1] */
+  background-image: url("../images/protip.png");
+}
+
+.protip:before {
+  content: "Pro Tip:";
+  clear: right;
+  display: block;
+  font-weight: bold;
+  font-variant: small-caps;
+  color: #569BBD;
+}
+
+/* COPY AND PASTE BELOW FROM IMS REPO
+
 /* From bookdown example */
 /* https://bookdown.org/yihui/bookdown/custom-blocks.html */
 /* https://github.com/rstudio/bookdown/blob/3bb46f4d29c64789d94fdb4cf5692c46c86c73c4/inst/examples/css/style.css#L1-L20 */
@@ -34,8 +55,8 @@
   padding: 1em 1em 1em 3em;
   margin-bottom: 10px;
   background: #f5f5f5 5px center/3em no-repeat;
-  border-top: 6px solid #569BBD;    /* openintro::COL[1,1] */ 
-  border-bottom: 2px solid #569BBD; /* openintro::COL[1,1] */ 
+  border-top: 6px solid #569BBD;    /* openintro::COL[1,1] */
+  border-bottom: 2px solid #569BBD; /* openintro::COL[1,1] */
 }
 
 .guidedpractice {
@@ -43,8 +64,8 @@
   margin-top: 30px;
   margin-bottom: 30px;
   background: #f5f5f5 5px center/3em no-repeat;
-  border-top: 1px solid #569BBD;    /* openintro::COL[1,1] */ 
-  border-bottom: 1px solid #569BBD; /* openintro::COL[1,1] */ 
+  border-top: 1px solid #569BBD;    /* openintro::COL[1,1] */
+  border-bottom: 1px solid #569BBD; /* openintro::COL[1,1] */
   background-image: url("../images/guided_practice.png");
 }
 
@@ -62,8 +83,8 @@
   margin-top: 30px;
   margin-bottom: 30px;
   background: #f5f5f5 5px center/3em no-repeat;
-  border-top: 1px solid #569BBD;    /* openintro::COL[1,1] */ 
-  border-bottom: 1px solid #569BBD; /* openintro::COL[1,1] */ 
+  border-top: 1px solid #569BBD;    /* openintro::COL[1,1] */
+  border-bottom: 1px solid #569BBD; /* openintro::COL[1,1] */
   background-image: url("../images/example.png");
 }
 
@@ -81,8 +102,8 @@
   margin-top: 30px;
   margin-bottom: 30px;
   background: #f5f5f5 5px center/3em no-repeat;
-  border-top: 1px solid #569BBD;    /* openintro::COL[1,1] */ 
-  border-bottom: 1px solid #569BBD; /* openintro::COL[1,1] */ 
+  border-top: 1px solid #569BBD;    /* openintro::COL[1,1] */
+  border-bottom: 1px solid #569BBD; /* openintro::COL[1,1] */
 }
 
 .onebox strong {
@@ -94,8 +115,8 @@
   margin-bottom: 30px;
   margin-top: 30px;
   background: #f5f5f5 5px center/3em no-repeat;
-  border-top: 1px solid #D9D9D9;    /* openintro::COL[1,1] */ 
-  border-bottom: 1px solid #D9D9D9; /* openintro::COL[1,1] */ 
+  border-top: 1px solid #D9D9D9;    /* openintro::COL[1,1] */
+  border-bottom: 1px solid #D9D9D9; /* openintro::COL[1,1] */
 }
 
 .data:before {
@@ -108,8 +129,8 @@
   margin-bottom: 30px;
   margin-top: 30px;
   background: #f5f5f5 5px center/3em no-repeat;
-  border-top: 1px solid #D9D9D9;    /* openintro::COL[1,1] */ 
-  border-bottom: 1px solid #D9D9D9; /* openintro::COL[1,1] */ 
+  border-top: 1px solid #D9D9D9;    /* openintro::COL[1,1] */
+  border-bottom: 1px solid #D9D9D9; /* openintro::COL[1,1] */
 }
 
 .pronunciation:before {
@@ -176,7 +197,7 @@ blockquote > p:first-child {
 }
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
-  color: #569BBD; /* openintro::COL[1,1] */ 
+  color: #569BBD; /* openintro::COL[1,1] */
 }
 h1.title {
   font-weight: 700;

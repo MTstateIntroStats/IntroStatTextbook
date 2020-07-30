@@ -138,10 +138,13 @@ So what we are really asking is the following: is the difference so large that w
 
 While we don't yet have our statistical tools to fully address this question on our own, we can comprehend the conclusions of the published analysis: there was compelling evidence of harm by stents in this study of stroke patients.
 
-**Be careful:** Do not generalize the results of this study to all patients and all stents.
+```{block2, type="importantbox", echo=TRUE}
+**Be careful.**
+Do not generalize the results of this study to all patients and all stents.
 This study looked at patients with very specific characteristics who volunteered to be a part of this study and who may not be representative of all stroke patients.
 In addition, there are many types of stents and this study only considered the self-expanding Wingspan stent (Boston Scientific).
 However, this study does leave us with an important lesson: we should keep our eyes open for surprises.
+```
 
 \index{data!stroke|)}
 
@@ -442,7 +445,7 @@ That is, two variables are independent if there is no evident relationship betwe
 terms_chp_1 <- c(terms_chp_1, "independent")
 ```
 
-```{block2, type="onebox", echo=TRUE}
+```{block2, type="importantbox", echo=TRUE}
 **Associated or independent, not both.**
 A pair of variables are either related in some way (associated) or not (independent).
 No pair of variables is both associated and independent.
@@ -504,7 +507,7 @@ See the case study in Section \@ref(basic-stents-strokes) for another example of
 terms_chp_1 <- c(terms_chp_1, "experiment", "randomized experiment", "placebo")
 ```
 
-```{block2, type="onebox", echo=TRUE}
+```{block2, type="importantbox", echo=TRUE}
 **Association $\neq$ Causation.**
 In general, association does not imply causation, and causation can only be inferred from a randomized experiment.
 ```
