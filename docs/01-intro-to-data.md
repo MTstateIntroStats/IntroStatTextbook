@@ -1,7 +1,7 @@
 # Introduction to data {#intro-to-data}
 
 \BeginKnitrBlock{chapterintro}<div class="chapterintro">Scientists seek to answer questions using rigorous methods and careful observations. 
-These observations -- collected from the likes of field notes, surveys, and experiments -- form the backbone of a statistical investigation and are called **data**. 
+These observations---collected from the likes of field notes, surveys, and experiments---form the backbone of a statistical investigation and are called **data**. 
 Statistics is the study of how best to collect, analyze, and draw conclusions from data, and in this first chapter, we focus on both the properties of data and on the collection of data.</div>\EndKnitrBlock{chapterintro}
 
 
@@ -526,7 +526,7 @@ Classify each of the variables as continuous quantitative, discrete quantitative
 The number of siblings and student height represent quantitative variables.
 Because the number of siblings is a count, it is discrete.
 Height varies continuously, so it is a continuous quantitative variable.
-The last variable classifies students into two categories -- those who have and those who have not taken a statistics course -- which makes this variable categorical.</div>\EndKnitrBlock{example}
+The last variable classifies students into two categories---those who have and those who have not taken a statistics course---which makes this variable categorical.</div>\EndKnitrBlock{example}
 
 \index{data!stroke}
 
@@ -583,7 +583,7 @@ While this trend isn't true for every county, the trend in the plot is evident. 
 <p class="caption">(\#fig:county-pop-change-med-hh-income)A scatterplot showing `pop_change` against `median_hh_income`. Owsley County of Kentucky, is highlighted, which lost 3.63% of its population from 2010 to 2017 and had median household income of $22,736.</p>
 </div>
 
-Because there is a downward trend in Figure \@ref(fig:county-multi-unit-homeownership) -- counties with more units in multi-unit structures are associated with lower homeownership -- these variables are said to be **negatively associated**.
+Because there is a downward trend in Figure \@ref(fig:county-multi-unit-homeownership)---counties with more units in multi-unit structures are associated with lower homeownership---these variables are said to be **negatively associated**.
 A **positive association** is shown in the relationship between the `median_hh_income` and `pop_change` variables in Figure \@ref(fig:county-pop-change-med-hh-income), where counties with higher median household income tend to have higher rates of population growth.
 
 
@@ -664,7 +664,7 @@ Consider the following three research questions:
 
 1. What is the average mercury content in swordfish in the Atlantic Ocean?
 1. Over the last 5 years, what is the average time to complete a degree for Duke undergrads?
-1. Does a new drug reduce the number of deaths in patients with severe heart disease?
+1. Does a new drug reduce the risk deaths in patients with severe heart disease?
 
 Each research question refers to a target **population**. 
 In the first question, the target population is all swordfish in the Atlantic ocean, and each fish represents a case. 
@@ -695,9 +695,9 @@ Second, and more importantly, it is unclear whether these cases are actually rep
 
 
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Anecdotal evidence.**
+\BeginKnitrBlock{importantbox}<div class="importantbox">**Anecdotal evidence.**
 Be careful of data collected in a haphazard fashion.
-Such evidence may be true and verifiable, but it may only represent extraordinary cases.</div>\EndKnitrBlock{onebox}
+Such evidence may be true and verifiable, but it may only represent extraordinary cases.</div>\EndKnitrBlock{importantbox}
 
 <div class="figure" style="text-align: center">
 <img src="01/images/mn-winter/mn-winter.jpg" alt="In February 2010, some media pundits cited one large snow storm as evidence against global warming. As comedian Jon Stewart pointed out, &quot;It is one storm, in one region, of one country.&quot;" width="80%" />
@@ -722,8 +722,8 @@ The selected names would represent a random sample of 100 graduates.
 We pick samples randomly to reduce the chance we introduce biases.
 
 <div class="figure" style="text-align: center">
-<img src="01-intro-to-data_files/figure-html/pop-to-sample-1.png" alt="In this graphic, five graduates are randomly selected from the population to be included in the sample." width="70%" />
-<p class="caption">(\#fig:pop-to-sample)In this graphic, five graduates are randomly selected from the population to be included in the sample.</p>
+<img src="01-intro-to-data_files/figure-html/pop-to-sample-1.png" alt="In this graphic, five graduates are randomly selected from the population (all graduates in the last 5 years) to be included in the sample." width="70%" />
+<p class="caption">(\#fig:pop-to-sample)In this graphic, five graduates are randomly selected from the population (all graduates in the last 5 years) to be included in the sample.</p>
 </div>
 
 \BeginKnitrBlock{example}<div class="example">Suppose we ask a student who happens to be majoring in nutrition to select several graduates for the study.
@@ -743,32 +743,47 @@ When selecting samples by hand, we run the risk of picking a **biased** sample, 
 </div>
 
 If someone was permitted to pick and choose exactly which graduates were included in the sample, it is entirely possible that the sample could be skewed to that person's interests, which may be entirely unintentional.
-This introduces **bias** into a sample. Sampling randomly helps resolve this problem.
+This introduces **bias** into a sampling method. 
+
+
+
+\BeginKnitrBlock{onebox}<div class="onebox">There are three common types of **sampling bias** we will discuss:
+
+1. **Selection bias**\index{selection bias}: the method in how your sample is selected tends to produce samples that either over-represent or under-represent certain portions of the population.
+1. **Non-response bias**\index{non-response bias}: individuals selected for the sample are unwilling or cannot respond.
+1. **Response bias**\index{response bias}: individuals selected for the sample respond in a way that does not accurately represent the truth---due to question wording, lack of anonymity, or other issues.</div>\EndKnitrBlock{onebox}
+
+A common downfall in survey studies is a **convenience sample**\index{convenience sample}, where individuals who are easily accessible are more likely to be included in the sample.
+For instance, if a political survey is done by stopping people walking in the Bronx, this will not represent all of New York City.
+It is often difficult to discern what sub-population a convenience sample represents.
+
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Is a convenience sample an example of selection bias, non-response bias,
+or response bias?^[A convenience sample is an example of selection bias, because the
+                   way in which the sample is _selected_ is biased.]</div>\EndKnitrBlock{guidedpractice}
+
+Sampling randomly helps resolve _selection bias_.
 The most basic random sample is called a **simple random sample**, and is equivalent to using a raffle to select cases.
 This means that each case in the population has an equal chance of being included and there is no implied connection between the cases in the sample.
 
 
 
-The act of taking a simple random sample helps minimize bias.
-However, bias can crop up in other ways.
-Even when people are picked at random, e.g. for surveys, caution must be exercised if the **non-response rate**\index{non-response rate} is high.
+Even when people are picked at random, however, caution must be exercised if the **non-response rate**\index{non-response rate} is high, or if **response bias** is present.
 For instance, if only 30\% of the people randomly sampled for a survey actually respond, then it is unclear whether the results are **representative** of the entire population.
-This **non-response bias**\index{non-response bias} can skew results.
+This *non-response bias* can produce results in the sample that do not accurately reflect the entire population.
 
 
 
 <div class="figure" style="text-align: center">
-<img src="01-intro-to-data_files/figure-html/survey-sample-1.png" alt="Due to the possibility of non-response, surveys studies may only reach a certain group within the population. It is difficult, and often times impossible, to completely fix this problem." width="70%" />
-<p class="caption">(\#fig:survey-sample)Due to the possibility of non-response, surveys studies may only reach a certain group within the population. It is difficult, and often times impossible, to completely fix this problem.</p>
+<img src="01-intro-to-data_files/figure-html/survey-sample-1.png" alt="Due to the possibility of non-response, survey studies may only reach a certain group within the population. It is difficult, and often times impossible, to completely fix this problem." width="70%" />
+<p class="caption">(\#fig:survey-sample)Due to the possibility of non-response, survey studies may only reach a certain group within the population. It is difficult, and often times impossible, to completely fix this problem.</p>
 </div>
 
-Another common downfall is a **convenience sample** \index{convenience sample}, where individuals who are easily accessible are more likely to be included in the sample.
-For instance, if a political survey is done by stopping people walking in the Bronx, this will not represent all of New York City.
-It is often difficult to discern what sub-population a convenience sample represents.
+\BeginKnitrBlock{onebox}<div class="onebox">**Asking the uninformed.** Popular late night host Jimmy Kimmel has a segment on his show called "Lie Witness News," where Kimmel's staff take to the streets to ask pedestrians about recent stories in the news. However, these recent stories are not really stories at all---they're fake. Without fail, those asked always express an opinion, unflinchingly. Why? People do not like to appear as if they don't know what they're talking about, so we make up answers. For an entertaining display of this fascinating psychological example of response bias, watch the [Coachella 2013 episode of Lie Witness News](https://www.youtube.com/watch?v=W_IzYUJANfk). </div>\EndKnitrBlock{onebox}
 
 
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">We can easily access ratings for products, sellers, and companies through websites. These ratings are based only on those people who go out of their way to provide a rating. If 50% of online reviews for a product are negative, do you think this means that 50% of buyers are dissatisfied with the product? Why or why not?^[Answers will vary. From our own anecdotal experiences, we believe people tend to rant more about products that fell below expectations than rave about those that perform as expected. For this reason, we suspect there is a negative bias in product ratings on sites like Amazon. Additionally, those with strong opinions (positive or negative) are more inclined to take the time to write a review. However, since our experiences may not be representative, we also keep an open mind.]</div>\EndKnitrBlock{guidedpractice}
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">We can easily access ratings for products, sellers, and companies through websites. These ratings are based only on those people who go out of their way to provide a rating. If 50% of online reviews for a product are negative, do you think this means that 50% of buyers are dissatisfied with the product? Why or why not?^[Answers will vary. From our own anecdotal experiences, we believe people tend to rant more about products that fell below expectations than rave about those that perform as expected. For this reason, we suspect there is a negative bias in product ratings on sites like Amazon. However, since our experiences may not be representative, we also keep an open mind.]</div>\EndKnitrBlock{guidedpractice}
+
 
 \index{sample!bias|)}
 \index{sample!random sample|)}
@@ -776,56 +791,11 @@ It is often difficult to discern what sub-population a convenience sample repres
 \index{population|)}
 \index{sample|)}
 
-### Observational studies
 
-Data where no treatment has been explicitly applied (or explicitly withheld) is called **observational data**.
-For instance, the loan data and county data described in Section \@ref(data-basics) are both examples of observational data.
-
-
-
-Making causal conclusions based on experiments is often reasonable.
-However, making the same causal conclusions based on observational data can be treacherous and is not recommended.
-Thus, observational studies are generally only sufficient to show associations or form hypotheses that can be later checked with experiments.
-
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Suppose an observational study tracked sunscreen use and skin cancer, and it was found that the more sunscreen someone used, the more likely the person was to have skin cancer. Does this mean sunscreen *causes* skin cancer?^[No. See the paragraph following the exercise for an explanation.]</div>\EndKnitrBlock{guidedpractice}
-
-Some previous research tells us that using sunscreen actually reduces skin cancer risk, so maybe there is another variable that can explain this hypothetical association between sunscreen usage and skin cancer. 
-One important piece of information that is absent is sun exposure. If someone is out in the sun all day, they are more likely to use sunscreen *and* more likely to get skin cancer. Exposure to the sun is unaccounted for in the simple investigation.
-
-<img src="01-intro-to-data_files/figure-html/sun-causes-cancer-1.png" width="70%" style="display: block; margin: auto;" />
-
-<!--
-Some studies:
-http://www.sciencedirect.com/science/article/pii/S0140673698121682
-http://archderm.ama-assn.org/cgi/content/abstract/122/5/537
-Study with a similar scenario to that described here:
-http://onlinelibrary.wiley.com/doi/10.1002/ijc.22745/full
--->
-
-Sun exposure is what is called a **confounding variable**^[Also called a **lurking variable**, **confounding factor**, or a **confounder**.], which is a variable that is associated with both the explanatory and response variables. 
-While one method to justify making causal conclusions from observational studies is to exhaust the search for confounding variables, there is no guarantee that all confounding variables can be examined or measured.
-
-
-
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Figure \@ref(fig:county-multi-unit-homeownership) shows a negative association between the homeownership rate and the percentage of multi-unit structures in a county.
-However, it is unreasonable to conclude that there is a causal relationship between the two variables.
-Suggest a variable that might explain the negative relationship.^[Answers will vary. Population density may be important. If a county is very dense, then this may require a larger fraction of residents to live in multi-unit structures. Additionally, the high density may contribute to increases in property value, making homeownership infeasible for many residents.]</div>\EndKnitrBlock{guidedpractice}
-
-Observational studies come in two forms: prospective and retrospective studies.
-A **prospective study** identifies individuals and collects information as events unfold.
-For instance, medical researchers may identify and follow a group of patients over many years to assess the possible influences of behavior on cancer risk. 
-One example of such a study is The Nurses' Health Study. 
-Started in 1976 and expanded in 1989, the Nurses' Health Study has collected data on over 275,000 nurses and is still enrolling participants. 
-This prospective study recruits registered nurses and then collects data from them using questionnaires. 
-**Retrospective studies** collect data after events have taken place, e.g. researchers may review past events in medical records.
-Some data sets may contain both prospectively- and retrospectively-collected variables, such as medical studies which gather information on participants' lives before they enter the study and subsequently collect data on participants throughout the study. 
-
-
-
-### Four sampling methods
+### Four sampling methods (special topic)
 
 Almost all statistical methods are based on the notion of implied randomness. 
-If observational data are not collected in a random framework from a population, these statistical methods -- the estimates and errors associated with the estimates -- are not reliable. 
+If observational data are not collected in a random framework from a population, these statistical methods---the estimates and errors associated with the estimates---are not reliable. 
 Here we consider four random sampling techniques: simple, stratified, cluster, and multistage sampling. Figures \@ref(fig:simple-stratified) and \@ref(fig:cluster-multistage) provide graphical representations of these techniques.
 
 \index{sample!simple random sampling}
@@ -852,7 +822,7 @@ Then we might randomly sample 4 players from each team for our sample of 120 pla
 
 
 
-**Stratified sampling** is especially useful when the cases in each stratum are very similar with respect to the outcome of interest. 
+Stratified sampling is especially useful when the cases in each stratum are very similar with respect to the outcome of interest. 
 The downside is that analyzing data from a stratified sample is a more complex task than analyzing data from a simple random sample. 
 The analysis methods introduced in this book would need to be extended to analyze data collected using stratified sampling.
 
@@ -894,6 +864,59 @@ Stratified sampling would be a challenge since it is unclear how we would build 
 However, cluster sampling or multistage sampling seem like very good ideas. 
 If we decided to use multistage sampling, we might randomly select half of the villages, then randomly select 10 people from each. 
 This would probably reduce our data collection costs substantially in comparison to a simple random sample, and the cluster sample would still give us reliable information, even if we would need to analyze the data with slightly more advanced methods than we discuss in this book.</div>\EndKnitrBlock{example}
+
+
+## Observational studies
+
+Data where no treatment has been explicitly applied (or explicitly withheld) is called **observational data**.
+For instance, the loan data and county data described in Section \@ref(data-basics) are both examples of observational data.
+
+
+
+O bservational studies are generally only sufficient to show associations or form hypotheses that can be later checked with experiments. Making causal conclusions based on experiments is often reasonable. However, making the same causal conclusions based on observational data can be treacherous and is not recommended. Indeed, making causal conclusions based on observational data is arguably the most common mistake in our news headlines and social media posts!
+
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Suppose an observational study tracked sunscreen use and skin cancer, and it was found that the more sunscreen someone used, the more likely the person was to have skin cancer. Does this mean sunscreen *causes* skin cancer?^[No! See the paragraph following this guided practice for an explanation.]</div>\EndKnitrBlock{guidedpractice}
+
+Some previous research tells us that using sunscreen actually reduces skin cancer risk, so maybe there is another variable that can explain this hypothetical association between sunscreen usage and skin cancer. 
+One important piece of information that is absent is sun exposure. If someone is out in the sun all day, they are more likely to use sunscreen *and* more likely to get skin cancer. Exposure to the sun is unaccounted for in the simple investigation.
+
+<img src="01-intro-to-data_files/figure-html/sun-causes-cancer-1.png" width="70%" style="display: block; margin: auto;" />
+
+<!--
+Some studies:
+http://www.sciencedirect.com/science/article/pii/S0140673698121682
+http://archderm.ama-assn.org/cgi/content/abstract/122/5/537
+Study with a similar scenario to that described here:
+http://onlinelibrary.wiley.com/doi/10.1002/ijc.22745/full
+-->
+
+Sun exposure is what is called a **confounding variable**^[Also called a **lurking variable**, **confounding factor**, or a **confounder**.], which is a variable that is associated with both the explanatory and response variables. 
+While one method to justify making causal conclusions from observational studies is to exhaust the search for confounding variables, there is no guarantee that all confounding variables can be examined or measured.
+
+\BeginKnitrBlock{onebox}<div class="onebox">A **confounding variable** is a variable that is _both_
+
+1. associated with the explanatory variable, _and_
+2. associated with the response variable.
+
+When both these conditions are met, if we observe an association between the explanatory variable and the response variable in the data, we cannot be sure if this association is due to the explanatory variable or the confounding variable---the explanatory and confounding variables are "confounded."</div>\EndKnitrBlock{onebox}
+
+
+
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Figure \@ref(fig:county-multi-unit-homeownership) shows a negative association between the homeownership rate and the percentage of multi-unit structures in a county.
+However, it is unreasonable to conclude that there is a causal relationship between the two variables.
+Suggest a variable that might explain the negative relationship.^[Answers will vary. Population density may be important. If a county is very dense, then this may require a larger fraction of residents to live in multi-unit structures. Additionally, the high density may contribute to increases in property value, making homeownership infeasible for many residents.]</div>\EndKnitrBlock{guidedpractice}
+
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Houndstongue (a noxious weed) is found in abundance on private and public lands that have been grazed by cattle. Houndstongue is rarely found on lands that have been grazed by mountain goats. One investigator concluded that houndstongue infestations could be reduced by importing mountain goats to the infested areas. What is wrong with this conclusion?^[Just because mountain goat grazing is associated with an absence of houndstongue doesn't mean the mountain goats are the cause behind the houndstongue reduction! One obvious confounding variable is elevation---elevation is associated with the presence/absence of houndstongue (houndstongue tends to grow at lower elevation) and is also associated with the presence/absence of mountain goats (mountain goats prefer higher elevations).]</div>\EndKnitrBlock{guidedpractice}
+
+Observational studies come in two forms: prospective and retrospective studies.
+A **prospective study** identifies individuals and collects information as events unfold.
+For instance, medical researchers may identify and follow a group of patients over many years to assess the possible influences of behavior on cancer risk. 
+One example of such a study is The Nurses' Health Study. 
+Started in 1976 and expanded in 1989, the Nurses' Health Study has collected data on over 275,000 nurses and is still enrolling participants. 
+This prospective study recruits registered nurses and then collects data from them using questionnaires. 
+**Retrospective studies** collect data after events have taken place, e.g. researchers may review past events in medical records.
+Some data sets may contain both prospectively- and retrospectively-collected variables, such as medical studies which gather information on participants' lives before they enter the study and subsequently collect data on participants throughout the study. 
+
 
 
 ## Experiments
@@ -992,6 +1015,21 @@ For instance, is it ethical to use a sham surgery when it creates a risk to the 
 However, if we don't use sham surgeries, we may promote the use of a costly treatment that has no real effect; if this happens, money and other resources will be diverted away from other treatments that are known to be helpful.
 Ultimately, this is a difficult situation where we cannot perfectly protect both the patients who have volunteered for the study and the patients who may benefit (or not) from the treatment in the future.
 
+
+## Scope of inference
+
+When statisticians refer to the **scope of inference**\index{scope of inference} of a study,
+we are asking two questions:
+
+1. **Generalizability**: To which population can we _generalize_ these results?
+1. **Causation**: Do these results provide evidence for a _causal_ relationship?
+
+The answer to the first question is determined by the _sampling method_---if we selected our sample randomly, and there are no other sources of sampling bias, then we can reasonably generalize to the population from which the sample was taken. The answer to the second question is determined by the _type of study_---if the study is a randomized experiment, then it can investigate whether changes in the explanatory variable caused changes in the response variable; in an observational study, one can only investigate associations between the variables. We summarize how to determine a study's scope of inference in Figure \@ref(fig:ScopeOfInference).
+
+<div class="figure" style="text-align: center">
+<img src="01/figures/ScopeOfInference/ScopeOfInference.png" alt="Determining scope of inference of a study." width="100%" />
+<p class="caption">(\#fig:ScopeOfInference)Determining scope of inference of a study.</p>
+</div>
 
 ## Data in `R`
 
@@ -1320,87 +1358,87 @@ However you should be able to easily spot them as **bolded text**.
 <tbody>
   <tr>
    <td style="text-align:left;"> anecdotal evidence </td>
-   <td style="text-align:left;"> control group </td>
-   <td style="text-align:left;"> non-response bias </td>
-   <td style="text-align:left;"> representative </td>
+   <td style="text-align:left;"> convenience sample </td>
+   <td style="text-align:left;"> non-response rate </td>
+   <td style="text-align:left;"> response bias </td>
   </tr>
   <tr>
    <td style="text-align:left;"> associated </td>
-   <td style="text-align:left;"> convenience sample </td>
-   <td style="text-align:left;"> non-response rate </td>
+   <td style="text-align:left;"> data </td>
+   <td style="text-align:left;"> observational data </td>
    <td style="text-align:left;"> response variable </td>
   </tr>
   <tr>
    <td style="text-align:left;"> barplot </td>
-   <td style="text-align:left;"> data </td>
-   <td style="text-align:left;"> observational data </td>
-   <td style="text-align:left;"> retrospective study </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> bias </td>
    <td style="text-align:left;"> data frame </td>
    <td style="text-align:left;"> observational study </td>
-   <td style="text-align:left;"> sample </td>
+   <td style="text-align:left;"> retrospective study </td>
   </tr>
   <tr>
    <td style="text-align:left;"> blind </td>
    <td style="text-align:left;"> dependent </td>
    <td style="text-align:left;"> observational unit </td>
-   <td style="text-align:left;"> sample bias </td>
+   <td style="text-align:left;"> sample </td>
   </tr>
   <tr>
    <td style="text-align:left;"> blocking </td>
    <td style="text-align:left;"> discrete </td>
    <td style="text-align:left;"> ordinal </td>
-   <td style="text-align:left;"> simple random sample </td>
+   <td style="text-align:left;"> sample bias </td>
   </tr>
   <tr>
    <td style="text-align:left;"> case </td>
    <td style="text-align:left;"> double-blind </td>
    <td style="text-align:left;"> placebo </td>
-   <td style="text-align:left;"> simple random sampling </td>
+   <td style="text-align:left;"> sampling bias </td>
   </tr>
   <tr>
    <td style="text-align:left;"> categorical </td>
    <td style="text-align:left;"> experiment </td>
    <td style="text-align:left;"> placebo effect </td>
-   <td style="text-align:left;"> strata </td>
+   <td style="text-align:left;"> selection bias </td>
   </tr>
   <tr>
    <td style="text-align:left;"> cluster </td>
    <td style="text-align:left;"> explanatory variable </td>
    <td style="text-align:left;"> population </td>
-   <td style="text-align:left;"> stratified sampling </td>
+   <td style="text-align:left;"> simple random sample </td>
   </tr>
   <tr>
    <td style="text-align:left;"> cluster sampling </td>
    <td style="text-align:left;"> independent </td>
    <td style="text-align:left;"> positive association </td>
-   <td style="text-align:left;"> summary statistic </td>
+   <td style="text-align:left;"> simple random sampling </td>
   </tr>
   <tr>
    <td style="text-align:left;"> cohort </td>
    <td style="text-align:left;"> level </td>
    <td style="text-align:left;"> prospective study </td>
-   <td style="text-align:left;"> treatment group </td>
+   <td style="text-align:left;"> strata </td>
   </tr>
   <tr>
    <td style="text-align:left;"> confounding variable </td>
    <td style="text-align:left;"> multistage sample </td>
    <td style="text-align:left;"> quantitative </td>
-   <td style="text-align:left;"> variable </td>
+   <td style="text-align:left;"> stratified sampling </td>
   </tr>
   <tr>
    <td style="text-align:left;"> continuous </td>
    <td style="text-align:left;"> negative association </td>
    <td style="text-align:left;"> randomized experiment </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> summary statistic </td>
   </tr>
   <tr>
    <td style="text-align:left;"> control </td>
    <td style="text-align:left;"> nominal </td>
    <td style="text-align:left;"> replicate </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> treatment group </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> control group </td>
+   <td style="text-align:left;"> non-response bias </td>
+   <td style="text-align:left;"> representative </td>
+   <td style="text-align:left;"> variable </td>
   </tr>
 </tbody>
 </table>
