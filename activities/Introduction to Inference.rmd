@@ -49,7 +49,7 @@ set.seed(12980)
 handedness_sub <- handedness[sample(nrow(handedness), 500), ]
 ```
 
-## Summary Statistics Review
+### Summary Statistics Review
 ```{r}
 # Counts for Handedness
 tally(~Stance, data=handedness_sub, margins=T) #Tally creates a table with a count in each level of the variable
@@ -130,7 +130,9 @@ The alternative hypothesis is the claim to be tested and the direction is based 
 \vspace{0.5in}
 
 Remember that when utilizing a hypothesis test, we are evaluating two competing possibilities. For this study the **two possibilities** are either...
+
   * The true proportion of male boxers who are left handed is 0.1 and our results just occurred by random chance or
+  
   * The true proportion of male boxers who are left handed is greater than 0.1 and our results give evidence against the null hypothesis
   
 Notice that these two competing possibilities represent the null and alternative hypotheses.

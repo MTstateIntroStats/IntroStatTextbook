@@ -31,15 +31,17 @@ library(mosaic)
 
 * Understand what the coefficient of determination is
 
-* 
 
 ## Association between two Quantitative Variables
 
 To plot two quantitative variables we will use a scatterplot.  If there is a clear relationship between these variables the variables are associated.  We will analyze four characteristics of scatterplots to assess this relationship.  
 
 * Pattern:  Is the relationship linear or non-linear.
+
 * Direction:  As the x variable increases is the y variable increasing (positive relationship) or decreasing (negative relationship).
+
 * Strength:  How strong is the association between the variables?  We will look at the measure of correlation to assess the strength.  When assessing the scatterplot we will see how close the individual data points are to the line of regression.  
+
 * Influential points:  We will also assess any data points that do not fit the pattern of the data.  These are called outliers or influential points.  
 
 
@@ -95,9 +97,9 @@ This shows a scatterplot of 'Budget' as a predictor of 'Revenue'.
 par(mfrow=c(1,2))
 scatterplot(revenue_mil~budget_mil, data=moviesa,pch=20,main="Revenue vs. Budget", smooth=F)
 ```
-4. Assess the four characteristics of the scatterplot for this relationship.
+4. Assess the four features of the scatterplot that describe this relationship.
 
-* Pattern (linear, non-linear)
+* Form (linear, non-linear)
 
 \vspace{1in}
 * Direction (positive, negative)
@@ -108,7 +110,7 @@ scatterplot(revenue_mil~budget_mil, data=moviesa,pch=20,main="Revenue vs. Budget
 
 \vspace{1in}
 
-* Influential Points
+* Unusual Observations or Outliers
 
 \vspace{1in}
 

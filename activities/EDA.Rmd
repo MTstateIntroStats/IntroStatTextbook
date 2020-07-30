@@ -1,5 +1,5 @@
 ---
-title: "EDA Intro"
+title: "Exploratory Data Analysis"
 output:
   pdf_document: default
   html_document:
@@ -19,7 +19,17 @@ library(mosaic)
 
 ## Learning Outcomes
 
-* 
+* Identify and create appropriate summary statistics and plots
+  given a data set or research question
+  
+* Interpret the following summary statistics in context:
+  median, lower quartile, upper quartile,
+  standard deviation, inter-quartile range,
+  coefficient of determination, regression line slope
+  
+* Given a plot or set of plots, describe and compare the distribution(s)
+  of a single quantitative variable
+  (center, variability, shape, outliers)
 
 
 The following dataset is from the Current Population Survey in 1985.  The following table summarizes the data.
@@ -40,7 +50,11 @@ The following dataset is from the Current Population Survey in 1985.  The follow
 
 \vspace{1in}
 
-A bar chart is used to plot a single categorical variable.  We can plot the counts for each category in a frequency bar chart and the proportion in each categorcy in a relative frequency bar chart. Here we will create a bar chart of the variable sector.
+An important part of understanding data is to create visual pictures of what the data represents.  In this activity we will create graphical representations of different types of data and different combinations of data.
+
+## Displaying a single categorical variable.
+
+A bar chart is used to plot a single categorical variable.  We can plot the counts for each category in a frequency bar chart and the proportion in each categorcy in a relative frequency bar chart. If we wanted to know how many people in our dataset were in each sector, we would create a bar chart of the variable sector.
 
 ```{r}
 cps <- read.csv("../data/cps.csv") #This will read in the dataset
@@ -61,10 +75,10 @@ barchart(cps$sector, #This specifies the dataset and the variable
 
 \vspace{1in}
 
-
+We could also choose to display the data as a proportion in a relative frequency bar chart. To find the relative frequency divide the count in each sector by the sample size.  This is the sample proportion. 
 ```{r}
 barplot(table(cps$sector)/nrow(cps), #divide the frequency counts by the total
-        main = "Relative Frequency Bar Graph of Sector", #Give your chart a title
+        main = "Relative Frequency Bar Chart of Sector", #Give your chart a title
         xlab = "Sector", #Label the x axis
         ylab = "Relative Frequency", #Label the y axis 
 )
@@ -74,8 +88,11 @@ barplot(table(cps$sector)/nrow(cps), #divide the frequency counts by the total
 
 \vspace{1in}
 
+## Displaying two categorical variables
 
-To visually display two categorical variables we will use a segmented bar chart. 
+To visually display two categorical variables we will use a segmented bar chart. In a segmented bar chart each bar sums to 100% or a proportion of 1. Typically the explanatory variable will be plotted on the y-axis and the response variable on the x-axis. 
+
+To see the differences in proportion of each sector between males and females we would create a segmented bar chart of sector segmented by sex.  In this plot we are comparing the variable sex (explanatory variable) for the different sectors (response variable).
 
 \vspace{1in}
 
@@ -87,9 +104,15 @@ plot(sex~sector #response~explanatory allows us to plot two variables
 
 5.  Using the segmented bar chart, which sector has about the same proportion of males and females?
 
-\vspace{1in}
+\vspace{0.5in}
 
-To plot quantitative variables, we can use a histogram or boxplot. To create a histogram the variable is broken into bins on a set width. Each bin plots the frequency of each .....$ We will create a histogram of the variable education.
+6. Which sector has the highest proportion of females?
+
+\vspace{0.5in}
+
+## Displaying a single quantitative variable
+
+To plot quantitative variables, we can use a dotplot, histogram or boxplot. To create a histogram the variable is broken into bins on a set width. Each bin plots the frequency of each variable for a certain bin. The following creates a histogram of the variable education.  Notice that the bin width is 2 years.  For example the first bin consists of the number of people in the data set of 0 to 2 years of education.  It is important to note that someone with 2 years of education will fall into the bin for 2 - 4 years.
 
 ```{r}
 hist(cps$educ, #dataset name and variable
@@ -98,33 +121,43 @@ hist(cps$educ, #dataset name and variable
 ```
 
 
-6. What is the width of each bin?
+7. Which eduation levels have the highest frequency?
 
 \vspace{1in}
 
 
-7. What is the most common level of Education?
+## Displaying a Single Categorical and Single Quantitative Variable
 
-\vspace{1in}
+Side by side plots are created from a single categorical and single quantitative variable.  We can create side by side boxplots, side by side histograms, and side by side dotplots.
 
-Side by side plots are created from a single categorical and single quantitative variable. The boxplot is created using the five number summary: 
+The boxplot is created using the five number summary: 
 * Minimum value
 * Quartile 1 (Q1) - the value at the 25th percentile
 * Median - the value at the 50th percentile
 * Quaritle 3 (Q3) - the avlue at the 75th percentile
 * Maximum value 
-Outliers are values less than $Q_1 - 1.5*IQR$ and greater than $Q_3 + 1.5*IQR$ 
 
-The boxplot of wage by sector is plotted using the code below.
+The boxplot of wage by sector is plotted using the code below.  This plot helps to compare the wages for different sectors.
 ```{r}
 boxplot(wage~sector #response~explanatory 
         , data=cps, main = "Side by side Boxplot of Wage by Sector", 
         xlab = "Sector", ylab = "Wage")
 ```
 
-8. Compare Service and Sales using the four characteristic to comparing distributions.
+When comparing distributions we will look at four characteristics:
 
+* Shape: A distribution that has approximately the same trailing off in both tails is considered a symmetric distribution.  One in which the data trails off to the right is a right-skewed distribution. If the data trails off to the left it is considered a left-skewed distribution.
 
+* Center: There are two measures of center used for quantitative data: the mean or the average and the median.  The mean is found by adding up all the values in the dataset and dividing the sum by the sample size.  The median is the 50th percentile of the ordered dataset.  
+
+* Spread: The spread is also referred to as variability.  Again there are two measures of spread used to describe the data: the standard deviation and the Inter Quartile Range or IQR.  The standard deviation measures the average distance of each observation from the mean. The IQR is found by subracting the value of the first quartile from the third quartile and measures the middle 50% of the data.  $IQR = Q_3 - Q_1$ 
+
+* Outliers: Outliers are values less than $Q_1 - 1.5*IQR$ and greater than $Q_3 + 1.5*IQR$.  On the box plot they are displayed as a single dot beyond the whisker.
+
+8. Compare Service and Sales using the four characteristic for
+comparing distributions.
+
+\vspace{1.5in}
 
 
 ...Fill in the following table...
