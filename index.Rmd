@@ -9,6 +9,8 @@ biblio-style: apalike
 link-citations: yes
 github-repo: MTstateIntroStats/IntroStatTextbook
 description: "Open resources textbook for Stat 216 at Montana State University"
+header-includes:
+- \usepackage{subfig}
 ---
 
 # Welcome {-}

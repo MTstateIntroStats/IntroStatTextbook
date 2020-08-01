@@ -1,7 +1,7 @@
 --- 
 title: "Montana State Introductory Statistics with R"
 author: "Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager"
-date: "2020-07-30"
+date: "2020-08-01"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -9,6 +9,8 @@ biblio-style: apalike
 link-citations: yes
 github-repo: MTstateIntroStats/IntroStatTextbook
 description: "Open resources textbook for Stat 216 at Montana State University"
+header-includes:
+- \usepackage{subfig}
 ---
 
 # Welcome {-}

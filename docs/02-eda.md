@@ -1,4 +1,4 @@
-# Exploratory Data Analysis {#eda}
+# Exploratory data analysis {#eda}
 
 \BeginKnitrBlock{chapterintro}<div class="chapterintro">This chapter focuses on the mechanics and construction of summary statistics and graphs.
 We use statistical software for generating the summaries and graphs presented in this chapter and book.
@@ -14,6 +14,7 @@ On the other hand, area codes and zip codes are not quantitative, but rather the
 
 Throughout this section and the next, we will apply these methods using the `loan50`, `county`, and `email50` data sets, which were introduced in Section \@ref(data-basics).
 If you'd like to review the variables from either data set, see Tables \@ref(tab:loan50Variables) and \@ref(tab:countyVariables).
+
 
 \BeginKnitrBlock{data}<div class="data">The `loan50` and `email50` data sets can be found in the [openintro](http://openintrostat.github.io/openintro) package.
 The `county` data can be found in the [usdata](https://openintrostat.github.io/usdata/) package.</div>\EndKnitrBlock{data}
@@ -36,7 +37,7 @@ When examining scatterplots, we describe four features:
 1. **Form** - If you were to trace the trend of the points,
    would the trend be _linear_ or _nonlinear_?
 2. **Direction** - As values on the _x_-axis increase, do the _y_-values
-  tend to  increase (_positive_) or do they decrease (_negative_)?
+  tend to  increase (_positive direction_) or do they decrease (_negative direction_)?
 3. **Strength** - How closely to the points follow a trend?
 4. **Unusual observations** or **outliers**- Are there any unusual observations
    that do not seem to match the overall pattern of the scatterplot?
@@ -275,9 +276,9 @@ How many modes would you expect in this height data set?^[There might be two hei
 Looking for modes isn't about finding a clear and correct answer about the number of modes in a distribution, which is why *prominent*\index{prominent} is not rigorously defined in this book. The most important part of this examination is to better understand your data.
 
 
-### Boxplots and the median {#boxplots}
+### Box plots and the median {#boxplots}
 
-A **boxplot**\index{boxplot} (or box-and-whisker plot) summarizes a data set using five statistics while
+A **box plot**\index{box plot} (or box-and-whisker plot) summarizes a data set using five statistics while
 also plotting unusual observations. The five statistics---minimum, first quartile, 
 median, third quartile, maximum---together are called the **five number summary**\index{five number summary}. 
 Figure \@ref(fig:boxPlotLayoutNumVar) provides a vertical dot plot alongside a box plot of the \var{num\_\hspace{0.3mm}char} variable from the \data{email50} data set.
@@ -560,4 +561,5 @@ the table would be called a **relative frequency table**.
 ### Why not pie charts?
 
 
+# Exploratory data analysis in R
 

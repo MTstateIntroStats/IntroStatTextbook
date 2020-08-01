@@ -80,7 +80,7 @@ Patient outcomes are recorded as `stroke` or `no event`, representing whether or
 </tbody>
 </table>
 
-Considering data from each patient individually would be a long, cumbersome path towards answering the original research question. 
+Considering data from each of the 451 patients individually would be a long, cumbersome path towards answering the original research question. 
 Instead, performing a statistical data analysis allows us to consider all of the data at once. 
 Table \@ref(tab:stentStudyResultsDFsummary) summarizes the raw data in a more helpful way. 
 In this table, we can quickly see what happened over the entire study. 
@@ -182,7 +182,7 @@ Effective presentation and description of data is a first step in most analyses.
 
 \index{data!loan50|(}
 
-Table \@ref(tab:loan50DF) displays six rows of a data set for 50 randomly sampled loans offered through Lending Club, which is a peer-to-peer lending company. These observations will be referred to as the `loan50` data set.
+Here, we will consider loans offered through the Lending Club, a peer-to-peer lending company. Such data could be used to explore characteristics of people receiving loans from the platform, such as job titles, annual income, or home ownership. Table \@ref(tab:loan50DF) displays six rows of a data set for 50 randomly sampled loans. These observations will be referred to as the `loan50` data set.
 
 \BeginKnitrBlock{data}<div class="data">The `loan50` data can be found in the [openintro](http://openintrostat.github.io/openintro/reference/index.html) package.</div>\EndKnitrBlock{data}
 
@@ -625,7 +625,7 @@ A formal evaluation to check whether one variable causes a change in another req
 
 ### Introducing observational studies and experiments
 
-There are two primary types of data collection: observational studies and experiments.
+There are two primary types of data collection: observational studies and experiments. We already encountered an experiment in the case study in Section \@ref(basic-stents-strokes), and an observational study with the Lending Club data in this section.
 
 Researchers perform an **observational study** when they collect data in a way that does not directly interfere with how the data arise.
 For instance, researchers may collect information via surveys, review medical or company records, or follow a **cohort** of many similar individuals to form hypotheses about why certain diseases might develop.
@@ -641,7 +641,7 @@ To check if there really is a causal connection between the explanatory variable
 The individuals in each group are *assigned* a treatment.
 When individuals are randomly assigned to a group, the experiment is called a **randomized experiment**.
 For example, each heart attack patient in the drug trial could be randomly assigned,  perhaps by flipping a coin, into one of two groups: the first group receives a **placebo** (fake treatment) and the second group receives the drug.
-See the case study in Section \@ref(basic-stents-strokes) for another example of an experiment, though that study did not employ a placebo.
+Note that the case study in Section \@ref(basic-stents-strokes) did not use a placebo.
 
 
 
@@ -716,7 +716,7 @@ Instead of looking at the most unusual cases, we should examine a sample of many
 We might try to estimate the time to graduation for Duke undergraduates in the last 5 years by collecting a sample of students.
 All graduates in the last 5 years represent the *population*\index{population}, and graduates who are selected for review are collectively called the *sample*\index{sample}.
 In general, we always seek to *randomly* select a sample from a population.
-The most basic type of random selection is equivalent to how raffles are conducted.
+The most basic type of random selection is equivalent to how raffles are conducted--where each raffle ticket has an equal chance of being selected.
 For example, in selecting graduates, we could write each graduate's name on a raffle ticket and draw 100 tickets.
 The selected names would represent a random sample of 100 graduates.
 We pick samples randomly to reduce the chance we introduce biases.
@@ -1187,12 +1187,12 @@ email50[47,3]
 </tbody>
 </table>
 
-### Tidy Structure of Data {#datastruc}
+### Tidy structure of data {#datastruc}
 
 For plotting, analyses, model building, etc., the data should be structured according to certain principles.   
 Hadley Wickham provides a thorough discussion and advice for cleaning up the data in @Wickham2014.
 
-* *Tidy Data*: rows (cases/observational units) and columns (variables).  
+* *Tidy data*: rows (cases/observational units) and columns (variables).  
 The key is that *every* row is a case and *every* column is a variable.  
 No exceptions.
 * Creating tidy data is often not trivial.

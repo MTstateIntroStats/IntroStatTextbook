@@ -1,4 +1,4 @@
-# Correlation and Regression {#cor-reg}
+# Correlation and regression {#cor-reg}
 
 \BeginKnitrBlock{uptohere}<div class="uptohere">The content in this chapter is currently just placeholder. We will remove this banner once the chapter content has been updated and ready for review.</div>\EndKnitrBlock{uptohere}
 
