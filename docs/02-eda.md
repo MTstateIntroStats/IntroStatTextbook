@@ -510,6 +510,44 @@ Examining data for outliers serves many useful purposes, including
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Using the box plot in Figure \@ref(fig:loan-int-rate-boxplot-dotplot), estimate the values of the $Q_1$, $Q_3$, and IQR for `interest_rate` in the `loan50` data set.^[These visual estimates will vary a little from one person to the next: $Q_1 \approx$ 8%, $Q_3 \approx$ 14%, IQR $\approx$ 14 - 8 = 6%.]</div>\EndKnitrBlock{guidedpractice}
 
+### Describing and comparing quantitative distributions
+
+As a review, when describing a scatterplot---the association between
+two quantitative variables, we look for the four features:
+
+1. Form
+2. Direction
+3. Strength
+4. Outliers
+
+When asked to describe or compare univariate (single variable) quantitative distributions, we look for four features:
+
+1. Center
+2. Variability
+3. Shape
+4. Outliers
+
+We can compare quantitative distributions by using side-by-side box plots,
+or stacked histograms or dot plots. Recall that the `loan50` data set represents a sample from a larger loan data set called `loans`.
+This larger data set contains information on 10,000 loans made through Lending Club. Figure @\ref{fig:homeownership-interest-boxplots} examines the relationship between `homeownership`, which for the `loans` data can take a value of `rent`, `mortgage` (owns but has a mortgage), or `own`, and `interest_rate`. Note that `homeownership`
+is a categorical variable and `interest_rate` is a quantitative variable.
+
+<div class="figure" style="text-align: center">
+<img src="02-eda_files/figure-html/homeownership-interest-boxplots-1.png" alt="Side-by-side box plots of loan interest rates by homeownership category." width="70%" />
+<p class="caption">(\#fig:homeownership-interest-boxplots)Side-by-side box plots of loan interest rates by homeownership category.</p>
+</div>
+
+We see immediately that some features are easier to discern in box plots, while others in histograms. Shape is shown more clearly in histograms, while center (as measured by the median) is easy to compare across groups in the side-by-side box plots.
+
+\BeginKnitrBlock{example}<div class="example">Using Figure @\ref{fig:homeownership-interest-boxplots} write a few sentences comparing the distributions of loan amount
+across the different homeownership categories.
+  
+---
+  
+The median loan amount is higher for those with a mortgage (around $16,000) than for those who own or rent (around $12,000-$13,000). However, variability in loan amounts is similar across homeownership categories, with an IQR of around $15,000 and loans ranging from a few hundred dollars to $40,000. We see from the histograms that the distribution of loan amounts is skewed right for all three homeownership categories, which means the mean loan amount will be higher than the median loan amount. There are no apparent outliers in the mortgage category, but both the rent and own categories have outliers at $40,000.
+
+Besides center, variability, shape, and outliers, another interesting feature in these distributions is the result of rounding. Loan amounts in the data set are often rounded to the nearest 100, so we see spikes on these values in the histogram---something that is not evident in the box plots.</div>\EndKnitrBlock{example}
+
 ### Robust statistics
 
 How are the **sample statistics** \index{sample statistic} of the `interest_rate` data set affected by the observation, 26.3%?

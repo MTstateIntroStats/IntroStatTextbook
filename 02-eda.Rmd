@@ -642,6 +642,55 @@ Examining data for outliers serves many useful purposes, including
 Using the box plot in Figure \@ref(fig:loan-int-rate-boxplot-dotplot), estimate the values of the $Q_1$, $Q_3$, and IQR for `interest_rate` in the `loan50` data set.^[These visual estimates will vary a little from one person to the next: $Q_1 \approx$ 8%, $Q_3 \approx$ 14%, IQR $\approx$ 14 - 8 = 6%.]
 ```
 
+### Describing and comparing quantitative distributions
+
+As a review, when describing a scatterplot---the association between
+two quantitative variables, we look for the four features:
+
+1. Form
+2. Direction
+3. Strength
+4. Outliers
+
+When asked to describe or compare univariate (single variable) quantitative distributions, we look for four features:
+
+1. Center
+2. Variability
+3. Shape
+4. Outliers
+
+We can compare quantitative distributions by using side-by-side box plots,
+or stacked histograms or dot plots. Recall that the `loan50` data set represents a sample from a larger loan data set called `loans`.
+This larger data set contains information on 10,000 loans made through Lending Club. Figure @\ref{fig:homeownership-interest-boxplots} examines the relationship between `homeownership`, which for the `loans` data can take a value of `rent`, `mortgage` (owns but has a mortgage), or `own`, and `interest_rate`. Note that `homeownership`
+is a categorical variable and `interest_rate` is a quantitative variable.
+
+```{r homeownership-interest-boxplots, fig.cap="Side-by-side box plots of loan interest rates by homeownership category."}
+plot1 <- ggplot(loans_full_schema, aes(x = homeownership, y = loan_amount, fill = homeownership)) + 
+  geom_boxplot() +
+  labs(x = "Homeownership", y = "Loan Amount ($)")
+
+plot2 <- ggplot(loans_full_schema, aes(x = loan_amount, y = after_stat(density), color = homeownership, fill = homeownership)) +
+  facet_grid(rows = vars(homeownership)) + 
+  geom_histogram(binwidth = 2000) +
+  geom_density(alpha = .2, fill = "#FF6666")+ 
+  labs(x = "Loan Amount ($)", y = "Density") 
+  
+grid.arrange(plot1, plot2, nrow=1)
+```
+
+We see immediately that some features are easier to discern in box plots, while others in histograms. Shape is shown more clearly in histograms, while center (as measured by the median) is easy to compare across groups in the side-by-side box plots.
+
+```{block2, type="example", echo=TRUE}
+Using Figure @\ref{fig:homeownership-interest-boxplots} write a few sentences comparing the distributions of loan amount
+across the different homeownership categories.
+  
+---
+  
+The median loan amount is higher for those with a mortgage (around $16,000) than for those who own or rent (around $12,000-$13,000). However, variability in loan amounts is similar across homeownership categories, with an IQR of around $15,000 and loans ranging from a few hundred dollars to $40,000. We see from the histograms that the distribution of loan amounts is skewed right for all three homeownership categories, which means the mean loan amount will be higher than the median loan amount. There are no apparent outliers in the mortgage category, but both the rent and own categories have outliers at $40,000.
+
+Besides center, variability, shape, and outliers, another interesting feature in these distributions is the result of rounding. Loan amounts in the data set are often rounded to the nearest 100, so we see spikes on these values in the histogram---something that is not evident in the box plots.
+```
+
 ### Robust statistics
 
 How are the **sample statistics** \index{sample statistic} of the `interest_rate` data set affected by the observation, 26.3%?
