@@ -24,7 +24,7 @@
 <meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager" />
 
 
-<meta name="date" content="2020-08-01" />
+<meta name="date" content="2020-08-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="intro-to-data.html"/>
-<link rel="next" href="exploratory-data-analysis-in-r.html"/>
+<link rel="next" href="cor-reg.html"/>
 <script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -188,10 +188,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.1" data-path="eda.html"><a href="eda.html#scatterplots"><i class="fa fa-check"></i><b>2.1.1</b> Scatterplots for paired data</a></li>
 <li class="chapter" data-level="2.1.2" data-path="eda.html"><a href="eda.html#dotplots"><i class="fa fa-check"></i><b>2.1.2</b> Dot plots and the mean</a></li>
 <li class="chapter" data-level="2.1.3" data-path="eda.html"><a href="eda.html#histograms"><i class="fa fa-check"></i><b>2.1.3</b> Histograms and shape</a></li>
-<li class="chapter" data-level="2.1.4" data-path="eda.html"><a href="eda.html#boxplots"><i class="fa fa-check"></i><b>2.1.4</b> Box plots and the median</a></li>
-<li class="chapter" data-level="2.1.5" data-path="eda.html"><a href="eda.html#robust-statistics"><i class="fa fa-check"></i><b>2.1.5</b> Robust statistics</a></li>
-<li class="chapter" data-level="2.1.6" data-path="eda.html"><a href="eda.html#distributions"><i class="fa fa-check"></i><b>2.1.6</b> Comparing distributions</a></li>
-<li class="chapter" data-level="2.1.7" data-path="eda.html"><a href="eda.html#mapping-data-special-topic"><i class="fa fa-check"></i><b>2.1.7</b> Mapping data (special topic)</a></li>
+<li class="chapter" data-level="2.1.4" data-path="eda.html"><a href="eda.html#variance-sd"><i class="fa fa-check"></i><b>2.1.4</b> Variance and standard deviation</a></li>
+<li class="chapter" data-level="2.1.5" data-path="eda.html"><a href="eda.html#box-plots-quartiles-and-the-median"><i class="fa fa-check"></i><b>2.1.5</b> Box plots, quartiles, and the median</a></li>
+<li class="chapter" data-level="2.1.6" data-path="eda.html"><a href="eda.html#robust-statistics"><i class="fa fa-check"></i><b>2.1.6</b> Robust statistics</a></li>
+<li class="chapter" data-level="2.1.7" data-path="eda.html"><a href="eda.html#transforming-data-special-topic"><i class="fa fa-check"></i><b>2.1.7</b> Transforming data (special topic)</a></li>
+<li class="chapter" data-level="2.1.8" data-path="eda.html"><a href="eda.html#mapping-data"><i class="fa fa-check"></i><b>2.1.8</b> Mapping data</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="eda.html"><a href="eda.html#categorical-data"><i class="fa fa-check"></i><b>2.2</b> Exploring categorical data</a>
 <ul>
@@ -199,117 +200,121 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2.2" data-path="eda.html"><a href="eda.html#bar-plots-and-mosaic-plots"><i class="fa fa-check"></i><b>2.2.2</b> Bar plots and mosaic plots</a></li>
 <li class="chapter" data-level="2.2.3" data-path="eda.html"><a href="eda.html#why-not-pie-charts"><i class="fa fa-check"></i><b>2.2.3</b> Why not pie charts?</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="exploratory-data-analysis-in-r.html"><a href="exploratory-data-analysis-in-r.html"><i class="fa fa-check"></i><b>3</b> Exploratory data analysis in R</a></li>
-<li class="chapter" data-level="4" data-path="cor-reg.html"><a href="cor-reg.html"><i class="fa fa-check"></i><b>4</b> Correlation and regression</a>
+<li class="chapter" data-level="2.3" data-path="eda.html"><a href="eda.html#exploratory-data-analysis-in-r"><i class="fa fa-check"></i><b>2.3</b> Exploratory data analysis in <code>R</code></a></li>
+<li class="chapter" data-level="2.4" data-path="eda.html"><a href="eda.html#chp2-review"><i class="fa fa-check"></i><b>2.4</b> Chapter 2 review</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="cor-reg.html"><a href="cor-reg.html#chp3-review"><i class="fa fa-check"></i><b>4.1</b> Chapter 3 review</a>
-<ul>
-<li class="chapter" data-level="4.1.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>4.1.1</b> Terms</a></li>
-<li class="chapter" data-level="4.1.2" data-path="cor-reg.html"><a href="cor-reg.html#chapter-exercises"><i class="fa fa-check"></i><b>4.1.2</b> Chapter exercises</a></li>
+<li class="chapter" data-level="2.4.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>2.4.1</b> Terms</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="mult-reg.html"><a href="mult-reg.html"><i class="fa fa-check"></i><b>5</b> Multiple regression</a>
+<li class="chapter" data-level="3" data-path="cor-reg.html"><a href="cor-reg.html"><i class="fa fa-check"></i><b>3</b> Correlation and regression</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="mult-reg.html"><a href="mult-reg.html#num-vs.-whatever---mlr"><i class="fa fa-check"></i><b>5.1</b> Num vs. whatever - MLR</a></li>
-<li class="chapter" data-level="5.2" data-path="mult-reg.html"><a href="mult-reg.html#parallel-slopes"><i class="fa fa-check"></i><b>5.2</b> Parallel slopes</a></li>
-<li class="chapter" data-level="5.3" data-path="mult-reg.html"><a href="mult-reg.html#hint-at-interaction-planes-and-parallel-planes-but-not-quantify"><i class="fa fa-check"></i><b>5.3</b> Hint at interaction, planes, and parallel planes but not quantify</a></li>
-<li class="chapter" data-level="5.4" data-path="mult-reg.html"><a href="mult-reg.html#chp4-review"><i class="fa fa-check"></i><b>5.4</b> Chapter 4 review</a>
+<li class="chapter" data-level="3.1" data-path="cor-reg.html"><a href="cor-reg.html#chp3-review"><i class="fa fa-check"></i><b>3.1</b> Chapter 3 review</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>3.1.1</b> Terms</a></li>
+<li class="chapter" data-level="3.1.2" data-path="cor-reg.html"><a href="cor-reg.html#chapter-exercises"><i class="fa fa-check"></i><b>3.1.2</b> Chapter exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="mult-reg.html"><a href="mult-reg.html"><i class="fa fa-check"></i><b>4</b> Multiple regression</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="mult-reg.html"><a href="mult-reg.html#num-vs.-whatever---mlr"><i class="fa fa-check"></i><b>4.1</b> Num vs. whatever - MLR</a></li>
+<li class="chapter" data-level="4.2" data-path="mult-reg.html"><a href="mult-reg.html#parallel-slopes"><i class="fa fa-check"></i><b>4.2</b> Parallel slopes</a></li>
+<li class="chapter" data-level="4.3" data-path="mult-reg.html"><a href="mult-reg.html#hint-at-interaction-planes-and-parallel-planes-but-not-quantify"><i class="fa fa-check"></i><b>4.3</b> Hint at interaction, planes, and parallel planes but not quantify</a></li>
+<li class="chapter" data-level="4.4" data-path="mult-reg.html"><a href="mult-reg.html#chp4-review"><i class="fa fa-check"></i><b>4.4</b> Chapter 4 review</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>4.4.1</b> Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="inference-foundations.html"><a href="inference-foundations.html"><i class="fa fa-check"></i><b>5</b> Foundations of inference</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="inference-foundations.html"><a href="inference-foundations.html#inf-rand"><i class="fa fa-check"></i><b>5.1</b> Randomization test</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="inference-foundations.html"><a href="inference-foundations.html#caseStudyGenderDiscrimination"><i class="fa fa-check"></i><b>5.1.1</b> Gender discrimination case study</a></li>
+<li class="chapter" data-level="5.1.2" data-path="inference-foundations.html"><a href="inference-foundations.html#caseStudyOpportunityCost"><i class="fa fa-check"></i><b>5.1.2</b> Opportunity cost case study</a></li>
+<li class="chapter" data-level="5.1.3" data-path="inference-foundations.html"><a href="inference-foundations.html#HypothesisTesting"><i class="fa fa-check"></i><b>5.1.3</b> Hypothesis testing</a></li>
+<li class="chapter" data-level="5.1.4" data-path="inference-foundations.html"><a href="inference-foundations.html#randomization-test-summary"><i class="fa fa-check"></i><b>5.1.4</b> Randomization test summary</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="inference-foundations.html"><a href="inference-foundations.html#boot-ci"><i class="fa fa-check"></i><b>5.2</b> Bootstrap confidence interval</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="inference-foundations.html"><a href="inference-foundations.html#sec-med-consult"><i class="fa fa-check"></i><b>5.2.1</b> Medical consultant case study</a></li>
+<li class="chapter" data-level="5.2.2" data-path="inference-foundations.html"><a href="inference-foundations.html#tappers-and-listeners-case-study"><i class="fa fa-check"></i><b>5.2.2</b> Tappers and listeners case study</a></li>
+<li class="chapter" data-level="5.2.3" data-path="inference-foundations.html"><a href="inference-foundations.html#ConfidenceIntervals"><i class="fa fa-check"></i><b>5.2.3</b> Confidence intervals</a></li>
+<li class="chapter" data-level="5.2.4" data-path="inference-foundations.html"><a href="inference-foundations.html#bootstrap-summary"><i class="fa fa-check"></i><b>5.2.4</b> Bootstrap summary</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="inference-foundations.html"><a href="inference-foundations.html#inf-math"><i class="fa fa-check"></i><b>5.3</b> Mathematical model</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="inference-foundations.html"><a href="inference-foundations.html#CLTsection"><i class="fa fa-check"></i><b>5.3.1</b> Central Limit Theorem</a></li>
+<li class="chapter" data-level="5.3.2" data-path="inference-foundations.html"><a href="inference-foundations.html#normalDist"><i class="fa fa-check"></i><b>5.3.2</b> Normal Distribution</a></li>
+<li class="chapter" data-level="5.3.3" data-path="inference-foundations.html"><a href="inference-foundations.html#ApplyingTheNormalModel"><i class="fa fa-check"></i><b>5.3.3</b> Hypothesis testing case studies</a></li>
+<li class="chapter" data-level="5.3.4" data-path="inference-foundations.html"><a href="inference-foundations.html#confidence-interval-case-study"><i class="fa fa-check"></i><b>5.3.4</b> Confidence interval case study</a></li>
+<li class="chapter" data-level="5.3.5" data-path="inference-foundations.html"><a href="inference-foundations.html#mathematical-model-summary"><i class="fa fa-check"></i><b>5.3.5</b> Mathematical model summary</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="inference-foundations.html"><a href="inference-foundations.html#chp5-review"><i class="fa fa-check"></i><b>5.4</b> Chapter 5 review</a>
 <ul>
 <li class="chapter" data-level="5.4.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>5.4.1</b> Terms</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="inference-foundations.html"><a href="inference-foundations.html"><i class="fa fa-check"></i><b>6</b> Foundations of inference</a>
+<li class="chapter" data-level="6" data-path="inference-cat.html"><a href="inference-cat.html"><i class="fa fa-check"></i><b>6</b> Inference for categorical data</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="inference-foundations.html"><a href="inference-foundations.html#inf-rand"><i class="fa fa-check"></i><b>6.1</b> Randomization test</a>
+<li class="chapter" data-level="6.1" data-path="inference-cat.html"><a href="inference-cat.html#single-prop"><i class="fa fa-check"></i><b>6.1</b> One proportion</a>
 <ul>
-<li class="chapter" data-level="6.1.1" data-path="inference-foundations.html"><a href="inference-foundations.html#caseStudyGenderDiscrimination"><i class="fa fa-check"></i><b>6.1.1</b> Gender discrimination case study</a></li>
-<li class="chapter" data-level="6.1.2" data-path="inference-foundations.html"><a href="inference-foundations.html#caseStudyOpportunityCost"><i class="fa fa-check"></i><b>6.1.2</b> Opportunity cost case study</a></li>
-<li class="chapter" data-level="6.1.3" data-path="inference-foundations.html"><a href="inference-foundations.html#HypothesisTesting"><i class="fa fa-check"></i><b>6.1.3</b> Hypothesis testing</a></li>
-<li class="chapter" data-level="6.1.4" data-path="inference-foundations.html"><a href="inference-foundations.html#randomization-test-summary"><i class="fa fa-check"></i><b>6.1.4</b> Randomization test summary</a></li>
+<li class="chapter" data-level="6.1.1" data-path="inference-cat.html"><a href="inference-cat.html#one-prop-null-boot"><i class="fa fa-check"></i><b>6.1.1</b> Bootstrap test for <span class="math inline">\(H_0: p = p_0\)</span></a></li>
+<li class="chapter" data-level="6.1.2" data-path="inference-cat.html"><a href="inference-cat.html#one-prop-norm"><i class="fa fa-check"></i><b>6.1.2</b> Mathematical model</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="inference-foundations.html"><a href="inference-foundations.html#boot-ci"><i class="fa fa-check"></i><b>6.2</b> Bootstrap confidence interval</a>
+<li class="chapter" data-level="6.2" data-path="inference-cat.html"><a href="inference-cat.html#diff-two-prop"><i class="fa fa-check"></i><b>6.2</b> Difference of two proportions</a>
 <ul>
-<li class="chapter" data-level="6.2.1" data-path="inference-foundations.html"><a href="inference-foundations.html#sec-med-consult"><i class="fa fa-check"></i><b>6.2.1</b> Medical consultant case study</a></li>
-<li class="chapter" data-level="6.2.2" data-path="inference-foundations.html"><a href="inference-foundations.html#tappers-and-listeners-case-study"><i class="fa fa-check"></i><b>6.2.2</b> Tappers and listeners case study</a></li>
-<li class="chapter" data-level="6.2.3" data-path="inference-foundations.html"><a href="inference-foundations.html#ConfidenceIntervals"><i class="fa fa-check"></i><b>6.2.3</b> Confidence intervals</a></li>
-<li class="chapter" data-level="6.2.4" data-path="inference-foundations.html"><a href="inference-foundations.html#bootstrap-summary"><i class="fa fa-check"></i><b>6.2.4</b> Bootstrap summary</a></li>
+<li class="chapter" data-level="6.2.1" data-path="inference-cat.html"><a href="inference-cat.html#two-prop-errors"><i class="fa fa-check"></i><b>6.2.1</b> Randomization test for <span class="math inline">\(H_0: p_1 - p_2 = 0\)</span></a></li>
+<li class="chapter" data-level="6.2.2" data-path="inference-cat.html"><a href="inference-cat.html#two-prop-boot-ci"><i class="fa fa-check"></i><b>6.2.2</b> Bootstrap confidence interval for <span class="math inline">\(p_1 - p_2\)</span></a></li>
+<li class="chapter" data-level="6.2.3" data-path="inference-cat.html"><a href="inference-cat.html#math-2prop"><i class="fa fa-check"></i><b>6.2.3</b> Mathematical model</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="inference-foundations.html"><a href="inference-foundations.html#inf-math"><i class="fa fa-check"></i><b>6.3</b> Mathematical model</a>
+<li class="chapter" data-level="6.3" data-path="inference-cat.html"><a href="inference-cat.html#independence-in-two-way-tables"><i class="fa fa-check"></i><b>6.3</b> Independence in two-way tables</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="inference-foundations.html"><a href="inference-foundations.html#CLTsection"><i class="fa fa-check"></i><b>6.3.1</b> Central Limit Theorem</a></li>
-<li class="chapter" data-level="6.3.2" data-path="inference-foundations.html"><a href="inference-foundations.html#normalDist"><i class="fa fa-check"></i><b>6.3.2</b> Normal Distribution</a></li>
-<li class="chapter" data-level="6.3.3" data-path="inference-foundations.html"><a href="inference-foundations.html#ApplyingTheNormalModel"><i class="fa fa-check"></i><b>6.3.3</b> Hypothesis testing case studies</a></li>
-<li class="chapter" data-level="6.3.4" data-path="inference-foundations.html"><a href="inference-foundations.html#confidence-interval-case-study"><i class="fa fa-check"></i><b>6.3.4</b> Confidence interval case study</a></li>
-<li class="chapter" data-level="6.3.5" data-path="inference-foundations.html"><a href="inference-foundations.html#mathematical-model-summary"><i class="fa fa-check"></i><b>6.3.5</b> Mathematical model summary</a></li>
+<li class="chapter" data-level="6.3.1" data-path="inference-cat.html"><a href="inference-cat.html#randomization-test-of-h_0-independence"><i class="fa fa-check"></i><b>6.3.1</b> Randomization test of <span class="math inline">\(H_0:\)</span> independence</a></li>
+<li class="chapter" data-level="6.3.2" data-path="inference-cat.html"><a href="inference-cat.html#mathematical-model"><i class="fa fa-check"></i><b>6.3.2</b> Mathematical model</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="inference-foundations.html"><a href="inference-foundations.html#chp5-review"><i class="fa fa-check"></i><b>6.4</b> Chapter 5 review</a>
+<li class="chapter" data-level="6.4" data-path="inference-cat.html"><a href="inference-cat.html#chp6-review"><i class="fa fa-check"></i><b>6.4</b> Chapter 6 review</a>
 <ul>
 <li class="chapter" data-level="6.4.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>6.4.1</b> Terms</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="inference-cat.html"><a href="inference-cat.html"><i class="fa fa-check"></i><b>7</b> Inference for categorical data</a>
+<li class="chapter" data-level="7" data-path="inference-num.html"><a href="inference-num.html"><i class="fa fa-check"></i><b>7</b> Inference for numerical data</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="inference-cat.html"><a href="inference-cat.html#single-prop"><i class="fa fa-check"></i><b>7.1</b> One proportion</a>
+<li class="chapter" data-level="7.1" data-path="inference-num.html"><a href="inference-num.html#one-mean"><i class="fa fa-check"></i><b>7.1</b> One mean</a>
 <ul>
-<li class="chapter" data-level="7.1.1" data-path="inference-cat.html"><a href="inference-cat.html#one-prop-null-boot"><i class="fa fa-check"></i><b>7.1.1</b> Bootstrap test for <span class="math inline">\(H_0: p = p_0\)</span></a></li>
-<li class="chapter" data-level="7.1.2" data-path="inference-cat.html"><a href="inference-cat.html#one-prop-norm"><i class="fa fa-check"></i><b>7.1.2</b> Mathematical model</a></li>
+<li class="chapter" data-level="7.1.1" data-path="inference-num.html"><a href="inference-num.html#bootstrap-confidence-interval-for-mu"><i class="fa fa-check"></i><b>7.1.1</b> Bootstrap confidence interval for <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="7.1.2" data-path="inference-num.html"><a href="inference-num.html#one-mean-math"><i class="fa fa-check"></i><b>7.1.2</b> Mathematical model</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="inference-cat.html"><a href="inference-cat.html#diff-two-prop"><i class="fa fa-check"></i><b>7.2</b> Difference of two proportions</a>
+<li class="chapter" data-level="7.2" data-path="inference-num.html"><a href="inference-num.html#paired-data"><i class="fa fa-check"></i><b>7.2</b> Paired difference</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="inference-cat.html"><a href="inference-cat.html#two-prop-errors"><i class="fa fa-check"></i><b>7.2.1</b> Randomization test for <span class="math inline">\(H_0: p_1 - p_2 = 0\)</span></a></li>
-<li class="chapter" data-level="7.2.2" data-path="inference-cat.html"><a href="inference-cat.html#two-prop-boot-ci"><i class="fa fa-check"></i><b>7.2.2</b> Bootstrap confidence interval for <span class="math inline">\(p_1 - p_2\)</span></a></li>
-<li class="chapter" data-level="7.2.3" data-path="inference-cat.html"><a href="inference-cat.html#math-2prop"><i class="fa fa-check"></i><b>7.2.3</b> Mathematical model</a></li>
+<li class="chapter" data-level="7.2.1" data-path="inference-num.html"><a href="inference-num.html#case-study"><i class="fa fa-check"></i><b>7.2.1</b> case study</a></li>
+<li class="chapter" data-level="7.2.2" data-path="inference-num.html"><a href="inference-num.html#randomization-test-for-h_0-mu_d-0"><i class="fa fa-check"></i><b>7.2.2</b> Randomization test for <span class="math inline">\(H_0: \mu_d = 0\)</span></a></li>
+<li class="chapter" data-level="7.2.3" data-path="inference-num.html"><a href="inference-num.html#bootstrap-confidence-interval-for-mu_d"><i class="fa fa-check"></i><b>7.2.3</b> Bootstrap confidence interval for <span class="math inline">\(\mu_d\)</span></a></li>
+<li class="chapter" data-level="7.2.4" data-path="inference-cat.html"><a href="inference-cat.html#mathematical-model"><i class="fa fa-check"></i><b>7.2.4</b> Mathematical model</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="inference-cat.html"><a href="inference-cat.html#independence-in-two-way-tables"><i class="fa fa-check"></i><b>7.3</b> Independence in two-way tables</a>
+<li class="chapter" data-level="7.3" data-path="inference-num.html"><a href="inference-num.html#difference-of-two-means"><i class="fa fa-check"></i><b>7.3</b> Difference of two means</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="inference-cat.html"><a href="inference-cat.html#randomization-test-of-h_0-independence"><i class="fa fa-check"></i><b>7.3.1</b> Randomization test of <span class="math inline">\(H_0:\)</span> independence</a></li>
-<li class="chapter" data-level="7.3.2" data-path="inference-cat.html"><a href="inference-cat.html#mathematical-model"><i class="fa fa-check"></i><b>7.3.2</b> Mathematical model</a></li>
+<li class="chapter" data-level="7.3.1" data-path="inference-num.html"><a href="inference-num.html#case-study-1"><i class="fa fa-check"></i><b>7.3.1</b> case study</a></li>
+<li class="chapter" data-level="7.3.2" data-path="inference-num.html"><a href="inference-num.html#randomization-test-for-h_0-mu_1---mu_2-0"><i class="fa fa-check"></i><b>7.3.2</b> Randomization test for <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span></a></li>
+<li class="chapter" data-level="7.3.3" data-path="inference-num.html"><a href="inference-num.html#bootstrap-confidence-interval-for-mu_1---mu_2"><i class="fa fa-check"></i><b>7.3.3</b> Bootstrap confidence interval for <span class="math inline">\(\mu_1 - \mu_2\)</span></a></li>
+<li class="chapter" data-level="7.3.4" data-path="inference-num.html"><a href="inference-num.html#mathematical-model-1"><i class="fa fa-check"></i><b>7.3.4</b> Mathematical model</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="inference-cat.html"><a href="inference-cat.html#chp6-review"><i class="fa fa-check"></i><b>7.4</b> Chapter 6 review</a>
+<li class="chapter" data-level="7.4" data-path="inference-num.html"><a href="inference-num.html#anovaAndRegrWithCategoricalVariables"><i class="fa fa-check"></i><b>7.4</b> Comparing many means with ANOVA</a>
 <ul>
-<li class="chapter" data-level="7.4.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>7.4.1</b> Terms</a></li>
+<li class="chapter" data-level="7.4.1" data-path="inference-num.html"><a href="inference-num.html#randomization-test-for-h_0-mu_1-mu_2-ldots-mu_k"><i class="fa fa-check"></i><b>7.4.1</b> Randomization test for <span class="math inline">\(H_0: \mu_1 = \mu_2 = \ldots = \mu_k\)</span></a></li>
+<li class="chapter" data-level="7.4.2" data-path="inference-num.html"><a href="inference-num.html#mathematical-model-2"><i class="fa fa-check"></i><b>7.4.2</b> Mathematical model</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="inference-num.html"><a href="inference-num.html"><i class="fa fa-check"></i><b>8</b> Inference for numerical data</a>
+<li class="chapter" data-level="7.5" data-path="inference-num.html"><a href="inference-num.html#chp7-review"><i class="fa fa-check"></i><b>7.5</b> Chapter 7 review</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="inference-num.html"><a href="inference-num.html#one-mean"><i class="fa fa-check"></i><b>8.1</b> One mean</a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="inference-num.html"><a href="inference-num.html#bootstrap-confidence-interval-for-mu"><i class="fa fa-check"></i><b>8.1.1</b> Bootstrap confidence interval for <span class="math inline">\(\mu\)</span></a></li>
-<li class="chapter" data-level="8.1.2" data-path="inference-num.html"><a href="inference-num.html#one-mean-math"><i class="fa fa-check"></i><b>8.1.2</b> Mathematical model</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="inference-num.html"><a href="inference-num.html#paired-data"><i class="fa fa-check"></i><b>8.2</b> Paired difference</a>
-<ul>
-<li class="chapter" data-level="8.2.1" data-path="inference-num.html"><a href="inference-num.html#case-study"><i class="fa fa-check"></i><b>8.2.1</b> case study</a></li>
-<li class="chapter" data-level="8.2.2" data-path="inference-num.html"><a href="inference-num.html#randomization-test-for-h_0-mu_d-0"><i class="fa fa-check"></i><b>8.2.2</b> Randomization test for <span class="math inline">\(H_0: \mu_d = 0\)</span></a></li>
-<li class="chapter" data-level="8.2.3" data-path="inference-num.html"><a href="inference-num.html#bootstrap-confidence-interval-for-mu_d"><i class="fa fa-check"></i><b>8.2.3</b> Bootstrap confidence interval for <span class="math inline">\(\mu_d\)</span></a></li>
-<li class="chapter" data-level="8.2.4" data-path="inference-cat.html"><a href="inference-cat.html#mathematical-model"><i class="fa fa-check"></i><b>8.2.4</b> Mathematical model</a></li>
-</ul></li>
-<li class="chapter" data-level="8.3" data-path="inference-num.html"><a href="inference-num.html#difference-of-two-means"><i class="fa fa-check"></i><b>8.3</b> Difference of two means</a>
-<ul>
-<li class="chapter" data-level="8.3.1" data-path="inference-num.html"><a href="inference-num.html#case-study-1"><i class="fa fa-check"></i><b>8.3.1</b> case study</a></li>
-<li class="chapter" data-level="8.3.2" data-path="inference-num.html"><a href="inference-num.html#randomization-test-for-h_0-mu_1---mu_2-0"><i class="fa fa-check"></i><b>8.3.2</b> Randomization test for <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span></a></li>
-<li class="chapter" data-level="8.3.3" data-path="inference-num.html"><a href="inference-num.html#bootstrap-confidence-interval-for-mu_1---mu_2"><i class="fa fa-check"></i><b>8.3.3</b> Bootstrap confidence interval for <span class="math inline">\(\mu_1 - \mu_2\)</span></a></li>
-<li class="chapter" data-level="8.3.4" data-path="inference-num.html"><a href="inference-num.html#mathematical-model-1"><i class="fa fa-check"></i><b>8.3.4</b> Mathematical model</a></li>
-</ul></li>
-<li class="chapter" data-level="8.4" data-path="inference-num.html"><a href="inference-num.html#anovaAndRegrWithCategoricalVariables"><i class="fa fa-check"></i><b>8.4</b> Comparing many means with ANOVA</a>
-<ul>
-<li class="chapter" data-level="8.4.1" data-path="inference-num.html"><a href="inference-num.html#randomization-test-for-h_0-mu_1-mu_2-ldots-mu_k"><i class="fa fa-check"></i><b>8.4.1</b> Randomization test for <span class="math inline">\(H_0: \mu_1 = \mu_2 = \ldots = \mu_k\)</span></a></li>
-<li class="chapter" data-level="8.4.2" data-path="inference-num.html"><a href="inference-num.html#mathematical-model-2"><i class="fa fa-check"></i><b>8.4.2</b> Mathematical model</a></li>
-</ul></li>
-<li class="chapter" data-level="8.5" data-path="inference-num.html"><a href="inference-num.html#chp7-review"><i class="fa fa-check"></i><b>8.5</b> Chapter 7 review</a>
-<ul>
-<li class="chapter" data-level="8.5.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>8.5.1</b> Terms</a></li>
+<li class="chapter" data-level="7.5.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>7.5.1</b> Terms</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="inference-reg.html"><a href="inference-reg.html"><i class="fa fa-check"></i><b>9</b> Inference for regression</a>
+<li class="chapter" data-level="8" data-path="inference-reg.html"><a href="inference-reg.html"><i class="fa fa-check"></i><b>8</b> Inference for regression</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="inference-reg.html"><a href="inference-reg.html#chp8-review"><i class="fa fa-check"></i><b>9.1</b> Chapter 8 review</a>
+<li class="chapter" data-level="8.1" data-path="inference-reg.html"><a href="inference-reg.html#chp8-review"><i class="fa fa-check"></i><b>8.1</b> Chapter 8 review</a>
 <ul>
-<li class="chapter" data-level="9.1.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>9.1.1</b> Terms</a></li>
+<li class="chapter" data-level="8.1.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>8.1.1</b> Terms</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>10</b> Appendix: Probability</a></li>
+<li class="chapter" data-level="9" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>9</b> Appendix: Probability</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
@@ -379,13 +384,12 @@ borrowers with income below $100,000 on the left side of the graph, while there
 are a handful of borrowers with income above $250,000. The loan amounts vary from
 below $10,000 to around $40,000. The data seem to have a <em>linear</em> form, though
 the relationship between the two variables is quite <em>weak</em>. The direction is
-<em>positive</em> – as total income increases, the loan amount also tends to increase –
-and there may be a few unusual observations in the higher income range,
+<em>positive</em>—as total income increases, the loan amount also tends to increase—and there may be a few unusual observations in the higher income range,
 though since the relationship is weak, it is hard to tell.</p>
 <div class="figure" style="text-align: center"><span id="fig:median-hh-income-poverty"></span>
-<img src="02-eda_files/figure-html/median-hh-income-poverty-1.png" alt="A scatterplot of the median household income against the poverty rate for the `county` dataset. Data are from 2017. A statistical model has also been fit to the data and is shown as a dashed line." width="70%" />
+<img src="02-eda_files/figure-html/median-hh-income-poverty-1.png" alt="A scatterplot of the median household income against the poverty rate for the `county` data set. Data are from 2017. A statistical model has also been fit to the data and is shown as a dashed line." width="70%" />
 <p class="caption">
-Figure 2.2: A scatterplot of the median household income against the poverty rate for the <code>county</code> dataset. Data are from 2017. A statistical model has also been fit to the data and is shown as a dashed line.
+Figure 2.2: A scatterplot of the median household income against the poverty rate for the <code>county</code> data set. Data are from 2017. A statistical model has also been fit to the data and is shown as a dashed line.
 </p>
 </div>
 
@@ -412,16 +416,17 @@ Describe two variables that would have a horseshoe-shaped association in a scatt
 In these cases, a dot plot provides the most basic of displays.
 A <strong>dot plot</strong> is a one-variable scatterplot; an example using the interest rate of 50 loans is shown in Figure <a href="eda.html#fig:loan-int-rate-dotplot">2.3</a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:loan-int-rate-dotplot"></span>
-<img src="02-eda_files/figure-html/loan-int-rate-dotplot-1.png" alt="A dot plot of `interest_rate` for the `loan50` dataset. The rates have been rounded to the nearest percent in this plot, and the distribution's mean is shown as a red triangle." width="70%" />
+<img src="02-eda_files/figure-html/loan-int-rate-dotplot-1.png" alt="A dot plot of `interest_rate` for the `loan50` data set. The rates have been rounded to the nearest percent in this plot, and the distribution's mean is shown as a red triangle." width="70%" />
 <p class="caption">
-Figure 2.3: A dot plot of <code>interest_rate</code> for the <code>loan50</code> dataset. The rates have been rounded to the nearest percent in this plot, and the distribution’s mean is shown as a red triangle.
+Figure 2.3: A dot plot of <code>interest_rate</code> for the <code>loan50</code> data set. The rates have been rounded to the nearest percent in this plot, and the distribution’s mean is shown as a red triangle.
 </p>
 </div>
-<p>The <strong>mean</strong>, often called the <strong>average</strong> is a common way to measure the center of a <strong>distribution</strong> of data.
-To compute the mean interest rate, we add up all the interest rates and divide by the number of observations.</p>
+<p>The <strong>distribution</strong> of a variable is a description of the possible values
+it takes and how frequently each value occurs. The <strong>mean</strong>, often called the <strong>average</strong>, is a common way to measure the center of a distribution of data.
+To compute the mean interest rate of the 50 loans above, we add up all the interest rates and divide by the number of observations.</p>
 <p>The sample mean is often labeled <span class="math inline">\(\bar{x}\)</span>.
-The letter <span class="math inline">\(x\)</span> is being used as a generic placeholder for the variable of interest and the bar over the <span class="math inline">\(x\)</span> communicates we’re looking at the average interest rate, which for these 50 loans is 11.57%.
-It’s useful to think of the mean as the balancing point of the distribution, and it’s shown as a triangle in Figure <a href="eda.html#fig:loan-int-rate-dotplot">2.3</a>.</p>
+The letter <span class="math inline">\(x\)</span> is being used as a generic placeholder for the variable and the bar over the <span class="math inline">\(x\)</span> communicates we’re looking at the average of that variable. In our example <span class="math inline">\(x\)</span> would represent interest rate, and <span class="math inline">\(\bar{x}\)</span> = 11.57%.
+It is useful to think of the mean as the balancing point of the distribution<a href="#fn22" class="footnote-ref" id="fnref22"><sup>22</sup></a>, and it’s shown as a triangle in Figure <a href="eda.html#fig:loan-int-rate-dotplot">2.3</a>.</p>
 
 <div class="onebox">
 <p><strong>Mean.</strong>
@@ -430,86 +435,48 @@ The sample mean can be calculated as the sum of the observed values divided by t
 </div>
 
 <div class="guidedpractice">
-Examine the equation for the mean. What does <span class="math inline">\(x_1\)</span> correspond to? And <span class="math inline">\(x_2\)</span> Can you infer a general meaning to what <span class="math inline">\(n_i\)</span> might represent?<a href="#fn22" class="footnote-ref" id="fnref22"><sup>22</sup></a>
+Examine the equation for the mean. What does <span class="math inline">\(x_1\)</span> correspond to? And <span class="math inline">\(x_2\)</span> Can you infer a general meaning to what <span class="math inline">\(x_i\)</span> might represent?<a href="#fn23" class="footnote-ref" id="fnref23"><sup>23</sup></a>
 </div>
 
 <div class="guidedpractice">
-What was <span class="math inline">\(n\)</span> in this sample of loans?<a href="#fn23" class="footnote-ref" id="fnref23"><sup>23</sup></a>
+What was <span class="math inline">\(n\)</span> in this sample of loans?<a href="#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a>
 </div>
 <p>The <code>loan50</code> data set represents a sample from a larger population of loans made through Lending Club.
 We could compute a mean for this population in the same way as the sample mean.
 However, the population mean has a special label: <span class="math inline">\(\mu\)</span>.
 The symbol <span class="math inline">\(\mu\)</span> is the Greek letter <em>mu</em> and represents the average of all observations in the population.
-Sometimes a subscript, such as <span class="math inline">\(_x\)</span>, is used to represent which variable the population mean refers to, e.g. <span class="math inline">\(\mu_x\)</span>.
-Often times it is too expensive to measure the population mean precisely, so we often estimate <span class="math inline">\(\mu\)</span> using the sample mean, <span class="math inline">\(\bar{x}\)</span>.</p>
+Sometimes a subscript, such as <span class="math inline">\(_x\)</span>, is used to represent which variable the population mean refers to, e.g., <span class="math inline">\(\mu_x\)</span>.
+Often times it is too expensive or time consuming to measure the population mean precisely, so we often estimate <span class="math inline">\(\mu\)</span> using the sample mean, <span class="math inline">\(\bar{x}\)</span>.</p>
 
 <div class="pronunciation">
 The Greek letter <span class="math inline">\(\mu\)</span> is pronounced <em>mu</em>, listen to the pronunciation <a href="https://youtu.be/PStgY5AcEIw?t=47">here</a>.
 </div>
+<p>In the field of statistics, summary measures that summarize a sample of data, such as <span class="math inline">\(\bar{x}\)</span>, are called <strong>statistics</strong>. Numbers that summarize an entire population, such as <span class="math inline">\(\mu\)</span>, are called <strong>parameters</strong>. You can remember
+this distinction by looking at the first letter of each term: _S_tatistics summarize _S_amples; _P_arameters summarize _P_opulations.
+We typically use Roman letters to symbolize statistics (e.g., <span class="math inline">\(\bar{x}\)</span>, <span class="math inline">\(\hat{p}\)</span>), and Greek letters to symbolize parameters (e.g., <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\pi\)</span>).
+Since we rarely can measure the entire population, and thus rarely know
+the actual parameter values, we like to say, “We don’t know Greek,
+and we don’t know parameters!”</p>
 
 <div class="example">
 <p>The average interest rate across all loans in the population can be estimated using the sample data. Based on the sample of 50 loans, what would be a reasonable estimate of <span class="math inline">\(\mu_x\)</span>, the mean interest rate for all loans in the full data set?</p>
 <hr />
-The sample mean, <code>r {round(loan50_mean_intrest_rate, 2)}</code>, provides a rough estimate of <span class="math inline">\(\mu_x\)</span>. While it is not perfect, this is our single best guess <strong>point estimate</strong> of the average interest rate of all the loans in the population under study. In Chapter <a href="inference-foundations.html#inference-foundations">6</a> and beyond, we will develop tools to characterize the accuracy of point estimates, like the sample mean. As you might have guessed, point estimates based on larger samples tend to be more accurate than those based on smaller samples.
+The sample mean, <code>r {round(loan50_mean_intrest_rate, 2)}</code>, provides a rough estimate of <span class="math inline">\(\mu_x\)</span>. While it is not perfect, this statistic our single best guess <strong>point estimate</strong> of the average interest rate of all the loans in the population under study, the parameter. In Chapter <a href="inference-foundations.html#inference-foundations">5</a> and beyond, we will develop tools to characterize the accuracy of point estimates, like the sample mean. As you might have guessed, point estimates based on larger samples tend to be more accurate than those based on smaller samples.
 </div>
-<p>The mean is useful because it allows us to rescale or standardize a metric into something more easily interpretable and comparable.
-Suppose we would like to understand if a new drug is more effective at treating asthma attacks than the standard drug.
-A trial of 1500 adults is set up, where 500 receive the new drug, and 1000 receive a standard drug in the control group:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:center;">
-New drug
-</th>
-<th style="text-align:center;">
-Standard drug
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Number of patients
-</td>
-<td style="text-align:center;">
-500
-</td>
-<td style="text-align:center;">
-1000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Total asthma attacks
-</td>
-<td style="text-align:center;">
-200
-</td>
-<td style="text-align:center;">
-300
-</td>
-</tr>
-</tbody>
-</table>
-<p>Comparing the raw counts of 200 to 300 asthma attacks would make it appear that the new drug is better, but this is an artifact of the imbalanced group sizes.
-Instead, we should look at the average number of asthma attacks per patient in each group:</p>
-<ul>
-<li>New drug: <span class="math inline">\(200 / 500 = 0.4\)</span> asthma attacks per patient</li>
-<li>Standard drug: <span class="math inline">\(300 / 1000 = 0.3\)</span> asthma attacks per patient</li>
-</ul>
-<p>The standard drug has a lower average number of asthma attacks per patient than the average in the treatment group.</p>
+<p>The mean is useful for making comparisons across different samples that may have different sample sizes by converting values into a standard unit.</p>
 
 <div class="example">
-<p>Provide another examples where the mean is useful for making comparisons.</p>
+<p>Emilio opened a food truck last year where he sells burritos, and his business has stabilized over the last 4 months.
+Over that 4 month period, he has made $11,000 while working 625 hours.
+Emilio’s competition, Francis, has made $13,000 over the last 4 months while working 800 hours. Francis brags to Emilio that her business is more profitable. Is Francis’ claim warranted?</p>
 <hr />
-<p>Emilio opened a food truck last year where he sells burritos, and his business has stabilized over the last 3 months.
-Over that 3 month period, he has made $11,000 while working 625 hours.
-Emilio’s average hourly earnings provides a useful statistic for evaluating whether his venture is, at least from a financial perspective, worth it:</p>
+<p>Emilio’s average hourly earnings provide a useful statistic for evaluating how much his venture is, at least from a financial perspective, worth:</p>
 <p><span class="math display">\[ \frac{\$11000}{625\text{ hours}} = \$17.60\text{ per hour} \]</span></p>
-By knowing his average hourly wage,
-Emilio now has put his earnings into a standard unit that is easier to compare with many other jobs that he might consider.
+<p>By knowing his average hourly wage,
+Emilio now has put his earnings into a standard unit that is easier to compare with many other jobs that he might consider.</p>
+<p>In comparison, Francis’ average hourly wage was</p>
+<p><span class="math display">\[ \frac{\$13000}{800\text{ hours}} = \$16.25\text{ per hour} \]</span></p>
+Thus, while Francis’ total earnings were larger than Emilio’s, when standardizing by hour, Francis shouldn’t brag.
 </div>
 
 <div class="example">
@@ -526,7 +493,7 @@ For more information on this topic, check out the following online supplement re
 </div>
 <div id="histograms" class="section level3" number="2.1.3">
 <h3><span class="header-section-number">2.1.3</span> Histograms and shape</h3>
-<p>Dot plots show the exact value for each observation. This is useful for small data sets, but they can become hard to read with larger samples. Rather than showing the value of each observation, we prefer to think of the value as belonging to a <em>bin</em>. For example, in the <code>loan50</code> data set, we created a table of counts for the number of loans with interest rates between 5.0% and 7.5%, then the number of loans with rates between 7.5% and 10.0%, and so on. Observations that fall on the boundary of a bin (e.g. 10.00%) are allocated to the lower bin. This tabulation is shown in Table <a href="eda.html#tab:binnedIntRateAmountTable">2.1</a>. These binned counts are plotted as bars in Figure <a href="eda.html#fig:loan50IntRateHist">2.4</a> into what is called a <strong>histogram</strong>, which resembles a more heavily binned version of the stacked dot plot shown in Figure <a href="eda.html#fig:loan-int-rate-dotplot">2.3</a>.</p>
+<p>Dot plots show the exact value for each observation. This is useful for small data sets, but they can become hard to read with larger samples. Rather than showing the value of each observation, we prefer to think of the value as belonging to a <em>bin</em>. For example, in the <code>loan50</code> data set, we created a table of counts for the number of loans with interest rates between 5.0% and 7.5%, then the number of loans with rates between 7.5% and 10.0%, and so on. Observations that fall on the boundary of a bin (e.g., 10.00%) are allocated to the lower bin. This tabulation is shown in Table <a href="eda.html#tab:binnedIntRateAmountTable">2.1</a>. These binned counts are plotted as bars in Figure <a href="eda.html#fig:loan50IntRateHist">2.4</a> into what is called a <strong>histogram</strong>, which resembles a more heavily binned version of the stacked dot plot shown in Figure <a href="eda.html#fig:loan-int-rate-dotplot">2.3</a>.</p>
 <table>
 <caption>
 <span id="tab:binnedIntRateAmountTable">Table 2.1: </span>Counts for the binned <code>interest_rate</code> data.
@@ -606,9 +573,10 @@ Count
 Figure 2.4: A histogram of <code>interest_rate</code>. This distribution is strongly skewed to the right.
 </p>
 </div>
-<p>Histograms provide a view of the <strong>data density</strong>. Higher bars represent where the data are relatively more common. For instance, there are many more loans with rates between 5% and 10% than loans with rates between 20% and 25% in the data set. The bars make it easy to see how the density of the data changes relative to the interest rate.</p>
-<p>Histograms are especially convenient for understanding the shape of the data distribution. Figure <a href="eda.html#fig:loan50IntRateHist">2.4</a> suggests that most loans have rates under 15%, while only a handful of loans have rates above 20%. When data trail off to the right in this way and has a longer right <strong>tail</strong>, the shape is said to be <strong>right skewed</strong><a href="#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a></p>
-<p>Data sets with the reverse characteristic – a long, thinner tail to the left – are said to be <strong>left skewed</strong>. We also say that such a distribution has a long left tail. Data sets that show roughly equal trailing off in both directions are called <strong>symmetric</strong>.</p>
+<p>Histograms provide a view of the <strong>data density</strong>. Higher bars represent where the data are relatively more common, or
+“dense.” For instance, there are many more loans with rates between 5% and 10% than loans with rates between 20% and 25% in the data set. The bars make it easy to see how the density of the data changes relative to the interest rate.</p>
+<p>Histograms are especially convenient for understanding the shape of the data distribution. Figure <a href="eda.html#fig:loan50IntRateHist">2.4</a> suggests that most loans have rates under 15%, while only a handful of loans have rates above 20%. When data trail off to the right in this way and has a longer right <strong>tail</strong>, the shape is said to be <strong>right skewed</strong><a href="#fn25" class="footnote-ref" id="fnref25"><sup>25</sup></a></p>
+<p>Data sets with the reverse characteristic—a long, thinner tail to the left—are said to be <strong>left skewed</strong>. We also say that such a distribution has a long left tail. Data sets that show roughly equal trailing off in both directions are called <strong>symmetric</strong>.</p>
 
 <div class="onebox">
 When data trail off in one direction, the distribution has a <strong>long tail</strong>.
@@ -617,11 +585,11 @@ If a distribution has a long right tail, it is <strong>right skewed</strong> or 
 </div>
 
 <div class="guidedpractice">
-Besides the mean (since it was labeled), what can you see in the dot plot in Figure <a href="eda.html#fig:loan-int-rate-dotplot">2.3</a> that you cannot see in the histogram in Figure <a href="eda.html#fig:loan50IntRateHist">2.4</a>?<a href="#fn25" class="footnote-ref" id="fnref25"><sup>25</sup></a>
+Besides the mean (since it was labeled), what can you see in the dot plot in Figure <a href="eda.html#fig:loan-int-rate-dotplot">2.3</a> that you cannot see in the histogram in Figure <a href="eda.html#fig:loan50IntRateHist">2.4</a>?<a href="#fn26" class="footnote-ref" id="fnref26"><sup>26</sup></a>
 </div>
 <p>In addition to looking at whether a distribution is skewed or symmetric, histograms can be used to identify modes. A <strong>mode</strong> is represented by a prominent peak in the distribution. There is only one prominent peak in the histogram of <code>interest_rate</code>.</p>
 <p>A definition of <em>mode</em> sometimes taught in math classes is the value with the most occurrences in the data set. However, for many real-world data sets, it is common to have <em>no</em> observations with the same value in a data set, making this definition impractical in data analysis.</p>
-<p>Figure <a href="eda.html#fig:singleBiMultiModalPlots">2.5</a> shows histograms that have one, two, or three prominent peaks. Such distributions are called <strong>unimodal</strong>, <strong>bimodal</strong>, and <strong>multimodal</strong>, respectively. Any distribution with more than 2~prominent peaks is called multimodal. Notice that there was one prominent peak in the unimodal distribution with a second less prominent peak that was not counted since it only differs from its neighboring bins by a few observations.</p>
+<p>Figure <a href="eda.html#fig:singleBiMultiModalPlots">2.5</a> shows histograms that have one, two, or three prominent peaks. Such distributions are called <strong>unimodal</strong>, <strong>bimodal</strong>, and <strong>multimodal</strong>, respectively. Any distribution with more than two prominent peaks is called multimodal. Notice that there was one prominent peak in the unimodal distribution with a second less prominent peak that was not counted since it only differs from its neighboring bins by a few observations.</p>
 <div class="figure" style="text-align: center"><span id="fig:singleBiMultiModalPlots"></span>
 <img src="02-eda_files/figure-html/singleBiMultiModalPlots-1.png" alt="Counting only prominent peaks, the distributions are (left to right) unimodal, bimodal, and multimodal. Note that the left plot is unimodal because we are counting prominent peaks, not just any peak." width="90%" />
 <p class="caption">
@@ -630,196 +598,591 @@ Figure 2.5: Counting only prominent peaks, the distributions are (left to right)
 </div>
 
 <div class="example">
-Figure <a href="eda.html#fig:loan50IntRateHist">2.4</a> reveals only one prominent mode in the interest rate. Is the distribution unimodal, bimodal, or multimodal?<a href="#fn26" class="footnote-ref" id="fnref26"><sup>26</sup></a>
+Figure <a href="eda.html#fig:loan50IntRateHist">2.4</a> reveals only one prominent mode in the interest rate. Is the distribution unimodal, bimodal, or multimodal?<a href="#fn27" class="footnote-ref" id="fnref27"><sup>27</sup></a>
 </div>
 
 <div class="guidedpractice">
 Height measurements of young students and adult teachers at a K-3 elementary school were taken.
-How many modes would you expect in this height data set?<a href="#fn27" class="footnote-ref" id="fnref27"><sup>27</sup></a>.
+How many modes would you expect in this height data set?<a href="#fn28" class="footnote-ref" id="fnref28"><sup>28</sup></a>.
 </div>
 <p>Looking for modes isn’t about finding a clear and correct answer about the number of modes in a distribution, which is why <em>prominent</em> is not rigorously defined in this book. The most important part of this examination is to better understand your data.</p>
-</div>
-<div id="boxplots" class="section level3" number="2.1.4">
-<h3><span class="header-section-number">2.1.4</span> Box plots and the median</h3>
-<p>A <strong>box plot</strong> (or box-and-whisker plot) summarizes a data set using five statistics while
-also plotting unusual observations. The five statistics—minimum, first quartile,
-median, third quartile, maximum—together are called the <strong>five number summary</strong>.
-Figure <a href="eda.html#fig:boxPlotLayoutNumVar">2.6</a> provides a vertical dot plot alongside a box plot of the  variable from the  data set.</p>
-<div class="figure" style="text-align: center"><span id="fig:boxPlotLayoutNumVar"></span>
-<img src="02/figures/boxPlotLayoutNumVar/boxPlotLayoutNumVar.png" alt="A vertical dot plot next to a labeled box plot for the number of characters in 50 emails. The median (6.89), splits the data into the bottom 50% and the top 50%, marked in the dot plot by horizontal dashes and open circles, respectively." width="75%" />
+<p>Another type of plot that is helpful for exploring the shape of a distribution is a smoothed histogram, called a <strong>density plot</strong>. A density plot will scale the <span class="math inline">\(y\)</span>-axis so that the total area under the density curve is equal to one. This allows us to get a sense of what <em>proportion</em> of the data lie in a certain interval, rather than the <em>frequency</em> of data in the interval. We can change the scale of a histogram to plot proportions rather than frequencies, then overlay a density curve on this rescaled histogram, as seen in Figure <a href="eda.html#fig:loan50IntRateDens">2.6</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:loan50IntRateDens"></span>
+<img src="02-eda_files/figure-html/loan50IntRateDens-1.png" alt="A density plot of `interest_rate` overlayed on a histogram using density scale." width="70%" />
 <p class="caption">
-Figure 2.6: A vertical dot plot next to a labeled box plot for the number of characters in 50 emails. The median (6.89), splits the data into the bottom 50% and the top 50%, marked in the dot plot by horizontal dashes and open circles, respectively.
+Figure 2.6: A density plot of <code>interest_rate</code> overlayed on a histogram using density scale.
 </p>
 </div>
-<p>The first step in building a box plot is drawing a dark line denoting the
-<strong>median</strong>, which splits the data in half. Figure
-<a href="eda.html#fig:boxPlotLayoutNumVar">2.6</a> shows 50% of the data falling below
-the median (dashes) and other 50% falling above the median (open circles).
-There are 50 character counts in the data set (an even number) so the data are
-perfectly split into two groups of 25. We take the median in this case to be the
-average of the two observations closest to the 50<sup>th</sup> percentile: <span class="math inline">\((6.768 + 7.012)/2 = 6.890\)</span>. When there are an odd number of observations, there will be exactly one observation that splits the data into two halves, and in this case that observation is the median (no average needed).</p>
+</div>
+<div id="variance-sd" class="section level3" number="2.1.4">
+<h3><span class="header-section-number">2.1.4</span> Variance and standard deviation</h3>
+<p>The mean was introduced as a method to describe the center of a data set, and <strong>variability</strong> in the data is also important. Here, we introduce two measures of variability: the variance and the standard deviation. Both of these are very useful in data analysis, even though their formulas are a bit tedious to calculate by hand. The standard deviation is the easier of the two to comprehend, and it roughly describes how far away the typical observation is from the mean.</p>
+<p>We call the distance of an observation from its mean its <strong>deviation</strong>. Below are the deviations for the <span class="math inline">\(1^{st}\)</span>, <span class="math inline">\(2^{nd}\)</span>, <span class="math inline">\(3^{rd}\)</span>, and <span class="math inline">\(50^{th}\)</span> observations in the <code>interest_rate</code> variable:</p>
+<p><span class="math display">\[ x_1 - \bar{x} = 10.9 - 11.57 = -0.67 \]</span> <span class="math display">\[ x_2 - \bar{x} = 9.92 - 11.57 = -1.65 \]</span> <span class="math display">\[ x_3 - \bar{x} = 26.3 - 11.57 = 14.73 \]</span> <span class="math display">\[ \vdots \]</span> <span class="math display">\[ x_{50} - \bar{x} = 6.08 - 11.57 = -5.49 \]</span></p>
+<p>If we square these deviations and then take an average, the result is equal to the sample <strong>variance</strong>, denoted by <span class="math inline">\(s^2\)</span>:</p>
+<p><span class="math display">\[ s^2 = \frac{(-0.67)^2 + (-1.65)^2 + (14.73)^2 + \cdots + (-5.49)^2}{50 - 1} = \frac{0.45 + 2.72 + \cdots + 30.14}{49} = 25.52 \]</span></p>
+<p>We divide by <span class="math inline">\(n - 1\)</span>, rather than dividing by <span class="math inline">\(n\)</span>, when computing a sample’s variance; there’s some mathematical nuance here, but the end result is that doing this makes this statistic slightly more reliable and useful.</p>
+<p>Notice that squaring the deviations does two things. First, it makes large values relatively much larger. Second, it gets rid of any negative signs.</p>
+<p>The <strong>standard deviation</strong> is defined as the square root of the variance:</p>
+<p><span class="math display">\[ s = \sqrt{25.52} = 5.05 \]</span></p>
+<p>While often omitted, a subscript of <span class="math inline">\(_x\)</span> may be added to the variance and standard deviation, i.e., <span class="math inline">\(s_x^2\)</span> and <span class="math inline">\(s_x\)</span>, if it is useful as a reminder that these are the variance and standard deviation of the observations represented by <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span>, …, <span class="math inline">\(x_n\)</span>.</p>
 
 <div class="onebox">
-<p><strong>Median.</strong> If the data are ordered from smallest to largest, the sample median is the observation
-right in the middle. If there are an even number of observations, there will be two
-values in the middle, and the median is taken as their average.</p>
-<p>If we denote the sample size by <span class="math inline">\(n\)</span>, then</p>
+<p><strong>Variance and standard deviation.</strong>
+The sample variance is the (near) average squared distance from the mean:
+<span class="math display">\[
+  s^2 = \frac{((x_1 - \bar{x})^2 + (x_2 - \bar{x})^2 + \cdots + (x_n - \bar{x})^2)}{n-1}
+\]</span>
+The sample standard deviation is the square root of the variance: <span class="math inline">\(s = \sqrt{s^2}\)</span>.</p>
+The standard deviation is useful when considering how far the data are distributed from the mean.
+<em>The standard deviation represents the typical deviation of observations from the mean.</em>
+If the distribution is bell-shaped, about 70% of the data will be within one standard deviation of the mean and about 95% will be within two standard deviations.
+However, these percentages do not necessarily hold for other shaped distributions!
+</div>
+<p>Like the mean, the population values for variance and standard deviation have special symbols: <span class="math inline">\(\sigma^2\)</span> for the variance and <span class="math inline">\(\sigma\)</span> for the standard deviation.</p>
+
+<div class="pronunciation">
+The Greek letter <span class="math inline">\(\sigma\)</span> is pronounced <em>sigma</em>, listen to the pronunciation <a href="https://youtu.be/PStgY5AcEIw?t=72">here</a>.
+</div>
+<div class="figure" style="text-align: center"><span id="fig:sdRuleForIntRate"></span>
+<img src="02-eda_files/figure-html/sdRuleForIntRate-1.png" alt="For the `interest_rate` variable, 34 of the 50 loans (68%) had interest rates within 1 standard deviation of the mean, and 48 of the 50 loans (96%) had rates within 2 standard deviations. Usually about 70% of the data are within 1 standard deviation of the mean and 95% within 2 standard deviations, though this is far from a hard rule." width="70%" />
+<p class="caption">
+Figure 2.7: For the <code>interest_rate</code> variable, 34 of the 50 loans (68%) had interest rates within 1 standard deviation of the mean, and 48 of the 50 loans (96%) had rates within 2 standard deviations. Usually about 70% of the data are within 1 standard deviation of the mean and 95% within 2 standard deviations, though this is far from a hard rule.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:severalDiffDistWithSdOf1"></span>
+<img src="02-eda_files/figure-html/severalDiffDistWithSdOf1-1.png" alt="Three very different population distributions with the same mean (0) and standard deviation (1)." width="70%" />
+<p class="caption">
+Figure 2.8: Three very different population distributions with the same mean (0) and standard deviation (1).
+</p>
+</div>
+
+<div class="guidedpractice">
+A good description of the shape of a distribution should include modality and whether the distribution is symmetric or skewed to one side.
+Using Figure <a href="eda.html#fig:severalDiffDistWithSdOf1">2.8</a> as an example, explain why such a description is important.<a href="#fn29" class="footnote-ref" id="fnref29"><sup>29</sup></a>
+</div>
+
+<div class="example">
+<p>Describe the distribution of the <code>interest_rate</code> variable using the histogram in Figure <a href="eda.html#fig:loan50IntRateHist">2.4</a>.
+The description should incorporate the center, variability, and shape of the distribution, and it should also be placed in context.
+Also note any especially unusual cases.</p>
+<hr />
+The distribution of interest rates is unimodal and skewed to the high end. Many of the rates fall near the mean at 11.57%, and most fall within one standard deviation (5.05%) of the mean.
+There are a few exceptionally large interest rates in the sample that are above 20%.
+</div>
+<p>In practice, the variance and standard deviation are sometimes used as a means to an end, where the “end” is being able to accurately estimate the uncertainty associated with a sample statistic. For example, in Chapter <a href="inference-foundations.html#inference-foundations">5</a> the standard deviation is used in calculations that help us understand how much a sample mean varies from one sample to the next.</p>
+</div>
+<div id="box-plots-quartiles-and-the-median" class="section level3" number="2.1.5">
+<h3><span class="header-section-number">2.1.5</span> Box plots, quartiles, and the median</h3>
+<p>A <strong>box plot</strong> (or box-and-whisker plot) summarizes a data set using five statistics while
+also identifying unusual observations. The five statistics—minimum, first quartile,
+median, third quartile, maximum—together are called the <strong>five number summary</strong>.
+Figure <a href="eda.html#fig:loan-int-rate-boxplot-dotplot">2.9</a> provides a dot plot alongside a box plot of the <code>interest_rate</code> variable from the <code>loan50</code> data set.</p>
+<div class="figure" style="text-align: center"><span id="fig:loan-int-rate-boxplot-dotplot"></span>
+<img src="02-eda_files/figure-html/loan-int-rate-boxplot-dotplot-1.png" alt="Plot A shows a dot plot and Plot B shows a box plot of the distribution of interest rates from the `loan50` dataset." width="70%" />
+<p class="caption">
+Figure 2.9: Plot A shows a dot plot and Plot B shows a box plot of the distribution of interest rates from the <code>loan50</code> dataset.
+</p>
+</div>
+<p>The dark line inside the box represents the <strong>median</strong>, which splits the data in half:
+50% of the data fall below this value and 50% fall above it.
+Since in the <code>loan50</code> dataset there are 50 observations (an even number), the median is defined as the average of the two observations closest to the <span class="math inline">\(50^{th}\)</span> percentile.
+Table @ref(tab:loan50_int_rate_sorted) shows all interest rates, arranged in ascending order.
+We can see that the <span class="math inline">\(25^{th}\)</span> and the <span class="math inline">\(26^{th}\)</span> values are both 9.93, which corresponds to the dark line in the box plot in Figure <a href="eda.html#fig:loan-int-rate-boxplot-dotplot">2.9</a>.</p>
+<table>
+<caption>
+(#tab:loan50_int_rate_sorted)Interest rates from the <code>loan50</code> dataset, arranged in ascending order.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+1
+</th>
+<th style="text-align:right;">
+2
+</th>
+<th style="text-align:right;">
+3
+</th>
+<th style="text-align:right;">
+4
+</th>
+<th style="text-align:right;">
+5
+</th>
+<th style="text-align:right;">
+6
+</th>
+<th style="text-align:right;">
+7
+</th>
+<th style="text-align:right;">
+8
+</th>
+<th style="text-align:right;">
+9
+</th>
+<th style="text-align:right;">
+10
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+5.31
+</td>
+<td style="text-align:right;">
+5.31
+</td>
+<td style="text-align:right;">
+5.32
+</td>
+<td style="text-align:right;">
+6.08
+</td>
+<td style="text-align:right;">
+6.08
+</td>
+<td style="text-align:right;">
+6.08
+</td>
+<td style="text-align:right;">
+6.71
+</td>
+<td style="text-align:right;">
+6.71
+</td>
+<td style="text-align:right;">
+7.34
+</td>
+<td style="text-align:right;">
+7.35
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:right;">
+7.35
+</td>
+<td style="text-align:right;">
+7.96
+</td>
+<td style="text-align:right;">
+7.96
+</td>
+<td style="text-align:right;">
+7.96
+</td>
+<td style="text-align:right;">
+7.97
+</td>
+<td style="text-align:right;">
+9.43
+</td>
+<td style="text-align:right;">
+9.43
+</td>
+<td style="text-align:right;">
+9.44
+</td>
+<td style="text-align:right;">
+9.44
+</td>
+<td style="text-align:right;">
+9.44
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20
+</td>
+<td style="text-align:right;">
+9.92
+</td>
+<td style="text-align:right;">
+9.92
+</td>
+<td style="text-align:right;">
+9.92
+</td>
+<td style="text-align:right;">
+9.92
+</td>
+<td style="text-align:right;">
+9.93
+</td>
+<td style="text-align:right;">
+9.93
+</td>
+<td style="text-align:right;">
+10.42
+</td>
+<td style="text-align:right;">
+10.42
+</td>
+<td style="text-align:right;">
+10.90
+</td>
+<td style="text-align:right;">
+10.90
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+30
+</td>
+<td style="text-align:right;">
+10.91
+</td>
+<td style="text-align:right;">
+10.91
+</td>
+<td style="text-align:right;">
+10.91
+</td>
+<td style="text-align:right;">
+11.98
+</td>
+<td style="text-align:right;">
+12.62
+</td>
+<td style="text-align:right;">
+12.62
+</td>
+<td style="text-align:right;">
+12.62
+</td>
+<td style="text-align:right;">
+14.08
+</td>
+<td style="text-align:right;">
+15.04
+</td>
+<td style="text-align:right;">
+16.02
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+40
+</td>
+<td style="text-align:right;">
+17.09
+</td>
+<td style="text-align:right;">
+17.09
+</td>
+<td style="text-align:right;">
+17.09
+</td>
+<td style="text-align:right;">
+18.06
+</td>
+<td style="text-align:right;">
+18.45
+</td>
+<td style="text-align:right;">
+19.42
+</td>
+<td style="text-align:right;">
+20.00
+</td>
+<td style="text-align:right;">
+21.45
+</td>
+<td style="text-align:right;">
+24.85
+</td>
+<td style="text-align:right;">
+26.30
+</td>
+</tr>
+</tbody>
+</table>
+<p>When there are an odd number of observations, there will be exactly one observation that splits the data into two halves, and in such a case that observation is the median (no average needed).</p>
+
+<div class="onebox">
+<p><strong>Median: the number in the middle.</strong><br />
+If the data are ordered from smallest to largest, the <strong>median</strong> is the observation right in the middle.
+If there are an even number of observations, there will be two values in the middle, and the median is taken as their average.</p>
+<p>Mathematically, if we denote the sample size by <span class="math inline">\(n\)</span>, then</p>
 <ul>
 <li>if <span class="math inline">\(n\)</span> is odd, the median is the <span class="math inline">\([(n+1)/2]^{th}\)</span> smallest value in the data set, and</li>
 <li>if <span class="math inline">\(n\)</span> is even, the median is the average of the <span class="math inline">\((n/2)^{th}\)</span> and <span class="math inline">\((n/2+1)^{th}\)</span> smallest values in the data set.
 </div></li>
 </ul>
-<p>The second step in building a box plot is drawing a rectangle to represent
-the area of the middle 50% of the data. The total length of the box,
-shown vertically in Figure <a href="eda.html#fig:boxPlotLayoutNumVar">2.6</a>, is called the
-<strong>interquartile range</strong> (IQR, for short)(interquartile range, IQR). It is a
-measure of <strong>variability</strong> in data. The more variable the data, the larger the IQR.
-The two boundaries of the box are called the <strong>first quartile</strong>
-(the 25<sup>th</sup> percentile, i.e., 25% of the data fall below this value) and the <strong>third
-quartile</strong> (the 75<sup>th</sup> percentile), and these are often labeled
-<span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span>, respectively. (In case you’re wondering, the median is the 2<sup>nd</sup> quartile! These three quartiles break the data into four groups of equal size.)</p>
+<p>The second step in building a box plot is drawing a rectangle to represent the middle 50% of the data.
+The length of the the box is called the <strong>interquartile range</strong>, or <strong>IQR</strong> for short.
+It, like the standard deviation, is a measure of variability in data.
+The more variable the data, the larger the standard deviation and IQR tend to be.
+The two boundaries of the box are called the <strong>first quartile</strong> (the <span class="math inline">\(25^{th}\)</span> percentile, i.e., 25% of the data fall below this value) and the <strong>third quartile</strong> (the <span class="math inline">\(75^{th}\)</span> percentile, i.e., 75% of the data fall below this value)  , and these are often labeled <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span>, respectively<a href="#fn30" class="footnote-ref" id="fnref30"><sup>30</sup></a></p>
 
 <div class="onebox">
-<p><strong>Interquartile range (IQR).</strong> The IQR is the length of the box in a box plot—the
-range of the middle 50% of the data.
-It is computed as</p>
-<p><span class="math display">\[IQR = Q_3 - Q_1,\]</span></p>
-where <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span> are the 25<sup>th</sup> and 75<sup>th</sup> percentiles.
+<strong>Interquartile range (IQR).</strong>
+The IQR interquartile range is the length of the box in a box plot.
+It is computed as
+<span class="math display">\[
+  IQR = Q_3 - Q_1,
+\]</span>
+where <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span> are the <span class="math inline">\(25^{th}\)</span> and <span class="math inline">\(75^{th}\)</span> percentiles, respectively.
 </div>
 
 <div class="guidedpractice">
 What percent of the data fall between <span class="math inline">\(Q_1\)</span> and the median?
-What percent is between the median and <span class="math inline">\(Q_3\)</span>?<a href="#fn28" class="footnote-ref" id="fnref28"><sup>28</sup></a>
+What percent is between the median and <span class="math inline">\(Q_3\)</span>?<a href="#fn31" class="footnote-ref" id="fnref31"><sup>31</sup></a>
 </div>
-<p>Extending out from the box, the <strong>whiskers</strong> attempt to capture the data
-outside of the box; however, their reach is never allowed to be more than <span class="math inline">\(1.5\times IQR\)</span>.<a href="#fn29" class="footnote-ref" id="fnref29"><sup>29</sup></a>
-They capture everything within this reach. In Figure <a href="eda.html#fig:boxPlotLayoutNumVar">2.6</a>,
-the upper whisker does not extend to the last three points, which are beyond
+<p>Extending out from the box, the <strong>whiskers</strong> attempt to capture the data outside of the box.
+The whiskers of a box plot reach to the minimum and the maximum values in the data, unless there are points that are considered unusually high or unusually low, which are identified as potential <strong>outliers</strong> by the box plot.
+These are labeled with a dot on the box plot.
+The purpose of labeling these points—instead of extending the whiskers to the minimum and maximum observed values—is to help identify any observations that appear to be unusually distant from the rest of the data.
+There are a variety of formulas for determining whether a particular data point is considered an outlier, and different statistical software use different formulas.
+A commonly used formula is that any value that is beyond <span class="math inline">\(1.5\times IQR\)</span>[While the choice of exactly 1.5 is arbitrary, it is the most commonly used value for box plots.] away from the box is considered an outlier.
+In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data, up to the outliers.</p>
+<p>In Figure <a href="eda.html#fig:loan-int-rate-boxplot-dotplot">2.9</a>,
+the upper whisker does not extend to the last two points, 24.85% and 26.3%, which are above
 <span class="math inline">\(Q_3 + 1.5\times IQR\)</span>, and so it extends only to the last point below this limit.
-The lower whisker stops at the lowest value, 33, since there is no additional data
-to reach; the lower whisker’s limit is not shown in the figure because the plot does not extend down to <span class="math inline">\(Q_1 - 1.5\times IQR\)</span>. In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data.</p>
+The lower whisker stops at the minimum value in the data set, 5.31%, since there are no outliers on the lower end of the distribution.</p>
 
 <div class="protip">
 The whiskers extend to actual data points—not the limits for outliers. That is,
 the values <span class="math inline">\(Q_1 - 1.5\times IQR\)</span> and <span class="math inline">\(Q_3 + 1.5\times IQR\)</span> should not be shown
 on the plot.
 </div>
-<p>Any observation that lies beyond the whiskers is labeled with a dot. The purpose of
-labeling these points—instead of just extending the whiskers to the minimum and
-maximum observed values—is to help identify any observations that appear to be
-unusually distant from the rest of the data. Unusually distant observations are called
-<strong>outliers</strong>. In this case, it would be reasonable to classify the
-emails with character counts of 41.623, 42.793, and 64.401 as outliers
-since they are numerically distant from most of the data.</p>
 
 <div class="onebox">
-<strong>Outliers are extreme.</strong> An outlier is an observation that is extreme, relative to the rest of the data.
-</div>
-
-<div class="protip">
-<p>Examination of data for possible outliers serves many useful purposes, including:</p>
+<p><strong>Outliers are extreme.</strong>
+An <strong>outlier</strong> is an observation that appears extreme relative to the rest of the data.
+Examining data for outliers serves many useful purposes, including</p>
 <ul>
-<li>Identifying strong skewness in the distribution</li>
-<li>Identifying data collection or entry errors. For instance, we re-examined the email purported to have 64.401 characters to ensure this value was accurate.</li>
-<li>Providing insight into interesting properties of the data.
+<li>identifying strong skew  in the distribution,</li>
+<li>identifying possible data collection or data entry errors, and</li>
+<li>providing insight into interesting properties of the data.
 </div></li>
 </ul>
 
 <div class="guidedpractice">
-The observation 64.401, an outlier, was found to be an accurate observation.
-What would such an observation suggest about the nature of character counts in
-emails?<a href="#fn30" class="footnote-ref" id="fnref30"><sup>30</sup></a>
+Using the box plot in Figure <a href="eda.html#fig:loan-int-rate-boxplot-dotplot">2.9</a>, estimate the values of the <span class="math inline">\(Q_1\)</span>, <span class="math inline">\(Q_3\)</span>, and IQR for <code>interest_rate</code> in the <code>loan50</code> data set.<a href="#fn32" class="footnote-ref" id="fnref32"><sup>32</sup></a>
 </div>
+</div>
+<div id="robust-statistics" class="section level3" number="2.1.6">
+<h3><span class="header-section-number">2.1.6</span> Robust statistics</h3>
+<p>How are the <strong>sample statistics</strong>  of the <code>interest_rate</code> data set affected by the observation, 26.3%?
+What would have happened if this loan had instead been only 15%?
+What would happen to these summary statistics  if the observation at 26.3% had been even larger, say 35%?
+These scenarios are plotted alongside the original data in Figure <a href="eda.html#fig:loan-int-rate-robust-ex">2.10</a>, and sample statistics are computed under each scenario in Table <a href="eda.html#tab:robustOrNotTable">2.2</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:loan-int-rate-robust-ex"></span>
+<img src="02-eda_files/figure-html/loan-int-rate-robust-ex-1.png" alt="Dot plots of the original interest rate data and two modified data sets." width="70%" />
+<p class="caption">
+Figure 2.10: Dot plots of the original interest rate data and two modified data sets.
+</p>
+</div>
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:robustOrNotTable">Table 2.2: </span>A comparison of how the median, IQR, mean, and standard deviation change as the value of an extereme observation from the original interest data changes.
+</caption>
+<thead>
+<tr>
+<th style="border-bottom:hidden" colspan="1">
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Robust
+</div>
+</th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Not robust
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+Scenario
+</th>
+<th style="text-align:center;">
+Median
+</th>
+<th style="text-align:center;">
+IQR
+</th>
+<th style="text-align:center;">
+Mean
+</th>
+<th style="text-align:center;">
+SD
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Original data
+</td>
+<td style="text-align:center;">
+9.93
+</td>
+<td style="text-align:center;">
+5.75
+</td>
+<td style="text-align:center;">
+11.6
+</td>
+<td style="text-align:center;">
+5.05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Move 26.3% to 15%
+</td>
+<td style="text-align:center;">
+9.93
+</td>
+<td style="text-align:center;">
+5.75
+</td>
+<td style="text-align:center;">
+11.3
+</td>
+<td style="text-align:center;">
+4.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Move 26.3% to 35%
+</td>
+<td style="text-align:center;">
+9.93
+</td>
+<td style="text-align:center;">
+5.75
+</td>
+<td style="text-align:center;">
+11.7
+</td>
+<td style="text-align:center;">
+5.68
+</td>
+</tr>
+</tbody>
+</table>
 
 <div class="guidedpractice">
-<p>Using Figure <a href="eda.html#fig:boxPlotLayoutNumVar">2.6</a>, estimate the following values for <code>num_char</code> in the <code>email50</code> data set:</p>
 <ol style="list-style-type: lower-alpha">
-<li><span class="math inline">\(Q_1\)</span></li>
-<li><span class="math inline">\(Q_3\)</span></li>
-<li><span class="math inline">\(IQR\)</span>.<a href="#fn31" class="footnote-ref" id="fnref31"><sup>31</sup></a>
+<li>Which is more affected by extreme observations, the mean or median?<br />
+</li>
+<li>Is the standard deviation or IQR more affected by extreme observations?<a href="#fn33" class="footnote-ref" id="fnref33"><sup>33</sup></a>
 </div></li>
 </ol>
+<p>The median and IQR are called <strong>robust statistics</strong> because extreme observations have little effect on their values—moving the most extreme value generally has little influence on these statistics.
+On the other hand, the mean and standard deviation are more heavily influenced by changes in extreme observations, which can be important in some situations. Additionally, the mean tends to get pulled in the direction of a distribution’s skewness, while the skewness has little affect on the median.</p>
+
+<div class="example">
+<p>The median and IQR did not change under the three scenarios in Table <a href="eda.html#tab:robustOrNotTable">2.2</a>.
+Why might this be the case?</p>
+<hr />
+The median and IQR are only sensitive to numbers near <span class="math inline">\(Q_1\)</span>, the median, and <span class="math inline">\(Q_3\)</span>.
+Since values in these regions are stable in the three data sets, the median and IQR estimates are also stable.
 </div>
-<div id="robust-statistics" class="section level3" number="2.1.5">
-<h3><span class="header-section-number">2.1.5</span> Robust statistics</h3>
-<!-- How are the \indexthis{sample statistics}{sample statistic} of the \data{num\_\hspace{0.3mm}char} data set affected by the observation, 64,401? What would have happened if this email wasn't observed? What would happen to these \indexthis{summary statistics}{summary statistic} if the observation at 64,401 had been even larger, say 150,000? These scenarios are plotted alongside the original data in Figure~\ref{email50NumCharDotPlotRobustEx}, and sample statistics are computed under each scenario in Table~\ref{robustOrNotTable}. -->
-<!-- \begin{figure}[ht] -->
-<!-- \centering -->
-<!-- \includegraphics[width=\textwidth]{01/figures/email50NumCharDotPlotRobustEx/email50NumCharDotPlotRobustEx} -->
-<!-- \caption{Dot plots of the original character count data and two modified data sets.} -->
-<!-- \label{email50NumCharDotPlotRobustEx} -->
-<!-- \end{figure} -->
-<!-- \begin{table}[ht] -->
-<!-- \centering -->
-<!-- \begin{tabular}{l c cc c cc} -->
-<!--   \hline -->
-<!-- & \hspace{0mm} & \multicolumn{2}{c}{\bf robust} & \hspace{2mm} & \multicolumn{2}{c}{\bf not robust} \\ -->
-<!-- scenario && median & IQR && $\bar{x}$ & $s$ \\  -->
-<!--   \hline -->
-<!-- original \var{num\_\hspace{0.3mm}char} data 	&& 6,890 & 12,875 && 11,600 & 13,130 \\ -->
-<!-- % library(openintro); data(email50); d <- email50$num_char; median(d); diff(quantile(d, c(0.25,0.75))); mean(d); sd(d) -->
-<!-- drop 66,924 observation		&& 6,768 & 11,702 && 10,521 & 10,798 \\ -->
-<!-- % library(openintro); data(email50); d <- email50$num_char; d <- d[-which.max(d)]; median(d); diff(quantile(d, c(0.25,0.75))); mean(d); sd(d) -->
-<!-- move 66,924 to 150,000		&& 6,890 & 12,875 && 13,310 & 22,434 \\ -->
-<!-- % library(openintro); data(email50); d <- email50$num_char; d[which.max(d)] <- 100000; median(d); diff(quantile(d, c(0.25,0.75))); mean(d); sd(d) -->
-<!--    \hline -->
-<!-- \end{tabular} -->
-<!-- \caption{A comparison of how the median, IQR, mean ($\bar{x}$), and standard deviation ($s$) change when extreme observations are present.} -->
-<!-- \label{robustOrNotTable} -->
-<!-- \end{table} -->
-<!-- \begin{exercise} \label{numCharWhichIsMoreRobust} -->
-<!-- (a) Which is more affected by extreme observations, the mean or median? Table~\ref{robustOrNotTable} may be helpful. (b) Is the standard deviation or IQR more affected by extreme observations?\footnote{(a) Mean is affected more. (b) Standard deviation is affected more. Complete explanations are provided in the material following Guided Practice~\ref{numCharWhichIsMoreRobust}.} -->
-<!-- \end{exercise} -->
-<!-- The median and IQR are called \term{robust estimates} because extreme observations have little effect on their values. The mean and standard deviation are much more affected by changes in extreme observations. -->
-<!-- \begin{example}{The median and IQR do not change much under the three scenarios in Table~\ref{robustOrNotTable}. Why might this be the case?} -->
-<!-- The median and IQR are only sensitive to numbers near $Q_1$, the median, and $Q_3$. Since values in these regions are relatively stable -- there aren't large jumps between observations -- the median and IQR estimates are also quite stable. -->
-<!-- \end{example} -->
-<!-- \begin{exercise} -->
-<!-- The distribution of vehicle prices tends to be right skewed, with a few luxury and sports cars lingering out into the right tail. If you were searching for a new car and cared about price, should you be more interested in the mean or median price of vehicles sold, assuming you are in the market for a regular car?\footnote{Buyers of a ``regular car'' should be concerned about the median price. High-end car sales can drastically inflate the mean price while the median will be more robust to the influence of those sales.} -->
-<!-- \end{exercise} -->
+
+<div class="guidedpractice">
+The distribution of loan amounts in the <code>loan50</code> data set is right skewed, with a few large loans lingering out into the right tail.
+If you were wanting to understand the typical loan size, should you be more interested in the mean or median?<a href="#fn34" class="footnote-ref" id="fnref34"><sup>34</sup></a>
 </div>
-<div id="distributions" class="section level3" number="2.1.6">
-<h3><span class="header-section-number">2.1.6</span> Comparing distributions</h3>
-<ul>
-<li>center, shape (symmetric, skewed, normal), spread, outliers</li>
-<li>side-by-side boxplots, stacked dotplots/histograms</li>
-</ul>
 </div>
-<div id="mapping-data-special-topic" class="section level3" number="2.1.7">
-<h3><span class="header-section-number">2.1.7</span> Mapping data (special topic)</h3>
-<!-- The \data{county} data set offers many numerical variables that we could plot using dot plots, scatterplots, or box plots, but these miss the true nature of the data. Rather, when we encounter geographic data, we should map it using an \term{intensity map}, where colors are used to show higher and lower values of a variable. Figures~\ref{countyIntensityMaps1} and~\ref{countyIntensityMaps2} shows intensity maps for federal spending per capita (\var{fed\_\hspace{0.3mm}spend}), poverty rate in percent (\var{poverty}), homeownership rate in percent (\var{homeownership}), and median household income (\var{med\_\hspace{0.3mm}income}). The color key indicates which colors correspond to which values. Note that the intensity maps are not generally very helpful for getting precise values in any given county, but they are very helpful for seeing geographic trends and generating interesting research questions. -->
-<!-- \begin{figure} -->
-<!-- \centering -->
-<!-- \subfigure[]{\includegraphics[width=\textwidth]{01/figures/countyIntensityMaps/countyFedSpendMap}\label{countyFedSpendMap}} -->
-<!-- \subfigure[]{\includegraphics[width=\textwidth]{01/figures/countyIntensityMaps/countyPovertyMap}\label{countyPovertyMap}} -->
-<!-- \caption{\subref{countyFedSpendMap} Map of federal spending (dollars per capita). \subref{countyPovertyMap} Intensity map of poverty rate (percent).} -->
-<!-- \label{countyIntensityMaps1} -->
-<!-- \end{figure} -->
-<!-- \begin{figure} -->
-<!-- \centering -->
-<!-- \subfigure[]{\includegraphics[width=\textwidth]{01/figures/countyIntensityMaps/countyHomeownershipMap}\label{countyHomeownershipMap}} -->
-<!-- \subfigure[]{\includegraphics[width=\textwidth]{01/figures/countyIntensityMaps/countyMedIncomeMap}\label{countyMedIncomeMap}} -->
-<!-- \caption{\subref{countyHomeownershipMap} Intensity map of homeownership rate (percent). \subref{countyMedIncomeMap} Intensity map of median household income (\$1000s).} -->
-<!-- \label{countyIntensityMaps2} -->
-<!-- \end{figure} -->
-<!-- \begin{example}{What interesting features are evident in the \var{fed\_\hspace{0.3mm}spend} and \var{poverty} intensity maps?} -->
-<!-- The federal spending intensity map shows substantial spending in the Dakotas and along the central-to-western part of the Canadian border, which may be related to the oil boom in this region. There are several other patches of federal spending, such as a vertical strip in eastern Utah and Arizona and the area where Colorado, Nebraska, and Kansas meet. There are also seemingly random counties with very high federal spending relative to their neighbors. If we did not cap the federal spending range at \$18 per capita, we would actually find that some counties have extremely high federal spending while there is almost no federal spending in the neighboring counties. These high-spending counties might contain military bases, companies with large government contracts, or other government facilities with many employees. -->
-<!-- Poverty rates are evidently higher in a few locations. Notably, the deep south shows higher poverty rates, as does the southwest border of Texas. The vertical strip of eastern Utah and Arizona, noted above for its higher federal spending, also appears to have higher rates of poverty (though generally little correspondence is seen between the two variables).  High poverty rates are evident in the Mississippi flood plains a little north of New Orleans and also in a large section of Kentucky and West Virginia. -->
-<!-- \end{example} -->
-<!-- \begin{exercise} -->
-<!-- What interesting features are evident in the \var{med\_\hspace{0.3mm}income} intensity map?\footnote{Note: answers will vary. There is a very strong correspondence between high earning and metropolitan areas. You might look for large cities you are familiar with and try to spot them on the map as dark spots.} -->
-<!-- \end{exercise} -->
+<div id="transforming-data-special-topic" class="section level3" number="2.1.7">
+<h3><span class="header-section-number">2.1.7</span> Transforming data (special topic)</h3>
+<p>When data are very strongly skewed, we sometimes transform them so they are easier to model. A <strong>transformation</strong> is a rescaling of the data using a function.</p>
+<div class="figure" style="text-align: center"><span id="fig:county-pop-transform"></span>
+<img src="02-eda_files/figure-html/county-pop-transform-1.png" alt="Plot A: A histogram of the populations of all US counties. Plot B: A histogram of log$_{10}$-transformed county populations. For this plot, the x-value corresponds to the power of 10, e.g. 4 on the x-axis corresponds to $10^4 =$ 10,000. Data are from 2017." width="70%" />
+<p class="caption">
+Figure 2.11: Plot A: A histogram of the populations of all US counties. Plot B: A histogram of log<span class="math inline">\(_{10}\)</span>-transformed county populations. For this plot, the x-value corresponds to the power of 10, e.g. 4 on the x-axis corresponds to <span class="math inline">\(10^4 =\)</span> 10,000. Data are from 2017.
+</p>
+</div>
+
+<div class="example">
+<p>Consider the histogram of county populations shown in the left of Figure @ref{fig:county-pop-transform}, which shows extreme skew. What is not so useful about this plot?</p>
+<hr />
+Nearly all of the data fall into the left-most bin, and the extreme skew obscures many of the potentially interesting details in the data.
+</div>
+<p>There are some standard transformations that may be useful for strongly right skewed data where much of the data is positive but clustered near zero.
+For instance, a plot of the logarithm (base 10) of county populations results in the new histogram in Figure <a href="eda.html#fig:county-pop-transform">2.11</a>.
+This data is symmetric, and any potential outliers appear much less extreme than in the original data set.
+By reigning in the outliers and extreme skew, transformations like this often make it easier to build statistical models against the data.</p>
+<p>Transformations can also be applied to one or both variables in a scatterplot.
+A scatterplot of the population change from 2010 to 2017 against the population in 2010 is shown in Figure <a href="eda.html#fig:county-pop-change-transform">2.12</a>.
+In this first scatterplot, it’s hard to decipher any interesting patterns because the population variable is so strongly skewed.
+However, if we apply a log<span class="math inline">\(_{10}\)</span> transformation to the population variable, as shown in
+Figure <a href="eda.html#fig:county-pop-change-transform">2.12</a>, a positive association between the variables is revealed.
+In fact, we may be interested in fitting a trend line to the data when we explore methods around fitting regression lines in Chapter <a href="cor-reg.html#cor-reg">3</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:county-pop-change-transform"></span>
+<img src="02-eda_files/figure-html/county-pop-change-transform-1.png" alt="Plot A: Scatterplot of population change against the population before the change. Plot B: A~scatterplot of the same data but where the population size has been log-transformed." width="70%" />
+<p class="caption">
+Figure 2.12: Plot A: Scatterplot of population change against the population before the change. Plot B: A~scatterplot of the same data but where the population size has been log-transformed.
+</p>
+</div>
+<p>Transformations other than the logarithm can be useful, too.
+For instance, the square root (<span class="math inline">\(\sqrt{\text{original observation}}\)</span>) and inverse (<span class="math inline">\(\frac{1}{\text{original observation}}\)</span>) are commonly used by data scientists.
+Common goals in transforming data are to see the data structure differently, reduce skew, assist in modeling, or straighten a nonlinear relationship in a scatterplot.</p>
+</div>
+<div id="mapping-data" class="section level3" number="2.1.8">
+<h3><span class="header-section-number">2.1.8</span> Mapping data</h3>
+<p></p>
+<p>The <code>county</code> data set offers many numerical variables that we could plot using dot plots, scatterplots, or box plots, but these miss the true nature of the data.
+Rather, when we encounter geographic data, we should create an <strong>intensity map</strong>, where colors are used to show higher and lower values of a variable.
+Figures <a href="eda.html#fig:county-intensity-map-poverty-unemp">2.13</a> and <a href="#fig:county-intensity-map-howownership-median-income"><strong>??</strong></a> show intensity maps for poverty rate in percent (<code>poverty</code>), unemployment rate (<code>unemployment_rate</code>), homeownership rate in percent (<code>homeownership</code>), and median household income (<code>median_hh_income</code>).
+The color key indicates which colors correspond to which values.
+The intensity maps are not generally very helpful for getting precise values in any given county, but they are very helpful for seeing geographic trends and generating interesting research questions or hypotheses.</p>
+
+<div class="example">
+<p>What interesting features are evident in the poverty and unemployment rate intensity maps?</p>
+<hr />
+Poverty rates are evidently higher in a few locations.
+Notably, the deep south shows higher poverty rates, as does much of Arizona and New Mexico.
+High poverty rates are evident in the Mississippi flood plains a little north of New Orleans and also in a large section of Kentucky.
+The unemployment rate follows similar trends, and we can see correspondence between the two
+variables.
+In fact, it makes sense for higher rates of unemployment to be closely related to poverty rates.
+One observation that stands out when comparing the two maps: the poverty rate is much higher than the unemployment rate, meaning while many people may be working, they are not making enough to break out of poverty.
+</div>
+
+<div class="guidedpractice">
+What interesting features are evident in the median household income intensity map in Figure <a href="eda.html#fig:county-intensity-map-homeownership-median-income">2.14</a>?<a href="#fn35" class="footnote-ref" id="fnref35"><sup>35</sup></a>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:county-intensity-map-poverty-unemp"></span>
+<img src="02-eda_files/figure-html/county-intensity-map-poverty-unemp-1.png" alt="Plot A: Intensity map of poverty rate (percent). Plot B: Intensity map of the unemployment rate (percent)." width="70%" />
+<p class="caption">
+Figure 2.13: Plot A: Intensity map of poverty rate (percent). Plot B: Intensity map of the unemployment rate (percent).
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:county-intensity-map-homeownership-median-income"></span>
+<img src="02-eda_files/figure-html/county-intensity-map-homeownership-median-income-1.png" alt="Plot A: Intensity map of homeownership rate (percent). Plot B: Intensity map of median household income ($1000s)." width="70%" />
+<p class="caption">
+Figure 2.14: Plot A: Intensity map of homeownership rate (percent). Plot B: Intensity map of median household income ($1000s).
+</p>
+</div>
 </div>
 </div>
 <div id="categorical-data" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Exploring categorical data</h2>
-<p>Like numerical data, categorical data can also be organized
-and analyzed. This section introduces tables and other basic
-tools for categorical data that are used throughout this book.
-The <code>email</code> data set contains information
-on 3,921 emails. In this section, we will examine whether the
-presence of numbers, small or large, in an email provides any
-useful value in classifying email as spam or not spam.</p>
+<p>Like quantitative data, categorical data can also be organized
+and analyzed. In this section, we will introduce tables and other basic tools for categorical data that are used throughout this book.
+The <code>loan50</code> data set represents a sample from a larger loan data set called <code>loans</code>.
+This larger data set contains information on 10,000 loans made through Lending Club.
+We will examine the relationship between <code>homeownership</code>, which for the <code>loans</code> data can take a value of <code>rent</code>, <code>mortgage</code> (owns but has a mortgage), or <code>own</code>, and <code>app_type</code>, which indicates whether the loan application was made with a partner or whether it was an individual application.</p>
+
+<div class="uptohere">
+
+</div>
 <div id="contingency-tables-and-conditional-proportions" class="section level3" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Contingency tables and conditional proportions</h3>
 <ul>
@@ -828,7 +1191,57 @@ useful value in classifying email as spam or not spam.</p>
 <li>association vs no association in conditional proportions</li>
 <li>Bayes theorem with tables and trees - conditional vs unconditional probabilities</li>
 </ul>
-<p>Table <a href="eda.html#tab:emailTable">2.2</a> summarizes two variables:
+<p><strong>COPIED AND PASTED FROM EARLIER</strong>
+The mean is useful because it allows us to rescale or standardize a metric into something more easily interpretable and comparable.
+Suppose we would like to understand if a new drug is more effective at treating asthma attacks than the standard drug.
+A trial of 1500 adults is set up, where 500 receive the new drug, and 1000 receive a standard drug in the control group:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+New drug
+</th>
+<th style="text-align:center;">
+Standard drug
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Number of patients
+</td>
+<td style="text-align:center;">
+500
+</td>
+<td style="text-align:center;">
+1000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Total asthma attacks
+</td>
+<td style="text-align:center;">
+200
+</td>
+<td style="text-align:center;">
+300
+</td>
+</tr>
+</tbody>
+</table>
+<p>Comparing the raw counts of 200 to 300 asthma attacks would make it appear that the new drug is better, but this is an artifact of the imbalanced group sizes.
+Instead, we should look at the average number of asthma attacks per patient in each group:</p>
+<ul>
+<li>New drug: <span class="math inline">\(200 / 500 = 0.4\)</span> asthma attacks per patient</li>
+<li>Standard drug: <span class="math inline">\(300 / 1000 = 0.3\)</span> asthma attacks per patient</li>
+</ul>
+<p>The standard drug has a lower average number of asthma attacks per patient than the average in the treatment group.</p>
+<p><strong>END COPIED AND PASTED SECTION</strong></p>
+<p>Table <a href="eda.html#tab:emailTable">2.3</a> summarizes two variables:
 <code>Type</code> (spam or not spam) and <code>Number</code>. <code>Number</code> is a
 categorical variable that describes whether an email
 contains no numbers, only small numbers (values under 1 million),
@@ -844,12 +1257,12 @@ The <strong>row totals</strong> provide the total counts across each row
 (e.g., <span class="math inline">\(149 + 168 + 50 = 367\)</span>), and <strong>column totals</strong> are total
 counts down each column.</p>
 <p>A table for a single variable is called a <strong>frequency table</strong>. Table
-<a href="eda.html#tab:emailTableNumber">2.3</a> is a frequency table for the <code>Number</code> variable.
+<a href="eda.html#tab:emailTableNumber">2.4</a> is a frequency table for the <code>Number</code> variable.
 If we replaced the counts with percentages or proportions,
 the table would be called a <strong>relative frequency table</strong>.</p>
 <table>
 <caption>
-<span id="tab:emailTable">Table 2.2: </span>Contingency table of <code>Type</code> and <code>Number</code> variables.
+<span id="tab:emailTable">Table 2.3: </span>Contingency table of <code>Type</code> and <code>Number</code> variables.
 </caption>
 <thead>
 <tr>
@@ -925,7 +1338,7 @@ Total
 </table>
 <table>
 <caption>
-<span id="tab:emailTableNumber">Table 2.3: </span>Frequency table of <code>Number</code> variable.
+<span id="tab:emailTableNumber">Table 2.4: </span>Frequency table of <code>Number</code> variable.
 </caption>
 <thead>
 <tr>
@@ -968,23 +1381,41 @@ big
 <h3><span class="header-section-number">2.2.3</span> Why not pie charts?</h3>
 </div>
 </div>
+<div id="exploratory-data-analysis-in-r" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Exploratory data analysis in <code>R</code></h2>
+</div>
+<div id="chp2-review" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Chapter 2 review</h2>
+<div id="terms" class="section level3" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Terms</h3>
+<p>We introduced the following terms in the chapter.
+If you’re not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
+We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate.
+However you should be able to easily spot them as <strong>bolded text</strong>.</p>
+
+</div>
+</div>
 </div>
 <div class="footnotes">
 <hr />
 <ol start="20">
 <li id="fn20"><p>Answers may vary. Scatterplots are helpful in quickly spotting associations relating variables, whether those associations come in the form of simple trends or whether those relationships are more complex.<a href="eda.html#fnref20" class="footnote-back">↩︎</a></p></li>
 <li id="fn21"><p>Consider the case where your vertical axis represents something “good” and your horizontal axis represents something that is only good in moderation. Health and water consumption fit this description: we require some water to survive, but consume too much and it become toxic and can kill a person.<a href="eda.html#fnref21" class="footnote-back">↩︎</a></p></li>
-<li id="fn22"><p><span class="math inline">\(x_1\)</span> corresponds to the interest rate for the first loan in the sample, <span class="math inline">\(x_2\)</span> to the second loan’s interest rate, and <span class="math inline">\(x_i\)</span> corresponds to the interest rate for the <span class="math inline">\(i^{th}\)</span> loan in the data set. For example, if <span class="math inline">\(i = 4\)</span>, then we’re examining <span class="math inline">\(x_4\)</span>, which refers to the fourth observation in the data set.<a href="eda.html#fnref22" class="footnote-back">↩︎</a></p></li>
-<li id="fn23"><p>The sample size was <span class="math inline">\(n = 50\)</span>.<a href="eda.html#fnref23" class="footnote-back">↩︎</a></p></li>
-<li id="fn24"><p>Other ways to describe data that are right skewed: skewed to the right, skewed to the high end, or skewed to the positive end.<a href="eda.html#fnref24" class="footnote-back">↩︎</a></p></li>
-<li id="fn25"><p>The interest rates for individual loans.<a href="eda.html#fnref25" class="footnote-back">↩︎</a></p></li>
-<li id="fn26"><p>Unimodal Remember that <em>uni</em> stands for 1 (think <em>uni</em>cycles). Similarly, <em>bi</em> stands for 2 (think <em>bi</em>cycles). We are hoping a <em>multi</em>cycle will be invented to complete this analogy.<a href="eda.html#fnref26" class="footnote-back">↩︎</a></p></li>
-<li id="fn27"><p>There might be two height groups visible in the data set: one of the students and one of the adults. That is, the data are probably bimodal.<a href="eda.html#fnref27" class="footnote-back">↩︎</a></p></li>
-<li id="fn28"><p>Since <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span> capture the middle 50% of the data, and the median splits the data in the middle, 25% of the data fall between <span class="math inline">\(Q_1\)</span> and the median, and another 25% falls between the median and <span class="math inline">\(Q_3\)</span>.<a href="eda.html#fnref28" class="footnote-back">↩︎</a></p></li>
-<li id="fn29"><p>While the choice of exactly 1.5 is arbitrary, it is the most commonly used value for box plots.<a href="eda.html#fnref29" class="footnote-back">↩︎</a></p></li>
-<li id="fn30"><p>That occasionally there may be very long emails.<a href="eda.html#fnref30" class="footnote-back">↩︎</a></p></li>
-<li id="fn31"><p>These visual estimates will vary a little from one person to the next:
-<span class="math inline">\(Q_1\approx\)</span> 3.000, <span class="math inline">\(Q_3\approx\)</span> 15.000, <span class="math inline">\(IQR = Q_3 - Q_1 \approx\)</span> 12.000. (The true values: <span class="math inline">\(Q_1=\)</span> 2.536, <span class="math inline">\(Q_3=\)</span> 15.411, <span class="math inline">\(IQR=\)</span> 12.875.)<a href="eda.html#fnref31" class="footnote-back">↩︎</a></p></li>
+<li id="fn22"><p>For
+more practice with this concept of the mean as a balancing point, see this <a href="https://www.khanacademy.org/math/ap-statistics/summarizing-quantitative-data-ap/mean-median-more/a/mean-as-the-balancing-point">Khan Academy article</a><a href="eda.html#fnref22" class="footnote-back">↩︎</a></p></li>
+<li id="fn23"><p><span class="math inline">\(x_1\)</span> corresponds to the interest rate for the first loan in the sample, <span class="math inline">\(x_2\)</span> to the second loan’s interest rate, and <span class="math inline">\(x_i\)</span> corresponds to the interest rate for the <span class="math inline">\(i^{th}\)</span> loan in the data set. For example, if <span class="math inline">\(i = 4\)</span>, then we’re examining <span class="math inline">\(x_4\)</span>, which refers to the fourth observation in the data set.<a href="eda.html#fnref23" class="footnote-back">↩︎</a></p></li>
+<li id="fn24"><p>The sample size was <span class="math inline">\(n = 50\)</span>.<a href="eda.html#fnref24" class="footnote-back">↩︎</a></p></li>
+<li id="fn25"><p>Other ways to describe data that are right skewed: skewed to the right, skewed to the high end, or skewed to the positive end.<a href="eda.html#fnref25" class="footnote-back">↩︎</a></p></li>
+<li id="fn26"><p>The interest rates for individual loans.<a href="eda.html#fnref26" class="footnote-back">↩︎</a></p></li>
+<li id="fn27"><p>Unimodal Remember that <em>uni</em> stands for 1 (think <em>uni</em>cycles). Similarly, <em>bi</em> stands for 2 (think <em>bi</em>cycles). We are hoping a <em>multi</em>cycle will be invented to complete this analogy.<a href="eda.html#fnref27" class="footnote-back">↩︎</a></p></li>
+<li id="fn28"><p>There might be two height groups visible in the data set: one of the students and one of the adults. That is, the data are probably bimodal.<a href="eda.html#fnref28" class="footnote-back">↩︎</a></p></li>
+<li id="fn29"><p>Figure <a href="eda.html#fig:severalDiffDistWithSdOf1">2.8</a> shows three distributions that look quite different, but all have the same mean, variance, and standard deviation. Using modality, we can distinguish between the first plot (bimodal) and the last two (unimodal). Using skewness, we can distinguish between the last plot (right skewed) and the first two. While a picture, like a histogram, tells a more complete story, we can use modality and shape (symmetry/skew) to characterize basic information about a distribution.<a href="eda.html#fnref29" class="footnote-back">↩︎</a></p></li>
+<li id="fn30"><p>The first and third quartiles are called quartiles because, together with the median (the second quartile), these three values break the data into four groups of equal size–the lowest 25%, next lowest 25%, next lowest 25%, and highest 25%.<a href="eda.html#fnref30" class="footnote-back">↩︎</a></p></li>
+<li id="fn31"><p>Since <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span> capture the middle 50% of the data and the median splits the data in the middle, 25% of the data fall between <span class="math inline">\(Q_1\)</span> and the median, and another 25% falls between the median and <span class="math inline">\(Q_3\)</span>.<a href="eda.html#fnref31" class="footnote-back">↩︎</a></p></li>
+<li id="fn32"><p>These visual estimates will vary a little from one person to the next: <span class="math inline">\(Q_1 \approx\)</span> 8%, <span class="math inline">\(Q_3 \approx\)</span> 14%, IQR <span class="math inline">\(\approx\)</span> 14 - 8 = 6%.<a href="eda.html#fnref32" class="footnote-back">↩︎</a></p></li>
+<li id="fn33"><p>(a) Mean is affected more. (b) Standard deviation is affected more.<a href="eda.html#fnref33" class="footnote-back">↩︎</a></p></li>
+<li id="fn34"><p>If we are looking to simply understand what a typical individual loan looks like, the median is probably more useful. However, if the goal is to understand something that scales well, such as the total amount of money we might need to have on hand if we were to offer 1,000 loans, then the mean would be more useful.<a href="eda.html#fnref34" class="footnote-back">↩︎</a></p></li>
+<li id="fn35"><p>Note: answers will vary. There is some correspondence between high earning and metropolitan areas, where we can see darker spots (higher median household income), though there are several exceptions. You might look for large cities you are familiar with and try to spot them on the map as dark spots.<a href="eda.html#fnref35" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -993,7 +1424,7 @@ big
         </div>
       </div>
 <a href="intro-to-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="exploratory-data-analysis-in-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="cor-reg.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
