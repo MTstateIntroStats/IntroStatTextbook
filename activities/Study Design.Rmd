@@ -1,9 +1,11 @@
 ---
 title: "Study Design"
-output: pdf_document
+output:
+  pdf_document: default
+  word_document: default
 ---
 
-```{r}
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, 
                       message = FALSE,
                       warnings = FALSE, 
@@ -15,10 +17,13 @@ options(show.signif.stars = FALSE)
 ## Study Design
 
 ## Learning Outcomes
-- Explain the purpose of random sampling and its effect on scope of inference
-- Explain the purpose of random assignment and its effect on scope of inference
-- Identify whether a study is observational or an experiment
-- Identify confounding variables in observational studies and explain why they are confounding
+* Explain the purpose of random sampling and its effect on scope of inference
+
+* Explain the purpose of random assignment and its effect on scope of inference
+
+* Identify whether a study is observational or an experiment
+
+* Identify confounding variables in observational studies and explain why they are confounding
 
 Statistics is the study of how best to collect, analyze, and draw conclusions from data.  Statistical inference will allow us to make a statement about a population parameter based on a sample statistic.
 
@@ -34,21 +39,21 @@ Statistics is the study of how best to collect, analyze, and draw conclusions fr
  
  * $p$ (just plain pea) to represent a population proportion.
  
- * $\rho$ (the Greek letter \rho" which sounds just like row) for correlation between two quantitative variables in a population.
+ * $\rho$ (the Greek letter $\rho$ which sounds just like row) for correlation between two quantitative variables in a population.
  
  * $\beta_1$ (read it as beta-one) slope of a true linear relationship between two quantitative variables in a population.
  
 * Statistic: a number which describes a characteristic of the sample and can be computed from the sample. We will use:
 
- * $\bar{x}$ (read it as ex{bar) to represent the sample mean (or average value).
+ * $\bar{x}$ (read it as ex-bar) to represent the sample mean (or average value).
  
  * s to represent the sample's standard deviation (spread).
  
- * $\hat{p}$ (read it as pea{hat) to represent a sample proportion. (We often use a hat to represent a statistic.)
+ * $\hat{p}$ (read it as pea-hat) to represent a sample proportion. (We often use a hat to represent a statistic.)
  
  * r for correlation between two quantitative variables in a sample.
  
- * $b_1$ slope of the "best ftting" line between two quantitative variables in a sample.
+ * $b_1$ for slope of the "best fitting" line between two quantitative variables in a sample.
  
 There are two parts to study design: how was the sample selected and how was the study conducted.  First we will look at sampling.
 
@@ -56,144 +61,210 @@ There are two parts to study design: how was the sample selected and how was the
 
 In the text, four sampling methods are discussed: 
 
-* Simple random sample: each case in the population has an equal chance of being included in the sample
+* Simple random sampling: each case in the population has an equal chance of being included in the sample
 
-* Stratified sample: the population is divided into groups of similar observational units called strata and then a second sampling method is used with each stratum
+* Stratified sampling: the population is divided into groups of similar observational units called strata and then a second sampling method (usually simple random sampling) is used with each stratum
 
-* Cluster sample: observational units are group into clusters, then random sample within the clusters
+* Cluster sampling: observational units are group into clusters, then a random sample of clusters is taken and **all** observational units within the selected clusters is measured
 
-* Multistage sample: 
+* Multistage sampling: similar to a cluster sampling but only a random selection of observational units within the cluster is measured
 
-In these next questions, identify the population of interest, the sample, the variable, and the sampling method.
+This above methods all represent a unbiased method of sampling.  Another popular sampling method is convenience sampling.  A convenience sample is where individuals who are easily accessible are more likely to be included in the sample such as surveying only Stat 216 students about university policies.
+
+In these next questions, identify the target population, the sample, the variable, and the sampling method.
 
 1. Do determine if the proportion of out of state undergraduate students at Montana State University has increased in the last 10 years, a statistics instructor surveyed undergraduate students.  She randomly selected 50 students from each college at the University and asked them their state of residency.
 
-Population of interest: 
+Target population: 
+
+\vspace{0.25in}
 
 Sample:
 
+\vspace{0.25in}
 
 Variable:
 
+\vspace{0.25in}
 
 Sampling Method:
 
+\vspace{0.25in}
 
-2.  PEW Research surveys US adults about many different topics.  Recently a survey was conducted to see the popularity of President Trump.  A random sample of .... was taken and ....
+2.  PEW Research surveys US adults about many different topics.  Recently a survey was conducted to assess current presidential approval.  A random sample of 6395 US adults was taken.  Of those surveyed, 42% say they agree with President Trump on many or nearly all of the top issues facing the country today.
 
-Population of interest: 
+Target population: 
+
+\vspace{0.25in}
 
 Sample:
 
+\vspace{0.25in}
 
 Variable:
 
+\vspace{0.25in}
 
 Sampling Method:
 
+\vspace{0.25in}
 
-3. Merck is working towards a vaccine for COVID-19 and has begun clinical trials.  Volunteer....
+3. A television station is interested in predicting whether or not voters in its listening area are opposed to legalizing marijuana for adult use. It asks its viewers to phone in and indicate whether they are in favor of this or opposed to this. Of the 2241 viewers who phoned in, forty-five percent were opposed to legalizing marijuana.
 
-Population of interest: 
+Target population: 
+
+\vspace{0.25in}
 
 Sample:
 
+\vspace{0.25in}
 
 Variable:
 
+\vspace{0.25in}
 
 Sampling Method:
 
-
-4. Convenience sample
-
+\vspace{0.25in}
 
 
-5. Stratified sample
+4. To gauge the interest in a new swimming pool, a local organization divided Gallatin County into neighborhood groups of 100 households.  Five neighborhoods were selected and surveys were sent to each household in those areas. 
+
+Target population: 
+
+\vspace{0.25in}
+
+Sample:
+
+\vspace{0.25in}
+
+Variable:
+
+\vspace{0.25in}
+
+Sampling Method:
+
+\vspace{0.25in}
+
+5. Of the above questions, which would be a biased method of sampling? Explain your answer.
+
+\vspace{1in}
+
+6. The Bozeman school district is interested in surveying parents of students about their opinions on returning to school this fall following the COVID-19 pandemic.  
 
 
-6. Of the above questions, which would be a biased method of sampling?
+a. What is the target population?
+
+\vspace{0.25in}
 
 
-7. The Bozeman school district is interested in surveying parents of students about their opinions on returning to school this fall.
+b. Explain how would they select a simple random sample.
 
+\vspace{0.5in}
 
-a. What is the population of interest?
+c. Explain how would they select a stratified sample.  
 
+\vspace{0.5in}
 
-b. How would they select a simple random sample?
+d. Explain how would they select a cluster sample.
 
-c. How would they select a stratified sample?
-
-d. How would they select a cluster sample?
+\vspace{0.5in}
 
 
 ## Study Design
-Before discussing different study designs, we must first introduce two roles that variables may play in a study.  The explanatory variable.... The response variable....
+Before discussing different study designs, we must first introduce two roles that variables may play in a study.  The **explanatory variable** is the variable that may explain the change in the response variable. In an experiment this is the variable in the study that the researcher can manipulate and vary. The **response variable** is the variable that is impacted or changed by the explanatory variable. This is the outcome variable we observe (our data). A **confounding variable** is a variable related both to the explanatory variable and the response variable so that the effects on the response variable cannot be separated from the effects of the explanatory variable.
 
-**Add about confounding variables**
+The two main study designs we will cover are observational studies and experiments.  In an **observational study**, groups of cases are compared by observation.  The data itself is not manipulated. When we randomly assign treatments to observational units, this study design is called an **experiment**.  
 
-The two main study designs we will cover are observational studies and experiments.  In an observational study,...  When we randomly assign observational units into the explanatory variable groups, this study design is called an experiment.
+Both the sampling method and the study design will help to determine the **scope of inference** for a study.  Remember that only in a randomized experiment can we conclude a causal relationship between the explanatory and response variable.
 
-**Add scope of inference**
+![](../images/ScopeOfInference.png)
 
 For the next exercises, identify the explanatory variable, the response variable, a potential confounding variable, and the study design.
 
-8. In a study on sleep habits, it was found that students who got at least 7 hours of sleep performed better on exams than students who got less than 7 hours of sleep.  
+7. In a study on sleep habits, it was found that students who got at least 7 hours of sleep performed better on exams than students who got less than 7 hours of sleep.  
 
 Explanatory Variable:
 
-Response Variable:
-
-Confounding Variable:
-
-Explain why this is a potential confounding variable: 
-
-Study design:
-
-What is the scope of inference for this study?
-
-9. In the last 10 years, the proportion of children who are allergic to peanuts has doubled in Western countries. However, the allergy is not very common in some other countries where peanut protein is an important part of peoples' diets. The LEAP randomized trial, reported by Du Toit, et.al in the New England Journal of Medicine in February 2015 identified over 500 children ages 4 to 10 months who showed some sensitivity to peanut protein. They randomly assigned them to two groups: 
-
- * Peanut avoiders: parents were told to not give their kids any food which contained peanuts, and
-
- * Peanut eaters: parents were given a snack containing peanut protein and told to feed it to their child several times per week (target dose was at least 6g of peanut protein per week).
-
-At age 5 years, children were tested with a standard skin prick to see if they had an allergic reaction to peanut protein (yes or no).
- 
-Explanatory Variable:
+\vspace{0.25in}
 
 Response Variable:
 
+\vspace{0.25in}
+
 Confounding Variable:
+
+\vspace{0.25in}
 
 Explain why this is a potential confounding variable: 
 
+\vspace{0.5in}
+
 Study design:
+
+\vspace{0.25in}
 
 What is the scope of inference for this study?
 
-10. In the article by Curry K, Stasio MJ. (2009). The effects of energy drinks alone and with alcohol on neuropsychological functioning. Human Psychopharmacology. 24(6):473-81, researchers used 27 volunteer women college students from a private college in the US. They advertised for volunteers, obtained consent to drinking beverages with alcohol and or caffeine, and were told that the study involved measuring creativity effects.
+\vspace{0.5in}
 
-The abstract says:
-In a double-blind, placebo-controlled design, 27 non-caffeine-deprived female participants were randomly assigned to consume a caffeinated energy drink alone (RED), one containing alcohol (RED+A), or a non-alcoholic, non-caffeinated control beverage.
+8. A study in 2009 was designed to see the effect of drinking beverages with alcohol and or caffeine on neuropsychological status. Twenty seven women college student volunteers were randomly assigned to drink either a caffeninated energy drink, a caffeinated energy drink with alcohol, or a non-alcocholic, non-caffeninated control beverage. 
 
 Pre- and post-test assessments were conducted using alternate forms of the
 Repeatable Battery for the Assessment of Neuropsychological Status (RBANS).
-RBANS comes in two forms (A and B) which have been shown to give the same scores to people in terms of cognitive status. One form of the test was administered several days before the subjects were given the treatment, and another was given 30 minutes after they had drunk the assigned beverage. The response we will look at is the change in RBANS scores (post score minus pre score). Initially we'll compare only the control and RED+A groups.
-
-The RBANS test is called a "battery" because it is intended to measure many aspects of human cognition including: Immediate memory, visuospatial/constructional, Language, Attention, and Delayed memory. The scores we will examine are combined (Total scale) across all those dimensions.
-Two of the drinks were commercial products: RED = Green Monster (caffeinated) and RED+A = Orange Sparks (6% alcohol and caffeine) while the control was colored Diet 7-Up.
+RBANS comes in two forms (A and B) which have been shown to give the same scores to people in terms of cognitive status. One form of the test was administered several days before the subjects were given the treatment, and another was given 30 minutes after they had drunk the assigned beverage. The response we will look at is the change in RBANS scores (post score minus pre score). 
 
 Explanatory Variable:
 
+\vspace{0.25in}
+
 Response Variable:
+
+\vspace{0.25in}
 
 Confounding Variable:
 
+\vspace{0.25in}
+
 Explain why this is a potential confounding variable: 
+
+\vspace{0.5in}
 
 Study design:
 
+\vspace{0.25in}
+
 What is the scope of inference for this study?
 
+\vspace{0.5in}
+
+
+9. The pharmaceutical company, Moderna Thearputics is working in conjucntion with the National Institute of Health towards a vaccine for COVID-19 and has recently begun Phase 3 clinical trials.  US Clinical research sites will enroll 30,000 volunteers without COVID-19 to participate. Participants will be randomly assigned to receive either the candidate vaccine or a saline placebo.  They will then be followed to assess vaccine related symptoms and development of COVID-19. The trial is blinded, so the investigators and the participants will not know who is assigned to which group.
+
+Explanatory Variable:
+
+\vspace{0.25in}
+
+Response Variable:
+
+\vspace{0.25in}
+
+Confounding Variable:
+
+\vspace{0.25in}
+
+Explain why this is a potential confounding variable: 
+
+\vspace{0.5in}
+
+Study design:
+
+\vspace{0.25in}
+
+What is the scope of inference for this study?
+
+\vspace{0.5in}
+
+10.  In which of the studies described above would the potential confounding variable identified not be an issue? Explain your answer.
+
+\vspace{1in}

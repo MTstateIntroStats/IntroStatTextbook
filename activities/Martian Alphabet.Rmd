@@ -11,6 +11,7 @@ options(show.signif.stars = FALSE)
 ## Learning Outcomes
 
 * Describe the statistical investigation process
+
 * Identify observational units, variables, and variable types in a statistical study
 
 How well can humans distinguish one “Martian” letter from another? In today’s activity, we’ll find out. When shown the two Martian letters, kiki and bumba, write down whether you think bumba is on the left or the right.
@@ -36,7 +37,7 @@ A **variable** is information collected or measured on each observational unit o
 
 Quantitative variables are numerical measurements that can be discrete (whole, non-negative numbers) or continuous (any value within an interval).  The number of students in a class would be a discrete variable as you can not have a partial student.  GPA would be a continuous variable ranging from 0 to 4.0. 
 
-Categorical variables are data that are in groups or categories such as eye color, state of residency, or whether or not a student is in-state. Categorical variables with a natural ordering are considered ordinal variables while those without a natural ordering are considered a nominal variable.  All variables will be treated as nominal for analysis.
+Categorical variables are data that are in groups or categories such as eye color, state of residency, or whether or not a student is considered in-state. Categorical variables with a natural ordering are considered ordinal variables while those without a natural ordering are considered a nominal variable.  All variables will be treated as nominal for analysis.
 
 ![](variables.png)
 
@@ -44,7 +45,7 @@ Categorical variables are data that are in groups or categories such as eye colo
 
 \vspace{1in}
 
-It is important to note that a variable is different that a summary statistic.  A variable is measured on a **single observational unit** while a summary statistic is calculated from a group of observational units.  For example, the variable whether or not a student is considered in-state can be measured on each individual student.  In a class of 50 students we can calculate the proportion of students who are considered in-state, the summary statistic.  Make sure you wrote the variable in question 3 as a variable NOT a summary statistic. 
+It is important to note that a variable is different than a summary statistic. A variable is measured on a **single observational unit** while a summary statistic is calculated from a group of observational units.  For example, the variable **whether or not a student is considered in-state** can be measured on each individual student.  In a class of 50 students we can calculate the proportion of students who are considered in-state, the summary statistic.  Make sure you wrote the variable in question 3 as a variable NOT a summary statistic. 
 
 4. Is the variable identified in question 3 categorical or quantitative?
 
@@ -107,7 +108,9 @@ What was the result from your class’s simulation?  What proportion of students
 
 \vspace{1in}
 
-13.	We still unfortunately only have a couple of simulations to compare our class data to.  It would be much better to be able to see how our class compared to hundreds or thousands of “just-guessing” classes.  Since we don’t want to flip coins all class period, your instructor will use a web app to get several 1000 trials. Note the applet inputs used by your instructor.  Sketch the distribution here, being sure to label each axis appropriately. **change to reflect r simulation**
+13.	We still unfortunately only have a couple of simulations to compare our class data to.  It would be much better to be able to see how our class compared to hundreds or thousands of “just-guessing” classes.  Since we don’t want to flip coins all class period, your instructor will use a web app to get several 1000 trials. Note the applet inputs used by your instructor.  Sketch the distribution here, being sure to label each axis appropriately. 
+
+**change to reflect r simulation**
 
 
 Probability of heads: _____
@@ -135,4 +138,13 @@ Number of repetitions: _____
 
 \vspace{1in}
 
+**Take Home Messages**
+
+1.	In this course we will learn how to evaluate a claim by comparing observed results (classes’ “guesses”) to a distribution of many simulated results under an assumption like “blind guessing.”
+
+2.	Blind guessing between two outcomes will be correct only about half the time. We can create data (via computer simulation) to fit the assumption of blind guessing.
+
+3.	Unusual observed results will make us doubt the assumptions used to create the simulated distribution. A large number of correct “guesses” is evidence that a person was not just blindly guessing.
+
+4.	Collecting data from more people typically results in stronger evidence for or against a claim.
 
