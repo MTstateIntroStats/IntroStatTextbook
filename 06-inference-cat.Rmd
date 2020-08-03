@@ -12,11 +12,11 @@ Te rest of this chapter focuses statistical inference for categorical data. The 
 
 Throughout the book so far, you have worked with data in a variety of contexts.
 You have learned how to summarize and visualize the data as well as how to model multiple variables at the same time.
-Sometimes the dataset at hand represents the entire research question.
+Sometimes the data set at hand represents the entire research question.
 But more often than not, the data have been collected to answer a research question about a larger group of which the data are a (hopefully) representative subset.
 
-You may agree that there is almost always variability in data (one dataset will not be identical to a second dataset even if they are both collected from the same population using the same methods).
-However, quantifying the variability in the data is neither obvious nor easy to do (**how** different is one dataset from another?). 
+You may agree that there is almost always variability in data (one data set will not be identical to a second data set even if they are both collected from the same population using the same methods).
+However, quantifying the variability in the data is neither obvious nor easy to do (**how** different is one data set from another?). 
 
 
 
@@ -55,7 +55,7 @@ terms_chp_6 <- c("statistical inference", "hypothesis test", "confidence interva
 
 ### Motivating example: Martian alphabet {#Martian}
 
-How well can humans distinguish one "Martian" letter from another? The Figure \@ref{fig:kiki-bumba}
+How well can humans distinguish one "Martian" letter from another? The Figure \@ref(fig:kiki-bumba)
 displays two Martians---one named Kiki and another named Bumba. Which do you think
 is Kiki and which do you think is Bumba?^[If you are a STAT 216 student, you will recognize this from our first week's in-class activity.]
 
@@ -72,7 +72,7 @@ One of two possibilities occurred:
 2. _We can read Martian, and these results reflect this ability._
 
 To decide between these two possibilities, we could calculate the probability
-of observing such results in a randomly selected sample of 28 students, under
+of observing such results in a randomly selected sample of 38 students, under
 the assumption that students were just guessing. If this probability is _very low_,
 we'd have reason to reject the first possibility in favor of the second.
 We can calculate this probability using one of two methods:
@@ -87,7 +87,7 @@ scenario and use the model to calculate the probability.
 How could you use a coin or cards to simulate the guesses of one sample of 38 students who cannot read Martian?^[A fair coin has a 50% chance of landing on heads, which is the chance a student would guess Bumba correctly if they were just guessing. Thus, toss a coin 38 times with heads representing "guess correctly"; then calculate the proportion of tosses that landed on heads. Another option would be to 10 black cards and 10 red cards, letting red represent "guess correctly". Shuffle the cards and draw one card, record if it is red or black, then replace the card and shuffle again. Do this 38 times and calculate the proportion of red cards observed.]
 ```
 
-For this situation---since "just guessing" means you have a 50% chance of guessing correctly---we could simulate a sample of 38 students' guesses by flipping a coin 38 times and counting the number of times it lands on heads. Using a computer to repeat this process 1,000 times, we create the dot plot in Figure \@ref{fig:MartianDotPlot}
+For this situation---since "just guessing" means you have a 50% chance of guessing correctly---we could simulate a sample of 38 students' guesses by flipping a coin 38 times and counting the number of times it lands on heads. Using a computer to repeat this process 1,000 times, we create the dot plot in Figure \@ref(fig:MartianDotPlot).
 
 ```{r MartianDotPlot, fig.cap="A dot plot of 1,000 sample proportions; each calculated by flipping a coin 38 times and calculating the proportion of times the coin landed on heads. None of the 1,000 simulations had sample proportion of at least 89%, which was the proportion observed in the study.", warning=FALSE, fig.width=10}
 samp.prop <- 34/38
@@ -112,9 +112,9 @@ ggplot(props, aes(x = x)) +
 
 None of our simulated samples produce 34 of 38 correct guesses! That is, if students were just guessing, it is nearly impossible to observe 34 or more correct guesses in a sample of 38 students. Given this low probability, the more plausible possibility is 2. _We can read Martian, and these results reflect this ability._ We've just completed our first hypothesis test!
 
-Now, obviously no one can read Martian, so a more realistic possibility is that humans tend to choose Bumba on the left more often than the right---there is a greater than 50% chance of choosing Bumba on the left, i.e., even though we may think we're guessing just by chance, we have a preference for Bumba on the left. It turns out that the explanation for this preference is called _synesthesia_, a tendency for humans to correlate sharp sounding noises (e.g., Kiki) with sharp looking images. To explore this further, watch this [TED Talk](https://www.ted.com/talks/vs_ramachandran_3_clues_to_understanding_your_brain) by neurologist Vilayanur Ramachandran (The synesthesia part begins at roughly 17:40 minutes).
+Now, obviously no one can read Martian, so a more realistic possibility is that humans tend to choose Bumba on the left more often than the right---there is a greater than 50% chance of choosing Bumba on the left. Even though we may think we're guessing just by chance, we have a preference for Bumba on the left. It turns out that the explanation for this preference is called _synesthesia_, a tendency for humans to correlate sharp sounding noises (e.g., Kiki) with sharp looking images.^[To explore this further, watch this [TED Talk](https://www.ted.com/talks/vs_ramachandran_3_clues_to_understanding_your_brain) by neurologist Vilayanur Ramachandran (The synesthesia part begins at roughly 17:40 minutes).]
 
-But wait---we're not done! We have evidence that humans tend to prefer Bumba on the left, but by how much? To answer this, we need a confidence interval---an interval of plausible values for the true probability humans will choose Bumba on the left. The width of this interval is determined by how variable sample proportions are from sample to sample. It turns out, there is a mathematical model for this variability that we will explore later in this chapter. For now, let's take the standard deviation from our simulated sample proportions as an estimate for this variability---`r round(sd(props$x),2)'. Since the simulated distribution of proportions is bell-shaped, we know about 95% of sample proportions should fall within two standard deviations of the true proportion, so we can add and subtract this **margin of error* to our sample proportion to calculate an approximate 95% confidence interval^[If you carry out the calculations, you'll note that the upper bound is actually $0.89 + 0.16 = 1.05$, but since a sample proportion cannot be greater than 1, we truncated the interval to 1.]:
+But wait---we're not done! We have evidence that humans tend to prefer Bumba on the left, but by how much? To answer this, we need a confidence interval---an interval of plausible values for the true probability humans will choose Bumba on the left. The width of this interval is determined by how variable sample proportions are from sample to sample. It turns out, there is a mathematical model for this variability that we will explore later in this chapter. For now, let's take the standard deviation from our simulated sample proportions as an estimate for this variability: 0.08. Since the simulated distribution of proportions is bell-shaped, we know about 95% of sample proportions should fall within two standard deviations of the true proportion, so we can add and subtract this **margin of error**\index{margin of error} to our sample proportion to calculate an approximate 95% confidence interval^[If you carry out the calculations, you'll note that the upper bound is actually $0.89 + 0.16 = 1.05$, but since a sample proportion cannot be greater than 1, we truncated the interval to 1.]:
 \[
 \frac{34}{38} \pm 2\times 0.08 = 0.89 \pm 0.16 = (0.73, 1)
 \]
@@ -154,7 +154,7 @@ A US court considers two possible claims about a defendant: they are either inno
 ---
  
 The jury considers whether the evidence is so convincing (strong) that there is no reasonable doubt regarding the person's guilt. 
-That is, the skeptical perspective (null hypothesis) is that the person is innocent until evidence is presented that convinces the jury that the person is guilty (alternative hypothesis).
+That is, the skeptical perspective (null hypothesis) is that the person is innocent until evidence is presented that convinces the jury that the person is guilty (alternative hypothesis). Analogously, in a hypothesis test, we assume the null hypothesis until evidence is presented that convinces us the alternative hypothesis is true.
 ```
 
 
@@ -176,8 +176,8 @@ In the [Martian alphabet example](#Martian), we performed a simulation-based hyp
 The research question---can humans read Martian?---was framed in the context of these hypotheses.
 
 The null hypothesis ($H_0$) was a perspective of no effect (no ability to read Martian).
-The student Martian guessing data provided a point estimate of 89.5% ($34/38 \times 100$%) for the true probability of choosing Bumba on the left.
-We determined that observing such a sample proportion from chance alone would be rare---it would only happen in less than 1 out of 1000 samples. When results
+The student data provided a point estimate of 89.5% ($34/38 \times 100$%) for the true probability of choosing Bumba on the left.
+We determined that observing such a sample proportion from chance alone (assuming $H_0$) would be rare---it would only happen in less than 1 out of 1000 samples. When results
 like these are inconsistent with $H_0$, we reject $H_0$ in favor of $H_A$. 
 Here, we concluded there humans have a preference for choosing Bumba on the left.
 
@@ -198,13 +198,13 @@ terms_chp_6 <- c(terms_chp_6, "p-value", "test statistic")
 ```{block2, type="protip", echo=TRUE}
 When interpreting a p-value, remember that the definition of a p-value has three components. It is a (1) probability. What it is the probability of? It is the probability of (2) our observed sample statistic or one more extreme. Assuming what? It is the probability of our observed sample statistic or one more extreme, (3) assuming the null hypothesis is true:
   
-* probability
-* data^[Technically, the observed sample statistic or one more extreme in the direction of our alternative. But it is helpful to just remember this as "the data".]
-* null hypothesis
+(1) probability
+(2) data^[Technically, the observed sample statistic or one more extreme in the direction of our alternative. But it is helpful to just remember this as "the data".]
+(3) null hypothesis
 ```
 
 ```{block2, type="example", echo=TRUE}
-What was the test statistic in the Martian alphabet example?
+What was the test statistic in the [Martian alphabet example](#Martian)?
  
 ---
  
@@ -219,7 +219,7 @@ Using a significance level of $\alpha = 0.05$ in the Martian alphabet study, we 
 ```{block2, type="onebox", echo=TRUE}
 **Statistical significance.**
 
-We say that the data provide **statistically significant**\index{hypothesis testing!statistically significant|textbf} evidence against the null hypothesis if the p-value is less than some reference value called the **significance level*, denoted by $\alpha$.
+We say that the data provide **statistically significant**\index{hypothesis testing!statistically significant|textbf} evidence against the null hypothesis if the p-value is less than some reference value called the **significance level**\index{significance level}, denoted by $\alpha$.
 ```
 
 
@@ -230,7 +230,7 @@ We often use a threshold of 0.05 to determine whether a result is statistically 
 But why 0.05? 
 Maybe we should use a bigger number, or maybe a smaller number. 
 If you're a little puzzled, that probably means you're reading with a critical eye---good job! 
-The $OpenIntro$ authors have a video to help clarify *why 0.05*:
+The _OpenIntro_ authors have a video to help clarify *why 0.05*:
 <center>
 [https://www.openintro.org/book/stat/why05/](https://www.openintro.org/book/stat/why05/)
 </center>
