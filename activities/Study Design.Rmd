@@ -1,0 +1,199 @@
+---
+title: "Study Design"
+output: pdf_document
+---
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE,
+                      warnings = FALSE, 
+                      eval = T)
+options(show.signif.stars = FALSE)
+```
+
+
+## Study Design
+
+## Learning Outcomes
+- Explain the purpose of random sampling and its effect on scope of inference
+- Explain the purpose of random assignment and its effect on scope of inference
+- Identify whether a study is observational or an experiment
+- Identify confounding variables in observational studies and explain why they are confounding
+
+Statistics is the study of how best to collect, analyze, and draw conclusions from data.  Statistical inference will allow us to make a statement about a population parameter based on a sample statistic.
+
+* Population: all the units (people, stores, animals, ...) of interest.
+
+* Sample: a subset of the population which gets measured or observed in our study.
+
+* Parameter: a number which describes a characteristic of the population. These values are never completely known except for small populations which can be enumerated. We will use:
+
+ * $\mu$ pronounced mew) to represent the population mean.
+ 
+ * $\sigma$ (pronounced sigma) to represent the population's standard deviation (spread).
+ 
+ * $p$ (just plain pea) to represent a population proportion.
+ 
+ * $\rho$ (the Greek letter \rho" which sounds just like row) for correlation between two quantitative variables in a population.
+ 
+ * $\beta_1$ (read it as beta-one) slope of a true linear relationship between two quantitative variables in a population.
+ 
+* Statistic: a number which describes a characteristic of the sample and can be computed from the sample. We will use:
+
+ * $\bar{x}$ (read it as ex{bar) to represent the sample mean (or average value).
+ 
+ * s to represent the sample's standard deviation (spread).
+ 
+ * $\hat{p}$ (read it as pea{hat) to represent a sample proportion. (We often use a hat to represent a statistic.)
+ 
+ * r for correlation between two quantitative variables in a sample.
+ 
+ * $b_1$ slope of the "best ftting" line between two quantitative variables in a sample.
+ 
+There are two parts to study design: how was the sample selected and how was the study conducted.  First we will look at sampling.
+
+## Sampling from a population
+
+In the text, four sampling methods are discussed: 
+
+* Simple random sample: each case in the population has an equal chance of being included in the sample
+
+* Stratified sample: the population is divided into groups of similar observational units called strata and then a second sampling method is used with each stratum
+
+* Cluster sample: observational units are group into clusters, then random sample within the clusters
+
+* Multistage sample: 
+
+In these next questions, identify the population of interest, the sample, the variable, and the sampling method.
+
+1. Do determine if the proportion of out of state undergraduate students at Montana State University has increased in the last 10 years, a statistics instructor surveyed undergraduate students.  She randomly selected 50 students from each college at the University and asked them their state of residency.
+
+Population of interest: 
+
+Sample:
+
+
+Variable:
+
+
+Sampling Method:
+
+
+2.  PEW Research surveys US adults about many different topics.  Recently a survey was conducted to see the popularity of President Trump.  A random sample of .... was taken and ....
+
+Population of interest: 
+
+Sample:
+
+
+Variable:
+
+
+Sampling Method:
+
+
+3. Merck is working towards a vaccine for COVID-19 and has begun clinical trials.  Volunteer....
+
+Population of interest: 
+
+Sample:
+
+
+Variable:
+
+
+Sampling Method:
+
+
+4. Convenience sample
+
+
+
+5. Stratified sample
+
+
+6. Of the above questions, which would be a biased method of sampling?
+
+
+7. The Bozeman school district is interested in surveying parents of students about their opinions on returning to school this fall.
+
+
+a. What is the population of interest?
+
+
+b. How would they select a simple random sample?
+
+c. How would they select a stratified sample?
+
+d. How would they select a cluster sample?
+
+
+## Study Design
+Before discussing different study designs, we must first introduce two roles that variables may play in a study.  The explanatory variable.... The response variable....
+
+**Add about confounding variables**
+
+The two main study designs we will cover are observational studies and experiments.  In an observational study,...  When we randomly assign observational units into the explanatory variable groups, this study design is called an experiment.
+
+**Add scope of inference**
+
+For the next exercises, identify the explanatory variable, the response variable, a potential confounding variable, and the study design.
+
+8. In a study on sleep habits, it was found that students who got at least 7 hours of sleep performed better on exams than students who got less than 7 hours of sleep.  
+
+Explanatory Variable:
+
+Response Variable:
+
+Confounding Variable:
+
+Explain why this is a potential confounding variable: 
+
+Study design:
+
+What is the scope of inference for this study?
+
+9. In the last 10 years, the proportion of children who are allergic to peanuts has doubled in Western countries. However, the allergy is not very common in some other countries where peanut protein is an important part of peoples' diets. The LEAP randomized trial, reported by Du Toit, et.al in the New England Journal of Medicine in February 2015 identified over 500 children ages 4 to 10 months who showed some sensitivity to peanut protein. They randomly assigned them to two groups: 
+
+ * Peanut avoiders: parents were told to not give their kids any food which contained peanuts, and
+
+ * Peanut eaters: parents were given a snack containing peanut protein and told to feed it to their child several times per week (target dose was at least 6g of peanut protein per week).
+
+At age 5 years, children were tested with a standard skin prick to see if they had an allergic reaction to peanut protein (yes or no).
+ 
+Explanatory Variable:
+
+Response Variable:
+
+Confounding Variable:
+
+Explain why this is a potential confounding variable: 
+
+Study design:
+
+What is the scope of inference for this study?
+
+10. In the article by Curry K, Stasio MJ. (2009). The effects of energy drinks alone and with alcohol on neuropsychological functioning. Human Psychopharmacology. 24(6):473-81, researchers used 27 volunteer women college students from a private college in the US. They advertised for volunteers, obtained consent to drinking beverages with alcohol and or caffeine, and were told that the study involved measuring creativity effects.
+
+The abstract says:
+In a double-blind, placebo-controlled design, 27 non-caffeine-deprived female participants were randomly assigned to consume a caffeinated energy drink alone (RED), one containing alcohol (RED+A), or a non-alcoholic, non-caffeinated control beverage.
+
+Pre- and post-test assessments were conducted using alternate forms of the
+Repeatable Battery for the Assessment of Neuropsychological Status (RBANS).
+RBANS comes in two forms (A and B) which have been shown to give the same scores to people in terms of cognitive status. One form of the test was administered several days before the subjects were given the treatment, and another was given 30 minutes after they had drunk the assigned beverage. The response we will look at is the change in RBANS scores (post score minus pre score). Initially we'll compare only the control and RED+A groups.
+
+The RBANS test is called a "battery" because it is intended to measure many aspects of human cognition including: Immediate memory, visuospatial/constructional, Language, Attention, and Delayed memory. The scores we will examine are combined (Total scale) across all those dimensions.
+Two of the drinks were commercial products: RED = Green Monster (caffeinated) and RED+A = Orange Sparks (6% alcohol and caffeine) while the control was colored Diet 7-Up.
+
+Explanatory Variable:
+
+Response Variable:
+
+Confounding Variable:
+
+Explain why this is a potential confounding variable: 
+
+Study design:
+
+What is the scope of inference for this study?
+
