@@ -1,19 +1,218 @@
 # Inference for categorical data {#inference-cat}
 
-\BeginKnitrBlock{uptohere}<div class="uptohere">The content in this chapter is currently just placeholder. We will remove this banner once the chapter content has been updated and is ready for review.</div>\EndKnitrBlock{uptohere}
+\BeginKnitrBlock{chapterintro}<div class="chapterintro">Statistical inference is primarily concerned with understanding and quantifying the _uncertainty_ of parameter estimates---that is, how variable is a sample statistic
+from sample to sample?
+While the equations and details change depending on the setting, the foundations for inference are the same throughout all of statistics. We will begin this chapter with a discussion of the foundations of inference, and introduce the two primary vehicles of inference: the **hypothesis test** and **confidence interval**.
 
-\BeginKnitrBlock{chapterintro}<div class="chapterintro">Focusing now on Statistical Inference for **categorical data**, we will revisit many of the foundational aspects of hypothesis testing from Chapter \@ref(inference-foundations).
-
-The three data structures we detail are one binary variable, summarized using a single proportion; two binary variables, summarized using a difference of two proportions; and two categorical variables, summarized using a two-way table. 
-When appropriate, each of the data structures will be analyzed using the three methods from Chapter \@ref(inference-foundations): randomization test, bootstrapping, and mathematical models.
-
-As we build on the inferential ideas, we will visit new foundational concepts in statistical inference. 
-For example, we will cover the conditions for when a normal model is appropriate; the two different error rates in hypothesis testing; and choosing the confidence level for a confidence interval.</div>\EndKnitrBlock{chapterintro}
+Te rest of this chapter focuses statistical inference for categorical data. The two data structures we detail are one binary variable, summarized using a single proportion, and two binary variables, summarized using a difference (or ratio) of two proportions.</div>\EndKnitrBlock{chapterintro}
 
 
 
+Throughout the book so far, you have worked with data in a variety of contexts.
+You have learned how to summarize and visualize the data as well as how to model multiple variables at the same time.
+Sometimes the dataset at hand represents the entire research question.
+But more often than not, the data have been collected to answer a research question about a larger group of which the data are a (hopefully) representative subset.
+
+You may agree that there is almost always variability in data (one dataset will not be identical to a second dataset even if they are both collected from the same population using the same methods).
+However, quantifying the variability in the data is neither obvious nor easy to do (**how** different is one dataset from another?). 
 
 
+
+\BeginKnitrBlock{example}<div class="example">Suppose your professor splits the students in class into two groups: students on the left and students on the right. If $\hat{p}_{_L}$ and $\hat{p}_{_R}$ represent the proportion of students who own an Apple product on the left and right, respectively, would you be surprised if $\hat{p}_{_L}$ did not *exactly* equal $\hat{p}_{_R}$?
+
+---
+
+While the proportions would probably be close to each other, it would be unusual for them to be exactly the same. We would probably observe a small difference due to *chance*.</div>\EndKnitrBlock{example}
+
+
+
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">If we don't think the side of the room a person sits on in class is related to whether the person owns an Apple product, what assumption are we making about the relationship between these two variables?
+(Reminder: for these Guided Practice questions, you can check your answer in the footnote.)^[We would be assuming that these two variables are **independent**\index{independent}.]</div>\EndKnitrBlock{guidedpractice}
+
+Studying randomness of this form is a key focus of statistics. 
+Throughout this chapter, and those that follow, we provide two different approaches for quantifying the variability inherent in data: simulation-based methods and theory-based methods (mathematical models).
+Using the methods provided in this and future chapters, we will be able to draw conclusions beyond the data set at hand to research questions about larger populations.
+
+## Foundations of inference {#inf-foundations}
+
+Given results seen in a sample, the process of determining what we can _infer_ to the
+population based on sample results is called **statistical inference**\index{statistical inference}. Statistical inferential methods enable us to understand and quantify the _uncertainty_ of our sample results. Statistical inference helps us answer two questions about the population:
+
+1. How strong is the _evidence_ of an effect?
+2. How _large_ is the effect?
+
+The first question is answered through a **hypothesis test**\index{hypothesis test}, while the second is addressed with a **confidence interval**\index{confidence interval}.
+
+
+
+### Motivating example: Martian alphabet {#Martian}
+
+How well can humans distinguish one "Martian" letter from another? The Figure \@ref{fig:kiki-bumba}
+displays two Martians---one named Kiki and another named Bumba. Which do you think
+is Kiki and which do you think is Bumba?^[If you are a STAT 216 student, you will recognize this from our first week's in-class activity.]
+
+<div class="figure" style="text-align: center">
+<img src="06/images/bumBa-KiKi.png" alt="Two Martians named Bumba and Kiki. Do you think Bumba is on the left or the right?^[Bumba is the Martian on the left!]" width="75%" />
+<p class="caption">(\#fig:kiki-bumba)Two Martians named Bumba and Kiki. Do you think Bumba is on the left or the right?^[Bumba is the Martian on the left!]</p>
+</div>
+
+This same image and question were presented to an introductory statistics class of
+38 students. In that class, 34 students correctly identified Bumba as the Martian on the left. Assuming we can't read Martian, is this result surprising?
+
+One of two possibilities occurred:
+
+1. _We can't read Martian, and these results just occurred by chance._
+2. _We can read Martian, and these results reflect this ability._
+
+To decide between these two possibilities, we could calculate the probability
+of observing such results in a randomly selected sample of 28 students, under
+the assumption that students were just guessing. If this probability is _very low_,
+we'd have reason to reject the first possibility in favor of the second.
+We can calculate this probability using one of two methods:
+
+* **Simulation-based method**: simulate lots of samples of 38 students under the assumption that
+students are just guessing, then calculate the proportion of these
+simulated samples where we saw 34 or more students guessing correctly, or
+* **Theory-based method**: develop a mathematical model for the sample proportion in this
+scenario and use the model to calculate the probability.
+
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">How could you use a coin or cards to simulate the guesses of one sample of 38 students who cannot read Martian?^[A fair coin has a 50% chance of landing on heads, which is the chance a student would guess Bumba correctly if they were just guessing. Thus, toss a coin 38 times with heads representing "guess correctly"; then calculate the proportion of tosses that landed on heads. Another option would be to 10 black cards and 10 red cards, letting red represent "guess correctly". Shuffle the cards and draw one card, record if it is red or black, then replace the card and shuffle again. Do this 38 times and calculate the proportion of red cards observed.]</div>\EndKnitrBlock{guidedpractice}
+
+For this situation---since "just guessing" means you have a 50% chance of guessing correctly---we could simulate a sample of 38 students' guesses by flipping a coin 38 times and counting the number of times it lands on heads. Using a computer to repeat this process 1,000 times, we create the dot plot in Figure \@ref{fig:MartianDotPlot}
+
+<div class="figure" style="text-align: center">
+<img src="06-inference-cat_files/figure-html/MartianDotPlot-1.png" alt="A dot plot of 1,000 sample proportions; each calculated by flipping a coin 38 times and calculating the proportion of times the coin landed on heads. None of the 1,000 simulations had sample proportion of at least 89%, which was the proportion observed in the study." width="70%" />
+<p class="caption">(\#fig:MartianDotPlot)A dot plot of 1,000 sample proportions; each calculated by flipping a coin 38 times and calculating the proportion of times the coin landed on heads. None of the 1,000 simulations had sample proportion of at least 89%, which was the proportion observed in the study.</p>
+</div>
+
+
+None of our simulated samples produce 34 of 38 correct guesses! That is, if students were just guessing, it is nearly impossible to observe 34 or more correct guesses in a sample of 38 students. Given this low probability, the more plausible possibility is 2. _We can read Martian, and these results reflect this ability._ We've just completed our first hypothesis test!
+
+Now, obviously no one can read Martian, so a more realistic possibility is that humans tend to choose Bumba on the left more often than the right---there is a greater than 50% chance of choosing Bumba on the left, i.e., even though we may think we're guessing just by chance, we have a preference for Bumba on the left. It turns out that the explanation for this preference is called _synesthesia_, a tendency for humans to correlate sharp sounding noises (e.g., Kiki) with sharp looking images. To explore this further, watch this [TED Talk](https://www.ted.com/talks/vs_ramachandran_3_clues_to_understanding_your_brain) by neurologist Vilayanur Ramachandran (The synesthesia part begins at roughly 17:40 minutes).
+
+But wait---we're not done! We have evidence that humans tend to prefer Bumba on the left, but by how much? To answer this, we need a confidence interval---an interval of plausible values for the true probability humans will choose Bumba on the left. The width of this interval is determined by how variable sample proportions are from sample to sample. It turns out, there is a mathematical model for this variability that we will explore later in this chapter. For now, let's take the standard deviation from our simulated sample proportions as an estimate for this variability---`r round(sd(props$x),2)'. Since the simulated distribution of proportions is bell-shaped, we know about 95% of sample proportions should fall within two standard deviations of the true proportion, so we can add and subtract this **margin of error* to our sample proportion to calculate an approximate 95% confidence interval^[If you carry out the calculations, you'll note that the upper bound is actually $0.89 + 0.16 = 1.05$, but since a sample proportion cannot be greater than 1, we truncated the interval to 1.]:
+\[
+\frac{34}{38} \pm 2\times 0.08 = 0.89 \pm 0.16 = (0.73, 1)
+\]
+Thus, based on this data, we are 95% confident that the probability a human guesses Bumba on the left is somewhere between 73% and 100%.
+
+### Hypothesis tests {#HypothesisTesting}
+
+In the [Martian alphabet example](#Martian), we utilized a **hypothesis test**\index{hypothesis test}, which is a formal technique for evaluating two competing possibilities. 
+Each hypothesis test involves a **null hypothesis**\index{null hypothesis}, which represents either a skeptical perspective or a perspective of no difference or no effect, and an **alternative hypothesis**\index{alternative hypothesis}, which represents a new perspective such as the possibility that there has been a change or that there is a treatment effect in an experiment.  The alternative hypothesis is usually the reason the scientists set out to do the research in the first place.
+
+
+
+
+\BeginKnitrBlock{onebox}<div class="onebox">**Null and alternative hypotheses.**
+
+The **null hypothesis ($H_0$)** often represents either a skeptical perspective or a claim to be tested. The **alternative hypothesis ($H_A$)** represents an alternative claim under consideration and is often represented by a range of possible values for the parameter of interest. </div>\EndKnitrBlock{onebox}
+
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">In the Martian alphabet example, which of the two competing possibilities was the null hypothesis? the alternative hypothesis?^[The first possibility (_We can't read Martian, and these results just occurred by chance._) was the null hypothesis; the second possibility (_We can read Martian, and these results reflect this ability._) was the alternative hypothesis.]</div>\EndKnitrBlock{guidedpractice}
+
+The hypothesis testing framework is a very general tool, and we often use it without a second thought. 
+If a person makes a somewhat unbelievable claim, we are initially skeptical. 
+However, if there is sufficient evidence that supports the claim, we set aside our skepticism. 
+The hallmarks of hypothesis testing are also found in the US court system. 
+
+#### The US court system {-}
+
+
+\BeginKnitrBlock{example}<div class="example">A US court considers two possible claims about a defendant: they are either innocent or guilty. If we set these claims up in a hypothesis framework, which would be the null hypothesis and which the alternative?
+
+---
+ 
+The jury considers whether the evidence is so convincing (strong) that there is no reasonable doubt regarding the person's guilt. 
+That is, the skeptical perspective (null hypothesis) is that the person is innocent until evidence is presented that convinces the jury that the person is guilty (alternative hypothesis).</div>\EndKnitrBlock{example}
+
+
+Jurors examine the evidence to see whether it convincingly shows a defendant is guilty. 
+Notice that if a jury finds a defendant *not guilty*, this does not necessarily mean the jury is confident in the person's innocence. 
+They are simply not convinced of the alternative that the person is guilty.
+
+This is also the case with hypothesis testing: *even if we fail to reject the null hypothesis, we typically do not accept the null hypothesis as truth*. 
+Failing to find strong evidence for the alternative hypothesis is not equivalent to providing evidence that the null hypothesis is true.
+
+#### p-value and statistical significance {-}
+
+In the [Martian alphabet example](#Martian), we performed a simulation-based hypothesis test of the hypotheses:
+
+* $H_0$: The chance a human chooses Bumba on the left is 50%.
+
+* $H_A$: Humans have a preference for choosing Bumba on the left.
+
+The research question---can humans read Martian?---was framed in the context of these hypotheses.
+
+The null hypothesis ($H_0$) was a perspective of no effect (no ability to read Martian).
+The student Martian guessing data provided a point estimate of 89.5% ($34/38 \times 100$%) for the true probability of choosing Bumba on the left.
+We determined that observing such a sample proportion from chance alone would be rare---it would only happen in less than 1 out of 1000 samples. When results
+like these are inconsistent with $H_0$, we reject $H_0$ in favor of $H_A$. 
+Here, we concluded there humans have a preference for choosing Bumba on the left.
+
+The less than 1-in-1000 chance is what we call a **p-value**, which is a probability quantifying the strength of the evidence against the null hypothesis and in favor of the alternative. 
+
+\BeginKnitrBlock{onebox}<div class="onebox">**p-value.**
+
+The **p-value**\index{hypothesis testing!p-value|textbf} is the probability of observing data at least as favorable to the alternative hypothesis as our current data set, if the null hypothesis were true. 
+We typically use a summary statistic of the data, such as a proportion or difference in proportions, to help compute the p-value and evaluate the hypotheses. 
+This summary value that is used to compute the p-value is often called the **test statistic**\index{test statistic}.</div>\EndKnitrBlock{onebox}
+
+
+
+\BeginKnitrBlock{protip}<div class="protip">When interpreting a p-value, remember that the definition of a p-value has three components. It is a (1) probability. What it is the probability of? It is the probability of (2) our observed sample statistic or one more extreme. Assuming what? It is the probability of our observed sample statistic or one more extreme, (3) assuming the null hypothesis is true:
+  
+* probability
+* data^[Technically, the observed sample statistic or one more extreme in the direction of our alternative. But it is helpful to just remember this as "the data".]
+* null hypothesis</div>\EndKnitrBlock{protip}
+
+\BeginKnitrBlock{example}<div class="example">What was the test statistic in the Martian alphabet example?
+ 
+---
+ 
+The test statistic in the the Martian alphabet example was the sample proportion, $\frac{34}{38} = 0.895$ (or 89.5%). This is also the **point estimate** of the true probability that humans would choose Bumba on the left.</div>\EndKnitrBlock{example}
+
+When the p-value is small, i.e., less than a previously set threshold, we say the results are **statistically significant**. 
+This means the data provide such strong evidence against $H_0$ that we reject the null hypothesis in favor of the alternative hypothesis. 
+The threshold, called the **significance level**\index{hypothesis testing!significance level}\index{significance level} and often represented by $\alpha$ (the Greek letter *alpha*), is typically set to $\alpha = 0.05$, but can vary depending on the field or the application and the consequences of an incorrect decision. 
+Using a significance level of $\alpha = 0.05$ in the Martian alphabet study, we can say that the data provided statistically significant evidence against the null hypothesis.
+
+\BeginKnitrBlock{onebox}<div class="onebox">**Statistical significance.**
+
+We say that the data provide **statistically significant**\index{hypothesis testing!statistically significant|textbf} evidence against the null hypothesis if the p-value is less than some reference value called the **significance level*, denoted by $\alpha$.</div>\EndKnitrBlock{onebox}
+
+
+\BeginKnitrBlock{onebox}<div class="onebox">**What's so special about 0.05?**
+
+We often use a threshold of 0.05 to determine whether a result is statistically significant. 
+But why 0.05? 
+Maybe we should use a bigger number, or maybe a smaller number. 
+If you're a little puzzled, that probably means you're reading with a critical eye---good job! 
+The $OpenIntro$ authors have a video to help clarify *why 0.05*:
+<center>
+[https://www.openintro.org/book/stat/why05/](https://www.openintro.org/book/stat/why05/)
+</center>
+<br>
+Sometimes it's also a good idea to deviate from the standard. 
+We'll discuss when to choose a threshold different than 0.05 in Section ??.</div>\EndKnitrBlock{onebox}
+
+
+### Confidence intervals {#ConfidenceIntervals}
+
+A point estimate provides a single plausible value for a parameter. 
+However, a point estimate is rarely perfect---usually there is some error in the estimate. 
+In addition to supplying a point estimate of a parameter, a next logical step would be to provide a plausible *range of values* for the parameter.
+
+A plausible range of values for the population parameter is called a **confidence interval**. 
+Using only a single point estimate is like fishing in a murky lake with a spear, and using a confidence interval is like fishing with a net. 
+We can throw a spear where we saw a fish, but we will probably miss. 
+On the other hand, if we toss a net in that area, we have a good chance of catching the fish.
+
+If we report a point estimate, we probably will not hit the exact population parameter. 
+On the other hand, if we report a range of plausible values---a confidence interval---we have a good shot at capturing the parameter.
+
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">If we want to be very certain we capture the population parameter, should we use a wider interval or a smaller interval?^[If we want to be more certain we will capture the fish, we might use a wider net. Likewise, we use a wider confidence interval if we want to be more certain that we capture the parameter.]</div>\EndKnitrBlock{guidedpractice}
+
+In Section ?? we will discuss different percentages for the confidence interval (e.g., 90% confidence interval or 99% confidence interval).  Section ?? also provides a longer discussion on what "95% confidence" actually means.
 
 ## One proportion {#single-prop}
 
@@ -2029,7 +2228,7 @@ Z = \frac{\text{point estimate} - \text{null value}}{SE}
 
 The lower tail area is 0.4325, which we double to get the p-value: 0.8650. Because this p-value is larger than 0.05, we do not reject the null hypothesis. That is, the difference in breast cancer death rates is reasonably explained by chance, and we do not observe benefits or harm from mammograms relative to a regular breast exam.</div>\EndKnitrBlock{example}
 
-<img src="06-inference-cat_files/figure-html/unnamed-chunk-70-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="06-inference-cat_files/figure-html/unnamed-chunk-83-1.png" width="70%" style="display: block; margin: auto;" />
 
 Can we conclude that mammograms have no benefits or harm?
 Here are a few considerations to keep in mind when reviewing
@@ -2807,56 +3006,6 @@ Section \@ref(diff-two-prop).
 
 \BeginKnitrBlock{todo}<div class="todo">need to expand on the technical condition as the last row.  also, is it helpful for the rest of the table to be repeated?</div>\EndKnitrBlock{todo}
 
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:chp6summary)Summary and comparison of Randomization Tests, Bootstrapping, and Mathematical Models as inferential statistical methods.</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;">  </th>
-   <th style="text-align:left;">  Randomization Test  </th>
-   <th style="text-align:left;"> Bootstrapping </th>
-   <th style="text-align:left;"> Mathematical Model </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> What does it do? </td>
-   <td style="text-align:left;"> Shuffles the explanatory variable to mimic the natural variability  found in a randomized experiment. </td>
-   <td style="text-align:left;"> Resamples (with replacement) from the observed data to mimic the sampling variability found by collecting data. </td>
-   <td style="text-align:left;"> Uses theory (primarily the Central Limit Theorem) to describe the hypothetical variability resulting from either repeated randomized experiments or random samples. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> What is the random process described? </td>
-   <td style="text-align:left;"> randomized experiment </td>
-   <td style="text-align:left;"> random sampling </td>
-   <td style="text-align:left;"> either / both </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Is there flexibility? </td>
-   <td style="text-align:left;"> Yes, can be used to describe random sampling in an observational model </td>
-   <td style="text-align:left;"> Yes, can be used to describe random allocation in an experiment </td>
-   <td style="text-align:left;"> Yes </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> What is it best for? </td>
-   <td style="text-align:left;"> Hypothesis Testing (can be used for Confidence Intervals, but not covered in this text). </td>
-   <td style="text-align:left;"> Confidence Intervals (HT for one proportion covered in Chapter 6). </td>
-   <td style="text-align:left;"> Quick analyses through, for example, calculating a Z score. </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> What physical object represents the simulation process? </td>
-   <td style="text-align:left;"> shuffling cards </td>
-   <td style="text-align:left;"> pulling balls from a bag </td>
-   <td style="text-align:left;"> NA </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> What are the technical conditions? </td>
-   <td style="text-align:left;"> independence </td>
-   <td style="text-align:left;"> independence, big n </td>
-   <td style="text-align:left;"> independence, big n </td>
-  </tr>
-</tbody>
-</table>
-
 ### Terms
 
 We introduced the following terms in the chapter. 
@@ -2867,28 +3016,40 @@ However you should be able to easily spot them as **bolded text**.
 <table>
 <tbody>
   <tr>
-   <td style="text-align:left;"> categorical data </td>
-   <td style="text-align:left;"> one-sided hypothesis test </td>
+   <td style="text-align:left;"> alternative hypothesis </td>
+   <td style="text-align:left;"> null hypothesis </td>
    <td style="text-align:left;"> pooled proportion </td>
-   <td style="text-align:left;"> success-failure condition </td>
+   <td style="text-align:left;"> test statistic </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> confirmation bias </td>
-   <td style="text-align:left;"> parametric bootstrap </td>
+   <td style="text-align:left;"> confidence interval </td>
+   <td style="text-align:left;"> one-sided hypothesis test </td>
    <td style="text-align:left;"> SE interval </td>
    <td style="text-align:left;"> two-sided hypothesis test </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> margin of error </td>
-   <td style="text-align:left;"> percentile interval </td>
+   <td style="text-align:left;"> confirmation bias </td>
+   <td style="text-align:left;"> p-value </td>
    <td style="text-align:left;"> standard error for difference in proportions </td>
    <td style="text-align:left;"> Type 1 Error </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> null distribution </td>
-   <td style="text-align:left;"> point estimate </td>
+   <td style="text-align:left;"> hypothesis test </td>
+   <td style="text-align:left;"> parametric bootstrap </td>
    <td style="text-align:left;"> standard error of single proportion </td>
    <td style="text-align:left;"> Type 2 Error </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> margin of error </td>
+   <td style="text-align:left;"> percentile interval </td>
+   <td style="text-align:left;"> statistical inference </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> null distribution </td>
+   <td style="text-align:left;"> point estimate </td>
+   <td style="text-align:left;"> success-failure condition </td>
+   <td style="text-align:left;">  </td>
   </tr>
 </tbody>
 </table>

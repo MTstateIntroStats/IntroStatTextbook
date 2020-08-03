@@ -1,7 +1,7 @@
 --- 
 title: "Montana State Introductory Statistics with R"
 author: "Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager"
-date: "2020-08-02"
+date: "2020-08-03"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -14,7 +14,7 @@ header-includes:
 ---
 
 # Welcome {-}
-
+ 
 We hope readers will take away three ideas from this book in addition to forming a foundation of statistical thinking and methods.
 
 1. Statistics is an applied field with a wide range of practical applications.
