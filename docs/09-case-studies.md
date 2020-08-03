@@ -1,3 +1,3 @@
-# Case Studies {#case-studies}
+# Case studies {#case-studies}
 
 

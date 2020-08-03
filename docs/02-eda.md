@@ -5,6 +5,147 @@ We use statistical software for generating the summaries and graphs presented in
 However, since this might be your first exposure to these concepts, we take our time in this chapter to detail how to create them.
 Mastery of the content presented in this chapter will be crucial for understanding the methods and techniques introduced in rest of the book.</div>\EndKnitrBlock{chapterintro}
 
+## Exploring categorical data {#categorical-data}
+
+In this section, we will introduce tables and other basic tools for organizing and analyzing categorical data that are used throughout this book.
+The `loan50` data set represents a sample from a larger loan data set called `loans`.
+This larger data set contains information on 10,000 loans made through Lending Club.
+We will examine the relationship between `homeownership`, which for the `loans` data can take a value of `rent`, `mortgage` (owns but has a mortgage), or `own`, and `app_type`, which indicates whether the loan application was made with a partner or whether it was an individual application.
+
+
+### Contingency tables and conditional proportions
+
+- One-way and Two-way/contingency tables 
+- Define frequencies/counts and relative frequencies/proportions
+- p-hat and pi notation
+- association vs no association in conditional proportions
+- Bayes theorem with tables and trees - conditional vs unconditional probabilities
+
+**COPIED AND PASTED FROM EARLIER**
+The mean is useful because it allows us to rescale or standardize a metric into something more easily interpretable and comparable. 
+Suppose we would like to understand if a new drug is more effective at treating asthma attacks than the standard drug. 
+A trial of 1500 adults is set up, where 500 receive the new drug, and 1000 receive a standard drug in the control group:
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;">  </th>
+   <th style="text-align:center;"> New drug </th>
+   <th style="text-align:center;"> Standard drug </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Number of patients </td>
+   <td style="text-align:center;"> 500 </td>
+   <td style="text-align:center;"> 1000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Total asthma attacks </td>
+   <td style="text-align:center;"> 200 </td>
+   <td style="text-align:center;"> 300 </td>
+  </tr>
+</tbody>
+</table>
+
+Comparing the raw counts of 200 to 300 asthma attacks would make it appear that the new drug is better, but this is an artifact of the imbalanced group sizes.
+Instead, we should look at the average number of asthma attacks per patient in each group:
+
+- New drug: $200 / 500 = 0.4$ asthma attacks per patient
+- Standard drug: $300 / 1000 = 0.3$ asthma attacks per patient
+
+The standard drug has a lower average number of asthma attacks per patient than the average in the treatment group.
+
+**END COPIED AND PASTED SECTION**
+
+Table \@ref(tab:emailTable) summarizes two variables:
+`Type` (spam or not spam) and `Number`. `Number` is a
+categorical variable that describes whether an email
+contains no numbers, only small numbers (values under 1 million),
+or at least one big number (a value of 1 million or more).
+A table that summarizes data for two categorical variables
+in this way is called a **contingency table** or **two-way table**.
+Each value in the table represents the number of times, or **frequency**
+a particular combination of variable outcomes occurred.
+For example, the value 149 corresponds to the number of emails
+in the data set that are spam _and_ had no number listed in the email.
+Row and column totals are also included.
+The **row totals** provide the total counts across each row
+(e.g., $149 + 168 + 50 = 367$), and **column totals** are total
+counts down each column.
+
+A table for a single variable is called a **frequency table**. Table
+\@ref(tab:emailTableNumber) is a frequency table for the `Number` variable.
+If we replaced the counts with percentages or proportions,
+the table would be called a **relative frequency table**.
+
+
+
+<table>
+<caption>(\#tab:emailTable)Contingency table of `Type` and `Number` variables.</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> none </th>
+   <th style="text-align:right;"> small </th>
+   <th style="text-align:right;"> big </th>
+   <th style="text-align:right;"> Total </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> spam </td>
+   <td style="text-align:right;"> 149 </td>
+   <td style="text-align:right;"> 168 </td>
+   <td style="text-align:right;"> 50 </td>
+   <td style="text-align:right;"> 367 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> not spam </td>
+   <td style="text-align:right;"> 400 </td>
+   <td style="text-align:right;"> 2659 </td>
+   <td style="text-align:right;"> 495 </td>
+   <td style="text-align:right;"> 3554 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Total </td>
+   <td style="text-align:right;"> 549 </td>
+   <td style="text-align:right;"> 2827 </td>
+   <td style="text-align:right;"> 545 </td>
+   <td style="text-align:right;"> 3921 </td>
+  </tr>
+</tbody>
+</table>
+
+<table>
+<caption>(\#tab:emailTableNumber)Frequency table of `Number` variable.</caption>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> none </th>
+   <th style="text-align:right;"> small </th>
+   <th style="text-align:right;"> big </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 549 </td>
+   <td style="text-align:right;"> 2827 </td>
+   <td style="text-align:right;"> 545 </td>
+  </tr>
+</tbody>
+</table>
+
+### Bar plots and mosaic plots
+- one cat bar plot
+- two cat bar plot
+- two cat mosaic plot
+- association vs no association in bar plots
+
+### Why not pie charts?
+
+If you're still not convinced, read this post on the "from Data to Viz" blog: ["The Issue with Pie Chart"](https://www.data-to-viz.com/caveat/pie.html).
+
+
 ## Exploring quantitative data {#quantitative-data}
 
 In this section we will explore techniques for summarizing quantitative variables.
@@ -698,148 +839,7 @@ One observation that stands out when comparing the two maps: the poverty rate is
 
 
 
-## Exploring categorical data {#categorical-data}
 
-Like quantitative data, categorical data can also be organized
-and analyzed. In this section, we will introduce tables and other basic tools for categorical data that are used throughout this book.
-The `loan50` data set represents a sample from a larger loan data set called `loans`.
-This larger data set contains information on 10,000 loans made through Lending Club.
-We will examine the relationship between `homeownership`, which for the `loans` data can take a value of `rent`, `mortgage` (owns but has a mortgage), or `own`, and `app_type`, which indicates whether the loan application was made with a partner or whether it was an individual application.
-
-\BeginKnitrBlock{uptohere}<div class="uptohere"></div>\EndKnitrBlock{uptohere}
-
-
-### Contingency tables and conditional proportions
-
-- One-way and Two-way/contingency tables 
-- Define frequencies/counts and relative frequencies/proportions
-- p-hat and pi notation
-- association vs no association in conditional proportions
-- Bayes theorem with tables and trees - conditional vs unconditional probabilities
-
-**COPIED AND PASTED FROM EARLIER**
-The mean is useful because it allows us to rescale or standardize a metric into something more easily interpretable and comparable. 
-Suppose we would like to understand if a new drug is more effective at treating asthma attacks than the standard drug. 
-A trial of 1500 adults is set up, where 500 receive the new drug, and 1000 receive a standard drug in the control group:
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;">  </th>
-   <th style="text-align:center;"> New drug </th>
-   <th style="text-align:center;"> Standard drug </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> Number of patients </td>
-   <td style="text-align:center;"> 500 </td>
-   <td style="text-align:center;"> 1000 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Total asthma attacks </td>
-   <td style="text-align:center;"> 200 </td>
-   <td style="text-align:center;"> 300 </td>
-  </tr>
-</tbody>
-</table>
-
-Comparing the raw counts of 200 to 300 asthma attacks would make it appear that the new drug is better, but this is an artifact of the imbalanced group sizes.
-Instead, we should look at the average number of asthma attacks per patient in each group:
-
-- New drug: $200 / 500 = 0.4$ asthma attacks per patient
-- Standard drug: $300 / 1000 = 0.3$ asthma attacks per patient
-
-The standard drug has a lower average number of asthma attacks per patient than the average in the treatment group.
-
-**END COPIED AND PASTED SECTION**
-
-Table \@ref(tab:emailTable) summarizes two variables:
-`Type` (spam or not spam) and `Number`. `Number` is a
-categorical variable that describes whether an email
-contains no numbers, only small numbers (values under 1 million),
-or at least one big number (a value of 1 million or more).
-A table that summarizes data for two categorical variables
-in this way is called a **contingency table** or **two-way table**.
-Each value in the table represents the number of times, or **frequency**
-a particular combination of variable outcomes occurred.
-For example, the value 149 corresponds to the number of emails
-in the data set that are spam _and_ had no number listed in the email.
-Row and column totals are also included.
-The **row totals** provide the total counts across each row
-(e.g., $149 + 168 + 50 = 367$), and **column totals** are total
-counts down each column.
-
-A table for a single variable is called a **frequency table**. Table
-\@ref(tab:emailTableNumber) is a frequency table for the `Number` variable.
-If we replaced the counts with percentages or proportions,
-the table would be called a **relative frequency table**.
-
-
-
-<table>
-<caption>(\#tab:emailTable)Contingency table of `Type` and `Number` variables.</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;">   </th>
-   <th style="text-align:right;"> none </th>
-   <th style="text-align:right;"> small </th>
-   <th style="text-align:right;"> big </th>
-   <th style="text-align:right;"> Total </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> spam </td>
-   <td style="text-align:right;"> 149 </td>
-   <td style="text-align:right;"> 168 </td>
-   <td style="text-align:right;"> 50 </td>
-   <td style="text-align:right;"> 367 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> not spam </td>
-   <td style="text-align:right;"> 400 </td>
-   <td style="text-align:right;"> 2659 </td>
-   <td style="text-align:right;"> 495 </td>
-   <td style="text-align:right;"> 3554 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Total </td>
-   <td style="text-align:right;"> 549 </td>
-   <td style="text-align:right;"> 2827 </td>
-   <td style="text-align:right;"> 545 </td>
-   <td style="text-align:right;"> 3921 </td>
-  </tr>
-</tbody>
-</table>
-
-<table>
-<caption>(\#tab:emailTableNumber)Frequency table of `Number` variable.</caption>
- <thead>
-  <tr>
-   <th style="text-align:right;"> none </th>
-   <th style="text-align:right;"> small </th>
-   <th style="text-align:right;"> big </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 549 </td>
-   <td style="text-align:right;"> 2827 </td>
-   <td style="text-align:right;"> 545 </td>
-  </tr>
-</tbody>
-</table>
-
-### Bar plots and mosaic plots
-- one cat bar plot
-- two cat bar plot
-- two cat mosaic plot
-- association vs no association in bar plots
-
-### Why not pie charts?
-
-If you're still not convinced, read ["The Issue with Pie Chart"](https://www.data-to-viz.com/caveat/pie.html) post on the "from Data to Viz" blog.
 
 ## Exploratory data analysis in `R`
 

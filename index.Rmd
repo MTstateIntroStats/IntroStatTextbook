@@ -14,7 +14,7 @@ header-includes:
 ---
 
 # Welcome {-}
-
+ 
 We hope readers will take away three ideas from this book in addition to forming a foundation of statistical thinking and methods.
 
 1. Statistics is an applied field with a wide range of practical applications.
@@ -24,6 +24,9 @@ We hope readers will take away three ideas from this book in addition to forming
 
 ## Textbook overview {-}
 
+This textbook accompanies the curriculum for STAT 216: Introduction to Statistics at Montana State University. The syllabus and other course information can be found
+on the [course webpage](https://math.montana.edu/courses/s216/index.html). Detailed learning outcomes for the course can be found [here](https://github.com/MTstateIntroStats/IntroStatTextbook/blob/master/learning_outcomes.md).
+
 1. **Introduction to data.** Data structures, variables, and basic data collection techniques.
 2. **Exploratory data analysis.** Data visualization and summarization for one and two variables, with a taste of probability.
 3. **Correlation and regression.** Visualizing, describing, and quantifying relationships between two quantitative variables.
@@ -32,6 +35,7 @@ We hope readers will take away three ideas from this book in addition to forming
 6. **Inference for categorical data.** Inference for one or two proportions using simulation and randomization techniques as well as the normal distribution.
 7. **Inference for numerical data.** Inference for one or two means using simulation and randomization techniques as well as the $t$-distribution.
 8. **Inference for regression.** Inference for a regression slope or correlation using simulation and randomization techniques as well as the $t$-distribution.
+9. **Case studies.** A series of case studies assigned weekly in this course.
 
 
 ## Acknowledgements {-}
