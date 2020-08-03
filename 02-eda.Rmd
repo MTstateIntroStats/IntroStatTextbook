@@ -1015,6 +1015,7 @@ We will examine the relationship between `homeownership`, which for the `loans` 
 
 - One-way and Two-way/contingency tables 
 - Define frequencies/counts and relative frequencies/proportions
+- p-hat and pi notation
 - association vs no association in conditional proportions
 - Bayes theorem with tables and trees - conditional vs unconditional probabilities
 
@@ -1097,11 +1098,81 @@ kable(data.frame(t(tab)), caption = "Frequency table of `Number` variable.")
 
 ### Why not pie charts?
 
+If you're still not convinced, read ["The Issue with Pie Chart"](https://www.data-to-viz.com/caveat/pie.html) post on the "from Data to Viz" blog.
 
 ## Exploratory data analysis in `R`
 
 
 ## Chapter 2 review {#chp2-review}
+
+We're encountered a variety of data visualization methods in this chapter.
+Figure ... presents a decision tree for deciding which type of plot is most appropriate for a given number and types of variables.
+
+```{r decision-tree-plots, fig.cap="Decision tree for determining an appropriate plot  given a number of variables and their types.", fig.fullwidth=TRUE}
+pal <- c("#000000",brewer.pal(8, 'Dark2'))
+
+data <- data.frame(
+  level1 = "Resp",
+  level2 = c(rep("Quan0",7), rep("Cat0",5)),
+  level3 = c(rep(c("None","Cat","Quant"),c(1,2,4)),
+             rep(c("None2","Cat2","Quant2"),c(2,1,2))),
+  level4 = paste0("plot_", letters[1:12])
+)
+
+# transform to edge list
+edges_level1_2 = data %>% select(level1, level2) %>% unique %>% rename(from=level1, to=level2)
+edges_level2_3 = data %>% select(level2, level3) %>% unique %>% rename(from=level2, to=level3)
+edges_level3_4 = data %>% select(level3, level4) %>% unique %>% rename(from=level3, to=level4)
+edge_list=rbind(edges_level1_2, edges_level2_3, edges_level3_4)
+
+# decision tree
+mygraph <- graph_from_data_frame( edge_list )
+ggraph(mygraph, layout = 'dendrogram', circular = FALSE) + 
+  geom_edge_diagonal(arrow = arrow(length = unit(3, 'mm')), 
+                   end_cap = circle(2, 'mm')) +
+  geom_node_point(color="#69b3a2", size=1) +
+  geom_node_label(
+    aes(   label=c("Response variable",
+                   "Quantitative", "Categorical",
+                  rep(c("Quantitative","Categorical","None"),2),
+                  "Scatterplot",
+                  "Stacked histogram", 
+                  "Side-by-side boxplots", "Boxplot",
+                  "Density plot", "Histogram",
+                  "Dotplot", "Side-by-side boxplots",
+                  "Smoothed scatterplot", "Segmented bar plot", 
+                  "Mosaic plot", "Bar plot")),
+    label.padding = unit(0.3, "lines"),
+    color = pal[c(1:9,4,5,5,6,6,6,6,7,7,8,9,9)],
+    size = c(4,rep(3.5,20)),
+    fontface = c("bold",rep("plain",20)),
+    nudge_x = c(rep(.5,9),rep(0,12)),
+    nudge_y = c(rep(0,9),rep(.7,12))
+                # c(.6,.8,.9,.47,.6,.55,.45,.9,.9,.9, .6,.5))
+    ) +
+  theme(plot.margin = margin(t=20, r=20, b=20, l=20, unit="pt")) +
+  coord_flip() +
+  scale_y_reverse(expand = c(.2,.2)) +
+  scale_x_discrete() +
+  annotate("text",  x = 6.1, y = 1, label = "Explanatory variable",
+           fontface = "bold", size = 4)
+```
+
+<!-- geom_node_label( -->
+<!--     aes(   label=c("Response variable", -->
+<!--                    "Quantitative", "Categorical", -->
+<!--                   rep(c("Quantitative","Categorical","None"),2), -->
+<!--                   "Scatterplot", -->
+<!--                   "Stacked histogram",  -->
+<!--                   "Side-by-side boxplots", "Boxplot", -->
+<!--                   "Density plot", "Histogram", -->
+<!--                   "Dotplot", "Side-by-side boxplots", -->
+<!--                   "Smoothed scatterplot", "Segmented bar plot",  -->
+<!--                   "Mosaic plot", "Bar plot")), -->
+<!--     label.padding = unit(0.5, "lines"), -->
+<!--     color = pal[c(1:9,4,5,5,6,6,6,6,7,7,8,9,9)], -->
+<!--     size = 4#, repel = TRUE -->
+<!--     )  -->
 
 ### Terms
 

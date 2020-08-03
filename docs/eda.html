@@ -1164,6 +1164,7 @@ We will examine the relationship between <code>homeownership</code>, which for t
 <ul>
 <li>One-way and Two-way/contingency tables</li>
 <li>Define frequencies/counts and relative frequencies/proportions</li>
+<li>p-hat and pi notation</li>
 <li>association vs no association in conditional proportions</li>
 <li>Bayes theorem with tables and trees - conditional vs unconditional probabilities</li>
 </ul>
@@ -1355,6 +1356,7 @@ big
 </div>
 <div id="why-not-pie-charts" class="section level3" number="2.2.3">
 <h3><span class="header-section-number">2.2.3</span> Why not pie charts?</h3>
+<p>If you’re still not convinced, read <a href="https://www.data-to-viz.com/caveat/pie.html">“The Issue with Pie Chart”</a> post on the “from Data to Viz” blog.</p>
 </div>
 </div>
 <div id="exploratory-data-analysis-in-r" class="section level2" number="2.3">
@@ -1362,6 +1364,29 @@ big
 </div>
 <div id="chp2-review" class="section level2" number="2.4">
 <h2><span class="header-section-number">2.4</span> Chapter 2 review</h2>
+<p>We’re encountered a variety of data visualization methods in this chapter.
+Figure … presents a decision tree for deciding which type of plot is most appropriate for a given number and types of variables.</p>
+<div class="figure" style="text-align: center"><span id="fig:decision-tree-plots"></span>
+<img src="02-eda_files/figure-html/decision-tree-plots-1.png" alt="Decision tree for determining an appropriate plot  given a number of variables and their types." width="70%" />
+<p class="caption">
+Figure 2.16: Decision tree for determining an appropriate plot given a number of variables and their types.
+</p>
+</div>
+<!-- geom_node_label( -->
+<!--     aes(   label=c("Response variable", -->
+<!--                    "Quantitative", "Categorical", -->
+<!--                   rep(c("Quantitative","Categorical","None"),2), -->
+<!--                   "Scatterplot", -->
+<!--                   "Stacked histogram",  -->
+<!--                   "Side-by-side boxplots", "Boxplot", -->
+<!--                   "Density plot", "Histogram", -->
+<!--                   "Dotplot", "Side-by-side boxplots", -->
+<!--                   "Smoothed scatterplot", "Segmented bar plot",  -->
+<!--                   "Mosaic plot", "Bar plot")), -->
+<!--     label.padding = unit(0.5, "lines"), -->
+<!--     color = pal[c(1:9,4,5,5,6,6,6,6,7,7,8,9,9)], -->
+<!--     size = 4#, repel = TRUE -->
+<!--     )  -->
 <div id="terms" class="section level3" number="2.4.1">
 <h3><span class="header-section-number">2.4.1</span> Terms</h3>
 <p>We introduced the following terms in the chapter.

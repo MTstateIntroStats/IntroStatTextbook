@@ -9,6 +9,11 @@ colorize <- function(x, color="red") {
   } else x
 }
 
+# extra packages ---------------------------------------------------------------------
+suppressMessages(library(gridExtra))
+suppressMessages(library(ggraph))
+suppressMessages(library(igraph))
+suppressMessages(library(RColorBrewer))
 
 
 ################## Update from ims repo from here down -
@@ -46,7 +51,7 @@ suppressMessages(library(infer))
 suppressMessages(library(patchwork))
 suppressMessages(library(gghighlight))
 suppressMessages(library(maps))
-suppressMessages(library(gridExtra))
+
 
 # dplyr options ----------------------------------------------------------------
 

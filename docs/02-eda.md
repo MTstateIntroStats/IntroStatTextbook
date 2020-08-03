@@ -713,6 +713,7 @@ We will examine the relationship between `homeownership`, which for the `loans` 
 
 - One-way and Two-way/contingency tables 
 - Define frequencies/counts and relative frequencies/proportions
+- p-hat and pi notation
 - association vs no association in conditional proportions
 - Bayes theorem with tables and trees - conditional vs unconditional probabilities
 
@@ -838,11 +839,36 @@ the table would be called a **relative frequency table**.
 
 ### Why not pie charts?
 
+If you're still not convinced, read ["The Issue with Pie Chart"](https://www.data-to-viz.com/caveat/pie.html) post on the "from Data to Viz" blog.
 
 ## Exploratory data analysis in `R`
 
 
 ## Chapter 2 review {#chp2-review}
+
+We're encountered a variety of data visualization methods in this chapter.
+Figure ... presents a decision tree for deciding which type of plot is most appropriate for a given number and types of variables.
+
+<div class="figure" style="text-align: center">
+<img src="02-eda_files/figure-html/decision-tree-plots-1.png" alt="Decision tree for determining an appropriate plot  given a number of variables and their types." width="70%" />
+<p class="caption">(\#fig:decision-tree-plots)Decision tree for determining an appropriate plot  given a number of variables and their types.</p>
+</div>
+
+<!-- geom_node_label( -->
+<!--     aes(   label=c("Response variable", -->
+<!--                    "Quantitative", "Categorical", -->
+<!--                   rep(c("Quantitative","Categorical","None"),2), -->
+<!--                   "Scatterplot", -->
+<!--                   "Stacked histogram",  -->
+<!--                   "Side-by-side boxplots", "Boxplot", -->
+<!--                   "Density plot", "Histogram", -->
+<!--                   "Dotplot", "Side-by-side boxplots", -->
+<!--                   "Smoothed scatterplot", "Segmented bar plot",  -->
+<!--                   "Mosaic plot", "Bar plot")), -->
+<!--     label.padding = unit(0.5, "lines"), -->
+<!--     color = pal[c(1:9,4,5,5,6,6,6,6,7,7,8,9,9)], -->
+<!--     size = 4#, repel = TRUE -->
+<!--     )  -->
 
 ### Terms
 
