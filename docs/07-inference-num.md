@@ -984,7 +984,7 @@ t-test.  mention that there are lots of nuances outside the scope of this book.
 ##### Observed statistic vs. null statistics {-}
 
 
-
+## More insights into the $t$-distribution
 
 ## Chapter 7 review {#chp7-review}
 
