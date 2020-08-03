@@ -846,8 +846,8 @@ If you're still not convinced, read ["The Issue with Pie Chart"](https://www.dat
 
 ## Chapter 2 review {#chp2-review}
 
-We're encountered a variety of data visualization methods in this chapter.
-Figure ... presents a decision tree for deciding which type of plot is most appropriate for a given number and types of variables.
+We're encountered a variety of univariate (one variable) and bivariate (two variable) data visualization methods in this chapter.
+Figure \@ref(fig:decision-tree-plots) presents a decision tree for deciding which type of plot is most appropriate for a given number and types of variables. In the next chapter, we'll further explore how to model the association between two quantitative variables, called regression. In Chapter \@ref(mult-reg), we'll look at exploratory data analysis methods for more than two variables.
 
 <div class="figure" style="text-align: center">
 <img src="02-eda_files/figure-html/decision-tree-plots-1.png" alt="Decision tree for determining an appropriate plot  given a number of variables and their types." width="70%" />

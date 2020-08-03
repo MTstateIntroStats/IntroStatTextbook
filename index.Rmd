@@ -25,7 +25,7 @@ We hope readers will take away three ideas from this book in addition to forming
 ## Textbook overview {-}
 
 1. **Introduction to data.** Data structures, variables, and basic data collection techniques.
-2. **Exploratory data analysis.** Data visualization and summarisation for one and two variables, with a taste of probability.
+2. **Exploratory data analysis.** Data visualization and summarization for one and two variables, with a taste of probability.
 3. **Correlation and regression.** Visualizing, describing, and quantifying relationships between two quantitative variables.
 4. **Multiple regression.** Descriptive summaries for quantifying the relationship between many variables.
 5. **Foundations for inference.** Case studies are used to introduce the ideas of statistical inference with randomization and simulations. 
