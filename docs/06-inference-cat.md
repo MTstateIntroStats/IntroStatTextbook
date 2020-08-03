@@ -214,52 +214,95 @@ On the other hand, if we report a range of plausible values---a confidence inter
 
 In Section ?? we will discuss different percentages for the confidence interval (e.g., 90% confidence interval or 99% confidence interval).  Section ?? also provides a longer discussion on what "95% confidence" actually means.
 
+
 ## One proportion {#single-prop}
 
-We encountered inference methods for a single proportion
-in Chapter \@ref(inference-foundations),
-exploring point estimates, confidence intervals,
-and hypothesis tests.
-In this section, we'll do a review of these topics
-and also how to choose an appropriate sample size
-when collecting data for single proportion contexts.
+A single proportion is used to summarize data when we measured a single categorical variable on each observational unit---the single variable is measured as either a success or failure (e.g., "surgical complication" vs. "no surgical complication")^[The terms "success" and "failure" may not actually represent outcomes we view as successful or not, but it is the typical generic way to referring to the possible outcomes of a binary variable. The "success" is whatever we count when calculating our sample proportion.]. 
 
-Note that there is only one variable being measured in a study which focuses on one proportion. 
-For each observational unit, the single variable is measured as either a success or failure (e.g., "surgical complication" vs. "no surgical complication"). 
-Because the nature of the research question at hand focuses on only a single variable, there is not a way to randomize the variable across a different (explanatory) variable. 
-For this reason, we will not use randomization as an analysis tool when focusing on a single proportion.  Instead, we will apply bootstrapping techniques to test a given hypothesis, and we will also revisit the associated mathematical models.
+\BeginKnitrBlock{onebox}<div class="onebox">**Notation**.
 
-### Bootstrap test for $H_0: p = p_0$ {#one-prop-null-boot}
+* $n$ = sample size (number of observational units in the data set)
+* $\hat{p}$ = sample proportion (number of "successes" divided by the sample size)
+* $\pi$ = population proportion^[When you see $\pi$ in this textbook, it will always symbolize a (typically unknown) population proportion, not the value 3.14....]</div>\EndKnitrBlock{onebox}
 
-The bootstrap simulation concept when $H_0$ is true is similar to the ideas used
-in the case studies presented in
-Section \@ref(boot-ci) where we bootstrapped without an assumption about $H_0$.  Because we will be testing a hypothesized value of $p$ (referred to as $p_0$), the bootstrap simulation for hypothesis testing has a fantastic advantage that it can be used for any sample size (a huge benefit for small samples, a nice alternative for large samples).
+### Hypothesis test for $H_0: \pi = \pi_0$ {#one-prop-null-boot}
 
-We expand on the medical consultant example, see Section \@ref(sec-med-consult), where instead of finding an interval estimate for the true complication rate, we work to test a specific research claim.
+\index{data!medical consultant|(}
 
-##### Observed data {-}
+People providing an organ for donation sometimes seek the help of a special medical consultant. 
+These consultants assist the patient in all aspects of the surgery, with the goal of reducing the possibility of complications during the medical procedure and recovery. 
+Patients might choose a consultant based in part on the historical complication rate of the consultant's clients.
 
-Recall the set-up for the example:
+One consultant tried to attract patients by noting the average complication rate for liver donor surgeries in the US is about 10%, but her clients have had only 3 complications in the 62 liver donor surgeries she has facilitated. 
+She claims this is strong evidence that her work meaningfully contributes to reducing complications (and therefore she should be hired!).
 
-People providing an organ for donation sometimes seek the help of a special "medical consultant". These consultants assist the patient in all aspects of the surgery, with the goal of reducing the possibility of complications during the medical procedure and recovery. Patients might choose a consultant based in part on the historical complication rate of the consultant's clients. One consultant tried to attract patients by noting the average complication rate for liver donor surgeries in the US is about 10%, but her clients have only had 3 complications in the 62 liver donor surgeries she has facilitated. She claims this is strong evidence that her work meaningfully contributes to reducing complications (and therefore she should be hired!).
-
-\BeginKnitrBlock{example}<div class="example">Using the data, is it possible to assess the consultant's claim that her complication rate is less than 10%?
+\BeginKnitrBlock{example}<div class="example">Using these data, is it possible to assess the consultant's claim that her work meaningfully contributes to reducing complications?
 
 ---
 
-No. The claim is that there is a causal connection, but the data are observational. Patients who hire this medical consultant may have lower complication rates for other reasons.
+No. The claim is that there is a causal connection, but the data are observational, so we must be on the lookout for confounding variables. 
+For example, maybe patients who can afford a medical consultant can afford better medical care, which can also lead to a lower complication rate.
 
-While it is not possible to assess this causal claim, it is still possible to test for an association using these data. For this question we ask, could the low complication rate of $\hat{p} = 0.048$ be due to chance?</div>\EndKnitrBlock{example}
-
-
-
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Write out hypotheses in both plain and statistical language to test for the association between the consultant's work and the true complication rate, $p$, for the consultant's clients.^[$H_0$: There is no association between the consultant's contributions and the clients' complication rate. In statistical language, $p=0.10$. 
-$H_A$: Patients who work with the consultant tend to have a complication rate lower than 10%, i.e., $p<0.10$.]</div>\EndKnitrBlock{guidedpractice}
+While it is not possible to assess the causal claim, it is still possible to understand the consultant's true rate of complications.</div>\EndKnitrBlock{example}
 
 
-Because, as it turns out, the conditions of working with the normal distribution are not met (see Section \@ref(one-prop-norm)), the uncertainty associated with the sample proportion should not be modeled using the normal distribution. However, we would still like to assess the hypotheses from the previous Guided Practice in absence of the normal framework. To do so, we need to evaluate the possibility of a sample value ($\hat{p}$) as far below the null value, $p_0=0.10$ as what was observed. The deviation of the sample value from the hypothesized parameter is usually quantified with a p-value.
+We will let $\pi$ represent the true complication rate for liver donors working with this consultant. This "true" complication probability is called the **parameter** of interest^[Parameters were first introduced in Section \@ref(dotplots)].)
+The sample proportion for the complication rate is 3 complications divided by the 62 surgeries the consultant has worked on: $\hat{p} = 3/62 = 0.048$. Since this value is estimated from sample data, it is called a **statistic**. The statistic $\hat{p}$ is our point estimate, or "best guess," for $\pi$.
 
-The p-value is computed based on the null distribution, which is the distribution of the test statistic if the null hypothesis is true. Supposing the null hypothesis is true, we can compute the p-value by identifying the chance of observing a test statistic that favors the alternative hypothesis at least as strongly as the observed test statistic. Here we will use a bootstrap simulation to measure the p-value.
+\BeginKnitrBlock{onebox}<div class="onebox">**Parameters and statistics.**\index{parameter}
+
+A **parameter** is the "true" value of interest. 
+We typically estimate the parameter using a **statistic** or point estimate\index{point estimate} from a sample of data. 
+
+For example, we estimate the probability $\pi$ of a complication for a client of the medical consultant by examining the past complications rates of her clients:
+
+ 
+$$\hat{p} = 3 / 62 = 0.048\qquad\text{is used to estimate}\qquad \pi$$</div>\EndKnitrBlock{onebox}
+
+\BeginKnitrBlock{protip}<div class="protip">Summary measures that summarize a sample of data, such as $\hat{p}$, are called **statistics**\index{statistic}. Numbers that summarize an entire population, such as $\pi$, are called **parameters**\index{parameter}. You can remember
+this distinction by looking at the first letter of each term: 
+
+> *S*tatistics summarize *S*amples; *P*arameters summarize *P*opulations.
+
+We typically use Roman letters to symbolize statistics (e.g., $\bar{x}$, $\hat{p}$), and Greek letters to symbolize parameters (e.g., $\mu$, $\pi$).
+Since we rarely can measure the entire population, and thus rarely know
+the actual parameter values, we like to say, "We don't know Greek,
+and we don't know parameters!"</div>\EndKnitrBlock{protip}
+
+\BeginKnitrBlock{example}<div class="example">Write out hypotheses in both plain and statistical language to test for the association between the consultant's work and the true complication rate, $\pi$, for the consultant's clients.
+
+---
+  
+In words:
+
+> $H_0$: There is no association between the consultant's contributions and the clients' complication rate.  
+> $H_A$: Patients who work with the consultant tend to have a complication rate lower than 10%. In statistical language
+
+In statistical language:
+
+> $H_0: \pi=0.10$  
+> $H_A: \pi<0.10$</div>\EndKnitrBlock{example}
+
+To assess these hypotheses, we need to evaluate the possibility of a sample value ($\hat{p}$) as far below the null value, $\pi_0=0.10$ as what was observed. 
+
+\BeginKnitrBlock{onebox}<div class="onebox">**Null value of a hypothesis test.**
+
+The **null value** is the reference value for the parameter in $H_0$, and it is sometimes represented with the parameter's label with a subscript 0 (or "null"), e.g., $\pi_0$ (just like $H_0$).</div>\EndKnitrBlock{onebox}
+
+The deviation of the sample value from the null hypothesized parameter is usually quantified with a p-value. The p-value is computed based on the null distribution, which is the distribution of the test statistic if the null hypothesis is true. Supposing the null hypothesis is true, we can compute the p-value by identifying the chance of observing a test statistic that favors the alternative hypothesis at least as strongly as the observed test statistic. 
+
+The null distribution can be created through simulation (simulation-based methods),
+or can be modeled by a mathematical function (theory-based methods).
+
+
+#### Simulation-based method for calculating the p-value
+
+
+#### Theory-based method for calculating the p-value
+
+
+
+Here we will use a bootstrap simulation to measure the p-value.
 
 ##### Variability of the statistic {-}
 
@@ -2228,7 +2271,7 @@ Z = \frac{\text{point estimate} - \text{null value}}{SE}
 
 The lower tail area is 0.4325, which we double to get the p-value: 0.8650. Because this p-value is larger than 0.05, we do not reject the null hypothesis. That is, the difference in breast cancer death rates is reasonably explained by chance, and we do not observe benefits or harm from mammograms relative to a regular breast exam.</div>\EndKnitrBlock{example}
 
-<img src="06-inference-cat_files/figure-html/unnamed-chunk-83-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="06-inference-cat_files/figure-html/unnamed-chunk-87-1.png" width="70%" style="display: block; margin: auto;" />
 
 Can we conclude that mammograms have no benefits or harm?
 Here are a few considerations to keep in mind when reviewing

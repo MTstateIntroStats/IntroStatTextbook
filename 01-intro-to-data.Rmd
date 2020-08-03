@@ -10,6 +10,29 @@ Statistics is the study of how best to collect, analyze, and draw conclusions fr
 terms_chp_1 <- c("data")
 ```
 
+Though we were calculating probabilities in the 16th century, and the first US Census was directed by Thomas Jefferson in 1790^[https://www.census.gov/history/www/through_the_decades/overview/1790.html], the discipline of statistics as we know it came about in the 1800s. Up until the 21st century, the **statistical investigation process**\index{statistical investigation process} looked something like this (adapted from @ISI2016):
+
+1. Ask a research question.
+2. Design a study and collect data.
+3. Summarize and visualize the data.
+4. Use statistical inferential methods to draw inferences from the data.
+5. Communicate the results and answer the research question.
+6. Revisit and look forward.
+
+```{r include=FALSE}
+terms_chp_1 <- c(terms_chp_1, "statistical investigation process")
+```
+
+With the rise of data science, however, we may not start with a research question,
+and instead start with a data set^[Data used in this context are called "found data."].
+In this case, the statistical investigation process looks more like the data exploration cycle found in Figure \@ref(fig:data-science-explore) taken from @R4DS.
+
+```{r data-science-explore, out.width="75%", fig.cap="Wickham and Grolemund's data exploration cycle (2017)."}
+include_graphics("01/images/data-science-explore.png")
+```
+
+In either case, the ideas, concepts, and methods presented in this book will provide you with the tools to work through the statistical investigation process, whether starting with a research question or starting with data.
+
 ## Case study: using stents to prevent strokes {#basic-stents-strokes}
 
 \index{data!stroke|(}

@@ -235,7 +235,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="inference-cat.html"><a href="inference-cat.html#single-prop"><i class="fa fa-check"></i><b>5.2</b> One proportion</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="inference-cat.html"><a href="inference-cat.html#one-prop-null-boot"><i class="fa fa-check"></i><b>5.2.1</b> Bootstrap test for <span class="math inline">\(H_0: p = p_0\)</span></a></li>
+<li class="chapter" data-level="5.2.1" data-path="inference-cat.html"><a href="inference-cat.html#one-prop-null-boot"><i class="fa fa-check"></i><b>5.2.1</b> Hypothesis test for <span class="math inline">\(H_0: \pi = \pi_0\)</span></a></li>
 <li class="chapter" data-level="5.2.2" data-path="inference-cat.html"><a href="inference-cat.html#one-prop-norm"><i class="fa fa-check"></i><b>5.2.2</b> Mathematical model</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="inference-cat.html"><a href="inference-cat.html#diff-two-prop"><i class="fa fa-check"></i><b>5.3</b> Difference of two proportions</a>
@@ -317,10 +317,10 @@ Te rest of this chapter focuses statistical inference for categorical data. The 
 </div>
 <p>Throughout the book so far, you have worked with data in a variety of contexts.
 You have learned how to summarize and visualize the data as well as how to model multiple variables at the same time.
-Sometimes the dataset at hand represents the entire research question.
+Sometimes the data set at hand represents the entire research question.
 But more often than not, the data have been collected to answer a research question about a larger group of which the data are a (hopefully) representative subset.</p>
-<p>You may agree that there is almost always variability in data (one dataset will not be identical to a second dataset even if they are both collected from the same population using the same methods).
-However, quantifying the variability in the data is neither obvious nor easy to do (<strong>how</strong> different is one dataset from another?).</p>
+<p>You may agree that there is almost always variability in data (one data set will not be identical to a second data set even if they are both collected from the same population using the same methods).
+However, quantifying the variability in the data is neither obvious nor easy to do (<strong>how</strong> different is one data set from another?).</p>
 
 <div class="example">
 <p>Suppose your professor splits the students in class into two groups: students on the left and students on the right. If <span class="math inline">\(\hat{p}_{_L}\)</span> and <span class="math inline">\(\hat{p}_{_R}\)</span> represent the proportion of students who own an Apple product on the left and right, respectively, would you be surprised if <span class="math inline">\(\hat{p}_{_L}\)</span> did not <em>exactly</em> equal <span class="math inline">\(\hat{p}_{_R}\)</span>?</p>
@@ -330,7 +330,7 @@ While the proportions would probably be close to each other, it would be unusual
 
 <div class="guidedpractice">
 If we don’t think the side of the room a person sits on in class is related to whether the person owns an Apple product, what assumption are we making about the relationship between these two variables?
-(Reminder: for these Guided Practice questions, you can check your answer in the footnote.)<a href="#fn36" class="footnote-ref" id="fnref36"><sup>36</sup></a>
+(Reminder: for these Guided Practice questions, you can check your answer in the footnote.)<a href="#fn38" class="footnote-ref" id="fnref38"><sup>38</sup></a>
 </div>
 <p>Studying randomness of this form is a key focus of statistics.
 Throughout this chapter, and those that follow, we provide two different approaches for quantifying the variability inherent in data: simulation-based methods and theory-based methods (mathematical models).
@@ -348,11 +348,11 @@ population based on sample results is called <strong>statistical inference</stro
 <h3><span class="header-section-number">5.1.1</span> Motivating example: Martian alphabet</h3>
 <p>How well can humans distinguish one “Martian” letter from another? The Figure <a href="inference-cat.html#fig:kiki-bumba">5.1</a>
 displays two Martians—one named Kiki and another named Bumba. Which do you think
-is Kiki and which do you think is Bumba?<a href="#fn37" class="footnote-ref" id="fnref37"><sup>37</sup></a></p>
+is Kiki and which do you think is Bumba?<a href="#fn39" class="footnote-ref" id="fnref39"><sup>39</sup></a></p>
 <div class="figure" style="text-align: center"><span id="fig:kiki-bumba"></span>
 <img src="06/images/bumBa-KiKi.png" alt="Two Martians named Bumba and Kiki. Do you think Bumba is on the left or the right?^[Bumba is the Martian on the left!]" width="75%" />
 <p class="caption">
-Figure 5.1: Two Martians named Bumba and Kiki. Do you think Bumba is on the left or the right?<a href="#fn38" class="footnote-ref" id="fnref38"><sup>38</sup></a>
+Figure 5.1: Two Martians named Bumba and Kiki. Do you think Bumba is on the left or the right?<a href="#fn40" class="footnote-ref" id="fnref40"><sup>40</sup></a>
 </p>
 </div>
 <p>This same image and question were presented to an introductory statistics class of
@@ -376,7 +376,7 @@ scenario and use the model to calculate the probability.</li>
 </ul>
 
 <div class="guidedpractice">
-How could you use a coin or cards to simulate the guesses of one sample of 38 students who cannot read Martian?<a href="#fn39" class="footnote-ref" id="fnref39"><sup>39</sup></a>
+How could you use a coin or cards to simulate the guesses of one sample of 38 students who cannot read Martian?<a href="#fn41" class="footnote-ref" id="fnref41"><sup>41</sup></a>
 </div>
 <p>For this situation—since “just guessing” means you have a 50% chance of guessing correctly—we could simulate a sample of 38 students’ guesses by flipping a coin 38 times and counting the number of times it lands on heads. Using a computer to repeat this process 1,000 times, we create the dot plot in Figure <a href="inference-cat.html#fig:MartianDotPlot">5.2</a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:MartianDotPlot"></span>
@@ -386,8 +386,8 @@ Figure 5.2: A dot plot of 1,000 sample proportions; each calculated by flipping 
 </p>
 </div>
 <p>None of our simulated samples produce 34 of 38 correct guesses! That is, if students were just guessing, it is nearly impossible to observe 34 or more correct guesses in a sample of 38 students. Given this low probability, the more plausible possibility is 2. <em>We can read Martian, and these results reflect this ability.</em> We’ve just completed our first hypothesis test!</p>
-<p>Now, obviously no one can read Martian, so a more realistic possibility is that humans tend to choose Bumba on the left more often than the right—there is a greater than 50% chance of choosing Bumba on the left. Even though we may think we’re guessing just by chance, we have a preference for Bumba on the left. It turns out that the explanation for this preference is called <em>synesthesia</em>, a tendency for humans to correlate sharp sounding noises (e.g., Kiki) with sharp looking images.<a href="#fn40" class="footnote-ref" id="fnref40"><sup>40</sup></a></p>
-<p>But wait—we’re not done! We have evidence that humans tend to prefer Bumba on the left, but by how much? To answer this, we need a confidence interval—an interval of plausible values for the true probability humans will choose Bumba on the left. The width of this interval is determined by how variable sample proportions are from sample to sample. It turns out, there is a mathematical model for this variability that we will explore later in this chapter. For now, let’s take the standard deviation from our simulated sample proportions as an estimate for this variability: 0.08. Since the simulated distribution of proportions is bell-shaped, we know about 95% of sample proportions should fall within two standard deviations of the true proportion, so we can add and subtract this <strong>margin of error</strong> to our sample proportion to calculate an approximate 95% confidence interval<a href="#fn41" class="footnote-ref" id="fnref41"><sup>41</sup></a>:
+<p>Now, obviously no one can read Martian, so a more realistic possibility is that humans tend to choose Bumba on the left more often than the right—there is a greater than 50% chance of choosing Bumba on the left. Even though we may think we’re guessing just by chance, we have a preference for Bumba on the left. It turns out that the explanation for this preference is called <em>synesthesia</em>, a tendency for humans to correlate sharp sounding noises (e.g., Kiki) with sharp looking images.<a href="#fn42" class="footnote-ref" id="fnref42"><sup>42</sup></a></p>
+<p>But wait—we’re not done! We have evidence that humans tend to prefer Bumba on the left, but by how much? To answer this, we need a confidence interval—an interval of plausible values for the true probability humans will choose Bumba on the left. The width of this interval is determined by how variable sample proportions are from sample to sample. It turns out, there is a mathematical model for this variability that we will explore later in this chapter. For now, let’s take the standard deviation from our simulated sample proportions as an estimate for this variability: 0.08. Since the simulated distribution of proportions is bell-shaped, we know about 95% of sample proportions should fall within two standard deviations of the true proportion, so we can add and subtract this <strong>margin of error</strong> to our sample proportion to calculate an approximate 95% confidence interval<a href="#fn43" class="footnote-ref" id="fnref43"><sup>43</sup></a>:
 <span class="math display">\[
 \frac{34}{38} \pm 2\times 0.08 = 0.89 \pm 0.16 = (0.73, 1)
 \]</span>
@@ -404,7 +404,7 @@ The <strong>null hypothesis (<span class="math inline">\(H_0\)</span>)</strong> 
 </div>
 
 <div class="guidedpractice">
-In the Martian alphabet example, which of the two competing possibilities was the null hypothesis? the alternative hypothesis?<a href="#fn42" class="footnote-ref" id="fnref42"><sup>42</sup></a>
+In the Martian alphabet example, which of the two competing possibilities was the null hypothesis? the alternative hypothesis?<a href="#fn44" class="footnote-ref" id="fnref44"><sup>44</sup></a>
 </div>
 <p>The hypothesis testing framework is a very general tool, and we often use it without a second thought.
 If a person makes a somewhat unbelievable claim, we are initially skeptical.
@@ -417,7 +417,7 @@ The hallmarks of hypothesis testing are also found in the US court system.</p>
 <p>A US court considers two possible claims about a defendant: they are either innocent or guilty. If we set these claims up in a hypothesis framework, which would be the null hypothesis and which the alternative?</p>
 <hr />
 The jury considers whether the evidence is so convincing (strong) that there is no reasonable doubt regarding the person’s guilt.
-That is, the skeptical perspective (null hypothesis) is that the person is innocent until evidence is presented that convinces the jury that the person is guilty (alternative hypothesis).
+That is, the skeptical perspective (null hypothesis) is that the person is innocent until evidence is presented that convinces the jury that the person is guilty (alternative hypothesis). Analogously, in a hypothesis test, we assume the null hypothesis until evidence is presented that convinces us the alternative hypothesis is true.
 </div>
 <p>Jurors examine the evidence to see whether it convincingly shows a defendant is guilty.
 Notice that if a jury finds a defendant <em>not guilty</em>, this does not necessarily mean the jury is confident in the person’s innocence.
@@ -434,8 +434,8 @@ Failing to find strong evidence for the alternative hypothesis is not equivalent
 </ul>
 <p>The research question—can humans read Martian?—was framed in the context of these hypotheses.</p>
 <p>The null hypothesis (<span class="math inline">\(H_0\)</span>) was a perspective of no effect (no ability to read Martian).
-The student Martian guessing data provided a point estimate of 89.5% (<span class="math inline">\(34/38 \times 100\)</span>%) for the true probability of choosing Bumba on the left.
-We determined that observing such a sample proportion from chance alone would be rare—it would only happen in less than 1 out of 1000 samples. When results
+The student data provided a point estimate of 89.5% (<span class="math inline">\(34/38 \times 100\)</span>%) for the true probability of choosing Bumba on the left.
+We determined that observing such a sample proportion from chance alone (assuming <span class="math inline">\(H_0\)</span>) would be rare—it would only happen in less than 1 out of 1000 samples. When results
 like these are inconsistent with <span class="math inline">\(H_0\)</span>, we reject <span class="math inline">\(H_0\)</span> in favor of <span class="math inline">\(H_A\)</span>.
 Here, we concluded there humans have a preference for choosing Bumba on the left.</p>
 <p>The less than 1-in-1000 chance is what we call a <strong>p-value</strong>, which is a probability quantifying the strength of the evidence against the null hypothesis and in favor of the alternative.</p>
@@ -449,15 +449,15 @@ This summary value that is used to compute the p-value is often called the <stro
 
 <div class="protip">
 <p>When interpreting a p-value, remember that the definition of a p-value has three components. It is a (1) probability. What it is the probability of? It is the probability of (2) our observed sample statistic or one more extreme. Assuming what? It is the probability of our observed sample statistic or one more extreme, (3) assuming the null hypothesis is true:</p>
-<ul>
+<ol style="list-style-type: decimal">
 <li>probability</li>
-<li>data<a href="#fn43" class="footnote-ref" id="fnref43"><sup>43</sup></a></li>
+<li>data<a href="#fn45" class="footnote-ref" id="fnref45"><sup>45</sup></a></li>
 <li>null hypothesis
 </div></li>
-</ul>
+</ol>
 
 <div class="example">
-<p>What was the test statistic in the Martian alphabet example?</p>
+<p>What was the test statistic in the <a href="inference-cat.html#Martian">Martian alphabet example</a>?</p>
 <hr />
 The test statistic in the the Martian alphabet example was the sample proportion, <span class="math inline">\(\frac{34}{38} = 0.895\)</span> (or 89.5%). This is also the <strong>point estimate</strong> of the true probability that humans would choose Bumba on the left.
 </div>
@@ -468,7 +468,7 @@ Using a significance level of <span class="math inline">\(\alpha = 0.05\)</span>
 
 <div class="onebox">
 <p><strong>Statistical significance.</strong></p>
-We say that the data provide <strong>statistically significant</strong> evidence against the null hypothesis if the p-value is less than some reference value called the **significance level*, denoted by <span class="math inline">\(\alpha\)</span>.
+We say that the data provide <strong>statistically significant</strong> evidence against the null hypothesis if the p-value is less than some reference value called the <strong>significance level</strong>, denoted by <span class="math inline">\(\alpha\)</span>.
 </div>
 
 <div class="onebox">
@@ -477,7 +477,7 @@ We often use a threshold of 0.05 to determine whether a result is statistically 
 But why 0.05?
 Maybe we should use a bigger number, or maybe a smaller number.
 If you’re a little puzzled, that probably means you’re reading with a critical eye—good job!
-The <span class="math inline">\(OpenIntro\)</span> authors have a video to help clarify <em>why 0.05</em>:
+The <em>OpenIntro</em> authors have a video to help clarify <em>why 0.05</em>:
 <center>
 <a href="https://www.openintro.org/book/stat/why05/">https://www.openintro.org/book/stat/why05/</a>
 </center>
@@ -500,48 +500,91 @@ On the other hand, if we toss a net in that area, we have a good chance of catch
 On the other hand, if we report a range of plausible values—a confidence interval—we have a good shot at capturing the parameter.</p>
 
 <div class="guidedpractice">
-If we want to be very certain we capture the population parameter, should we use a wider interval or a smaller interval?<a href="#fn44" class="footnote-ref" id="fnref44"><sup>44</sup></a>
+If we want to be very certain we capture the population parameter, should we use a wider interval or a smaller interval?<a href="#fn46" class="footnote-ref" id="fnref46"><sup>46</sup></a>
 </div>
 <p>In Section ?? we will discuss different percentages for the confidence interval (e.g., 90% confidence interval or 99% confidence interval). Section ?? also provides a longer discussion on what “95% confidence” actually means.</p>
 </div>
 </div>
 <div id="single-prop" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> One proportion</h2>
-<p>We encountered inference methods for a single proportion
-in Chapter <a href="#inference-foundations"><strong>??</strong></a>,
-exploring point estimates, confidence intervals,
-and hypothesis tests.
-In this section, we’ll do a review of these topics
-and also how to choose an appropriate sample size
-when collecting data for single proportion contexts.</p>
-<p>Note that there is only one variable being measured in a study which focuses on one proportion.
-For each observational unit, the single variable is measured as either a success or failure (e.g., “surgical complication” vs. “no surgical complication”).
-Because the nature of the research question at hand focuses on only a single variable, there is not a way to randomize the variable across a different (explanatory) variable.
-For this reason, we will not use randomization as an analysis tool when focusing on a single proportion. Instead, we will apply bootstrapping techniques to test a given hypothesis, and we will also revisit the associated mathematical models.</p>
+<p>A single proportion is used to summarize data when we measured a single categorical variable on each observational unit—the single variable is measured as either a success or failure (e.g., “surgical complication” vs. “no surgical complication”)<a href="#fn47" class="footnote-ref" id="fnref47"><sup>47</sup></a>.</p>
+
+<div class="onebox">
+<p><strong>Notation</strong>.</p>
+<ul>
+<li><span class="math inline">\(n\)</span> = sample size (number of observational units in the data set)</li>
+<li><span class="math inline">\(\hat{p}\)</span> = sample proportion (number of “successes” divided by the sample size)</li>
+<li><span class="math inline">\(\pi\)</span> = population proportion<a href="#fn48" class="footnote-ref" id="fnref48"><sup>48</sup></a>
+</div></li>
+</ul>
 <div id="one-prop-null-boot" class="section level3" number="5.2.1">
-<h3><span class="header-section-number">5.2.1</span> Bootstrap test for <span class="math inline">\(H_0: p = p_0\)</span></h3>
-<p>The bootstrap simulation concept when <span class="math inline">\(H_0\)</span> is true is similar to the ideas used
-in the case studies presented in
-Section <a href="#boot-ci"><strong>??</strong></a> where we bootstrapped without an assumption about <span class="math inline">\(H_0\)</span>. Because we will be testing a hypothesized value of <span class="math inline">\(p\)</span> (referred to as <span class="math inline">\(p_0\)</span>), the bootstrap simulation for hypothesis testing has a fantastic advantage that it can be used for any sample size (a huge benefit for small samples, a nice alternative for large samples).</p>
-<p>We expand on the medical consultant example, see Section <a href="#sec-med-consult"><strong>??</strong></a>, where instead of finding an interval estimate for the true complication rate, we work to test a specific research claim.</p>
-<div id="observed-data" class="section level5 unnumbered">
-<h5>Observed data</h5>
-<p>Recall the set-up for the example:</p>
-<p>People providing an organ for donation sometimes seek the help of a special “medical consultant”. These consultants assist the patient in all aspects of the surgery, with the goal of reducing the possibility of complications during the medical procedure and recovery. Patients might choose a consultant based in part on the historical complication rate of the consultant’s clients. One consultant tried to attract patients by noting the average complication rate for liver donor surgeries in the US is about 10%, but her clients have only had 3 complications in the 62 liver donor surgeries she has facilitated. She claims this is strong evidence that her work meaningfully contributes to reducing complications (and therefore she should be hired!).</p>
+<h3><span class="header-section-number">5.2.1</span> Hypothesis test for <span class="math inline">\(H_0: \pi = \pi_0\)</span></h3>
+<p></p>
+<p>People providing an organ for donation sometimes seek the help of a special medical consultant.
+These consultants assist the patient in all aspects of the surgery, with the goal of reducing the possibility of complications during the medical procedure and recovery.
+Patients might choose a consultant based in part on the historical complication rate of the consultant’s clients.</p>
+<p>One consultant tried to attract patients by noting the average complication rate for liver donor surgeries in the US is about 10%, but her clients have had only 3 complications in the 62 liver donor surgeries she has facilitated.
+She claims this is strong evidence that her work meaningfully contributes to reducing complications (and therefore she should be hired!).</p>
 
 <div class="example">
-<p>Using the data, is it possible to assess the consultant’s claim that her complication rate is less than 10%?</p>
+<p>Using these data, is it possible to assess the consultant’s claim that her work meaningfully contributes to reducing complications?</p>
 <hr />
-<p>No. The claim is that there is a causal connection, but the data are observational. Patients who hire this medical consultant may have lower complication rates for other reasons.</p>
-While it is not possible to assess this causal claim, it is still possible to test for an association using these data. For this question we ask, could the low complication rate of <span class="math inline">\(\hat{p} = 0.048\)</span> be due to chance?
+<p>No. The claim is that there is a causal connection, but the data are observational, so we must be on the lookout for confounding variables.
+For example, maybe patients who can afford a medical consultant can afford better medical care, which can also lead to a lower complication rate.</p>
+While it is not possible to assess the causal claim, it is still possible to understand the consultant’s true rate of complications.
+</div>
+<p>We will let <span class="math inline">\(\pi\)</span> represent the true complication rate for liver donors working with this consultant. This “true” complication probability is called the <strong>parameter</strong> of interest<a href="#fn49" class="footnote-ref" id="fnref49"><sup>49</sup></a>.)
+The sample proportion for the complication rate is 3 complications divided by the 62 surgeries the consultant has worked on: <span class="math inline">\(\hat{p} = 3/62 = 0.048\)</span>. Since this value is estimated from sample data, it is called a <strong>statistic</strong>. The statistic <span class="math inline">\(\hat{p}\)</span> is our point estimate, or “best guess,” for <span class="math inline">\(\pi\)</span>.</p>
+
+<div class="onebox">
+<p><strong>Parameters and statistics.</strong></p>
+<p>A <strong>parameter</strong> is the “true” value of interest.
+We typically estimate the parameter using a <strong>statistic</strong> or point estimate from a sample of data.</p>
+<p>For example, we estimate the probability <span class="math inline">\(\pi\)</span> of a complication for a client of the medical consultant by examining the past complications rates of her clients:</p>
+<span class="math display">\[\hat{p} = 3 / 62 = 0.048\qquad\text{is used to estimate}\qquad \pi\]</span>
 </div>
 
-<div class="guidedpractice">
-Write out hypotheses in both plain and statistical language to test for the association between the consultant’s work and the true complication rate, <span class="math inline">\(p\)</span>, for the consultant’s clients.<a href="#fn45" class="footnote-ref" id="fnref45"><sup>45</sup></a>
+<div class="protip">
+<p>Summary measures that summarize a sample of data, such as <span class="math inline">\(\hat{p}\)</span>, are called <strong>statistics</strong>. Numbers that summarize an entire population, such as <span class="math inline">\(\pi\)</span>, are called <strong>parameters</strong>. You can remember
+this distinction by looking at the first letter of each term:</p>
+<blockquote>
+<p><em>S</em>tatistics summarize <em>S</em>amples; <em>P</em>arameters summarize <em>P</em>opulations.</p>
+</blockquote>
+We typically use Roman letters to symbolize statistics (e.g., <span class="math inline">\(\bar{x}\)</span>, <span class="math inline">\(\hat{p}\)</span>), and Greek letters to symbolize parameters (e.g., <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\pi\)</span>).
+Since we rarely can measure the entire population, and thus rarely know
+the actual parameter values, we like to say, “We don’t know Greek,
+and we don’t know parameters!”
 </div>
-<p>Because, as it turns out, the conditions of working with the normal distribution are not met (see Section <a href="inference-cat.html#one-prop-norm">5.2.2</a>), the uncertainty associated with the sample proportion should not be modeled using the normal distribution. However, we would still like to assess the hypotheses from the previous Guided Practice in absence of the normal framework. To do so, we need to evaluate the possibility of a sample value (<span class="math inline">\(\hat{p}\)</span>) as far below the null value, <span class="math inline">\(p_0=0.10\)</span> as what was observed. The deviation of the sample value from the hypothesized parameter is usually quantified with a p-value.</p>
-<p>The p-value is computed based on the null distribution, which is the distribution of the test statistic if the null hypothesis is true. Supposing the null hypothesis is true, we can compute the p-value by identifying the chance of observing a test statistic that favors the alternative hypothesis at least as strongly as the observed test statistic. Here we will use a bootstrap simulation to measure the p-value.</p>
+
+<div class="example">
+<p>Write out hypotheses in both plain and statistical language to test for the association between the consultant’s work and the true complication rate, <span class="math inline">\(\pi\)</span>, for the consultant’s clients.</p>
+<hr />
+<p>In words:</p>
+<blockquote>
+<p><span class="math inline">\(H_0\)</span>: There is no association between the consultant’s contributions and the clients’ complication rate.<br />
+<span class="math inline">\(H_A\)</span>: Patients who work with the consultant tend to have a complication rate lower than 10%. In statistical language</p>
+</blockquote>
+<p>In statistical language:</p>
+<blockquote>
+<span class="math inline">\(H_0: \pi=0.10\)</span><br />
+<span class="math inline">\(H_A: \pi&lt;0.10\)</span>
 </div>
+</blockquote>
+<p>To assess these hypotheses, we need to evaluate the possibility of a sample value (<span class="math inline">\(\hat{p}\)</span>) as far below the null value, <span class="math inline">\(\pi_0=0.10\)</span> as what was observed.</p>
+
+<div class="onebox">
+<p><strong>Null value of a hypothesis test.</strong></p>
+The <strong>null value</strong> is the reference value for the parameter in <span class="math inline">\(H_0\)</span>, and it is sometimes represented with the parameter’s label with a subscript 0 (or “null”), e.g., <span class="math inline">\(\pi_0\)</span> (just like <span class="math inline">\(H_0\)</span>).
+</div>
+<p>The deviation of the sample value from the null hypothesized parameter is usually quantified with a p-value. The p-value is computed based on the null distribution, which is the distribution of the test statistic if the null hypothesis is true. Supposing the null hypothesis is true, we can compute the p-value by identifying the chance of observing a test statistic that favors the alternative hypothesis at least as strongly as the observed test statistic.</p>
+<p>The null distribution can be created through simulation (simulation-based methods),
+or can be modeled by a mathematical function (theory-based methods).</p>
+<div id="simulation-based-method-for-calculating-the-p-value" class="section level4" number="5.2.1.1">
+<h4><span class="header-section-number">5.2.1.1</span> Simulation-based method for calculating the p-value</h4>
+</div>
+<div id="theory-based-method-for-calculating-the-p-value" class="section level4" number="5.2.1.2">
+<h4><span class="header-section-number">5.2.1.2</span> Theory-based method for calculating the p-value</h4>
+<p>Here we will use a bootstrap simulation to measure the p-value.</p>
 <div id="variability-of-the-statistic" class="section level5 unnumbered">
 <h5>Variability of the statistic</h5>
 <p>We want to identify the sampling distribution of the test statistic (<span class="math inline">\(\hat{p}\)</span>) if the null hypothesis was true. In other words, we want to see how the sample proportion changes due to chance alone. Then we plan to use this information to decide whether there is enough evidence to reject the null hypothesis.</p>
@@ -554,6 +597,7 @@ Sampling a marble from the bag (with 10% red marbles) is one way of simulating w
 <p>Is this one simulation enough to determine whether or not we should reject the null hypothesis?</p>
 <hr />
 No. To assess the hypotheses, we need to see a distribution of many <span class="math inline">\(\hat{p}_{sim}\)</span>, not just a <em>single</em> draw from this sampling distribution.
+</div>
 </div>
 </div>
 <div id="observed-statistic-vs.-null-statistics" class="section level4 unnumbered">
@@ -573,12 +617,12 @@ Figure 5.3: The null distribution for <span class="math inline">\(\hat{p}\)</spa
 </div>
 
 <div class="guidedpractice">
-Because the estimated p-value is 0.1222, which is larger than the significance level 0.05, we do not reject the null hypothesis. Explain what this means in plain language in the context of the problem.<a href="#fn46" class="footnote-ref" id="fnref46"><sup>46</sup></a>
+Because the estimated p-value is 0.1222, which is larger than the significance level 0.05, we do not reject the null hypothesis. Explain what this means in plain language in the context of the problem.<a href="#fn50" class="footnote-ref" id="fnref50"><sup>50</sup></a>
 </div>
 <p></p>
 
 <div class="guidedpractice">
-Does the conclusion in the previous Guided Practice imply there is no real association between the surgical consultant’s work and the risk of complications? Explain.<a href="#fn47" class="footnote-ref" id="fnref47"><sup>47</sup></a>
+Does the conclusion in the previous Guided Practice imply there is no real association between the surgical consultant’s work and the risk of complications? Explain.<a href="#fn51" class="footnote-ref" id="fnref51"><sup>51</sup></a>
 </div>
 
 <div class="onebox">
@@ -719,7 +763,7 @@ did search and replace for each term above.  for example 826 for 826
 <div class="guidedpractice">
 <p>Consider taking many polls of registered voters (i.e., random samples) of size 300 asking them if they support legalized marijuana.
 It is suspected that about 2/3 of all voters support legalized marijuana.
-To understand how the sample proportion (<span class="math inline">\(\hat{p}\)</span>) would vary across the samples, calculate the standard error of <span class="math inline">\(\hat{p}\)</span>.<a href="#fn48" class="footnote-ref" id="fnref48"><sup>48</sup></a></p>
+To understand how the sample proportion (<span class="math inline">\(\hat{p}\)</span>) would vary across the samples, calculate the standard error of <span class="math inline">\(\hat{p}\)</span>.<a href="#fn52" class="footnote-ref" id="fnref52"><sup>52</sup></a></p>
 </div>
 <div id="variability-of-the-statistic-1" class="section level5 unnumbered">
 <h5>Variability of the statistic</h5>
@@ -816,7 +860,7 @@ see Section <a href="inference-cat.html#ConfidenceIntervals">5.1.3</a>.</p>
 There are three components to this interval: the point estimate, “1.96”, and the standard error. The choice of <span class="math inline">\(1.96\times SE\)</span> was based on capturing 95% of the data since the estimate is within 1.96 standard errors of the true value about 95% of the time. The choice of 1.96 corresponds to a 95% confidence level.</p>
 
 <div class="guidedpractice">
-If <span class="math inline">\(X\)</span> is a normally distributed random variable, how often will <span class="math inline">\(X\)</span> be within 2.58 standard deviations of the mean?<a href="#fn49" class="footnote-ref" id="fnref49"><sup>49</sup></a>
+If <span class="math inline">\(X\)</span> is a normally distributed random variable, how often will <span class="math inline">\(X\)</span> be within 2.58 standard deviations of the mean?<a href="#fn53" class="footnote-ref" id="fnref53"><sup>53</sup></a>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:choosingZForCI"></span>
 <img src="06-inference-cat_files/figure-html/choosingZForCI-1.png" alt="The area between -$z^{\star}$ and $z^{\star}$ increases as $|z^{\star}|$ becomes larger. If the confidence level is 99%, we choose $z^{\star}$ such that 99% of the normal curve is between -$z^{\star}$ and $z^{\star}$, which corresponds to 0.5% in the lower tail and 0.5% in the upper tail: $z^{\star}=2.58$." width="70%" />
@@ -839,7 +883,7 @@ label for previous equation?
 <p>The normal approximation is crucial to the precision of the <span class="math inline">\(z^\star\)</span> confidence intervals (in contrast to the bootstrap confidence intervals). When the normal model is not a good fit, we will use alternative distributions that better characterize the sampling distribution or we will use bootstrapping procedures.</p>
 
 <div class="guidedpractice">
-Create a 99% confidence interval for the impact of the stent on the risk of stroke using the data from Section <a href="intro-to-data.html#basic-stents-strokes">1.1</a>. The point estimate is 0.090, and the standard error is <span class="math inline">\(SE = 0.028\)</span>. It has been verified for you that the point estimate can reasonably be modeled by a normal distribution.<a href="#fn50" class="footnote-ref" id="fnref50"><sup>50</sup></a>
+Create a 99% confidence interval for the impact of the stent on the risk of stroke using the data from Section <a href="intro-to-data.html#basic-stents-strokes">1.1</a>. The point estimate is 0.090, and the standard error is <span class="math inline">\(SE = 0.028\)</span>. It has been verified for you that the point estimate can reasonably be modeled by a normal distribution.<a href="#fn54" class="footnote-ref" id="fnref54"><sup>54</sup></a>
 </div>
 
 <div class="onebox">
@@ -853,7 +897,7 @@ where <span class="math inline">\(z^{\star}\)</span> corresponds to the confiden
 <p>Figure <a href="inference-cat.html#fig:choosingZForCI">5.4</a> provides a picture of how to identify <span class="math inline">\(z^{\star}\)</span> based on a confidence level. We select <span class="math inline">\(z^{\star}\)</span> so that the area between -<span class="math inline">\(z^{\star}\)</span> and <span class="math inline">\(z^{\star}\)</span> in the normal model corresponds to the confidence level.</p>
 
 <div class="guidedpractice">
-Previously, we found that implanting a stent in the brain of a patient at risk for a stroke <em>increased</em> the risk of a stroke. The study estimated a 9% increase in the number of patients who had a stroke, and the standard error of this estimate was about <span class="math inline">\(SE = 2.8%\)</span>. Compute a 90% confidence interval for the effect.<a href="#fn51" class="footnote-ref" id="fnref51"><sup>51</sup></a>
+Previously, we found that implanting a stent in the brain of a patient at risk for a stroke <em>increased</em> the risk of a stroke. The study estimated a 9% increase in the number of patients who had a stroke, and the standard error of this estimate was about <span class="math inline">\(SE = 2.8%\)</span>. Compute a 90% confidence interval for the effect.<a href="#fn55" class="footnote-ref" id="fnref55"><sup>55</sup></a>
 </div>
 </div>
 <div id="hypothesis-test-for-h_0-p-p_0" class="section level4 unnumbered">
@@ -881,7 +925,7 @@ of regulation?</p>
 <div class="guidedpractice">
 Set up hypotheses to evaluate whether borrowers
 have a majority support for this
-type of regulation.<a href="#fn52" class="footnote-ref" id="fnref52"><sup>52</sup></a>
+type of regulation.<a href="#fn56" class="footnote-ref" id="fnref56"><sup>56</sup></a>
 </div>
 <p>To apply the normal distribution framework in the context
 of a hypothesis test for a proportion, the independence
@@ -903,7 +947,7 @@ From a random sample of 826 borrowers,
 51% said they would support such
 a regulation.
 Is it reasonable use a normal distribution to model <span class="math inline">\(\hat{p}\)</span>
-for a hypothesis test here?<a href="#fn53" class="footnote-ref" id="fnref53"><sup>53</sup></a>
+for a hypothesis test here?<a href="#fn57" class="footnote-ref" id="fnref57"><sup>57</sup></a>
 </div>
 
 <div class="example">
@@ -1183,7 +1227,7 @@ we compute the estimate’s standard error, and
 we apply the mathematical framework.</p>
 <div id="two-prop-errors" class="section level3" number="5.3.1">
 <h3><span class="header-section-number">5.3.1</span> Randomization test for <span class="math inline">\(H_0: p_1 - p_2 = 0\)</span></h3>
-<div id="observed-data-1" class="section level4 unnumbered">
+<div id="observed-data" class="section level4 unnumbered">
 <h4>Observed data</h4>
 <p>We consider a study on a new malaria vaccine
 called PfSPZ.
@@ -1309,7 +1353,7 @@ Total
 <div class="guidedpractice">
 Is this an observational study or an experiment?
 What implications does the study type have on what can
-be inferred from the results?<a href="#fn54" class="footnote-ref" id="fnref54"><sup>54</sup></a>
+be inferred from the results?<a href="#fn58" class="footnote-ref" id="fnref58"><sup>58</sup></a>
 </div>
 <p>In this study, a smaller proportion of patients
 who received the vaccine showed signs of an infection
@@ -1536,7 +1580,7 @@ clinical setting.</p></li>
 to reject <span class="math inline">\(H_0\)</span> and assert that the vaccine was useful.
 When we conduct formal studies, usually we reject the
 notion that we just happened to observe a rare
-event.<a href="#fn55" class="footnote-ref" id="fnref55"><sup>55</sup></a>
+event.<a href="#fn59" class="footnote-ref" id="fnref59"><sup>59</sup></a>
 In this case, we reject the independence model in favor
 of the alternative.
 That is, we are concluding the data provide strong evidence
@@ -1634,7 +1678,7 @@ A Type 2 Error means the court failed to reject <span class="math inline">\(H_0\
 </div>
 
 <div class="guidedpractice">
-Consider the opportunity cost study where we concluded students were less likely to make a DVD purchase if they were reminded that money not spent now could be spent later. What would a Type 1 Error represent in this context?<a href="#fn56" class="footnote-ref" id="fnref56"><sup>56</sup></a>
+Consider the opportunity cost study where we concluded students were less likely to make a DVD purchase if they were reminded that money not spent now could be spent later. What would a Type 1 Error represent in this context?<a href="#fn60" class="footnote-ref" id="fnref60"><sup>60</sup></a>
 </div>
 
 <div class="example">
@@ -1646,7 +1690,7 @@ To lower the Type 1 Error rate, we might raise our standard for conviction from 
 
 <div class="guidedpractice">
 How could we reduce the Type 2 Error rate in US courts?
-What influence would this have on the Type 1 Error rate?<a href="#fn57" class="footnote-ref" id="fnref57"><sup>57</sup></a>
+What influence would this have on the Type 1 Error rate?<a href="#fn61" class="footnote-ref" id="fnref61"><sup>61</sup></a>
 </div>
 <p></p>
 <p>The example and guided practice above provide an important lesson: if we reduce how often we make one type of error, we generally make more of the other type.</p>
@@ -1697,7 +1741,7 @@ To do so, let’s learn about <strong>two-sided hypothesis tests</strong> in the
 <p>Cardiopulmonary resuscitation (CPR) is a procedure used on individuals suffering a heart attack when other emergency resources are unavailable.
 This procedure is helpful in providing some blood circulation to keep a person alive, but CPR chest compressions can also cause internal injuries. Internal bleeding and other injuries that can result from CPR complicate additional treatment efforts.
 For instance, blood thinners may be used to help release a clot that is causing the heart attack once a patient arrives in the hospital. However, blood thinners negatively affect internal injuries.</p>
-<p>Here we consider an experiment with patients who underwent CPR for a heart attack and were subsequently admitted to a hospital.<a href="#fn58" class="footnote-ref" id="fnref58"><sup>58</sup></a>
+<p>Here we consider an experiment with patients who underwent CPR for a heart attack and were subsequently admitted to a hospital.<a href="#fn62" class="footnote-ref" id="fnref62"><sup>62</sup></a>
 Each patient was randomly assigned to either receive a blood thinner (treatment group) or not receive a blood thinner (control group).
 The outcome variable of interest was whether the patient survived for at least 24 hours.</p>
 <!--
@@ -1790,7 +1834,7 @@ Total
 <div class="guidedpractice">
 What is the observed survival rate in the control group?
 And in the treatment group?
-Also, provide a point estimate of the difference in survival proportions of the two groups: <span class="math inline">\(\hat{p}_t - \hat{p}_c\)</span>.<a href="#fn59" class="footnote-ref" id="fnref59"><sup>59</sup></a>
+Also, provide a point estimate of the difference in survival proportions of the two groups: <span class="math inline">\(\hat{p}_t - \hat{p}_c\)</span>.<a href="#fn63" class="footnote-ref" id="fnref63"><sup>63</sup></a>
 </div>
 <p>According to the point estimate, for patients who have undergone CPR outside of the hospital, an additional 13% of these patients survive when they are treated with blood thinners.
 However, we wonder if this difference could be easily explainable by chance.</p>
@@ -1900,7 +1944,7 @@ Hypotheses should be set up <em>before</em> observing the data.
 <p>Use the CPR data. After we find the CI (use percentile and SE methods), write the interval values down below in the math section that describes the generic confidence interval method.</p>
 <p>In Section <a href="inference-cat.html#two-prop-errors">5.3.1</a>, we worked with the randomization distribution to understand the distribution of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> when the null hypothesis <span class="math inline">\(H_0: p_1 - p_2 = 0\)</span> is true.
 Now, through bootstrapping, we study the variability of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> without the null assumption.</p>
-<div id="observed-data-2" class="section level4 unnumbered">
+<div id="observed-data-1" class="section level4 unnumbered">
 <h4>Observed data</h4>
 <p>Reconsider the CPR data from Section <a href="inference-cat.html#two-prop-errors">5.3.1</a> which is provided in Table <a href="inference-cat.html#tab:resultsForCPRStudyInSmallSampleSection">5.3</a>. The experiment consisted of two treatments on patients who underwent CPR for a heart attack and were subsequently admitted to a hospital. Each patient was randomly assigned to either receive a blood thinner (treatment group) or not receive a blood thinner (control group).
 The outcome variable of interest was whether the patient survived for at least 24 hours.</p>
@@ -2334,12 +2378,12 @@ Control
 </table>
 
 <div class="guidedpractice">
-Is this study an experiment or an observational study?<a href="#fn60" class="footnote-ref" id="fnref60"><sup>60</sup></a>
+Is this study an experiment or an observational study?<a href="#fn64" class="footnote-ref" id="fnref64"><sup>64</sup></a>
 </div>
 
 <div class="guidedpractice">
 Set up hypotheses to test whether there was a difference
-in breast cancer deaths in the mammogram and control groups.<a href="#fn61" class="footnote-ref" id="fnref61"><sup>61</sup></a>
+in breast cancer deaths in the mammogram and control groups.<a href="#fn65" class="footnote-ref" id="fnref65"><sup>65</sup></a>
 </div>
 <p>Using the previous example,
 we will check the conditions for using a normal distribution to
@@ -2416,7 +2460,7 @@ of successes in sample 2.
 </div>
 <p>In the previous example,
 the pooled proportion was used to check the success-failure
-condition<a href="#fn62" class="footnote-ref" id="fnref62"><sup>62</sup></a>. In the next example, we see an additional place where the pooled
+condition<a href="#fn66" class="footnote-ref" id="fnref66"><sup>66</sup></a>. In the next example, we see an additional place where the pooled
 proportion comes into play: the standard error calculation.</p>
 
 <div class="example">
@@ -2460,7 +2504,7 @@ Z = \frac{\text{point estimate} - \text{null value}}{SE}
 \end{align*}\]</span></p>
 The lower tail area is 0.4325, which we double to get the p-value: 0.8650. Because this p-value is larger than 0.05, we do not reject the null hypothesis. That is, the difference in breast cancer death rates is reasonably explained by chance, and we do not observe benefits or harm from mammograms relative to a regular breast exam.
 </div>
-<p><img src="06-inference-cat_files/figure-html/unnamed-chunk-83-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p><img src="06-inference-cat_files/figure-html/unnamed-chunk-87-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Can we conclude that mammograms have no benefits or harm?
 Here are a few considerations to keep in mind when reviewing
 the mammogram study as well as any other medical study:</p>
@@ -2686,7 +2730,7 @@ will be forthright about any underlying problems with
 what they’re selling.
 This is not something we should take for granted.
 Researchers recruited 219 participants in a study where they
-would sell a used iPod<a href="#fn63" class="footnote-ref" id="fnref63"><sup>63</sup></a>
+would sell a used iPod<a href="#fn67" class="footnote-ref" id="fnref67"><sup>67</sup></a>
 that was known to have frozen twice in the past.
 The participants were incentivized to get as much money
 as they could for the iPod since they would receive a 5%
@@ -2847,7 +2891,7 @@ meaning about 27.85% of respondents would disclose the
 freezing issue regardless of what question they were asked,
 about how many sellers would we expect to  the
 freezing problem from the Positive Assumption
-group?<a href="#fn64" class="footnote-ref" id="fnref64"><sup>64</sup></a>
+group?<a href="#fn68" class="footnote-ref" id="fnref68"><sup>68</sup></a>
 </div>
 <p>We can compute the expected number of sellers who we would
 expect to disclose or hide the freezing issue for all groups,
@@ -3024,7 +3068,7 @@ and <span class="math inline">\(j^{th}\)</span> column, compute
 </div>
 <div id="the-chi-square-statistic" class="section level4 unnumbered">
 <h4>The chi-square statistic</h4>
-<div id="observed-data-3" class="section level5 unnumbered">
+<div id="observed-data-2" class="section level5 unnumbered">
 <h5>Observed data</h5>
 <p>The chi-square test statistic for a two-way table is found
 by comparing the observed and expected counts for each cell in the table.
@@ -3332,7 +3376,7 @@ Total
 <p>A chi-square test for a two-way table may be used to test
 the hypotheses in the diabetes Example above.</p>
 As a first step, compute the expected values for each of the
-six table cells.<a href="#fn65" class="footnote-ref" id="fnref65"><sup>65</sup></a>
+six table cells.<a href="#fn69" class="footnote-ref" id="fnref69"><sup>69</sup></a>
 </div>
 <!--
 \begin{exercisewrap}
@@ -3482,41 +3526,42 @@ success-failure condition
 </div>
 <div class="footnotes">
 <hr />
-<ol start="36">
-<li id="fn36"><p>We would be assuming that these two variables are <strong>independent</strong>.<a href="inference-cat.html#fnref36" class="footnote-back">↩︎</a></p></li>
-<li id="fn37"><p>If you are a STAT 216 student, you will recognize this from our first week’s in-class activity.<a href="inference-cat.html#fnref37" class="footnote-back">↩︎</a></p></li>
-<li id="fn38"><p>Bumba is the Martian on the left!<a href="inference-cat.html#fnref38" class="footnote-back">↩︎</a></p></li>
-<li id="fn39"><p>A fair coin has a 50% chance of landing on heads, which is the chance a student would guess Bumba correctly if they were just guessing. Thus, toss a coin 38 times with heads representing “guess correctly”; then calculate the proportion of tosses that landed on heads. Another option would be to 10 black cards and 10 red cards, letting red represent “guess correctly”. Shuffle the cards and draw one card, record if it is red or black, then replace the card and shuffle again. Do this 38 times and calculate the proportion of red cards observed.<a href="inference-cat.html#fnref39" class="footnote-back">↩︎</a></p></li>
-<li id="fn40"><p>To explore this further, watch this <a href="https://www.ted.com/talks/vs_ramachandran_3_clues_to_understanding_your_brain">TED Talk</a> by neurologist Vilayanur Ramachandran (The synesthesia part begins at roughly 17:40 minutes).<a href="inference-cat.html#fnref40" class="footnote-back">↩︎</a></p></li>
-<li id="fn41"><p>If you carry out the calculations, you’ll note that the upper bound is actually <span class="math inline">\(0.89 + 0.16 = 1.05\)</span>, but since a sample proportion cannot be greater than 1, we truncated the interval to 1.<a href="inference-cat.html#fnref41" class="footnote-back">↩︎</a></p></li>
-<li id="fn42"><p>The first possibility (<em>We can’t read Martian, and these results just occurred by chance.</em>) was the null hypothesis; the second possibility (<em>We can read Martian, and these results reflect this ability.</em>) was the alternative hypothesis.<a href="inference-cat.html#fnref42" class="footnote-back">↩︎</a></p></li>
-<li id="fn43"><p>Technically, the observed sample statistic or one more extreme in the direction of our alternative. But it is helpful to just remember this as “the data”.<a href="inference-cat.html#fnref43" class="footnote-back">↩︎</a></p></li>
-<li id="fn44"><p>If we want to be more certain we will capture the fish, we might use a wider net. Likewise, we use a wider confidence interval if we want to be more certain that we capture the parameter.<a href="inference-cat.html#fnref44" class="footnote-back">↩︎</a></p></li>
-<li id="fn45"><p><span class="math inline">\(H_0\)</span>: There is no association between the consultant’s contributions and the clients’ complication rate. In statistical language, <span class="math inline">\(p=0.10\)</span>.
-<span class="math inline">\(H_A\)</span>: Patients who work with the consultant tend to have a complication rate lower than 10%, i.e., <span class="math inline">\(p&lt;0.10\)</span>.<a href="inference-cat.html#fnref45" class="footnote-back">↩︎</a></p></li>
-<li id="fn46"><p>There isn’t sufficiently strong evidence to support an association between the consultant’s work and fewer surgery complications.<a href="inference-cat.html#fnref46" class="footnote-back">↩︎</a></p></li>
-<li id="fn47"><p>No. It might be that the consultant’s work is associated with a reduction but that there isn’t enough data to convincingly show this connection.<a href="inference-cat.html#fnref47" class="footnote-back">↩︎</a></p></li>
-<li id="fn48"><p>Because the <span class="math inline">\(p\)</span> is unknown but expected to be around 2/3, we will use 2/3 in place of <span class="math inline">\(p\)</span> in the formula for the standard error.<br />
-<span class="math inline">\(SE = \sqrt{\frac{p(1-p)}{n}} \approx  \sqrt{\frac{2/3 (1 - 2/3)}  {300}} = 0.027\)</span>.<a href="inference-cat.html#fnref48" class="footnote-back">↩︎</a></p></li>
-<li id="fn49"><p>This is equivalent to asking how often the <span class="math inline">\(Z\)</span> score will be larger than -2.58 but less than 2.58. (For a picture, see Figure <a href="inference-cat.html#fig:choosingZForCI">5.4</a>.) To determine this probability, look up -2.58 and 2.58 in the normal probability table (0.0049 and 0.9951). Thus, there is a <span class="math inline">\(0.9951-0.0049 \approx 0.99\)</span> probability that the unobserved random variable <span class="math inline">\(X\)</span> will be within 2.58 standard deviations of the mean.<a href="inference-cat.html#fnref49" class="footnote-back">↩︎</a></p></li>
-<li id="fn50"><p>Since the necessary conditions for applying the normal model have already been checked for us, we can go straight to the construction of the confidence interval: <span class="math inline">\(\text{point estimate}\ \pm\ 2.58 \times SE \rightarrow (0.018, 0.162)\)</span>. We are 99% confident that implanting a stent in the brain of a patient who is at risk of stroke increases the risk of stroke within 30 days by a rate of 0.018 to 0.162 (assuming the patients are representative of the population).<a href="inference-cat.html#fnref50" class="footnote-back">↩︎</a></p></li>
-<li id="fn51"><p>We must find <span class="math inline">\(z^{\star}\)</span> such that 90% of the distribution falls between -<span class="math inline">\(z^{\star}\)</span> and <span class="math inline">\(z^{\star}\)</span> in the standard normal model, <span class="math inline">\(N(\mu=0, \sigma=1)\)</span>. We can look up -<span class="math inline">\(z^{\star}\)</span> in the normal probability table by looking for a lower tail of 5% (the other 5% is in the upper tail), thus <span class="math inline">\(z^{\star}=1.65\)</span>. The 90% confidence interval can then be computed as <span class="math inline">\(\text{point estimate}\ \pm\ 1.65\times SE \to (4.4\%, 13.6\%)\)</span>. (Note: the conditions for normality had earlier been confirmed for us.) That is, we are 90% confident that implanting a stent in a stroke patient’s brain increased the risk of stroke within 30 days by 4.4% to 13.6%.<a href="inference-cat.html#fnref51" class="footnote-back">↩︎</a></p></li>
-<li id="fn52"><p><span class="math inline">\(H_0\)</span>: there is not support for the regulation; <span class="math inline">\(H_0\)</span>: <span class="math inline">\(p \leq 0.50\)</span>. <span class="math inline">\(H_A\)</span>: the majority of borrowers support the regulation; <span class="math inline">\(H_A\)</span>: <span class="math inline">\(p &gt; 0.50\)</span>.<a href="inference-cat.html#fnref52" class="footnote-back">↩︎</a></p></li>
-<li id="fn53"><p>Independence holds since the poll
+<ol start="38">
+<li id="fn38"><p>We would be assuming that these two variables are <strong>independent</strong>.<a href="inference-cat.html#fnref38" class="footnote-back">↩︎</a></p></li>
+<li id="fn39"><p>If you are a STAT 216 student, you will recognize this from our first week’s in-class activity.<a href="inference-cat.html#fnref39" class="footnote-back">↩︎</a></p></li>
+<li id="fn40"><p>Bumba is the Martian on the left!<a href="inference-cat.html#fnref40" class="footnote-back">↩︎</a></p></li>
+<li id="fn41"><p>A fair coin has a 50% chance of landing on heads, which is the chance a student would guess Bumba correctly if they were just guessing. Thus, toss a coin 38 times with heads representing “guess correctly”; then calculate the proportion of tosses that landed on heads. Another option would be to 10 black cards and 10 red cards, letting red represent “guess correctly”. Shuffle the cards and draw one card, record if it is red or black, then replace the card and shuffle again. Do this 38 times and calculate the proportion of red cards observed.<a href="inference-cat.html#fnref41" class="footnote-back">↩︎</a></p></li>
+<li id="fn42"><p>To explore this further, watch this <a href="https://www.ted.com/talks/vs_ramachandran_3_clues_to_understanding_your_brain">TED Talk</a> by neurologist Vilayanur Ramachandran (The synesthesia part begins at roughly 17:40 minutes).<a href="inference-cat.html#fnref42" class="footnote-back">↩︎</a></p></li>
+<li id="fn43"><p>If you carry out the calculations, you’ll note that the upper bound is actually <span class="math inline">\(0.89 + 0.16 = 1.05\)</span>, but since a sample proportion cannot be greater than 1, we truncated the interval to 1.<a href="inference-cat.html#fnref43" class="footnote-back">↩︎</a></p></li>
+<li id="fn44"><p>The first possibility (<em>We can’t read Martian, and these results just occurred by chance.</em>) was the null hypothesis; the second possibility (<em>We can read Martian, and these results reflect this ability.</em>) was the alternative hypothesis.<a href="inference-cat.html#fnref44" class="footnote-back">↩︎</a></p></li>
+<li id="fn45"><p>Technically, the observed sample statistic or one more extreme in the direction of our alternative. But it is helpful to just remember this as “the data”.<a href="inference-cat.html#fnref45" class="footnote-back">↩︎</a></p></li>
+<li id="fn46"><p>If we want to be more certain we will capture the fish, we might use a wider net. Likewise, we use a wider confidence interval if we want to be more certain that we capture the parameter.<a href="inference-cat.html#fnref46" class="footnote-back">↩︎</a></p></li>
+<li id="fn47"><p>The terms “success” and “failure” may not actually represent outcomes we view as successful or not, but it is the typical generic way to referring to the possible outcomes of a binary variable. The “success” is whatever we count when calculating our sample proportion.<a href="inference-cat.html#fnref47" class="footnote-back">↩︎</a></p></li>
+<li id="fn48"><p>When you see <span class="math inline">\(\pi\)</span> in this textbook, it will always symbolize a (typically unknown) population proportion, not the value 3.14….<a href="inference-cat.html#fnref48" class="footnote-back">↩︎</a></p></li>
+<li id="fn49"><p>Parameters were first introduced in Section <a href="eda.html#dotplots">2.2.2</a><a href="inference-cat.html#fnref49" class="footnote-back">↩︎</a></p></li>
+<li id="fn50"><p>There isn’t sufficiently strong evidence to support an association between the consultant’s work and fewer surgery complications.<a href="inference-cat.html#fnref50" class="footnote-back">↩︎</a></p></li>
+<li id="fn51"><p>No. It might be that the consultant’s work is associated with a reduction but that there isn’t enough data to convincingly show this connection.<a href="inference-cat.html#fnref51" class="footnote-back">↩︎</a></p></li>
+<li id="fn52"><p>Because the <span class="math inline">\(p\)</span> is unknown but expected to be around 2/3, we will use 2/3 in place of <span class="math inline">\(p\)</span> in the formula for the standard error.<br />
+<span class="math inline">\(SE = \sqrt{\frac{p(1-p)}{n}} \approx  \sqrt{\frac{2/3 (1 - 2/3)}  {300}} = 0.027\)</span>.<a href="inference-cat.html#fnref52" class="footnote-back">↩︎</a></p></li>
+<li id="fn53"><p>This is equivalent to asking how often the <span class="math inline">\(Z\)</span> score will be larger than -2.58 but less than 2.58. (For a picture, see Figure <a href="inference-cat.html#fig:choosingZForCI">5.4</a>.) To determine this probability, look up -2.58 and 2.58 in the normal probability table (0.0049 and 0.9951). Thus, there is a <span class="math inline">\(0.9951-0.0049 \approx 0.99\)</span> probability that the unobserved random variable <span class="math inline">\(X\)</span> will be within 2.58 standard deviations of the mean.<a href="inference-cat.html#fnref53" class="footnote-back">↩︎</a></p></li>
+<li id="fn54"><p>Since the necessary conditions for applying the normal model have already been checked for us, we can go straight to the construction of the confidence interval: <span class="math inline">\(\text{point estimate}\ \pm\ 2.58 \times SE \rightarrow (0.018, 0.162)\)</span>. We are 99% confident that implanting a stent in the brain of a patient who is at risk of stroke increases the risk of stroke within 30 days by a rate of 0.018 to 0.162 (assuming the patients are representative of the population).<a href="inference-cat.html#fnref54" class="footnote-back">↩︎</a></p></li>
+<li id="fn55"><p>We must find <span class="math inline">\(z^{\star}\)</span> such that 90% of the distribution falls between -<span class="math inline">\(z^{\star}\)</span> and <span class="math inline">\(z^{\star}\)</span> in the standard normal model, <span class="math inline">\(N(\mu=0, \sigma=1)\)</span>. We can look up -<span class="math inline">\(z^{\star}\)</span> in the normal probability table by looking for a lower tail of 5% (the other 5% is in the upper tail), thus <span class="math inline">\(z^{\star}=1.65\)</span>. The 90% confidence interval can then be computed as <span class="math inline">\(\text{point estimate}\ \pm\ 1.65\times SE \to (4.4\%, 13.6\%)\)</span>. (Note: the conditions for normality had earlier been confirmed for us.) That is, we are 90% confident that implanting a stent in a stroke patient’s brain increased the risk of stroke within 30 days by 4.4% to 13.6%.<a href="inference-cat.html#fnref55" class="footnote-back">↩︎</a></p></li>
+<li id="fn56"><p><span class="math inline">\(H_0\)</span>: there is not support for the regulation; <span class="math inline">\(H_0\)</span>: <span class="math inline">\(p \leq 0.50\)</span>. <span class="math inline">\(H_A\)</span>: the majority of borrowers support the regulation; <span class="math inline">\(H_A\)</span>: <span class="math inline">\(p &gt; 0.50\)</span>.<a href="inference-cat.html#fnref56" class="footnote-back">↩︎</a></p></li>
+<li id="fn57"><p>Independence holds since the poll
 is based on a random sample.
 The success-failure condition also holds,
 which is checked
 using the null value (<span class="math inline">\(p_0 = 0.5\)</span>) from <span class="math inline">\(H_0\)</span>:
 <span class="math inline">\(np_0 = 826 \times 0.5 = 413\)</span>,
-<span class="math inline">\(n(1 - p_0) = 826 \times 0.5 = 413\)</span>. Recall that here, the best guess for <span class="math inline">\(p\)</span> is <span class="math inline">\(p_0\)</span> which comes from the null hypothesis (because we assume the null hypothesis is true when performing the testing procedure steps). <span class="math inline">\(H_0\)</span>: there is not support for the regulation; <span class="math inline">\(H_0\)</span>: <span class="math inline">\(p \leq 0.50\)</span>. <span class="math inline">\(H_A\)</span>: the majority of borrowers support the regulation; <span class="math inline">\(H_A\)</span>: <span class="math inline">\(p &gt; 0.50\)</span>.<a href="inference-cat.html#fnref53" class="footnote-back">↩︎</a></p></li>
-<li id="fn54"><p>The
+<span class="math inline">\(n(1 - p_0) = 826 \times 0.5 = 413\)</span>. Recall that here, the best guess for <span class="math inline">\(p\)</span> is <span class="math inline">\(p_0\)</span> which comes from the null hypothesis (because we assume the null hypothesis is true when performing the testing procedure steps). <span class="math inline">\(H_0\)</span>: there is not support for the regulation; <span class="math inline">\(H_0\)</span>: <span class="math inline">\(p \leq 0.50\)</span>. <span class="math inline">\(H_A\)</span>: the majority of borrowers support the regulation; <span class="math inline">\(H_A\)</span>: <span class="math inline">\(p &gt; 0.50\)</span>.<a href="inference-cat.html#fnref57" class="footnote-back">↩︎</a></p></li>
+<li id="fn58"><p>The
 study is an experiment, as patients were randomly
 assigned an experiment group.
 Since this is an experiment, the results can be used
 to evaluate a causal relationship between the malaria
 vaccine and whether patients showed signs
-of an infection.<a href="inference-cat.html#fnref54" class="footnote-back">↩︎</a></p></li>
-<li id="fn55"><p>This reasoning does not generally extend
+of an infection.<a href="inference-cat.html#fnref58" class="footnote-back">↩︎</a></p></li>
+<li id="fn59"><p>This reasoning does not generally extend
 to anecdotal observations.
 Each of us observes incredibly rare events every day,
 events we could not possibly hope to predict.
@@ -3539,38 +3584,38 @@ each possible event in itself seems incredibly rare,
 but if we consider every alternative, those outcomes
 are also incredibly rare.
 We should be cautious not to misinterpret such
-anecdotal evidence.<a href="inference-cat.html#fnref55" class="footnote-back">↩︎</a></p></li>
-<li id="fn56"><p>Making a Type 1 Error in this context would mean that reminding students that money not spent now can be spent later does not affect their buying habits, despite the strong evidence (the data suggesting otherwise) found in the experiment. Notice that this does <em>not</em> necessarily mean something was wrong with the data or that we made a computational mistake. Sometimes data simply point us to the wrong conclusion, which is why scientific studies are often repeated to check initial findings.<a href="inference-cat.html#fnref56" class="footnote-back">↩︎</a></p></li>
-<li id="fn57"><p>To lower the Type 2 Error rate, we want to convict more guilty people. We could lower the standards for conviction from “beyond a reasonable doubt” to “beyond a little doubt”. Lowering the bar for guilt will also result in more wrongful convictions, raising the Type 1 Error rate.<a href="inference-cat.html#fnref57" class="footnote-back">↩︎</a></p></li>
-<li id="fn58"><p>B<span class="math inline">\(\ddot{\text{o}}\)</span>ttiger et al. “Efficacy and safety of thrombolytic therapy after initially unsuccessful cardiopulmonary resuscitation: a prospective clinical trial.” The Lancet, 2001.<a href="inference-cat.html#fnref58" class="footnote-back">↩︎</a></p></li>
-<li id="fn59"><p>Observed control survival rate: <span class="math inline">\(p_c = \frac{11}{50} = 0.22\)</span>.
+anecdotal evidence.<a href="inference-cat.html#fnref59" class="footnote-back">↩︎</a></p></li>
+<li id="fn60"><p>Making a Type 1 Error in this context would mean that reminding students that money not spent now can be spent later does not affect their buying habits, despite the strong evidence (the data suggesting otherwise) found in the experiment. Notice that this does <em>not</em> necessarily mean something was wrong with the data or that we made a computational mistake. Sometimes data simply point us to the wrong conclusion, which is why scientific studies are often repeated to check initial findings.<a href="inference-cat.html#fnref60" class="footnote-back">↩︎</a></p></li>
+<li id="fn61"><p>To lower the Type 2 Error rate, we want to convict more guilty people. We could lower the standards for conviction from “beyond a reasonable doubt” to “beyond a little doubt”. Lowering the bar for guilt will also result in more wrongful convictions, raising the Type 1 Error rate.<a href="inference-cat.html#fnref61" class="footnote-back">↩︎</a></p></li>
+<li id="fn62"><p>B<span class="math inline">\(\ddot{\text{o}}\)</span>ttiger et al. “Efficacy and safety of thrombolytic therapy after initially unsuccessful cardiopulmonary resuscitation: a prospective clinical trial.” The Lancet, 2001.<a href="inference-cat.html#fnref62" class="footnote-back">↩︎</a></p></li>
+<li id="fn63"><p>Observed control survival rate: <span class="math inline">\(p_c = \frac{11}{50} = 0.22\)</span>.
 Treatment survival rate: <span class="math inline">\(p_t = \frac{14}{40} = 0.35\)</span>.
-Observed difference: <span class="math inline">\(\hat{p}_t - \hat{p}_c = 0.35 - 0.22 = 0.13\)</span>.<a href="inference-cat.html#fnref59" class="footnote-back">↩︎</a></p></li>
-<li id="fn60"><p>This is an experiment. Patients were randomized
+Observed difference: <span class="math inline">\(\hat{p}_t - \hat{p}_c = 0.35 - 0.22 = 0.13\)</span>.<a href="inference-cat.html#fnref63" class="footnote-back">↩︎</a></p></li>
+<li id="fn64"><p>This is an experiment. Patients were randomized
 to receive mammograms or a standard breast cancer exam.
-We will be able to make causal conclusions based on this study.<a href="inference-cat.html#fnref60" class="footnote-back">↩︎</a></p></li>
-<li id="fn61"><p><span class="math inline">\(H_0\)</span>: the breast cancer death rate for patients
+We will be able to make causal conclusions based on this study.<a href="inference-cat.html#fnref64" class="footnote-back">↩︎</a></p></li>
+<li id="fn65"><p><span class="math inline">\(H_0\)</span>: the breast cancer death rate for patients
 screened using mammograms is the same as the breast cancer
 death rate for patients in the control,
 <span class="math inline">\(p_{mgm} - p_{ctrl} = 0\)</span>.<br />
 <span class="math inline">\(H_A\)</span>: the breast cancer death rate for patients screened
 using mammograms is different than the breast cancer death
 rate for patients in the control,
-<span class="math inline">\(p_{mgm} - p_{ctrl} \neq 0\)</span>.<a href="inference-cat.html#fnref61" class="footnote-back">↩︎</a></p></li>
-<li id="fn62"><p>For an example of a two-proportion
+<span class="math inline">\(p_{mgm} - p_{ctrl} \neq 0\)</span>.<a href="inference-cat.html#fnref65" class="footnote-back">↩︎</a></p></li>
+<li id="fn66"><p>For an example of a two-proportion
 hypothesis test that does not require the
 success-failure condition to be met, see
-Section <a href="inference-cat.html#two-prop-errors">5.3.1</a>.<a href="inference-cat.html#fnref62" class="footnote-back">↩︎</a></p></li>
-<li id="fn63"><p>For readers not as old as
+Section <a href="inference-cat.html#two-prop-errors">5.3.1</a>.<a href="inference-cat.html#fnref66" class="footnote-back">↩︎</a></p></li>
+<li id="fn67"><p>For readers not as old as
 the authors, an iPod is basically an iPhone without
 any cellular service, assuming it was one of the later
-generations. Earlier generations were more basic.<a href="inference-cat.html#fnref63" class="footnote-back">↩︎</a></p></li>
-<li id="fn64"><p>We would expect
+generations. Earlier generations were more basic.<a href="inference-cat.html#fnref67" class="footnote-back">↩︎</a></p></li>
+<li id="fn68"><p>We would expect
 <span class="math inline">\((1 - 0.2785) \times 73 = 52.67\)</span>.
 It is okay that this result,
 like the result from Example ,
-is a fraction.<a href="inference-cat.html#fnref64" class="footnote-back">↩︎</a></p></li>
-<li id="fn65"><p>The expected count for
+is a fraction.<a href="inference-cat.html#fnref68" class="footnote-back">↩︎</a></p></li>
+<li id="fn69"><p>The expected count for
 row one / column one is found by multiplying the
 row one total (234) and column one total (319),
 then dividing by the table total (699):
@@ -3578,7 +3623,7 @@ then dividing by the table total (699):
 Similarly for the second column and the first row:
 <span class="math inline">\(\frac{234\times 380}{699} = 127.2\)</span>.
 Row 2: 105.9 and 126.1.
-Row 3: 106.3 and 126.7.<a href="inference-cat.html#fnref65" class="footnote-back">↩︎</a></p></li>
+Row 3: 106.3 and 126.7.<a href="inference-cat.html#fnref69" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

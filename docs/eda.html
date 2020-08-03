@@ -235,7 +235,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="inference-cat.html"><a href="inference-cat.html#single-prop"><i class="fa fa-check"></i><b>5.2</b> One proportion</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="inference-cat.html"><a href="inference-cat.html#one-prop-null-boot"><i class="fa fa-check"></i><b>5.2.1</b> Bootstrap test for <span class="math inline">\(H_0: p = p_0\)</span></a></li>
+<li class="chapter" data-level="5.2.1" data-path="inference-cat.html"><a href="inference-cat.html#one-prop-null-boot"><i class="fa fa-check"></i><b>5.2.1</b> Hypothesis test for <span class="math inline">\(H_0: \pi = \pi_0\)</span></a></li>
 <li class="chapter" data-level="5.2.2" data-path="inference-cat.html"><a href="inference-cat.html#one-prop-norm"><i class="fa fa-check"></i><b>5.2.2</b> Mathematical model</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="inference-cat.html"><a href="inference-cat.html#diff-two-prop"><i class="fa fa-check"></i><b>5.3</b> Difference of two proportions</a>
@@ -538,7 +538,7 @@ The <code>county</code> data can be found in the <a href="https://openintrostat.
 <h3><span class="header-section-number">2.2.1</span> Scatterplots for paired data</h3>
 <p></p>
 <p>A <strong>scatterplot</strong> provides a case-by-case view of data for two quantitative variables.
-In Figure <a href="intro-to-data.html#fig:county-multi-unit-homeownership">1.3</a>, a scatterplot was used to examine the homeownership rate against the fraction of housing units that were part of multi-unit properties (e.g. apartments) in the <code>county</code> data set.
+In Figure <a href="intro-to-data.html#fig:county-multi-unit-homeownership">1.4</a>, a scatterplot was used to examine the homeownership rate against the fraction of housing units that were part of multi-unit properties (e.g. apartments) in the <code>county</code> data set.
 Another scatterplot is shown in Figure <a href="eda.html#fig:loan50-amount-income">2.1</a>, comparing the total income of a borrower <code>total_income</code> and the amount they borrowed <code>loan_amount</code> for the <code>loan50</code> data set.
 In any scatterplot, each point represents a single case.
 Since there are 50 cases in <code>loan50</code>, there are 50 points in Figure <a href="eda.html#fig:loan50-amount-income">2.1</a>.</p>
@@ -582,11 +582,11 @@ and there does not appear to be any unusual observations.
 </div>
 
 <div class="guidedpractice">
-What do scatterplots reveal about the data, and how are they useful?<a href="#fn20" class="footnote-ref" id="fnref20"><sup>20</sup></a>
+What do scatterplots reveal about the data, and how are they useful?<a href="#fn22" class="footnote-ref" id="fnref22"><sup>22</sup></a>
 </div>
 
 <div class="guidedpractice">
-Describe two variables that would have a horseshoe-shaped association in a scatterplot (<span class="math inline">\(\cap\)</span> or <span class="math inline">\(\frown\)</span>)<a href="#fn21" class="footnote-ref" id="fnref21"><sup>21</sup></a>
+Describe two variables that would have a horseshoe-shaped association in a scatterplot (<span class="math inline">\(\cap\)</span> or <span class="math inline">\(\frown\)</span>)<a href="#fn23" class="footnote-ref" id="fnref23"><sup>23</sup></a>
 </div>
 </div>
 <div id="dotplots" class="section level3" number="2.2.2">
@@ -605,7 +605,7 @@ it takes and how frequently each value occurs. The <strong>mean</strong>, often 
 To compute the mean interest rate of the 50 loans above, we add up all the interest rates and divide by the number of observations.</p>
 <p>The sample mean is often labeled <span class="math inline">\(\bar{x}\)</span>.
 The letter <span class="math inline">\(x\)</span> is being used as a generic placeholder for the variable and the bar over the <span class="math inline">\(x\)</span> communicates we’re looking at the average of that variable. In our example <span class="math inline">\(x\)</span> would represent interest rate, and <span class="math inline">\(\bar{x}\)</span> = 11.57%.
-It is useful to think of the mean as the balancing point of the distribution<a href="#fn22" class="footnote-ref" id="fnref22"><sup>22</sup></a>, and it’s shown as a triangle in Figure <a href="eda.html#fig:loan-int-rate-dotplot">2.3</a>.</p>
+It is useful to think of the mean as the balancing point of the distribution<a href="#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a>, and it’s shown as a triangle in Figure <a href="eda.html#fig:loan-int-rate-dotplot">2.3</a>.</p>
 
 <div class="onebox">
 <p><strong>Mean.</strong>
@@ -614,11 +614,11 @@ The sample mean can be calculated as the sum of the observed values divided by t
 </div>
 
 <div class="guidedpractice">
-Examine the equation for the mean. What does <span class="math inline">\(x_1\)</span> correspond to? And <span class="math inline">\(x_2\)</span> Can you infer a general meaning to what <span class="math inline">\(x_i\)</span> might represent?<a href="#fn23" class="footnote-ref" id="fnref23"><sup>23</sup></a>
+Examine the equation for the mean. What does <span class="math inline">\(x_1\)</span> correspond to? And <span class="math inline">\(x_2\)</span> Can you infer a general meaning to what <span class="math inline">\(x_i\)</span> might represent?<a href="#fn25" class="footnote-ref" id="fnref25"><sup>25</sup></a>
 </div>
 
 <div class="guidedpractice">
-What was <span class="math inline">\(n\)</span> in this sample of loans?<a href="#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a>
+What was <span class="math inline">\(n\)</span> in this sample of loans?<a href="#fn26" class="footnote-ref" id="fnref26"><sup>26</sup></a>
 </div>
 <p>The <code>loan50</code> data set represents a sample from a larger population of loans made through Lending Club.
 We could compute a mean for this population in the same way as the sample mean.
@@ -631,8 +631,11 @@ Often times it is too expensive or time consuming to measure the population mean
 The Greek letter <span class="math inline">\(\mu\)</span> is pronounced <em>mu</em>, listen to the pronunciation <a href="https://youtu.be/PStgY5AcEIw?t=47">here</a>.
 </div>
 <p>In the field of statistics, summary measures that summarize a sample of data, such as <span class="math inline">\(\bar{x}\)</span>, are called <strong>statistics</strong>. Numbers that summarize an entire population, such as <span class="math inline">\(\mu\)</span>, are called <strong>parameters</strong>. You can remember
-this distinction by looking at the first letter of each term: _S_tatistics summarize _S_amples; _P_arameters summarize _P_opulations.
-We typically use Roman letters to symbolize statistics (e.g., <span class="math inline">\(\bar{x}\)</span>, <span class="math inline">\(\hat{p}\)</span>), and Greek letters to symbolize parameters (e.g., <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\pi\)</span>).
+this distinction by looking at the first letter of each term:</p>
+<blockquote>
+<p><em>S</em>tatistics summarize <em>S</em>amples; <em>P</em>arameters summarize <em>P</em>opulations.</p>
+</blockquote>
+<p>We typically use Roman letters to symbolize statistics (e.g., <span class="math inline">\(\bar{x}\)</span>, <span class="math inline">\(\hat{p}\)</span>), and Greek letters to symbolize parameters (e.g., <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\pi\)</span>).
 Since we rarely can measure the entire population, and thus rarely know
 the actual parameter values, we like to say, “We don’t know Greek,
 and we don’t know parameters!”</p>
@@ -754,7 +757,7 @@ Figure 2.4: A histogram of <code>interest_rate</code>. This distribution is stro
 </div>
 <p>Histograms provide a view of the <strong>data density</strong>. Higher bars represent where the data are relatively more common, or
 “dense.” For instance, there are many more loans with rates between 5% and 10% than loans with rates between 20% and 25% in the data set. The bars make it easy to see how the density of the data changes relative to the interest rate.</p>
-<p>Histograms are especially convenient for understanding the shape of the data distribution. Figure <a href="eda.html#fig:loan50IntRateHist">2.4</a> suggests that most loans have rates under 15%, while only a handful of loans have rates above 20%. When data trail off to the right in this way and has a longer right <strong>tail</strong>, the shape is said to be <strong>right skewed</strong><a href="#fn25" class="footnote-ref" id="fnref25"><sup>25</sup></a></p>
+<p>Histograms are especially convenient for understanding the shape of the data distribution. Figure <a href="eda.html#fig:loan50IntRateHist">2.4</a> suggests that most loans have rates under 15%, while only a handful of loans have rates above 20%. When data trail off to the right in this way and has a longer right <strong>tail</strong>, the shape is said to be <strong>right skewed</strong><a href="#fn27" class="footnote-ref" id="fnref27"><sup>27</sup></a></p>
 <p>Data sets with the reverse characteristic—a long, thinner tail to the left—are said to be <strong>left skewed</strong>. We also say that such a distribution has a long left tail. Data sets that show roughly equal trailing off in both directions are called <strong>symmetric</strong>.</p>
 
 <div class="onebox">
@@ -764,7 +767,7 @@ If a distribution has a long right tail, it is <strong>right skewed</strong> or 
 </div>
 
 <div class="guidedpractice">
-Besides the mean (since it was labeled), what can you see in the dot plot in Figure <a href="eda.html#fig:loan-int-rate-dotplot">2.3</a> that you cannot see in the histogram in Figure <a href="eda.html#fig:loan50IntRateHist">2.4</a>?<a href="#fn26" class="footnote-ref" id="fnref26"><sup>26</sup></a>
+Besides the mean (since it was labeled), what can you see in the dot plot in Figure <a href="eda.html#fig:loan-int-rate-dotplot">2.3</a> that you cannot see in the histogram in Figure <a href="eda.html#fig:loan50IntRateHist">2.4</a>?<a href="#fn28" class="footnote-ref" id="fnref28"><sup>28</sup></a>
 </div>
 <p>In addition to looking at whether a distribution is skewed or symmetric, histograms can be used to identify modes. A <strong>mode</strong> is represented by a prominent peak in the distribution. There is only one prominent peak in the histogram of <code>interest_rate</code>.</p>
 <p>A definition of <em>mode</em> sometimes taught in math classes is the value with the most occurrences in the data set. However, for many real-world data sets, it is common to have <em>no</em> observations with the same value in a data set, making this definition impractical in data analysis.</p>
@@ -777,12 +780,12 @@ Figure 2.5: Counting only prominent peaks, the distributions are (left to right)
 </div>
 
 <div class="example">
-Figure <a href="eda.html#fig:loan50IntRateHist">2.4</a> reveals only one prominent mode in the interest rate. Is the distribution unimodal, bimodal, or multimodal?<a href="#fn27" class="footnote-ref" id="fnref27"><sup>27</sup></a>
+Figure <a href="eda.html#fig:loan50IntRateHist">2.4</a> reveals only one prominent mode in the interest rate. Is the distribution unimodal, bimodal, or multimodal?<a href="#fn29" class="footnote-ref" id="fnref29"><sup>29</sup></a>
 </div>
 
 <div class="guidedpractice">
 Height measurements of young students and adult teachers at a K-3 elementary school were taken.
-How many modes would you expect in this height data set?<a href="#fn28" class="footnote-ref" id="fnref28"><sup>28</sup></a>.
+How many modes would you expect in this height data set?<a href="#fn30" class="footnote-ref" id="fnref30"><sup>30</sup></a>.
 </div>
 <p>Looking for modes isn’t about finding a clear and correct answer about the number of modes in a distribution, which is why <em>prominent</em> is not rigorously defined in this book. The most important part of this examination is to better understand your data.</p>
 <p>Another type of plot that is helpful for exploring the shape of a distribution is a smoothed histogram, called a <strong>density plot</strong>. A density plot will scale the <span class="math inline">\(y\)</span>-axis so that the total area under the density curve is equal to one. This allows us to get a sense of what <em>proportion</em> of the data lie in a certain interval, rather than the <em>frequency</em> of data in the interval. We can change the scale of a histogram to plot proportions rather than frequencies, then overlay a density curve on this rescaled histogram, as seen in Figure <a href="eda.html#fig:loan50IntRateDens">2.6</a>.</p>
@@ -838,7 +841,7 @@ Figure 2.8: Three very different population distributions with the same mean (0)
 
 <div class="guidedpractice">
 A good description of the shape of a distribution should include modality and whether the distribution is symmetric or skewed to one side.
-Using Figure <a href="eda.html#fig:severalDiffDistWithSdOf1">2.8</a> as an example, explain why such a description is important.<a href="#fn29" class="footnote-ref" id="fnref29"><sup>29</sup></a>
+Using Figure <a href="eda.html#fig:severalDiffDistWithSdOf1">2.8</a> as an example, explain why such a description is important.<a href="#fn31" class="footnote-ref" id="fnref31"><sup>31</sup></a>
 </div>
 
 <div class="example">
@@ -1102,7 +1105,7 @@ If there are an even number of observations, there will be two values in the mid
 The length of the the box is called the <strong>interquartile range</strong>, or <strong>IQR</strong> for short.
 It, like the standard deviation, is a measure of variability in data.
 The more variable the data, the larger the standard deviation and IQR tend to be.
-The two boundaries of the box are called the <strong>first quartile</strong> (the <span class="math inline">\(25^{th}\)</span> percentile, i.e., 25% of the data fall below this value) and the <strong>third quartile</strong> (the <span class="math inline">\(75^{th}\)</span> percentile, i.e., 75% of the data fall below this value)  , and these are often labeled <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span>, respectively<a href="#fn30" class="footnote-ref" id="fnref30"><sup>30</sup></a></p>
+The two boundaries of the box are called the <strong>first quartile</strong> (the <span class="math inline">\(25^{th}\)</span> percentile, i.e., 25% of the data fall below this value) and the <strong>third quartile</strong> (the <span class="math inline">\(75^{th}\)</span> percentile, i.e., 75% of the data fall below this value)  , and these are often labeled <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span>, respectively<a href="#fn32" class="footnote-ref" id="fnref32"><sup>32</sup></a></p>
 
 <div class="onebox">
 <strong>Interquartile range (IQR).</strong>
@@ -1116,7 +1119,7 @@ where <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q
 
 <div class="guidedpractice">
 What percent of the data fall between <span class="math inline">\(Q_1\)</span> and the median?
-What percent is between the median and <span class="math inline">\(Q_3\)</span>?<a href="#fn31" class="footnote-ref" id="fnref31"><sup>31</sup></a>
+What percent is between the median and <span class="math inline">\(Q_3\)</span>?<a href="#fn33" class="footnote-ref" id="fnref33"><sup>33</sup></a>
 </div>
 <p>Extending out from the box, the <strong>whiskers</strong> attempt to capture the data outside of the box.
 The whiskers of a box plot reach to the minimum and the maximum values in the data, unless there are points that are considered unusually high or unusually low, which are identified as potential <strong>outliers</strong> by the box plot.
@@ -1148,7 +1151,7 @@ Examining data for outliers serves many useful purposes, including</p>
 </ul>
 
 <div class="guidedpractice">
-Using the box plot in Figure <a href="eda.html#fig:loan-int-rate-boxplot-dotplot">2.9</a>, estimate the values of the <span class="math inline">\(Q_1\)</span>, <span class="math inline">\(Q_3\)</span>, and IQR for <code>interest_rate</code> in the <code>loan50</code> data set.<a href="#fn32" class="footnote-ref" id="fnref32"><sup>32</sup></a>
+Using the box plot in Figure <a href="eda.html#fig:loan-int-rate-boxplot-dotplot">2.9</a>, estimate the values of the <span class="math inline">\(Q_1\)</span>, <span class="math inline">\(Q_3\)</span>, and IQR for <code>interest_rate</code> in the <code>loan50</code> data set.<a href="#fn34" class="footnote-ref" id="fnref34"><sup>34</sup></a>
 </div>
 </div>
 <div id="describing-and-comparing-quantitative-distributions" class="section level3" number="2.2.6">
@@ -1296,7 +1299,7 @@ Move 26.3% to 35%
 <ol style="list-style-type: lower-alpha">
 <li>Which is more affected by extreme observations, the mean or median?<br />
 </li>
-<li>Is the standard deviation or IQR more affected by extreme observations?<a href="#fn33" class="footnote-ref" id="fnref33"><sup>33</sup></a>
+<li>Is the standard deviation or IQR more affected by extreme observations?<a href="#fn35" class="footnote-ref" id="fnref35"><sup>35</sup></a>
 </div></li>
 </ol>
 <p>The median and IQR are called <strong>robust statistics</strong> because extreme observations have little effect on their values—moving the most extreme value generally has little influence on these statistics.
@@ -1312,7 +1315,7 @@ Since values in these regions are stable in the three data sets, the median and 
 
 <div class="guidedpractice">
 The distribution of loan amounts in the <code>loan50</code> data set is right skewed, with a few large loans lingering out into the right tail.
-If you were wanting to understand the typical loan size, should you be more interested in the mean or median?<a href="#fn34" class="footnote-ref" id="fnref34"><sup>34</sup></a>
+If you were wanting to understand the typical loan size, should you be more interested in the mean or median?<a href="#fn36" class="footnote-ref" id="fnref36"><sup>36</sup></a>
 </div>
 </div>
 <div id="transforming-data-special-topic" class="section level3" number="2.2.8">
@@ -1372,7 +1375,7 @@ One observation that stands out when comparing the two maps: the poverty rate is
 </div>
 
 <div class="guidedpractice">
-What interesting features are evident in the median household income intensity map in Figure <a href="eda.html#fig:county-intensity-map-homeownership-median-income">2.15</a>?<a href="#fn35" class="footnote-ref" id="fnref35"><sup>35</sup></a>
+What interesting features are evident in the median household income intensity map in Figure <a href="eda.html#fig:county-intensity-map-homeownership-median-income">2.15</a>?<a href="#fn37" class="footnote-ref" id="fnref37"><sup>37</sup></a>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:county-intensity-map-poverty-unemp"></span>
 <img src="02-eda_files/figure-html/county-intensity-map-poverty-unemp-1.png" alt="Plot A: Intensity map of poverty rate (percent). Plot B: Intensity map of the unemployment rate (percent)." width="70%" />
@@ -1428,24 +1431,24 @@ However you should be able to easily spot them as <strong>bolded text</strong>.<
 </div>
 <div class="footnotes">
 <hr />
-<ol start="20">
-<li id="fn20"><p>Answers may vary. Scatterplots are helpful in quickly spotting associations relating variables, whether those associations come in the form of simple trends or whether those relationships are more complex.<a href="eda.html#fnref20" class="footnote-back">↩︎</a></p></li>
-<li id="fn21"><p>Consider the case where your vertical axis represents something “good” and your horizontal axis represents something that is only good in moderation. Health and water consumption fit this description: we require some water to survive, but consume too much and it become toxic and can kill a person.<a href="eda.html#fnref21" class="footnote-back">↩︎</a></p></li>
-<li id="fn22"><p>For
-more practice with this concept of the mean as a balancing point, see this <a href="https://www.khanacademy.org/math/ap-statistics/summarizing-quantitative-data-ap/mean-median-more/a/mean-as-the-balancing-point">Khan Academy article</a><a href="eda.html#fnref22" class="footnote-back">↩︎</a></p></li>
-<li id="fn23"><p><span class="math inline">\(x_1\)</span> corresponds to the interest rate for the first loan in the sample, <span class="math inline">\(x_2\)</span> to the second loan’s interest rate, and <span class="math inline">\(x_i\)</span> corresponds to the interest rate for the <span class="math inline">\(i^{th}\)</span> loan in the data set. For example, if <span class="math inline">\(i = 4\)</span>, then we’re examining <span class="math inline">\(x_4\)</span>, which refers to the fourth observation in the data set.<a href="eda.html#fnref23" class="footnote-back">↩︎</a></p></li>
-<li id="fn24"><p>The sample size was <span class="math inline">\(n = 50\)</span>.<a href="eda.html#fnref24" class="footnote-back">↩︎</a></p></li>
-<li id="fn25"><p>Other ways to describe data that are right skewed: skewed to the right, skewed to the high end, or skewed to the positive end.<a href="eda.html#fnref25" class="footnote-back">↩︎</a></p></li>
-<li id="fn26"><p>The interest rates for individual loans.<a href="eda.html#fnref26" class="footnote-back">↩︎</a></p></li>
-<li id="fn27"><p>Unimodal Remember that <em>uni</em> stands for 1 (think <em>uni</em>cycles). Similarly, <em>bi</em> stands for 2 (think <em>bi</em>cycles). We are hoping a <em>multi</em>cycle will be invented to complete this analogy.<a href="eda.html#fnref27" class="footnote-back">↩︎</a></p></li>
-<li id="fn28"><p>There might be two height groups visible in the data set: one of the students and one of the adults. That is, the data are probably bimodal.<a href="eda.html#fnref28" class="footnote-back">↩︎</a></p></li>
-<li id="fn29"><p>Figure <a href="eda.html#fig:severalDiffDistWithSdOf1">2.8</a> shows three distributions that look quite different, but all have the same mean, variance, and standard deviation. Using modality, we can distinguish between the first plot (bimodal) and the last two (unimodal). Using skewness, we can distinguish between the last plot (right skewed) and the first two. While a picture, like a histogram, tells a more complete story, we can use modality and shape (symmetry/skew) to characterize basic information about a distribution.<a href="eda.html#fnref29" class="footnote-back">↩︎</a></p></li>
-<li id="fn30"><p>The first and third quartiles are called quartiles because, together with the median (the second quartile), these three values break the data into four groups of equal size–the lowest 25%, next lowest 25%, next lowest 25%, and highest 25%.<a href="eda.html#fnref30" class="footnote-back">↩︎</a></p></li>
-<li id="fn31"><p>Since <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span> capture the middle 50% of the data and the median splits the data in the middle, 25% of the data fall between <span class="math inline">\(Q_1\)</span> and the median, and another 25% falls between the median and <span class="math inline">\(Q_3\)</span>.<a href="eda.html#fnref31" class="footnote-back">↩︎</a></p></li>
-<li id="fn32"><p>These visual estimates will vary a little from one person to the next: <span class="math inline">\(Q_1 \approx\)</span> 8%, <span class="math inline">\(Q_3 \approx\)</span> 14%, IQR <span class="math inline">\(\approx\)</span> 14 - 8 = 6%.<a href="eda.html#fnref32" class="footnote-back">↩︎</a></p></li>
-<li id="fn33"><p>(a) Mean is affected more. (b) Standard deviation is affected more.<a href="eda.html#fnref33" class="footnote-back">↩︎</a></p></li>
-<li id="fn34"><p>If we are looking to simply understand what a typical individual loan looks like, the median is probably more useful. However, if the goal is to understand something that scales well, such as the total amount of money we might need to have on hand if we were to offer 1,000 loans, then the mean would be more useful.<a href="eda.html#fnref34" class="footnote-back">↩︎</a></p></li>
-<li id="fn35"><p>Note: answers will vary. There is some correspondence between high earning and metropolitan areas, where we can see darker spots (higher median household income), though there are several exceptions. You might look for large cities you are familiar with and try to spot them on the map as dark spots.<a href="eda.html#fnref35" class="footnote-back">↩︎</a></p></li>
+<ol start="22">
+<li id="fn22"><p>Answers may vary. Scatterplots are helpful in quickly spotting associations relating variables, whether those associations come in the form of simple trends or whether those relationships are more complex.<a href="eda.html#fnref22" class="footnote-back">↩︎</a></p></li>
+<li id="fn23"><p>Consider the case where your vertical axis represents something “good” and your horizontal axis represents something that is only good in moderation. Health and water consumption fit this description: we require some water to survive, but consume too much and it become toxic and can kill a person.<a href="eda.html#fnref23" class="footnote-back">↩︎</a></p></li>
+<li id="fn24"><p>For
+more practice with this concept of the mean as a balancing point, see this <a href="https://www.khanacademy.org/math/ap-statistics/summarizing-quantitative-data-ap/mean-median-more/a/mean-as-the-balancing-point">Khan Academy article</a><a href="eda.html#fnref24" class="footnote-back">↩︎</a></p></li>
+<li id="fn25"><p><span class="math inline">\(x_1\)</span> corresponds to the interest rate for the first loan in the sample, <span class="math inline">\(x_2\)</span> to the second loan’s interest rate, and <span class="math inline">\(x_i\)</span> corresponds to the interest rate for the <span class="math inline">\(i^{th}\)</span> loan in the data set. For example, if <span class="math inline">\(i = 4\)</span>, then we’re examining <span class="math inline">\(x_4\)</span>, which refers to the fourth observation in the data set.<a href="eda.html#fnref25" class="footnote-back">↩︎</a></p></li>
+<li id="fn26"><p>The sample size was <span class="math inline">\(n = 50\)</span>.<a href="eda.html#fnref26" class="footnote-back">↩︎</a></p></li>
+<li id="fn27"><p>Other ways to describe data that are right skewed: skewed to the right, skewed to the high end, or skewed to the positive end.<a href="eda.html#fnref27" class="footnote-back">↩︎</a></p></li>
+<li id="fn28"><p>The interest rates for individual loans.<a href="eda.html#fnref28" class="footnote-back">↩︎</a></p></li>
+<li id="fn29"><p>Unimodal Remember that <em>uni</em> stands for 1 (think <em>uni</em>cycles). Similarly, <em>bi</em> stands for 2 (think <em>bi</em>cycles). We are hoping a <em>multi</em>cycle will be invented to complete this analogy.<a href="eda.html#fnref29" class="footnote-back">↩︎</a></p></li>
+<li id="fn30"><p>There might be two height groups visible in the data set: one of the students and one of the adults. That is, the data are probably bimodal.<a href="eda.html#fnref30" class="footnote-back">↩︎</a></p></li>
+<li id="fn31"><p>Figure <a href="eda.html#fig:severalDiffDistWithSdOf1">2.8</a> shows three distributions that look quite different, but all have the same mean, variance, and standard deviation. Using modality, we can distinguish between the first plot (bimodal) and the last two (unimodal). Using skewness, we can distinguish between the last plot (right skewed) and the first two. While a picture, like a histogram, tells a more complete story, we can use modality and shape (symmetry/skew) to characterize basic information about a distribution.<a href="eda.html#fnref31" class="footnote-back">↩︎</a></p></li>
+<li id="fn32"><p>The first and third quartiles are called quartiles because, together with the median (the second quartile), these three values break the data into four groups of equal size–the lowest 25%, next lowest 25%, next lowest 25%, and highest 25%.<a href="eda.html#fnref32" class="footnote-back">↩︎</a></p></li>
+<li id="fn33"><p>Since <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span> capture the middle 50% of the data and the median splits the data in the middle, 25% of the data fall between <span class="math inline">\(Q_1\)</span> and the median, and another 25% falls between the median and <span class="math inline">\(Q_3\)</span>.<a href="eda.html#fnref33" class="footnote-back">↩︎</a></p></li>
+<li id="fn34"><p>These visual estimates will vary a little from one person to the next: <span class="math inline">\(Q_1 \approx\)</span> 8%, <span class="math inline">\(Q_3 \approx\)</span> 14%, IQR <span class="math inline">\(\approx\)</span> 14 - 8 = 6%.<a href="eda.html#fnref34" class="footnote-back">↩︎</a></p></li>
+<li id="fn35"><p>(a) Mean is affected more. (b) Standard deviation is affected more.<a href="eda.html#fnref35" class="footnote-back">↩︎</a></p></li>
+<li id="fn36"><p>If we are looking to simply understand what a typical individual loan looks like, the median is probably more useful. However, if the goal is to understand something that scales well, such as the total amount of money we might need to have on hand if we were to offer 1,000 loans, then the mean would be more useful.<a href="eda.html#fnref36" class="footnote-back">↩︎</a></p></li>
+<li id="fn37"><p>Note: answers will vary. There is some correspondence between high earning and metropolitan areas, where we can see darker spots (higher median household income), though there are several exceptions. You might look for large cities you are familiar with and try to spot them on the map as dark spots.<a href="eda.html#fnref37" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

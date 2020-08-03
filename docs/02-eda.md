@@ -266,7 +266,10 @@ Often times it is too expensive or time consuming to measure the population mean
 \BeginKnitrBlock{pronunciation}<div class="pronunciation">The Greek letter $\mu$ is pronounced *mu*, listen to the pronunciation [here](https://youtu.be/PStgY5AcEIw?t=47).</div>\EndKnitrBlock{pronunciation}
 
 In the field of statistics, summary measures that summarize a sample of data, such as $\bar{x}$, are called **statistics**\index{statistic}. Numbers that summarize an entire population, such as $\mu$, are called **parameters**\index{parameter}. You can remember
-this distinction by looking at the first letter of each term: _S_tatistics summarize _S_amples; _P_arameters summarize _P_opulations.
+this distinction by looking at the first letter of each term: 
+
+> *S*tatistics summarize *S*amples; *P*arameters summarize *P*opulations.
+
 We typically use Roman letters to symbolize statistics (e.g., $\bar{x}$, $\hat{p}$), and Greek letters to symbolize parameters (e.g., $\mu$, $\pi$).
 Since we rarely can measure the entire population, and thus rarely know
 the actual parameter values, we like to say, "We don't know Greek,

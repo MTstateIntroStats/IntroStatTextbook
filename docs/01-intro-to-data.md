@@ -6,6 +6,28 @@ Statistics is the study of how best to collect, analyze, and draw conclusions fr
 
 
 
+Though we were calculating probabilities in the 16th century, and the first US Census was directed by Thomas Jefferson in 1790^[https://www.census.gov/history/www/through_the_decades/overview/1790.html], the discipline of statistics as we know it came about in the 1800s. Up until the 21st century, the **statistical investigation process**\index{statistical investigation process} looked something like this (adapted from @ISI2016):
+
+1. Ask a research question.
+2. Design a study and collect data.
+3. Summarize and visualize the data.
+4. Use statistical inferential methods to draw inferences from the data.
+5. Communicate the results and answer the research question.
+6. Revisit and look forward.
+
+
+
+With the rise of data science, however, we may not start with a research question,
+and instead start with a data set^[Data used in this context are called "found data."].
+In this case, the statistical investigation process looks more like the data exploration cycle found in Figure \@ref(fig:data-science-explore) taken from @R4DS.
+
+<div class="figure" style="text-align: center">
+<img src="01/images/data-science-explore.png" alt="Wickham and Grolemund's data exploration cycle (2017)." width="75%" />
+<p class="caption">(\#fig:data-science-explore)Wickham and Grolemund's data exploration cycle (2017).</p>
+</div>
+
+In either case, the ideas, concepts, and methods presented in this book will provide you with the tools to work through the statistical investigation process, whether starting with a research question or starting with data.
+
 ## Case study: using stents to prevent strokes {#basic-stents-strokes}
 
 \index{data!stroke|(}
@@ -1358,87 +1380,93 @@ However you should be able to easily spot them as **bolded text**.
 <tbody>
   <tr>
    <td style="text-align:left;"> anecdotal evidence </td>
-   <td style="text-align:left;"> convenience sample </td>
-   <td style="text-align:left;"> non-response rate </td>
-   <td style="text-align:left;"> response bias </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> associated </td>
    <td style="text-align:left;"> data </td>
-   <td style="text-align:left;"> observational data </td>
-   <td style="text-align:left;"> response variable </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> barplot </td>
-   <td style="text-align:left;"> data frame </td>
    <td style="text-align:left;"> observational study </td>
-   <td style="text-align:left;"> retrospective study </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> blind </td>
-   <td style="text-align:left;"> dependent </td>
-   <td style="text-align:left;"> observational unit </td>
    <td style="text-align:left;"> sample </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> blocking </td>
-   <td style="text-align:left;"> discrete </td>
-   <td style="text-align:left;"> ordinal </td>
+   <td style="text-align:left;"> associated </td>
+   <td style="text-align:left;"> data frame </td>
+   <td style="text-align:left;"> observational unit </td>
    <td style="text-align:left;"> sample bias </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> case </td>
-   <td style="text-align:left;"> double-blind </td>
-   <td style="text-align:left;"> placebo </td>
+   <td style="text-align:left;"> barplot </td>
+   <td style="text-align:left;"> dependent </td>
+   <td style="text-align:left;"> ordinal </td>
    <td style="text-align:left;"> sampling bias </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> categorical </td>
-   <td style="text-align:left;"> experiment </td>
-   <td style="text-align:left;"> placebo effect </td>
+   <td style="text-align:left;"> blind </td>
+   <td style="text-align:left;"> discrete </td>
+   <td style="text-align:left;"> placebo </td>
    <td style="text-align:left;"> selection bias </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> cluster </td>
-   <td style="text-align:left;"> explanatory variable </td>
-   <td style="text-align:left;"> population </td>
+   <td style="text-align:left;"> blocking </td>
+   <td style="text-align:left;"> double-blind </td>
+   <td style="text-align:left;"> placebo effect </td>
    <td style="text-align:left;"> simple random sample </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> cluster sampling </td>
-   <td style="text-align:left;"> independent </td>
-   <td style="text-align:left;"> positive association </td>
+   <td style="text-align:left;"> case </td>
+   <td style="text-align:left;"> experiment </td>
+   <td style="text-align:left;"> population </td>
    <td style="text-align:left;"> simple random sampling </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> cohort </td>
-   <td style="text-align:left;"> level </td>
+   <td style="text-align:left;"> categorical </td>
+   <td style="text-align:left;"> explanatory variable </td>
+   <td style="text-align:left;"> positive association </td>
+   <td style="text-align:left;"> statistical investigation process </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> cluster </td>
+   <td style="text-align:left;"> independent </td>
    <td style="text-align:left;"> prospective study </td>
    <td style="text-align:left;"> strata </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> confounding variable </td>
-   <td style="text-align:left;"> multistage sample </td>
+   <td style="text-align:left;"> cluster sampling </td>
+   <td style="text-align:left;"> level </td>
    <td style="text-align:left;"> quantitative </td>
    <td style="text-align:left;"> stratified sampling </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> continuous </td>
-   <td style="text-align:left;"> negative association </td>
+   <td style="text-align:left;"> cohort </td>
+   <td style="text-align:left;"> multistage sample </td>
    <td style="text-align:left;"> randomized experiment </td>
    <td style="text-align:left;"> summary statistic </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> control </td>
-   <td style="text-align:left;"> nominal </td>
+   <td style="text-align:left;"> confounding variable </td>
+   <td style="text-align:left;"> negative association </td>
    <td style="text-align:left;"> replicate </td>
    <td style="text-align:left;"> treatment group </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> control group </td>
-   <td style="text-align:left;"> non-response bias </td>
+   <td style="text-align:left;"> continuous </td>
+   <td style="text-align:left;"> nominal </td>
    <td style="text-align:left;"> representative </td>
    <td style="text-align:left;"> variable </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> control </td>
+   <td style="text-align:left;"> non-response bias </td>
+   <td style="text-align:left;"> response bias </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> control group </td>
+   <td style="text-align:left;"> non-response rate </td>
+   <td style="text-align:left;"> response variable </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> convenience sample </td>
+   <td style="text-align:left;"> observational data </td>
+   <td style="text-align:left;"> retrospective study </td>
+   <td style="text-align:left;">  </td>
   </tr>
 </tbody>
 </table>

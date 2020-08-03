@@ -235,7 +235,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="inference-cat.html"><a href="inference-cat.html#single-prop"><i class="fa fa-check"></i><b>5.2</b> One proportion</a>
 <ul>
-<li class="chapter" data-level="5.2.1" data-path="inference-cat.html"><a href="inference-cat.html#one-prop-null-boot"><i class="fa fa-check"></i><b>5.2.1</b> Bootstrap test for <span class="math inline">\(H_0: p = p_0\)</span></a></li>
+<li class="chapter" data-level="5.2.1" data-path="inference-cat.html"><a href="inference-cat.html#one-prop-null-boot"><i class="fa fa-check"></i><b>5.2.1</b> Hypothesis test for <span class="math inline">\(H_0: \pi = \pi_0\)</span></a></li>
 <li class="chapter" data-level="5.2.2" data-path="inference-cat.html"><a href="inference-cat.html#one-prop-norm"><i class="fa fa-check"></i><b>5.2.2</b> Mathematical model</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="inference-cat.html"><a href="inference-cat.html#diff-two-prop"><i class="fa fa-check"></i><b>5.3</b> Difference of two proportions</a>
@@ -314,6 +314,25 @@ Scientists seek to answer questions using rigorous methods and careful observati
 These observations—collected from the likes of field notes, surveys, and experiments—form the backbone of a statistical investigation and are called <strong>data</strong>.
 Statistics is the study of how best to collect, analyze, and draw conclusions from data, and in this first chapter, we focus on both the properties of data and on the collection of data.
 </div>
+<p>Though we were calculating probabilities in the 16th century, and the first US Census was directed by Thomas Jefferson in 1790<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, the discipline of statistics as we know it came about in the 1800s. Up until the 21st century, the <strong>statistical investigation process</strong> looked something like this (adapted from <span class="citation">Tintle et al. (<a href="#ref-ISI2016" role="doc-biblioref">2016</a>)</span>):</p>
+<ol style="list-style-type: decimal">
+<li>Ask a research question.</li>
+<li>Design a study and collect data.</li>
+<li>Summarize and visualize the data.</li>
+<li>Use statistical inferential methods to draw inferences from the data.</li>
+<li>Communicate the results and answer the research question.</li>
+<li>Revisit and look forward.</li>
+</ol>
+<p>With the rise of data science, however, we may not start with a research question,
+and instead start with a data set<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.
+In this case, the statistical investigation process looks more like the data exploration cycle found in Figure <a href="intro-to-data.html#fig:data-science-explore">1.1</a> taken from <span class="citation">Wickham and Grolemund (<a href="#ref-R4DS" role="doc-biblioref">2017</a>)</span>.</p>
+<div class="figure" style="text-align: center"><span id="fig:data-science-explore"></span>
+<img src="01/images/data-science-explore.png" alt="Wickham and Grolemund's data exploration cycle (2017)." width="75%" />
+<p class="caption">
+Figure 1.1: Wickham and Grolemund’s data exploration cycle (2017).
+</p>
+</div>
+<p>In either case, the ideas, concepts, and methods presented in this book will provide you with the tools to work through the statistical investigation process, whether starting with a research question or starting with data.</p>
 <div id="basic-stents-strokes" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> Case study: using stents to prevent strokes</h2>
 <p></p>
@@ -530,18 +549,18 @@ Total
 </tr>
 </tbody>
 </table>
-<p>The data summarized in this table can also be visualized with a <strong>barplot</strong>, seen in Figure <a href="intro-to-data.html#fig:stentStudyResultsDFbarplot">1.1</a>:</p>
+<p>The data summarized in this table can also be visualized with a <strong>barplot</strong>, seen in Figure <a href="intro-to-data.html#fig:stentStudyResultsDFbarplot">1.2</a>:</p>
 <div class="figure" style="text-align: center"><span id="fig:stentStudyResultsDFbarplot"></span>
 <img src="01-intro-to-data_files/figure-html/stentStudyResultsDFbarplot-1.png" alt="Segmented barplot of outcomes in stent study by group and time." width="70%" />
 <p class="caption">
-Figure 1.1: Segmented barplot of outcomes in stent study by group and time.
+Figure 1.2: Segmented barplot of outcomes in stent study by group and time.
 </p>
 </div>
 
 <div class="guidedpractice">
 Of the 224 patients in the treatment group, 45 had a stroke by the end of the first year.
 Using these two numbers, compute the proportion of patients in the treatment group who had a stroke by the end of their first year.
-(Please note: answers to all Guided Practice exercises are provided using footnotes.)<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>
+(Please note: answers to all Guided Practice exercises are provided using footnotes.)<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>
 </div>
 <p>We can compute summary statistics from the table to give us a better idea of how the impact of the stent treatment differed between the two groups.
 A <strong>summary statistic</strong> is a single number summarizing a large amount of data.
@@ -595,7 +614,7 @@ Be careful not to confuse summary statistics—calculated from a <em>group</em> 
 <div class="guidedpractice">
 What is the grade of the first loan in Table <a href="intro-to-data.html#tab:loan50DF">1.3</a>?
 And what is the home ownership status of the borrower for that first loan?
-Reminder: for these Guided Practice questions, you can check your answer in the footnote.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>
+Reminder: for these Guided Practice questions, you can check your answer in the footnote.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>
 </div>
 <p>In practice, it is especially important to ask clarifying questions to ensure important aspects of the data are understood.
 For instance, it is always important to be sure we know what each variable means and its units of measurement.
@@ -871,14 +890,14 @@ This structure allows new cases to be added as rows or new variables as new colu
 
 <div class="guidedpractice">
 The grades for assignments, quizzes, and exams in a course are often recorded in a gradebook that takes the form of a data frame.
-How might you organize a course’s grade data using a data frame?<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>
+How might you organize a course’s grade data using a data frame?<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>
 </div>
 <p></p>
 
 <div class="guidedpractice">
 We consider data for 3,142 counties in the United States,
 which include the name of each county, the state where it resides, its population in 2017, how its population changed from 2010 to 2017, poverty rate, and nine additional characteristics.
-How might these data be organized in a data frame?<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>
+How might these data be organized in a data frame?<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>
 </div>
 <p>The data described in the Guided Practice above represent the <strong>county</strong> data set, which is shown as a data frame in Table <a href="intro-to-data.html#tab:countyDF">1.5</a>.
 The variables as well as the variables in the data set that did not fit in Table <a href="intro-to-data.html#tab:countyDF">1.5</a> are described in Table <a href="intro-to-data.html#tab:countyVariables">1.6</a></p>
@@ -1192,7 +1211,7 @@ To simplify analyses, any ordinal variable in this book will be treated as a nom
 <div class="figure" style="text-align: center"><span id="fig:variables"></span>
 <img src="01/figures/variables/variables.png" alt="Breakdown of variables into their respective types." width="75%" />
 <p class="caption">
-Figure 1.2: Breakdown of variables into their respective types.
+Figure 1.3: Breakdown of variables into their respective types.
 </p>
 </div>
 
@@ -1211,7 +1230,7 @@ The last variable classifies students into two categories—those who have and t
 <div class="guidedpractice">
 An experiment is evaluating the effectiveness of a new drug in treating migraines.
 A <code>group</code> variable is used to indicate the experiment group for each patient: treatment or control.
-The <code>num_migraines</code> variable represents the number of migraines the patient experienced during a 3-month period. Classify each variable as either quantitative or categorical?<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>
+The <code>num_migraines</code> variable represents the number of migraines the patient experienced during a 3-month period. Classify each variable as either quantitative or categorical?<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>
 </div>
 </div>
 <div id="variable-relations" class="section level3" number="1.2.3">
@@ -1231,7 +1250,7 @@ A social scientist may like to answer some of the following questions:</p>
 Examining <strong>summary statistics</strong> could provide insights for each of the three questions about counties.
 Additionally, graphs can be used to visually explore the data.</p>
 <p><strong>Scatterplots</strong> are one type of graph used to study the relationship between two quantitative variables.
-Figure <a href="intro-to-data.html#fig:county-multi-unit-homeownership">1.3</a> displays the relationship between the variables <code>homeownership</code> and <code>multi_unit</code>, which is the percent of units in multi-unit structures (e.g., apartments, condos).
+Figure <a href="intro-to-data.html#fig:county-multi-unit-homeownership">1.4</a> displays the relationship between the variables <code>homeownership</code> and <code>multi_unit</code>, which is the percent of units in multi-unit structures (e.g., apartments, condos).
 Each point on the plot represents a single county (a single observational unit).
 For instance, the highlighted dot corresponds to County 413 in the <code>county</code> data set: Chattahoochee County, Georgia, which has 39.4% of units in multi-unit structures and a homeownership rate of 31.3%.
 The scatterplot suggests a relationship between the two variables: counties with a higher rate of multi-units tend to have lower homeownership rates.
@@ -1239,7 +1258,7 @@ We might brainstorm as to why this relationship exists and investigate each idea
 <div class="figure" style="text-align: center"><span id="fig:county-multi-unit-homeownership"></span>
 <img src="01-intro-to-data_files/figure-html/county-multi-unit-homeownership-1.png" alt="A scatterplot of homeownership versus the percent of units that are in multi-unit structures for US counties. The highlighted dot represents Chattahoochee County, Georgia, which has a multi-unit rate of 39.4% and a homeownership rate of 31.3%." width="70%" />
 <p class="caption">
-Figure 1.3: A scatterplot of homeownership versus the percent of units that are in multi-unit structures for US counties. The highlighted dot represents Chattahoochee County, Georgia, which has a multi-unit rate of 39.4% and a homeownership rate of 31.3%.
+Figure 1.4: A scatterplot of homeownership versus the percent of units that are in multi-unit structures for US counties. The highlighted dot represents Chattahoochee County, Georgia, which has a multi-unit rate of 39.4% and a homeownership rate of 31.3%.
 </p>
 </div>
 <p>The multi-unit and homeownership rates are said to be associated because the plot shows a discernible pattern.
@@ -1248,11 +1267,11 @@ Associated variables can also be called <strong>dependent</strong> variables and
 
 <div class="guidedpractice">
 Examine the variables in the <code>loan50</code> data set, which are described in Table <a href="intro-to-data.html#tab:loan50Variables">1.4</a>.
-Create two questions about possible relationships between variables in <code>loan50</code> that are of interest to you.<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a>
+Create two questions about possible relationships between variables in <code>loan50</code> that are of interest to you.<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>
 </div>
 
 <div class="example">
-<p>This example examines the relationship between the change in population from 2010 to 2017 and median household income for counties, which is visualized as a scatterplot in Figure <a href="intro-to-data.html#fig:county-pop-change-med-hh-income">1.4</a>.
+<p>This example examines the relationship between the change in population from 2010 to 2017 and median household income for counties, which is visualized as a scatterplot in Figure <a href="intro-to-data.html#fig:county-pop-change-med-hh-income">1.5</a>.
 Are these variables associated?</p>
 <hr />
 The larger the median household income for a county, the higher the population growth observed for the county.
@@ -1261,11 +1280,11 @@ While this trend isn’t true for every county, the trend in the plot is evident
 <div class="figure" style="text-align: center"><span id="fig:county-pop-change-med-hh-income"></span>
 <img src="01-intro-to-data_files/figure-html/county-pop-change-med-hh-income-1.png" alt="A scatterplot showing `pop_change` against `median_hh_income`. Owsley County of Kentucky, is highlighted, which lost 3.63% of its population from 2010 to 2017 and had median household income of $22,736." width="70%" />
 <p class="caption">
-Figure 1.4: A scatterplot showing <code>pop_change</code> against <code>median_hh_income</code>. Owsley County of Kentucky, is highlighted, which lost 3.63% of its population from 2010 to 2017 and had median household income of $22,736.
+Figure 1.5: A scatterplot showing <code>pop_change</code> against <code>median_hh_income</code>. Owsley County of Kentucky, is highlighted, which lost 3.63% of its population from 2010 to 2017 and had median household income of $22,736.
 </p>
 </div>
-<p>Because there is a downward trend in Figure <a href="intro-to-data.html#fig:county-multi-unit-homeownership">1.3</a>—counties with more units in multi-unit structures are associated with lower homeownership—these variables are said to be <strong>negatively associated</strong>.
-A <strong>positive association</strong> is shown in the relationship between the <code>median_hh_income</code> and <code>pop_change</code> variables in Figure <a href="intro-to-data.html#fig:county-pop-change-med-hh-income">1.4</a>, where counties with higher median household income tend to have higher rates of population growth.</p>
+<p>Because there is a downward trend in Figure <a href="intro-to-data.html#fig:county-multi-unit-homeownership">1.4</a>—counties with more units in multi-unit structures are associated with lower homeownership—these variables are said to be <strong>negatively associated</strong>.
+A <strong>positive association</strong> is shown in the relationship between the <code>median_hh_income</code> and <code>pop_change</code> variables in Figure <a href="intro-to-data.html#fig:county-pop-change-med-hh-income">1.5</a>, where counties with higher median household income tend to have higher rates of population growth.</p>
 <p>If two variables are not associated, then they are said to be <strong>independent</strong>.
 That is, two variables are independent if there is no evident relationship between the two.</p>
 
@@ -1283,7 +1302,7 @@ Consider the following rephrasing of an earlier question bout the <code>county</
 <p>If there is an increase in the median household income in a county, does this drive an increase in its population?</p>
 </blockquote>
 <p>In this question, we are asking whether one variable affects another.
-If this is our underlying belief, then <em>median household income</em> is the <strong>explanatory variable</strong> variable and the <em>population change</em> is the <strong>response variable</strong> variable in the hypothesized relationship.<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a></p>
+If this is our underlying belief, then <em>median household income</em> is the <strong>explanatory variable</strong> variable and the <em>population change</em> is the <strong>response variable</strong> variable in the hypothesized relationship.<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a></p>
 <p></p>
 
 <div class="onebox">
@@ -1343,7 +1362,7 @@ A <strong>sample</strong> represents a subset of the cases and is often a small 
 For instance, 60 swordfish (or some other number) in the population might be selected, and this sample data may be used to provide an estimate of the population average and answer the research question.</p>
 
 <div class="guidedpractice">
-For the second and third questions above, identify the target population and what represents an individual case.<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>
+For the second and third questions above, identify the target population and what represents an individual case.<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>
 </div>
 </div>
 <div id="anecdotal-evidence" class="section level3" number="1.3.2">
@@ -1368,7 +1387,7 @@ Such evidence may be true and verifiable, but it may only represent extraordinar
 <div class="figure" style="text-align: center"><span id="fig:mn-winter"></span>
 <img src="01/images/mn-winter/mn-winter.jpg" alt="In February 2010, some media pundits cited one large snow storm as evidence against global warming. As comedian Jon Stewart pointed out, &quot;It is one storm, in one region, of one country.&quot;" width="80%" />
 <p class="caption">
-Figure 1.5: In February 2010, some media pundits cited one large snow storm as evidence against global warming. As comedian Jon Stewart pointed out, “It is one storm, in one region, of one country.”
+Figure 1.6: In February 2010, some media pundits cited one large snow storm as evidence against global warming. As comedian Jon Stewart pointed out, “It is one storm, in one region, of one country.”
 </p>
 </div>
 <p>Anecdotal evidence typically is composed of unusual cases that we recall based on their striking characteristics.
@@ -1389,7 +1408,7 @@ We pick samples randomly to reduce the chance we introduce biases.</p>
 <div class="figure" style="text-align: center"><span id="fig:pop-to-sample"></span>
 <img src="01-intro-to-data_files/figure-html/pop-to-sample-1.png" alt="In this graphic, five graduates are randomly selected from the population (all graduates in the last 5 years) to be included in the sample." width="70%" />
 <p class="caption">
-Figure 1.6: In this graphic, five graduates are randomly selected from the population (all graduates in the last 5 years) to be included in the sample.
+Figure 1.7: In this graphic, five graduates are randomly selected from the population (all graduates in the last 5 years) to be included in the sample.
 </p>
 </div>
 
@@ -1404,7 +1423,7 @@ When selecting samples by hand, we run the risk of picking a <strong>biased</str
 <div class="figure" style="text-align: center"><span id="fig:pop-to-sub-sample-graduates"></span>
 <img src="01-intro-to-data_files/figure-html/pop-to-sub-sample-graduates-1.png" alt="Asked to pick a sample of graduates, a nutrition major might inadvertently pick a disproportionate number of graduates from health-related majors." width="70%" />
 <p class="caption">
-Figure 1.7: Asked to pick a sample of graduates, a nutrition major might inadvertently pick a disproportionate number of graduates from health-related majors.
+Figure 1.8: Asked to pick a sample of graduates, a nutrition major might inadvertently pick a disproportionate number of graduates from health-related majors.
 </p>
 </div>
 <p>If someone was permitted to pick and choose exactly which graduates were included in the sample, it is entirely possible that the sample could be skewed to that person’s interests, which may be entirely unintentional.
@@ -1424,7 +1443,7 @@ It is often difficult to discern what sub-population a convenience sample repres
 
 <div class="guidedpractice">
 Is a convenience sample an example of selection bias, non-response bias,
-or response bias?<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>
+or response bias?<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a>
 </div>
 <p>Sampling randomly helps resolve <em>selection bias</em>.
 The most basic random sample is called a <strong>simple random sample</strong>, and is equivalent to using a raffle to select cases.
@@ -1435,7 +1454,7 @@ This <em>non-response bias</em> can produce results in the sample that do not ac
 <div class="figure" style="text-align: center"><span id="fig:survey-sample"></span>
 <img src="01-intro-to-data_files/figure-html/survey-sample-1.png" alt="Due to the possibility of non-response, survey studies may only reach a certain group within the population. It is difficult, and often times impossible, to completely fix this problem." width="70%" />
 <p class="caption">
-Figure 1.8: Due to the possibility of non-response, survey studies may only reach a certain group within the population. It is difficult, and often times impossible, to completely fix this problem.
+Figure 1.9: Due to the possibility of non-response, survey studies may only reach a certain group within the population. It is difficult, and often times impossible, to completely fix this problem.
 </p>
 </div>
 
@@ -1444,7 +1463,7 @@ Figure 1.8: Due to the possibility of non-response, survey studies may only reac
 </div>
 
 <div class="guidedpractice">
-We can easily access ratings for products, sellers, and companies through websites. These ratings are based only on those people who go out of their way to provide a rating. If 50% of online reviews for a product are negative, do you think this means that 50% of buyers are dissatisfied with the product? Why or why not?<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>
+We can easily access ratings for products, sellers, and companies through websites. These ratings are based only on those people who go out of their way to provide a rating. If 50% of online reviews for a product are negative, do you think this means that 50% of buyers are dissatisfied with the product? Why or why not?<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a>
 </div>
 <p>
 
@@ -1456,13 +1475,13 @@ We can easily access ratings for products, sellers, and companies through websit
 <h3><span class="header-section-number">1.3.4</span> Four sampling methods (special topic)</h3>
 <p>Almost all statistical methods are based on the notion of implied randomness.
 If observational data are not collected in a random framework from a population, these statistical methods—the estimates and errors associated with the estimates—are not reliable.
-Here we consider four random sampling techniques: simple, stratified, cluster, and multistage sampling. Figures <a href="intro-to-data.html#fig:simple-stratified">1.9</a> and <a href="intro-to-data.html#fig:cluster-multistage">1.10</a> provide graphical representations of these techniques.</p>
+Here we consider four random sampling techniques: simple, stratified, cluster, and multistage sampling. Figures <a href="intro-to-data.html#fig:simple-stratified">1.10</a> and <a href="intro-to-data.html#fig:cluster-multistage">1.11</a> provide graphical representations of these techniques.</p>
 <p>
 </p>
 <div class="figure" style="text-align: center"><span id="fig:simple-stratified"></span>
 <img src="01-intro-to-data_files/figure-html/simple-stratified-1.png" alt="Examples of simple random and stratified sampling. In the top panel, simple random sampling was used to randomly select the 18 cases (denoted in red). In the bottom panel, stratified sampling was used: cases were grouped into strata, then simple random sampling was employed to randomly select 3 cases within each stratum." width="70%" />
 <p class="caption">
-Figure 1.9: Examples of simple random and stratified sampling. In the top panel, simple random sampling was used to randomly select the 18 cases (denoted in red). In the bottom panel, stratified sampling was used: cases were grouped into strata, then simple random sampling was employed to randomly select 3 cases within each stratum.
+Figure 1.10: Examples of simple random and stratified sampling. In the top panel, simple random sampling was used to randomly select the 18 cases (denoted in red). In the bottom panel, stratified sampling was used: cases were grouped into strata, then simple random sampling was employed to randomly select 3 cases within each stratum.
 </p>
 </div>
 <p><strong>Simple random sampling</strong> is probably the most intuitive form of random sampling.
@@ -1492,7 +1511,7 @@ A <strong>multistage sample</strong> is like a cluster sample, but rather than k
 <div class="figure" style="text-align: center"><span id="fig:cluster-multistage"></span>
 <img src="01-intro-to-data_files/figure-html/cluster-multistage-1.png" alt="Examples of cluster and multistage sampling. In the top panel, cluster sampling was used: data were binned into nine clusters, three of these clusters were sampled, and all observations within these three cluster were included in the sample. In the bottom panel, multistage sampling was used, which differs from cluster sampling only in that we randomly select a subset of each cluster to be included in the sample rather than measuring every case in each sampled cluster." width="70%" />
 <p class="caption">
-Figure 1.10: Examples of cluster and multistage sampling. In the top panel, cluster sampling was used: data were binned into nine clusters, three of these clusters were sampled, and all observations within these three cluster were included in the sample. In the bottom panel, multistage sampling was used, which differs from cluster sampling only in that we randomly select a subset of each cluster to be included in the sample rather than measuring every case in each sampled cluster.
+Figure 1.11: Examples of cluster and multistage sampling. In the top panel, cluster sampling was used: data were binned into nine clusters, three of these clusters were sampled, and all observations within these three cluster were included in the sample. In the bottom panel, multistage sampling was used, which differs from cluster sampling only in that we randomly select a subset of each cluster to be included in the sample rather than measuring every case in each sampled cluster.
 </p>
 </div>
 <p>Sometimes cluster or multistage sampling can be more economical than the alternative sampling techniques.
@@ -1520,7 +1539,7 @@ For instance, the loan data and county data described in Section <a href="intro-
 <p>O bservational studies are generally only sufficient to show associations or form hypotheses that can be later checked with experiments. Making causal conclusions based on experiments is often reasonable. However, making the same causal conclusions based on observational data can be treacherous and is not recommended. Indeed, making causal conclusions based on observational data is arguably the most common mistake in our news headlines and social media posts!</p>
 
 <div class="guidedpractice">
-Suppose an observational study tracked sunscreen use and skin cancer, and it was found that the more sunscreen someone used, the more likely the person was to have skin cancer. Does this mean sunscreen <em>causes</em> skin cancer?<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a>
+Suppose an observational study tracked sunscreen use and skin cancer, and it was found that the more sunscreen someone used, the more likely the person was to have skin cancer. Does this mean sunscreen <em>causes</em> skin cancer?<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>
 </div>
 <p>Some previous research tells us that using sunscreen actually reduces skin cancer risk, so maybe there is another variable that can explain this hypothetical association between sunscreen usage and skin cancer.
 One important piece of information that is absent is sun exposure. If someone is out in the sun all day, they are more likely to use sunscreen <em>and</em> more likely to get skin cancer. Exposure to the sun is unaccounted for in the simple investigation.</p>
@@ -1532,7 +1551,7 @@ http://archderm.ama-assn.org/cgi/content/abstract/122/5/537
 Study with a similar scenario to that described here:
 http://onlinelibrary.wiley.com/doi/10.1002/ijc.22745/full
 -->
-<p>Sun exposure is what is called a <strong>confounding variable</strong><a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a>, which is a variable that is associated with both the explanatory and response variables.
+<p>Sun exposure is what is called a <strong>confounding variable</strong><a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a>, which is a variable that is associated with both the explanatory and response variables.
 While one method to justify making causal conclusions from observational studies is to exhaust the search for confounding variables, there is no guarantee that all confounding variables can be examined or measured.</p>
 
 <div class="onebox">
@@ -1545,13 +1564,13 @@ When both these conditions are met, if we observe an association between the exp
 </div>
 
 <div class="guidedpractice">
-Figure <a href="intro-to-data.html#fig:county-multi-unit-homeownership">1.3</a> shows a negative association between the homeownership rate and the percentage of multi-unit structures in a county.
+Figure <a href="intro-to-data.html#fig:county-multi-unit-homeownership">1.4</a> shows a negative association between the homeownership rate and the percentage of multi-unit structures in a county.
 However, it is unreasonable to conclude that there is a causal relationship between the two variables.
-Suggest a variable that might explain the negative relationship.<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>
+Suggest a variable that might explain the negative relationship.<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a>
 </div>
 
 <div class="guidedpractice">
-Houndstongue (a noxious weed) is found in abundance on private and public lands that have been grazed by cattle. Houndstongue is rarely found on lands that have been grazed by mountain goats. One investigator concluded that houndstongue infestations could be reduced by importing mountain goats to the infested areas. What is wrong with this conclusion?<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a>
+Houndstongue (a noxious weed) is found in abundance on private and public lands that have been grazed by cattle. Houndstongue is rarely found on lands that have been grazed by mountain goats. One investigator concluded that houndstongue infestations could be reduced by importing mountain goats to the infested areas. What is wrong with this conclusion?<a href="#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a>
 </div>
 <p>Observational studies come in two forms: prospective and retrospective studies.
 A <strong>prospective study</strong> identifies individuals and collects information as events unfold.
@@ -1570,7 +1589,7 @@ Randomized experiments are fundamentally important when trying to show a causal 
 <div id="principles-of-experimental-design" class="section level3" number="1.5.1">
 <h3><span class="header-section-number">1.5.1</span> Principles of experimental design</h3>
 <ol style="list-style-type: decimal">
-<li><p><strong>Controlling.</strong> Researchers assign treatments to cases, and they do their best to <strong>control</strong> any other differences in the groups<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a>.<br />
+<li><p><strong>Controlling.</strong> Researchers assign treatments to cases, and they do their best to <strong>control</strong> any other differences in the groups<a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a>.<br />
 For example, when patients take a drug in pill form, some patients take the pill with only a sip of water while others may have it with an entire glass of water.
 To control for the effect of water consumption, a doctor may instruct every patient to drink a 12 ounce glass of water with the pill.</p></li>
 <li><p><strong>Randomization.</strong> Researchers randomize patients into treatment groups to account for variables that cannot be controlled.
@@ -1585,13 +1604,13 @@ Alternatively, a group of scientists may replicate an entire study to verify an 
 <li><strong>Blocking.</strong> Researchers sometimes know or suspect that variables, other than the treatment, influence the response.
 Under these circumstances, they may first group individuals based on this variable into <strong>blocks</strong> and then randomize cases within each block to the treatment groups.
 This strategy is often referred to as <strong>blocking</strong>.
-For instance, if we are looking at the effect of a drug on heart attacks, we might first split patients in the study into low-risk and high-risk blocks, then randomly assign half the patients from each block to the control group and the other half to the treatment group, as shown in Figure <a href="intro-to-data.html#fig:blocking">1.11</a>.
+For instance, if we are looking at the effect of a drug on heart attacks, we might first split patients in the study into low-risk and high-risk blocks, then randomly assign half the patients from each block to the control group and the other half to the treatment group, as shown in Figure <a href="intro-to-data.html#fig:blocking">1.12</a>.
 This strategy ensures each treatment group has an equal number of low-risk and high-risk patients.</li>
 </ol>
 <div class="figure" style="text-align: center"><span id="fig:blocking"></span>
 <img src="01-intro-to-data_files/figure-html/blocking-1.png" alt="Blocking using a variable depicting patient risk. Patients are first divided into low-risk and high-risk blocks, then each block is evenly separated into the treatment groups using randomization. This strategy ensures an equal representation of patients in each treatment group from both the low-risk and high-risk categories." width="70%" />
 <p class="caption">
-Figure 1.11: Blocking using a variable depicting patient risk. Patients are first divided into low-risk and high-risk blocks, then each block is evenly separated into the treatment groups using randomization. This strategy ensures an equal representation of patients in each treatment group from both the low-risk and high-risk categories.
+Figure 1.12: Blocking using a variable depicting patient risk. Patients are first divided into low-risk and high-risk blocks, then each block is evenly separated into the treatment groups using randomization. This strategy ensures an equal representation of patients in each treatment group from both the low-risk and high-risk categories.
 </p>
 </div>
 <p>It is important to incorporate the first three experimental design principles into any study, and this book describes applicable methods for analyzing data from such experiments.
@@ -1604,7 +1623,7 @@ Human studies are perfect examples where bias can unintentionally arise.
 Here we reconsider a study where a new drug was used to treat heart attack patients.
 In particular, researchers wanted to know if the drug reduced deaths in patients.</p>
 <p>These researchers designed a randomized experiment because they wanted to draw causal conclusions about the drug’s effect.
-Study volunteers<a href="#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a> were randomly placed into two study groups.
+Study volunteers<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a> were randomly placed into two study groups.
 One group, the <strong>treatment group</strong>, received the drug.
 The other group, called the <strong>control group</strong>, did not receive any drug treatment.</p>
 <p>Put yourself in the place of a person in the study.
@@ -1622,16 +1641,16 @@ Often times, a placebo results in a slight but real improvement in patients.
 This effect has been dubbed the <strong>placebo effect</strong>.</p>
 <p>The patients are not the only ones who should be blinded: doctors and researchers can accidentally bias a study.
 When a doctor knows a patient has been given the real treatment, they might inadvertently give that patient more attention or care than a patient that they know is on the placebo.
-To guard against this bias, which again has been found to have a measurable effect in some instances, most modern studies employ a <strong>double-blind</strong> setup where doctors or researchers who interact with patients are, just like the patients, unaware of who is or is not receiving the treatment.<a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a></p>
+To guard against this bias, which again has been found to have a measurable effect in some instances, most modern studies employ a <strong>double-blind</strong> setup where doctors or researchers who interact with patients are, just like the patients, unaware of who is or is not receiving the treatment.<a href="#fn19" class="footnote-ref" id="fnref19"><sup>19</sup></a></p>
 
 <div class="guidedpractice">
 Look back to the study in Section <a href="intro-to-data.html#basic-stents-strokes">1.1</a> where researchers were testing whether stents were effective at reducing strokes in at-risk patients.
-Is this an experiment? Was the study blinded? Was it double-blinded?<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a>
+Is this an experiment? Was the study blinded? Was it double-blinded?<a href="#fn20" class="footnote-ref" id="fnref20"><sup>20</sup></a>
 </div>
 
 <div class="guidedpractice">
 For the study in Section <a href="intro-to-data.html#basic-stents-strokes">1.1</a>, could the researchers have employed a placebo?
-If so, what would that placebo have looked like?<a href="#fn19" class="footnote-ref" id="fnref19"><sup>19</sup></a>
+If so, what would that placebo have looked like?<a href="#fn21" class="footnote-ref" id="fnref21"><sup>21</sup></a>
 </div>
 <p>You may have many questions about the ethics of sham surgeries to create a placebo.
 These questions may have even arisen in your mind when in the general experiment context, where a possibly helpful treatment was withheld from individuals in the control group; the main difference is that a sham surgery tends to create additional risk, while withholding a treatment only maintains a person’s risk.</p>
@@ -1649,11 +1668,11 @@ we are asking two questions:</p>
 <li><strong>Generalizability</strong>: To which population can we <em>generalize</em> these results?</li>
 <li><strong>Causation</strong>: Do these results provide evidence for a <em>causal</em> relationship?</li>
 </ol>
-<p>The answer to the first question is determined by the <em>sampling method</em>—if we selected our sample randomly, and there are no other sources of sampling bias, then we can reasonably generalize to the population from which the sample was taken. The answer to the second question is determined by the <em>type of study</em>—if the study is a randomized experiment, then it can investigate whether changes in the explanatory variable caused changes in the response variable; in an observational study, one can only investigate associations between the variables. We summarize how to determine a study’s scope of inference in Figure <a href="intro-to-data.html#fig:ScopeOfInference">1.12</a>.</p>
+<p>The answer to the first question is determined by the <em>sampling method</em>—if we selected our sample randomly, and there are no other sources of sampling bias, then we can reasonably generalize to the population from which the sample was taken. The answer to the second question is determined by the <em>type of study</em>—if the study is a randomized experiment, then it can investigate whether changes in the explanatory variable caused changes in the response variable; in an observational study, one can only investigate associations between the variables. We summarize how to determine a study’s scope of inference in Figure <a href="intro-to-data.html#fig:ScopeOfInference">1.13</a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:ScopeOfInference"></span>
 <img src="01/figures/ScopeOfInference/ScopeOfInference.png" alt="Determining scope of inference of a study." width="100%" />
 <p class="caption">
-Figure 1.12: Determining scope of inference of a study.
+Figure 1.13: Determining scope of inference of a study.
 </p>
 </div>
 </div>
@@ -2001,52 +2020,10 @@ However you should be able to easily spot them as <strong>bolded text</strong>.<
 anecdotal evidence
 </td>
 <td style="text-align:left;">
-convenience sample
-</td>
-<td style="text-align:left;">
-non-response rate
-</td>
-<td style="text-align:left;">
-response bias
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-associated
-</td>
-<td style="text-align:left;">
 data
 </td>
 <td style="text-align:left;">
-observational data
-</td>
-<td style="text-align:left;">
-response variable
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-barplot
-</td>
-<td style="text-align:left;">
-data frame
-</td>
-<td style="text-align:left;">
 observational study
-</td>
-<td style="text-align:left;">
-retrospective study
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-blind
-</td>
-<td style="text-align:left;">
-dependent
-</td>
-<td style="text-align:left;">
-observational unit
 </td>
 <td style="text-align:left;">
 sample
@@ -2054,13 +2031,13 @@ sample
 </tr>
 <tr>
 <td style="text-align:left;">
-blocking
+associated
 </td>
 <td style="text-align:left;">
-discrete
+data frame
 </td>
 <td style="text-align:left;">
-ordinal
+observational unit
 </td>
 <td style="text-align:left;">
 sample bias
@@ -2068,13 +2045,13 @@ sample bias
 </tr>
 <tr>
 <td style="text-align:left;">
-case
+barplot
 </td>
 <td style="text-align:left;">
-double-blind
+dependent
 </td>
 <td style="text-align:left;">
-placebo
+ordinal
 </td>
 <td style="text-align:left;">
 sampling bias
@@ -2082,13 +2059,13 @@ sampling bias
 </tr>
 <tr>
 <td style="text-align:left;">
-categorical
+blind
 </td>
 <td style="text-align:left;">
-experiment
+discrete
 </td>
 <td style="text-align:left;">
-placebo effect
+placebo
 </td>
 <td style="text-align:left;">
 selection bias
@@ -2096,13 +2073,13 @@ selection bias
 </tr>
 <tr>
 <td style="text-align:left;">
-cluster
+blocking
 </td>
 <td style="text-align:left;">
-explanatory variable
+double-blind
 </td>
 <td style="text-align:left;">
-population
+placebo effect
 </td>
 <td style="text-align:left;">
 simple random sample
@@ -2110,13 +2087,13 @@ simple random sample
 </tr>
 <tr>
 <td style="text-align:left;">
-cluster sampling
+case
 </td>
 <td style="text-align:left;">
-independent
+experiment
 </td>
 <td style="text-align:left;">
-positive association
+population
 </td>
 <td style="text-align:left;">
 simple random sampling
@@ -2124,10 +2101,24 @@ simple random sampling
 </tr>
 <tr>
 <td style="text-align:left;">
-cohort
+categorical
 </td>
 <td style="text-align:left;">
-level
+explanatory variable
+</td>
+<td style="text-align:left;">
+positive association
+</td>
+<td style="text-align:left;">
+statistical investigation process
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cluster
+</td>
+<td style="text-align:left;">
+independent
 </td>
 <td style="text-align:left;">
 prospective study
@@ -2138,10 +2129,10 @@ strata
 </tr>
 <tr>
 <td style="text-align:left;">
-confounding variable
+cluster sampling
 </td>
 <td style="text-align:left;">
-multistage sample
+level
 </td>
 <td style="text-align:left;">
 quantitative
@@ -2152,10 +2143,10 @@ stratified sampling
 </tr>
 <tr>
 <td style="text-align:left;">
-continuous
+cohort
 </td>
 <td style="text-align:left;">
-negative association
+multistage sample
 </td>
 <td style="text-align:left;">
 randomized experiment
@@ -2166,10 +2157,10 @@ summary statistic
 </tr>
 <tr>
 <td style="text-align:left;">
-control
+confounding variable
 </td>
 <td style="text-align:left;">
-nominal
+negative association
 </td>
 <td style="text-align:left;">
 replicate
@@ -2180,16 +2171,55 @@ treatment group
 </tr>
 <tr>
 <td style="text-align:left;">
-control group
+continuous
 </td>
 <td style="text-align:left;">
-non-response bias
+nominal
 </td>
 <td style="text-align:left;">
 representative
 </td>
 <td style="text-align:left;">
 variable
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:left;">
+non-response bias
+</td>
+<td style="text-align:left;">
+response bias
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+control group
+</td>
+<td style="text-align:left;">
+non-response rate
+</td>
+<td style="text-align:left;">
+response variable
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+convenience sample
+</td>
+<td style="text-align:left;">
+observational data
+</td>
+<td style="text-align:left;">
+retrospective study
+</td>
+<td style="text-align:left;">
 </td>
 </tr>
 </tbody>
@@ -2203,6 +2233,12 @@ variable
 <div id="ref-chimowitz2011stenting">
 <p>Chimowitz, Marc I, Michael J Lynn, Colin P Derdeyn, Tanya N Turan, David Fiorella, Bethany F Lane, L Scott Janis, et al. 2011. “Stenting Versus Aggressive Medical Therapy for Intracranial Arterial Stenosis.” <em>New England Journal of Medicine</em> 365 (11): 993–1003. <a href="http://www.nejm.org/doi/full/10.1056/NEJMoa1105335">http://www.nejm.org/doi/full/10.1056/NEJMoa1105335</a>.</p>
 </div>
+<div id="ref-ISI2016">
+<p>Tintle, Nathan L, Beth L Chance, George W Cobb, Allan J Rossman, Soma Roy, Todd M Swanson, and Jill L VanderStoep. 2016. <em>Introduction to Statistical Investigations</em>. 1st ed. Wiley.</p>
+</div>
+<div id="ref-R4DS">
+<p>Wickham, Hadley, and Garrett Grolemund. 2017. <em>R for Data Science</em>. O’Reilly Media.</p>
+</div>
 <div id="ref-Wickham2014">
 <p>Wickham, Hadley, and others. 2014. “Tidy Data.” <em>Journal of Statistical Software</em> 59 (10): 1–23.</p>
 </div>
@@ -2210,26 +2246,28 @@ variable
 <div class="footnotes">
 <hr />
 <ol start="1">
-<li id="fn1"><p>The proportion of the 224 patients who had a stroke within 365 days: <span class="math inline">\(45/224 = 0.20\)</span>.<a href="intro-to-data.html#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>The loan’s grade is B, and the borrower rents their residence.<a href="intro-to-data.html#fnref2" class="footnote-back">↩︎</a></p></li>
-<li id="fn3"><p>There are multiple strategies that can be followed. One common strategy is to have each student represented by a row, and then add a column for each assignment, quiz, or exam. Under this setup, it is easy to review a single line to understand the grade history of a student. There should also be columns to include student information, such as one column to list student names.<a href="intro-to-data.html#fnref3" class="footnote-back">↩︎</a></p></li>
-<li id="fn4"><p>Each county may be viewed as a case, and there are eleven pieces of information recorded for each case. A table with 3,142 rows and 14 columns could hold these data, where each row represents a county and each column represents a particular piece of information.<a href="intro-to-data.html#fnref4" class="footnote-back">↩︎</a></p></li>
-<li id="fn5"><p>The <code>group</code> variable can take just one of two group names, making it categorical. The <code>num_migraines</code> variable describes a count of the number of migraines, which is an outcome where basic arithmetic is sensible, which means this is numerical outcome; more specifically, since it represents a count, <code>num_migraines</code> is a discrete quantitative variable.<a href="intro-to-data.html#fnref5" class="footnote-back">↩︎</a></p></li>
-<li id="fn6"><p>Two example questions: (1) What is the relationship between loan amount and total income? (2) If someone’s income is above the average, will their interest rate tend to be above or below the average?<a href="intro-to-data.html#fnref6" class="footnote-back">↩︎</a></p></li>
-<li id="fn7"><p>Sometimes the explanatory variable is called the <strong>independent</strong> variable and the response variable is called the <strong>dependent</strong> variable. However, this becomes confusing since a <em>pair</em> of variables might be independent or dependent, so we avoid this language.<a href="intro-to-data.html#fnref7" class="footnote-back">↩︎</a></p></li>
-<li id="fn8"><p>The question <em>“Over the last 5 years, what is the average time to complete a degree for Duke undergrads?”</em> is only relevant to students who complete their degree; the average cannot be computed using a student who never finished her degree. Thus, only Duke undergrads who graduated in the last five years represent cases in the population under consideration. Each such student is an individual case. For the question <em>“Does a new drug reduce the number of deaths in patients with severe heart disease?”</em>, a person with severe heart disease represents a case. The population includes all people with severe heart disease.<a href="intro-to-data.html#fnref8" class="footnote-back">↩︎</a></p></li>
-<li id="fn9"><p>A convenience sample is an example of selection bias, because the
-way in which the sample is <em>selected</em> is biased.<a href="intro-to-data.html#fnref9" class="footnote-back">↩︎</a></p></li>
-<li id="fn10"><p>Answers will vary. From our own anecdotal experiences, we believe people tend to rant more about products that fell below expectations than rave about those that perform as expected. For this reason, we suspect there is a negative bias in product ratings on sites like Amazon. Additionally, those with strong opinions (positive or negative) are more inclined to take the time to write a review. However, since our experiences may not be representative, we also keep an open mind.<a href="intro-to-data.html#fnref10" class="footnote-back">↩︎</a></p></li>
-<li id="fn11"><p>No! See the paragraph following this guided practice for an explanation.<a href="intro-to-data.html#fnref11" class="footnote-back">↩︎</a></p></li>
-<li id="fn12"><p>Also called a <strong>lurking variable</strong>, <strong>confounding factor</strong>, or a <strong>confounder</strong>.<a href="intro-to-data.html#fnref12" class="footnote-back">↩︎</a></p></li>
-<li id="fn13"><p>Answers will vary. Population density may be important. If a county is very dense, then this may require a larger fraction of residents to live in multi-unit structures. Additionally, the high density may contribute to increases in property value, making homeownership infeasible for many residents.<a href="intro-to-data.html#fnref13" class="footnote-back">↩︎</a></p></li>
-<li id="fn14"><p>Just because mountain goat grazing is associated with an absence of houndstongue doesn’t mean the mountain goats are the cause behind the houndstongue reduction! One obvious confounding variable is elevation—elevation is associated with the presence/absence of houndstongue (houndstongue tends to grow at lower elevation) and is also associated with the presence/absence of mountain goats (mountain goats prefer higher elevations).<a href="intro-to-data.html#fnref14" class="footnote-back">↩︎</a></p></li>
-<li id="fn15"><p>This is a different concept than a <em>control group</em>, which we discuss in the second principle and in Section <a href="intro-to-data.html#reducing-bias-human-experiments">1.5.2</a>.<a href="intro-to-data.html#fnref15" class="footnote-back">↩︎</a></p></li>
-<li id="fn16"><p>Human subjects are often called <strong>patients</strong>, <strong>volunteers</strong>, or <strong>study participants</strong>.<a href="intro-to-data.html#fnref16" class="footnote-back">↩︎</a></p></li>
-<li id="fn17"><p>There are always some researchers involved in the study who do know which patients are receiving which treatment. However, they do not interact with the study’s patients and do not tell the blinded health care professionals who is receiving which treatment.<a href="intro-to-data.html#fnref17" class="footnote-back">↩︎</a></p></li>
-<li id="fn18"><p>The researchers assigned the patients into their treatment groups, so this study was an experiment. However, the patients could distinguish what treatment they received, so this study was not blind. The study could not be double-blind since it was not blind.<a href="intro-to-data.html#fnref18" class="footnote-back">↩︎</a></p></li>
-<li id="fn19"><p>Ultimately, can we make patients think they got treated from a surgery? In fact, we can, and some experiments use a <strong>sham surgery</strong>. In a sham surgery, the patient does undergo surgery, but the patient does not receive the full treatment, though they will still get a placebo effect.<a href="intro-to-data.html#fnref19" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p><a href="https://www.census.gov/history/www/through_the_decades/overview/1790.html" class="uri">https://www.census.gov/history/www/through_the_decades/overview/1790.html</a><a href="intro-to-data.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Data used in this context are called “found data.”<a href="intro-to-data.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>The proportion of the 224 patients who had a stroke within 365 days: <span class="math inline">\(45/224 = 0.20\)</span>.<a href="intro-to-data.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>The loan’s grade is B, and the borrower rents their residence.<a href="intro-to-data.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>There are multiple strategies that can be followed. One common strategy is to have each student represented by a row, and then add a column for each assignment, quiz, or exam. Under this setup, it is easy to review a single line to understand the grade history of a student. There should also be columns to include student information, such as one column to list student names.<a href="intro-to-data.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>Each county may be viewed as a case, and there are eleven pieces of information recorded for each case. A table with 3,142 rows and 14 columns could hold these data, where each row represents a county and each column represents a particular piece of information.<a href="intro-to-data.html#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p>The <code>group</code> variable can take just one of two group names, making it categorical. The <code>num_migraines</code> variable describes a count of the number of migraines, which is an outcome where basic arithmetic is sensible, which means this is numerical outcome; more specifically, since it represents a count, <code>num_migraines</code> is a discrete quantitative variable.<a href="intro-to-data.html#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p>Two example questions: (1) What is the relationship between loan amount and total income? (2) If someone’s income is above the average, will their interest rate tend to be above or below the average?<a href="intro-to-data.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p>Sometimes the explanatory variable is called the <strong>independent</strong> variable and the response variable is called the <strong>dependent</strong> variable. However, this becomes confusing since a <em>pair</em> of variables might be independent or dependent, so we avoid this language.<a href="intro-to-data.html#fnref9" class="footnote-back">↩︎</a></p></li>
+<li id="fn10"><p>The question <em>“Over the last 5 years, what is the average time to complete a degree for Duke undergrads?”</em> is only relevant to students who complete their degree; the average cannot be computed using a student who never finished her degree. Thus, only Duke undergrads who graduated in the last five years represent cases in the population under consideration. Each such student is an individual case. For the question <em>“Does a new drug reduce the number of deaths in patients with severe heart disease?”</em>, a person with severe heart disease represents a case. The population includes all people with severe heart disease.<a href="intro-to-data.html#fnref10" class="footnote-back">↩︎</a></p></li>
+<li id="fn11"><p>A convenience sample is an example of selection bias, because the
+way in which the sample is <em>selected</em> is biased.<a href="intro-to-data.html#fnref11" class="footnote-back">↩︎</a></p></li>
+<li id="fn12"><p>Answers will vary. From our own anecdotal experiences, we believe people tend to rant more about products that fell below expectations than rave about those that perform as expected. For this reason, we suspect there is a negative bias in product ratings on sites like Amazon. Additionally, those with strong opinions (positive or negative) are more inclined to take the time to write a review. However, since our experiences may not be representative, we also keep an open mind.<a href="intro-to-data.html#fnref12" class="footnote-back">↩︎</a></p></li>
+<li id="fn13"><p>No! See the paragraph following this guided practice for an explanation.<a href="intro-to-data.html#fnref13" class="footnote-back">↩︎</a></p></li>
+<li id="fn14"><p>Also called a <strong>lurking variable</strong>, <strong>confounding factor</strong>, or a <strong>confounder</strong>.<a href="intro-to-data.html#fnref14" class="footnote-back">↩︎</a></p></li>
+<li id="fn15"><p>Answers will vary. Population density may be important. If a county is very dense, then this may require a larger fraction of residents to live in multi-unit structures. Additionally, the high density may contribute to increases in property value, making homeownership infeasible for many residents.<a href="intro-to-data.html#fnref15" class="footnote-back">↩︎</a></p></li>
+<li id="fn16"><p>Just because mountain goat grazing is associated with an absence of houndstongue doesn’t mean the mountain goats are the cause behind the houndstongue reduction! One obvious confounding variable is elevation—elevation is associated with the presence/absence of houndstongue (houndstongue tends to grow at lower elevation) and is also associated with the presence/absence of mountain goats (mountain goats prefer higher elevations).<a href="intro-to-data.html#fnref16" class="footnote-back">↩︎</a></p></li>
+<li id="fn17"><p>This is a different concept than a <em>control group</em>, which we discuss in the second principle and in Section <a href="intro-to-data.html#reducing-bias-human-experiments">1.5.2</a>.<a href="intro-to-data.html#fnref17" class="footnote-back">↩︎</a></p></li>
+<li id="fn18"><p>Human subjects are often called <strong>patients</strong>, <strong>volunteers</strong>, or <strong>study participants</strong>.<a href="intro-to-data.html#fnref18" class="footnote-back">↩︎</a></p></li>
+<li id="fn19"><p>There are always some researchers involved in the study who do know which patients are receiving which treatment. However, they do not interact with the study’s patients and do not tell the blinded health care professionals who is receiving which treatment.<a href="intro-to-data.html#fnref19" class="footnote-back">↩︎</a></p></li>
+<li id="fn20"><p>The researchers assigned the patients into their treatment groups, so this study was an experiment. However, the patients could distinguish what treatment they received, so this study was not blind. The study could not be double-blind since it was not blind.<a href="intro-to-data.html#fnref20" class="footnote-back">↩︎</a></p></li>
+<li id="fn21"><p>Ultimately, can we make patients think they got treated from a surgery? In fact, we can, and some experiments use a <strong>sham surgery</strong>. In a sham surgery, the patient does undergo surgery, but the patient does not receive the full treatment, though they will still get a placebo effect.<a href="intro-to-data.html#fnref21" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
