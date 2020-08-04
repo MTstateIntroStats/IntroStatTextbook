@@ -105,7 +105,7 @@ When testing data we must first identify the null hypothesis.  The null hypothes
 
 \vspace{1in}
 
-The notation used for a categorical parameter is, $p$.  When writing the null hypothesis in notation we set the parameter equal to the null value, $H_0: p = p_0$
+The notation used for a categorical parameter is, $\pi$.  When writing the null hypothesis in notation we set the parameter equal to the null value, $H_0: \pi = \pi_0$
 
 7. Write the null hypothesis in notation using the null value of 0.1.
 
@@ -133,7 +133,7 @@ Remember that when utilizing a hypothesis test, we are evaluating two competing 
 
   * The true proportion of male boxers who are left handed is 0.1 and our results just occurred by random chance or
   
-  * The true proportion of male boxers who are left handed is greater than 0.1 and our results give evidence against the null hypothesis
+  * The true proportion of male boxers who are left handed is greater than 0.1 and our results reflect this
   
 Notice that these two competing possibilities represent the null and alternative hypotheses.
   
@@ -188,11 +188,20 @@ This plausible range of values for the population parameter is called a confiden
 
 To calculate a 95% confidence interval, we will build the interval around the point estimate.  
 
-**Add conditions?**
-
-$\hat{p}\pm SE(\hat{p})$ where $SE(\hat{p}) = \sqrt\frac{p(1-p)}{n}$
+$\hat{p}\pm SE(\hat{p})$ where $SE(\hat{p}) = \sqrt\frac{\pi(1-\pi)}{n}$
 
 The standard error of $\hat{p}$ measures the uncertainity or variability associated with the point estimate.
+
+When using a normal distribution to model the variability of a statistic we need to be sure certain conditions are not violated.
+
+The sampling distribution for $\hat{p}$ based on a sample of size n from a population with a true proportion, $\pi$ is nearly normal when:
+
+1. The sample's observations are independent, e.g. are from a simple random sample.
+
+2. We expected to see at least 10 successes and 10 failures in the sample, i.e. $n\pi \ge 10$ and $n(1-\pi) \ge 10$.  This is called the success/failure condition.
+
+19. Using the sample proportion, $\hat{p}$, as a substitute for $\pi$
+
      
 19.  Calculate the $SE(\hat{p})$.  
 
@@ -209,8 +218,9 @@ The standard error of $\hat{p}$ measures the uncertainity or variability associa
 
 When we write a conclusion we answer the research question by stating how much evidence there is for the alternative hypothesis.
 
-**Conclusion as evidence against the null and statement amount alternative??? similar to 217**
+22.  Write a conclusion to this test based on the p-value and confidence interval found.
 
+\vspace{1in}
 
 
 
