@@ -4,7 +4,12 @@
 from sample to sample?
 While the equations and details change depending on the setting, the foundations for inference are the same throughout all of statistics. We will begin this chapter with a discussion of the foundations of inference, and introduce the two primary vehicles of inference: the **hypothesis test** and **confidence interval**.
 
-Te rest of this chapter focuses statistical inference for categorical data. The two data structures we detail are one binary variable, summarized using a single proportion, and two binary variables, summarized using a difference (or ratio) of two proportions.</div>\EndKnitrBlock{chapterintro}
+The rest of this chapter focuses statistical inference for categorical data. The two data structures we detail are:
+
+* one binary variable, summarized using a single proportion, and 
+* two binary variables, summarized using a difference (or ratio) of two proportions.
+
+We will also introduce a new important mathematical model, the **normal distribution** (as the foundation for the $z$-test).</div>\EndKnitrBlock{chapterintro}
 
 
 

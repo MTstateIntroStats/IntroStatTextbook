@@ -15,7 +15,7 @@ Though we were calculating probabilities in the 16th century, and the first US C
 1. Ask a research question.
 2. Design a study and collect data.
 3. Summarize and visualize the data.
-4. Use statistical inferential methods to draw inferences from the data.
+4. Use statistical analysis methods to draw inferences from the data.
 5. Communicate the results and answer the research question.
 6. Revisit and look forward.
 
