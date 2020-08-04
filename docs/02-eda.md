@@ -245,7 +245,7 @@ To compute the mean interest rate of the 50 loans above, we add up all the inter
 The sample mean is often labeled $\bar{x}$.
 The letter $x$ is being used as a generic placeholder for the variable and the bar over the $x$ communicates we're looking at the average of that variable. In our example $x$ would represent interest rate, and $\bar{x}$ = 11.57%.
 It is useful to think of the mean as the balancing point of the distribution^[For
-more practice with this concept of the mean as a balancing point, see this [Khan Academy article](https://www.khanacademy.org/math/ap-statistics/summarizing-quantitative-data-ap/mean-median-more/a/mean-as-the-balancing-point)], and it's shown as a triangle in Figure \@ref(fig:loan-int-rate-dotplot).
+more practice with this concept of the mean as a balancing point, see this [Khan Academy article](https://www.khanacademy.org/math/ap-statistics/summarizing-quantitative-data-ap/mean-median-more/a/mean-as-the-balancing-point).], and it's shown as a triangle in Figure \@ref(fig:loan-int-rate-dotplot).
 
 \BeginKnitrBlock{onebox}<div class="onebox">**Mean.**
 The sample mean can be calculated as the sum of the observed values divided by the number of observations:
@@ -880,4 +880,73 @@ If you're not sure what some of these terms mean, we recommend you go back in th
 We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. 
 However you should be able to easily spot them as **bolded text**.
 
-
+<table>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> average </td>
+   <td style="text-align:left;"> first quartile </td>
+   <td style="text-align:left;"> outlier </td>
+   <td style="text-align:left;"> strength </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> bimodal </td>
+   <td style="text-align:left;"> form </td>
+   <td style="text-align:left;"> outliers </td>
+   <td style="text-align:left;"> symmetric </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> box plot </td>
+   <td style="text-align:left;"> frequency </td>
+   <td style="text-align:left;"> parameter </td>
+   <td style="text-align:left;"> tail </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> column totals </td>
+   <td style="text-align:left;"> histogram </td>
+   <td style="text-align:left;"> point estimate </td>
+   <td style="text-align:left;"> third quartile </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> contingency table </td>
+   <td style="text-align:left;"> intensity map </td>
+   <td style="text-align:left;"> relative frequency </td>
+   <td style="text-align:left;"> transformation </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> data density </td>
+   <td style="text-align:left;"> interquartile range </td>
+   <td style="text-align:left;"> right skewed </td>
+   <td style="text-align:left;"> two-way table </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> density plot </td>
+   <td style="text-align:left;"> IQR </td>
+   <td style="text-align:left;"> robust statistics </td>
+   <td style="text-align:left;"> unimodal </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> deviation </td>
+   <td style="text-align:left;"> left skewed </td>
+   <td style="text-align:left;"> row totals </td>
+   <td style="text-align:left;"> variability </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> direction </td>
+   <td style="text-align:left;"> mean </td>
+   <td style="text-align:left;"> scatterplot </td>
+   <td style="text-align:left;"> variance </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> distribution </td>
+   <td style="text-align:left;"> median </td>
+   <td style="text-align:left;"> standard deviation </td>
+   <td style="text-align:left;"> weighted mean </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> dot plot </td>
+   <td style="text-align:left;"> multimodal </td>
+   <td style="text-align:left;"> statistic </td>
+   <td style="text-align:left;"> whiskers </td>
+  </tr>
+</tbody>
+</table>

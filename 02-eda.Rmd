@@ -245,7 +245,7 @@ loan50_mean_intrest_rate <- mean(loan50$interest_rate)
 The sample mean is often labeled $\bar{x}$.
 The letter $x$ is being used as a generic placeholder for the variable and the bar over the $x$ communicates we're looking at the average of that variable. In our example $x$ would represent interest rate, and $\bar{x}$ = `r round(loan50_mean_intrest_rate, 2)`%.
 It is useful to think of the mean as the balancing point of the distribution^[For
-more practice with this concept of the mean as a balancing point, see this [Khan Academy article](https://www.khanacademy.org/math/ap-statistics/summarizing-quantitative-data-ap/mean-median-more/a/mean-as-the-balancing-point)], and it's shown as a triangle in Figure \@ref(fig:loan-int-rate-dotplot).
+more practice with this concept of the mean as a balancing point, see this [Khan Academy article](https://www.khanacademy.org/math/ap-statistics/summarizing-quantitative-data-ap/mean-median-more/a/mean-as-the-balancing-point).], and it's shown as a triangle in Figure \@ref(fig:loan-int-rate-dotplot).
 
 ```{block2, type="onebox", echo=TRUE}
 **Mean.**
@@ -1183,6 +1183,6 @@ If you're not sure what some of these terms mean, we recommend you go back in th
 We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. 
 However you should be able to easily spot them as **bolded text**.
 
-```{r eval = FALSE}
+```{r}
 make_terms_table(terms_chp_2)
 ```
