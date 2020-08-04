@@ -27,17 +27,19 @@ library(ggplot2)
 
 * Use a confidence interval to determine the conclusion of a hypothesis test
 
-We will work through a five step process to complete a hypothesis test for a single proportion.
+We will work through a six step process to complete a hypothesis test for a single proportion.
 
-* Frame the research question in terms of hypotheses. Hypothesis tests are appropriate for research questions that can be summarized in two competing hypotheses. The null hypothesis ($H_0$) usually represents a skeptical perspective or a perspective of no difference. The alternative hypothesis ($H_A$)usually represents a new view or a difference.
+* Ask a research question. 
 
-* Collect data with an observational study or experiment. If a research question can be formed into two hypotheses, we can collect data to run a hypothesis test. If the research question focuses on associations between variables but does not concern causation, we would run an observational study. If the research question seeks a causal connection between two or more variables, then an experiment should be used.
+* Design a study and collect data. 
 
-* Model the randomness as if the null hypothesis was true. We will use a computer to generate the null distribution from many different randomizations in order to quantify the null variability.
+* Summarize and Visualize the data.
 
-* Analyze the data. Choose an analysis technique appropriate for the data and identify the p-value. In this study, we will focus on using randomization.
+* Use statistical analysis methods to draw inferences from the data. Choose an analysis technique appropriate for the data and identify the p-value. In this study, we will focus on using randomization.
 
-* Form a conclusion. Using the p-value from the analysis, determine whether the data provide statistically significant evidence against the null hypothesis. Also, be sure to write the conclusion in plain language so casual readers can understand the results.
+* Communicate the results and answer the research question. Using the p-value and confidence interval from the analysis, determine whether the data provide statistical evidence against the null hypothesis. 
+
+* Revisit and look forward. 
 
 Left-handedness is a trait that is found in about 10% of the population. The fighting hypothesis states that left-handed men have an advantage in competition.  Past studies have shown that left-handed men are overrepresented among professional fighters. In this sample of 500 male boxers we will see if there is an overprevalence of left-handed fighters.
 

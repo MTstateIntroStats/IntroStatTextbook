@@ -30,6 +30,12 @@ library(yarrr)
 ## Background
 In “Helmet Use and Risk of Head Injuries in Alpine Skiers and Snowboarders” by Sullheim et. al., Journal of the American Medical Association, Vol. 295, No. 8, we can see the results from a random sample 3562 skiers and snowboarders involved in accidents. 
 
+|                            |     Head Injury    |     No Head Injury    |     Total    |
+|----------------------------|--------------------|-----------------------|--------------|
+|     Wore Helmet            |     96             |     656               |     752      |
+|     Did Not Wear Helmet    |     480            |     2330              |     2810     |
+|     Total                  |     576            |     2986              |     3562     |
+
 Is there evidence that saftey helmet use reduces the risk of head injury for skiiers and snowboarders? 
 
 ## Vocabulary Review
@@ -66,31 +72,16 @@ injury$Helmet <- factor(injury$Helmet)
 injury$Injury <- factor(injury$Injury)
 ```
 
-# Observed Data
-
-```{r}
-plot(Injury~Helmet 
-     , data = injury, main="####" #Make sure to title your graph
-     )
-```
  
-7.  Fill in the #### with the appropriate variables to plot a segmented bar plot of injury by helmet use.
-
-\vspace{1in}
-
-8.  Based on the bar plot, Does there appear to be an association between helmet use and head injury?  Explain.
-
-\vspace{1in}
-
-# Creating the Null Distribution
+## Ask a Research Question
 
 In this study we are looking at the relationship between two groups or two parameters ($\pi_1$ and $\pi_2$).  Remember we define the parameter as the true proportion of observational units that represent the variable of interest.  
 
-9. What is the variable of interest in this study?
+7. What is the variable of interest in this study?
 
-\vspace{in}
+\vspace{0.5in}
 
-10. Write the two parameters of interest for this study.
+8. Write the two parameters of interest for this study.
 
 $\pi_1$ - 
 
@@ -102,17 +93,33 @@ $\pi_2$ -
 
 When comparing two groups, we assume the two parameters are equal in the null hypothesis.  There is no association between the variables.
 
-11.  Write the null hypothesis out in words using your answers to question 10.
+9.  Write the null hypothesis out in words using your answers to question 8.
 
 \vspace{1in}
 
-12.  What is the research question?
+10.  What is the research question?
 
 \vspace{1in}
 
-13. Based on the research question fill in the appropriate sign for the alternative hypothesis:
+11. Based on the research question fill in the appropriate sign for the alternative hypothesis:
 
-Ha: $\pi_1$       $\pi_2$
+Ha: $\pi_1$         $\pi_2$
+
+## Summarize and Visualize the data
+
+```{r}
+plot(Injury~Helmet 
+     , data = injury, main="####" #Make sure to title your graph
+     )
+```
+
+12.  Fill in the #### with the appropriate variables to plot a segmented bar plot of injury by helmet use.
+
+\vspace{1in}
+
+13.  Based on the bar plot, Does there appear to be an association between helmet use and head injury?  Explain.
+
+\vspace{1in}
 
 14.  Calculate the point estimate for this study.  We will use helmet use minus no helmet use as the order of subtraction.
 
@@ -122,33 +129,95 @@ Ha: $\pi_1$       $\pi_2$
 15. What is the notation used for the value calculated in question 14?
 
 
-Before looking at the simulation, where do you expect the null distribution to be centered?  Explain your reasoning.
+\vspace{0.5in}
+
+To test the null hypothesis we could use simulation methods as we did with a single categorical variable. In this activity we will focus on theory-based methods.  Like with a single proportion, the difference in proportions can be mathematically modeled using the normal distribution if certain conditions are met.
+
+Conditions for the sample distribution of $\hat{p_1}-\hat{p_2}$
+
+  1. *Independence*  The data are independent within and between the two groups.
+
+  2. *Success-Failure Condition* The success-failure condition holds for each group.
+
+
+
+16.  Is the independence condition met? Explain your answer.
 
 \vspace{1in}
 
-**simulation**
-
-16.  Circle the area on the above simulation that you will look to find the p-value. Are you counting observations above or below the point estimate?
+17. Is the success-failure condition met for each group?  Explain your answer.
 
 \vspace{1in}
 
-17. Report the p-value from the simulation.  How much evidence does this provide against the null hypothesis?
+To calculate the test statistic we use,
+
+  $z = \frac{point \space estimate \space - \space null \space value}{SE}$
+
+  where the standard error is calculated using the pooled proportion of successes.
+
+  $SE(\hat{p_1}-\hat{p_2})=\sqrt(\frac{\hat{p}_{pool}(1-\hat{p}_{pool})}{n_1-1}+\frac{\hat{p}_{pool}(1-\hat{p}_{pool})}{{n_2-1}})$
+
+  where $\hat{p}_{pool} = \frac{number \space of \space "successes"}{number \space of \space cases} = \frac{\hat{p_1}n_1+\hat{p_2}n_1}{n_1+n_2}$
+
+18. Calculate the $SE(\hat{p_1}-\hat{p_2})$.
 
 \vspace{1in}
 
-**r code to find multiplier**
-
-18. Using the multiplier found above calculate the 95% confidence interval for the difference in true proportion of head injuries for those that used helmets minus those who did not.
+19. Calculate the test statistic.
 
 \vspace{1in}
 
-19. Interpret the confidence interval found in question 18 in context of the problem.
+**Not sure how you want to use R to find the p-value**
+
+20.  How much evidence does the p-value provide against the null hypothesis?
+
+\vspace{0.5in}
+
+To find a confidence interval for the difference in proportions we will add and subtract the margin of error from the point estimate to find the two endpoints.
+
+   $\hat{p_1}-\hat{p_2}\pm SE(\hat{p_1}-\hat{p_2})$
+ 
+   where, $SE(\hat{p_1}-\hat{p_2}) = \sqrt(\frac{\hat{p_1}(1-\hat{p_1})}{n_1-1}+\frac{\hat{p_2}(1-\hat{p_2}}{n_2-1})$
+ 
+Note the formula changes When calculating the variability around the statistic in order to calculate a confidence interval.  Here use the sample proportions for each group to calculate the standard error for the difference in proportions.  
+
+21. Calculate the standard error for a difference in proportions to create a 95% confidence interval.  
 
 \vspace{1in}
 
-20. Write a conclusion to the research question.
+22. Using the multiplier of 1.96 calculate the 95% confidence interval for the difference in true proportion of head injuries for those that used helmets minus those who did not.
+
+\vspace{1in}
+
+23. Interpret the confidence interval found in question 22 in context of the problem.
+
+\vspace{1in}
+
+24. Write a conclusion to the research question.
 
 \vspace{1in}
 
 
+## Types of Errors
+
+Hypothesis tests are not flawless. In a hypothesis test, there are two competing hypotheses: the null and alternative. We make a decision about which might be true, but we may choose incorrectly.  
+
+|       |            | Test Conclusion |                |
+|:-----:|:----------:|-----------------|----------------|
+| Truth | $H_0$ true |  good decision  |  Type 1 Error  |
+|       | $H_A$ true |  Type 2 Error   |  good decision |
+
+A Type 1 Error is rejecting the null hypothesis when $H_0$is actually true. A Type 2 Error is failing to reject the null hypothesis when the alternative is actually true.
+
+25.  Using a significance level of 0.05, what decision do you make in regards to the null hypothesis?
+
+\vspace{0.5in}
+
+26. What type of error could we have made?
+
+\vspace{0.5in}
+
+27.  Write this error in context of the problem.
+
+\vspace{1in}
 

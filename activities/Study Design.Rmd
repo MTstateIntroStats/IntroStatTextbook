@@ -33,27 +33,27 @@ Statistics is the study of how best to collect, analyze, and draw conclusions fr
 
 * Parameter: a number which describes a characteristic of the population. These values are never completely known except for small populations which can be enumerated. We will use:
 
- * $\mu$ pronounced mew) to represent the population mean.
+    * $\mu$ pronounced mew) to represent the population mean.
  
- * $\sigma$ (pronounced sigma) to represent the population's standard deviation (spread).
+    * $\sigma$ (pronounced sigma) to represent the population's standard deviation (spread).
  
- * $p$ (just plain pea) to represent a population proportion.
+    * $\pi$ (pronounced pie) to represent a population proportion.
  
- * $\rho$ (the Greek letter $\rho$ which sounds just like row) for correlation between two quantitative variables in a population.
+    * $\rho$ (the Greek letter $\rho$ which sounds just like row) for correlation between two quantitative variables in a population.
  
- * $\beta_1$ (read it as beta-one) slope of a true linear relationship between two quantitative variables in a population.
+    * $\beta_1$ (read it as beta-one) slope of a true linear relationship between two quantitative variables in a population.
  
 * Statistic: a number which describes a characteristic of the sample and can be computed from the sample. We will use:
 
- * $\bar{x}$ (read it as ex-bar) to represent the sample mean (or average value).
+    * $\bar{x}$ (read it as ex-bar) to represent the sample mean (or average value).
  
- * s to represent the sample's standard deviation (spread).
+    * s to represent the sample's standard deviation (spread).
  
- * $\hat{p}$ (read it as pea-hat) to represent a sample proportion. (We often use a hat to represent a statistic.)
+    * $\hat{p}$ (read it as pea-hat) to represent a sample proportion. (We often use a hat to represent a statistic.)
  
- * r for correlation between two quantitative variables in a sample.
+    * r for correlation between two quantitative variables in a sample.
  
- * $b_1$ for slope of the "best fitting" line between two quantitative variables in a sample.
+    * $b_1$ for slope of the "best fitting" line between two quantitative variables in a sample.
  
 There are two parts to study design: how was the sample selected and how was the study conducted.  First we will look at sampling.
 
@@ -75,6 +75,7 @@ In these next questions, identify the target population, the sample, the variabl
 
 1. Do determine if the proportion of out of state undergraduate students at Montana State University has increased in the last 10 years, a statistics instructor surveyed undergraduate students.  She randomly selected 50 students from each college at the University and asked them their state of residency.
 
+\vspace{0.25in}
 Target population: 
 
 \vspace{0.25in}
@@ -93,6 +94,7 @@ Sampling Method:
 
 2.  PEW Research surveys US adults about many different topics.  Recently a survey was conducted to assess current presidential approval.  A random sample of 6395 US adults was taken.  Of those surveyed, 42% say they agree with President Trump on many or nearly all of the top issues facing the country today.
 
+\vspace{0.25in}
 Target population: 
 
 \vspace{0.25in}
@@ -111,6 +113,7 @@ Sampling Method:
 
 3. A television station is interested in predicting whether or not voters in its listening area are opposed to legalizing marijuana for adult use. It asks its viewers to phone in and indicate whether they are in favor of this or opposed to this. Of the 2241 viewers who phoned in, forty-five percent were opposed to legalizing marijuana.
 
+\vspace{0.25in}
 Target population: 
 
 \vspace{0.25in}
@@ -130,6 +133,7 @@ Sampling Method:
 
 4. To gauge the interest in a new swimming pool, a local organization divided Gallatin County into neighborhood groups of 100 households.  Five neighborhoods were selected and surveys were sent to each household in those areas. 
 
+\vspace{0.25in}
 Target population: 
 
 \vspace{0.25in}
@@ -152,7 +156,7 @@ Sampling Method:
 
 6. The Bozeman school district is interested in surveying parents of students about their opinions on returning to school this fall following the COVID-19 pandemic.  
 
-
+\vspace{0.25in}
 a. What is the target population?
 
 \vspace{0.25in}
