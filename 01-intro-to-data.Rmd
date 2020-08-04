@@ -302,8 +302,8 @@ The `county` data can be found in the [openintro](http://openintrostat.github.io
 
 ### Types of variables {#variable-types}
 
-Examine the `unemployment_rate`, `pop2017`, `state`, and `median_edu` variables in the `county` data set. 
-Each of these variables is inherently different from the other three, yet some share certain characteristics.
+Examine the `unemployment_rate`, `pop2017`, `state`, `metro`, and `median_edu` variables in the `county` data set. 
+Each of these variables is inherently different from the others, yet some share certain characteristics.
 
 First consider `unemployment_rate`, which is said to be a **quantitative** or **numerical** variable since it can take a wide range of numerical values, and it is sensible to add, subtract, or take averages with those values.
 On the other hand, we would not classify a variable reporting telephone area codes as quantitative since the average, sum, and difference of area codes doesn't have any clear meaning.
@@ -322,10 +322,10 @@ terms_chp_1 <- c(terms_chp_1, "discrete", "continuous")
 ```
 
 The variable `state` can take up to 51 values after accounting for Washington, DC: AL, AK, ..., and WY.
-Because the responses themselves are categories, `state` is called a **categorical** variable, and the possible values are called the variable's **levels** .
+Because the responses themselves are categories, `state` is called a **categorical** variable, and the possible values are called the variable's **levels** . The variable `metro` is also categorical, but it only has two levels (yes or no). A categorical variable with only two levels is called a **binary** variable.
 
 ```{r include=FALSE}
-terms_chp_1 <- c(terms_chp_1, "categorical", "level")
+terms_chp_1 <- c(terms_chp_1, "categorical", "level", "binary")
 ```
 
 Finally, consider the `median_edu` variable, which describes the median education level of county residents and takes values `below_hs`, `hs_diploma`, `some_college`, or `bachelors` in each county.

@@ -1,7 +1,7 @@
 # Inference for quantitative data {#inference-num}
 
 ```{block2, chp2-intro, type="chapterintro", echo=TRUE}
-Focusing now on statistical inference for quantitative data, again, we will revisit and expand upon the foundational aspects of hypothesis testing from Section \@ref(inference-foundations).
+Focusing now on statistical inference for quantitative data, again, we will revisit and expand upon the foundational aspects of hypothesis testing from Section \@ref(inf-foundations).
 
 The important data structure for this chapter is a quantitative response variable (that is, the outcome is numerical).
 The three data structures we detail are: 
@@ -10,7 +10,7 @@ The three data structures we detail are:
 * one quantitative response variable which is a difference across a pair of observations, summarized by a paired mean difference, and 
 * a quantitative response variable broken down by a binary explanatory variable, summarized by a difference in means.
 
-When appropriate, each of the data structures will be analyzed using the two methods introduced in Section \@ref(inference-foundations): simulation-based and theory-based.
+When appropriate, each of the data structures will be analyzed using the two methods introduced in Section \@ref(inf-foundations): simulation-based and theory-based.
 
 As we build on the inferential ideas, we will visit new foundational concepts in statistical inference.  One key new idea rests in estimating how the sample mean (as opposed to the sample proportion) varies from sample to sample; the resulting value is referred to as the **standard error of the mean**.  We will also introduce a new important mathematical model, the $t$-distribution (as the foundation for the $t$-test).  
 ```
@@ -22,6 +22,16 @@ The techniques described for each setting will vary slightly, but you will be we
 
 
 ## One mean {#one-mean}
+
+```{block2, type="onebox", echo=TRUE}
+**Notation**.
+
+* $n$ = sample size
+* $\hat{x}$ = sample mean
+* $s$ = sample standard deviation
+* $\mu$ = population mean
+* $\sigma$ = population standard deviation
+```
 
 In this section, we explore the situation where we focus on a single mean of a quantitative variable, and we introduce a new simulation method, **bootstrapping**\index{bootstrap}. 
 Bootstrapping is best suited for modeling studies where the data have been generated through random sampling from a population.
@@ -40,15 +50,6 @@ However, some statistics don't have simple theory for how they vary, and bootstr
 terms_chp_6 <- c("bootstrapping")
 ```
 
-```{block2, type="onebox", echo=TRUE}
-**Notation**.
-
-* $n$ = sample size
-* $\hat{x}$ = sample mean
-* $s$ = sample standard deviation
-* $\mu$ = population mean
-* $\sigma$ = population standard deviation
-```
 
 
 ### Bootstrap confidence interval for $\mu$
@@ -253,11 +254,6 @@ The example presented above is done for a sample with only five observations.
 As with analysis techniques that build on mathematical models, bootstrapping works best when a large random sample has been taken from the population.
 Bootstrapping is a method for capturing the variability of a statistic when the mathematical model is unknown (it is not a method for navigating small samples).
 As you might guess, the larger the random sample, the more accurately that sample will represent the population of interest.
-
-
-### Shifted bootstrap hypothesis test for $H_0: \mu = \mu_0$
-
-
 
 
 
@@ -1136,6 +1132,17 @@ is from the null value.
 
 ## Paired mean difference {#paired-data}
 
+```{block2, type="onebox", echo=TRUE}
+**Notation**.
+
+* $n_{diff}$ = sample size of differences in paired samples
+* $\hat{x}_{diff}$ = sample mean of differences in paired samples
+* $s_{diff}$ = sample standard deviation of differences in paired samples
+* $\mu_{diff}$ = population mean of differences in paired samples
+* $\sigma_{diff}$ = population standard deviation of differences in paired samples
+```
+
+
 Paired data represent a particular type of experimental structure where the analysis is somewhat akin to a one-sample analysis (see Section \@ref(one-mean)) but has other features that resemble a two-sample analysis (see Section \@ref(differenceOfTwoMeans)).  As with a two-sample analysis, quantitative measurements are made on each of two different levels of the explanatory variable.  However, because the observational unit is **paired** across the two groups, the two measurements are subtracted such that only the difference is retained.  Table \@ref(tab:pairedexamples) presents some examples of studies where paired designs were implemented.
 
 ```{r pairedexamples}
@@ -1672,6 +1679,17 @@ on Amazon?^[The average price difference
 
 
 ## Difference of two means {#differenceOfTwoMeans}
+
+```{block2, type="onebox", echo=TRUE}
+**Notation**.
+
+* $n_1$, $n_2$ = sample sizes of two independent samples
+* $\hat{x}_1$, $\hat{x}_1$ = sample means of two independent samples
+* $s_1$, $s_2$ = sample standard deviations of two independent samples
+* $\mu_1$, $\mu_2$ = population means of two independent samples
+* $\sigma_1$, $\sigma_2$ = population standard deviations of two independent samples
+```
+
 
 In this section we consider a difference in
 two population means, $\mu_1 - \mu_2$, under the condition
@@ -2452,19 +2470,25 @@ but this general approach remain the same.
 
 -->
 
-## $t$-procedures
+## Summary of $t$-procedures
 
-So far in this chapter, we have seen the $t$-distribution applied as the appropriate mathematical model in three distinct settings.  Although the three data structures are different, their similarities and differences are worth pointing out.  We provide Table \@ref(tab:tcompare) partly as a mechanism for understanding $t$-procedures and partly to highlight the extremely common usage of the $t$-distribution in practice.
+So far in this chapter, we have seen the $t$-distribution applied as the appropriate mathematical model in three distinct settings.  Although the three data structures are different, their similarities and differences are worth pointing out.  We provide Table \@ref(tab:tcompare) partly as a mechanism for understanding $t$-procedures and partly to highlight the extremely common usage of the $t$-distribution in practice. You will often hear the following three $t$-procedures referred to as a **one sample $t$-test** ($t$-interval), **paired $t$-test** ($t$-interval), and **two sample $t$-test** ($t$-interval).
+
+```{r include=FALSE}
+terms_chp_6 <- c(terms_chp_6, "one sample $t$-test", "two sample $t$-test", "paired $t$-test")
+```
 
 ```{r tcompare}
 tsim_table <- tribble(
   ~variable,    ~col1, ~col2, ~col3,
 "response variable",  "numeric", "numeric",  "numeric",
 
-"parameter of interest", "mean: $\\mu$", "paired mean: $\\mu_{diff}$",  "diff in means: $\\mu_1 - \\mu_2$",
+"explanatory variable", "none", "binary", "binary",
+
+"parameter of interest", "mean: $\\mu$", "paired mean diff: $\\mu_{diff}$",  "diff in means: $\\mu_1 - \\mu_2$",
 
 
-"statistic of interest", "mean: $\\bar{x}$", "paired mean: $\\bar{x}_{diff}$",  "diff in means: $\\bar{x}_1 - \\bar{x}_2$",
+"statistic of interest", "mean: $\\bar{x}$", "paired mean diff: $\\bar{x}_{diff}$",  "diff in means: $\\bar{x}_1 - \\bar{x}_2$",
 
 "standard error", "$\\frac{s}{\\sqrt{n}}$", "$\\frac{s_{diff}}{\\sqrt{n_{diff}}}$", "$\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}$",
 

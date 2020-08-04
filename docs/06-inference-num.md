@@ -1,6 +1,6 @@
 # Inference for quantitative data {#inference-num}
 
-\BeginKnitrBlock{chapterintro}<div class="chapterintro">Focusing now on statistical inference for quantitative data, again, we will revisit and expand upon the foundational aspects of hypothesis testing from Section \@ref(inference-foundations).
+\BeginKnitrBlock{chapterintro}<div class="chapterintro">Focusing now on statistical inference for quantitative data, again, we will revisit and expand upon the foundational aspects of hypothesis testing from Section \@ref(inf-foundations).
 
 The important data structure for this chapter is a quantitative response variable (that is, the outcome is numerical).
 The three data structures we detail are: 
@@ -9,7 +9,7 @@ The three data structures we detail are:
 * one quantitative response variable which is a difference across a pair of observations, summarized by a paired mean difference, and 
 * a quantitative response variable broken down by a binary explanatory variable, summarized by a difference in means.
 
-When appropriate, each of the data structures will be analyzed using the two methods introduced in Section \@ref(inference-foundations): simulation-based and theory-based.
+When appropriate, each of the data structures will be analyzed using the two methods introduced in Section \@ref(inf-foundations): simulation-based and theory-based.
 
 As we build on the inferential ideas, we will visit new foundational concepts in statistical inference.  One key new idea rests in estimating how the sample mean (as opposed to the sample proportion) varies from sample to sample; the resulting value is referred to as the **standard error of the mean**.  We will also introduce a new important mathematical model, the $t$-distribution (as the foundation for the $t$-test).  </div>\EndKnitrBlock{chapterintro}
 

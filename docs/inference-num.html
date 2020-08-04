@@ -256,9 +256,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="inference-num.html"><a href="inference-num.html#one-mean"><i class="fa fa-check"></i><b>6.1</b> One mean</a>
 <ul>
 <li class="chapter" data-level="6.1.1" data-path="inference-num.html"><a href="inference-num.html#bootstrap-confidence-interval-for-mu"><i class="fa fa-check"></i><b>6.1.1</b> Bootstrap confidence interval for <span class="math inline">\(\mu\)</span></a></li>
-<li class="chapter" data-level="6.1.2" data-path="inference-num.html"><a href="inference-num.html#one-mean-math"><i class="fa fa-check"></i><b>6.1.2</b> Theory-based inferential methods for <span class="math inline">\(\bar{x}\)</span></a></li>
+<li class="chapter" data-level="6.1.2" data-path="inference-num.html"><a href="inference-num.html#shifted-bootstrap-hypothesis-test-for-h_0-mu-mu_0"><i class="fa fa-check"></i><b>6.1.2</b> Shifted bootstrap hypothesis test for <span class="math inline">\(H_0: \mu = \mu_0\)</span></a></li>
+<li class="chapter" data-level="6.1.3" data-path="inference-num.html"><a href="inference-num.html#one-mean-math"><i class="fa fa-check"></i><b>6.1.3</b> Theory-based inferential methods for <span class="math inline">\(\bar{x}\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="inference-num.html"><a href="inference-num.html#paired-data"><i class="fa fa-check"></i><b>6.2</b> Paired difference</a>
+<li class="chapter" data-level="6.2" data-path="inference-num.html"><a href="inference-num.html#paired-data"><i class="fa fa-check"></i><b>6.2</b> Paired mean difference</a>
 <ul>
 <li class="chapter" data-level="6.2.1" data-path="inference-num.html"><a href="inference-num.html#randomization-test-for-h_0-mu_d-0"><i class="fa fa-check"></i><b>6.2.1</b> Randomization test for <span class="math inline">\(H_0: \mu_d = 0\)</span></a></li>
 <li class="chapter" data-level="6.2.2" data-path="inference-num.html"><a href="inference-num.html#bootstrap-confidence-interval-for-mu_d"><i class="fa fa-check"></i><b>6.2.2</b> Bootstrap confidence interval for <span class="math inline">\(\mu_d\)</span></a></li>
@@ -306,7 +307,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 6</span> Inference for quantitative data</h1>
 
 <div class="chapterintro">
-<p>Focusing now on statistical inference for quantitative data, again, we will revisit and expand upon the foundational aspects of hypothesis testing from Section <a href="#inference-foundations"><strong>??</strong></a>.</p>
+<p>Focusing now on statistical inference for quantitative data, again, we will revisit and expand upon the foundational aspects of hypothesis testing from Section <a href="inference-cat.html#inf-foundations">5.1</a>.</p>
 <p>The important data structure for this chapter is a quantitative response variable (that is, the outcome is numerical).
 The three data structures we detail are:</p>
 <ul>
@@ -314,7 +315,7 @@ The three data structures we detail are:</p>
 <li>one quantitative response variable which is a difference across a pair of observations, summarized by a paired mean difference, and</li>
 <li>a quantitative response variable broken down by a binary explanatory variable, summarized by a difference in means.</li>
 </ul>
-<p>When appropriate, each of the data structures will be analyzed using the two methods introduced in Section <a href="#inference-foundations"><strong>??</strong></a>: simulation-based and theory-based.</p>
+<p>When appropriate, each of the data structures will be analyzed using the two methods introduced in Section <a href="inference-cat.html#inf-foundations">5.1</a>: simulation-based and theory-based.</p>
 As we build on the inferential ideas, we will visit new foundational concepts in statistical inference. One key new idea rests in estimating how the sample mean (as opposed to the sample proportion) varies from sample to sample; the resulting value is referred to as the <strong>standard error of the mean</strong>. We will also introduce a new important mathematical model, the <span class="math inline">\(t\)</span>-distribution (as the foundation for the <span class="math inline">\(t\)</span>-test).
 </div>
 <p>To summarize a quantitative response variable, we focus on the sample mean (instead of, for example, the sample median or the range of the observations) because of the well-studied mathematical model which describes the behavior of the sample mean.
@@ -404,8 +405,8 @@ To find the middle 95% of a distribution, which two percentiles would form its b
 A 95% confidence interval is given by £ 1389.75 to £ 1916. The conclusion is that we are 90% confident that the true average rental price for three bedroom flats in Edinburgh lies somewhere between £ 1389.75 and £ 1916.
 </div>
 </div>
-<div id="bootstrap-percentile-confidence-interval-for-sigma-special-topic" class="section level4 unnumbered">
-<h4>Bootstrap percentile confidence interval for <span class="math inline">\(\sigma\)</span> (special topic)</h4>
+<div id="bootstrap-percentile-confidence-interval-for-sigma" class="section level4 unnumbered">
+<h4>Bootstrap percentile confidence interval for <span class="math inline">\(\sigma\)</span></h4>
 <p>Suppose that the research question at hand seeks to understand how variable the rental price of the flats are in Edinburgh.
 That is, your interest is no longer in the average rental price of the flats but in the <em>standard deviation</em> of the rental prices of all three bedroom flats in Edinburgh, <span class="math inline">\(\sigma\)</span>.
 You may have already realized that the sample standard deviation, <span class="math inline">\(s\)</span>, will work as a good <strong>point estimate</strong> for the parameter of interest: the population standard deviation, <span class="math inline">\(\sigma\)</span>.
@@ -439,8 +440,11 @@ Bootstrapping is a method for capturing the variability of a statistic when the 
 As you might guess, the larger the random sample, the more accurately that sample will represent the population of interest.</p>
 </div>
 </div>
-<div id="one-mean-math" class="section level3" number="6.1.2">
-<h3><span class="header-section-number">6.1.2</span> Theory-based inferential methods for <span class="math inline">\(\bar{x}\)</span></h3>
+<div id="shifted-bootstrap-hypothesis-test-for-h_0-mu-mu_0" class="section level3" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> Shifted bootstrap hypothesis test for <span class="math inline">\(H_0: \mu = \mu_0\)</span></h3>
+</div>
+<div id="one-mean-math" class="section level3" number="6.1.3">
+<h3><span class="header-section-number">6.1.3</span> Theory-based inferential methods for <span class="math inline">\(\bar{x}\)</span></h3>
 <p>As with the sample proportion, the variability of the sample mean is well described by the mathematical theory given by the Central Limit Theorem. Similar to how we can model the behavior of the sample proportion <span class="math inline">\(\hat{p}\)</span> using a normal distribution, the sample mean <span class="math inline">\(\bar{x}\)</span> can also be modeled using
 a normal distribution when certain conditions are met.
 However, because of missing information about the inherent variability in the population, a <span class="math inline">\(t\)</span>-distribution is used in place of the standard normal when performing hypothesis test or confidence interval analyses.</p>
@@ -1097,7 +1101,7 @@ is from the null value.
 </div>
 </div>
 <div id="paired-data" class="section level2" number="6.2">
-<h2><span class="header-section-number">6.2</span> Paired difference</h2>
+<h2><span class="header-section-number">6.2</span> Paired mean difference</h2>
 <p>Paired data represent a particular type of experimental structure where the analysis is somewhat akin to a one-sample analysis (see Section <a href="inference-num.html#one-mean">6.1</a>) but has other features that resemble a two-sample analysis (see Section <a href="inference-num.html#differenceOfTwoMeans">6.3</a>). As with a two-sample analysis, quantitative measurements are made on each of two different levels of the explanatory variable. However, because the observational unit is <strong>paired</strong> across the two groups, the two measurements are subtracted such that only the difference is retained. Table <a href="inference-num.html#tab:pairedexamples">6.2</a> presents some examples of studies where paired designs were implemented.</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -1415,7 +1419,7 @@ Figure 6.18: Bootstrap distribution for the average difference in new book price
 <div id="mathematical-model" class="section level3" number="6.2.3">
 <h3><span class="header-section-number">6.2.3</span> Mathematical model</h3>
 <p>Thinking about the differences as a single observation on an observational unit changes the paired setting into the one-sample setting.
-The mathematical model for the one-sample case is covered in Section <a href="inference-num.html#one-mean-math">6.1.2</a>.</p>
+The mathematical model for the one-sample case is covered in Section <a href="inference-num.html#one-mean-math">6.1.3</a>.</p>
 <div id="observed-data-3" class="section level5 unnumbered">
 <h5>Observed data</h5>
 <p>To analyze paired data, it is often useful to look
@@ -1453,7 +1457,7 @@ Figure 6.19: Histogram of the difference in price for each book sampled.
 we simply analyze the differences.
 We can use the same <span class="math inline">\(t\)</span>-distribution techniques
 we applied in
-Section <a href="inference-num.html#one-mean-math">6.1.2</a>.</p>
+Section <a href="inference-num.html#one-mean-math">6.1.3</a>.</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:textbooksSummaryStats">Table 6.4: </span>Summary statistics for the 68 price differences.

@@ -3344,6 +3344,64 @@ SAT scores closely follow the normal model with mean $\mu = 1500$ and standard d
 (b) What percent score between 1500 and 2100?^[(a) 900 and 2100 represent two standard deviations above and below the mean, which means about 95% of test takers will score between 900 and 2100. (b) Since the normal model is symmetric, then half of the test takers from part (a) ($\frac{95\%}{2} = 47.5\%$ of all test takers) will score 900 to 1500 while 47.5% score between 1500 and 2100.]
 ```
 
+## Summary of $z$-procedures
+
+So far in this chapter, we have seen the normal distribution applied as the appropriate mathematical model in two distinct settings.  Although the two data structures are different, their similarities and differences are worth pointing out.  We provide Table \@ref(tab:zcompare) partly as a mechanism for understanding $z$-procedures and partly to highlight the extremely common usage of the normal distribution in practice.
+You will often hear the following two $z$-procedures referred to as a **one sample $z$-test** ($z$-interval) and **two sample $z$-test** ($z$-interval).
+
+```{r include=FALSE}
+terms_chp_5 <- c(terms_chp_6, "one sample $z$-test", "two sample $z$-test")
+```
+
+
+```{r zcompare}
+zsim_table <- tribble(
+  ~variable,    ~col1, ~col2,
+"response variable",  "binary", "binary",
+
+"explanatory variable", "none", "binary",
+
+"parameter of interest", "proportion: $\\pi$", "diff in props:$\\pi_1 - \\pi_2$",
+
+
+"statistic of interest", "proportion: $\hat{p}$", "diff in props: $\\\hat{p}_1 - \\hat{p}_2$",
+
+"null standard error", "$\\\sqrt{\frac{\pi_0(1-\pi_0)}{n}}$", "$\\\sqrt{\hat{p}_{pool}(1-\hat{p}_{pool})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}$",
+
+"standard error", "$\\\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$", "$\\\sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}$",
+
+"conditions", "1. independence, 2. large samples (at least 10 successes and 10 failures)", "1. independence, 2. large samples (at least 10 successes and 10 failures in each sample)"
+)
+
+zsim_table %>%
+ kable(caption = "Similarities of $z$-methods across one sample and two independent samples analysis of a categorical response variable.", 
+    col.names = c("", " one sample ", "two indep. samples")) %>%
+ kable_styling()
+```
+
+
+
+**Hypothesis tests.** When applying the $t$-distribution for a hypothesis test, we proceed as follows:
+
+* Write appropriate hypotheses.  
+* Verify conditions for using the $t$-distribution.  
+   - One-sample or differences from paired data: the observations (or differences) must be independent and nearly normal. For larger sample sizes, we can relax the nearly normal requirement, e.g., slight skew is okay for sample sizes of 15, moderate skew for sample sizes of 30, and strong skew for sample sizes of 60.  
+   - For a difference of means when the data are not paired: each sample mean must separately satisfy the one-sample conditions for the $t$-distribution, and the data in the groups must also be independent.  
+
+
+* Compute the point estimate of interest, the standard error, and the degrees of freedom. For $df$, use $n-1$ for one sample, and for two samples use either statistical software or the smaller of $n_1 - 1$ and $n_2 - 1$.  
+* Compute the T-score and p-value.
+* Make a conclusion based on the p-value, and write a conclusion in context and in plain language so anyone can understand the result.
+
+**Confidence intervals.** Similarly, the following is how we generally computed a confidence interval using a $t$-distribution:
+
+* Verify conditions for using the $t$-distribution. (See above.)  
+* Compute the point estimate of interest, the standard error, the degrees of freedom, and $t^{\star}_{df}$.  
+* Calculate the confidence interval using the general formula, point estimate $\pm\ t_{df}^{\star} SE$.  
+* Put the conclusions in context and in plain language so even non-data scientists can understand the results.
+
+
+
 
 ## Chapter 5 review {#chp5-review}
 
