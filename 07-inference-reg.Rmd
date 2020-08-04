@@ -4,7 +4,7 @@
 - t-distribution for regression coefficients - test/CI
 
 
-## Chapter 8 review {#chp8-review}
+## Chapter 7 review {#chp7-review}
 
 ### Terms
 
@@ -14,5 +14,5 @@ We are purposefully presenting them in alphabetical order, instead of in order o
 However you should be able to easily spot them as **bolded text**.
 
 ```{r eval = FALSE}
-make_terms_table(terms_chp_8)
+make_terms_table(terms_chp_7)
 ```

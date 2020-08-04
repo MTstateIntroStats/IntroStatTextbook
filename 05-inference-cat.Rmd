@@ -50,7 +50,7 @@ population based on sample results is called **statistical inference**\index{sta
 The first question is answered through a **hypothesis test**\index{hypothesis test}, while the second is addressed with a **confidence interval**\index{confidence interval}.
 
 ```{r include=FALSE}
-terms_chp_6 <- c("statistical inference", "hypothesis test", "confidence interval")
+terms_chp_5 <- c("statistical inference", "hypothesis test", "confidence interval")
 ```
 
 ### Motivating example: Martian alphabet {#Martian}
@@ -60,7 +60,7 @@ displays two Martians---one named Kiki and another named Bumba. Which do you thi
 is Kiki and which do you think is Bumba?^[If you are a STAT 216 student, you will recognize this from our first week's in-class activity.]
 
 ```{r kiki-bumba, out.width="75%", fig.cap="Two Martians named Bumba and Kiki. Do you think Bumba is on the left or the right?^[Bumba is the Martian on the left!]"}
-include_graphics("06/images/bumBa-KiKi.png")
+include_graphics("05/images/bumBa-KiKi.png")
 ```
 
 This same image and question were presented to an introductory statistics class of
@@ -134,7 +134,7 @@ For large sample sizes, the **sampling distribution** of a sample proportion (or
 ```
 
 ```{r include=FALSE}
-terms_chp_6 <- c(terms_chp_6, "Central Limit Theorem", "sampling distribution")
+terms_chp_5 <- c(terms_chp_5, "Central Limit Theorem", "sampling distribution")
 ```
 
 An example of a perfect normal distribution is shown in Figure \@ref(fig:simpleNormal). 
@@ -173,7 +173,7 @@ Each hypothesis test involves a **null hypothesis**\index{null hypothesis}, whic
 
 
 ```{r include=FALSE}
-terms_chp_6 <- c(terms_chp_6, "hypothesis test", "null hypothesis", "alternative hypothesis")
+terms_chp_5 <- c(terms_chp_5, "hypothesis test", "null hypothesis", "alternative hypothesis")
 ```
 
 ```{block2, type="onebox", echo=TRUE}
@@ -238,7 +238,7 @@ This summary value that is used to compute the p-value is often called the **tes
 ```
 
 ```{r include=FALSE}
-terms_chp_6 <- c(terms_chp_6, "p-value", "test statistic")
+terms_chp_5 <- c(terms_chp_5, "p-value", "test statistic")
 ```
 
 ```{block2, type="protip", echo=TRUE}
@@ -411,7 +411,7 @@ Under the null hypothesis, 10% of liver donors have complications during or afte
 
 
 ```{r include=FALSE}
-terms_chp_6 <- c(terms_chp_6, "parametric bootstrap")
+terms_chp_5 <- c(terms_chp_5, "parametric bootstrap")
 ```
 
 
@@ -545,7 +545,7 @@ large, the normal model will describe the variability quite well; when the obser
 \index{standard error (SE)!single proportion}
   
 ```{r include=FALSE}
-terms_chp_6 <- c(terms_chp_6, "success-failure condition", "standard error of single proportion")
+terms_chp_5 <- c(terms_chp_5, "success-failure condition", "standard error of single proportion")
 ```
 
 Typically we don't know the true proportion $p$,
@@ -993,7 +993,7 @@ In a confidence interval, $z^{\star}\times SE$ is called the **margin of error**
 
 
 ```{r include=FALSE}
-terms_chp_6 <- c(terms_chp_6, "margin of error")
+terms_chp_5 <- c(terms_chp_5, "margin of error")
 ```
 
 
@@ -1204,7 +1204,7 @@ we compute the estimate's standard error, and
 we apply the mathematical framework.
 
 ```{r include=FALSE}
-terms_chp_6 <- c(terms_chp_6, "point estimate")
+terms_chp_5 <- c(terms_chp_5, "point estimate")
 ```
 
 ### Randomization test for $H_0: p_1 - p_2 = 0$ {#two-prop-errors}
@@ -1653,7 +1653,7 @@ Since we rejected the null hypothesis in the gender discrimination and opportuni
 A **Type 2 Error**\index{Type 2 Error} is failing to reject the null hypothesis when the alternative is actually true.
 
 ```{r include=FALSE}
-terms_chp_6 <- c(terms_chp_6, "Type 1 Error", "Type 2 Error")
+terms_chp_5 <- c(terms_chp_5, "Type 1 Error", "Type 2 Error")
 ```
 
 
@@ -1750,7 +1750,7 @@ To do so, let's learn about **two-sided hypothesis tests**\index{two-sided hypot
 
 
 ```{r include=FALSE}
-terms_chp_6 <- c(terms_chp_6, "confirmation bias", "one-sided hypothesis test", "two-sided hypothesis test")
+terms_chp_5 <- c(terms_chp_5, "confirmation bias", "one-sided hypothesis test", "two-sided hypothesis test")
 ```
 
 \index{data!CPR and blood thinner|(}
@@ -1823,7 +1823,7 @@ If we repeat this simulation 10,000 times, we can build a **null distribution**\
 
 
 ```{r include=FALSE}
-terms_chp_6 <- c(terms_chp_6, "null distribution")
+terms_chp_5 <- c(terms_chp_5, "null distribution")
 ```
 
 
@@ -2013,7 +2013,7 @@ Again, we use the difference in sample proportions as the observed statistic of 
 The bootstrap method applied to two samples is an extension of the method described in Section \@ref(boot-ci).  Now, we have two samples, so each sample estimates the population from which they came.  In the CPR setting, the `treatment` sample estimates the population of all individuals who have gotten (or will get) the treatment; the `control` sample estimate the population of all individuals who do not get the treatment and are controls.  Figure \@ref(fig:boot2samp1) extends Figure \@ref(fig:boot1) to show the bootstrapping process from two samples simultaneously.
 
 ```{r boot2samp1, fig.cap = "(probably populations only, no BS samples) two sample estimating two populations (two infinite popuations)", warning = FALSE,  out.width="75%"}
-include_graphics("06/figures/boot2samp1.png")
+include_graphics("05/figures/boot2samp1.png")
 ```
 
 The variability of the statistic (the difference in sample proportions) can be calculated by taking one treatment bootstrap sample and one control bootstrap sample and calculating the difference of the bootstrap survival proportions.  One sample from each of the estimated populations has been taken with the sample proportions calculated for the treatment bootstrap sample and the control bootstrap sample.  
@@ -2024,14 +2024,14 @@ once the image is in, we need to describe above (and below) the values (proporti
 
 
 ```{r boot2samp2, fig.cap = "some way to connect the first BS sample on the left wiht the first BS sample on the right.", warning = FALSE, out.width="75%"}
-include_graphics("06/figures/boot2samp2.png")
+include_graphics("05/figures/boot2samp2.png")
 ```
 
 
 As always, the variability of the difference in proportions can only be estimated by repeated simulations, in this case, repeated bootstrap samples.  Figure \@ref(fig:boot2samp2) shows multiple bootstrap differences calculated for each of the repeated bootstrap samples.
 
 ```{r boot2samp3, fig.cap = "in this graph, some kind of connection between each of the two sides", warning = FALSE,  out.width="75%"}
-include_graphics("06/figures/boot2samp3.png")
+include_graphics("05/figures/boot2samp3.png")
 ```
 
 ```{block2, type = "todo", echo = TRUE}
@@ -2109,7 +2109,7 @@ The result is: we are 90% confident that, in the population, the true difference
 The interval shows that we do not have much definitive evidence of the affect of blood thinners, one way or another.
 
 ```{r include=FALSE}
-terms_chp_6 <- c(terms_chp_6, "percentile interval")
+terms_chp_5 <- c(terms_chp_5, "percentile interval")
 ```
 
 ```{r CPR percentile interval, fig.cap="The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the probability of survival in the treatment group is $\\hat{p}_{t}  = 14/40$ and the probability of survival in the control group is $\\hat{p}_{c} = 11/50$. ", warning=FALSE, fig.width=10}
@@ -2153,7 +2153,7 @@ The resulting interval is called the **SE interval**.
 Section \@ref(math-2prop) details the mathematical model for the standard error of the difference in sample proportions, but the bootstrap distribution typically does an excellent job of estimating the variability.
 
 ```{r include=FALSE}
-terms_chp_6 <- c(terms_chp_6, "SE interval")
+terms_chp_5 <- c(terms_chp_5, "SE interval")
 ```
 
 $$SE(\hat{p}_t - \hat{p}_c) \approx SD(\hat{p}_{bs,t} - \hat{p}_{bs,c}) = 0.0975$$
@@ -2215,7 +2215,7 @@ SE reference above?
 
 
 ```{r include=FALSE}
-terms_chp_6 <- c(terms_chp_6, "standard error for difference in proportions")
+terms_chp_5 <- c(terms_chp_5, "standard error for difference in proportions")
 ```
 
 
@@ -2513,7 +2513,7 @@ We will also use this pooled proportion when computing
 the standard error.
 
 ```{r include=FALSE}
-terms_chp_6 <- c(terms_chp_6, "pooled proportion")
+terms_chp_5 <- c(terms_chp_5, "pooled proportion")
 ```
 
 ```{block2, type = "example", echo = TRUE}
@@ -2690,7 +2690,7 @@ Additionally, some variables such as SAT scores and heights of US adult males cl
 
 
 ```{r include=FALSE}
-terms_chp_6 <- c(terms_chp_6, "normal curve", "normal model", "normal distribution")
+terms_chp_5 <- c(terms_chp_5, "normal curve", "normal model", "normal distribution")
 ```
 
 
@@ -2750,7 +2750,7 @@ abline(h=0)
 
 
 ```{r include=FALSE}
-terms_chp_6 <- c(terms_chp_6, "standard normal distribution")
+terms_chp_5 <- c(terms_chp_5, "standard normal distribution")
 ```
 
 
@@ -2781,7 +2781,7 @@ N(\mu=0,\sigma=1)\quad\text{and}\quad N(\mu=19,\sigma=4)
 Because the mean and standard deviation describe a normal distribution exactly, they are called the distribution's **parameters**\index{parameter}.
 
 ```{r include=FALSE}
-terms_chp_6 <- c(terms_chp_6, "parameter")
+terms_chp_5 <- c(terms_chp_5, "parameter")
 ```
 
 ```{block2, type="guidedpractice", echo=TRUE}
@@ -2854,7 +2854,7 @@ If the observation is one standard deviation above the mean, its Z score is 1. I
 If $x$ is an observation from a distribution $N(\mu, \sigma)$, we define the Z score mathematically as
 
 ```{r include=FALSE}
-terms_chp_6 <- c(terms_chp_6, "Z score")
+terms_chp_5 <- c(terms_chp_5, "Z score")
 ```
 
 \begin{eqnarray*}
@@ -2914,7 +2914,7 @@ Ann's **percentile**\index{percentile} is the percentage of people who earned a 
 ```
 
 ```{r include=FALSE}
-terms_chp_6 <- c(terms_chp_6, "percentile")
+terms_chp_5 <- c(terms_chp_5, "percentile")
 ```
 
 
@@ -3340,7 +3340,7 @@ SAT scores closely follow the normal model with mean $\mu = 1500$ and standard d
 ```
 
 
-## Chapter 6 review {#chp6-review}
+## Chapter 5 review {#chp5-review}
 
 ### Terms
 
@@ -3350,6 +3350,6 @@ We are purposefully presenting them in alphabetical order, instead of in order o
 However you should be able to easily spot them as **bolded text**.
 
 ```{r}
-make_terms_table(terms_chp_6)
+make_terms_table(terms_chp_5)
 ```
 

@@ -1,40 +1,19 @@
 # Inference for numerical data {#inference-num}
 
-```{block2, type="uptohere", echo=TRUE}
-The content in this chapter is currently just placeholder. We will remove this banner once the chapter content has been updated and ready for review.
-```
+\BeginKnitrBlock{uptohere}<div class="uptohere">The content in this chapter is currently just placeholder. We will remove this banner once the chapter content has been updated and ready for review.</div>\EndKnitrBlock{uptohere}
 
-```{block2, chp2-intro, type="chapterintro", echo=TRUE}
-Focusing now on Statistical Inference for **numerical data**, again, we will revisit and expand upon the foundational aspects of hypothesis testing from Chapter \@ref(inference-foundations).
+\BeginKnitrBlock{chapterintro}<div class="chapterintro">Focusing now on Statistical Inference for **numerical data**, again, we will revisit and expand upon the foundational aspects of hypothesis testing from Chapter \@ref(inference-foundations).
 
 The important data structure for this chapter is a numeric response variable (that is, the outcome is quantitative).
 The four data structures we detail are one numeric response variable, one numeric response variable which is a difference across a pair of observations, a numeric response variable broken down by a binary explanatory variable, and a numeric response variable broken down by an explanatory variable that has two or more levels.
 When appropriate, each of the data structures will be analyzed using the three methods from Chapter \@ref(inference-foundations): randomization test, bootstrapping, and mathematical models.
 
-As we build on the inferential ideas, we will visit new foundational concepts in statistical inference.  One key new idea rests in estimating how the sample mean (as opposed to the sample proportion) varies from sample to sample; the resulting value is referred to as the standard error of the mean.  We will also introduce a new important mathematical model, the $t$-distribution (as the foundation for the $t$-test).  
-```
-
-```{r summary3methodsChp7}
-method_summary_table <- tribble(
-  ~variable,    ~col1, ~col2, ~col3,
-"What does it do?",  "Shuffles the explanatory variable to mimic the natural variability  found in a randomized experiment.", "Resamples (with replacement) from the observed data to mimic the sampling variability found by collecting data.",  "Uses theory (primarily the Central Limit Theorem) to describe the hypothetical variability resulting from either repeated randomized experiments or random samples.",
-
-"What is the random process described?", "randomized experiment", "random sampling",  "either / both",
-
-"Is there flexibility?", "Yes, can be used to describe random sampling in an observational model", "Yes, can be used to describe random allocation in an experiment", "Yes",
-
-"What is it best for?", "Hypothesis Testing (can be used for Confidence Intervals, but not covered in this text).", "Confidence Intervals (HT for one proportion covered in Chapter 6).", "Quick analyses through, for example, calculating a Z score.",
-
-"What physical object represents the simulation process?", "shuffling cards", "pulling balls from a bag", "NA",
-
-"What are the technical conditions?", "independence", "independence, big n", "independence, big n"
-)
-```
+As we build on the inferential ideas, we will visit new foundational concepts in statistical inference.  One key new idea rests in estimating how the sample mean (as opposed to the sample proportion) varies from sample to sample; the resulting value is referred to as the standard error of the mean.  We will also introduce a new important mathematical model, the $t$-distribution (as the foundation for the $t$-test).  </div>\EndKnitrBlock{chapterintro}
 
 
-```{r include=FALSE}
-terms_chp_7 <- c("numerical data")
-```
+
+
+
 
 
 
@@ -69,18 +48,15 @@ In order to walk through the example more clearly, let's say that you are only a
 
 Figure \@ref(fig:5flats) presents the details of the random sample of observations where the monthly rent of five flats has been recorded.
 
-```{r 5flats, fig.cap = "5 flats", warning = FALSE,  out.width="75%"}
-include_graphics("07/figures/5flats.png")
-```
+<div class="figure" style="text-align: center">
+<img src="06/figures/5flats.png" alt="5 flats" width="75%" />
+<p class="caption">(\#fig:5flats)5 flats</p>
+</div>
 
-```{r}
-edin_3br <- data.frame(price = c(1400, 1995, 1250, 1995, 1600))
 
-#edin_3br %>% summarize(mean(price), sd(price), n())
-```
 
-The sample average monthly rent of £ `r mean(edin_3br$price)` is a first guess at the price of three bedroom flats.  However, as a student of statistics, you understand that one sample mean based on a sample of five observations will not necessarily equal the true population average rent for all three bedroom flats in Edinburgh.
-Indeed, you can see that the observed rent prices vary with a standard deviation of `r sd(edin_3br$price)`, and surely the average monthly rent would be different if a different sample of size five had been taken from the population.
+The sample average monthly rent of £ 1648 is a first guess at the price of three bedroom flats.  However, as a student of statistics, you understand that one sample mean based on a sample of five observations will not necessarily equal the true population average rent for all three bedroom flats in Edinburgh.
+Indeed, you can see that the observed rent prices vary with a standard deviation of 340.232, and surely the average monthly rent would be different if a different sample of size five had been taken from the population.
 Fortunately, as it did in previous chapters for the sample proportion, bootstrapping will approximate the variability of the sample mean from sample to sample.
 
 
@@ -94,108 +70,57 @@ Most of the inferential procedures covered in this text are grounded in quantify
 It doesn't make sense to take repeated samples from the same population because if you have the means to take more samples, a larger sample size will benefit you more than the exact same sample twice.
 Instead, we measure how the samples behave under an estimate of the population.  Figure \@ref(fig:bootquant1) shows how the unknown original population can be estimated by using the sample to approximate the distribution of 
 
-```{block2, type = "todo", echo = TRUE}
-need to fill in the example here
-```
+\BeginKnitrBlock{todo}<div class="todo">need to fill in the example here</div>\EndKnitrBlock{todo}
 
-```{r bootquant1, fig.cap = "first figure with the ? pop, then sample, then estimate of the pop.", warning = FALSE,  out.width="75%"}
-include_graphics("07/figures/bootquant1.png")
-```
+<div class="figure" style="text-align: center">
+<img src="06/figures/bootquant1.png" alt="first figure with the ? pop, then sample, then estimate of the pop." width="75%" />
+<p class="caption">(\#fig:bootquant1)first figure with the ? pop, then sample, then estimate of the pop.</p>
+</div>
 
 
 By taking repeated samples from the estimated population, the variability from sample to sample can be observed.  In Figure \@ref(fig:boot2) the repeated bootstrap samples are obviously different both from each other and from the original population.
 Recall that the bootstrap samples were taken from the same (estimated) population, and so the differences are due entirely to natural variability in the sampling procedure.
 
-```{r bootquant2, fig.cap = "next fig, has the bootstrap samples", warning = FALSE,  out.width="75%"}
-include_graphics("07/figures/bootquant2.png")
-```
+<div class="figure" style="text-align: center">
+<img src="06/figures/bootquant2.png" alt="next fig, has the bootstrap samples" width="75%" />
+<p class="caption">(\#fig:bootquant2)next fig, has the bootstrap samples</p>
+</div>
 
 By summarizing each of the bootstrap samples (here, using the sample mean), we see, directly, the variability of the sample mean, $\bar{x}$, from sample to sample.
 The distribution of $\hat{x}_{bs}$ for the Edinburgh flats is shown in Figure \@ref(fig:bootquant3).
 
-```{block2, type = "todo", echo = TRUE}
-after the plot is made, describe the actual BS samples
-```
+\BeginKnitrBlock{todo}<div class="todo">after the plot is made, describe the actual BS samples</div>\EndKnitrBlock{todo}
 
 
-```{r bootquant3, fig.cap = "WITH ADDED HISTOGRAM... boot samples, arrow, histogram of all of them", warning = FALSE,  out.width="75%"}
-include_graphics("07/figures/bootquant3.png")
-```
+<div class="figure" style="text-align: center">
+<img src="06/figures/bootquant3.png" alt="WITH ADDED HISTOGRAM... boot samples, arrow, histogram of all of them" width="75%" />
+<p class="caption">(\#fig:bootquant3)WITH ADDED HISTOGRAM... boot samples, arrow, histogram of all of them</p>
+</div>
 
 
 
 
-```{block2, type = "todo", echo = TRUE}
-add the sampling with replacement part (????)
-```
+\BeginKnitrBlock{todo}<div class="todo">add the sampling with replacement part (????)</div>\EndKnitrBlock{todo}
 
 
 Figure \@ref(fig:flatsbsmean) summarizes one thousand bootstrap samples in a histogram of the bootstrap sample means.
 The bootstrapped average rent prices vary from £ 1250 to £ 1995 (with a small observed sample of size 5, a bootstrap resample can sometimes, although rarely, include only repeated measurements of the same observation).
 The bootstrap confidence interval is found by locating the middle 90% (for a 90% confidence interval) or a 95% (for a 95% confidence interval) of the bootstrapped statistics.
 
-```{block2, type = "example", echo = TRUE}
-Using Figure \@ref(fig:flatsbsmean), find the 90% and 95% confidence intervals for the true mean monthly rental price of a three bedroom flat in Edinburgh.
+\BeginKnitrBlock{example}<div class="example">Using Figure \@ref(fig:flatsbsmean), find the 90% and 95% confidence intervals for the true mean monthly rental price of a three bedroom flat in Edinburgh.
 
 ---
 A 90% confidence interval is given by £ 1429 to £ 1876.  The conclusion is that we are 90% confident that the true average rental price for three bedroom flats in Edinburgh lies somewhere between £ 1429 and £ 1876.
 
 
-A 95% confidence interval is given by £ 1389.75 to £ 1916.  The conclusion is that we are 90% confident that the true average rental price for three bedroom flats in Edinburgh lies somewhere between £ 1389.75 and £ 1916.
-```
+A 95% confidence interval is given by £ 1389.75 to £ 1916.  The conclusion is that we are 90% confident that the true average rental price for three bedroom flats in Edinburgh lies somewhere between £ 1389.75 and £ 1916.</div>\EndKnitrBlock{example}
 
 
 
-```{r flatsbsmean, fig.cap="The original Edinburgh data is bootstrapped 1,000 times. The histogram provides a sense for the variability of the average rent values from sample to sample.", warning=FALSE, fig.width=10}
-
-set.seed(47)
-bsflats <- edin_3br %>%
-  rep_sample_n(size = 5, reps = 1000, replace = TRUE) 
-
-bsflats_mean <- bsflats %>%
-  group_by(replicate) %>% 
-  summarize( flat_bsmean = mean(price)) %>%
-  pull()
-
-bsq1 <- quantile(bsflats_mean, probs = c(0.005, 0.025, 0.05, 0.1, 0.9, 0.95, 0.975, 0.995))
-
-bsmeans_up <- bsflats_mean[bsflats_mean >= bsq1[7]]
-bsmeans_low <- bsflats_mean[bsflats_mean <= bsq1[2]]
-
-umeans <- sort(unique(bsflats_mean))
-bin.width <- (umeans[length(umeans)] - umeans[1])/15
-#breaks <- c(uprops - bin.width / 4, uprops + bin.width / 4)
-breaks <- seq(umeans[1] - 1, umeans[length(umeans)] + bin.width, by = bin.width)
-  
-
-histPlot(bsflats_mean, breaks = breaks, axes = FALSE, col = rgb(1,1,1),
-     xlab = "", ylab="")
-#histPlot(bsmeans_up, breaks = breaks, col = COL[1], add = TRUE)
-#histPlot(bsmeans_low, breaks = breaks, col = COL[1], add = TRUE)
-axis(1)
-#axis(2, at = seq(0, 100, 50), labels = format(seq(0, 50, 25) / nsim))
-lines(c(bsq1[6], bsq1[6]), c(0, 75), lty = 3, lwd = 3)
-lines(c(bsq1[3], bsq1[3]), c(0, 75), lty = 3, lwd = 3)
-lines(c(bsq1[7], bsq1[7]), c(0, 50), lty = 3, lwd = 3)
-lines(c(bsq1[2], bsq1[2]), c(0, 50), lty = 3, lwd = 3)
-lines(c(bsq1[8], bsq1[8]), c(0, 25), lty = 3, lwd = 3)
-lines(c(bsq1[1], bsq1[1]), c(0, 25), lty = 3, lwd = 3)
-text(bsq1[6], 75, "95 percentile", pos = 3)
-text(bsq1[3], 75, "5 percentile", pos = 3)
-text(bsq1[7], 50, "97.5 percentile", pos = 3)
-text(bsq1[2], 50, "2.5 percentile", pos = 3)
-text(bsq1[8], 25, "99.5 percentile", pos = 3)
-text(bsq1[1], 25, "0.5 percentile", pos = 3)
-text(bsq1[6], -5, round(bsq1[6],1), pos = 3)
-text(bsq1[3], -5, round(bsq1[3],1), pos = 3)
-text(bsq1[7], -5, round(bsq1[7],1), pos = 3)
-text(bsq1[2], -5, round(bsq1[2],1), pos = 3)
-text(bsq1[8], -5, round(bsq1[8],1), pos = 3)
-text(bsq1[1], -5, round(bsq1[1],1), pos = 3)
-par(las = 0)
-mtext("Bootstrapped values of the mean of the monthly flat price", 1, 2.5)
-
-```
+<div class="figure" style="text-align: center">
+<img src="06-inference-num_files/figure-html/flatsbsmean-1.png" alt="The original Edinburgh data is bootstrapped 1,000 times. The histogram provides a sense for the variability of the average rent values from sample to sample." width="70%" />
+<p class="caption">(\#fig:flatsbsmean)The original Edinburgh data is bootstrapped 1,000 times. The histogram provides a sense for the variability of the average rent values from sample to sample.</p>
+</div>
 
 #### Bootstrap SE confidence interval {-}
 
@@ -204,28 +129,23 @@ Another method for creating bootstrap intervals is built on first calculating th
 $$\mbox{point estimate} \pm 2 \cdot SE_{BS}$$
 The number 2 is an approximation connected to the "95%" part of the confidence interval (remember the 68-95-99.7 rule) which will be made more detailed in Section \@ref(one-mean-math).
 
-```{block2, type = "example", echo = TRUE}
-Explain how the SE of the bootstrapped means is calculated and what it is measuring.
+\BeginKnitrBlock{example}<div class="example">Explain how the SE of the bootstrapped means is calculated and what it is measuring.
 
 ---
 
 The SE of the bootstrapped means measures how variable the means are from resample to resample.  The bootstrap SE is a good approximation to the SE of means as if we had taken repeated samples from the original population (which we agreed isn't something we would do because of wasted resources).
 
-Logistically, we can find the standard deviation of the bootstrapped means using the same calculations from Chapter \@ref(eda).  That is, the bootstrapped means are the individual observations about which we measure the variability.
-```
+Logistically, we can find the standard deviation of the bootstrapped means using the same calculations from Chapter \@ref(eda).  That is, the bootstrapped means are the individual observations about which we measure the variability.</div>\EndKnitrBlock{example}
 
-```{block2, type = "guidedpractice", echo = TRUE}
-It turns out that the standard deviation of the bootstrapped means from Figure \@ref(fig:flatsbsmean) is £ 136.9.  [Note: in R the calculation was done using the function `sd()`.]  The average of the observed prices, the best guess point estimate for $\mu$, is  £ 1648.
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">It turns out that the standard deviation of the bootstrapped means from Figure \@ref(fig:flatsbsmean) is £ 136.9.  [Note: in R the calculation was done using the function `sd()`.]  The average of the observed prices, the best guess point estimate for $\mu$, is  £ 1648.
 
 Find and interpret the confidence interval for $\mu$ (the true average rental price of flats in Edinbugh) using the Bootstrap SE inverval formula.^[Using the formula for the boostrap SE interval, we find the 95% confidence interval for $\mu$ is: 
                                                                                                                                                       $1648 \pm 2 \cdot 136.9 \rightarrow$ (£ 1374.2, £ 1921.8)
                                                                                                                                                       
-We are 95% confident that the true average rent price for a three bedroom flat in Edinburgh is somewhere between £ 1374.2 and £ 1921.8.]
-```
+We are 95% confident that the true average rent price for a three bedroom flat in Edinburgh is somewhere between £ 1374.2 and £ 1921.8.]</div>\EndKnitrBlock{guidedpractice}
 
 
-```{block2, type = "example", echo = TRUE}
-Compare and contrast the two different 95% confidence intervals for $\mu$ created by finding the percentiles of the bootstrapped means and created by finding the SE of the bootstrapped means.  Do you think the intervals *should* be identical?
+\BeginKnitrBlock{example}<div class="example">Compare and contrast the two different 95% confidence intervals for $\mu$ created by finding the percentiles of the bootstrapped means and created by finding the SE of the bootstrapped means.  Do you think the intervals *should* be identical?
   
 ---
   
@@ -234,8 +154,7 @@ Compare and contrast the two different 95% confidence intervals for $\mu$ create
 
 The intervals were created using different methods, so it is not surprising that they are not identical.  However, we are pleased to see that the two methods provide very similar interval approximations. 
 
-The technical details surrounding which data structures are best for percentile intervals and which are best for SE intervals is beyond the scope of this text.  However, the larger the samples are, the better the interval estimates will be.
-```
+The technical details surrounding which data structures are best for percentile intervals and which are best for SE intervals is beyond the scope of this text.  However, the larger the samples are, the better the interval estimates will be.</div>\EndKnitrBlock{example}
 
 #### Bootstrap confidence interval for $\sigma$ {-}
 
@@ -247,68 +166,20 @@ While $s =$ £  340.23 might be a good guess for $\sigma$, we prefer to have an 
 Although there is a mathematical model which describes how $s$ varies from sample to sample, the mathematical model will not be presented in this text.
 But even without the mathematical model, bootstrapping can be used to find a confidence interval for the parameter $\sigma$.
 
-```{r include=FALSE}
-terms_chp_7 <- c(terms_chp_7, "point estimate")
-```
 
-```{block2, type = "example", echo = TRUE}
-Describe the bootstrap distribution for the standard deviation shown in Figure \@ref(fig:flatsbssd).
+
+\BeginKnitrBlock{example}<div class="example">Describe the bootstrap distribution for the standard deviation shown in Figure \@ref(fig:flatsbssd).
 
 ---
   
-The distribution is skewed left and centered near £ 340.23, which is the point estimate from the original data. Most observations in this distribution lie between £ 0 and £ 408.1.
-```
+The distribution is skewed left and centered near £ 340.23, which is the point estimate from the original data. Most observations in this distribution lie between £ 0 and £ 408.1.</div>\EndKnitrBlock{example}
 
-```{block2, type = "guidedpractice", echo = TRUE}
-Using Figure \@ref(fig:flatsbssd), find *and interpret* a 90% confidence interval for the population standard deviation for three bedroom flat prices in Edinburgh.^[By looking at the percentile values in Figure \@ref(fig:flatsbssd), the middle 90% of the bootstrap standard deviations are given by the 5 percentile (£ 153.9) and 95 percentile (£ 385.6).  That is, we are 90% confident that the true standard deviation of rent prices is between £ 153.9 and £ 385.6.]
-```
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Using Figure \@ref(fig:flatsbssd), find *and interpret* a 90% confidence interval for the population standard deviation for three bedroom flat prices in Edinburgh.^[By looking at the percentile values in Figure \@ref(fig:flatsbssd), the middle 90% of the bootstrap standard deviations are given by the 5 percentile (£ 153.9) and 95 percentile (£ 385.6).  That is, we are 90% confident that the true standard deviation of rent prices is between £ 153.9 and £ 385.6.]</div>\EndKnitrBlock{guidedpractice}
 
-```{r flatsbssd, fig.cap="The original Edinburgh data is bootstrapped 1,000 times. The histogram provides a sense for the variability of the standard deviation of the rent values from sample to sample.", warning=FALSE, fig.width=10}
-
-bsflats_sd <- bsflats %>%
-  group_by(replicate) %>% 
-  summarize( flat_bssd = sd(price)) %>%
-  pull()
-
-bsq1 <- quantile(bsflats_sd, probs = c(0.005, 0.025, 0.05, 0.1, 0.9, 0.95, 0.975, 0.995))
-
-bsmeans_up <- bsflats_sd[bsflats_sd >= bsq1[7]]
-bsmeans_low <- bsflats_sd[bsflats_sd <= bsq1[2]]
-
-umeans <- sort(unique(bsflats_sd))
-bin.width <- (umeans[length(umeans)] - umeans[1])/15
-#breaks <- c(uprops - bin.width / 4, uprops + bin.width / 4)
-breaks <- seq(umeans[1] - 1, umeans[length(umeans)] + bin.width, by = bin.width)
-  
-
-histPlot(bsflats_sd, breaks = breaks, axes = FALSE, col = rgb(1,1,1),
-     xlab = "", ylab="")
-#histPlot(bsmeans_up, breaks = breaks, col = COL[1], add = TRUE)
-#histPlot(bsmeans_low, breaks = breaks, col = COL[1], add = TRUE)
-axis(1)
-#axis(2, at = seq(0, 100, 50), labels = format(seq(0, 50, 25) / nsim))
-lines(c(bsq1[6], bsq1[6]), c(0, 75), lty = 3, lwd = 3)
-lines(c(bsq1[3], bsq1[3]), c(0, 75), lty = 3, lwd = 3)
-lines(c(bsq1[7], bsq1[7]), c(0, 50), lty = 3, lwd = 3)
-lines(c(bsq1[2], bsq1[2]), c(0, 50), lty = 3, lwd = 3)
-lines(c(bsq1[8], bsq1[8]), c(0, 25), lty = 3, lwd = 3)
-lines(c(bsq1[1], bsq1[1]), c(0, 25), lty = 3, lwd = 3)
-text(bsq1[6], 75, "95 percentile", pos = 3)
-text(bsq1[3], 75, "5 percentile", pos = 3)
-text(bsq1[7], 50, "97.5 percentile", pos = 3)
-text(bsq1[2], 50, "2.5 percentile", pos = 3)
-text(bsq1[8], 25, "99.5 percentile", pos = 3)
-text(bsq1[1], 25, "0.5 percentile", pos = 3)
-text(bsq1[6], -5, round(bsq1[6],1), pos = 3)
-text(bsq1[3], -5, round(bsq1[3],1), pos = 3)
-text(bsq1[7], -5, round(bsq1[7],1), pos = 3)
-text(bsq1[2], -5, round(bsq1[2],1), pos = 3)
-text(bsq1[8], -5, round(bsq1[8],1), pos = 3)
-text(bsq1[1], -5, round(bsq1[1],1), pos = 3)
-par(las = 0)
-mtext("Bootstrapped values of the standard deviation of the monthly flat price", 1, 2.5)
-
-```
+<div class="figure" style="text-align: center">
+<img src="06-inference-num_files/figure-html/flatsbssd-1.png" alt="The original Edinburgh data is bootstrapped 1,000 times. The histogram provides a sense for the variability of the standard deviation of the rent values from sample to sample." width="70%" />
+<p class="caption">(\#fig:flatsbssd)The original Edinburgh data is bootstrapped 1,000 times. The histogram provides a sense for the variability of the standard deviation of the rent values from sample to sample.</p>
+</div>
 
 
 #### Bootstrapping is not a solution to small sample sizes! {-}
@@ -332,8 +203,7 @@ Additionally, we can compute a standard error for the sample
 mean using the population standard deviation $\sigma$
 and the sample size $n$.
 
-```{block2, type = "onebox", echo = TRUE}
-**Central Limit Theorem for the sample mean**  
+\BeginKnitrBlock{onebox}<div class="onebox">**Central Limit Theorem for the sample mean**  
   When we collect a sufficiently large sample of
   $n$ independent observations from a population with
   mean $\mu$ and standard deviation $\sigma$,
@@ -342,8 +212,7 @@ and the sample size $n$.
   \begin{align*}
   &\text{Mean}=\mu
   &&\text{Standard Error }(SE) = \frac{\sigma}{\sqrt{n}}
-  \end{align*}
-```
+  \end{align*}</div>\EndKnitrBlock{onebox}
 
 
 Before diving into confidence intervals and hypothesis
@@ -364,9 +233,7 @@ tests using $\bar{x}$, we first need to cover two topics:
     to fix this problem, which we discuss in
 
 
-```{r include=FALSE}
-terms_chp_7 <- c(terms_chp_7, "t-distribution")
-```
+
 
 #### Evaluating the two conditions required for modeling $\bar{x}$ {-}
 
@@ -393,12 +260,9 @@ for a sample mean $\bar{x}$:
 
 
 
-```{r include=FALSE}
-terms_chp_7 <- c(terms_chp_7, "Central Limit Theorem")
-```
 
-```{block2, type = "onebox", echo = TRUE}
-**General rule: how to perform the normality check**
+
+\BeginKnitrBlock{onebox}<div class="onebox">**General rule: how to perform the normality check**
   
   There is no perfect way to check the normality condition,
   so instead we use two general rules: 
@@ -412,8 +276,7 @@ terms_chp_7 <- c(terms_chp_7, "Central Limit Theorem")
       and there are no *particularly extreme* outliers,
       then we typically assume the sampling distribution
       of $\bar{x}$ is nearly normal, even if the underlying
-      distribution of individual observations is not.
-```
+      distribution of individual observations is not.</div>\EndKnitrBlock{onebox}
 
 In this first course in statistics, you aren't expected
 to develop perfect judgement on the normality condition.
@@ -424,8 +287,7 @@ clear cut cases based on the rules of thumb.^[More
   sample size is very large.
   However, we'll leave further discussion here to a future course.]
 
-```{block2, type = "example", echo = TRUE}
-Consider the following two plots
+\BeginKnitrBlock{example}<div class="example">Consider the following two plots
     that come from simple random samples from
     different populations.
     Their sample sizes are $n_1 = 15$ and $n_2 = 50$.
@@ -456,33 +318,9 @@ Each samples is from a simple random sample of its
   further from the center of the distribution than the
   next furthest observation.
   This is an example of a particularly extreme outlier,
-  so the normality condition would not be satisfied.
-```
+  so the normality condition would not be satisfied.</div>\EndKnitrBlock{example}
 
-```{r outliersandsscondition, fig.cap="", warning=FALSE, fig.width=10}
-
-d1 <- rnorm(15, 3, 2)
-d2 <- c(exp(rnorm(49, 0, 0.7)), 22)
-
-histPlot(d1, axes = FALSE, # breaks = 20,
-         xlab = "Sample 1 Observations (n = 15)",
-         ylab = "",
-         col = COL[1])
-axis(1, at = seq(-10, 10, 2))
-axis(2)
-par(las = 0)
-mtext("Frequency", 2, 1.8)
-
-par(las = 1, mar = c(3, 4, 0.5, 0.5))
-histPlot(d2, axes = FALSE, breaks = 20,
-         xlab = "Sample 2 Observations (n = 50)",
-         ylab = "",
-         col = COL[1])
-axis(1, at = seq(-10, 30, 10))
-axis(2)
-par(las = 0)
-mtext("Frequency", 2, 2)
-```
+<img src="06-inference-num_files/figure-html/outliersandsscondition-1.png" width="70%" style="display: block; margin: auto;" /><img src="06-inference-num_files/figure-html/outliersandsscondition-2.png" width="70%" style="display: block; margin: auto;" />
 
 
 
@@ -553,42 +391,10 @@ the correction needed to resolve the problem of using $s$
 in place of $\sigma$ in the $SE$ calculation.
 
 
-```{r tDistCompareToNormalDist, fig.cap="Comparison of a $t$-distribution and a normal distribution.", warning=FALSE, fig.width=10}
-
-plot(c(-5, 5),
-     c(0, dnorm(0)),
-     type = 'n',
-     axes = FALSE)
-axis(1, seq(-6, 6, 2))
-abline(h = 0)
-
-xleg <- 2
-yleg <- 0.35
-yleg.line.offset <- -0.07
-line.leg.width <- 0.55
-lines(
-    c(xleg, xleg + line.leg.width),
-    rep(yleg, 2),
-    col = COL[4], lty = 3, lwd = 2.5)
-lines(
-    c(xleg, xleg + line.leg.width),
-    rep(yleg + yleg.line.offset, 2),
-    col = COL[1], lty = 1, lwd = 1.8)
-text(xleg + line.leg.width, yleg,
-    "Normal",
-    col = COL[4], pos = 4)
-text(xleg + line.leg.width, yleg + yleg.line.offset,
-    "t-distribution",
-    col = COL[1], pos = 4)
-
-X <- seq(-6, 6, 0.01)
-Y <- dnorm(X)
-lines(X, Y, lty = 3, lwd = 2.5, col = COL[4])
-
-Y <- dt(X, 2)
-lines(X, Y, lwd = 1.8, col = COL[1])
-
-```
+<div class="figure" style="text-align: center">
+<img src="06-inference-num_files/figure-html/tDistCompareToNormalDist-1.png" alt="Comparison of a $t$-distribution and a normal distribution." width="70%" />
+<p class="caption">(\#fig:tDistCompareToNormalDist)Comparison of a $t$-distribution and a normal distribution.</p>
+</div>
 
 
 The $t$-distribution is always centered at zero and
@@ -611,48 +417,17 @@ when the degrees of freedom is about 30 or more,
 the $t$-distribution is nearly indistinguishable
 from the normal distribution.
 
-```{r include=FALSE}
-terms_chp_7 <- c(terms_chp_7, "degrees of freedom")
-```
-
-
-```{r tDistConvergeToNormalDist, fig.cap="The larger the degrees of freedom, the more closely the $t$-distribution resembles the standard normal distribution.", warning=FALSE, fig.width=10}
-
-plot(c(-5, 5),
-     c(0, dnorm(0)),
-     type = 'n',
-     axes = FALSE)
-at <- seq(-10, 10, 2)
-axis(1, at)
-axis(1, at - 1, rep("", length(at)), tcl = -0.1)
-abline(h = 0)
-
-COL. <- fadeColor(COL[1], c("FF", "89", "68", "4C", "33"))
-COLt <- fadeColor(COL[1], c("FF", "AA", "85", "60", "45"))
-DF   <- c('normal', 8, 4, 2, 1)
-
-X <- seq(-10, 10, 0.02)
-Y <- dnorm(X)
-lines(X, Y, col = COL.[1])
-
-for (i in 2:5) {
-  Y <- dt(X, as.numeric(DF[i]))
-  lines(X, Y, col = COL.[i], lwd = 1.5)
-}
-
-legend(2.5, 0.4,
-       legend = c(DF[1],
-       paste('t, df = ', DF[2:5], sep = '')),
-       col = COL.,
-       text.col = COLt,
-       lty = rep(1, 5),
-       lwd = 1.5)
-```
 
 
 
-```{block2, type = "onebox", echo = TRUE}
-**Degrees of freedom: df**
+<div class="figure" style="text-align: center">
+<img src="06-inference-num_files/figure-html/tDistConvergeToNormalDist-1.png" alt="The larger the degrees of freedom, the more closely the $t$-distribution resembles the standard normal distribution." width="70%" />
+<p class="caption">(\#fig:tDistConvergeToNormalDist)The larger the degrees of freedom, the more closely the $t$-distribution resembles the standard normal distribution.</p>
+</div>
+
+
+
+\BeginKnitrBlock{onebox}<div class="onebox">**Degrees of freedom: df**
   
   The degrees of freedom describes the shape of the
   $t$-distribution.
@@ -660,8 +435,7 @@ legend(2.5, 0.4,
   the distribution approximates the normal model. 
   
   When modeling $\bar{x}$ using the $t$-distribution,
-  use $df = n - 1$.
-```
+  use $df = n - 1$.</div>\EndKnitrBlock{onebox}
 
 
 The $t$-distribution allows us greater flexibility than
@@ -683,8 +457,7 @@ No matter the approach you choose, apply your method
 using the examples below to confirm your working
 understanding of the $t$-distribution.
 
-```{block2, type = "example", echo = TRUE}
-What proportion of the $t$-distribution
+\BeginKnitrBlock{example}<div class="example">What proportion of the $t$-distribution
     with 18 degrees of freedom falls below -2.10?
       
 ---
@@ -695,29 +468,24 @@ Just like a normal probability problem, we first draw
 
 
   Using statistical software, we can obtain a precise
-  value: 0.0250.
-```
+  value: 0.0250.</div>\EndKnitrBlock{example}
 
 
-```{r echo = TRUE}
+
+```r
 # using pt() to find probability under the $t$-distribution
 pt(-2.10, df = 18)
+#> [1] 0.025
 ```
 
-```{r tDistDF18LeftTail2Point10, fig.cap="The $t$-distribution with 18 degrees of freedom. The area below -2.10 has been shaded.", warning=FALSE, fig.width=10}
-
-normTail(L = -2.10,
-         df = 10,
-         xlim = c(-4, 4),
-         col = COL[1],
-         axes = FALSE)
-axis(1)
-```
+<div class="figure" style="text-align: center">
+<img src="06-inference-num_files/figure-html/tDistDF18LeftTail2Point10-1.png" alt="The $t$-distribution with 18 degrees of freedom. The area below -2.10 has been shaded." width="70%" />
+<p class="caption">(\#fig:tDistDF18LeftTail2Point10)The $t$-distribution with 18 degrees of freedom. The area below -2.10 has been shaded.</p>
+</div>
 
 
 
-```{block2, type = "example", echo = TRUE}
-A $t$-distribution with 20 degrees of freedom
+\BeginKnitrBlock{example}<div class="example">A $t$-distribution with 20 degrees of freedom
     is shown in the top panel of
     Figure \@ref(fig:tDistDF20RightTail1Point65).
     Estimate the proportion of the distribution falling
@@ -728,30 +496,16 @@ A $t$-distribution with 20 degrees of freedom
 With a normal distribution, this would correspond to
   about 0.05, so we should expect the $t$-distribution
   to give us a value in this neighborhood.
-  Using statistical software: 0.0573.
-```
+  Using statistical software: 0.0573.</div>\EndKnitrBlock{example}
 
 
 
-```{r tDistDF20RightTail1Point65, fig.cap="Top: The $t$-distribution with 20 degrees of freedom, with the area above 1.65 shaded. Bottom: The $t$-distribution with 2 degrees of freedom, with the area further than 3 units from 0 shaded.", warning=FALSE, fig.width=10}
+<div class="figure" style="text-align: center">
+<img src="06-inference-num_files/figure-html/tDistDF20RightTail1Point65-1.png" alt="Top: The $t$-distribution with 20 degrees of freedom, with the area above 1.65 shaded. Bottom: The $t$-distribution with 2 degrees of freedom, with the area further than 3 units from 0 shaded." width="70%" /><img src="06-inference-num_files/figure-html/tDistDF20RightTail1Point65-2.png" alt="Top: The $t$-distribution with 20 degrees of freedom, with the area above 1.65 shaded. Bottom: The $t$-distribution with 2 degrees of freedom, with the area further than 3 units from 0 shaded." width="70%" />
+<p class="caption">(\#fig:tDistDF20RightTail1Point65)Top: The $t$-distribution with 20 degrees of freedom, with the area above 1.65 shaded. Bottom: The $t$-distribution with 2 degrees of freedom, with the area further than 3 units from 0 shaded.</p>
+</div>
 
-normTail(U = 1.65,
-         df = 12,
-         xlim = c(-4, 4),
-         col = COL[1],
-         axes = FALSE)
-axis(1)
-normTail(L = -3,
-         U = 3,
-         df = 2.3,
-         xlim = c(-4.5, 4.5),
-         col = COL[1],
-         axes = FALSE)
-axis(1)
-```
-
-```{block2, type = "example", echo = TRUE}
-A $t$-distribution with 2 degrees of freedom
+\BeginKnitrBlock{example}<div class="example">A $t$-distribution with 2 degrees of freedom
     is shown in the bottom panel of
     Figure \@ref(fig:tDistDF20RightTail1Point65).
     Estimate the proportion of the distribution falling more
@@ -767,16 +521,13 @@ With so few degrees of freedom, the $t$-distribution will
   For a $t$-distribution with $df = 2$, the area in both
   tails beyond 3 units totals 0.0955.
   This area is dramatically different than what
-  we obtain from the normal distribution.
-```
+  we obtain from the normal distribution.</div>\EndKnitrBlock{example}
 
-```{block2, type = "guidedpractice", echo = TRUE}
-What proportion of the $t$-distribution with 19 degrees
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">What proportion of the $t$-distribution with 19 degrees
 of freedom falls above -1.79 units?
 Use your preferred method for finding tail areas.^[We want to find the shaded area *above* -1.79 (we leave the picture to you).
   The lower tail area has an area of 0.0447,
-  so the upper area would have an area of $1 - 0.0447 = 0.9553$.]
-```
+  so the upper area would have an area of $1 - 0.0447 = 0.9553$.]</div>\EndKnitrBlock{guidedpractice}
 
 \index{distribution!t@$t$|)}
 \index{t-distribution@$t$-distribution|)}
@@ -795,30 +546,40 @@ for both dolphins
 and other animals, like humans, who occasionally eat them.
 
 
-```{r rissosDolphin, fig.cap = "A Risso's dolphin. Photo by Mike Baird, www.bairdphotos.com", warning = FALSE,  out.width="75%"}
-include_graphics("07/figures/rissosDolphin.jpg")
-```
+<div class="figure" style="text-align: center">
+<img src="06/figures/rissosDolphin.jpg" alt="A Risso's dolphin. Photo by Mike Baird, www.bairdphotos.com" width="75%" />
+<p class="caption">(\#fig:rissosDolphin)A Risso's dolphin. Photo by Mike Baird, www.bairdphotos.com</p>
+</div>
 
 #### Observed data {-}
 
 We will identify a confidence interval for the average mercury content in dolphin muscle using a sample of 19 Risso's dolphins from the Taiji area in Japan. The data are summarized in Table \@ref(tab:summaryStatsOfHgInMuscleOfRissosDolphins). The minimum and maximum observed values can be used to evaluate whether or not there are clear outliers.
 
 
-```{r summaryStatsOfHgInMuscleOfRissosDolphins}
-temptbl <- tribble(
- ~col0,    ~col1, ~col2, ~col3, ~col4,
- 19, 4.4, 2.3, 1.7, 9.2
-)
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>(\#tab:summaryStatsOfHgInMuscleOfRissosDolphins)Summary of mercury content in the muscle of 19 Risso's dolphins from the Taiji area. Measurements are in micrograms of mercury per wet gram
+    of muscle ($\mu$g/wet g).</caption>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> $n$ </th>
+   <th style="text-align:right;"> $\bar{x}$ </th>
+   <th style="text-align:right;"> s </th>
+   <th style="text-align:right;"> minimum </th>
+   <th style="text-align:right;"> maximum </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 4.4 </td>
+   <td style="text-align:right;"> 2.3 </td>
+   <td style="text-align:right;"> 1.7 </td>
+   <td style="text-align:right;"> 9.2 </td>
+  </tr>
+</tbody>
+</table>
 
-temptbl %>%
- kable(caption = "Summary of mercury content in the muscle of 19 Risso's dolphins from the Taiji area. Measurements are in micrograms of mercury per wet gram
-    of muscle ($\\mu$g/wet g).",
-    col.names = c( "$n$", "$\\bar{x}$", "s", "minimum", "maximum")) %>%
- kable_styling() 
-```
-
-```{block2, type = "example", echo = TRUE}
-Are the independence and
+\BeginKnitrBlock{example}<div class="example">Are the independence and
     normality conditions satisfied for this data set?
       
 ---
@@ -831,8 +592,7 @@ The observations are a simple random sample,
   all observations are within 2.5 standard deviations
   of the mean.
   Based on this evidence, the normality condition
-  seems reasonable.
-```
+  seems reasonable.</div>\EndKnitrBlock{example}
 
 In the normal model, we used $z^{\star}$ and the standard error to determine the width of a confidence interval. We revise the confidence interval formula slightly when using the $t$-distribution:
 \begin{align*}
@@ -841,8 +601,7 @@ In the normal model, we used $z^{\star}$ and the standard error to determine the
 &&\bar{x} \ \pm\  t^{\star}_{df} \times \frac{s}{\sqrt{n}}
 \end{align*}
 
-```{block2, type = "example", echo = TRUE}
-Using the summary statistics in
+\BeginKnitrBlock{example}<div class="example">Using the summary statistics in
     Table \@ref(tab:summaryStatsOfHgInMuscleOfRissosDolphins),
     compute the standard error for the average
     mercury content in the $n = 19$ dolphins.
@@ -853,8 +612,7 @@ We plug in $s$ and $n$ into the formula:
   $SE
     = s / \sqrt{n}
     = 2.3 / \sqrt{19}
-    = 0.528$.
-```
+    = 0.528$.</div>\EndKnitrBlock{example}
 
 The value $t^{\star}_{df}$ is a cutoff we obtain based on the
 confidence level and the $t$-distribution with $df$ degrees
@@ -865,8 +623,7 @@ the fraction of the $t$-distribution with $df$ degrees
 of freedom within a distance $t^{\star}_{df}$
 of 0 matches the confidence level of interest.
 
-```{block2, type = "example", echo = TRUE}
-
+\BeginKnitrBlock{example}<div class="example">
 When $n = 19$, what is the appropriate
     degrees of freedom?
     Find $t^{\star}_{df}$ for this degrees of freedom
@@ -882,14 +639,11 @@ The degrees of freedom is easy to calculate:
   $t^{\star}_{18} = 2.10$.
   The area below -2.10 will also be equal to 2.5%.
   That is, 95% of the $t$-distribution with $df = 18$
-  lies within 2.10 units of 0.
-```
+  lies within 2.10 units of 0.</div>\EndKnitrBlock{example}
 
-```{block2, type = "onebox", echo = TRUE}
-**Degrees of freedom for a single sample.**
+\BeginKnitrBlock{onebox}<div class="onebox">**Degrees of freedom for a single sample.**
   
-If the sample has $n$ observations and we are examining a single mean, then we use the $t$-distribution with $df=n-1$ degrees of freedom.
-```
+If the sample has $n$ observations and we are examining a single mean, then we use the $t$-distribution with $df=n-1$ degrees of freedom.</div>\EndKnitrBlock{onebox}
 
 %In our current example, we should use the $t$-distribution
 %with $df=19-1=18$ degrees of freedom.
@@ -900,8 +654,7 @@ If the sample has $n$ observations and we are examining a single mean, then we u
 %Generally the value of $t^{\star}_{df}$ is slightly larger
 %than what we would get under the normal model with $z^{\star}$.
 
-```{block2, type = "example", echo = TRUE}
-Compute and interpret the 95% confidence interval
+\BeginKnitrBlock{example}<div class="example">Compute and interpret the 95% confidence interval
     for the average mercury content in Risso's dolphins.
     
 ---
@@ -914,13 +667,11 @@ We can construct the confidence interval as
   \end{align*}
   We are 95% confident the average mercury content of muscles
   in Risso's dolphins is between 3.29 and 5.51 $\mu$g/wet gram,
-  which is considered extremely high.
-```
+  which is considered extremely high.</div>\EndKnitrBlock{example}
 
 \index{data!dolphins and mercury|)}
 
-```{block2, type = "onebox", echo = TRUE}
-**Finding a $t$-confidence interval for the mean, $\mu$.**
+\BeginKnitrBlock{onebox}<div class="onebox">**Finding a $t$-confidence interval for the mean, $\mu$.**
   
   Based on a sample of $n$ independent and nearly normal
   observations, a confidence interval for the population
@@ -933,11 +684,9 @@ We can construct the confidence interval as
   where $\bar{x}$ is the sample mean, $t^{\star}_{df}$
   corresponds to the confidence level and degrees of freedom
   $df$, and $SE$ is the standard error as estimated by
-  the sample.
-```
+  the sample.</div>\EndKnitrBlock{onebox}
 
-```{block2, type = "guidedpractice", echo = TRUE}
-The FDA's webpage provides some data on mercury content of fish.
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">The FDA's webpage provides some data on mercury content of fish.
 Based on a sample of 15 croaker white fish (Pacific),
 a sample mean and standard deviation were computed as 0.287
 and 0.069 ppm (parts per million), respectively.
@@ -948,15 +697,13 @@ do you have any objections to the normality condition
 of the individual observations?^[The sample size is under 30,
   so we check for obvious outliers:
   since all observations are within 2 standard deviations
-  of the mean, there are no such clear outliers.]
-```
+  of the mean, there are no such clear outliers.]</div>\EndKnitrBlock{guidedpractice}
 
 
 \index{data!white fish and mercury|(}
 
 
-```{block2, type = "example", echo = TRUE}
-Estimate the standard error of
+\BeginKnitrBlock{example}<div class="example">Estimate the standard error of
     $\bar{x} = 0.287$ ppm using the data summaries in the previous Guided Practice.    If we are to use the $t$-distribution to create a
     90% confidence interval for the actual mean of the
     mercury content, identify the degrees of freedom
@@ -971,8 +718,7 @@ The standard error: $SE = \frac{0.069}{\sqrt{15}} = 0.0178$.
   Since the goal is a 90% confidence interval,
   we choose $t_{14}^{\star}$ so that the two-tail area
   is 0.1:
-  $t^{\star}_{14} = 1.76$.
-```
+  $t^{\star}_{14} = 1.76$.</div>\EndKnitrBlock{example}
 
 <!--
 \begin{onebox}{Confidence interval for a single mean}
@@ -997,25 +743,21 @@ The standard error: $SE = \frac{0.069}{\sqrt{15}} = 0.0178$.
 -->
 
 
-```{block2, type = "guidedpractice", echo = TRUE}
-Using the information and results of the previous Guided Practice and Example, compute a 90% confidence interval for the average mercury content of croaker white fish (Pacific).^[$\bar{x} \ \pm\ t^{\star}_{14} \times SE
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Using the information and results of the previous Guided Practice and Example, compute a 90% confidence interval for the average mercury content of croaker white fish (Pacific).^[$\bar{x} \ \pm\ t^{\star}_{14} \times SE
       \ \to\  0.287 \ \pm\  1.76 \times 0.0178
       \ \to\ (0.256, 0.318)$.
   We are 90% confident that the average mercury content
-  of croaker white fish (Pacific) is between 0.256 and 0.318 ppm.]
-```
+  of croaker white fish (Pacific) is between 0.256 and 0.318 ppm.]</div>\EndKnitrBlock{guidedpractice}
 
 
-```{block2, type = "guidedpractice", echo = TRUE}
-The 90% confidence interval from the previous
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">The 90% confidence interval from the previous
 Guided Practice is 0.256 ppm to 0.318 ppm.
 Can we say that 90% of croaker white fish (Pacific)
 have mercury levels between 0.256 and 0.318 ppm?^[No, a confidence interval only provides a range
   of plausible values for a population parameter,
   in this case the population mean.
   It does not describe what we might observe
-  for individual observations.]
-```
+  for individual observations.]</div>\EndKnitrBlock{guidedpractice}
 
 \index{data!white fish and mercury|)}
 
@@ -1038,12 +780,9 @@ Is the typical US runner getting faster or slower over time? We consider this qu
 
 The average time for all runners who finished the Cherry Blossom Race in 2006 was 93.29 minutes (93 minutes and about 17 seconds). We want to determine using data from 100 participants in the 2017 Cherry Blossom Race whether runners in this race are getting faster or slower, versus the other possibility that there has been no change.
 
-```{block2, type = "guidedpractice", echo = TRUE}
-What are appropriate hypotheses for this context?^[$H_0$: The average 10-mile run time was the same for 2006 and 2017. $\mu = 93.29$ minutes. $H_A$: The average 10-mile run time for 2017 was \emph{different} than that of 2006. $\mu \neq 93.29$ minutes.]
-```
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">What are appropriate hypotheses for this context?^[$H_0$: The average 10-mile run time was the same for 2006 and 2017. $\mu = 93.29$ minutes. $H_A$: The average 10-mile run time for 2017 was \emph{different} than that of 2006. $\mu \neq 93.29$ minutes.]</div>\EndKnitrBlock{guidedpractice}
 
-```{block2, type = "guidedpractice", echo = TRUE}
-The data come from a simple random sample of all participants,
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">The data come from a simple random sample of all participants,
 so the observations are independent.
 However, should we be worried about the normality condition?
 See Figure \@ref(fig:run10SampTimeHistogram) for a histogram
@@ -1052,24 +791,14 @@ forward.^[With a sample of 100,
   we should only be concerned if there is are particularly
   extreme outliers.
   The histogram of the data doesn't show any outliers of concern
-  (and arguably, no outliers at all).]
-```
+  (and arguably, no outliers at all).]</div>\EndKnitrBlock{guidedpractice}
 
 
 
-```{r run10SampTimeHistogram, fig.cap="A histogram of `time` for the sample Cherry Blossom Race data.", warning=FALSE, fig.width=10}
-
-set.seed(1)
-run17 <- subset(run17, event == "10 Mile")
-d <- run17[sample(nrow(run17), 100), ] %>%
-  mutate(time = net_sec / 60)
-
-histPlot(d$time,
-         main = "",
-         xlab = "Time (Minutes)",
-         ylab = "Frequency",
-         col = COL[1])
-```
+<div class="figure" style="text-align: center">
+<img src="06-inference-num_files/figure-html/run10SampTimeHistogram-1.png" alt="A histogram of `time` for the sample Cherry Blossom Race data." width="70%" />
+<p class="caption">(\#fig:run10SampTimeHistogram)A histogram of `time` for the sample Cherry Blossom Race data.</p>
+</div>
 
 When completing a hypothesis test for the one-sample mean,
 the process is nearly identical to completing a hypothesis
@@ -1082,12 +811,9 @@ Then we finding the p-value using the same ideas we used
 previously: find the one-tail area under the sampling
 distribution, and double it.
 
-```{r include=FALSE}
-terms_chp_7 <- c(terms_chp_7, "T score")
-```
 
-```{block2, type = "example", echo = TRUE}
-With both the independence
+
+\BeginKnitrBlock{example}<div class="example">With both the independence
     and normality conditions satisfied,
     we can proceed with a hypothesis test using
     the $t$-distribution.
@@ -1132,17 +858,17 @@ To find the test statistic (T score),
   Since the observed value is above the null value
   and we have rejected the null hypothesis, we would conclude
   that runners in the race were slower on average in 2017
-  than in 2006.
-```
+  than in 2006.</div>\EndKnitrBlock{example}
 
-```{r echo = TRUE}
+
+```r
 # using pt() to find the p-value
 1 - pt(2.37, df = 99)
+#> [1] 0.00986
 ```
 
 
-```{block2, type = "onebox", echo = TRUE}
-**When using a $t$-distribution, we use a T score (same as Z score).**
+\BeginKnitrBlock{onebox}<div class="onebox">**When using a $t$-distribution, we use a T score (same as Z score).**
 
 To help us remember to use the $t$-distribution,
 we use a $T$ to represent the test statistic,
@@ -1150,8 +876,7 @@ and we often call this a **T score**.
 The Z score and T score are computed in the exact same way
 and are conceptually identical:
 each represents how many standard errors the observed value
-is from the null value.
-```
+is from the null value.</div>\EndKnitrBlock{onebox}
 
 <!--
 \begin{onebox}{Hypothesis testing for a single mean}
@@ -1261,7 +986,7 @@ t-test.  mention that there are lots of nuances outside the scope of this book.
 
 ## More insights into the $t$-distribution
 
-## Chapter 7 review {#chp7-review}
+## Chapter 6 review {#chp6-review}
 
 
 ### Terms
@@ -1271,9 +996,7 @@ If you're not sure what some of these terms mean, we recommend you go back in th
 We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. 
 However you should be able to easily spot them as **bolded text**.
 
-```{r eval = FALSE}
-make_terms_table(terms_chp_7)
-```
+
 
 
 
