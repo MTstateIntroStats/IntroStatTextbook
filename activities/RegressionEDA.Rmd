@@ -13,7 +13,7 @@ library(readr)
 library(mosaic)
 ```
 
-## Exploratory Data Analysis - Regression
+## Exploratory Data Analysis - Quantitative Varibles
 
 ## Learning Objectives
 
@@ -30,6 +30,10 @@ library(mosaic)
 * Understand what the slope coefficient represents
 
 * Understand what the coefficient of determination is
+
+## Displaying a single quantitative variable
+
+To plot quantitative variables, we can use a dotplot, histogram or boxplot. To create a histogram the variable is broken into bins on a set width. Each bin plots the frequency of each variable for a certain bin. The following creates a histogram of the variable education.  Notice that the bin width is 2 years.  For example the first bin consists of the number of people in the data set of 0 to 2 years of education.  It is important to note that someone with 2 years of education will fall into the bin for 2 - 4 years.
 
 
 ## Association between two Quantitative Variables
