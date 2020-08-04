@@ -69,7 +69,7 @@ include_graphics("05/images/bumBa-KiKi.png")
 ```
 
 This same image and question were presented to an introductory statistics class of
-38 students. In that class, 34 students correctly identified Bumba as the Martian on the left. Assuming we can't read Martian, is this result surprising?
+38 students. In that class, 34 students correctly identified Bumba as the Martian letter on the left. Assuming we can't read Martian, is this result surprising?
 
 One of two possibilities occurred:
 
@@ -82,7 +82,7 @@ the assumption that students were just guessing. If this probability is _very lo
 we'd have reason to reject the first possibility in favor of the second.
 We can calculate this probability using one of two methods:
 
-* **Simulation-based method**: simulate lots of samples of 38 students under the assumption that
+* **Simulation-based method**: simulate lots of samples (Classes) of 38 students under the assumption that
 students are just guessing, then calculate the proportion of these
 simulated samples where we saw 34 or more students guessing correctly, or
 * **Theory-based method**: develop a mathematical model for the sample proportion in this
@@ -117,9 +117,9 @@ ggplot(props, aes(x = x)) +
 
 None of our simulated samples produce 34 of 38 correct guesses! That is, if students were just guessing, it is nearly impossible to observe 34 or more correct guesses in a sample of 38 students. Given this low probability, the more plausible possibility is 2. _We can read Martian, and these results reflect this ability._ We've just completed our first hypothesis test!
 
-Now, obviously no one can read Martian, so a more realistic possibility is that humans tend to choose Bumba on the left more often than the right---there is a greater than 50% chance of choosing Bumba on the left. Even though we may think we're guessing just by chance, we have a preference for Bumba on the left. It turns out that the explanation for this preference is called _synesthesia_, a tendency for humans to correlate sharp sounding noises (e.g., Kiki) with sharp looking images.^[To explore this further, watch this [TED Talk](https://www.ted.com/talks/vs_ramachandran_3_clues_to_understanding_your_brain) by neurologist Vilayanur Ramachandran (The synesthesia part begins at roughly 17:40 minutes).]
+Now, obviously no one can read Martian, so a more realistic possibility is that humans tend to choose Bumba on the left more often than the right---there is a greater than 50% chance of choosing Bumba as the letter on the left. Even though we may think we're guessing just by chance, we have a preference for Bumba on the left. It turns out that the explanation for this preference is called _synesthesia_, a tendency for humans to correlate sharp sounding noises (e.g., Kiki) with sharp looking images.^[To explore this further, watch this [TED Talk](https://www.ted.com/talks/vs_ramachandran_3_clues_to_understanding_your_brain) by neurologist Vilayanur Ramachandran (The synesthesia part begins at roughly 17:40 minutes).]
 
-But wait---we're not done! We have evidence that humans tend to prefer Bumba on the left, but by how much? To answer this, we need a confidence interval---an interval of plausible values for the true probability humans will choose Bumba on the left. The width of this interval is determined by how variable sample proportions are from sample to sample. It turns out, there is a mathematical model for this variability that we will explore later in this chapter. For now, let's take the standard deviation from our simulated sample proportions as an estimate for this variability: 0.08. Since the simulated distribution of proportions is bell-shaped, we know about 95% of sample proportions should fall within two standard deviations of the true proportion, so we can add and subtract this **margin of error**\index{margin of error} to our sample proportion to calculate an approximate 95% confidence interval^[If you carry out the calculations, you'll note that the upper bound is actually $0.89 + 0.16 = 1.05$, but since a sample proportion cannot be greater than 1, we truncated the interval to 1.]:
+But wait---we're not done! We have evidence that humans tend to prefer Bumba on the left, but by how much? To answer this, we need a confidence interval---an interval of plausible values for the true probability humans will selecting Bumba as the left letter. The width of this interval is determined by how variable sample proportions are from sample to sample. It turns out, there is a mathematical model for this variability that we will explore later in this chapter. For now, let's take the standard deviation from our simulated sample proportions as an estimate for this variability: 0.08. Since the simulated distribution of proportions is bell-shaped, we know about 95% of sample proportions should fall within two standard deviations of the true proportion, so we can add and subtract this **margin of error**\index{margin of error} to our sample proportion to calculate an approximate 95% confidence interval^[If you carry out the calculations, you'll note that the upper bound is actually $0.89 + 0.16 = 1.05$, but since a sample proportion cannot be greater than 1, we truncated the interval to 1.]:
 \[
 \frac{34}{38} \pm 2\times 0.08 = 0.89 \pm 0.16 = (0.73, 1)
 \]
