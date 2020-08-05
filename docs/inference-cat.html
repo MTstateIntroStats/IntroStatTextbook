@@ -645,19 +645,19 @@ If we want to be very certain we capture the population parameter, should we use
 </div>
 <p>We will explore both simulation-based methods (bootstrapping) and theory-based methods for creating confidence intervals in this text. Though the details change with different scenarios, theory-based confidence intervals will always take the form:
 <span class="math display">\[
-\mbox{statistic} \pm (\mbox{critical value}) \times (\mbox{standard error of the statistic})
+\mbox{statistic} \pm (\mbox{multiplier}) \times (\mbox{standard error of the statistic})
 \]</span>
-The statistic is our best guess for the value of the parameter, so it makes sense to build the confidence interval around that value. The standard error, which is a measure of the uncertainty associated with the statistic, provides a guide for how large we should make the confidence interval. The critical value is determined by how confident we’d like to be, and tells us how many standard errors we need to add and subtract from the statistic. The amount we add and subtract from the statistic is called the <strong>margin of error</strong>.</p>
+The statistic is our best guess for the value of the parameter, so it makes sense to build the confidence interval around that value. The standard error, which is a measure of the uncertainty associated with the statistic, provides a guide for how large we should make the confidence interval. The multiplier is determined by how confident we’d like to be, and tells us how many standard errors we need to add and subtract from the statistic. The amount we add and subtract from the statistic is called the <strong>margin of error</strong>.</p>
 
 <div class="onebox">
 <p><strong>General form of a confidence interval.</strong></p>
 The general form of a <strong>theory-based confidence interval</strong> for an unknown parameter is
 <span class="math display">\[
-\mbox{statistic} \pm (\mbox{critical value}) \times (\mbox{standard error of the statistic})
+\mbox{statistic} \pm (\mbox{multiplier}) \times (\mbox{standard error of the statistic})
 \]</span>
 The amount we add and subtract to the statistic to calculate the confidence interval is called the <strong>margin of error</strong>.
 <span class="math display">\[
-\mbox{margin of error} = (\mbox{critical value}) \times (\mbox{standard error of the statistic})
+\mbox{margin of error} = (\mbox{multiplier}) \times (\mbox{standard error of the statistic})
 \]</span>
 </div>
 <p>In Section <a href="inference-cat.html#conf-int-one-prop">5.3.2</a> we will discuss different percentages for the confidence interval (e.g., 90% confidence interval or 99% confidence interval). Section <a href="inference-cat.html#conf-int-one-prop">5.3.2</a> also provides a longer discussion on what “95% confidence” actually means.</p>
@@ -1452,8 +1452,8 @@ of <span class="math inline">\(\hat{p}\)</span> may be well-approximated by the 
 <span class="math display">\[
  SE(\hat{p}) = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
   \]</span></li>
-<li>Use statistical software to find the critical value <span class="math inline">\(z^{\star}\)</span> corresponding to the confidence level.</li>
-<li>Apply the general confidence interval formula <span class="math inline">\(\mbox{statistic} \pm (\mbox{critical value}) \times SE\)</span>:
+<li>Use statistical software to find the multiplier <span class="math inline">\(z^{\star}\)</span> corresponding to the confidence level.</li>
+<li>Apply the general confidence interval formula <span class="math inline">\(\mbox{statistic} \pm (\mbox{multiplier}) \times SE\)</span>:
 <span class="math display">\[
  \hat{p} \pm z^{\star}\times \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
   \]</span>

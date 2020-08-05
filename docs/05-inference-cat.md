@@ -331,19 +331,19 @@ This reasoning also explains why we can never prove a null hypothesis. Sample st
 
 We will explore both simulation-based methods (bootstrapping) and theory-based methods for creating confidence intervals in this text. Though the details change with different scenarios, theory-based confidence intervals will always take the form:
 \[
-\mbox{statistic} \pm (\mbox{critical value}) \times (\mbox{standard error of the statistic})
+\mbox{statistic} \pm (\mbox{multiplier}) \times (\mbox{standard error of the statistic})
 \]
-The statistic is our best guess for the value of the parameter, so it makes sense to build the confidence interval around that value. The standard error, which is a measure of the uncertainty associated with the statistic, provides a guide for how large we should make the confidence interval. The critical value is determined by how confident we'd like to be, and tells us how many standard errors we need to add and subtract from the statistic. The amount we add and subtract from the statistic is called the **margin of error**.
+The statistic is our best guess for the value of the parameter, so it makes sense to build the confidence interval around that value. The standard error, which is a measure of the uncertainty associated with the statistic, provides a guide for how large we should make the confidence interval. The multiplier is determined by how confident we'd like to be, and tells us how many standard errors we need to add and subtract from the statistic. The amount we add and subtract from the statistic is called the **margin of error**.
 
 \BeginKnitrBlock{onebox}<div class="onebox">**General form of a confidence interval.**
 
 The general form of a **theory-based confidence interval** for an unknown parameter is
 \[
-\mbox{statistic} \pm (\mbox{critical value}) \times (\mbox{standard error of the statistic})
+\mbox{statistic} \pm (\mbox{multiplier}) \times (\mbox{standard error of the statistic})
 \]
 The amount we add and subtract to the statistic to calculate the confidence interval is called the **margin of error**.
 \[
-\mbox{margin of error} = (\mbox{critical value}) \times (\mbox{standard error of the statistic})
+\mbox{margin of error} = (\mbox{multiplier}) \times (\mbox{standard error of the statistic})
 \]</div>\EndKnitrBlock{onebox}
 
 In Section \@ref(conf-int-one-prop) we will discuss different percentages for the confidence interval (e.g., 90% confidence interval or 99% confidence interval).  Section \@ref(conf-int-one-prop) also provides a longer discussion on what "95% confidence" actually means.
@@ -1230,8 +1230,8 @@ There are four steps to constructing a confidence
   \[
     SE(\hat{p}) = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
   \]
-3. Use statistical software to find the critical value $z^{\star}$ corresponding to the confidence level.
-4. Apply the general confidence interval formula $\mbox{statistic} \pm (\mbox{critical value}) \times SE$:
+3. Use statistical software to find the multiplier $z^{\star}$ corresponding to the confidence level.
+4. Apply the general confidence interval formula $\mbox{statistic} \pm (\mbox{multiplier}) \times SE$:
   \[
     \hat{p} \pm z^{\star}\times \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
   \]</div>\EndKnitrBlock{onebox}

@@ -2449,7 +2449,7 @@ We will use the sample difference and the standard error that
   && SE = \sqrt{\frac{5.17^2}{9} + \frac{2.76^2}{9}} = 1.95
   \end{align*}
   Using $df = 8$, we can identify the
-  critical value of $t^{\star}_{8} = 2.31$
+  multiplier of $t^{\star}_{8} = 2.31$
   for a 95%  confidence interval.
   Finally, we can enter the values into the confidence
   interval formula:
