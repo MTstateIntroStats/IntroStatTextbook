@@ -22,13 +22,13 @@ library(mosaic)
 * Use a confidence interval to determine the conclusion of a hypothesis test
 
 ## Mean Difference in Heart Rates for Jumping Jacks and Bicycle Kicks
-Which exercise, jumping jacks or bicycle kicks will raise your heart rate more? Students in an introductory statistics class were asked to participate in an experiment to answer this question.  Each student flipped a coin to determine which exericise to complete first.  If the coin landed on heads the student would do jumping jacks for 30 seconds and then measure their heart rate.  After a 2 minute break the student would do bicycle kicks for 30 seconds and then record their heart rate.  If the coin landed on tails the student would complete bicycle kicks first followed by jumping jacks using the same times as above. 
+Which exercise, jumping jacks or bicycle kicks will raise your heart rate more? Students in an introductory statistics class were asked to participate in an experiment to answer this question.  Each student flipped a coin to determine which exercise to complete first.  If the coin landed on heads the student would do jumping jacks for 30 seconds and then measure their heart rate.  After a 2 minute break the student would do bicycle kicks for 30 seconds and then record their heart rate.  If the coin landed on tails the student would complete bicycle kicks first followed by jumping jacks using the same times as above. 
 
 ## Review
 ```{r}
 heartrate <- read.csv("../data/HeartRates.csv")
 boxplot(heartrate$Diff, 
-        main="Boxplot of the Differences in Heart Rates for Exericises")
+        main="Boxplot of the Differences in Heart Rates for Exercises")
 ```
 
 ```{r}
@@ -53,7 +53,7 @@ fav_stats(heartrate$Diff)
 
 ## Ask a Research Question
 
-5. What are the two competing possiblities to run a hypothesis test?
+5. What are the two competing possibilities to run a hypothesis test?
 
 \vspace{1in}
 
@@ -116,7 +116,7 @@ $\bar{x}_d \pm t^*SE(\bar{x}_d)$, where $SE(\bar{x}_d) = \sqrt(\frac{\bar{x}_d}{
 To find the $t^*$ multiplier for a 95% confidence interval we will find the value in the t-distribution that represents the endpoints for the middle 95% of the data.
 
 ```{r}
-qt(0.99, df = 42) #Multiplier for 95% confidence with 42 (n-1) df
+qt(0.95+0.025, df = 42) #Multiplier for 95% confidence with 42 (n-1) df
 ```
 
 15.  Calculate the $SE(\bar{x}_d)$. 
