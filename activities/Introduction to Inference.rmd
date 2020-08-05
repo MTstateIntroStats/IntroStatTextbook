@@ -185,7 +185,7 @@ This is the p-value.  The smaller the p-value the more evidence we have against 
 
 20. Using the following guidelines for the strength of evidence, how much evidence does the statistic provide against the null hypothesis?
 
-![](../images/sof_gradient.png)
+![](../images/soe_gradient.png)
 
 21.  Is there evidence that there is a higher proportion of male boxers that are left handed than the general population?  Explain your answer.
 
