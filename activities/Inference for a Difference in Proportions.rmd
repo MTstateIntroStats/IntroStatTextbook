@@ -36,7 +36,7 @@ In “Helmet Use and Risk of Head Injuries in Alpine Skiers and Snowboarders” 
 |     Did Not Wear Helmet    |     480            |     2330              |     2810     |
 |     Total                  |     576            |     2986              |     3562     |
 
-Is there evidence that saftey helmet use reduces the risk of head injury for skiiers and snowboarders? 
+Is there evidence that safety helmet use reduces the risk of head injury for skiers and snowboarders? 
 
 ## Vocabulary Review
 
@@ -56,11 +56,11 @@ Is there evidence that saftey helmet use reduces the risk of head injury for ski
 
 \vspace{1in}
 
-5. What is the conditional proportion of skiiers/snowboarders with a head injury that wore a helmet?
+5. What is the conditional proportion of skiers/snowboarders with a head injury that wore a helmet?
 
 \vspace{1in}
 
-6. What is the conditional proportion of skiiers/snowboarders with a head injury that did not wear a helmet?
+6. What is the conditional proportion of skiers/snowboarders with a head injury that did not wear a helmet?
 
 \vspace{1in}
 

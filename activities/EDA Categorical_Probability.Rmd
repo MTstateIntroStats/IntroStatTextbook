@@ -1,5 +1,5 @@
 ---
-title: "Categorical Variables"
+title: "Exploratory Data Analysis - Categorical Variables"
 output: pdf_document
 ---
 
@@ -12,8 +12,6 @@ options(show.signif.stars = FALSE)
 library(mosaic)
 ```
 
-
-## Exploratory Data Analysis - Categorical Variables
 
 ## Learning Outcomes
 
@@ -30,7 +28,7 @@ library(mosaic)
 * Construct two-way tables and tree diagrams to evaluate
   marginal, joint, and conditional probabilities
 
-The following dataset is from the Current Population Survey in 1985.  The following table summarizes the data.
+The following data set is from the Current Population Survey in 1985.  The following table summarizes the data.
 
 ![](../images/cps.png)
 
@@ -38,7 +36,7 @@ The following dataset is from the Current Population Survey in 1985.  The follow
 
 1. What are the observational units?
 
-\vspace{1in}
+\vspace{0.5in}
 
 2.  Which variables are categorical?
 
@@ -48,15 +46,15 @@ The following dataset is from the Current Population Survey in 1985.  The follow
 
 \vspace{1in}
 
-An important part of understanding data is to create visual pictures of what the data represents.  In this activity we will create graphical representations of different types of data and different combinations of data.
+An important part of understanding data is to create visual pictures of what the data represents.  In this activity we will create graphical representations of categorical data.
 
 ## Displaying a single categorical variable.
 
-A bar chart is used to plot a single categorical variable.  We can plot the counts for each category in a frequency bar chart and the proportion in each categorcy in a relative frequency bar chart. If we wanted to know how many people in our dataset were in each sector, we would create a bar chart of the variable sector.
+A bar plot is used to plot a single categorical variable.  We can plot the counts for each category in a frequency bar plot and the proportion in each category in a relative frequency bar plot. If we wanted to know how many people in our data set were in each sector, we would create a bar plot of the variable sector.
 
 ```{r}
 cps <- read.csv("../data/cps.csv") #This will read in the dataset
-cps$sector <- factor(cps$sector) #When a variable is categorical you need to set up as a factor?????reword
+cps$sector <- factor(cps$sector) #When a variable is categorical you need to set up as a factor
 cps$sex <- factor(cps$sex)
 ```
 
@@ -64,7 +62,7 @@ cps$sex <- factor(cps$sex)
 ```{r}
 barchart(cps$sector, #This specifies the dataset and the variable
          horizontal = FALSE, #Turn the bars so they are vertical
-         main = "Frequency Bar Chart of Sector", #Give your chart a title
+         main = "Frequency Bar Plot of Sector", #Give your plot a title
          xlab = "Sector", #Label the x axis
          ylab = "Frequency", #Label the y axis 
          ) 
@@ -73,10 +71,10 @@ barchart(cps$sector, #This specifies the dataset and the variable
 
 \vspace{1in}
 
-We could also choose to display the data as a proportion in a relative frequency bar chart. To find the relative frequency divide the count in each sector by the sample size.  This is the sample proportion. 
+We could also choose to display the data as a proportion in a relative frequency bar plot. To find the relative frequency divide the count in each sector by the sample size.  This is the sample proportion. 
 ```{r}
 barplot(table(cps$sector)/nrow(cps), #divide the frequency counts by the total
-        main = "Relative Frequency Bar Chart of Sector", #Give your chart a title
+        main = "Relative Frequency Bar Plot of Sector", #Give your plot a title
         xlab = "Sector", #Label the x axis
         ylab = "Relative Frequency", #Label the y axis 
 )
@@ -88,19 +86,17 @@ barplot(table(cps$sector)/nrow(cps), #divide the frequency counts by the total
 
 ## Displaying two categorical variables
 
-To visually display two categorical variables we will use a segmented bar chart. In a segmented bar chart each bar sums to 100% or a proportion of 1. Typically the explanatory variable will be plotted on the y-axis and the response variable on the x-axis. 
+To visually display two categorical variables we will use a segmented bar plot or a mosaic plot. In a segmented bar plot each bar sums to 100% or a proportion of 1. Typically the explanatory variable will be plotted on the y-axis and the response variable on the x-axis. 
 
-To see the differences in proportion of each sector between males and females we would create a segmented bar chart of sector segmented by sex.  In this plot we are comparing the variable sex (explanatory variable) for the different sectors (response variable).
-
-\vspace{1in}
+To see the differences in proportion of each sector between males and females we would create a segmented bar plot of sector segmented by sex.  In this plot we are comparing the variable sex (explanatory variable) for the different sectors (response variable).
 
 ```{r}
 plot(sex~sector #response~explanatory allows us to plot two variables
-     , data = cps, main="Segmented Bar Chart of Sector by Sex" #Make sure to title your graph
+     , data = cps, main="Segmented Bar Plot of Sector by Sex" #Make sure to title your graph
      )
 ```
 
-5.  Using the segmented bar chart, which sector has about the same proportion of males and females?
+5.  Using the segmented bar plot, which sector has about the same proportion of males and females?
 
 \vspace{0.5in}
 
@@ -138,7 +134,7 @@ e. Find the probability that a selected non-gambler is a non-boy.
 
 \vspace{1in}
 
-f. What is the notation used for this probability?
+f. What is the notation used for the probability calculated in part e?
 
 \vspace{0.5in}
 
@@ -156,12 +152,16 @@ b. Create a tree diagram to represent the situation.
 
 c. Calculate the probability that a randomly selected computer will be a desktop, given that the computer is on sale.  
 
+\vspace{1in}
+
 d. What is the notation used for the probability calculated in part c.
+
+\vspace{0.5in}
 
 e. Find $P(S|L^C)$.
 
 \vspace{1in}
 
-9. 
+
 
 
