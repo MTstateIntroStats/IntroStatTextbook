@@ -14,19 +14,21 @@ options(show.signif.stars = FALSE)
 library(mosaic)
 ```
 
-## Inference for a Difference in Means
-
 ## Learning Objectives.
 
 * Write out the null and alternative hypothesis for One Categorical and One Quantitative Variable
+
 * Calculate and carry-out theory-based hypothesis tests
+
 * Interpret and evaluate a p-value
+
 * Calculate and interpret a standardized statistic
+
 * Construct and interpret a theory-based confidence interval
+
 * Use a confidence interval to determine the conclusion of a hypothesis test
 
 ## Background
-
 
 In the winter of 2018-2019, Bozeman had a record snowfall which resulted in the collapse of two flat-roofed buildings on the MSU campus.  A writer for the Washington Post predicted the heavy snowfall for 2018-2019 due to the El Nino weather pattern that occurred in that season. A meteorologist in Montana wanted to see if the weather pattern really was associated with total snowfall. She obtained historical data from 44 years on the weather pattern (El Nino or La Nina) and snowfall (in inches) at the Billings Weather Station.  
 
@@ -66,7 +68,7 @@ boxplot(Snowfall~WeatherPattern, data=Snow)
 
 \vspace{1in}
 
-### Frame the research question.
+## Ask a research question.
 
 5.  Write out the parameter of interest in context of the study.
 
@@ -80,13 +82,13 @@ boxplot(Snowfall~WeatherPattern, data=Snow)
 
 \vspace{1in}
 
-# Collect Data
+## Summarize and Visualize the data.
 
 8. Calculate the summary statistic.  Use El Nino minus La Nina as the order of subtraction. What is the appropriate notation for the statistic?
 
 \vspace{0.5in}
 
-### Model the Randomness
+## Use statistical inferential methods to draw inferences from the data
 
 The T score measures the number of standard deviations the statistic is from the null value.  
 
@@ -94,11 +96,11 @@ The T score measures the number of standard deviations the statistic is from the
 
 Remember to use the t distribution the following conditions must be met.
 
-* The observations for each group must be normal for sample sizes less than 15.  For sample sizes greater than 60....
+* The observations for each group must be normal for sample sizes less than For sample sizes greater than 60....
 
 * The observations in each group must be independent
 
-9. Are these conditions met to use the t-distribuion?
+9. Are these conditions met to use the t-distribution?
 
 \vspace{1in}
 
@@ -119,9 +121,11 @@ Remember to use the t distribution the following conditions must be met.
 
 \vspace{1in}
 
-### Analyze the data
+To find the p-value we will use the function pt(test statistic, df, lower.tail=T).  The test statistic is the value calculated in Q12, df is the smallest sample size minus 1.  When you choose lower.tail = T this will give you the p-value for less than the test statistic.  If you choose lower.tail = F this will give you the p-value for greater than the test statistic.
 
-14.  **Use R to find the p-value???***
+```{r}
+pt(-1.59, df=20, lower.tail=T)
+```
 
 \vspace{1in}
 
@@ -130,9 +134,18 @@ Remember to use the t distribution the following conditions must be met.
 
 \vspace{1in}
 
-### Form Conclusions
+## Communicate the results and answer the research question.
 
-16.  Calculate the confidence interval using the general formula, point estimate $\pm t^*_{df}SE$.  **Do we want them to find the t* mulipliers???**
+To estimate the true difference in means we will use this equation for the confidence interval.
+$\bar{x}_d \pm t^* SE(\bar{x}_d)$
+
+The t* multiplier is found in r using the following code:
+
+```{r}
+qt(0.95+0.025, df=20)
+```
+
+16.  Calculate the 95% confidence interval.
 
 \vspace{1in}
 
