@@ -9,11 +9,16 @@ library(mosaic)
 ```
 
 ## Learning Outcomes
+
 * Given a research question, construct the null and alternative hypotheses
   in words and using appropriate statistical symbols
-* Describe and perform simulation-based hypothesis tests
+  
+* Describe and perform simulation-based hypothesis 
+
 * Interpret and evaluate a p-value
+
 * Construct and interpret a theory-based confidence interval
+
 * Use a confidence interval to determine the conclusion of a hypothesis test
 
 ## Mean Difference in Heart Rates for Jumping Jacks and Bicycle Kicks
@@ -23,7 +28,7 @@ Which exercise, jumping jacks or bicycle kicks will raise your heart rate more? 
 ```{r}
 heartrate <- read.csv("../data/HeartRates.csv")
 boxplot(heartrate$Diff, 
-        main="Boxplot of the Differences in Heart Rates for Jumping Jacks minus Bicycle Kicks")
+        main="Boxplot of the Differences in Heart Rates for Exericises")
 ```
 
 ```{r}
@@ -46,7 +51,7 @@ fav_stats(heartrate$Diff)
 
 \vspace{1in}
 
-## Frame the research question in terms of hypotheses. 
+## Ask a Research Question
 
 5. What are the two competing possiblities to run a hypothesis test?
 
@@ -65,7 +70,7 @@ fav_stats(heartrate$Diff)
 \vspace{1in}
 
 
-## Collect data 
+## Summarize and Visualize the Data 
 
 9. Report the summary statistic for the data.  
 
@@ -76,22 +81,68 @@ fav_stats(heartrate$Diff)
 \vspace{0.5in}
 
 
-## Model the randomness as if the null hypothesis was true. 
+## Use statistical inferential methods to draw inferences from the data
+
+
+To simulate the null distribution we will use a bootstrapping method - sampling with replacement from the data set.  Before bootstrapping we will need to shift the each data point by the difference $\mu_0 - \bar{x}$.  This will ensure that the simulated null distribution will be centered at the null value.  
+
+11. Calculate the difference $\mu_0 - \bar{x}$.  Will we need to shift the data up or down?
+
+\vspace{1in}
+
 
 **Add simulation here**
 
 
-## Analyze the data. 
+12. Explain why the null distribution is centered at zero. 
 
-..What proportion of samples are beyond the sample mean difference in heart beats for jumping jacks minus bicycle kicks?
+\vspace{1in}
+
+13. What proportion of samples are beyond the sample mean difference in heart beats for jumping jacks minus bicycle kicks?
 
 \vspace{1in}
 
 
-## Form a conclusion. 
+## Communicate the results and answer the research question.
 
-.. Write out the parameter of interest in context of the study.
+14. Write out the parameter of interest in context of the study.
 
 \vspace{1in}
 
-.. Calculate the 
+To calculate a confidence interval to estimate the mean difference in heart rates, we will use this equation:
+
+$\bar{x}_d \pm t^*SE(\bar{x}_d)$, where $SE(\bar{x}_d) = \sqrt(\frac{\bar{x}_d}{n_d})$
+
+To find the $t^*$ multiplier for a 95% confidence interval we will find the value in the t-distribution that represents the endpoints for the middle 95% of the data.
+
+```{r}
+qt(0.99, df = 42) #Multiplier for 95% confidence with 42 (n-1) df
+```
+
+15.  Calculate the $SE(\bar{x}_d)$. 
+
+\vspace{1in}
+
+16. Calculate a 95% confidence interval for the parameter of interest.
+
+\vspace{1in}
+
+17. Interpret the 95% confidence interval in context of the problem.
+
+\vspace{1in}
+
+18.  Based off your p-value and confidence interval, write a conclusion.
+
+\vspace{1in}
+
+## Revisit and Look Forward
+
+Suppose we had a sample of 90 students instead of 43 resulting in the same summary statistic.
+
+19. Would this new data provide more or less evidence against the null hypothesis?  Explain your answer.
+
+\vspace{1in}
+
+20. Would this result in a wider or narrower confidence interval?
+
+\vspace{1in}

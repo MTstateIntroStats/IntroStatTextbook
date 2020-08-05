@@ -14,9 +14,8 @@ options(show.signif.stars = FALSE)
 ```
 
 
-## Study Design
-
 ## Learning Outcomes
+
 * Explain the purpose of random sampling and its effect on scope of inference
 
 * Explain the purpose of random assignment and its effect on scope of inference
@@ -24,6 +23,8 @@ options(show.signif.stars = FALSE)
 * Identify whether a study is observational or an experiment
 
 * Identify confounding variables in observational studies and explain why they are confounding
+
+## Background
 
 Statistics is the study of how best to collect, analyze, and draw conclusions from data.  Statistical inference will allow us to make a statement about a population parameter based on a sample statistic.
 
@@ -57,9 +58,11 @@ Statistics is the study of how best to collect, analyze, and draw conclusions fr
  
 There are two parts to study design: how was the sample selected and how was the study conducted.  First we will look at sampling.
 
+\newpage
+
 ## Sampling from a population
 
-In the text, four sampling methods are discussed: 
+In the text, four unbiased sampling methods are discussed: 
 
 * Simple random sampling: each case in the population has an equal chance of being included in the sample
 
@@ -69,11 +72,11 @@ In the text, four sampling methods are discussed:
 
 * Multistage sampling: similar to a cluster sampling but only a random selection of observational units within the cluster is measured
 
-This above methods all represent a unbiased method of sampling.  Another popular sampling method is convenience sampling.  A convenience sample is where individuals who are easily accessible are more likely to be included in the sample such as surveying only Stat 216 students about university policies.
+These above methods all represent an unbiased method of sampling.  Another popular sampling method is convenience sampling.  A convenience sample is where individuals who are easily accessible are more likely to be included in the sample such as surveying only Stat 216 students about university policies.
 
 In these next questions, identify the target population, the sample, the variable, and the sampling method.
 
-1. Do determine if the proportion of out of state undergraduate students at Montana State University has increased in the last 10 years, a statistics instructor surveyed undergraduate students.  She randomly selected 50 students from each college at the University and asked them their state of residency.
+1. To determine if the proportion of out of state undergraduate students at Montana State University has increased in the last 10 years, a statistics instructor surveyed current undergraduate students.  She randomly selected 50 students from each college at the University and asked them their state of residency.
 
 \vspace{0.25in}
 Target population: 
@@ -150,7 +153,7 @@ Sampling Method:
 
 \vspace{0.25in}
 
-5. Of the above questions, which would be a biased method of sampling? Explain your answer.
+5. Of the above scenarios, which would be a biased method of sampling? Explain your answer.
 
 \vspace{1in}
 
@@ -160,7 +163,6 @@ Sampling Method:
 a. What is the target population?
 
 \vspace{0.25in}
-
 
 b. Explain how would they select a simple random sample.
 
@@ -180,7 +182,7 @@ Before discussing different study designs, we must first introduce two roles tha
 
 The two main study designs we will cover are observational studies and experiments.  In an **observational study**, groups of cases are compared by observation.  The data itself is not manipulated. When we randomly assign treatments to observational units, this study design is called an **experiment**.  
 
-Both the sampling method and the study design will help to determine the **scope of inference** for a study.  Remember that only in a randomized experiment can we conclude a causal relationship between the explanatory and response variable.
+Both the sampling method and the study design will help to determine the **scope of inference** for a study.  Remember that only in a randomized experiment can we conclude a **causal** (cause and effect) relationship between the explanatory and response variable.
 
 ![](../images/ScopeOfInference.png)
 
@@ -212,7 +214,7 @@ What is the scope of inference for this study?
 
 \vspace{0.5in}
 
-8. A study in 2009 was designed to see the effect of drinking beverages with alcohol and or caffeine on neuropsychological status. Twenty seven women college student volunteers were randomly assigned to drink either a caffeninated energy drink, a caffeinated energy drink with alcohol, or a non-alcocholic, non-caffeninated control beverage. 
+8. A study in 2009 was designed to see the effect of drinking beverages with alcohol and or caffeine on neuropsychological status. Twenty seven women college student volunteers were randomly assigned to drink either a caffeinated energy drink, a caffeinated energy drink with alcohol, or a non-alcoholic, non-caffeinated control beverage. 
 
 Pre- and post-test assessments were conducted using alternate forms of the
 Repeatable Battery for the Assessment of Neuropsychological Status (RBANS).
@@ -243,7 +245,7 @@ What is the scope of inference for this study?
 \vspace{0.5in}
 
 
-9. The pharmaceutical company, Moderna Thearputics is working in conjucntion with the National Institute of Health towards a vaccine for COVID-19 and has recently begun Phase 3 clinical trials.  US Clinical research sites will enroll 30,000 volunteers without COVID-19 to participate. Participants will be randomly assigned to receive either the candidate vaccine or a saline placebo.  They will then be followed to assess vaccine related symptoms and development of COVID-19. The trial is blinded, so the investigators and the participants will not know who is assigned to which group.
+9. The pharmaceutical company, Moderna Therapeutics is working in conjunction with the National Institute of Health towards a vaccine for COVID-19 and has recently begun Phase 3 clinical trials.  US Clinical research sites will enroll 30,000 volunteers without COVID-19 to participate. Participants will be randomly assigned to receive either the candidate vaccine or a saline placebo.  They will then be followed to assess vaccine related symptoms and development of COVID-19. The trial is blinded, so the investigators and the participants will not know who is assigned to which group.
 
 Explanatory Variable:
 

@@ -1,5 +1,5 @@
 ---
-title: "Quantitative Exploratory Data Analysis Activity"
+title: "Quantitative Exploratory Data Analysis"
 output:
   pdf_document: default
   html_document:
@@ -13,8 +13,6 @@ library(car)
 library(readr)
 library(mosaic)
 ```
-
-## Exploratory Data Analysis - Quantitative Varibles
 
 ## Learning Objectives
 
@@ -51,9 +49,9 @@ A data set was collected on Movies released since 1916 to 2016.  Here is a list 
 *Year*: Year the movie was released
 *Budget*: The amount of money (in US $) budgeted for the production of the movie
 *Revenue*: The amount of money (in US $) the movie made after release
-*Duraton*: The length of the movie (in minutes)
+*Duration*: The length of the movie (in minutes)
 *Content Rating*: Rating of the movie (G, PG, PG-13, R, Not Rated)
-*IMDB Score*: User rating score from 1 to 10
+*IMDb Score*: User rating score from 1 to 10
 *Genre*: Category the movie falls into
 *Movie Facebook Likes*: Number of likes a movie receives on Facebook
 
@@ -61,7 +59,7 @@ A data set was collected on Movies released since 1916 to 2016.  Here is a list 
 
 1. What are the observational units in this data set?
 
-\vspace{1in}
+\vspace{0.5in}
 
 2. Which of the above listed variables are categorical?
 
@@ -73,7 +71,7 @@ A data set was collected on Movies released since 1916 to 2016.  Here is a list 
 
 ```{r echo=F, fig.height=4}
 par(mfrow=c(1,2))
-movies <- read.csv("../data/Movies.csv")
+movies <- read.csv("../data/Movies.csv") #reads in data
 movies$content_rating <- factor(movies$content_rating)
 rating <- c("PG", "PG-13", "R")
 movies <- movies[movies$content_rating %in% rating,]
@@ -88,11 +86,11 @@ moviesa <- na.omit(movies)
 
 ## Summarizing a single quantitative variable
 
-* Center: There are two measures of center used for quantitative data: the mean or the average and the median.  The mean is found by adding up all the values in the dataset and dividing the sum by the sample size.  The median is the 50th percentile of the ordered dataset.  
+* Center: There are two measures of center used for quantitative data: the **mean** or the average and the **median**.  The mean is found by adding up all the values in the data set and dividing the sum by the sample size.  The median is the 50th percentile of the ordered data set.  
 
-* Spread: The spread is also referred to as variability.  Again there are two measures of spread used to describe the data: the standard deviation and the Inter Quartile Range or IQR.  The standard deviation measures the average distance of each observation from the mean. The IQR is found by subracting the value of the first quartile from the third quartile and measures the middle 50% of the data.  $IQR = Q_3 - Q_1$ 
+* Spread: The spread is also referred to as variability.  Again there are two measures of spread used to describe the data: the **standard deviation** and the **Interquartile Range or IQR**.  The standard deviation measures the average distance of each observation from the mean. The IQR is found by subtracting the value of the first quartile from the third quartile and measures the middle 50% of the data.  $IQR = Q_3 - Q_1$ 
 
-The favstats function gives the summary statistics for a quantitative variable.
+The favstats function gives the summary statistics for a quantitative variable. Here we have the summary statistics for 'IMDb'.
 ```{r}
 favstats(moviesa$imdb_score)
 ```
@@ -110,14 +108,14 @@ favstats(moviesa$imdb_score)
 
 ## Displaying a single quantitative variable
 
-To plot quantitative variables, we can use a dotplot, histogram or boxplot. To create a histogram the variable is broken into bins on a set width. Each bin plots the frequency of each variable for a certain bin. The following code creates a histogram of the variable IMBD Score.  Notice that the bin width is 0.5.  For example the first bin consists of the number of movies in the data set with an IMBD score of 3 to 3.5.  It is important to note that a movie with a IMBD score of 5 will fall into the bin for 5 - 5.5.  Visually this shows us the range of IMBD scores for Movies released in 2016.
+To plot quantitative variables, we can use a dotplot, histogram or boxplot. To create a histogram the variable is broken into bins on a set width. Each bin plots the frequency of each variable for a certain bin. The following code creates a histogram of the variable 'IMBd Score'.  Notice that the bin width is 0.5.  For example the first bin consists of the number of movies in the data set with an IMBd score of 3 to 3.5.  It is important to note that a movie with a IMBd score of 5 will fall into the bin for 5 - 5.5.  Visually this shows us the range of IMBd scores for Movies released in 2016.
 
 ```{r}
 hist(moviesa$imdb_score, #dataset name and variable
-     main = "Histogram of IMDB Score of Movies in 2016", #title for plot 
-     xlab = "IMDB Score") #label for x axis
+     main = "Histogram of IMDb Score of Movies in 2016", #title for plot 
+     xlab = "IMDb Score") #label for x axis
 ```
-7. Which range of IMBD scores have the highest frequency?
+7. Which range of IMBb scores have the highest frequency?
 
 \vspace{1in}
 
@@ -135,18 +133,18 @@ The boxplot is created using the five number summary:
 * Minimum value
 * Quartile 1 (Q1) - the value at the 25th percentile
 * Median - the value at the 50th percentile
-* Quartile 3 (Q3) - the avlue at the 75th percentile
+* Quartile 3 (Q3) - the value at the 75th percentile
 * Maximum value 
 
-Here is a boxplot of IMDB scores for movies in 2016.
+Here is a boxplot of IMDb scores for movies in 2016.
 
 ```{r}
 boxplot(moviesa$imdb_score, 
-       main = "Boxplot of IMDB Scores for Movies in 2016",
+       main = "Boxplot of IMDb Scores for Movies in 2016",
         ylab="IMDB Scores")
 ```
 
-8. Using the two plots above, what is the shape of the distribution of IMDB scores?
+8. Using the two plots above, what is the shape of the distribution of IMDb scores?
 
 \vspace{0.5in}
 
@@ -155,7 +153,7 @@ boxplot(moviesa$imdb_score,
 
 Side by side plots are created from a single categorical and single quantitative variable.  We can create side by side boxplots, side by side histograms, and side by side dotplots.
 
-The boxplot of budget in millions by content rating is plotted using the code below.  This plot helps to compare the budget for different levels of content rating.
+The boxplot of 'Budget' in millions by 'Content rating' is plotted using the code below.  This plot helps to compare the budget for different levels of content rating.
 
 ```{r}
 boxplot(budget_mil~content_rating #response~explanatory 
@@ -174,13 +172,13 @@ comparing distributions.
 
 To plot two quantitative variables we will use a scatterplot.  If there is a clear relationship between these variables the variables are associated.  We will analyze four characteristics of scatterplots to assess this relationship.  
 
-* Pattern:  Is the relationship linear or non-linear.
+* Form:  Is the relationship linear or non-linear.
 
 * Direction:  As the x variable increases is the y variable increasing (positive relationship) or decreasing (negative relationship).
 
 * Strength:  How strong is the association between the variables?  We will look at the measure of correlation to assess the strength.  When assessing the scatterplot we will see how close the individual data points are to the line of regression.  
 
-* Influential points:  We will also assess any data points that do not fit the pattern of the data.  These are called outliers or influential points.  
+* Unusual Observations or Outliers:  We will also assess any data points that do not fit the overall pattern of the data.  These are called outliers or unusual observations.  
 
 We will look at the relationship between 'Budget' and 'Revenue' for movies released in 2016.
 
@@ -208,7 +206,7 @@ scatterplot(revenue_mil~budget_mil, data=moviesa,pch=20,main="Revenue vs. Budget
 
 \vspace{1in}
 
-10. Does there appear to be an association betwen 'Budget' and 'Revenue'? Explain.
+10. Does there appear to be an association between 'Budget' and 'Revenue'? Explain.
 
 \vspace{1in}
 
@@ -257,7 +255,7 @@ favstats(moviesa$revenue_mil)
 
 \vspace{1in}
 
-The slope measures the change in y for each increase in x by 1.  In other words, as the x variable increases by 1 unit, the y variable changes (increaes/decreases) by the value of slope.
+The slope measures the change in y for each increase in x by 1.  In other words, as the x variable increases by 1 unit, the y variable changes (increase/decreases) by the value of slope.
 
 17.  Interpret the value of slope in context of the problem.
 
@@ -297,7 +295,7 @@ Residual = Data - Model
 $e_i=y_i-\hat{y}_i$
 \end{center}
 
-21.  The movie, Independence Day: Resurgence, had a budget of 165 million and revenue of 102.315 million.  Find the residual for this movie.
+21.  The movie, *Independence Day: Resurgence*, had a budget of 165 million and revenue of 102.315 million.  Find the residual for this movie.
 
 \vspace{1in}
 
