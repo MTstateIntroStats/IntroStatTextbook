@@ -507,8 +507,8 @@ The variables as well as the variables in the data set that did not fit in Table
 
 ### Types of variables {#variable-types}
 
-Examine the `unemployment_rate`, `pop2017`, `state`, and `median_edu` variables in the `county` data set. 
-Each of these variables is inherently different from the other three, yet some share certain characteristics.
+Examine the `unemployment_rate`, `pop2017`, `state`, `metro`, and `median_edu` variables in the `county` data set. 
+Each of these variables is inherently different from the others, yet some share certain characteristics.
 
 First consider `unemployment_rate`, which is said to be a **quantitative** or **numerical** variable since it can take a wide range of numerical values, and it is sensible to add, subtract, or take averages with those values.
 On the other hand, we would not classify a variable reporting telephone area codes as quantitative since the average, sum, and difference of area codes doesn't have any clear meaning.
@@ -523,7 +523,7 @@ On the other hand, the unemployment rate variable is said to be **continuous**.
 
 
 The variable `state` can take up to 51 values after accounting for Washington, DC: AL, AK, ..., and WY.
-Because the responses themselves are categories, `state` is called a **categorical** variable, and the possible values are called the variable's **levels** .
+Because the responses themselves are categories, `state` is called a **categorical** variable, and the possible values are called the variable's **levels** . The variable `metro` is also categorical, but it only has two levels (yes or no). A categorical variable with only two levels is called a **binary** variable.
 
 
 
@@ -1380,18 +1380,24 @@ However you should be able to easily spot them as **bolded text**.
 <tbody>
   <tr>
    <td style="text-align:left;"> anecdotal evidence </td>
+   <td style="text-align:left;"> convenience sample </td>
+   <td style="text-align:left;"> observational data </td>
+   <td style="text-align:left;"> retrospective study </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> associated </td>
    <td style="text-align:left;"> data </td>
    <td style="text-align:left;"> observational study </td>
    <td style="text-align:left;"> sample </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> associated </td>
+   <td style="text-align:left;"> barplot </td>
    <td style="text-align:left;"> data frame </td>
    <td style="text-align:left;"> observational unit </td>
    <td style="text-align:left;"> sample bias </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> barplot </td>
+   <td style="text-align:left;"> binary </td>
    <td style="text-align:left;"> dependent </td>
    <td style="text-align:left;"> ordinal </td>
    <td style="text-align:left;"> sampling bias </td>
@@ -1460,12 +1466,6 @@ However you should be able to easily spot them as **bolded text**.
    <td style="text-align:left;"> control group </td>
    <td style="text-align:left;"> non-response rate </td>
    <td style="text-align:left;"> response variable </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> convenience sample </td>
-   <td style="text-align:left;"> observational data </td>
-   <td style="text-align:left;"> retrospective study </td>
    <td style="text-align:left;">  </td>
   </tr>
 </tbody>

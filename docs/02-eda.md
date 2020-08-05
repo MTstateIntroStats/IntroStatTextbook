@@ -844,7 +844,7 @@ One observation that stands out when comparing the two maps: the poverty rate is
 
 
 
-## Exploratory data analysis in `R`
+## `R`: Exploratory data analysis
 
 
 ## Chapter 2 review {#chp2-review}

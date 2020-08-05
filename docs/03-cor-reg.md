@@ -10,7 +10,9 @@
 - extrapolation
 - outliers and influential points
 	
-	
+
+## `R`: Correlation and regression
+
 ## Chapter 3 review {#chp3-review}
 
 ### Terms

@@ -1102,7 +1102,7 @@ map_howownership /
 
 
 
-## Exploratory data analysis in `R`
+## `R`: Exploratory data analysis
 
 
 ## Chapter 2 review {#chp2-review}

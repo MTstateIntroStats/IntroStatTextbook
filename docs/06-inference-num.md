@@ -21,6 +21,14 @@ The techniques described for each setting will vary slightly, but you will be we
 
 ## One mean {#one-mean}
 
+\BeginKnitrBlock{onebox}<div class="onebox">**Notation**.
+
+* $n$ = sample size
+* $\hat{x}$ = sample mean
+* $s$ = sample standard deviation
+* $\mu$ = population mean
+* $\sigma$ = population standard deviation</div>\EndKnitrBlock{onebox}
+
 In this section, we explore the situation where we focus on a single mean of a quantitative variable, and we introduce a new simulation method, **bootstrapping**\index{bootstrap}. 
 Bootstrapping is best suited for modeling studies where the data have been generated through random sampling from a population.
 
@@ -36,13 +44,6 @@ However, some statistics don't have simple theory for how they vary, and bootstr
 
 
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Notation**.
-
-* $n$ = sample size
-* $\hat{x}$ = sample mean
-* $s$ = sample standard deviation
-* $\mu$ = population mean
-* $\sigma$ = population standard deviation</div>\EndKnitrBlock{onebox}
 
 
 ### Bootstrap confidence interval for $\mu$
@@ -71,25 +72,22 @@ It doesn't make sense to take repeated samples from the same population because 
 By taking repeated samples from the estimated population, the variability from sample to sample can be observed.
 
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Bootstrapping**.
-
-1. Take a random sample of size $n$ from the original sample, _with replacement_. This is called a **bootstrapped resample**.
-2. Record the sample mean (or statistic of interest) from the boostrapped resample. This is called a **bootstrapped statistic**.
-3. Repeat steps (1) and (2) 1000s of times.
-
-Use the standard deviation of the distribution of bootstrapped statistics as your estimate for the standard deviation of the sampling distribution of sample means---the amount we would expect a sample mean to typically deviate from the population mean.
-
-Since this bootstrapped standard deviation of statistics is an _estimate_ of the standard deviation of sample means---and not the actual value, which is unknown---we call this a **standard error** of the sample mean.</div>\EndKnitrBlock{onebox}
-
-
-Figure \@ref(fig:bootstrapping) shows how the unknown original population can be estimated by using the sample. This estimated population---consisting of infinitely many copies of the original sample---can then be used to generate bootstrapped samples.
+Figure \@ref(fig:bootstrapping) shows how the unknown original population can be estimated by using many duplicates of the sample. This estimated population---consisting of infinitely many copies of the original sample---can then be used to generate bootstrapped resamples.
 
 <div class="figure" style="text-align: center">
 <img src="06/figures/bootstrapping.png" alt="Using the original sample of five Edinburgh flats to generate an estimated population, which is then used to generate bootstrapped resamples. This process of generating a bootstrapped sample is equivalent to sampling five flats from the original sample, with replacement." width="75%" />
 <p class="caption">(\#fig:bootstrapping)Using the original sample of five Edinburgh flats to generate an estimated population, which is then used to generate bootstrapped resamples. This process of generating a bootstrapped sample is equivalent to sampling five flats from the original sample, with replacement.</p>
 </div>
 
-In Figure \@ref(fig:bootstrapping) the repeated bootstrap resamples are obviously different both from each other and from the original sample.
+It turns out that in practice, it is very difficult for computers to work with an infinite population (with the same proportional breakdown as in the sample).
+However, there is a physical and computational model which produces an equivalent bootstrap distribution of the sample mean in a computationally efficient manner.
+Consider the observed data to be a bag of five marbles. Each marble corresponds to one flat, and is labeled by the rent price.  By drawing the marbles out of the bag _with replacement_ (after we draw one, we put it back before drawing another), we depict the same sampling **process** as was done with the infinitely large estimated population.
+Note in Figure \@ref(fig:bootstrapping) that when sampling the original observations, a particular data point may end up in the new sample one time, several times, or not at all.  
+
+
+
+
+In Figure \@ref(fig:bootstrapping), the repeated bootstrap resamples are obviously different both from each other and from the original sample.
 Since the bootstrap resamples are taken from the same (estimated) population, these differences are due entirely to natural variability in the sampling procedure.
 By summarizing each of the bootstrap resamples (here, using the sample mean), we see, directly, the variability of the sample mean, $\bar{x}$, from sample to sample.
 The distribution of $\hat{x}_{boot}$ for the Edinburgh flats is shown in Figure \@ref(fig:flatsbsmean).
@@ -100,7 +98,28 @@ The distribution of $\hat{x}_{boot}$ for the Edinburgh flats is shown in Figure 
 </div>
 
 The bootstrapped average rent prices vary from £ 1250 to £ 1995 (with a small observed sample of size 5, a bootstrap resample can sometimes, although rarely, include only repeated measurements of the same observation).
-The **bootstrap confidence interval** for $\mu$, the population mean rent price for three bedroom flats in Edinburgh, is found by locating the middle 95% (for a 95% confidence interval) of the bootstrapped statistics. You can find a different confidence level by changing the percent of the distribution you take, e.g., locate the middle 90% of the bootstrapped statistics for a 90% confidence interval.
+
+\BeginKnitrBlock{onebox}<div class="onebox">**Bootstrapping**.
+
+1. Take a random sample of size $n$ from the original sample, _with replacement_. This is called a **bootstrapped resample**.
+2. Record the sample mean (or statistic of interest) from the boostrapped resample. This is called a **bootstrapped statistic**.
+3. Repeat steps (1) and (2) 1000s of times.
+
+Use the standard deviation of the distribution of bootstrapped statistics as your estimate for the standard deviation of the sampling distribution of sample means---the amount we would expect a sample mean to typically deviate from the population mean.
+
+Since this bootstrapped standard deviation of statistics is an _estimate_ of the standard deviation of sample means---and not the actual value, which is unknown---we call this a **standard error** of the sample mean.</div>\EndKnitrBlock{onebox}
+
+Due to theory that is beyond this text, we know that the bootstrap means $\bar{x}_{boot}$ vary around the original sample mean, $\bar{x}$, in a similar way to how different sample (i.e., different data sets which would produce different $\bar{x}$ values) means vary around the true parameter $\mu$. 
+Therefore, an interval estimate for $\mu$ can be produced using the $\bar{x}_{boot}$ values themselves.The **bootstrap confidence interval** for $\mu$, the population mean rent price for three bedroom flats in Edinburgh, is found by locating the middle 95% (for a 95% confidence interval) of the bootstrapped sample means in Figure \@ref{fig:flatsbsmean}.
+
+\BeginKnitrBlock{onebox}<div class="onebox">**95% Bootstrap confidence interval for a population mean $\mu$.**
+
+The 95% bootstrap confidence interval for the parameter $\mu$ can be obtained directly using the ordered values $\bar{x}_{boot}$ values. Consider the sorted $\bar{x}_{boot}$ values, and let $\bar{x}_{boot, 0.025}$ be the 2.5% value and $\bar{x}_{boot, 0.025}$ be the 97.5% value. The 95% confidence interval is given by:
+<center>
+($\hat{p}_{bs, 0.025}$, $\hat{p}_{bs, 0.975}$)
+</center></div>\EndKnitrBlock{onebox}
+
+You can find confidence intervals of difference confidence levels by changing the percent of the distribution you take, e.g., locate the middle 90% of the bootstrapped statistics for a 90% confidence interval.
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">To find the middle 95% of a distribution, which two percentiles would form its boundaries?^[The the middle 95% of a distribution would range from the 2.5th percentile (the value with 2.5% of the distribution below) to the 97.5th percentile (the value with 2.5% of the distribution above). ]</div>\EndKnitrBlock{guidedpractice}
 
@@ -149,11 +168,6 @@ The example presented above is done for a sample with only five observations.
 As with analysis techniques that build on mathematical models, bootstrapping works best when a large random sample has been taken from the population.
 Bootstrapping is a method for capturing the variability of a statistic when the mathematical model is unknown (it is not a method for navigating small samples).
 As you might guess, the larger the random sample, the more accurately that sample will represent the population of interest.
-
-
-### Shifted bootstrap hypothesis test for $H_0: \mu = \mu_0$
-
-
 
 
 
@@ -892,6 +906,15 @@ is from the null value.</div>\EndKnitrBlock{onebox}
 
 ## Paired mean difference {#paired-data}
 
+\BeginKnitrBlock{onebox}<div class="onebox">**Notation**.
+
+* $n_{diff}$ = sample size of differences in paired samples
+* $\hat{x}_{diff}$ = sample mean of differences in paired samples
+* $s_{diff}$ = sample standard deviation of differences in paired samples
+* $\mu_{diff}$ = population mean of differences in paired samples
+* $\sigma_{diff}$ = population standard deviation of differences in paired samples</div>\EndKnitrBlock{onebox}
+
+
 Paired data represent a particular type of experimental structure where the analysis is somewhat akin to a one-sample analysis (see Section \@ref(one-mean)) but has other features that resemble a two-sample analysis (see Section \@ref(differenceOfTwoMeans)).  As with a two-sample analysis, quantitative measurements are made on each of two different levels of the explanatory variable.  However, because the observational unit is **paired** across the two groups, the two measurements are subtracted such that only the difference is retained.  Table \@ref(tab:pairedexamples) presents some examples of studies where paired designs were implemented.
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
@@ -1344,6 +1367,15 @@ on Amazon?^[The average price difference
 
 
 ## Difference of two means {#differenceOfTwoMeans}
+
+\BeginKnitrBlock{onebox}<div class="onebox">**Notation**.
+
+* $n_1$, $n_2$ = sample sizes of two independent samples
+* $\bar{x}_1$, $\bar{x}_2$ = sample means of two independent samples
+* $s_1$, $s_2$ = sample standard deviations of two independent samples
+* $\mu_1$, $\mu_2$ = population means of two independent samples
+* $\sigma_1$, $\sigma_2$ = population standard deviations of two independent samples</div>\EndKnitrBlock{onebox}
+
 
 In this section we consider a difference in
 two population means, $\mu_1 - \mu_2$, under the condition
@@ -2075,9 +2107,11 @@ but this general approach remain the same.
 
 -->
 
-## $t$-procedures
+## Summary of $t$-procedures
 
-So far in this chapter, we have seen the $t$-distribution applied as the appropriate mathematical model in three distinct settings.  Although the three data structures are different, their similarities and differences are worth pointing out.  We provide Table \@ref(tab:tcompare) partly as a mechanism for understanding $t$-procedures and partly to highlight the extremely common usage of the $t$-distribution in practice.
+So far in this chapter, we have seen the $t$-distribution applied as the appropriate mathematical model in three distinct settings.  Although the three data structures are different, their similarities and differences are worth pointing out.  We provide Table \@ref(tab:tcompare) partly as a mechanism for understanding $t$-procedures and partly to highlight the extremely common usage of the $t$-distribution in practice. You will often hear the following three $t$-procedures referred to as a **one sample $t$-test** ($t$-interval), **paired $t$-test** ($t$-interval), and **two sample $t$-test** ($t$-interval).
+
+
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>(\#tab:tcompare)Similarities of $t$-methods across one sample, paired sample, and two independent samples analysis of a numeric response variable.</caption>
@@ -2097,15 +2131,21 @@ So far in this chapter, we have seen the $t$-distribution applied as the appropr
    <td style="text-align:left;"> numeric </td>
   </tr>
   <tr>
+   <td style="text-align:left;"> explanatory variable </td>
+   <td style="text-align:left;"> none </td>
+   <td style="text-align:left;"> binary </td>
+   <td style="text-align:left;"> binary </td>
+  </tr>
+  <tr>
    <td style="text-align:left;"> parameter of interest </td>
    <td style="text-align:left;"> mean: $\mu$ </td>
-   <td style="text-align:left;"> paired mean: $\mu_{diff}$ </td>
+   <td style="text-align:left;"> paired mean diff: $\mu_{diff}$ </td>
    <td style="text-align:left;"> diff in means: $\mu_1 - \mu_2$ </td>
   </tr>
   <tr>
    <td style="text-align:left;"> statistic of interest </td>
    <td style="text-align:left;"> mean: $\bar{x}$ </td>
-   <td style="text-align:left;"> paired mean: $\bar{x}_{diff}$ </td>
+   <td style="text-align:left;"> paired mean diff: $\bar{x}_{diff}$ </td>
    <td style="text-align:left;"> diff in means: $\bar{x}_1 - \bar{x}_2$ </td>
   </tr>
   <tr>
@@ -2130,30 +2170,37 @@ So far in this chapter, we have seen the $t$-distribution applied as the appropr
 </table>
 
 
-
 **Hypothesis tests.** When applying the $t$-distribution for a hypothesis test, we proceed as follows:
 
-* Write appropriate hypotheses.  
-* Verify conditions for using the $t$-distribution.  
+1. Write appropriate hypotheses.  
+2. Verify conditions for using the $t$-distribution.  
    - One-sample or differences from paired data: the observations (or differences) must be independent and nearly normal. For larger sample sizes, we can relax the nearly normal requirement, e.g., slight skew is okay for sample sizes of 15, moderate skew for sample sizes of 30, and strong skew for sample sizes of 60.  
    - For a difference of means when the data are not paired: each sample mean must separately satisfy the one-sample conditions for the $t$-distribution, and the data in the groups must also be independent.  
 
-
-* Compute the point estimate of interest, the standard error, and the degrees of freedom. For $df$, use $n-1$ for one sample, and for two samples use either statistical software or the smaller of $n_1 - 1$ and $n_2 - 1$.  
-* Compute the T-score and p-value.
-* Make a conclusion based on the p-value, and write a conclusion in context and in plain language so anyone can understand the result.
+3. Compute the statistic of interest, the standard error, and the degrees of freedom. For $df$, use $n-1$ for one sample, and for two samples use either statistical software or the smaller of $n_1 - 1$ and $n_2 - 1$.  
+4. Compute the T-score using the general formula:
+    \[
+    T = \frac{\mbox{statistic} - \mbox{null value}}{\mbox{standard error}}
+    \]
+5. Use the statistical software to find the p-value using the appropriate $t$-distribution:
+    - Sign in $H_a$ is $<$: p-value = area below T-score
+    - Sign in $H_a$ is $>$: p-value = area above T-score
+    - Sign in $H_a$ is $\neq$: p-value = 2 $\times$ area below $-|\mbox{T-score}|$
+6. Make a conclusion based on the p-value, and write a conclusion in context, in plain language, and in terms of the alternative hypothesis.
 
 **Confidence intervals.** Similarly, the following is how we generally computed a confidence interval using a $t$-distribution:
 
-* Verify conditions for using the $t$-distribution. (See above.)  
-* Compute the point estimate of interest, the standard error, the degrees of freedom, and $t^{\star}_{df}$.  
-* Calculate the confidence interval using the general formula, point estimate $\pm\ t_{df}^{\star} SE$.  
-* Put the conclusions in context and in plain language so even non-data scientists can understand the results.
+1. Verify conditions for using the $t$-distribution. (See above.)  
+2. Compute the point estimate of interest, the standard error, the degrees of freedom, and $t^{\star}_{df}$.  
+3. Calculate the confidence interval using the general formula:
+    \[
+    \mbox{statistic} \pm\ t_{df}^{\star} SE.
+    \]
+4. Put the conclusions in context and in plain language so even non-data scientists can understand the results.
 
 
 
-
-
+## `R`: Inference for quantitative data
 
 
 ## Chapter 6 review {#chp6-review}
@@ -2170,14 +2217,20 @@ However you should be able to easily spot them as **bolded text**.
 <tbody>
   <tr>
    <td style="text-align:left;"> bootstrapping </td>
-   <td style="text-align:left;"> degrees of freedom </td>
+   <td style="text-align:left;"> one sample $t$-test </td>
    <td style="text-align:left;"> point estimate </td>
-   <td style="text-align:left;"> t-distribution </td>
+   <td style="text-align:left;"> two sample $t$-test </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Central Limit Theorem </td>
-   <td style="text-align:left;"> paired data </td>
+   <td style="text-align:left;"> paired $t$-test </td>
    <td style="text-align:left;"> T score </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> degrees of freedom </td>
+   <td style="text-align:left;"> paired data </td>
+   <td style="text-align:left;"> t-distribution </td>
    <td style="text-align:left;">  </td>
   </tr>
 </tbody>

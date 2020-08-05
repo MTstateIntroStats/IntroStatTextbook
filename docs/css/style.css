@@ -17,6 +17,14 @@
   color: #569BBD;
 }
 
+/* Useage:
+/* .protip = something for students to keep in mind that might trip them up (e.g., observed vs simulated stat)stat
+/* .importantbox = something really important, e.g., association /neq causation
+/* .tipbox = interesting fact that isn't too important if they don't know (e.g., details of CLT)
+/* .guidedpractice = practice problem where answer is in footnote
+/* .example = practice problem where answer is in the same box
+/* .onebox = generic box without an icon; start with bold followed by period. Use for definitions. **Vocab word.** Return - blank line - definition
+
 /* COPY AND PASTE BELOW FROM IMS REPO
 
 /* From bookdown example */

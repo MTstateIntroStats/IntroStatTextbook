@@ -4,6 +4,9 @@
 - t-distribution for regression coefficients - test/CI
 
 
+## `R`: Inference for regression
+
+
 ## Chapter 7 review {#chp7-review}
 
 ### Terms

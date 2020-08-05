@@ -12,7 +12,9 @@ The content in this chapter is currently just placeholder. We will remove this b
 - extrapolation
 - outliers and influential points
 	
-	
+
+## `R`: Correlation and regression
+
 ## Chapter 3 review {#chp3-review}
 
 ### Terms
