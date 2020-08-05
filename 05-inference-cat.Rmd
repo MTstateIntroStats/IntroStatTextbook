@@ -1465,15 +1465,12 @@ not independent are outside the scope of this book.
 
 
 
-### Two-sided hypotheses
-
-
 ### Confidence interval for $\pi$
 
 \index{point estimate!single proportion}
 
 A confidence interval provides a range of
-plausible values for the parameter $p$,
+plausible values for the parameter $\pi$,
 and when $\hat{p}$ can be modeled using a
 normal distribution, the confidence interval
 for $p$ takes the form
@@ -1481,20 +1478,20 @@ for $p$ takes the form
 \hat{p} \pm z^{\star} \times SE.
 \end{align*}
 
-We have seen $\hat{p}$ to be the sample proportion.  The value $z^{\star}$ determines the confidence level (previously set to be 1.96) and will be discussed in detail in the examples following.  The value of the standard error, $SE$, depends heavily on the sample size.
+We have seen $\hat{p}$ to be the sample proportion.  The value $z^{\star}$ comes from a standard normal distribution and is determined by the chosen confidence level.  The value of the standard error, $SE$, approximates how far we would expect the sample proportion to fall from $\pi$, and depends heavily on the sample size.
 
 ```{block2, type = "onebox", echo = TRUE}
-**Standard Error of one proportion, $\hat{p}$**
+**Standard error of one proportion, $\hat{p}$.**
   
-When the conditions are met so that the distribution fo $\hat{p}$ is nearly normal, the **variability** of a single proportion, $\hat{p}$ is well described by:
+When the conditions are met so that the distribution fo $\hat{p}$ is nearly normal, the **variability** of a single proportion, $\hat{p}$ is well described by its standard deviation:
   
-$$SE(\hat{p}) = \sqrt{\frac{p(1-p)}{n}}$$
+$$SD(\hat{p}) = \sqrt{\frac{\pi(1-\pi)}{n}}$$
   
-Note that we almost never know the true value of $p$.  A more helpful formula to use is:
+Note that we almost never know the true value of $\pi$, but we can substitute our best guess of $\pi$ to obtain an approximate standard deviation, called the **standard error** of $\hat{p}$:
   
-$$SE(\hat{p}) \approx \sqrt{\frac{(\mbox{best guess of }p)(1 - \mbox{best guess of }p)}{n}}$$
+$$SD(\hat{p}) \approx \hspace{3mm} SE(\hat{p}) = \sqrt{\frac{(\mbox{best guess of }\pi)(1 - \mbox{best guess of }\pi)}{n}}$$
   
-For hypothesis testing, we often use $p_0$ as the best guess of $p$.  For confidence intervals, we typically use $\hat{p}$ as the best guess of $p$.
+For hypothesis testing, we often use $p_0$ as the best guess of $\pi$, as seen in Section \@ref(one-prop-null-boot).  For confidence intervals, we typically use $\hat{p}$ as the best guess of $\pi$.
 ```
 
 \index{data!Payday regulation poll|(}
@@ -1517,16 +1514,14 @@ did search and replace for each term above.  for example 826 for 826
 -->
 
 ```{block2, type = "guidedpractice", echo = TRUE}
-Consider taking many polls of registered voters (i.e., random samples) of size 300 asking them if they support legalized marijuana.
+Consider taking many polls of registered voters (i.e., random samples) of size 300 and asking them if they support legalized marijuana.
 It is suspected that about 2/3 of all voters support legalized marijuana.
-To understand how the sample proportion ($\hat{p}$) would vary across the samples, calculate the standard error of $\hat{p}$.^[Because the $p$ is unknown but expected to be around 2/3, we will use 2/3 in place of $p$ in the formula for the standard error.  
-$SE = \sqrt{\frac{p(1-p)}{n}} \approx
-    \sqrt{\frac{2/3 (1 - 2/3)}
+To understand how the sample proportion ($\hat{p}$) would vary across the samples, calculate the standard error of $\hat{p}$.^[Because the $\pi$ is unknown but expected to be around 2/3, we will use 2/3 in place of $\pi$ in the formula for the standard deviation of $\hat{p}$ and calculate  
+$SE = \sqrt{\frac{2/3 (1 - 2/3)}
         {300}} = 0.027$.]
 
 ```
 
-#### Variability of the statistic {-}
 
 ```{block2, type = "example", echo = TRUE}
 
@@ -1539,10 +1534,10 @@ A simple random sample of 826
   1. Is it reasonable to model the variability of $\hat{p}$ from sample to sample
     using a normal distribution?
     
-  2. Estimate the standard error of $\hat{p}$.
+  2. Calculate the standard error of $\hat{p}$.
 
-  3. Construct a 95% confidence interval for $p$,
-    the proportion of payday borrowers who support increased
+  3. Construct a 95% confidence interval for $\pi$,
+    the proportion of _all_ payday borrowers who support increased
     regulation for payday lenders.  
     
 ---
@@ -1551,28 +1546,27 @@ A simple random sample of 826
   independent and representative of the population of
   interest.
 
-  We also must check the success-failure condition,
-  which we do using $\hat{p}$ in place
-  of $p$ when computing a confidence interval:
-  \begin{align*}
-  \text{Support: }
-      n p &
-          \approx 826 \times 0.70
-      = 578
-  &\text{Not: }
-      n (1 - p) &
-        \approx 826 \times (1 - 0.70)
-      = 248
-  \end{align*}
-  Since both values are at least 10, we can use the normal
-  distribution to model $\hat{p}$.
+    We also must check the success-failure condition,
+    which we do using $\hat{p}$ in place
+    of $\pi$ when computing a confidence interval:
+    \begin{align*}
+    \text{Support: }
+      n \hat{p} &
+          == 826 \times 0.70
+      \approx 578
+    &\text{Not: }
+      n (1 - \hat{p}) &
+        = 826 \times (1 - 0.70)
+      \approx 248
+    \end{align*}
+    Since both values are at least 10, we can use the normal
+    distribution to model the sampling distribution of $\hat{p}$.
   
-2. Because $p$ is unknown and the standard error is for
-a confidence interval, use $\hat{p}$ in place of $p$
+2. Because $\pi$ is unknown and the standard error is for
+a confidence interval, use $\hat{p}$ as our best guess of $\pi$
 in the formula.
 
-$SE = \sqrt{\frac{p(1-p)}{n}} \approx
-    \sqrt{\frac{0.70 (1 - 0.70)}
+    $SE = \sqrt{\frac{0.70 (1 - 0.70)}
         {826}} = 0.016$.
 
 3.       
@@ -1580,7 +1574,7 @@ $SE = \sqrt{\frac{p(1-p)}{n}} \approx
   the point estimate 0.70,
   $z^{\star} = 1.96$ for a 95% confidence interval,
   and
-  the standard error $SE = 0.016$ from the pervious
+  the standard error $SE = 0.016$ from the previous
   Guided Practice,
   the confidence interval is
   \begin{eqnarray*}
@@ -1617,7 +1611,7 @@ There are three steps to constructing a confidence
 
 
 
-#### Changing the confidence level {#change-conf-level}
+#### *z^*$ and the confidence level {#change-conf-level}
 
 \index{confidence interval!confidence level|(}
 
@@ -3000,9 +2994,9 @@ Think about these steps when you apply statistical methods.
 -->
 
 ```{block2, type = "onebox", echo = TRUE}
-**Standard Error of the difference in two proportions, $\hat{p}_1 -\hat{p}_2$.**
+**Standard error of the difference in two proportions, $\hat{p}_1 -\hat{p}_2$.**
   
-When the conditions are met so that the distribution fo $\hat{p}$ is nearly normal, the **variability** of the difference in proportions, $\hat{p}_1 -\hat{p}_2$, is well described by:
+When the conditions are met so that the distribution of $\hat{p}$ is nearly normal, the **variability** of the difference in proportions, $\hat{p}_1 -\hat{p}_2$, is well described by:
 \begin{eqnarray*}
   SE(\hat{p}_1 -\hat{p}_2) = \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}
   \end{eqnarray*}

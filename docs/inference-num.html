@@ -235,10 +235,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1.3" data-path="inference-cat.html"><a href="inference-cat.html#HypothesisTesting"><i class="fa fa-check"></i><b>5.1.3</b> Hypothesis tests</a></li>
 <li class="chapter" data-level="5.1.4" data-path="inference-cat.html"><a href="inference-cat.html#ConfidenceIntervals"><i class="fa fa-check"></i><b>5.1.4</b> Confidence intervals</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="inference-cat.html"><a href="inference-cat.html#normal"><i class="fa fa-check"></i><b>5.2</b> The normal distribution</a></li>
+<li class="chapter" data-level="5.2" data-path="inference-cat.html"><a href="inference-cat.html#normal"><i class="fa fa-check"></i><b>5.2</b> The normal distribution</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="inference-cat.html"><a href="inference-cat.html#normal-distribution-model"><i class="fa fa-check"></i><b>5.2.1</b> Normal distribution model</a></li>
+<li class="chapter" data-level="5.2.2" data-path="inference-cat.html"><a href="inference-cat.html#standardizing-with-z-scores"><i class="fa fa-check"></i><b>5.2.2</b> Standardizing with Z-scores</a></li>
+<li class="chapter" data-level="5.2.3" data-path="inference-cat.html"><a href="inference-cat.html#normal-probability-calculations-in-r"><i class="fa fa-check"></i><b>5.2.3</b> Normal probability calculations in <code>R</code></a></li>
+<li class="chapter" data-level="5.2.4" data-path="inference-cat.html"><a href="inference-cat.html#normal-probability-examples"><i class="fa fa-check"></i><b>5.2.4</b> Normal probability examples</a></li>
+<li class="chapter" data-level="5.2.5" data-path="inference-cat.html"><a href="inference-cat.html#rule"><i class="fa fa-check"></i><b>5.2.5</b> 68-95-99.7 rule</a></li>
+</ul></li>
 <li class="chapter" data-level="5.3" data-path="inference-cat.html"><a href="inference-cat.html#single-prop"><i class="fa fa-check"></i><b>5.3</b> One proportion</a>
 <ul>
 <li class="chapter" data-level="5.3.1" data-path="inference-cat.html"><a href="inference-cat.html#one-prop-null-boot"><i class="fa fa-check"></i><b>5.3.1</b> Hypothesis test for <span class="math inline">\(H_0: \pi = \pi_0\)</span></a></li>
+<li class="chapter" data-level="5.3.2" data-path="inference-cat.html"><a href="inference-cat.html#confidence-interval-for-pi"><i class="fa fa-check"></i><b>5.3.2</b> Confidence interval for <span class="math inline">\(\pi\)</span></a></li>
 </ul></li>
 <li class="chapter" data-level="5.4" data-path="inference-cat.html"><a href="inference-cat.html#diff-two-prop"><i class="fa fa-check"></i><b>5.4</b> Difference of two proportions</a>
 <ul>
@@ -412,7 +420,7 @@ The 95% bootstrap confidence interval for the parameter <span class="math inline
 <p>You can find confidence intervals of difference confidence levels by changing the percent of the distribution you take, e.g., locate the middle 90% of the bootstrapped statistics for a 90% confidence interval.</p>
 
 <div class="guidedpractice">
-To find the middle 95% of a distribution, which two percentiles would form its boundaries?<a href="#fn90" class="footnote-ref" id="fnref90"><sup>90</sup></a>
+To find the middle 95% of a distribution, which two percentiles would form its boundaries?<a href="#fn91" class="footnote-ref" id="fnref91"><sup>91</sup></a>
 </div>
 
 <div class="example">
@@ -543,7 +551,7 @@ distribution of individual observations is not.
 <p>In this first course in statistics, you aren’t expected
 to develop perfect judgement on the normality condition.
 However, you are expected to be able to handle
-clear cut cases based on the rules of thumb.<a href="#fn91" class="footnote-ref" id="fnref91"><sup>91</sup></a></p>
+clear cut cases based on the rules of thumb.<a href="#fn92" class="footnote-ref" id="fnref92"><sup>92</sup></a></p>
 
 <div class="example">
 <p>Consider the following two plots
@@ -748,7 +756,7 @@ we obtain from the normal distribution.
 <div class="guidedpractice">
 What proportion of the <span class="math inline">\(t\)</span>-distribution with 19 degrees
 of freedom falls above -1.79 units?
-Use your preferred method for finding tail areas.<a href="#fn92" class="footnote-ref" id="fnref92"><sup>92</sup></a>
+Use your preferred method for finding tail areas.<a href="#fn93" class="footnote-ref" id="fnref93"><sup>93</sup></a>
 </div>
 <p>
 </p>
@@ -923,7 +931,7 @@ The 15 observations ranged from 0.18 to 0.41 ppm.
 We will assume these observations are independent.
 Based on the summary statistics of the data,
 do you have any objections to the normality condition
-of the individual observations?<a href="#fn93" class="footnote-ref" id="fnref93"><sup>93</sup></a>
+of the individual observations?<a href="#fn94" class="footnote-ref" id="fnref94"><sup>94</sup></a>
 </div>
 <p></p>
 
@@ -969,14 +977,14 @@ is 0.1:
 -->
 
 <div class="guidedpractice">
-Using the information and results of the previous Guided Practice and Example, compute a 90% confidence interval for the average mercury content of croaker white fish (Pacific).<a href="#fn94" class="footnote-ref" id="fnref94"><sup>94</sup></a>
+Using the information and results of the previous Guided Practice and Example, compute a 90% confidence interval for the average mercury content of croaker white fish (Pacific).<a href="#fn95" class="footnote-ref" id="fnref95"><sup>95</sup></a>
 </div>
 
 <div class="guidedpractice">
 The 90% confidence interval from the previous
 Guided Practice is 0.256 ppm to 0.318 ppm.
 Can we say that 90% of croaker white fish (Pacific)
-have mercury levels between 0.256 and 0.318 ppm?<a href="#fn95" class="footnote-ref" id="fnref95"><sup>95</sup></a>
+have mercury levels between 0.256 and 0.318 ppm?<a href="#fn96" class="footnote-ref" id="fnref96"><sup>96</sup></a>
 </div>
 <p></p>
 </div>
@@ -997,7 +1005,7 @@ hypothesis tests for the mean.</p>
 <p>The average time for all runners who finished the Cherry Blossom Race in 2006 was 93.29 minutes (93 minutes and about 17 seconds). We want to determine using data from 100 participants in the 2017 Cherry Blossom Race whether runners in this race are getting faster or slower, versus the other possibility that there has been no change.</p>
 
 <div class="guidedpractice">
-What are appropriate hypotheses for this context?<a href="#fn96" class="footnote-ref" id="fnref96"><sup>96</sup></a>
+What are appropriate hypotheses for this context?<a href="#fn97" class="footnote-ref" id="fnref97"><sup>97</sup></a>
 </div>
 
 <div class="guidedpractice">
@@ -1006,7 +1014,7 @@ so the observations are independent.
 However, should we be worried about the normality condition?
 See Figure <a href="inference-num.html#fig:run10SampTimeHistogram">6.10</a> for a histogram
 of the differences and evaluate if we can move
-forward.<a href="#fn97" class="footnote-ref" id="fnref97"><sup>97</sup></a>
+forward.<a href="#fn98" class="footnote-ref" id="fnref98"><sup>98</sup></a>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:run10SampTimeHistogram"></span>
 <img src="06-inference-num_files/figure-html/run10SampTimeHistogram-1.png" alt="A histogram of `time` for the sample Cherry Blossom Race data." width="70%" />
@@ -1771,11 +1779,11 @@ Figure 6.21: Exam scores for students given one of three different exams.
 Construct hypotheses to evaluate whether the observed
 difference in sample means, <span class="math inline">\(\bar{x}_A - \bar{x}_B=3.1\)</span>,
 is due to chance. We will later evaluate these hypotheses
-using <span class="math inline">\(\alpha = 0.01\)</span>.<a href="#fn98" class="footnote-ref" id="fnref98"><sup>98</sup></a>
+using <span class="math inline">\(\alpha = 0.01\)</span>.<a href="#fn99" class="footnote-ref" id="fnref99"><sup>99</sup></a>
 </div>
 
 <div class="guidedpractice">
-Before moving on to evaluate the hypotheses in the previous Guided Practice, let’s think carefully about the dataset. Are the observations across the two groups independent? Are there any concerns about outliers?<a href="#fn99" class="footnote-ref" id="fnref99"><sup>99</sup></a>
+Before moving on to evaluate the hypotheses in the previous Guided Practice, let’s think carefully about the dataset. Are the observations across the two groups independent? Are there any concerns about outliers?<a href="#fn100" class="footnote-ref" id="fnref100"><sup>100</sup></a>
 </div>
 </div>
 <div id="variability-of-the-statistic-4" class="section level5 unnumbered">
@@ -2280,7 +2288,7 @@ Figure 6.27: The top panel represents birth weights for infants whose mothers sm
 
 <div class="guidedpractice">
 <p>The summary statistics in Table <a href="inference-num.html#tab:SumStatsBirthWeightNewbornsSmoke">6.8</a> may be useful
-for this Guided Practice.<a href="#fn100" class="footnote-ref" id="fnref100"><sup>100</sup></a></p>
+for this Guided Practice.<a href="#fn101" class="footnote-ref" id="fnref101"><sup>101</sup></a></p>
 <ol style="list-style-type: lower-alpha">
 <li>What is the point estimate of the population difference,
 <span class="math inline">\(\mu_{n} - \mu_{s}\)</span>?</li>
@@ -2380,13 +2388,13 @@ Figure 6.28: The mathematical model for the T statistic when the null hypothesis
 <div class="guidedpractice">
 We’ve seen much research suggesting smoking is harmful
 during pregnancy, so how could we fail to reject the null
-hypothesis in the previous Example?<a href="#fn101" class="footnote-ref" id="fnref101"><sup>101</sup></a>
+hypothesis in the previous Example?<a href="#fn102" class="footnote-ref" id="fnref102"><sup>102</sup></a>
 </div>
 
 <div class="guidedpractice">
 If we made a Type 2 Error and there is a difference,
 what could we have done differently in data collection
-to be more likely to detect the difference?<a href="#fn102" class="footnote-ref" id="fnref102"><sup>102</sup></a>
+to be more likely to detect the difference?<a href="#fn103" class="footnote-ref" id="fnref103"><sup>103</sup></a>
 </div>
 <p>Public service announcement: while we have used this relatively
 small data set as an example, larger data sets show that women
@@ -2403,7 +2411,7 @@ And some women would prefer having smaller babies.</em>
 </blockquote>
 <p>Fact check: the babies from women who smoke are not actually
 as healthy as the babies from women who do not
-smoke.<a href="#fn103" class="footnote-ref" id="fnref103"><sup>103</sup></a></p>
+smoke.<a href="#fn104" class="footnote-ref" id="fnref104"><sup>104</sup></a></p>
 <!--
 % Resource on this topic:
 % http://archive.tobacco.org/Documents/documentquotes.html
@@ -2781,43 +2789,43 @@ t-distribution
 </div>
 <div class="footnotes">
 <hr />
-<ol start="90">
-<li id="fn90"><p>The the middle 95% of a distribution would range from the 2.5th percentile (the value with 2.5% of the distribution below) to the 97.5th percentile (the value with 2.5% of the distribution above). <a href="inference-num.html#fnref90" class="footnote-back">↩︎</a></p></li>
-<li id="fn91"><p>More
+<ol start="91">
+<li id="fn91"><p>The the middle 95% of a distribution would range from the 2.5th percentile (the value with 2.5% of the distribution below) to the 97.5th percentile (the value with 2.5% of the distribution above). <a href="inference-num.html#fnref91" class="footnote-back">↩︎</a></p></li>
+<li id="fn92"><p>More
 nuanced guidelines would consider further relaxing
 the <em>particularly extreme outlier</em> check when the
 sample size is very large.
-However, we’ll leave further discussion here to a future course.<a href="inference-num.html#fnref91" class="footnote-back">↩︎</a></p></li>
-<li id="fn92"><p>We want to find the shaded area <em>above</em> -1.79 (we leave the picture to you).
+However, we’ll leave further discussion here to a future course.<a href="inference-num.html#fnref92" class="footnote-back">↩︎</a></p></li>
+<li id="fn93"><p>We want to find the shaded area <em>above</em> -1.79 (we leave the picture to you).
 The lower tail area has an area of 0.0447,
-so the upper area would have an area of <span class="math inline">\(1 - 0.0447 = 0.9553\)</span>.<a href="inference-num.html#fnref92" class="footnote-back">↩︎</a></p></li>
-<li id="fn93"><p>The sample size is under 30,
+so the upper area would have an area of <span class="math inline">\(1 - 0.0447 = 0.9553\)</span>.<a href="inference-num.html#fnref93" class="footnote-back">↩︎</a></p></li>
+<li id="fn94"><p>The sample size is under 30,
 so we check for obvious outliers:
 since all observations are within 2 standard deviations
-of the mean, there are no such clear outliers.<a href="inference-num.html#fnref93" class="footnote-back">↩︎</a></p></li>
-<li id="fn94"><p><span class="math inline">\(\bar{x} \ \pm\ t^{\star}_{14} \times SE  \ \to\  0.287 \ \pm\  1.76 \times 0.0178  \ \to\ (0.256, 0.318)\)</span>.
+of the mean, there are no such clear outliers.<a href="inference-num.html#fnref94" class="footnote-back">↩︎</a></p></li>
+<li id="fn95"><p><span class="math inline">\(\bar{x} \ \pm\ t^{\star}_{14} \times SE  \ \to\  0.287 \ \pm\  1.76 \times 0.0178  \ \to\ (0.256, 0.318)\)</span>.
 We are 90% confident that the average mercury content
-of croaker white fish (Pacific) is between 0.256 and 0.318 ppm.<a href="inference-num.html#fnref94" class="footnote-back">↩︎</a></p></li>
-<li id="fn95"><p>No, a confidence interval only provides a range
+of croaker white fish (Pacific) is between 0.256 and 0.318 ppm.<a href="inference-num.html#fnref95" class="footnote-back">↩︎</a></p></li>
+<li id="fn96"><p>No, a confidence interval only provides a range
 of plausible values for a population parameter,
 in this case the population mean.
 It does not describe what we might observe
-for individual observations.<a href="inference-num.html#fnref95" class="footnote-back">↩︎</a></p></li>
-<li id="fn96"><p><span class="math inline">\(H_0\)</span>: The average 10-mile run time was the same for 2006 and 2017. <span class="math inline">\(\mu = 93.29\)</span> minutes. <span class="math inline">\(H_A\)</span>: The average 10-mile run time for 2017 was <em>different</em> than that of 2006. <span class="math inline">\(\mu \neq 93.29\)</span> minutes.<a href="inference-num.html#fnref96" class="footnote-back">↩︎</a></p></li>
-<li id="fn97"><p>With a sample of 100,
+for individual observations.<a href="inference-num.html#fnref96" class="footnote-back">↩︎</a></p></li>
+<li id="fn97"><p><span class="math inline">\(H_0\)</span>: The average 10-mile run time was the same for 2006 and 2017. <span class="math inline">\(\mu = 93.29\)</span> minutes. <span class="math inline">\(H_A\)</span>: The average 10-mile run time for 2017 was <em>different</em> than that of 2006. <span class="math inline">\(\mu \neq 93.29\)</span> minutes.<a href="inference-num.html#fnref97" class="footnote-back">↩︎</a></p></li>
+<li id="fn98"><p>With a sample of 100,
 we should only be concerned if there is are particularly
 extreme outliers.
 The histogram of the data doesn’t show any outliers of concern
-(and arguably, no outliers at all).<a href="inference-num.html#fnref97" class="footnote-back">↩︎</a></p></li>
-<li id="fn98"><p><span class="math inline">\(H_0\)</span>: the exams are equally difficult, on average. <span class="math inline">\(\mu_A - \mu_B = 0\)</span>. <span class="math inline">\(H_A\)</span>: one exam was more difficult than the other, on average. <span class="math inline">\(\mu_A - \mu_B \neq 0\)</span>.<a href="inference-num.html#fnref98" class="footnote-back">↩︎</a></p></li>
-<li id="fn99"><p>
+(and arguably, no outliers at all).<a href="inference-num.html#fnref98" class="footnote-back">↩︎</a></p></li>
+<li id="fn99"><p><span class="math inline">\(H_0\)</span>: the exams are equally difficult, on average. <span class="math inline">\(\mu_A - \mu_B = 0\)</span>. <span class="math inline">\(H_A\)</span>: one exam was more difficult than the other, on average. <span class="math inline">\(\mu_A - \mu_B \neq 0\)</span>.<a href="inference-num.html#fnref99" class="footnote-back">↩︎</a></p></li>
+<li id="fn100"><p>
 (a) Since the exams were shuffled,
 the “treatment” in this case was randomly assigned,
 so independence within and between groups is satisfied.
 (b) The summary statistics suggest the data are roughly
 symmetric about the mean, and the min/max values don’t
-suggest any outliers of concern.<a href="inference-num.html#fnref99" class="footnote-back">↩︎</a></p></li>
-<li id="fn100"><p>(a) The difference in sample means is an
+suggest any outliers of concern.<a href="inference-num.html#fnref100" class="footnote-back">↩︎</a></p></li>
+<li id="fn101"><p>(a) The difference in sample means is an
 appropriate point estimate: <span class="math inline">\(\bar{x}_{n} - \bar{x}_{s} = 0.40\)</span>.
 (b) The standard error of the estimate can be
 calculated using the standard error formula:
@@ -2827,19 +2835,19 @@ calculated using the standard error formula:
       \approx \sqrt{\frac{s_n^2}{n_n} + \frac{s_s^2}{n_s}}
     = \sqrt{\frac{1.60^2}{100} + \frac{1.43^2}{50}}
     = 0.26
-  \end{align*}\]</span><a href="inference-num.html#fnref100" class="footnote-back">↩︎</a></p></li>
-<li id="fn101"><p>It is possible that there is a difference
+  \end{align*}\]</span><a href="inference-num.html#fnref101" class="footnote-back">↩︎</a></p></li>
+<li id="fn102"><p>It is possible that there is a difference
 but we did not detect it.
-If there is a difference, we made a Type 2 Error.<a href="inference-num.html#fnref101" class="footnote-back">↩︎</a></p></li>
-<li id="fn102"><p>We could have collected more data.
+If there is a difference, we made a Type 2 Error.<a href="inference-num.html#fnref102" class="footnote-back">↩︎</a></p></li>
+<li id="fn103"><p>We could have collected more data.
 If the sample sizes are larger, we tend to have
 a better shot at finding a difference if one exists.
 In fact, this is exactly what we would find if we
-examined a larger data set!<a href="inference-num.html#fnref102" class="footnote-back">↩︎</a></p></li>
-<li id="fn103"><p>You can watch an episode of John Oliver
+examined a larger data set!<a href="inference-num.html#fnref103" class="footnote-back">↩︎</a></p></li>
+<li id="fn104"><p>You can watch an episode of John Oliver
 on <a href="youtu.be/6UsHHOCH4q8"><em>Last Week Tonight</em></a> to explore the present day
 offenses of the tobacco industry.
-Please be aware that there is some adult language.<a href="inference-num.html#fnref103" class="footnote-back">↩︎</a></p></li>
+Please be aware that there is some adult language.<a href="inference-num.html#fnref104" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
