@@ -101,6 +101,8 @@ But wait---we're not done! We have evidence that humans tend to prefer Bumba on 
 \]
 Thus, based on this data, we are 95% confident that the probability a human guesses Bumba on the left is somewhere between 73% and 100%.
 
+
+
 ### Variability in a statistic {#var-stat}
 
 There are two approaches to modeling how a statistic may vary from sample to sample.
@@ -323,7 +325,24 @@ This reasoning also explains why we can never prove a null hypothesis. Sample st
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">If we want to be very certain we capture the population parameter, should we use a wider interval or a smaller interval?^[If we want to be more certain we will capture the fish, we might use a wider net. Likewise, we use a wider confidence interval if we want to be more certain that we capture the parameter.]</div>\EndKnitrBlock{guidedpractice}
 
-In Section \@ref(change-conf-level) we will discuss different percentages for the confidence interval (e.g., 90% confidence interval or 99% confidence interval).  Section \@ref(conf-level) also provides a longer discussion on what "95% confidence" actually means.
+We will explore both simulation-based methods (bootstrapping) and theory-based methods for creating confidence intervals in this text. Though the details change with different scenarios, theory-based confidence intervals will always take the form:
+\[
+\mbox{statistic} \pm (\mbox{critical value}) \times (\mbox{standard error of the statistic})
+\]
+The statistic is our best guess for the value of the parameter, so it makes sense to build the confidence interval around that value. The standard error, which is a measure of the uncertainty associated with the statistic, provides a guide for how large we should make the confidence interval. The critical value is determined by how confident we'd like to be, and tells us how many standard errors we need to add and subtract from the statistic. The amount we add and subtract from the statistic is called the **margin of error**.
+
+\BeginKnitrBlock{onebox}<div class="onebox">**General form of a confidence interval.**
+
+The general form of a **theory-based confidence interval** for an unknown parameter is
+\[
+\mbox{statistic} \pm (\mbox{critical value}) \times (\mbox{standard error of the statistic})
+\]
+The amount we add and subtract to the statistic to calculate the confidence interval is called the **margin of error**.
+\[
+\mbox{margin of error} = (\mbox{critical value}) \times (\mbox{standard error of the statistic})
+\]</div>\EndKnitrBlock{onebox}
+
+In Section \@ref(conf-int-one-prop) we will discuss different percentages for the confidence interval (e.g., 90% confidence interval or 99% confidence interval).  Section \@ref(conf-int-one-prop) also provides a longer discussion on what "95% confidence" actually means.
 
 
 ## The normal distribution {#normal}
@@ -498,7 +517,7 @@ pnorm(0.43, m = 0, s = 1)
 openintro::normTail(0.43, m = 0, s = 1)
 ```
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-37-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-39-1.png" width="70%" style="display: block; margin: auto;" />
 
 We can also find the Z-score associated with a percentile. 
 For example, to identify Z for the $80^{th}$ percentile, we use `qnorm` which identifies the **quantile** for a given percentage.  The quantile represents the cutoff value.  (To remember the function `qnorm` as providing a cutoff, notice that both `qnorm` and "cutoff" start with the sound "kuh".  To remember the `pnorm` function as providing a probability from a given cutoff, notice that both `pnorm` and probability start with the sound "puh".) 
@@ -511,7 +530,7 @@ qnorm(0.80, m = 0, s = 1)
 openintro::normTail(0.80, m = 0, s = 1)
 ```
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-38-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-40-1.png" width="70%" style="display: block; margin: auto;" />
 
 We can use these functions with other normal distributions than the standard normal distribution by specifying the mean as the argument for `m` and the standard deviation as the argument for `s`. Here we determine the proportion of ACT test takers who scored worse than Tom on the ACT: 0.73.
 
@@ -522,7 +541,7 @@ pnorm(24, m = 21, s = 5)
 openintro::normTail(24, m = 21, s = 5)
 ```
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-39-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-41-1.png" width="70%" style="display: block; margin: auto;" />
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Determine the proportion of SAT test takers who scored better than Ann on the SAT.^[If 84% had lower scores than Ann, the number of people who had better scores must be 16%. (Generally ties are ignored when the normal model, or any other continuous distribution, is used.)]</div>\EndKnitrBlock{guidedpractice}
 
@@ -660,11 +679,11 @@ The total area under the curve is 1. If we find the area of the two tails that a
 That is, the probability of being between 5'9'' and 6'2'' is 0.5048.</div>\EndKnitrBlock{example}
 
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-56-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-58-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-57-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-59-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 
@@ -781,7 +800,7 @@ The null distribution can be created through simulation (simulation-based method
 or can be modeled by a mathematical function (theory-based methods).
 
 
-#### Simulation-based method for calculating the p-value {-}
+#### Simulation-based method for calculating the p-value
 
 We want to identify the sampling distribution of the test statistic ($\hat{p}$) if the null hypothesis was true. In other words, we want to see how the sample proportion changes due to chance alone. Then we plan to use this information to decide whether there is enough evidence to reject the null hypothesis.
 
@@ -860,10 +879,10 @@ If it were plotted, the exact null distribution would look almost identical to t
 \end{example}
 
 -->
-#### Theory-based method for calculating the p-value {-}
+#### Theory-based method for calculating the p-value
 
 In Section \@ref(var-stat), we introduced the normal distribution and showed how it can be used as a mathematical model to describe the variability of a sample mean or sample proportion as a result of the Central Limit Theorem. We explored the normal distribution
-further in Section \@ref(normal).
+further in Section \@ref(normal). Theory-based methods for proportions use the normal distribution to calculate the p-value.
 
 There are conditions under which a sample proportion $\hat{p}$ is well-modeled using a normal distribution.
 When the sample observations
@@ -991,11 +1010,14 @@ for a hypothesis test here?^[Independence holds since the poll
   We cannot claim that exactly 50% of people support the regulation, but we cannot claim   a majority support it either.</div>\EndKnitrBlock{example}
 
   
-<img src="05-inference-cat_files/figure-html/paydayCC-norm-pvalue-1.png" width="70%" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+<img src="05-inference-cat_files/figure-html/paydayCC-norm-pvalue-1.png" alt="Approximate sampling distribution of $\hat{p}$ across all possible samples assuming $\pi = 0.50$. The shaded area represents the p-value corresponding to an observed sample proportion of 0.51." width="70%" />
+<p class="caption">(\#fig:paydayCC-norm-pvalue)Approximate sampling distribution of $\hat{p}$ across all possible samples assuming $\pi = 0.50$. The shaded area represents the p-value corresponding to an observed sample proportion of 0.51.</p>
+</div>
 
 Often, with theory-based methods, we use a **standardized statistic** rather than
 the original statistic. A standardized statistic is computed by subtracting the mean of the null distribution from the original statistic, then dividing by the standard error. When we are modeling the null distribution with a normal
-distribution, this standardized statistic is called $Z$, since it is the $Z-score$ of the sample proportion.
+distribution, this standardized statistic is called $Z$, since it is the Z-score of the sample proportion.
 
 \BeginKnitrBlock{onebox}<div class="onebox">**Standardized sample proportion.**
   
@@ -1006,7 +1028,8 @@ Z = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}
 where $p_0$ is the null value. The denominator, $\sqrt{\frac{p_0(1-p_0)}{n}}$, is called the **null standard error**.</div>\EndKnitrBlock{onebox}
 
 With the standardized statistic as our test statistic, we can find
-the p-value as the area under a standard normal distribution.
+the p-value as the area under a standard normal distribution at or more extreme
+than our observed $Z$ value.
 
 \BeginKnitrBlock{example}<div class="example">Do payday loan borrowers support a regulation that would require lenders to pull their credit report and evaluate their debt payments? From a random sample of 826 borrowers, 51% said they would support such a regulation. We set up hypotheses and checked conditions previously. Now calculate and interpret the standardized statistic, then use the standard normal distribution to calculate the approximate p-value.
 
@@ -1027,8 +1050,13 @@ Z = \frac{0.51 - 0.50}{0.017} = 0.57
 
 Interpreting this value, we can say that our sample proportion of 0.51 was only 0.57 standard errors above the null value of 0.50. 
 
-The p-value is the area above $Z = 0.57$ on a standard normal distribution---0.278---the same p-value we would obtain by finding the area above $\hat{p} = 0.51$ on a normal distribution with mean 0.50 and standard deviation 0.017.</div>\EndKnitrBlock{example}
+Shown in Figure \@ref(fig:paydayCC-stdnorm-pvalue), the p-value is the area above $Z = 0.57$ on a standard normal distribution---0.278---the same p-value we would obtain by finding the area above $\hat{p} = 0.51$ on a normal distribution with mean 0.50 and standard deviation 0.017.</div>\EndKnitrBlock{example}
 
+
+<div class="figure" style="text-align: center">
+<img src="05-inference-cat_files/figure-html/paydayCC-stdnorm-pvalue-1.png" alt="Approximate sampling distribution of $Z$ across all possible samples assuming $\pi = 0.50$. The shaded area represents the p-value corresponding to an observed standardized statistic of 0.57. Compare to Figure @ef(fig:paydatCC-norm-pvalue)" width="70%" />
+<p class="caption">(\#fig:paydayCC-stdnorm-pvalue)Approximate sampling distribution of $Z$ across all possible samples assuming $\pi = 0.50$. The shaded area represents the p-value corresponding to an observed standardized statistic of 0.57. Compare to Figure @ef(fig:paydatCC-norm-pvalue)</p>
+</div>
 
 \BeginKnitrBlock{onebox}<div class="onebox">**Theory-based hypothesis test for a proportion: one-sample $Z$-test.**
   
@@ -1063,15 +1091,15 @@ not independent are outside the scope of this book.
 
 
 
-### Confidence interval for $\pi$
+### Confidence interval for $\pi$  {#conf-int-one-prop}
 
 \index{point estimate!single proportion}
 
 A confidence interval provides a range of
-plausible values for the parameter $\pi$,
-and when $\hat{p}$ can be modeled using a
-normal distribution, the confidence interval
-for $p$ takes the form
+plausible values for the parameter $\pi$.
+A point estimate is our best guess for the value of the parameter, so it makes sense to build the confidence interval around that value. The standard error, which is a measure of the uncertainty associated with the point estimate, provides a guide for how large we should make the confidence interval. When $\hat{p}$ can be modeled using a
+normal distribution, the 68-95-99.7 rule tells us that, in general, 95% of observations are within 2 standard errors of the mean.  Here, we use the value 1.96 to be slightly more precise. The confidence interval
+for $\pi$ then takes the form
 \begin{align*}
 \hat{p} \pm z^{\star} \times SE.
 \end{align*}
@@ -1145,7 +1173,7 @@ A simple random sample of 826
     \begin{align*}
     \text{Support: }
       n \hat{p} &
-          == 826 \times 0.70
+          = 826 \times 0.70
       \approx 578
     &\text{Not: }
       n (1 - \hat{p}) &
@@ -1164,7 +1192,7 @@ in the formula.
 
 3.       
   Using
-  the point estimate 0.70,
+  the point estimate $0.70$,
   $z^{\star} = 1.96$ for a 95% confidence interval,
   and
   the standard error $SE = 0.016$ from the previous
@@ -1187,21 +1215,27 @@ in the formula.
 
 \BeginKnitrBlock{onebox}<div class="onebox">**Constructing a confidence interval for a single proportion.**
 
-There are three steps to constructing a confidence
+There are four steps to constructing a confidence
   interval for $p$.
 
 1. Check independence and the success-failure condition
       using $\hat{p}$.
       If the conditions are met, the sampling distribution
       of $\hat{p}$ may be well-approximated by the normal model.
-2. Construct the standard error using $\hat{p}$
-      in place of $p$ in the standard error formula.
-3. Apply the general confidence interval formula.</div>\EndKnitrBlock{onebox}
+2. Construct the standard error:
+  \[
+    SE(\hat{p}) = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
+  \]
+3. Use statistical software to find the critical value $z^{\star}$ corresponding to the confidence level.
+4. Apply the general confidence interval formula $\mbox{statistic} \pm (\mbox{critical value}) \times SE$:
+  \[
+    \hat{p} \pm z^{\star}\times \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
+  \]</div>\EndKnitrBlock{onebox}
 
 
 
 
-#### *z^*$ and the confidence level {#change-conf-level}
+#### $z^{\star}$ and the confidence level {-}
 
 \index{confidence interval!confidence level|(}
 
@@ -1211,7 +1245,7 @@ The 95% confidence interval structure provides guidance in how to make intervals
 \begin{eqnarray}
 \text{point estimate}\ \pm\ 1.96\times SE
 \end{eqnarray}
-There are three components to this interval: the point estimate, "1.96", and the standard error. The choice of $1.96\times SE$ was based on capturing 95% of the data since the estimate is within 1.96 standard errors of the true value about 95% of the time. The choice of 1.96 corresponds to a 95% confidence level. 
+There are three components to this interval: the point estimate, "1.96", and the standard error. The choice of $1.96\times SE$ was based on capturing 95% of the distribution since the estimate is within 1.96 standard errors of the true value about 95% of the time. The choice of 1.96 corresponds to a 95% confidence level. 
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">If $X$ is a normally distributed random variable, how often will $X$ be within 2.58 standard deviations of the mean?^[This is equivalent to asking how often the $Z$ score will be larger than -2.58 but less than 2.58. (For a picture, see Figure \@ref(fig:choosingZForCI).) To determine this probability, look up -2.58 and 2.58 in the normal probability table (0.0049 and 0.9951). Thus, there is a $0.9951-0.0049 \approx 0.99$ probability that the unobserved random variable $X$ will be within 2.58 standard deviations of the mean.]</div>\EndKnitrBlock{guidedpractice}
 
@@ -1224,7 +1258,7 @@ There are three components to this interval: the point estimate, "1.96", and the
 \index{confidence interval!confidence level|)}
 
 
-To create a 99% confidence interval, change 1.96 in the 95% confidence interval formula to be $2.58$. The previous Guided Practice highlights that 99% of the time a normal random variable will be within 2.58 standard deviations of its mean. This approach -- using the Z-scores in the normal model to compute confidence levels -- is appropriate when the point estimate is associated with a normal distribution and we can properly compute the standard error. Thus, the formula for a 99% confidence interval is:
+To create a 99% confidence interval, change 1.96 in the 95% confidence interval formula to be 2.58. The previous Guided Practice highlights that 99% of the time a normal random variable will be within 2.58 standard deviations of its mean. This approach---using the Z-scores in the normal model to compute confidence levels---is appropriate when the point estimate is associated with a normal distribution and we can properly compute the standard error. Thus, the formula for a 99% confidence interval is:
 
 \begin{eqnarray*}
 \text{point estimate}\ \pm\ 2.58\times SE
@@ -1238,25 +1272,43 @@ label for previous equation?
 %\Comment{I don't know where the equation number above gets referenced. Might drop the equation number.}
 -->
 
-The normal approximation is crucial to the precision of the $z^\star$ confidence intervals (in contrast to the bootstrap confidence intervals). When the normal model is not a good fit, we will use alternative distributions that better characterize the sampling distribution or we will use bootstrapping procedures.
+The normal approximation is crucial to the precision of the $z^\star$ confidence intervals. When the normal model is not a good fit, we will use alternative distributions that better characterize the sampling distribution or we will use bootstrapping procedures seen later in the textbook.
 
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Create a 99% confidence interval for the impact of the stent on the risk of stroke using the data from Section \@ref(basic-stents-strokes). The point estimate is 0.090, and the standard error is $SE = 0.028$. It has been verified for you that the point estimate can reasonably be modeled by a normal distribution.^[Since the necessary conditions for applying the normal model have already been checked for us, we can go straight to the construction of the confidence interval: $\text{point estimate}\ \pm\ 2.58 \times SE \rightarrow (0.018, 0.162)$. We are 99% confident that implanting a stent in the brain of a patient who is at risk of stroke increases the risk of stroke within 30 days by a rate of 0.018 to 0.162 (assuming the patients are representative of the population).]</div>\EndKnitrBlock{guidedpractice}
 
 
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Mathematical model confidence interval for any confidence level.**
+\BeginKnitrBlock{onebox}<div class="onebox">**Theory-based $(1-\alpha)\times 100$% confidence interval.**
 
-If the point estimate follows the normal model with standard error $SE$, then a confidence interval for the population parameter is
+If the statistic follows the normal model with standard error $SE$, then a confidence interval for the population parameter is
 \begin{eqnarray*}
-\text{point estimate}\ \pm\ z^{\star} \times SE
+\text{statistic}\ \pm\ z^{\star} \times SE
 \end{eqnarray*}
-where $z^{\star}$ corresponds to the confidence level selected.</div>\EndKnitrBlock{onebox}
+where $z^{\star}$ corresponds to the confidence level selected: the middle $(1-\alpha)\times 100$% of a standard normal distribution lies between $-z^{\star}$ and $z^{\star}$.</div>\EndKnitrBlock{onebox}
 
-Figure \@ref(fig:choosingZForCI) provides a picture of how to identify $z^{\star}$ based on a confidence level. We select $z^{\star}$ so that the area between -$z^{\star}$ and $z^{\star}$ in the normal model corresponds to the confidence level. 
+Figure \@ref(fig:choosingZForCI) provides a picture of how to identify $z^{\star}$ based on a confidence level. We select $z^{\star}$ so that the area between -$z^{\star}$ and $z^{\star}$ in the normal model corresponds to the confidence level. In `R`, you can find $z^{\star}$ using the `qnorm` function:
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Previously, we found that implanting a stent in the brain of a patient at risk for a stroke *increased* the risk of a stroke. The study estimated a 9% increase in the number of patients who had a stroke, and the standard error of this estimate was about $SE = 2.8%$. Compute a 90% confidence interval for the effect.^[We must find $z^{\star}$ such that 90% of the distribution falls between -$z^{\star}$ and $z^{\star}$ in the standard normal model, $N(\mu=0, \sigma=1)$. We can look up -$z^{\star}$ in the normal probability table by looking for a lower tail of 5% (the other 5% is in the upper tail), thus $z^{\star}=1.65$. The 90% confidence interval can then be computed as $\text{point estimate}\ \pm\ 1.65\times SE \to (4.4\%, 13.6\%)$. (Note: the conditions for normality had earlier been confirmed for us.) That is, we are 90% confident that implanting a stent in a stroke patient's brain increased the risk of stroke within 30 days by 4.4% to 13.6%.]</div>\EndKnitrBlock{guidedpractice}
+
+
+```r
+# z* for 90% --> alpha = 0.15 --> need 5% on each size:
+qnorm(.90 + .05)
+#> [1] 1.645
+
+# z* for 95% --> alpha = 0.05 --> need 2.5% on each size:
+qnorm(.95 + .025)
+#> [1] 1.96
+
+# z* for 99% --> alpha = 0.01 --> need .5% on each size:
+qnorm(.99 + .005)
+#> [1] 2.576
+```
+
+
+
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Previously, we found that implanting a stent in the brain of a patient at risk for a stroke *increased* the risk of a stroke. The study estimated a 9% increase in the number of patients who had a stroke, and the standard error of this estimate was about $SE = 2.8%$. Compute a 90% confidence interval for the effect.^[We must find $z^{\star}$ such that 90% of the distribution falls between -$z^{\star}$ and $z^{\star}$ in the standard normal model, $N(\mu=0, \sigma=1)$. We can find -$z^{\star}$ from a standard normal distribution by looking for a lower tail of 5% (the other 5% is in the upper tail), thus $z^{\star}=1.645$. The 90% confidence interval can then be computed as $\text{point estimate}\ \pm\ 1.65\times SE \to (4.4\%, 13.6\%)$. (Note: The conditions for normality had earlier been confirmed for us.) That is, we are 90% confident that implanting a stent in a stroke patient's brain increased the risk of stroke within 30 days by 4.4% to 13.6%.]</div>\EndKnitrBlock{guidedpractice}
 
 
 <!--
@@ -1453,32 +1505,21 @@ of error of 0.04 with 95% confidence?^[We complete the same computations as befo
 
 We now extend the methods from Section \@ref(single-prop) to apply confidence intervals and hypothesis tests to differences in population proportions that come from two groups: $\pi_1 - \pi_2$.
 
-<!--
-%We consider three examples.
-%In the first, we compare the utility of a blood thinner
-%for heart attack patients.
-%In the second application, we examine the efficacy of
-%mammograms in reducing deaths from breast cancer.
-%In the last example, a quadcopter company weighs whether
-%to switch to a higher quality manufacturer of rotor blades.
--->
-
 In our investigations, we'll identify a reasonable
-point estimate of $p_1 - p_2$ based on the sample,
+point estimate of $\pi_1 - \pi_2$ based on the sample,
 and you may have already guessed its form:
 $\hat{p}_1 - \hat{p}_2$.
 \index{point estimate!difference of proportions}
-Then we'll look at the inferential analysis in three different ways: using a randomization test, applying bootstrapping for interval estimates, and, if
+We'll look at methods for hypothesis testing in two different ways: 
+simulation-based methods using a randomization test, and
+theory-based methods if
 we verify that the point estimate
-can be modeled using a normal distribution,
-we compute the estimate's standard error, and
-we apply the mathematical framework.
+can be modeled using a normal distribution. 
+We will then investigate theory-based methods for computing confidence intervals.
 
 
 
-### Randomization test for $H_0: p_1 - p_2 = 0$ {#two-prop-errors}
-
-#### Observed data {-}
+### Randomization test for $H_0: \pi_1 - \pi_2 = 0$ {#two-prop-errors}
 
 We consider a study on a new malaria vaccine
 called PfSPZ.
@@ -2745,7 +2786,7 @@ Z = \frac{\text{point estimate} - \text{null value}}{SE}
 
 The lower tail area is 0.4325, which we double to get the p-value: 0.8650. Because this p-value is larger than 0.05, we do not reject the null hypothesis. That is, the difference in breast cancer death rates is reasonably explained by chance, and we do not observe benefits or harm from mammograms relative to a regular breast exam.</div>\EndKnitrBlock{example}
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-137-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-142-1.png" width="70%" style="display: block; margin: auto;" />
 
 Can we conclude that mammograms have no benefits or harm?
 Here are a few considerations to keep in mind when reviewing

@@ -814,7 +814,7 @@ This *non-response bias* can produce results in the sample that do not accuratel
 \index{sample|)}
 
 
-### Four sampling methods (special topic)
+### Four sampling methods (special topic) {#samp-methods}
 
 Almost all statistical methods are based on the notion of implied randomness. 
 If observational data are not collected in a random framework from a population, these statistical methods---the estimates and errors associated with the estimates---are not reliable. 
