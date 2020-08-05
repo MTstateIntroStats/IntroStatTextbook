@@ -20,8 +20,8 @@ By the end of this course, students should be able to...
 ## Probability
 - Understand and explain the role of randomness in designing studies and drawing conclusions
 - Recognize and simulate probabilities as long-run frequencies
-- Construct two-way tables and tree diagrams to evaluate
-  marginal, joint, and conditional probabilities
+- Construct two-way tables to evaluate
+  conditional and unconditional probabilities
 
 ## Exploratory Data Analysis
 - Identify and create appropriate summary statistics and plots
