@@ -1,6 +1,7 @@
 ---
-title: "Regression Exploratory Data Analysis Activity"
+title: "Quantitative Exploratory Data Analysis Activity"
 output:
+  pdf_document: default
   html_document:
     df_print: paged
 ---
@@ -17,6 +18,18 @@ library(mosaic)
 
 ## Learning Objectives
 
+* Identify and create appropriate summary statistics and plots
+  given a data set or research question
+  
+* Interpret the following summary statistics in context:
+  median, lower quartile, upper quartile,
+  standard deviation, inter-quartile range,
+  coefficient of determination, regression line slope
+  
+* Given a plot or set of plots, describe and compare the distribution(s)
+  of a single quantitative variable
+  (center, variability, shape, outliers)
+  
 * Use scatterplots to assess the relationship between two quantitative variables
 
 * Find the correlation coefficient 
@@ -31,24 +44,6 @@ library(mosaic)
 
 * Understand what the coefficient of determination is
 
-## Displaying a single quantitative variable
-
-To plot quantitative variables, we can use a dotplot, histogram or boxplot. To create a histogram the variable is broken into bins on a set width. Each bin plots the frequency of each variable for a certain bin. The following creates a histogram of the variable education.  Notice that the bin width is 2 years.  For example the first bin consists of the number of people in the data set of 0 to 2 years of education.  It is important to note that someone with 2 years of education will fall into the bin for 2 - 4 years.
-
-
-## Association between two Quantitative Variables
-
-To plot two quantitative variables we will use a scatterplot.  If there is a clear relationship between these variables the variables are associated.  We will analyze four characteristics of scatterplots to assess this relationship.  
-
-* Pattern:  Is the relationship linear or non-linear.
-
-* Direction:  As the x variable increases is the y variable increasing (positive relationship) or decreasing (negative relationship).
-
-* Strength:  How strong is the association between the variables?  We will look at the measure of correlation to assess the strength.  When assessing the scatterplot we will see how close the individual data points are to the line of regression.  
-
-* Influential points:  We will also assess any data points that do not fit the pattern of the data.  These are called outliers or influential points.  
-
-
 ## Movies Released in 2016
 
 A data set was collected on Movies released since 1916 to 2016.  Here is a list of some of the variables collected on these movies.
@@ -58,7 +53,7 @@ A data set was collected on Movies released since 1916 to 2016.  Here is a list 
 *Revenue*: The amount of money (in US $) the movie made after release
 *Duraton*: The length of the movie (in minutes)
 *Content Rating*: Rating of the movie (G, PG, PG-13, R, Not Rated)
-*IMBD Score*: User rating score from 1 to 10
+*IMDB Score*: User rating score from 1 to 10
 *Genre*: Category the movie falls into
 *Movie Facebook Likes*: Number of likes a movie receives on Facebook
 
@@ -76,9 +71,6 @@ A data set was collected on Movies released since 1916 to 2016.  Here is a list 
 
 \vspace{1in}
 
-We will look at the relationship between 'Budget' and 'Revenue' for movies released in 2016.
-
-
 ```{r echo=F, fig.height=4}
 par(mfrow=c(1,2))
 movies <- read.csv("../data/Movies.csv")
@@ -94,14 +86,112 @@ moviesa <- na.omit(movies)
 
 ```
 
+## Summarizing a single quantitative variable
+
+* Center: There are two measures of center used for quantitative data: the mean or the average and the median.  The mean is found by adding up all the values in the dataset and dividing the sum by the sample size.  The median is the 50th percentile of the ordered dataset.  
+
+* Spread: The spread is also referred to as variability.  Again there are two measures of spread used to describe the data: the standard deviation and the Inter Quartile Range or IQR.  The standard deviation measures the average distance of each observation from the mean. The IQR is found by subracting the value of the first quartile from the third quartile and measures the middle 50% of the data.  $IQR = Q_3 - Q_1$ 
+
+The favstats function gives the summary statistics for a quantitative variable.
+```{r}
+favstats(moviesa$imdb_score)
+```
+
+4. Give the values for the two measures of center. 
+
+\vspace{0.5in}
+
+5. Calculate the IQR.
+
+\vspace{0.5in}
+
+6. Report the value of the standard deviation and interpret this value in context of the problem.
+\vspace{1in}
+
+## Displaying a single quantitative variable
+
+To plot quantitative variables, we can use a dotplot, histogram or boxplot. To create a histogram the variable is broken into bins on a set width. Each bin plots the frequency of each variable for a certain bin. The following code creates a histogram of the variable IMBD Score.  Notice that the bin width is 0.5.  For example the first bin consists of the number of movies in the data set with an IMBD score of 3 to 3.5.  It is important to note that a movie with a IMBD score of 5 will fall into the bin for 5 - 5.5.  Visually this shows us the range of IMBD scores for Movies released in 2016.
+
+```{r}
+hist(moviesa$imdb_score, #dataset name and variable
+     main = "Histogram of IMDB Score of Movies in 2016", #title for plot 
+     xlab = "IMDB Score") #label for x axis
+```
+7. Which range of IMBD scores have the highest frequency?
+
+\vspace{1in}
+
+When comparing distributions we will look at four characteristics:
+
+* Shape: A distribution that has approximately the same trailing off in both tails is considered a symmetric distribution.  One in which the data trails off to the right is a right-skewed distribution. If the data trails off to the left it is considered a left-skewed distribution.
+
+* Center: Mean or Median 
+
+* Spread: Standard Deviation or IQR
+
+* Outliers: Outliers are values less than $Q_1 - 1.5*IQR$ and greater than $Q_3 + 1.5*IQR$.  On the box plot they are displayed as a single dot beyond the whisker.
+
+The boxplot is created using the five number summary: 
+* Minimum value
+* Quartile 1 (Q1) - the value at the 25th percentile
+* Median - the value at the 50th percentile
+* Quartile 3 (Q3) - the avlue at the 75th percentile
+* Maximum value 
+
+Here is a boxplot of IMDB scores for movies in 2016.
+
+```{r}
+boxplot(moviesa$imdb_score, 
+       main = "Boxplot of IMDB Scores for Movies in 2016",
+        ylab="IMDB Scores")
+```
+
+8. Using the two plots above, what is the shape of the distribution of IMDB scores?
+
+\vspace{0.5in}
+
+
+## Displaying a Single Categorical and Single Quantitative Variable
+
+Side by side plots are created from a single categorical and single quantitative variable.  We can create side by side boxplots, side by side histograms, and side by side dotplots.
+
+The boxplot of budget in millions by content rating is plotted using the code below.  This plot helps to compare the budget for different levels of content rating.
+
+```{r}
+boxplot(budget_mil~content_rating #response~explanatory 
+        , data=moviesa, main = "Side by side Boxplot of Budget by Content Rating", 
+        xlab = "Content Rating", ylab = "Budget (in Millions)")
+```
+
+
+9. Compare PG and PG-13 movies using the four characteristics for
+comparing distributions.
+
+\vspace{1.5in}
+
+
+## Association between two Quantitative Variables
+
+To plot two quantitative variables we will use a scatterplot.  If there is a clear relationship between these variables the variables are associated.  We will analyze four characteristics of scatterplots to assess this relationship.  
+
+* Pattern:  Is the relationship linear or non-linear.
+
+* Direction:  As the x variable increases is the y variable increasing (positive relationship) or decreasing (negative relationship).
+
+* Strength:  How strong is the association between the variables?  We will look at the measure of correlation to assess the strength.  When assessing the scatterplot we will see how close the individual data points are to the line of regression.  
+
+* Influential points:  We will also assess any data points that do not fit the pattern of the data.  These are called outliers or influential points.  
+
+We will look at the relationship between 'Budget' and 'Revenue' for movies released in 2016.
+
 ## Using a Scatterplot to Assess the Association between Quantitative Variables
-This shows a scatterplot of 'Budget' as a predictor of 'Revenue'.  
+This shows a scatterplot of 'Budget' as a predictor of 'Revenue' (note: both variables are measures in "millions of dollars".  
 
 ```{r echo=t, fig.height=5,fig.width=12}
 par(mfrow=c(1,2))
 scatterplot(revenue_mil~budget_mil, data=moviesa,pch=20,main="Revenue vs. Budget", smooth=F)
 ```
-4. Assess the four features of the scatterplot that describe this relationship.
+9. Assess the four features of the scatterplot that describe this relationship.
 
 * Form (linear, non-linear)
 
@@ -118,7 +208,7 @@ scatterplot(revenue_mil~budget_mil, data=moviesa,pch=20,main="Revenue vs. Budget
 
 \vspace{1in}
 
-5. Does there appear to be an association betwen 'Budget' and 'Revenue'? Explain.
+10. Does there appear to be an association betwen 'Budget' and 'Revenue'? Explain.
 
 \vspace{1in}
 
@@ -131,19 +221,19 @@ moviesb <- moviesa[,c("budget_mil", "revenue_mil", "duration", "imdb_score", "mo
 round(cor(moviesb,use="pairwise.complete.obs"),4)
 ```
 
-6.  Using the output above, which two variables have the strongest correlation?
+11.  Using the output above, which two variables have the strongest correlation?
 
 \vspace{1in}
 
-7.  What is the value of correlation between 'Budget' and 'Revenue'?
+12.  What is the value of correlation between 'Budget' and 'Revenue'?
 
 \vspace{1in}
 
-8.  Based on the value of correlation what would the sign of the slope be? Positive or negative?  Explain.
+13.  Based on the value of correlation what would the sign of the slope be? Positive or negative?  Explain.
 
 \vspace{1in}
 
-9.  Does your answer to question 8 match the direction you choose in question 4?
+14.  Does your answer to question 13 match the direction you choose in question 9?
 
 \vspace{1in}
 
@@ -158,25 +248,25 @@ favstats(moviesa$revenue_mil)
 ```
 
 
-10.  What is the standard deviation for 'Budget'?  What is the standard deviation for 'Revenue'? Use proper notation.
+15.  What is the standard deviation for 'Budget'?  What is the standard deviation for 'Revenue'? Use proper notation.
 
 \vspace{1in}
 
       
-11.  Calculate the slope of the least squares line between 'Budget' and 'Revenue'.
+16.  Calculate the slope of the least squares line between 'Budget' and 'Revenue'.
 
 \vspace{1in}
 
 The slope measures the change in y for each increase in x by 1.  In other words, as the x variable increases by 1 unit, the y variable changes (increaes/decreases) by the value of slope.
 
-12.  Interpret the value of slope in context of the problem.
+17.  Interpret the value of slope in context of the problem.
 
 \vspace{1in}
 
 We can use the **point-slope** form of a line to find the least squares line using the estimate for slope and the mean of x and y. 
         $y-\bar{y} = b_1(x - \bar{x})$
         
-13.  Identify the least squares line using the summary statistics provided.
+18.  Identify the least squares line using the summary statistics provided.
 
 \vspace{1in}
 
@@ -186,11 +276,11 @@ The linear model function in R can also give us the summary of the least squares
 revenueLM <- lm(revenue_mil~budget_mil,data=moviesa)
 summary(revenueLM)
 ```
-14.  Does the least squares line found in Question 13 match the output from the linear model?  Write out this equation.
+19.  Does the least squares line found in Question 18 match the output from the linear model?  Write out this equation.
 
 \vspace{1in}
 
-15. Using the least squares line from Question 14, predict the revenue for a movie with a budget of 165 million.
+20. Using the least squares line from Question 19, predict the revenue for a movie with a budget of 165 million.
 
 \vspace{1in}
 
@@ -207,11 +297,11 @@ Residual = Data - Model
 $e_i=y_i-\hat{y}_i$
 \end{center}
 
-16.  The movie, Independence Day: Resurgence, had a budget of 165 million and revenue of 102.315 million.  Find the residual for this movie.
+21.  The movie, Independence Day: Resurgence, had a budget of 165 million and revenue of 102.315 million.  Find the residual for this movie.
 
 \vspace{1in}
 
-17.  Did the line of regression overestimate or underestimate the revenue for this movie? 
+22.  Did the line of regression overestimate or underestimate the revenue for this movie? 
 
 \vspace{1in}
 
@@ -219,11 +309,11 @@ $e_i=y_i-\hat{y}_i$
 
 The coefficient of determination, $R^2$, can also be used to describe the strength of the linear relationship between two quantitative variables. $R^2$ describes the amount of variation in the response that is explained by the least squares line with the explanatory variable.  
 
-18.  Calculate the coefficient of determination between 'Budget' and 'Revenue'.
+23.  Calculate the coefficient of determination between 'Budget' and 'Revenue'.
 
 \vspace{1in}
 
-19.  Interpret the coefficient of determination in context of the problem.
+24.  Interpret the coefficient of determination in context of the problem.
 
 \vspace{1in}
 
@@ -234,7 +324,7 @@ Let's look at this linear relationship between 'Budget' and 'Revenue' for differ
 scatterplot(revenue_mil~budget_mil|content_rating, data = moviesa, smooth=F)
 ```
 
-20. Does the relationship between 'Budget' and 'Revenue' differ amount the different content ratings?  Explain.
+25. Does the relationship between 'Budget' and 'Revenue' differ among the different content ratings?  Explain.
 
 \vspace{1in}
 
