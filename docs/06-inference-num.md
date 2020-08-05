@@ -2107,7 +2107,7 @@ but this general approach remain the same.
 
 -->
 
-## Summary of $t$-procedures
+## Summary of t-procedures
 
 So far in this chapter, we have seen the $t$-distribution applied as the appropriate mathematical model in three distinct settings.  Although the three data structures are different, their similarities and differences are worth pointing out.  We provide Table \@ref(tab:tcompare) partly as a mechanism for understanding $t$-procedures and partly to highlight the extremely common usage of the $t$-distribution in practice. You will often hear the following three $t$-procedures referred to as a **one sample $t$-test** ($t$-interval), **paired $t$-test** ($t$-interval), and **two sample $t$-test** ($t$-interval).
 

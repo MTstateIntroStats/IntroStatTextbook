@@ -2786,7 +2786,7 @@ These considerations highlight the complexity around medical care and treatment 
 
 
 
-## Summary of $z$-procedures
+## Summary of Z-procedures
 
 So far in this chapter, we have seen the normal distribution applied as the appropriate mathematical model in two distinct settings.  Although the two data structures are different, their similarities and differences are worth pointing out.  We provide Table \@ref(tab:zcompare) partly as a mechanism for understanding $z$-procedures and partly to highlight the extremely common usage of the normal distribution in practice.
 You will often hear the following two $z$-procedures referred to as a **one sample $z$-test** ($z$-interval) and **two sample $z$-test** ($z$-interval).
