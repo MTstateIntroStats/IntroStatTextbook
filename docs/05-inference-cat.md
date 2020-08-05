@@ -48,6 +48,10 @@ population based on sample results is called **statistical inference**\index{sta
 
 The first question is answered through a **hypothesis test**\index{hypothesis test}, while the second is addressed with a **confidence interval**\index{confidence interval}.
 
+Statistical inference is the practice of making decisions and conclusions from data in the context of uncertainty. 
+Errors do occur, just like rare events, and the data set at hand might lead us to the wrong conclusion. 
+While a given data set may not always lead us to a correct conclusion, statistical inference gives us tools to control and evaluate how often these errors occur. 
+
 
 
 ### Motivating example: Martian alphabet {#Martian}
@@ -1607,34 +1611,27 @@ When looking at the rates of promotion for males and females in this study, why 
  
 The large difference in promotion rates (58.3% for females versus 87.5% for males) suggest there might be discrimination against women in promotion decisions. 
 However, we cannot yet be sure if the observed difference represents discrimination or is just from random chance. 
-Generally there is a little bit of fluctuation in sample data, and we wouldn't expect the sample proportions to be *exactly* equal, even if the truth was that the promotion decisions were independent of gender.</div>\EndKnitrBlock{example}
+Generally there is a little bit of fluctuation in sample data, and we wouldn't expect the sample proportions to be *exactly* equal, even if the truth was that the promotion decisions were independent of gender.
+
+Additionally, the researchers used a **convenience sample**---48 male bank supervisors attending a management institute---so we will need to think carefully about to which population we can generalize these results.</div>\EndKnitrBlock{example}
 
 The previous example is a reminder that the observed outcomes in the sample may not perfectly reflect the true relationships between variables in the underlying population.
-Table \@ref(tab:discriminationResults) shows there were 7 fewer promotions in the female group than in the male group, a difference in promotion rates of 29.2% $\left( \frac{21}{24} - \frac{14}{24} = 0.292 \right)$. 
-This observed difference is what we call a **point estimate**\index{point estimate} of the true effect. 
-The point estimate of the difference is large, but the sample size for the study is small, making it unclear if this observed difference represents discrimination or whether it is simply due to chance. 
-We label these two competing claims, $H_0$ and $H_A$:
-
-
+Table \@ref(tab:discriminationResults) shows there were 7 fewer promotions in the female group than in the male group, a difference in promotion rates of 29.2%:
+\[
+\hat{p}_M - \hat{p}_F = \frac{21}{24} - \frac{14}{24} = 0.292. 
+\]
+This point estimate of the true difference is large, but the sample size for the study is small, making it unclear if this observed difference represents discrimination or whether it is simply due to chance. 
+These two competing claims are our null and alternative hypotheses:
 
 * $H_0$: **Null hypothesis**\index{null hypothesis}. The variables `gender` and `decision` are independent. They have no relationship, and the observed difference between the proportion of males and females who were promoted, 29.2%, was due to chance.
 
 * $H_A$: **Alternative hypothesis**\index{alternative hypothesis}. The variables `gender` and `decision` are *not* independent. The difference in promotion rates of 29.2% was not due to chance, and equally qualified females are less likely to be promoted than males.
 
+In statistical notation:
 
+* $H_0: \pi_M - \pi_F = 0$
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Hypothesis testing**
-
-These hypotheses are part of what is called a **hypothesis test**\index{hypothesis test}. 
-A hypothesis test is a statistical technique used to evaluate competing claims using data. 
-Often times, the null hypothesis takes a stance of *no difference* or *no effect*. 
-
-If the null hypothesis and the data notably disagree, then we will reject the null hypothesis in favor of the alternative hypothesis. 
-
-Don't worry if you aren't a master of hypothesis testing at the end of this section. 
-We'll discuss these ideas and details many times in this chapter and those that follow.</div>\EndKnitrBlock{onebox}
-
-
+* $H_A: \pi_M - \pi_F > 0$
 
 What would it mean if the null hypothesis, which says the variables `gender` and `decision` are unrelated, is true? 
 It would mean each banker would decide whether to promote the candidate without regard to the gender indicated on the file. 
@@ -1729,30 +1726,27 @@ This difference due to chance is much smaller than the difference observed in th
 
 Figure \@ref(fig:genderrand4) shows that the difference in promotion rates is much larger in the original data than it is in the simulated groups (0.292 >>>  0.042).
 The quantity of interest throughout this case study has been the difference in promotion rates.
-We call the summary value the **statistic** of interest (or often the **test statistic**).
-When we encounter different data structures, the statistic is likely to change (e.g., we might calculate an average instead of a proportion), but we will always want to understand how the statistic varies from sample to sample.
-
-
+This summary value is the **statistic** of interest (or often the **test statistic**).
 
 <div class="figure" style="text-align: center">
-<img src="05/figures/genderrand4c.png" alt="We summarize the randomized data to produce one estiamte of the difference in proportions given no gender discrimination." width="100%" />
-<p class="caption">(\#fig:genderrand4)We summarize the randomized data to produce one estiamte of the difference in proportions given no gender discrimination.</p>
+<img src="05/figures/genderrand4c.png" alt="We summarize the randomized data to produce one estimate of the difference in proportions given no gender discrimination." width="100%" />
+<p class="caption">(\#fig:genderrand4)We summarize the randomized data to produce one estimate of the difference in proportions given no gender discrimination.</p>
 </div>
 
 
 #### Observed statistic vs. null statistics {-}
 
-We computed one possible difference under the null hypothesis in Guided Practice, which represents one difference due to chance. 
+We computed one possible sample difference in proportions under the null hypothesis in the Guided Practice above, which represents one difference due to chance. 
 While in this first simulation, we physically dealt out files, it is much more efficient to perform this simulation using a computer. 
 Repeating the simulation on a computer, we get another difference due to chance: -0.042. 
 And another: 0.208. 
-And so on until we repeat the simulation enough times that we have a good idea of what represents the *distribution of differences from chance alone*. 
+And so on until we repeat the simulation enough times that we have a good idea of what represents the *distribution of differences in sample proportions from chance alone*. 
 Figure \@ref(fig:discRandDotPlot) shows a plot of the differences found from 100 simulations, where each dot represents a simulated difference between the proportions of male and female files recommended for promotion.
 
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/discRandDotPlot-1.png" alt="A stacked dot plot of differences from 100 simulations produced under the null hypothesis, $H_0$, where `gender_simulated` and `decision` are independent. Two of the 100 simulations had a difference of at least 29.2%, the difference observed in the study, and are shown as solid red dots." width="70%" />
-<p class="caption">(\#fig:discRandDotPlot)A stacked dot plot of differences from 100 simulations produced under the null hypothesis, $H_0$, where `gender_simulated` and `decision` are independent. Two of the 100 simulations had a difference of at least 29.2%, the difference observed in the study, and are shown as solid red dots.</p>
+<img src="05-inference-cat_files/figure-html/discRandDotPlot-1.png" alt="A dot plot of differences from 100 simulations produced under the null hypothesis, $H_0$, where `gender_simulated` and `decision` are independent. Two of the 100 simulations had a difference of at least 29.2%, the difference observed in the study, and are shown as solid red dots." width="70%" />
+<p class="caption">(\#fig:discRandDotPlot)A dot plot of differences from 100 simulations produced under the null hypothesis, $H_0$, where `gender_simulated` and `decision` are independent. Two of the 100 simulations had a difference of at least 29.2%, the difference observed in the study, and are shown as solid red dots.</p>
 </div>
 
 Note that the distribution of these simulated differences in proportions is centered around 0. 
@@ -1782,14 +1776,14 @@ That is, *any set of numbers we could have observed would ultimately be incredib
 This type of situation is typical of our daily lives: each possible event in itself seems incredibly rare, but if we consider every alternative, those outcomes are also incredibly rare. 
 We should be cautious not to misinterpret such anecdotal evidence.]
 In our analysis, we determined that there was only a $\approx$ 2% probability of obtaining a sample where $\geq$ 29.2% more males than females get promoted by chance alone, so we conclude that the data provide strong evidence of gender discrimination against women by the supervisors. 
-In this case, we reject the null hypothesis in favor of the alternative.
+
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">What statistical term is given to the 2% probability of obtaining a sample where $\geq$ 29.2% more males than females get promoted by chance alone?^[This probability of the results we see in our study, under the assumption of no discrimination, is the **p-value**.]</div>\EndKnitrBlock{guidedpractice}
+
+#### Scope of inference {-}
+
+Since the study was a randomized experiment, we can conclude that the effect was due to gender discrimination---the gender of the application _caused_ the lower rate of promotion. However, since this study was a convenience sample, we can only generalize this result to individuals similar to those in the study. Thus, we have evidence of gender discrimination, but only among male bank supervisors attending a management institute at the University of North Carolina in 1972 that are similar to those in the study.
 
 \index{data!discrimination|)}
-
-Statistical inference is the practice of making decisions and conclusions from data in the context of uncertainty. 
-Errors do occur, just like rare events, and the data set at hand might lead us to the wrong conclusion. 
-While a given data set may not always lead us to a correct conclusion, statistical inference gives us tools to control and evaluate how often these errors occur. 
-Before getting into the nuances of hypothesis testing, let's work through another case study.
 
 
 #### Opportunity cost case study {#caseStudyOpportunityCost}
@@ -1804,6 +1798,14 @@ We can summarize the two different perspectives using the null and alternative h
 * $H_0$: **Null hypothesis**. Reminding students that they can save money for later purchases will not have any impact on students' spending decisions.
 
 * $H_A$: **Alternative hypothesis**. Reminding students that they can save money for later purchases will reduce the chance they will continue with a purchase.
+
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">How could you design a randomized experiment to test these two hypotheses?^[With a sample of students, randomly assign half of them to the control condition, and the other half to the treatment condition. For those in the control condition, present them with a situation where an item is on sale and ask if they would like to buy the item. For those in the treatment condition, present them with the same situation, but also remind them that they can save money for later purchases, then ask if they would like to buy the item. Compute and compare the proportions who refrained from purchasing the item in each group.]</div>\EndKnitrBlock{guidedpractice}
+
+In statistical notation, we can define parameters $\pi_{ctrl}$ = the probability a student under a control condition (not reminding them that they can save money for later purchases) refrains from making a purchase, and $\pi_{trmt}$ = the probability a student under a treatment condition (reminding them that they can save money for later purchases) refrains from makes a purchase. Our hypotheses are then
+
+* $H_0: \pi_{trmt} - \pi_{ctrl} = 0$
+
+* $H_A: \pi_{trmt} - \pi_{ctrl} > 0$
 
 In this section, we'll explore an experiment conducted by researchers that investigates this very question for students at a university in the southwestern United States.^[Frederick S, Novemsky N, Wang J, Dhar R, Nowlis S. 2009. Opportunity Cost Neglect. Journal of Consumer Research 36: 553-561.]
 
@@ -1881,7 +1883,7 @@ Table \@ref(tab:OpportunityCostTable) summarizes the study results.
 -->
 
 It might be a little easier to review the results using row proportions, specifically considering the proportion of participants in each group who said they would buy or not buy the DVD. 
-These summaries are given in Table \@ref(tab:OpportunityCostTableRowProp).
+These summaries are given in Table \@ref(tab:OpportunityCostTableRowProp), and a segmented bar plot is provided in Figure \@ref(fig:OpportunityCostBarplot).
 
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
@@ -1921,11 +1923,11 @@ These summaries are given in Table \@ref(tab:OpportunityCostTableRowProp).
 </tbody>
 </table>
 
-<!--
-"The data from Table \@ref(tab:OpportunityCostTable) summarized using row proportions. Row proportions are particularly useful here since we can view the proportion of *buy* and *not buy* decisions in each group."
--->
 
-
+<div class="figure" style="text-align: center">
+<img src="05-inference-cat_files/figure-html/OpportunityCostBarplot-1.png" alt="Segmented bar plot comparing the proportion who bought and did not buy the DVD between the control and treatment groups." width="70%" />
+<p class="caption">(\#fig:OpportunityCostBarplot)Segmented bar plot comparing the proportion who bought and did not buy the DVD between the control and treatment groups.</p>
+</div>
 
 We will define a **success**\index{success} in this study as a student who chooses not to buy the DVD.^[Success is often defined in a study as the outcome of interest, and a "success" may or may not actually be a positive outcome. For example, researchers working on a study on HIV prevalence might define a "success" in the statistical sense as a patient who is HIV+. A more complete discussion of the term **success** will be given in Chapter \@ref(inference-cat).] 
 Then, the value of interest is the change in DVD purchase rates that results by reminding students that not spending money now means they can spend the money later.
@@ -2055,6 +2057,11 @@ If there was no treatment effect, then we'd only observe a difference of at leas
 That is really rare! 
 Instead, we will conclude the data provide strong evidence there is a treatment effect: reminding students before a purchase that they could instead spend the money later on something else lowers the chance that they will continue with the purchase. 
 Notice that we are able to make a causal statement for this study since the study is an experiment.
+
+### Theory-based test for $H_0: \pi_1 - \pi_2 = 0$ {#two-prop-test-theory}
+
+
+### Theory-based confidence interval for $\pi_1 - \pi_2$ {#two-prop-ci-theory}
 
 
 #### Old Ch 6 starts here
@@ -3324,7 +3331,7 @@ Z = \frac{\text{point estimate} - \text{null value}}{SE}
 
 The lower tail area is 0.4325, which we double to get the p-value: 0.8650. Because this p-value is larger than 0.05, we do not reject the null hypothesis. That is, the difference in breast cancer death rates is reasonably explained by chance, and we do not observe benefits or harm from mammograms relative to a regular breast exam.</div>\EndKnitrBlock{example}
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-157-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-154-1.png" width="70%" style="display: block; margin: auto;" />
 
 Can we conclude that mammograms have no benefits or harm?
 Here are a few considerations to keep in mind when reviewing
@@ -3468,60 +3475,60 @@ However you should be able to easily spot them as **bolded text**.
    <td style="text-align:left;"> alternative hypothesis </td>
    <td style="text-align:left;"> null hypothesis </td>
    <td style="text-align:left;"> randomization </td>
-   <td style="text-align:left;"> statistically significant </td>
+   <td style="text-align:left;"> success </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Central Limit Theorem </td>
    <td style="text-align:left;"> one sample $z$-test </td>
    <td style="text-align:left;"> sampling distribution </td>
-   <td style="text-align:left;"> success </td>
+   <td style="text-align:left;"> success-failure condition </td>
   </tr>
   <tr>
    <td style="text-align:left;"> confidence interval </td>
    <td style="text-align:left;"> one-sided hypothesis test </td>
    <td style="text-align:left;"> SE interval </td>
-   <td style="text-align:left;"> success-failure condition </td>
+   <td style="text-align:left;"> test statistic </td>
   </tr>
   <tr>
    <td style="text-align:left;"> confirmation bias </td>
    <td style="text-align:left;"> p-value </td>
    <td style="text-align:left;"> simulation </td>
-   <td style="text-align:left;"> test statistic </td>
+   <td style="text-align:left;"> two sample $z$-test </td>
   </tr>
   <tr>
    <td style="text-align:left;"> hypothesis test </td>
    <td style="text-align:left;"> parameter </td>
    <td style="text-align:left;"> standard error </td>
-   <td style="text-align:left;"> two sample $z$-test </td>
+   <td style="text-align:left;"> two-sided hypothesis test </td>
   </tr>
   <tr>
    <td style="text-align:left;"> margin of error </td>
    <td style="text-align:left;"> percentile </td>
    <td style="text-align:left;"> standard error for difference in proportions </td>
-   <td style="text-align:left;"> two-sided hypothesis test </td>
+   <td style="text-align:left;"> Type 1 Error </td>
   </tr>
   <tr>
    <td style="text-align:left;"> normal curve </td>
    <td style="text-align:left;"> percentile interval </td>
    <td style="text-align:left;"> standard error of single proportion </td>
-   <td style="text-align:left;"> Type 1 Error </td>
+   <td style="text-align:left;"> Type 2 Error </td>
   </tr>
   <tr>
    <td style="text-align:left;"> normal distribution </td>
    <td style="text-align:left;"> permutation test </td>
    <td style="text-align:left;"> standard normal distribution </td>
-   <td style="text-align:left;"> Type 2 Error </td>
+   <td style="text-align:left;"> Z-score </td>
   </tr>
   <tr>
    <td style="text-align:left;"> normal model </td>
    <td style="text-align:left;"> point estimate </td>
-   <td style="text-align:left;"> statistic </td>
-   <td style="text-align:left;"> Z-score </td>
+   <td style="text-align:left;"> statistical inference </td>
+   <td style="text-align:left;">  </td>
   </tr>
   <tr>
    <td style="text-align:left;"> null distribution </td>
    <td style="text-align:left;"> pooled proportion </td>
-   <td style="text-align:left;"> statistical inference </td>
+   <td style="text-align:left;"> statistically significant </td>
    <td style="text-align:left;">  </td>
   </tr>
 </tbody>
