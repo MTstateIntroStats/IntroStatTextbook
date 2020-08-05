@@ -101,6 +101,8 @@ But wait---we're not done! We have evidence that humans tend to prefer Bumba on 
 \]
 Thus, based on this data, we are 95% confident that the probability a human guesses Bumba on the left is somewhere between 73% and 100%.
 
+
+
 ### Variability in a statistic {#var-stat}
 
 There are two approaches to modeling how a statistic may vary from sample to sample.
@@ -323,7 +325,24 @@ This reasoning also explains why we can never prove a null hypothesis. Sample st
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">If we want to be very certain we capture the population parameter, should we use a wider interval or a smaller interval?^[If we want to be more certain we will capture the fish, we might use a wider net. Likewise, we use a wider confidence interval if we want to be more certain that we capture the parameter.]</div>\EndKnitrBlock{guidedpractice}
 
-In Section \@ref(change-conf-level) we will discuss different percentages for the confidence interval (e.g., 90% confidence interval or 99% confidence interval).  Section \@ref(conf-level) also provides a longer discussion on what "95% confidence" actually means.
+We will explore both simulation-based methods (bootstrapping) and theory-based methods for creating confidence intervals in this text. Though the details change with different scenarios, theory-based confidence intervals will always take the form:
+\[
+\mbox{statistic} \pm (\mbox{critical value}) \times (\mbox{standard error of the statistic})
+\]
+The statistic is our best guess for the value of the parameter, so it makes sense to build the confidence interval around that value. The standard error, which is a measure of the uncertainty associated with the statistic, provides a guide for how large we should make the confidence interval. The critical value is determined by how confident we'd like to be, and tells us how many standard errors we need to add and subtract from the statistic. The amount we add and subtract from the statistic is called the **margin of error**.
+
+\BeginKnitrBlock{onebox}<div class="onebox">**General form of a confidence interval.**
+
+The general form of a **theory-based confidence interval** for an unknown parameter is
+\[
+\mbox{statistic} \pm (\mbox{critical value}) \times (\mbox{standard error of the statistic})
+\]
+The amount we add and subtract to the statistic to calculate the confidence interval is called the **margin of error**.
+\[
+\mbox{margin of error} = (\mbox{critical value}) \times (\mbox{standard error of the statistic})
+\]</div>\EndKnitrBlock{onebox}
+
+In Section \@ref(conf-int-one-prop) we will discuss different percentages for the confidence interval (e.g., 90% confidence interval or 99% confidence interval).  Section \@ref(conf-int-one-prop) also provides a longer discussion on what "95% confidence" actually means.
 
 
 ## The normal distribution {#normal}
@@ -498,7 +517,7 @@ pnorm(0.43, m = 0, s = 1)
 openintro::normTail(0.43, m = 0, s = 1)
 ```
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-37-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-39-1.png" width="70%" style="display: block; margin: auto;" />
 
 We can also find the Z-score associated with a percentile. 
 For example, to identify Z for the $80^{th}$ percentile, we use `qnorm` which identifies the **quantile** for a given percentage.  The quantile represents the cutoff value.  (To remember the function `qnorm` as providing a cutoff, notice that both `qnorm` and "cutoff" start with the sound "kuh".  To remember the `pnorm` function as providing a probability from a given cutoff, notice that both `pnorm` and probability start with the sound "puh".) 
@@ -511,7 +530,7 @@ qnorm(0.80, m = 0, s = 1)
 openintro::normTail(0.80, m = 0, s = 1)
 ```
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-38-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-40-1.png" width="70%" style="display: block; margin: auto;" />
 
 We can use these functions with other normal distributions than the standard normal distribution by specifying the mean as the argument for `m` and the standard deviation as the argument for `s`. Here we determine the proportion of ACT test takers who scored worse than Tom on the ACT: 0.73.
 
@@ -522,7 +541,7 @@ pnorm(24, m = 21, s = 5)
 openintro::normTail(24, m = 21, s = 5)
 ```
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-39-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-41-1.png" width="70%" style="display: block; margin: auto;" />
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Determine the proportion of SAT test takers who scored better than Ann on the SAT.^[If 84% had lower scores than Ann, the number of people who had better scores must be 16%. (Generally ties are ignored when the normal model, or any other continuous distribution, is used.)]</div>\EndKnitrBlock{guidedpractice}
 
@@ -660,11 +679,11 @@ The total area under the curve is 1. If we find the area of the two tails that a
 That is, the probability of being between 5'9'' and 6'2'' is 0.5048.</div>\EndKnitrBlock{example}
 
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-56-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-58-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-57-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-59-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 
@@ -781,7 +800,7 @@ The null distribution can be created through simulation (simulation-based method
 or can be modeled by a mathematical function (theory-based methods).
 
 
-#### Simulation-based method for calculating the p-value {-}
+#### Simulation-based method for calculating the p-value
 
 We want to identify the sampling distribution of the test statistic ($\hat{p}$) if the null hypothesis was true. In other words, we want to see how the sample proportion changes due to chance alone. Then we plan to use this information to decide whether there is enough evidence to reject the null hypothesis.
 
@@ -860,10 +879,10 @@ If it were plotted, the exact null distribution would look almost identical to t
 \end{example}
 
 -->
-#### Theory-based method for calculating the p-value {-}
+#### Theory-based method for calculating the p-value
 
 In Section \@ref(var-stat), we introduced the normal distribution and showed how it can be used as a mathematical model to describe the variability of a sample mean or sample proportion as a result of the Central Limit Theorem. We explored the normal distribution
-further in Section \@ref(normal).
+further in Section \@ref(normal). Theory-based methods for proportions use the normal distribution to calculate the p-value.
 
 There are conditions under which a sample proportion $\hat{p}$ is well-modeled using a normal distribution.
 When the sample observations
@@ -991,11 +1010,14 @@ for a hypothesis test here?^[Independence holds since the poll
   We cannot claim that exactly 50% of people support the regulation, but we cannot claim   a majority support it either.</div>\EndKnitrBlock{example}
 
   
-<img src="05-inference-cat_files/figure-html/paydayCC-norm-pvalue-1.png" width="70%" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+<img src="05-inference-cat_files/figure-html/paydayCC-norm-pvalue-1.png" alt="Approximate sampling distribution of $\hat{p}$ across all possible samples assuming $\pi = 0.50$. The shaded area represents the p-value corresponding to an observed sample proportion of 0.51." width="70%" />
+<p class="caption">(\#fig:paydayCC-norm-pvalue)Approximate sampling distribution of $\hat{p}$ across all possible samples assuming $\pi = 0.50$. The shaded area represents the p-value corresponding to an observed sample proportion of 0.51.</p>
+</div>
 
 Often, with theory-based methods, we use a **standardized statistic** rather than
 the original statistic. A standardized statistic is computed by subtracting the mean of the null distribution from the original statistic, then dividing by the standard error. When we are modeling the null distribution with a normal
-distribution, this standardized statistic is called $Z$, since it is the $Z-score$ of the sample proportion.
+distribution, this standardized statistic is called $Z$, since it is the Z-score of the sample proportion.
 
 \BeginKnitrBlock{onebox}<div class="onebox">**Standardized sample proportion.**
   
@@ -1006,7 +1028,8 @@ Z = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}
 where $p_0$ is the null value. The denominator, $\sqrt{\frac{p_0(1-p_0)}{n}}$, is called the **null standard error**.</div>\EndKnitrBlock{onebox}
 
 With the standardized statistic as our test statistic, we can find
-the p-value as the area under a standard normal distribution.
+the p-value as the area under a standard normal distribution at or more extreme
+than our observed $Z$ value.
 
 \BeginKnitrBlock{example}<div class="example">Do payday loan borrowers support a regulation that would require lenders to pull their credit report and evaluate their debt payments? From a random sample of 826 borrowers, 51% said they would support such a regulation. We set up hypotheses and checked conditions previously. Now calculate and interpret the standardized statistic, then use the standard normal distribution to calculate the approximate p-value.
 
@@ -1027,8 +1050,13 @@ Z = \frac{0.51 - 0.50}{0.017} = 0.57
 
 Interpreting this value, we can say that our sample proportion of 0.51 was only 0.57 standard errors above the null value of 0.50. 
 
-The p-value is the area above $Z = 0.57$ on a standard normal distribution---0.278---the same p-value we would obtain by finding the area above $\hat{p} = 0.51$ on a normal distribution with mean 0.50 and standard deviation 0.017.</div>\EndKnitrBlock{example}
+Shown in Figure \@ref(fig:paydayCC-stdnorm-pvalue), the p-value is the area above $Z = 0.57$ on a standard normal distribution---0.278---the same p-value we would obtain by finding the area above $\hat{p} = 0.51$ on a normal distribution with mean 0.50 and standard deviation 0.017.</div>\EndKnitrBlock{example}
 
+
+<div class="figure" style="text-align: center">
+<img src="05-inference-cat_files/figure-html/paydayCC-stdnorm-pvalue-1.png" alt="Approximate sampling distribution of $Z$ across all possible samples assuming $\pi = 0.50$. The shaded area represents the p-value corresponding to an observed standardized statistic of 0.57. Compare to Figure @ef(fig:paydatCC-norm-pvalue)" width="70%" />
+<p class="caption">(\#fig:paydayCC-stdnorm-pvalue)Approximate sampling distribution of $Z$ across all possible samples assuming $\pi = 0.50$. The shaded area represents the p-value corresponding to an observed standardized statistic of 0.57. Compare to Figure @ef(fig:paydatCC-norm-pvalue)</p>
+</div>
 
 \BeginKnitrBlock{onebox}<div class="onebox">**Theory-based hypothesis test for a proportion: one-sample $Z$-test.**
   
@@ -1063,15 +1091,15 @@ not independent are outside the scope of this book.
 
 
 
-### Confidence interval for $\pi$
+### Confidence interval for $\pi$  {#conf-int-one-prop}
 
 \index{point estimate!single proportion}
 
 A confidence interval provides a range of
-plausible values for the parameter $\pi$,
-and when $\hat{p}$ can be modeled using a
-normal distribution, the confidence interval
-for $p$ takes the form
+plausible values for the parameter $\pi$.
+A point estimate is our best guess for the value of the parameter, so it makes sense to build the confidence interval around that value. The standard error, which is a measure of the uncertainty associated with the point estimate, provides a guide for how large we should make the confidence interval. When $\hat{p}$ can be modeled using a
+normal distribution, the 68-95-99.7 rule tells us that, in general, 95% of observations are within 2 standard errors of the mean.  Here, we use the value 1.96 to be slightly more precise. The confidence interval
+for $\pi$ then takes the form
 \begin{align*}
 \hat{p} \pm z^{\star} \times SE.
 \end{align*}
@@ -1145,7 +1173,7 @@ A simple random sample of 826
     \begin{align*}
     \text{Support: }
       n \hat{p} &
-          == 826 \times 0.70
+          = 826 \times 0.70
       \approx 578
     &\text{Not: }
       n (1 - \hat{p}) &
@@ -1164,7 +1192,7 @@ in the formula.
 
 3.       
   Using
-  the point estimate 0.70,
+  the point estimate $0.70$,
   $z^{\star} = 1.96$ for a 95% confidence interval,
   and
   the standard error $SE = 0.016$ from the previous
@@ -1187,21 +1215,27 @@ in the formula.
 
 \BeginKnitrBlock{onebox}<div class="onebox">**Constructing a confidence interval for a single proportion.**
 
-There are three steps to constructing a confidence
+There are four steps to constructing a confidence
   interval for $p$.
 
 1. Check independence and the success-failure condition
       using $\hat{p}$.
       If the conditions are met, the sampling distribution
       of $\hat{p}$ may be well-approximated by the normal model.
-2. Construct the standard error using $\hat{p}$
-      in place of $p$ in the standard error formula.
-3. Apply the general confidence interval formula.</div>\EndKnitrBlock{onebox}
+2. Construct the standard error:
+  \[
+    SE(\hat{p}) = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
+  \]
+3. Use statistical software to find the critical value $z^{\star}$ corresponding to the confidence level.
+4. Apply the general confidence interval formula $\mbox{statistic} \pm (\mbox{critical value}) \times SE$:
+  \[
+    \hat{p} \pm z^{\star}\times \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
+  \]</div>\EndKnitrBlock{onebox}
 
 
 
 
-#### *z^*$ and the confidence level {#change-conf-level}
+#### $z^{\star}$ and the confidence level {-}
 
 \index{confidence interval!confidence level|(}
 
@@ -1211,7 +1245,7 @@ The 95% confidence interval structure provides guidance in how to make intervals
 \begin{eqnarray}
 \text{point estimate}\ \pm\ 1.96\times SE
 \end{eqnarray}
-There are three components to this interval: the point estimate, "1.96", and the standard error. The choice of $1.96\times SE$ was based on capturing 95% of the data since the estimate is within 1.96 standard errors of the true value about 95% of the time. The choice of 1.96 corresponds to a 95% confidence level. 
+There are three components to this interval: the point estimate, "1.96", and the standard error. The choice of $1.96\times SE$ was based on capturing 95% of the distribution since the estimate is within 1.96 standard errors of the true value about 95% of the time. The choice of 1.96 corresponds to a 95% confidence level. 
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">If $X$ is a normally distributed random variable, how often will $X$ be within 2.58 standard deviations of the mean?^[This is equivalent to asking how often the $Z$ score will be larger than -2.58 but less than 2.58. (For a picture, see Figure \@ref(fig:choosingZForCI).) To determine this probability, look up -2.58 and 2.58 in the normal probability table (0.0049 and 0.9951). Thus, there is a $0.9951-0.0049 \approx 0.99$ probability that the unobserved random variable $X$ will be within 2.58 standard deviations of the mean.]</div>\EndKnitrBlock{guidedpractice}
 
@@ -1224,7 +1258,7 @@ There are three components to this interval: the point estimate, "1.96", and the
 \index{confidence interval!confidence level|)}
 
 
-To create a 99% confidence interval, change 1.96 in the 95% confidence interval formula to be $2.58$. The previous Guided Practice highlights that 99% of the time a normal random variable will be within 2.58 standard deviations of its mean. This approach -- using the Z-scores in the normal model to compute confidence levels -- is appropriate when the point estimate is associated with a normal distribution and we can properly compute the standard error. Thus, the formula for a 99% confidence interval is:
+To create a 99% confidence interval, change 1.96 in the 95% confidence interval formula to be 2.58. The previous Guided Practice highlights that 99% of the time a normal random variable will be within 2.58 standard deviations of its mean. This approach---using the Z-scores in the normal model to compute confidence levels---is appropriate when the point estimate is associated with a normal distribution and we can properly compute the standard error. Thus, the formula for a 99% confidence interval is:
 
 \begin{eqnarray*}
 \text{point estimate}\ \pm\ 2.58\times SE
@@ -1238,25 +1272,43 @@ label for previous equation?
 %\Comment{I don't know where the equation number above gets referenced. Might drop the equation number.}
 -->
 
-The normal approximation is crucial to the precision of the $z^\star$ confidence intervals (in contrast to the bootstrap confidence intervals). When the normal model is not a good fit, we will use alternative distributions that better characterize the sampling distribution or we will use bootstrapping procedures.
+The normal approximation is crucial to the precision of the $z^\star$ confidence intervals. When the normal model is not a good fit, we will use alternative distributions that better characterize the sampling distribution or we will use bootstrapping procedures seen later in the textbook.
 
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Create a 99% confidence interval for the impact of the stent on the risk of stroke using the data from Section \@ref(basic-stents-strokes). The point estimate is 0.090, and the standard error is $SE = 0.028$. It has been verified for you that the point estimate can reasonably be modeled by a normal distribution.^[Since the necessary conditions for applying the normal model have already been checked for us, we can go straight to the construction of the confidence interval: $\text{point estimate}\ \pm\ 2.58 \times SE \rightarrow (0.018, 0.162)$. We are 99% confident that implanting a stent in the brain of a patient who is at risk of stroke increases the risk of stroke within 30 days by a rate of 0.018 to 0.162 (assuming the patients are representative of the population).]</div>\EndKnitrBlock{guidedpractice}
 
 
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Mathematical model confidence interval for any confidence level.**
+\BeginKnitrBlock{onebox}<div class="onebox">**Theory-based $(1-\alpha)\times 100$% confidence interval.**
 
-If the point estimate follows the normal model with standard error $SE$, then a confidence interval for the population parameter is
+If the statistic follows the normal model with standard error $SE$, then a confidence interval for the population parameter is
 \begin{eqnarray*}
-\text{point estimate}\ \pm\ z^{\star} \times SE
+\text{statistic}\ \pm\ z^{\star} \times SE
 \end{eqnarray*}
-where $z^{\star}$ corresponds to the confidence level selected.</div>\EndKnitrBlock{onebox}
+where $z^{\star}$ corresponds to the confidence level selected: the middle $(1-\alpha)\times 100$% of a standard normal distribution lies between $-z^{\star}$ and $z^{\star}$.</div>\EndKnitrBlock{onebox}
 
-Figure \@ref(fig:choosingZForCI) provides a picture of how to identify $z^{\star}$ based on a confidence level. We select $z^{\star}$ so that the area between -$z^{\star}$ and $z^{\star}$ in the normal model corresponds to the confidence level. 
+Figure \@ref(fig:choosingZForCI) provides a picture of how to identify $z^{\star}$ based on a confidence level. We select $z^{\star}$ so that the area between -$z^{\star}$ and $z^{\star}$ in the normal model corresponds to the confidence level. In `R`, you can find $z^{\star}$ using the `qnorm` function:
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Previously, we found that implanting a stent in the brain of a patient at risk for a stroke *increased* the risk of a stroke. The study estimated a 9% increase in the number of patients who had a stroke, and the standard error of this estimate was about $SE = 2.8%$. Compute a 90% confidence interval for the effect.^[We must find $z^{\star}$ such that 90% of the distribution falls between -$z^{\star}$ and $z^{\star}$ in the standard normal model, $N(\mu=0, \sigma=1)$. We can look up -$z^{\star}$ in the normal probability table by looking for a lower tail of 5% (the other 5% is in the upper tail), thus $z^{\star}=1.65$. The 90% confidence interval can then be computed as $\text{point estimate}\ \pm\ 1.65\times SE \to (4.4\%, 13.6\%)$. (Note: the conditions for normality had earlier been confirmed for us.) That is, we are 90% confident that implanting a stent in a stroke patient's brain increased the risk of stroke within 30 days by 4.4% to 13.6%.]</div>\EndKnitrBlock{guidedpractice}
+
+
+```r
+# z* for 90% --> alpha = 0.15 --> need 5% on each size:
+qnorm(.90 + .05)
+#> [1] 1.645
+
+# z* for 95% --> alpha = 0.05 --> need 2.5% on each size:
+qnorm(.95 + .025)
+#> [1] 1.96
+
+# z* for 99% --> alpha = 0.01 --> need .5% on each size:
+qnorm(.99 + .005)
+#> [1] 2.576
+```
+
+
+
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Previously, we found that implanting a stent in the brain of a patient at risk for a stroke *increased* the risk of a stroke. The study estimated a 9% increase in the number of patients who had a stroke, and the standard error of this estimate was about $SE = 2.8%$. Compute a 90% confidence interval for the effect.^[We must find $z^{\star}$ such that 90% of the distribution falls between -$z^{\star}$ and $z^{\star}$ in the standard normal model, $N(\mu=0, \sigma=1)$. We can find -$z^{\star}$ from a standard normal distribution by looking for a lower tail of 5% (the other 5% is in the upper tail), thus $z^{\star}=1.645$. The 90% confidence interval can then be computed as $\text{point estimate}\ \pm\ 1.65\times SE \to (4.4\%, 13.6\%)$. (Note: The conditions for normality had earlier been confirmed for us.) That is, we are 90% confident that implanting a stent in a stroke patient's brain increased the risk of stroke within 30 days by 4.4% to 13.6%.]</div>\EndKnitrBlock{guidedpractice}
 
 
 <!--
@@ -1453,39 +1505,566 @@ of error of 0.04 with 95% confidence?^[We complete the same computations as befo
 
 We now extend the methods from Section \@ref(single-prop) to apply confidence intervals and hypothesis tests to differences in population proportions that come from two groups: $\pi_1 - \pi_2$.
 
-<!--
-%We consider three examples.
-%In the first, we compare the utility of a blood thinner
-%for heart attack patients.
-%In the second application, we examine the efficacy of
-%mammograms in reducing deaths from breast cancer.
-%In the last example, a quadcopter company weighs whether
-%to switch to a higher quality manufacturer of rotor blades.
--->
-
 In our investigations, we'll identify a reasonable
-point estimate of $p_1 - p_2$ based on the sample,
+point estimate of $\pi_1 - \pi_2$ based on the sample,
 and you may have already guessed its form:
 $\hat{p}_1 - \hat{p}_2$.
 \index{point estimate!difference of proportions}
-Then we'll look at the inferential analysis in three different ways: using a randomization test, applying bootstrapping for interval estimates, and, if
+We'll look at methods for hypothesis testing in two different ways: 
+simulation-based methods using a randomization test, and
+theory-based methods if
 we verify that the point estimate
-can be modeled using a normal distribution,
-we compute the estimate's standard error, and
-we apply the mathematical framework.
+can be modeled using a normal distribution. 
+We will then investigate theory-based methods for computing confidence intervals.
 
 
 
-### Randomization test for $H_0: p_1 - p_2 = 0$ {#two-prop-errors}
+### Randomization test for $H_0: \pi_1 - \pi_2 = 0$ {#two-prop-errors}
+
+As you learned in Chapter \@ref(intro-to-data), a **randomized experiment** is done to assess whether or not one variable (the **explanatory** variable) causes changes in a second variable (the **response** variable). 
+Every data set has some variability in it, so to decide whether the variability in the data is due to (1) the causal mechanism (the randomized explanatory variable in the experiment) or instead (2) natural variability inherent to the data, we set up a sham randomized experiment as a comparison. 
+That is, we assume that each observational unit would have gotten the exact same response value regardless of the treatment level. 
+By reassigning the treatments many many times, we can compare the actual experiment to the sham experiment. If the actual experiment has more extreme results than any of the sham experiments, we are led to believe that it is the explanatory variable which is causing the result and not inherent data variability. 
+Using a few different case studies, let's look more carefully at this idea of a **randomization test**\index{randomization}.
+
+
+
+#### Gender discrimination case study {#caseStudyGenderDiscrimination}
+
+
+\index{data!discrimination|(}
+
+We consider a study investigating gender discrimination in the 1970s, which is set in the context of personnel decisions within a bank.^[Rosen B and Jerdee T. 1974. "Influence of sex role stereotypes on personnel decisions." Journal of Applied Psychology 59(1):9-14.] The research question we hope to answer is, "Are females discriminated against in promotion decisions made by male managers?"
 
 #### Observed data {-}
 
+The participants in this study were 48 male bank supervisors attending a management institute at the University of North Carolina in 1972. 
+They were asked to assume the role of the personnel director of a bank and were given a personnel file to judge whether the person should be promoted to a branch manager position. 
+The files given to the participants were identical, except that half of them indicated the candidate was male and the other half indicated the candidate was female. 
+These files were randomly assigned to the subjects.
+
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Is this an observational study or an experiment? How does the type of study impact what can be inferred from the results?^[The study is an experiment, as subjects were randomly assigned a "male" file or a "female" file (remember, all the files were actually identical in content). Since this is an experiment, the results can be used to evaluate a causal relationship between gender of a candidate and the promotion decision.]</div>\EndKnitrBlock{guidedpractice}
+
+For each supervisor we recorded the gender associated with the assigned file and the promotion decision. 
+Using the results of the study summarized in Table \@ref(tab:discriminationResults), we would like to evaluate if females are unfairly discriminated against in promotion decisions. 
+In this study, a smaller proportion of females are promoted than males (0.583 versus 0.875), but it is unclear whether the difference provides *convincing evidence* that females are unfairly discriminated against.
+
+
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>(\#tab:discriminationResults)Summary results for the gender discrimination study.</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden" colspan="1"></th>
+<th style="border-bottom:hidden" colspan="1"></th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`decision`</div></th>
+<th style="border-bottom:hidden" colspan="1"></th>
+</tr>
+  <tr>
+   <th style="text-align:left;">  </th>
+   <th style="text-align:left;">  </th>
+   <th style="text-align:left;"> promoted </th>
+   <th style="text-align:left;"> not promoted </th>
+   <th style="text-align:left;"> Total </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> male </td>
+   <td style="text-align:left;"> 21 </td>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> 24 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> `gender` </td>
+   <td style="text-align:left;"> female </td>
+   <td style="text-align:left;"> 14 </td>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> 24 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> Total </td>
+   <td style="text-align:left;"> 35 </td>
+   <td style="text-align:left;"> 13 </td>
+   <td style="text-align:left;"> 48 </td>
+  </tr>
+</tbody>
+</table>
+
+The data are visualized in Figure \@ref(fig:genderrand1).  Note that the promoted decision is colored in red (promoted) and white(not promoted).  Additionally, the observations are broken up into the male and female groups.
+
+
+<div class="figure" style="text-align: center">
+<img src="05/figures/genderrand1b.png" alt="The gender descriminiation study can be thought of as 48 red and black cards." width="50%" />
+<p class="caption">(\#fig:genderrand1)The gender descriminiation study can be thought of as 48 red and black cards.</p>
+</div>
+
+\BeginKnitrBlock{example}<div class="example">Statisticians are sometimes called upon to evaluate the strength of evidence. 
+When looking at the rates of promotion for males and females in this study, why might we be tempted to immediately conclude that females are being discriminated against?
+ 
+---
+ 
+The large difference in promotion rates (58.3% for females versus 87.5% for males) suggest there might be discrimination against women in promotion decisions. 
+However, we cannot yet be sure if the observed difference represents discrimination or is just from random chance. 
+Generally there is a little bit of fluctuation in sample data, and we wouldn't expect the sample proportions to be *exactly* equal, even if the truth was that the promotion decisions were independent of gender.</div>\EndKnitrBlock{example}
+
+The previous example is a reminder that the observed outcomes in the sample may not perfectly reflect the true relationships between variables in the underlying population.
+Table \@ref(tab:discriminationResults) shows there were 7 fewer promotions in the female group than in the male group, a difference in promotion rates of 29.2% $\left( \frac{21}{24} - \frac{14}{24} = 0.292 \right)$. 
+This observed difference is what we call a **point estimate**\index{point estimate} of the true effect. 
+The point estimate of the difference is large, but the sample size for the study is small, making it unclear if this observed difference represents discrimination or whether it is simply due to chance. 
+We label these two competing claims, $H_0$ and $H_A$:
+
+
+
+* $H_0$: **Null hypothesis**\index{null hypothesis}. The variables `gender` and `decision` are independent. They have no relationship, and the observed difference between the proportion of males and females who were promoted, 29.2%, was due to chance.
+
+* $H_A$: **Alternative hypothesis**\index{alternative hypothesis}. The variables `gender` and `decision` are *not* independent. The difference in promotion rates of 29.2% was not due to chance, and equally qualified females are less likely to be promoted than males.
+
+
+
+\BeginKnitrBlock{onebox}<div class="onebox">**Hypothesis testing**
+
+These hypotheses are part of what is called a **hypothesis test**\index{hypothesis test}. 
+A hypothesis test is a statistical technique used to evaluate competing claims using data. 
+Often times, the null hypothesis takes a stance of *no difference* or *no effect*. 
+
+If the null hypothesis and the data notably disagree, then we will reject the null hypothesis in favor of the alternative hypothesis. 
+
+Don't worry if you aren't a master of hypothesis testing at the end of this section. 
+We'll discuss these ideas and details many times in this chapter and those that follow.</div>\EndKnitrBlock{onebox}
+
+
+
+What would it mean if the null hypothesis, which says the variables `gender` and `decision` are unrelated, is true? 
+It would mean each banker would decide whether to promote the candidate without regard to the gender indicated on the file. 
+That is, the difference in the promotion percentages would be due to the way the files were randomly divided to the bankers, and the randomization just happened to give rise to a relatively large difference of 29.2%.
+
+Consider the alternative hypothesis: bankers were influenced by which gender was listed on the personnel file. 
+If this was true, and especially if this influence was substantial, we would expect to see some difference in the promotion rates of male and female candidates. 
+If this gender bias was against females, we would expect a smaller fraction of promotion recommendations for female personnel files relative to the male files.
+
+We will choose between these two competing claims by assessing if the data conflict so much with $H_0$ that the null hypothesis cannot be deemed reasonable. 
+If this is the case, and the data support $H_A$, then we will reject the notion of independence and conclude that these data provide strong evidence of discrimination.
+
+#### Variability of the statistic {-}
+
+Table \@ref(tab:discriminationResults) shows that 35 bank supervisors recommended promotion and 13 did not. 
+Now, suppose the bankers' decisions were independent of gender. 
+Then, if we conducted the experiment again with a different random assignment of gender to the files, differences in promotion rates would be based only on random fluctuation. 
+We can actually perform this **randomization**, which simulates what would have happened if the bankers' decisions had been independent of gender but we had distributed the file genders differently.^[The test procedure we employ in this section is sometimes referred to as a **permutation test**\index{permutation test}.]
+
+
+
+In this **simulation**\index{simulation}, we thoroughly shuffle 48 personnel files, 35 labeled `promoted` and 13 labeled `not promoted`, and we deal these files into two stacks. 
+Note that by keeping 35 promoted and 13 not promoted, we are assuming that 35 of the bank managers would have promoted the individual whose content is contained in the file (**independent** of gender).
+We will deal 24 files into the first stack, which will represent the 24 "female" files.
+The second stack will also have 24 files, and it will represent the 24 "male" files.
+Figure \@ref(fig:genderrand3) highlights both the shuffle and the reallocation to the sham gender groups.
+
+
+<div class="figure" style="text-align: center">
+<img src="05/figures/genderrand3b.png" alt="The gender descriminiation data is shuffled and reallocated to the gender groups." width="80%" />
+<p class="caption">(\#fig:genderrand3)The gender descriminiation data is shuffled and reallocated to the gender groups.</p>
+</div>
+
+
+Then, as we did with the original data, we tabulate the results and determine the fraction of `male` and `female` who were promoted.
+
+
+
+Since the randomization of files in this simulation is independent of the promotion decisions, any difference in the two promotion rates is entirely due to chance. 
+Table \@ref(tab:discriminationRand1) show the results of one such simulation.
+
+
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>(\#tab:discriminationRand1)Simulation results, where the difference in promotion rates between `male` and `female` is purely due to chance.</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden" colspan="1"></th>
+<th style="border-bottom:hidden" colspan="1"></th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`decision`</div></th>
+<th style="border-bottom:hidden" colspan="1"></th>
+</tr>
+  <tr>
+   <th style="text-align:left;">  </th>
+   <th style="text-align:left;">  </th>
+   <th style="text-align:left;"> promoted </th>
+   <th style="text-align:left;"> not promoted </th>
+   <th style="text-align:left;"> Total </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> male </td>
+   <td style="text-align:left;"> 18 </td>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 24 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> `gender` </td>
+   <td style="text-align:left;"> female </td>
+   <td style="text-align:left;"> 17 </td>
+   <td style="text-align:left;"> 7 </td>
+   <td style="text-align:left;"> 24 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> Total </td>
+   <td style="text-align:left;"> 35 </td>
+   <td style="text-align:left;"> 13 </td>
+   <td style="text-align:left;"> 48 </td>
+  </tr>
+</tbody>
+</table>
+
+
+
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">What is the difference in promotion rates between the two simulated groups in Table \@ref(tab:discriminationRand1) ? 
+How does this compare to the observed difference 29.2% from the actual study?^[$18/24 - 17/24=0.042$ or about 4.2% in favor of the men. 
+This difference due to chance is much smaller than the difference observed in the actual groups.]</div>\EndKnitrBlock{guidedpractice}
+
+
+
+Figure \@ref(fig:genderrand4) shows that the difference in promotion rates is much larger in the original data than it is in the simulated groups (0.292 >>>  0.042).
+The quantity of interest throughout this case study has been the difference in promotion rates.
+We call the summary value the **statistic** of interest (or often the **test statistic**).
+When we encounter different data structures, the statistic is likely to change (e.g., we might calculate an average instead of a proportion), but we will always want to understand how the statistic varies from sample to sample.
+
+
+
+<div class="figure" style="text-align: center">
+<img src="05/figures/genderrand4c.png" alt="We summarize the randomized data to produce one estiamte of the difference in proportions given no gender discrimination." width="100%" />
+<p class="caption">(\#fig:genderrand4)We summarize the randomized data to produce one estiamte of the difference in proportions given no gender discrimination.</p>
+</div>
+
+
+#### Observed statistic vs. null statistics {-}
+
+We computed one possible difference under the null hypothesis in Guided Practice, which represents one difference due to chance. 
+While in this first simulation, we physically dealt out files, it is much more efficient to perform this simulation using a computer. 
+Repeating the simulation on a computer, we get another difference due to chance: -0.042. 
+And another: 0.208. 
+And so on until we repeat the simulation enough times that we have a good idea of what represents the *distribution of differences from chance alone*. 
+Figure \@ref(fig:discRandDotPlot) shows a plot of the differences found from 100 simulations, where each dot represents a simulated difference between the proportions of male and female files recommended for promotion.
+
+
+<div class="figure" style="text-align: center">
+<img src="05-inference-cat_files/figure-html/discRandDotPlot-1.png" alt="A stacked dot plot of differences from 100 simulations produced under the null hypothesis, $H_0$, where `gender_simulated` and `decision` are independent. Two of the 100 simulations had a difference of at least 29.2%, the difference observed in the study, and are shown as solid red dots." width="70%" />
+<p class="caption">(\#fig:discRandDotPlot)A stacked dot plot of differences from 100 simulations produced under the null hypothesis, $H_0$, where `gender_simulated` and `decision` are independent. Two of the 100 simulations had a difference of at least 29.2%, the difference observed in the study, and are shown as solid red dots.</p>
+</div>
+
+Note that the distribution of these simulated differences in proportions is centered around 0. 
+Because we simulated differences in a way that made no distinction between men and women, this makes sense: we should expect differences from chance alone to fall around zero with some random fluctuation for each simulation.
+
+\BeginKnitrBlock{example}<div class="example">How often would you observe a difference of at least 29.2% (0.292) according to Figure \@ref(fig:discRandDotPlot)? 
+Often, sometimes, rarely, or never?
+ 
+---
+ 
+It appears that a difference of at least 29.2% due to chance alone would only happen about 2% of the time according to Figure \@ref(fig:discRandDotPlot). 
+Such a low probability indicates that observing such a large difference from chance is rare.</div>\EndKnitrBlock{example}
+
+The difference of 29.2% is a rare event if there really is no impact from listing gender in the candidates' files, which provides us with two possible interpretations of the study results:
+
+
+* $H_0$: **Null hypothesis**. Gender has no effect on promotion decision, and we observed a difference that is so large that it would only happen rarely.
+
+* $H_A$: **Alternative hypothesis**. Gender has an effect on promotion decision, and what we observed was actually due to equally qualified women being discriminated against in promotion decisions, which explains the large difference of 29.2%.
+
+When we conduct formal studies, we reject a null position (the idea that the data are a result of chance only) if the data strongly conflict with that null position.^[This reasoning does not generally extend to anecdotal observations. 
+Each of us observes incredibly rare events every day, events we could not possibly hope to predict. 
+However, in the non-rigorous setting of anecdotal evidence, almost anything may appear to be a rare event, so the idea of looking for rare events in day-to-day activities is treacherous. 
+For example, we might look at the lottery: there was only a 1 in 176 million chance that the Mega Millions numbers for the largest jackpot in history (March 30, 2012) would be (2, 4, 23, 38, 46) with a Mega ball of (23), but nonetheless those numbers came up! 
+However, no matter what numbers had turned up, they would have had the same incredibly rare odds. 
+That is, *any set of numbers we could have observed would ultimately be incredibly rare*. 
+This type of situation is typical of our daily lives: each possible event in itself seems incredibly rare, but if we consider every alternative, those outcomes are also incredibly rare. 
+We should be cautious not to misinterpret such anecdotal evidence.]
+In our analysis, we determined that there was only a $\approx$ 2% probability of obtaining a sample where $\geq$ 29.2% more males than females get promoted by chance alone, so we conclude that the data provide strong evidence of gender discrimination against women by the supervisors. 
+In this case, we reject the null hypothesis in favor of the alternative.
+
+\index{data!discrimination|)}
+
+Statistical inference is the practice of making decisions and conclusions from data in the context of uncertainty. 
+Errors do occur, just like rare events, and the data set at hand might lead us to the wrong conclusion. 
+While a given data set may not always lead us to a correct conclusion, statistical inference gives us tools to control and evaluate how often these errors occur. 
+Before getting into the nuances of hypothesis testing, let's work through another case study.
+
+
+#### Opportunity cost case study {#caseStudyOpportunityCost}
+
+How rational and consistent is the behavior of the typical American college student? 
+In this section, we'll explore whether college student consumers always consider the following: money not spent now can be spent later.
+
+In particular, we are interested in whether reminding students about this well-known fact about money causes them to be a little thriftier. 
+A skeptic might think that such a reminder would have no impact. 
+We can summarize the two different perspectives using the null and alternative hypothesis framework.
+
+* $H_0$: **Null hypothesis**. Reminding students that they can save money for later purchases will not have any impact on students' spending decisions.
+
+* $H_A$: **Alternative hypothesis**. Reminding students that they can save money for later purchases will reduce the chance they will continue with a purchase.
+
+In this section, we'll explore an experiment conducted by researchers that investigates this very question for students at a university in the southwestern United States.^[Frederick S, Novemsky N, Wang J, Dhar R, Nowlis S. 2009. Opportunity Cost Neglect. Journal of Consumer Research 36: 553-561.]
+
+#### Observed data {-}
+
+<!--Shane Frederick of Yale School of Management and his collaborators conducted an experiment exploring the rational behavior of consumers. 
+
+% Suppose when a person is about to spend money, we simply reminded them that they could spend the money on something else. Would it have any impact on the likelihood that they would continue with the purchase?
+%What would you do in this situation? Please circle one of the options below.
+
+-->
+
+One-hundred and fifty students were recruited for the study, and each was given the following statement:
+
+> Imagine that you have been saving some extra money on the side to make some purchases, and on your most recent visit to the video store you come across a special sale on a new video. This video is one with your favorite actor or actress, and your favorite type of movie (such as a comedy, drama, thriller, etc.). This particular video that you are considering is one you have been thinking about buying for a long time. It is available for a special sale price of $14.99.
+
+> What would you do in this situation? Please circle one of the options below.
+
+Half of the 150 students were randomized into a control group and were given the following two options:
+
+> (A) Buy this entertaining video.
+
+> (B) Not buy this entertaining video.
+
+
+The remaining 75 students were placed in the treatment group, and they saw a slightly modified option (B):
+
+> (A) Buy this entertaining video.
+
+> (B) Not buy this entertaining video. Keep the $14.99 for other purchases.
+
+Would the extra statement reminding students of an obvious fact impact the purchasing decision? 
+Table \@ref(tab:OpportunityCostTable) summarizes the study results.
+
+
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>(\#tab:OpportunityCostTable)Summary of student choices in the opportunity cost study.</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden" colspan="1"></th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`decision`</div></th>
+<th style="border-bottom:hidden" colspan="1"></th>
+</tr>
+  <tr>
+   <th style="text-align:left;">  </th>
+   <th style="text-align:left;"> buy DVD </th>
+   <th style="text-align:left;"> not buy DVD </th>
+   <th style="text-align:left;"> Total </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> control group </td>
+   <td style="text-align:left;"> 56 </td>
+   <td style="text-align:left;"> 19 </td>
+   <td style="text-align:left;"> 75 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> treatment group </td>
+   <td style="text-align:left;"> 41 </td>
+   <td style="text-align:left;"> 34 </td>
+   <td style="text-align:left;"> 75 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Total </td>
+   <td style="text-align:left;"> 97 </td>
+   <td style="text-align:left;"> 53 </td>
+   <td style="text-align:left;"> 150 </td>
+  </tr>
+</tbody>
+</table>
+
+<!--
+%150 participants were asked whether they would buy a DVD under a particular circumstance. Participants in the control group were given two options, and participants in the treatment group were given the same options, except in the *not buy* option they were reminded that not spending the money meant the money could be used for a later purchase. This table summarizes the results from the study.}
+-->
+
+It might be a little easier to review the results using row proportions, specifically considering the proportion of participants in each group who said they would buy or not buy the DVD. 
+These summaries are given in Table \@ref(tab:OpportunityCostTableRowProp).
+
+
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>(\#tab:OpportunityCostTableRowProp)The data above are now summarized using row proportions. Row proportions are particularly useful here since we can view the proportion of *buy* and *not buy* decisions in each group.</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden" colspan="1"></th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`decision`</div></th>
+<th style="border-bottom:hidden" colspan="1"></th>
+</tr>
+  <tr>
+   <th style="text-align:left;">  </th>
+   <th style="text-align:left;"> buy DVD </th>
+   <th style="text-align:left;"> not buy DVD </th>
+   <th style="text-align:left;"> Total </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> control group </td>
+   <td style="text-align:left;"> 0.747 </td>
+   <td style="text-align:left;"> 0.253 </td>
+   <td style="text-align:left;"> 1.00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> treatment group </td>
+   <td style="text-align:left;"> 0.547 </td>
+   <td style="text-align:left;"> 0.453 </td>
+   <td style="text-align:left;"> 1.00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Total </td>
+   <td style="text-align:left;"> 0.647 </td>
+   <td style="text-align:left;"> 0.353 </td>
+   <td style="text-align:left;"> 1.00 </td>
+  </tr>
+</tbody>
+</table>
+
+<!--
+"The data from Table \@ref(tab:OpportunityCostTable) summarized using row proportions. Row proportions are particularly useful here since we can view the proportion of *buy* and *not buy* decisions in each group."
+-->
+
+
+
+We will define a **success**\index{success} in this study as a student who chooses not to buy the DVD.^[Success is often defined in a study as the outcome of interest, and a "success" may or may not actually be a positive outcome. For example, researchers working on a study on HIV prevalence might define a "success" in the statistical sense as a patient who is HIV+. A more complete discussion of the term **success** will be given in Chapter \@ref(inference-cat).] 
+Then, the value of interest is the change in DVD purchase rates that results by reminding students that not spending money now means they can spend the money later.
+
+
+
+
+<!--
+%A first look at the data suggests that reminding students that not spending money means they can spend the money later has an impact. 
+-->
+
+We can construct a point estimate for this difference as
+\begin{align*}
+\hat{p}_{trmt} - \hat{p}_{ctrl}
+ = \frac{34}{75} - \frac{19}{75}
+ = 0.453 - 0.253
+ = 0.200
+\end{align*}
+The proportion of students who chose not to buy the DVD was 20% higher in the treatment group than the control group.
+However, is this result **statistically significant**\index{statistically significant}? In other words, is a 20% difference between the two groups so prominent that it is unlikely to have occurred from chance alone?
+
+
+
+#### Variability of the statistic {-}
+
+The primary goal in this data analysis is to understand what sort of differences we might see if the null hypothesis were true, i.e., the treatment had no effect on students. 
+For this, we'll use the same procedure we applied in Section \@ref(caseStudyGenderDiscrimination): randomization.
+
+Let's think about the data in the context of the hypotheses. 
+If the null hypothesis ($H_0$) was true and the treatment had no impact on student decisions, then the observed difference between the two groups of 20% could be attributed entirely to chance. 
+If, on the other hand, the alternative hypothesis ($H_A$) is true, then the difference indicates that reminding students about saving for later purchases actually impacts their buying decisions.
+
+#### Observed statistic vs. null statistics {-}
+
+Just like with the gender discrimination study, we can perform a statistical analysis. 
+Using the same randomization technique from the last section, let's see what happens when we simulate the experiment under the scenario where there is no effect from the treatment.
+
+While we would in reality do this simulation on a computer, it might be useful to think about how we would go about carrying out the simulation without a computer. 
+We start with 150 index cards and label each card to indicate the distribution of our response variable: `decision`. 
+That is, 53 cards will be labeled "not buy DVD" to represent the 53 students who opted not to buy, and 97 will be labeled "buy DVD" for the other 97 students. 
+Then we shuffle these cards thoroughly and divide them into two stacks of size 75, representing the simulated treatment and control groups. 
+Any observed difference between the proportions of "not buy DVD" cards (what we earlier defined as *success*) can be attributed entirely to chance.
+
+\BeginKnitrBlock{example}<div class="example">If we are randomly assigning the cards into the simulated treatment and control groups, how many "not buy DVD" cards would we expect to end up with in each simulated group? 
+What would be the expected difference between the proportions of "not buy DVD" cards in each group?
+
+---
+
+Since the simulated groups are of equal size, we would expect $53 / 2 = 26.5$, i.e., 26 or 27, "not buy DVD" cards in each simulated group, yielding a simulated point estimate of 0% . However, due to random fluctuations, we might actually observe a number a little above or below 26 and 27.</div>\EndKnitrBlock{example}
+
+<!--
+%We'll take the students and randomize them into two new groups, simulated-control and simulated-treatment groups, and then we'll look at the difference in the two groups. 
+-->
+
+The results of a single randomization from chance alone is shown in Table \@ref(tab:OpportunityCostTableSimulated). 
+From this table, we can compute a difference that occurred from chance alone:
+\begin{align*}
+\hat{p}_{trmt, simulated} - \hat{p}_{ctrl, simulated}
+ = \frac{24}{75} - \frac{29}{75}
+ = 0.32 - 0.387
+ = - 0.067
+\end{align*}
+<!--
+%This difference of -6.7% is entirely due to chance.
+-->
+
+
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>(\#tab:OpportunityCostTableSimulated)Summary of student choices against their simulated groups. The group assignment had no connection to the student decisions, so any difference between the two groups is due to chance.</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden" colspan="1"></th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`decision`</div></th>
+<th style="border-bottom:hidden" colspan="1"></th>
+</tr>
+  <tr>
+   <th style="text-align:left;">  </th>
+   <th style="text-align:left;"> buy DVD </th>
+   <th style="text-align:left;"> not buy DVD </th>
+   <th style="text-align:left;"> Total </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> control group </td>
+   <td style="text-align:left;"> 46 </td>
+   <td style="text-align:left;"> 29 </td>
+   <td style="text-align:left;"> 75 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> treatment group </td>
+   <td style="text-align:left;"> 51 </td>
+   <td style="text-align:left;"> 24 </td>
+   <td style="text-align:left;"> 75 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Total </td>
+   <td style="text-align:left;"> 97 </td>
+   <td style="text-align:left;"> 53 </td>
+   <td style="text-align:left;"> 150 </td>
+  </tr>
+</tbody>
+</table>
+
+
+Just one simulation will not be enough to get a sense of what sorts of differences would happen from chance alone. 
+We'll simulate another set of simulated groups and compute the new difference: 0.013. 
+And again: 0.067. 
+And again: -0.173. 
+We'll do this 1,000 times. The results are summarized in a dot plot in Figure \@ref(fig:OpportunityCostDiffsDotPlot), where each point represents a simulation. 
+Since there are so many points, it is more convenient to summarize the results in a histogram such as the one in Figure \@ref(fig:OpportunityCostDiffs), where the height of each histogram bar represents the fraction of observations in that group.
+
+
+<div class="figure" style="text-align: center">
+<img src="05-inference-cat_files/figure-html/OpportunityCostDiffsDotPlot-1.png" alt="A stacked dot plot of 1,000 chance differences produced under the null hypothesis, $H_0$. Six of the 1,000 simulations had a difference of at least 20% , which was the difference observed in the study." width="70%" />
+<p class="caption">(\#fig:OpportunityCostDiffsDotPlot)A stacked dot plot of 1,000 chance differences produced under the null hypothesis, $H_0$. Six of the 1,000 simulations had a difference of at least 20% , which was the difference observed in the study.</p>
+</div>
+
+
+<div class="figure" style="text-align: center">
+<img src="05-inference-cat_files/figure-html/OpportunityCostDiffs-1.png" alt="A histogram of 1,000 chance differences produced under the null hypothesis, $H_0$. Histograms like this one are a more convenient representation of data or results when there are a large number of observations." width="70%" />
+<p class="caption">(\#fig:OpportunityCostDiffs)A histogram of 1,000 chance differences produced under the null hypothesis, $H_0$. Histograms like this one are a more convenient representation of data or results when there are a large number of observations.</p>
+</div>
+
+
+If there was no treatment effect, then we'd only observe a difference of at least +20% about 0.6% of the time, or about 1-in-150 times. 
+That is really rare! 
+Instead, we will conclude the data provide strong evidence there is a treatment effect: reminding students before a purchase that they could instead spend the money later on something else lowers the chance that they will continue with the purchase. 
+Notice that we are able to make a causal statement for this study since the study is an experiment.
+
+
+#### Old Ch 6 starts here
+<!-- Old CH 6 starts here -->
 We consider a study on a new malaria vaccine
 called PfSPZ.
 In this study, volunteer patients were randomized
 into one of two experiment groups:
 14 patients received an experimental vaccine
-or 6 patients received a placebo vaccine.
+and 6 patients received a placebo vaccine.
 Nineteen weeks later, all 20 patients were exposed
 to a drug-sensitive malaria virus strain;
 the motivation of using a drug-sensitive strain
@@ -2745,7 +3324,7 @@ Z = \frac{\text{point estimate} - \text{null value}}{SE}
 
 The lower tail area is 0.4325, which we double to get the p-value: 0.8650. Because this p-value is larger than 0.05, we do not reject the null hypothesis. That is, the difference in breast cancer death rates is reasonably explained by chance, and we do not observe benefits or harm from mammograms relative to a regular breast exam.</div>\EndKnitrBlock{example}
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-137-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-157-1.png" width="70%" style="display: block; margin: auto;" />
 
 Can we conclude that mammograms have no benefits or harm?
 Here are a few considerations to keep in mind when reviewing
@@ -2887,56 +3466,62 @@ However you should be able to easily spot them as **bolded text**.
 <tbody>
   <tr>
    <td style="text-align:left;"> alternative hypothesis </td>
-   <td style="text-align:left;"> null distribution </td>
-   <td style="text-align:left;"> pooled proportion </td>
-   <td style="text-align:left;"> test statistic </td>
+   <td style="text-align:left;"> null hypothesis </td>
+   <td style="text-align:left;"> randomization </td>
+   <td style="text-align:left;"> statistically significant </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Central Limit Theorem </td>
-   <td style="text-align:left;"> null hypothesis </td>
+   <td style="text-align:left;"> one sample $z$-test </td>
    <td style="text-align:left;"> sampling distribution </td>
-   <td style="text-align:left;"> two sample $z$-test </td>
+   <td style="text-align:left;"> success </td>
   </tr>
   <tr>
    <td style="text-align:left;"> confidence interval </td>
-   <td style="text-align:left;"> one sample $z$-test </td>
+   <td style="text-align:left;"> one-sided hypothesis test </td>
    <td style="text-align:left;"> SE interval </td>
-   <td style="text-align:left;"> two-sided hypothesis test </td>
+   <td style="text-align:left;"> success-failure condition </td>
   </tr>
   <tr>
    <td style="text-align:left;"> confirmation bias </td>
-   <td style="text-align:left;"> one-sided hypothesis test </td>
-   <td style="text-align:left;"> standard error </td>
-   <td style="text-align:left;"> Type 1 Error </td>
+   <td style="text-align:left;"> p-value </td>
+   <td style="text-align:left;"> simulation </td>
+   <td style="text-align:left;"> test statistic </td>
   </tr>
   <tr>
    <td style="text-align:left;"> hypothesis test </td>
-   <td style="text-align:left;"> p-value </td>
-   <td style="text-align:left;"> standard error for difference in proportions </td>
-   <td style="text-align:left;"> Type 2 Error </td>
+   <td style="text-align:left;"> parameter </td>
+   <td style="text-align:left;"> standard error </td>
+   <td style="text-align:left;"> two sample $z$-test </td>
   </tr>
   <tr>
    <td style="text-align:left;"> margin of error </td>
-   <td style="text-align:left;"> parameter </td>
-   <td style="text-align:left;"> standard error of single proportion </td>
-   <td style="text-align:left;"> Z-score </td>
+   <td style="text-align:left;"> percentile </td>
+   <td style="text-align:left;"> standard error for difference in proportions </td>
+   <td style="text-align:left;"> two-sided hypothesis test </td>
   </tr>
   <tr>
    <td style="text-align:left;"> normal curve </td>
-   <td style="text-align:left;"> percentile </td>
-   <td style="text-align:left;"> standard normal distribution </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> percentile interval </td>
+   <td style="text-align:left;"> standard error of single proportion </td>
+   <td style="text-align:left;"> Type 1 Error </td>
   </tr>
   <tr>
    <td style="text-align:left;"> normal distribution </td>
-   <td style="text-align:left;"> percentile interval </td>
-   <td style="text-align:left;"> statistical inference </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> permutation test </td>
+   <td style="text-align:left;"> standard normal distribution </td>
+   <td style="text-align:left;"> Type 2 Error </td>
   </tr>
   <tr>
    <td style="text-align:left;"> normal model </td>
    <td style="text-align:left;"> point estimate </td>
-   <td style="text-align:left;"> success-failure condition </td>
+   <td style="text-align:left;"> statistic </td>
+   <td style="text-align:left;"> Z-score </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> null distribution </td>
+   <td style="text-align:left;"> pooled proportion </td>
+   <td style="text-align:left;"> statistical inference </td>
    <td style="text-align:left;">  </td>
   </tr>
 </tbody>
