@@ -36,7 +36,7 @@ In today's activity we will review summary measures and plots for quantitative v
     * IQR
 * Boxplots, dotplots, histograms
 
-To review these concepts see Section 2.2 in the textbook.  
+To review these concepts see Section 2.3 in the textbook.  
 
 ## Movies Released in 2016
 
@@ -157,15 +157,19 @@ boxplot(budget_mil~content_rating #response~explanatory
 
 11. Answer the following questions about the boxplots above.
 
-    a. Which content rating has the highest center?
+   a. Which content rating has the highest center?
 \vspace{0.5in}
-    b. Which content rating has the largest spread?
+
+   b. Which content rating has the largest spread?
 \vspace{0.5in}
-    c. Which content rating is the most symmetric?
+
+   c. Which content rating is the most symmetric?
 \vspace{0.5in}
-    d. Fifty percent of movies in 2016 with a PG-13 content rating fall below what value?
+    
+   d. Fifty percent of movies in 2016 with a PG-13 content rating fall below what value?
 \vspace{0.5in}
-    e.  What is the value for Q3 for the PG-13 rating?  Interpret this value in context.
+
+   e.  What is the value for Q3 for the PG-13 rating?  Interpret this value in context.
 \vspace{1in}
 
 
