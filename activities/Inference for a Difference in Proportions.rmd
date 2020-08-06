@@ -4,13 +4,12 @@ output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, 
+knitr::opts_chunk$set(echo = FALSE, 
                       message = FALSE,
                       warnings = FALSE, 
                       eval = T)
 options(show.signif.stars = FALSE)
-library(mosaic)
-library(yarrr)
+library(ggplot2)
 ```
 
 ## Inference for a Difference in Proportions
@@ -28,7 +27,7 @@ library(yarrr)
 * Create and Interpret a Confidence Interval for the difference in proportions
 
 ## Background
-In “Helmet Use and Risk of Head Injuries in Alpine Skiers and Snowboarders” by Sullheim et. al., Journal of the American Medical Association, Vol. 295, No. 8, we can see the results from a random sample 3562 skiers and snowboarders involved in accidents. 
+In "Helmet Use and Risk of Head Injuries in Alpine Skiers and Snowboarders" by Sullheim et. al., in the Journal of the American Medical Association, Vol. 295, No. 8, we can see the results from a random sample 3562 skiers and snowboarders involved in accidents. 
 
 |                            |     Head Injury    |     No Head Injury    |     Total    |
 |----------------------------|--------------------|-----------------------|--------------|
@@ -64,9 +63,7 @@ Is there evidence that safety helmet use reduces the risk of head injury for ski
 
 \vspace{1in}
 
-``````{r}
-library(readr)
-library(car)
+``````{r }
 injury <- read.csv("../data/head_injury.csv")
 injury$Helmet <- factor(injury$Helmet)
 injury$Injury <- factor(injury$Injury)
@@ -103,17 +100,24 @@ When comparing two groups, we assume the two parameters are equal in the null hy
 
 11. Based on the research question fill in the appropriate sign for the alternative hypothesis:
 
-Ha: $\pi_1$         $\pi_2$
+Ha: $\pi_1$   \hspace{.5in}      $\pi_2$
 
 ## Summarize and Visualize the data
 
 ```{r}
-plot(Injury~Helmet 
-     , data = injury, main="####" #Make sure to title your graph
-     )
+ggplot(data = injury,   #This specifies the dataset
+       aes(x = Injury, fill = Helmet)) +   #This specifies the variables
+  geom_bar(stat = "count", position = "fill") +  #Tell it to make a stacked bar plot
+  labs(title = "Segmented Bar Plot of Injury by Helmet Use",  #Make sure to title your plot 
+       x = "___________________",   #Label the x axis
+       y = "",  #Remove y axis label
+       fill = "_____________") + #Change legend label
+  scale_fill_discrete(labels = c("_________", "_________")) +
+  scale_x_discrete(labels = c("_____________", "_____________"))
+
 ```
 
-12.  Fill in the #### with the appropriate variables to plot a segmented bar plot of injury by helmet use.
+12.  Fill in the blanks with the appropriate variables and values to plot a segmented bar plot of injury by helmet use.
 
 \vspace{1in}
 
@@ -133,12 +137,13 @@ plot(Injury~Helmet
 
 To test the null hypothesis we could use simulation methods as we did with a single categorical variable. In this activity we will focus on theory-based methods.  Like with a single proportion, the difference in proportions can be mathematically modeled using the normal distribution if certain conditions are met.
 
-Conditions for the sample distribution of $\hat{p_1}-\hat{p_2}$
+Conditions for the sample distribution of $\hat{p}_1-\hat{p}_2$
 
   1. *Independence*  The data are independent within and between the two groups.
 
   2. *Success-Failure Condition* The success-failure condition holds for each group.
 
+\vspace{.25in}
 
 
 16.  Is the independence condition met? Explain your answer.
@@ -151,15 +156,13 @@ Conditions for the sample distribution of $\hat{p_1}-\hat{p_2}$
 
 To calculate the test statistic we use,
 
-  $z = \frac{point \space estimate \space - \space null \space value}{SE}$
+- $z = \frac{\text{point estimate} - \text{null value}}{SE}$, where the standard error is calculated using the pooled proportion of successes.
 
-  where the standard error is calculated using the pooled proportion of successes.
+- $SE(\hat{p}_1-\hat{p}_2)=\sqrt{\left(\frac{\hat{p}_{pool}(1-\hat{p}_{pool})}{n_1-1}+\frac{\hat{p}_{pool}(1-\hat{p}_{pool})}{{n_2-1}}\right)}$, where $\hat{p}_{pool} = \frac{\text{number of "successes"}}{\text{number of cases}} = \frac{\hat{p}_1 n_1+\hat{p}_2 n_1}{n_1+n_2}$
 
-  $SE(\hat{p_1}-\hat{p_2})=\sqrt(\frac{\hat{p}_{pool}(1-\hat{p}_{pool})}{n_1-1}+\frac{\hat{p}_{pool}(1-\hat{p}_{pool})}{{n_2-1}})$
+\vspace{.25in}
 
-  where $\hat{p}_{pool} = \frac{number \space of \space "successes"}{number \space of \space cases} = \frac{\hat{p_1}n_1+\hat{p_2}n_1}{n_1+n_2}$
-
-18. Calculate the $SE(\hat{p_1}-\hat{p_2})$.
+18. Calculate the $SE(\hat{p}_1-\hat{p}_2)$.
 
 \vspace{1in}
 
@@ -175,11 +178,11 @@ To calculate the test statistic we use,
 
 To find a confidence interval for the difference in proportions we will add and subtract the margin of error from the point estimate to find the two endpoints.
 
-   $\hat{p_1}-\hat{p_2}\pm SE(\hat{p_1}-\hat{p_2})$
+   $$\hat{p}_1-\hat{p}_2\pm SE(\hat{p}_1-\hat{p}_2), \text{where}$$
  
-   where, $SE(\hat{p_1}-\hat{p_2}) = \sqrt(\frac{\hat{p_1}(1-\hat{p_1})}{n_1-1}+\frac{\hat{p_2}(1-\hat{p_2}}{n_2-1})$
+   $$SE(\hat{p}_1-\hat{p}_2) = \sqrt{\left(\frac{\hat{p}_1 (1-\hat{p}_1)}{n_1}+\frac{\hat{p}_2 (1-\hat{p}_2)}{n_2}\right)}$$
  
-Note the formula changes When calculating the variability around the statistic in order to calculate a confidence interval.  Here use the sample proportions for each group to calculate the standard error for the difference in proportions.  
+Note that the formula changes when calculating the variability around the statistic in order to calculate a confidence interval!  Here use the sample proportions for each group to calculate the standard error for the difference in proportions.  
 
 21. Calculate the standard error for a difference in proportions to create a 95% confidence interval.  
 
