@@ -4,7 +4,7 @@ output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 options(show.signif.stars = FALSE)
 ```
 
@@ -41,6 +41,7 @@ Categorical variables are data that are in groups or categories such as eye colo
 
 ![](variables.png)
 
+
 3. Identify the variable we are collecting on each observational unit in this study.  What are we measuring on each student?
 
 \vspace{1in}
@@ -59,8 +60,9 @@ We will now collect the data from the entire class.
 
 6.	How many people in your class were correct in identifying bumba?  Using the class size from question 2, calculate the proportion of students who correctly identified bumba.  
 
-$$proportion = \frac{number \space of \space students \space who \space correctly \space identified \space bumba}{total \space number \space of \space  students}$$
-
+\begin{center}
+$\mbox{proportion} = \frac{\mbox{number of students who correctly identified bumba}}{\mbox{total number of students}}$
+\end{center}
 \vspace{1in}
 
 Looking at the data set and the summary statistics is only one way to display the data.  We will also want to create a visualization or picture of the data. A **frequency bar plot** is used to display categorical data as a count or frequency. Since our variable has two levels, correct or incorrect, we will create two bars one for each level.
@@ -78,29 +80,21 @@ We can also visualize the data as a proportion in a **relative frequency bar plo
 ![](../images/relative_barplot_martian.png)
 
 9.	The next step is to analyze the data.  If humans really don’t know Martian and are just guessing which is bumba, what are the chances of getting it right? 
-
 \vspace{0.5in}
-
-How could we use a coin to simulate each student “just guessing” which martian letter is bumba?  
-
+    
+    How could we use a coin to simulate each student “just guessing” which martian letter is bumba? 
 \vspace{1in}
 
-How could we use coins to simulate the entire class “just guessing” which martian letter is bumba? 
-
+    How could we use coins to simulate the entire class “just guessing” which martian letter is bumba? 
 \vspace{1in}
 
-How many people in your class would you expect to choose bumba correctly just by chance?  Explain your reasoning.
-
+    How many people in your class would you expect to choose bumba correctly just by chance?  Explain your reasoning.
 \vspace{1in}
 
-10.	Each of you will flip a coin one time to simulate your “guess”.  Let Heads = correct, Tails = incorrect.  What was the result of your simulation?  
+10.	Each of you will flip a coin one time to simulate your “guess”.  Let Heads = correct, Tails = incorrect.  What was the result of your simulation? \vspace{0.5in}
 
+    What was the result from your class’s simulation?  What proportion of students “guessed” correctly in the simulation?
 \vspace{0.5in}
-
-What was the result from your class’s simulation?  What proportion of students “guessed” correctly in the simulation?
-
-\vspace{0.5in}
-
 
 11. If students really don’t know Martian and are just guessing which is bumba, which seems more unusual: the result from your class’s **simulation** or the observed proportion of students in your class that were correct (this is your data from question 6)?  Explain your reasoning.
 
@@ -110,33 +104,36 @@ What was the result from your class’s simulation?  What proportion of students
 
 \vspace{1in}
 
-13.	We still unfortunately only have a couple of simulations to compare our class data to.  It would be much better to be able to see how our class compared to hundreds or thousands of “just-guessing” classes.  Since we don’t want to flip coins all class period, your instructor will use a web app to get several 1000 trials. Note the applet inputs used by your instructor.  Sketch the distribution here, being sure to label each axis appropriately. 
+13.	We still unfortunately only have a couple of simulations to compare our class data to.  It would be much better to be able to see how our class compared to hundreds or thousands of “just-guessing” classes.  Since we don’t want to flip coins all class period, your instructor will use a web app to get several 1000 trials. Fill in the following blanks to describe how we would create a simulation of random guessing with 1000 trials.
+\vspace{0.1in}
 
-**change to reflect r simulation**
+    Probability of correct guesses: _____
+\vspace{0.1in}
+    
+    Number of tosses: _____
+\vspace{0.1in}
 
+    Number of repetitions: _____
+\vspace{0.1in}
 
-Probability of heads: _____
+14.  Sketch the distribution displayed by your instructor here, being sure to label each axis appropriately. 
 
-Number of tosses: _____
+\vspace{1.5in}
 
-Number of repetitions: _____
-
-
-
-14. Is your class particularly good or bad at Martian?  How can you use the plot in question 13 to tell? 
-
-\vspace{1in}
-
-
-15.	Is it possible that we could see our class results just by chance if everyone was just guessing?  Explain your reasoning.
+15. Is your class particularly good or bad at Martian?  How can you use the plot in question 14 to tell? 
 
 \vspace{1in}
 
-16.	Is it likely that we could see our class results just by chance if everyone was just guessing?  Explain your reasoning.
+
+16.	Is it possible that we could see our class results just by chance if everyone was just guessing?  Explain your reasoning.
 
 \vspace{1in}
 
-17.	Does this activity provide strong evidence that students were not just guessing at random? If so, what do you think is going on here?  Can we as a class read Martian?  
+17.	Is it likely that we could see our class results just by chance if everyone was just guessing?  Explain your reasoning.
+
+\vspace{1in}
+
+18.	Does this activity provide strong evidence that students were not just guessing at random? If so, what do you think is going on here?  Can we as a class read Martian?  
 
 \vspace{1in}
 
