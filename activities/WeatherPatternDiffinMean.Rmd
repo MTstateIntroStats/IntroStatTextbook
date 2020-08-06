@@ -16,15 +16,13 @@ library(mosaic)
 
 ## Learning Objectives.
 
-* Write out the null and alternative hypothesis for One Categorical and One Quantitative Variable
+* Write out the null and alternative hypothesis for one categorical and one quantitative Variable
 
-* Calculate and carry-out theory-based hypothesis tests
+* Calculate and carry-out simulation based hypothesis test for a difference in means
 
 * Interpret and evaluate a p-value
 
-* Calculate and interpret a standardized statistic
-
-* Construct and interpret a theory-based confidence interval
+* Find a bootstap confidence interval for the difference in means
 
 * Use a confidence interval to determine the conclusion of a hypothesis test
 
@@ -33,7 +31,7 @@ library(mosaic)
 In the winter of 2018-2019, Bozeman had a record snowfall which resulted in the collapse of two flat-roofed buildings on the MSU campus.  A writer for the Washington Post predicted the heavy snowfall for 2018-2019 due to the El Nino weather pattern that occurred in that season. A meteorologist in Montana wanted to see if the weather pattern really was associated with total snowfall. She obtained historical data from 44 years on the weather pattern (El Nino or La Nina) and snowfall (in inches) at the Billings Weather Station.  
 
 
-``````{r}
+``````{r, include=FALSE}
 # Set-up
 library(readr)
 library(car)
@@ -52,7 +50,7 @@ boxplot(Snowfall~WeatherPattern, data=Snow)
 
 ## Quantitative Variables Review
 
-1. The two variables assessed in this the type of weather pattern and snowfall.  Identify the role for each variable (explanatory, response).
+1. The two variables assessed in this study are the type of weather pattern and snowfall.  Identify the role for each variable (explanatory, response).
 
 \vspace{1in}
 
@@ -70,15 +68,15 @@ boxplot(Snowfall~WeatherPattern, data=Snow)
 
 ## Ask a research question.
 
-5.  Write out the parameter of interest in context of the study.
+5.  Write out the parameter of interest in context of the study.  Use proper notation and be sure to define your subscripts.  Use El Nino minus La Nina as the order of subtraction.
 
 \vspace{1in}
 
-6.  Write out the null hypothesis in notation.
+6.  What are the two competing possibilities we will evaluate in this study?
 
 \vspace{1in}
 
-7. Based on the research question, what is the direction of the alternative hypothesis?
+7.  Identify which is the null hypothesis and which is the alternative hypothesis. 
 
 \vspace{1in}
 
@@ -90,66 +88,78 @@ boxplot(Snowfall~WeatherPattern, data=Snow)
 
 ## Use statistical inferential methods to draw inferences from the data
 
-The T score measures the number of standard deviations the statistic is from the null value.  
+Remember that the null distribution is created based on the assumption the null hypothesis is true.  In this study, we asssume there is no association between variables.  This means that a snowfall value could be in either an El Nino year or a La Nina year.
 
- d$T = \frac{\bar{x_1}-\bar{x_2}-0}{SE_{(\bar{x_1}-\bar{x_2})}}$, where $SE_{(\bar{x_1}-\bar{x_2})}=\sqrt{\frac{s^2_1}{n_1}+{\frac{s^2_2}{n_2}}}$
+To demonstrate this your instructor will use cards to represent the sample.  
 
-Remember to use the t distribution the following conditions must be met.
+9.  How many cards will we start with?
 
-* The observations for each group must be normal for sample sizes less than For sample sizes greater than 60....
+\vspace{0.5in}
 
-* The observations in each group must be independent
+10.  What will we write on each card?
 
-9. Are these conditions met to use the t-distribution?
+\vspace{0.5in}
 
-\vspace{1in}
-
-10. Calculate the point estimate.
+11.  Next we will mix the cards together and shuffle into two piles.  How many cards will go into each pile?  What should we label the piles?
 
 \vspace{1in}
 
-11. Calculate the $SE_{(\bar{x_1}-\bar{x_2})}$. 
+12.  What value is calculated from the cards and plotted on the null distribution?
 
 \vspace{1in}
 
-12.  Calculate the test statistic.
+13.  Once we create a null distribution of 1000 simulations, at what value do you expect the distribution to be centered at?  Explain your answer.
 
 \vspace{1in}
 
+**simulation**
 
-13. Interpret the value found in question 12.  
-
-\vspace{1in}
-
-To find the p-value we will use the function pt(test statistic, df, lower.tail=T).  The test statistic is the value calculated in Q12, df is the smallest sample size minus 1.  When you choose lower.tail = T this will give you the p-value for less than the test statistic.  If you choose lower.tail = F this will give you the p-value for greater than the test statistic.
-
-```{r}
-pt(-1.59, df=20, lower.tail=T)
-```
+14.  Load the package CatStats.  Using the ....Enter the values for the ....
 
 \vspace{1in}
 
 
-15.  How much evidence does the p-value provide against the null hypothesis?
+15.  Report the p-value. How much evidence does the p-value provide against the null hypothesis?
+
+\vspace{1in}
+
+16. Using bootstrapping find a 90% confidence interval.  
+
+**bootstrapping simulation**
+
+17. Interpret the interval you calculated in Question 16. 
 
 \vspace{1in}
 
 ## Communicate the results and answer the research question.
 
-To estimate the true difference in means we will use this equation for the confidence interval.
-$\bar{x}_d \pm t^* SE(\bar{x}_d)$
+18.  Write a paragraph summarizing the results of the study.  Be sure to include:
 
-The t* multiplier is found in r using the following code:
+* Summary statistic
 
-```{r}
-qt(0.95+0.025, df=20)
-```
+* P-value
 
-16.  Calculate the 95% confidence interval.
+* Conclusion in context
+
+* Confidence interval
+
+* Interpretation of the confidence interval
+
+* Scope of inference
+
+\vspace{3in}
+
+## Revisit and Look Forward
+
+19.  Would the results from the theory-based test match the results we saw with the simulation?  Explain why or why not.
 
 \vspace{1in}
 
-17. Interpret the interval you calculated in Question 16. 
+20. If we had data on 45 La Nina years and 47 El Nino years and found a similar summary statistic, what would happen to the p-value?  The width of the confidence interval?  The power?
 
 \vspace{1in}
+
+
+
+
 
