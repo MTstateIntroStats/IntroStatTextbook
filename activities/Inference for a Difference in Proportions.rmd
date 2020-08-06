@@ -153,6 +153,7 @@ ggplot(data = injury,   #This specifies the dataset
 
 
 \vspace{0.5in}
+## Use statistical analysis methods to draw inferences from the data
 
 To test the null hypothesis we could use simulation methods as we did with a single categorical variable. In this activity we will focus on theory-based methods.  Like with a single proportion, the difference in proportions can be mathematically modeled using the normal distribution if certain conditions are met.
 
