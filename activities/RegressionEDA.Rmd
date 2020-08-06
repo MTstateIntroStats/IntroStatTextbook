@@ -17,15 +17,15 @@ library(mosaic)
 ```{r echo=F, fig.height=4}
 par(mfrow=c(1,2))
 movies <- read.csv("../data/Movies.csv") #reads in data
-movies$content_rating <- factor(movies$content_rating)
-rating <- c("PG", "PG-13", "R")
+movies$content_rating <- factor(movies$content_rating) 
+rating <- c("PG", "PG-13", "R") #chooses levels of a variable
 movies <- movies[movies$content_rating %in% rating,]
 movies$content_rating <- factor(movies$content_rating)
 movies$title_year <- factor(movies$title_year)
-year <- c("2016")
+year <- c("2016") #chooses a single year
 movies <- movies[movies$title_year %in% year,]
 movies$title_year <- factor(movies$title_year)
-moviesa <- na.omit(movies)
+moviesa <- na.omit(movies) #removes mising values
 ```
 
 ## Learning Objectives
@@ -67,7 +67,7 @@ We will revisit the data set used last week collected on Movies released since 1
 
 In today's activity we will review summary measures and plots for two quantitative variables.  Some terms covered in this activity are
 
-* Scatterplots
+* Scatterplot
 
 * Correlation
 
@@ -146,7 +146,7 @@ round(cor(moviesb,use="pairwise.complete.obs"),4)
 
 The slope measures the change in y for each increase in x by 1.  In other words, as the x variable increases by 1 unit, the y variable changes (increase/decreases) by the value of slope.
 
-The linear model function in R can also give us the summary of the least squares fit.  The estimate for (Intercept) is the y-intercept for the line of least squares and the estimate for budget is the value of $b_1$, the slope.
+The linear model function in R gives us the summary for the least squares regression line.  The estimate for (Intercept) is the y-intercept for the line of least squares and the estimate for budget is the value of $b_1$, the slope.
 
 ```{r}
 revenueLM <- lm(revenue_mil~budget_mil,data=moviesa)
@@ -197,14 +197,18 @@ The coefficient of determination, $R^2$, can also be used to describe the streng
 
 \vspace{1in}
 
-## Multiple Linear Regression
-Let's look at this linear relationship between 'Budget' and 'Revenue' for different ratings.
+## Multivariate Plot
+In the next plot we are graphing three variables. 
 
 ```{r,fig.width=5,fig.height=4,fig.align='center'}
 scatterplot(revenue_mil~budget_mil|content_rating, data = moviesa, smooth=F)
 ```
 
-25. Does the relationship between 'Budget' and 'Revenue' differ among the different content ratings?  Explain.
+25.  Identify the three varables plotted in this graph.
+
+\vspace{0.5in}
+
+26. Does the relationship between 'Budget' and 'Revenue' differ among the different content ratings?  Explain.
 
 \vspace{1in}
 
