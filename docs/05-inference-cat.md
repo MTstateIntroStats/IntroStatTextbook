@@ -109,7 +109,7 @@ Thus, based on this data, we are 95% confident that the probability a human gues
 
 ### Variability in a statistic {#var-stat}
 
-There are two approaches to modeling how a statistic may vary from sample to sample.
+There are two approaches to modeling how a statistic, such as a sample proportion, may vary from sample to sample.
 In the [Martian alphabet example](#Martian), we used a **simulation-based approach** to model
 this variability, using the standard deviation of the simulated distribution of sample proportions as a quantitative measure of this sampling variability. Simulation-based methods include the randomization tests and bootstrapping methods we will use in this textbook. We can also use a **theory-based approach**---one which makes use of
 mathematical modeling---and involves the normal and $t$ probability distributions.
@@ -228,7 +228,7 @@ The test statistic in the the Martian alphabet example was the sample proportion
 Since the p-value is a probability, its value will always be between 0 and 1. The closer the p-value is to 0, the stronger the evidence we have _against the null hypothesis_. Why? A small p-value means that our data are _unlikely_ to occur, _if_ the null hypothesis is true. We take that to mean that the null hypothesis isn't a plausible assumption, and we reject it. This process mimics the scientific method---it is easier to disprove a theory than prove it. If scientists want to find evidence that a new drug reduces the risk of stroke, then they assume it _doesn't_ reduce the risk of stroke and then show that the observed data are so unlikely to occur that the more plausible explanation is that the drug works.
 
 
-Think of p-values as a continuum of strength of evidence against the null, from 0 (extremely strong evidence) to 1 (no evidence). Beyond around 10%, the data provide no evidence against the null hypothesis. Be careful not to equate this with \colorize{evidence for the null hypothesis}, which is \colorize{incorrect}. _The absence of evidence is not evidence of absence._
+Think of p-values as a continuum of strength of evidence against the null, from 0 (extremely strong evidence) to 1 (no evidence). Beyond around 10%, the data provide no evidence against the null hypothesis. Be careful not to equate this with evidence for the null hypothesis, which is incorrect. _The absence of evidence is not evidence of absence._
 <div class="figure" style="text-align: center">
 <img src="05/figures/pvalueStrengths.png" alt="Strength of evidence against the null for a continuum of p-values. Once the p-value is beyond around 0.10, the data provide no evidence against the null hypothesis." width="100%" />
 <p class="caption">(\#fig:pval-continuum)Strength of evidence against the null for a continuum of p-values. Once the p-value is beyond around 0.10, the data provide no evidence against the null hypothesis.</p>
@@ -256,7 +256,7 @@ Think of p-values as a continuum of strength of evidence against the null, from 
 
 Regardless of the data structure or analysis method, the hypothesis testing framework always follows the same steps---only the details for how we model randomness in the data change.
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Steps of a hypothesis test.** Every hypothesis test follows these same general steps:
+\BeginKnitrBlock{onebox}<div class="onebox">**General steps of a hypothesis test.** Every hypothesis test follows these same general steps:
 
 1. Frame the research question in terms of hypotheses.
 2. Collect and summarize data using a test statistic.
@@ -724,7 +724,7 @@ A single proportion is used to summarize data when we measured a single categori
 \index{data!medical consultant|(}
 In Section \@ref(HypothesisTesting), we introduced the general steps of a hypothesis test:
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Steps of a hypothesis test.** Every hypothesis test follows these same general steps:
+\BeginKnitrBlock{onebox}<div class="onebox">**General steps of a hypothesis test.** Every hypothesis test follows these same general steps:
 
 1. Frame the research question in terms of hypotheses.
 2. Collect and summarize data using a test statistic.
@@ -732,8 +732,6 @@ In Section \@ref(HypothesisTesting), we introduced the general steps of a hypoth
 4. Compare the observed test statistic to the null distribution to calculate a p-value.
 5. Make a conclusion based on the p-value, and write a conclusion in context, in plain language, and in terms of the alternative hypothesis.</div>\EndKnitrBlock{onebox}
 
-Regardless of if we use simulation-based methods or theory-based methods, the first two steps of a hypothesis test start out the same.
-Let's follow these steps through in the context of an example.
 
 \BeginKnitrBlock{example}<div class="example">People providing an organ for donation sometimes seek the help of a special medical consultant. 
 These consultants assist the patient in all aspects of the surgery, with the goal of reducing the possibility of complications during the medical procedure and recovery. 
@@ -754,13 +752,14 @@ While it is not possible to assess the causal claim, it is still possible to und
 
 #### Steps 1 and 2: Hypotheses and test statistic {-}
 
+Regardless of if we use simulation-based methods or theory-based methods, the first two steps of a hypothesis test start out the same: setting up hypotheses and summarizing data with a test statistic.
 We will let $\pi$ represent the true complication rate for liver donors working with this consultant. This "true" complication probability is called the **parameter** of interest^[Parameters were first introduced in Section \@ref(dotplots)].)
 The sample proportion for the complication rate is 3 complications divided by the 62 surgeries the consultant has worked on: $\hat{p} = 3/62 = 0.048$. Since this value is estimated from sample data, it is called a **statistic**. The statistic $\hat{p}$ is also our point estimate, or "best guess," for $\pi$, and we will use is as our **test statistic**.
 
 \BeginKnitrBlock{onebox}<div class="onebox">**Parameters and statistics.**\index{parameter}
 
 A **parameter** is the "true" value of interest. 
-We typically estimate the parameter using a **statistic** or point estimate\index{point estimate} from a sample of data. 
+We typically estimate the parameter using a **statistic** from a sample of data. When a statistic is used as an estimate of a parameter, it is called a **point estimate**.
 
 For example, we estimate the probability $\pi$ of a complication for a client of the medical consultant by examining the past complications rates of her clients:
 
@@ -772,7 +771,8 @@ $$\hat{p} = 3 / 62 = 0.048\qquad\text{is used to estimate}\qquad \pi$$</div>\End
 \BeginKnitrBlock{protip}<div class="protip">Summary measures that summarize a sample of data, such as $\hat{p}$, are called **statistics**\index{statistic}. Numbers that summarize an entire population, such as $\pi$, are called **parameters**\index{parameter}. You can remember
 this distinction by looking at the first letter of each term: 
 
-> **S**tatistics summarize **S**amples; **P**arameters summarize **P**opulations.
+> **_S_**tatistics summarize **_S_**amples.  
+> **_P_**arameters summarize **_P_**opulations.
 
 We typically use Roman letters to symbolize statistics (e.g., $\bar{x}$, $\hat{p}$), and Greek letters to symbolize parameters (e.g., $\mu$, $\pi$).
 Since we rarely can measure the entire population, and thus rarely know
@@ -786,7 +786,7 @@ and we don't know parameters!"</div>\EndKnitrBlock{protip}
 In words:
 
 > $H_0$: There is no association between the consultant's contributions and the clients' complication rate.  
-> $H_A$: Patients who work with the consultant tend to have a complication rate lower than 10%. In statistical language
+> $H_A$: Patients who work with the consultant tend to have a complication rate lower than 10%.
 
 In statistical language:
 
@@ -913,100 +913,58 @@ No! Though our decision was to fail to reject the null hypothesis, this does not
 
 In the medical consultant case study, the parameter is $\pi$, the true probability of a complication for a client of the medical consultant.
 There is no reason to believe that $\pi$ is exactly $\hat{p} = 3/62$, but there is also no reason to believe that $\pi$ is particularly far from $\hat{p} = 3/62$.
-By sampling with replacement from the data set (a process called **bootstrapping**\index{bootstrapping}), the variability of the possible $\hat{p}$ values can be approximated, which will allow us to generate a range of plausible values for $\pi$---a confidence interval. 
+By sampling with replacement from the data set (a process called **bootstrapping**\index{bootstrapping}), the variability of the possible $\hat{p}$ values can be approximated, which will allow us to generate a range of plausible values for $\pi$, i.e., a confidence interval. 
 
 
 
 Most of the inferential procedures covered in this text are grounded in quantifying how one data set would differ from another when they are both taken from the same population.
 It doesn't make sense to take repeated samples from the same population because if you have the means to take more samples, a larger sample size will benefit you more than the exact same sample twice.
-Instead, we measure how the samples behave under an estimate of the population.  Figure \@ref(fig:boot1) shows how the unknown original population can be estimated by using the sample to approximate the proportion of complications and no complications for the medical consultant.
+Instead, we measure how the samples behave under an estimate of the population.  Figure \@ref(fig:boot1) shows how an unknown original population of red and white marbles can be estimated by using multiple copies of a sample of seven marbles.
 
 <div class="figure" style="text-align: center">
-<img src="05/figures/boot1prop1.png" alt="The unknown population on the left represents all potential clients of the medical consultant, where red represent patients who would have complications, and white no complications. The estimated population on the right is many copies of the sample." width="75%" />
-<p class="caption">(\#fig:boot1)The unknown population on the left represents all potential clients of the medical consultant, where red represent patients who would have complications, and white no complications. The estimated population on the right is many copies of the sample.</p>
+<img src="05/figures/boot1prop1.png" alt="An unknown population of red and white marbles. The estimated population on the right is many copies of the observed sample." width="75%" />
+<p class="caption">(\#fig:boot1)An unknown population of red and white marbles. The estimated population on the right is many copies of the observed sample.</p>
 </div>
 
-\BeginKnitrBlock{todo}<div class="todo">Revised up to here - need to revise remainder of this bootstrap CI section.</div>\EndKnitrBlock{todo}
-
-By taking repeated samples from the estimated population, the variability from sample to sample can be observed.  In Figure \@ref(fig:boot2) the repeated bootstrap samples are obviously different both from each other and from the original population.
+By taking repeated samples from the estimated population, the variability from sample to sample can be observed.  In Figure \@ref(fig:boot2) the repeated bootstrap samples are obviously different both from each other, from the original sample, and from the original population.
 Recall that the bootstrap samples were taken from the same (estimated) population, and so the differences are due entirely to natural variability in the sampling procedure.
 
 <div class="figure" style="text-align: center">
-<img src="05/figures/boot1prop2.png" alt="next fig, has the bootstrap samples" width="75%" />
-<p class="caption">(\#fig:boot2)next fig, has the bootstrap samples</p>
+<img src="05/figures/boot1prop2.png" alt="Selecting $k$ random samples from the estimated population created from copies of the observed sample." width="75%" />
+<p class="caption">(\#fig:boot2)Selecting $k$ random samples from the estimated population created from copies of the observed sample.</p>
 </div>
 
-By summarizing each of the bootstrap samples (here, using the sample proportion), we see, directly, the variability of the sample proportion, $\hat{p}$, from sample to sample.
-The distribution of $\hat{p}_{bs}$ for the example scenario is shown in Figure \@ref(fig:boot3), and the bootstrap distribution for the medical consultant data is shown in Figure \@ref(fig:MedConsBSSim).
+By summarizing each of the bootstrap samples (here, using the sample proportion), we see, directly, the variability of the sample proportion of red marbles, $\hat{p}$, from sample to sample.
+The distribution of bootstrapped $\hat{p}$'s for the example scenario is shown in Figure \@ref(fig:boot3), and the bootstrap distribution for the medical consultant data is shown in Figure \@ref(fig:MedConsBSSim).
 
 <div class="figure" style="text-align: center">
-<img src="05/figures/boot1prop3.png" alt="WITH ADDED HISTOGRAM... boot samples, arrow, histogram of all of them" width="75%" />
-<p class="caption">(\#fig:boot3)WITH ADDED HISTOGRAM... boot samples, arrow, histogram of all of them</p>
+<img src="05/figures/boot1prop3.png" alt="Calculate the sample proportion of red marbles in each bootstrap resample, then plot these simulated sample proportions in a dot plot. The dot plot of sample proportion provides us a sense of how sample proportions would vary from sample to sample if we could take many samples from our original population." width="50%" /><img src="05-inference-cat_files/figure-html/boot3-2.png" alt="Calculate the sample proportion of red marbles in each bootstrap resample, then plot these simulated sample proportions in a dot plot. The dot plot of sample proportion provides us a sense of how sample proportions would vary from sample to sample if we could take many samples from our original population." width="50%" />
+<p class="caption">(\#fig:boot3)Calculate the sample proportion of red marbles in each bootstrap resample, then plot these simulated sample proportions in a dot plot. The dot plot of sample proportion provides us a sense of how sample proportions would vary from sample to sample if we could take many samples from our original population.</p>
 </div>
 
 
 It turns out that in practice, it is very difficult for computers to work with an infinite population (with the same proportional breakdown as in the sample).
 However, there is a physical and computational model which produces an equivalent bootstrap distribution of the sample proportion in a computationally efficient manner.
-Consider the observed data to be a bag of marbles 3 of which are success (white) and 4 of which are failures (red).  By drawing the marbles out of the bag with replacement, we depict the same sampling **process** as was done with the infinitely large estimated population.
-Note in Figure \@ref(fig:boot4) that when sampling the original observations, a particular data point may end up in the new sample one time (evidenced by a circle around the observation), two times (evidenced by two circles around the observation), or not at all (no circles around the observation).  
+Consider the observed data to be a bag of marbles 3 of which are red and 4 of which are white.  By drawing the marbles out of the bag _with replacement_, we depict the same sampling **process** as was done with the infinitely large estimated population.
+Note that when sampling the original observations with replacement, a particular marble may end up in the new sample one time, multiple times, or not at all.  
 
 If we apply the bootstrap sampling process to the medical consultant example, we consider each client to be one of the marbles in the bag.
 There will be 59 white marbles (no complication) and 3 red marbles (complication).
-If we 62 choose marbles out of the bag (one at a time) and compute the proportion of simulated patients with complications, $\hat{p}_{bs}$, then this "bootstrap" proportion represents a single simulated proportion from the "resample from the sample" approach.
+If we 62 choose marbles out of the bag (one at a time), replacing each chosen marble after its color is recorded, and compute the proportion of simulated patients with complications, $\hat{p}_{bs}$, then this "bootstrap" proportion represents a single simulated proportion from the "resample from the sample" approach.
 
-<div class="figure" style="text-align: center">
-<img src="05/figures/boot1prop4.png" alt="sampling with replacement figure" width="75%" />
-<p class="caption">(\#fig:boot4)sampling with replacement figure</p>
-</div>
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">In a simulation of 62 patients conduced by sampling with replacement from the original sample, about how many would we expect to have had a complication?^[Since in the original sample, 3 out of 62, or about 5% had complications, we could expect about 5% of the patients (6.2 on average) in the simulation will have a complication, though we will see a little variation from one simulation to the next.]</div>\EndKnitrBlock{guidedpractice}
 
-
-<div class="figure" style="text-align: center">
-<img src="05/figures/boot1propboth.png" alt="here is the full process.  do we want to break it up as above?" width="75%" />
-<p class="caption">(\#fig:boot1prop)here is the full process.  do we want to break it up as above?</p>
-</div>
-
-
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">In a simulation of 62 patients, about how many would we expect to have had a complication?^[About 5% of the patients (6.2 on average) in the simulation will have a complication, though we will see a little variation from one simulation to the next.]</div>\EndKnitrBlock{guidedpractice}
-
-Figure \@ref(fig:boot5) visualizes one simulation for the medical consultant.
-Out of the simulated cases, there were 5 with a complication and 57 without a complication: $\hat{p}_{bs} = 5/62 = 0.081$.
-
-<div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/boot5-1.png" alt="how impossible would it be to create one simulation with 62 marbles? 3 red, 59 white?" width="75%" />
-<p class="caption">(\#fig:boot5)how impossible would it be to create one simulation with 62 marbles? 3 red, 59 white?</p>
-</div>
-
-One simulation isn't enough to get a sense of the variability from one bootstrap proportion to another bootstrap proportion, so we repeated the simulation 10,000 times using a computer. 
+One simulated bootstrap resample isn't enough to get a sense of the variability from one bootstrap proportion to another bootstrap proportion, so we repeated the simulation 10,000 times using a computer.
 Figure \@ref(fig:MedConsBSSim) shows the distribution from the 10,000 bootstrap simulations. 
-The bootstrapped proportions vary from about zero to 11.3%. 
-The variability in the bootstrapped proportions leads us to believe that the true probability of complication (the parameter, $p$) is somewhere between 0 and 11.3%.
-<!--The simulated proportions that are less than or equal to $\hat{p}=0.048$ are shaded.
-There were 1222 simulated sample proportions with $\hat{p}_{bs} \leq 0.048$, which represents a fraction 0.1222 of our simulations:
--->
+The bootstrapped proportions vary from about zero to 0.15. By taking the range of the middle 95% of this distribution, we can construct a **95% bootstrapped confidence interval** for $\pi$. The 2.5^{th} percentile is 0, and the 97.5^{th} percentile is 0.113, so the middle 95% of the distribution is the range (0, 0.113).
+The variability in the bootstrapped proportions leads us to believe that the true risk of complication (the parameter, $\pi$) is somewhere between 0 and 11.3%.
+
 
 <div class="figure" style="text-align: center">
 <img src="05-inference-cat_files/figure-html/MedConsBSSim-1.png" alt="The original medical consultant data is bootstrapped 10,000 times. Each simulation creates a sample from the original data where the probability of a complication is $\hat{p} = 3/62$. The bootstrap 2.5 percentile proportion is 0 and the 97.5 percentile is 0.113. The result is: we are confident that, in the population, the true probability of a complication is between 0% and 11.3%." width="70%" />
 <p class="caption">(\#fig:MedConsBSSim)The original medical consultant data is bootstrapped 10,000 times. Each simulation creates a sample from the original data where the probability of a complication is $\hat{p} = 3/62$. The bootstrap 2.5 percentile proportion is 0 and the 97.5 percentile is 0.113. The result is: we are confident that, in the population, the true probability of a complication is between 0% and 11.3%.</p>
 </div>
 
-<!--
-\begin{align*}
-\text{left tail }
-	= \frac{\text{Number of observed simulations with }\hat{p}_{bs}\leq\text{ 0.048}}{10000}
-	= \frac{1222}{10000} = 0.1222
-\end{align*}
-However, this is not our p-value! Remember that we are conducting a two-sided test, so we should double the one-tail area to get the p-value:\footnote{This doubling approach is preferred even when the distribution isn't symmetric, as in this case.}
-\begin{align*}
-\text{p-value} = 2 \times \text{left tail} = 2 \times 0.1222 = 0.2444
-\end{align*}
-\begin{figure}[ht]
-\centering
-\includegraphics[width=0.83\textwidth]{02/figures/MedicalConsultant/MedConsBSSim}
-\caption{The null distribution for $\hat{p}$, created from 10,000 simulated studies. The left tail contains 12.22% of the simulations. We double this value to get the p-value.}
-\label{MedConsBSSim}
-\end{figure}
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Because the p-value is 0.2444, which is larger than the significance level 0.05, we do not reject the null hypothesis. Explain what this means in the context of the problem using plain language.^[The data do not provide strong evidence that the consultant's work is associated with a lower or higher rate of surgery complications than the general rate of 10%.]</div>\EndKnitrBlock{guidedpractice}
--->
 
 \BeginKnitrBlock{example}<div class="example">The original claim was that the consultant's true rate of complication was under the national rate of 10%. Does the interval estimate of 0 to 11.3% for the true probability of complication indicate that the surgical consultant has a lower rate of complications than the national average?
 Explain.
@@ -3471,7 +3429,7 @@ Z = \frac{\text{point estimate} - \text{null value}}{SE}
 
 The lower tail area is 0.4325, which we double to get the p-value: 0.8650. Because this p-value is larger than 0.05, we do not reject the null hypothesis. That is, the difference in breast cancer death rates is reasonably explained by chance, and we do not observe benefits or harm from mammograms relative to a regular breast exam.</div>\EndKnitrBlock{example}
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-164-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-162-1.png" width="70%" style="display: block; margin: auto;" />
 
 Can we conclude that mammograms have no benefits or harm?
 Here are a few considerations to keep in mind when reviewing
