@@ -4,14 +4,13 @@ output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, 
+knitr::opts_chunk$set(echo = FALSE, 
                       message = FALSE,
                       warnings = FALSE, 
                       eval = T)
 options(show.signif.stars = FALSE)
 library(mosaic)
 ```
-
 
 ## Learning Outcomes
 
@@ -25,8 +24,25 @@ library(mosaic)
 
 * Recognize and simulate probabilities as long-run frequencies
 
-* Construct two-way tables and tree diagrams to evaluate
-  marginal, joint, and conditional probabilities
+* Construct two-way tables to evaluate conditional probabilities
+
+## Terminology Review
+
+In today's activity we will review summary measures and plots for categorical variables.  Some terms covered in this activity are...
+
+* Proportions 
+
+* Bar plots
+
+* Segmented bar plots
+
+* Probability
+
+* Conditional Probability
+
+* Two-way tables
+
+To review these concepts see Section 2.1 in the textbook.  
 
 The following data set is from the Current Population Survey in 1985.  The following table summarizes the data.
 
@@ -42,7 +58,7 @@ The following data set is from the Current Population Survey in 1985.  The follo
 
 \vspace{1in}
 
-3.  Which variables are quantitative?
+3.  What types of plots can be used to display categorical data?
 
 \vspace{1in}
 
@@ -50,7 +66,7 @@ An important part of understanding data is to create visual pictures of what the
 
 ## Displaying a single categorical variable.
 
-A bar plot is used to plot a single categorical variable.  We can plot the counts for each category in a frequency bar plot and the proportion in each category in a relative frequency bar plot. If we wanted to know how many people in our data set were in each sector, we would create a bar plot of the variable sector.
+If we wanted to know how many people in our data set were in each sector, we would create a bar plot of the variable sector.
 
 ```{r}
 cps <- read.csv("../data/cps.csv") #This will read in the dataset
@@ -67,9 +83,9 @@ barchart(cps$sector, #This specifies the dataset and the variable
          ylab = "Frequency", #Label the y axis 
          ) 
 ```
-3.  Which Sector has the largest number of people in it?
+4.  Which Sector has the largest number of people in it?
 
-\vspace{1in}
+\vspace{0.5in}
 
 We could also choose to display the data as a proportion in a relative frequency bar plot. To find the relative frequency divide the count in each sector by the sample size.  This is the sample proportion. 
 ```{r}
@@ -80,15 +96,13 @@ barplot(table(cps$sector)/nrow(cps), #divide the frequency counts by the total
 )
 ```
 
-4.  How does this plot differ from the plot above?
+5.  How does is this plot the same as the frequency bar plot?  How does it differ?
 
 \vspace{1in}
 
 ## Displaying two categorical variables
 
-To visually display two categorical variables we will use a segmented bar plot or a mosaic plot. In a segmented bar plot each bar sums to 100% or a proportion of 1. Typically the explanatory variable will be plotted on the y-axis and the response variable on the x-axis. 
-
-To see the differences in proportion of each sector between males and females we would create a segmented bar plot of sector segmented by sex.  In this plot we are comparing the variable sex (explanatory variable) for the different sectors (response variable).
+To see the differences in proportion of each sector between males and females we would create a segmented bar plot of sector segmented by sex.  
 
 ```{r}
 plot(sex~sector #response~explanatory allows us to plot two variables
@@ -96,25 +110,32 @@ plot(sex~sector #response~explanatory allows us to plot two variables
      )
 ```
 
-5.  Using the segmented bar plot, which sector has about the same proportion of males and females?
+6.  Using the segmented bar plot, which sector has about the same proportion of males and females?
 
 \vspace{0.5in}
 
-6. Which sector has the highest proportion of females?
+7. Which sector has the highest proportion of females?
+
+\vspace{0.5in}
+
+8. Which variable is the explanatory variable?  Which is the response variable?
 
 \vspace{0.5in}
 
 ## Probability 
 
-7. A study was reported in which ninth grade Minnesota teens were asked whether they had gambled at least once a week in the past year.  The sample consisted of 49.1% boys.  The proportion of boys who had gambled at least once per week during the past year was 0.229, while among non-boys this proportion was only 0.045.  
+9. A study was reported in which ninth grade Minnesota teens were asked whether they had gambled at least once a week in the past year.  The sample consisted of 49.1% boys.  The proportion of boys who had gambled at least once per week during the past year was 0.229, while among non-boys this proportion was only 0.045.  
+    Let B = the event the person is a boy, and C = the event the person is a weekly gambler.
+\vspace{0.25in}
 
-Let B = the event the person is a boy, and C = the event the person is a weekly gambler.
+   a. Draw a segmented bar plot of gambling segmented by sex.
+\vspace{2in}
 
-a. Identify what each numerical value represents in probability notation.
-
+   b. Identify what each numerical value represents in probability notation.
 \vspace{1in}
-
-b. Create a two-way hypothetical table to represent the situation.
+ 
+   c. Create a two-way hypothetical table to represent the situation.
+    
 
 |                | Boys | Non-Boys | Total   |
 |----------------|------|----------|---------|
@@ -122,44 +143,37 @@ b. Create a two-way hypothetical table to represent the situation.
 | Did Not Gamble |      |          |         |
 | Total          |      |          | 100,000 |
 
-c. Find $P(B and C)$.
 
+   d. Find $P(\mbox{B and C})$.
 \vspace{1in}
 
-d. What does this probability represent in the context of the problem?
-
+   e. What does this probability represent in the context of the problem?
 \vspace{1in}
 
-e. Find the probability that a selected non-gambler is a non-boy.
-
+   f. Find the probability that a selected non-gambler is a non-boy.
 \vspace{1in}
 
-f. What is the notation used for the probability calculated in part e?
-
+   g. What is the notation used for the probability calculated in part e?
 \vspace{0.5in}
 
 8. In a computer store, 30% of the computers in stock are laptops and 70% are desktops.  Five percent of the laptops are on sale, while 10% of the desktops are on sale.
 
 Let L = the event the computer is a laptop, and S = the event the computer is on sale.
+\vspace{0.25in}
 
-a. Identify what each numerical value represents in probability notation.
-
+   a. Identify what each numerical value represents in probability notation.
 \vspace{1in}
 
-b. Create a tree diagram to represent the situation.
-
+   b. Create a two-way table to represent the situation.
 \vspace{2in}
 
-c. Calculate the probability that a randomly selected computer will be a desktop, given that the computer is on sale.  
-
+   c. Calculate the probability that a randomly selected computer will be a desktop, given that the computer is on sale.  
 \vspace{1in}
 
-d. What is the notation used for the probability calculated in part c.
-
+   d. What is the notation used for the probability calculated in part c.
 \vspace{0.5in}
 
-e. Find $P(S|L^C)$.
-
+   e. Find $P(S | L^C)$.
 \vspace{1in}
 
 
