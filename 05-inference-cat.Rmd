@@ -3612,9 +3612,11 @@ We are 95% confident that the true value of $p_t - p_c$ is between -0.065 and 0.
 
 ### Theory-based test for $H_0: \pi_1 - \pi_2 = 0$ {#two-prop-test-theory}
 
+```{block2, type="todo", echo=TRUE}
+Add section on power here.
+```
 
 ### Theory-based confidence interval for $\pi_1 - \pi_2$ {#two-prop-ci-theory}
-
 
 
 
