@@ -301,7 +301,7 @@ The _OpenIntro_ authors have a video to help clarify *why 0.05*:
 </center>
 <br>
 Sometimes it's also a good idea to deviate from the standard. 
-We'll discuss when to choose a threshold different than 0.05 in Section ??.</div>\EndKnitrBlock{onebox}
+We'll discuss when to choose a threshold different than 0.05 in Section \@ref(#two-prop-errors).</div>\EndKnitrBlock{onebox}
 
 
 Statistical significance has been a hot topic in the news, related to the "reproducibility crisis" in some scientific fields. We encourage you to read more about the debate on the use of p-values and statistical significance. A good place to start would be the _Nature_ article, "[Scientists rise up against statistical significance](https://www.nature.com/articles/d41586-019-00857-9)," from March 20, 2019.
@@ -343,7 +343,7 @@ The amount we add and subtract to the statistic to calculate the confidence inte
 \mbox{margin of error} = (\mbox{multiplier}) \times (\mbox{standard error of the statistic})
 \]</div>\EndKnitrBlock{onebox}
 
-In Section \@ref(conf-int-one-prop) we will discuss different percentages for the confidence interval (e.g., 90% confidence interval or 99% confidence interval).  Section \@ref(two-prop-boot-ci) provides a longer discussion on what "95% confidence" actually means.
+In Section \@ref(theory-prop) we will discuss different percentages for the confidence interval (e.g., 90% confidence interval or 99% confidence interval).  Section \@ref(two-prop-boot-ci) provides a longer discussion on what "95% confidence" actually means.
 
 
 ## The normal distribution {#normal}
@@ -992,34 +992,34 @@ No. Because the interval overlaps 10%, it might be that the consultant's work is
 \index{data!medical consultant|)}
 
 
-
-
-### Theory-based method for calculating the p-value {#theory-prop}
+### Theory-based methods for $\pi$ {#theory-prop}
 
 In Section \@ref(var-stat), we introduced the normal distribution and showed how it can be used as a mathematical model to describe the variability of a sample mean or sample proportion as a result of the Central Limit Theorem. We explored the normal distribution
-further in Section \@ref(normal). Theory-based hypothesis tests for proportions use the normal distribution to calculate the p-value.
+further in Section \@ref(normal). Theory-based hypothesis tests and confidence intervals for proportions use the normal distribution to calculate the p-value and to determine the width of the confidence interval.
+
+#### Variability of $\hat{p}$ {-}
 
 There are conditions under which a sample proportion $\hat{p}$ is well-modeled using a normal distribution.
 When the sample observations
 are independent and the sample size is sufficiently
 large, the normal model will describe the variability quite well; when the observations violate the conditions, the normal model can be inaccurate.
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Sampling distribution of
-    $\hat{p}$.**  
+\BeginKnitrBlock{onebox}<div class="onebox">**Conditions for the sampling distribution of
+    $\hat{p}$ to be normal.**  
 
   The sampling distribution for $\hat{p}$ based on
   a sample of size $n$ from a population with a true
-  proportion $\pi$ is nearly normal when:
+  proportion $\pi$ can be modeled
+  using a normal distribution  when:
 
-1. The sample's observations are independent,
+1. _Independence_. The sample's observations are independent,
       e.g., are from a simple random sample.
-2. We expected to see at least 10 successes and
+2. _Success-failure condition_. We expected to see at least 10 successes and
       10 failures in the sample, i.e., $n\pi\geq10$ and
       $n(1-\pi)\geq10$.
-      This is called the **success-failure condition**.
 
-  When these conditions are met, then the sampling
-  distribution of $\hat{p}$ is nearly normal with mean
+  When these conditions are satisfied, then the sampling
+  distribution of $\hat{p}$ is approximately normal with mean
   $\pi$ and standard deviation $\sqrt{\frac{\ \pi(1-\pi)\ }{n}}$.</div>\EndKnitrBlock{onebox}
 
 \index{success-failure condition}
@@ -1051,13 +1051,16 @@ The independence assumption may be reasonable if each of the surgeries is from a
 
 Since theory-based methods cannot be used on the medical consultant example, we'll turn to another example to demonstrate these methods, where conditions for approximating the distribution of $\hat{p}$ by a normal distribution are met.
 
-\BeginKnitrBlock{example}<div class="example">One possible regulation for payday lenders is that they
+#### Hypothesis test for $H_0: \pi = \pi_0$ {-}
+
+One possible regulation for payday lenders is that they
 would be required to do a credit check and evaluate debt
 payments against the borrower's finances.
 We would like to know: would borrowers support this form
 of regulation?
 
-Set up hypotheses to evaluate whether borrowers
+
+\BeginKnitrBlock{example}<div class="example">Set up hypotheses to evaluate whether borrowers
 have a majority support for this
 type of regulation. We take "majority" to mean
 greater than 50% of the population.
@@ -1221,7 +1224,7 @@ An exact p-value can be generated using the binomial distribution, but that meth
 \index{data!Payday regulation poll|)}
 
 
-### Theory-based confidence interval for $\pi$  {#conf-int-one-prop}
+#### Confidence interval for $\pi$  {-}
 
 \index{point estimate!single proportion}
 
@@ -2611,28 +2614,24 @@ Here we consider an experiment with patients who underwent CPR for a heart attac
 Each patient was randomly assigned to either receive a blood thinner (treatment group) or not receive a blood thinner (control group). 
 The outcome variable of interest was whether the patient survived for at least 24 hours.
 
-<!--
-% The way p_c and p_t are described make it sound like we are only considering the samples
--->
-
 
 \BeginKnitrBlock{example}<div class="example">Form hypotheses for this study in plain and statistical language. 
-Let $\pi_c$ represent the true survival rate of people who do not receive a blood thinner (corresponding to the control group) and $\pi_t$ represent the survival rate for people receiving a blood thinner (corresponding to the treatment group).
+Let $\pi_c$ represent the true survival rate of people who do not receive a blood thinner (corresponding to the control group) and $\pi_t$ represent the true survival rate for people receiving a blood thinner (corresponding to the treatment group).
 
 ---
  
 We want to understand whether blood thinners are helpful or harmful. 
 We'll consider both of these possibilities using a two-sided hypothesis test.
 
-* $H_0$: Blood thinners do not have an overall survival effect, i.e., the survival proportions are the same in each group. $\pi_t - \pi_c = 0$.
+* $H_0$: Blood thinners do not have an overall survival effect, i.e., $\pi_t - \pi_c = 0$.
 
-* $H_A$: Blood thinners have an impact on survival, either positive or negative, but not zero. $\pi_t - \pi_c \neq 0$.
+* $H_A$: Blood thinners have an impact on survival, either positive or negative, but not zero, i.e., $\pi_t - \pi_c \neq 0$.
 
 Note that if we had done a one-sided hypothesis test, the resulting hypotheses would have been:
 
-* $H_0$: Blood thinners do not have a positive overall survival effect, i.e., the survival proportions for the blood thinner group is the same or lower than the control group. $\pi_t - \pi_c = 0$.
+* $H_0$: Blood thinners do not have a positive overall survival effect, i.e., $\pi_t - \pi_c = 0$.
 
-* $H_A$: Blood thinners have a positive impact on survival. $p_t - p_c > 0$.
+* $H_A$: Blood thinners have a positive impact on survival, i.e., $\pi_t - \pi_c > 0$.
 </div>\EndKnitrBlock{example}
 
 There were 50 patients in the experiment who did not receive a blood thinner and 40 patients who did. 
@@ -2864,7 +2863,7 @@ As in Section \@ref(boot-ci-prop), the bootstrap confidence interval can be calc
 Note that here we calculate the 90% confidence interval by finding the 5^th^ and 95^th^ percentile values from the bootstrapped differences.
 The bootstrap 5 percentile proportion is -0.155 and the 95 percentile is 0.167.
 The result is: we are 90% confident that, in the population, the true difference in probability of survival (treatment $-$ control) is between -0.155 and 0.167. 
-More clearly, we are 90% confident that the probability of survival for heart attack patients who underwent CPR is between 0.155 less to 0.167 more than that for patients who did not undergo CPR. The interval shows that we do not have much definitive evidence of the affect of blood thinners, one way or another.
+More clearly, we are 90% confident that the probability of survival for heart attack patients who underwent CPR on blood thinners is between 0.155 less to 0.167 more than that for patients who were not given blood thinners. The interval shows that we do not have much definitive evidence of the affect of blood thinners, one way or another.
 
 
 
@@ -2948,12 +2947,13 @@ The difference $\hat{p}_1 - \hat{p}_2$ can be modeled
 
     
   When these conditions are satisfied,
-  the standard error of $\hat{p}_1 - \hat{p}_2$ is
+  then the sampling distribution of $\hat{p}_1 - \hat{p}_2$ is
+  approximately normal with mean $\pi_1 - \pi_2$ and standard deviation
 
   \begin{eqnarray*}
-  SE = \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}
+  SD(\hat{p}_1 - \hat{p}_2) = \sqrt{\frac{\pi_1(1-\pi_1)}{n_1} + \frac{\pi_2(1-\pi_2)}{n_2}}
   \end{eqnarray*}
-  where $p_1$ and $p_2$ represent the population proportions,
+  where $\pi_1$ and $\pi_2$ represent the population proportions,
   and $n_1$ and $n_2$ represent the sample sizes.</div>\EndKnitrBlock{onebox}
 
 \index{standard error (SE)!difference in proportions}
@@ -2962,30 +2962,40 @@ The difference $\hat{p}_1 - \hat{p}_2$ can be modeled
 SE reference above?
     \label{seForDiffOfProp}
 -->
+\BeginKnitrBlock{tipbox}<div class="tipbox">The success-failure condition listed above is only necessary for the sampling distribution of $\hat{p}_1 - \hat{p}_2$ to be approximately normal. The mean of the sampling distribution of $\hat{p}_1 - \hat{p}_2$ is $\pi_1 - \pi_2$, and the standard deviation is $\sqrt{\frac{\pi_1(1-\pi_1)}{n_1}+\frac{\pi_1(1-\pi_1)}{n_1}}$, regardless of the two sample sizes.</div>\EndKnitrBlock{tipbox}
 
 
 
 
+As in the case of one proportion, we typically don't know the true proportions $\pi_1$ and $\pi_2$,
+so we will substitute some value to check the success-failure condition
+and to estimate the standard deviation of the sampling distribution of $\hat{p}_1 - \hat{p}_2$.
 
 
-#### Confidence interval for $p_1 - p_2$ {-}
-
-<!--
-{Confidence intervals for $\pmb{p_1 - p_2}$}
--->
+#### Confidence interval for $\pi_1 - \pi_2$ {-}
 
 \index{data!CPR and blood thinner|(}
 
-We can apply the generic confidence interval formula
+\BeginKnitrBlock{onebox}<div class="onebox">**Standard error of the difference in two proportions, $\hat{p}_1 -\hat{p}_2$: confidence intervals.**
+  
+When computing a theory-based confidence interval for $\pi_1 - \pi_2$, we substitute $\hat{p}_1$ for $\pi_1$ and $\hat{p}_2$ for $\pi_2$ in the expression for the standard deviation of the statistic, resulting in its standard error:
+
+\begin{eqnarray*}
+  SE(\hat{p}_1 -\hat{p}_2) = \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}
+  \end{eqnarray*}
+
+This is the standard error formula we will use when computing confidence intervals for the difference in two proportions.</div>\EndKnitrBlock{onebox}
+
+If the conditions for the sampling distribution of $\hat{p}_1 - \hat{p}_2$ to be normal are met, we can apply the generic confidence interval formula
 for a difference of two proportions,
 where we use $\hat{p}_1 - \hat{p}_2$ as the point
-estimate and substitute the $SE$ formula:
+estimate and substitute the $SE$ formula above:
 \begin{align*}
 &\text{point estimate} \ \pm\  z^{\star} \times SE
 &&\to
 &&\hat{p}_1 - \hat{p}_2 \ \pm\ 
     z^{\star} \times
-   \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}
+   \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}
 \end{align*}
 
 <!--
@@ -2998,12 +3008,6 @@ but the general approach remain the same.
 Think about these steps when you apply statistical methods.
 -->
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Standard Error of the difference in two proportions, $\hat{p}_1 -\hat{p}_2$.**
-  
-When the conditions are met so that the distribution fo $\hat{p}$ is nearly normal, the **variability** of the difference in proportions, $\hat{p}_1 -\hat{p}_2$, is well described by:
-\begin{eqnarray*}
-  SE(\hat{p}_1 -\hat{p}_2) = \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}
-  \end{eqnarray*}</div>\EndKnitrBlock{onebox}
 
 <!--
 \BeginKnitrBlock{onebox}<div class="onebox">**Confidence interval for a difference of two proportions**
@@ -3104,9 +3108,9 @@ When the conditions are met so that the distribution fo $\hat{p}$ is nearly norm
 
 ---
       
-We'll use $p_t$ for the survival
-  rate in the treatment group and $p_c$ for the control
-  group:
+We'll use $\pi_t$ for the true survival
+  rate in the treatment group and $\pi_c$ for the control
+  group. Our point estimate of $\pi_t - \pi_c$ is:
   \begin{align*}
   \hat{p}_{t} - \hat{p}_{c}
     = \frac{14}{40} - \frac{11}{50}
@@ -3128,9 +3132,9 @@ We'll use $p_t$ for the survival
     \quad \to \quad 0.13 \ \pm\ 1.65 \times  0.095
     \quad \to \quad (-0.027, 0.287)
   \end{align*}
-  We are 90% confident that blood thinners have
-  a difference of -2.7% to +28.7% percentage point
-  impact on survival rate for patients who are like
+  We are 90% confident that the survival probability for those
+  patients given blood thinners is between 0.027 lower to 0.287 higher
+  than that of patients not given blood thinners, among patients like
   those in the study.
   Because 0% is contained in the interval,
   we do not have enough information to say
@@ -3142,18 +3146,12 @@ We'll use $p_t$ for the survival
 
 \index{data!CPR and blood thinner|)}
 
-
-
-\BeginKnitrBlock{todo}<div class="todo">not sure why the footnote in the guidedpractice below doesn't show up?
-
-should be right after: "Also interpret the interval in the context of the study."</div>\EndKnitrBlock{todo}
-
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">A 5-year experiment
 was conducted to evaluate the effectiveness
 of fish oils on reducing cardiovascular events,
 where each subject was randomized into one of two
 treatment groups.
-We'll consider heart attack outcomes in the patients listed in Table \@ref(tab:fish-oil-data).
+We will consider heart attack outcomes in the patients listed in Table \@ref(tab:fish-oil-data).
 
 Create a 95% confidence interval for the effect of fish oils
 on heart attacks for patients who are well-represented by
@@ -3162,22 +3160,16 @@ Also interpret the interval in the context of the
 study.^[Because the patients were randomized, the subjects are independent, both within and between the two groups.
 The success-failure condition is also met for both groups as all counts are at least 10.
 This satisfies the conditions necessary to model the difference in proportions using a normal distribution.
-
 Compute the sample proportions ($\hat{p}_{\text{fish oil}} = 0.0112$, $\hat{p}_{\text{placebo}} = 0.0155$), point estimate of the difference ($0.0112 - 0.0155 = -0.0043$), and standard error $SE = \sqrt{\frac{0.0112 \times 0.9888}{12933} + \frac{0.0155 \times 0.9845}{12938}} = 0.00145$. 
-
-Next, plug the values into the general formula for a confidence interval, where we'll use a 95% confidence level with $z^{\star} = 1.96$:
-\begin{align*}
-  -0.0043 \pm 1.96 \times 0.00145
-      \quad \to \quad
-      (-0.0071, -0.0015)
-\end{align*}  
+Next, plug the values into the general formula for a confidence interval, where $z^{\star} = 1.96$ for a 95% confidence level: $-0.0043 \pm 1.96 \times 0.00145
+\rightarrow (-0.0071, -0.0015)$.
 We are 95% confident that fish oils decreases
   heart attacks by
   0.15 to 0.71 percentage points
   (off of a baseline of about 1.55%)
   over a 5-year period for subjects who are similar
   to those in the study.
-  Because the interval is entirely below 0, and the treatment was randomly assigned
+  Because the interval is entirely below 0, and the treatment was randomly assigned,
   the data provide strong evidence
   that fish oil supplements reduce heart attacks
   in patients like those in the study.]</div>\EndKnitrBlock{guidedpractice}
@@ -3208,7 +3200,7 @@ We are 95% confident that fish oils decreases
 </tbody>
 </table>
 
-#### Hypothesis test for $H_0: p_1 - p_2 = 0$ {-}
+#### Hypothesis test for $H_0: \pi_1 - \pi_2 = 0$ {-}
 
 \index{data!mammography|(}
 \index{data!breast cancer|(}
@@ -3217,9 +3209,9 @@ A mammogram is an X-ray procedure used to check for
 breast cancer.
 Whether mammograms should be used is part of a
 controversial discussion, and it's the topic of our
-next example where we learn about 2-proportion
-hypothesis tests when $H_0$ is $p_1 - p_2 = 0$
-(or equivalently, $p_1 = p_2$).
+next example where we learn about two proportion
+hypothesis tests when $H_0$ is $\pi_1 - \pi_2 = 0$
+(or equivalently, $\pi_1 = \pi_2$).
 
 A 30-year study was conducted with nearly 90,000 female participants. During a 5-year screening period, each woman was randomized to one of two groups: in the first group, women received regular mammograms to screen for breast cancer, and in the second group, women received regular non-mammogram breast cancer exams. No intervention was made during the following 25 years of the study, and we'll consider death resulting from breast cancer over the full 30-year period. Results from the study are summarized in Figure \@ref(tab:mammogramStudySummaryTable).
 
@@ -3263,70 +3255,39 @@ If mammograms are much more effective than non-mammogram breast cancer exams, th
 in breast cancer deaths in the mammogram and control groups.^[$H_0$: the breast cancer death rate for patients
     screened using mammograms is the same as the breast cancer
     death rate for patients in the control,
-    $p_{mgm} - p_{ctrl} = 0$.  
+    $\pi_{mgm} - \pi_{ctrl} = 0$.  
     $H_A$: the breast cancer death rate for patients screened
     using mammograms is different than the breast cancer death
     rate for patients in the control,
-    $p_{mgm} - p_{ctrl} \neq 0$.]</div>\EndKnitrBlock{guidedpractice}
+    $\pi_{mgm} - \pi_{ctrl} \neq 0$.]</div>\EndKnitrBlock{guidedpractice}
 
-The research question describing mammograms is set up to address specific hypotheses (in contrast to a confidence interval for a parameter).  In order to fully take advantage of the hypothesis testing structure, we asses the randomness under the condition that the null hypothesis is true (as we always do for hypothesis testing).
+The research question describing mammograms is set up to address specific hypotheses (in contrast to a confidence interval for a parameter).  In order to fully take advantage of the hypothesis testing structure, we assess the randomness under the condition that the null hypothesis is true (as we always do for hypothesis testing).
 Using the data from Table \@ref(tab:mammogramStudySummaryTable),
 we will check the conditions for using a normal distribution to
 analyze the results of the study using a hypothesis test.
 The details for checking conditions are very similar to that of confidence intervals.
-However, when the null hypothesis is that $p_1 - p_2 = 0$,
+However, when the null hypothesis is that $\pi_1 - \pi_2 = 0$,
 we use a special proportion called the
-**pooled proportion**\index{pooled proportion} to check the success-failure condition:
+**pooled proportion**\index{pooled proportion} to check the success-failure condition and when computing the standard error:
 \begin{align*}
 \hat{p}_{\textit{pool}}
     &= \frac
         {\text{# of patients who died from breast cancer in the entire study}}
         {\text{# of patients in the entire study}} \\
+        &\\
 	&= \frac{500 + 505}{500 + \text{44,425} + 505 + \text{44,405}} \\
+	&\\
 	&= 0.0112
 \end{align*}
 This proportion is an estimate of the breast cancer death rate
 across the entire study, and it's our best estimate of the
-proportions $p_{mgm}$ and $p_{ctrl}$
-*if the null hypothesis is true that $p_{mgm} = p_{ctrl}$*.
-We will also use this pooled proportion when computing
-the standard error.
+death rates $\pi_{mgm}$ and $\pi_{ctrl}$
+*if the null hypothesis is true that $\pi_{mgm} = \pi_{ctrl}$*.
 
 
 
-\BeginKnitrBlock{example}<div class="example">Is it reasonable to model the difference
-    in proportions using a normal distribution in this
-    study?
-  
----
-      
-  Because the patients are randomized, they can be treated
-  as independent, both within and between groups.
-  We also must check the success-failure condition for each group.
-  Under the null hypothesis, the proportions $p_{mgm}$
-  and $p_{ctrl}$ are equal, so we check the success-failure
-  condition with our best estimate of these values under $H_0$,
-  the pooled proportion from the two samples,
-  $\hat{p}_{\textit{pool}} = 0.0112$:
-  \begin{align*}
-  \hat{p}_{\textit{pool}} \times n_{mgm}
-      &= 0.0112 \times \text{44,925} = 503
-    & (1 - \hat{p}_{\textit{pool}}) \times n_{mgm}
-      &= 0.9888 \times \text{44,925} = \text{44,422} \\
-  \hat{p}_{\textit{pool}} \times n_{ctrl}
-      &= 0.0112 \times \text{44,910} = 503
-    & (1 - \hat{p}_{\textit{pool}}) \times n_{ctrl}
-      &= 0.9888 \times \text{44,910} = \text{44,407}
-  \end{align*}
-  The success-failure condition is satisfied since
-  all values are at least 10.
-  With both conditions satisfied, we can safely model
-  the difference in proportions using a normal
-  distribution.</div>\EndKnitrBlock{example}
 
-
-
-\BeginKnitrBlock{onebox}<div class="onebox">**Use the pooled proportion when $H_0$ is $p_1 - p_2 = 0$.**
+\BeginKnitrBlock{onebox}<div class="onebox">**Use the pooled proportion when $H_0$ is $\pi_1 - \pi_2 = 0$.**
   
   When the null hypothesis is that the proportions are equal,
   use the pooled proportion ($\hat{p}_{\textit{pool}}$)
@@ -3334,7 +3295,7 @@ the standard error.
   success-failure condition and estimate the standard error:
   \begin{eqnarray*}
   \hat{p}_{\textit{pool}}
-    = \frac{\text{number of ``successes"}}
+    = \frac{\text{number of "successes"}}
       {\text{number of cases}}
     = \frac{\hat{p}_1 n_1 + \hat{p}_2 n_2}{n_1 + n_2}
   \end{eqnarray*}
@@ -3347,13 +3308,54 @@ the standard error.
   Similarly, $\hat{p}_2 n_2$ represents the number
   of successes in sample 2.</div>\EndKnitrBlock{onebox}
 
-In the previous example,
-the pooled proportion was used to check the success-failure
+
+\BeginKnitrBlock{example}<div class="example">Is it reasonable to model the difference
+    in proportions using a normal distribution in this
+    study?
+  
+---
+      
+  Because the patients are randomized, they can be treated
+  as independent, both within and between groups.
+  We also must check the success-failure condition for each group.
+  Under the null hypothesis, the proportions $\pi_{mgm}$
+  and $\pi_{ctrl}$ are equal, so we check the success-failure
+  condition with our best estimate of these values under $H_0$,
+  the pooled proportion from the two samples,
+  $\hat{p}_{\textit{pool}} = 0.0112$:
+  \begin{align*}
+  \hat{p}_{\textit{pool}} \times n_{mgm}
+      &= 0.0112 \times \text{44,925} = 503 \\
+   (1 - \hat{p}_{\textit{pool}}) \times n_{mgm}
+      &= 0.9888 \times \text{44,925} = \text{44,422} \\
+  & \\
+  \hat{p}_{\textit{pool}} \times n_{ctrl}
+      &= 0.0112 \times \text{44,910} = 503 \\
+   (1 - \hat{p}_{\textit{pool}}) \times n_{ctrl}
+      &= 0.9888 \times \text{44,910} = \text{44,407}
+  \end{align*}
+  The success-failure condition is satisfied since
+  all values are at least 10.
+  With both conditions satisfied, we can safely model
+  the difference in proportions using a normal
+  distribution.</div>\EndKnitrBlock{example}
+
+
+We used the pooled proportion to check the success-failure
 condition^[For an example of a two-proportion
   hypothesis test that does not require the
   success-failure condition to be met, see
-  Section \@ref(two-prop-errors).].  In the next example, we see an additional place where the pooled
-proportion comes into play: the standard error calculation.
+  Section \@ref(two-prop-errors).].  We next use it again in the standard error calculation.
+
+\BeginKnitrBlock{onebox}<div class="onebox">**Standard error of the difference in two proportions, $\hat{p}_1 -\hat{p}_2$: hypothesis tests.**
+  
+When conducting a theory-based hypothesis test for $H_0: \pi_1 - \pi_2 = 0$, we substitute the **pooled sample proportion**, $\hat{p}_{pool}$ in for both $\pi_1$ and $\pi_2$ in the expression for the standard deviation of the statistic, resulting in its standard error:
+
+\begin{eqnarray*}
+  SE(\hat{p}_1 -\hat{p}_2) = \sqrt{\frac{\hat{p}_{pool}(1-\hat{p}_{pool})}{n_1} + \frac{\hat{p}_{pool}(1-\hat{p}_{pool})}{n_2}} = \sqrt{\hat{p}_{pool}(1-\hat{p}_{pool})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}
+  \end{eqnarray*}
+
+This is the standard error formula we will use when computing the test statistic for a hypothesis test of $H_0: \pi_1 - \pi_2 = 0$.</div>\EndKnitrBlock{onebox}
 
 
 \BeginKnitrBlock{example}<div class="example">Compute the point estimate of the difference
@@ -3369,13 +3371,16 @@ proportion comes into play: the standard error calculation.
   \begin{align*}
   \hat{p}_{mgm} - \hat{p}_{ctrl}
     &= \frac{500}{500 + 44,425} - \frac{505}{505 + 44,405} \\
+  & \\
     &= 0.01113 - 0.01125 \\
+  & \\
     &= -0.00012
   \end{align*}
   The breast cancer death rate in the mammogram group
-  was 0.012% less than in the control group.
-  Next, the standard error is calculated
-  \emph{using the pooled proportion}, $\hat{p}_{\textit{pool}}$:
+  was 0.00012 less than in the control group.
+  
+  Next, the standard error of $\hat{p}_{mgm} - \hat{p}_{ctrl}$ is calculated
+  _using the pooled proportion_, $\hat{p}_{\textit{pool}}$:
 \begin{align*}
 SE = \sqrt{
       \frac{\hat{p}_{\textit{pool}}(1-\hat{p}_{\textit{pool}})}
@@ -3394,23 +3399,28 @@ SE = \sqrt{
   
 Just like in past tests, we first compute a test statistic and draw a picture:
 \begin{align*}
-Z = \frac{\text{point estimate} - \text{null value}}{SE}
+Z = \frac{\text{point estimate} - \text{null value}}{\mbox{Null }SE}
 	= \frac{-0.00012 - 0}{0.00070}
 	= -0.17
 \end{align*}
 
-The lower tail area is 0.4325, which we double to get the p-value: 0.8650. Because this p-value is larger than 0.05, we do not reject the null hypothesis. That is, the difference in breast cancer death rates is reasonably explained by chance, and we do not observe benefits or harm from mammograms relative to a regular breast exam.</div>\EndKnitrBlock{example}
+The lower tail area below -0.17 on a standard normal distribution is 0.4325, which we double to get the p-value: 0.8650 (see Figure \@ref(fig:mamm-norm)). With this very large p-value, the difference in breast cancer death rates is reasonably explained by chance, and we have no significant evidence that mammograms either decrease or increase the risk of death by breast cancer compared to regular breast exams, among women similar to those in the study.</div>\EndKnitrBlock{example}
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-164-1.png" width="70%" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+<img src="05-inference-cat_files/figure-html/mamm-norm-1.png" alt="Standard normal distribution with the p-value shaded. The shaded area represents the probability of observing a difference in sample proportions of -0.17 or further away from zero, if the true proportions were equal." width="70%" />
+<p class="caption">(\#fig:mamm-norm)Standard normal distribution with the p-value shaded. The shaded area represents the probability of observing a difference in sample proportions of -0.17 or further away from zero, if the true proportions were equal.</p>
+</div>
 
 Can we conclude that mammograms have no benefits or harm?
 Here are a few considerations to keep in mind when reviewing
 the mammogram study as well as any other medical study:
 
 
-* We do not accept the null hypothesis, which means
+* We do not accept the null hypothesis. We can only say
     we don't have sufficient evidence to conclude that
-    mammograms reduce or increase breast cancer deaths.
+    mammograms reduce breast cancer deaths, and 
+    we don't have sufficient evidence to conclude that
+    mammograms increase breast cancer deaths.
 * If mammograms are helpful or harmful, the data
     suggest the effect isn't very large.
 * Are mammograms more or less expensive than
@@ -3439,7 +3449,7 @@ These considerations highlight the complexity around medical care and treatment 
 \index{data!mammography|)}
 
 <!--
-\BeginKnitrBlock{onebox}<div class="onebox">**Hypothesis testing when ${H_0}$ is $p_1 - p_2 = 0$.**
+\BeginKnitrBlock{onebox}<div class="onebox">**Hypothesis testing when ${H_0}$ is $\pi_1 - \pi_2 = 0$.**
   
   Once you've determined a hypothesis test for the difference
   of two proportions is the correct procedure, there are four
