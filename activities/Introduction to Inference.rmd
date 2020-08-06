@@ -1,5 +1,6 @@
 ---
 title: "Introduction to Inference"
+subtitle: "Single Categorical Variable"
 output: pdf_document
 ---
 
@@ -19,11 +20,31 @@ library(ggplot2)
 * Given a research question, construct the null and alternative hypotheses
   in words and using appropriate statistical symbols
   
-* Describe and perform simulation-based hypothesis tests 
+* Describe and perform simulation-based hypothesis tests for a single proportion
 
 * Interpret and evaluate a p-value
 
-* Use a confidence interval to determine the conclusion of a hypothesis test
+* Use bootstrapping to find a confidence interval for a single proportion
+
+## Terminology
+
+These are a few of the terms we will cover in today's activity.
+
+* Parameter of Interest
+
+* Null Hypothesis
+
+* Alternative Hypothesis
+
+* Null distribuiton
+
+* p-value
+
+* Bootstrapping
+
+* Confidence Interval
+
+To review these concepts see Chapter 5 in your textbook
 
 ## Steps of Statisical Investigation
 
@@ -43,7 +64,7 @@ We will work through a six step process to complete a hypothesis test for a sing
 
 ## Handedness of Male Boxers
 
-Left-handedness is a trait that is found in about 10% of the population. The fighting hypothesis states that left-handed men have an advantage in competition.  Past studies have shown that left-handed men are over-represented among professional fighters. In this random sample of 500 male boxers we will see if there is an over-prevalence of left-handed fighters.
+Left-handedness is a trait that is found in about 10% of the population. The fighting claim states that left-handed men have an advantage in competition.  Past studies have shown that left-handed men are over-represented among professional fighters. In this random sample of 500 male boxers we will see if there is an over-prevalence of left-handed fighters.
 
 ```{r echo=F, fig.height=4}
 handedness <- read.csv("../data/Male_boxers.csv")
@@ -51,8 +72,6 @@ handedness$Stance <- factor(handedness$Stance)
 set.seed(12980)
 handedness_sub <- handedness[sample(nrow(handedness), 500), ]
 ```
-
-\newpage
 
 ## Summary Statistics Review
 
@@ -68,7 +87,7 @@ handedness_sub <- handedness[sample(nrow(handedness), 500), ]
 
 \vspace{1in}
 
-4. What statistic will we calculate to summarize the data?
+4. Write out in context the statistic will we calculate to summarize the data.
 
 \vspace{0.5in}
 
@@ -99,73 +118,83 @@ tally(~Stance, data=handedness_sub, margins=T)
 
 \vspace{0.5in}
 
-```{r}
-ggplot(data = handedness_sub,   #This specifies the dataset
-       aes(y = Stance)) +   #This specifies the variable
-  geom_bar(stat = "count") +  #Tell it to make a bar plot
-  labs(title = "Frequency Bar Plot of Handedness in Male Boxers",  #Give your plot a title
-       x = "Handedness",   #Label the x axis
-       y = "Frequency")  + #Label the y axis
-  coord_flip()  #Turn the bars so they are vertical
-```
-
-```{r}
-ggplot(data = handedness_sub,   #This specifies the dataset
-       aes(x = Stance)) +   #This specifies the variable
-  geom_bar(aes(y = ..prop.., group = 1)) +  #Tell it to make a bar plot with proportions
-  labs(title = "Relative Frequency Bar Plot of Handedness in Male Boxers",  #Give your plot a title
-       x = "Handedness",   #Label the x axis
-       y = "Frequency")  #Label the y axis
-```
-9. What is the difference between the two plots above?  
-
-\vspace{0.5in}
-
 ## Use statistical analysis methods to draw inferences from the data
 
 When testing data we must first identify the null hypothesis.  The null hypothesis is written about the parameter of interest, the true value of interest.  
 
-10.  Write out the parameter of interest. (Hint: the true proportion of....)
+9.  Write out the parameter of interest. (Hint: the true proportion of....)
 
 \vspace{1in}
 
-11.  We will assume that the true proportion of male boxers who are left handed is the same as the general population, 0.1. Using the parameter of interest in question 5, write out the null hypothesis in words.
+10.  We will assume that the true proportion of male boxers who are left handed is the same as the general population, 0.1. Using the parameter of interest in question 9, write out the null hypothesis in words.
 
 \vspace{1in}
 
-The notation used for a categorical parameter is, $\pi$.  When writing the null hypothesis in notation we set the parameter equal to the null value, $H_0: \pi = \pi_0$
+The notation used for a true proportion is $\pi$.  Since this summarizes a population, it is a parameter. When writing the null hypothesis in notation we set the parameter equal to the null value, $H_0: \pi = \pi_0$
 
-12. Write the null hypothesis in notation using the null value of 0.1.
+11. Write the null hypothesis in notation using the null value of 0.1.
 
 \vspace{0.5in}
 
 The alternative hypothesis is the claim to be tested and the direction is based on the research question.  
 
-13.  Based on the research question, are we testing that the parameter is greater than 0.1, less than 0.1 or different than 0.1? 
+12.  Based on the research question from question 5, are we testing that the parameter is greater than 0.1, less than 0.1 or different than 0.1? 
 
 \vspace{0.5in}
 
-14. Write out the alternative hypothesis in words.
+13. Write out the alternative hypothesis in words.
 
 \vspace{1in}
 
-15.  Write out the alternative hypothesis in notation.
+14.  Write out the alternative hypothesis in notation.
 
 \vspace{0.5in}
 
 Remember that when utilizing a hypothesis test, we are evaluating two competing possibilities. For this study the **two possibilities** are either...
 
-  * The true proportion of male boxers who are left handed is 0.1 and our results just occurred by random chance or
+* The true proportion of male boxers who are left handed is 0.1 and our results just occurred by random chance or
   
-  * The true proportion of male boxers who are left handed is greater than 0.1 and our results reflect this
+* The true proportion of male boxers who are left handed is greater than 0.1 and our results reflect this
   
 Notice that these two competing possibilities represent the null and alternative hypotheses.
   
 The null distribution is created under the assumption the null hypothesis is true.  In this case, we assume the true proportion of male boxers who are left handed is 0.1 so we will create 1000 different simulations of 500 boxers under this assumption.
 
-To create one simulation we could have 50 blue cards and 450 red cards, where a blue card represents left-handed.  Mix cards, draw 1 card, write down if it's red or blue, replace the card, repeat 499 times. The proportion of blue cards out of the 500 draws represents the simulated proportion of male boxers who are left handed and will be plotted on the simulated null distribution. 
+Let's think about how to use cards to create one simulation of 500 boxers under the assumption the null hypothesis is true.  Suppose blue cards represents left-handed and red cards represents right-handed.
+
+15.  How many cards total do we need?  How many blue ones?  How many red ones?
+
+\vspace{0.5in}
+
+16.  Next, we would mix the cards together and draw 1 card, write down if it's red or blue, and replace the card.  How many times would we need to repeat this process to simulate our sample?
+
+\vspace{0.5in}
+
+17.  What would we plot on the null distribution?
+\vspace{1in}
 
 We will use the computer to simulate 1000 simulated proportions of male boxers who are left handed for a sample size of 500 based on the assumption that the true proportion of male boxers who are left handed is 0.1.  This is called the null distribution because it is created based on the assumption that the null hypothesis is true.
+
+To use the computer simulation, we will need to enter the "probability of success," "sample size," "number of repetitions," "as extreme as," and the "direction" (matches the direction of the alternative hypothesis).
+
+18.  What values should be entered into the simulation?
+
+\vspace{0.25in}
+    Probability of success:
+    
+\vspace{0.25in}
+    Sample size:
+
+\vspace{0.25in}
+    Number of repetitions:
+    
+\vspace{0.25in}
+    As extreme as:
+    
+\vspace{0.25in}
+    Direction:
+    
+\vspace{0.25in}
 
 ```{r, echo = FALSE}
 #Note will need to update to loading catstats when package is ready
@@ -338,52 +367,35 @@ one_proportion_test(probability_success = 0.1, #Null hypothesis value
                     report_value = "proportion") #Reporting proportion or number of successes?
 ```
 
-16.  At what value is the null distribution centered?  Why does that make sense?
+19. Around what value is the null distribution centered?  Why does that make sense?
 
 \vspace{1in}
 
-17. Where does the statistic (value from question 8) fall in the null distribution?  Is it towards the center or in one of the tails?  
+20. Where does the statistic (value from question 8) fall in the null distribution?  Is it towards the center or in one of the tails?  
 
 \vspace{1in}
 
-18.  Is the statistic likely to happen or unlikely to happen if the true proportion of male boxers is 0.1?  Explain your answer.
+21.  Is the statistic likely to happen or unlikely to happen if the true proportion of male boxers is 0.1?  Explain your answer.
 
 \vspace{1in}
 
-19.  Using the simulation, what is the probability that we find this summary statistic or greater, if the true proportion of male boxers is 0.1?
+22.  Using the simulation, what is the proportion of samples at this summary statistic or greater, if the true proportion of male boxers is 0.1? *Hint: Look under the simulation.*
 
 \vspace{1in}
 
 This is the p-value.  The smaller the p-value the more evidence we have against the null hypothesis.
 
-20. Using the following guidelines for the strength of evidence, how much evidence does the statistic provide against the null hypothesis?
+23. Using the following guidelines for the strength of evidence, how much evidence do the data provide against the null hypothesis?
 
 ![](../images/soe_gradient.png)
+\vspace{0.5in}
 
-21.  Is there evidence that there is a higher proportion of male boxers that are left handed than the general population?  Explain your answer.
+A point estimate provides a single plausible value for a parameter. However, a point estimate is rarely perfect; usually there is some error in the estimate. In addition to supplying a point estimate of a parameter, a next logical step would be to provide a plausible range of values for the parameter. This plausible range of values for the population parameter is called a confidence interval. 
 
+We will use bootstrapping to find the 95% confidence interval. 
+
+24.  What is bootstrapping?
 \vspace{1in}
-
-## Communicate the results and answer the research question
-
-A point estimate provides a single plausible value for a parameter. However, a point estimate is rarely perfect; usually there is some error in the estimate. In addition to supplying a point estimate of a parameter, a next logical step would be to provide a plausible range of values for the parameter.
-
-This plausible range of values for the population parameter is called a confidence interval. 
-
-To calculate a 95% confidence interval, we will build the interval around the point estimate.  
-
-$\hat{p}\pm SE(\hat{p})$ where $SE(\hat{p}) = \sqrt\frac{\hat{p}(1-\hat{p})}{n}$
-
-The standard error of $\hat{p}$ measures the uncertainty or variability associated with the point estimate.
-
-When using a normal distribution to model the variability of a statistic we need to be sure certain conditions are not violated.
-
-The sampling distribution for $\hat{p}$ based on a sample of size n from a population with a true proportion, $\pi$ is nearly normal when:
-
-1. The sample's observations are independent, e.g. are from a simple random sample.
-
-2. We expected to see at least 10 successes and 10 failures in the sample, i.e. $n\pi \ge 10$ and $n(1-\pi) \ge 10$.  This is called the success/failure condition.
-
 ```{r, echo = FALSE}
 #Delete when can load catstats library
 ###############
@@ -451,32 +463,38 @@ one_proportion_bootstrap_CI(sample_size = 500, #Sample size
                     confidence_level = 0.95) #Confidence level as a decimal
 ```
 
-22. Are the conditions met to use the normal approximation?  Explain your answer.
+25. Explain why the blue lines are at the 2.5th percentile and the 97.5th percentile.
 
 \vspace{1in}
 
-23.  Calculate the $SE(\hat{p})$.  
+26. Report the 95% bootstrapped confidence interval for $\pi$.  Use interval notation: (lower value, upper value).
+
+\vspace{1in}
+27.  What are we 95% confident is contained within this interval?
 
 \vspace{1in}
 
-24. Using the multiplier of 1.96 and the standard error found in question 23, calculate a 95% confidence interval.
-
-\vspace{1in}
-
-25.  What are we 95% confident is contained within this interval?
-
-\vspace{1in}
-
+## Communicate the results and answer the research question
 
 When we write a conclusion we answer the research question by stating how much evidence there is for the alternative hypothesis.
 
-26.  Write a conclusion to this test based on the p-value and confidence interval found.
+28.  Write a paragraph summarizing the results.  Be sure to include:
 
-\vspace{1in}
+* Summary statistic
+
+* P-value
+
+* Conclusion in context
+
+* Confidence Interval
+
+* Interpretation of the Confidence Interval
+
+\vspace{3in}
 
 ## Revisit and look forward
 
-27. Suggest a new research question that you might investigate, building on what you learned in this study.
+29. Suggest a new research question that you might investigate, building on what you learned in this study.
 
 \vspace{1in}
 
