@@ -135,18 +135,11 @@ Recall from Chapter \@ref(eda) that a _distribution_ of a variable is a descript
 Theory-based methods also give us mathematical expressions for the
 standard deviation of a sampling distribution. For instance,
 if the true population proportion is $\pi$, then the standard deviation
-of the sampling distribution of sample proportions is
+of the sampling distribution of sample proportions---how far away we would expect a sample proportion to be away from the population proportion---is
 \[
 SD(\hat{p}) = \sqrt{\frac{\pi(1-\pi)}{n}}.
 \]
-In the case of two samples, a sample of size $n_1$ taken from a population with proportion
-$\pi_1$, and the other of size $n_2$ from a population with proportion $\pi_2$,
-the standard deviation of the sampling distribution of the difference
-in sample proportions is
-\[
-SD(\hat{p}_1 - \hat{p}_2) = \sqrt{\frac{\pi_1(1-\pi_1)}{n_1} + \frac{\pi_2(1-\pi_2)}{n}}
-\]
-Typically, the values of the parameters $\pi$, $\pi_1$, and $\pi_2$ are unknown, so we are unable to calculate these standard deviations. In this case, we substitute our "best guess" for $\pi$ in the formulas, either from a hypothesis or from a point estimate.
+Typically, values of parameters such as $\pi$ are unknown, so we are unable to calculate these standard deviations. In this case, we substitute our "best guess" for $\pi$ in the formulas, either from a hypothesis or from a point estimate.
 
 \BeginKnitrBlock{onebox}<div class="onebox">**Standard error.**  
 
@@ -234,35 +227,32 @@ The test statistic in the the Martian alphabet example was the sample proportion
 
 Since the p-value is a probability, its value will always be between 0 and 1. The closer the p-value is to 0, the stronger the evidence we have _against the null hypothesis_. Why? A small p-value means that our data are _unlikely_ to occur, _if_ the null hypothesis is true. We take that to mean that the null hypothesis isn't a plausible assumption, and we reject it. This process mimics the scientific method---it is easier to disprove a theory than prove it. If scientists want to find evidence that a new drug reduces the risk of stroke, then they assume it _doesn't_ reduce the risk of stroke and then show that the observed data are so unlikely to occur that the more plausible explanation is that the drug works.
 
-Think of the p-value as a continuum of strength of evidence against the null. You may use Table \@ref(tab:pvalue-continuum) as a general guide, but remember that there are no hard and fast cutoffs on this scale---the strength of evidence against the null with a p-value of 0.049 is the same as with a p-value of 0.051. 
 
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:pvalue-continuum)The p-value as a continuum of strength of evidence against the null--a general guide.</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> p-value range </th>
-   <th style="text-align:left;"> Strength of evidence against $H_0$ </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> p-value &lt; 0.01 </td>
-   <td style="text-align:left;"> very strong </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 0.01 &lt; p-value &lt; 0.05 </td>
-   <td style="text-align:left;"> strong </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 0.05 &lt; p-value &lt; 0.10 </td>
-   <td style="text-align:left;"> moderate </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> p-value &gt; 0.10 </td>
-   <td style="text-align:left;"> little to no evidence </td>
-  </tr>
-</tbody>
-</table>
+Think of p-values as a continuum of strength of evidence against the null, from 0 (extremely strong evidence) to 1 (no evidence). Beyond around 10%, the data provide no evidence against the null hypothesis. Be careful not to equate this with \colorize{evidence for the null hypothesis}, which is \colorize{incorrect}. _The absence of evidence is not evidence of absence._
+<div class="figure" style="text-align: center">
+<img src="05/figures/pvalueStrengths.png" alt="Strength of evidence against the null for a continuum of p-values. Once the p-value is beyond around 0.10, the data provide no evidence against the null hypothesis." width="100%" />
+<p class="caption">(\#fig:pval-continuum)Strength of evidence against the null for a continuum of p-values. Once the p-value is beyond around 0.10, the data provide no evidence against the null hypothesis.</p>
+</div>
+
+<!-- You may use Table \@ref(tab:pvalue-continuum) as a general guide, but remember that there are no hard and fast cutoffs on this scale---the strength of evidence against the null with a p-value of 0.049 is the same as with a p-value of 0.051.  -->
+
+<!-- ```{r pvalue-continuum} -->
+<!-- pval_table <- tribble( -->
+<!--   ~variable,    ~col1,  -->
+<!-- "p-value < 0.01",  "very strong", -->
+
+<!-- "0.01 < p-value < 0.05", "strong", -->
+
+<!-- "0.05 < p-value < 0.10", "moderate", -->
+
+<!-- "p-value > 0.10", "little to no evidence", -->
+<!-- ) -->
+
+<!-- pval_table %>% -->
+<!--  kable(caption = "The p-value as a continuum of strength of evidence against the null--a general guide.",  -->
+<!--     col.names = c("p-value range", "Strength of evidence against $H_0$")) %>% -->
+<!--  kable_styling() -->
+<!-- ``` -->
 
 Regardless of the data structure or analysis method, the hypothesis testing framework always follows the same steps---only the details for how we model randomness in the data change.
 
@@ -729,23 +719,30 @@ It is possible for a normal random variable to fall 4, 5, or even more standard 
 A single proportion is used to summarize data when we measured a single categorical variable on each observational unit---the single variable is measured as either a success or failure (e.g., "surgical complication" vs. "no surgical complication")^[The terms "success" and "failure" may not actually represent outcomes we view as successful or not, but it is the typical generic way to referring to the possible outcomes of a binary variable. The "success" is whatever we count when calculating our sample proportion.]. 
 
 
-### Hypothesis test for $H_0: \pi = \pi_0$ {#one-prop-null-boot}
+### Simulation-based test for $H_0: \pi = \pi_0$ {#one-prop-null-boot}
 
 \index{data!medical consultant|(}
+In Section \@ref(HypothesisTesting), we introduced the general steps of a hypothesis test:
 
-Regardless of if we use simulation-based methods or theory-based methods, the first few steps of a hypothesis test start out the same: 
+\BeginKnitrBlock{onebox}<div class="onebox">**Steps of a hypothesis test.** Every hypothesis test follows these same general steps:
 
 1. Frame the research question in terms of hypotheses.
 2. Collect and summarize data using a test statistic.
+3. Assume the null hypothesis is true, and simulate or mathematically model a null distribution for the test statistic.
+4. Compare the observed test statistic to the null distribution to calculate a p-value.
+5. Make a conclusion based on the p-value, and write a conclusion in context, in plain language, and in terms of the alternative hypothesis.</div>\EndKnitrBlock{onebox}
 
-People providing an organ for donation sometimes seek the help of a special medical consultant. 
+Regardless of if we use simulation-based methods or theory-based methods, the first two steps of a hypothesis test start out the same.
+Let's follow these steps through in the context of an example.
+
+\BeginKnitrBlock{example}<div class="example">People providing an organ for donation sometimes seek the help of a special medical consultant. 
 These consultants assist the patient in all aspects of the surgery, with the goal of reducing the possibility of complications during the medical procedure and recovery. 
 Patients might choose a consultant based in part on the historical complication rate of the consultant's clients.
 
 One consultant tried to attract patients by noting the average complication rate for liver donor surgeries in the US is about 10%, but her clients have had only 3 complications in the 62 liver donor surgeries she has facilitated. 
 She claims this is strong evidence that her work meaningfully contributes to reducing complications (and therefore she should be hired!).
 
-\BeginKnitrBlock{example}<div class="example">Using these data, is it possible to assess the consultant's claim that her work meaningfully contributes to reducing complications?
+Using these data, is it possible to assess the consultant's claim that her work meaningfully contributes to reducing complications?
 
 ---
 
@@ -755,8 +752,10 @@ For example, maybe patients who can afford a medical consultant can afford bette
 While it is not possible to assess the causal claim, it is still possible to understand the consultant's true rate of complications.</div>\EndKnitrBlock{example}
 
 
+#### Steps 1 and 2: Hypotheses and test statistic {-}
+
 We will let $\pi$ represent the true complication rate for liver donors working with this consultant. This "true" complication probability is called the **parameter** of interest^[Parameters were first introduced in Section \@ref(dotplots)].)
-The sample proportion for the complication rate is 3 complications divided by the 62 surgeries the consultant has worked on: $\hat{p} = 3/62 = 0.048$. Since this value is estimated from sample data, it is called a **statistic**. The statistic $\hat{p}$ is our point estimate, or "best guess," for $\pi$.
+The sample proportion for the complication rate is 3 complications divided by the 62 surgeries the consultant has worked on: $\hat{p} = 3/62 = 0.048$. Since this value is estimated from sample data, it is called a **statistic**. The statistic $\hat{p}$ is also our point estimate, or "best guess," for $\pi$, and we will use is as our **test statistic**.
 
 \BeginKnitrBlock{onebox}<div class="onebox">**Parameters and statistics.**\index{parameter}
 
@@ -767,6 +766,8 @@ For example, we estimate the probability $\pi$ of a complication for a client of
 
  
 $$\hat{p} = 3 / 62 = 0.048\qquad\text{is used to estimate}\qquad \pi$$</div>\EndKnitrBlock{onebox}
+
+
 
 \BeginKnitrBlock{protip}<div class="protip">Summary measures that summarize a sample of data, such as $\hat{p}$, are called **statistics**\index{statistic}. Numbers that summarize an entire population, such as $\pi$, are called **parameters**\index{parameter}. You can remember
 this distinction by looking at the first letter of each term: 
@@ -792,19 +793,27 @@ In statistical language:
 > $H_0: \pi=0.10$  
 > $H_A: \pi<0.10$</div>\EndKnitrBlock{example}
 
-To assess these hypotheses, we need to evaluate the possibility of a sample value ($\hat{p}$) as far below the null value, $\pi_0=0.10$ as what was observed. 
+#### Steps 3 and 4: Null distribution and p-value {-}
+
+To assess these hypotheses, we need to evaluate the possibility of getting a sample proportion as far below the null value, $0.10$, as what was observed ($0.048$), _if the null hypothesis were true_. 
 
 \BeginKnitrBlock{onebox}<div class="onebox">**Null value of a hypothesis test.**
 
 The **null value** is the reference value for the parameter in $H_0$, and it is sometimes represented with the parameter's label with a subscript 0 (or "null"), e.g., $\pi_0$ (just like $H_0$).</div>\EndKnitrBlock{onebox}
 
-The deviation of the sample statistic from the null hypothesized parameter is usually quantified with a p-value. The p-value is computed based on the null distribution, which is the distribution of the test statistic if the null hypothesis is true. Supposing the null hypothesis is true, we can compute the p-value by identifying the chance of observing a test statistic that favors the alternative hypothesis at least as strongly as the observed test statistic. 
-
-The null distribution can be created through simulation (simulation-based methods),
-or can be modeled by a mathematical function (theory-based methods).
 
 
-#### Simulation-based method for calculating the p-value
+The deviation of the sample statistic from the null hypothesized parameter is usually quantified with a p-value^[Now would be a good time to review the definition of a p-value in Section \@ref(HypothesisTesting)!]. The p-value is computed based on the null distribution, which is the distribution of the test statistic if the null hypothesis is true. Supposing the null hypothesis is true, we can compute the p-value by identifying the chance of observing a test statistic that favors the alternative hypothesis at least as strongly as the observed test statistic. 
+
+\BeginKnitrBlock{onebox}<div class="onebox">**Null distribution.**
+  
+The **null distribution** of a test statistic is the sampling distribution of that statistic _under the assumption of the null hypothesis_. It describes how that statistic would vary from sample to sample, if the null hypothesis were true. 
+
+The null distribution can be estimated through simulation (simulation-based methods), as in this section,
+or can be modeled by a mathematical function (theory-based methods),
+as in Section \@ref(theory-prop).</div>\EndKnitrBlock{onebox}
+
+
 
 We want to identify the sampling distribution of the test statistic ($\hat{p}$) if the null hypothesis was true. In other words, we want to see how the sample proportion changes due to chance alone. Then we plan to use this information to decide whether there is enough evidence to reject the null hypothesis.
 
@@ -841,15 +850,14 @@ Of the 10,000 simulated $\hat{p}_{sim}$, 1222 were equal to or smaller than $\ha
 <p class="caption">(\#fig:nullDistForPHatIfLiverTransplantConsultantIsNotHelpful)The null distribution for $\hat{p}$, created from 10,000 simulated studies. The left tail, representing the p-value for the hypothesis test, contains 12.22% of the simulations.</p>
 </div>
 
+#### Step 5: Conclusion {-}
+
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Because the estimated p-value is 0.1222, which is not small, we have little to no evidence against the null hypothesis. Explain what this means in plain language in the context of the problem.^[There isn't sufficiently strong evidence to support the claim that fewer than 10% of the consultant's clients experience complications. That is, there isn't sufficiently strong evidence to support an association between the consultant's work and fewer surgery complications.]</div>\EndKnitrBlock{guidedpractice}
 
 \index{data!medical consultant|)}
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Does the conclusion in the previous Guided Practice imply there is no real association between the surgical consultant's work and the risk of complications? Explain.^[No. It might be that the consultant's work is associated with a reduction but that there isn't enough data to convincingly show this connection.]</div>\EndKnitrBlock{guidedpractice}
 
-Regardless of the statistical method chosen, the p-value is always derived by analyzing the null distribution of the test statistic. The normal model poorly approximates the null distribution for $\hat{p}$ when the success-failure condition is not satisfied. As a substitute, we can generate the null distribution using simulated sample proportions and use this distribution to compute the tail area, i.e., the p-value.
-Neither the p-value approximated by the normal distribution nor the simulated p-value are exact, because the normal distribution and simulated null distribution themselves are not exact, only a close approximation.
-An exact p-value can be generated using the binomial distribution, but that method will not be covered in this text.
 
 <!--
 Add this to an Appendix someday!
@@ -883,7 +891,136 @@ If it were plotted, the exact null distribution would look almost identical to t
 \end{example}
 
 -->
-#### Theory-based method for calculating the p-value
+
+### Bootstrap confidence interval for $\pi$ {#boot-ci-prop}
+
+A confidence interval provides a range of
+plausible values for the parameter $\pi$.
+If the goal is to produce a range of possible values for a population value, then in an ideal world, we would sample data from the population again and recompute the sample proportion. 
+Then we could do it again. 
+And again. 
+And so on until we have a good sense of the variability of our original estimate. 
+The ideal world where sampling data is free or extremely cheap is almost never the case, and taking repeated samples from a population is usually impossible. 
+So, instead of using a "resample from the population" approach, bootstrapping uses a "resample from the sample" approach.
+
+\index{data!medical consultant|(}
+
+\BeginKnitrBlock{example}<div class="example">Let's revisit our medical consultant example from Section \@ref(one-prop-null-boot). This consultant tried to attract patients by noting the average complication rate for liver donor surgeries in the US is about 10%, but her clients have had only 3 complications in the 62 liver donor surgeries she has facilitated. This data, however, did not provide sufficient evidence that the consultant's complication rate was less than 10%, since the p-value was approximately 0.122. Does this mean we can conclude that the consultant's complication rate was equal to 10%?
+
+---
+
+No! Though our decision was to fail to reject the null hypothesis, this does not mean we have evidence _for_ the null hypothesis---we cannot "accept" the null. The sample proportion was $\hat{p} = 3/62 = 0.048$, which is our point estimate---or "best guess"---of $\pi$. It wouldn't make sense that a sample complication rate of 4.8% gives us evidence that the true complication rate was exactly 10%. It`s plausible that the true complication rate is 10%, but there are a range of plausible values for $\pi$. In this section, we will use a simulation-based method called **bootstrapping** to generate this range of plausible values for $\pi$ using the observed data.</div>\EndKnitrBlock{example}
+
+In the medical consultant case study, the parameter is $\pi$, the true probability of a complication for a client of the medical consultant.
+There is no reason to believe that $\pi$ is exactly $\hat{p} = 3/62$, but there is also no reason to believe that $\pi$ is particularly far from $\hat{p} = 3/62$.
+By sampling with replacement from the data set (a process called **bootstrapping**\index{bootstrapping}), the variability of the possible $\hat{p}$ values can be approximated, which will allow us to generate a range of plausible values for $\pi$---a confidence interval. 
+
+
+
+Most of the inferential procedures covered in this text are grounded in quantifying how one data set would differ from another when they are both taken from the same population.
+It doesn't make sense to take repeated samples from the same population because if you have the means to take more samples, a larger sample size will benefit you more than the exact same sample twice.
+Instead, we measure how the samples behave under an estimate of the population.  Figure \@ref(fig:boot1) shows how the unknown original population can be estimated by using the sample to approximate the proportion of complications and no complications for the medical consultant.
+
+<div class="figure" style="text-align: center">
+<img src="05/figures/boot1prop1.png" alt="The unknown population on the left represents all potential clients of the medical consultant, where red represent patients who would have complications, and white no complications. The estimated population on the right is many copies of the sample." width="75%" />
+<p class="caption">(\#fig:boot1)The unknown population on the left represents all potential clients of the medical consultant, where red represent patients who would have complications, and white no complications. The estimated population on the right is many copies of the sample.</p>
+</div>
+
+\BeginKnitrBlock{todo}<div class="todo">Revised up to here - need to revise remainder of this bootstrap CI section.</div>\EndKnitrBlock{todo}
+
+By taking repeated samples from the estimated population, the variability from sample to sample can be observed.  In Figure \@ref(fig:boot2) the repeated bootstrap samples are obviously different both from each other and from the original population.
+Recall that the bootstrap samples were taken from the same (estimated) population, and so the differences are due entirely to natural variability in the sampling procedure.
+
+<div class="figure" style="text-align: center">
+<img src="05/figures/boot1prop2.png" alt="next fig, has the bootstrap samples" width="75%" />
+<p class="caption">(\#fig:boot2)next fig, has the bootstrap samples</p>
+</div>
+
+By summarizing each of the bootstrap samples (here, using the sample proportion), we see, directly, the variability of the sample proportion, $\hat{p}$, from sample to sample.
+The distribution of $\hat{p}_{bs}$ for the example scenario is shown in Figure \@ref(fig:boot3), and the bootstrap distribution for the medical consultant data is shown in Figure \@ref(fig:MedConsBSSim).
+
+<div class="figure" style="text-align: center">
+<img src="05/figures/boot1prop3.png" alt="WITH ADDED HISTOGRAM... boot samples, arrow, histogram of all of them" width="75%" />
+<p class="caption">(\#fig:boot3)WITH ADDED HISTOGRAM... boot samples, arrow, histogram of all of them</p>
+</div>
+
+
+It turns out that in practice, it is very difficult for computers to work with an infinite population (with the same proportional breakdown as in the sample).
+However, there is a physical and computational model which produces an equivalent bootstrap distribution of the sample proportion in a computationally efficient manner.
+Consider the observed data to be a bag of marbles 3 of which are success (white) and 4 of which are failures (red).  By drawing the marbles out of the bag with replacement, we depict the same sampling **process** as was done with the infinitely large estimated population.
+Note in Figure \@ref(fig:boot4) that when sampling the original observations, a particular data point may end up in the new sample one time (evidenced by a circle around the observation), two times (evidenced by two circles around the observation), or not at all (no circles around the observation).  
+
+If we apply the bootstrap sampling process to the medical consultant example, we consider each client to be one of the marbles in the bag.
+There will be 59 white marbles (no complication) and 3 red marbles (complication).
+If we 62 choose marbles out of the bag (one at a time) and compute the proportion of simulated patients with complications, $\hat{p}_{bs}$, then this "bootstrap" proportion represents a single simulated proportion from the "resample from the sample" approach.
+
+<div class="figure" style="text-align: center">
+<img src="05/figures/boot1prop4.png" alt="sampling with replacement figure" width="75%" />
+<p class="caption">(\#fig:boot4)sampling with replacement figure</p>
+</div>
+
+
+<div class="figure" style="text-align: center">
+<img src="05/figures/boot1propboth.png" alt="here is the full process.  do we want to break it up as above?" width="75%" />
+<p class="caption">(\#fig:boot1prop)here is the full process.  do we want to break it up as above?</p>
+</div>
+
+
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">In a simulation of 62 patients, about how many would we expect to have had a complication?^[About 5% of the patients (6.2 on average) in the simulation will have a complication, though we will see a little variation from one simulation to the next.]</div>\EndKnitrBlock{guidedpractice}
+
+Figure \@ref(fig:boot5) visualizes one simulation for the medical consultant.
+Out of the simulated cases, there were 5 with a complication and 57 without a complication: $\hat{p}_{bs} = 5/62 = 0.081$.
+
+<div class="figure" style="text-align: center">
+<img src="05-inference-cat_files/figure-html/boot5-1.png" alt="how impossible would it be to create one simulation with 62 marbles? 3 red, 59 white?" width="75%" />
+<p class="caption">(\#fig:boot5)how impossible would it be to create one simulation with 62 marbles? 3 red, 59 white?</p>
+</div>
+
+One simulation isn't enough to get a sense of the variability from one bootstrap proportion to another bootstrap proportion, so we repeated the simulation 10,000 times using a computer. 
+Figure \@ref(fig:MedConsBSSim) shows the distribution from the 10,000 bootstrap simulations. 
+The bootstrapped proportions vary from about zero to 11.3%. 
+The variability in the bootstrapped proportions leads us to believe that the true probability of complication (the parameter, $p$) is somewhere between 0 and 11.3%.
+<!--The simulated proportions that are less than or equal to $\hat{p}=0.048$ are shaded.
+There were 1222 simulated sample proportions with $\hat{p}_{bs} \leq 0.048$, which represents a fraction 0.1222 of our simulations:
+-->
+
+<div class="figure" style="text-align: center">
+<img src="05-inference-cat_files/figure-html/MedConsBSSim-1.png" alt="The original medical consultant data is bootstrapped 10,000 times. Each simulation creates a sample from the original data where the probability of a complication is $\hat{p} = 3/62$. The bootstrap 2.5 percentile proportion is 0 and the 97.5 percentile is 0.113. The result is: we are confident that, in the population, the true probability of a complication is between 0% and 11.3%." width="70%" />
+<p class="caption">(\#fig:MedConsBSSim)The original medical consultant data is bootstrapped 10,000 times. Each simulation creates a sample from the original data where the probability of a complication is $\hat{p} = 3/62$. The bootstrap 2.5 percentile proportion is 0 and the 97.5 percentile is 0.113. The result is: we are confident that, in the population, the true probability of a complication is between 0% and 11.3%.</p>
+</div>
+
+<!--
+\begin{align*}
+\text{left tail }
+	= \frac{\text{Number of observed simulations with }\hat{p}_{bs}\leq\text{ 0.048}}{10000}
+	= \frac{1222}{10000} = 0.1222
+\end{align*}
+However, this is not our p-value! Remember that we are conducting a two-sided test, so we should double the one-tail area to get the p-value:\footnote{This doubling approach is preferred even when the distribution isn't symmetric, as in this case.}
+\begin{align*}
+\text{p-value} = 2 \times \text{left tail} = 2 \times 0.1222 = 0.2444
+\end{align*}
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.83\textwidth]{02/figures/MedicalConsultant/MedConsBSSim}
+\caption{The null distribution for $\hat{p}$, created from 10,000 simulated studies. The left tail contains 12.22% of the simulations. We double this value to get the p-value.}
+\label{MedConsBSSim}
+\end{figure}
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Because the p-value is 0.2444, which is larger than the significance level 0.05, we do not reject the null hypothesis. Explain what this means in the context of the problem using plain language.^[The data do not provide strong evidence that the consultant's work is associated with a lower or higher rate of surgery complications than the general rate of 10%.]</div>\EndKnitrBlock{guidedpractice}
+-->
+
+\BeginKnitrBlock{example}<div class="example">The original claim was that the consultant's true rate of complication was under the national rate of 10%. Does the interval estimate of 0 to 11.3% for the true probability of complication indicate that the surgical consultant has a lower rate of complications than the national average?
+Explain.
+
+---
+
+No. Because the interval overlaps 10%, it might be that the consultant's work is associated with a lower risk of complciations, or it might be that the consulant's work is associated with a higher risk (i.e., greater than 10%) of complications! Additionally, as previously mentioned, because this is an observational study, even if an association can be measured, there is no evidence that the consultant's work is the cause of the complication rate (being higher or lower). </div>\EndKnitrBlock{example}
+
+<!--
+%However, we currently don't have enough data to say whether the corresponding complication rate is any different than 0.10.
+-->
+\index{data!medical consultant|)}
+
+### Theory-based method for calculating the p-value {#theory-prop}
 
 In Section \@ref(var-stat), we introduced the normal distribution and showed how it can be used as a mathematical model to describe the variability of a sample mean or sample proportion as a result of the Central Limit Theorem. We explored the normal distribution
 further in Section \@ref(normal). Theory-based methods for proportions use the normal distribution to calculate the p-value.
@@ -1073,6 +1210,11 @@ Shown in Figure \@ref(fig:paydayCC-stdnorm-pvalue), the p-value is the area abov
 4. Use the test statistic and the standard normal distribution to calculate the p-value.
 5. Make a conclusion based on the p-value, and write a conclusion in context, in plain language, and in terms of the alternative hypothesis.</div>\EndKnitrBlock{onebox}
 
+
+<!-- Move this paragraph to the right place: -->
+Regardless of the statistical method chosen, the p-value is always derived by analyzing the null distribution of the test statistic. The normal model poorly approximates the null distribution for $\hat{p}$ when the success-failure condition is not satisfied. As a substitute, we can generate the null distribution using simulated sample proportions and use this distribution to compute the tail area, i.e., the p-value.
+Neither the p-value approximated by the normal distribution nor the simulated p-value are exact, because the normal distribution and simulated null distribution themselves are not exact, only a close approximation.
+An exact p-value can be generated using the binomial distribution, but that method will not be covered in this text.
 
 
 \index{data!Payday regulation poll|)}
@@ -2648,8 +2790,6 @@ If we repeat this simulation 10,000 times, we can build a **null distribution**\
 
 
 
-
-
 <div class="figure" style="text-align: center">
 <img src="05-inference-cat_files/figure-html/CPR-study-right-tail-1.png" alt="Null distribution of the point estimate for the difference in proportions, $\hat{p}_t - \hat{p}_c$. The shaded right tail shows observations that are at least as large as the observed difference, 0.13." width="70%" />
 <p class="caption">(\#fig:CPR-study-right-tail)Null distribution of the point estimate for the difference in proportions, $\hat{p}_t - \hat{p}_c$. The shaded right tail shows observations that are at least as large as the observed difference, 0.13.</p>
@@ -3331,7 +3471,7 @@ Z = \frac{\text{point estimate} - \text{null value}}{SE}
 
 The lower tail area is 0.4325, which we double to get the p-value: 0.8650. Because this p-value is larger than 0.05, we do not reject the null hypothesis. That is, the difference in breast cancer death rates is reasonably explained by chance, and we do not observe benefits or harm from mammograms relative to a regular breast exam.</div>\EndKnitrBlock{example}
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-154-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-164-1.png" width="70%" style="display: block; margin: auto;" />
 
 Can we conclude that mammograms have no benefits or harm?
 Here are a few considerations to keep in mind when reviewing
@@ -3478,46 +3618,52 @@ However you should be able to easily spot them as **bolded text**.
    <td style="text-align:left;"> success </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Central Limit Theorem </td>
-   <td style="text-align:left;"> one sample $z$-test </td>
+   <td style="text-align:left;"> bootstrapping </td>
+   <td style="text-align:left;"> null value </td>
    <td style="text-align:left;"> sampling distribution </td>
    <td style="text-align:left;"> success-failure condition </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> confidence interval </td>
-   <td style="text-align:left;"> one-sided hypothesis test </td>
+   <td style="text-align:left;"> Central Limit Theorem </td>
+   <td style="text-align:left;"> one sample $z$-test </td>
    <td style="text-align:left;"> SE interval </td>
    <td style="text-align:left;"> test statistic </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> confirmation bias </td>
-   <td style="text-align:left;"> p-value </td>
+   <td style="text-align:left;"> confidence interval </td>
+   <td style="text-align:left;"> one-sided hypothesis test </td>
    <td style="text-align:left;"> simulation </td>
    <td style="text-align:left;"> two sample $z$-test </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> hypothesis test </td>
-   <td style="text-align:left;"> parameter </td>
+   <td style="text-align:left;"> confirmation bias </td>
+   <td style="text-align:left;"> p-value </td>
    <td style="text-align:left;"> standard error </td>
    <td style="text-align:left;"> two-sided hypothesis test </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> margin of error </td>
-   <td style="text-align:left;"> percentile </td>
+   <td style="text-align:left;"> hypothesis test </td>
+   <td style="text-align:left;"> parameter </td>
    <td style="text-align:left;"> standard error for difference in proportions </td>
    <td style="text-align:left;"> Type 1 Error </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> normal curve </td>
-   <td style="text-align:left;"> percentile interval </td>
+   <td style="text-align:left;"> margin of error </td>
+   <td style="text-align:left;"> percentile </td>
    <td style="text-align:left;"> standard error of single proportion </td>
    <td style="text-align:left;"> Type 2 Error </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> normal distribution </td>
-   <td style="text-align:left;"> permutation test </td>
+   <td style="text-align:left;"> normal curve </td>
+   <td style="text-align:left;"> percentile interval </td>
    <td style="text-align:left;"> standard normal distribution </td>
    <td style="text-align:left;"> Z-score </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> normal distribution </td>
+   <td style="text-align:left;"> permutation test </td>
+   <td style="text-align:left;"> statistic </td>
+   <td style="text-align:left;">  </td>
   </tr>
   <tr>
    <td style="text-align:left;"> normal model </td>
