@@ -247,6 +247,8 @@ qnorm(0.95 + 0.025) #multiplier for 95% confidence interval
 
 * Interpretation of the confidence interval
 
+* Scope of inference
+
 \vspace{3in}
 
 
