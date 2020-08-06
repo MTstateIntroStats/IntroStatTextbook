@@ -159,6 +159,13 @@ Each hypothesis test involves a **null hypothesis**\index{null hypothesis}, whic
 
 \BeginKnitrBlock{onebox}<div class="onebox">**Null and alternative hypotheses.**
 
+When we observe an effect in a sample, we would like to determine
+if this observed effect represents
+an actual effect in the population, or whether it was simply due to
+chance. 
+We label these two competing claims, $H_0$ and $H_A$,
+which are spoken as "H-nought" and "H_A"
+  
 The **null hypothesis ($H_0$)** often represents either a skeptical perspective or a claim to be tested. The **alternative hypothesis ($H_A$)** represents an alternative claim under consideration and is often represented by a range of possible values for the parameter of interest. </div>\EndKnitrBlock{onebox}
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">In the Martian alphabet example, which of the two competing possibilities was the null hypothesis? the alternative hypothesis?^[The first possibility (_We can't read Martian, and these results just occurred by chance._) was the null hypothesis; the second possibility (_We can read Martian, and these results reflect this ability._) was the alternative hypothesis.]</div>\EndKnitrBlock{guidedpractice}
@@ -1437,10 +1444,6 @@ qnorm(.99 + .005)
 In a confidence interval, $z^{\star}\times SE$ is called the **margin of error**\index{margin of error}.</div>\EndKnitrBlock{onebox}
 
 
-
-
-
-
 \index{margin of error|(}
 
 When collecting data, we choose a sample size suitable
@@ -1646,12 +1649,10 @@ point estimate of $\pi_1 - \pi_2$ based on the sample,
 and you may have already guessed its form:
 $\hat{p}_1 - \hat{p}_2$.
 \index{point estimate!difference of proportions}
-We'll look at methods for hypothesis testing in two different ways: 
-simulation-based methods using a randomization test, and
-theory-based methods if
-we verify that the point estimate
-can be modeled using a normal distribution. 
-We will then investigate theory-based methods for computing confidence intervals.
+We'll look at statistical inference for a difference in proportions
+in two ways: simulation-based methods through a randomization test
+and bootstrap confidence interval, and theory-based methods through
+a two sample $z$-test and $z$-interval.
 
 
 
@@ -1661,11 +1662,11 @@ As you learned in Chapter \@ref(intro-to-data), a **randomized experiment** is d
 Every data set has some variability in it, so to decide whether the variability in the data is due to (1) the causal mechanism (the randomized explanatory variable in the experiment) or instead (2) natural variability inherent to the data, we set up a sham randomized experiment as a comparison. 
 That is, we assume that each observational unit would have gotten the exact same response value regardless of the treatment level. 
 By reassigning the treatments many many times, we can compare the actual experiment to the sham experiment. If the actual experiment has more extreme results than any of the sham experiments, we are led to believe that it is the explanatory variable which is causing the result and not inherent data variability. 
-Using a few different case studies, let's look more carefully at this idea of a **randomization test**\index{randomization}.
+Using a few different studies, let's look more carefully at this idea of a **randomization test**\index{randomization}.
 
 
 
-#### Gender discrimination case study {#caseStudyGenderDiscrimination}
+#### Gender discrimination {#caseStudyGenderDiscrimination}
 
 
 \index{data!discrimination|(}
@@ -1732,8 +1733,8 @@ The data are visualized in Figure \@ref(fig:genderrand1).  Note that the promote
 
 
 <div class="figure" style="text-align: center">
-<img src="05/figures/genderrand1b.png" alt="The gender descriminiation study can be thought of as 48 red and black cards." width="50%" />
-<p class="caption">(\#fig:genderrand1)The gender descriminiation study can be thought of as 48 red and black cards.</p>
+<img src="05/figures/genderrand1b.png" alt="The gender descrimination study can be thought of as 48 red and black cards." width="50%" />
+<p class="caption">(\#fig:genderrand1)The gender descrimination study can be thought of as 48 red and black cards.</p>
 </div>
 
 \BeginKnitrBlock{example}<div class="example">Statisticians are sometimes called upon to evaluate the strength of evidence. 
@@ -1793,8 +1794,8 @@ Figure \@ref(fig:genderrand3) highlights both the shuffle and the reallocation t
 
 
 <div class="figure" style="text-align: center">
-<img src="05/figures/genderrand3b.png" alt="The gender descriminiation data is shuffled and reallocated to the gender groups." width="80%" />
-<p class="caption">(\#fig:genderrand3)The gender descriminiation data is shuffled and reallocated to the gender groups.</p>
+<img src="05/figures/genderrand3b.png" alt="The gender descrimination data is shuffled and reallocated to the gender groups." width="80%" />
+<p class="caption">(\#fig:genderrand3)The gender descrimination data is shuffled and reallocated to the gender groups.</p>
 </div>
 
 
@@ -1918,7 +1919,7 @@ Since the study was a randomized experiment, we can conclude that the effect was
 \index{data!discrimination|)}
 
 
-#### Opportunity cost case study {#caseStudyOpportunityCost}
+#### Opportunity cost {#caseStudyOpportunityCost}
 
 How rational and consistent is the behavior of the typical American college student? 
 In this section, we'll explore whether college student consumers always consider the following: money not spent now can be spent later.
@@ -2190,14 +2191,15 @@ That is really rare!
 Instead, we will conclude the data provide strong evidence there is a treatment effect: reminding students before a purchase that they could instead spend the money later on something else lowers the chance that they will continue with the purchase. 
 Notice that we are able to make a causal statement for this study since the study is an experiment.
 
-### Theory-based test for $H_0: \pi_1 - \pi_2 = 0$ {#two-prop-test-theory}
+#### Scope of inference {-}
+
+Since the study was a randomized experiment, we can conclude that the effect was due to the reminder about saving money for other purchases---the reminder _caused_ the lower rate of purchase. However, since this study used a volunteer sample (students were "recruited"), we can only generalize this result to individuals similar to those in the study. Thus, we have evidence that reminding students that they can save money for later purchases will reduce the chance they will continue with a purchase, but only among students are similar to those in the study.
 
 
-### Theory-based confidence interval for $\pi_1 - \pi_2$ {#two-prop-ci-theory}
+#### Malaria vaccine {#caseStudyMalaria}
 
+#### Observed data {-}
 
-#### Old Ch 6 starts here
-<!-- Old CH 6 starts here -->
 We consider a study on a new malaria vaccine
 called PfSPZ.
 In this study, volunteer patients were randomized
@@ -2258,25 +2260,6 @@ signs of infection.
 </tbody>
 </table>
 
-<!--
-\newcommand{\malariaAA}{5}
-\newcommand{\malariaAB}{9}
-\newcommand{\malariaAD}{14}
-\newcommand{\malariaBA}{6}
-\newcommand{\malariaBB}{0}
-\newcommand{\malariaBD}{6}
-\newcommand{\malariaDA}{11}
-\newcommand{\malariaDB}{9}
-\newcommand{\malariaDD}{20}
-\newcommand{\malariaVIR}{0.357}
-\newcommand{\malariaVIRPerc}{35.7\%}
-\newcommand{\malariaPIR}{1.000}
-\newcommand{\malariaPIRPerc}{100\%}
-\newcommand{\malariaIRDiff}{0.643}
-\newcommand{\malariaIRDiffPerc}{64.3\%}
--->
-
-
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Is this an observational study or an experiment?
 What implications does the study type have on what can
 be inferred from the results?^[The
@@ -2293,52 +2276,46 @@ who received the vaccine showed signs of an infection
 However, the sample is very small,
 and it is unclear whether the difference provides
 *convincing evidence* that the vaccine is
-effective.
+effective. To determine this, we need to perform
+statistical inference.
 
-<!--
-<div class="example">
-<p>Data scientists are sometimes called upon to evaluate the strength of evidence. When looking at the rates of infection for patients in the two groups in this study, what comes to mind as we try to determine whether the data show convincing evidence of a real difference?</p>
-<hr />
-<p>The observed infection rates (35.7% for the treatment group versus 100% for the control group) suggest the vaccine may be effective. However, we cannot be sure if the observed difference represents the vaccine’s efficacy or is just from random chance. Generally there is a little bit of fluctuation in sample data, and we wouldn’t expect the sample proportions to be <em>exactly</em> equal, even if the truth was that the infection rates were independent of getting the vaccine. Additionally, with such small samples, perhaps it’s common to observe such large differences when we randomly split a group due to chance alone!</p>
-</div>
+Instead of using the _difference in proportion_ infected as our summary measure,
+let's use the _relative risk_ of infection for this case study. Thus,
+the parameter of interest is $\pi_{Vac} / \pi_{Pla}$, and our point estimate
+of this parameter is
 
-The previous malaria example
-is a reminder that the observed outcomes in the data
-sample may not perfectly reflect the true relationships
-between variables since there is \term{random noise}.
-While the observed difference in rates of infection
-is large, the sample size for the study is small,
-making it unclear if this observed difference represents
-efficacy of the vaccine or whether it is simply due to
-chance.
-We label these two competing claims, $H_0$ and $H_A$,
-which are spoken as ``H-nought'' and ``H-A'':
-\begin{itemize}
-\setlength{\itemsep}{0mm}
-\item[$H_0$:] \textbf{Independence model.}
-    The variables \var{treatment} and \var{outcome}
-    are independent.
-    They have no relationship, and the observed difference
-    between the proportion of patients who developed
-    an infection in the two groups, 64.3%,
-    was due to chance.
-\item[$H_A$:] \textbf{Alternative model.}
-    The variables are \emph{not} independent.
-    The difference in infection rates of
-    64.3%
-    was not due to chance,
-    and vaccine affected the rate of infection.
-\end{itemize}
+$$
+\frac{\hat{p}_{Vac}}{\hat{p}_{Pla}} = \frac{5/14}{6/6} = 0.357.
+$$
+
+Converting this to a percent decrease^[$(0.357 - 1)\times 100$% = -64.3%], we
+see that the patients in the vaccine group had a 64.3% reduced risk of infection
+compared to the placebo group.^[With small sample sizes, researchers often
+add 0.5 to each of the four cells prior to calculating the sample relative risk
+in order to avoid dividing by zero. With this adjustment, the sample relative
+risk is: $\frac{5.5/15}{6.5/7} = 0.395$. We will use this adjustment
+when simulating relative risks as well.]
+
+In terms of relative risk, our null and alternative hypotheses are
+
+**Independence model** $H_0: \dfrac{\pi_{Vac}}{\pi_{Pla}} = 1$
+<br>
+
+**Alternative model** $H_a: \dfrac{\pi_{Vac}}{\pi_{Pla}} < 1$
+
+\BeginKnitrBlock{tipbox}<div class="tipbox">Whether we write our hypotheses in terms of a difference in proportions or
+a ratio of proportions (relative risk), the hypotheses still have the same interpretation.
+For example, the three null hypotheses $H_0: \pi_{Vac} = \pi_{Pla}$, $H_0: \pi_{Vac} - \pi_{Pla} = 0$, and $H_0: \pi_{Vac}/\pi_{Pla} = 1$, are all algebraicly equivalent.</div>\EndKnitrBlock{tipbox}
 
 What would it mean if the independence model,
 which says the vaccine had no influence on the
 rate of infection, is true?
 It would mean 11 patients were going to
-develop an infection \emph{no matter which group
-they were randomized into},
+develop an infection _no matter which group
+they were randomized into_,
 and 9 patients would not develop an infection
-\emph{no matter which group they were randomized
-into}.
+_no matter which group they were randomized
+into_.
 That is, if the vaccine did not affect the rate
 of infection, the difference in the infection rates
 was due to chance alone in how the patients were
@@ -2357,14 +2334,12 @@ $H_0$ that the independence model cannot be deemed
 reasonable.
 If this is the case, and the data support $H_A$,
 then we will reject the notion of independence
-and conclude there was discrimination.
+and conclude the vaccine is effective.
 
 
-\subsection{Simulating the study}
-\label{simulatingTheStudy}
+#### Variability of the statistic {-}
 
-We're going to implement
-\termsub{simulations}{simulation},
+We're going to implement simulation,
 where we will pretend we know that the malaria
 vaccine being tested does \emph{not} work.
 Ultimately, we want to understand if the large
@@ -2375,136 +2350,47 @@ we observed was purely due to chance.
 If it is very uncommon, then the possibility
 that the vaccine was helpful seems more plausible.
 
-Table \@ref(tab:malaria-vaccine-20-exp-summary)
-shows that 11 patients developed infections and 9 did not.
-For our simulation, we will suppose the infections
-were independent of the vaccine and we were able to
-\emph{rewind} back to when the researchers randomized
-the patients in the study.
-If we happened to randomize the patients differently,
-we may get a different result in this hypothetical
-world where the vaccine doesn't influence the infection.
-Let's complete another \term{randomization} using
-a simulation.
+We can again randomize the responses (`infection` or `no infection`) to the treatment conditions under the null hypothesis of independence, but this time, we'll compute sample relative risks with each simulated sample. 
 
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">How could you use cards to re-randomize one sample into groups? Remember, in this hypothetical world, we believe each patient that got an infection was going to get it regardless of which group they were in, and we would like to see what happens if we randomly assign these patients to the treatment
+and control groups again.^[1. Take 20 notecards to represent the 20 patients, where we write down "infection" on 11 cards and "no infection" on 9 cards.
+2. Thoroughly shuffle the notecards and deal 14 into
+a "vaccine" pile and 6 into a "placebo" pile. 3. Compute the proportion of "infection" cards in the "vaccine" pile and divide it by the proportion of "infection" cards in the "placebo" pile to get the simulated sample relative risk.]</div>\EndKnitrBlock{guidedpractice}
 
-In this \term{simulation}, we take 20 notecards to
-represent the 20 patients, where we write down ``infection''
-on 11 cards and ``no infection'' on 9 cards.
-In this hypothetical world, we believe each patient
-that got an infection was going to get it regardless
-of which group they were in, so let's see what happens
-if we randomly assign the patients to the treatment
-and control groups again.
-We thoroughly shuffle the notecards and deal 14 into
-a \resp{vaccine} pile and 6 into a \resp{placebo} pile.
-Finally, we tabulate the results, which are shown in
-Figure \ref{malaria-vaccine-20-exp-summary_rand_1}.
-
-\begin{figure}[ht]
-\centering
-\begin{tabular}{l l cc rr}
-  & & \multicolumn{2}{c}{\var{outcome}} \\
-  \cline{3-4}
-  &  &  {infection} & {no infection} & Total & \hspace{3mm}  \\ 
-  \cline{2-5}
-  treatment & {vaccine} & 7 & 7 & 14 \\ 
-  (simulated) & {placebo} & 4 & 2 & 6 \\ 
-  \cline{2-5}
-  & Total & 11 & 9 & 20 \\
-  \cline{2-5}
-\end{tabular}
-\caption{Simulation results, where any difference
-    in infection rates is purely due to chance.}
-\label{malaria-vaccine-20-exp-summary_rand_1}
-\end{figure}
-
-\begin{exercisewrap}
-\begin{nexercise}
-\label{malaria-vaccine-20-exp-summary_rand_1_diff}
-What is the difference in infection rates between
-the two simulated groups in
-Figure \ref{malaria-vaccine-20-exp-summary_rand_1}?
-How does this compare to the observed
-64.3% difference
-in the actual data?\footnotemark{}
-\end{nexercise}
-\end{exercisewrap}
-\footnotetext{$4 / 6 - 7 / 14 = 0.167$
-  or about 16.7\% in favor of the vaccine.
-  This difference due to chance is much smaller than the
-  difference observed in the actual groups.}
--->
-
-As we saw in Section \@ref(inf-rand), we can randomize the responses (`infection` or `no infection`) to the treatment conditions under the null hypothesis of independence and compute possible differences in proportions.
-The process by which we randomize observations to two groups is summarized and visualized in Figure \@ref(fig:fullrand). 
-
-<!--
-We computed one possible difference under the
-independence model in Guided
-Practice \ref{malaria-vaccine-20-exp-summary_rand_1_diff},
-which represents one difference due to chance.
-While in this first simulation, we physically dealt
-out notecards to represent the patients,
-it is more efficient to perform this simulation
-using a computer.
-Repeating the simulation on a computer, we get another
-difference due to chance:
-\begin{align*}
-\frac{2}{\malariaBD{}} - \frac{9}{\malariaAD{}} = -0.310
-\end{align*}
-And another:
-\begin{align*}
-\frac{3}{\malariaBD{}} - \frac{8}{\malariaAD{}} = -0.071
-\end{align*}
-And so on until we repeat the simulation enough times
-that we have a good idea of what represents the
-\emph{distribution of differences from chance alone}.
--->
-
-#### Variability of the statistic {-}
-
-Figure \@ref(fig:malaria-rand-dot-plot) shows a stacked plot
-of the differences found from 100 randomization simulations (i.e., repeated iterations as described in Figure \@ref(fig:fullrand)),
-where each dot represents a simulated difference between
-the infection rates (control rate minus treatment rate).
+Figure \@ref(fig:malaria-rand-dot-plot) shows a histogram
+of the relative risks found from 1,000 randomization simulations,
+where each dot represents a simulated relative risk of infection (treatment rate divided by control rate).
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/malaria-rand-dot-plot-1.png" alt="A stacked dot plot of differences from 100 simulations produced under the independence model $H_0$, where in these simulations infections are unaffected by the vaccine. Two of the 100 simulations had a difference of at least 64.3%, the difference observed in the study." width="70%" />
-<p class="caption">(\#fig:malaria-rand-dot-plot)A stacked dot plot of differences from 100 simulations produced under the independence model $H_0$, where in these simulations infections are unaffected by the vaccine. Two of the 100 simulations had a difference of at least 64.3%, the difference observed in the study.</p>
+<img src="05-inference-cat_files/figure-html/malaria-rand-dot-plot-1.png" alt="A histogram of relative risks of infection from 1,000 simulations produced under the independence model $H_0$, where in these simulations infections are unaffected by the vaccine. Seventeen of the 1,000 simulations (shaded in red) had a relative risk of at most 0.357, the relative risk observed in the study." width="70%" />
+<p class="caption">(\#fig:malaria-rand-dot-plot)A histogram of relative risks of infection from 1,000 simulations produced under the independence model $H_0$, where in these simulations infections are unaffected by the vaccine. Seventeen of the 1,000 simulations (shaded in red) had a relative risk of at most 0.357, the relative risk observed in the study.</p>
 </div>
+
+
 
 #### Observed statistic vs null statistics {-}
 
 Note that the distribution of these simulated differences
-is centered around 0.
-We simulated the differences assuming that the independence
+is centered around 1.
+We simulated the relative risks assuming that the independence
 model was true, and under this condition,
-we expect the difference to be near zero with some random
+we expect the difference to be near one with some random
 fluctuation, where *near* is pretty generous in this
 case since the sample sizes are so small in this study.
 
 
-
-\BeginKnitrBlock{example}<div class="example">How often would you observe a difference
-    of at least 64.3% (0.643)
+\BeginKnitrBlock{example}<div class="example">How often would you observe a sample relative risk
+    of at most 0.357 (at least a 64.3% reduction in risk on vaccine)
     according to Figure \@ref(fig:malaria-rand-dot-plot)?
     Often, sometimes, rarely, or never?
       
 ---
       
-  It appears that a difference of at least
-  64.3% due to chance alone would only
+  It appears that a 64.3% reduction in risk due to chance alone would only
   happen about 2% of the time according to
   Figure \@ref(fig:malaria-rand-dot-plot).
   Such a low probability indicates a rare event.</div>\EndKnitrBlock{example}
 
-The difference of 64.3% being
-a rare event suggests two possible interpretations
-of the results of the study:
-
-* $H_0$ Independence model. The vaccine has no effect on infection rate, and we just happened to observe a difference that would only occur on a rare occasion.
-* $H_A$ Alternative model. The vaccine has an effect on infection rate, and the difference we observed was actually due to the vaccine being effective at combating malaria, which explains the large difference of 64.3%.
 
 Based on the simulations, we have two options:   
 
@@ -2542,6 +2428,7 @@ event.^[This reasoning does not generally extend
     are also incredibly rare.
     We should be cautious not to misinterpret such
     anecdotal evidence.]
+    
 In this case, we reject the independence model in favor
 of the alternative. 
 That is, we are concluding the data provide strong evidence
@@ -2550,7 +2437,7 @@ in this clinical setting.
 
 \index{data!malaria vaccine|)}
 
-Statistical inference, is built
+Statistical inference is built
 on evaluating whether such differences are due to chance.
 In statistical inference, data scientists evaluate which
 model is most reasonable given the data.
@@ -2561,7 +2448,7 @@ inference gives us tools to control and evaluate how
 often these errors occur.
 
 
-#### Decision errors {-}
+#### Decision errors {#types-of-errors}
 
 \index{hypothesis testing!decision errors|(}
 
@@ -2591,6 +2478,12 @@ We make a statement about which one might be true, but we might choose incorrect
 <tbody>
   <tr>
    <td style="text-align:left;">  </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> Fail to reject $H_0$ </td>
+   <td style="text-align:left;"> Reject $H_0$ </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
    <td style="text-align:left;"> $H_0$ true </td>
    <td style="text-align:left;"> good decision </td>
    <td style="text-align:left;"> Type 1 Error </td>
@@ -2606,8 +2499,9 @@ We make a statement about which one might be true, but we might choose incorrect
 
 
 A **Type 1 Error**\index{Type 1 Error} is rejecting the null hypothesis when $H_0$ is actually true. 
-Since we rejected the null hypothesis in the gender discrimination and opportunity cost studies, it is possible that we made a Type 1 Error in one or both of those studies. 
-A **Type 2 Error**\index{Type 2 Error} is failing to reject the null hypothesis when the alternative is actually true.
+Since we rejected the null hypothesis in the [gender discrimination](caseStudyGenderDiscrimination), [opportunity cost](caseStudyOpportunityCost), and [malaria](caseStudyMalaria) studies, it is possible that we made a Type 1 Error in one, two, or all three of those studies. 
+
+A **Type 2 Error**\index{Type 2 Error} is failing to reject the null hypothesis when the alternative is actually true. Since we failed to reject the null hypothesis in the [medical consultant](one-prop-null-boot) study, it is possible that we made a Type 2 Error in that study.
 
 
 
@@ -2662,11 +2556,11 @@ If a Type 2 Error is relatively more dangerous or much more costly than a Type 1
 Here we want to be cautious about failing to reject $H_0$ when the null is actually false.
 
 
-\BeginKnitrBlock{tipbox}<div class="tipbox">**Significance levels should reflect consequences of errors.**
+\BeginKnitrBlock{important}<div class="important">**Significance levels should reflect consequences of errors.**
 
-The significance level selected for a test should reflect the real-world consequences associated with making a Type 1 or Type 2 Error.</div>\EndKnitrBlock{tipbox}
+The significance level selected for a test should reflect the real-world consequences associated with making a Type 1 or Type 2 Error.</div>\EndKnitrBlock{important}
 
-#### Two-sided hypotheses {-}
+#### Two-sided hypotheses {#two-sided-tests}
 
 <!--
 %_________________
@@ -2675,7 +2569,7 @@ The significance level selected for a test should reflect the real-world consequ
 
 \index{hypothesis testing!two tails|(}
 
-In Section \@ref(inf-rand) we explored whether women were discriminated against and whether a simple trick could make students a little thriftier. 
+In in the [gender discrimination](caseStudyGenderDiscrimination) and [opportunity cost](caseStudyOpportunityCost) studies, we explored whether women were discriminated against and whether a simple trick could make students a little thriftier. 
 In these two case studies, we've actually ignored some possibilities:
 
 * What if *men* are actually discriminated against?
@@ -2696,6 +2590,8 @@ To do so, let's learn about **two-sided hypothesis tests**\index{two-sided hypot
 
 
 
+
+#### CPR and blood thinner {-}
 \index{data!CPR and blood thinner|(}
 
 Cardiopulmonary resuscitation (CPR) is a procedure used on individuals suffering a heart attack when other emergency resources are unavailable. 
@@ -2712,20 +2608,20 @@ The outcome variable of interest was whether the patient survived for at least 2
 
 
 \BeginKnitrBlock{example}<div class="example">Form hypotheses for this study in plain and statistical language. 
-Let $p_c$ represent the true survival rate of people who do not receive a blood thinner (corresponding to the control group) and $p_t$ represent the survival rate for people receiving a blood thinner (corresponding to the treatment group).
+Let $\pi_c$ represent the true survival rate of people who do not receive a blood thinner (corresponding to the control group) and $\pi_t$ represent the survival rate for people receiving a blood thinner (corresponding to the treatment group).
 
 ---
  
 We want to understand whether blood thinners are helpful or harmful. 
 We'll consider both of these possibilities using a two-sided hypothesis test.
 
-* $H_0$: Blood thinners do not have an overall survival effect, i.e., the survival proportions are the same in each group. $p_t - p_c = 0$.
+* $H_0$: Blood thinners do not have an overall survival effect, i.e., the survival proportions are the same in each group. $\pi_t - \pi_c = 0$.
 
-* $H_A$: Blood thinners have an impact on survival, either positive or negative, but not zero. $p_t - p_c \neq 0$.
+* $H_A$: Blood thinners have an impact on survival, either positive or negative, but not zero. $\pi_t - \pi_c \neq 0$.
 
 Note that if we had done a one-sided hypothesis test, the resulting hypotheses would have been:
 
-* $H_0$: Blood thinners do not have a positive overall survival effect, i.e., the survival proportions for the blood thinner group is the same or lower than the control group. $p_t - p_c \leq 0$.
+* $H_0$: Blood thinners do not have a positive overall survival effect, i.e., the survival proportions for the blood thinner group is the same or lower than the control group. $\pi_t - \pi_c = 0$.
 
 * $H_A$: Blood thinners have a positive impact on survival. $p_t - p_c > 0$.
 </div>\EndKnitrBlock{example}
@@ -2734,7 +2630,7 @@ There were 50 patients in the experiment who did not receive a blood thinner and
 The study results are shown in Table \@ref(tab:resultsForCPRStudyInSmallSampleSection).
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:resultsForCPRStudyInSmallSampleSection)Results for the CPR study. Patients in the treatment group were given a blood thinner, and patients in the control group were not</caption>
+<caption>(\#tab:resultsForCPRStudyInSmallSampleSection)Results for the CPR study. Patients in the treatment group were given a blood thinner, and patients in the control group were not.</caption>
  <thead>
   <tr>
    <th style="text-align:left;">  </th>
@@ -2767,16 +2663,17 @@ The study results are shown in Table \@ref(tab:resultsForCPRStudyInSmallSampleSe
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">What is the observed survival rate in the control group? 
 And in the treatment group? 
-Also, provide a point estimate of the difference in survival proportions of the two groups: $\hat{p}_t - \hat{p}_c$.^[Observed control survival rate: $p_c = \frac{11}{50} = 0.22$. 
-Treatment survival rate: $p_t = \frac{14}{40} = 0.35$. 
-Observed difference: $\hat{p}_t - \hat{p}_c = 0.35 - 0.22 = 0.13$.]</div>\EndKnitrBlock{guidedpractice}
+Also, provide a point estimate of the difference in survival proportions of the two groups ($\hat{p}_t - \hat{p}_c$) and the relative "risk" of survival ($\hat{p}_t/\hat{p}_c$).^[Observed control survival rate: $\hat{p}_c = \frac{11}{50} = 0.22$. 
+Treatment survival rate: $\hat{p}_t = \frac{14}{40} = 0.35$. 
+Observed difference: $\hat{p}_t - \hat{p}_c = 0.35 - 0.22 = 0.13$.
+Relative risk: $\hat{p}_t/\hat{p}_c = 0.35/0.22 = 1.59$]</div>\EndKnitrBlock{guidedpractice}
 
-According to the point estimate, for patients who have undergone CPR outside of the hospital, an additional 13% of these patients survive when they are treated with blood thinners. 
+According to the point estimate, for patients who have undergone CPR outside of the hospital, an additional 13% of these patients survive when they are treated with blood thinners. Interpreting the relative risk, patients in this sample who had undergone CPR outside of the hospital had a 59% higher survival rate when they were treated with blood thinners.
 However, we wonder if this difference could be easily explainable by chance.
 
-As we did in our past two studies this chapter, we will simulate what type of differences we might see from chance alone under the null hypothesis. 
+As we did in our past studies this chapter, we will simulate what type of differences we might see from chance alone under the null hypothesis. 
 By randomly assigning "simulated treatment" and "simulated control" stickers to the patients' files, we get a new grouping. 
-If we repeat this simulation 10,000 times, we can build a **null distribution**\index{null distribution} of the differences shown in Figure \@ref(fig:CPR-study-right-tail).
+If we repeat this simulation 10,000 times, we can build a **null distribution**\index{null distribution} of the differences in sample proportions shown in Figure \@ref(fig:CPR-study-right-tail).
 
 
 
@@ -2788,9 +2685,9 @@ If we repeat this simulation 10,000 times, we can build a **null distribution**\
 The right tail area is 0.131. (Note: it is only a coincidence that we also have $\hat{p}_t - \hat{p}_c=0.13$.) 
 However, contrary to how we calculated the p-value in previous studies, the p-value of this test is not 0.131!
 
-The p-value is defined as the chance we observe a result at least as favorable to the alternative hypothesis as the result (i.e., the difference) we observe. 
+The p-value is defined as the chance we observe a result _at least as favorable to the alternative hypothesis as the result_ (i.e., the difference) we observe. 
 In this case, any differences less than or equal to -0.13 would also provide equally strong evidence favoring the alternative hypothesis as a difference of +0.13 did. 
-A difference of -0.13 would correspond to 13% higher survival rate in the control group than the treatment group. 
+A difference of -0.13 would correspond to the survival rate in the _control group_ being 0.13 higher than the treatment group.^[Note that the relative risk in the opposite direction is not a _decrease_ of 59%! When comparing control to treatment, the relative risk would be $0.22/0.35 = 0.63$, or a decrease of 37%. These values differ because the quantity we're comparing to (the "100%" quantity) differs.] 
 In Figure \@ref(fig:CPR-study-p-value) we've also shaded these differences in the left tail of the distribution. 
 These two shaded tails provide a visual representation of the p-value for a two-sided test.
 
@@ -2805,9 +2702,8 @@ These two shaded tails provide a visual representation of the p-value for a two-
 </div>
 
 
-For a two-sided test, take the single tail (in this case, 0.131) and double it to get the p-value: 0.262. 
-Since this p-value is larger than 0.05, we do not reject the null hypothesis. 
-That is, we do not find statistically significant evidence that the blood thinner has any influence on survival of patients who undergo CPR prior to arriving at the hospital. 
+For a two-sided test, since the null distribution is symmetric, take the single tail (in this case, 0.131) and double it to get the p-value: 0.262. 
+With this large p-value, we do not find statistically significant evidence that the blood thinner has any influence on survival of patients who undergo CPR prior to arriving at the hospital. 
 
 <!--%Once again, we can discuss the causal conclusion since this is an experiment.
 -->
@@ -2821,8 +2717,8 @@ Use a one-sided hypothesis test only if you truly have interest in only one dire
 
 \BeginKnitrBlock{onebox}<div class="onebox">**Computing a p-value for a two-sided test.**
 
-First compute the p-value for one tail of the distribution, then double that value to get the two-sided p-value. 
-That's it!</div>\EndKnitrBlock{onebox}
+If your null distribution is symmetric, first compute the p-value for one tail of the distribution, then double that value to get the two-sided p-value. 
+That's it!^[If the null distribution is not symmetric, then the computer will have to count the proportions in each tail separately, since the two tail proportions may differ.]</div>\EndKnitrBlock{onebox}
 
 \BeginKnitrBlock{example}<div class="example">Consider the situation of the medical consultant. 
 Now that you know about one-sided and two-sided tests, which type of test do you think is more appropriate?
@@ -2874,11 +2770,11 @@ This is twice the error rate we prescribed with our significance level: $\alpha=
 <p class="caption">(\#fig:type1ErrorDoublingExampleFigure)The shaded regions represent areas where we would reject $H_0$ under the bad practices considered in when $\alpha = 0.05$.</p>
 </div>
 
-\BeginKnitrBlock{cautionbox}<div class="cautionbox">**Hypothesis tests should be set up *before* seeing the data.**
+\BeginKnitrBlock{importantbox}<div class="importantbox">**Hypothesis tests should be set up *before* seeing the data.**
 
 After observing data, it is tempting to turn a two-sided test into a one-sided test. 
 Avoid this temptation. 
-Hypotheses should be set up *before* observing the data.</div>\EndKnitrBlock{cautionbox}
+Hypotheses should be set up *before* observing the data.</div>\EndKnitrBlock{importantbox}
 
 <!--
 %\Comment{Should we scrap this subsection and example and just leave the caution box? Downside: weakens item 1 near the start of Section \@ref(IntroducingTwoSidedHypotheses).}
@@ -2984,6 +2880,17 @@ Because we don't know the true distribution of $\hat{p}_t - \hat{p}_c$, we will 
 \end{align}
 
 We are 95% confident that the true value of $p_t - p_c$ is between -0.065 and 0.325.  Again, the wide confidence interval that overlaps zero indicates that the study provides very little evidence about the effectiveness of blood thinners.
+
+
+
+### Theory-based test for $H_0: \pi_1 - \pi_2 = 0$ {#two-prop-test-theory}
+
+
+### Theory-based confidence interval for $\pi_1 - \pi_2$ {#two-prop-ci-theory}
+
+
+
+
 
 ### Mathematical model {#math-2prop}
 
