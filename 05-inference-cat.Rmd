@@ -4236,6 +4236,19 @@ These considerations highlight the complexity around medical care and treatment 
 ```
 -->
 
+## Power, Errors, and Practical Importance {#power}
+
+```{block2, type="todo", echo=TRUE}
+- power
+- what affects power
+- what affects width of CIs
+- statistical significance vs practical importance
+- effect size?
+```
+
+```{r, out.width="50%"}
+include_graphics("05/images/Whalberg.png")
+```
 
 ## Summary of Z-procedures
 

@@ -3476,6 +3476,15 @@ These considerations highlight the complexity around medical care and treatment 
       of the problem.</div>\EndKnitrBlock{onebox}
 -->
 
+## Power, Errors, and Practical Importance {#power}
+
+\BeginKnitrBlock{todo}<div class="todo">- power
+- what affects power
+- what affects width of CIs
+- statistical significance vs practical importance
+- effect size?</div>\EndKnitrBlock{todo}
+
+<img src="05/images/Whalberg.png" width="50%" style="display: block; margin: auto;" />
 
 ## Summary of Z-procedures
 
