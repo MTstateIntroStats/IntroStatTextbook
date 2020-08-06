@@ -260,10 +260,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4" data-path="inference-cat.html"><a href="inference-cat.html#diff-two-prop"><i class="fa fa-check"></i><b>5.4</b> Difference of two proportions</a>
 <ul>
 <li class="chapter" data-level="5.4.1" data-path="inference-cat.html"><a href="inference-cat.html#two-prop-errors"><i class="fa fa-check"></i><b>5.4.1</b> Randomization test for <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span></a></li>
-<li class="chapter" data-level="5.4.2" data-path="inference-cat.html"><a href="inference-cat.html#two-prop-boot-ci"><i class="fa fa-check"></i><b>5.4.2</b> Bootstrap confidence interval for <span class="math inline">\(p_1 - p_2\)</span></a></li>
-<li class="chapter" data-level="5.4.3" data-path="inference-cat.html"><a href="inference-cat.html#two-prop-test-theory"><i class="fa fa-check"></i><b>5.4.3</b> Theory-based test for <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span></a></li>
-<li class="chapter" data-level="5.4.4" data-path="inference-cat.html"><a href="inference-cat.html#two-prop-ci-theory"><i class="fa fa-check"></i><b>5.4.4</b> Theory-based confidence interval for <span class="math inline">\(\pi_1 - \pi_2\)</span></a></li>
-<li class="chapter" data-level="5.4.5" data-path="inference-cat.html"><a href="inference-cat.html#math-2prop"><i class="fa fa-check"></i><b>5.4.5</b> Mathematical model</a></li>
+<li class="chapter" data-level="5.4.2" data-path="inference-cat.html"><a href="inference-cat.html#two-prop-boot-ci"><i class="fa fa-check"></i><b>5.4.2</b> Bootstrap confidence interval for <span class="math inline">\(\pi_1 - \pi_2\)</span></a></li>
+<li class="chapter" data-level="5.4.3" data-path="inference-cat.html"><a href="inference-cat.html#math-2prop"><i class="fa fa-check"></i><b>5.4.3</b> Theory-based methods for <span class="math inline">\(\pi_1 - \pi_2\)</span></a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="inference-cat.html"><a href="inference-cat.html#summary-of-z-procedures"><i class="fa fa-check"></i><b>5.5</b> Summary of Z-procedures</a></li>
 <li class="chapter" data-level="5.6" data-path="inference-cat.html"><a href="inference-cat.html#r-inference-for-categorical-data"><i class="fa fa-check"></i><b>5.6</b> <code>R</code>: Inference for categorical data</a></li>
@@ -639,7 +637,7 @@ The amount we add and subtract to the statistic to calculate the confidence inte
 \mbox{margin of error} = (\mbox{multiplier}) \times (\mbox{standard error of the statistic})
 \]</span>
 </div>
-<p>In Section <a href="inference-cat.html#conf-int-one-prop">5.3.4</a> we will discuss different percentages for the confidence interval (e.g., 90% confidence interval or 99% confidence interval). Section <a href="inference-cat.html#conf-int-one-prop">5.3.4</a> also provides a longer discussion on what “95% confidence” actually means.</p>
+<p>In Section <a href="inference-cat.html#conf-int-one-prop">5.3.4</a> we will discuss different percentages for the confidence interval (e.g., 90% confidence interval or 99% confidence interval). Section <a href="inference-cat.html#two-prop-boot-ci">5.4.2</a> provides a longer discussion on what “95% confidence” actually means.</p>
 </div>
 </div>
 <div id="normal" class="section level2" number="5.2">
@@ -797,14 +795,14 @@ Figure 5.8: The normal model for SAT scores, shading the area of those individua
 </p>
 </div>
 <p>We can use the normal model to find percentiles or probabilities. In <code>R</code>, the function
-to calculate normal probabilities is <code>pnorm</code>. The <code>normTail</code> function is available in the <code>openintro</code> R package and will draw the associated curve if it is helpful. In the code below, we find the percentile of <span class="math inline">\(Z=0.43\)</span> is 0.6664, or the <span class="math inline">\(66.64^{th}\)</span> percentile.</p>
+to calculate normal probabilities is <code>pnorm()</code>. The <code>normTail()</code> function is available in the <code>openintro</code> R package and will draw the associated curve if it is helpful. In the code below, we find the percentile of <span class="math inline">\(Z=0.43\)</span> is 0.6664, or the <span class="math inline">\(66.64^{th}\)</span> percentile.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="inference-cat.html#cb12-1" aria-hidden="true"></a><span class="kw">pnorm</span>(<span class="fl">0.43</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span>
 <span id="cb12-2"><a href="inference-cat.html#cb12-2" aria-hidden="true"></a><span class="co">#&gt; [1] 0.666</span></span>
 <span id="cb12-3"><a href="inference-cat.html#cb12-3" aria-hidden="true"></a>openintro<span class="op">::</span><span class="kw">normTail</span>(<span class="fl">0.43</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="05-inference-cat_files/figure-html/unnamed-chunk-39-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>We can also find the Z-score associated with a percentile.
-For example, to identify Z for the <span class="math inline">\(80^{th}\)</span> percentile, we use <code>qnorm</code> which identifies the <strong>quantile</strong> for a given percentage. The quantile represents the cutoff value. (To remember the function <code>qnorm</code> as providing a cutoff, notice that both <code>qnorm</code> and “cutoff” start with the sound “kuh”. To remember the <code>pnorm</code> function as providing a probability from a given cutoff, notice that both <code>pnorm</code> and probability start with the sound “puh”.)
-We determine the Z-score for the <span class="math inline">\(80^{th}\)</span> percentile using <code>qnorm</code>: 0.84.</p>
+For example, to identify Z for the <span class="math inline">\(80^{th}\)</span> percentile, we use <code>qnorm()</code> which identifies the <strong>quantile</strong> for a given percentage. The quantile represents the cutoff value. (To remember the function <code>qnorm()</code> as providing a cutoff, notice that both <code>qnorm()</code> and “cutoff” start with the sound “kuh”. To remember the <code>pnorm()</code> function as providing a probability from a given cutoff, notice that both <code>pnorm()</code> and probability start with the sound “puh”.)
+We determine the Z-score for the <span class="math inline">\(80^{th}\)</span> percentile using <code>qnorm()</code>: 0.84.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="inference-cat.html#cb13-1" aria-hidden="true"></a><span class="kw">qnorm</span>(<span class="fl">0.80</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span>
 <span id="cb13-2"><a href="inference-cat.html#cb13-2" aria-hidden="true"></a><span class="co">#&gt; [1] 0.842</span></span>
 <span id="cb13-3"><a href="inference-cat.html#cb13-3" aria-hidden="true"></a>openintro<span class="op">::</span><span class="kw">normTail</span>(<span class="fl">0.80</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span></code></pre></div>
@@ -955,7 +953,7 @@ Figure 5.9: Probabilities for falling within 1, 2, and 3 standard deviations of 
 </div>
 
 <div class="guidedpractice">
-Use <code>pnorm</code> to confirm that about 68%, 95%, and 99.7% of observations fall within 1, 2, and 3, standard deviations of the mean in the normal distribution, respectively. For instance, first find the area that falls between <span class="math inline">\(Z=-1\)</span> and <span class="math inline">\(Z=1\)</span>, which should have an area of about 0.68. Similarly there should be an area of about 0.95 between <span class="math inline">\(Z=-2\)</span> and <span class="math inline">\(Z=2\)</span>.<a href="#fn71" class="footnote-ref" id="fnref71"><sup>71</sup></a>
+Use <code>pnorm()</code> to confirm that about 68%, 95%, and 99.7% of observations fall within 1, 2, and 3, standard deviations of the mean in the normal distribution, respectively. For instance, first find the area that falls between <span class="math inline">\(Z=-1\)</span> and <span class="math inline">\(Z=1\)</span>, which should have an area of about 0.68. Similarly there should be an area of about 0.95 between <span class="math inline">\(Z=-2\)</span> and <span class="math inline">\(Z=2\)</span>.<a href="#fn71" class="footnote-ref" id="fnref71"><sup>71</sup></a>
 </div>
 <p>It is possible for a normal random variable to fall 4, 5, or even more standard deviations from the mean. However, these occurrences are very rare if the data are nearly normal. The probability of being further than 4 standard deviations from the mean is about 1-in-30,000. For 5 and 6 standard deviations, it is about 1-in-3.5 million and 1-in-1 billion, respectively.</p>
 
@@ -1189,16 +1187,25 @@ Figure 5.13: Calculate the sample proportion of red marbles in each bootstrap re
 However, there is a physical and computational model which produces an equivalent bootstrap distribution of the sample proportion in a computationally efficient manner.
 Consider the observed data to be a bag of marbles 3 of which are red and 4 of which are white. By drawing the marbles out of the bag <em>with replacement</em>, we depict the same sampling <strong>process</strong> as was done with the infinitely large estimated population.
 Note that when sampling the original observations with replacement, a particular marble may end up in the new sample one time, multiple times, or not at all.</p>
+
+<div class="onebox">
+<p><strong>Bootstrapping<a href="#fn80" class="footnote-ref" id="fnref80"><sup>80</sup></a> from one sample</strong>.</p>
+<ol style="list-style-type: decimal">
+<li>Take a random sample of size <span class="math inline">\(n\)</span> from the original sample, <em>with replacement</em>. This is called a <strong>bootstrapped resample</strong>.</li>
+<li>Record the sample proportion (or statistic of interest) from the boostrapped resample. This is called a <strong>bootstrapped statistic</strong>.</li>
+<li>Repeat steps (1) and (2) 1000s of times to create a distribution of bootstrapped statistics.
+</div></li>
+</ol>
 <p>If we apply the bootstrap sampling process to the medical consultant example, we consider each client to be one of the marbles in the bag.
 There will be 59 white marbles (no complication) and 3 red marbles (complication).
 If we 62 choose marbles out of the bag (one at a time), replacing each chosen marble after its color is recorded, and compute the proportion of simulated patients with complications, <span class="math inline">\(\hat{p}_{bs}\)</span>, then this “bootstrap” proportion represents a single simulated proportion from the “resample from the sample” approach.</p>
 
 <div class="guidedpractice">
-In a simulation of 62 patients conduced by sampling with replacement from the original sample, about how many would we expect to have had a complication?<a href="#fn80" class="footnote-ref" id="fnref80"><sup>80</sup></a>
+In a simulation of 62 patients conduced by sampling with replacement from the original sample, about how many would we expect to have had a complication?<a href="#fn81" class="footnote-ref" id="fnref81"><sup>81</sup></a>
 </div>
 <p>One simulated bootstrap resample isn’t enough to get a sense of the variability from one bootstrap proportion to another bootstrap proportion, so we repeated the simulation 10,000 times using a computer.
 Figure <a href="inference-cat.html#fig:MedConsBSSim">5.14</a> shows the distribution from the 10,000 bootstrap simulations.
-The bootstrapped proportions vary from about zero to 0.15. By taking the range of the middle 95% of this distribution, we can construct a <strong>95% bootstrapped confidence interval</strong> for <span class="math inline">\(\pi\)</span>. The 2.5^{th} percentile is 0, and the 97.5^{th} percentile is 0.113, so the middle 95% of the distribution is the range (0, 0.113).
+The bootstrapped proportions vary from about zero to 0.15. By taking the range of the middle 95% of this distribution, we can construct a <strong>95% bootstrapped confidence interval</strong> for <span class="math inline">\(\pi\)</span>. The 2.5<sup>th</sup> percentile is 0, and the 97.5<sup>th</sup> percentile is 0.113, so the middle 95% of the distribution is the range (0, 0.113).
 The variability in the bootstrapped proportions leads us to believe that the true risk of complication (the parameter, <span class="math inline">\(\pi\)</span>) is somewhere between 0 and 11.3%.</p>
 <div class="figure" style="text-align: center"><span id="fig:MedConsBSSim"></span>
 <img src="05-inference-cat_files/figure-html/MedConsBSSim-1.png" alt="The original medical consultant data is bootstrapped 10,000 times. Each simulation creates a sample from the original data where the probability of a complication is $\hat{p} = 3/62$. The bootstrap 2.5 percentile proportion is 0 and the 97.5 percentile is 0.113. The result is: we are confident that, in the population, the true probability of a complication is between 0% and 11.3%." width="70%" />
@@ -1260,7 +1267,7 @@ it isn’t met.
 For example, <em>there exist no statistical methods available to truly correct the inherent biases of data from a convenience sample.</em>
 On the other hand, if we took a cluster random sample
 (see Section <a href="intro-to-data.html#samp-methods">1.3.4</a>), the observations wouldn’t be independent, but suitable statistical methods are available for analyzing the data (but they are beyond the scope of even most second or third courses
-in statistics)<a href="#fn81" class="footnote-ref" id="fnref81"><sup>81</sup></a>.</p>
+in statistics)<a href="#fn82" class="footnote-ref" id="fnref82"><sup>82</sup></a>.</p>
 
 <div class="example">
 <p>In the examples based on large sample theory, we modeled <span class="math inline">\(\hat{p}\)</span> using the normal distribution. Why is this not appropriate for the study on the medical consultant?</p>
@@ -1318,7 +1325,7 @@ From a random sample of 826 borrowers,
 51% said they would support such
 a regulation.
 Is it reasonable use a normal distribution to model <span class="math inline">\(\hat{p}\)</span>
-for a hypothesis test here?<a href="#fn82" class="footnote-ref" id="fnref82"><sup>82</sup></a>
+for a hypothesis test here?<a href="#fn83" class="footnote-ref" id="fnref83"><sup>83</sup></a>
 </div>
 
 <div class="example">
@@ -1467,7 +1474,7 @@ did search and replace for each term above.  for example 826 for 826
 <div class="guidedpractice">
 <p>Consider taking many polls of registered voters (i.e., random samples) of size 300 and asking them if they support legalized marijuana.
 It is suspected that about 2/3 of all voters support legalized marijuana.
-To understand how the sample proportion (<span class="math inline">\(\hat{p}\)</span>) would vary across the samples, calculate the standard error of <span class="math inline">\(\hat{p}\)</span>.<a href="#fn83" class="footnote-ref" id="fnref83"><sup>83</sup></a></p>
+To understand how the sample proportion (<span class="math inline">\(\hat{p}\)</span>) would vary across the samples, calculate the standard error of <span class="math inline">\(\hat{p}\)</span>.<a href="#fn84" class="footnote-ref" id="fnref84"><sup>84</sup></a></p>
 </div>
 
 <div class="example">
@@ -1560,7 +1567,7 @@ of <span class="math inline">\(\hat{p}\)</span> may be well-approximated by the 
 There are three components to this interval: the point estimate, “1.96”, and the standard error. The choice of <span class="math inline">\(1.96\times SE\)</span> was based on capturing 95% of the sampling distribution of statistics since the point estimate is within 1.96 standard errors of the true parameter about 95% of the time. The choice of 1.96 corresponds to a 95% <strong>confidence level</strong>.</p>
 
 <div class="guidedpractice">
-If <span class="math inline">\(X\)</span> is a normally distributed random variable, how often will <span class="math inline">\(X\)</span> be within 2.58 standard deviations of the mean?<a href="#fn84" class="footnote-ref" id="fnref84"><sup>84</sup></a>
+If <span class="math inline">\(X\)</span> is a normally distributed random variable, how often will <span class="math inline">\(X\)</span> be within 2.58 standard deviations of the mean?<a href="#fn85" class="footnote-ref" id="fnref85"><sup>85</sup></a>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:choosingZForCI"></span>
 <img src="05-inference-cat_files/figure-html/choosingZForCI-1.png" alt="The area between -$z^{\star}$ and $z^{\star}$ increases as $|z^{\star}|$ becomes larger. If the confidence level is 99%, we choose $z^{\star}$ such that 99% of the normal curve is between -$z^{\star}$ and $z^{\star}$, which corresponds to 0.5% in the lower tail and 0.5% in the upper tail: $z^{\star}=2.58$." width="70%" />
@@ -1583,7 +1590,7 @@ label for previous equation?
 <p>The normal approximation is crucial to the precision of the <span class="math inline">\(z^\star\)</span> confidence intervals. When the normal model is not a good fit, we will use alternative distributions that better characterize the sampling distribution or we will use bootstrapping procedures.</p>
 
 <div class="guidedpractice">
-Create a 99% confidence interval for the impact of the stent on the risk of stroke using the data from Section <a href="intro-to-data.html#basic-stents-strokes">1.1</a>. The point estimate is 0.090, and the standard error is <span class="math inline">\(SE = 0.028\)</span>. It has been verified for you that the point estimate can reasonably be modeled by a normal distribution.<a href="#fn85" class="footnote-ref" id="fnref85"><sup>85</sup></a>
+Create a 99% confidence interval for the impact of the stent on the risk of stroke using the data from Section <a href="intro-to-data.html#basic-stents-strokes">1.1</a>. The point estimate is 0.090, and the standard error is <span class="math inline">\(SE = 0.028\)</span>. It has been verified for you that the point estimate can reasonably be modeled by a normal distribution.<a href="#fn86" class="footnote-ref" id="fnref86"><sup>86</sup></a>
 </div>
 
 <div class="onebox">
@@ -1597,7 +1604,7 @@ where <span class="math inline">\(z^{\star}\)</span> corresponds to the confiden
 </div>
 <div id="using-r-to-find-zstar" class="section level4 unnumbered">
 <h4>Using <code>R</code> to find <span class="math inline">\(z^{\star}\)</span></h4>
-<p>Figure <a href="inference-cat.html#fig:choosingZForCI">5.17</a> provides a picture of how to identify <span class="math inline">\(z^{\star}\)</span> based on a confidence level. We select <span class="math inline">\(z^{\star}\)</span> so that the area between -<span class="math inline">\(z^{\star}\)</span> and <span class="math inline">\(z^{\star}\)</span> in the normal model corresponds to the confidence level. In <code>R</code>, you can find <span class="math inline">\(z^{\star}\)</span> using the <code>qnorm</code> function:</p>
+<p>Figure <a href="inference-cat.html#fig:choosingZForCI">5.17</a> provides a picture of how to identify <span class="math inline">\(z^{\star}\)</span> based on a confidence level. We select <span class="math inline">\(z^{\star}\)</span> so that the area between -<span class="math inline">\(z^{\star}\)</span> and <span class="math inline">\(z^{\star}\)</span> in the normal model corresponds to the confidence level. In <code>R</code>, you can find <span class="math inline">\(z^{\star}\)</span> using the <code>qnorm()</code> function:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="inference-cat.html#cb17-1" aria-hidden="true"></a><span class="co"># z* for 90% --&gt; alpha = 0.15 --&gt; need 5% on each size:</span></span>
 <span id="cb17-2"><a href="inference-cat.html#cb17-2" aria-hidden="true"></a><span class="kw">qnorm</span>(.<span class="dv">90</span> <span class="op">+</span><span class="st"> </span><span class="fl">.05</span>)</span>
 <span id="cb17-3"><a href="inference-cat.html#cb17-3" aria-hidden="true"></a><span class="co">#&gt; [1] 1.645</span></span>
@@ -1611,7 +1618,7 @@ where <span class="math inline">\(z^{\star}\)</span> corresponds to the confiden
 <span id="cb17-11"><a href="inference-cat.html#cb17-11" aria-hidden="true"></a><span class="co">#&gt; [1] 2.576</span></span></code></pre></div>
 
 <div class="guidedpractice">
-Previously, we found that implanting a stent in the brain of a patient at risk for a stroke <em>increased</em> the risk of a stroke. The study estimated a 9% increase in the number of patients who had a stroke, and the standard error of this estimate was about <span class="math inline">\(SE = 2.8%\)</span>. Compute a 90% confidence interval for the effect.<a href="#fn86" class="footnote-ref" id="fnref86"><sup>86</sup></a>
+Previously, we found that implanting a stent in the brain of a patient at risk for a stroke <em>increased</em> the risk of a stroke. The study estimated a 9% increase in the number of patients who had a stroke, and the standard error of this estimate was about <span class="math inline">\(SE = 2.8%\)</span>. Compute a 90% confidence interval for the effect.<a href="#fn87" class="footnote-ref" id="fnref87"><sup>87</sup></a>
 </div>
 <!--
 #### Choosing a sample size when estimating a proportion {-}
@@ -1842,7 +1849,7 @@ Using a few different studies, let’s look more carefully at this idea of a <st
 <div id="caseStudyGenderDiscrimination" class="section level4" number="5.4.1.1">
 <h4><span class="header-section-number">5.4.1.1</span> Gender discrimination</h4>
 <p></p>
-<p>We consider a study investigating gender discrimination in the 1970s, which is set in the context of personnel decisions within a bank.<a href="#fn87" class="footnote-ref" id="fnref87"><sup>87</sup></a> The research question we hope to answer is, “Are females discriminated against in promotion decisions made by male managers?”</p>
+<p>We consider a study investigating gender discrimination in the 1970s, which is set in the context of personnel decisions within a bank.<a href="#fn88" class="footnote-ref" id="fnref88"><sup>88</sup></a> The research question we hope to answer is, “Are females discriminated against in promotion decisions made by male managers?”</p>
 </div>
 <div id="observed-data" class="section level4 unnumbered">
 <h4>Observed data</h4>
@@ -1852,7 +1859,7 @@ The files given to the participants were identical, except that half of them ind
 These files were randomly assigned to the subjects.</p>
 
 <div class="guidedpractice">
-Is this an observational study or an experiment? How does the type of study impact what can be inferred from the results?<a href="#fn88" class="footnote-ref" id="fnref88"><sup>88</sup></a>
+Is this an observational study or an experiment? How does the type of study impact what can be inferred from the results?<a href="#fn89" class="footnote-ref" id="fnref89"><sup>89</sup></a>
 </div>
 <p>For each supervisor we recorded the gender associated with the assigned file and the promotion decision.
 Using the results of the study summarized in Table <a href="inference-cat.html#tab:discriminationResults">5.2</a>, we would like to evaluate if females are unfairly discriminated against in promotion decisions.
@@ -1990,7 +1997,7 @@ If this is the case, and the data support <span class="math inline">\(H_A\)</spa
 <p>Table <a href="inference-cat.html#tab:discriminationResults">5.2</a> shows that 35 bank supervisors recommended promotion and 13 did not.
 Now, suppose the bankers’ decisions were independent of gender.
 Then, if we conducted the experiment again with a different random assignment of gender to the files, differences in promotion rates would be based only on random fluctuation.
-We can actually perform this <strong>randomization</strong>, which simulates what would have happened if the bankers’ decisions had been independent of gender but we had distributed the file genders differently.<a href="#fn89" class="footnote-ref" id="fnref89"><sup>89</sup></a></p>
+We can actually perform this <strong>randomization</strong>, which simulates what would have happened if the bankers’ decisions had been independent of gender but we had distributed the file genders differently.<a href="#fn90" class="footnote-ref" id="fnref90"><sup>90</sup></a></p>
 <p>In this <strong>simulation</strong>, we thoroughly shuffle 48 personnel files, 35 labeled <code>promoted</code> and 13 labeled <code>not promoted</code>, and we deal these files into two stacks.
 Note that by keeping 35 promoted and 13 not promoted, we are assuming that 35 of the bank managers would have promoted the individual whose content is contained in the file (<strong>independent</strong> of gender).
 We will deal 24 files into the first stack, which will represent the 24 “female” files.
@@ -2094,7 +2101,7 @@ Total
 
 <div class="guidedpractice">
 What is the difference in promotion rates between the two simulated groups in Table <a href="inference-cat.html#tab:discriminationRand1">5.3</a> ?
-How does this compare to the observed difference 29.2% from the actual study?<a href="#fn90" class="footnote-ref" id="fnref90"><sup>90</sup></a>
+How does this compare to the observed difference 29.2% from the actual study?<a href="#fn91" class="footnote-ref" id="fnref91"><sup>91</sup></a>
 </div>
 <p>Figure <a href="inference-cat.html#fig:genderrand4">5.20</a> shows that the difference in promotion rates is much larger in the original data than it is in the simulated groups (0.292 &gt;&gt;&gt; 0.042).
 The quantity of interest throughout this case study has been the difference in promotion rates.
@@ -2135,11 +2142,11 @@ Such a low probability indicates that observing such a large difference from cha
 <li><p><span class="math inline">\(H_0\)</span>: <strong>Null hypothesis</strong>. Gender has no effect on promotion decision, and we observed a difference that is so large that it would only happen rarely.</p></li>
 <li><p><span class="math inline">\(H_A\)</span>: <strong>Alternative hypothesis</strong>. Gender has an effect on promotion decision, and what we observed was actually due to equally qualified women being discriminated against in promotion decisions, which explains the large difference of 29.2%.</p></li>
 </ul>
-<p>When we conduct formal studies, we reject a null position (the idea that the data are a result of chance only) if the data strongly conflict with that null position.<a href="#fn91" class="footnote-ref" id="fnref91"><sup>91</sup></a>
+<p>When we conduct formal studies, we reject a null position (the idea that the data are a result of chance only) if the data strongly conflict with that null position.<a href="#fn92" class="footnote-ref" id="fnref92"><sup>92</sup></a>
 In our analysis, we determined that there was only a <span class="math inline">\(\approx\)</span> 2% probability of obtaining a sample where <span class="math inline">\(\geq\)</span> 29.2% more males than females get promoted by chance alone, so we conclude that the data provide strong evidence of gender discrimination against women by the supervisors.</p>
 
 <div class="guidedpractice">
-What statistical term is given to the 2% probability of obtaining a sample where <span class="math inline">\(\geq\)</span> 29.2% more males than females get promoted by chance alone?<a href="#fn92" class="footnote-ref" id="fnref92"><sup>92</sup></a>
+What statistical term is given to the 2% probability of obtaining a sample where <span class="math inline">\(\geq\)</span> 29.2% more males than females get promoted by chance alone?<a href="#fn93" class="footnote-ref" id="fnref93"><sup>93</sup></a>
 </div>
 </div>
 <div id="scope-of-inference" class="section level4 unnumbered">
@@ -2160,14 +2167,14 @@ We can summarize the two different perspectives using the null and alternative h
 </ul>
 
 <div class="guidedpractice">
-How could you design a randomized experiment to test these two hypotheses?<a href="#fn93" class="footnote-ref" id="fnref93"><sup>93</sup></a>
+How could you design a randomized experiment to test these two hypotheses?<a href="#fn94" class="footnote-ref" id="fnref94"><sup>94</sup></a>
 </div>
 <p>In statistical notation, we can define parameters <span class="math inline">\(\pi_{ctrl}\)</span> = the probability a student under a control condition (not reminding them that they can save money for later purchases) refrains from making a purchase, and <span class="math inline">\(\pi_{trmt}\)</span> = the probability a student under a treatment condition (reminding them that they can save money for later purchases) refrains from makes a purchase. Our hypotheses are then</p>
 <ul>
 <li><p><span class="math inline">\(H_0: \pi_{trmt} - \pi_{ctrl} = 0\)</span></p></li>
 <li><p><span class="math inline">\(H_A: \pi_{trmt} - \pi_{ctrl} &gt; 0\)</span></p></li>
 </ul>
-<p>In this section, we’ll explore an experiment conducted by researchers that investigates this very question for students at a university in the southwestern United States.<a href="#fn94" class="footnote-ref" id="fnref94"><sup>94</sup></a></p>
+<p>In this section, we’ll explore an experiment conducted by researchers that investigates this very question for students at a university in the southwestern United States.<a href="#fn95" class="footnote-ref" id="fnref95"><sup>95</sup></a></p>
 </div>
 <div id="observed-data-1" class="section level4 unnumbered">
 <h4>Observed data</h4>
@@ -2369,7 +2376,7 @@ Total
 Figure 5.22: Segmented bar plot comparing the proportion who bought and did not buy the DVD between the control and treatment groups.
 </p>
 </div>
-<p>We will define a <strong>success</strong> in this study as a student who chooses not to buy the DVD.<a href="#fn95" class="footnote-ref" id="fnref95"><sup>95</sup></a>
+<p>We will define a <strong>success</strong> in this study as a student who chooses not to buy the DVD.<a href="#fn96" class="footnote-ref" id="fnref96"><sup>96</sup></a>
 Then, the value of interest is the change in DVD purchase rates that results by reminding students that not spending money now means they can spend the money later.</p>
 <!--
 %A first look at the data suggests that reminding students that not spending money means they can spend the money later has an impact. 
@@ -2636,7 +2643,7 @@ Total
 <div class="guidedpractice">
 Is this an observational study or an experiment?
 What implications does the study type have on what can
-be inferred from the results?<a href="#fn96" class="footnote-ref" id="fnref96"><sup>96</sup></a>
+be inferred from the results?<a href="#fn97" class="footnote-ref" id="fnref97"><sup>97</sup></a>
 </div>
 <p>In this study, a smaller proportion of patients
 who received the vaccine showed signs of an infection
@@ -2653,9 +2660,9 @@ of this parameter is</p>
 <p><span class="math display">\[
 \frac{\hat{p}_{Vac}}{\hat{p}_{Pla}} = \frac{5/14}{6/6} = 0.357.
 \]</span></p>
-<p>Converting this to a percent decrease<a href="#fn97" class="footnote-ref" id="fnref97"><sup>97</sup></a>, we
+<p>Converting this to a percent decrease<a href="#fn98" class="footnote-ref" id="fnref98"><sup>98</sup></a>, we
 see that the patients in the vaccine group had a 64.3% reduced risk of infection
-compared to the placebo group.<a href="#fn98" class="footnote-ref" id="fnref98"><sup>98</sup></a></p>
+compared to the placebo group.<a href="#fn99" class="footnote-ref" id="fnref99"><sup>99</sup></a></p>
 <p>In terms of relative risk, our null and alternative hypotheses are</p>
 <p><strong>Independence model</strong> <span class="math inline">\(H_0: \dfrac{\pi_{Vac}}{\pi_{Pla}} = 1\)</span>
 <br></p>
@@ -2709,7 +2716,7 @@ that the vaccine was helpful seems more plausible.</p>
 
 <div class="guidedpractice">
 How could you use cards to re-randomize one sample into groups? Remember, in this hypothetical world, we believe each patient that got an infection was going to get it regardless of which group they were in, and we would like to see what happens if we randomly assign these patients to the treatment
-and control groups again.<a href="#fn99" class="footnote-ref" id="fnref99"><sup>99</sup></a>
+and control groups again.<a href="#fn100" class="footnote-ref" id="fnref100"><sup>100</sup></a>
 </div>
 <p>Figure <a href="inference-cat.html#fig:malaria-rand-dot-plot">5.25</a> shows a histogram
 of the relative risks found from 1,000 randomization simulations,
@@ -2753,7 +2760,7 @@ clinical setting.</p></li>
 to reject <span class="math inline">\(H_0\)</span> and assert that the vaccine was useful.
 When we conduct formal studies, usually we reject the
 notion that we just happened to observe a rare
-event.<a href="#fn100" class="footnote-ref" id="fnref100"><sup>100</sup></a></p></li>
+event.<a href="#fn101" class="footnote-ref" id="fnref101"><sup>101</sup></a></p></li>
 </ol>
 <p>In this case, we reject the independence model in favor
 of the alternative.
@@ -2863,7 +2870,7 @@ A Type 2 Error means the court failed to reject <span class="math inline">\(H_0\
 </div>
 
 <div class="guidedpractice">
-Consider the opportunity cost study where we concluded students were less likely to make a DVD purchase if they were reminded that money not spent now could be spent later. What would a Type 1 Error represent in this context?<a href="#fn101" class="footnote-ref" id="fnref101"><sup>101</sup></a>
+Consider the opportunity cost study where we concluded students were less likely to make a DVD purchase if they were reminded that money not spent now could be spent later. What would a Type 1 Error represent in this context?<a href="#fn102" class="footnote-ref" id="fnref102"><sup>102</sup></a>
 </div>
 
 <div class="example">
@@ -2875,7 +2882,7 @@ To lower the Type 1 Error rate, we might raise our standard for conviction from 
 
 <div class="guidedpractice">
 How could we reduce the Type 2 Error rate in US courts?
-What influence would this have on the Type 1 Error rate?<a href="#fn102" class="footnote-ref" id="fnref102"><sup>102</sup></a>
+What influence would this have on the Type 1 Error rate?<a href="#fn103" class="footnote-ref" id="fnref103"><sup>103</sup></a>
 </div>
 <p></p>
 <p>The example and guided practice above provide an important lesson: if we reduce how often we make one type of error, we generally make more of the other type.</p>
@@ -2929,7 +2936,7 @@ To do so, let’s learn about <strong>two-sided hypothesis tests</strong> in the
 <p>Cardiopulmonary resuscitation (CPR) is a procedure used on individuals suffering a heart attack when other emergency resources are unavailable.
 This procedure is helpful in providing some blood circulation to keep a person alive, but CPR chest compressions can also cause internal injuries. Internal bleeding and other injuries that can result from CPR complicate additional treatment efforts.
 For instance, blood thinners may be used to help release a clot that is causing the heart attack once a patient arrives in the hospital. However, blood thinners negatively affect internal injuries.</p>
-<p>Here we consider an experiment with patients who underwent CPR for a heart attack and were subsequently admitted to a hospital.<a href="#fn103" class="footnote-ref" id="fnref103"><sup>103</sup></a>
+<p>Here we consider an experiment with patients who underwent CPR for a heart attack and were subsequently admitted to a hospital.<a href="#fn104" class="footnote-ref" id="fnref104"><sup>104</sup></a>
 Each patient was randomly assigned to either receive a blood thinner (treatment group) or not receive a blood thinner (control group).
 The outcome variable of interest was whether the patient survived for at least 24 hours.</p>
 <!--
@@ -3022,7 +3029,7 @@ Total
 <div class="guidedpractice">
 What is the observed survival rate in the control group?
 And in the treatment group?
-Also, provide a point estimate of the difference in survival proportions of the two groups (<span class="math inline">\(\hat{p}_t - \hat{p}_c\)</span>) and the relative “risk” of survival (<span class="math inline">\(\hat{p}_t/\hat{p}_c\)</span>).<a href="#fn104" class="footnote-ref" id="fnref104"><sup>104</sup></a>
+Also, provide a point estimate of the difference in survival proportions of the two groups (<span class="math inline">\(\hat{p}_t - \hat{p}_c\)</span>) and the relative “risk” of survival (<span class="math inline">\(\hat{p}_t/\hat{p}_c\)</span>).<a href="#fn105" class="footnote-ref" id="fnref105"><sup>105</sup></a>
 </div>
 <p>According to the point estimate, for patients who have undergone CPR outside of the hospital, an additional 13% of these patients survive when they are treated with blood thinners. Interpreting the relative risk, patients in this sample who had undergone CPR outside of the hospital had a 59% higher survival rate when they were treated with blood thinners.
 However, we wonder if this difference could be easily explainable by chance.</p>
@@ -3039,7 +3046,7 @@ Figure 5.26: Null distribution of the point estimate for the difference in propo
 However, contrary to how we calculated the p-value in previous studies, the p-value of this test is not 0.131!</p>
 <p>The p-value is defined as the chance we observe a result <em>at least as favorable to the alternative hypothesis as the result</em> (i.e., the difference) we observe.
 In this case, any differences less than or equal to -0.13 would also provide equally strong evidence favoring the alternative hypothesis as a difference of +0.13 did.
-A difference of -0.13 would correspond to the survival rate in the <em>control group</em> being 0.13 higher than the treatment group.<a href="#fn105" class="footnote-ref" id="fnref105"><sup>105</sup></a>
+A difference of -0.13 would correspond to the survival rate in the <em>control group</em> being 0.13 higher than the treatment group.<a href="#fn106" class="footnote-ref" id="fnref106"><sup>106</sup></a>
 In Figure <a href="inference-cat.html#fig:CPR-study-p-value">5.27</a> we’ve also shaded these differences in the left tail of the distribution.
 These two shaded tails provide a visual representation of the p-value for a two-sided test.</p>
 <!--
@@ -3066,7 +3073,7 @@ Use a one-sided hypothesis test only if you truly have interest in only one dire
 <div class="onebox">
 <p><strong>Computing a p-value for a two-sided test.</strong></p>
 If your null distribution is symmetric, first compute the p-value for one tail of the distribution, then double that value to get the two-sided p-value.
-That’s it!<a href="#fn106" class="footnote-ref" id="fnref106"><sup>106</sup></a>
+That’s it!<a href="#fn107" class="footnote-ref" id="fnref107"><sup>107</sup></a>
 </div>
 
 <div class="example">
@@ -3126,10 +3133,8 @@ Hypotheses should be set up <em>before</em> observing the data.
 </div>
 </div>
 <div id="two-prop-boot-ci" class="section level3" number="5.4.2">
-<h3><span class="header-section-number">5.4.2</span> Bootstrap confidence interval for <span class="math inline">\(p_1 - p_2\)</span></h3>
-<p>The key will be to use two different bags to simulate from the original data.</p>
-<p>Use the CPR data. After we find the CI (use percentile and SE methods), write the interval values down below in the math section that describes the generic confidence interval method.</p>
-<p>In Section <a href="inference-cat.html#two-prop-errors">5.4.1</a>, we worked with the randomization distribution to understand the distribution of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> when the null hypothesis <span class="math inline">\(H_0: p_1 - p_2 = 0\)</span> is true.
+<h3><span class="header-section-number">5.4.2</span> Bootstrap confidence interval for <span class="math inline">\(\pi_1 - \pi_2\)</span></h3>
+<p>In Section <a href="inference-cat.html#two-prop-errors">5.4.1</a>, we worked with the randomization distribution to understand the distribution of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> when the null hypothesis <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span> is true.
 Now, through bootstrapping, we study the variability of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> without the null assumption.</p>
 <div id="observed-data-3" class="section level4 unnumbered">
 <h4>Observed data</h4>
@@ -3139,58 +3144,64 @@ The outcome variable of interest was whether the patient survived for at least 2
 </div>
 <div id="variability-of-the-statistic-3" class="section level4 unnumbered">
 <h4>Variability of the statistic</h4>
-<p>The bootstrap method applied to two samples is an extension of the method described in Section <a href="#boot-ci"><strong>??</strong></a>. Now, we have two samples, so each sample estimates the population from which they came. In the CPR setting, the <code>treatment</code> sample estimates the population of all individuals who have gotten (or will get) the treatment; the <code>control</code> sample estimate the population of all individuals who do not get the treatment and are controls. Figure <a href="inference-cat.html#fig:boot2samp1">5.29</a> extends Figure <a href="inference-cat.html#fig:boot1">5.11</a> to show the bootstrapping process from two samples simultaneously.</p>
-<div class="figure" style="text-align: center"><span id="fig:boot2samp1"></span>
-<img src="05/figures/boot2samp1.png" alt="(probably populations only, no BS samples) two sample estimating two populations (two infinite popuations)" width="75%" />
+<p>The bootstrap method applied to two samples is an extension of the method described in Section <a href="inference-cat.html#boot-ci-prop">5.3.2</a>. Now, we have two samples, so each sample estimates the population from which they came. In the CPR setting, the <code>treatment</code> sample estimates the population of all individuals who have gotten (or will get) the treatment; the <code>control</code> sample estimate the population of all individuals who do not get the treatment and are controls. Figure <a href="inference-cat.html#fig:boot2proppops">5.29</a> extends Figure <a href="inference-cat.html#fig:boot1">5.11</a> to show the bootstrapping process from two samples simultaneously.</p>
+<div class="figure" style="text-align: center"><span id="fig:boot2proppops"></span>
+<img src="05/figures/boot2proppops.png" alt="Creating two estimated populations from two different samples from different populations." width="100%" />
 <p class="caption">
-Figure 5.29: (probably populations only, no BS samples) two sample estimating two populations (two infinite popuations)
+Figure 5.29: Creating two estimated populations from two different samples from different populations.
 </p>
 </div>
-<p>The variability of the statistic (the difference in sample proportions) can be calculated by taking one treatment bootstrap sample and one control bootstrap sample and calculating the difference of the bootstrap survival proportions. One sample from each of the estimated populations has been taken with the sample proportions calculated for the treatment bootstrap sample and the control bootstrap sample.</p>
-
-<div class="todo">
-once the image is in, we need to describe above (and below) the values (proportions, differences) in the image explicitly.
+<p>As before, once the population is estimated, we can randomly resample observations to create bootstrap samples, as seen in Figure <a href="inference-cat.html#fig:boot2propresamps">5.30</a>. Computationally, each bootstrap resample
+is created by randomly sampling with replacement from the original sample.</p>
+<div class="figure" style="text-align: center"><span id="fig:boot2propresamps"></span>
+<img src="05/figures/boot2propresamps.png" alt="Bootstrapped resamples from two separate estimated populations." width="100%" />
+<p class="caption">
+Figure 5.30: Bootstrapped resamples from two separate estimated populations.
+</p>
 </div>
+<p>The variability of the statistic (the difference in sample proportions) can be calculated by taking one treatment bootstrap sample and one control bootstrap sample and calculating the difference of the bootstrap survival proportions. Figure @(boot2samp2) displays one bootstrap resample from each of the estimated populations, with the difference in sample proportions calculated between the treatment bootstrap sample and the control bootstrap sample.</p>
 <div class="figure" style="text-align: center"><span id="fig:boot2samp2"></span>
-<img src="05/figures/boot2samp2.png" alt="some way to connect the first BS sample on the left wiht the first BS sample on the right." width="75%" />
+<img src="05/figures/boot2prop3.png" alt="The bootstrap resample on the left is from the first estimated population; the one on the right from the second. In this case, the value of the simulated bootstrap statistic would be $\hat{p}_1 - \hat{p}_2 = \frac{2}{7}-\frac{1}{7}$." width="75%" />
 <p class="caption">
-Figure 5.30: some way to connect the first BS sample on the left wiht the first BS sample on the right.
+Figure 5.31: The bootstrap resample on the left is from the first estimated population; the one on the right from the second. In this case, the value of the simulated bootstrap statistic would be <span class="math inline">\(\hat{p}_1 - \hat{p}_2 = \frac{2}{7}-\frac{1}{7}\)</span>.
 </p>
 </div>
-<p>As always, the variability of the difference in proportions can only be estimated by repeated simulations, in this case, repeated bootstrap samples. Figure <a href="inference-cat.html#fig:boot2samp2">5.30</a> shows multiple bootstrap differences calculated for each of the repeated bootstrap samples.</p>
+<p>As always, the variability of the difference in proportions can only be estimated by repeated simulations, in this case, repeated bootstrap samples. Figure <a href="inference-cat.html#fig:boot2samp3">5.32</a> shows multiple bootstrap differences calculated for each of the repeated bootstrap samples.</p>
 <div class="figure" style="text-align: center"><span id="fig:boot2samp3"></span>
-<img src="05/figures/boot2samp3.png" alt="in this graph, some kind of connection between each of the two sides" width="75%" />
+<img src="05/figures/boot2prop2.png" alt="in this graph, some kind of connection between each of the two sides" width="75%" />
 <p class="caption">
-Figure 5.31: in this graph, some kind of connection between each of the two sides
+Figure 5.32: in this graph, some kind of connection between each of the two sides
 </p>
-</div>
-
-<div class="todo">
-Do we also want to visualize “sampling with replacement” in the two sample case?
 </div>
 <p>Repeated bootstrap simulations lead to a bootstrap sampling distribution of the statistic of interest, here the difference in sample proportions.
-Figure <a href="inference-cat.html#fig:bootCPR1000">5.32</a> shows 1000 bootstrap differences in proportions for the CPR data.</p>
-<div class="figure" style="text-align: center"><span id="fig:bootCPR1000"></span>
-<img src="05-inference-cat_files/figure-html/bootCPR1000-1.png" alt="A histogram of differences in proportions from 1000 bootstrap simulations." width="70%" />
+Figure <a href="inference-cat.html#fig:boot2samp1">5.33</a> visualizes the process in the toy example, and Figure <a href="inference-cat.html#fig:bootCPR1000">5.34</a> shows 1000 bootstrap differences in proportions for the CPR data.</p>
+<div class="figure" style="text-align: center"><span id="fig:boot2samp1"></span>
+<img src="05/figures/boot2prop1.png" alt="The process of repeatedly resampling from the estimated population (sampling with replacement from the original sample), computing a difference in sample proportions from each pair of samples, then plotting this distribution." width="100%" />
 <p class="caption">
-Figure 5.32: A histogram of differences in proportions from 1000 bootstrap simulations.
+Figure 5.33: The process of repeatedly resampling from the estimated population (sampling with replacement from the original sample), computing a difference in sample proportions from each pair of samples, then plotting this distribution.
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:bootCPR1000"></span>
+<img src="05-inference-cat_files/figure-html/bootCPR1000-1.png" alt="A histogram of differences in proportions (treatment $-$ control) from 1000 bootstrap simulations using the CPR data." width="70%" />
+<p class="caption">
+Figure 5.34: A histogram of differences in proportions (treatment <span class="math inline">\(-\)</span> control) from 1000 bootstrap simulations using the CPR data.
 </p>
 </div>
 </div>
 <div id="percentile-vs.-se-bootstrap-confidence-intervals" class="section level4 unnumbered">
 <h4>Percentile vs. SE bootstrap confidence intervals</h4>
-<p>Figure <a href="inference-cat.html#fig:bootCPR1000">5.32</a> provides an estimate for the variability of the difference in survival proportions from sample to sample, The values in the histogram can be used in two different ways to create a confidence interval for the parameter of interest: <span class="math inline">\(p_1 - p_2\)</span>.</p>
+<p>Figure <a href="inference-cat.html#fig:bootCPR1000">5.34</a> provides an estimate for the variability of the difference in survival proportions from sample to sample, The values in the histogram can be used in two different ways to create a confidence interval for the parameter of interest: <span class="math inline">\(\pi_1 - \pi_2\)</span>.</p>
 <div id="percentile-bootstrap-interval" class="section level5 unnumbered">
 <h5>Percentile bootstrap interval</h5>
-<p>As in Section <a href="#boot-ci"><strong>??</strong></a>, the bootstrap confidence interval can be calculated directly from the bootstrapped differences in Figure <a href="inference-cat.html#fig:bootCPR1000">5.32</a>. The interval created from the percentiles of the distribution is called the <strong>percentile interval</strong>.
-Note that here we calculate the 90% confidence interval by finding the <span class="math inline">\(5^{th}\)</span> and <span class="math inline">\(95^{th}\)</span> percentile values from the bootstrapped differences.
+<p>As in Section <a href="inference-cat.html#boot-ci-prop">5.3.2</a>, the bootstrap confidence interval can be calculated directly from the bootstrapped differences in Figure <a href="inference-cat.html#fig:bootCPR1000">5.34</a>. The interval created from the percentiles of the distribution is called the <strong>percentile interval</strong>.
+Note that here we calculate the 90% confidence interval by finding the 5<sup>th</sup> and 95<sup>th</sup> percentile values from the bootstrapped differences.
 The bootstrap 5 percentile proportion is -0.155 and the 95 percentile is 0.167.
-The result is: we are 90% confident that, in the population, the true difference in probability of survival is between -0.155 and 0.167.
-The interval shows that we do not have much definitive evidence of the affect of blood thinners, one way or another.</p>
-<div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/CPR%20percentile%20interval-1.png" alt="The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the probability of survival in the treatment group is $\hat{p}_{t}  = 14/40$ and the probability of survival in the control group is $\hat{p}_{c} = 11/50$. " width="70%" />
+The result is: we are 90% confident that, in the population, the true difference in probability of survival (treatment <span class="math inline">\(-\)</span> control) is between -0.155 and 0.167.
+More clearly, we are 90% confident that the probability of survival for heart attack patients who underwent CPR is between 0.155 less to 0.167 more than that for patients who did not undergo CPR. The interval shows that we do not have much definitive evidence of the affect of blood thinners, one way or another.</p>
+<div class="figure" style="text-align: center"><span id="fig:bootCPR1000CI"></span>
+<img src="05-inference-cat_files/figure-html/bootCPR1000CI-1.png" alt="The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the probability of survival in the treatment group is $\hat{p}_{t}  = 14/40$ and the probability of survival in the control group is $\hat{p}_{c} = 11/50$. " width="70%" />
 <p class="caption">
-(#fig:CPR percentile interval)The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the probability of survival in the treatment group is <span class="math inline">\(\hat{p}_{t} = 14/40\)</span> and the probability of survival in the control group is <span class="math inline">\(\hat{p}_{c} = 11/50\)</span>.
+Figure 5.35: The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the probability of survival in the treatment group is <span class="math inline">\(\hat{p}_{t} = 14/40\)</span> and the probability of survival in the control group is <span class="math inline">\(\hat{p}_{c} = 11/50\)</span>.
 </p>
 </div>
 </div>
@@ -3198,27 +3209,45 @@ The interval shows that we do not have much definitive evidence of the affect of
 <h5>SE bootstrap interval</h5>
 <p>Alternatively, we can use the variability in the bootstrapped differences to calculate a standard error of the difference.
 The resulting interval is called the <strong>SE interval</strong>.
-Section <a href="inference-cat.html#math-2prop">5.4.5</a> details the mathematical model for the standard error of the difference in sample proportions, but the bootstrap distribution typically does an excellent job of estimating the variability.</p>
+Section <a href="inference-cat.html#math-2prop">5.4.3</a> details the mathematical model for the standard error of the difference in sample proportions, but the bootstrap distribution typically does an excellent job of estimating the variability.</p>
 <p><span class="math display">\[SE(\hat{p}_t - \hat{p}_c) \approx SD(\hat{p}_{bs,t} - \hat{p}_{bs,c}) = 0.0975\]</span></p>
-<p>The calculation above was performed in R using the <code>sd()</code> function, but any statistical software will calculate the standard deviation of the differences, here, the exact quantity we hope to approximate.</p>
-<p>Because we don’t know the true distribution of <span class="math inline">\(\hat{p}_t - \hat{p}_c\)</span>, we will use a rough approximation to find a confidence interval for <span class="math inline">\(p_t - p_c\)</span>. A 95% confidence interval for <span class="math inline">\(p_t - p_c\)</span> is given by:</p>
-<p><span class="math display">\[\begin{align}
-\hat{p}_t - \hat{p}_c &amp;\pm&amp; 2 SE(\hat{p}_t - \hat{p}_c)\\
-14/40 - 11/50 &amp;\pm&amp; 0.0975\\
-&amp;&amp;(-0.065, 0.325)
-\end{align}\]</span></p>
-<p>We are 95% confident that the true value of <span class="math inline">\(p_t - p_c\)</span> is between -0.065 and 0.325. Again, the wide confidence interval that overlaps zero indicates that the study provides very little evidence about the effectiveness of blood thinners.</p>
+<p>The variability of the bootstrapped difference in proportions was calculated in <code>R</code> using the <code>sd()</code> function, but any statistical software will calculate the standard deviation of the differences, here, the exact quantity we hope to approximate.</p>
+<p>Note that we do not know know the true distribution of <span class="math inline">\(\hat{p}_t - \hat{p}_c\)</span>, so we will use a rough approximation to find a confidence interval for <span class="math inline">\(\pi_t - \pi_c\)</span>. As seen in the bootstrap histograms, the shape of the distribution is roughly symmetric and bell-shaped. So for a rough approximation, we will apply the 68-95-99.7 rule which tells us that 95% of observed differences should be roughly no farther than 2 SE from the true parameter difference. An approximate 95% confidence interval for <span class="math inline">\(\pi_t - \pi_c\)</span> is given by:</p>
+<p><span class="math display">\[\begin{align*}
+\hat{p}_t - \hat{p}_c \pm 2 \cdot SE \ \ \ \rightarrow \ \ \ 14/40 - 11/50 \pm 2 \cdot 0.0975 \ \ \  \rightarrow \ \ \  (-0.065, 0.325)
+\end{align*}\]</span></p>
+<p>We are 95% confident that the true value of <span class="math inline">\(\pi_t - \pi_c\)</span> is between -0.065 and 0.325. Again, the wide confidence interval that overlaps zero indicates that the study provides very little evidence about the effectiveness of blood thinners.</p>
+
+<div class="important">
+Since the multiplier “2” in the SE bootstrap interval comes from the 68-95-99.7 rule for normal distributions, these intervals are only valid when the bootstrap sampling distribution is approximately normal.
 </div>
 </div>
 </div>
-<div id="two-prop-test-theory" class="section level3" number="5.4.3">
-<h3><span class="header-section-number">5.4.3</span> Theory-based test for <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span></h3>
+<div id="what-does-95-mean" class="section level4 unnumbered">
+<h4>What does 95% mean?</h4>
+<p>Recall that the goal of a confidence interval is to find a plausible range of values for a <em>parameter</em> of interest.
+The estimated statistic is not the value of interest, but it is typically the best guess for the unknown parameter.
+The confidence level (often 95%) is a number that takes a while to get used to. Surprisingly, the percentage doesn’t describe the data set at hand, it describes many possible data sets.
+One way to understand a confidence interval is to think about all the confidence intervals that you have ever made or that you will ever make as a scientist, the confidence level describes <strong>those</strong> intervals.</p>
+<p>Figure <a href="inference-cat.html#fig:ci25ints">5.36</a> demonstrates a hypothetical situation in which 25 different studies are performed on the exact same population (with the same goal of estimating the true parameter value of <span class="math inline">\(\pi_1 - \pi_2 = 0.47\)</span>).
+The study at hand represents one point estimate (a dot) and a corresponding interval.
+It is not possible to know whether the interval at hand is to the right of the unknown true parameter value (the black line) or to the left of that line.
+It is also impossible to know whether the interval captures the true parameter (is blue) or doesn’t (is red).
+If we are making 95% intervals, then 5% of the intervals we create over our lifetime will <em>not</em> capture the parameter of interest (e.g., will be red as in Figure <a href="inference-cat.html#fig:ci25ints">5.36</a> ).
+What we know is that over our lifetimes as scientists, 95% of the intervals created and reported on will capture the parameter value of interest: thus the language “95% confident.”</p>
+<div class="figure" style="text-align: center"><span id="fig:ci25ints"></span>
+<img src="05-inference-cat_files/figure-html/ci25ints-1.png" alt="One hypothetical population, parameter value of: $\pi_1 - \pi_2 = 0.47$.  Twenty-five different studies all which led to a different point estimate, SE, and confidence interval.  The study at hand is one of the horizontal lines (hopefully a blue line!)." width="70%" />
+<p class="caption">
+Figure 5.36: One hypothetical population, parameter value of: <span class="math inline">\(\pi_1 - \pi_2 = 0.47\)</span>. Twenty-five different studies all which led to a different point estimate, SE, and confidence interval. The study at hand is one of the horizontal lines (hopefully a blue line!).
+</p>
 </div>
-<div id="two-prop-ci-theory" class="section level3" number="5.4.4">
-<h3><span class="header-section-number">5.4.4</span> Theory-based confidence interval for <span class="math inline">\(\pi_1 - \pi_2\)</span></h3>
+<p>The choice of 95% or 90% or even 99% as a confidence level is admittedly somewhat arbitrary; however, it is related to the logic we used when deciding that a p-value should be declared as significant if it is lower than 0.05 (or 0.10 or 0.01, respectively).
+Indeed, one can show mathematically, that a 95% confidence interval and a two-sided hypothesis test at a cutoff of 0.05 will provide the same conclusion when the same data and mathematical tools are applied for the analysis.
+A full derivation of the explicit connection between confidence intervals and hypothesis tests is beyond the scope of this text.</p>
 </div>
-<div id="math-2prop" class="section level3" number="5.4.5">
-<h3><span class="header-section-number">5.4.5</span> Mathematical model</h3>
+</div>
+<div id="math-2prop" class="section level3" number="5.4.3">
+<h3><span class="header-section-number">5.4.3</span> Theory-based methods for <span class="math inline">\(\pi_1 - \pi_2\)</span></h3>
 <div id="variability-of-hatp_1---hatp_2" class="section level4 unnumbered">
 <h4>Variability of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span></h4>
 <p>Like with <span class="math inline">\(\hat{p}\)</span>, the difference of two sample
@@ -3234,7 +3263,7 @@ the success-failure condition must be met by both groups.</p>
 <p>The difference <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> can be modeled
 using a normal distribution when</p>
 <ol style="list-style-type: decimal">
-<li><em>Independence</em>, extended. The data are independent within and between
+<li><em>Independence</em> (extended). The data are independent within and between
 the two groups. Generally this is satisfied if the data come from two independent random samples or if the data come from a randomized experiment.</li>
 <li><em>Success-failure condition.</em>
 The success-failure condition holds for both
@@ -3283,8 +3312,8 @@ Think about these steps when you apply statistical methods.
 -->
 
 <div class="onebox">
-<p><strong>Standard error of the difference in two proportions, <span class="math inline">\(\hat{p}_1 -\hat{p}_2\)</span>.</strong></p>
-When the conditions are met so that the distribution of <span class="math inline">\(\hat{p}\)</span> is nearly normal, the <strong>variability</strong> of the difference in proportions, <span class="math inline">\(\hat{p}_1 -\hat{p}_2\)</span>, is well described by:
+<p><strong>Standard Error of the difference in two proportions, <span class="math inline">\(\hat{p}_1 -\hat{p}_2\)</span>.</strong></p>
+When the conditions are met so that the distribution fo <span class="math inline">\(\hat{p}\)</span> is nearly normal, the <strong>variability</strong> of the difference in proportions, <span class="math inline">\(\hat{p}_1 -\hat{p}_2\)</span>, is well described by:
 <span class="math display">\[\begin{eqnarray*}
   SE(\hat{p}_1 -\hat{p}_2) = \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}
   \end{eqnarray*}\]</span>
@@ -3382,7 +3411,7 @@ for these data.
 <p>Create and interpret a 90% confidence interval of the
 difference for the survival rates in the CPR study.</p>
 <hr />
-We’ll use <span class="math inline">\(p_t\)</span> for the survival
+<p>We’ll use <span class="math inline">\(p_t\)</span> for the survival
 rate in the treatment group and <span class="math inline">\(p_c\)</span> for the control
 group:
 <span class="math display">\[\begin{align*}
@@ -3414,7 +3443,8 @@ Because 0% is contained in the interval,
 we do not have enough information to say
 whether blood thinners help or harm
 heart attack patients who have been admitted after
-they have undergone CPR.
+they have undergone CPR.</p>
+Note, the problem was set up as 90% to indicate that there was not a need for a high level of confidence (such a 95% or 99%). A lower degree of confidence increases potential for error, but it also produces a more narrow interval.
 </div>
 <p></p>
 
@@ -3571,17 +3601,18 @@ Control
 </table>
 
 <div class="guidedpractice">
-Is this study an experiment or an observational study?<a href="#fn107" class="footnote-ref" id="fnref107"><sup>107</sup></a>
+Is this study an experiment or an observational study?<a href="#fn108" class="footnote-ref" id="fnref108"><sup>108</sup></a>
 </div>
 
 <div class="guidedpractice">
 Set up hypotheses to test whether there was a difference
-in breast cancer deaths in the mammogram and control groups.<a href="#fn108" class="footnote-ref" id="fnref108"><sup>108</sup></a>
+in breast cancer deaths in the mammogram and control groups.<a href="#fn109" class="footnote-ref" id="fnref109"><sup>109</sup></a>
 </div>
-<p>Using the previous example,
+<p>The research question describing mammograms is set up to address specific hypotheses (in contrast to a confidence interval for a parameter). In order to fully take advantage of the hypothesis testing structure, we asses the randomness under the condition that the null hypothesis is true (as we always do for hypothesis testing).
+Using the data from Table <a href="inference-cat.html#tab:mammogramStudySummaryTable">5.11</a>,
 we will check the conditions for using a normal distribution to
-analyze the results of the study.
-The details are very similar to that of confidence intervals.
+analyze the results of the study using a hypothesis test.
+The details for checking conditions are very similar to that of confidence intervals.
 However, when the null hypothesis is that <span class="math inline">\(p_1 - p_2 = 0\)</span>,
 we use a special proportion called the
 <strong>pooled proportion</strong> to check the success-failure condition:
@@ -3633,11 +3664,11 @@ distribution.
 <div class="onebox">
 <p><strong>Use the pooled proportion when <span class="math inline">\(H_0\)</span> is <span class="math inline">\(p_1 - p_2 = 0\)</span>.</strong></p>
 When the null hypothesis is that the proportions are equal,
-use the pooled proportion (<span class="math inline">\(\hat{p}_{\textit{pooled}}\)</span>)
+use the pooled proportion (<span class="math inline">\(\hat{p}_{\textit{pool}}\)</span>)
 to verify the
 success-failure condition and estimate the standard error:
 <span class="math display">\[\begin{eqnarray*}
-  \hat{p}_{\textit{pooled}}
+  \hat{p}_{\textit{pool}}
     = \frac{\text{number of ``successes&quot;}}
       {\text{number of cases}}
     = \frac{\hat{p}_1 n_1 + \hat{p}_2 n_2}{n_1 + n_2}
@@ -3653,7 +3684,7 @@ of successes in sample 2.
 </div>
 <p>In the previous example,
 the pooled proportion was used to check the success-failure
-condition<a href="#fn109" class="footnote-ref" id="fnref109"><sup>109</sup></a>. In the next example, we see an additional place where the pooled
+condition<a href="#fn110" class="footnote-ref" id="fnref110"><sup>110</sup></a>. In the next example, we see an additional place where the pooled
 proportion comes into play: the standard error calculation.</p>
 
 <div class="example">
@@ -3730,6 +3761,33 @@ or emotional harm to patients.</li>
 <p>These considerations highlight the complexity around medical care and treatment recommendations. Experts and medical boards who study medical treatments use considerations like those above to provide their best recommendation based on the current evidence.</p>
 <p>
 </p>
+<!--
+\BeginKnitrBlock{onebox}<div class="onebox">**Hypothesis testing when ${H_0}$ is $p_1 - p_2 = 0$.**
+  
+  Once you've determined a hypothesis test for the difference
+  of two proportions is the correct procedure, there are four
+  steps to completing the test:
+
+* **Prepare.**
+      Identify the parameter of interest,
+      list out hypotheses,
+      identify the significance level,
+      and compute summary statistics for each group.
+* **Check.**
+      Verify the conditions to ensure
+      $\hat{p}_1 - \hat{p}_2$ is nearly normal under $H_0$.
+      When the null hypothesis is that the difference is 0,
+      use a pooled proportion to check the success-failure
+      condition for each group.
+* **Calculate.**
+      If the conditions hold, compute the standard
+      error, again using the pooled proportion,
+      compute the Z-score, and identify the p-value.
+* **Conclude.**
+      Evaluate the hypothesis test by comparing the p-value
+      to $\alpha$, and provide a conclusion in the context
+      of the problem.</div>\EndKnitrBlock{onebox}
+-->
 </div>
 </div>
 </div>
@@ -4078,7 +4136,7 @@ statistical inference
 <li id="fn68"><p>Numerical answers: (a) 0.1131. (b) 0.3821.<a href="inference-cat.html#fnref68" class="footnote-back">↩︎</a></p></li>
 <li id="fn69"><p>This is an abbreviated solution. (Be sure to draw a figure!) First find the percent who get below 1500 and the percent that get above 2000: <span class="math inline">\(Z_{1500} = 0.00 \to 0.5000\)</span> (area below), <span class="math inline">\(Z_{2000} = 1.67 \to 0.0475\)</span> (area above). Final answer: <span class="math inline">\(1.0000-0.5000 - 0.0475 = 0.4525\)</span>.<a href="inference-cat.html#fnref69" class="footnote-back">↩︎</a></p></li>
 <li id="fn70"><p>5’5’’ is 65 inches. 5’7’’ is 67 inches. Numerical solution: <span class="math inline">\(1.000 - 0.0649 - 0.8183 = 0.1168\)</span>, i.e., 11.68%.<a href="inference-cat.html#fnref70" class="footnote-back">↩︎</a></p></li>
-<li id="fn71"><p>First draw the pictures. To find the area between <span class="math inline">\(Z=-1\)</span> and <span class="math inline">\(Z=1\)</span>, use <code>pnorm</code> to determine the areas below <span class="math inline">\(Z=-1\)</span> and above <span class="math inline">\(Z=1\)</span>. Next verify the area between <span class="math inline">\(Z=-1\)</span> and <span class="math inline">\(Z=1\)</span> is about 0.68. Repeat this for <span class="math inline">\(Z=-2\)</span> to <span class="math inline">\(Z=2\)</span> and also for <span class="math inline">\(Z=-3\)</span> to <span class="math inline">\(Z=3\)</span>.<a href="inference-cat.html#fnref71" class="footnote-back">↩︎</a></p></li>
+<li id="fn71"><p>First draw the pictures. To find the area between <span class="math inline">\(Z=-1\)</span> and <span class="math inline">\(Z=1\)</span>, use <code>pnorm()</code> to determine the areas below <span class="math inline">\(Z=-1\)</span> and above <span class="math inline">\(Z=1\)</span>. Next verify the area between <span class="math inline">\(Z=-1\)</span> and <span class="math inline">\(Z=1\)</span> is about 0.68. Repeat this for <span class="math inline">\(Z=-2\)</span> to <span class="math inline">\(Z=2\)</span> and also for <span class="math inline">\(Z=-3\)</span> to <span class="math inline">\(Z=3\)</span>.<a href="inference-cat.html#fnref71" class="footnote-back">↩︎</a></p></li>
 <li id="fn72"><p>(a) 900 and 2100 represent two standard deviations above and below the mean, which means about 95% of test takers will score between 900 and 2100. (b) Since the normal model is symmetric, then half of the test takers from part (a) (<span class="math inline">\(\frac{95\%}{2} = 47.5\%\)</span> of all test takers) will score 900 to 1500 while 47.5% score between 1500 and 2100.<a href="inference-cat.html#fnref72" class="footnote-back">↩︎</a></p></li>
 <li id="fn73"><p>When you see <span class="math inline">\(\pi\)</span> in this textbook, it will always symbolize a (typically unknown) population proportion, not the value 3.14….<a href="inference-cat.html#fnref73" class="footnote-back">↩︎</a></p></li>
 <li id="fn74"><p>The terms “success” and “failure” may not actually represent outcomes we view as successful or not, but it is the typical generic way to referring to the possible outcomes of a binary variable. The “success” is whatever we count when calculating our sample proportion.<a href="inference-cat.html#fnref74" class="footnote-back">↩︎</a></p></li>
@@ -4087,57 +4145,58 @@ statistical inference
 <li id="fn77"><p>One option would be to use a spinner with 10% shaded red, and the rest shaded green. Each spin of the spinner would represent one client. Spin the spinner 62 times and count the number of times the spinner lands on red. The proportion of times the spinner lands on red represents a simulated <span class="math inline">\(\hat{p}\)</span> under the assumption that <span class="math inline">\(\pi = 0.10\)</span>. Other objects include: a bag of marbles with 10% red marbles and 90% white marbles, or 10 cards where 1 is red and 9 are white. Sampling 62 times with replacement from these collections would simulate one sample of clients.<a href="inference-cat.html#fnref77" class="footnote-back">↩︎</a></p></li>
 <li id="fn78"><p>There isn’t sufficiently strong evidence to support the claim that fewer than 10% of the consultant’s clients experience complications. That is, there isn’t sufficiently strong evidence to support an association between the consultant’s work and fewer surgery complications.<a href="inference-cat.html#fnref78" class="footnote-back">↩︎</a></p></li>
 <li id="fn79"><p>No. It might be that the consultant’s work is associated with a reduction but that there isn’t enough data to convincingly show this connection.<a href="inference-cat.html#fnref79" class="footnote-back">↩︎</a></p></li>
-<li id="fn80"><p>Since in the original sample, 3 out of 62, or about 5% had complications, we could expect about 5% of the patients (6.2 on average) in the simulation will have a complication, though we will see a little variation from one simulation to the next.<a href="inference-cat.html#fnref80" class="footnote-back">↩︎</a></p></li>
-<li id="fn81"><p>While this book is scoped to well-constrained statistical
+<li id="fn80"><p>If you’re curious where the term “bootstrapping” comes from, it comes from the phrase “lift yourself up by your own bootstraps.” Lifting yourself up by your own bootstraps is analogous to creating more samples from the single original sample.<a href="inference-cat.html#fnref80" class="footnote-back">↩︎</a></p></li>
+<li id="fn81"><p>Since in the original sample, 3 out of 62, or about 5% had complications, we could expect about 5% of the patients (6.2 on average) in the simulation will have a complication, though we will see a little variation from one simulation to the next.<a href="inference-cat.html#fnref81" class="footnote-back">↩︎</a></p></li>
+<li id="fn82"><p>While this book is scoped to well-constrained statistical
 problems, do remember that this is just the first
 book in what is a large library of statistical methods that
-are suitable for a very wide range of data and contexts.<a href="inference-cat.html#fnref81" class="footnote-back">↩︎</a></p></li>
-<li id="fn82"><p>Independence holds since the poll
+are suitable for a very wide range of data and contexts.<a href="inference-cat.html#fnref82" class="footnote-back">↩︎</a></p></li>
+<li id="fn83"><p>Independence holds since the poll
 is based on a random sample.
 The success-failure condition also holds,
 which is checked
 using the null value (<span class="math inline">\(p_0 = 0.5\)</span>) from <span class="math inline">\(H_0\)</span>:
 <span class="math inline">\(np_0 = 826 \times 0.5 = 413\)</span>,
-<span class="math inline">\(n(1 - p_0) = 826 \times 0.5 = 413\)</span>. Recall that here, the best guess for <span class="math inline">\(\pi\)</span> is <span class="math inline">\(p_0\)</span> which comes from the null hypothesis (because we assume the null hypothesis is true when performing the testing procedure steps). <span class="math inline">\(H_0\)</span>: there is not support for the regulation; <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\pi \leq 0.50\)</span>. <span class="math inline">\(H_A\)</span>: the majority of borrowers support the regulation; <span class="math inline">\(H_A\)</span>: <span class="math inline">\(\pi &gt; 0.50\)</span>.<a href="inference-cat.html#fnref82" class="footnote-back">↩︎</a></p></li>
-<li id="fn83"><p>Because the <span class="math inline">\(\pi\)</span> is unknown but expected to be around 2/3, we will use 2/3 in place of <span class="math inline">\(\pi\)</span> in the formula for the standard deviation of <span class="math inline">\(\hat{p}\)</span> and calculate<br />
-<span class="math inline">\(SE = \sqrt{\frac{2/3 (1 - 2/3)}  {300}} = 0.027\)</span>.<a href="inference-cat.html#fnref83" class="footnote-back">↩︎</a></p></li>
-<li id="fn84"><p>This is equivalent to asking how often the <span class="math inline">\(Z\)</span> score will be larger than -2.58 but less than 2.58. (For a picture, see Figure <a href="inference-cat.html#fig:choosingZForCI">5.17</a>.) To determine this probability, look up -2.58 and 2.58 in the normal probability table (0.0049 and 0.9951). Thus, there is a <span class="math inline">\(0.9951-0.0049 \approx 0.99\)</span> probability that the unobserved random variable <span class="math inline">\(X\)</span> will be within 2.58 standard deviations of the mean.<a href="inference-cat.html#fnref84" class="footnote-back">↩︎</a></p></li>
-<li id="fn85"><p>Since the necessary conditions for applying the normal model have already been checked for us, we can go straight to the construction of the confidence interval: <span class="math inline">\(\text{point estimate}\ \pm\ 2.58 \times SE \rightarrow (0.018, 0.162)\)</span>. We are 99% confident that implanting a stent in the brain of a patient who is at risk of stroke increases the risk of stroke within 30 days by a rate of 0.018 to 0.162 (assuming the patients are representative of the population).<a href="inference-cat.html#fnref85" class="footnote-back">↩︎</a></p></li>
-<li id="fn86"><p>We must find <span class="math inline">\(z^{\star}\)</span> such that 90% of the distribution falls between -<span class="math inline">\(z^{\star}\)</span> and <span class="math inline">\(z^{\star}\)</span> in the standard normal model, <span class="math inline">\(N(\mu=0, \sigma=1)\)</span>. We can find -<span class="math inline">\(z^{\star}\)</span> from a standard normal distribution by looking for a lower tail of 5% (the other 5% is in the upper tail), thus <span class="math inline">\(z^{\star}=1.645\)</span>. The 90% confidence interval can then be computed as <span class="math inline">\(\text{point estimate}\ \pm\ 1.65\times SE \to (4.4\%, 13.6\%)\)</span>. (Note: The conditions for normality had earlier been confirmed for us.) That is, we are 90% confident that implanting a stent in a stroke patient’s brain increased the risk of stroke within 30 days by 4.4% to 13.6%.<a href="inference-cat.html#fnref86" class="footnote-back">↩︎</a></p></li>
-<li id="fn87"><p>Rosen B and Jerdee T. 1974. “Influence of sex role stereotypes on personnel decisions.” Journal of Applied Psychology 59(1):9-14.<a href="inference-cat.html#fnref87" class="footnote-back">↩︎</a></p></li>
-<li id="fn88"><p>The study is an experiment, as subjects were randomly assigned a “male” file or a “female” file (remember, all the files were actually identical in content). Since this is an experiment, the results can be used to evaluate a causal relationship between gender of a candidate and the promotion decision.<a href="inference-cat.html#fnref88" class="footnote-back">↩︎</a></p></li>
-<li id="fn89"><p>The test procedure we employ in this section is sometimes referred to as a <strong>permutation test</strong>.<a href="inference-cat.html#fnref89" class="footnote-back">↩︎</a></p></li>
-<li id="fn90"><p><span class="math inline">\(18/24 - 17/24=0.042\)</span> or about 4.2% in favor of the men.
-This difference due to chance is much smaller than the difference observed in the actual groups.<a href="inference-cat.html#fnref90" class="footnote-back">↩︎</a></p></li>
-<li id="fn91"><p>This reasoning does not generally extend to anecdotal observations.
+<span class="math inline">\(n(1 - p_0) = 826 \times 0.5 = 413\)</span>. Recall that here, the best guess for <span class="math inline">\(\pi\)</span> is <span class="math inline">\(p_0\)</span> which comes from the null hypothesis (because we assume the null hypothesis is true when performing the testing procedure steps). <span class="math inline">\(H_0\)</span>: there is not support for the regulation; <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\pi \leq 0.50\)</span>. <span class="math inline">\(H_A\)</span>: the majority of borrowers support the regulation; <span class="math inline">\(H_A\)</span>: <span class="math inline">\(\pi &gt; 0.50\)</span>.<a href="inference-cat.html#fnref83" class="footnote-back">↩︎</a></p></li>
+<li id="fn84"><p>Because the <span class="math inline">\(\pi\)</span> is unknown but expected to be around 2/3, we will use 2/3 in place of <span class="math inline">\(\pi\)</span> in the formula for the standard deviation of <span class="math inline">\(\hat{p}\)</span> and calculate<br />
+<span class="math inline">\(SE = \sqrt{\frac{2/3 (1 - 2/3)}  {300}} = 0.027\)</span>.<a href="inference-cat.html#fnref84" class="footnote-back">↩︎</a></p></li>
+<li id="fn85"><p>This is equivalent to asking how often the <span class="math inline">\(Z\)</span> score will be larger than -2.58 but less than 2.58. (For a picture, see Figure <a href="inference-cat.html#fig:choosingZForCI">5.17</a>.) To determine this probability, look up -2.58 and 2.58 in the normal probability table (0.0049 and 0.9951). Thus, there is a <span class="math inline">\(0.9951-0.0049 \approx 0.99\)</span> probability that the unobserved random variable <span class="math inline">\(X\)</span> will be within 2.58 standard deviations of the mean.<a href="inference-cat.html#fnref85" class="footnote-back">↩︎</a></p></li>
+<li id="fn86"><p>Since the necessary conditions for applying the normal model have already been checked for us, we can go straight to the construction of the confidence interval: <span class="math inline">\(\text{point estimate}\ \pm\ 2.58 \times SE \rightarrow (0.018, 0.162)\)</span>. We are 99% confident that implanting a stent in the brain of a patient who is at risk of stroke increases the risk of stroke within 30 days by a rate of 0.018 to 0.162 (assuming the patients are representative of the population).<a href="inference-cat.html#fnref86" class="footnote-back">↩︎</a></p></li>
+<li id="fn87"><p>We must find <span class="math inline">\(z^{\star}\)</span> such that 90% of the distribution falls between -<span class="math inline">\(z^{\star}\)</span> and <span class="math inline">\(z^{\star}\)</span> in the standard normal model, <span class="math inline">\(N(\mu=0, \sigma=1)\)</span>. We can find -<span class="math inline">\(z^{\star}\)</span> from a standard normal distribution by looking for a lower tail of 5% (the other 5% is in the upper tail), thus <span class="math inline">\(z^{\star}=1.645\)</span>. The 90% confidence interval can then be computed as <span class="math inline">\(\text{point estimate}\ \pm\ 1.65\times SE \to (4.4\%, 13.6\%)\)</span>. (Note: The conditions for normality had earlier been confirmed for us.) That is, we are 90% confident that implanting a stent in a stroke patient’s brain increased the risk of stroke within 30 days by 4.4% to 13.6%.<a href="inference-cat.html#fnref87" class="footnote-back">↩︎</a></p></li>
+<li id="fn88"><p>Rosen B and Jerdee T. 1974. “Influence of sex role stereotypes on personnel decisions.” Journal of Applied Psychology 59(1):9-14.<a href="inference-cat.html#fnref88" class="footnote-back">↩︎</a></p></li>
+<li id="fn89"><p>The study is an experiment, as subjects were randomly assigned a “male” file or a “female” file (remember, all the files were actually identical in content). Since this is an experiment, the results can be used to evaluate a causal relationship between gender of a candidate and the promotion decision.<a href="inference-cat.html#fnref89" class="footnote-back">↩︎</a></p></li>
+<li id="fn90"><p>The test procedure we employ in this section is sometimes referred to as a <strong>permutation test</strong>.<a href="inference-cat.html#fnref90" class="footnote-back">↩︎</a></p></li>
+<li id="fn91"><p><span class="math inline">\(18/24 - 17/24=0.042\)</span> or about 4.2% in favor of the men.
+This difference due to chance is much smaller than the difference observed in the actual groups.<a href="inference-cat.html#fnref91" class="footnote-back">↩︎</a></p></li>
+<li id="fn92"><p>This reasoning does not generally extend to anecdotal observations.
 Each of us observes incredibly rare events every day, events we could not possibly hope to predict.
 However, in the non-rigorous setting of anecdotal evidence, almost anything may appear to be a rare event, so the idea of looking for rare events in day-to-day activities is treacherous.
 For example, we might look at the lottery: there was only a 1 in 176 million chance that the Mega Millions numbers for the largest jackpot in history (March 30, 2012) would be (2, 4, 23, 38, 46) with a Mega ball of (23), but nonetheless those numbers came up!
 However, no matter what numbers had turned up, they would have had the same incredibly rare odds.
 That is, <em>any set of numbers we could have observed would ultimately be incredibly rare</em>.
 This type of situation is typical of our daily lives: each possible event in itself seems incredibly rare, but if we consider every alternative, those outcomes are also incredibly rare.
-We should be cautious not to misinterpret such anecdotal evidence.<a href="inference-cat.html#fnref91" class="footnote-back">↩︎</a></p></li>
-<li id="fn92"><p>This probability of the results we see in our study, under the assumption of no discrimination, is the <strong>p-value</strong>.<a href="inference-cat.html#fnref92" class="footnote-back">↩︎</a></p></li>
-<li id="fn93"><p>With a sample of students, randomly assign half of them to the control condition, and the other half to the treatment condition. For those in the control condition, present them with a situation where an item is on sale and ask if they would like to buy the item. For those in the treatment condition, present them with the same situation, but also remind them that they can save money for later purchases, then ask if they would like to buy the item. Compute and compare the proportions who refrained from purchasing the item in each group.<a href="inference-cat.html#fnref93" class="footnote-back">↩︎</a></p></li>
-<li id="fn94"><p>Frederick S, Novemsky N, Wang J, Dhar R, Nowlis S. 2009. Opportunity Cost Neglect. Journal of Consumer Research 36: 553-561.<a href="inference-cat.html#fnref94" class="footnote-back">↩︎</a></p></li>
-<li id="fn95"><p>Success is often defined in a study as the outcome of interest, and a “success” may or may not actually be a positive outcome. For example, researchers working on a study on HIV prevalence might define a “success” in the statistical sense as a patient who is HIV+. A more complete discussion of the term <strong>success</strong> will be given in Chapter <a href="inference-cat.html#inference-cat">5</a>.<a href="inference-cat.html#fnref95" class="footnote-back">↩︎</a></p></li>
-<li id="fn96"><p>The
+We should be cautious not to misinterpret such anecdotal evidence.<a href="inference-cat.html#fnref92" class="footnote-back">↩︎</a></p></li>
+<li id="fn93"><p>This probability of the results we see in our study, under the assumption of no discrimination, is the <strong>p-value</strong>.<a href="inference-cat.html#fnref93" class="footnote-back">↩︎</a></p></li>
+<li id="fn94"><p>With a sample of students, randomly assign half of them to the control condition, and the other half to the treatment condition. For those in the control condition, present them with a situation where an item is on sale and ask if they would like to buy the item. For those in the treatment condition, present them with the same situation, but also remind them that they can save money for later purchases, then ask if they would like to buy the item. Compute and compare the proportions who refrained from purchasing the item in each group.<a href="inference-cat.html#fnref94" class="footnote-back">↩︎</a></p></li>
+<li id="fn95"><p>Frederick S, Novemsky N, Wang J, Dhar R, Nowlis S. 2009. Opportunity Cost Neglect. Journal of Consumer Research 36: 553-561.<a href="inference-cat.html#fnref95" class="footnote-back">↩︎</a></p></li>
+<li id="fn96"><p>Success is often defined in a study as the outcome of interest, and a “success” may or may not actually be a positive outcome. For example, researchers working on a study on HIV prevalence might define a “success” in the statistical sense as a patient who is HIV+. A more complete discussion of the term <strong>success</strong> will be given in Chapter <a href="inference-cat.html#inference-cat">5</a>.<a href="inference-cat.html#fnref96" class="footnote-back">↩︎</a></p></li>
+<li id="fn97"><p>The
 study is an experiment, as patients were randomly
 assigned an experiment group.
 Since this is an experiment, the results can be used
 to evaluate a causal relationship between the malaria
 vaccine and whether patients showed signs
-of an infection.<a href="inference-cat.html#fnref96" class="footnote-back">↩︎</a></p></li>
-<li id="fn97"><p><span class="math inline">\((0.357 - 1)\times 100\)</span>% = -64.3%<a href="inference-cat.html#fnref97" class="footnote-back">↩︎</a></p></li>
-<li id="fn98"><p>With small sample sizes, researchers often
+of an infection.<a href="inference-cat.html#fnref97" class="footnote-back">↩︎</a></p></li>
+<li id="fn98"><p><span class="math inline">\((0.357 - 1)\times 100\)</span>% = -64.3%<a href="inference-cat.html#fnref98" class="footnote-back">↩︎</a></p></li>
+<li id="fn99"><p>With small sample sizes, researchers often
 add 0.5 to each of the four cells prior to calculating the sample relative risk
 in order to avoid dividing by zero. With this adjustment, the sample relative
 risk is: <span class="math inline">\(\frac{5.5/15}{6.5/7} = 0.395\)</span>. We will use this adjustment
-when simulating relative risks as well.<a href="inference-cat.html#fnref98" class="footnote-back">↩︎</a></p></li>
-<li id="fn99"><p>1. Take 20 notecards to represent the 20 patients, where we write down “infection” on 11 cards and “no infection” on 9 cards.
+when simulating relative risks as well.<a href="inference-cat.html#fnref99" class="footnote-back">↩︎</a></p></li>
+<li id="fn100"><p>1. Take 20 notecards to represent the 20 patients, where we write down “infection” on 11 cards and “no infection” on 9 cards.
 2. Thoroughly shuffle the notecards and deal 14 into
-a “vaccine” pile and 6 into a “placebo” pile. 3. Compute the proportion of “infection” cards in the “vaccine” pile and divide it by the proportion of “infection” cards in the “placebo” pile to get the simulated sample relative risk.<a href="inference-cat.html#fnref99" class="footnote-back">↩︎</a></p></li>
-<li id="fn100"><p>This reasoning does not generally extend
+a “vaccine” pile and 6 into a “placebo” pile. 3. Compute the proportion of “infection” cards in the “vaccine” pile and divide it by the proportion of “infection” cards in the “placebo” pile to get the simulated sample relative risk.<a href="inference-cat.html#fnref100" class="footnote-back">↩︎</a></p></li>
+<li id="fn101"><p>This reasoning does not generally extend
 to anecdotal observations.
 Each of us observes incredibly rare events every day,
 events we could not possibly hope to predict.
@@ -4160,31 +4219,31 @@ each possible event in itself seems incredibly rare,
 but if we consider every alternative, those outcomes
 are also incredibly rare.
 We should be cautious not to misinterpret such
-anecdotal evidence.<a href="inference-cat.html#fnref100" class="footnote-back">↩︎</a></p></li>
-<li id="fn101"><p>Making a Type 1 Error in this context would mean that reminding students that money not spent now can be spent later does not affect their buying habits, despite the strong evidence (the data suggesting otherwise) found in the experiment. Notice that this does <em>not</em> necessarily mean something was wrong with the data or that we made a computational mistake. Sometimes data simply point us to the wrong conclusion, which is why scientific studies are often repeated to check initial findings.<a href="inference-cat.html#fnref101" class="footnote-back">↩︎</a></p></li>
-<li id="fn102"><p>To lower the Type 2 Error rate, we want to convict more guilty people. We could lower the standards for conviction from “beyond a reasonable doubt” to “beyond a little doubt”. Lowering the bar for guilt will also result in more wrongful convictions, raising the Type 1 Error rate.<a href="inference-cat.html#fnref102" class="footnote-back">↩︎</a></p></li>
-<li id="fn103"><p>B<span class="math inline">\(\ddot{\text{o}}\)</span>ttiger et al. “Efficacy and safety of thrombolytic therapy after initially unsuccessful cardiopulmonary resuscitation: a prospective clinical trial.” The Lancet, 2001.<a href="inference-cat.html#fnref103" class="footnote-back">↩︎</a></p></li>
-<li id="fn104"><p>Observed control survival rate: <span class="math inline">\(\hat{p}_c = \frac{11}{50} = 0.22\)</span>.
+anecdotal evidence.<a href="inference-cat.html#fnref101" class="footnote-back">↩︎</a></p></li>
+<li id="fn102"><p>Making a Type 1 Error in this context would mean that reminding students that money not spent now can be spent later does not affect their buying habits, despite the strong evidence (the data suggesting otherwise) found in the experiment. Notice that this does <em>not</em> necessarily mean something was wrong with the data or that we made a computational mistake. Sometimes data simply point us to the wrong conclusion, which is why scientific studies are often repeated to check initial findings.<a href="inference-cat.html#fnref102" class="footnote-back">↩︎</a></p></li>
+<li id="fn103"><p>To lower the Type 2 Error rate, we want to convict more guilty people. We could lower the standards for conviction from “beyond a reasonable doubt” to “beyond a little doubt”. Lowering the bar for guilt will also result in more wrongful convictions, raising the Type 1 Error rate.<a href="inference-cat.html#fnref103" class="footnote-back">↩︎</a></p></li>
+<li id="fn104"><p>B<span class="math inline">\(\ddot{\text{o}}\)</span>ttiger et al. “Efficacy and safety of thrombolytic therapy after initially unsuccessful cardiopulmonary resuscitation: a prospective clinical trial.” The Lancet, 2001.<a href="inference-cat.html#fnref104" class="footnote-back">↩︎</a></p></li>
+<li id="fn105"><p>Observed control survival rate: <span class="math inline">\(\hat{p}_c = \frac{11}{50} = 0.22\)</span>.
 Treatment survival rate: <span class="math inline">\(\hat{p}_t = \frac{14}{40} = 0.35\)</span>.
 Observed difference: <span class="math inline">\(\hat{p}_t - \hat{p}_c = 0.35 - 0.22 = 0.13\)</span>.
-Relative risk: <span class="math inline">\(\hat{p}_t/\hat{p}_c = 0.35/0.22 = 1.59\)</span><a href="inference-cat.html#fnref104" class="footnote-back">↩︎</a></p></li>
-<li id="fn105"><p>Note that the relative risk in the opposite direction is not a <em>decrease</em> of 59%! When comparing control to treatment, the relative risk would be <span class="math inline">\(0.22/0.35 = 0.63\)</span>, or a decrease of 37%. These values differ because the quantity we’re comparing to (the “100%” quantity) differs.<a href="inference-cat.html#fnref105" class="footnote-back">↩︎</a></p></li>
-<li id="fn106"><p>If the null distribution is not symmetric, then the computer will have to count the proportions in each tail separately, since the two tail proportions may differ.<a href="inference-cat.html#fnref106" class="footnote-back">↩︎</a></p></li>
-<li id="fn107"><p>This is an experiment. Patients were randomized
+Relative risk: <span class="math inline">\(\hat{p}_t/\hat{p}_c = 0.35/0.22 = 1.59\)</span><a href="inference-cat.html#fnref105" class="footnote-back">↩︎</a></p></li>
+<li id="fn106"><p>Note that the relative risk in the opposite direction is not a <em>decrease</em> of 59%! When comparing control to treatment, the relative risk would be <span class="math inline">\(0.22/0.35 = 0.63\)</span>, or a decrease of 37%. These values differ because the quantity we’re comparing to (the “100%” quantity) differs.<a href="inference-cat.html#fnref106" class="footnote-back">↩︎</a></p></li>
+<li id="fn107"><p>If the null distribution is not symmetric, then the computer will have to count the proportions in each tail separately, since the two tail proportions may differ.<a href="inference-cat.html#fnref107" class="footnote-back">↩︎</a></p></li>
+<li id="fn108"><p>This is an experiment. Patients were randomized
 to receive mammograms or a standard breast cancer exam.
-We will be able to make causal conclusions based on this study.<a href="inference-cat.html#fnref107" class="footnote-back">↩︎</a></p></li>
-<li id="fn108"><p><span class="math inline">\(H_0\)</span>: the breast cancer death rate for patients
+We will be able to make causal conclusions based on this study.<a href="inference-cat.html#fnref108" class="footnote-back">↩︎</a></p></li>
+<li id="fn109"><p><span class="math inline">\(H_0\)</span>: the breast cancer death rate for patients
 screened using mammograms is the same as the breast cancer
 death rate for patients in the control,
 <span class="math inline">\(p_{mgm} - p_{ctrl} = 0\)</span>.<br />
 <span class="math inline">\(H_A\)</span>: the breast cancer death rate for patients screened
 using mammograms is different than the breast cancer death
 rate for patients in the control,
-<span class="math inline">\(p_{mgm} - p_{ctrl} \neq 0\)</span>.<a href="inference-cat.html#fnref108" class="footnote-back">↩︎</a></p></li>
-<li id="fn109"><p>For an example of a two-proportion
+<span class="math inline">\(p_{mgm} - p_{ctrl} \neq 0\)</span>.<a href="inference-cat.html#fnref109" class="footnote-back">↩︎</a></p></li>
+<li id="fn110"><p>For an example of a two-proportion
 hypothesis test that does not require the
 success-failure condition to be met, see
-Section <a href="inference-cat.html#two-prop-errors">5.4.1</a>.<a href="inference-cat.html#fnref109" class="footnote-back">↩︎</a></p></li>
+Section <a href="inference-cat.html#two-prop-errors">5.4.1</a>.<a href="inference-cat.html#fnref110" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

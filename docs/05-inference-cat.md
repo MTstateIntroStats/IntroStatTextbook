@@ -343,7 +343,7 @@ The amount we add and subtract to the statistic to calculate the confidence inte
 \mbox{margin of error} = (\mbox{multiplier}) \times (\mbox{standard error of the statistic})
 \]</div>\EndKnitrBlock{onebox}
 
-In Section \@ref(conf-int-one-prop) we will discuss different percentages for the confidence interval (e.g., 90% confidence interval or 99% confidence interval).  Section \@ref(conf-int-one-prop) also provides a longer discussion on what "95% confidence" actually means.
+In Section \@ref(conf-int-one-prop) we will discuss different percentages for the confidence interval (e.g., 90% confidence interval or 99% confidence interval).  Section \@ref(two-prop-boot-ci) provides a longer discussion on what "95% confidence" actually means.
 
 
 ## The normal distribution {#normal}
@@ -509,7 +509,7 @@ Ann's **percentile**\index{percentile} is the percentage of people who earned a 
 
 
 We can use the normal model to find percentiles or probabilities. In `R`, the function
-to calculate normal probabilities is `pnorm`. The `normTail` function is available in the `openintro` R package and will draw the associated curve if it is helpful. In the code below, we find the percentile of $Z=0.43$ is 0.6664, or the $66.64^{th}$ percentile. 
+to calculate normal probabilities is `pnorm()`. The `normTail()` function is available in the `openintro` R package and will draw the associated curve if it is helpful. In the code below, we find the percentile of $Z=0.43$ is 0.6664, or the $66.64^{th}$ percentile. 
 
 
 ```r
@@ -521,8 +521,8 @@ openintro::normTail(0.43, m = 0, s = 1)
 <img src="05-inference-cat_files/figure-html/unnamed-chunk-39-1.png" width="70%" style="display: block; margin: auto;" />
 
 We can also find the Z-score associated with a percentile. 
-For example, to identify Z for the $80^{th}$ percentile, we use `qnorm` which identifies the **quantile** for a given percentage.  The quantile represents the cutoff value.  (To remember the function `qnorm` as providing a cutoff, notice that both `qnorm` and "cutoff" start with the sound "kuh".  To remember the `pnorm` function as providing a probability from a given cutoff, notice that both `pnorm` and probability start with the sound "puh".) 
-We determine the Z-score for the $80^{th}$ percentile using `qnorm`: 0.84.
+For example, to identify Z for the $80^{th}$ percentile, we use `qnorm()` which identifies the **quantile** for a given percentage.  The quantile represents the cutoff value.  (To remember the function `qnorm()` as providing a cutoff, notice that both `qnorm()` and "cutoff" start with the sound "kuh".  To remember the `pnorm()` function as providing a probability from a given cutoff, notice that both `pnorm()` and probability start with the sound "puh".) 
+We determine the Z-score for the $80^{th}$ percentile using `qnorm()`: 0.84.
 
 
 ```r
@@ -705,7 +705,7 @@ Here, we present a useful general rule for the probability of falling within 1, 
 
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Use `pnorm` to confirm that about 68%, 95%, and 99.7% of observations fall within 1, 2, and 3, standard deviations of the mean in the normal distribution, respectively. For instance, first find the area that falls between $Z=-1$ and $Z=1$, which should have an area of about 0.68. Similarly there should be an area of about 0.95 between $Z=-2$ and $Z=2$.^[First draw the pictures. To find the area between $Z=-1$ and $Z=1$, use `pnorm` to determine the areas below $Z=-1$ and above $Z=1$. Next verify the area between $Z=-1$ and $Z=1$ is about 0.68. Repeat this for $Z=-2$ to $Z=2$ and also for $Z=-3$ to $Z=3$.]</div>\EndKnitrBlock{guidedpractice}
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Use `pnorm()` to confirm that about 68%, 95%, and 99.7% of observations fall within 1, 2, and 3, standard deviations of the mean in the normal distribution, respectively. For instance, first find the area that falls between $Z=-1$ and $Z=1$, which should have an area of about 0.68. Similarly there should be an area of about 0.95 between $Z=-2$ and $Z=2$.^[First draw the pictures. To find the area between $Z=-1$ and $Z=1$, use `pnorm()` to determine the areas below $Z=-1$ and above $Z=1$. Next verify the area between $Z=-1$ and $Z=1$ is about 0.68. Repeat this for $Z=-2$ to $Z=2$ and also for $Z=-3$ to $Z=3$.]</div>\EndKnitrBlock{guidedpractice}
 
 It is possible for a normal random variable to fall 4, 5, or even more standard deviations from the mean. However, these occurrences are very rare if the data are nearly normal. The probability of being further than 4 standard deviations from the mean is about 1-in-30,000. For 5 and 6 standard deviations, it is about 1-in-3.5 million and 1-in-1 billion, respectively.
 
@@ -955,6 +955,12 @@ However, there is a physical and computational model which produces an equivalen
 Consider the observed data to be a bag of marbles 3 of which are red and 4 of which are white.  By drawing the marbles out of the bag _with replacement_, we depict the same sampling **process** as was done with the infinitely large estimated population.
 Note that when sampling the original observations with replacement, a particular marble may end up in the new sample one time, multiple times, or not at all.  
 
+\BeginKnitrBlock{onebox}<div class="onebox">**Bootstrapping^[If you're curious where the term "bootstrapping" comes from, it comes from the phrase "lift yourself up by your own bootstraps." Lifting yourself up by your own bootstraps is analogous to creating more samples from the single original sample.] from one sample**.
+
+1. Take a random sample of size $n$ from the original sample, _with replacement_. This is called a **bootstrapped resample**.
+2. Record the sample proportion (or statistic of interest) from the boostrapped resample. This is called a **bootstrapped statistic**.
+3. Repeat steps (1) and (2) 1000s of times to create a distribution of bootstrapped statistics.</div>\EndKnitrBlock{onebox}
+
 If we apply the bootstrap sampling process to the medical consultant example, we consider each client to be one of the marbles in the bag.
 There will be 59 white marbles (no complication) and 3 red marbles (complication).
 If we 62 choose marbles out of the bag (one at a time), replacing each chosen marble after its color is recorded, and compute the proportion of simulated patients with complications, $\hat{p}_{bs}$, then this "bootstrap" proportion represents a single simulated proportion from the "resample from the sample" approach.
@@ -963,7 +969,7 @@ If we 62 choose marbles out of the bag (one at a time), replacing each chosen ma
 
 One simulated bootstrap resample isn't enough to get a sense of the variability from one bootstrap proportion to another bootstrap proportion, so we repeated the simulation 10,000 times using a computer.
 Figure \@ref(fig:MedConsBSSim) shows the distribution from the 10,000 bootstrap simulations. 
-The bootstrapped proportions vary from about zero to 0.15. By taking the range of the middle 95% of this distribution, we can construct a **95% bootstrapped confidence interval** for $\pi$. The 2.5^{th} percentile is 0, and the 97.5^{th} percentile is 0.113, so the middle 95% of the distribution is the range (0, 0.113).
+The bootstrapped proportions vary from about zero to 0.15. By taking the range of the middle 95% of this distribution, we can construct a **95% bootstrapped confidence interval** for $\pi$. The 2.5^th^ percentile is 0, and the 97.5^th^ percentile is 0.113, so the middle 95% of the distribution is the range (0, 0.113).
 The variability in the bootstrapped proportions leads us to believe that the true risk of complication (the parameter, $\pi$) is somewhere between 0 and 11.3%.
 
 
@@ -984,6 +990,9 @@ No. Because the interval overlaps 10%, it might be that the consultant's work is
 %However, we currently don't have enough data to say whether the corresponding complication rate is any different than 0.10.
 -->
 \index{data!medical consultant|)}
+
+
+
 
 ### Theory-based method for calculating the p-value {#theory-prop}
 
@@ -1412,7 +1421,7 @@ where $z^{\star}$ corresponds to the confidence level selected: the middle $(1-\
 
 #### Using `R` to find $z^{\star}$ {-}
 
-Figure \@ref(fig:choosingZForCI) provides a picture of how to identify $z^{\star}$ based on a confidence level. We select $z^{\star}$ so that the area between -$z^{\star}$ and $z^{\star}$ in the normal model corresponds to the confidence level. In `R`, you can find $z^{\star}$ using the `qnorm` function:
+Figure \@ref(fig:choosingZForCI) provides a picture of how to identify $z^{\star}$ based on a confidence level. We select $z^{\star}$ so that the area between -$z^{\star}$ and $z^{\star}$ in the normal model corresponds to the confidence level. In `R`, you can find $z^{\star}$ using the `qnorm()` function:
 
 
 
@@ -2784,13 +2793,9 @@ Hypotheses should be set up *before* observing the data.</div>\EndKnitrBlock{imp
 
 
 
-### Bootstrap confidence interval for $p_1 - p_2$ {#two-prop-boot-ci}
+### Bootstrap confidence interval for $\pi_1 - \pi_2$ {#two-prop-boot-ci}
 
-The key will be to use two different bags to simulate from the original data.
-
-Use the CPR data.  After we find the CI (use percentile and SE methods), write the interval values down below in the math section that describes the generic confidence interval method. 
-
-In Section \@ref(two-prop-errors), we worked with the randomization distribution to understand the distribution of $\hat{p}_1 - \hat{p}_2$ when the null hypothesis $H_0: p_1 - p_2 = 0$ is true.
+In Section \@ref(two-prop-errors), we worked with the randomization distribution to understand the distribution of $\hat{p}_1 - \hat{p}_2$ when the null hypothesis $H_0: \pi_1 - \pi_2 = 0$ is true.
 Now, through bootstrapping, we study the variability of $\hat{p}_1 - \hat{p}_2$ without the null assumption.
 
 #### Observed data {-}
@@ -2802,59 +2807,70 @@ Again, we use the difference in sample proportions as the observed statistic of 
 
 #### Variability of the statistic {-}
 
-The bootstrap method applied to two samples is an extension of the method described in Section \@ref(boot-ci).  Now, we have two samples, so each sample estimates the population from which they came.  In the CPR setting, the `treatment` sample estimates the population of all individuals who have gotten (or will get) the treatment; the `control` sample estimate the population of all individuals who do not get the treatment and are controls.  Figure \@ref(fig:boot2samp1) extends Figure \@ref(fig:boot1) to show the bootstrapping process from two samples simultaneously.
+The bootstrap method applied to two samples is an extension of the method described in Section \@ref(boot-ci-prop).  Now, we have two samples, so each sample estimates the population from which they came.  In the CPR setting, the `treatment` sample estimates the population of all individuals who have gotten (or will get) the treatment; the `control` sample estimate the population of all individuals who do not get the treatment and are controls.  Figure \@ref(fig:boot2proppops) extends Figure \@ref(fig:boot1) to show the bootstrapping process from two samples simultaneously.
 
 <div class="figure" style="text-align: center">
-<img src="05/figures/boot2samp1.png" alt="(probably populations only, no BS samples) two sample estimating two populations (two infinite popuations)" width="75%" />
-<p class="caption">(\#fig:boot2samp1)(probably populations only, no BS samples) two sample estimating two populations (two infinite popuations)</p>
-</div>
-
-The variability of the statistic (the difference in sample proportions) can be calculated by taking one treatment bootstrap sample and one control bootstrap sample and calculating the difference of the bootstrap survival proportions.  One sample from each of the estimated populations has been taken with the sample proportions calculated for the treatment bootstrap sample and the control bootstrap sample.  
-
-\BeginKnitrBlock{todo}<div class="todo">once the image is in, we need to describe above (and below) the values (proportions, differences) in the image explicitly.</div>\EndKnitrBlock{todo}
-
-
-<div class="figure" style="text-align: center">
-<img src="05/figures/boot2samp2.png" alt="some way to connect the first BS sample on the left wiht the first BS sample on the right." width="75%" />
-<p class="caption">(\#fig:boot2samp2)some way to connect the first BS sample on the left wiht the first BS sample on the right.</p>
+<img src="05/figures/boot2proppops.png" alt="Creating two estimated populations from two different samples from different populations." width="100%" />
+<p class="caption">(\#fig:boot2proppops)Creating two estimated populations from two different samples from different populations.</p>
 </div>
 
 
-As always, the variability of the difference in proportions can only be estimated by repeated simulations, in this case, repeated bootstrap samples.  Figure \@ref(fig:boot2samp2) shows multiple bootstrap differences calculated for each of the repeated bootstrap samples.
+As before, once the population is estimated, we can randomly resample observations to create bootstrap samples, as seen in Figure \@ref(fig:boot2propresamps). Computationally, each bootstrap resample
+is created by randomly sampling with replacement from the original sample.
 
 <div class="figure" style="text-align: center">
-<img src="05/figures/boot2samp3.png" alt="in this graph, some kind of connection between each of the two sides" width="75%" />
+<img src="05/figures/boot2propresamps.png" alt="Bootstrapped resamples from two separate estimated populations." width="100%" />
+<p class="caption">(\#fig:boot2propresamps)Bootstrapped resamples from two separate estimated populations.</p>
+</div>
+
+
+The variability of the statistic (the difference in sample proportions) can be calculated by taking one treatment bootstrap sample and one control bootstrap sample and calculating the difference of the bootstrap survival proportions.  Figure @\ref(boot2samp2) displays one bootstrap resample from each of the estimated populations, with the difference in sample proportions calculated between the treatment bootstrap sample and the control bootstrap sample.  
+
+
+<div class="figure" style="text-align: center">
+<img src="05/figures/boot2prop3.png" alt="The bootstrap resample on the left is from the first estimated population; the one on the right from the second. In this case, the value of the simulated bootstrap statistic would be $\hat{p}_1 - \hat{p}_2 = \frac{2}{7}-\frac{1}{7}$." width="75%" />
+<p class="caption">(\#fig:boot2samp2)The bootstrap resample on the left is from the first estimated population; the one on the right from the second. In this case, the value of the simulated bootstrap statistic would be $\hat{p}_1 - \hat{p}_2 = \frac{2}{7}-\frac{1}{7}$.</p>
+</div>
+
+
+As always, the variability of the difference in proportions can only be estimated by repeated simulations, in this case, repeated bootstrap samples.  Figure \@ref(fig:boot2samp3) shows multiple bootstrap differences calculated for each of the repeated bootstrap samples.
+
+<div class="figure" style="text-align: center">
+<img src="05/figures/boot2prop2.png" alt="in this graph, some kind of connection between each of the two sides" width="75%" />
 <p class="caption">(\#fig:boot2samp3)in this graph, some kind of connection between each of the two sides</p>
 </div>
 
-\BeginKnitrBlock{todo}<div class="todo">Do we also want to visualize "sampling with replacement" in the two sample case?</div>\EndKnitrBlock{todo}
-
 Repeated bootstrap simulations lead to a bootstrap sampling distribution of the statistic of interest, here the difference in sample proportions.
-Figure \@ref(fig:bootCPR1000) shows 1000 bootstrap differences in proportions for the CPR data.
+Figure \@ref(fig:boot2samp1) visualizes the process in the toy example, and Figure \@ref(fig:bootCPR1000) shows 1000 bootstrap differences in proportions for the CPR data.
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/bootCPR1000-1.png" alt="A histogram of differences in proportions from 1000 bootstrap simulations." width="70%" />
-<p class="caption">(\#fig:bootCPR1000)A histogram of differences in proportions from 1000 bootstrap simulations.</p>
+<img src="05/figures/boot2prop1.png" alt="The process of repeatedly resampling from the estimated population (sampling with replacement from the original sample), computing a difference in sample proportions from each pair of samples, then plotting this distribution." width="100%" />
+<p class="caption">(\#fig:boot2samp1)The process of repeatedly resampling from the estimated population (sampling with replacement from the original sample), computing a difference in sample proportions from each pair of samples, then plotting this distribution.</p>
+</div>
+
+<div class="figure" style="text-align: center">
+<img src="05-inference-cat_files/figure-html/bootCPR1000-1.png" alt="A histogram of differences in proportions (treatment $-$ control) from 1000 bootstrap simulations using the CPR data." width="70%" />
+<p class="caption">(\#fig:bootCPR1000)A histogram of differences in proportions (treatment $-$ control) from 1000 bootstrap simulations using the CPR data.</p>
 </div>
 
 
 #### Percentile vs. SE bootstrap confidence intervals {-}
 
-Figure \@ref(fig:bootCPR1000) provides an estimate for the variability of the difference in survival proportions from sample to sample,  The values in the histogram can be used in two different ways to create a confidence interval for the parameter of interest:  $p_1 - p_2$.
+Figure \@ref(fig:bootCPR1000) provides an estimate for the variability of the difference in survival proportions from sample to sample,  The values in the histogram can be used in two different ways to create a confidence interval for the parameter of interest:  $\pi_1 - \pi_2$.
 
 ##### Percentile bootstrap interval {-}
 
-As in Section \@ref(boot-ci), the bootstrap confidence interval can be calculated directly from the bootstrapped differences in Figure \@ref(fig:bootCPR1000).  The interval created from the percentiles of the distribution is called the **percentile interval**.
-Note that here we calculate the 90% confidence interval by finding the $5^{th}$ and $95^{th}$ percentile values from the bootstrapped differences.
+As in Section \@ref(boot-ci-prop), the bootstrap confidence interval can be calculated directly from the bootstrapped differences in Figure \@ref(fig:bootCPR1000).  The interval created from the percentiles of the distribution is called the **percentile interval**.
+Note that here we calculate the 90% confidence interval by finding the 5^th^ and 95^th^ percentile values from the bootstrapped differences.
 The bootstrap 5 percentile proportion is -0.155 and the 95 percentile is 0.167.
-The result is: we are 90% confident that, in the population, the true difference in probability of survival is between -0.155 and 0.167. 
-The interval shows that we do not have much definitive evidence of the affect of blood thinners, one way or another.
+The result is: we are 90% confident that, in the population, the true difference in probability of survival (treatment $-$ control) is between -0.155 and 0.167. 
+More clearly, we are 90% confident that the probability of survival for heart attack patients who underwent CPR is between 0.155 less to 0.167 more than that for patients who did not undergo CPR. The interval shows that we do not have much definitive evidence of the affect of blood thinners, one way or another.
 
 
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/CPR percentile interval-1.png" alt="The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the probability of survival in the treatment group is $\hat{p}_{t}  = 14/40$ and the probability of survival in the control group is $\hat{p}_{c} = 11/50$. " width="70%" />
-<p class="caption">(\#fig:CPR percentile interval)The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the probability of survival in the treatment group is $\hat{p}_{t}  = 14/40$ and the probability of survival in the control group is $\hat{p}_{c} = 11/50$. </p>
+<img src="05-inference-cat_files/figure-html/bootCPR1000CI-1.png" alt="The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the probability of survival in the treatment group is $\hat{p}_{t}  = 14/40$ and the probability of survival in the control group is $\hat{p}_{c} = 11/50$. " width="70%" />
+<p class="caption">(\#fig:bootCPR1000CI)The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the probability of survival in the treatment group is $\hat{p}_{t}  = 14/40$ and the probability of survival in the control group is $\hat{p}_{c} = 11/50$. </p>
 </div>
 
 
@@ -2869,30 +2885,44 @@ Section \@ref(math-2prop) details the mathematical model for the standard error 
 
 $$SE(\hat{p}_t - \hat{p}_c) \approx SD(\hat{p}_{bs,t} - \hat{p}_{bs,c}) = 0.0975$$
 
-The calculation above was performed in R using the `sd()` function, but any statistical software will calculate the standard deviation of the differences, here, the exact quantity we hope to approximate.
+The variability of the bootstrapped difference in proportions was calculated in `R` using the `sd()` function, but any statistical software will calculate the standard deviation of the differences, here, the exact quantity we hope to approximate.
 
-Because we don't know the true distribution of $\hat{p}_t - \hat{p}_c$, we will use a rough approximation to find a confidence interval for $p_t - p_c$.  A 95% confidence interval for $p_t - p_c$ is given by:
+Note that we do not know know the true distribution of $\hat{p}_t - \hat{p}_c$, so we will use a rough approximation to find a confidence interval for $\pi_t - \pi_c$.  As seen in the bootstrap histograms, the shape of the distribution is roughly symmetric and bell-shaped.  So for a rough approximation, we will apply the 68-95-99.7 rule which tells us that 95% of observed differences should be roughly no farther than 2 SE from the true parameter difference.  An approximate 95% confidence interval for $\pi_t - \pi_c$ is given by:
 
-\begin{align}
-\hat{p}_t - \hat{p}_c &\pm& 2 SE(\hat{p}_t - \hat{p}_c)\\
-14/40 - 11/50 &\pm& 0.0975\\
-&&(-0.065, 0.325)
-\end{align}
+\begin{align*}
+\hat{p}_t - \hat{p}_c \pm 2 \cdot SE \ \ \ \rightarrow \ \ \ 14/40 - 11/50 \pm 2 \cdot 0.0975 \ \ \  \rightarrow \ \ \  (-0.065, 0.325)
+\end{align*}
 
-We are 95% confident that the true value of $p_t - p_c$ is between -0.065 and 0.325.  Again, the wide confidence interval that overlaps zero indicates that the study provides very little evidence about the effectiveness of blood thinners.
+We are 95% confident that the true value of $\pi_t - \pi_c$ is between -0.065 and 0.325.  Again, the wide confidence interval that overlaps zero indicates that the study provides very little evidence about the effectiveness of blood thinners.
+
+\BeginKnitrBlock{important}<div class="important">Since the multiplier "2" in the SE bootstrap interval comes from the 68-95-99.7 rule for normal distributions, these intervals are only valid when the bootstrap sampling distribution is approximately normal.</div>\EndKnitrBlock{important}
+
+#### What does 95% mean? {-}
+
+Recall that the goal of a confidence interval is to find a plausible range of values for a *parameter* of interest.
+The estimated statistic is not the value of interest, but it is typically the best guess for the unknown parameter.
+The confidence level (often 95%) is a number that takes a while to get used to.  Surprisingly, the percentage doesn't describe the data set at hand, it describes many possible data sets.
+One way to understand a confidence interval is to think about all the confidence intervals that you have ever made or that you will ever make as a scientist, the confidence level describes **those** intervals.
+
+Figure \@ref(fig:ci25ints) demonstrates a hypothetical situation in which 25 different studies are performed on the exact same population (with the same goal of estimating the true parameter value of $\pi_1 - \pi_2 = 0.47$).
+The study at hand represents one point estimate (a dot) and a corresponding interval.
+It is not possible to know whether the interval at hand is to the right of the unknown true parameter value (the black line) or to the left of that line.
+It is also impossible to know whether the interval captures the true parameter (is blue) or doesn't (is red).
+If we are making 95% intervals, then 5% of the intervals we create over our lifetime will *not* capture the parameter of interest (e.g., will be red as in Figure \@ref(fig:ci25ints) ).
+What we know is that over our lifetimes as scientists, 95% of the intervals created and reported on will capture the parameter value of interest:  thus the language "95% confident."
 
 
+<div class="figure" style="text-align: center">
+<img src="05-inference-cat_files/figure-html/ci25ints-1.png" alt="One hypothetical population, parameter value of: $\pi_1 - \pi_2 = 0.47$.  Twenty-five different studies all which led to a different point estimate, SE, and confidence interval.  The study at hand is one of the horizontal lines (hopefully a blue line!)." width="70%" />
+<p class="caption">(\#fig:ci25ints)One hypothetical population, parameter value of: $\pi_1 - \pi_2 = 0.47$.  Twenty-five different studies all which led to a different point estimate, SE, and confidence interval.  The study at hand is one of the horizontal lines (hopefully a blue line!).</p>
+</div>
 
-### Theory-based test for $H_0: \pi_1 - \pi_2 = 0$ {#two-prop-test-theory}
+The choice of 95% or 90% or even 99% as a confidence level is admittedly somewhat arbitrary; however, it is related to the logic we used when deciding that a p-value should be declared as significant if it is lower than 0.05 (or 0.10 or 0.01, respectively).
+Indeed, one can show mathematically, that a 95% confidence interval and a two-sided hypothesis test at a cutoff of 0.05 will provide the same conclusion when the same data and mathematical tools are applied for the analysis.
+A full derivation of the explicit connection between confidence intervals and hypothesis tests is beyond the scope of this text.
 
 
-### Theory-based confidence interval for $\pi_1 - \pi_2$ {#two-prop-ci-theory}
-
-
-
-
-
-### Mathematical model {#math-2prop}
+### Theory-based methods for $\pi_1 - \pi_2$ {#math-2prop}
 
 #### Variability of $\hat{p}_1 - \hat{p}_2$ {-}
 
@@ -2909,7 +2939,7 @@ the success-failure condition must be met by both groups.
 The difference $\hat{p}_1 - \hat{p}_2$ can be modeled
   using a normal distribution when
 
-1. *Independence*, extended.  The data are independent within and between
+1. *Independence* (extended).  The data are independent within and between
     the two groups. Generally this is satisfied if the data come from two independent random samples or if the data come from a randomized experiment.
 2. *Success-failure condition.*
     The success-failure condition holds for both
@@ -2968,9 +2998,9 @@ but the general approach remain the same.
 Think about these steps when you apply statistical methods.
 -->
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Standard error of the difference in two proportions, $\hat{p}_1 -\hat{p}_2$.**
+\BeginKnitrBlock{onebox}<div class="onebox">**Standard Error of the difference in two proportions, $\hat{p}_1 -\hat{p}_2$.**
   
-When the conditions are met so that the distribution of $\hat{p}$ is nearly normal, the **variability** of the difference in proportions, $\hat{p}_1 -\hat{p}_2$, is well described by:
+When the conditions are met so that the distribution fo $\hat{p}$ is nearly normal, the **variability** of the difference in proportions, $\hat{p}_1 -\hat{p}_2$, is well described by:
 \begin{eqnarray*}
   SE(\hat{p}_1 -\hat{p}_2) = \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}
   \end{eqnarray*}</div>\EndKnitrBlock{onebox}
@@ -3106,7 +3136,9 @@ We'll use $p_t$ for the survival
   we do not have enough information to say
   whether blood thinners help or harm
   heart attack patients who have been admitted after
-  they have undergone CPR.</div>\EndKnitrBlock{example}
+  they have undergone CPR.
+  
+  Note, the problem was set up as 90% to indicate that there was not a need for a high level of confidence (such a 95% or 99%).  A lower degree of confidence increases potential for error, but it also produces a more narrow interval. </div>\EndKnitrBlock{example}
 
 \index{data!CPR and blood thinner|)}
 
@@ -3237,10 +3269,11 @@ in breast cancer deaths in the mammogram and control groups.^[$H_0$: the breast 
     rate for patients in the control,
     $p_{mgm} - p_{ctrl} \neq 0$.]</div>\EndKnitrBlock{guidedpractice}
 
-Using the previous example,
+The research question describing mammograms is set up to address specific hypotheses (in contrast to a confidence interval for a parameter).  In order to fully take advantage of the hypothesis testing structure, we asses the randomness under the condition that the null hypothesis is true (as we always do for hypothesis testing).
+Using the data from Table \@ref(tab:mammogramStudySummaryTable),
 we will check the conditions for using a normal distribution to
-analyze the results of the study.
-The details are very similar to that of confidence intervals.
+analyze the results of the study using a hypothesis test.
+The details for checking conditions are very similar to that of confidence intervals.
 However, when the null hypothesis is that $p_1 - p_2 = 0$,
 we use a special proportion called the
 **pooled proportion**\index{pooled proportion} to check the success-failure condition:
@@ -3296,11 +3329,11 @@ the standard error.
 \BeginKnitrBlock{onebox}<div class="onebox">**Use the pooled proportion when $H_0$ is $p_1 - p_2 = 0$.**
   
   When the null hypothesis is that the proportions are equal,
-  use the pooled proportion ($\hat{p}_{\textit{pooled}}$)
+  use the pooled proportion ($\hat{p}_{\textit{pool}}$)
   to verify the
   success-failure condition and estimate the standard error:
   \begin{eqnarray*}
-  \hat{p}_{\textit{pooled}}
+  \hat{p}_{\textit{pool}}
     = \frac{\text{number of ``successes"}}
       {\text{number of cases}}
     = \frac{\hat{p}_1 n_1 + \hat{p}_2 n_2}{n_1 + n_2}
@@ -3405,8 +3438,33 @@ These considerations highlight the complexity around medical care and treatment 
 \index{data!breast cancer|)}
 \index{data!mammography|)}
 
+<!--
+\BeginKnitrBlock{onebox}<div class="onebox">**Hypothesis testing when ${H_0}$ is $p_1 - p_2 = 0$.**
+  
+  Once you've determined a hypothesis test for the difference
+  of two proportions is the correct procedure, there are four
+  steps to completing the test:
 
-
+* **Prepare.**
+      Identify the parameter of interest,
+      list out hypotheses,
+      identify the significance level,
+      and compute summary statistics for each group.
+* **Check.**
+      Verify the conditions to ensure
+      $\hat{p}_1 - \hat{p}_2$ is nearly normal under $H_0$.
+      When the null hypothesis is that the difference is 0,
+      use a pooled proportion to check the success-failure
+      condition for each group.
+* **Calculate.**
+      If the conditions hold, compute the standard
+      error, again using the pooled proportion,
+      compute the Z-score, and identify the p-value.
+* **Conclude.**
+      Evaluate the hypothesis test by comparing the p-value
+      to $\alpha$, and provide a conclusion in the context
+      of the problem.</div>\EndKnitrBlock{onebox}
+-->
 
 
 ## Summary of Z-procedures
