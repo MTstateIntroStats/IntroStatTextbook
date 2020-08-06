@@ -40,6 +40,8 @@ The variables are defined as follows:
 
 * frac —Percentage of all eligible students taking the SAT, 1994-95
 
+* frac_40 - whether the percentage of all eligible students taking the SAT is less than 40%, 1994-95
+
 * verbal —Average verbal SAT score, 1994-95
 
 * math — Average math SAT score, 1994-95
@@ -64,7 +66,14 @@ summary(lm1)
 
 ```{r echo=t, fig.height=5,fig.width=12}
 par(mfrow=c(1,2))
-scatterplot(sat~expend, data=SAT,pch=20,main="Expendature vs. SAT Score", smooth=F)
+levels(SAT$frac_40) <- c("yes", "no")
+scatterplot(sat~expend, lwd=3, data=SAT,pch=20,main="Expendature vs. SAT Score", smooth=F)
+```
+
+```{r echo=t, fig.height=5,fig.width=12}
+par(mfrow=c(1,2))
+levels(SAT$frac_40) <- c("yes", "no")
+scatterplot(sat~expend+frac_40, lwd=3, data=SAT,pch=20,main="Expendature vs. SAT Score", smooth=F)
 ```
 
 ```{r}
@@ -80,7 +89,7 @@ summary(lm3)
 
 ```{r echo=t, fig.height=5,fig.width=12}
 par(mfrow=c(1,2))
-scatterplot(sat~salary, data=SAT,pch=20,main="Salary vs. SAT Score", smooth=F)
+scatterplot(sat~salary+frac_40, data=SAT,pch=20,main="Salary vs. SAT Score", smooth=F)
 ```
 
 ```{r echo=t, fig.height=5,fig.width=12}

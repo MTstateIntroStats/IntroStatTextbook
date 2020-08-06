@@ -56,11 +56,11 @@ The following data set is from the Current Population Survey in 1985.  The follo
 
 2.  Which variables are categorical?
 
-\vspace{1in}
+\vspace{0.5in}
 
 3.  What types of plots can be used to display categorical data?
 
-\vspace{1in}
+\vspace{0.5in}
 
 An important part of understanding data is to create visual pictures of what the data represents.  In this activity we will create graphical representations of categorical data.
 
@@ -135,14 +135,7 @@ plot(sex~sector #response~explanatory allows us to plot two variables
 \vspace{1in}
  
    c. Create a two-way hypothetical table to represent the situation.
-    
-
-|                | Boys | Non-Boys | Total   |
-|----------------|------|----------|---------|
-| Gambled        |      |          |         |
-| Did Not Gamble |      |          |         |
-| Total          |      |          | 100,000 |
-
+\vspace{1.5in}
 
    d. Find $P(\mbox{B and C})$.
 \vspace{1in}
@@ -153,19 +146,18 @@ plot(sex~sector #response~explanatory allows us to plot two variables
    f. Find the probability that a selected non-gambler is a non-boy.
 \vspace{1in}
 
-   g. What is the notation used for the probability calculated in part e?
+   g. What is the notation used for the probability calculated in part f?
 \vspace{0.5in}
 
 8. In a computer store, 30% of the computers in stock are laptops and 70% are desktops.  Five percent of the laptops are on sale, while 10% of the desktops are on sale.
-
-Let L = the event the computer is a laptop, and S = the event the computer is on sale.
+    Let L = the event the computer is a laptop, and S = the event the computer is on sale.
 \vspace{0.25in}
 
    a. Identify what each numerical value represents in probability notation.
 \vspace{1in}
 
    b. Create a two-way table to represent the situation.
-\vspace{2in}
+\vspace{1.5in}
 
    c. Calculate the probability that a randomly selected computer will be a desktop, given that the computer is on sale.  
 \vspace{1in}
