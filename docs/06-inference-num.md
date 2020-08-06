@@ -64,6 +64,7 @@ The sample average monthly rent of £ 1648 is a first guess at the price of thre
 Indeed, you can see that the observed rent prices vary with a standard deviation of £ 340.232, and surely the average monthly rent would be different if a different sample of size five had been taken from the population.
 Fortunately, we can use bootstrapping to approximate the variability of the sample mean from sample to sample.
 
+\BeginKnitrBlock{todo}<div class="todo">Revise below to remove duplication from bootstrap CI for one proportion section.</div>\EndKnitrBlock{todo}
 
 #### Variability of the statistic {-}
 
@@ -167,7 +168,7 @@ Note, the problem was set up as 90% to indicate that there was not a need for a 
 The example presented above is done for a sample with only five observations. 
 As with analysis techniques that build on mathematical models, bootstrapping works best when a large random sample has been taken from the population.
 Bootstrapping is a method for capturing the variability of a statistic when the mathematical model is unknown (it is not a method for navigating small samples).
-As you might guess, the larger the random sample, the more accurately that sample will represent the population of interest.
+As you might guess, the larger the random sample, the more accurately that sample will represent the target population.
 
 
 

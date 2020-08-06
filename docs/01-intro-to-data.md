@@ -1367,7 +1367,7 @@ This is not necessary for this example, but it will come up later in the course.
 \BeginKnitrBlock{todo}<div class="todo">Add link to tutorial.</div>\EndKnitrBlock{todo}
 
 
-## Chapter review
+## Chapter 1 review {#chp1-review}
 
 ### Terms
 
