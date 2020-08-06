@@ -4,7 +4,7 @@ output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = F)
+knitr::opts_chunk$set(echo = TRUE)
 options(show.signif.stars = FALSE)
 library(car)
 library(readr)
