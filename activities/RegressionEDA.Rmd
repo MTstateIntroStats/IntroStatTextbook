@@ -17,22 +17,11 @@ library(mosaic)
 ## Learning Objectives
 
 * Identify and create appropriate summary statistics and plots
-  given a data set or research question
-  
-* Interpret the following summary statistics in context:
-  median, lower quartile, upper quartile,
-  standard deviation, inter-quartile range,
-  coefficient of determination, regression line slope
-  
-* Given a plot or set of plots, describe and compare the distribution(s)
-  of a single quantitative variable
-  (center, variability, shape, outliers)
+  given a data set with two quantitative variables
   
 * Use scatterplots to assess the relationship between two quantitative variables
 
 * Find the correlation coefficient 
-
-* Plot a scatterplot 
 
 * Estimate slope using the correlation coefficient 
 
@@ -42,130 +31,8 @@ library(mosaic)
 
 * Understand what the coefficient of determination is
 
-## Movies Released in 2016
-
-A data set was collected on Movies released since 1916 to 2016.  Here is a list of some of the variables collected on these movies.
-
-*Year*: Year the movie was released
-*Budget*: The amount of money (in US $) budgeted for the production of the movie
-*Revenue*: The amount of money (in US $) the movie made after release
-*Duration*: The length of the movie (in minutes)
-*Content Rating*: Rating of the movie (G, PG, PG-13, R, Not Rated)
-*IMDb Score*: User rating score from 1 to 10
-*Genre*: Category the movie falls into
-*Movie Facebook Likes*: Number of likes a movie receives on Facebook
-
-## Vocabulary Review
-
-1. What are the observational units in this data set?
-
-\vspace{0.5in}
-
-2. Which of the above listed variables are categorical?
-
-\vspace{1in}
-
-3. Which of the above listed variables are quantitative?
-
-\vspace{1in}
-
-```{r echo=F, fig.height=4}
-par(mfrow=c(1,2))
-movies <- read.csv("../data/Movies.csv") #reads in data
-movies$content_rating <- factor(movies$content_rating)
-rating <- c("PG", "PG-13", "R")
-movies <- movies[movies$content_rating %in% rating,]
-movies$content_rating <- factor(movies$content_rating)
-movies$title_year <- factor(movies$title_year)
-year <- c("2016")
-movies <- movies[movies$title_year %in% year,]
-movies$title_year <- factor(movies$title_year)
-moviesa <- na.omit(movies)
-
-```
-
-## Summarizing a single quantitative variable
-
-* Center: There are two measures of center used for quantitative data: the **mean** or the average and the **median**.  The mean is found by adding up all the values in the data set and dividing the sum by the sample size.  The median is the 50th percentile of the ordered data set.  
-
-* Spread: The spread is also referred to as variability.  Again there are two measures of spread used to describe the data: the **standard deviation** and the **Interquartile Range or IQR**.  The standard deviation measures the average distance of each observation from the mean. The IQR is found by subtracting the value of the first quartile from the third quartile and measures the middle 50% of the data.  $IQR = Q_3 - Q_1$ 
-
-The favstats function gives the summary statistics for a quantitative variable. Here we have the summary statistics for 'IMDb'.
-```{r}
-favstats(moviesa$imdb_score)
-```
-
-4. Give the values for the two measures of center. 
-
-\vspace{0.5in}
-
-5. Calculate the IQR.
-
-\vspace{0.5in}
-
-6. Report the value of the standard deviation and interpret this value in context of the problem.
-\vspace{1in}
-
-## Displaying a single quantitative variable
-
-To plot quantitative variables, we can use a dotplot, histogram or boxplot. To create a histogram the variable is broken into bins on a set width. Each bin plots the frequency of each variable for a certain bin. The following code creates a histogram of the variable 'IMBd Score'.  Notice that the bin width is 0.5.  For example the first bin consists of the number of movies in the data set with an IMBd score of 3 to 3.5.  It is important to note that a movie with a IMBd score of 5 will fall into the bin for 5 - 5.5.  Visually this shows us the range of IMBd scores for Movies released in 2016.
-
-```{r}
-hist(moviesa$imdb_score, #dataset name and variable
-     main = "Histogram of IMDb Score of Movies in 2016", #title for plot 
-     xlab = "IMDb Score") #label for x axis
-```
-7. Which range of IMBb scores have the highest frequency?
-
-\vspace{1in}
-
-When comparing distributions we will look at four characteristics:
-
-* Shape: A distribution that has approximately the same trailing off in both tails is considered a symmetric distribution.  One in which the data trails off to the right is a right-skewed distribution. If the data trails off to the left it is considered a left-skewed distribution.
-
-* Center: Mean or Median 
-
-* Spread: Standard Deviation or IQR
-
-* Outliers: Outliers are values less than $Q_1 - 1.5*IQR$ and greater than $Q_3 + 1.5*IQR$.  On the box plot they are displayed as a single dot beyond the whisker.
-
-The boxplot is created using the five number summary: 
-* Minimum value
-* Quartile 1 (Q1) - the value at the 25th percentile
-* Median - the value at the 50th percentile
-* Quartile 3 (Q3) - the value at the 75th percentile
-* Maximum value 
-
-Here is a boxplot of IMDb scores for movies in 2016.
-
-```{r}
-boxplot(moviesa$imdb_score, 
-       main = "Boxplot of IMDb Scores for Movies in 2016",
-        ylab="IMDB Scores")
-```
-
-8. Using the two plots above, what is the shape of the distribution of IMDb scores?
-
-\vspace{0.5in}
 
 
-## Displaying a Single Categorical and Single Quantitative Variable
-
-Side by side plots are created from a single categorical and single quantitative variable.  We can create side by side boxplots, side by side histograms, and side by side dotplots.
-
-The boxplot of 'Budget' in millions by 'Content rating' is plotted using the code below.  This plot helps to compare the budget for different levels of content rating.
-
-```{r}
-boxplot(budget_mil~content_rating #response~explanatory 
-        , data=moviesa, main = "Side by side Boxplot of Budget by Content Rating", 
-        xlab = "Content Rating", ylab = "Budget (in Millions)")
-```
-
-
-9. Compare PG and PG-13 movies using the four characteristics for
-comparing distributions.
-
-\vspace{1.5in}
 
 
 ## Association between two Quantitative Variables
