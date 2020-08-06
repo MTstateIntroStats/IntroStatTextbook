@@ -981,7 +981,7 @@ No. Because the interval overlaps 10%, it might be that the consultant's work is
 ### Theory-based method for calculating the p-value {#theory-prop}
 
 In Section \@ref(var-stat), we introduced the normal distribution and showed how it can be used as a mathematical model to describe the variability of a sample mean or sample proportion as a result of the Central Limit Theorem. We explored the normal distribution
-further in Section \@ref(normal). Theory-based methods for proportions use the normal distribution to calculate the p-value.
+further in Section \@ref(normal). Theory-based hypothesis tests for proportions use the normal distribution to calculate the p-value.
 
 There are conditions under which a sample proportion $\hat{p}$ is well-modeled using a normal distribution.
 When the sample observations
@@ -1035,7 +1035,7 @@ The independence assumption may be reasonable if each of the surgeries is from a
 
 Since theory-based methods cannot be used on the medical consultant example, we'll turn to another example to demonstrate these methods, where conditions for approximating the distribution of $\hat{p}$ by a normal distribution are met.
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">One possible regulation for payday lenders is that they
+\BeginKnitrBlock{example}<div class="example">One possible regulation for payday lenders is that they
 would be required to do a credit check and evaluate debt
 payments against the borrower's finances.
 We would like to know: would borrowers support this form
@@ -1043,7 +1043,31 @@ of regulation?
 
 Set up hypotheses to evaluate whether borrowers
 have a majority support for this
-type of regulation.^[$H_0$: there is not majority support for the regulation; $H_0$: $\pi \leq 0.50$. $H_A$: the majority of borrowers support the regulation; $H_A$: $\pi > 0.50$.]</div>\EndKnitrBlock{guidedpractice}
+type of regulation. We take "majority" to mean
+greater than 50% of the population.
+
+---
+
+In words,
+
+* $H_0$: there is not majority support for the regulation
+* $H_A$: the majority of borrowers support the regulation
+
+In statistical notation,
+
+* $H_0$: $\pi = 0.50$
+* $H_A$: $\pi > 0.50$,
+
+where $\pi$ represents the proportion of _all_ payday loan borrowers that would support the regulation.</div>\EndKnitrBlock{example}
+
+\BeginKnitrBlock{tipbox}<div class="tipbox">Note that the null hypothesis above was stated as $H_0: \pi = 0.50$, even though saying there is "not majority support" would imply $\pi \leq 0.50$. Indeed, some textbooks would
+write $H_0: \pi \leq 0.50$ in this case, and it is not an incorrect statement. However,
+when calculating the p-value, we need to assume a particular value for $\pi$ under
+the null hypothesis, so in this textbook, our null hypothesis will always be of the form:
+  
+\[
+H_0: \mbox{ parameter } = \mbox{ null value}
+\]</div>\EndKnitrBlock{tipbox}
 
 To apply the normal distribution to model the null distribution, the independence
 and success-failure conditions must be satisfied.
@@ -1070,8 +1094,7 @@ for a hypothesis test here?^[Independence holds since the poll
     $n(1 - p_0) = 826 \times 0.5 = 413$.  Recall that here, the best guess for $\pi$ is $p_0$ which comes from the null hypothesis (because we assume the null hypothesis is true when performing the testing procedure steps).  $H_0$: there is not support for the regulation; $H_0$: $\pi \leq 0.50$. $H_A$: the majority of borrowers support the regulation; $H_A$: $\pi > 0.50$.]</div>\EndKnitrBlock{guidedpractice}
 
     
-\BeginKnitrBlock{example}<div class="example">Using the hypotheses and data from the previous two
-    Guided Practices,
+\BeginKnitrBlock{example}<div class="example">Continuing the previous Example,
     evaluate whether the poll on lending regulations provides convincing evidence
     that a majority of payday loan borrowers support
     a new regulation that would
@@ -1089,10 +1112,10 @@ for a hypothesis test here?^[Independence holds since the poll
       = \sqrt{\frac{0.5 (1 - 0.5)}{826}}
       = 0.017
   \end{align*}
-  A picture of the normal model for null distribution of sample proportions
-    is shown below in Figure \@ref(fig:paydayCC-norm-pvalue),
+  A picture of the normal model for the null distribution of sample proportions
+    in this scenario is shown below in Figure \@ref(fig:paydayCC-norm-pvalue),
   with the p-value represented by the shaded region.
-  Note that this distribution is centered at 0.50, the null value,
+  Note that this null distribution is centered at 0.50, the null value,
   and has standard deviation 0.017.
   
   Under $H_0$, the probability of observing $\hat{p} = 0.51$ or higher
@@ -1115,7 +1138,11 @@ for a hypothesis test here?^[Independence holds since the poll
 </div>
 
 Often, with theory-based methods, we use a **standardized statistic** rather than
-the original statistic. A standardized statistic is computed by subtracting the mean of the null distribution from the original statistic, then dividing by the standard error. When we are modeling the null distribution with a normal
+the original statistic as our test statistic. A standardized statistic is computed by subtracting the mean of the null distribution from the original statistic, then dividing by the standard error:
+\[
+\mbox{standardized statistic} = \frac{\mbox{observed statistic} - \mbox{null value}}{\mbox{null standard error}}
+\]
+The **null standard error** of the observed statistic is its estimated standard deviation assuming the null hypothesis is true. We can interpret the standardized statistic as _the number of standard errors our observed statistic is above (if positive) or below (if negative) the null value_. When we are modeling the null distribution with a normal
 distribution, this standardized statistic is called $Z$, since it is the Z-score of the sample proportion.
 
 \BeginKnitrBlock{onebox}<div class="onebox">**Standardized sample proportion.**
@@ -1124,7 +1151,7 @@ The **standardized statistic** for theory-based methods for one proportion is
 \[
 Z = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}
 \]
-where $p_0$ is the null value. The denominator, $\sqrt{\frac{p_0(1-p_0)}{n}}$, is called the **null standard error**.</div>\EndKnitrBlock{onebox}
+where $p_0$ is the null value. The denominator, $\sqrt{\frac{p_0(1-p_0)}{n}}$, is called the **null standard error** of the sample proportion.</div>\EndKnitrBlock{onebox}
 
 With the standardized statistic as our test statistic, we can find
 the p-value as the area under a standard normal distribution at or more extreme
@@ -1149,7 +1176,7 @@ Z = \frac{0.51 - 0.50}{0.017} = 0.57
 
 Interpreting this value, we can say that our sample proportion of 0.51 was only 0.57 standard errors above the null value of 0.50. 
 
-Shown in Figure \@ref(fig:paydayCC-stdnorm-pvalue), the p-value is the area above $Z = 0.57$ on a standard normal distribution---0.278---the same p-value we would obtain by finding the area above $\hat{p} = 0.51$ on a normal distribution with mean 0.50 and standard deviation 0.017.</div>\EndKnitrBlock{example}
+Shown in Figure \@ref(fig:paydayCC-stdnorm-pvalue), the p-value is the area above $Z = 0.57$ on a standard normal distribution---0.278---the same p-value we would obtain by finding the area above $\hat{p} = 0.51$ on a normal distribution with mean 0.50 and standard deviation 0.017, as in Figure \@ref(fig:paydayCC-norm-pvalue).</div>\EndKnitrBlock{example}
 
 
 <div class="figure" style="text-align: center">
@@ -1177,25 +1204,8 @@ An exact p-value can be generated using the binomial distribution, but that meth
 
 \index{data!Payday regulation poll|)}
 
-#### Violating conditions {-}
 
-We've spent a lot of time discussing conditions for when
-$\hat{p}$ can be reasonably modeled by a normal distribution.
-What happens when the success-failure condition fails?
-What about when the independence condition fails?
-In either case, the general ideas of confidence intervals
-and hypothesis tests remain the same, but the strategy
-or technique used to generate the interval or p-value
-change.
-
-When the success-failure condition isn't met
-for a hypothesis test, we can simulate the null distribution 
-of $\hat{p}$ using the null value, $p_0$, as seen in Section \@ref(one-prop-null-boot).  Unfortunately, methods for dealing with observations which are
-not independent are outside the scope of this book.
-
-
-
-### Confidence interval for $\pi$  {#conf-int-one-prop}
+### Theory-based confidence interval for $\pi$  {#conf-int-one-prop}
 
 \index{point estimate!single proportion}
 
@@ -1220,7 +1230,7 @@ Note that we almost never know the true value of $\pi$, but we can substitute ou
   
 $$SD(\hat{p}) \approx \hspace{3mm} SE(\hat{p}) = \sqrt{\frac{(\mbox{best guess of }\pi)(1 - \mbox{best guess of }\pi)}{n}}$$
   
-For hypothesis testing, we often use $p_0$ as the best guess of $\pi$, as seen in Section \@ref(one-prop-null-boot).  For confidence intervals, we typically use $\hat{p}$ as the best guess of $\pi$.</div>\EndKnitrBlock{onebox}
+For hypothesis testing, we often use $p_0$ as the best guess of $\pi$, as seen in Section \@ref(theory-prop).  For confidence intervals, we typically use $\hat{p}$ as the best guess of $\pi$.</div>\EndKnitrBlock{onebox}
 
 \index{data!Payday regulation poll|(}
 
@@ -1345,11 +1355,13 @@ There are four steps to constructing a confidence
 
 Suppose we want to consider confidence intervals where the confidence level is somewhat higher than 95%: perhaps we would like a confidence level of 99%. Think back to the analogy about trying to catch a fish: if we want to be more sure that we will catch the fish, we should use a wider net. To create a 99% confidence level, we must also widen our 95% interval. On the other hand, if we want an interval with lower confidence, such as 90%, we could make our original 95% interval slightly slimmer.
 
-The 95% confidence interval structure provides guidance in how to make intervals with new confidence levels. Below is a general 95% confidence interval for a point estimate that comes from a nearly normal distribution:
+The 95% confidence interval structure provides guidance in how to make intervals with new confidence levels. Below is a general 95% confidence interval for a parameter whose point estimate has a nearly normal distribution:
 \begin{eqnarray}
 \text{point estimate}\ \pm\ 1.96\times SE
 \end{eqnarray}
-There are three components to this interval: the point estimate, "1.96", and the standard error. The choice of $1.96\times SE$ was based on capturing 95% of the distribution since the estimate is within 1.96 standard errors of the true value about 95% of the time. The choice of 1.96 corresponds to a 95% confidence level. 
+There are three components to this interval: the point estimate, "1.96", and the standard error. The choice of $1.96\times SE$ was based on capturing 95% of the sampling distribution of statistics since the point estimate is within 1.96 standard errors of the true parameter about 95% of the time. The choice of 1.96 corresponds to a 95% **confidence level**. 
+
+
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">If $X$ is a normally distributed random variable, how often will $X$ be within 2.58 standard deviations of the mean?^[This is equivalent to asking how often the $Z$ score will be larger than -2.58 but less than 2.58. (For a picture, see Figure \@ref(fig:choosingZForCI).) To determine this probability, look up -2.58 and 2.58 in the normal probability table (0.0049 and 0.9951). Thus, there is a $0.9951-0.0049 \approx 0.99$ probability that the unobserved random variable $X$ will be within 2.58 standard deviations of the mean.]</div>\EndKnitrBlock{guidedpractice}
 
@@ -1376,7 +1388,7 @@ label for previous equation?
 %\Comment{I don't know where the equation number above gets referenced. Might drop the equation number.}
 -->
 
-The normal approximation is crucial to the precision of the $z^\star$ confidence intervals. When the normal model is not a good fit, we will use alternative distributions that better characterize the sampling distribution or we will use bootstrapping procedures seen later in the textbook.
+The normal approximation is crucial to the precision of the $z^\star$ confidence intervals. When the normal model is not a good fit, we will use alternative distributions that better characterize the sampling distribution or we will use bootstrapping procedures.
 
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Create a 99% confidence interval for the impact of the stent on the risk of stroke using the data from Section \@ref(basic-stents-strokes). The point estimate is 0.090, and the standard error is $SE = 0.028$. It has been verified for you that the point estimate can reasonably be modeled by a normal distribution.^[Since the necessary conditions for applying the normal model have already been checked for us, we can go straight to the construction of the confidence interval: $\text{point estimate}\ \pm\ 2.58 \times SE \rightarrow (0.018, 0.162)$. We are 99% confident that implanting a stent in the brain of a patient who is at risk of stroke increases the risk of stroke within 30 days by a rate of 0.018 to 0.162 (assuming the patients are representative of the population).]</div>\EndKnitrBlock{guidedpractice}
@@ -1390,6 +1402,8 @@ If the statistic follows the normal model with standard error $SE$, then a confi
 \text{statistic}\ \pm\ z^{\star} \times SE
 \end{eqnarray*}
 where $z^{\star}$ corresponds to the confidence level selected: the middle $(1-\alpha)\times 100$% of a standard normal distribution lies between $-z^{\star}$ and $z^{\star}$.</div>\EndKnitrBlock{onebox}
+
+#### Using `R` to find $z^{\star}$ {-}
 
 Figure \@ref(fig:choosingZForCI) provides a picture of how to identify $z^{\star}$ based on a confidence level. We select $z^{\star}$ so that the area between -$z^{\star}$ and $z^{\star}$ in the normal model corresponds to the confidence level. In `R`, you can find $z^{\star}$ using the `qnorm` function:
 
@@ -1595,6 +1609,24 @@ of error of 0.04 with 95% confidence?^[We complete the same computations as befo
 
 {\input{ch_inference_for_props/TeX/inference_for_a_single_proportion.tex}}
 -->
+
+#### Violating conditions {-}
+
+We've spent a lot of time discussing conditions for when
+$\hat{p}$ can be reasonably modeled by a normal distribution.
+What happens when the success-failure condition fails?
+What about when the independence condition fails?
+In either case, the general ideas of confidence intervals
+and hypothesis tests remain the same, but the strategy
+or technique used to generate the interval or p-value
+change.
+
+When the success-failure condition isn't met
+for a hypothesis test, we can simulate the null distribution 
+of $\hat{p}$ using the null value, $p_0$, as seen in Section \@ref(one-prop-null-boot).  Unfortunately, methods for dealing with observations which are
+not independent are outside the scope of this book.
+
+
 
 \BeginKnitrBlock{todo}<div class="todo">Add tappers and listeners case study example from old Ch. 5 here.</div>\EndKnitrBlock{todo}
 
@@ -3429,7 +3461,7 @@ Z = \frac{\text{point estimate} - \text{null value}}{SE}
 
 The lower tail area is 0.4325, which we double to get the p-value: 0.8650. Because this p-value is larger than 0.05, we do not reject the null hypothesis. That is, the difference in breast cancer death rates is reasonably explained by chance, and we do not observe benefits or harm from mammograms relative to a regular breast exam.</div>\EndKnitrBlock{example}
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-162-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-164-1.png" width="70%" style="display: block; margin: auto;" />
 
 Can we conclude that mammograms have no benefits or harm?
 Here are a few considerations to keep in mind when reviewing
@@ -3571,24 +3603,30 @@ However you should be able to easily spot them as **bolded text**.
 <tbody>
   <tr>
    <td style="text-align:left;"> alternative hypothesis </td>
+   <td style="text-align:left;"> null distribution </td>
+   <td style="text-align:left;"> pooled proportion </td>
+   <td style="text-align:left;"> statistically significant </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> bootstrapping </td>
    <td style="text-align:left;"> null hypothesis </td>
    <td style="text-align:left;"> randomization </td>
    <td style="text-align:left;"> success </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> bootstrapping </td>
+   <td style="text-align:left;"> Central Limit Theorem </td>
    <td style="text-align:left;"> null value </td>
    <td style="text-align:left;"> sampling distribution </td>
    <td style="text-align:left;"> success-failure condition </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Central Limit Theorem </td>
+   <td style="text-align:left;"> confidence interval </td>
    <td style="text-align:left;"> one sample $z$-test </td>
    <td style="text-align:left;"> SE interval </td>
    <td style="text-align:left;"> test statistic </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> confidence interval </td>
+   <td style="text-align:left;"> confidence level </td>
    <td style="text-align:left;"> one-sided hypothesis test </td>
    <td style="text-align:left;"> simulation </td>
    <td style="text-align:left;"> two sample $z$-test </td>
@@ -3627,12 +3665,6 @@ However you should be able to easily spot them as **bolded text**.
    <td style="text-align:left;"> normal model </td>
    <td style="text-align:left;"> point estimate </td>
    <td style="text-align:left;"> statistical inference </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> null distribution </td>
-   <td style="text-align:left;"> pooled proportion </td>
-   <td style="text-align:left;"> statistically significant </td>
    <td style="text-align:left;">  </td>
   </tr>
 </tbody>
