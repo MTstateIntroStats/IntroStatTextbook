@@ -39,7 +39,7 @@ Quantitative variables are numerical measurements that can be discrete (whole, n
 
 Categorical variables are data that are in groups or categories such as eye color, state of residency, or whether or not a student is considered in-state. Categorical variables with a natural ordering are considered ordinal variables while those without a natural ordering are considered a nominal variable.  All variables will be treated as nominal for analysis.
 
-![](variables.png)
+![](images/variables.png)
 
 
 3. Identify the variable we are collecting on each observational unit in this study.  What are we measuring on each student?
