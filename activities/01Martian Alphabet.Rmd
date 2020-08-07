@@ -66,16 +66,20 @@ $\mbox{proportion} = \frac{\mbox{number of students who correctly identified bum
 
 Looking at the data set and the summary statistics is only one way to display the data.  We will also want to create a visualization or picture of the data. A **frequency bar plot** is used to display categorical data as a count or frequency. Since our variable has two levels, correct or incorrect, we will create two bars one for each level.
 
+\newpage
 7. Plot the observed class data using a frequency bar plot. 
 
 ![](images/barplot_martian.png)
 
 We can also visualize the data as a proportion in a **relative frequency bar plot**.  Relative frequency is the proportion calculated for each level of the categorical variable. 
 
+\vspace{1in}
+
 8. Plot the observed class data using a relative frequency bar plot.
 
 ![](images/relative_barplot_martian.png)
 
+\newpage
 9.	The next step is to analyze the data.  If humans really don’t know Martian and are just guessing which is bumba, what are the chances of getting it right? 
 \vspace{0.5in}
     
@@ -88,10 +92,10 @@ We can also visualize the data as a proportion in a **relative frequency bar plo
     How many people in your class would you expect to choose bumba correctly just by chance?  Explain your reasoning.
 \vspace{1in}
 
-10.	Each of you will flip a coin one time to simulate your “guess”.  Let Heads = correct, Tails = incorrect.  What was the result of your simulation? \vspace{0.5in}
+10.	Each of you will flip a coin one time to simulate your “guess”.  Let Heads = correct, Tails = incorrect.  What was the result of your simulation? \vspace{1in}
 
     What was the result from your class’s simulation?  What proportion of students “guessed” correctly in the simulation?
-\vspace{0.5in}
+\vspace{1in}
 
 11. If students really don’t know Martian and are just guessing which is bumba, which seems more unusual: the result from your class’s **simulation** or the observed proportion of students in your class that were correct (this is your data from question 6)?  Explain your reasoning.
 
@@ -100,9 +104,9 @@ We can also visualize the data as a proportion in a **relative frequency bar plo
 12.	While your observed class data is likely far different from the simulated “just-guessing” class, comparing our class data to a single simulation does not seem to give enough information.  The differences seen could just be due to that set of coin flips!  Let’s simulate another class.  Each student should flip your coin again.  What was the result from your class’s second simulation?  What proportion of students “guessed” correctly in the second simulation?  Create a plot to compare the two simulated results with the observed class result.
 
 \vspace{1in}
-\newpage
 
-13.	We still unfortunately only have a couple of simulations to compare our class data to.  It would be much better to be able to see how our class compared to hundreds or thousands of “just-guessing” classes.  Since we don’t want to flip coins all class period, your instructor will use a web app to get several 1000 trials. Fill in the following blanks to describe how we would create a simulation of random guessing with 1000 trials.
+
+13.	We still unfortunately only have a couple of simulations to compare our class data to.  It would be much better to be able to see how our class compared to hundreds or thousands of “just-guessing” classes.  Since we don’t want to flip coins all class period, your instructor will use a computer simulation to get 1000 trials. Fill in the following blanks to describe how we would create a simulation of random guessing with 1000 trials.
 \vspace{0.1in}
 
     Probability of correct guesses: _____
