@@ -66,23 +66,27 @@ boxplot(Snowfall~WeatherPattern, data=Snow)
 
 \vspace{1in}
 
+5.  Is this a paired data set or independent groups?  Explain your answer.
+
+\vspace{1in}
+
 ## Ask a research question.
 
-5.  Write out the parameter of interest in context of the study.  Use proper notation and be sure to define your subscripts.  Use El Nino minus La Nina as the order of subtraction.
+6.  Write out the parameter of interest in context of the study.  Use proper notation and be sure to define your subscripts.  Use El Nino minus La Nina as the order of subtraction.
 
 \vspace{1in}
 
-6.  What are the two competing possibilities we will evaluate in this study?
+7.  What are the two competing possibilities we will evaluate in this study?
 
 \vspace{1in}
 
-7.  Identify which is the null hypothesis and which is the alternative hypothesis. 
+8.  Identify which is the null hypothesis and which is the alternative hypothesis. 
 
 \vspace{1in}
 
 ## Summarize and Visualize the data.
 
-8. Calculate the summary statistic.  Use El Nino minus La Nina as the order of subtraction. What is the appropriate notation for the statistic?
+9. Calculate the summary statistic.  Use El Nino minus La Nina as the order of subtraction. What is the appropriate notation for the statistic?
 
 \vspace{0.5in}
 
@@ -92,48 +96,48 @@ Remember that the null distribution is created based on the assumption the null 
 
 To demonstrate this your instructor will use cards to represent the sample.  
 
-9.  How many cards will we start with?
+10.  How many cards will we start with?
 
 \vspace{0.5in}
 
-10.  What will we write on each card?
+11.  What will we write on each card?
 
 \vspace{0.5in}
 
-11.  Next we will mix the cards together and shuffle into two piles.  How many cards will go into each pile?  What should we label the piles?
+12.  Next we will mix the cards together and shuffle into two piles.  How many cards will go into each pile?  What should we label the piles?
 
 \vspace{1in}
 
-12.  What value is calculated from the cards and plotted on the null distribution?
+13.  What value is calculated from the cards and plotted on the null distribution?
 
 \vspace{1in}
 
-13.  Once we create a null distribution of 1000 simulations, at what value do you expect the distribution to be centered at?  Explain your answer.
+14.  Once we create a null distribution of 1000 simulations, at what value do you expect the distribution to be centered at?  Explain your answer.
 
 \vspace{1in}
 
 **simulation**
 
-14.  Load the package CatStats.  Using the ....Enter the values for the ....
+15.  Load the package CatStats.  Using the ....Enter the values for the ....
 
 \vspace{1in}
 
 
-15.  Report the p-value. How much evidence does the p-value provide against the null hypothesis?
+16.  Report the p-value. How much evidence does the p-value provide against the null hypothesis?
 
 \vspace{1in}
 
-16. Using bootstrapping find a 90% confidence interval.  
+17. Using bootstrapping find a 90% confidence interval.  
 
 **bootstrapping simulation**
 
-17. Interpret the interval you calculated in Question 16. 
+18. Interpret the interval you calculated in Question 17. 
 
 \vspace{1in}
 
 ## Communicate the results and answer the research question.
 
-18.  Write a paragraph summarizing the results of the study.  Be sure to include:
+19.  Write a paragraph summarizing the results of the study.  Be sure to include:
 
 * Summary statistic
 
@@ -151,11 +155,11 @@ To demonstrate this your instructor will use cards to represent the sample.
 
 ## Revisit and Look Forward
 
-19.  Would the results from the theory-based test match the results we saw with the simulation?  Explain why or why not.
+20.  Would the results from the theory-based test match the results we saw with the simulation?  Explain why or why not.
 
 \vspace{1in}
 
-20. If we had data on 45 La Nina years and 47 El Nino years and found a similar summary statistic, what would happen to the p-value?  The width of the confidence interval?  The power?
+21. If we had data on 45 La Nina years and 47 El Nino years and found a similar summary statistic, what would happen to the p-value?  The width of the confidence interval?  The power?
 
 \vspace{1in}
 
