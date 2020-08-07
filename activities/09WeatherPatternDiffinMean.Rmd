@@ -35,7 +35,7 @@ In the winter of 2018-2019, Bozeman had a record snowfall which resulted in the 
 # Set-up
 library(readr)
 library(car)
-Snow <- read.csv("../data/SnowfallbyWeatherPattern.csv")
+Snow <- read.csv("data/SnowfallbyWeatherPattern.csv")
 Snow$WeatherPattern <- factor(Snow$WeatherPattern)
 ```
 

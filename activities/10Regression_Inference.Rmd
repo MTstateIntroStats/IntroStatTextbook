@@ -69,7 +69,7 @@ The variables in this dataset consist of the following:
 ```{r,fig.width=7,fig.height=6}
 require(readr)
 require(car)
-hands <- read.csv("../data/hands.csv")
+hands <- read.csv("data/hands.csv")
 
 ## rename variables (odd original coding)
 colnames(hands) <- c("time","speed","age","dominant","gender",
