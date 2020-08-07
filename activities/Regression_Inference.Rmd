@@ -1,0 +1,192 @@
+---
+title: "Regression Inference"
+output:
+  word_document: default
+  pdf_document: default
+subtitle: 34 points
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, 
+                      message = FALSE,
+                      warning = FALSE,
+                      eval = FALSE)
+options(show.signif.stars = FALSE)
+library(readr)
+```
+
+# Hand Dexterity
+
+## Learning Outcomes
+* Given a research question, construct the null and alternative hypotheses
+  in words and using appropriate statistical symbols
+  
+* Describe and perform simulation-based hypothesis tests
+
+* Interpret and evaluate a p-value
+
+* Construct and interpret a theory-based confidence interval
+
+* Use a confidence interval to determine the conclusion of a hypothesis test
+
+
+## Background
+
+Physical therapists often evaluate manual (hand) dexterity by having patients complete simple tasks, such as moving pegs on a board or threading objects through holes. Researchers want to examine the manual dexterity of children as part of a follow-up study of a test originally designed for adults to see how manual dexterity changes with age. In this test, 174 participants were given a board with 16 pegs, each in their own hole, arranged in a 4x4 grid. Participants were instructed to pick up the peg with one hand, flip it over by rotating their wrist, then reinsert it in the same hole. Using this test, researchers want to know if as people age the speed at which they can flip all 16 pegs increases.
+
+The variables in this dataset consist of the following:
+
+- **time:** Recorded time to flip all 16 pegs, measured in seconds.
+
+- **speed:** The average speed to flip a peg for each participant (seconds per peg).
+
+- **age:** Age of the participants, measured in years.
+
+- **dominant:** Whether the participant's dominant hand was used, coded as 0 for no, 1 for yes.
+
+- **gender:** The participant's gender, recorded as a binary variable, 0 for male, 1 for female.
+
+- **HD:** The dominant hand of the participant, recorded as "R" for right hand, "L" for left hand.
+
+- **handUsed:** Which hand the participant used to complete the test, recorded as "R" for right hand, "L" for left hand.
+
+*Data source: Hand Dexterity in Children: Administration and Normative Values of the Functional Dexterity Test (FDT), Gogola, G., et al., 2013*
+
+
+### Review
+
+1. Explain why regression methods are appropriate to use to address the researchers' question. Make sure you clearly define the variables of interest in your explanation.
+
+\vspace{1in}
+
+2. What is the scope of inference for this study?  Explain your answer. 
+
+\vspace{1in}
+
+
+3. Create a scatterplot to examine the relationship between the speed at which a participant can flip a peg and the age of the participant. Provide this plot. Based on your plot, does it appear that there is a relationship between ``age`` and ``speed``? Note: ``age`` should be on the x-axis.
+
+```{r,fig.width=7,fig.height=6}
+require(readr)
+require(car)
+hands <- read.csv("../data/hands.csv")
+
+## rename variables (odd original coding)
+colnames(hands) <- c("time","speed","age","dominant","gender",
+                     "HD","handUsed") 
+
+hands$dominant <- factor(hands$dominant)
+hands$gender <- factor(hands$gender)
+hands$HD <- factor(hands$HD)
+hands$handUsed <- factor(hands$handUsed)
+
+## You will need to replace each "xxx" with the appropriate information
+## and give your plot an informative title
+scatterplot(speed~age, data = hands, smooth=F, col=1, pch=19,
+            main = "Scatterplot of Age vs. Speed")
+lm.hand <- lm(speed~age, data=hands)
+plot(lm.hand, pch = 20, add.smooth = F)
+```
+
+4. Describe the features of the plot you created in Question 3.
+
+\vspace{1in}
+
+If you indicated there are potential outliers, which points are they?
+
+#### Conditions for the least squares line
+
+When performing inference on a least squares line, the follow conditions are generally required
+
+- Linearity: the data should follow a linear trend
+- Nearly normal residuals: residuals must be nearly normal
+- Constant variability: the variability of points around the least squares line remains roughly constant
+- Independent observations: individual data points must be independent 
+
+5. Are the conditions met ....
+
+\vspace{1in}
+
+
+### Frame the research quesiton
+
+5. Write out the null hypothesis in words.
+
+\vspace{1in}
+
+6. Using the research question, write the alternative hypothesis in notation.
+
+\vspace{0.5in}
+
+### Collect Data
+
+```{r}
+favstats(hands$age)
+favstats(hands$speed)
+```
+
+
+7. Calculate the slope of the least squares line between 'age' and 'speed'.
+
+\vspace{1in}
+
+```{r}
+## replace each xxx with the appropriate information
+lm.hand <- lm(speed~age, data=hands)
+summary(lm.hand)
+```
+
+8.  Using the output above, write the equation of the regression line.
+
+\vspace{1in}
+
+9.  Interpret the slope in context of the problem.
+
+\vspace{1in}
+
+10. Using your estimated line of best fit, predict the per peg speed for a participant who was 9.18 years old. Show all work.
+
+\vspace{1in}
+
+11. Calculate the residual associated with the observation (9.18, 2.95), using your estimated regression line from question 8. 
+
+\vspace{1in}
+
+### Model the Randomness
+
+**use R output??**
+
+### Analyze the data
+
+...Based on the p-value, how much evidence is there against the null hypothesis?
+
+### Form Conclusions
+
+...Based on the p-value, write a conclusion
+
+Calculate the coefficient of determination for a linear model that describes the relationship between ``age`` and ``speed``. Show all work and use proper notation.
+
+Interpret this value in the context of the study. 
+
+
+
+## Multilinear Regression???
+
+Is there an effect due to gender on this linear relationship?  
+
+```{r}
+
+require(wesanderson) ##package for colors
+palette(wes_palette("Zissou1")) ## change default color scheme
+scatterplot(speed~age+dominant, data = hands, smooth=F, col=1, 
+            main = "Scatterplot of Age vs. Speed by Gender")
+```
+
+
+```{r}
+lm.hand_gender <- lm(speed~age+gender)
+summary(lm.hand_gender)
+```
+
+
+
