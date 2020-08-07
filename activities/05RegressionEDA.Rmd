@@ -16,7 +16,7 @@ library(mosaic)
 
 ```{r echo=F, fig.height=4}
 par(mfrow=c(1,2))
-movies <- read.csv("../data/Movies.csv") #reads in data
+movies <- read.csv("data/Movies.csv") #reads in data
 movies$content_rating <- factor(movies$content_rating) 
 rating <- c("PG", "PG-13", "R") #chooses levels of a variable
 movies <- movies[movies$content_rating %in% rating,]

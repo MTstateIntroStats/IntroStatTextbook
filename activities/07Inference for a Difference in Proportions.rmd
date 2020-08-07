@@ -84,7 +84,7 @@ Is there evidence that safety helmet use reduces the risk of head injury for ski
 \vspace{1in}
 
 ```{r echo=F, fig.height=4}
-injury <- read.csv("../data/head_injury.csv")
+injury <- read.csv("data/head_injury.csv")
 injury$Helmet <- factor(injury$Helmet)
 injury$Injury <- factor(injury$Injury)
 ```

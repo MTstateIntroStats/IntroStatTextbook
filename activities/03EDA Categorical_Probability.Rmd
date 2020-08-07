@@ -46,7 +46,7 @@ To review these concepts see Section 2.1 in the textbook.
 
 The data set we will use for this activity is from the Current Population Survey in 1985.  The CPS is a survey sponsored by the Census Bureau and the Bureau of Labor Statistics to track labor force statistics for the United States population.  The following table summarizes the data:
 
-![](../images/cps.png)
+![](images/cps.png)
 
 ## Vocabulary Review
 
@@ -69,7 +69,7 @@ An important part of understanding data is to create visual pictures of what the
 If we wanted to know how many people in our data set were in each sector, we would create a bar plot of the variable sector.
 
 ```{r}
-cps <- read.csv("../data/cps.csv") #This will read in the dataset
+cps <- read.csv("data/cps.csv") #This will read in the dataset
 cps$sector <- factor(cps$sector) #When a variable is categorical, need to make it a factor
 cps$sex <- factor(cps$sex)
 ```

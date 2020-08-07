@@ -71,13 +71,13 @@ Looking at the data set and the summary statistics is only one way to display th
 
 7. Plot the observed class data using a frequency bar plot. 
 
-![](../images/barplot_martian.png)
+![](images/barplot_martian.png)
 
 We can also visualize the data as a proportion in a **relative frequency bar plot**.  Relative frequency is the proportion calculated for each level of the categorical variable. 
 
 8. Plot the observed class data using a relative frequency bar plot.
 
-![](../images/relative_barplot_martian.png)
+![](images/relative_barplot_martian.png)
 
 9.	The next step is to analyze the data.  If humans really don’t know Martian and are just guessing which is bumba, what are the chances of getting it right? 
 \vspace{0.5in}
