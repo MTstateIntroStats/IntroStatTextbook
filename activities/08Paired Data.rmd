@@ -30,6 +30,8 @@ The following terms will be covered in this activity.
 
 * Independent groups
 
+* Shifted Null Distribution
+
 For further explanation of these topics see Section 6.2 in the textbook.
 
 ## COVID-19 and Air Pollution
@@ -40,12 +42,16 @@ The social distancing efforts and stay-at-home directives to help combat the spr
 
 Have high population-density U.S. cities seen the same improved air quality conditions? To study this question, data was gathered from the U.S. Environmental Protection Agency (EPA) AirData website which records the ozone (O3) and fine particulate matter (PM2.5) values for cities across the U.S. These measures are used to calculate an air quality index (AQI) score for each city each day of the year. Thirty-three of the most densely populated U.S. cities were selected and the AQI score recorded for April 20, 2020 as well as the five-year median AQI score for April 20th (2015 - 2019). Note that higher AQI scores indicate worse air quality.
 
-## Review
-```{r, echo=FALSE}
+## Vocabulary Review
+```{r}
 Air <- read.csv("data/AirPollutionCOVID.csv")
+```
+
+```{r}
 boxplot(Air$Difference, 
         main="Boxplot of the Differences in AQI Scores")
 ```
+
 
 |               |         Mean         | Standard deviation | Sample Size |
 |:-------------:|:--------------------:|--------------------|-------------|
@@ -100,7 +106,6 @@ boxplot(Air$Difference,
 
 
 ## Use statistical inferential methods to draw inferences from the data
-
 
 To simulate the null distribution we will use a bootstrapping method - sampling with replacement from the data set.  Before bootstrapping we will need to shift the each data point by the difference $\mu_0 - \bar{x}$.  This will ensure that the simulated null distribution will be centered at the null value.  
 
@@ -161,5 +166,6 @@ Report the confidence interval in interval notation.
 \vspace{3in}
 
 ## Revisit and Look Forward
+
 
 
