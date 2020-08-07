@@ -112,12 +112,14 @@ favstats(moviesa$imdb_score)
 
 \vspace{0.5in}
 
-A histogram of the variable 'IMBd Score' is shown below.  Notice that the bin width is 0.5.  For example the first bin consists of the number of movies in the data set with an IMBd score of 3 to 3.5.  It is important to note that a movie with a IMBd score of 5 will fall into the bin for 5 - 5.5.  Visually this shows us the range of IMBd scores for Movies released in 2016.
+A histogram of the variable 'IMBd Score' is shown below.  Notice that the bin width is 0.5.  For example the first bin consists of the number of movies in the data set with an IMBd score of 3.25 to 3.75.  It is important to note that a movie with a IMBd score of 4.75 will fall into the bin for 4.75 - 5.25.  Visually this shows us the range of IMBd scores for Movies released in 2016.
 
 ```{r}
-hist(moviesa$imdb_score, #dataset name and variable
-     main = "Histogram of IMDb Score of Movies in 2016", #title for plot 
-     xlab = "IMDb Score") #label for x axis
+ggplot(data = moviesa,   #Name data set
+       aes(x = imdb_score)) +   #Name variable to plot
+  geom_histogram(binwidth = 0.5) +  #Create histogram with specified binwidth
+  labs(title = "Histogram of IMDb Score of Movies in 2016", #title for plot 
+       x = "IMDb Score") #Label for x axis
 ```
 
 
@@ -150,9 +152,12 @@ The boxplot is created using the five number summary:
 The boxplot of 'Budget' in millions by 'Content rating' is plotted using the code below.  This plot helps to compare the budget for different levels of content rating.
 
 ```{r}
-boxplot(budget_mil~content_rating #response~explanatory 
-        , data=moviesa, main = "Side by side Boxplot of Budget by Content Rating", 
-        xlab = "Content Rating", ylab = "Budget (in Millions)")
+ggplot(data = moviesa,  #Data set
+       aes(y = budget_mil, x = content_rating))+  #Identify variables
+  geom_boxplot()+  #Tell it to make a boxplot
+  labs(title = "Side by side Boxplot of Budget by Content Rating",  #Title
+        x = "Content Rating",    #x-axis label
+       y = "Budget (in Millions)")  #y-axis label
 ```
 
 11. Answer the following questions about the boxplots above.
