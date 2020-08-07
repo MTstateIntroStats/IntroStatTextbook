@@ -13,27 +13,45 @@ library(mosaic)
 * Given a research question, construct the null and alternative hypotheses
   in words and using appropriate statistical symbols
   
-* Describe and perform simulation-based hypothesis 
+* Describe and perform simulation-based hypothesis for paired quantitative data
 
 * Interpret and evaluate a p-value
 
-* Construct and interpret a theory-based confidence interval
+* Find a confidence interval for the mean difference using bootstrapping
 
 * Use a confidence interval to determine the conclusion of a hypothesis test
 
-## Mean Difference in Heart Rates for Jumping Jacks and Bicycle Kicks
-Which exercise, jumping jacks or bicycle kicks will raise your heart rate more? Students in an introductory statistics class were asked to participate in an experiment to answer this question.  Each student flipped a coin to determine which exercise to complete first.  If the coin landed on heads the student would do jumping jacks for 30 seconds and then measure their heart rate.  After a 2 minute break the student would do bicycle kicks for 30 seconds and then record their heart rate.  If the coin landed on tails the student would complete bicycle kicks first followed by jumping jacks using the same times as above. 
+## Terminology
+The following terms will be covered in this activity.
+
+* Mean difference
+
+* Paired data
+
+* Independent groups
+
+For further explanation of these topics see Section 6.2 in the textbook.
+
+## COVID-19 and Air Pollution
+
+The social distancing efforts and stay-at-home directives to help combat the spread of COVID-19 have appeared to help 'flatten the curve' across the United States, albeit at a high cost to many individuals and businesses. The impact of these measures, though, goes far beyond the infection and death rates from the disease. You may have seen images comparing air quality in large international cities like Rome, Milan, Wuhan, and New Delhi such as the one pictured below which seem to indicate, perhaps unsurprisingly, that fewer people driving and factories being shut down have reduced air pollutants. 
+
+![](images/air_pollution.png)
+
+Have high population-density U.S. cities seen the same improved air quality conditions? To study this question, data was gathered from the U.S. Environmental Protection Agency (EPA) AirData website which records the ozone (O3) and fine particulate matter (PM2.5) values for cities across the U.S. These measures are used to calculate an air quality index (AQI) score for each city each day of the year. Thirty-three of the most densely populated U.S. cities were selected and the AQI score recorded for April 20, 2020 as well as the five-year median AQI score for April 20th (2015 - 2019). Note that higher AQI scores indicate worse air quality.
 
 ## Review
-```{r}
-heartrate <- read.csv("../data/HeartRates.csv")
-boxplot(heartrate$Diff, 
-        main="Boxplot of the Differences in Heart Rates for Exercises")
+```{r, echo=FALSE}
+Air <- read.csv("data/AirPollutionCOVID.csv")
+boxplot(Air$Difference, 
+        main="Boxplot of the Differences in AQI Scores")
 ```
 
-```{r}
-fav_stats(heartrate$Diff)
-```
+|               |         Mean         | Standard deviation | Sample Size |
+|:-------------:|:--------------------:|--------------------|-------------|
+| Current       | $\bar{x}_1$ = 47.394 | $s_1$ = 14.107     | $n_1$ = 33  |
+| 5 Year Median | $\bar{x}_2$ = 51.545 | $s_2$ = 17.447     | $n_2$ = 33  |
+| Differences   | $\bar{x}_d$ = -4.152 | $s_d$ = 17.096     | $n_d$ = 33  |
 
 1. What is the sample size? 
 
@@ -47,9 +65,9 @@ fav_stats(heartrate$Diff)
 
 \vspace{1in}
 
-4.  What is the purpose of randomizing the order of jumping jacks and bicycle kicks before measuring heart rates?
+4. Is this an experiment or observational study?
 
-\vspace{1in}
+\vspace{0.5in}
 
 ## Ask a Research Question
 
@@ -98,51 +116,50 @@ To simulate the null distribution we will use a bootstrapping method - sampling 
 
 \vspace{1in}
 
-13. What proportion of samples are beyond the sample mean difference in heart beats for jumping jacks minus bicycle kicks?
+13. What proportion of samples are beyond the sample mean difference in AQI Scores for current scores minus 5 year median scores?
 
 \vspace{1in}
 
+14. Interpret the p-value in the context of the problem.
+
+\vspace{1in}
+
+15. How much evidence does this provide for improved air quality in US cities?
+
+\vspace{1in}
+
+16. Write out the parameter of interest in context of the study.
+
+\vspace{1in}
+
+17.  Use bootstrapping to find a 99% confidence interval for the parameter of interest.  Fill in the ....
+Report the confidence interval in interval notation.
+
+\vspace{1in}
 
 ## Communicate the results and answer the research question.
 
-14. Write out the parameter of interest in context of the study.
+18. Interpret the 95% confidence interval in context of the problem.
 
 \vspace{1in}
 
-To calculate a confidence interval to estimate the mean difference in heart rates, we will use this equation:
 
-$\bar{x}_d \pm t^*SE(\bar{x}_d)$, where $SE(\bar{x}_d) = \sqrt(\frac{\bar{x}_d}{n_d})$
+19.  Write a paragraph summarizes the results of this study.  Be sure to include:
 
-To find the $t^*$ multiplier for a 95% confidence interval we will find the value in the t-distribution that represents the endpoints for the middle 95% of the data.
+* Summary statistic
 
-```{r}
-qt(0.95+0.025, df = 42) #Multiplier for 95% confidence with 42 (n-1) df
-```
+* P-value
 
-15.  Calculate the $SE(\bar{x}_d)$. 
+* Interpretation of the p-value
 
-\vspace{1in}
+* Confidence Interval
 
-16. Calculate a 95% confidence interval for the parameter of interest.
+* Interpretation of the confidence interval
 
-\vspace{1in}
+* Conclusion in context
 
-17. Interpret the 95% confidence interval in context of the problem.
-
-\vspace{1in}
-
-18.  Based off your p-value and confidence interval, write a conclusion.
-
-\vspace{1in}
+\vspace{3in}
 
 ## Revisit and Look Forward
 
-Suppose we had a sample of 90 students instead of 43 resulting in the same summary statistic.
 
-19. Would this new data provide more or less evidence against the null hypothesis?  Explain your answer.
-
-\vspace{1in}
-
-20. Would this result in a wider or narrower confidence interval?
-
-\vspace{1in}
