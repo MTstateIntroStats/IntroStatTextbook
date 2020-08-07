@@ -1,36 +1,45 @@
 ---
 title: "Regression Inference"
 output:
-  word_document: default
   pdf_document: default
-subtitle: 34 points
+  word_document: default
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, 
                       message = FALSE,
                       warning = FALSE,
-                      eval = FALSE)
+                      eval = TRUE)
 options(show.signif.stars = FALSE)
 library(readr)
+library(mosaic)
+library(car)
 ```
-
-# Hand Dexterity
 
 ## Learning Outcomes
 * Given a research question, construct the null and alternative hypotheses
   in words and using appropriate statistical symbols
   
-* Describe and perform simulation-based hypothesis tests
+* Describe and perform theory-based hypothesis tests for the slope 
 
 * Interpret and evaluate a p-value
 
-* Construct and interpret a theory-based confidence interval
+* Construct and interpret a theory-based confidence interval for slope
 
 * Use a confidence interval to determine the conclusion of a hypothesis test
 
+## Terminology
+The following terms will be covered in this activity.
 
-## Background
+* Correlation
+
+* Slope 
+
+* Coeffiecient of determination
+
+For further explanation of these topics review Chapter 3 and 7 in the textbook.
+
+## Hand Dexterity
 
 Physical therapists often evaluate manual (hand) dexterity by having patients complete simple tasks, such as moving pegs on a board or threading objects through holes. Researchers want to examine the manual dexterity of children as part of a follow-up study of a test originally designed for adults to see how manual dexterity changes with age. In this test, 174 participants were given a board with 16 pegs, each in their own hole, arranged in a 4x4 grid. Participants were instructed to pick up the peg with one hand, flip it over by rotating their wrist, then reinsert it in the same hole. Using this test, researchers want to know if as people age the speed at which they can flip all 16 pegs increases.
 
@@ -53,9 +62,9 @@ The variables in this dataset consist of the following:
 *Data source: Hand Dexterity in Children: Administration and Normative Values of the Functional Dexterity Test (FDT), Gogola, G., et al., 2013*
 
 
-### Review
+## Vocabulary Review
 
-1. Explain why regression methods are appropriate to use to address the researchers' question. Make sure you clearly define the variables of interest in your explanation.
+1. Explain why regression methods are appropriate to use to address the researchers' question. Make sure you clearly define the variables of interest in your explanation and their roles.
 
 \vspace{1in}
 
@@ -65,28 +74,24 @@ The variables in this dataset consist of the following:
 
 
 3. Create a scatterplot to examine the relationship between the speed at which a participant can flip a peg and the age of the participant. Provide this plot. Based on your plot, does it appear that there is a relationship between ``age`` and ``speed``? Note: ``age`` should be on the x-axis.
-
-```{r,fig.width=7,fig.height=6}
-require(readr)
-require(car)
+ 
+```{r, include = FALSE, fig.width=7,fig.height=6}
 hands <- read.csv("data/hands.csv")
 
 ## rename variables (odd original coding)
 colnames(hands) <- c("time","speed","age","dominant","gender",
                      "HD","handUsed") 
-
 hands$dominant <- factor(hands$dominant)
 hands$gender <- factor(hands$gender)
 hands$HD <- factor(hands$HD)
 hands$handUsed <- factor(hands$handUsed)
+```
 
-## You will need to replace each "xxx" with the appropriate information
-## and give your plot an informative title
+```{r}
 scatterplot(speed~age, data = hands, smooth=F, col=1, pch=19,
             main = "Scatterplot of Age vs. Speed")
-lm.hand <- lm(speed~age, data=hands)
-plot(lm.hand, pch = 20, add.smooth = F)
 ```
+
 
 4. Describe the features of the plot you created in Question 3.
 
@@ -94,7 +99,7 @@ plot(lm.hand, pch = 20, add.smooth = F)
 
 If you indicated there are potential outliers, which points are they?
 
-#### Conditions for the least squares line
+## Conditions for the least squares line
 
 When performing inference on a least squares line, the follow conditions are generally required
 
@@ -103,39 +108,38 @@ When performing inference on a least squares line, the follow conditions are gen
 - Constant variability: the variability of points around the least squares line remains roughly constant
 - Independent observations: individual data points must be independent 
 
-5. Are the conditions met ....
+The scatterplot and the residual plot will be used to assess the conditions for approximating the data with the T-distribution
+
+```{r}
+lm.hand <- lm(speed~age, data = hands)
+par(mfrow=c(2,2))
+plot(lm.hand)
+```
+
+5. Are the conditions met 
 
 \vspace{1in}
 
 
-### Frame the research quesiton
+## Ask a Reseach Question
 
-5. Write out the null hypothesis in words.
+6. Write out the null hypothesis in words.
 
 \vspace{1in}
 
-6. Using the research question, write the alternative hypothesis in notation.
+7. Using the research question, write the alternative hypothesis in notation.
 
 \vspace{0.5in}
 
-### Collect Data
+## Summarize and Visualize the data
 
-```{r}
-favstats(hands$age)
-favstats(hands$speed)
-```
-
-
-7. Calculate the slope of the least squares line between 'age' and 'speed'.
-
-\vspace{1in}
+Enter the variable names into the linear model function to get the linear model output.
 
 ```{r}
 ## replace each xxx with the appropriate information
 lm.hand <- lm(speed~age, data=hands)
-summary(lm.hand)
+summary(lm.hand)$coefficients
 ```
-
 8.  Using the output above, write the equation of the regression line.
 
 \vspace{1in}
@@ -152,41 +156,88 @@ summary(lm.hand)
 
 \vspace{1in}
 
-### Model the Randomness
+## Use statistical inferential methods to draw inferences from the data
 
-**use R output??**
+To find the value of the test statistic to test the slope we will use, 
 
-### Analyze the data
+ $T = \frac{\mbox{slope estimate}}{SE} = T = \frac{b_1}{SE(b_1)}$
+ 
+We will use the linear model output above to get the estimate for slope and standard error.
 
-...Based on the p-value, how much evidence is there against the null hypothesis?
+12.  Calculate the test statistic for slope.
 
-### Form Conclusions
+\vspace{1in}
 
-...Based on the p-value, write a conclusion
+13.  What value does the value calculated in question 12 match in the linear model output?
 
-Calculate the coefficient of determination for a linear model that describes the relationship between ``age`` and ``speed``. Show all work and use proper notation.
+\vspace{0.5in}
 
-Interpret this value in the context of the study. 
+14.  Interpret the test statistic in context of the problem.
 
+\vspace{1in}
 
+15.  Using the linear model output, report the p-value for the test of significance.
 
-## Multilinear Regression???
+\vspace{0.5in}
+16. Based on the p-value, how much evidence is there against the null hypothesis?
 
-Is there an effect due to gender on this linear relationship?  
+\vspace{0.5in}
+
+Recall that a confidence interval is calculated by adding and subtracting the margin of error to the point estimate.  
+
+ $\mbox{point estimate}\pm t^*SE(estimate)$
+ $b_1 \pm t^* SE(b_1)$
+ 
+The $t^*$ multiplier comes from the t-distribution with $n-2$ df.
 
 ```{r}
+qt(0.95+0.025, 172) #95% t* multiplier 
+```
 
-require(wesanderson) ##package for colors
-palette(wes_palette("Zissou1")) ## change default color scheme
+17. Calculate the 95% confidence interval for the true slope.
+\vspace{1in}
+
+18. Calculate the coefficient of determination for a linear model that describes the relationship between ``age`` and ``speed``. Use proper notation.
+
+\vspace{1in}
+
+19. Interpret this value in the context of the study.
+
+\vspace{1in}
+
+## Communicate the results and answer the research question.
+
+20. Based on the p-value, write a conclusion in context of the problem.
+
+\vspace{1in}
+
+21. Interpret the 95% confidence interval in context of the problem.
+
+\vspace{1in}
+
+22.  Summarize the results of the study in a written paragraph.  Be sure to include.
+
+* Summary statistic
+
+* Test statistic and interpretation
+
+* P-value and interpretation
+
+* Confidence interval and interpretation
+
+* Conclusion in context
+
+* Scope of inference
+
+## Revisit and Look Forward
+
+23. Is there an effect due to gender on this linear relationship?  Explain your answer using the scatterplot.
+
+```{r}
 scatterplot(speed~age+dominant, data = hands, smooth=F, col=1, 
             main = "Scatterplot of Age vs. Speed by Gender")
 ```
 
-
-```{r}
-lm.hand_gender <- lm(speed~age+gender)
-summary(lm.hand_gender)
-```
 
 
 
