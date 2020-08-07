@@ -41,7 +41,6 @@ Categorical variables are data that are in groups or categories such as eye colo
 
 ![](images/variables.png)
 
-
 3. Identify the variable we are collecting on each observational unit in this study.  What are we measuring on each student?
 
 \vspace{1in}
@@ -66,8 +65,6 @@ $\mbox{proportion} = \frac{\mbox{number of students who correctly identified bum
 \vspace{1in}
 
 Looking at the data set and the summary statistics is only one way to display the data.  We will also want to create a visualization or picture of the data. A **frequency bar plot** is used to display categorical data as a count or frequency. Since our variable has two levels, correct or incorrect, we will create two bars one for each level.
-
-\newpage
 
 7. Plot the observed class data using a frequency bar plot. 
 
@@ -103,6 +100,7 @@ We can also visualize the data as a proportion in a **relative frequency bar plo
 12.	While your observed class data is likely far different from the simulated “just-guessing” class, comparing our class data to a single simulation does not seem to give enough information.  The differences seen could just be due to that set of coin flips!  Let’s simulate another class.  Each student should flip your coin again.  What was the result from your class’s second simulation?  What proportion of students “guessed” correctly in the second simulation?  Create a plot to compare the two simulated results with the observed class result.
 
 \vspace{1in}
+\newpage
 
 13.	We still unfortunately only have a couple of simulations to compare our class data to.  It would be much better to be able to see how our class compared to hundreds or thousands of “just-guessing” classes.  Since we don’t want to flip coins all class period, your instructor will use a web app to get several 1000 trials. Fill in the following blanks to describe how we would create a simulation of random guessing with 1000 trials.
 \vspace{0.1in}
@@ -118,7 +116,7 @@ We can also visualize the data as a proportion in a **relative frequency bar plo
 
 14.  Sketch the distribution displayed by your instructor here, being sure to label each axis appropriately. 
 
-\vspace{1.5in}
+\vspace{2in}
 
 15. Is your class particularly good or bad at Martian?  How can you use the plot in question 14 to tell? 
 
