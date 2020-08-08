@@ -9,12 +9,39 @@ Mastery of the content presented in this chapter will be crucial for understandi
 
 ## Exploring categorical data {#categorical-data}
 
-In this section, we will introduce tables and other basic tools for organizing and analyzing categorical data that are used throughout this book.
-The `loan50` data set represents a sample from a larger loan data set called `loans`.
-This larger data set contains information on 10,000 loans made through Lending Club.
-We will examine the relationship between `homeownership`, which for the `loans` data can take a value of `rent`, `mortgage` (owns but has a mortgage), or `own`, and `app_type`, which indicates whether the loan application was made with a partner or whether it was an individual application.
+In this section, we will introduce tables and other basic tools for organizing and analyzing categorical data that are used throughout this book. Table \@ref(tab:emailDF) displays the first six rows of the `email` data set containing information on 3,921 emails. In this section we will examine whether the presence of numbers, small or large, in an email provides any useful value in classifying email as spam or not spam..
+Descriptions of all five email variables are given in Table \@ref(tab: emailVariables).
 
+```{block2, type="data", echo=TRUE}
+The `email` data can be found in the [openintro](http://openintrostat.github.io/openintro/reference/index.html) package.^[The `email` data set found in the `openintro` package defines the variable `spam` as 0 (not spam) or 1 (spam), and `format` as 0 (not HTML) or 1 (HTML). When variables are defined in this way---coded as the numbers 0 and 1 rather than the category names---they are called **indicator variables*** or **dummy variables**. In this section of the textbook, we have re-coded `spam` to be the variable `type`, which takes on values "not spam" or "spam", and we have re-coded the variable `format` to take on values "not HTML" or "HTML".]
+```
 
+```{r emailDF}
+data(email)
+email <- email %>%
+  mutate(type = factor(spam, levels=c(0,1), labels=c("not spam","spam")),
+        format = factor(format, levels=c(0,1), labels=c("not HTML","HTML")))
+
+email %>% 
+  select("type", "num_char", "line_breaks", "format", "number") %>%
+  slice_head(n = 6) %>%
+  kable(caption = "Six rows from the `email` data set.",
+        row.names = TRUE)
+```
+
+```{r emailVariables}
+email_var_def <- tribble(
+  ~variable,       ~description,
+  "type", "Whether the email was spam or not spam.",
+  "num_char", "The number of characters in the email, in thousands.",
+  "line_breaks", "The number of line breaks in the email (does not count text wrapping).",
+  "format", "Whether the email was written using HTML (e.g., may have included bolding or active links) or not.",
+  "number", "Factor variable saying whether there was no number, a small number (under 1 million), or a big number."
+)
+
+email_var_def %>%
+  kable(caption = "Variables and their descriptions for the `email` data set.")
+```
 ### Contingency tables and conditional proportions
 
 - One-way and Two-way/contingency tables 
@@ -22,39 +49,23 @@ We will examine the relationship between `homeownership`, which for the `loans` 
 - p-hat and pi notation
 - conditional/unconditional probabilities
 - association vs no association in conditional proportions
+- Simpson's paradox
 
-**COPIED AND PASTED FROM EARLIER**
-The mean is useful because it allows us to rescale or standardize a metric into something more easily interpretable and comparable. 
-Suppose we would like to understand if a new drug is more effective at treating asthma attacks than the standard drug. 
-A trial of 1500 adults is set up, where 500 receive the new drug, and 1000 receive a standard drug in the control group:
+A summary table for a single categorical variable that reports the number of observations (frequency) in each category is called a **frequency table**. Table
+\@ref(tab:emailTableNumber) is a frequency table for the nNumber` variable.
+If we replaced the counts with percentages or proportions (relative frequencies),
+the table would be called a **relative frequency table**.
 
-```{r}
-drug_asthma <- tribble(
-  ~x,                     ~`New drug`, ~`Standard drug`,
-  "Number of patients",   500,         1000,
-  "Total asthma attacks", 200,         300
-)
-drug_asthma %>%
-  kable(col.names = c("", "New drug", "Standard drug"),
-        align = c("lcc"))
+
+```{r emailTableNumber}
+tab <- as.numeric(table(email[,c("number")]))
+names(tab) <- c("none","small","big")
+kable(data.frame(t(tab)), caption = "Frequency table of `Number` variable.")
 ```
 
-Comparing the raw counts of 200 to 300 asthma attacks would make it appear that the new drug is better, but this is an artifact of the imbalanced group sizes.
-Instead, we should look at the average number of asthma attacks per patient in each group:
-
-- New drug: $200 / 500 = 0.4$ asthma attacks per patient
-- Standard drug: $300 / 1000 = 0.3$ asthma attacks per patient
-
-The standard drug has a lower average number of asthma attacks per patient than the average in the treatment group.
-
-**END COPIED AND PASTED SECTION**
 
 Table \@ref(tab:emailTable) summarizes two variables:
-`Type` (spam or not spam) and `Number`. `Number` is a
-categorical variable that describes whether an email
-contains no numbers, only small numbers (values under 1 million),
-or at least one big number (a value of 1 million or more).
-A table that summarizes data for two categorical variables
+`type` (spam or not spam) and `number`. A table that summarizes data for two categorical variables
 in this way is called a **contingency table** or **two-way table**.
 Each value in the table represents the number of times, or **frequency**
 a particular combination of variable outcomes occurred.
@@ -65,10 +76,7 @@ The **row totals** provide the total counts across each row
 (e.g., $149 + 168 + 50 = 367$), and **column totals** are total
 counts down each column.
 
-A table for a single variable is called a **frequency table**. Table
-\@ref(tab:emailTableNumber) is a frequency table for the `Number` variable.
-If we replaced the counts with percentages or proportions,
-the table would be called a **relative frequency table**.
+In this textbook, we generally take the convention of putting the explanatory variable on the rows and the response variables on the columns (if there exists and explanatory-response relationship between the two variables).
 
 ```{r include=FALSE}
 terms_chp_2 <- c("contingency table", "two-way table",
@@ -77,22 +85,19 @@ terms_chp_2 <- c("contingency table", "two-way table",
 ```
 
 ```{r emailTable}
-data(email)
-tab <- table(email[,c("spam", "number")])[2:1,]
+tab <- table(email[,c("number","type")])
 tab <- cbind(tab, rowSums(tab))
 tab <- rbind(tab, colSums(tab))
-dimnames(tab) <- list(Type = c("spam", "not spam","Total"),
-                   Number = c("none", "small","big","Total"))
+dimnames(tab) <- list(
+                   number = c("none", "small","big","Total"),
+                   type = c("spam", "not spam","Total")
+                   )
 
-kable(tab, caption = "Contingency table of `Type` and `Number` variables.")
+kable(tab, caption = "Contingency table of `Number` (rows) and `Type` (columns) variables.")
 ```
 
-```{r emailTableNumber}
-data(email)
-tab <- as.numeric(table(email[,c("number")]))
-names(tab) <- c("none","small","big")
-kable(data.frame(t(tab)), caption = "Frequency table of `Number` variable.")
-```
+
+
 
 ### Bar plots and mosaic plots
 - one cat bar plot
@@ -425,8 +430,29 @@ The sample mean, `r {round(loan50_mean_intrest_rate, 2)}`, provides a rough esti
 terms_chp_2 <- c(terms_chp_2, "statistic", "parameter","point estimate")
 ```
 
-The mean is useful for making comparisons across different samples that may have different sample sizes by converting values into a standard unit.
+The mean is useful for making comparisons across different samples that may have different sample sizes because it allows us to rescale or standardize a metric into something more easily interpretable and comparable. 
 
+Suppose we would like to understand if a new drug is more effective at treating asthma attacks than the standard drug. 
+A trial of 1500 adults is set up, where 500 receive the new drug, and 1000 receive a standard drug in the control group:
+
+```{r}
+drug_asthma <- tribble(
+  ~x,                     ~`New drug`, ~`Standard drug`,
+  "Number of patients",   500,         1000,
+  "Total asthma attacks", 200,         300
+)
+drug_asthma %>%
+  kable(col.names = c("", "New drug", "Standard drug"),
+        align = c("lcc"))
+```
+
+Comparing the raw counts of 200 to 300 asthma attacks would make it appear that the new drug is better, but this is an artifact of the imbalanced group sizes.
+Instead, we should look at the average number of asthma attacks per patient in each group:
+
+- New drug: $200 / 500 = 0.4$ asthma attacks per patient
+- Standard drug: $300 / 1000 = 0.3$ asthma attacks per patient
+
+The standard drug has a lower average number of asthma attacks per patient than the average in the treatment group.
 
 
 ```{block2, type="example", echo=TRUE}
@@ -449,6 +475,7 @@ In comparison, Francis' average hourly wage was
 
 Thus, while Francis' total earnings were larger than Emilio's, when standardizing by hour, Francis shouldn't brag.
 ```
+
 
 ```{block2, type="example", echo=TRUE}
 Suppose we want to compute the average income per person in the US. To do so, we might first think to take the mean of the per capita incomes across the 3,142 counties in the \data{county} data set. What would be a better approach?

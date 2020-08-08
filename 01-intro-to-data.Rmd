@@ -216,7 +216,7 @@ Descriptions of the variables in the `loan50` data set are given in Table \@ref(
 loan50 %>% 
   select(loan_amount, interest_rate, term, grade, state, total_income, homeownership) %>%
   slice_head(n = 6) %>%
-  kable(caption = "Six rows from the `loan50` data set",
+  kable(caption = "Six rows from the `loan50` data set.",
         row.names = TRUE)
 ```
 
