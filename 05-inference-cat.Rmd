@@ -414,6 +414,10 @@ In Section \@ref(theory-prop) we will discuss different percentages for the conf
 
 ## The normal distribution {#normal}
 
+```{block2, type="todo", echo=TRUE}
+Update examples in this section to use R rather than table.
+```
+
 \index{normal distribution|(}
 
 Among all the distributions we see in statistics, one is overwhelmingly the most common. 

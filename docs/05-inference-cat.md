@@ -348,6 +348,8 @@ In Section \@ref(theory-prop) we will discuss different percentages for the conf
 
 ## The normal distribution {#normal}
 
+\BeginKnitrBlock{todo}<div class="todo">Update examples in this section to use R rather than table.</div>\EndKnitrBlock{todo}
+
 \index{normal distribution|(}
 
 Among all the distributions we see in statistics, one is overwhelmingly the most common. 
@@ -518,7 +520,7 @@ pnorm(0.43, m = 0, s = 1)
 openintro::normTail(0.43, m = 0, s = 1)
 ```
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-39-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-40-1.png" width="70%" style="display: block; margin: auto;" />
 
 We can also find the Z-score associated with a percentile. 
 For example, to identify Z for the $80^{th}$ percentile, we use `qnorm()` which identifies the **quantile** for a given percentage.  The quantile represents the cutoff value.  (To remember the function `qnorm()` as providing a cutoff, notice that both `qnorm()` and "cutoff" start with the sound "kuh".  To remember the `pnorm()` function as providing a probability from a given cutoff, notice that both `pnorm()` and probability start with the sound "puh".) 
@@ -531,7 +533,7 @@ qnorm(0.80, m = 0, s = 1)
 openintro::normTail(0.80, m = 0, s = 1)
 ```
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-40-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-41-1.png" width="70%" style="display: block; margin: auto;" />
 
 We can use these functions with other normal distributions than the standard normal distribution by specifying the mean as the argument for `m` and the standard deviation as the argument for `s`. Here we determine the proportion of ACT test takers who scored worse than Tom on the ACT: 0.73.
 
@@ -542,7 +544,7 @@ pnorm(24, m = 21, s = 5)
 openintro::normTail(24, m = 21, s = 5)
 ```
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-41-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-42-1.png" width="70%" style="display: block; margin: auto;" />
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Determine the proportion of SAT test takers who scored better than Ann on the SAT.^[If 84% had lower scores than Ann, the number of people who had better scores must be 16%. (Generally ties are ignored when the normal model, or any other continuous distribution, is used.)]</div>\EndKnitrBlock{guidedpractice}
 
@@ -680,11 +682,11 @@ The total area under the curve is 1. If we find the area of the two tails that a
 That is, the probability of being between 5'9'' and 6'2'' is 0.5048.</div>\EndKnitrBlock{example}
 
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-58-1.png" width="70%" style="display: block; margin: auto;" />
-
-
-
 <img src="05-inference-cat_files/figure-html/unnamed-chunk-59-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-60-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 

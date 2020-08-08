@@ -7,8 +7,8 @@ Mastery of the content presented in this chapter will be crucial for understandi
 
 ## Exploring categorical data {#categorical-data}
 
-In this section, we will introduce tables and other basic tools for organizing and analyzing categorical data that are used throughout this book. Table \@ref(tab:emailDF) displays the first six rows of the `email` data set containing information on 3,921 emails. In this section we will examine whether the presence of numbers, small or large, in an email provides any useful value in classifying email as spam or not spam..
-Descriptions of all five email variables are given in Table \@ref(tab: emailVariables).
+In this section, we will introduce tables and other basic tools for organizing and analyzing categorical data that are used throughout this book. Table \@ref(tab:emailDF) displays the first six rows of the `email` data set containing information on 3,921 emails sent to David Diez's Gmail account (one of the authors of the _OpenIntro_ textbooks). In this section we will examine whether the presence of numbers, small or large, in an email provides any useful value in classifying email as spam or not spam.
+Descriptions of all five email variables are given in Table \@ref(tab:emailVariables).
 
 \BeginKnitrBlock{data}<div class="data">The `email` data can be found in the [openintro](http://openintrostat.github.io/openintro/reference/index.html) package.^[The `email` data set found in the `openintro` package defines the variable `spam` as 0 (not spam) or 1 (spam), and `format` as 0 (not HTML) or 1 (HTML). When variables are defined in this way---coded as the numbers 0 and 1 rather than the category names---they are called **indicator variables*** or **dummy variables**. In this section of the textbook, we have re-coded `spam` to be the variable `type`, which takes on values "not spam" or "spam", and we have re-coded the variable `format` to take on values "not HTML" or "HTML".]</div>\EndKnitrBlock{data}
 
@@ -109,13 +109,6 @@ Descriptions of all five email variables are given in Table \@ref(tab: emailVari
 </table>
 ### Contingency tables and conditional proportions
 
-- One-way and Two-way/contingency tables 
-- Define frequencies/counts and relative frequencies/proportions
-- p-hat and pi notation
-- conditional/unconditional probabilities
-- association vs no association in conditional proportions
-- Simpson's paradox
-
 A summary table for a single categorical variable that reports the number of observations (frequency) in each category is called a **frequency table**. Table
 \@ref(tab:emailTableNumber) is a frequency table for the nNumber` variable.
 If we replaced the counts with percentages or proportions (relative frequencies),
@@ -203,12 +196,199 @@ In this textbook, we generally take the convention of putting the categories of 
 </tbody>
 </table>
 
+We would like to examine whether the presence of numbers, small or large, in an email provides any useful value in classifying email as spam or not spam---that is, is there an **association** between the variables `number` and `type`? 
+
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">To determine if a relationship exists between whether an email is spam or not, and whether the email has no numbers, a small number, or a big number, why isn't it helpful to compare the _number_ of spam emails across the `number` categories?^[Since the sample sizes in the three `number` categories differ (549 emails with no numbers; 2827 emails with a small number; 545 emails with a big number), we need to compare the _proportion_ of spam emails across categories rather than the count.]</div>\EndKnitrBlock{guidedpractice}
+The proportion of emails that were classified as spam in the data set is $3554/3921 = 0.906$, or about 91%. Let's compare this **unconditional proportion** to the **conditional proportions** of spam within each `number` category: $400/549 = 73$% of emails with no numbers are spam; $2659/2827 = 94$% of emails with small numbers are spam; and $495/545 = 91$% of emails with big numbers are spam. Since these three conditional proportions differ, we say the variables `number` and `type` are _associated_ in this data set. Note that some differ from the overall, or unconditional, proportion of spam emails in the data set---91%.
+
+\BeginKnitrBlock{onebox}<div class="onebox">**Association between two categorical variables.**
+  
+An **unconditional** proportion is a proportion measured out of the total sample size. A **conditional** proportion is a proportion measured out of a subgroup in the sample.
+
+If the conditional proportions of a particular outcome (e.g., spam email) within levels of a categorical variable (e.g., whether no number, a small number, or a big number appears in the email) differ across levels, we say those two variables are **associated**. We can also determine if two categorical variables are associated by checking if any of the conditional proportions of the outcome within categories differ from the overall, or **unconditional** proportion.
+  </div>\EndKnitrBlock{onebox}
+
+#### Sample proportions and population proportions {-}
+
+In the field of statistics, summary measures that summarize a sample of data are called **statistics**\index{statistic}. Numbers that summarize an entire population are called **parameters**\index{parameter}. You can remember
+this distinction by looking at the first letter of each term: 
+
+> **_S_**tatistics summarize **_S_**amples.  
+> **_P_**arameters summarize **_P_**opulations.
+
+Proportions calculated from a sample of data are denoted by $\hat{p}$.
+In our example, we were interested in the proportion of spam emails in our data set, so we could denote this by $\hat{p} = 0.91$. If there are different groups we want to summarize with a proportion, we can add subscripts: $\hat{p}_{none} = 0.73$, $\hat{p}_{small} = 0.94$, and $\hat{p}_{big} = 0.91$. Each of these values is a statistic since it is computed from a sample of data.
+
+These 3921 emails were a sample from a larger group of emails---all emails that are sent to David Diez, either in the past or in the future. This larger group of emails is the population. There is some unknown value for the proportion of _all_ emails in the population that would be classified as spam, which we denote by $\pi$. Similarly, there are unknown values for the proportion of all emails with no numbers in the population that would be classified as spam, denoted by $\pi_{none}$. Each of these unknown values are called parameters. 
+
+We typically use Roman letters to symbolize statistics (e.g., $\bar{x}$, $\hat{p}$), and Greek letters to symbolize parameters (e.g., $\mu$, $\pi$).
+Since we rarely can measure the entire population, and thus rarely know
+the actual parameter values, we like to say, "We don't know Greek,
+and we don't know parameters!"
+
+
+
 
 ### Bar plots and mosaic plots
 - one cat bar plot
 - two cat bar plot
 - two cat mosaic plot
 - association vs no association in bar plots
+
+### Simpson's paradox
+
+#### Race and capital punishment {-}
+
+A 1991 study by Radelet and Pierce examined whether race was associated with whether the death penalty was invoked in homicide cases^[This example is adapted from @Agresti2007 (p. 49-52).]. Table \@ref(tab:DP) and Figure \@ref(fig:DPbarplot) summarize data on 674 defendants in indictments involving cases with multiple murders in Florida from 1976 through 1987.
+
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>(\#tab:DP)Contingency table of homicide cases in Florida from 1976 through 1987.</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden" colspan="1"></th>
+<th style="border-bottom:hidden" colspan="1"></th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Defendant's race</div></th>
+<th style="border-bottom:hidden" colspan="1"></th>
+</tr>
+  <tr>
+   <th style="text-align:left;">  </th>
+   <th style="text-align:left;">  </th>
+   <th style="text-align:left;"> Caucasian </th>
+   <th style="text-align:left;"> African American </th>
+   <th style="text-align:left;"> Total </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> Death penalty </td>
+   <td style="text-align:left;"> 53 </td>
+   <td style="text-align:left;"> 15 </td>
+   <td style="text-align:left;"> 68 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sentence </td>
+   <td style="text-align:left;"> No death penalty </td>
+   <td style="text-align:left;"> 430 </td>
+   <td style="text-align:left;"> 176 </td>
+   <td style="text-align:left;"> 606 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> Total </td>
+   <td style="text-align:left;"> 483 </td>
+   <td style="text-align:left;"> 191 </td>
+   <td style="text-align:left;"> 674 </td>
+  </tr>
+</tbody>
+</table>
+
+<div class="figure" style="text-align: center">
+<img src="02-eda_files/figure-html/DPbarplot-1.png" alt="Segmented bar plot comparing the proportion of defendants who received the death penalty between Caucasians and African Americans." width="70%" />
+<p class="caption">(\#fig:DPbarplot)Segmented bar plot comparing the proportion of defendants who received the death penalty between Caucasians and African Americans.</p>
+</div>
+
+
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Is the race of the defendant associated with the sentence of the trial?^[Yes. The conditional proportions of receiving the death penalty given race differ: 11% of Caucasian defendants received the death penalty, versus 8% of African American defendants received the death penalty.]</div>\EndKnitrBlock{guidedpractice}
+
+Overall, a lower percentage of African American defendants received the death penalty than Caucasian defendants (8% compared to 11%). Given the systemic racism in our society, this may be surprising. Let's look at the data more closely.
+
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Since these are _observational data_, confounding variables are most likely present. Recall, a confounding variable is one that is associated with both the response variable (sentence) and the explanatory variable (race of the defendant). What confounding variables could be present?^[The confounding variable we will consider here is race of the victim. Other confounding variables may include socioeconomic status (since SES is related to race, and a higher SES may allow you to hire a better lawyer---though this explanation is opposite of the association we see in the data) or district (the racial makeup would differ across districts, and maybe districts with a larger proportion of Caucasians also tend to invoke the death penalty more often).]</div>\EndKnitrBlock{guidedpractice}
+
+If we subset the data by the race of the victim, we see a different picture. Table \@ref(tab:DP2) and Figure \@ref(fig:DPbarplot2) summarize the same data, but separately for Caucasian and African American homicide victims.
+
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>(\#tab:DP2)Contingency table of homicide cases in Florida from 1976 through 1987; sentences classified by defendant's race and victim's race.</caption>
+ <thead>
+<tr>
+<th style="border-bottom:hidden" colspan="1"></th>
+<th style="border-bottom:hidden" colspan="1"></th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Death Penalty?</div></th>
+<th style="border-bottom:hidden" colspan="1"></th>
+</tr>
+  <tr>
+   <th style="text-align:left;"> Victim's race </th>
+   <th style="text-align:left;"> Defendant's race </th>
+   <th style="text-align:left;"> Yes </th>
+   <th style="text-align:left;"> No </th>
+   <th style="text-align:left;"> Percent Yes </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Caucasian </td>
+   <td style="text-align:left;"> Caucasian </td>
+   <td style="text-align:left;"> 53 </td>
+   <td style="text-align:left;"> 414 </td>
+   <td style="text-align:left;"> 11.3% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> African American </td>
+   <td style="text-align:left;"> 11 </td>
+   <td style="text-align:left;"> 37 </td>
+   <td style="text-align:left;"> 22.9% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> African American </td>
+   <td style="text-align:left;"> Caucasian </td>
+   <td style="text-align:left;"> 0 </td>
+   <td style="text-align:left;"> 16 </td>
+   <td style="text-align:left;"> 0.0% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> African American </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 139 </td>
+   <td style="text-align:left;"> 2.8% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Total </td>
+   <td style="text-align:left;"> Caucasian </td>
+   <td style="text-align:left;"> 53 </td>
+   <td style="text-align:left;"> 430 </td>
+   <td style="text-align:left;"> 11.0% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> African American </td>
+   <td style="text-align:left;"> 15 </td>
+   <td style="text-align:left;"> 176 </td>
+   <td style="text-align:left;"> 7.9% </td>
+  </tr>
+</tbody>
+</table>
+
+<div class="figure" style="text-align: center">
+<img src="02-eda_files/figure-html/DPbarplot2-1.png" alt="Segmented bar plots comparing the proportion of Caucasian and African American defendants who received the death penalty; separate plots for Caucasian victims and African American victims." width="50%" /><img src="02-eda_files/figure-html/DPbarplot2-2.png" alt="Segmented bar plots comparing the proportion of Caucasian and African American defendants who received the death penalty; separate plots for Caucasian victims and African American victims." width="50%" />
+<p class="caption">(\#fig:DPbarplot2)Segmented bar plots comparing the proportion of Caucasian and African American defendants who received the death penalty; separate plots for Caucasian victims and African American victims.</p>
+</div>
+
+If we compare Figures \@ref(fig:DPbarplot) and \@ref(fig:DPbarplot2), we see that the direction of the association between the race of the defendant and the sentence is _reversed_ if we subgroup by the race of the victim. Overall, a larger proportion of Caucasians were sentenced to the death penalty than African Americans. However, when we only compare cases with the same victim's race, a larger proportion of African Americans were sentenced to the death penalty than Caucasians!
+
+How did this happen? The answer has to do with the race of the victim being a confounding variable. Figure \@ref(fig:DPconfound) shows two segmented barplots examining the relationship between the race of the victim and the sentence (the response variable), and the relationship between the race of the victim and the race of the defendant (the explanatory variable). We see that the race of the victim is associated with both the response and the explanatory variables: defendants are more likely to involve a victim of the same race, and cases with African American victims are less likely to result in the death penalty.
+
+<div class="figure" style="text-align: center">
+<img src="02-eda_files/figure-html/DPconfound-1.png" alt="The race of the victim is associated both with the sentence (death penalty or no death penalty) and with the race of the defendant. Defendants are more likely to involve a victim of the same race, and cases with African American victims are less likely to result in the death penalty." width="50%" /><img src="02-eda_files/figure-html/DPconfound-2.png" alt="The race of the victim is associated both with the sentence (death penalty or no death penalty) and with the race of the defendant. Defendants are more likely to involve a victim of the same race, and cases with African American victims are less likely to result in the death penalty." width="50%" />
+<p class="caption">(\#fig:DPconfound)The race of the victim is associated both with the sentence (death penalty or no death penalty) and with the race of the defendant. Defendants are more likely to involve a victim of the same race, and cases with African American victims are less likely to result in the death penalty.</p>
+</div>
+
+Thus, the extremely low chance of a homicide case resulting in the death penalty for African Americans combines with the fact that most cases with African American victims also had an African American victim to results in an overall lower rate of death penalty sentences for African American defendants than for Caucasian defendants. The overall results in Figure \@ref(fig:DPbarplots) and the results in each subgroup of Figure \@ref(fig:DPbarplots2) are both valid---they are not the result of any "bad statistics"---but they suggest opposite conclusions. Data such as these, where an observed effect _reverses_ itself when you examine the variables within subgroups, exhibit **Simpson's Paradox**.
+
+\BeginKnitrBlock{onebox}<div class="onebox">***Simpson's Paradox.***
+
+When the association between an explanatory variable and a response variable reverses itself when we examine the association within different levels of a confounding variable, we say that these data exhibit **Simpson's Paradox**.</div>\EndKnitrBlock{onebox}
+
+
+
 
 ### Why not pie charts?
 
@@ -451,23 +631,13 @@ Often times it is too expensive or time consuming to measure the population mean
 
 \BeginKnitrBlock{pronunciation}<div class="pronunciation">The Greek letter $\mu$ is pronounced *mu*, listen to the pronunciation [here](https://youtu.be/PStgY5AcEIw?t=47).</div>\EndKnitrBlock{pronunciation}
 
-In the field of statistics, summary measures that summarize a sample of data, such as $\bar{x}$, are called **statistics**\index{statistic}. Numbers that summarize an entire population, such as $\mu$, are called **parameters**\index{parameter}. You can remember
-this distinction by looking at the first letter of each term: 
 
-> *S*tatistics summarize *S*amples; *P*arameters summarize *P*opulations.
-
-We typically use Roman letters to symbolize statistics (e.g., $\bar{x}$, $\hat{p}$), and Greek letters to symbolize parameters (e.g., $\mu$, $\pi$).
-Since we rarely can measure the entire population, and thus rarely know
-the actual parameter values, we like to say, "We don't know Greek,
-and we don't know parameters!"
 
 \BeginKnitrBlock{example}<div class="example">The average interest rate across all loans in the population can be estimated using the sample data. Based on the sample of 50 loans, what would be a reasonable estimate of $\mu_x$, the mean interest rate for all loans in the full data set?
 
 ---
   
 The sample mean, `r {round(loan50_mean_intrest_rate, 2)}`, provides a rough estimate of $\mu_x$. While it is not perfect, this statistic our single best guess **point estimate**\index{point estimate} of the average interest rate of all the loans in the population under study, the parameter. In Chapter \@ref(inference-foundations) and beyond, we will develop tools to characterize the accuracy of point estimates, like the sample mean. As you might have guessed, point estimates based on larger samples tend to be more accurate than those based on smaller samples.</div>\EndKnitrBlock{example}
-
-
 
 The mean is useful for making comparisons across different samples that may have different sample sizes because it allows us to rescale or standardize a metric into something more easily interpretable and comparable. 
 
@@ -1068,7 +1238,8 @@ One observation that stands out when comparing the two maps: the poverty rate is
 
 ## Chapter 2 review {#chp2-review}
 
-We're encountered a variety of univariate (one variable) and bivariate (two variable) data visualization methods in this chapter.
+We're encountered a variety of univariate (one variable) and bivariate (two variable) summary statistics and data visualization methods in this chapter.
+
 Figure \@ref(fig:decision-tree-plots) presents a decision tree for deciding which type of plot is most appropriate for a given number and types of variables. In the next chapter, we'll further explore how to model the association between two quantitative variables, called regression. In Chapter \@ref(mult-reg), we'll look at exploratory data analysis methods for more than two variables.
 
 <div class="figure" style="text-align: center">
@@ -1092,6 +1263,25 @@ Figure \@ref(fig:decision-tree-plots) presents a decision tree for deciding whic
 <!--     size = 4#, repel = TRUE -->
 <!--     )  -->
 
+### Notation summary
+
+In the field of statistics, summary measures that summarize a sample of data are called **statistics**\index{statistic}. Numbers that summarize an entire population **parameters**\index{parameter}. You can remember
+this distinction by looking at the first letter of each term: 
+
+> **_S_**tatistics summarize **_S_**amples.  
+> **_P_**arameters summarize **_P_**opulations.
+
+We typically use Roman letters to symbolize statistics (e.g., $\bar{x}$, $\hat{p}$), and Greek letters to symbolize parameters (e.g., $\mu$, $\pi$).
+
+
+|Summary Measure |Statistic |Parameter |
+|:---	|:---: |:---: |
+|Sample size   |$n$|$-$|
+|Proportion   |$\hat{p}$|$\pi$|
+|Mean   |$\bar{x}$|$\mu$|
+|Correlation   |$r$|$\rho$|
+|Regression line slope   |$b$|$\beta$|
+
 ### Terms
 
 We introduced the following terms in the chapter. 
@@ -1103,69 +1293,75 @@ However you should be able to easily spot them as **bolded text**.
 <tbody>
   <tr>
    <td style="text-align:left;"> average </td>
-   <td style="text-align:left;"> first quartile </td>
-   <td style="text-align:left;"> outlier </td>
-   <td style="text-align:left;"> strength </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> bimodal </td>
    <td style="text-align:left;"> form </td>
-   <td style="text-align:left;"> outliers </td>
-   <td style="text-align:left;"> symmetric </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> box plot </td>
-   <td style="text-align:left;"> frequency </td>
    <td style="text-align:left;"> parameter </td>
    <td style="text-align:left;"> tail </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> column totals </td>
-   <td style="text-align:left;"> histogram </td>
+   <td style="text-align:left;"> bimodal </td>
+   <td style="text-align:left;"> frequency </td>
    <td style="text-align:left;"> point estimate </td>
    <td style="text-align:left;"> third quartile </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> contingency table </td>
-   <td style="text-align:left;"> intensity map </td>
+   <td style="text-align:left;"> box plot </td>
+   <td style="text-align:left;"> histogram </td>
    <td style="text-align:left;"> relative frequency </td>
    <td style="text-align:left;"> transformation </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> data density </td>
-   <td style="text-align:left;"> interquartile range </td>
+   <td style="text-align:left;"> column totals </td>
+   <td style="text-align:left;"> intensity map </td>
    <td style="text-align:left;"> right skewed </td>
    <td style="text-align:left;"> two-way table </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> density plot </td>
-   <td style="text-align:left;"> IQR </td>
+   <td style="text-align:left;"> contingency table </td>
+   <td style="text-align:left;"> interquartile range </td>
    <td style="text-align:left;"> robust statistics </td>
    <td style="text-align:left;"> unimodal </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> deviation </td>
-   <td style="text-align:left;"> left skewed </td>
+   <td style="text-align:left;"> data density </td>
+   <td style="text-align:left;"> IQR </td>
    <td style="text-align:left;"> row totals </td>
    <td style="text-align:left;"> variability </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> direction </td>
-   <td style="text-align:left;"> mean </td>
+   <td style="text-align:left;"> density plot </td>
+   <td style="text-align:left;"> left skewed </td>
    <td style="text-align:left;"> scatterplot </td>
    <td style="text-align:left;"> variance </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> distribution </td>
-   <td style="text-align:left;"> median </td>
-   <td style="text-align:left;"> standard deviation </td>
+   <td style="text-align:left;"> deviation </td>
+   <td style="text-align:left;"> mean </td>
+   <td style="text-align:left;"> Simpson's Paradox </td>
    <td style="text-align:left;"> weighted mean </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> dot plot </td>
+   <td style="text-align:left;"> direction </td>
+   <td style="text-align:left;"> median </td>
+   <td style="text-align:left;"> standard deviation </td>
+   <td style="text-align:left;"> whiskers </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> distribution </td>
    <td style="text-align:left;"> multimodal </td>
    <td style="text-align:left;"> statistic </td>
-   <td style="text-align:left;"> whiskers </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> dot plot </td>
+   <td style="text-align:left;"> outlier </td>
+   <td style="text-align:left;"> strength </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> first quartile </td>
+   <td style="text-align:left;"> outliers </td>
+   <td style="text-align:left;"> symmetric </td>
+   <td style="text-align:left;">  </td>
   </tr>
 </tbody>
 </table>

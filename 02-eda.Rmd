@@ -9,8 +9,8 @@ Mastery of the content presented in this chapter will be crucial for understandi
 
 ## Exploring categorical data {#categorical-data}
 
-In this section, we will introduce tables and other basic tools for organizing and analyzing categorical data that are used throughout this book. Table \@ref(tab:emailDF) displays the first six rows of the `email` data set containing information on 3,921 emails. In this section we will examine whether the presence of numbers, small or large, in an email provides any useful value in classifying email as spam or not spam..
-Descriptions of all five email variables are given in Table \@ref(tab: emailVariables).
+In this section, we will introduce tables and other basic tools for organizing and analyzing categorical data that are used throughout this book. Table \@ref(tab:emailDF) displays the first six rows of the `email` data set containing information on 3,921 emails sent to David Diez's Gmail account (one of the authors of the _OpenIntro_ textbooks). In this section we will examine whether the presence of numbers, small or large, in an email provides any useful value in classifying email as spam or not spam.
+Descriptions of all five email variables are given in Table \@ref(tab:emailVariables).
 
 ```{block2, type="data", echo=TRUE}
 The `email` data can be found in the [openintro](http://openintrostat.github.io/openintro/reference/index.html) package.^[The `email` data set found in the `openintro` package defines the variable `spam` as 0 (not spam) or 1 (spam), and `format` as 0 (not HTML) or 1 (HTML). When variables are defined in this way---coded as the numbers 0 and 1 rather than the category names---they are called **indicator variables*** or **dummy variables**. In this section of the textbook, we have re-coded `spam` to be the variable `type`, which takes on values "not spam" or "spam", and we have re-coded the variable `format` to take on values "not HTML" or "HTML".]
@@ -43,13 +43,6 @@ email_var_def %>%
   kable(caption = "Variables and their descriptions for the `email` data set.")
 ```
 ### Contingency tables and conditional proportions
-
-- One-way and Two-way/contingency tables 
-- Define frequencies/counts and relative frequencies/proportions
-- p-hat and pi notation
-- conditional/unconditional probabilities
-- association vs no association in conditional proportions
-- Simpson's paradox
 
 A summary table for a single categorical variable that reports the number of observations (frequency) in each category is called a **frequency table**. Table
 \@ref(tab:emailTableNumber) is a frequency table for the nNumber` variable.
@@ -99,12 +92,187 @@ temptbl %>%
   kable_styling()  
 ```
 
+We would like to examine whether the presence of numbers, small or large, in an email provides any useful value in classifying email as spam or not spam---that is, is there an **association** between the variables `number` and `type`? 
+
+```{block2, type="guidedpractice", echo=TRUE}
+To determine if a relationship exists between whether an email is spam or not, and whether the email has no numbers, a small number, or a big number, why isn't it helpful to compare the _number_ of spam emails across the `number` categories?^[Since the sample sizes in the three `number` categories differ (549 emails with no numbers; 2827 emails with a small number; 545 emails with a big number), we need to compare the _proportion_ of spam emails across categories rather than the count.]
+```
+The proportion of emails that were classified as spam in the data set is $3554/3921 = 0.906$, or about 91%. Let's compare this **unconditional proportion** to the **conditional proportions** of spam within each `number` category: $400/549 = 73$% of emails with no numbers are spam; $2659/2827 = 94$% of emails with small numbers are spam; and $495/545 = 91$% of emails with big numbers are spam. Since these three conditional proportions differ, we say the variables `number` and `type` are _associated_ in this data set. Note that some differ from the overall, or unconditional, proportion of spam emails in the data set---91%.
+
+```{block2, type="onebox", echo=TRUE}
+**Association between two categorical variables.**
+  
+An **unconditional** proportion is a proportion measured out of the total sample size. A **conditional** proportion is a proportion measured out of a subgroup in the sample.
+
+If the conditional proportions of a particular outcome (e.g., spam email) within levels of a categorical variable (e.g., whether no number, a small number, or a big number appears in the email) differ across levels, we say those two variables are **associated**. We can also determine if two categorical variables are associated by checking if any of the conditional proportions of the outcome within categories differ from the overall, or **unconditional** proportion.
+  
+```
+
+#### Sample proportions and population proportions {-}
+
+In the field of statistics, summary measures that summarize a sample of data are called **statistics**\index{statistic}. Numbers that summarize an entire population are called **parameters**\index{parameter}. You can remember
+this distinction by looking at the first letter of each term: 
+
+> **_S_**tatistics summarize **_S_**amples.  
+> **_P_**arameters summarize **_P_**opulations.
+
+Proportions calculated from a sample of data are denoted by $\hat{p}$.
+In our example, we were interested in the proportion of spam emails in our data set, so we could denote this by $\hat{p} = 0.91$. If there are different groups we want to summarize with a proportion, we can add subscripts: $\hat{p}_{none} = 0.73$, $\hat{p}_{small} = 0.94$, and $\hat{p}_{big} = 0.91$. Each of these values is a statistic since it is computed from a sample of data.
+
+These 3921 emails were a sample from a larger group of emails---all emails that are sent to David Diez, either in the past or in the future. This larger group of emails is the population. There is some unknown value for the proportion of _all_ emails in the population that would be classified as spam, which we denote by $\pi$. Similarly, there are unknown values for the proportion of all emails with no numbers in the population that would be classified as spam, denoted by $\pi_{none}$. Each of these unknown values are called parameters. 
+
+We typically use Roman letters to symbolize statistics (e.g., $\bar{x}$, $\hat{p}$), and Greek letters to symbolize parameters (e.g., $\mu$, $\pi$).
+Since we rarely can measure the entire population, and thus rarely know
+the actual parameter values, we like to say, "We don't know Greek,
+and we don't know parameters!"
+
+
+```{r include=FALSE}
+terms_chp_2 <- c(terms_chp_2, "statistic", "parameter","point estimate")
+```
 
 ### Bar plots and mosaic plots
 - one cat bar plot
 - two cat bar plot
 - two cat mosaic plot
 - association vs no association in bar plots
+
+### Simpson's paradox
+
+#### Race and capital punishment {-}
+
+A 1991 study by Radelet and Pierce examined whether race was associated with whether the death penalty was invoked in homicide cases^[This example is adapted from @Agresti2007 (p. 49-52).]. Table \@ref(tab:DP) and Figure \@ref(fig:DPbarplot) summarize data on 674 defendants in indictments involving cases with multiple murders in Florida from 1976 through 1987.
+
+```{r DP}
+temptbl <- tribble(
+ ~variable,    ~col1, ~col2, ~col3, ~col4,
+ "","Death penalty", "53", "15", "68",
+ "Sentence", "No death penalty", "430", "176", "606",
+ "","Total", "483", "191", "674"
+)
+
+temptbl %>%
+ kable(caption = "Contingency table of homicide cases in Florida from 1976 through 1987.",
+    col.names = c("", "", "Caucasian", "African American", "Total")) %>%
+ add_header_above(c(" ", "", "Defendant's race" = 2, " ")) %>%
+  kable_styling()  
+```
+
+```{r DPbarplot, fig.cap="Segmented bar plot comparing the proportion of defendants who received the death penalty between Caucasians and African Americans."}
+temptbl <- tribble(
+ ~variable,    ~col1, ~col2 ,
+ "Caucasian", 0.890, "No DP",
+ "Caucasian", 0.110, "DP",
+ "African American", 0.921, "No DP",
+ "African American", 0.079, "DP"
+)
+temptbl %>% ggplot(aes(x = variable, y=col1, fill=factor(col2, levels=c("No DP", "DP")))) + geom_col() +
+  xlab("Race") + ylab("Proportion") + 
+  scale_fill_discrete(name="Sentence") 
+```
+
+
+```{block2, type="guidedpractice", echo=TRUE}
+Is the race of the defendant associated with the sentence of the trial?^[Yes. The conditional proportions of receiving the death penalty given race differ: 11% of Caucasian defendants received the death penalty, versus 8% of African American defendants received the death penalty.]
+```
+
+Overall, a lower percentage of African American defendants received the death penalty than Caucasian defendants (8% compared to 11%). Given the systemic racism in our society, this may be surprising. Let's look at the data more closely.
+
+```{block2, type="guidedpractice", echo=TRUE}
+Since these are _observational data_, confounding variables are most likely present. Recall, a confounding variable is one that is associated with both the response variable (sentence) and the explanatory variable (race of the defendant). What confounding variables could be present?^[The confounding variable we will consider here is race of the victim. Other confounding variables may include socioeconomic status (since SES is related to race, and a higher SES may allow you to hire a better lawyer---though this explanation is opposite of the association we see in the data) or district (the racial makeup would differ across districts, and maybe districts with a larger proportion of Caucasians also tend to invoke the death penalty more often).]
+```
+
+If we subset the data by the race of the victim, we see a different picture. Table \@ref(tab:DP2) and Figure \@ref(fig:DPbarplot2) summarize the same data, but separately for Caucasian and African American homicide victims.
+
+```{r DP2}
+temptbl <- tribble(
+ ~variable,    ~col1, ~col2, ~col3, ~col4,
+ "Caucasian","Caucasian", "53", "414", "11.3%",
+ "", "African American", "11", "37", "22.9%",
+  "African American","Caucasian", "0", "16", "0.0%",
+ "", "African American", "4", "139", "2.8%",
+ "", " ", " ", " ", " ",
+ "Total","Caucasian", "53", "430", "11.0%",
+  "", "African American", "15", "176", "7.9%"
+)
+
+temptbl %>%
+ kable(caption = "Contingency table of homicide cases in Florida from 1976 through 1987; sentences classified by defendant's race and victim's race.",
+    col.names = c("Victim's race", "Defendant's race", "Yes", "No", "Percent Yes")) %>%
+ add_header_above(c(" ", "", "Death Penalty?" = 2, " ")) %>%
+  kable_styling()  
+```
+
+```{r DPbarplot2, fig.cap="Segmented bar plots comparing the proportion of Caucasian and African American defendants who received the death penalty; separate plots for Caucasian victims and African American victims.", out.width="50%", fig.show="hold"}
+temptbl1 <- tribble(
+ ~variable,    ~col1, ~col2 ,
+ "Caucasian", .887, "No DP",
+ "Caucasian", .113, "DP",
+ "African American", .771, "No DP",
+ "African American", .229, "DP"
+)
+temptbl1 %>% ggplot(aes(x = variable, y=col1, 
+                        fill=factor(col2, levels=c("No DP", "DP")))) + geom_col() +
+  xlab("Defendant's Race") + ylab("Proportion") + 
+  scale_fill_discrete(name="Sentence") +
+  ggtitle("Caucasian Victims")
+
+temptbl2 <- tribble(
+ ~variable,    ~col1, ~col2 ,
+ "Caucasian", 1, "No DP",
+ "Caucasian", 0, "DP",
+ "African American", .972, "No DP",
+ "African American", .028, "DP"
+)
+temptbl2 %>% ggplot(aes(x = variable, y=col1, fill=factor(col2, levels=c("No DP", "DP")))) + geom_col() +
+  xlab("Defendant's Race") + ylab("Proportion") + 
+  scale_fill_discrete(name="Sentence") +
+  ggtitle("African American Victims")
+```
+
+If we compare Figures \@ref(fig:DPbarplot) and \@ref(fig:DPbarplot2), we see that the direction of the association between the race of the defendant and the sentence is _reversed_ if we subgroup by the race of the victim. Overall, a larger proportion of Caucasians were sentenced to the death penalty than African Americans. However, when we only compare cases with the same victim's race, a larger proportion of African Americans were sentenced to the death penalty than Caucasians!
+
+How did this happen? The answer has to do with the race of the victim being a confounding variable. Figure \@ref(fig:DPconfound) shows two segmented barplots examining the relationship between the race of the victim and the sentence (the response variable), and the relationship between the race of the victim and the race of the defendant (the explanatory variable). We see that the race of the victim is associated with both the response and the explanatory variables: defendants are more likely to involve a victim of the same race, and cases with African American victims are less likely to result in the death penalty.
+
+```{r DPconfound, fig.cap="The race of the victim is associated both with the sentence (death penalty or no death penalty) and with the race of the defendant. Defendants are more likely to involve a victim of the same race, and cases with African American victims are less likely to result in the death penalty.", out.width="50%", fig.show="hold"}
+temptbl1 <- tribble(
+ ~variable,    ~col1, ~col2 ,
+ "Caucasian", .907, "Caucasian",
+ "Caucasian", .093, "African American",
+ "African American", .101, "Caucasian",
+ "African American", .899, "African American"
+)
+temptbl1 %>% ggplot(aes(x = variable, y=col1, 
+                        fill=col2)) + geom_col() +
+  xlab("Victim's Race") + ylab("Proportion") + 
+  scale_fill_discrete(name="Defendant's Race") +
+  ggtitle("Victim's Race vs Defendant's Race")
+
+temptbl2 <- tribble(
+ ~variable,    ~col1, ~col2 ,
+ "Caucasian", .876, "No DP",
+ "Caucasian", .124, "DP",
+ "African American", .975, "No DP",
+ "African American", .025, "DP"
+)
+temptbl2 %>% ggplot(aes(x = variable, y=col1, fill=factor(col2, levels=c("No DP", "DP")))) + geom_col() +
+  xlab("Victim's Race") + ylab("Proportion") + 
+  scale_fill_discrete(name="Sentence") +
+  ggtitle("Victim's Race vs Sentence")
+```
+
+Thus, the extremely low chance of a homicide case resulting in the death penalty for African Americans combines with the fact that most cases with African American victims also had an African American victim to results in an overall lower rate of death penalty sentences for African American defendants than for Caucasian defendants. The overall results in Figure \@ref(fig:DPbarplots) and the results in each subgroup of Figure \@ref(fig:DPbarplots2) are both valid---they are not the result of any "bad statistics"---but they suggest opposite conclusions. Data such as these, where an observed effect _reverses_ itself when you examine the variables within subgroups, exhibit **Simpson's Paradox**.
+
+```{block2, type="onebox", echo=TRUE}
+***Simpson's Paradox.***
+
+When the association between an explanatory variable and a response variable reverses itself when we examine the association within different levels of a confounding variable, we say that these data exhibit **Simpson's Paradox**.
+```
+
+```{r include=FALSE}
+terms_chp_2 <- c(terms_chp_2, "Simpson's Paradox")
+```
+
 
 ### Why not pie charts?
 
@@ -409,15 +577,7 @@ Often times it is too expensive or time consuming to measure the population mean
 The Greek letter $\mu$ is pronounced *mu*, listen to the pronunciation [here](https://youtu.be/PStgY5AcEIw?t=47).
 ```
 
-In the field of statistics, summary measures that summarize a sample of data, such as $\bar{x}$, are called **statistics**\index{statistic}. Numbers that summarize an entire population, such as $\mu$, are called **parameters**\index{parameter}. You can remember
-this distinction by looking at the first letter of each term: 
 
-> *S*tatistics summarize *S*amples; *P*arameters summarize *P*opulations.
-
-We typically use Roman letters to symbolize statistics (e.g., $\bar{x}$, $\hat{p}$), and Greek letters to symbolize parameters (e.g., $\mu$, $\pi$).
-Since we rarely can measure the entire population, and thus rarely know
-the actual parameter values, we like to say, "We don't know Greek,
-and we don't know parameters!"
 
 ```{block2, type="example", echo=TRUE}
 The average interest rate across all loans in the population can be estimated using the sample data. Based on the sample of 50 loans, what would be a reasonable estimate of $\mu_x$, the mean interest rate for all loans in the full data set?
@@ -425,10 +585,6 @@ The average interest rate across all loans in the population can be estimated us
 ---
   
 The sample mean, `r {round(loan50_mean_intrest_rate, 2)}`, provides a rough estimate of $\mu_x$. While it is not perfect, this statistic our single best guess **point estimate**\index{point estimate} of the average interest rate of all the loans in the population under study, the parameter. In Chapter \@ref(inference-foundations) and beyond, we will develop tools to characterize the accuracy of point estimates, like the sample mean. As you might have guessed, point estimates based on larger samples tend to be more accurate than those based on smaller samples.
-```
-
-```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "statistic", "parameter","point estimate")
 ```
 
 The mean is useful for making comparisons across different samples that may have different sample sizes because it allows us to rescale or standardize a metric into something more easily interpretable and comparable. 
@@ -1265,7 +1421,8 @@ map_howownership /
 
 ## Chapter 2 review {#chp2-review}
 
-We're encountered a variety of univariate (one variable) and bivariate (two variable) data visualization methods in this chapter.
+We're encountered a variety of univariate (one variable) and bivariate (two variable) summary statistics and data visualization methods in this chapter.
+
 Figure \@ref(fig:decision-tree-plots) presents a decision tree for deciding which type of plot is most appropriate for a given number and types of variables. In the next chapter, we'll further explore how to model the association between two quantitative variables, called regression. In Chapter \@ref(mult-reg), we'll look at exploratory data analysis methods for more than two variables.
 
 ```{r decision-tree-plots, fig.cap="Decision tree for determining an appropriate plot  given a number of variables and their types.", fig.fullwidth=TRUE}
@@ -1333,6 +1490,25 @@ ggraph(mygraph, layout = 'dendrogram', circular = FALSE) +
 <!--     color = pal[c(1:9,4,5,5,6,6,6,6,7,7,8,9,9)], -->
 <!--     size = 4#, repel = TRUE -->
 <!--     )  -->
+
+### Notation summary
+
+In the field of statistics, summary measures that summarize a sample of data are called **statistics**\index{statistic}. Numbers that summarize an entire population **parameters**\index{parameter}. You can remember
+this distinction by looking at the first letter of each term: 
+
+> **_S_**tatistics summarize **_S_**amples.  
+> **_P_**arameters summarize **_P_**opulations.
+
+We typically use Roman letters to symbolize statistics (e.g., $\bar{x}$, $\hat{p}$), and Greek letters to symbolize parameters (e.g., $\mu$, $\pi$).
+
+
+|Summary Measure |Statistic |Parameter |
+|:---	|:---: |:---: |
+|Sample size   |$n$|$-$|
+|Proportion   |$\hat{p}$|$\pi$|
+|Mean   |$\bar{x}$|$\mu$|
+|Correlation   |$r$|$\rho$|
+|Regression line slope   |$b$|$\beta$|
 
 ### Terms
 

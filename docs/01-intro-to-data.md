@@ -523,7 +523,7 @@ On the other hand, the unemployment rate variable is said to be **continuous**.
 
 
 The variable `state` can take up to 51 values after accounting for Washington, DC: AL, AK, ..., and WY.
-Because the responses themselves are categories, `state` is called a **categorical** variable, and the possible values are called the variable's **levels** . The variable `metro` is also categorical, but it only has two levels (yes or no). A categorical variable with only two levels is called a **binary** variable.
+Because the responses themselves are categories, `state` is called a **categorical** variable, and the possible values are called the variable's **levels** . The variable `metro` is also categorical, but it only has two levels (yes or no). A categorical variable with only two levels is called a **binary** variable. When working with a generic binary variable, we often call the two possible levels "success" and "failure."
 
 
 

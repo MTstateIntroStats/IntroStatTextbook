@@ -1,0 +1,9 @@
+﻿VictimRace,DefendantRace,DeathPenalty,Frequency
+Caucasian,Caucasian,Yes,53
+Caucasian,Caucasian,No,414
+Caucasian,African American,Yes,11
+Caucasian,African American,No,37
+African American,Caucasian,Yes,0
+African American,Caucasian,No,16
+African American,African American,Yes,4
+African American,African American,No,139

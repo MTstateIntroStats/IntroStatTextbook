@@ -187,7 +187,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1.1" data-path="eda.html"><a href="eda.html#contingency-tables-and-conditional-proportions"><i class="fa fa-check"></i><b>2.1.1</b> Contingency tables and conditional proportions</a></li>
 <li class="chapter" data-level="2.1.2" data-path="eda.html"><a href="eda.html#bar-plots-and-mosaic-plots"><i class="fa fa-check"></i><b>2.1.2</b> Bar plots and mosaic plots</a></li>
-<li class="chapter" data-level="2.1.3" data-path="eda.html"><a href="eda.html#why-not-pie-charts"><i class="fa fa-check"></i><b>2.1.3</b> Why not pie charts?</a></li>
+<li class="chapter" data-level="2.1.3" data-path="eda.html"><a href="eda.html#simpsons-paradox"><i class="fa fa-check"></i><b>2.1.3</b> Simpson’s paradox</a></li>
+<li class="chapter" data-level="2.1.4" data-path="eda.html"><a href="eda.html#why-not-pie-charts"><i class="fa fa-check"></i><b>2.1.4</b> Why not pie charts?</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="eda.html"><a href="eda.html#probability-with-tables"><i class="fa fa-check"></i><b>2.2</b> Probability with tables</a>
 <ul>
@@ -211,7 +212,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4" data-path="eda.html"><a href="eda.html#r-exploratory-data-analysis"><i class="fa fa-check"></i><b>2.4</b> <code>R</code>: Exploratory data analysis</a></li>
 <li class="chapter" data-level="2.5" data-path="eda.html"><a href="eda.html#chp2-review"><i class="fa fa-check"></i><b>2.5</b> Chapter 2 review</a>
 <ul>
-<li class="chapter" data-level="2.5.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>2.5.1</b> Terms</a></li>
+<li class="chapter" data-level="2.5.1" data-path="eda.html"><a href="eda.html#notation-summary"><i class="fa fa-check"></i><b>2.5.1</b> Notation summary</a></li>
+<li class="chapter" data-level="2.5.2" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>2.5.2</b> Terms</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="cor-reg.html"><a href="cor-reg.html"><i class="fa fa-check"></i><b>3</b> Correlation and regression</a>
@@ -1219,7 +1221,7 @@ This variable of the population count can only take whole non-negative numbers (
 For this reason, the population variable is said to be <strong>discrete</strong> since it can only take numerical values with jumps.
 On the other hand, the unemployment rate variable is said to be <strong>continuous</strong>.</p>
 <p>The variable <code>state</code> can take up to 51 values after accounting for Washington, DC: AL, AK, …, and WY.
-Because the responses themselves are categories, <code>state</code> is called a <strong>categorical</strong> variable, and the possible values are called the variable’s <strong>levels</strong> . The variable <code>metro</code> is also categorical, but it only has two levels (yes or no). A categorical variable with only two levels is called a <strong>binary</strong> variable.</p>
+Because the responses themselves are categories, <code>state</code> is called a <strong>categorical</strong> variable, and the possible values are called the variable’s <strong>levels</strong> . The variable <code>metro</code> is also categorical, but it only has two levels (yes or no). A categorical variable with only two levels is called a <strong>binary</strong> variable. When working with a generic binary variable, we often call the two possible levels “success” and “failure.”</p>
 <p>Finally, consider the <code>median_edu</code> variable, which describes the median education level of county residents and takes values <code>below_hs</code>, <code>hs_diploma</code>, <code>some_college</code>, or <code>bachelors</code> in each county.
 This variable seems to be a hybrid: it is a categorical variable but the levels have a natural ordering.
 A variable with these properties is called an <strong>ordinal</strong> variable, while a regular categorical variable without this type of special ordering is called a <strong>nominal</strong> variable.
