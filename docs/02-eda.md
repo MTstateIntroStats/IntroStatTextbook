@@ -153,49 +153,55 @@ The **row totals** provide the total counts across each row
 (e.g., $149 + 168 + 50 = 367$), and **column totals** are total
 counts down each column.
 
-In this textbook, we generally take the convention of putting the explanatory variable on the rows and the response variables on the columns (if there exists and explanatory-response relationship between the two variables).
+In this textbook, we generally take the convention of putting the categories of the explanatory variable as the columns and the categories of the response variable as the rows (if there exists and explanatory-response relationship between the two variables).
 
 
 
-<table>
-<caption>(\#tab:emailTable)Contingency table of `Number` (rows) and `Type` (columns) variables.</caption>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>(\#tab:emailTable)Contingency table of `number` (cols) and `type` (rows) variables.</caption>
  <thead>
+<tr>
+<th style="border-bottom:hidden" colspan="1"></th>
+<th style="border-bottom:hidden" colspan="1"></th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`number`</div></th>
+<th style="border-bottom:hidden" colspan="1"></th>
+</tr>
   <tr>
-   <th style="text-align:left;">   </th>
-   <th style="text-align:right;"> spam </th>
-   <th style="text-align:right;"> not spam </th>
-   <th style="text-align:right;"> Total </th>
+   <th style="text-align:left;">  </th>
+   <th style="text-align:left;">  </th>
+   <th style="text-align:left;"> none </th>
+   <th style="text-align:left;"> small </th>
+   <th style="text-align:left;"> big </th>
+   <th style="text-align:left;"> Total </th>
   </tr>
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> none </td>
-   <td style="text-align:right;"> 400 </td>
-   <td style="text-align:right;"> 149 </td>
-   <td style="text-align:right;"> 549 </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> spam </td>
+   <td style="text-align:left;"> 400 </td>
+   <td style="text-align:left;"> 2659 </td>
+   <td style="text-align:left;"> 495 </td>
+   <td style="text-align:left;"> 3554 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> small </td>
-   <td style="text-align:right;"> 2659 </td>
-   <td style="text-align:right;"> 168 </td>
-   <td style="text-align:right;"> 2827 </td>
+   <td style="text-align:left;"> type </td>
+   <td style="text-align:left;"> not spam </td>
+   <td style="text-align:left;"> 149 </td>
+   <td style="text-align:left;"> 168 </td>
+   <td style="text-align:left;"> 50 </td>
+   <td style="text-align:left;"> 367 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> big </td>
-   <td style="text-align:right;"> 495 </td>
-   <td style="text-align:right;"> 50 </td>
-   <td style="text-align:right;"> 545 </td>
-  </tr>
-  <tr>
+   <td style="text-align:left;">  </td>
    <td style="text-align:left;"> Total </td>
-   <td style="text-align:right;"> 3554 </td>
-   <td style="text-align:right;"> 367 </td>
-   <td style="text-align:right;"> 3921 </td>
+   <td style="text-align:left;"> 549 </td>
+   <td style="text-align:left;"> 2827 </td>
+   <td style="text-align:left;"> 545 </td>
+   <td style="text-align:left;"> 3921 </td>
   </tr>
 </tbody>
 </table>
-
-
 
 
 ### Bar plots and mosaic plots

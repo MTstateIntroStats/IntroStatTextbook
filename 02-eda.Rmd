@@ -76,7 +76,7 @@ The **row totals** provide the total counts across each row
 (e.g., $149 + 168 + 50 = 367$), and **column totals** are total
 counts down each column.
 
-In this textbook, we generally take the convention of putting the explanatory variable on the rows and the response variables on the columns (if there exists and explanatory-response relationship between the two variables).
+In this textbook, we generally take the convention of putting the categories of the explanatory variable as the columns and the categories of the response variable as the rows (if there exists and explanatory-response relationship between the two variables).
 
 ```{r include=FALSE}
 terms_chp_2 <- c("contingency table", "two-way table",
@@ -85,18 +85,19 @@ terms_chp_2 <- c("contingency table", "two-way table",
 ```
 
 ```{r emailTable}
-tab <- table(email[,c("number","type")])
-tab <- cbind(tab, rowSums(tab))
-tab <- rbind(tab, colSums(tab))
-dimnames(tab) <- list(
-                   number = c("none", "small","big","Total"),
-                   type = c("spam", "not spam","Total")
-                   )
+temptbl <- tribble(
+ ~variable,    ~col1, ~col2, ~col3, ~col4, ~col5,
+ "", "spam", "400", "2659", "495", "3554",
+ "type", "not spam", "149", "168", "50", "367",
+ "", "Total", "549", "2827", "545", "3921"
+)
 
-kable(tab, caption = "Contingency table of `Number` (rows) and `Type` (columns) variables.")
+temptbl %>%
+ kable(caption = "Contingency table of `number` (cols) and `type` (rows) variables.",
+    col.names = c("", "", "none", "small", "big", "Total")) %>%
+ add_header_above(c(" ", " ", "`number`" = 3, " ")) %>%
+  kable_styling()  
 ```
-
-
 
 
 ### Bar plots and mosaic plots
