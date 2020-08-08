@@ -230,10 +230,11 @@ and we don't know parameters!"
 
 
 ### Bar plots and mosaic plots
-- one cat bar plot
+
+\BeginKnitrBlock{todo}<div class="todo">- one cat bar plot
 - two cat bar plot
 - two cat mosaic plot
-- association vs no association in bar plots
+- association vs no association in bar plots</div>\EndKnitrBlock{todo}
 
 ### Simpson's paradox
 
@@ -391,6 +392,8 @@ When the association between an explanatory variable and a response variable rev
 
 
 ### Why not pie charts?
+
+\BeginKnitrBlock{todo}<div class="todo">Example with bar chart and pie chart side-by-side.</div>\EndKnitrBlock{todo}
 
 If you're still not convinced, read this post on the "from Data to Viz" blog: ["The Issue with Pie Chart"](https://www.data-to-viz.com/caveat/pie.html).
 
@@ -571,7 +574,7 @@ though since the relationship is weak, it is hard to tell.
 </div>
 
 
-\BeginKnitrBlock{example}<div class="example">Figure \@ref(fig:median-hh-income-poverty) shows a plot of median household income against the poverty rate for `r nrow(county)` counties.
+\BeginKnitrBlock{example}<div class="example">Figure \@ref(fig:median-hh-income-poverty) shows a plot of median household income against the poverty rate for 3,142 counties.
 What can be said about the relationship between these variables?
 
 ---
@@ -638,7 +641,7 @@ Often times it is too expensive or time consuming to measure the population mean
 
 ---
   
-The sample mean, `r {round(loan50_mean_intrest_rate, 2)}`, provides a rough estimate of $\mu_x$. While it is not perfect, this statistic our single best guess **point estimate**\index{point estimate} of the average interest rate of all the loans in the population under study, the parameter. In Chapter \@ref(inference-foundations) and beyond, we will develop tools to characterize the accuracy of point estimates, like the sample mean. As you might have guessed, point estimates based on larger samples tend to be more accurate than those based on smaller samples.</div>\EndKnitrBlock{example}
+The sample mean, 11.57%, provides a rough estimate of $\mu_x$. While it is not perfect, this statistic our single best guess **point estimate**\index{point estimate} of the average interest rate of all the loans in the population under study, the parameter. In Chapter \@ref(inference-foundations) and beyond, we will develop tools to characterize the accuracy of point estimates, like the sample mean. As you might have guessed, point estimates based on larger samples tend to be more accurate than those based on smaller samples.</div>\EndKnitrBlock{example}
 
 The mean is useful for making comparisons across different samples that may have different sample sizes because it allows us to rescale or standardize a metric into something more easily interpretable and comparable. 
 
@@ -1240,6 +1243,7 @@ One observation that stands out when comparing the two maps: the poverty rate is
 
 ## `R`: Exploratory data analysis
 
+\BeginKnitrBlock{todo}<div class="todo">Section on doing EDA in R.</div>\EndKnitrBlock{todo}
 
 ## Chapter 2 review {#chp2-review}
 

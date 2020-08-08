@@ -132,10 +132,13 @@ terms_chp_2 <- c(terms_chp_2, "statistic", "parameter","point estimate")
 ```
 
 ### Bar plots and mosaic plots
+
+```{block2, type="todo", echo=TRUE}
 - one cat bar plot
 - two cat bar plot
 - two cat mosaic plot
 - association vs no association in bar plots
+```
 
 ### Simpson's paradox
 
@@ -275,6 +278,10 @@ terms_chp_2 <- c(terms_chp_2, "Simpson's Paradox")
 
 
 ### Why not pie charts?
+
+```{block2, type="todo", echo=TRUE}
+Example with bar chart and pie chart side-by-side.
+```
 
 If you're still not convinced, read this post on the "from Data to Viz" blog: ["The Issue with Pie Chart"](https://www.data-to-viz.com/caveat/pie.html).
 
@@ -485,7 +492,7 @@ ggplot(county, aes(x = poverty/100, y = median_hh_income)) +
 
 
 ```{block2, type="example", echo=TRUE}
-Figure \@ref(fig:median-hh-income-poverty) shows a plot of median household income against the poverty rate for `r nrow(county)` counties.
+Figure \@ref(fig:median-hh-income-poverty) shows a plot of median household income against the poverty rate for 3,142 counties.
 What can be said about the relationship between these variables?
 
 ---
@@ -585,7 +592,7 @@ The average interest rate across all loans in the population can be estimated us
 
 ---
   
-The sample mean, `r {round(loan50_mean_intrest_rate, 2)}`, provides a rough estimate of $\mu_x$. While it is not perfect, this statistic our single best guess **point estimate**\index{point estimate} of the average interest rate of all the loans in the population under study, the parameter. In Chapter \@ref(inference-foundations) and beyond, we will develop tools to characterize the accuracy of point estimates, like the sample mean. As you might have guessed, point estimates based on larger samples tend to be more accurate than those based on smaller samples.
+The sample mean, 11.57%, provides a rough estimate of $\mu_x$. While it is not perfect, this statistic our single best guess **point estimate**\index{point estimate} of the average interest rate of all the loans in the population under study, the parameter. In Chapter \@ref(inference-foundations) and beyond, we will develop tools to characterize the accuracy of point estimates, like the sample mean. As you might have guessed, point estimates based on larger samples tend to be more accurate than those based on smaller samples.
 ```
 
 The mean is useful for making comparisons across different samples that may have different sample sizes because it allows us to rescale or standardize a metric into something more easily interpretable and comparable. 
@@ -1423,6 +1430,9 @@ map_howownership /
 
 ## `R`: Exploratory data analysis
 
+```{block2, type="todo", echo=TRUE}
+Section on doing EDA in R.
+```
 
 ## Chapter 2 review {#chp2-review}
 

@@ -6,6 +6,10 @@
 
 ## `R`: Inference for regression
 
+\BeginKnitrBlock{todo}<div class="todo">Section on doing inference for categorical data in R.
+- Simulation functions in catstats
+- `lm`
+- Diagnostic plots</div>\EndKnitrBlock{todo}
 
 ## Chapter 7 review {#chp7-review}
 

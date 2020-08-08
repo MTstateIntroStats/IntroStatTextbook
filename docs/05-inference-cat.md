@@ -3580,6 +3580,11 @@ You will often hear the following two $z$-procedures referred to as a **one samp
 
 ## `R`: Inference for categorical data
 
+\BeginKnitrBlock{todo}<div class="todo">Section on doing inference for categorical data in R.
+- Raw data to tables
+- Simulation functions in catstats
+- `prop.test`</div>\EndKnitrBlock{todo}
+
 ## Chapter 5 review {#chp5-review}
 
 ### Terms

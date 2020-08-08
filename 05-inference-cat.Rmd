@@ -4318,6 +4318,13 @@ zsim_table %>%
 
 ## `R`: Inference for categorical data
 
+```{block2, type="todo", echo=TRUE}
+Section on doing inference for categorical data in R.
+- Raw data to tables
+- Simulation functions in catstats
+- `prop.test`
+```
+
 ## Chapter 5 review {#chp5-review}
 
 ### Terms

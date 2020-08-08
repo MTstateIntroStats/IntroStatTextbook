@@ -2203,6 +2203,9 @@ So far in this chapter, we have seen the $t$-distribution applied as the appropr
 
 ## `R`: Inference for quantitative data
 
+\BeginKnitrBlock{todo}<div class="todo">Section on doing inference for categorical data in R.
+- Simulation functions in catstats
+- `t.test`</div>\EndKnitrBlock{todo}
 
 ## Chapter 6 review {#chp6-review}
 

@@ -6,6 +6,12 @@
 
 ## `R`: Inference for regression
 
+```{block2, type="todo", echo=TRUE}
+Section on doing inference for categorical data in R.
+- Simulation functions in catstats
+- `lm`
+- Diagnostic plots
+```
 
 ## Chapter 7 review {#chp7-review}
 

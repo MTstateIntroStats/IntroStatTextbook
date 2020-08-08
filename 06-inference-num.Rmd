@@ -2559,6 +2559,11 @@ tsim_table %>%
 
 ## `R`: Inference for quantitative data
 
+```{block2, type="todo", echo=TRUE}
+Section on doing inference for categorical data in R.
+- Simulation functions in catstats
+- `t.test`
+```
 
 ## Chapter 6 review {#chp6-review}
 
