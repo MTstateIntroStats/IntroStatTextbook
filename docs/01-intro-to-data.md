@@ -228,7 +228,7 @@ For instance, it is always important to be sure we know what each variable means
 Descriptions of the variables in the `loan50` data set are given in Table \@ref(tab:loan50Variables).
 
 <table>
-<caption>(\#tab:loan50DF)Six rows from the `loan50` data set</caption>
+<caption>(\#tab:loan50DF)Six rows from the `loan50` data set.</caption>
  <thead>
   <tr>
    <th style="text-align:left;">   </th>

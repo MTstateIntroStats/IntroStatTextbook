@@ -803,9 +803,9 @@ First, a picture is needed. Edward's percentile is the proportion of people who 
 
 Identifying the mean $\mu=1500$, the standard deviation $\sigma=300$, and the cutoff for the tail area $x=1400$ makes it easy to compute the Z-score:
 \begin{eqnarray*}
-Z = \frac{x - \mu}{\sigma} = \frac{1400 - 1500}{300} = -0.33
+Z = \frac{x - \mu}{\sigma} = \frac{1400 - 1500}{300} = -0.3333
 \end{eqnarray*}
-Using the normal probability table, identify the row of $-0.3$ and column of $0.03$, which corresponds to the probability $0.3707$. Edward is at the $37^{th}$ percentile.
+Using the `pnorm()` function (either `pnorm(-1/3)` or `pnorm(1400, m=1500, s=300)` will give the desired result), the desired probability is $0.3694$. Edward is at the $37^{th}$ percentile.
 ```
 
 
@@ -825,7 +825,7 @@ Use the results of the previous example to compute the proportion of SAT takers 
 ```{block2, type="protip", echo=TRUE}
 **Areas to the right.**
 
-The normal probability table in most books gives the area to the left. If you would like the area to the right, first find the area to the left and then subtract this amount from one.
+The `pnorm()` function (and the normal probability table in most books) gives the area to the left. If you would like the area to the right, first find the area to the left and then subtract this amount from one. In `R`, you can also do this by setting the `lower.tail` argument to `FALSE`.
 ```
 
 ```{block2, type="guidedpractice", echo=TRUE}
@@ -2251,15 +2251,15 @@ In this study, a smaller proportion of females are promoted than males (0.583 ve
 ```{r discriminationResults}
 temptbl <- tribble(
  ~variable,    ~col1, ~col2, ~col3, ~col4, 
- "", "male", "21", "3", "24",
- "`gender`", "female", "14", "10","24",
- "", "Total", "35", "13", "48"
+ "", "promoted", "21", "14", "35",
+ "`decision`", "not promoted", "3", "10","13",
+ "", "Total", "24", "24", "48"
 )
 
 temptbl %>%
  kable(caption = "Summary results for the gender discrimination study.",
-    col.names = c("", "", "promoted", "not promoted", "Total")) %>%
- add_header_above(c(" ", " ", "`decision`" = 2, " ")) %>%
+    col.names = c("", "", "male", "female", "Total")) %>%
+ add_header_above(c(" ", " ", "`gender`" = 2, " ")) %>%
   kable_styling()  
 ```
 
@@ -2348,16 +2348,16 @@ Table \@ref(tab:discriminationRand1) show the results of one such simulation.
 ```{r discriminationRand1}
 temptbl <- tribble(
  ~variable,    ~col1, ~col2, ~col3, ~col4, 
- "", "male", "18", "6", "24",
- "`gender`", "female", "17", "7","24",
- "", "Total", "35", "13", "48"
+ "", "promoted", "18", "17", "35",
+ "`decision`", "not promoted", "6", "7","13",
+ "", "Total", "24", "24", "48"
 )
 
 temptbl %>%
  kable(caption = "Simulation results, where the difference in promotion rates between `male` and `female` is purely due to chance.",
-    col.names = c("", "", "promoted", "not promoted", "Total")) %>%
+    col.names = c("", "", "male", "female", "Total")) %>%
  kable_styling() %>%
- add_header_above(c(" ", " ", "`decision`" = 2, " "))
+ add_header_above(c(" ", " ", "`gender`" = 2, " "))
 ```
 
 
@@ -2539,16 +2539,15 @@ Table \@ref(tab:OpportunityCostTable) summarizes the study results.
 ```{r OpportunityCostTable}
 temptbl <- tribble(
  ~variable,    ~col1, ~col2, ~col3, 
- "control group", "56", "19", "75",
- "treatment group", "41", "34","75",
+ "", "control group", "treatment group", "Total",
+ "buy DVD", "56", "19", "75",
+ "not buy DVD", "41", "34","75",
  "Total", "97", "53", "150"
 )
 
 temptbl %>%
- kable(caption = "Summary of student choices in the opportunity cost study.",
-    col.names = c("", "buy DVD", "not buy DVD", "Total")) %>%
- kable_styling() %>%
- add_header_above(c(" ", "`decision`" = 2, " "))
+ kable(caption = "Summary of student choices in the opportunity cost study.") %>%
+ kable_styling() 
 ```
 
 <!--
@@ -2562,16 +2561,15 @@ These summaries are given in Table \@ref(tab:OpportunityCostTableRowProp), and a
 ```{r OpportunityCostTableRowProp}
 temptbl <- tribble(
  ~variable,    ~col1, ~col2, ~col3, 
- "control group", "0.747", "0.253", "1.00",
- "treatment group", "0.547", "0.453","1.00",
- "Total", "0.647", "0.353", "1.00"
+ "", "control group", "treatment group", "Total",
+ "buy DVD", "0.747", "0.547", "0.647",
+ "not buy DVD", "0.253", "0.453","0.353",
+ "Total", "1.00", "1.00", "1.00"
 )
 
 temptbl %>%
- kable(caption = "The data above are now summarized using row proportions. Row proportions are particularly useful here since we can view the proportion of *buy* and *not buy* decisions in each group.",
-    col.names = c("", "buy DVD", "not buy DVD", "Total")) %>%
- kable_styling() %>%
- add_header_above(c( " ", "`decision`" = 2, " "))
+ kable(caption = "The data above are now summarized using column proportions. Column proportions are particularly useful here since we can view the proportion of *buy* and *not buy* decisions in each group, and across the whole sample.") %>%
+ kable_styling()
 ```
 
 
@@ -2663,16 +2661,15 @@ From this table, we can compute a difference that occurred from chance alone:
 ```{r OpportunityCostTableSimulated}
 temptbl <- tribble(
  ~variable,    ~col1, ~col2, ~col3, 
- "control group", "46", "29", "75",
- "treatment group", "51", "24","75",
- "Total", "97", "53", "150"
+ "", "control group", "treatment group", "Total",
+ "buy DVD", "46", "51", "97",
+ "not buy DVD", "29", "24","53",
+ "Total", "75", "75", "150"
 )
 
 temptbl %>%
- kable(caption = "Summary of student choices against their simulated groups. The group assignment had no connection to the student decisions, so any difference between the two groups is due to chance.",
-    col.names = c( "", "buy DVD", "not buy DVD", "Total")) %>%
- kable_styling() %>%
- add_header_above(c( " ", "`decision`" = 2, " "))
+ kable(caption = "Summary of student choices against their simulated groups. The group assignment had no connection to the student decisions, so any difference between the two groups is due to chance.") %>%
+ kable_styling()
 ```
 
 
@@ -2815,16 +2812,16 @@ signs of infection.
 ```{r malaria-vaccine-20-exp-summary}
 temptbl <- tribble(
  ~variable,    ~col1, ~col2, ~col3, ~col4, 
- "", "vaccine", "5", "9", "14",
- "`treatment`", "placebo", "6", "0","6",
- "", "Total", "11", "9", "20"
+ "", "infection", "5", "6", "11",
+ "`no infection`", "placebo", "9", "0","9",
+ "", "Total", "14", "6", "20"
 )
 
 temptbl %>%
  kable(caption = "Summary results for the malaria vaccine experiment.",
-    col.names = c("", "", "infection", "no infection", "Total")) %>%
+    col.names = c("", "", "vaccine", "placebo", "Total")) %>%
  kable_styling() %>%
- add_header_above(c(" ", " ", "`outcome`" = 2, " "))
+ add_header_above(c(" ", " ", "`treatment`" = 2, " "))
 ```
 
 ```{block2, type = "guidedpractice", echo = TRUE}
@@ -3247,14 +3244,14 @@ The study results are shown in Table \@ref(tab:resultsForCPRStudyInSmallSampleSe
 ```{r resultsForCPRStudyInSmallSampleSection}
 temptbl <- tribble(
  ~variable,    ~col1, ~col2, ~col3, 
- "Control", "11", "39", "50",
- "Treatment", "14", "26","40",
- "Total", "25", "65", "90"
+ "Survived", "14", "11", "25",
+ "Died", "26", "39","65",
+ "Total", "40", "50", "90"
 )
 
 temptbl %>%
  kable(caption = "Results for the CPR study. Patients in the treatment group were given a blood thinner, and patients in the control group were not.",
-    col.names = c("", "Survived", "Died", "Total")) %>%
+    col.names = c("", "Treatment", "Control", "Total")) %>%
  kable_styling() 
 ```
 
@@ -3938,13 +3935,14 @@ We are 95% confident that fish oils decreases
 ```
 
 ```{r fish-oil-data}
-fish_oil_18[[3]] %>% 
+temptbl <- fish_oil_18[[3]] %>% 
   data.frame() %>%
   mutate(group = c("fish oil", "placebo")) %>%
   mutate(total = myocardioal_infarction + no_event) %>%
-  column_to_rownames(var = "group") %>%
- kable(caption = "Results for the study on n-3 fatty acid supplement and related health benefits.", 
-    col.names = c( "heart attack", "no event", "Total"),
+  column_to_rownames(var = "group") %>% t()
+row.names(temptbl) <- c("heart attack","no event","Total")
+kable(temptbl, caption = "Results for the study on n-3 fatty acid supplement and related health benefits.", 
+    col.names = c( "fish oil", "placebo"),
     row.names = TRUE) %>%
  kable_styling()
 ```
@@ -3969,15 +3967,14 @@ If mammograms are much more effective than non-mammogram breast cancer exams, th
 
 ```{r mammogramStudySummaryTable}
 temptbl <- tribble(
- ~variable,    ~col1, ~col2,
- "Mammogram", "500", "44,425",
- "Control", "505", "44,405"
+ ~variable,    ~col1, ~col2, ~col3,
+ "Death from breast cancer?", "Yes", "500", "505",
+ "", "No", "44,425", "44,405"
 )
 
 temptbl %>%
  kable(caption = "Summary results for breast cancer study.", 
-    col.names = c( "", "Yes", "No")) %>%
- add_header_above( c("", "Death from breast cancer?" = 2)) %>%
+    col.names = c( "", "", "Mammogram", "Control"))  %>%
  kable_styling()
 ```
 

@@ -590,9 +590,9 @@ First, a picture is needed. Edward's percentile is the proportion of people who 
 
 Identifying the mean $\mu=1500$, the standard deviation $\sigma=300$, and the cutoff for the tail area $x=1400$ makes it easy to compute the Z-score:
 \begin{eqnarray*}
-Z = \frac{x - \mu}{\sigma} = \frac{1400 - 1500}{300} = -0.33
+Z = \frac{x - \mu}{\sigma} = \frac{1400 - 1500}{300} = -0.3333
 \end{eqnarray*}
-Using the normal probability table, identify the row of $-0.3$ and column of $0.03$, which corresponds to the probability $0.3707$. Edward is at the $37^{th}$ percentile.</div>\EndKnitrBlock{example}
+Using the `pnorm()` function (either `pnorm(-1/3)` or `pnorm(1400, m=1500, s=300)` will give the desired result), the desired probability is $0.3694$. Edward is at the $37^{th}$ percentile.</div>\EndKnitrBlock{example}
 
 
 <img src="05-inference-cat_files/figure-html/satBelow1400-1.png" width="70%" style="display: block; margin: auto;" />
@@ -604,7 +604,7 @@ Using the normal probability table, identify the row of $-0.3$ and column of $0.
 
 \BeginKnitrBlock{protip}<div class="protip">**Areas to the right.**
 
-The normal probability table in most books gives the area to the left. If you would like the area to the right, first find the area to the left and then subtract this amount from one.</div>\EndKnitrBlock{protip}
+The `pnorm()` function (and the normal probability table in most books) gives the area to the left. If you would like the area to the right, first find the area to the left and then subtract this amount from one. In `R`, you can also do this by setting the `lower.tail` argument to `FALSE`.</div>\EndKnitrBlock{protip}
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Stuart earned an SAT score of 2100. Draw a picture for each part. (a) What is his percentile? (b) What percent of SAT takers did better than Stuart?^[Numerical answers: (a) 0.9772. (b) 0.0228.]</div>\EndKnitrBlock{guidedpractice}
 
@@ -1705,37 +1705,37 @@ In this study, a smaller proportion of females are promoted than males (0.583 ve
 <tr>
 <th style="border-bottom:hidden" colspan="1"></th>
 <th style="border-bottom:hidden" colspan="1"></th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`decision`</div></th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`gender`</div></th>
 <th style="border-bottom:hidden" colspan="1"></th>
 </tr>
   <tr>
    <th style="text-align:left;">  </th>
    <th style="text-align:left;">  </th>
-   <th style="text-align:left;"> promoted </th>
-   <th style="text-align:left;"> not promoted </th>
+   <th style="text-align:left;"> male </th>
+   <th style="text-align:left;"> female </th>
    <th style="text-align:left;"> Total </th>
   </tr>
  </thead>
 <tbody>
   <tr>
    <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> male </td>
+   <td style="text-align:left;"> promoted </td>
    <td style="text-align:left;"> 21 </td>
-   <td style="text-align:left;"> 3 </td>
-   <td style="text-align:left;"> 24 </td>
+   <td style="text-align:left;"> 14 </td>
+   <td style="text-align:left;"> 35 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> `gender` </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:left;"> 14 </td>
+   <td style="text-align:left;"> `decision` </td>
+   <td style="text-align:left;"> not promoted </td>
+   <td style="text-align:left;"> 3 </td>
    <td style="text-align:left;"> 10 </td>
-   <td style="text-align:left;"> 24 </td>
+   <td style="text-align:left;"> 13 </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
    <td style="text-align:left;"> Total </td>
-   <td style="text-align:left;"> 35 </td>
-   <td style="text-align:left;"> 13 </td>
+   <td style="text-align:left;"> 24 </td>
+   <td style="text-align:left;"> 24 </td>
    <td style="text-align:left;"> 48 </td>
   </tr>
 </tbody>
@@ -1825,37 +1825,37 @@ Table \@ref(tab:discriminationRand1) show the results of one such simulation.
 <tr>
 <th style="border-bottom:hidden" colspan="1"></th>
 <th style="border-bottom:hidden" colspan="1"></th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`decision`</div></th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`gender`</div></th>
 <th style="border-bottom:hidden" colspan="1"></th>
 </tr>
   <tr>
    <th style="text-align:left;">  </th>
    <th style="text-align:left;">  </th>
-   <th style="text-align:left;"> promoted </th>
-   <th style="text-align:left;"> not promoted </th>
+   <th style="text-align:left;"> male </th>
+   <th style="text-align:left;"> female </th>
    <th style="text-align:left;"> Total </th>
   </tr>
  </thead>
 <tbody>
   <tr>
    <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> male </td>
+   <td style="text-align:left;"> promoted </td>
    <td style="text-align:left;"> 18 </td>
-   <td style="text-align:left;"> 6 </td>
-   <td style="text-align:left;"> 24 </td>
+   <td style="text-align:left;"> 17 </td>
+   <td style="text-align:left;"> 35 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> `gender` </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:left;"> 17 </td>
+   <td style="text-align:left;"> `decision` </td>
+   <td style="text-align:left;"> not promoted </td>
+   <td style="text-align:left;"> 6 </td>
    <td style="text-align:left;"> 7 </td>
-   <td style="text-align:left;"> 24 </td>
+   <td style="text-align:left;"> 13 </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
    <td style="text-align:left;"> Total </td>
-   <td style="text-align:left;"> 35 </td>
-   <td style="text-align:left;"> 13 </td>
+   <td style="text-align:left;"> 24 </td>
+   <td style="text-align:left;"> 24 </td>
    <td style="text-align:left;"> 48 </td>
   </tr>
 </tbody>
@@ -1989,27 +1989,28 @@ Table \@ref(tab:OpportunityCostTable) summarizes the study results.
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>(\#tab:OpportunityCostTable)Summary of student choices in the opportunity cost study.</caption>
  <thead>
-<tr>
-<th style="border-bottom:hidden" colspan="1"></th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`decision`</div></th>
-<th style="border-bottom:hidden" colspan="1"></th>
-</tr>
   <tr>
-   <th style="text-align:left;">  </th>
-   <th style="text-align:left;"> buy DVD </th>
-   <th style="text-align:left;"> not buy DVD </th>
-   <th style="text-align:left;"> Total </th>
+   <th style="text-align:left;"> variable </th>
+   <th style="text-align:left;"> col1 </th>
+   <th style="text-align:left;"> col2 </th>
+   <th style="text-align:left;"> col3 </th>
   </tr>
  </thead>
 <tbody>
   <tr>
+   <td style="text-align:left;">  </td>
    <td style="text-align:left;"> control group </td>
+   <td style="text-align:left;"> treatment group </td>
+   <td style="text-align:left;"> Total </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> buy DVD </td>
    <td style="text-align:left;"> 56 </td>
    <td style="text-align:left;"> 19 </td>
    <td style="text-align:left;"> 75 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> treatment group </td>
+   <td style="text-align:left;"> not buy DVD </td>
    <td style="text-align:left;"> 41 </td>
    <td style="text-align:left;"> 34 </td>
    <td style="text-align:left;"> 75 </td>
@@ -2032,37 +2033,38 @@ These summaries are given in Table \@ref(tab:OpportunityCostTableRowProp), and a
 
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:OpportunityCostTableRowProp)The data above are now summarized using row proportions. Row proportions are particularly useful here since we can view the proportion of *buy* and *not buy* decisions in each group.</caption>
+<caption>(\#tab:OpportunityCostTableRowProp)The data above are now summarized using column proportions. Column proportions are particularly useful here since we can view the proportion of *buy* and *not buy* decisions in each group, and across the whole sample.</caption>
  <thead>
-<tr>
-<th style="border-bottom:hidden" colspan="1"></th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`decision`</div></th>
-<th style="border-bottom:hidden" colspan="1"></th>
-</tr>
   <tr>
-   <th style="text-align:left;">  </th>
-   <th style="text-align:left;"> buy DVD </th>
-   <th style="text-align:left;"> not buy DVD </th>
-   <th style="text-align:left;"> Total </th>
+   <th style="text-align:left;"> variable </th>
+   <th style="text-align:left;"> col1 </th>
+   <th style="text-align:left;"> col2 </th>
+   <th style="text-align:left;"> col3 </th>
   </tr>
  </thead>
 <tbody>
   <tr>
+   <td style="text-align:left;">  </td>
    <td style="text-align:left;"> control group </td>
-   <td style="text-align:left;"> 0.747 </td>
-   <td style="text-align:left;"> 0.253 </td>
-   <td style="text-align:left;"> 1.00 </td>
+   <td style="text-align:left;"> treatment group </td>
+   <td style="text-align:left;"> Total </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> treatment group </td>
+   <td style="text-align:left;"> buy DVD </td>
+   <td style="text-align:left;"> 0.747 </td>
    <td style="text-align:left;"> 0.547 </td>
+   <td style="text-align:left;"> 0.647 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> not buy DVD </td>
+   <td style="text-align:left;"> 0.253 </td>
    <td style="text-align:left;"> 0.453 </td>
-   <td style="text-align:left;"> 1.00 </td>
+   <td style="text-align:left;"> 0.353 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Total </td>
-   <td style="text-align:left;"> 0.647 </td>
-   <td style="text-align:left;"> 0.353 </td>
+   <td style="text-align:left;"> 1.00 </td>
+   <td style="text-align:left;"> 1.00 </td>
    <td style="text-align:left;"> 1.00 </td>
   </tr>
 </tbody>
@@ -2143,35 +2145,36 @@ From this table, we can compute a difference that occurred from chance alone:
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>(\#tab:OpportunityCostTableSimulated)Summary of student choices against their simulated groups. The group assignment had no connection to the student decisions, so any difference between the two groups is due to chance.</caption>
  <thead>
-<tr>
-<th style="border-bottom:hidden" colspan="1"></th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`decision`</div></th>
-<th style="border-bottom:hidden" colspan="1"></th>
-</tr>
   <tr>
-   <th style="text-align:left;">  </th>
-   <th style="text-align:left;"> buy DVD </th>
-   <th style="text-align:left;"> not buy DVD </th>
-   <th style="text-align:left;"> Total </th>
+   <th style="text-align:left;"> variable </th>
+   <th style="text-align:left;"> col1 </th>
+   <th style="text-align:left;"> col2 </th>
+   <th style="text-align:left;"> col3 </th>
   </tr>
  </thead>
 <tbody>
   <tr>
+   <td style="text-align:left;">  </td>
    <td style="text-align:left;"> control group </td>
-   <td style="text-align:left;"> 46 </td>
-   <td style="text-align:left;"> 29 </td>
-   <td style="text-align:left;"> 75 </td>
+   <td style="text-align:left;"> treatment group </td>
+   <td style="text-align:left;"> Total </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> treatment group </td>
+   <td style="text-align:left;"> buy DVD </td>
+   <td style="text-align:left;"> 46 </td>
    <td style="text-align:left;"> 51 </td>
+   <td style="text-align:left;"> 97 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> not buy DVD </td>
+   <td style="text-align:left;"> 29 </td>
    <td style="text-align:left;"> 24 </td>
-   <td style="text-align:left;"> 75 </td>
+   <td style="text-align:left;"> 53 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Total </td>
-   <td style="text-align:left;"> 97 </td>
-   <td style="text-align:left;"> 53 </td>
+   <td style="text-align:left;"> 75 </td>
+   <td style="text-align:left;"> 75 </td>
    <td style="text-align:left;"> 150 </td>
   </tr>
 </tbody>
@@ -2236,37 +2239,37 @@ signs of infection.
 <tr>
 <th style="border-bottom:hidden" colspan="1"></th>
 <th style="border-bottom:hidden" colspan="1"></th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`outcome`</div></th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`treatment`</div></th>
 <th style="border-bottom:hidden" colspan="1"></th>
 </tr>
   <tr>
    <th style="text-align:left;">  </th>
    <th style="text-align:left;">  </th>
-   <th style="text-align:left;"> infection </th>
-   <th style="text-align:left;"> no infection </th>
+   <th style="text-align:left;"> vaccine </th>
+   <th style="text-align:left;"> placebo </th>
    <th style="text-align:left;"> Total </th>
   </tr>
  </thead>
 <tbody>
   <tr>
    <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> vaccine </td>
+   <td style="text-align:left;"> infection </td>
    <td style="text-align:left;"> 5 </td>
-   <td style="text-align:left;"> 9 </td>
-   <td style="text-align:left;"> 14 </td>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 11 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> `treatment` </td>
+   <td style="text-align:left;"> `no infection` </td>
    <td style="text-align:left;"> placebo </td>
-   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 9 </td>
    <td style="text-align:left;"> 0 </td>
-   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> 9 </td>
   </tr>
   <tr>
    <td style="text-align:left;">  </td>
    <td style="text-align:left;"> Total </td>
-   <td style="text-align:left;"> 11 </td>
-   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> 14 </td>
+   <td style="text-align:left;"> 6 </td>
    <td style="text-align:left;"> 20 </td>
   </tr>
 </tbody>
@@ -2642,28 +2645,28 @@ The study results are shown in Table \@ref(tab:resultsForCPRStudyInSmallSampleSe
  <thead>
   <tr>
    <th style="text-align:left;">  </th>
-   <th style="text-align:left;"> Survived </th>
-   <th style="text-align:left;"> Died </th>
+   <th style="text-align:left;"> Treatment </th>
+   <th style="text-align:left;"> Control </th>
    <th style="text-align:left;"> Total </th>
   </tr>
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> Control </td>
+   <td style="text-align:left;"> Survived </td>
+   <td style="text-align:left;"> 14 </td>
    <td style="text-align:left;"> 11 </td>
-   <td style="text-align:left;"> 39 </td>
-   <td style="text-align:left;"> 50 </td>
+   <td style="text-align:left;"> 25 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Treatment </td>
-   <td style="text-align:left;"> 14 </td>
+   <td style="text-align:left;"> Died </td>
    <td style="text-align:left;"> 26 </td>
-   <td style="text-align:left;"> 40 </td>
+   <td style="text-align:left;"> 39 </td>
+   <td style="text-align:left;"> 65 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Total </td>
-   <td style="text-align:left;"> 25 </td>
-   <td style="text-align:left;"> 65 </td>
+   <td style="text-align:left;"> 40 </td>
+   <td style="text-align:left;"> 50 </td>
    <td style="text-align:left;"> 90 </td>
   </tr>
 </tbody>
@@ -3179,22 +3182,24 @@ We are 95% confident that fish oils decreases
  <thead>
   <tr>
    <th style="text-align:left;">   </th>
-   <th style="text-align:right;"> heart attack </th>
-   <th style="text-align:right;"> no event </th>
-   <th style="text-align:right;"> Total </th>
+   <th style="text-align:right;"> fish oil </th>
+   <th style="text-align:right;"> placebo </th>
   </tr>
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> fish oil </td>
+   <td style="text-align:left;"> heart attack </td>
    <td style="text-align:right;"> 145 </td>
-   <td style="text-align:right;"> 12788 </td>
-   <td style="text-align:right;"> 12933 </td>
+   <td style="text-align:right;"> 200 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:right;"> 200 </td>
+   <td style="text-align:left;"> no event </td>
+   <td style="text-align:right;"> 12788 </td>
    <td style="text-align:right;"> 12738 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Total </td>
+   <td style="text-align:right;"> 12933 </td>
    <td style="text-align:right;"> 12938 </td>
   </tr>
 </tbody>
@@ -3221,25 +3226,24 @@ If mammograms are much more effective than non-mammogram breast cancer exams, th
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>(\#tab:mammogramStudySummaryTable)Summary results for breast cancer study.</caption>
  <thead>
-<tr>
-<th style="border-bottom:hidden" colspan="1"></th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Death from breast cancer?</div></th>
-</tr>
   <tr>
    <th style="text-align:left;">  </th>
-   <th style="text-align:left;"> Yes </th>
-   <th style="text-align:left;"> No </th>
+   <th style="text-align:left;">  </th>
+   <th style="text-align:left;"> Mammogram </th>
+   <th style="text-align:left;"> Control </th>
   </tr>
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> Mammogram </td>
+   <td style="text-align:left;"> Death from breast cancer? </td>
+   <td style="text-align:left;"> Yes </td>
    <td style="text-align:left;"> 500 </td>
-   <td style="text-align:left;"> 44,425 </td>
+   <td style="text-align:left;"> 505 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Control </td>
-   <td style="text-align:left;"> 505 </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> No </td>
+   <td style="text-align:left;"> 44,425 </td>
    <td style="text-align:left;"> 44,405 </td>
   </tr>
 </tbody>
