@@ -492,7 +492,10 @@ terms_chp_1 <- c(terms_chp_1, "explanatory variable", "response variable", "depe
 
 ```{block2, type="onebox", echo=TRUE}
 **Explanatory and response variables.**
-When we suspect one variable might causally affect another, we label the first variable the explanatory variable and the second the response variable. 
+  
+When we suspect one variable might causally affect another,
+we label the first variable the explanatory variable
+and the second the response variable. 
 
 <center>
 explanatory variable $\rightarrow$ *might affect* $\rightarrow$ response variable

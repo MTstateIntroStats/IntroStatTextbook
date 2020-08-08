@@ -634,7 +634,10 @@ If this is our underlying belief, then *median household income* is the **explan
 \index{data!county|)}
 
 \BeginKnitrBlock{onebox}<div class="onebox">**Explanatory and response variables.**
-When we suspect one variable might causally affect another, we label the first variable the explanatory variable and the second the response variable. 
+  
+When we suspect one variable might causally affect another,
+we label the first variable the explanatory variable
+and the second the response variable. 
 
 <center>
 explanatory variable $\rightarrow$ *might affect* $\rightarrow$ response variable

@@ -383,7 +383,7 @@ How did this happen? The answer has to do with the race of the victim being a co
 
 Thus, the extremely low chance of a homicide case resulting in the death penalty for African Americans combines with the fact that most cases with African American victims also had an African American victim to results in an overall lower rate of death penalty sentences for African American defendants than for Caucasian defendants. The overall results in Figure \@ref(fig:DPbarplots) and the results in each subgroup of Figure \@ref(fig:DPbarplots2) are both valid---they are not the result of any "bad statistics"---but they suggest opposite conclusions. Data such as these, where an observed effect _reverses_ itself when you examine the variables within subgroups, exhibit **Simpson's Paradox**.
 
-\BeginKnitrBlock{onebox}<div class="onebox">***Simpson's Paradox.***
+\BeginKnitrBlock{onebox}<div class="onebox">**Simpson's Paradox.**
 
 When the association between an explanatory variable and a response variable reverses itself when we examine the association within different levels of a confounding variable, we say that these data exhibit **Simpson's Paradox**.</div>\EndKnitrBlock{onebox}
 
@@ -614,6 +614,7 @@ It is useful to think of the mean as the balancing point of the distribution^[Fo
 more practice with this concept of the mean as a balancing point, see this [Khan Academy article](https://www.khanacademy.org/math/ap-statistics/summarizing-quantitative-data-ap/mean-median-more/a/mean-as-the-balancing-point).], and it's shown as a triangle in Figure \@ref(fig:loan-int-rate-dotplot).
 
 \BeginKnitrBlock{onebox}<div class="onebox">**Mean.**
+  
 The sample mean can be calculated as the sum of the observed values divided by the number of observations:
 
 \[ \bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n} \]</div>\EndKnitrBlock{onebox}
@@ -835,6 +836,7 @@ While often omitted, a subscript of $_x$ may be added to the variance and standa
 
 
 \BeginKnitrBlock{onebox}<div class="onebox">**Variance and standard deviation.**
+  
 The sample variance is the (near) average squared distance from the mean:
 \[
   s^2 = \frac{((x_1 - \bar{x})^2 + (x_2 - \bar{x})^2 + \cdots + (x_n - \bar{x})^2)}{n-1}
@@ -985,6 +987,7 @@ When there are an odd number of observations, there will be exactly one observat
 
 
 \BeginKnitrBlock{onebox}<div class="onebox">**Median: the number in the middle.**  
+  
 If the data are ordered from smallest to largest, the **median** is the observation right in the middle.
 If there are an even number of observations, there will be two values in the middle, and the median is taken as their average.
 
@@ -1002,6 +1005,7 @@ The two boundaries of the box are called the **first quartile** (the $25^{th}$ p
 
 
 \BeginKnitrBlock{onebox}<div class="onebox">**Interquartile range (IQR).**
+  
 The IQR interquartile range is the length of the box in a box plot.
 It is computed as
 \[
@@ -1034,6 +1038,7 @@ on the plot.</div>\EndKnitrBlock{protip}
 
 
 \BeginKnitrBlock{onebox}<div class="onebox">**Outliers are extreme.**
+  
 An **outlier** is an observation that appears extreme relative to the rest of the data. 
 Examining data for outliers serves many useful purposes, including
 
