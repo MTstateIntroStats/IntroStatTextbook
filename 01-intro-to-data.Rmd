@@ -226,7 +226,7 @@ loan50_var_def <- tribble(
   "loan_amount",   "Amount of the loan received, in US dollars.",
   "interest_rate", "Interest rate on the loan, in an annual percentage.",
   "term",          "The length of the loan, which is always set as a whole number of months.",
-  "grade",         "Loan grade, which takes a values A through G and represents the quality of the loan and its likelihood of being repaid.",
+  "grade",         "Loan grade, which takes on values A through G and represents the quality of the loan and its likelihood of being repaid.",
   "state",         "US state where the borrower resides.",
   "total_income",  "Borrower's total income, including any second income, in US dollars.",
   "homeownership", "Indicates whether the person owns, owns but has a mortgage, or rents."
