@@ -83,6 +83,9 @@ the `catstats` package each time you restart RStudio using the following command
 library(catstats)
 ```
 
+Note that the `catstats` package will install all of the packages needed to run code in this textbook,
+so you will not need to load other packages (e.g., `openintro`) once you load `catstats` into your `R` session.
+
 ## Acknowledgements {-}
 
 This resource is largely a derivative of the 1st and 2nd

@@ -205,8 +205,114 @@ The proportion of emails that were classified as spam in the data set is $3554/3
   
 An **unconditional** proportion is a proportion measured out of the total sample size. A **conditional** proportion is a proportion measured out of a subgroup in the sample.
 
-If the conditional proportions of a particular outcome (e.g., spam email) within levels of a categorical variable (e.g., whether no number, a small number, or a big number appears in the email) differ across levels, we say those two variables are **associated**. We can also determine if two categorical variables are associated by checking if any of the conditional proportions of the outcome within categories differ from the overall, or **unconditional** proportion.
-  </div>\EndKnitrBlock{onebox}
+If the conditional proportions of a particular outcome (e.g., spam email) within levels of a categorical variable (e.g., whether no number, a small number, or a big number appears in the email) differ across levels, we say those two variables are **associated**. We can also determine if two categorical variables are associated by checking if any of the conditional proportions of the outcome within categories differ from the overall, or **unconditional** proportion.</div>\EndKnitrBlock{onebox}
+
+#### Row and column proportions {-}
+
+Conditional proportions that condition on a row category are called **row proportions**; conditional proportions that condition on a column category
+are called **column proportions**. 
+
+
+
+Table \@ref(tab:rowPropSpamNumber) shows the row proportions for Table \@ref(tab:emailTable). The row proportions are computed as the counts divided by their row totals. The value 149 at the intersection of `type` and `none` is replaced by $149/367=0.406$, i.e., 149 divided by its row total, 367. So what does 0.406 represent? It corresponds to the conditional proportion of spam emails in the sample that do not have any numbers.
+
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>(\#tab:rowPropSpamNumber)A contingency table with row proportions for the `type` and `number` variables.</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> none </th>
+   <th style="text-align:right;"> small </th>
+   <th style="text-align:right;"> big </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> spam </td>
+   <td style="text-align:right;"> 0.406 </td>
+   <td style="text-align:right;"> 0.458 </td>
+   <td style="text-align:right;"> 0.136 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> not spam </td>
+   <td style="text-align:right;"> 0.113 </td>
+   <td style="text-align:right;"> 0.748 </td>
+   <td style="text-align:right;"> 0.139 </td>
+  </tr>
+</tbody>
+</table>
+
+A contingency table of the column proportions is computed in a similar way, where each column proportion is computed as the count divided by the corresponding column total. Table \@ref(tab:colPropSpamNumber) shows such a table, and here the value 0.271 indicates that 27.1% of emails with no numbers were spam. This rate of spam is much higher than emails with only small numbers (5.9%) or big numbers (9.2%). Because these spam rates vary between the three levels of `number` (`none`, `small`, `big`), this provides evidence that the `spam` and `number` variables are associated in this data set.
+
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>(\#tab:colPropSpamNumber)A contingency table with column proportions for the `type` and `number` variables.</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> none </th>
+   <th style="text-align:right;"> small </th>
+   <th style="text-align:right;"> big </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> spam </td>
+   <td style="text-align:right;"> 0.271 </td>
+   <td style="text-align:right;"> 0.059 </td>
+   <td style="text-align:right;"> 0.092 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> not spam </td>
+   <td style="text-align:right;"> 0.729 </td>
+   <td style="text-align:right;"> 0.941 </td>
+   <td style="text-align:right;"> 0.908 </td>
+  </tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>(\#tab:emailSpamHTMLTableTotals)A contingency table for `type` and `format`.</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> not HTML </th>
+   <th style="text-align:right;"> HTML </th>
+   <th style="text-align:right;"> Total </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> spam </td>
+   <td style="text-align:right;"> 209 </td>
+   <td style="text-align:right;"> 158 </td>
+   <td style="text-align:right;"> 367 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> not spam </td>
+   <td style="text-align:right;"> 986 </td>
+   <td style="text-align:right;"> 2568 </td>
+   <td style="text-align:right;"> 3554 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Total </td>
+   <td style="text-align:right;"> 1195 </td>
+   <td style="text-align:right;"> 2726 </td>
+   <td style="text-align:right;"> 3921 </td>
+  </tr>
+</tbody>
+</table>
+
+The previous Example points out that row and column proportions are not equivalent. Before settling on one form for a table, it is important to consider each to ensure that the most useful table is constructed.
+
+
+
 
 #### Sample proportions and population proportions {-}
 
@@ -231,10 +337,70 @@ and we don't know parameters!"
 
 ### Bar plots and mosaic plots
 
-\BeginKnitrBlock{todo}<div class="todo">- one cat bar plot
-- two cat bar plot
-- two cat mosaic plot
-- association vs no association in bar plots</div>\EndKnitrBlock{todo}
+A bar plot is a common way to display a single categorical variable. The left panel of Figure \@ref(fig:emailNumberBarPlot) shows a **bar plot** for the `number` variable. 
+In the right panel, the counts are converted into proportions (e.g., $549/3921=0.140$ for `none`).
+
+<div class="figure" style="text-align: center">
+<img src="02-eda_files/figure-html/emailNumberBarPlot-1.png" alt="Two bar plots of `number`. The left panel shows the counts, and the right panel shows the proportions in each group." width="50%" /><img src="02-eda_files/figure-html/emailNumberBarPlot-2.png" alt="Two bar plots of `number`. The left panel shows the counts, and the right panel shows the proportions in each group." width="50%" />
+<p class="caption">(\#fig:emailNumberBarPlot)Two bar plots of `number`. The left panel shows the counts, and the right panel shows the proportions in each group.</p>
+</div>
+
+Bar plots are also used to display the relationship between two categorical variables.
+When the bars are stacked such that each bar totals 100% and is segmented by
+another categorical variable, it is called a **segmented bar plot**.
+
+
+
+A segmented bar plot is a graphical display of contingency table information. For example, segmented bar plots representing Table \@ref(tab:colPropSpamNumber) is shown in Figure \@ref(fig:emailSpamNumberSegBar), where we have first created a non-standardized segmented bar plot using the `number` variable and then separated each group by the levels of `type`. The standardized segmented bar plot using the column proportions of Table \@ref(tab:colPropSpamNumber) is a helpful visualization of the fraction of spam emails in each level of `number`.
+
+
+
+<div class="figure" style="text-align: center">
+<img src="02-eda_files/figure-html/emailSpamNumberSegBar-1.png" alt="(a) Segmented bar plot for numbers found in emails, where the counts have been further broken down by `type`. (b) Segmented bar plot using column proportions of each type within each `number` category." width="50%" /><img src="02-eda_files/figure-html/emailSpamNumberSegBar-2.png" alt="(a) Segmented bar plot for numbers found in emails, where the counts have been further broken down by `type`. (b) Segmented bar plot using column proportions of each type within each `number` category." width="50%" />
+<p class="caption">(\#fig:emailSpamNumberSegBar)(a) Segmented bar plot for numbers found in emails, where the counts have been further broken down by `type`. (b) Segmented bar plot using column proportions of each type within each `number` category.</p>
+</div>
+
+
+
+
+
+Since the proportion of spam changes across the groups in Figure \@ref(fig:emailSpamNumberSegBar) (seen in plot (b)), we can conclude the variables are dependent, which is something we were also able to discern using the column proportions in Table \@ref(tab:colPropSpamNumber). Because both the `none` and `big` groups have relatively few observations compared to the `small` group, the association is more difficult to see in plot (a) of Figure \@ref(fig:emailSpamNumberSegBar).
+
+In some other cases, a segmented bar plot that is not standardized will be more useful in communicating important information. Before settling on a particular segmented bar plot, create standardized and non-standardized forms and decide which is more effective at communicating features of the data.
+
+#### Mosaic plots {-}
+
+A **mosaic plot** is a graphical display of contingency table information that is similar to a bar plot for one variable or a segmented bar plot when using two variables. Figure \ref(fig:emailNumberMosaic) plot (a) shows a mosaic plot for the `number` variable. Each column represents a level of `number`, and the column widths correspond to the proportion of emails of each number type. For instance, there are fewer emails with no numbers than emails with only small numbers, so the no number email column is slimmer. In general, mosaic plots use box *areas* to represent the number of observations.
+
+
+
+<div class="figure" style="text-align: center">
+<img src="02-eda_files/figure-html/emailNumberMosaic-1.png" alt="(a) Mosaic plot for numbers found in emails. (b) Mosaic plot where the `number` counts have been further broken down by `type`." width="50%" /><img src="02-eda_files/figure-html/emailNumberMosaic-2.png" alt="(a) Mosaic plot for numbers found in emails. (b) Mosaic plot where the `number` counts have been further broken down by `type`." width="50%" />
+<p class="caption">(\#fig:emailNumberMosaic)(a) Mosaic plot for numbers found in emails. (b) Mosaic plot where the `number` counts have been further broken down by `type`.</p>
+</div>
+This one-variable mosaic plot is further divided into pieces in Figure \ref(fig:emailNumberMosaic) plot (b) using the `type` variable. Each column is split proportionally according to the fraction of emails that were spam in each number category. For example, the second column, representing emails with only small numbers, was divided into emails that were spam (lower) and not spam (upper). 
+As another example, the bottom of the third column represents spam emails that had big numbers, and the upper part of the third column represents regular emails that had big numbers. We can again use this plot to see that the `type` and `number` variables are associated since some columns are divided in different vertical locations than others, which was the same technique used for checking an association in the standardized version of the segmented bar plot.
+
+
+
+### Why not pie charts?
+
+
+While pie charts are well known, they are not typically as useful as other charts in a data analysis. A **pie chart** is shown in Figure \@ref(fig:emailNumberPieChart) alongside a bar plot. It is generally more difficult to compare group sizes in a pie chart (comparing angles) than in a bar plot (comparing heights), especially when categories have nearly identical counts or proportions. In the case of the `none` and `big` categories, the difference is so slight you may be unable to distinguish any difference in group sizes for either plot!
+
+<div class="figure" style="text-align: center">
+<img src="02-eda_files/figure-html/emailNumberPieChart-1.png" alt="A pie chart and bar plot of `number` for the `email` data set. This is the only pie chart you will see in this book!" width="50%" /><img src="02-eda_files/figure-html/emailNumberPieChart-2.png" alt="A pie chart and bar plot of `number` for the `email` data set. This is the only pie chart you will see in this book!" width="50%" />
+<p class="caption">(\#fig:emailNumberPieChart)A pie chart and bar plot of `number` for the `email` data set. This is the only pie chart you will see in this book!</p>
+</div>
+
+Pie charts are nearly useless when trying to compare two categorical variables, as is shown in Figure \@ref(fig:worst-pie-chart).
+
+<div class="figure" style="text-align: center">
+<img src="02-eda_files/figure-html/worst-pie-chart-1.png" alt="Try comparing the distributions of colors across pie charts A, B, and C---it's impossible!^[R code from User:Schutz for Wikipedia on 28 August 2007]" width="75%" />
+<p class="caption">(\#fig:worst-pie-chart)Try comparing the distributions of colors across pie charts A, B, and C---it's impossible!^[R code from User:Schutz for Wikipedia on 28 August 2007]</p>
+</div>
+
+If you're still not convinced that you shouldn't use pie charts, read ["The Issue with Pie Chart"](https://www.data-to-viz.com/caveat/pie.html) on the "from Data to Viz" blog, and ["The Worst Chart in the World"](https://www.businessinsider.com/pie-charts-are-the-worst-2013-6) article on Business Insider.
 
 ### Simpson's paradox
 
@@ -382,7 +548,7 @@ How did this happen? The answer has to do with the race of the victim being a co
 <p class="caption">(\#fig:DPconfound)The race of the victim is associated both with the sentence (death penalty or no death penalty) and with the race of the defendant. Defendants are more likely to involve a victim of the same race, and cases with African American victims are less likely to result in the death penalty.</p>
 </div>
 
-Thus, the extremely low chance of a homicide case resulting in the death penalty for African Americans combines with the fact that most cases with African American victims also had an African American victim to results in an overall lower rate of death penalty sentences for African American defendants than for Caucasian defendants. The overall results in Figure \@ref(fig:DPbarplots) and the results in each subgroup of Figure \@ref(fig:DPbarplots2) are both valid---they are not the result of any "bad statistics"---but they suggest opposite conclusions. Data such as these, where an observed effect _reverses_ itself when you examine the variables within subgroups, exhibit **Simpson's Paradox**.
+Thus, the extremely low chance of a homicide case resulting in the death penalty for African Americans combines with the fact that most cases with African American victims also had an African American victim to results in an overall lower rate of death penalty sentences for African American defendants than for Caucasian defendants. The overall results in Figure \@ref(fig:DPbarplot) and the results in each subgroup of Figure \@ref(fig:DPbarplot2) are both valid---they are not the result of any "bad statistics"---but they suggest opposite conclusions. Data such as these, where an observed effect _reverses_ itself when you examine the variables within subgroups, exhibit **Simpson's Paradox**.
 
 \BeginKnitrBlock{onebox}<div class="onebox">**Simpson's Paradox.**
 
@@ -391,11 +557,7 @@ When the association between an explanatory variable and a response variable rev
 
 
 
-### Why not pie charts?
 
-\BeginKnitrBlock{todo}<div class="todo">Example with bar chart and pie chart side-by-side.</div>\EndKnitrBlock{todo}
-
-If you're still not convinced, read this post on the "from Data to Viz" blog: ["The Issue with Pie Chart"](https://www.data-to-viz.com/caveat/pie.html).
 
 
 ## Probability with tables
@@ -641,7 +803,7 @@ Often times it is too expensive or time consuming to measure the population mean
 
 ---
   
-The sample mean, 11.57%, provides a rough estimate of $\mu_x$. While it is not perfect, this statistic our single best guess **point estimate**\index{point estimate} of the average interest rate of all the loans in the population under study, the parameter. In Chapter \@ref(inference-foundations) and beyond, we will develop tools to characterize the accuracy of point estimates, like the sample mean. As you might have guessed, point estimates based on larger samples tend to be more accurate than those based on smaller samples.</div>\EndKnitrBlock{example}
+The sample mean, 11.57%, provides a rough estimate of $\mu_x$. While it is not perfect, this statistic our single best guess **point estimate**\index{point estimate} of the average interest rate of all the loans in the population under study, the parameter. In Chapter \@ref(inference-cat) and beyond, we will develop tools to characterize the accuracy of point estimates, like the sample mean. As you might have guessed, point estimates based on larger samples tend to be more accurate than those based on smaller samples.</div>\EndKnitrBlock{example}
 
 The mean is useful for making comparisons across different samples that may have different sample sizes because it allows us to rescale or standardize a metric into something more easily interpretable and comparable. 
 
@@ -877,7 +1039,7 @@ Also note any especially unusual cases.
 The distribution of interest rates is unimodal and skewed to the high end. Many of the rates fall near the mean at 11.57%, and most fall within one standard deviation (5.05%) of the mean. 
 There are a few exceptionally large interest rates in the sample that are above 20%.</div>\EndKnitrBlock{example}
 
-In practice, the variance and standard deviation are sometimes used as a means to an end, where the "end" is being able to accurately estimate the uncertainty associated with a sample statistic. For example, in Chapter \@ref(inference-foundations) the standard deviation is used in calculations that help us understand how much a sample mean varies from one sample to the next.
+In practice, the variance and standard deviation are sometimes used as a means to an end, where the "end" is being able to accurately estimate the uncertainty associated with a sample statistic. For example, in Chapter \@ref(inference-num) the standard deviation is used in calculations that help us understand how much a sample mean varies from one sample to the next.
 
 ### Box plots, quartiles, and the median
 
@@ -1205,7 +1367,7 @@ Common goals in transforming data are to see the data structure differently, red
 
 The `county` data set offers many numerical variables that we could plot using dot plots, scatterplots, or box plots, but these miss the true nature of the data.
 Rather, when we encounter geographic data, we should create an **intensity map**, where colors are used to show higher and lower values of a variable.
-Figures \@ref(fig:county-intensity-map-poverty-unemp) and \@ref(fig:county-intensity-map-howownership-median-income) show intensity maps for poverty rate in percent (`poverty`), unemployment rate (`unemployment_rate`), homeownership rate in percent (`homeownership`), and median household income (`median_hh_income`).
+Figures \@ref(fig:county-intensity-map-poverty-unemp) and \@ref(fig:county-intensity-map-homeownership-median-income) show intensity maps for poverty rate in percent (`poverty`), unemployment rate (`unemployment_rate`), homeownership rate in percent (`homeownership`), and median household income (`median_hh_income`).
 The color key indicates which colors correspond to which values.
 The intensity maps are not generally very helpful for getting precise values in any given county, but they are very helpful for seeing geographic trends and generating interesting research questions or hypotheses.
 
@@ -1302,74 +1464,80 @@ However you should be able to easily spot them as **bolded text**.
 <tbody>
   <tr>
    <td style="text-align:left;"> average </td>
+   <td style="text-align:left;"> first quartile </td>
+   <td style="text-align:left;"> outliers </td>
+   <td style="text-align:left;"> statistic </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> bar plot </td>
    <td style="text-align:left;"> form </td>
    <td style="text-align:left;"> parameter </td>
-   <td style="text-align:left;"> tail </td>
+   <td style="text-align:left;"> strength </td>
   </tr>
   <tr>
    <td style="text-align:left;"> bimodal </td>
    <td style="text-align:left;"> frequency </td>
-   <td style="text-align:left;"> point estimate </td>
-   <td style="text-align:left;"> third quartile </td>
+   <td style="text-align:left;"> pie chart </td>
+   <td style="text-align:left;"> symmetric </td>
   </tr>
   <tr>
    <td style="text-align:left;"> box plot </td>
    <td style="text-align:left;"> histogram </td>
+   <td style="text-align:left;"> point estimate </td>
+   <td style="text-align:left;"> tail </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> column proportions </td>
+   <td style="text-align:left;"> intensity map </td>
    <td style="text-align:left;"> relative frequency </td>
-   <td style="text-align:left;"> transformation </td>
+   <td style="text-align:left;"> third quartile </td>
   </tr>
   <tr>
    <td style="text-align:left;"> column totals </td>
-   <td style="text-align:left;"> intensity map </td>
+   <td style="text-align:left;"> interquartile range </td>
    <td style="text-align:left;"> right skewed </td>
-   <td style="text-align:left;"> two-way table </td>
+   <td style="text-align:left;"> transformation </td>
   </tr>
   <tr>
    <td style="text-align:left;"> contingency table </td>
-   <td style="text-align:left;"> interquartile range </td>
+   <td style="text-align:left;"> IQR </td>
    <td style="text-align:left;"> robust statistics </td>
-   <td style="text-align:left;"> unimodal </td>
+   <td style="text-align:left;"> two-way table </td>
   </tr>
   <tr>
    <td style="text-align:left;"> data density </td>
-   <td style="text-align:left;"> IQR </td>
+   <td style="text-align:left;"> left skewed </td>
+   <td style="text-align:left;"> row proportions </td>
+   <td style="text-align:left;"> unimodal </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> density plot </td>
+   <td style="text-align:left;"> mean </td>
    <td style="text-align:left;"> row totals </td>
    <td style="text-align:left;"> variability </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> density plot </td>
-   <td style="text-align:left;"> left skewed </td>
+   <td style="text-align:left;"> deviation </td>
+   <td style="text-align:left;"> median </td>
    <td style="text-align:left;"> scatterplot </td>
    <td style="text-align:left;"> variance </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> deviation </td>
-   <td style="text-align:left;"> mean </td>
-   <td style="text-align:left;"> Simpson's Paradox </td>
-   <td style="text-align:left;"> weighted mean </td>
-  </tr>
-  <tr>
    <td style="text-align:left;"> direction </td>
-   <td style="text-align:left;"> median </td>
-   <td style="text-align:left;"> standard deviation </td>
-   <td style="text-align:left;"> whiskers </td>
+   <td style="text-align:left;"> mosaic plot </td>
+   <td style="text-align:left;"> segmented bar plot </td>
+   <td style="text-align:left;"> weighted mean </td>
   </tr>
   <tr>
    <td style="text-align:left;"> distribution </td>
    <td style="text-align:left;"> multimodal </td>
-   <td style="text-align:left;"> statistic </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> Simpson's Paradox </td>
+   <td style="text-align:left;"> whiskers </td>
   </tr>
   <tr>
    <td style="text-align:left;"> dot plot </td>
    <td style="text-align:left;"> outlier </td>
-   <td style="text-align:left;"> strength </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> first quartile </td>
-   <td style="text-align:left;"> outliers </td>
-   <td style="text-align:left;"> symmetric </td>
+   <td style="text-align:left;"> standard deviation </td>
    <td style="text-align:left;">  </td>
   </tr>
 </tbody>

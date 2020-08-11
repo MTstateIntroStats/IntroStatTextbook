@@ -105,8 +105,79 @@ The proportion of emails that were classified as spam in the data set is $3554/3
 An **unconditional** proportion is a proportion measured out of the total sample size. A **conditional** proportion is a proportion measured out of a subgroup in the sample.
 
 If the conditional proportions of a particular outcome (e.g., spam email) within levels of a categorical variable (e.g., whether no number, a small number, or a big number appears in the email) differ across levels, we say those two variables are **associated**. We can also determine if two categorical variables are associated by checking if any of the conditional proportions of the outcome within categories differ from the overall, or **unconditional** proportion.
-  
 ```
+
+#### Row and column proportions {-}
+
+Conditional proportions that condition on a row category are called **row proportions**; conditional proportions that condition on a column category
+are called **column proportions**. 
+
+```{r include=FALSE}
+terms_chp_2 <- c(terms_chp_2, "row proportions", "column proportions")
+```
+
+Table \@ref(tab:rowPropSpamNumber) shows the row proportions for Table \@ref(tab:emailTable). The row proportions are computed as the counts divided by their row totals. The value 149 at the intersection of `type` and `none` is replaced by $149/367=0.406$, i.e., 149 divided by its row total, 367. So what does 0.406 represent? It corresponds to the conditional proportion of spam emails in the sample that do not have any numbers.
+
+```{r rowPropSpamNumber}
+g <- table(email$spam, email$number)[2:1,]
+g.prop <- round(g / rep(rowSums(g), 3), 3)
+dimnames(g.prop)[[1]] <- c("spam", "not spam")
+
+g.prop %>%
+ kable(caption = "A contingency table with row proportions for the `type` and `number` variables.") %>%
+  kable_styling()  
+```
+
+A contingency table of the column proportions is computed in a similar way, where each column proportion is computed as the count divided by the corresponding column total. Table \@ref(tab:colPropSpamNumber) shows such a table, and here the value 0.271 indicates that 27.1% of emails with no numbers were spam. This rate of spam is much higher than emails with only small numbers (5.9%) or big numbers (9.2%). Because these spam rates vary between the three levels of `number` (`none`, `small`, `big`), this provides evidence that the `spam` and `number` variables are associated in this data set.
+
+```{r colPropSpamNumber}
+g <- table(email$spam, email$number)[2:1,]
+g.prop <- round(g / rep(colSums(g), rep(2,3)), 3)
+dimnames(g.prop)[[1]] <- c("spam", "not spam")
+
+g.prop %>%
+ kable(caption = "A contingency table with column proportions for the `type` and `number` variables.") %>%
+  kable_styling()  
+```
+
+
+```{block2, type="guidedpractice"}
+What does 0.458 represent in Table \@ref(tab:rowPropSpamNumber)? What does 0.059 represent in Table \@ref(tab:colPropSpamNumber)?^[0.458 represents the proportion of spam emails that had a small number. 0.058 represents the fraction of emails with small numbers that are spam.]
+```
+
+```{block2, type="guidedpractice"}
+What does 0.139 at the intersection of `not~spam` and `big` represent in Table \@ref(tab:rowPropSpamNumber)? What does 0.908 represent in the Table \@ref(tab:colPropSpamNumber)?^[0.139 represents the fraction of non-spam email that had a big number. 0.908 represents the fraction of emails with big numbers that are non-spam emails.]
+```
+
+```{block2, type="example"}
+Data scientists use statistics to filter spam from incoming email messages. By noting specific characteristics of an email, a data scientist may be able to classify some emails as spam or not spam with high accuracy.
+One of those characteristics is whether the email contains no numbers, small numbers, or big numbers. Another characteristic is whether or not an email has any HTML content. A contingency table `type` and `format` variables from the `email` data set are shown in Table \@ref(tab:emailSpamHTMLTableTotals). Recall that an HTML email is an email with the capacity for special formatting, e.g., bold text. In Table~ \@ref(tab:emailSpamHTMLTableTotals), which would be more helpful to someone hoping to classify email as spam or regular email: row or column proportions?
+  
+---
+  
+Such a person would be interested in how the proportion of spam changes within each email format. This corresponds to column proportions: the proportion of spam in plain text emails and the proportion of spam in HTML emails.
+
+If we generate the column proportions, we can see that a higher fraction of plain text emails are spam ($209/1195 = 17.5\%$) than compared to HTML emails ($158/2726 = 5.8\%$). This information on its own is insufficient to classify an email as spam or not spam, as over 80\% of plain text emails are not spam. Yet, when we carefully combine this information with many other characteristics, such as \var{number} and other variables, we stand a reasonable chance of being able to classify some email as spam or not spam. \GLMSection{This is a topic we will return to in Chapter~\ref{multipleRegressionAndANOVA}.}{}
+```
+
+```{r emailSpamHTMLTableTotals}
+g <- table(email$spam, email$format)[2:1,]
+g <- rbind(g, colSums(g))
+g <- cbind(g, rowSums(g))
+dimnames(g)[[1]] <- c("spam", "not spam", "Total")
+dimnames(g)[[2]] <- c("not HTML", "HTML", "Total")
+
+g %>%
+ kable(caption = "A contingency table for `type` and `format`.") %>%
+  kable_styling()  
+```
+
+The previous Example points out that row and column proportions are not equivalent. Before settling on one form for a table, it is important to consider each to ensure that the most useful table is constructed.
+
+```{block2, type="guidedpractice"}
+Look back to Tables \@ref(rowPropSpamNumber) and \@ref(colPropSpamNumber). Which would be more useful to someone hoping to identify spam emails using the `number` variable?^[The column proportions in Table \@ref(colPropSpamNumber) will probably be most useful, which makes it easier to see that emails with small numbers are spam about 5.9% of the time (relatively rare). We would also see that about 27.1% of emails with no numbers are spam, and 9.2% of emails with big numbers are spam.]
+```
+
 
 #### Sample proportions and population proportions {-}
 
@@ -133,12 +204,127 @@ terms_chp_2 <- c(terms_chp_2, "statistic", "parameter","point estimate")
 
 ### Bar plots and mosaic plots
 
-```{block2, type="todo", echo=TRUE}
-- one cat bar plot
-- two cat bar plot
-- two cat mosaic plot
-- association vs no association in bar plots
+A bar plot is a common way to display a single categorical variable. The left panel of Figure \@ref(fig:emailNumberBarPlot) shows a **bar plot** for the `number` variable. 
+In the right panel, the counts are converted into proportions (e.g., $549/3921=0.140$ for `none`).
+
+```{r emailNumberBarPlot, fig.cap="Two bar plots of `number`. The left panel shows the counts, and the right panel shows the proportions in each group.", fig.show="hold", out.width="50%"}
+email %>% ggplot(aes(x = number)) +
+  geom_bar(col="seagreen", fill="seagreen") + theme_light() +
+  ylab("Frequency")
+email %>% ggplot(aes(x = number)) +
+  geom_bar(aes(y = ..prop.., group=1), col="seagreen", fill="seagreen") +
+  theme_light() + ylab("Relative Frequency")
 ```
+
+Bar plots are also used to display the relationship between two categorical variables.
+When the bars are stacked such that each bar totals 100% and is segmented by
+another categorical variable, it is called a **segmented bar plot**.
+
+```{r include=FALSE}
+terms_chp_2 <- c(terms_chp_2, "bar plot", "segmented bar plot")
+```
+
+A segmented bar plot is a graphical display of contingency table information. For example, segmented bar plots representing Table \@ref(tab:colPropSpamNumber) is shown in Figure \@ref(fig:emailSpamNumberSegBar), where we have first created a non-standardized segmented bar plot using the `number` variable and then separated each group by the levels of `type`. The standardized segmented bar plot using the column proportions of Table \@ref(tab:colPropSpamNumber) is a helpful visualization of the fraction of spam emails in each level of `number`.
+
+```{block2, type="important"}
+In a segmented bar plot, the explanatory variable is plotted on the $x$-axis, while the response variable is displayed by different colors within each bar, defined by the legend.
+```
+
+```{r emailSpamNumberSegBar, fig.cap="(a) Segmented bar plot for numbers found in emails, where the counts have been further broken down by `type`. (b) Segmented bar plot using column proportions of each type within each `number` category.", fig.show="hold", out.width="50%"}
+email %>%
+  ggplot(aes(x = number, fill = type)) +
+  geom_bar() + xlab("(a)") + ylab("Count")
+email %>%
+  ggplot(aes(x = number, fill = type)) +
+  geom_bar(stat = "count", position = "fill") +
+  xlab("(b)") + ylab("Proportion")
+```
+
+```{block2, type="guidedpractice"}
+In the segmented bar plots in Figure \@ref(fig:emailSpamNumberSegBar), which variable is the explanatory variable? the response variable?^[The numbers found in emails (`number`) is the explanatory variable; whether the email is spam or not spam is the response variable.]
+```
+
+```{block2, type="example"}
+Examine both of the segmented bar plots in Figure \@ref(fig:emailSpamNumberSegBar). Which is more useful?
+  
+---
+
+Plot (a) contains more information, but plot (b) presents the information more clearly. Plot (b) makes it clear that emails with no number have a relatively high rate of spam email---about 27%! On the other hand, less than 10% of email with small or big numbers are spam.
+```
+
+Since the proportion of spam changes across the groups in Figure \@ref(fig:emailSpamNumberSegBar) (seen in plot (b)), we can conclude the variables are dependent, which is something we were also able to discern using the column proportions in Table \@ref(tab:colPropSpamNumber). Because both the `none` and `big` groups have relatively few observations compared to the `small` group, the association is more difficult to see in plot (a) of Figure \@ref(fig:emailSpamNumberSegBar).
+
+In some other cases, a segmented bar plot that is not standardized will be more useful in communicating important information. Before settling on a particular segmented bar plot, create standardized and non-standardized forms and decide which is more effective at communicating features of the data.
+
+#### Mosaic plots {-}
+
+A **mosaic plot** is a graphical display of contingency table information that is similar to a bar plot for one variable or a segmented bar plot when using two variables. Figure \ref(fig:emailNumberMosaic) plot (a) shows a mosaic plot for the `number` variable. Each column represents a level of `number`, and the column widths correspond to the proportion of emails of each number type. For instance, there are fewer emails with no numbers than emails with only small numbers, so the no number email column is slimmer. In general, mosaic plots use box *areas* to represent the number of observations.
+
+```{r include=FALSE}
+terms_chp_2 <- c(terms_chp_2, "mosaic plot")
+```
+
+```{r emailNumberMosaic, fig.cap="(a) Mosaic plot for numbers found in emails. (b) Mosaic plot where the `number` counts have been further broken down by `type`.", fig.show="hold", out.width="50%"}
+mosaicplot(table(email$number), xlab="(a)", main="", cex.axis=1)
+mosaicplot(number ~ factor(spam, levels=c(0,1), labels=c("not spam","spam")), data=email, xlab="(b)", ylab="", main="", cex.axis=1, color = c("palegreen2","tomato"))
+```
+This one-variable mosaic plot is further divided into pieces in Figure \ref(fig:emailNumberMosaic) plot (b) using the `type` variable. Each column is split proportionally according to the fraction of emails that were spam in each number category. For example, the second column, representing emails with only small numbers, was divided into emails that were spam (lower) and not spam (upper). 
+As another example, the bottom of the third column represents spam emails that had big numbers, and the upper part of the third column represents regular emails that had big numbers. We can again use this plot to see that the `type` and `number` variables are associated since some columns are divided in different vertical locations than others, which was the same technique used for checking an association in the standardized version of the segmented bar plot.
+
+```{block2, type="important"}
+As in a segmented bar plot, the explanatory variable is plotted on the $x$-axis of a mosaic plot, i.e., the explanatory variable is represented by columns, while the response variable is displayed by different colors within each column, defined by the legend.
+```
+
+### Why not pie charts?
+
+```{r include=FALSE}
+terms_chp_2 <- c(terms_chp_2, "pie chart")
+```
+While pie charts are well known, they are not typically as useful as other charts in a data analysis. A **pie chart** is shown in Figure \@ref(fig:emailNumberPieChart) alongside a bar plot. It is generally more difficult to compare group sizes in a pie chart (comparing angles) than in a bar plot (comparing heights), especially when categories have nearly identical counts or proportions. In the case of the `none` and `big` categories, the difference is so slight you may be unable to distinguish any difference in group sizes for either plot!
+
+```{r emailNumberPieChart, fig.cap="A pie chart and bar plot of `number` for the `email` data set. This is the only pie chart you will see in this book!", fig.show="hold", out.width="50%"}
+my.col <- brewer.pal(3, name = "Accent")
+pie(table(email$number), col = my.col)
+email %>% ggplot(aes(x = number)) +
+  geom_bar(aes(y = ..prop.., group=1), col=my.col, fill=my.col) +
+  theme_light() + ylab("Relative Frequency")
+```
+
+Pie charts are nearly useless when trying to compare two categorical variables, as is shown in Figure \@ref(fig:worst-pie-chart).
+
+```{r worst-pie-chart, fig.cap="Try comparing the distributions of colors across pie charts A, B, and C---it's impossible!^[R code from User:Schutz for Wikipedia on 28 August 2007]", out.width="75%"}
+a <- matrix(c(17, 18, 20, 22, 23,
+                20, 20, 19, 21, 20,
+                23, 22, 20, 18, 17), nrow=3, byrow=T)
+  titles <- c("A", "B", "C")
+  cols <- brewer.pal(5,"Accent")
+  
+  defaultmar <- par()$mar
+  layout(matrix(c(1,3,5,
+                  2,4,6), nrow=2, byrow=T), height=c(1,1))       
+  par(cex=1)
+  par(font=1)
+  par(las=1)
+  par(font.axis=1)
+  par(mgp=c(1,1,0))
+  
+  for (i in 1:nrow(a)) {
+    par(mar=c(0,0,2,0))
+    pie(a[i,], init=90, clockwise=T, col=cols, radius=0.8)
+    title(main=titles[i], line=0)
+    par(mar=defaultmar+c(-2,-1.5,-4,-0.5))
+    par(mgp=c(0,0.5,0))
+    barplot(a[i,], horiz=F, xlim=c(0,10), ylim=c(0,25), col=cols, border=0,
+            names.arg=1:5, space=0.8, axes=F)
+    par(mgp=c(0,1,0))
+  
+    abline(h=5*1:5, col="white")
+    axis(2)
+  }
+  par(mar=defaultmar)
+```
+
+If you're still not convinced that you shouldn't use pie charts, read ["The Issue with Pie Chart"](https://www.data-to-viz.com/caveat/pie.html) on the "from Data to Viz" blog, and ["The Worst Chart in the World"](https://www.businessinsider.com/pie-charts-are-the-worst-2013-6) article on Business Insider.
 
 ### Simpson's paradox
 
@@ -264,7 +450,7 @@ temptbl2 %>% ggplot(aes(x = variable, y=col1, fill=factor(col2, levels=c("No DP"
   ggtitle("Victim's Race vs Sentence")
 ```
 
-Thus, the extremely low chance of a homicide case resulting in the death penalty for African Americans combines with the fact that most cases with African American victims also had an African American victim to results in an overall lower rate of death penalty sentences for African American defendants than for Caucasian defendants. The overall results in Figure \@ref(fig:DPbarplots) and the results in each subgroup of Figure \@ref(fig:DPbarplots2) are both valid---they are not the result of any "bad statistics"---but they suggest opposite conclusions. Data such as these, where an observed effect _reverses_ itself when you examine the variables within subgroups, exhibit **Simpson's Paradox**.
+Thus, the extremely low chance of a homicide case resulting in the death penalty for African Americans combines with the fact that most cases with African American victims also had an African American victim to results in an overall lower rate of death penalty sentences for African American defendants than for Caucasian defendants. The overall results in Figure \@ref(fig:DPbarplot) and the results in each subgroup of Figure \@ref(fig:DPbarplot2) are both valid---they are not the result of any "bad statistics"---but they suggest opposite conclusions. Data such as these, where an observed effect _reverses_ itself when you examine the variables within subgroups, exhibit **Simpson's Paradox**.
 
 ```{block2, type="onebox", echo=TRUE}
 **Simpson's Paradox.**
@@ -277,13 +463,7 @@ terms_chp_2 <- c(terms_chp_2, "Simpson's Paradox")
 ```
 
 
-### Why not pie charts?
 
-```{block2, type="todo", echo=TRUE}
-Example with bar chart and pie chart side-by-side.
-```
-
-If you're still not convinced, read this post on the "from Data to Viz" blog: ["The Issue with Pie Chart"](https://www.data-to-viz.com/caveat/pie.html).
 
 
 ## Probability with tables
@@ -592,7 +772,7 @@ The average interest rate across all loans in the population can be estimated us
 
 ---
   
-The sample mean, 11.57%, provides a rough estimate of $\mu_x$. While it is not perfect, this statistic our single best guess **point estimate**\index{point estimate} of the average interest rate of all the loans in the population under study, the parameter. In Chapter \@ref(inference-foundations) and beyond, we will develop tools to characterize the accuracy of point estimates, like the sample mean. As you might have guessed, point estimates based on larger samples tend to be more accurate than those based on smaller samples.
+The sample mean, 11.57%, provides a rough estimate of $\mu_x$. While it is not perfect, this statistic our single best guess **point estimate**\index{point estimate} of the average interest rate of all the loans in the population under study, the parameter. In Chapter \@ref(inference-cat) and beyond, we will develop tools to characterize the accuracy of point estimates, like the sample mean. As you might have guessed, point estimates based on larger samples tend to be more accurate than those based on smaller samples.
 ```
 
 The mean is useful for making comparisons across different samples that may have different sample sizes because it allows us to rescale or standardize a metric into something more easily interpretable and comparable. 
@@ -925,7 +1105,7 @@ The distribution of interest rates is unimodal and skewed to the high end. Many 
 There are a few exceptionally large interest rates in the sample that are above 20%.
 ```
 
-In practice, the variance and standard deviation are sometimes used as a means to an end, where the "end" is being able to accurately estimate the uncertainty associated with a sample statistic. For example, in Chapter \@ref(inference-foundations) the standard deviation is used in calculations that help us understand how much a sample mean varies from one sample to the next.
+In practice, the variance and standard deviation are sometimes used as a means to an end, where the "end" is being able to accurately estimate the uncertainty associated with a sample statistic. For example, in Chapter \@ref(inference-num) the standard deviation is used in calculations that help us understand how much a sample mean varies from one sample to the next.
 
 ### Box plots, quartiles, and the median
 
@@ -1311,7 +1491,7 @@ Common goals in transforming data are to see the data structure differently, red
 
 The `county` data set offers many numerical variables that we could plot using dot plots, scatterplots, or box plots, but these miss the true nature of the data.
 Rather, when we encounter geographic data, we should create an **intensity map**, where colors are used to show higher and lower values of a variable.
-Figures \@ref(fig:county-intensity-map-poverty-unemp) and \@ref(fig:county-intensity-map-howownership-median-income) show intensity maps for poverty rate in percent (`poverty`), unemployment rate (`unemployment_rate`), homeownership rate in percent (`homeownership`), and median household income (`median_hh_income`).
+Figures \@ref(fig:county-intensity-map-poverty-unemp) and \@ref(fig:county-intensity-map-homeownership-median-income) show intensity maps for poverty rate in percent (`poverty`), unemployment rate (`unemployment_rate`), homeownership rate in percent (`homeownership`), and median household income (`median_hh_income`).
 The color key indicates which colors correspond to which values.
 The intensity maps are not generally very helpful for getting precise values in any given county, but they are very helpful for seeing geographic trends and generating interesting research questions or hypotheses.
 

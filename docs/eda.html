@@ -192,8 +192,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1.1" data-path="eda.html"><a href="eda.html#contingency-tables-and-conditional-proportions"><i class="fa fa-check"></i><b>2.1.1</b> Contingency tables and conditional proportions</a></li>
 <li class="chapter" data-level="2.1.2" data-path="eda.html"><a href="eda.html#bar-plots-and-mosaic-plots"><i class="fa fa-check"></i><b>2.1.2</b> Bar plots and mosaic plots</a></li>
-<li class="chapter" data-level="2.1.3" data-path="eda.html"><a href="eda.html#simpsons-paradox"><i class="fa fa-check"></i><b>2.1.3</b> Simpson’s paradox</a></li>
-<li class="chapter" data-level="2.1.4" data-path="eda.html"><a href="eda.html#why-not-pie-charts"><i class="fa fa-check"></i><b>2.1.4</b> Why not pie charts?</a></li>
+<li class="chapter" data-level="2.1.3" data-path="eda.html"><a href="eda.html#why-not-pie-charts"><i class="fa fa-check"></i><b>2.1.3</b> Why not pie charts?</a></li>
+<li class="chapter" data-level="2.1.4" data-path="eda.html"><a href="eda.html#simpsons-paradox"><i class="fa fa-check"></i><b>2.1.4</b> Simpson’s paradox</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="eda.html"><a href="eda.html#probability-with-tables"><i class="fa fa-check"></i><b>2.2</b> Probability with tables</a>
 <ul>
@@ -710,6 +710,178 @@ To determine if a relationship exists between whether an email is spam or not, a
 <p>An <strong>unconditional</strong> proportion is a proportion measured out of the total sample size. A <strong>conditional</strong> proportion is a proportion measured out of a subgroup in the sample.</p>
 If the conditional proportions of a particular outcome (e.g., spam email) within levels of a categorical variable (e.g., whether no number, a small number, or a big number appears in the email) differ across levels, we say those two variables are <strong>associated</strong>. We can also determine if two categorical variables are associated by checking if any of the conditional proportions of the outcome within categories differ from the overall, or <strong>unconditional</strong> proportion.
 </div>
+<div id="row-and-column-proportions" class="section level4 unnumbered">
+<h4>Row and column proportions</h4>
+<p>Conditional proportions that condition on a row category are called <strong>row proportions</strong>; conditional proportions that condition on a column category
+are called <strong>column proportions</strong>.</p>
+<p>Table <a href="eda.html#tab:rowPropSpamNumber">2.5</a> shows the row proportions for Table <a href="eda.html#tab:emailTable">2.4</a>. The row proportions are computed as the counts divided by their row totals. The value 149 at the intersection of <code>type</code> and <code>none</code> is replaced by <span class="math inline">\(149/367=0.406\)</span>, i.e., 149 divided by its row total, 367. So what does 0.406 represent? It corresponds to the conditional proportion of spam emails in the sample that do not have any numbers.</p>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:rowPropSpamNumber">Table 2.5: </span>A contingency table with row proportions for the <code>type</code> and <code>number</code> variables.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+none
+</th>
+<th style="text-align:right;">
+small
+</th>
+<th style="text-align:right;">
+big
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+spam
+</td>
+<td style="text-align:right;">
+0.406
+</td>
+<td style="text-align:right;">
+0.458
+</td>
+<td style="text-align:right;">
+0.136
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not spam
+</td>
+<td style="text-align:right;">
+0.113
+</td>
+<td style="text-align:right;">
+0.748
+</td>
+<td style="text-align:right;">
+0.139
+</td>
+</tr>
+</tbody>
+</table>
+<p>A contingency table of the column proportions is computed in a similar way, where each column proportion is computed as the count divided by the corresponding column total. Table <a href="eda.html#tab:colPropSpamNumber">2.6</a> shows such a table, and here the value 0.271 indicates that 27.1% of emails with no numbers were spam. This rate of spam is much higher than emails with only small numbers (5.9%) or big numbers (9.2%). Because these spam rates vary between the three levels of <code>number</code> (<code>none</code>, <code>small</code>, <code>big</code>), this provides evidence that the <code>spam</code> and <code>number</code> variables are associated in this data set.</p>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:colPropSpamNumber">Table 2.6: </span>A contingency table with column proportions for the <code>type</code> and <code>number</code> variables.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+none
+</th>
+<th style="text-align:right;">
+small
+</th>
+<th style="text-align:right;">
+big
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+spam
+</td>
+<td style="text-align:right;">
+0.271
+</td>
+<td style="text-align:right;">
+0.059
+</td>
+<td style="text-align:right;">
+0.092
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not spam
+</td>
+<td style="text-align:right;">
+0.729
+</td>
+<td style="text-align:right;">
+0.941
+</td>
+<td style="text-align:right;">
+0.908
+</td>
+</tr>
+</tbody>
+</table>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:emailSpamHTMLTableTotals">Table 2.7: </span>A contingency table for <code>type</code> and <code>format</code>.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+not HTML
+</th>
+<th style="text-align:right;">
+HTML
+</th>
+<th style="text-align:right;">
+Total
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+spam
+</td>
+<td style="text-align:right;">
+209
+</td>
+<td style="text-align:right;">
+158
+</td>
+<td style="text-align:right;">
+367
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not spam
+</td>
+<td style="text-align:right;">
+986
+</td>
+<td style="text-align:right;">
+2568
+</td>
+<td style="text-align:right;">
+3554
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:right;">
+1195
+</td>
+<td style="text-align:right;">
+2726
+</td>
+<td style="text-align:right;">
+3921
+</td>
+</tr>
+</tbody>
+</table>
+<p>The previous Example points out that row and column proportions are not equivalent. Before settling on one form for a table, it is important to consider each to ensure that the most useful table is constructed.</p>
+</div>
 <div id="sample-proportions-and-population-proportions" class="section level4 unnumbered">
 <h4>Sample proportions and population proportions</h4>
 <p>In the field of statistics, summary measures that summarize a sample of data are called <strong>statistics</strong>. Numbers that summarize an entire population are called <strong>parameters</strong>. You can remember
@@ -729,24 +901,65 @@ and we don’t know parameters!”</p>
 </div>
 <div id="bar-plots-and-mosaic-plots" class="section level3" number="2.1.2">
 <h3><span class="header-section-number">2.1.2</span> Bar plots and mosaic plots</h3>
-
-<div class="todo">
-<ul>
-<li>one cat bar plot</li>
-<li>two cat bar plot</li>
-<li>two cat mosaic plot</li>
-<li>association vs no association in bar plots
-</div></li>
-</ul>
+<p>A bar plot is a common way to display a single categorical variable. The left panel of Figure <a href="eda.html#fig:emailNumberBarPlot">2.1</a> shows a <strong>bar plot</strong> for the <code>number</code> variable.
+In the right panel, the counts are converted into proportions (e.g., <span class="math inline">\(549/3921=0.140\)</span> for <code>none</code>).</p>
+<div class="figure" style="text-align: center"><span id="fig:emailNumberBarPlot"></span>
+<img src="02-eda_files/figure-html/emailNumberBarPlot-1.png" alt="Two bar plots of `number`. The left panel shows the counts, and the right panel shows the proportions in each group." width="50%" /><img src="02-eda_files/figure-html/emailNumberBarPlot-2.png" alt="Two bar plots of `number`. The left panel shows the counts, and the right panel shows the proportions in each group." width="50%" />
+<p class="caption">
+Figure 2.1: Two bar plots of <code>number</code>. The left panel shows the counts, and the right panel shows the proportions in each group.
+</p>
 </div>
-<div id="simpsons-paradox" class="section level3" number="2.1.3">
-<h3><span class="header-section-number">2.1.3</span> Simpson’s paradox</h3>
+<p>Bar plots are also used to display the relationship between two categorical variables.
+When the bars are stacked such that each bar totals 100% and is segmented by
+another categorical variable, it is called a <strong>segmented bar plot</strong>.</p>
+<p>A segmented bar plot is a graphical display of contingency table information. For example, segmented bar plots representing Table <a href="eda.html#tab:colPropSpamNumber">2.6</a> is shown in Figure <a href="eda.html#fig:emailSpamNumberSegBar">2.2</a>, where we have first created a non-standardized segmented bar plot using the <code>number</code> variable and then separated each group by the levels of <code>type</code>. The standardized segmented bar plot using the column proportions of Table <a href="eda.html#tab:colPropSpamNumber">2.6</a> is a helpful visualization of the fraction of spam emails in each level of <code>number</code>.</p>
+<div class="figure" style="text-align: center"><span id="fig:emailSpamNumberSegBar"></span>
+<img src="02-eda_files/figure-html/emailSpamNumberSegBar-1.png" alt="(a) Segmented bar plot for numbers found in emails, where the counts have been further broken down by `type`. (b) Segmented bar plot using column proportions of each type within each `number` category." width="50%" /><img src="02-eda_files/figure-html/emailSpamNumberSegBar-2.png" alt="(a) Segmented bar plot for numbers found in emails, where the counts have been further broken down by `type`. (b) Segmented bar plot using column proportions of each type within each `number` category." width="50%" />
+<p class="caption">
+Figure 2.2: (a) Segmented bar plot for numbers found in emails, where the counts have been further broken down by <code>type</code>. (b) Segmented bar plot using column proportions of each type within each <code>number</code> category.
+</p>
+</div>
+<p>Since the proportion of spam changes across the groups in Figure <a href="eda.html#fig:emailSpamNumberSegBar">2.2</a> (seen in plot (b)), we can conclude the variables are dependent, which is something we were also able to discern using the column proportions in Table <a href="eda.html#tab:colPropSpamNumber">2.6</a>. Because both the <code>none</code> and <code>big</code> groups have relatively few observations compared to the <code>small</code> group, the association is more difficult to see in plot (a) of Figure <a href="eda.html#fig:emailSpamNumberSegBar">2.2</a>.</p>
+<p>In some other cases, a segmented bar plot that is not standardized will be more useful in communicating important information. Before settling on a particular segmented bar plot, create standardized and non-standardized forms and decide which is more effective at communicating features of the data.</p>
+<div id="mosaic-plots" class="section level4 unnumbered">
+<h4>Mosaic plots</h4>
+<p>A <strong>mosaic plot</strong> is a graphical display of contingency table information that is similar to a bar plot for one variable or a segmented bar plot when using two variables. Figure (fig:emailNumberMosaic) plot (a) shows a mosaic plot for the <code>number</code> variable. Each column represents a level of <code>number</code>, and the column widths correspond to the proportion of emails of each number type. For instance, there are fewer emails with no numbers than emails with only small numbers, so the no number email column is slimmer. In general, mosaic plots use box <em>areas</em> to represent the number of observations.</p>
+<div class="figure" style="text-align: center"><span id="fig:emailNumberMosaic"></span>
+<img src="02-eda_files/figure-html/emailNumberMosaic-1.png" alt="(a) Mosaic plot for numbers found in emails. (b) Mosaic plot where the `number` counts have been further broken down by `type`." width="50%" /><img src="02-eda_files/figure-html/emailNumberMosaic-2.png" alt="(a) Mosaic plot for numbers found in emails. (b) Mosaic plot where the `number` counts have been further broken down by `type`." width="50%" />
+<p class="caption">
+Figure 2.3: (a) Mosaic plot for numbers found in emails. (b) Mosaic plot where the <code>number</code> counts have been further broken down by <code>type</code>.
+</p>
+</div>
+<p>This one-variable mosaic plot is further divided into pieces in Figure (fig:emailNumberMosaic) plot (b) using the <code>type</code> variable. Each column is split proportionally according to the fraction of emails that were spam in each number category. For example, the second column, representing emails with only small numbers, was divided into emails that were spam (lower) and not spam (upper).
+As another example, the bottom of the third column represents spam emails that had big numbers, and the upper part of the third column represents regular emails that had big numbers. We can again use this plot to see that the <code>type</code> and <code>number</code> variables are associated since some columns are divided in different vertical locations than others, which was the same technique used for checking an association in the standardized version of the segmented bar plot.</p>
+</div>
+</div>
+<div id="why-not-pie-charts" class="section level3" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Why not pie charts?</h3>
+<p>While pie charts are well known, they are not typically as useful as other charts in a data analysis. A <strong>pie chart</strong> is shown in Figure <a href="eda.html#fig:emailNumberPieChart">2.4</a> alongside a bar plot. It is generally more difficult to compare group sizes in a pie chart (comparing angles) than in a bar plot (comparing heights), especially when categories have nearly identical counts or proportions. In the case of the <code>none</code> and <code>big</code> categories, the difference is so slight you may be unable to distinguish any difference in group sizes for either plot!</p>
+<div class="figure" style="text-align: center"><span id="fig:emailNumberPieChart"></span>
+<img src="02-eda_files/figure-html/emailNumberPieChart-1.png" alt="A pie chart and bar plot of `number` for the `email` data set. This is the only pie chart you will see in this book!" width="50%" /><img src="02-eda_files/figure-html/emailNumberPieChart-2.png" alt="A pie chart and bar plot of `number` for the `email` data set. This is the only pie chart you will see in this book!" width="50%" />
+<p class="caption">
+Figure 2.4: A pie chart and bar plot of <code>number</code> for the <code>email</code> data set. This is the only pie chart you will see in this book!
+</p>
+</div>
+<p>Pie charts are nearly useless when trying to compare two categorical variables, as is shown in Figure <a href="eda.html#fig:worst-pie-chart">2.5</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:worst-pie-chart"></span>
+<img src="02-eda_files/figure-html/worst-pie-chart-1.png" alt="Try comparing the distributions of colors across pie charts A, B, and C---it's impossible!^[R code from User:Schutz for Wikipedia on 28 August 2007]" width="75%" />
+<p class="caption">
+Figure 2.5: Try comparing the distributions of colors across pie charts A, B, and C—it’s impossible!<a href="#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a>
+</p>
+</div>
+<p>If you’re still not convinced that you shouldn’t use pie charts, read <a href="https://www.data-to-viz.com/caveat/pie.html">“The Issue with Pie Chart”</a> on the “from Data to Viz” blog, and <a href="https://www.businessinsider.com/pie-charts-are-the-worst-2013-6">“The Worst Chart in the World”</a> article on Business Insider.</p>
+</div>
+<div id="simpsons-paradox" class="section level3" number="2.1.4">
+<h3><span class="header-section-number">2.1.4</span> Simpson’s paradox</h3>
 <div id="race-and-capital-punishment" class="section level4 unnumbered">
 <h4>Race and capital punishment</h4>
-<p>A 1991 study by Radelet and Pierce examined whether race was associated with whether the death penalty was invoked in homicide cases<a href="#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a>. Table <a href="eda.html#tab:DP">2.5</a> and Figure <a href="eda.html#fig:DPbarplot">2.1</a> summarize data on 674 defendants in indictments involving cases with multiple murders in Florida from 1976 through 1987.</p>
+<p>A 1991 study by Radelet and Pierce examined whether race was associated with whether the death penalty was invoked in homicide cases<a href="#fn25" class="footnote-ref" id="fnref25"><sup>25</sup></a>. Table <a href="eda.html#tab:DP">2.8</a> and Figure <a href="eda.html#fig:DPbarplot">2.6</a> summarize data on 674 defendants in indictments involving cases with multiple murders in Florida from 1976 through 1987.</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:DP">Table 2.5: </span>Contingency table of homicide cases in Florida from 1976 through 1987.
+<span id="tab:DP">Table 2.8: </span>Contingency table of homicide cases in Florida from 1976 through 1987.
 </caption>
 <thead>
 <tr>
@@ -833,22 +1046,22 @@ Total
 <div class="figure" style="text-align: center"><span id="fig:DPbarplot"></span>
 <img src="02-eda_files/figure-html/DPbarplot-1.png" alt="Segmented bar plot comparing the proportion of defendants who received the death penalty between Caucasians and African Americans." width="70%" />
 <p class="caption">
-Figure 2.1: Segmented bar plot comparing the proportion of defendants who received the death penalty between Caucasians and African Americans.
+Figure 2.6: Segmented bar plot comparing the proportion of defendants who received the death penalty between Caucasians and African Americans.
 </p>
 </div>
 
 <div class="guidedpractice">
-Is the race of the defendant associated with the sentence of the trial?<a href="#fn25" class="footnote-ref" id="fnref25"><sup>25</sup></a>
+Is the race of the defendant associated with the sentence of the trial?<a href="#fn26" class="footnote-ref" id="fnref26"><sup>26</sup></a>
 </div>
 <p>Overall, a lower percentage of African American defendants received the death penalty than Caucasian defendants (8% compared to 11%). Given the systemic racism in our society, this may be surprising. Let’s look at the data more closely.</p>
 
 <div class="guidedpractice">
-Since these are <em>observational data</em>, confounding variables are most likely present. Recall, a confounding variable is one that is associated with both the response variable (sentence) and the explanatory variable (race of the defendant). What confounding variables could be present?<a href="#fn26" class="footnote-ref" id="fnref26"><sup>26</sup></a>
+Since these are <em>observational data</em>, confounding variables are most likely present. Recall, a confounding variable is one that is associated with both the response variable (sentence) and the explanatory variable (race of the defendant). What confounding variables could be present?<a href="#fn27" class="footnote-ref" id="fnref27"><sup>27</sup></a>
 </div>
-<p>If we subset the data by the race of the victim, we see a different picture. Table <a href="eda.html#tab:DP2">2.6</a> and Figure <a href="eda.html#fig:DPbarplot2">2.2</a> summarize the same data, but separately for Caucasian and African American homicide victims.</p>
+<p>If we subset the data by the race of the victim, we see a different picture. Table <a href="eda.html#tab:DP2">2.9</a> and Figure <a href="eda.html#fig:DPbarplot2">2.7</a> summarize the same data, but separately for Caucasian and African American homicide victims.</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:DP2">Table 2.6: </span>Contingency table of homicide cases in Florida from 1976 through 1987; sentences classified by defendant’s race and victim’s race.
+<span id="tab:DP2">Table 2.9: </span>Contingency table of homicide cases in Florida from 1976 through 1987; sentences classified by defendant’s race and victim’s race.
 </caption>
 <thead>
 <tr>
@@ -999,32 +1212,24 @@ African American
 <div class="figure" style="text-align: center"><span id="fig:DPbarplot2"></span>
 <img src="02-eda_files/figure-html/DPbarplot2-1.png" alt="Segmented bar plots comparing the proportion of Caucasian and African American defendants who received the death penalty; separate plots for Caucasian victims and African American victims." width="50%" /><img src="02-eda_files/figure-html/DPbarplot2-2.png" alt="Segmented bar plots comparing the proportion of Caucasian and African American defendants who received the death penalty; separate plots for Caucasian victims and African American victims." width="50%" />
 <p class="caption">
-Figure 2.2: Segmented bar plots comparing the proportion of Caucasian and African American defendants who received the death penalty; separate plots for Caucasian victims and African American victims.
+Figure 2.7: Segmented bar plots comparing the proportion of Caucasian and African American defendants who received the death penalty; separate plots for Caucasian victims and African American victims.
 </p>
 </div>
-<p>If we compare Figures <a href="eda.html#fig:DPbarplot">2.1</a> and <a href="eda.html#fig:DPbarplot2">2.2</a>, we see that the direction of the association between the race of the defendant and the sentence is <em>reversed</em> if we subgroup by the race of the victim. Overall, a larger proportion of Caucasians were sentenced to the death penalty than African Americans. However, when we only compare cases with the same victim’s race, a larger proportion of African Americans were sentenced to the death penalty than Caucasians!</p>
-<p>How did this happen? The answer has to do with the race of the victim being a confounding variable. Figure <a href="eda.html#fig:DPconfound">2.3</a> shows two segmented barplots examining the relationship between the race of the victim and the sentence (the response variable), and the relationship between the race of the victim and the race of the defendant (the explanatory variable). We see that the race of the victim is associated with both the response and the explanatory variables: defendants are more likely to involve a victim of the same race, and cases with African American victims are less likely to result in the death penalty.</p>
+<p>If we compare Figures <a href="eda.html#fig:DPbarplot">2.6</a> and <a href="eda.html#fig:DPbarplot2">2.7</a>, we see that the direction of the association between the race of the defendant and the sentence is <em>reversed</em> if we subgroup by the race of the victim. Overall, a larger proportion of Caucasians were sentenced to the death penalty than African Americans. However, when we only compare cases with the same victim’s race, a larger proportion of African Americans were sentenced to the death penalty than Caucasians!</p>
+<p>How did this happen? The answer has to do with the race of the victim being a confounding variable. Figure <a href="eda.html#fig:DPconfound">2.8</a> shows two segmented barplots examining the relationship between the race of the victim and the sentence (the response variable), and the relationship between the race of the victim and the race of the defendant (the explanatory variable). We see that the race of the victim is associated with both the response and the explanatory variables: defendants are more likely to involve a victim of the same race, and cases with African American victims are less likely to result in the death penalty.</p>
 <div class="figure" style="text-align: center"><span id="fig:DPconfound"></span>
 <img src="02-eda_files/figure-html/DPconfound-1.png" alt="The race of the victim is associated both with the sentence (death penalty or no death penalty) and with the race of the defendant. Defendants are more likely to involve a victim of the same race, and cases with African American victims are less likely to result in the death penalty." width="50%" /><img src="02-eda_files/figure-html/DPconfound-2.png" alt="The race of the victim is associated both with the sentence (death penalty or no death penalty) and with the race of the defendant. Defendants are more likely to involve a victim of the same race, and cases with African American victims are less likely to result in the death penalty." width="50%" />
 <p class="caption">
-Figure 2.3: The race of the victim is associated both with the sentence (death penalty or no death penalty) and with the race of the defendant. Defendants are more likely to involve a victim of the same race, and cases with African American victims are less likely to result in the death penalty.
+Figure 2.8: The race of the victim is associated both with the sentence (death penalty or no death penalty) and with the race of the defendant. Defendants are more likely to involve a victim of the same race, and cases with African American victims are less likely to result in the death penalty.
 </p>
 </div>
-<p>Thus, the extremely low chance of a homicide case resulting in the death penalty for African Americans combines with the fact that most cases with African American victims also had an African American victim to results in an overall lower rate of death penalty sentences for African American defendants than for Caucasian defendants. The overall results in Figure <a href="#fig:DPbarplots"><strong>??</strong></a> and the results in each subgroup of Figure <a href="#fig:DPbarplots2"><strong>??</strong></a> are both valid—they are not the result of any “bad statistics”—but they suggest opposite conclusions. Data such as these, where an observed effect <em>reverses</em> itself when you examine the variables within subgroups, exhibit <strong>Simpson’s Paradox</strong>.</p>
+<p>Thus, the extremely low chance of a homicide case resulting in the death penalty for African Americans combines with the fact that most cases with African American victims also had an African American victim to results in an overall lower rate of death penalty sentences for African American defendants than for Caucasian defendants. The overall results in Figure <a href="eda.html#fig:DPbarplot">2.6</a> and the results in each subgroup of Figure <a href="eda.html#fig:DPbarplot2">2.7</a> are both valid—they are not the result of any “bad statistics”—but they suggest opposite conclusions. Data such as these, where an observed effect <em>reverses</em> itself when you examine the variables within subgroups, exhibit <strong>Simpson’s Paradox</strong>.</p>
 
 <div class="onebox">
 <p><strong>Simpson’s Paradox.</strong></p>
 When the association between an explanatory variable and a response variable reverses itself when we examine the association within different levels of a confounding variable, we say that these data exhibit <strong>Simpson’s Paradox</strong>.
 </div>
 </div>
-</div>
-<div id="why-not-pie-charts" class="section level3" number="2.1.4">
-<h3><span class="header-section-number">2.1.4</span> Why not pie charts?</h3>
-
-<div class="todo">
-Example with bar chart and pie chart side-by-side.
-</div>
-<p>If you’re still not convinced, read this post on the “from Data to Viz” blog: <a href="https://www.data-to-viz.com/caveat/pie.html">“The Issue with Pie Chart”</a>.</p>
 </div>
 </div>
 <div id="probability-with-tables" class="section level2" number="2.2">
@@ -1041,7 +1246,7 @@ The <strong>probability</strong> of an event is the long-run proportion of times
 <div class="figure" style="text-align: center"><span id="fig:coinflip"></span>
 <img src="02/figures/CoinFlip/Coinflip.png" alt="One simulation of flipping a fair coin, tracking the long-run proportion of times the coin lands on heads." width="75%" />
 <p class="caption">
-Figure 2.4: One simulation of flipping a fair coin, tracking the long-run proportion of times the coin lands on heads.
+Figure 2.9: One simulation of flipping a fair coin, tracking the long-run proportion of times the coin lands on heads.
 </p>
 </div>
 </div>
@@ -1161,13 +1366,13 @@ Now we can find the probability of being late to class by reading it off the tab
 <ol style="list-style-type: decimal">
 <li>What is the probability you are not late to class?</li>
 <li>What is the probability that you park in Lot 6 and you are not late to class?</li>
-<li>Given that you were late to class, what is the probability you parked in Lot 18?<a href="#fn27" class="footnote-ref" id="fnref27"><sup>27</sup></a>
+<li>Given that you were late to class, what is the probability you parked in Lot 18?<a href="#fn28" class="footnote-ref" id="fnref28"><sup>28</sup></a>
 </div></li>
 </ol>
 <p>Carefully read how each of the probabilities is described in the Guided Practice—note the subtle difference between “the probability of being late to class, <em>given</em> that you parked Lot 18” (<span class="math inline">\(120/800 = 0.15\)</span>) and “the probability of parking Lot 18, given that you were late to class” (<span class="math inline">\(120/130 = 0.923\)</span>). When we are given extra information, this is called a <strong>conditional probability</strong>, and the denominator in the probability calculation is a row total (e.g., 800) or column total (e.g., 130) rather than the overall total in the hypothetical two-way table.</p>
 
 <div class="guidedpractice">
-In the previous Guided Practice, which of the probabilities are conditional probabilities? which are unconditional?<a href="#fn28" class="footnote-ref" id="fnref28"><sup>28</sup></a>
+In the previous Guided Practice, which of the probabilities are conditional probabilities? which are unconditional?<a href="#fn29" class="footnote-ref" id="fnref29"><sup>29</sup></a>
 </div>
 </div>
 <div id="probability-notation" class="section level3" number="2.2.3">
@@ -1195,7 +1400,7 @@ In our coin flip example, we could let <span class="math inline">\(A\)</span> be
 <ol style="list-style-type: decimal">
 <li>sensitivity</li>
 <li>specificity</li>
-<li>prevalence<a href="#fn29" class="footnote-ref" id="fnref29"><sup>29</sup></a>
+<li>prevalence<a href="#fn30" class="footnote-ref" id="fnref30"><sup>30</sup></a>
 </div></li>
 </ol>
 <p>Note that sensitivity and specificity are conditional probabilities, while prevalence is an unconditional probability. While the above probabilities are useful information, if you test positive on a diagnostic test, none of these quantities is the probability you really want to know: the conditional probability of having the disease, given you tested positive, <span class="math inline">\(P(D | T)\)</span>.</p>
@@ -1236,7 +1441,7 @@ In our coin flip example, we could let <span class="math inline">\(A\)</span> be
 <p>Now we can read off the desired probability from the table: of the 30 male newborns we’d expect to test positive, only 10 of them actually have muscular dystrophy. This means the chance Baby Jeff has muscular dystrophy is only about 33%!</p>
 
 <div class="guidedpractice">
-How would this probability change if the prevalence were 1/3500? 1/15000? Try it.<a href="#fn30" class="footnote-ref" id="fnref30"><sup>30</sup></a>
+How would this probability change if the prevalence were 1/3500? 1/15000? Try it.<a href="#fn31" class="footnote-ref" id="fnref31"><sup>31</sup></a>
 </div>
 <p>Why did this counter-intuitive result occur? With such high sensitivity and specificity, why does this test perform so poorly? The answer has to do with the prevalence of the disease. For a rare disease, the very small proportion that test positive out of the very large group of people without the disease will overwhelm the very large proportion that test positive out of the very small group of people with the disease. The number of false positives can be much higher than the number of true positives.</p>
 </div>
@@ -1260,9 +1465,9 @@ The <code>county</code> data can be found in the <a href="https://openintrostat.
 <p></p>
 <p>A <strong>scatterplot</strong> provides a case-by-case view of data for two quantitative variables.
 In Figure <a href="intro-to-data.html#fig:county-multi-unit-homeownership">1.4</a>, a scatterplot was used to examine the homeownership rate against the fraction of housing units that were part of multi-unit properties (e.g. apartments) in the <code>county</code> data set.
-Another scatterplot is shown in Figure <a href="eda.html#fig:loan50-amount-income">2.5</a>, comparing the total income of a borrower <code>total_income</code> and the amount they borrowed <code>loan_amount</code> for the <code>loan50</code> data set.
+Another scatterplot is shown in Figure <a href="eda.html#fig:loan50-amount-income">2.10</a>, comparing the total income of a borrower <code>total_income</code> and the amount they borrowed <code>loan_amount</code> for the <code>loan50</code> data set.
 In any scatterplot, each point represents a single case.
-Since there are 50 cases in <code>loan50</code>, there are 50 points in Figure <a href="eda.html#fig:loan50-amount-income">2.5</a>.</p>
+Since there are 50 cases in <code>loan50</code>, there are 50 points in Figure <a href="eda.html#fig:loan50-amount-income">2.10</a>.</p>
 <p>When examining scatterplots, we describe four features:</p>
 <ol style="list-style-type: decimal">
 <li><strong>Form</strong> - If you were to trace the trend of the points,
@@ -1276,10 +1481,10 @@ that do not seem to match the overall pattern of the scatterplot?</li>
 <div class="figure" style="text-align: center"><span id="fig:loan50-amount-income"></span>
 <img src="02-eda_files/figure-html/loan50-amount-income-1.png" alt="A scatterplot of `loan_amount` versus `total_income` for the `loan50` data set." width="70%" />
 <p class="caption">
-Figure 2.5: A scatterplot of <code>loan_amount</code> versus <code>total_income</code> for the <code>loan50</code> data set.
+Figure 2.10: A scatterplot of <code>loan_amount</code> versus <code>total_income</code> for the <code>loan50</code> data set.
 </p>
 </div>
-<p>Looking at Figure <a href="eda.html#fig:loan50-amount-income">2.5</a>, we see that there are many
+<p>Looking at Figure <a href="eda.html#fig:loan50-amount-income">2.10</a>, we see that there are many
 borrowers with income below $100,000 on the left side of the graph, while there
 are a handful of borrowers with income above $250,000. The loan amounts vary from
 below $10,000 to around $40,000. The data seem to have a <em>linear</em> form, though
@@ -1289,12 +1494,12 @@ though since the relationship is weak, it is hard to tell.</p>
 <div class="figure" style="text-align: center"><span id="fig:median-hh-income-poverty"></span>
 <img src="02-eda_files/figure-html/median-hh-income-poverty-1.png" alt="A scatterplot of the median household income against the poverty rate for the `county` data set. Data are from 2017. A statistical model has also been fit to the data and is shown as a dashed line." width="70%" />
 <p class="caption">
-Figure 2.6: A scatterplot of the median household income against the poverty rate for the <code>county</code> data set. Data are from 2017. A statistical model has also been fit to the data and is shown as a dashed line.
+Figure 2.11: A scatterplot of the median household income against the poverty rate for the <code>county</code> data set. Data are from 2017. A statistical model has also been fit to the data and is shown as a dashed line.
 </p>
 </div>
 
 <div class="example">
-<p>Figure <a href="eda.html#fig:median-hh-income-poverty">2.6</a> shows a plot of median household income against the poverty rate for 3,142 counties.
+<p>Figure <a href="eda.html#fig:median-hh-income-poverty">2.11</a> shows a plot of median household income against the poverty rate for 3,142 counties.
 What can be said about the relationship between these variables?</p>
 <hr />
 The relationship is evidently <strong>nonlinear</strong>, as highlighted by the dashed line. This is different from previous scatterplots we have seen, which show relationships that do not show much, if any, curvature in the trend.
@@ -1303,22 +1508,22 @@ and there does not appear to be any unusual observations.
 </div>
 
 <div class="guidedpractice">
-What do scatterplots reveal about the data, and how are they useful?<a href="#fn31" class="footnote-ref" id="fnref31"><sup>31</sup></a>
+What do scatterplots reveal about the data, and how are they useful?<a href="#fn32" class="footnote-ref" id="fnref32"><sup>32</sup></a>
 </div>
 
 <div class="guidedpractice">
-Describe two variables that would have a horseshoe-shaped association in a scatterplot (<span class="math inline">\(\cap\)</span> or <span class="math inline">\(\frown\)</span>)<a href="#fn32" class="footnote-ref" id="fnref32"><sup>32</sup></a>
+Describe two variables that would have a horseshoe-shaped association in a scatterplot (<span class="math inline">\(\cap\)</span> or <span class="math inline">\(\frown\)</span>)<a href="#fn33" class="footnote-ref" id="fnref33"><sup>33</sup></a>
 </div>
 </div>
 <div id="dotplots" class="section level3" number="2.3.2">
 <h3><span class="header-section-number">2.3.2</span> Dot plots and the mean</h3>
 <p>Sometimes we are interested in the distribution of a single variable.
 In these cases, a dot plot provides the most basic of displays.
-A <strong>dot plot</strong> is a one-variable scatterplot; an example using the interest rate of 50 loans is shown in Figure <a href="eda.html#fig:loan-int-rate-dotplot">2.7</a>.</p>
+A <strong>dot plot</strong> is a one-variable scatterplot; an example using the interest rate of 50 loans is shown in Figure <a href="eda.html#fig:loan-int-rate-dotplot">2.12</a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:loan-int-rate-dotplot"></span>
 <img src="02-eda_files/figure-html/loan-int-rate-dotplot-1.png" alt="A dot plot of `interest_rate` for the `loan50` data set. The rates have been rounded to the nearest percent in this plot, and the distribution's mean is shown as a red triangle." width="70%" />
 <p class="caption">
-Figure 2.7: A dot plot of <code>interest_rate</code> for the <code>loan50</code> data set. The rates have been rounded to the nearest percent in this plot, and the distribution’s mean is shown as a red triangle.
+Figure 2.12: A dot plot of <code>interest_rate</code> for the <code>loan50</code> data set. The rates have been rounded to the nearest percent in this plot, and the distribution’s mean is shown as a red triangle.
 </p>
 </div>
 <p>The <strong>distribution</strong> of a variable is a description of the possible values
@@ -1326,7 +1531,7 @@ it takes and how frequently each value occurs. The <strong>mean</strong>, often 
 To compute the mean interest rate of the 50 loans above, we add up all the interest rates and divide by the number of observations.</p>
 <p>The sample mean is often labeled <span class="math inline">\(\bar{x}\)</span>.
 The letter <span class="math inline">\(x\)</span> is being used as a generic placeholder for the variable and the bar over the <span class="math inline">\(x\)</span> communicates we’re looking at the average of that variable. In our example <span class="math inline">\(x\)</span> would represent interest rate, and <span class="math inline">\(\bar{x}\)</span> = 11.57%.
-It is useful to think of the mean as the balancing point of the distribution<a href="#fn33" class="footnote-ref" id="fnref33"><sup>33</sup></a>, and it’s shown as a triangle in Figure <a href="eda.html#fig:loan-int-rate-dotplot">2.7</a>.</p>
+It is useful to think of the mean as the balancing point of the distribution<a href="#fn34" class="footnote-ref" id="fnref34"><sup>34</sup></a>, and it’s shown as a triangle in Figure <a href="eda.html#fig:loan-int-rate-dotplot">2.12</a>.</p>
 
 <div class="onebox">
 <p><strong>Mean.</strong></p>
@@ -1335,11 +1540,11 @@ It is useful to think of the mean as the balancing point of the distribution<a h
 </div>
 
 <div class="guidedpractice">
-Examine the equation for the mean. What does <span class="math inline">\(x_1\)</span> correspond to? And <span class="math inline">\(x_2\)</span> Can you infer a general meaning to what <span class="math inline">\(x_i\)</span> might represent?<a href="#fn34" class="footnote-ref" id="fnref34"><sup>34</sup></a>
+Examine the equation for the mean. What does <span class="math inline">\(x_1\)</span> correspond to? And <span class="math inline">\(x_2\)</span> Can you infer a general meaning to what <span class="math inline">\(x_i\)</span> might represent?<a href="#fn35" class="footnote-ref" id="fnref35"><sup>35</sup></a>
 </div>
 
 <div class="guidedpractice">
-What was <span class="math inline">\(n\)</span> in this sample of loans?<a href="#fn35" class="footnote-ref" id="fnref35"><sup>35</sup></a>
+What was <span class="math inline">\(n\)</span> in this sample of loans?<a href="#fn36" class="footnote-ref" id="fnref36"><sup>36</sup></a>
 </div>
 <p>The <code>loan50</code> data set represents a sample from a larger population of loans made through Lending Club.
 We could compute a mean for this population in the same way as the sample mean.
@@ -1355,7 +1560,7 @@ The Greek letter <span class="math inline">\(\mu\)</span> is pronounced <em>mu</
 <div class="example">
 <p>The average interest rate across all loans in the population can be estimated using the sample data. Based on the sample of 50 loans, what would be a reasonable estimate of <span class="math inline">\(\mu_x\)</span>, the mean interest rate for all loans in the full data set?</p>
 <hr />
-The sample mean, 11.57%, provides a rough estimate of <span class="math inline">\(\mu_x\)</span>. While it is not perfect, this statistic our single best guess <strong>point estimate</strong> of the average interest rate of all the loans in the population under study, the parameter. In Chapter <a href="#inference-foundations"><strong>??</strong></a> and beyond, we will develop tools to characterize the accuracy of point estimates, like the sample mean. As you might have guessed, point estimates based on larger samples tend to be more accurate than those based on smaller samples.
+The sample mean, 11.57%, provides a rough estimate of <span class="math inline">\(\mu_x\)</span>. While it is not perfect, this statistic our single best guess <strong>point estimate</strong> of the average interest rate of all the loans in the population under study, the parameter. In Chapter <a href="inference-cat.html#inference-cat">5</a> and beyond, we will develop tools to characterize the accuracy of point estimates, like the sample mean. As you might have guessed, point estimates based on larger samples tend to be more accurate than those based on smaller samples.
 </div>
 <p>The mean is useful for making comparisons across different samples that may have different sample sizes because it allows us to rescale or standardize a metric into something more easily interpretable and comparable.</p>
 <p>Suppose we would like to understand if a new drug is more effective at treating asthma attacks than the standard drug.
@@ -1434,10 +1639,10 @@ For more information on this topic, check out the following online supplement re
 </div>
 <div id="histograms" class="section level3" number="2.3.3">
 <h3><span class="header-section-number">2.3.3</span> Histograms and shape</h3>
-<p>Dot plots show the exact value for each observation. This is useful for small data sets, but they can become hard to read with larger samples. Rather than showing the value of each observation, we prefer to think of the value as belonging to a <em>bin</em>. For example, in the <code>loan50</code> data set, we created a table of counts for the number of loans with interest rates between 5.0% and 7.5%, then the number of loans with rates between 7.5% and 10.0%, and so on. Observations that fall on the boundary of a bin (e.g., 10.00%) are allocated to the lower bin. This tabulation is shown in Table <a href="eda.html#tab:binnedIntRateAmountTable">2.7</a>. These binned counts are plotted as bars in Figure <a href="eda.html#fig:loan50IntRateHist">2.8</a> into what is called a <strong>histogram</strong>, which resembles a more heavily binned version of the stacked dot plot shown in Figure <a href="eda.html#fig:loan-int-rate-dotplot">2.7</a>.</p>
+<p>Dot plots show the exact value for each observation. This is useful for small data sets, but they can become hard to read with larger samples. Rather than showing the value of each observation, we prefer to think of the value as belonging to a <em>bin</em>. For example, in the <code>loan50</code> data set, we created a table of counts for the number of loans with interest rates between 5.0% and 7.5%, then the number of loans with rates between 7.5% and 10.0%, and so on. Observations that fall on the boundary of a bin (e.g., 10.00%) are allocated to the lower bin. This tabulation is shown in Table <a href="eda.html#tab:binnedIntRateAmountTable">2.10</a>. These binned counts are plotted as bars in Figure <a href="eda.html#fig:loan50IntRateHist">2.13</a> into what is called a <strong>histogram</strong>, which resembles a more heavily binned version of the stacked dot plot shown in Figure <a href="eda.html#fig:loan-int-rate-dotplot">2.12</a>.</p>
 <table>
 <caption>
-<span id="tab:binnedIntRateAmountTable">Table 2.7: </span>Counts for the binned <code>interest_rate</code> data.
+<span id="tab:binnedIntRateAmountTable">Table 2.10: </span>Counts for the binned <code>interest_rate</code> data.
 </caption>
 <thead>
 <tr>
@@ -1511,12 +1716,12 @@ Count
 <div class="figure" style="text-align: center"><span id="fig:loan50IntRateHist"></span>
 <img src="02-eda_files/figure-html/loan50IntRateHist-1.png" alt="A histogram of `interest_rate`. This distribution is strongly skewed to the right." width="70%" />
 <p class="caption">
-Figure 2.8: A histogram of <code>interest_rate</code>. This distribution is strongly skewed to the right.
+Figure 2.13: A histogram of <code>interest_rate</code>. This distribution is strongly skewed to the right.
 </p>
 </div>
 <p>Histograms provide a view of the <strong>data density</strong>. Higher bars represent where the data are relatively more common, or
 “dense.” For instance, there are many more loans with rates between 5% and 10% than loans with rates between 20% and 25% in the data set. The bars make it easy to see how the density of the data changes relative to the interest rate.</p>
-<p>Histograms are especially convenient for understanding the shape of the data distribution. Figure <a href="eda.html#fig:loan50IntRateHist">2.8</a> suggests that most loans have rates under 15%, while only a handful of loans have rates above 20%. When data trail off to the right in this way and has a longer right <strong>tail</strong>, the shape is said to be <strong>right skewed</strong><a href="#fn36" class="footnote-ref" id="fnref36"><sup>36</sup></a></p>
+<p>Histograms are especially convenient for understanding the shape of the data distribution. Figure <a href="eda.html#fig:loan50IntRateHist">2.13</a> suggests that most loans have rates under 15%, while only a handful of loans have rates above 20%. When data trail off to the right in this way and has a longer right <strong>tail</strong>, the shape is said to be <strong>right skewed</strong><a href="#fn37" class="footnote-ref" id="fnref37"><sup>37</sup></a></p>
 <p>Data sets with the reverse characteristic—a long, thinner tail to the left—are said to be <strong>left skewed</strong>. We also say that such a distribution has a long left tail. Data sets that show roughly equal trailing off in both directions are called <strong>symmetric</strong>.</p>
 
 <div class="onebox">
@@ -1526,32 +1731,32 @@ If a distribution has a long right tail, it is <strong>right skewed</strong> or 
 </div>
 
 <div class="guidedpractice">
-Besides the mean (since it was labeled), what can you see in the dot plot in Figure <a href="eda.html#fig:loan-int-rate-dotplot">2.7</a> that you cannot see in the histogram in Figure <a href="eda.html#fig:loan50IntRateHist">2.8</a>?<a href="#fn37" class="footnote-ref" id="fnref37"><sup>37</sup></a>
+Besides the mean (since it was labeled), what can you see in the dot plot in Figure <a href="eda.html#fig:loan-int-rate-dotplot">2.12</a> that you cannot see in the histogram in Figure <a href="eda.html#fig:loan50IntRateHist">2.13</a>?<a href="#fn38" class="footnote-ref" id="fnref38"><sup>38</sup></a>
 </div>
 <p>In addition to looking at whether a distribution is skewed or symmetric, histograms can be used to identify modes. A <strong>mode</strong> is represented by a prominent peak in the distribution. There is only one prominent peak in the histogram of <code>interest_rate</code>.</p>
 <p>A definition of <em>mode</em> sometimes taught in math classes is the value with the most occurrences in the data set. However, for many real-world data sets, it is common to have <em>no</em> observations with the same value in a data set, making this definition impractical in data analysis.</p>
-<p>Figure <a href="eda.html#fig:singleBiMultiModalPlots">2.9</a> shows histograms that have one, two, or three prominent peaks. Such distributions are called <strong>unimodal</strong>, <strong>bimodal</strong>, and <strong>multimodal</strong>, respectively. Any distribution with more than two prominent peaks is called multimodal. Notice that there was one prominent peak in the unimodal distribution with a second less prominent peak that was not counted since it only differs from its neighboring bins by a few observations.</p>
+<p>Figure <a href="eda.html#fig:singleBiMultiModalPlots">2.14</a> shows histograms that have one, two, or three prominent peaks. Such distributions are called <strong>unimodal</strong>, <strong>bimodal</strong>, and <strong>multimodal</strong>, respectively. Any distribution with more than two prominent peaks is called multimodal. Notice that there was one prominent peak in the unimodal distribution with a second less prominent peak that was not counted since it only differs from its neighboring bins by a few observations.</p>
 <div class="figure" style="text-align: center"><span id="fig:singleBiMultiModalPlots"></span>
 <img src="02-eda_files/figure-html/singleBiMultiModalPlots-1.png" alt="Counting only prominent peaks, the distributions are (left to right) unimodal, bimodal, and multimodal. Note that the left plot is unimodal because we are counting prominent peaks, not just any peak." width="90%" />
 <p class="caption">
-Figure 2.9: Counting only prominent peaks, the distributions are (left to right) unimodal, bimodal, and multimodal. Note that the left plot is unimodal because we are counting prominent peaks, not just any peak.
+Figure 2.14: Counting only prominent peaks, the distributions are (left to right) unimodal, bimodal, and multimodal. Note that the left plot is unimodal because we are counting prominent peaks, not just any peak.
 </p>
 </div>
 
 <div class="example">
-Figure <a href="eda.html#fig:loan50IntRateHist">2.8</a> reveals only one prominent mode in the interest rate. Is the distribution unimodal, bimodal, or multimodal?<a href="#fn38" class="footnote-ref" id="fnref38"><sup>38</sup></a>
+Figure <a href="eda.html#fig:loan50IntRateHist">2.13</a> reveals only one prominent mode in the interest rate. Is the distribution unimodal, bimodal, or multimodal?<a href="#fn39" class="footnote-ref" id="fnref39"><sup>39</sup></a>
 </div>
 
 <div class="guidedpractice">
 Height measurements of young students and adult teachers at a K-3 elementary school were taken.
-How many modes would you expect in this height data set?<a href="#fn39" class="footnote-ref" id="fnref39"><sup>39</sup></a>.
+How many modes would you expect in this height data set?<a href="#fn40" class="footnote-ref" id="fnref40"><sup>40</sup></a>.
 </div>
 <p>Looking for modes isn’t about finding a clear and correct answer about the number of modes in a distribution, which is why <em>prominent</em> is not rigorously defined in this book. The most important part of this examination is to better understand your data.</p>
-<p>Another type of plot that is helpful for exploring the shape of a distribution is a smoothed histogram, called a <strong>density plot</strong>. A density plot will scale the <span class="math inline">\(y\)</span>-axis so that the total area under the density curve is equal to one. This allows us to get a sense of what <em>proportion</em> of the data lie in a certain interval, rather than the <em>frequency</em> of data in the interval. We can change the scale of a histogram to plot proportions rather than frequencies, then overlay a density curve on this rescaled histogram, as seen in Figure <a href="eda.html#fig:loan50IntRateDens">2.10</a>.</p>
+<p>Another type of plot that is helpful for exploring the shape of a distribution is a smoothed histogram, called a <strong>density plot</strong>. A density plot will scale the <span class="math inline">\(y\)</span>-axis so that the total area under the density curve is equal to one. This allows us to get a sense of what <em>proportion</em> of the data lie in a certain interval, rather than the <em>frequency</em> of data in the interval. We can change the scale of a histogram to plot proportions rather than frequencies, then overlay a density curve on this rescaled histogram, as seen in Figure <a href="eda.html#fig:loan50IntRateDens">2.15</a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:loan50IntRateDens"></span>
 <img src="02-eda_files/figure-html/loan50IntRateDens-1.png" alt="A density plot of `interest_rate` overlayed on a histogram using density scale." width="70%" />
 <p class="caption">
-Figure 2.10: A density plot of <code>interest_rate</code> overlayed on a histogram using density scale.
+Figure 2.15: A density plot of <code>interest_rate</code> overlayed on a histogram using density scale.
 </p>
 </div>
 </div>
@@ -1588,48 +1793,48 @@ The Greek letter <span class="math inline">\(\sigma\)</span> is pronounced <em>s
 <div class="figure" style="text-align: center"><span id="fig:sdRuleForIntRate"></span>
 <img src="02-eda_files/figure-html/sdRuleForIntRate-1.png" alt="For the `interest_rate` variable, 34 of the 50 loans (68%) had interest rates within 1 standard deviation of the mean, and 48 of the 50 loans (96%) had rates within 2 standard deviations. Usually about 70% of the data are within 1 standard deviation of the mean and 95% within 2 standard deviations, though this is far from a hard rule." width="70%" />
 <p class="caption">
-Figure 2.11: For the <code>interest_rate</code> variable, 34 of the 50 loans (68%) had interest rates within 1 standard deviation of the mean, and 48 of the 50 loans (96%) had rates within 2 standard deviations. Usually about 70% of the data are within 1 standard deviation of the mean and 95% within 2 standard deviations, though this is far from a hard rule.
+Figure 2.16: For the <code>interest_rate</code> variable, 34 of the 50 loans (68%) had interest rates within 1 standard deviation of the mean, and 48 of the 50 loans (96%) had rates within 2 standard deviations. Usually about 70% of the data are within 1 standard deviation of the mean and 95% within 2 standard deviations, though this is far from a hard rule.
 </p>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:severalDiffDistWithSdOf1"></span>
 <img src="02-eda_files/figure-html/severalDiffDistWithSdOf1-1.png" alt="Three very different population distributions with the same mean (0) and standard deviation (1)." width="70%" />
 <p class="caption">
-Figure 2.12: Three very different population distributions with the same mean (0) and standard deviation (1).
+Figure 2.17: Three very different population distributions with the same mean (0) and standard deviation (1).
 </p>
 </div>
 
 <div class="guidedpractice">
 A good description of the shape of a distribution should include modality and whether the distribution is symmetric or skewed to one side.
-Using Figure <a href="eda.html#fig:severalDiffDistWithSdOf1">2.12</a> as an example, explain why such a description is important.<a href="#fn40" class="footnote-ref" id="fnref40"><sup>40</sup></a>
+Using Figure <a href="eda.html#fig:severalDiffDistWithSdOf1">2.17</a> as an example, explain why such a description is important.<a href="#fn41" class="footnote-ref" id="fnref41"><sup>41</sup></a>
 </div>
 
 <div class="example">
-<p>Describe the distribution of the <code>interest_rate</code> variable using the histogram in Figure <a href="eda.html#fig:loan50IntRateHist">2.8</a>.
+<p>Describe the distribution of the <code>interest_rate</code> variable using the histogram in Figure <a href="eda.html#fig:loan50IntRateHist">2.13</a>.
 The description should incorporate the center, variability, and shape of the distribution, and it should also be placed in context.
 Also note any especially unusual cases.</p>
 <hr />
 The distribution of interest rates is unimodal and skewed to the high end. Many of the rates fall near the mean at 11.57%, and most fall within one standard deviation (5.05%) of the mean.
 There are a few exceptionally large interest rates in the sample that are above 20%.
 </div>
-<p>In practice, the variance and standard deviation are sometimes used as a means to an end, where the “end” is being able to accurately estimate the uncertainty associated with a sample statistic. For example, in Chapter <a href="#inference-foundations"><strong>??</strong></a> the standard deviation is used in calculations that help us understand how much a sample mean varies from one sample to the next.</p>
+<p>In practice, the variance and standard deviation are sometimes used as a means to an end, where the “end” is being able to accurately estimate the uncertainty associated with a sample statistic. For example, in Chapter <a href="inference-num.html#inference-num">6</a> the standard deviation is used in calculations that help us understand how much a sample mean varies from one sample to the next.</p>
 </div>
 <div id="box-plots-quartiles-and-the-median" class="section level3" number="2.3.5">
 <h3><span class="header-section-number">2.3.5</span> Box plots, quartiles, and the median</h3>
 <p>A <strong>box plot</strong> (or box-and-whisker plot) summarizes a data set using five statistics while
 also identifying unusual observations. The five statistics—minimum, first quartile,
 median, third quartile, maximum—together are called the <strong>five number summary</strong>.
-Figure <a href="eda.html#fig:loan-int-rate-boxplot-dotplot">2.13</a> provides a dot plot alongside a box plot of the <code>interest_rate</code> variable from the <code>loan50</code> data set.</p>
+Figure <a href="eda.html#fig:loan-int-rate-boxplot-dotplot">2.18</a> provides a dot plot alongside a box plot of the <code>interest_rate</code> variable from the <code>loan50</code> data set.</p>
 <div class="figure" style="text-align: center"><span id="fig:loan-int-rate-boxplot-dotplot"></span>
 <img src="02-eda_files/figure-html/loan-int-rate-boxplot-dotplot-1.png" alt="Plot A shows a dot plot and Plot B shows a box plot of the distribution of interest rates from the `loan50` dataset." width="70%" />
 <p class="caption">
-Figure 2.13: Plot A shows a dot plot and Plot B shows a box plot of the distribution of interest rates from the <code>loan50</code> dataset.
+Figure 2.18: Plot A shows a dot plot and Plot B shows a box plot of the distribution of interest rates from the <code>loan50</code> dataset.
 </p>
 </div>
 <p>The dark line inside the box represents the <strong>median</strong>, which splits the data in half:
 50% of the data fall below this value and 50% fall above it.
 Since in the <code>loan50</code> dataset there are 50 observations (an even number), the median is defined as the average of the two observations closest to the <span class="math inline">\(50^{th}\)</span> percentile.
 Table @ref(tab:loan50_int_rate_sorted) shows all interest rates, arranged in ascending order.
-We can see that the <span class="math inline">\(25^{th}\)</span> and the <span class="math inline">\(26^{th}\)</span> values are both 9.93, which corresponds to the dark line in the box plot in Figure <a href="eda.html#fig:loan-int-rate-boxplot-dotplot">2.13</a>.</p>
+We can see that the <span class="math inline">\(25^{th}\)</span> and the <span class="math inline">\(26^{th}\)</span> values are both 9.93, which corresponds to the dark line in the box plot in Figure <a href="eda.html#fig:loan-int-rate-boxplot-dotplot">2.18</a>.</p>
 <table>
 <caption>
 (#tab:loan50_int_rate_sorted)Interest rates from the <code>loan50</code> dataset, arranged in ascending order.
@@ -1864,7 +2069,7 @@ If there are an even number of observations, there will be two values in the mid
 The length of the the box is called the <strong>interquartile range</strong>, or <strong>IQR</strong> for short.
 It, like the standard deviation, is a measure of variability in data.
 The more variable the data, the larger the standard deviation and IQR tend to be.
-The two boundaries of the box are called the <strong>first quartile</strong> (the <span class="math inline">\(25^{th}\)</span> percentile, i.e., 25% of the data fall below this value) and the <strong>third quartile</strong> (the <span class="math inline">\(75^{th}\)</span> percentile, i.e., 75% of the data fall below this value)  , and these are often labeled <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span>, respectively<a href="#fn41" class="footnote-ref" id="fnref41"><sup>41</sup></a></p>
+The two boundaries of the box are called the <strong>first quartile</strong> (the <span class="math inline">\(25^{th}\)</span> percentile, i.e., 25% of the data fall below this value) and the <strong>third quartile</strong> (the <span class="math inline">\(75^{th}\)</span> percentile, i.e., 75% of the data fall below this value)  , and these are often labeled <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span>, respectively<a href="#fn42" class="footnote-ref" id="fnref42"><sup>42</sup></a></p>
 
 <div class="onebox">
 <p><strong>Interquartile range (IQR).</strong></p>
@@ -1878,7 +2083,7 @@ where <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q
 
 <div class="guidedpractice">
 What percent of the data fall between <span class="math inline">\(Q_1\)</span> and the median?
-What percent is between the median and <span class="math inline">\(Q_3\)</span>?<a href="#fn42" class="footnote-ref" id="fnref42"><sup>42</sup></a>
+What percent is between the median and <span class="math inline">\(Q_3\)</span>?<a href="#fn43" class="footnote-ref" id="fnref43"><sup>43</sup></a>
 </div>
 <p>Extending out from the box, the <strong>whiskers</strong> attempt to capture the data outside of the box.
 The whiskers of a box plot reach to the minimum and the maximum values in the data, unless there are points that are considered unusually high or unusually low, which are identified as potential <strong>outliers</strong> by the box plot.
@@ -1887,7 +2092,7 @@ The purpose of labeling these points—instead of extending the whiskers to the 
 There are a variety of formulas for determining whether a particular data point is considered an outlier, and different statistical software use different formulas.
 A commonly used formula is that any value that is beyond <span class="math inline">\(1.5\times IQR\)</span>[While the choice of exactly 1.5 is arbitrary, it is the most commonly used value for box plots.] away from the box is considered an outlier.
 In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data, up to the outliers.</p>
-<p>In Figure <a href="eda.html#fig:loan-int-rate-boxplot-dotplot">2.13</a>,
+<p>In Figure <a href="eda.html#fig:loan-int-rate-boxplot-dotplot">2.18</a>,
 the upper whisker does not extend to the last two points, 24.85% and 26.3%, which are above
 <span class="math inline">\(Q_3 + 1.5\times IQR\)</span>, and so it extends only to the last point below this limit.
 The lower whisker stops at the minimum value in the data set, 5.31%, since there are no outliers on the lower end of the distribution.</p>
@@ -1910,7 +2115,7 @@ Examining data for outliers serves many useful purposes, including</p>
 </ul>
 
 <div class="guidedpractice">
-Using the box plot in Figure <a href="eda.html#fig:loan-int-rate-boxplot-dotplot">2.13</a>, estimate the values of the <span class="math inline">\(Q_1\)</span>, <span class="math inline">\(Q_3\)</span>, and IQR for <code>interest_rate</code> in the <code>loan50</code> data set.<a href="#fn43" class="footnote-ref" id="fnref43"><sup>43</sup></a>
+Using the box plot in Figure <a href="eda.html#fig:loan-int-rate-boxplot-dotplot">2.18</a>, estimate the values of the <span class="math inline">\(Q_1\)</span>, <span class="math inline">\(Q_3\)</span>, and IQR for <code>interest_rate</code> in the <code>loan50</code> data set.<a href="#fn44" class="footnote-ref" id="fnref44"><sup>44</sup></a>
 </div>
 </div>
 <div id="describing-and-comparing-quantitative-distributions" class="section level3" number="2.3.6">
@@ -1937,7 +2142,7 @@ is a categorical variable and <code>interest_rate</code> is a quantitative varia
 <div class="figure" style="text-align: center"><span id="fig:homeownership-interest-boxplots"></span>
 <img src="02-eda_files/figure-html/homeownership-interest-boxplots-1.png" alt="Side-by-side box plots of loan interest rates by homeownership category." width="70%" />
 <p class="caption">
-Figure 2.14: Side-by-side box plots of loan interest rates by homeownership category.
+Figure 2.19: Side-by-side box plots of loan interest rates by homeownership category.
 </p>
 </div>
 <p>We see immediately that some features are easier to discern in box plots, while others in histograms. Shape is shown more clearly in histograms, while center (as measured by the median) is easy to compare across groups in the side-by-side box plots.</p>
@@ -1955,16 +2160,16 @@ Besides center, variability, shape, and outliers, another interesting feature in
 <p>How are the <strong>sample statistics</strong>  of the <code>interest_rate</code> data set affected by the observation, 26.3%?
 What would have happened if this loan had instead been only 15%?
 What would happen to these summary statistics  if the observation at 26.3% had been even larger, say 35%?
-These scenarios are plotted alongside the original data in Figure <a href="eda.html#fig:loan-int-rate-robust-ex">2.15</a>, and sample statistics are computed under each scenario in Table <a href="eda.html#tab:robustOrNotTable">2.8</a>.</p>
+These scenarios are plotted alongside the original data in Figure <a href="eda.html#fig:loan-int-rate-robust-ex">2.20</a>, and sample statistics are computed under each scenario in Table <a href="eda.html#tab:robustOrNotTable">2.11</a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:loan-int-rate-robust-ex"></span>
 <img src="02-eda_files/figure-html/loan-int-rate-robust-ex-1.png" alt="Dot plots of the original interest rate data and two modified data sets." width="70%" />
 <p class="caption">
-Figure 2.15: Dot plots of the original interest rate data and two modified data sets.
+Figure 2.20: Dot plots of the original interest rate data and two modified data sets.
 </p>
 </div>
 <table class="table table-striped" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:robustOrNotTable">Table 2.8: </span>A comparison of how the median, IQR, mean, and standard deviation change as the value of an extereme observation from the original interest data changes.
+<span id="tab:robustOrNotTable">Table 2.11: </span>A comparison of how the median, IQR, mean, and standard deviation change as the value of an extereme observation from the original interest data changes.
 </caption>
 <thead>
 <tr>
@@ -2058,14 +2263,14 @@ Move 26.3% to 35%
 <ol style="list-style-type: lower-alpha">
 <li>Which is more affected by extreme observations, the mean or median?<br />
 </li>
-<li>Is the standard deviation or IQR more affected by extreme observations?<a href="#fn44" class="footnote-ref" id="fnref44"><sup>44</sup></a>
+<li>Is the standard deviation or IQR more affected by extreme observations?<a href="#fn45" class="footnote-ref" id="fnref45"><sup>45</sup></a>
 </div></li>
 </ol>
 <p>The median and IQR are called <strong>robust statistics</strong> because extreme observations have little effect on their values—moving the most extreme value generally has little influence on these statistics.
 On the other hand, the mean and standard deviation are more heavily influenced by changes in extreme observations, which can be important in some situations. Additionally, the mean tends to get pulled in the direction of a distribution’s skewness, while the skewness has little affect on the median.</p>
 
 <div class="example">
-<p>The median and IQR did not change under the three scenarios in Table <a href="eda.html#tab:robustOrNotTable">2.8</a>.
+<p>The median and IQR did not change under the three scenarios in Table <a href="eda.html#tab:robustOrNotTable">2.11</a>.
 Why might this be the case?</p>
 <hr />
 The median and IQR are only sensitive to numbers near <span class="math inline">\(Q_1\)</span>, the median, and <span class="math inline">\(Q_3\)</span>.
@@ -2074,7 +2279,7 @@ Since values in these regions are stable in the three data sets, the median and 
 
 <div class="guidedpractice">
 The distribution of loan amounts in the <code>loan50</code> data set is right skewed, with a few large loans lingering out into the right tail.
-If you were wanting to understand the typical loan size, should you be more interested in the mean or median?<a href="#fn45" class="footnote-ref" id="fnref45"><sup>45</sup></a>
+If you were wanting to understand the typical loan size, should you be more interested in the mean or median?<a href="#fn46" class="footnote-ref" id="fnref46"><sup>46</sup></a>
 </div>
 </div>
 <div id="transforming-data-special-topic" class="section level3" number="2.3.8">
@@ -2083,7 +2288,7 @@ If you were wanting to understand the typical loan size, should you be more inte
 <div class="figure" style="text-align: center"><span id="fig:county-pop-transform"></span>
 <img src="02-eda_files/figure-html/county-pop-transform-1.png" alt="Plot A: A histogram of the populations of all US counties. Plot B: A histogram of log$_{10}$-transformed county populations. For this plot, the x-value corresponds to the power of 10, e.g. 4 on the x-axis corresponds to $10^4 =$ 10,000. Data are from 2017." width="70%" />
 <p class="caption">
-Figure 2.16: Plot A: A histogram of the populations of all US counties. Plot B: A histogram of log<span class="math inline">\(_{10}\)</span>-transformed county populations. For this plot, the x-value corresponds to the power of 10, e.g. 4 on the x-axis corresponds to <span class="math inline">\(10^4 =\)</span> 10,000. Data are from 2017.
+Figure 2.21: Plot A: A histogram of the populations of all US counties. Plot B: A histogram of log<span class="math inline">\(_{10}\)</span>-transformed county populations. For this plot, the x-value corresponds to the power of 10, e.g. 4 on the x-axis corresponds to <span class="math inline">\(10^4 =\)</span> 10,000. Data are from 2017.
 </p>
 </div>
 
@@ -2093,19 +2298,19 @@ Figure 2.16: Plot A: A histogram of the populations of all US counties. Plot B: 
 Nearly all of the data fall into the left-most bin, and the extreme skew obscures many of the potentially interesting details in the data.
 </div>
 <p>There are some standard transformations that may be useful for strongly right skewed data where much of the data is positive but clustered near zero.
-For instance, a plot of the logarithm (base 10) of county populations results in the new histogram in Figure <a href="eda.html#fig:county-pop-transform">2.16</a>.
+For instance, a plot of the logarithm (base 10) of county populations results in the new histogram in Figure <a href="eda.html#fig:county-pop-transform">2.21</a>.
 This data is symmetric, and any potential outliers appear much less extreme than in the original data set.
 By reigning in the outliers and extreme skew, transformations like this often make it easier to build statistical models against the data.</p>
 <p>Transformations can also be applied to one or both variables in a scatterplot.
-A scatterplot of the population change from 2010 to 2017 against the population in 2010 is shown in Figure <a href="eda.html#fig:county-pop-change-transform">2.17</a>.
+A scatterplot of the population change from 2010 to 2017 against the population in 2010 is shown in Figure <a href="eda.html#fig:county-pop-change-transform">2.22</a>.
 In this first scatterplot, it’s hard to decipher any interesting patterns because the population variable is so strongly skewed.
 However, if we apply a log<span class="math inline">\(_{10}\)</span> transformation to the population variable, as shown in
-Figure <a href="eda.html#fig:county-pop-change-transform">2.17</a>, a positive association between the variables is revealed.
+Figure <a href="eda.html#fig:county-pop-change-transform">2.22</a>, a positive association between the variables is revealed.
 In fact, we may be interested in fitting a trend line to the data when we explore methods around fitting regression lines in Chapter <a href="cor-reg.html#cor-reg">3</a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:county-pop-change-transform"></span>
 <img src="02-eda_files/figure-html/county-pop-change-transform-1.png" alt="Plot A: Scatterplot of population change against the population before the change. Plot B: A~scatterplot of the same data but where the population size has been log-transformed." width="70%" />
 <p class="caption">
-Figure 2.17: Plot A: Scatterplot of population change against the population before the change. Plot B: A~scatterplot of the same data but where the population size has been log-transformed.
+Figure 2.22: Plot A: Scatterplot of population change against the population before the change. Plot B: A~scatterplot of the same data but where the population size has been log-transformed.
 </p>
 </div>
 <p>Transformations other than the logarithm can be useful, too.
@@ -2117,7 +2322,7 @@ Common goals in transforming data are to see the data structure differently, red
 <p></p>
 <p>The <code>county</code> data set offers many numerical variables that we could plot using dot plots, scatterplots, or box plots, but these miss the true nature of the data.
 Rather, when we encounter geographic data, we should create an <strong>intensity map</strong>, where colors are used to show higher and lower values of a variable.
-Figures <a href="eda.html#fig:county-intensity-map-poverty-unemp">2.18</a> and <a href="#fig:county-intensity-map-howownership-median-income"><strong>??</strong></a> show intensity maps for poverty rate in percent (<code>poverty</code>), unemployment rate (<code>unemployment_rate</code>), homeownership rate in percent (<code>homeownership</code>), and median household income (<code>median_hh_income</code>).
+Figures <a href="eda.html#fig:county-intensity-map-poverty-unemp">2.23</a> and <a href="eda.html#fig:county-intensity-map-homeownership-median-income">2.24</a> show intensity maps for poverty rate in percent (<code>poverty</code>), unemployment rate (<code>unemployment_rate</code>), homeownership rate in percent (<code>homeownership</code>), and median household income (<code>median_hh_income</code>).
 The color key indicates which colors correspond to which values.
 The intensity maps are not generally very helpful for getting precise values in any given county, but they are very helpful for seeing geographic trends and generating interesting research questions or hypotheses.</p>
 
@@ -2134,18 +2339,18 @@ One observation that stands out when comparing the two maps: the poverty rate is
 </div>
 
 <div class="guidedpractice">
-What interesting features are evident in the median household income intensity map in Figure <a href="eda.html#fig:county-intensity-map-homeownership-median-income">2.19</a>?<a href="#fn46" class="footnote-ref" id="fnref46"><sup>46</sup></a>
+What interesting features are evident in the median household income intensity map in Figure <a href="eda.html#fig:county-intensity-map-homeownership-median-income">2.24</a>?<a href="#fn47" class="footnote-ref" id="fnref47"><sup>47</sup></a>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:county-intensity-map-poverty-unemp"></span>
 <img src="02-eda_files/figure-html/county-intensity-map-poverty-unemp-1.png" alt="Plot A: Intensity map of poverty rate (percent). Plot B: Intensity map of the unemployment rate (percent)." width="70%" />
 <p class="caption">
-Figure 2.18: Plot A: Intensity map of poverty rate (percent). Plot B: Intensity map of the unemployment rate (percent).
+Figure 2.23: Plot A: Intensity map of poverty rate (percent). Plot B: Intensity map of the unemployment rate (percent).
 </p>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:county-intensity-map-homeownership-median-income"></span>
 <img src="02-eda_files/figure-html/county-intensity-map-homeownership-median-income-1.png" alt="Plot A: Intensity map of homeownership rate (percent). Plot B: Intensity map of median household income ($1000s)." width="70%" />
 <p class="caption">
-Figure 2.19: Plot A: Intensity map of homeownership rate (percent). Plot B: Intensity map of median household income ($1000s).
+Figure 2.24: Plot A: Intensity map of homeownership rate (percent). Plot B: Intensity map of median household income ($1000s).
 </p>
 </div>
 </div>
@@ -2160,11 +2365,11 @@ Section on doing EDA in R.
 <div id="chp2-review" class="section level2" number="2.5">
 <h2><span class="header-section-number">2.5</span> Chapter 2 review</h2>
 <p>We’re encountered a variety of univariate (one variable) and bivariate (two variable) summary statistics and data visualization methods in this chapter.</p>
-<p>Figure <a href="eda.html#fig:decision-tree-plots">2.20</a> presents a decision tree for deciding which type of plot is most appropriate for a given number and types of variables. In the next chapter, we’ll further explore how to model the association between two quantitative variables, called regression. In Chapter <a href="mult-reg.html#mult-reg">4</a>, we’ll look at exploratory data analysis methods for more than two variables.</p>
+<p>Figure <a href="eda.html#fig:decision-tree-plots">2.25</a> presents a decision tree for deciding which type of plot is most appropriate for a given number and types of variables. In the next chapter, we’ll further explore how to model the association between two quantitative variables, called regression. In Chapter <a href="mult-reg.html#mult-reg">4</a>, we’ll look at exploratory data analysis methods for more than two variables.</p>
 <div class="figure" style="text-align: center"><span id="fig:decision-tree-plots"></span>
 <img src="02-eda_files/figure-html/decision-tree-plots-1.png" alt="Decision tree for determining an appropriate plot  given a number of variables and their types." width="70%" />
 <p class="caption">
-Figure 2.20: Decision tree for determining an appropriate plot given a number of variables and their types.
+Figure 2.25: Decision tree for determining an appropriate plot given a number of variables and their types.
 </p>
 </div>
 <!-- geom_node_label( -->
@@ -2241,13 +2446,27 @@ However you should be able to easily spot them as <strong>bolded text</strong>.<
 average
 </td>
 <td style="text-align:left;">
+first quartile
+</td>
+<td style="text-align:left;">
+outliers
+</td>
+<td style="text-align:left;">
+statistic
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+bar plot
+</td>
+<td style="text-align:left;">
 form
 </td>
 <td style="text-align:left;">
 parameter
 </td>
 <td style="text-align:left;">
-tail
+strength
 </td>
 </tr>
 <tr>
@@ -2258,10 +2477,10 @@ bimodal
 frequency
 </td>
 <td style="text-align:left;">
-point estimate
+pie chart
 </td>
 <td style="text-align:left;">
-third quartile
+symmetric
 </td>
 </tr>
 <tr>
@@ -2272,10 +2491,24 @@ box plot
 histogram
 </td>
 <td style="text-align:left;">
+point estimate
+</td>
+<td style="text-align:left;">
+tail
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+column proportions
+</td>
+<td style="text-align:left;">
+intensity map
+</td>
+<td style="text-align:left;">
 relative frequency
 </td>
 <td style="text-align:left;">
-transformation
+third quartile
 </td>
 </tr>
 <tr>
@@ -2283,13 +2516,13 @@ transformation
 column totals
 </td>
 <td style="text-align:left;">
-intensity map
+interquartile range
 </td>
 <td style="text-align:left;">
 right skewed
 </td>
 <td style="text-align:left;">
-two-way table
+transformation
 </td>
 </tr>
 <tr>
@@ -2297,13 +2530,13 @@ two-way table
 contingency table
 </td>
 <td style="text-align:left;">
-interquartile range
+IQR
 </td>
 <td style="text-align:left;">
 robust statistics
 </td>
 <td style="text-align:left;">
-unimodal
+two-way table
 </td>
 </tr>
 <tr>
@@ -2311,7 +2544,21 @@ unimodal
 data density
 </td>
 <td style="text-align:left;">
-IQR
+left skewed
+</td>
+<td style="text-align:left;">
+row proportions
+</td>
+<td style="text-align:left;">
+unimodal
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+density plot
+</td>
+<td style="text-align:left;">
+mean
 </td>
 <td style="text-align:left;">
 row totals
@@ -2322,10 +2569,10 @@ variability
 </tr>
 <tr>
 <td style="text-align:left;">
-density plot
+deviation
 </td>
 <td style="text-align:left;">
-left skewed
+median
 </td>
 <td style="text-align:left;">
 scatterplot
@@ -2336,30 +2583,16 @@ variance
 </tr>
 <tr>
 <td style="text-align:left;">
-deviation
-</td>
-<td style="text-align:left;">
-mean
-</td>
-<td style="text-align:left;">
-Simpson’s Paradox
-</td>
-<td style="text-align:left;">
-weighted mean
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 direction
 </td>
 <td style="text-align:left;">
-median
+mosaic plot
 </td>
 <td style="text-align:left;">
-standard deviation
+segmented bar plot
 </td>
 <td style="text-align:left;">
-whiskers
+weighted mean
 </td>
 </tr>
 <tr>
@@ -2370,9 +2603,10 @@ distribution
 multimodal
 </td>
 <td style="text-align:left;">
-statistic
+Simpson’s Paradox
 </td>
 <td style="text-align:left;">
+whiskers
 </td>
 </tr>
 <tr>
@@ -2383,20 +2617,7 @@ dot plot
 outlier
 </td>
 <td style="text-align:left;">
-strength
-</td>
-<td style="text-align:left;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-first quartile
-</td>
-<td style="text-align:left;">
-outliers
-</td>
-<td style="text-align:left;">
-symmetric
+standard deviation
 </td>
 <td style="text-align:left;">
 </td>
@@ -2418,30 +2639,31 @@ symmetric
 <ol start="22">
 <li id="fn22"><p>The <code>email</code> data set found in the <code>openintro</code> package defines the variable <code>spam</code> as 0 (not spam) or 1 (spam), and <code>format</code> as 0 (not HTML) or 1 (HTML). When variables are defined in this way—coded as the numbers 0 and 1 rather than the category names—they are called <strong>indicator variables</strong>* or <strong>dummy variables</strong>. In this section of the textbook, we have re-coded <code>spam</code> to be the variable <code>type</code>, which takes on values “not spam” or “spam”, and we have re-coded the variable <code>format</code> to take on values “not HTML” or “HTML”.<a href="eda.html#fnref22" class="footnote-back">↩︎</a></p></li>
 <li id="fn23"><p>Since the sample sizes in the three <code>number</code> categories differ (549 emails with no numbers; 2827 emails with a small number; 545 emails with a big number), we need to compare the <em>proportion</em> of spam emails across categories rather than the count.<a href="eda.html#fnref23" class="footnote-back">↩︎</a></p></li>
-<li id="fn24"><p>This example is adapted from <span class="citation">Agresti (<a href="#ref-Agresti2007" role="doc-biblioref">2007</a>)</span> (p. 49-52).<a href="eda.html#fnref24" class="footnote-back">↩︎</a></p></li>
-<li id="fn25"><p>Yes. The conditional proportions of receiving the death penalty given race differ: 11% of Caucasian defendants received the death penalty, versus 8% of African American defendants received the death penalty.<a href="eda.html#fnref25" class="footnote-back">↩︎</a></p></li>
-<li id="fn26"><p>The confounding variable we will consider here is race of the victim. Other confounding variables may include socioeconomic status (since SES is related to race, and a higher SES may allow you to hire a better lawyer—though this explanation is opposite of the association we see in the data) or district (the racial makeup would differ across districts, and maybe districts with a larger proportion of Caucasians also tend to invoke the death penalty more often).<a href="eda.html#fnref26" class="footnote-back">↩︎</a></p></li>
-<li id="fn27"><p>1. <span class="math inline">\(870/1000 = 0.87\)</span>; 2. <span class="math inline">\(190/1000 = 0.19\)</span>; 3. <span class="math inline">\(120/130 = 0.923\)</span><a href="eda.html#fnref27" class="footnote-back">↩︎</a></p></li>
-<li id="fn28"><p>Probabilities in (1) and (2) are unconditional; the probability asked for in (3) is conditional.<a href="eda.html#fnref28" class="footnote-back">↩︎</a></p></li>
-<li id="fn29"><p>1. sensitivity = <span class="math inline">\(P(T | D)\)</span>; 2. specificity = <span class="math inline">\(P(T^C | D^C)\)</span>; 3. prevalence = <span class="math inline">\(P(D)\)</span><a href="eda.html#fnref29" class="footnote-back">↩︎</a></p></li>
-<li id="fn30"><p>If the prevalence were 1/3500, the probability of actually having muscular dystrophy given that the baby tests positive is 0.588 (slightly better than just flipping a coin for a test!). With prevalence of 1/15000, this probability decreases to 0.250.<a href="eda.html#fnref30" class="footnote-back">↩︎</a></p></li>
-<li id="fn31"><p>Answers may vary. Scatterplots are helpful in quickly spotting associations relating variables, whether those associations come in the form of simple trends or whether those relationships are more complex.<a href="eda.html#fnref31" class="footnote-back">↩︎</a></p></li>
-<li id="fn32"><p>Consider the case where your vertical axis represents something “good” and your horizontal axis represents something that is only good in moderation. Health and water consumption fit this description: we require some water to survive, but consume too much and it become toxic and can kill a person.<a href="eda.html#fnref32" class="footnote-back">↩︎</a></p></li>
-<li id="fn33"><p>For
-more practice with this concept of the mean as a balancing point, see this <a href="https://www.khanacademy.org/math/ap-statistics/summarizing-quantitative-data-ap/mean-median-more/a/mean-as-the-balancing-point">Khan Academy article</a>.<a href="eda.html#fnref33" class="footnote-back">↩︎</a></p></li>
-<li id="fn34"><p><span class="math inline">\(x_1\)</span> corresponds to the interest rate for the first loan in the sample, <span class="math inline">\(x_2\)</span> to the second loan’s interest rate, and <span class="math inline">\(x_i\)</span> corresponds to the interest rate for the <span class="math inline">\(i^{th}\)</span> loan in the data set. For example, if <span class="math inline">\(i = 4\)</span>, then we’re examining <span class="math inline">\(x_4\)</span>, which refers to the fourth observation in the data set.<a href="eda.html#fnref34" class="footnote-back">↩︎</a></p></li>
-<li id="fn35"><p>The sample size was <span class="math inline">\(n = 50\)</span>.<a href="eda.html#fnref35" class="footnote-back">↩︎</a></p></li>
-<li id="fn36"><p>Other ways to describe data that are right skewed: skewed to the right, skewed to the high end, or skewed to the positive end.<a href="eda.html#fnref36" class="footnote-back">↩︎</a></p></li>
-<li id="fn37"><p>The interest rates for individual loans.<a href="eda.html#fnref37" class="footnote-back">↩︎</a></p></li>
-<li id="fn38"><p>Unimodal Remember that <em>uni</em> stands for 1 (think <em>uni</em>cycles). Similarly, <em>bi</em> stands for 2 (think <em>bi</em>cycles). We are hoping a <em>multi</em>cycle will be invented to complete this analogy.<a href="eda.html#fnref38" class="footnote-back">↩︎</a></p></li>
-<li id="fn39"><p>There might be two height groups visible in the data set: one of the students and one of the adults. That is, the data are probably bimodal.<a href="eda.html#fnref39" class="footnote-back">↩︎</a></p></li>
-<li id="fn40"><p>Figure <a href="eda.html#fig:severalDiffDistWithSdOf1">2.12</a> shows three distributions that look quite different, but all have the same mean, variance, and standard deviation. Using modality, we can distinguish between the first plot (bimodal) and the last two (unimodal). Using skewness, we can distinguish between the last plot (right skewed) and the first two. While a picture, like a histogram, tells a more complete story, we can use modality and shape (symmetry/skew) to characterize basic information about a distribution.<a href="eda.html#fnref40" class="footnote-back">↩︎</a></p></li>
-<li id="fn41"><p>The first and third quartiles are called quartiles because, together with the median (the second quartile), these three values break the data into four groups of equal size–the lowest 25%, next lowest 25%, next lowest 25%, and highest 25%.<a href="eda.html#fnref41" class="footnote-back">↩︎</a></p></li>
-<li id="fn42"><p>Since <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span> capture the middle 50% of the data and the median splits the data in the middle, 25% of the data fall between <span class="math inline">\(Q_1\)</span> and the median, and another 25% falls between the median and <span class="math inline">\(Q_3\)</span>.<a href="eda.html#fnref42" class="footnote-back">↩︎</a></p></li>
-<li id="fn43"><p>These visual estimates will vary a little from one person to the next: <span class="math inline">\(Q_1 \approx\)</span> 8%, <span class="math inline">\(Q_3 \approx\)</span> 14%, IQR <span class="math inline">\(\approx\)</span> 14 - 8 = 6%.<a href="eda.html#fnref43" class="footnote-back">↩︎</a></p></li>
-<li id="fn44"><p>(a) Mean is affected more. (b) Standard deviation is affected more.<a href="eda.html#fnref44" class="footnote-back">↩︎</a></p></li>
-<li id="fn45"><p>If we are looking to simply understand what a typical individual loan looks like, the median is probably more useful. However, if the goal is to understand something that scales well, such as the total amount of money we might need to have on hand if we were to offer 1,000 loans, then the mean would be more useful.<a href="eda.html#fnref45" class="footnote-back">↩︎</a></p></li>
-<li id="fn46"><p>Note: answers will vary. There is some correspondence between high earning and metropolitan areas, where we can see darker spots (higher median household income), though there are several exceptions. You might look for large cities you are familiar with and try to spot them on the map as dark spots.<a href="eda.html#fnref46" class="footnote-back">↩︎</a></p></li>
+<li id="fn24"><p>R code from User:Schutz for Wikipedia on 28 August 2007<a href="eda.html#fnref24" class="footnote-back">↩︎</a></p></li>
+<li id="fn25"><p>This example is adapted from <span class="citation">Agresti (<a href="#ref-Agresti2007" role="doc-biblioref">2007</a>)</span> (p. 49-52).<a href="eda.html#fnref25" class="footnote-back">↩︎</a></p></li>
+<li id="fn26"><p>Yes. The conditional proportions of receiving the death penalty given race differ: 11% of Caucasian defendants received the death penalty, versus 8% of African American defendants received the death penalty.<a href="eda.html#fnref26" class="footnote-back">↩︎</a></p></li>
+<li id="fn27"><p>The confounding variable we will consider here is race of the victim. Other confounding variables may include socioeconomic status (since SES is related to race, and a higher SES may allow you to hire a better lawyer—though this explanation is opposite of the association we see in the data) or district (the racial makeup would differ across districts, and maybe districts with a larger proportion of Caucasians also tend to invoke the death penalty more often).<a href="eda.html#fnref27" class="footnote-back">↩︎</a></p></li>
+<li id="fn28"><p>1. <span class="math inline">\(870/1000 = 0.87\)</span>; 2. <span class="math inline">\(190/1000 = 0.19\)</span>; 3. <span class="math inline">\(120/130 = 0.923\)</span><a href="eda.html#fnref28" class="footnote-back">↩︎</a></p></li>
+<li id="fn29"><p>Probabilities in (1) and (2) are unconditional; the probability asked for in (3) is conditional.<a href="eda.html#fnref29" class="footnote-back">↩︎</a></p></li>
+<li id="fn30"><p>1. sensitivity = <span class="math inline">\(P(T | D)\)</span>; 2. specificity = <span class="math inline">\(P(T^C | D^C)\)</span>; 3. prevalence = <span class="math inline">\(P(D)\)</span><a href="eda.html#fnref30" class="footnote-back">↩︎</a></p></li>
+<li id="fn31"><p>If the prevalence were 1/3500, the probability of actually having muscular dystrophy given that the baby tests positive is 0.588 (slightly better than just flipping a coin for a test!). With prevalence of 1/15000, this probability decreases to 0.250.<a href="eda.html#fnref31" class="footnote-back">↩︎</a></p></li>
+<li id="fn32"><p>Answers may vary. Scatterplots are helpful in quickly spotting associations relating variables, whether those associations come in the form of simple trends or whether those relationships are more complex.<a href="eda.html#fnref32" class="footnote-back">↩︎</a></p></li>
+<li id="fn33"><p>Consider the case where your vertical axis represents something “good” and your horizontal axis represents something that is only good in moderation. Health and water consumption fit this description: we require some water to survive, but consume too much and it become toxic and can kill a person.<a href="eda.html#fnref33" class="footnote-back">↩︎</a></p></li>
+<li id="fn34"><p>For
+more practice with this concept of the mean as a balancing point, see this <a href="https://www.khanacademy.org/math/ap-statistics/summarizing-quantitative-data-ap/mean-median-more/a/mean-as-the-balancing-point">Khan Academy article</a>.<a href="eda.html#fnref34" class="footnote-back">↩︎</a></p></li>
+<li id="fn35"><p><span class="math inline">\(x_1\)</span> corresponds to the interest rate for the first loan in the sample, <span class="math inline">\(x_2\)</span> to the second loan’s interest rate, and <span class="math inline">\(x_i\)</span> corresponds to the interest rate for the <span class="math inline">\(i^{th}\)</span> loan in the data set. For example, if <span class="math inline">\(i = 4\)</span>, then we’re examining <span class="math inline">\(x_4\)</span>, which refers to the fourth observation in the data set.<a href="eda.html#fnref35" class="footnote-back">↩︎</a></p></li>
+<li id="fn36"><p>The sample size was <span class="math inline">\(n = 50\)</span>.<a href="eda.html#fnref36" class="footnote-back">↩︎</a></p></li>
+<li id="fn37"><p>Other ways to describe data that are right skewed: skewed to the right, skewed to the high end, or skewed to the positive end.<a href="eda.html#fnref37" class="footnote-back">↩︎</a></p></li>
+<li id="fn38"><p>The interest rates for individual loans.<a href="eda.html#fnref38" class="footnote-back">↩︎</a></p></li>
+<li id="fn39"><p>Unimodal Remember that <em>uni</em> stands for 1 (think <em>uni</em>cycles). Similarly, <em>bi</em> stands for 2 (think <em>bi</em>cycles). We are hoping a <em>multi</em>cycle will be invented to complete this analogy.<a href="eda.html#fnref39" class="footnote-back">↩︎</a></p></li>
+<li id="fn40"><p>There might be two height groups visible in the data set: one of the students and one of the adults. That is, the data are probably bimodal.<a href="eda.html#fnref40" class="footnote-back">↩︎</a></p></li>
+<li id="fn41"><p>Figure <a href="eda.html#fig:severalDiffDistWithSdOf1">2.17</a> shows three distributions that look quite different, but all have the same mean, variance, and standard deviation. Using modality, we can distinguish between the first plot (bimodal) and the last two (unimodal). Using skewness, we can distinguish between the last plot (right skewed) and the first two. While a picture, like a histogram, tells a more complete story, we can use modality and shape (symmetry/skew) to characterize basic information about a distribution.<a href="eda.html#fnref41" class="footnote-back">↩︎</a></p></li>
+<li id="fn42"><p>The first and third quartiles are called quartiles because, together with the median (the second quartile), these three values break the data into four groups of equal size–the lowest 25%, next lowest 25%, next lowest 25%, and highest 25%.<a href="eda.html#fnref42" class="footnote-back">↩︎</a></p></li>
+<li id="fn43"><p>Since <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span> capture the middle 50% of the data and the median splits the data in the middle, 25% of the data fall between <span class="math inline">\(Q_1\)</span> and the median, and another 25% falls between the median and <span class="math inline">\(Q_3\)</span>.<a href="eda.html#fnref43" class="footnote-back">↩︎</a></p></li>
+<li id="fn44"><p>These visual estimates will vary a little from one person to the next: <span class="math inline">\(Q_1 \approx\)</span> 8%, <span class="math inline">\(Q_3 \approx\)</span> 14%, IQR <span class="math inline">\(\approx\)</span> 14 - 8 = 6%.<a href="eda.html#fnref44" class="footnote-back">↩︎</a></p></li>
+<li id="fn45"><p>(a) Mean is affected more. (b) Standard deviation is affected more.<a href="eda.html#fnref45" class="footnote-back">↩︎</a></p></li>
+<li id="fn46"><p>If we are looking to simply understand what a typical individual loan looks like, the median is probably more useful. However, if the goal is to understand something that scales well, such as the total amount of money we might need to have on hand if we were to offer 1,000 loans, then the mean would be more useful.<a href="eda.html#fnref46" class="footnote-back">↩︎</a></p></li>
+<li id="fn47"><p>Note: answers will vary. There is some correspondence between high earning and metropolitan areas, where we can see darker spots (higher median household income), though there are several exceptions. You might look for large cities you are familiar with and try to spot them on the map as dark spots.<a href="eda.html#fnref47" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
