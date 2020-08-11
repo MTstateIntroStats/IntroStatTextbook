@@ -1,0 +1,14 @@
+# Table of Contents {-}
+
+```{r echo=FALSE}
+source("helpers/render_toc.R")
+render_toc("01-intro-to-data.Rmd", toc_depth=4)
+render_toc("02-eda.Rmd", toc_depth=4)
+render_toc("03-cor-reg.Rmd", toc_depth=4)
+render_toc("04-mult-reg.Rmd", toc_depth=4)
+render_toc("05-inference-cat.Rmd", toc_depth=4)
+render_toc("06-inference-num.Rmd", toc_depth=4)
+render_toc("07-inference-reg.Rmd", toc_depth=4)
+```
+
+
