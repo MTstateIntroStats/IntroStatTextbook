@@ -24,7 +24,7 @@
 <meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager" />
 
 
-<meta name="date" content="2020-08-08" />
+<meta name="date" content="2020-08-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -137,6 +137,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#textbook-overview"><i class="fa fa-check"></i>Textbook overview</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#statistical-computing"><i class="fa fa-check"></i>Statistical computing</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#getting-rstudio"><i class="fa fa-check"></i>Getting RStudio</a></li>
+<li><a href="index.html#installing-catstats">Installing <code>catstats</code></a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html"><i class="fa fa-check"></i>About the Authors</a>
@@ -327,7 +332,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Montana State Introductory Statistics with R</h1>
 <p class="author"><em>Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager</em></p>
-<p class="date"><em>2020-08-08</em></p>
+<p class="date"><em>2020-08-10</em></p>
 </div>
 <div id="welcome" class="section level1 unnumbered">
 <h1>Welcome</h1>
@@ -352,6 +357,44 @@ on the <a href="https://math.montana.edu/courses/s216/index.html">course webpage
 <li><strong>Inference for regression.</strong> Inference for a regression slope or correlation using simulation and randomization techniques as well as the <span class="math inline">\(t\)</span>-distribution.</li>
 <li><strong>Case studies.</strong> A series of case studies assigned weekly in this course.</li>
 </ol>
+</div>
+<div id="statistical-computing" class="section level2 unnumbered">
+<h2>Statistical computing</h2>
+<p>STAT 216 and this textbook use <a href="https://www.r-project.org/"><code>R</code></a> and <a href="https://rstudio.com/products/rstudio/">RStudio</a> for statistical computing. In particular, we use
+the <a href="https://www.tidyverse.org/"><code>tidyverse</code></a> collection of packages designed for doing data science.
+STAT 216 also has its own <code>R</code> package called <a href="https://github.com/greenwood-stat/catstats"><code>catstats</code></a>, which contains all of the functions
+for running simulation-based inference in this course.</p>
+<div id="getting-rstudio" class="section level3 unnumbered">
+<h3>Getting RStudio</h3>
+<p>Students have four options for accessing this free software:</p>
+<ol style="list-style-type: decimal">
+<li>Download to your own laptop. (Note R and RStudio will not run on iPad, notebooks, or Chromebooks. If you have one of these devices, see the cloud-based option below.)</li>
+</ol>
+<ul>
+<li>Download and install <a href="https://cloud.r-project.org/">R</a>.</li>
+<li>Download and install <a href="https://rstudio.com/products/rstudio/">RStudio Desktop</a>.</li>
+<li>Install the <code>catstats</code> package.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Use RStudio through the <a href="https://login.rstudio.cloud/register?redirect=https%3A%2F%2Fclient.login.rstudio.cloud%2Foauth%2Flogin%3Fshow_auth%3D0%26show_login%3D1%26show_setup%3D1">RStudio Cloud</a>. This resource allows you to use RStudio through a web browser. It is free for use, but it does limit you to a certain number of project hours per month.</p></li>
+<li><p>Use RStudio through an MSU <a href="https://studentlabs.montana.edu/remotelabs/howto.html">virtual machine</a>.</p></li>
+<li><p>Use RStudio in an MSU on-campus computer lab.</p></li>
+</ol>
+</div>
+<div id="installing-catstats" class="section level3 unnumbered">
+<h3>Installing <code>catstats</code></h3>
+<p>To use the <code>R</code> functions in the <code>catstats</code> package, you need to first install the <code>remotes</code> package,
+and then install <code>catstats</code> from Github.</p>
+<p>In the RStudio console, run the following commands:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true"></a><span class="kw">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
+<span id="cb1-2"><a href="index.html#cb1-2" aria-hidden="true"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;greenwood-stat/catstats&quot;</span>)</span></code></pre></div>
+<p>If during the installation, it gives you an option to update the more
+recent versions of packages, type <code>1</code> (to choose to install All),
+then type Yes if it asks if you want to install.</p>
+<p>You only need to run the installation commands once, but you will need to load
+the <code>catstats</code> package each time you restart RStudio using the following command:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" aria-hidden="true"></a><span class="kw">library</span>(catstats)</span></code></pre></div>
+</div>
 </div>
 <div id="acknowledgements" class="section level2 unnumbered">
 <h2>Acknowledgements</h2>

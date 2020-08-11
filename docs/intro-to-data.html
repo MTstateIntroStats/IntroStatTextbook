@@ -24,7 +24,7 @@
 <meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager" />
 
 
-<meta name="date" content="2020-08-08" />
+<meta name="date" content="2020-08-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -137,6 +137,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#textbook-overview"><i class="fa fa-check"></i>Textbook overview</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#statistical-computing"><i class="fa fa-check"></i>Statistical computing</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#getting-rstudio"><i class="fa fa-check"></i>Getting RStudio</a></li>
+<li><a href="index.html#installing-catstats">Installing <code>catstats</code></a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html"><i class="fa fa-check"></i>About the Authors</a>
@@ -871,7 +876,7 @@ The length of the loan, which is always set as a whole number of months.
 grade
 </td>
 <td style="text-align:left;">
-Loan grade, which takes a values A through G and represents the quality of the loan and its likelihood of being repaid.
+Loan grade, which takes on values A through G and represents the quality of the loan and its likelihood of being repaid.
 </td>
 </tr>
 <tr>
@@ -1722,45 +1727,45 @@ of an RMarkdown file.</p>
 We can use the <code>glimpse()</code> function to see the variables included in the data set
 and their data type. Or, we could use the <code>head()</code> function to see the first
 few rows of the data set.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="intro-to-data.html#cb1-1" aria-hidden="true"></a><span class="kw">data</span>(email50)</span>
-<span id="cb1-2"><a href="intro-to-data.html#cb1-2" aria-hidden="true"></a><span class="kw">glimpse</span>(email50)</span>
-<span id="cb1-3"><a href="intro-to-data.html#cb1-3" aria-hidden="true"></a><span class="co">#&gt; Rows: 50</span></span>
-<span id="cb1-4"><a href="intro-to-data.html#cb1-4" aria-hidden="true"></a><span class="co">#&gt; Columns: 21</span></span>
-<span id="cb1-5"><a href="intro-to-data.html#cb1-5" aria-hidden="true"></a><span class="co">#&gt; $ spam         &lt;dbl&gt; 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0,…</span></span>
-<span id="cb1-6"><a href="intro-to-data.html#cb1-6" aria-hidden="true"></a><span class="co">#&gt; $ to_multiple  &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,…</span></span>
-<span id="cb1-7"><a href="intro-to-data.html#cb1-7" aria-hidden="true"></a><span class="co">#&gt; $ from         &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…</span></span>
-<span id="cb1-8"><a href="intro-to-data.html#cb1-8" aria-hidden="true"></a><span class="co">#&gt; $ cc           &lt;int&gt; 0, 0, 4, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,…</span></span>
-<span id="cb1-9"><a href="intro-to-data.html#cb1-9" aria-hidden="true"></a><span class="co">#&gt; $ sent_email   &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1,…</span></span>
-<span id="cb1-10"><a href="intro-to-data.html#cb1-10" aria-hidden="true"></a><span class="co">#&gt; $ time         &lt;dttm&gt; 2012-01-04 06:19:16, 2012-02-16 13:10:06, 2012-01-04 08…</span></span>
-<span id="cb1-11"><a href="intro-to-data.html#cb1-11" aria-hidden="true"></a><span class="co">#&gt; $ image        &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</span></span>
-<span id="cb1-12"><a href="intro-to-data.html#cb1-12" aria-hidden="true"></a><span class="co">#&gt; $ attach       &lt;dbl&gt; 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 0,…</span></span>
-<span id="cb1-13"><a href="intro-to-data.html#cb1-13" aria-hidden="true"></a><span class="co">#&gt; $ dollar       &lt;dbl&gt; 0, 0, 0, 0, 9, 0, 0, 0, 0, 23, 4, 0, 3, 2, 0, 0, 0, 0, 0…</span></span>
-<span id="cb1-14"><a href="intro-to-data.html#cb1-14" aria-hidden="true"></a><span class="co">#&gt; $ winner       &lt;fct&gt; no, no, no, no, no, no, no, no, no, no, no, no, yes, no,…</span></span>
-<span id="cb1-15"><a href="intro-to-data.html#cb1-15" aria-hidden="true"></a><span class="co">#&gt; $ inherit      &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</span></span>
-<span id="cb1-16"><a href="intro-to-data.html#cb1-16" aria-hidden="true"></a><span class="co">#&gt; $ viagra       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</span></span>
-<span id="cb1-17"><a href="intro-to-data.html#cb1-17" aria-hidden="true"></a><span class="co">#&gt; $ password     &lt;dbl&gt; 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 8,…</span></span>
-<span id="cb1-18"><a href="intro-to-data.html#cb1-18" aria-hidden="true"></a><span class="co">#&gt; $ num_char     &lt;dbl&gt; 21.705, 7.011, 0.631, 2.454, 41.623, 0.057, 0.809, 5.229…</span></span>
-<span id="cb1-19"><a href="intro-to-data.html#cb1-19" aria-hidden="true"></a><span class="co">#&gt; $ line_breaks  &lt;int&gt; 551, 183, 28, 61, 1088, 5, 17, 88, 242, 578, 1167, 198, …</span></span>
-<span id="cb1-20"><a href="intro-to-data.html#cb1-20" aria-hidden="true"></a><span class="co">#&gt; $ format       &lt;dbl&gt; 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1,…</span></span>
-<span id="cb1-21"><a href="intro-to-data.html#cb1-21" aria-hidden="true"></a><span class="co">#&gt; $ re_subj      &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0,…</span></span>
-<span id="cb1-22"><a href="intro-to-data.html#cb1-22" aria-hidden="true"></a><span class="co">#&gt; $ exclaim_subj &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</span></span>
-<span id="cb1-23"><a href="intro-to-data.html#cb1-23" aria-hidden="true"></a><span class="co">#&gt; $ urgent_subj  &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</span></span>
-<span id="cb1-24"><a href="intro-to-data.html#cb1-24" aria-hidden="true"></a><span class="co">#&gt; $ exclaim_mess &lt;dbl&gt; 8, 1, 2, 1, 43, 0, 0, 2, 22, 3, 13, 1, 2, 2, 21, 10, 0, …</span></span>
-<span id="cb1-25"><a href="intro-to-data.html#cb1-25" aria-hidden="true"></a><span class="co">#&gt; $ number       &lt;fct&gt; small, big, none, small, small, small, small, small, sma…</span></span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="intro-to-data.html#cb2-1" aria-hidden="true"></a><span class="kw">head</span>(email50) </span>
-<span id="cb2-2"><a href="intro-to-data.html#cb2-2" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 6 x 21</span></span>
-<span id="cb2-3"><a href="intro-to-data.html#cb2-3" aria-hidden="true"></a><span class="co">#&gt;    spam to_multiple  from    cc sent_email time                image attach</span></span>
-<span id="cb2-4"><a href="intro-to-data.html#cb2-4" aria-hidden="true"></a><span class="co">#&gt;   &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;      &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt;  &lt;dbl&gt;</span></span>
-<span id="cb2-5"><a href="intro-to-data.html#cb2-5" aria-hidden="true"></a><span class="co">#&gt; 1     0           0     1     0          1 2012-01-04 06:19:16     0      0</span></span>
-<span id="cb2-6"><a href="intro-to-data.html#cb2-6" aria-hidden="true"></a><span class="co">#&gt; 2     0           0     1     0          0 2012-02-16 13:10:06     0      0</span></span>
-<span id="cb2-7"><a href="intro-to-data.html#cb2-7" aria-hidden="true"></a><span class="co">#&gt; 3     1           0     1     4          0 2012-01-04 08:36:23     0      2</span></span>
-<span id="cb2-8"><a href="intro-to-data.html#cb2-8" aria-hidden="true"></a><span class="co">#&gt; 4     0           0     1     0          0 2012-01-04 10:49:52     0      0</span></span>
-<span id="cb2-9"><a href="intro-to-data.html#cb2-9" aria-hidden="true"></a><span class="co">#&gt; 5     0           0     1     0          0 2012-01-27 02:34:45     0      0</span></span>
-<span id="cb2-10"><a href="intro-to-data.html#cb2-10" aria-hidden="true"></a><span class="co">#&gt; 6     0           0     1     0          0 2012-01-17 10:31:57     0      0</span></span>
-<span id="cb2-11"><a href="intro-to-data.html#cb2-11" aria-hidden="true"></a><span class="co">#&gt; # … with 13 more variables: dollar &lt;dbl&gt;, winner &lt;fct&gt;, inherit &lt;dbl&gt;,</span></span>
-<span id="cb2-12"><a href="intro-to-data.html#cb2-12" aria-hidden="true"></a><span class="co">#&gt; #   viagra &lt;dbl&gt;, password &lt;dbl&gt;, num_char &lt;dbl&gt;, line_breaks &lt;int&gt;,</span></span>
-<span id="cb2-13"><a href="intro-to-data.html#cb2-13" aria-hidden="true"></a><span class="co">#&gt; #   format &lt;dbl&gt;, re_subj &lt;dbl&gt;, exclaim_subj &lt;dbl&gt;, urgent_subj &lt;dbl&gt;,</span></span>
-<span id="cb2-14"><a href="intro-to-data.html#cb2-14" aria-hidden="true"></a><span class="co">#&gt; #   exclaim_mess &lt;dbl&gt;, number &lt;fct&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="intro-to-data.html#cb3-1" aria-hidden="true"></a><span class="kw">data</span>(email50)</span>
+<span id="cb3-2"><a href="intro-to-data.html#cb3-2" aria-hidden="true"></a><span class="kw">glimpse</span>(email50)</span>
+<span id="cb3-3"><a href="intro-to-data.html#cb3-3" aria-hidden="true"></a><span class="co">#&gt; Rows: 50</span></span>
+<span id="cb3-4"><a href="intro-to-data.html#cb3-4" aria-hidden="true"></a><span class="co">#&gt; Columns: 21</span></span>
+<span id="cb3-5"><a href="intro-to-data.html#cb3-5" aria-hidden="true"></a><span class="co">#&gt; $ spam         &lt;dbl&gt; 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0,…</span></span>
+<span id="cb3-6"><a href="intro-to-data.html#cb3-6" aria-hidden="true"></a><span class="co">#&gt; $ to_multiple  &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,…</span></span>
+<span id="cb3-7"><a href="intro-to-data.html#cb3-7" aria-hidden="true"></a><span class="co">#&gt; $ from         &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…</span></span>
+<span id="cb3-8"><a href="intro-to-data.html#cb3-8" aria-hidden="true"></a><span class="co">#&gt; $ cc           &lt;int&gt; 0, 0, 4, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,…</span></span>
+<span id="cb3-9"><a href="intro-to-data.html#cb3-9" aria-hidden="true"></a><span class="co">#&gt; $ sent_email   &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1,…</span></span>
+<span id="cb3-10"><a href="intro-to-data.html#cb3-10" aria-hidden="true"></a><span class="co">#&gt; $ time         &lt;dttm&gt; 2012-01-04 06:19:16, 2012-02-16 13:10:06, 2012-01-04 08…</span></span>
+<span id="cb3-11"><a href="intro-to-data.html#cb3-11" aria-hidden="true"></a><span class="co">#&gt; $ image        &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</span></span>
+<span id="cb3-12"><a href="intro-to-data.html#cb3-12" aria-hidden="true"></a><span class="co">#&gt; $ attach       &lt;dbl&gt; 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 0,…</span></span>
+<span id="cb3-13"><a href="intro-to-data.html#cb3-13" aria-hidden="true"></a><span class="co">#&gt; $ dollar       &lt;dbl&gt; 0, 0, 0, 0, 9, 0, 0, 0, 0, 23, 4, 0, 3, 2, 0, 0, 0, 0, 0…</span></span>
+<span id="cb3-14"><a href="intro-to-data.html#cb3-14" aria-hidden="true"></a><span class="co">#&gt; $ winner       &lt;fct&gt; no, no, no, no, no, no, no, no, no, no, no, no, yes, no,…</span></span>
+<span id="cb3-15"><a href="intro-to-data.html#cb3-15" aria-hidden="true"></a><span class="co">#&gt; $ inherit      &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</span></span>
+<span id="cb3-16"><a href="intro-to-data.html#cb3-16" aria-hidden="true"></a><span class="co">#&gt; $ viagra       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</span></span>
+<span id="cb3-17"><a href="intro-to-data.html#cb3-17" aria-hidden="true"></a><span class="co">#&gt; $ password     &lt;dbl&gt; 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 8,…</span></span>
+<span id="cb3-18"><a href="intro-to-data.html#cb3-18" aria-hidden="true"></a><span class="co">#&gt; $ num_char     &lt;dbl&gt; 21.705, 7.011, 0.631, 2.454, 41.623, 0.057, 0.809, 5.229…</span></span>
+<span id="cb3-19"><a href="intro-to-data.html#cb3-19" aria-hidden="true"></a><span class="co">#&gt; $ line_breaks  &lt;int&gt; 551, 183, 28, 61, 1088, 5, 17, 88, 242, 578, 1167, 198, …</span></span>
+<span id="cb3-20"><a href="intro-to-data.html#cb3-20" aria-hidden="true"></a><span class="co">#&gt; $ format       &lt;dbl&gt; 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1,…</span></span>
+<span id="cb3-21"><a href="intro-to-data.html#cb3-21" aria-hidden="true"></a><span class="co">#&gt; $ re_subj      &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0,…</span></span>
+<span id="cb3-22"><a href="intro-to-data.html#cb3-22" aria-hidden="true"></a><span class="co">#&gt; $ exclaim_subj &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</span></span>
+<span id="cb3-23"><a href="intro-to-data.html#cb3-23" aria-hidden="true"></a><span class="co">#&gt; $ urgent_subj  &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</span></span>
+<span id="cb3-24"><a href="intro-to-data.html#cb3-24" aria-hidden="true"></a><span class="co">#&gt; $ exclaim_mess &lt;dbl&gt; 8, 1, 2, 1, 43, 0, 0, 2, 22, 3, 13, 1, 2, 2, 21, 10, 0, …</span></span>
+<span id="cb3-25"><a href="intro-to-data.html#cb3-25" aria-hidden="true"></a><span class="co">#&gt; $ number       &lt;fct&gt; small, big, none, small, small, small, small, small, sma…</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="intro-to-data.html#cb4-1" aria-hidden="true"></a><span class="kw">head</span>(email50) </span>
+<span id="cb4-2"><a href="intro-to-data.html#cb4-2" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 6 x 21</span></span>
+<span id="cb4-3"><a href="intro-to-data.html#cb4-3" aria-hidden="true"></a><span class="co">#&gt;    spam to_multiple  from    cc sent_email time                image attach</span></span>
+<span id="cb4-4"><a href="intro-to-data.html#cb4-4" aria-hidden="true"></a><span class="co">#&gt;   &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;      &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span id="cb4-5"><a href="intro-to-data.html#cb4-5" aria-hidden="true"></a><span class="co">#&gt; 1     0           0     1     0          1 2012-01-04 06:19:16     0      0</span></span>
+<span id="cb4-6"><a href="intro-to-data.html#cb4-6" aria-hidden="true"></a><span class="co">#&gt; 2     0           0     1     0          0 2012-02-16 13:10:06     0      0</span></span>
+<span id="cb4-7"><a href="intro-to-data.html#cb4-7" aria-hidden="true"></a><span class="co">#&gt; 3     1           0     1     4          0 2012-01-04 08:36:23     0      2</span></span>
+<span id="cb4-8"><a href="intro-to-data.html#cb4-8" aria-hidden="true"></a><span class="co">#&gt; 4     0           0     1     0          0 2012-01-04 10:49:52     0      0</span></span>
+<span id="cb4-9"><a href="intro-to-data.html#cb4-9" aria-hidden="true"></a><span class="co">#&gt; 5     0           0     1     0          0 2012-01-27 02:34:45     0      0</span></span>
+<span id="cb4-10"><a href="intro-to-data.html#cb4-10" aria-hidden="true"></a><span class="co">#&gt; 6     0           0     1     0          0 2012-01-17 10:31:57     0      0</span></span>
+<span id="cb4-11"><a href="intro-to-data.html#cb4-11" aria-hidden="true"></a><span class="co">#&gt; # … with 13 more variables: dollar &lt;dbl&gt;, winner &lt;fct&gt;, inherit &lt;dbl&gt;,</span></span>
+<span id="cb4-12"><a href="intro-to-data.html#cb4-12" aria-hidden="true"></a><span class="co">#&gt; #   viagra &lt;dbl&gt;, password &lt;dbl&gt;, num_char &lt;dbl&gt;, line_breaks &lt;int&gt;,</span></span>
+<span id="cb4-13"><a href="intro-to-data.html#cb4-13" aria-hidden="true"></a><span class="co">#&gt; #   format &lt;dbl&gt;, re_subj &lt;dbl&gt;, exclaim_subj &lt;dbl&gt;, urgent_subj &lt;dbl&gt;,</span></span>
+<span id="cb4-14"><a href="intro-to-data.html#cb4-14" aria-hidden="true"></a><span class="co">#&gt; #   exclaim_mess &lt;dbl&gt;, number &lt;fct&gt;</span></span></code></pre></div>
 <p>Sometimes it is necessary to extract a column or a row from a data set.
 In <code>R</code>, the <code>$</code> operator can be used to extract a column from a data set.
 For example, <code>data$variable</code> would extract the <code>variable</code> column from the <code>data</code> dataframe.
@@ -1768,17 +1773,17 @@ When extracted, these columns can be thought of as vectors. With these vectors, 
 For example, <code>data$variable[2]</code> would extract the second entry (row) of the <code>variable</code> column.</p>
 <p>Because a dataframe can be (roughly) thought of as a set of many different vectors, you can extract rows and columns from a dataframe using familiar matrix notation (e.g. <code>[row, column]</code>.
 For example <code>data[i,j]</code> will extract the <span class="math inline">\((i,j)^{th}\)</span> entry of data, <code>data[i, ]</code> will extract the <span class="math inline">\(i^{th}\)</span> row, and <code>data[ , j]</code> will extract the <span class="math inline">\(j^{th}\)</span> column. Notice, when extracting an entire row (or column), you do not need to specify the columns (or rows) you would like, which is why the second entry does not contain a number.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="intro-to-data.html#cb3-1" aria-hidden="true"></a>email50<span class="op">$</span>num_char</span>
-<span id="cb3-2"><a href="intro-to-data.html#cb3-2" aria-hidden="true"></a><span class="co">#&gt;  [1] 21.705  7.011  0.631  2.454 41.623  0.057  0.809  5.229  9.277 17.170</span></span>
-<span id="cb3-3"><a href="intro-to-data.html#cb3-3" aria-hidden="true"></a><span class="co">#&gt; [11] 64.401 10.368 42.793  0.451 29.233  9.794  2.139  0.130  4.945 11.533</span></span>
-<span id="cb3-4"><a href="intro-to-data.html#cb3-4" aria-hidden="true"></a><span class="co">#&gt; [21]  5.682  6.768  0.086  3.070 26.520 26.255  5.259  2.780  5.864  9.928</span></span>
-<span id="cb3-5"><a href="intro-to-data.html#cb3-5" aria-hidden="true"></a><span class="co">#&gt; [31] 25.209  6.563 24.599 25.757  0.409 11.223  3.778  1.493 10.613  0.493</span></span>
-<span id="cb3-6"><a href="intro-to-data.html#cb3-6" aria-hidden="true"></a><span class="co">#&gt; [41]  4.415 14.156  9.491 24.837  0.684 13.502  2.789  1.169  8.937 15.829</span></span>
-<span id="cb3-7"><a href="intro-to-data.html#cb3-7" aria-hidden="true"></a>email50[<span class="dv">47</span>,<span class="dv">3</span>]</span>
-<span id="cb3-8"><a href="intro-to-data.html#cb3-8" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 1 x 1</span></span>
-<span id="cb3-9"><a href="intro-to-data.html#cb3-9" aria-hidden="true"></a><span class="co">#&gt;    from</span></span>
-<span id="cb3-10"><a href="intro-to-data.html#cb3-10" aria-hidden="true"></a><span class="co">#&gt;   &lt;dbl&gt;</span></span>
-<span id="cb3-11"><a href="intro-to-data.html#cb3-11" aria-hidden="true"></a><span class="co">#&gt; 1     1</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="intro-to-data.html#cb5-1" aria-hidden="true"></a>email50<span class="op">$</span>num_char</span>
+<span id="cb5-2"><a href="intro-to-data.html#cb5-2" aria-hidden="true"></a><span class="co">#&gt;  [1] 21.705  7.011  0.631  2.454 41.623  0.057  0.809  5.229  9.277 17.170</span></span>
+<span id="cb5-3"><a href="intro-to-data.html#cb5-3" aria-hidden="true"></a><span class="co">#&gt; [11] 64.401 10.368 42.793  0.451 29.233  9.794  2.139  0.130  4.945 11.533</span></span>
+<span id="cb5-4"><a href="intro-to-data.html#cb5-4" aria-hidden="true"></a><span class="co">#&gt; [21]  5.682  6.768  0.086  3.070 26.520 26.255  5.259  2.780  5.864  9.928</span></span>
+<span id="cb5-5"><a href="intro-to-data.html#cb5-5" aria-hidden="true"></a><span class="co">#&gt; [31] 25.209  6.563 24.599 25.757  0.409 11.223  3.778  1.493 10.613  0.493</span></span>
+<span id="cb5-6"><a href="intro-to-data.html#cb5-6" aria-hidden="true"></a><span class="co">#&gt; [41]  4.415 14.156  9.491 24.837  0.684 13.502  2.789  1.169  8.937 15.829</span></span>
+<span id="cb5-7"><a href="intro-to-data.html#cb5-7" aria-hidden="true"></a>email50[<span class="dv">47</span>,<span class="dv">3</span>]</span>
+<span id="cb5-8"><a href="intro-to-data.html#cb5-8" aria-hidden="true"></a><span class="co">#&gt; # A tibble: 1 x 1</span></span>
+<span id="cb5-9"><a href="intro-to-data.html#cb5-9" aria-hidden="true"></a><span class="co">#&gt;    from</span></span>
+<span id="cb5-10"><a href="intro-to-data.html#cb5-10" aria-hidden="true"></a><span class="co">#&gt;   &lt;dbl&gt;</span></span>
+<span id="cb5-11"><a href="intro-to-data.html#cb5-11" aria-hidden="true"></a><span class="co">#&gt; 1     1</span></span></code></pre></div>
 <table>
 <caption>
 <span id="tab:ca">Table 1.7: </span>Data from the 47th row of the email data set.
@@ -1957,43 +1962,43 @@ Two hundred observations were randomly sampled from the High School and Beyond s
 Of interest is the proportion of students at each of the two types of school, <code>public</code> and <code>privaate</code>.</p>
 <p>We use the <code>table</code> command to tabulate how many of each type of school are in the data set. Notice that the same result is produced by the <code>$</code> command with <code>table</code> and the chaining syntax done with <code>%&gt;%</code>.</p>
 <div style="float: left; width: 49.5%;">
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="intro-to-data.html#cb5-1" aria-hidden="true"></a><span class="kw">data</span>(hsb2)</span>
-<span id="cb5-2"><a href="intro-to-data.html#cb5-2" aria-hidden="true"></a><span class="kw">table</span>(hsb2<span class="op">$</span>schtyp)  </span>
-<span id="cb5-3"><a href="intro-to-data.html#cb5-3" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb5-4"><a href="intro-to-data.html#cb5-4" aria-hidden="true"></a><span class="co">#&gt;  public private </span></span>
-<span id="cb5-5"><a href="intro-to-data.html#cb5-5" aria-hidden="true"></a><span class="co">#&gt;     168      32</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="intro-to-data.html#cb7-1" aria-hidden="true"></a><span class="kw">data</span>(hsb2)</span>
+<span id="cb7-2"><a href="intro-to-data.html#cb7-2" aria-hidden="true"></a><span class="kw">table</span>(hsb2<span class="op">$</span>schtyp)  </span>
+<span id="cb7-3"><a href="intro-to-data.html#cb7-3" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb7-4"><a href="intro-to-data.html#cb7-4" aria-hidden="true"></a><span class="co">#&gt;  public private </span></span>
+<span id="cb7-5"><a href="intro-to-data.html#cb7-5" aria-hidden="true"></a><span class="co">#&gt;     168      32</span></span></code></pre></div>
 </div>
 <div style="float: left; width: 49.5%;">
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="intro-to-data.html#cb6-1" aria-hidden="true"></a>hsb2 <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb6-2"><a href="intro-to-data.html#cb6-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">select</span>(schtyp) <span class="op">%&gt;%</span></span>
-<span id="cb6-3"><a href="intro-to-data.html#cb6-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">table</span>()</span>
-<span id="cb6-4"><a href="intro-to-data.html#cb6-4" aria-hidden="true"></a><span class="co">#&gt; .</span></span>
-<span id="cb6-5"><a href="intro-to-data.html#cb6-5" aria-hidden="true"></a><span class="co">#&gt;  public private </span></span>
-<span id="cb6-6"><a href="intro-to-data.html#cb6-6" aria-hidden="true"></a><span class="co">#&gt;     168      32</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="intro-to-data.html#cb8-1" aria-hidden="true"></a>hsb2 <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb8-2"><a href="intro-to-data.html#cb8-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">select</span>(schtyp) <span class="op">%&gt;%</span></span>
+<span id="cb8-3"><a href="intro-to-data.html#cb8-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">table</span>()</span>
+<span id="cb8-4"><a href="intro-to-data.html#cb8-4" aria-hidden="true"></a><span class="co">#&gt; .</span></span>
+<span id="cb8-5"><a href="intro-to-data.html#cb8-5" aria-hidden="true"></a><span class="co">#&gt;  public private </span></span>
+<span id="cb8-6"><a href="intro-to-data.html#cb8-6" aria-hidden="true"></a><span class="co">#&gt;     168      32</span></span></code></pre></div>
 </div>
 <p>What if we are interested only in <code>public</code> schools?<br />
 First, we should take note of another piece of <code>R</code> syntax: the double equal sign.
 This is the logical test for “is equal to”.
 In other words, we first determine if school type is equal to public for each of the observations in the data set and filter for those where this is true.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="intro-to-data.html#cb7-1" aria-hidden="true"></a><span class="co"># Filter for public schools</span></span>
-<span id="cb7-2"><a href="intro-to-data.html#cb7-2" aria-hidden="true"></a>hsb2_public &lt;-<span class="st"> </span>hsb2 <span class="op">%&gt;%</span></span>
-<span id="cb7-3"><a href="intro-to-data.html#cb7-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">filter</span>(schtyp <span class="op">==</span><span class="st"> &quot;public&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="intro-to-data.html#cb9-1" aria-hidden="true"></a><span class="co"># Filter for public schools</span></span>
+<span id="cb9-2"><a href="intro-to-data.html#cb9-2" aria-hidden="true"></a>hsb2_public &lt;-<span class="st"> </span>hsb2 <span class="op">%&gt;%</span></span>
+<span id="cb9-3"><a href="intro-to-data.html#cb9-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">filter</span>(schtyp <span class="op">==</span><span class="st"> &quot;public&quot;</span>)</span></code></pre></div>
 <p>We can read this as: “take the <code>hsb2</code> data frame and <code>pipe</code> it into the <code>filter</code> function. Filter the data for <code>cases where school type is equal to public</code>. Then, <code>assign</code> the resulting data frame to a new object called <code>hsb2 underscore public</code>.”</p>
 <p>Suppose we are not interested in the actual reading score of students, but instead whether their reading score is below average or at or above average.
 First, we need to calculate the average reading score with the mean function.
 This will give us the mean value, 52.23.
 However, in order to be able to refer back to this value later on, we might want to store it as an object that we can refer to by name.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="intro-to-data.html#cb8-1" aria-hidden="true"></a><span class="co"># Calculate average reading score and show the value</span></span>
-<span id="cb8-2"><a href="intro-to-data.html#cb8-2" aria-hidden="true"></a><span class="kw">mean</span>(hsb2<span class="op">$</span>read)</span>
-<span id="cb8-3"><a href="intro-to-data.html#cb8-3" aria-hidden="true"></a><span class="co">#&gt; [1] 52.2</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="intro-to-data.html#cb10-1" aria-hidden="true"></a><span class="co"># Calculate average reading score and show the value</span></span>
+<span id="cb10-2"><a href="intro-to-data.html#cb10-2" aria-hidden="true"></a><span class="kw">mean</span>(hsb2<span class="op">$</span>read)</span>
+<span id="cb10-3"><a href="intro-to-data.html#cb10-3" aria-hidden="true"></a><span class="co">#&gt; [1] 52.2</span></span></code></pre></div>
 <p>So instead of just printing the result, let’s save it as a new object called <code>avg_read</code>.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="intro-to-data.html#cb9-1" aria-hidden="true"></a><span class="co"># Calculate average reading score and store as avg_read</span></span>
-<span id="cb9-2"><a href="intro-to-data.html#cb9-2" aria-hidden="true"></a>avg_read &lt;-<span class="st"> </span><span class="kw">mean</span>(hsb2<span class="op">$</span>read)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="intro-to-data.html#cb11-1" aria-hidden="true"></a><span class="co"># Calculate average reading score and store as avg_read</span></span>
+<span id="cb11-2"><a href="intro-to-data.html#cb11-2" aria-hidden="true"></a>avg_read &lt;-<span class="st"> </span><span class="kw">mean</span>(hsb2<span class="op">$</span>read)</span></code></pre></div>
 <p>Before we more on, a quick tip: most often you’ll want to do both; see the value and also store it for later use. The approach we used here, running the mean function twice, is redundant.</p>
 <p>Instead, you can simply wrap your assignment code in parentheses so that <code>R</code> will not only assign the average value of reading test scores to avg read, but it will also print out its value.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="intro-to-data.html#cb10-1" aria-hidden="true"></a><span class="co"># Do both</span></span>
-<span id="cb10-2"><a href="intro-to-data.html#cb10-2" aria-hidden="true"></a>(avg_read &lt;-<span class="st"> </span><span class="kw">mean</span>(hsb2<span class="op">$</span>read))</span>
-<span id="cb10-3"><a href="intro-to-data.html#cb10-3" aria-hidden="true"></a><span class="co">#&gt; [1] 52.2</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="intro-to-data.html#cb12-1" aria-hidden="true"></a><span class="co"># Do both</span></span>
+<span id="cb12-2"><a href="intro-to-data.html#cb12-2" aria-hidden="true"></a>(avg_read &lt;-<span class="st"> </span><span class="kw">mean</span>(hsb2<span class="op">$</span>read))</span>
+<span id="cb12-3"><a href="intro-to-data.html#cb12-3" aria-hidden="true"></a><span class="co">#&gt; [1] 52.2</span></span></code></pre></div>
 <p>Next we need to determine whether each student is below or at or above average. For example, a reading score of 57 is above average, so is 68, but 44 is below.
 Obviously, going through each record like this would be tedious and error prone.</p>
 <p>Instead we can create this new variable with the mutate function from the <code>dplyr</code> package.</p>
@@ -2002,8 +2007,8 @@ Note that we are using a new variable name here in order to not overwrite the ex
 The new variable <code>read_cat</code> will be a column in the existing data frame <code>hsb2</code>.
 To indicate that the <code>mutate</code> function came from the <code>dplyr</code> package, we use the <code>pacakge::function</code> syntax.
 It is not usually necessary to provide the package name (unless there is ambiguity about where the function came from).</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="intro-to-data.html#cb11-1" aria-hidden="true"></a>hsb2 &lt;-<span class="st"> </span>hsb2 <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">read_cat =</span> <span class="kw">ifelse</span>(read <span class="op">&lt;</span><span class="st"> </span>avg_read, </span>
-<span id="cb11-2"><a href="intro-to-data.html#cb11-2" aria-hidden="true"></a>                                                 <span class="st">&quot;below average&quot;</span>, <span class="st">&quot;at or above average&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="intro-to-data.html#cb13-1" aria-hidden="true"></a>hsb2 &lt;-<span class="st"> </span>hsb2 <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">read_cat =</span> <span class="kw">ifelse</span>(read <span class="op">&lt;</span><span class="st"> </span>avg_read, </span>
+<span id="cb13-2"><a href="intro-to-data.html#cb13-2" aria-hidden="true"></a>                                                 <span class="st">&quot;below average&quot;</span>, <span class="st">&quot;at or above average&quot;</span>))</span></code></pre></div>
 <p>The decision criteria for this new variable is based on a TRUE/FALSE question: if the reading score of the student is below the average reading score, label “below average”, otherwise, label “at or above average”.</p>
 <p>This can be accomplished using the <code>ifelse</code> function in <code>R</code>.</p>
 <p>The first argument of the function is the logical test.</p>

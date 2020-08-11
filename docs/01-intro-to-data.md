@@ -328,7 +328,7 @@ Descriptions of the variables in the `loan50` data set are given in Table \@ref(
   </tr>
   <tr>
    <td style="text-align:left;"> grade </td>
-   <td style="text-align:left;"> Loan grade, which takes a values A through G and represents the quality of the loan and its likelihood of being repaid. </td>
+   <td style="text-align:left;"> Loan grade, which takes on values A through G and represents the quality of the loan and its likelihood of being repaid. </td>
   </tr>
   <tr>
    <td style="text-align:left;"> state </td>

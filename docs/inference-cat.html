@@ -24,7 +24,7 @@
 <meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager" />
 
 
-<meta name="date" content="2020-08-08" />
+<meta name="date" content="2020-08-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -137,6 +137,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
 <ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#textbook-overview"><i class="fa fa-check"></i>Textbook overview</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#statistical-computing"><i class="fa fa-check"></i>Statistical computing</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#getting-rstudio"><i class="fa fa-check"></i>Getting RStudio</a></li>
+<li><a href="index.html#installing-catstats">Installing <code>catstats</code></a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html"><i class="fa fa-check"></i>About the Authors</a>
@@ -801,21 +806,21 @@ Figure 5.8: The normal model for SAT scores, shading the area of those individua
 </div>
 <p>We can use the normal model to find percentiles or probabilities. In <code>R</code>, the function
 to calculate normal probabilities is <code>pnorm()</code>. The <code>normTail()</code> function is available in the <code>openintro</code> R package and will draw the associated curve if it is helpful. In the code below, we find the percentile of <span class="math inline">\(Z=0.43\)</span> is 0.6664, or the <span class="math inline">\(66.64^{th}\)</span> percentile.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="inference-cat.html#cb12-1" aria-hidden="true"></a><span class="kw">pnorm</span>(<span class="fl">0.43</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span>
-<span id="cb12-2"><a href="inference-cat.html#cb12-2" aria-hidden="true"></a><span class="co">#&gt; [1] 0.666</span></span>
-<span id="cb12-3"><a href="inference-cat.html#cb12-3" aria-hidden="true"></a>openintro<span class="op">::</span><span class="kw">normTail</span>(<span class="fl">0.43</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="inference-cat.html#cb14-1" aria-hidden="true"></a><span class="kw">pnorm</span>(<span class="fl">0.43</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span>
+<span id="cb14-2"><a href="inference-cat.html#cb14-2" aria-hidden="true"></a><span class="co">#&gt; [1] 0.666</span></span>
+<span id="cb14-3"><a href="inference-cat.html#cb14-3" aria-hidden="true"></a>openintro<span class="op">::</span><span class="kw">normTail</span>(<span class="fl">0.43</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="05-inference-cat_files/figure-html/unnamed-chunk-40-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>We can also find the Z-score associated with a percentile.
 For example, to identify Z for the <span class="math inline">\(80^{th}\)</span> percentile, we use <code>qnorm()</code> which identifies the <strong>quantile</strong> for a given percentage. The quantile represents the cutoff value. (To remember the function <code>qnorm()</code> as providing a cutoff, notice that both <code>qnorm()</code> and “cutoff” start with the sound “kuh”. To remember the <code>pnorm()</code> function as providing a probability from a given cutoff, notice that both <code>pnorm()</code> and probability start with the sound “puh”.)
 We determine the Z-score for the <span class="math inline">\(80^{th}\)</span> percentile using <code>qnorm()</code>: 0.84.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="inference-cat.html#cb13-1" aria-hidden="true"></a><span class="kw">qnorm</span>(<span class="fl">0.80</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span>
-<span id="cb13-2"><a href="inference-cat.html#cb13-2" aria-hidden="true"></a><span class="co">#&gt; [1] 0.842</span></span>
-<span id="cb13-3"><a href="inference-cat.html#cb13-3" aria-hidden="true"></a>openintro<span class="op">::</span><span class="kw">normTail</span>(<span class="fl">0.80</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="inference-cat.html#cb15-1" aria-hidden="true"></a><span class="kw">qnorm</span>(<span class="fl">0.80</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span>
+<span id="cb15-2"><a href="inference-cat.html#cb15-2" aria-hidden="true"></a><span class="co">#&gt; [1] 0.842</span></span>
+<span id="cb15-3"><a href="inference-cat.html#cb15-3" aria-hidden="true"></a>openintro<span class="op">::</span><span class="kw">normTail</span>(<span class="fl">0.80</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="05-inference-cat_files/figure-html/unnamed-chunk-41-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>We can use these functions with other normal distributions than the standard normal distribution by specifying the mean as the argument for <code>m</code> and the standard deviation as the argument for <code>s</code>. Here we determine the proportion of ACT test takers who scored worse than Tom on the ACT: 0.73.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="inference-cat.html#cb14-1" aria-hidden="true"></a><span class="kw">pnorm</span>(<span class="dv">24</span>, <span class="dt">m =</span> <span class="dv">21</span>, <span class="dt">s =</span> <span class="dv">5</span>)</span>
-<span id="cb14-2"><a href="inference-cat.html#cb14-2" aria-hidden="true"></a><span class="co">#&gt; [1] 0.726</span></span>
-<span id="cb14-3"><a href="inference-cat.html#cb14-3" aria-hidden="true"></a>openintro<span class="op">::</span><span class="kw">normTail</span>(<span class="dv">24</span>, <span class="dt">m =</span> <span class="dv">21</span>, <span class="dt">s =</span> <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="inference-cat.html#cb16-1" aria-hidden="true"></a><span class="kw">pnorm</span>(<span class="dv">24</span>, <span class="dt">m =</span> <span class="dv">21</span>, <span class="dt">s =</span> <span class="dv">5</span>)</span>
+<span id="cb16-2"><a href="inference-cat.html#cb16-2" aria-hidden="true"></a><span class="co">#&gt; [1] 0.726</span></span>
+<span id="cb16-3"><a href="inference-cat.html#cb16-3" aria-hidden="true"></a>openintro<span class="op">::</span><span class="kw">normTail</span>(<span class="dv">24</span>, <span class="dt">m =</span> <span class="dv">21</span>, <span class="dt">s =</span> <span class="dv">5</span>)</span></code></pre></div>
 <p><img src="05-inference-cat_files/figure-html/unnamed-chunk-42-1.png" width="70%" style="display: block; margin: auto;" /></p>
 
 <div class="guidedpractice">
@@ -895,8 +900,8 @@ Knowing <span class="math inline">\(Z_{Erik}=-0.25\)</span> and the population p
 \end{eqnarray*}\]</span>
 Solving for <span class="math inline">\(x_{Erik}\)</span> yields the height 69.18 inches. That is, Erik is about 5’9’’ (this is notation for 5-feet, 9-inches).
 </div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="inference-cat.html#cb15-1" aria-hidden="true"></a><span class="kw">qnorm</span>(<span class="fl">0.4</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span>
-<span id="cb15-2"><a href="inference-cat.html#cb15-2" aria-hidden="true"></a><span class="co">#&gt; [1] -0.253</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="inference-cat.html#cb17-1" aria-hidden="true"></a><span class="kw">qnorm</span>(<span class="fl">0.4</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span>
+<span id="cb17-2"><a href="inference-cat.html#cb17-2" aria-hidden="true"></a><span class="co">#&gt; [1] -0.253</span></span></code></pre></div>
 <p><img src="05-inference-cat_files/figure-html/height40Perc-1.png" width="70%" style="display: block; margin: auto;" /></p>
 
 <div class="example">
@@ -909,8 +914,8 @@ Next, we want to find the Z-score at the <span class="math inline">\(82^{nd}\)</
 \end{eqnarray*}\]</span>
 This yields 73.04 inches or about 6’1’’ as the height at the <span class="math inline">\(82^{nd}\)</span> percentile.
 </div>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="inference-cat.html#cb16-1" aria-hidden="true"></a><span class="kw">qnorm</span>(<span class="fl">0.82</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span>
-<span id="cb16-2"><a href="inference-cat.html#cb16-2" aria-hidden="true"></a><span class="co">#&gt; [1] 0.915</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="inference-cat.html#cb18-1" aria-hidden="true"></a><span class="kw">qnorm</span>(<span class="fl">0.82</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span>
+<span id="cb18-2"><a href="inference-cat.html#cb18-2" aria-hidden="true"></a><span class="co">#&gt; [1] 0.915</span></span></code></pre></div>
 <p><img src="05-inference-cat_files/figure-html/height82Perc-1.png" width="70%" style="display: block; margin: auto;" /></p>
 
 <div class="guidedpractice">
@@ -1616,17 +1621,17 @@ where <span class="math inline">\(z^{\star}\)</span> corresponds to the confiden
 <div id="using-r-to-find-zstar" class="section level4 unnumbered">
 <h4>Using <code>R</code> to find <span class="math inline">\(z^{\star}\)</span></h4>
 <p>Figure <a href="inference-cat.html#fig:choosingZForCI">5.17</a> provides a picture of how to identify <span class="math inline">\(z^{\star}\)</span> based on a confidence level. We select <span class="math inline">\(z^{\star}\)</span> so that the area between -<span class="math inline">\(z^{\star}\)</span> and <span class="math inline">\(z^{\star}\)</span> in the normal model corresponds to the confidence level. In <code>R</code>, you can find <span class="math inline">\(z^{\star}\)</span> using the <code>qnorm()</code> function:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="inference-cat.html#cb17-1" aria-hidden="true"></a><span class="co"># z* for 90% --&gt; alpha = 0.15 --&gt; need 5% on each size:</span></span>
-<span id="cb17-2"><a href="inference-cat.html#cb17-2" aria-hidden="true"></a><span class="kw">qnorm</span>(.<span class="dv">90</span> <span class="op">+</span><span class="st"> </span><span class="fl">.05</span>)</span>
-<span id="cb17-3"><a href="inference-cat.html#cb17-3" aria-hidden="true"></a><span class="co">#&gt; [1] 1.645</span></span>
-<span id="cb17-4"><a href="inference-cat.html#cb17-4" aria-hidden="true"></a></span>
-<span id="cb17-5"><a href="inference-cat.html#cb17-5" aria-hidden="true"></a><span class="co"># z* for 95% --&gt; alpha = 0.05 --&gt; need 2.5% on each size:</span></span>
-<span id="cb17-6"><a href="inference-cat.html#cb17-6" aria-hidden="true"></a><span class="kw">qnorm</span>(.<span class="dv">95</span> <span class="op">+</span><span class="st"> </span><span class="fl">.025</span>)</span>
-<span id="cb17-7"><a href="inference-cat.html#cb17-7" aria-hidden="true"></a><span class="co">#&gt; [1] 1.96</span></span>
-<span id="cb17-8"><a href="inference-cat.html#cb17-8" aria-hidden="true"></a></span>
-<span id="cb17-9"><a href="inference-cat.html#cb17-9" aria-hidden="true"></a><span class="co"># z* for 99% --&gt; alpha = 0.01 --&gt; need .5% on each size:</span></span>
-<span id="cb17-10"><a href="inference-cat.html#cb17-10" aria-hidden="true"></a><span class="kw">qnorm</span>(.<span class="dv">99</span> <span class="op">+</span><span class="st"> </span><span class="fl">.005</span>)</span>
-<span id="cb17-11"><a href="inference-cat.html#cb17-11" aria-hidden="true"></a><span class="co">#&gt; [1] 2.576</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="inference-cat.html#cb19-1" aria-hidden="true"></a><span class="co"># z* for 90% --&gt; alpha = 0.15 --&gt; need 5% on each size:</span></span>
+<span id="cb19-2"><a href="inference-cat.html#cb19-2" aria-hidden="true"></a><span class="kw">qnorm</span>(.<span class="dv">90</span> <span class="op">+</span><span class="st"> </span><span class="fl">.05</span>)</span>
+<span id="cb19-3"><a href="inference-cat.html#cb19-3" aria-hidden="true"></a><span class="co">#&gt; [1] 1.645</span></span>
+<span id="cb19-4"><a href="inference-cat.html#cb19-4" aria-hidden="true"></a></span>
+<span id="cb19-5"><a href="inference-cat.html#cb19-5" aria-hidden="true"></a><span class="co"># z* for 95% --&gt; alpha = 0.05 --&gt; need 2.5% on each size:</span></span>
+<span id="cb19-6"><a href="inference-cat.html#cb19-6" aria-hidden="true"></a><span class="kw">qnorm</span>(.<span class="dv">95</span> <span class="op">+</span><span class="st"> </span><span class="fl">.025</span>)</span>
+<span id="cb19-7"><a href="inference-cat.html#cb19-7" aria-hidden="true"></a><span class="co">#&gt; [1] 1.96</span></span>
+<span id="cb19-8"><a href="inference-cat.html#cb19-8" aria-hidden="true"></a></span>
+<span id="cb19-9"><a href="inference-cat.html#cb19-9" aria-hidden="true"></a><span class="co"># z* for 99% --&gt; alpha = 0.01 --&gt; need .5% on each size:</span></span>
+<span id="cb19-10"><a href="inference-cat.html#cb19-10" aria-hidden="true"></a><span class="kw">qnorm</span>(.<span class="dv">99</span> <span class="op">+</span><span class="st"> </span><span class="fl">.005</span>)</span>
+<span id="cb19-11"><a href="inference-cat.html#cb19-11" aria-hidden="true"></a><span class="co">#&gt; [1] 2.576</span></span></code></pre></div>
 
 <div class="guidedpractice">
 Previously, we found that implanting a stent in the brain of a patient at risk for a stroke <em>increased</em> the risk of a stroke. The study estimated a 9% increase in the number of patients who had a stroke, and the standard error of this estimate was about <span class="math inline">\(SE = 2.8%\)</span>. Compute a 90% confidence interval for the effect.<a href="#fn92" class="footnote-ref" id="fnref92"><sup>92</sup></a>

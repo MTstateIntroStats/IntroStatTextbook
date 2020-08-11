@@ -1,7 +1,7 @@
 --- 
 title: "Montana State Introductory Statistics with R"
 author: "Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager"
-date: "2020-08-08"
+date: "2020-08-10"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -37,6 +37,51 @@ on the [course webpage](https://math.montana.edu/courses/s216/index.html). Detai
 8. **Inference for regression.** Inference for a regression slope or correlation using simulation and randomization techniques as well as the $t$-distribution.
 9. **Case studies.** A series of case studies assigned weekly in this course.
 
+
+## Statistical computing {-}
+
+STAT 216 and this textbook use [`R`](https://www.r-project.org/) and [RStudio](https://rstudio.com/products/rstudio/) for statistical computing. In particular, we use
+the [`tidyverse`](https://www.tidyverse.org/) collection of packages designed for doing data science.
+STAT 216 also has its own `R` package called [`catstats`](https://github.com/greenwood-stat/catstats), which contains all of the functions
+for running simulation-based inference in this course.
+
+### Getting RStudio {-}
+
+Students have four options for accessing this free software:
+
+1. Download to your own laptop. (Note R and RStudio will not run on iPad, notebooks, or Chromebooks. If you have one of these devices, see the cloud-based option below.)
+
+* Download and install [R](https://cloud.r-project.org/).
+* Download and install [RStudio Desktop](https://rstudio.com/products/rstudio/).
+* Install the `catstats` package.
+
+2. Use RStudio through the [RStudio Cloud](https://login.rstudio.cloud/register?redirect=https%3A%2F%2Fclient.login.rstudio.cloud%2Foauth%2Flogin%3Fshow_auth%3D0%26show_login%3D1%26show_setup%3D1). This resource allows you to use RStudio through a web browser. It is free for use, but it does limit you to a certain number of project hours per month.
+
+3. Use RStudio through an MSU [virtual machine](https://studentlabs.montana.edu/remotelabs/howto.html).
+
+4. Use RStudio in an MSU on-campus computer lab. 
+
+### Installing `catstats` {-}
+
+To use the `R` functions in the `catstats` package, you need to first install the `remotes` package,
+and then install `catstats` from Github.
+
+In the RStudio console, run the following commands:
+
+```r
+install.packages("remotes")
+remotes::install_github("greenwood-stat/catstats")
+```
+If during the installation, it gives you an option to update the more
+recent versions of packages, type `1` (to choose to install All),
+then type Yes if it asks if you want to install.
+
+You only need to run the installation commands once, but you will need to load
+the `catstats` package each time you restart RStudio using the following command:
+
+```r
+library(catstats)
+```
 
 ## Acknowledgements {-}
 
