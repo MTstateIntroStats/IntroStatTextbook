@@ -16,7 +16,9 @@ rmd_files: [
   "05-inference-cat.Rmd",
   "06-inference-num.Rmd",
   "07-inference-reg.Rmd",
-  "10-references.Rmd"
+  #"09-case-studies.Rmd",
+  "10-activities.Rmd",
+  "11-references.Rmd"
   ]
 before_chapter_script: "_common.R"
 output: bookdown::gitbook

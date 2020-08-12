@@ -209,7 +209,7 @@ Here, we will consider loans offered through the Lending Club, a peer-to-peer le
 \BeginKnitrBlock{data}<div class="data">The `loan50` data can be found in the [openintro](http://openintrostat.github.io/openintro/reference/index.html) package.</div>\EndKnitrBlock{data}
 
 Each row in the table represents a single loan. 
-The formal name for a row is a **case** or \index{unit of observation}**observational unit**.
+The formal name for a row is a **case** or \index{unit of observation}**observational unit**. Since there are 50 observational units in our data set, the **sample size**, denoted by $n$, is 50 ($n = 50$).
 The columns represent characteristics of each loan, where each column is referred to as a **variable**.
 
 \BeginKnitrBlock{tip}<div class="tip">A variable is something that can be measured on an individual observational unit.
@@ -1093,27 +1093,27 @@ data(email50)
 glimpse(email50)
 #> Rows: 50
 #> Columns: 21
-#> $ spam         <dbl> 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, ...
-#> $ to_multiple  <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, ...
-#> $ from         <dbl> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
-#> $ cc           <int> 0, 0, 4, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...
-#> $ sent_email   <dbl> 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, ...
-#> $ time         <dttm> 2012-01-04 06:19:16, 2012-02-16 13:10:06, 2012-01-04 ...
-#> $ image        <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...
-#> $ attach       <dbl> 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, ...
-#> $ dollar       <dbl> 0, 0, 0, 0, 9, 0, 0, 0, 0, 23, 4, 0, 3, 2, 0, 0, 0, 0,...
-#> $ winner       <fct> no, no, no, no, no, no, no, no, no, no, no, no, yes, n...
-#> $ inherit      <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...
-#> $ viagra       <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...
-#> $ password     <dbl> 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, ...
-#> $ num_char     <dbl> 21.705, 7.011, 0.631, 2.454, 41.623, 0.057, 0.809, 5.2...
-#> $ line_breaks  <int> 551, 183, 28, 61, 1088, 5, 17, 88, 242, 578, 1167, 198...
-#> $ format       <dbl> 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, ...
-#> $ re_subj      <dbl> 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, ...
-#> $ exclaim_subj <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...
-#> $ urgent_subj  <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...
-#> $ exclaim_mess <dbl> 8, 1, 2, 1, 43, 0, 0, 2, 22, 3, 13, 1, 2, 2, 21, 10, 0...
-#> $ number       <fct> small, big, none, small, small, small, small, small, s...
+#> $ spam         <dbl> 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0,…
+#> $ to_multiple  <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,…
+#> $ from         <dbl> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+#> $ cc           <int> 0, 0, 4, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,…
+#> $ sent_email   <dbl> 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1,…
+#> $ time         <dttm> 2012-01-04 06:19:16, 2012-02-16 13:10:06, 2012-01-04 08…
+#> $ image        <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+#> $ attach       <dbl> 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 0,…
+#> $ dollar       <dbl> 0, 0, 0, 0, 9, 0, 0, 0, 0, 23, 4, 0, 3, 2, 0, 0, 0, 0, 0…
+#> $ winner       <fct> no, no, no, no, no, no, no, no, no, no, no, no, yes, no,…
+#> $ inherit      <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+#> $ viagra       <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+#> $ password     <dbl> 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 8,…
+#> $ num_char     <dbl> 21.705, 7.011, 0.631, 2.454, 41.623, 0.057, 0.809, 5.229…
+#> $ line_breaks  <int> 551, 183, 28, 61, 1088, 5, 17, 88, 242, 578, 1167, 198, …
+#> $ format       <dbl> 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1,…
+#> $ re_subj      <dbl> 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0,…
+#> $ exclaim_subj <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+#> $ urgent_subj  <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+#> $ exclaim_mess <dbl> 8, 1, 2, 1, 43, 0, 0, 2, 22, 3, 13, 1, 2, 2, 21, 10, 0, …
+#> $ number       <fct> small, big, none, small, small, small, small, small, sma…
 ```
 
 
@@ -1128,7 +1128,7 @@ head(email50)
 #> 4     0           0     1     0          0 2012-01-04 10:49:52     0      0
 #> 5     0           0     1     0          0 2012-01-27 02:34:45     0      0
 #> 6     0           0     1     0          0 2012-01-17 10:31:57     0      0
-#> # ... with 13 more variables: dollar <dbl>, winner <fct>, inherit <dbl>,
+#> # … with 13 more variables: dollar <dbl>, winner <fct>, inherit <dbl>,
 #> #   viagra <dbl>, password <dbl>, num_char <dbl>, line_breaks <int>,
 #> #   format <dbl>, re_subj <dbl>, exclaim_subj <dbl>, urgent_subj <dbl>,
 #> #   exclaim_mess <dbl>, number <fct>
@@ -1403,67 +1403,67 @@ However you should be able to easily spot them as **bolded text**.
    <td style="text-align:left;"> binary </td>
    <td style="text-align:left;"> dependent </td>
    <td style="text-align:left;"> ordinal </td>
-   <td style="text-align:left;"> sampling bias </td>
+   <td style="text-align:left;"> sample size </td>
   </tr>
   <tr>
    <td style="text-align:left;"> blind </td>
    <td style="text-align:left;"> discrete </td>
    <td style="text-align:left;"> placebo </td>
-   <td style="text-align:left;"> selection bias </td>
+   <td style="text-align:left;"> sampling bias </td>
   </tr>
   <tr>
    <td style="text-align:left;"> blocking </td>
    <td style="text-align:left;"> double-blind </td>
    <td style="text-align:left;"> placebo effect </td>
-   <td style="text-align:left;"> simple random sample </td>
+   <td style="text-align:left;"> selection bias </td>
   </tr>
   <tr>
    <td style="text-align:left;"> case </td>
    <td style="text-align:left;"> experiment </td>
    <td style="text-align:left;"> population </td>
-   <td style="text-align:left;"> simple random sampling </td>
+   <td style="text-align:left;"> simple random sample </td>
   </tr>
   <tr>
    <td style="text-align:left;"> categorical </td>
    <td style="text-align:left;"> explanatory variable </td>
    <td style="text-align:left;"> positive association </td>
-   <td style="text-align:left;"> statistical investigation process </td>
+   <td style="text-align:left;"> simple random sampling </td>
   </tr>
   <tr>
    <td style="text-align:left;"> cluster </td>
    <td style="text-align:left;"> independent </td>
    <td style="text-align:left;"> prospective study </td>
-   <td style="text-align:left;"> strata </td>
+   <td style="text-align:left;"> statistical investigation process </td>
   </tr>
   <tr>
    <td style="text-align:left;"> cluster sampling </td>
    <td style="text-align:left;"> level </td>
    <td style="text-align:left;"> quantitative </td>
-   <td style="text-align:left;"> stratified sampling </td>
+   <td style="text-align:left;"> strata </td>
   </tr>
   <tr>
    <td style="text-align:left;"> cohort </td>
    <td style="text-align:left;"> multistage sample </td>
    <td style="text-align:left;"> randomized experiment </td>
-   <td style="text-align:left;"> summary statistic </td>
+   <td style="text-align:left;"> stratified sampling </td>
   </tr>
   <tr>
    <td style="text-align:left;"> confounding variable </td>
    <td style="text-align:left;"> negative association </td>
    <td style="text-align:left;"> replicate </td>
-   <td style="text-align:left;"> treatment group </td>
+   <td style="text-align:left;"> summary statistic </td>
   </tr>
   <tr>
    <td style="text-align:left;"> continuous </td>
    <td style="text-align:left;"> nominal </td>
    <td style="text-align:left;"> representative </td>
-   <td style="text-align:left;"> variable </td>
+   <td style="text-align:left;"> treatment group </td>
   </tr>
   <tr>
    <td style="text-align:left;"> control </td>
    <td style="text-align:left;"> non-response bias </td>
    <td style="text-align:left;"> response bias </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> variable </td>
   </tr>
   <tr>
    <td style="text-align:left;"> control group </td>
