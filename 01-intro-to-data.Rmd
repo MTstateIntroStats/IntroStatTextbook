@@ -477,7 +477,7 @@ No pair of variables is both associated and independent.
 ### Explanatory and response variables
 
 When we ask questions about the relationship between two variables, we sometimes also want to determine if the change in one variable causes a change in the other.
-Consider the following rephrasing of an earlier question bout the `county` data set:
+Consider the following rephrasing of an earlier question about the `county` data set:
 
 > If there is an increase in the median household income in a county, does this drive an increase in its population?
 
