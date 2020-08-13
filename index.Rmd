@@ -61,6 +61,10 @@ Students have four options for accessing this free software:
 
 4. Use RStudio in an MSU on-campus computer lab. 
 
+View this [tutorial video on installing R and RStudio](https://greenwood-stat.shinyapps.io/InstallDemo/) if you would
+like additional installation instructions.
+
+
 ### Installing `catstats` {-}
 
 To use the `R` functions in the `catstats` package, you need to first install the `remotes` package,

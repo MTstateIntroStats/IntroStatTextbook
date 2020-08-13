@@ -622,7 +622,7 @@ No pair of variables is both associated and independent.</div>\EndKnitrBlock{imp
 ### Explanatory and response variables
 
 When we ask questions about the relationship between two variables, we sometimes also want to determine if the change in one variable causes a change in the other.
-Consider the following rephrasing of an earlier question bout the `county` data set:
+Consider the following rephrasing of an earlier question about the `county` data set:
 
 > If there is an increase in the median household income in a county, does this drive an increase in its population?
 
@@ -876,7 +876,7 @@ A **multistage sample** is like a cluster sample, but rather than keeping all ob
 Sometimes cluster or multistage sampling can be more economical than the alternative sampling techniques.
 Also, unlike stratified sampling, these approaches are most helpful when there is a lot of case-to-case variability within a cluster but the clusters themselves don't look very different from one another.
 For example, if neighborhoods represented clusters, then cluster or multistage sampling work best when the neighborhoods are very diverse.
-A~downside of these methods is that more advanced techniques are typically required to analyze the data, though the methods in this book can be extended to handle such data.
+A downside of these methods is that more advanced techniques are typically required to analyze the data, though the methods in this book can be extended to handle such data.
 
 \BeginKnitrBlock{example}<div class="example">Suppose we are interested in estimating the malaria rate in a densely tropical portion of rural Indonesia.
 We learn that there are 30 villages in that part of the Indonesian jungle, each more or less similar to the next, but the distances between the villages is substantial. Our goal is to test 150 individuals for malaria.
@@ -898,7 +898,7 @@ For instance, the loan data and county data described in Section \@ref(data-basi
 
 
 
-O bservational studies are generally only sufficient to show associations or form hypotheses that can be later checked with experiments. Making causal conclusions based on experiments is often reasonable. However, making the same causal conclusions based on observational data can be treacherous and is not recommended. Indeed, making causal conclusions based on observational data is arguably the most common mistake in our news headlines and social media posts!
+Observational studies are generally only sufficient to show associations or form hypotheses that can be later checked with experiments. Making causal conclusions based on experiments is often reasonable. However, making the same causal conclusions based on observational data can be treacherous and is not recommended. Indeed, making causal conclusions based on observational data is arguably the most common mistake in our news headlines and social media posts!
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Suppose an observational study tracked sunscreen use and skin cancer, and it was found that the more sunscreen someone used, the more likely the person was to have skin cancer. Does this mean sunscreen *causes* skin cancer?^[No! See the paragraph following this guided practice for an explanation.]</div>\EndKnitrBlock{guidedpractice}
 
@@ -936,7 +936,7 @@ Suggest a variable that might explain the negative relationship.^[Answers will v
 Observational studies come in two forms: prospective and retrospective studies.
 A **prospective study** identifies individuals and collects information as events unfold.
 For instance, medical researchers may identify and follow a group of patients over many years to assess the possible influences of behavior on cancer risk. 
-One example of such a study is The Nurses' Health Study. 
+One example of such a study is the Nurses' Health Study. 
 Started in 1976 and expanded in 1989, the Nurses' Health Study has collected data on over 275,000 nurses and is still enrolling participants. 
 This prospective study recruits registered nurses and then collects data from them using questionnaires. 
 **Retrospective studies** collect data after events have taken place, e.g. researchers may review past events in medical records.
@@ -1078,7 +1078,7 @@ We start with an introduction to `R`, focused on how data sets are structured in
 
 Throughout the text, we will work with many different data sets. Some data sets
 are pre-loaded into `R`, some get loaded through `R` packages, and some data sets
-will be created by the student. data sets can be viewed through the RStudio
+will be created by the student. Data sets can be viewed through the RStudio
 environment, but the data can also be investigated through the notebook features
 of an RMarkdown file.
 
@@ -1238,7 +1238,9 @@ object_name <- data_table %>%
 ```
 
 is extended chaining.  `%>%` is never at the front of the line, it is always connecting one idea with the continuation of that idea on the next line.
+
 * In `R`, all functions take arguments in round parentheses (as opposed to subsetting observations or variables from data objects which happen with square parentheses).  Additionally, the spot to the left of `%>%` is always a data table.
+
 * The pipe syntax should be read as *then*, `%>%`.
 
 ### Using the pipe to chain

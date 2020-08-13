@@ -1,7 +1,7 @@
 --- 
 title: "Montana State Introductory Statistics with R"
 author: "Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager"
-date: "2020-08-12"
+date: "2020-08-13"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -60,6 +60,10 @@ Students have four options for accessing this free software:
 3. Use RStudio through an MSU [virtual machine](https://studentlabs.montana.edu/remotelabs/howto.html).
 
 4. Use RStudio in an MSU on-campus computer lab. 
+
+View this [tutorial video on installing R and RStudio](https://greenwood-stat.shinyapps.io/InstallDemo/) if you would
+like additional installation instructions.
+
 
 ### Installing `catstats` {-}
 

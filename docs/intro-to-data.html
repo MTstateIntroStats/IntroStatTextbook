@@ -24,7 +24,7 @@
 <meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager" />
 
 
-<meta name="date" content="2020-08-12" />
+<meta name="date" content="2020-08-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1321,7 +1321,7 @@ No pair of variables is both associated and independent.
 <div id="explanatory-and-response-variables" class="section level3" number="1.2.4">
 <h3><span class="header-section-number">1.2.4</span> Explanatory and response variables</h3>
 <p>When we ask questions about the relationship between two variables, we sometimes also want to determine if the change in one variable causes a change in the other.
-Consider the following rephrasing of an earlier question bout the <code>county</code> data set:</p>
+Consider the following rephrasing of an earlier question about the <code>county</code> data set:</p>
 <blockquote>
 <p>If there is an increase in the median household income in a county, does this drive an increase in its population?</p>
 </blockquote>
@@ -1543,7 +1543,7 @@ Figure 1.11: Examples of cluster and multistage sampling. In the top panel, clus
 <p>Sometimes cluster or multistage sampling can be more economical than the alternative sampling techniques.
 Also, unlike stratified sampling, these approaches are most helpful when there is a lot of case-to-case variability within a cluster but the clusters themselves don’t look very different from one another.
 For example, if neighborhoods represented clusters, then cluster or multistage sampling work best when the neighborhoods are very diverse.
-A~downside of these methods is that more advanced techniques are typically required to analyze the data, though the methods in this book can be extended to handle such data.</p>
+A downside of these methods is that more advanced techniques are typically required to analyze the data, though the methods in this book can be extended to handle such data.</p>
 
 <div class="example">
 <p>Suppose we are interested in estimating the malaria rate in a densely tropical portion of rural Indonesia.
@@ -1562,7 +1562,7 @@ This would probably reduce our data collection costs substantially in comparison
 <h2><span class="header-section-number">1.4</span> Observational studies</h2>
 <p>Data where no treatment has been explicitly applied (or explicitly withheld) is called <strong>observational data</strong>.
 For instance, the loan data and county data described in Section <a href="intro-to-data.html#data-basics">1.2</a> are both examples of observational data.</p>
-<p>O bservational studies are generally only sufficient to show associations or form hypotheses that can be later checked with experiments. Making causal conclusions based on experiments is often reasonable. However, making the same causal conclusions based on observational data can be treacherous and is not recommended. Indeed, making causal conclusions based on observational data is arguably the most common mistake in our news headlines and social media posts!</p>
+<p>Observational studies are generally only sufficient to show associations or form hypotheses that can be later checked with experiments. Making causal conclusions based on experiments is often reasonable. However, making the same causal conclusions based on observational data can be treacherous and is not recommended. Indeed, making causal conclusions based on observational data is arguably the most common mistake in our news headlines and social media posts!</p>
 
 <div class="guidedpractice">
 Suppose an observational study tracked sunscreen use and skin cancer, and it was found that the more sunscreen someone used, the more likely the person was to have skin cancer. Does this mean sunscreen <em>causes</em> skin cancer?<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>
@@ -1601,7 +1601,7 @@ Houndstongue (a noxious weed) is found in abundance on private and public lands 
 <p>Observational studies come in two forms: prospective and retrospective studies.
 A <strong>prospective study</strong> identifies individuals and collects information as events unfold.
 For instance, medical researchers may identify and follow a group of patients over many years to assess the possible influences of behavior on cancer risk.
-One example of such a study is The Nurses’ Health Study.
+One example of such a study is the Nurses’ Health Study.
 Started in 1976 and expanded in 1989, the Nurses’ Health Study has collected data on over 275,000 nurses and is still enrolling participants.
 This prospective study recruits registered nurses and then collects data from them using questionnaires.
 <strong>Retrospective studies</strong> collect data after events have taken place, e.g. researchers may review past events in medical records.
@@ -1721,7 +1721,7 @@ distinguishable from the software, and in those cases, we have have provided the
 <h3><span class="header-section-number">1.7.1</span> Dataframes in <code>R</code></h3>
 <p>Throughout the text, we will work with many different data sets. Some data sets
 are pre-loaded into <code>R</code>, some get loaded through <code>R</code> packages, and some data sets
-will be created by the student. data sets can be viewed through the RStudio
+will be created by the student. Data sets can be viewed through the RStudio
 environment, but the data can also be investigated through the notebook features
 of an RMarkdown file.</p>
 <p>Consider the  data that was described previously in this chapter.<br />
@@ -1946,9 +1946,11 @@ In chaining, the value on the left side of <code>%&gt;%</code> becomes the <em>f
 <pre><code>object_name &lt;- data_table %&gt;%
                     function_name(arguments) %&gt;% 
                     another_function_name(other_arguments)</code></pre>
-<p>is extended chaining. <code>%&gt;%</code> is never at the front of the line, it is always connecting one idea with the continuation of that idea on the next line.
-* In <code>R</code>, all functions take arguments in round parentheses (as opposed to subsetting observations or variables from data objects which happen with square parentheses). Additionally, the spot to the left of <code>%&gt;%</code> is always a data table.
-* The pipe syntax should be read as <em>then</em>, <code>%&gt;%</code>.</p>
+<p>is extended chaining. <code>%&gt;%</code> is never at the front of the line, it is always connecting one idea with the continuation of that idea on the next line.</p>
+<ul>
+<li><p>In <code>R</code>, all functions take arguments in round parentheses (as opposed to subsetting observations or variables from data objects which happen with square parentheses). Additionally, the spot to the left of <code>%&gt;%</code> is always a data table.</p></li>
+<li><p>The pipe syntax should be read as <em>then</em>, <code>%&gt;%</code>.</p></li>
+</ul>
 </div>
 <div id="using-the-pipe-to-chain" class="section level3" number="1.7.3">
 <h3><span class="header-section-number">1.7.3</span> Using the pipe to chain</h3>
