@@ -110,7 +110,7 @@ Descriptions of all five email variables are given in Table \@ref(tab:emailVaria
 ### Contingency tables and conditional proportions
 
 A summary table for a single categorical variable that reports the number of observations (frequency) in each category is called a **frequency table**. Table
-\@ref(tab:emailTableNumber) is a frequency table for the nNumber` variable.
+\@ref(tab:emailTableNumber) is a frequency table for the `number` variable.
 If we replaced the counts with percentages or proportions (relative frequencies),
 the table would be called a **relative frequency table**.
 
@@ -370,7 +370,7 @@ In some other cases, a segmented bar plot that is not standardized will be more 
 
 #### Mosaic plots {-}
 
-A **mosaic plot** is a graphical display of contingency table information that is similar to a bar plot for one variable or a segmented bar plot when using two variables. Figure \ref(fig:emailNumberMosaic) plot (a) shows a mosaic plot for the `number` variable. Each column represents a level of `number`, and the column widths correspond to the proportion of emails of each number type. For instance, there are fewer emails with no numbers than emails with only small numbers, so the no number email column is slimmer. In general, mosaic plots use box *areas* to represent the number of observations.
+A **mosaic plot** is a graphical display of contingency table information that is similar to a bar plot for one variable or a segmented bar plot when using two variables. Figure \@ref(fig:emailNumberMosaic) plot (a) shows a mosaic plot for the `number` variable. Each column represents a level of `number`, and the column widths correspond to the proportion of emails of each number type. For instance, there are fewer emails with no numbers than emails with only small numbers, so the no number email column is slimmer. In general, mosaic plots use box *areas* to represent the number of observations.
 
 
 
@@ -378,7 +378,7 @@ A **mosaic plot** is a graphical display of contingency table information that i
 <img src="02-eda_files/figure-html/emailNumberMosaic-1.png" alt="(a) Mosaic plot for numbers found in emails. (b) Mosaic plot where the `number` counts have been further broken down by `type`." width="50%" /><img src="02-eda_files/figure-html/emailNumberMosaic-2.png" alt="(a) Mosaic plot for numbers found in emails. (b) Mosaic plot where the `number` counts have been further broken down by `type`." width="50%" />
 <p class="caption">(\#fig:emailNumberMosaic)(a) Mosaic plot for numbers found in emails. (b) Mosaic plot where the `number` counts have been further broken down by `type`.</p>
 </div>
-This one-variable mosaic plot is further divided into pieces in Figure \ref(fig:emailNumberMosaic) plot (b) using the `type` variable. Each column is split proportionally according to the fraction of emails that were spam in each number category. For example, the second column, representing emails with only small numbers, was divided into emails that were spam (lower) and not spam (upper). 
+This one-variable mosaic plot is further divided into pieces in Figure \@ref(fig:emailNumberMosaic) plot (b) using the `type` variable. Each column is split proportionally according to the fraction of emails that were spam in each number category. For example, the second column, representing emails with only small numbers, was divided into emails that were spam (lower) and not spam (upper). 
 As another example, the bottom of the third column represents spam emails that had big numbers, and the upper part of the third column represents regular emails that had big numbers. We can again use this plot to see that the `type` and `number` variables are associated since some columns are divided in different vertical locations than others, which was the same technique used for checking an association in the standardized version of the segmented bar plot.
 
 
@@ -548,7 +548,7 @@ How did this happen? The answer has to do with the race of the victim being a co
 <p class="caption">(\#fig:DPconfound)The race of the victim is associated both with the sentence (death penalty or no death penalty) and with the race of the defendant. Defendants are more likely to involve a victim of the same race, and cases with African American victims are less likely to result in the death penalty.</p>
 </div>
 
-Thus, the extremely low chance of a homicide case resulting in the death penalty for African Americans combines with the fact that most cases with African American victims also had an African American victim to results in an overall lower rate of death penalty sentences for African American defendants than for Caucasian defendants. The overall results in Figure \@ref(fig:DPbarplot) and the results in each subgroup of Figure \@ref(fig:DPbarplot2) are both valid---they are not the result of any "bad statistics"---but they suggest opposite conclusions. Data such as these, where an observed effect _reverses_ itself when you examine the variables within subgroups, exhibit **Simpson's Paradox**.
+Thus, the extremely low chance of a homicide case resulting in the death penalty for African Americans combined with the fact that most cases with African American defendants also had an African American victim results in an overall lower rate of death penalty sentences for African American defendants than for Caucasian defendants. The overall results in Figure \@ref(fig:DPbarplot) and the results in each subgroup of Figure \@ref(fig:DPbarplot2) are both valid---they are not the result of any "bad statistics"---but they suggest opposite conclusions. Data such as these, where an observed effect _reverses_ itself when you examine the variables within subgroups, exhibit **Simpson's Paradox**.
 
 \BeginKnitrBlock{onebox}<div class="onebox">**Simpson's Paradox.**
 
@@ -570,7 +570,7 @@ A **random process** is  one in which the outcome is unpredictable. We encounter
 
 The **probability** of an event is the long-run proportion of times the event would occur if the random process were repeated indefinitely (under identical conditions).</div>\EndKnitrBlock{onebox}
 
-Consider the simple example of flipping a fair coin once. What is the probability the coin lands on heads. From its physical properties, we assume the probability of heads is 0.5, but let's use simulation to examine the probability. Figure @\ref(fig:coinflip) shows the long-run proportion of times a simulated coin flip lands on heads on the y-axis, and the number of tosses on the x-axis. Notice how the long-run proportion starts converging to 0.5 as the number of tosses increases.
+Consider the simple example of flipping a fair coin once. What is the probability the coin lands on heads. From its physical properties, we assume the probability of heads is 0.5, but let's use simulation to examine the probability. Figure \@ref(fig:coinflip) shows the long-run proportion of times a simulated coin flip lands on heads on the y-axis, and the number of tosses on the x-axis. Notice how the long-run proportion starts converging to 0.5 as the number of tosses increases.
 
 <div class="figure" style="text-align: center">
 <img src="02/figures/CoinFlip/Coinflip.png" alt="One simulation of flipping a fair coin, tracking the long-run proportion of times the coin lands on heads." width="75%" />
@@ -582,7 +582,7 @@ Consider the simple example of flipping a fair coin once. What is the probabilit
 
 We can solve many real-life probability problems without using any equations by creating a **hypothetical two-way table** of the scenario. This tool is best demonstrated by an example.
 
-\BeginKnitrBlock{example}<div class="example">As a student at Montana State University, suppose your first class on Mondays is in Wilson Hall at 8:00am and you commute to school. You have a Bobcat parking permit. From past experience, you know that there is a 20% chance of finding an open parking spot in Lot 6 by Animal Bioscience. Otherwise, you have to park in Lot 18 by graduate housing. If you find a spot in Lot 6, you only have a 5\% chance of being late to class. However, if you have to part in Lot 18, you have a 15\% chance of being late to class. What is the probability that you will be late to class this Monday?
+\BeginKnitrBlock{example}<div class="example">As a student at Montana State University, suppose your first class on Mondays is in Wilson Hall at 8:00am and you commute to school. You have a Bobcat parking permit. From past experience, you know that there is a 20% chance of finding an open parking spot in Lot 6 by Animal Bioscience. Otherwise, you have to park in Lot 18 by graduate housing. If you find a spot in Lot 6, you only have a 5\% chance of being late to class. However, if you have to park in Lot 18, you have a 15\% chance of being late to class. What is the probability that you will be late to class this Monday?
   
 ---
   
@@ -598,7 +598,7 @@ Now we can find the probability of being late to class by reading it off the tab
 
 How did we create the table in the last Example? Let's work through it step-by-step.
 
-1. Identify the _unconditional_ probabilities given in the problem: 20% chance of parking in Lot 6, which means an 80% chance of parking in Lot 16. Take 20% and 80% of 1000 to fill in the row totals:
+1. Identify the _unconditional_ probabilities given in the problem: 20% chance of parking in Lot 6, which means an 80% chance of parking in Lot 18. Take 20% and 80% of 1000 to fill in the row totals:
 
 |        | Late to class | Not late to class |Total |
 |--------|:--|:--|:--|
@@ -614,7 +614,7 @@ How did we create the table in the last Example? Let's work through it step-by-s
 | Lot 18 | 800 $\times$ 0.15 = 120           |                | 800   |
 | Total  |            |                | 1000  |
 
-3. Use subtraction to fill in the remaining cells.
+3. Use subtraction to fill in the remaining cells for the column "Not late to class." Use addition to find the column totals.
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Using the hypothetical two-way table given in the last Example, find the following probabilities:
 
@@ -623,7 +623,7 @@ How did we create the table in the last Example? Let's work through it step-by-s
 3. Given that you were late to class, what is the probability you parked in Lot 18?^[1. $870/1000 = 0.87$; 2. $190/1000 = 0.19$; 3. $120/130 = 0.923$]</div>\EndKnitrBlock{guidedpractice}
 
 
-Carefully read how each of the probabilities is described in the Guided Practice---note the subtle difference between "the probability of being late to class, _given_ that you parked Lot 18" ($120/800 = 0.15$) and "the probability of parking Lot 18, given that you were late to class" ($120/130 = 0.923$). When we are given extra information, this is called a **conditional probability**, and the denominator in the probability calculation is a row total (e.g., 800) or column total (e.g., 130) rather than the overall total in the hypothetical two-way table.
+Carefully read how each of the probabilities is described in the Guided Practice---note the subtle difference between "the probability of being late to class, _given_ that you parked in Lot 18" ($120/800 = 0.15$) and "the probability of parking in Lot 18, given that you were late to class" ($120/130 = 0.923$). When we are given extra information, this is called a **conditional probability**, and the denominator in the probability calculation is a row total (e.g., 800) or column total (e.g., 130) rather than the overall total in the hypothetical two-way table.
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">In the previous Guided Practice, which of the probabilities are conditional probabilities? which are unconditional?^[Probabilities in (1) and (2) are unconditional; the probability asked for in (3) is conditional.]</div>\EndKnitrBlock{guidedpractice}
 
@@ -710,7 +710,7 @@ When examining scatterplots, we describe four features:
    would the trend be _linear_ or _nonlinear_?
 2. **Direction** - As values on the _x_-axis increase, do the _y_-values
   tend to  increase (_positive direction_) or do they decrease (_negative direction_)?
-3. **Strength** - How closely to the points follow a trend?
+3. **Strength** - How closely do the points follow a trend?
 4. **Unusual observations** or **outliers**- Are there any unusual observations
    that do not seem to match the overall pattern of the scatterplot?
 
@@ -1057,8 +1057,7 @@ Figure \@ref(fig:loan-int-rate-boxplot-dotplot) provides a dot plot alongside a 
 
 The dark line inside the box represents the **median**, which splits the data in half: 
 50% of the data fall below this value and 50% fall above it. 
-Since in the `loan50` dataset there are 50 observations (an even number), the median is defined as the average of the two observations closest to the $50^{th}$ percentile. 
-Table \@ref(tab:loan50_int_rate_sorted) shows all interest rates, arranged in ascending order. 
+Since in the `loan50` dataset there are 50 observations (an even number), the median is defined as the average of the two observations closest to the $50^{th}$ percentile. Table \@ref(tab:loan50_int_rate_sorted) shows all interest rates, arranged in ascending order. 
 We can see that the $25^{th}$ and the $26^{th}$ values are both 9.93, which corresponds to the dark line in the box plot in Figure \@ref(fig:loan-int-rate-boxplot-dotplot).
 
 <table>
@@ -1232,7 +1231,7 @@ When asked to describe or compare univariate (single variable) quantitative dist
 
 We can compare quantitative distributions by using side-by-side box plots,
 or stacked histograms or dot plots. Recall that the `loan50` data set represents a sample from a larger loan data set called `loans`.
-This larger data set contains information on 10,000 loans made through Lending Club. Figure @\ref{fig:homeownership-interest-boxplots} examines the relationship between `homeownership`, which for the `loans` data can take a value of `rent`, `mortgage` (owns but has a mortgage), or `own`, and `interest_rate`. Note that `homeownership`
+This larger data set contains information on 10,000 loans made through Lending Club. Figure \@ref(fig:homeownership-interest-boxplots) examines the relationship between `homeownership`, which for the `loans` data can take a value of `rent`, `mortgage` (owns but has a mortgage), or `own`, and `interest_rate`. Note that `homeownership`
 is a categorical variable and `interest_rate` is a quantitative variable.
 
 <div class="figure" style="text-align: center">
@@ -1242,7 +1241,7 @@ is a categorical variable and `interest_rate` is a quantitative variable.
 
 We see immediately that some features are easier to discern in box plots, while others in histograms. Shape is shown more clearly in histograms, while center (as measured by the median) is easy to compare across groups in the side-by-side box plots.
 
-\BeginKnitrBlock{example}<div class="example">Using Figure @\ref{fig:homeownership-interest-boxplots} write a few sentences comparing the distributions of loan amount
+\BeginKnitrBlock{example}<div class="example">Using Figure \@ref(fig:homeownership-interest-boxplots) write a few sentences comparing the distributions of loan amount
 across the different homeownership categories.
   
 ---
@@ -1332,7 +1331,7 @@ When data are very strongly skewed, we sometimes transform them so they are easi
 <p class="caption">(\#fig:county-pop-transform)Plot A: A histogram of the populations of all US counties. Plot B: A histogram of log$_{10}$-transformed county populations. For this plot, the x-value corresponds to the power of 10, e.g. 4 on the x-axis corresponds to $10^4 =$ 10,000. Data are from 2017.</p>
 </div>
 
-\BeginKnitrBlock{example}<div class="example">Consider the histogram of county populations shown in the left of Figure \@ref{fig:county-pop-transform}, which shows extreme skew\index{skew!extreme}. What is not so useful about this plot?
+\BeginKnitrBlock{example}<div class="example">Consider the histogram of county populations shown in the left of Figure \@ref(fig:county-pop-transform), which shows extreme skew\index{skew!extreme}. What is not so useful about this plot?
   
 ---
   
