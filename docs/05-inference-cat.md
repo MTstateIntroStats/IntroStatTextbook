@@ -4,7 +4,7 @@
 from sample to sample?
 While the equations and details change depending on the setting, the foundations for inference are the same throughout all of statistics. We will begin this chapter with a discussion of the foundations of inference, and introduce the two primary vehicles of inference: the **hypothesis test** and **confidence interval**.
 
-The rest of this chapter focuses statistical inference for categorical data. The two data structures we detail are:
+The rest of this chapter focuses on statistical inference for categorical data. The two data structures we detail are:
 
 * one binary variable, summarized using a single proportion, and 
 * two binary variables, summarized using a difference (or ratio) of two proportions.
@@ -99,7 +99,7 @@ None of our simulated samples produce 34 of 38 correct guesses! That is, if stud
 
 Now, obviously no one can read Martian, so a more realistic possibility is that humans tend to choose Bumba on the left more often than the right---there is a greater than 50% chance of choosing Bumba as the letter on the left. Even though we may think we're guessing just by chance, we have a preference for Bumba on the left. It turns out that the explanation for this preference is called _synesthesia_, a tendency for humans to correlate sharp sounding noises (e.g., Kiki) with sharp looking images.^[To explore this further, watch this [TED Talk](https://www.ted.com/talks/vs_ramachandran_3_clues_to_understanding_your_brain) by neurologist Vilayanur Ramachandran (The synesthesia part begins at roughly 17:40 minutes).]
 
-But wait---we're not done! We have evidence that humans tend to prefer Bumba on the left, but by how much? To answer this, we need a confidence interval---an interval of plausible values for the true probability humans will selecting Bumba as the left letter. The width of this interval is determined by how variable sample proportions are from sample to sample. It turns out, there is a mathematical model for this variability that we will explore later in this chapter. For now, let's take the standard deviation from our simulated sample proportions as an estimate for this variability: 0.08. Since the simulated distribution of proportions is bell-shaped, we know about 95% of sample proportions should fall within two standard deviations of the true proportion, so we can add and subtract this **margin of error**\index{margin of error} to our sample proportion to calculate an approximate 95% confidence interval^[If you carry out the calculations, you'll note that the upper bound is actually $0.89 + 0.16 = 1.05$, but since a sample proportion cannot be greater than 1, we truncated the interval to 1.]:
+But wait---we're not done! We have evidence that humans tend to prefer Bumba on the left, but by how much? To answer this, we need a confidence interval---an interval of plausible values for the true probability humans will select Bumba as the left letter. The width of this interval is determined by how variable sample proportions are from sample to sample. It turns out, there is a mathematical model for this variability that we will explore later in this chapter. For now, let's take the standard deviation from our simulated sample proportions as an estimate for this variability: 0.08. Since the simulated distribution of proportions is bell-shaped, we know about 95% of sample proportions should fall within two standard deviations of the true proportion, so we can add and subtract this **margin of error**\index{margin of error} to our sample proportion to calculate an approximate 95% confidence interval^[If you carry out the calculations, you'll note that the upper bound is actually $0.89 + 0.16 = 1.05$, but since a sample proportion cannot be greater than 1, we truncated the interval to 1.]:
 \[
 \frac{34}{38} \pm 2\times 0.08 = 0.89 \pm 0.16 = (0.73, 1)
 \]
@@ -207,7 +207,7 @@ The null hypothesis ($H_0$) was a perspective of no effect (no ability to read M
 The student data provided a point estimate of 89.5% ($34/38 \times 100$%) for the true probability of choosing Bumba on the left.
 We determined that observing such a sample proportion from chance alone (assuming $H_0$) would be rare---it would only happen in less than 1 out of 1000 samples. When results
 like these are inconsistent with $H_0$, we reject $H_0$ in favor of $H_A$. 
-Here, we concluded there humans have a preference for choosing Bumba on the left.
+Here, we concluded that humans have a preference for choosing Bumba on the left.
 
 The less than 1-in-1000 chance is what we call a **p-value**, which is a probability quantifying the strength of the evidence against the null hypothesis and in favor of the alternative. 
 
@@ -237,7 +237,7 @@ Since the p-value is a probability, its value will always be between 0 and 1. Th
 
 Think of p-values as a continuum of strength of evidence against the null, from 0 (extremely strong evidence) to 1 (no evidence). Beyond around 10%, the data provide no evidence against the null hypothesis. Be careful not to equate this with evidence for the null hypothesis, which is incorrect. _The absence of evidence is not evidence of absence._
 <div class="figure" style="text-align: center">
-<img src="05/figures/pvalueStrengths.png" alt="Strength of evidence against the null for a continuum of p-values. Once the p-value is beyond around 0.10, the data provide no evidence against the null hypothesis." width="100%" />
+<img src="05/figures/soe_gradient.png" alt="Strength of evidence against the null for a continuum of p-values. Once the p-value is beyond around 0.10, the data provide no evidence against the null hypothesis." width="100%" />
 <p class="caption">(\#fig:pval-continuum)Strength of evidence against the null for a continuum of p-values. Once the p-value is beyond around 0.10, the data provide no evidence against the null hypothesis.</p>
 </div>
 
@@ -301,7 +301,7 @@ The _OpenIntro_ authors have a video to help clarify *why 0.05*:
 </center>
 <br>
 Sometimes it's also a good idea to deviate from the standard. 
-We'll discuss when to choose a threshold different than 0.05 in Section \@ref(#two-prop-errors).</div>\EndKnitrBlock{onebox}
+We'll discuss when to choose a threshold different than 0.05 in Section \@ref(two-prop-errors).</div>\EndKnitrBlock{onebox}
 
 
 Statistical significance has been a hot topic in the news, related to the "reproducibility crisis" in some scientific fields. We encourage you to read more about the debate on the use of p-values and statistical significance. A good place to start would be the _Nature_ article, "[Scientists rise up against statistical significance](https://www.nature.com/articles/d41586-019-00857-9)," from March 20, 2019.
@@ -320,7 +320,7 @@ On the other hand, if we toss a net in that area, we have a good chance of catch
 If we report a point estimate, we probably will not hit the exact population parameter. 
 On the other hand, if we report a range of plausible values---a confidence interval---we have a good shot at capturing the parameter.
 
-This reasoning also explains why we can never prove a null hypothesis. Sample statistics will vary from sample to sample. While we can quantify this uncertainty (e.g., we are 95% sure the statistic is within 0.15 of the parameter), we can never be certain that the parameter is an exact value. For example, suppose want to test whether a coin is a fair coin, i.e., $H_0: \pi = 0.50$ versus $H_0: \pi \neq 0.50$, so you toss the coin 10 times to collect data. In those 10 tosses, 6 land on heads and 4 land on tails, resulting in a p-value of 0.754^[You will get more practice calculating p-values such as these in this Chapter.]. We don't have enough evidence to show that the coin is biased, but surely we wouldn't say we just proved the coin is fair!
+This reasoning also explains why we can never prove a null hypothesis. Sample statistics will vary from sample to sample. While we can quantify this uncertainty (e.g., we are 95% sure the statistic is within 0.15 of the parameter), we can never be certain that the parameter is an exact value. For example, suppose you want to test whether a coin is a fair coin, i.e., $H_0: \pi = 0.50$ versus $H_0: \pi \neq 0.50$, so you toss the coin 10 times to collect data. In those 10 tosses, 6 land on heads and 4 land on tails, resulting in a p-value of 0.754^[You will get more practice calculating p-values such as these in this Chapter.]. We don't have enough evidence to show that the coin is biased, but surely we wouldn't say we just proved the coin is fair!
 
 \BeginKnitrBlock{importantbox}<div class="importantbox">There are only _two_ possible decisions in a hypothesis test: (1) reject $H_0$, or (2) fail to reject $H_0$. Since one can never prove a null hypothesis---we can only disprove^[Since statistical methods are grounded in probability, technically we can only find strong evidence against a hypothesis, not disprove it.] it---we never have the ability to "accept the null." You may have seen this phrase in other textbooks or articles, but it is incorrect.</div>\EndKnitrBlock{importantbox}
 
@@ -3584,6 +3584,67 @@ You will often hear the following two $z$-procedures referred to as a **one samp
 - Raw data to tables
 - Simulation functions in catstats
 - `prop.test`</div>\EndKnitrBlock{todo}
+
+### Interactive R tutorials
+
+Navigate the concepts you've learned in this chapter in R using the following self-paced tutorials. 
+All you need is your browser to get started!
+
+::: {.alltutorials}
+[Tutorial 5: Introduction to statistical inference](https://openintrostat.github.io/ims-tutorials/05-introduction-to-statistical-inference/)
+:::
+
+::: {.singletutorial}
+[Tutorial 5 - Lesson 1: Sampling variability](https://openintro.shinyapps.io/ims-05-introduction-to-statistical-inference-01/)
+:::
+
+::: {.singletutorial}
+[Tutorial 5 - Lesson 2: Randomization test](https://openintro.shinyapps.io/ims-05-introduction-to-statistical-inference-02/)
+:::
+
+::: {.singletutorial}
+[Tutorial 5 - Lesson 3: Errors in hypothesis testing](https://openintro.shinyapps.io/ims-05-introduction-to-statistical-inference-03/)
+:::
+
+::: {.singletutorial}
+[Tutorial 5 - Lesson 4: Parameters and confidence intervals](https://openintro.shinyapps.io/ims-05-introduction-to-statistical-inference-04/)
+:::
+
+
+::: {.alltutorials}
+[Tutorial 6: Inference for categorical responses](https://openintrostat.github.io/ims-tutorials/06-inference-for-categorical-responses/)
+:::
+
+::: {.singletutorial}
+[Tutorial 6 - Lesson 1: Inference for a single proportion](https://openintro.shinyapps.io/ims-06-inference-for-categorical-responses-01/)
+:::
+
+::: {.singletutorial}
+[Tutorial 6 - Lesson 2: Hypothesis tests to compare proportions](https://openintro.shinyapps.io/ims-06-inference-for-categorical-responses-02/)
+:::
+
+You can also access the full list of tutorials supporting this book [here](https://openintrostat.github.io/ims-tutorials/).
+
+### R labs
+
+Further apply the concepts you've learned in this chapter in R with computational labs that walk you through a data analysis case study.
+
+::: {.singlelab}
+[Sampling distributions - Does science benefit you? ](https://openintro.shinyapps.io/sampling_distributions/)
+:::
+
+::: {.singlelab}
+[Confidence intervals - Climate change ](https://openintro.shinyapps.io/confidence_intervals/)
+:::
+
+::: {.singlelab}
+[Inference for categorical responses - Texting while driving ](https://openintro.shinyapps.io/inf_for_categorical_data/)
+:::
+
+::: {.alllabs}
+[Full list of labs supporting OpenIntro::Introduction to Modern Statistics](http://openintrostat.github.io/oilabs-tidy/)
+:::
+
 
 ## Chapter 5 review {#chp5-review}
 

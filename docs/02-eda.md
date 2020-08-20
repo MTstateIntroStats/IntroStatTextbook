@@ -1400,11 +1400,46 @@ One observation that stands out when comparing the two maps: the poverty rate is
 
 
 
-
-
 ## `R`: Exploratory data analysis
 
-\BeginKnitrBlock{todo}<div class="todo">Section on doing EDA in R.</div>\EndKnitrBlock{todo}
+### Interactive R tutorials
+
+Navigate the concepts you've learned in this chapter in R using the following self-paced tutorials. 
+All you need is your browser to get started!
+
+::: {.alltutorials}
+[Tutorial 2: Summarizing and visualizing data](https://openintrostat.github.io/ims-tutorials/02-summarizing-and-visualizing-data/)
+:::
+
+::: {.singletutorial}
+[Tutorial 2 - Lesson 1: Visualizing categorical data](https://openintro.shinyapps.io/ims-02-summarizing-and-visualizing-data-01/)
+:::
+
+::: {.singletutorial}
+[Tutorial 2 - Lesson 2: Visualizing numerical data](https://openintro.shinyapps.io/ims-02-summarizing-and-visualizing-data-02/)
+:::
+
+::: {.singletutorial}
+[Tutorial 2 - Lesson 3: Summarizing with statistics](https://openintro.shinyapps.io/ims-02-summarizing-and-visualizing-data-03/)
+:::
+
+::: {.singletutorial}
+[Tutorial 2 - Lesson 4: Case study](https://openintro.shinyapps.io/ims-02-summarizing-and-visualizing-data-04/)
+:::
+
+You can also access the full list of tutorials supporting this book [here](https://openintrostat.github.io/ims-tutorials/).
+
+### R labs
+
+Further apply the concepts you've learned in this chapter in R with computational labs that walk you through a data analysis case study.
+
+::: {.singlelab}
+[Intro to data - Flight delays](http://openintrostat.github.io/oilabs-tidy/02_intro_to_data/intro_to_data.html)
+:::
+
+::: {.alllabs}
+[Full list of labs supporting OpenIntro::Introduction to Modern Statistics](http://openintrostat.github.io/oilabs-tidy/)
+:::
 
 ## Chapter 2 review {#chp2-review}
 

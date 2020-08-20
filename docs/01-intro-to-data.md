@@ -954,6 +954,8 @@ Randomized experiments are fundamentally important when trying to show a causal 
 
 ### Principles of experimental design
 
+Randomized experiments are generally built on four principles:
+
 1. **Controlling.** Researchers assign treatments to cases, and they do their best to **control** any other differences in the groups^[This is a different concept than a *control group*, which we discuss in the second principle and in Section \@ref(reducing-bias-human-experiments).].  
 For example, when patients take a drug in pill form, some patients take the pill with only a sip of water while others may have it with an entire glass of water. 
 To control for the effect of water consumption, a doctor may instruct every patient to drink a 12 ounce glass of water with the pill.
@@ -969,8 +971,6 @@ In a single study, we **replicate** by collecting a sufficiently large sample.
 Alternatively, a group of scientists may replicate an entire study to verify an earlier finding.
 
 
-
-Randomized experiments are generally built on four principles:
 
 1. **Blocking.** Researchers sometimes know or suspect that variables, other than the treatment, influence the response. 
 Under these circumstances, they may first group individuals based on this variable into **blocks** and then randomize cases within each block to the treatment groups. 
@@ -1055,6 +1055,7 @@ The answer to the first question is determined by the _sampling method_---if we 
 <img src="01/figures/ScopeOfInference/ScopeOfInference.png" alt="Determining scope of inference of a study." width="100%" />
 <p class="caption">(\#fig:ScopeOfInference)Determining scope of inference of a study.</p>
 </div>
+
 
 ## Data in `R`
 
@@ -1359,17 +1360,45 @@ The second argument is what to do if the result of the logical test is TRUE, in 
 The `ifelse` function can be used for more complicated discretization rules as well, by nesting many `ifelse` statements within each other. 
 This is not necessary for this example, but it will come up later in the course.
 
-<!--
-# droplevels()  #???
+### Interactive R tutorials
 
-# SRS using sample_n
-# stratified sampling using group_by then sample_n
-# R code for blocking???
+Navigate the concepts you've learned in this chapter in R using the following self-paced tutorials. 
+All you need is your browser to get started!
 
-# add case_when?
--->
+::: {.alltutorials}
+[Tutorial 1: Getting Started with Data](https://openintrostat.github.io/ims-tutorials/01-getting-started-with-data/)
+:::
 
-\BeginKnitrBlock{todo}<div class="todo">Add link to tutorial.</div>\EndKnitrBlock{todo}
+::: {.singletutorial}
+[Tutorial 1 - Lesson 1: Language of data](https://openintro.shinyapps.io/ims-01-getting-started-with-data-01/)
+:::
+
+::: {.singletutorial}
+[Tutorial 1 - Lesson 2: Types of studies](https://openintro.shinyapps.io/ims-01-getting-started-with-data-02/)
+:::
+
+::: {.singletutorial}
+[Tutorial 1 - Lesson 3: Sampling strategies and Experimental design](https://openintro.shinyapps.io/ims-01-getting-started-with-data-03/)
+:::
+
+::: {.singletutorial}
+[Tutorial 1 - Lesson 4: Case study](https://openintro.shinyapps.io/ims-01-getting-started-with-data-04/)
+:::
+
+You can also access the full list of tutorials supporting this book [here](https://openintrostat.github.io/ims-tutorials/).
+
+### R labs
+
+Further apply the concepts you've learned in this chapter in R with computational labs that walk you through a data analysis case study.
+
+::: {.singlelab}
+[Intro to R - Birth rates](http://openintrostat.github.io/oilabs-tidy/01_intro_to_r/intro_to_r.html)
+:::
+
+::: {.alllabs}
+[Full list of labs supporting OpenIntro::Introduction to Modern Statistics](http://openintrostat.github.io/oilabs-tidy/)
+:::
+
 
 
 ## Chapter 1 review {#chp1-review}

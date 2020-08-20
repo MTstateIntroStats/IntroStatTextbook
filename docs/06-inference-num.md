@@ -2207,6 +2207,47 @@ So far in this chapter, we have seen the $t$-distribution applied as the appropr
 - Simulation functions in catstats
 - `t.test`</div>\EndKnitrBlock{todo}
 
+### Interactive R tutorials
+
+Navigate the concepts you've learned in this chapter in R using the following self-paced tutorials. 
+All you need is your browser to get started!
+
+::: {.alltutorials}
+[Tutorial 7: Inference for categorical responses](https://openintrostat.github.io/ims-tutorials/07-inference-for-numerical-responses/)
+:::
+
+::: {.singletutorial}
+[Tutorial 7 - Lesson 1: Bootstrapping for estimating a parameter](https://openintro.shinyapps.io/ims-07-inference-for-numerical-responses-01/)
+:::
+
+::: {.singletutorial}
+[Tutorial 7 - Lesson 2: Introducing the t-distribution](https://openintro.shinyapps.io/ims-07-inference-for-numerical-responses-02/)
+:::
+
+::: {.singletutorial}
+[Tutorial 7 - Lesson 3: Inference for difference in two means](https://openintro.shinyapps.io/ims-07-inference-for-numerical-responses-03/)
+:::
+
+::: {.singletutorial}
+[Tutorial 7 - Lesson 4: Comparing many means](https://openintro.shinyapps.io/ims-07-inference-for-numerical-responses-04/)
+:::
+
+You can also access the full list of tutorials supporting this book [here](https://openintrostat.github.io/ims-tutorials/).
+
+### R labs
+
+Further apply the concepts you've learned in this chapter in R with computational labs that walk you through a data analysis case study.
+
+::: {.singlelab}
+[Inference for numerical responses - Youth Risk Behavior Surveillance System ](http://openintrostat.github.io/oilabs-tidy/07_inf_for_numerical_data/inf_for_numerical_data.html)
+:::
+
+::: {.alllabs}
+[Full list of labs supporting OpenIntro::Introduction to Modern Statistics](http://openintrostat.github.io/oilabs-tidy/)
+:::
+
+
+
 ## Chapter 6 review {#chp6-review}
 
 

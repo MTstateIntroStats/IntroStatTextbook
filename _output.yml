@@ -1,13 +1,13 @@
 bookdown::gitbook:
-  css: css/style.css
+  css: css/oistyle.css
   config:
     toc:
-      collapse: section
+      collapse: subsection
       toc_depth: 4
       toc_float: true
       before: |
         <li><a href="./">MSU Intro Stat with R</a></li>
-    download: ["pdf", "epub"]
+    download: ["pdf"]
     edit:
       link: https://github.com/MTstateIntroStats/IntroStatTextbook/edit/master/%s
       text: "Edit"
@@ -19,5 +19,9 @@ bookdown::pdf_book:
   citation_package: natbib
   keep_tex: yes
   highlight: tango
-bookdown::epub_book:
-  stylesheet: css/style.css
+  dev: "cairo_pdf"
+  pandoc_args: ["--top-level-division=chapter", "--lua-filter=latex/sidebar.lua"]
+  template: null
+  quote_footer: ["\\hspace*{\\fill} ", ""]
+  toc_unnumbered: false
+  number_sections: true

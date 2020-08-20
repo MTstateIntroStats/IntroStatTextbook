@@ -13,6 +13,51 @@
 
 ## `R`: Correlation and regression
 
+### Interactive R tutorials
+
+Navigate the concepts you've learned in this chapter in R using the following self-paced tutorials. 
+All you need is your browser to get started!
+
+::: {.alltutorials}
+[Tutorial 3: Introduction to linear models](https://openintrostat.github.io/ims-tutorials/03-introduction-to-linear-models/)
+:::
+
+::: {.singletutorial}
+[Tutorial 3 - Lesson 1: Visualizing two variales](https://openintro.shinyapps.io/ims-03-introduction-to-linear-models-01/)
+:::
+
+::: {.singletutorial}
+[Tutorial 2 - Lesson 2: Correlation](https://openintro.shinyapps.io/ims-03-introduction-to-linear-models-02/)
+:::
+
+::: {.singletutorial}
+[Tutorial 2 - Lesson 3: Simple linear regression](https://openintro.shinyapps.io/ims-03-introduction-to-linear-models-03/)
+:::
+
+::: {.singletutorial}
+[Tutorial 2 - Lesson 4: Interpreting regression models](https://openintro.shinyapps.io/ims-03-introduction-to-linear-models-04/)
+:::
+
+::: {.singletutorial}
+[Tutorial 2 - Lesson 5: Model fit](https://openintro.shinyapps.io/ims-03-introduction-to-linear-models-05/)
+:::
+
+You can also access the full list of tutorials supporting this book [here](https://openintrostat.github.io/ims-tutorials/).
+
+
+### R labs
+
+Further apply the concepts you've learned in this chapter in R with computational labs that walk you through a data analysis case study.
+
+::: {.singlelab}
+[Introduction to linear regression - Human Freedom Index](http://openintrostat.github.io/oilabs-tidy/08_simple_regression/simple_regression.html)
+:::
+
+::: {.alllabs}
+[Full list of labs supporting OpenIntro::Introduction to Modern Statistics](http://openintrostat.github.io/oilabs-tidy/)
+:::
+
+
 ## Chapter 3 review {#chp3-review}
 
 ### Terms
