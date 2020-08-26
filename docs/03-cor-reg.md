@@ -3,13 +3,88 @@
 \BeginKnitrBlock{uptohere}<div class="uptohere">The content in this chapter is currently just placeholder. We will remove this banner once the chapter content has been updated and ready for review.</div>\EndKnitrBlock{uptohere}
 
 
-- review scatterplots
-- correlation
-- least squares regression line, fitted/predicted values
-- residuals, SSE/SSR/SST, R-squared
-- extrapolation
-- outliers and influential points
+<!-- - review scatterplots -->
+<!-- - correlation -->
+<!-- - least squares regression line, fitted/predicted values -->
+<!-- - residuals, SSE/SSR/SST, R-squared -->
+<!-- - extrapolation -->
+<!-- - outliers and influential points -->
 	
+\BeginKnitrBlock{chapterintro}<div class="chapterintro">Linear regression is a very powerful statistical technique. Many people have some familiarity with regression just from reading the news, where graphs with straight lines are overlaid on scatterplots. Linear models can be used for prediction or to evaluate whether there is a linear relationship between two numerical variables.</div>\EndKnitrBlock{chapterintro}
+
+Figure \@ref(fig:perfLinearModel) shows two variables whose relationship can be modeled perfectly with a straight line. The equation for the line is
+\[
+y = 5 + 57.49x
+\]
+Imagine what a perfect linear relationship would mean: you would know the exact value of $y$ just by knowing the value of $x$. This is unrealistic in almost any natural process. For example, if we took family income $x$, this value would provide some useful information about how much financial support $y$ a college may offer a prospective student. However, there would still be variability in financial support, even when comparing students whose families have similar financial backgrounds.
+
+<div class="figure" style="text-align: center">
+<img src="03-cor-reg_files/figure-html/perfLinearModel-1.png" alt="Requests from twelve separate buyers were simultaneously placed with a trading company to purchase Target Corporation stock (ticker _TGT_, April 26th, 2012), and the total cost of the shares were reported. Because the cost is computed using a linear formula, the linear fit is perfect." width="70%" />
+<p class="caption">(\#fig:perfLinearModel)Requests from twelve separate buyers were simultaneously placed with a trading company to purchase Target Corporation stock (ticker _TGT_, April 26th, 2012), and the total cost of the shares were reported. Because the cost is computed using a linear formula, the linear fit is perfect.</p>
+</div>
+
+It is rare for all of the data to fall on a straight line, as seen in the three scatterplots in Figure \@ref(fig:imperfLinearModel). In each case, the data fall around a straight line, even if none of the observations fall exactly on the line. The first plot shows a relatively strong downward linear trend, where the remaining variability in the data around the line is minor relative to the strength of the relationship between $x$ and $y$. The second plot shows an upward trend that, while evident, is not as strong as the first. The last plot shows a very weak downward trend in the data, so slight we can hardly notice it. In each of these examples, we will have some uncertainty regarding our best line of fit. For instance, we might wonder, should we move the line up or down a little, or should we tilt it more or less? 
+
+<div class="figure" style="text-align: center">
+<img src="03-cor-reg_files/figure-html/imperfLinearModel-1.png" alt="Three data sets where a linear model may be useful even though the data do not all fall exactly on the line." width="100%" />
+<p class="caption">(\#fig:imperfLinearModel)Three data sets where a linear model may be useful even though the data do not all fall exactly on the line.</p>
+</div>
+
+Linear regression assumes that the relationship between two variables, $x$ and $y$, can be modeled by a straight line. In other words, the _average_ value of $y$ for a given $x$ can be modeled as
+\[
+\text{mean of } y = \beta_0 + \beta_1x
+\]
+where $\beta_0$ and $\beta_1$ represent two model **parameters**\index{parameter} ($\beta$ is the Greek letter \emph{beta}). These parameters are estimated using data, and we write their point estimates as $b_0$ and $b_1$. When we use $x$ to predict $y$, we usually call $x$ the explanatory or \term{predictor} variable, and we call $y$ the response.
+
+As we move forward in this chapter, we will learn different criteria for line-fitting, and we will also learn about the uncertainty associated with estimates of model parameters. We will also see examples in this chapter where fitting a straight line to the data, even if there is a clear relationship between the variables, is not helpful. One such case is shown in Figure \@ref(fig:notGoodAtAllForALinearModel) where there is a very strong relationship between the variables even though the trend is not linear. We will discuss nonlinear trends in this chapter and the next, but the details of fitting nonlinear models are saved for a later course.
+
+<div class="figure" style="text-align: center">
+<img src="03-cor-reg_files/figure-html/notGoodAtAllForALinearModel-1.png" alt="A linear model is not useful in this nonlinear case. These data are from an introductory physics experiment." width="70%" />
+<p class="caption">(\#fig:notGoodAtAllForALinearModel)A linear model is not useful in this nonlinear case. These data are from an introductory physics experiment.</p>
+</div>
+
+## Correlation and the coefficient of determination
+
+::: {.onebox}
+**Correlation: strength and direction of a linear relationship**
+
+**Correlation**, which always takes values between -1 and 1, is a summary statistic that describes the strength (by its magnitude) and direction (by its sign) of the linear relationship between two variables. We denote the correlation by $R$ or $r$.
+:::
+
+
+
+We can compute the correlation using a formula, just as we did with the sample mean and standard deviation. However, this formula is rather complex^[Formally, we can compute the correlation for observations $(x_1, y_1)$, $(x_2, y_2)$, ..., $(x_n, y_n)$ using the formula
+\[
+R = \frac{1}{n-1}\sum_{i=1}^{n} \frac{x_i-\bar{x}}{s_x}\frac{y_i-\bar{y}}{s_y}
+\]
+where $\bar{x}$, $\bar{y}$, $s_x$, and $s_y$ are the sample means and standard deviations for each variable.] so we generally perform the calculations on a computer or calculator. Figure @\ref(fig:posNegCorPlots) shows eight plots and their corresponding correlations. Only when the relationship is perfectly linear is the correlation either -1 or 1. If the relationship is strong and positive, the correlation will be near +1. If it is strong and negative, it will be near -1. If there is no apparent linear relationship between the variables, then the correlation will be near zero.
+
+<div class="figure" style="text-align: center">
+<img src="03-cor-reg_files/figure-html/posNegCorPlots-1.png" alt="Sample scatterplots and their correlations. The first row shows variables with a positive relationship, represented by the trend up and to the right. The second row shows variables with a negative trend, where a large value in one variable is associated with a low value in the other." width="70%" />
+<p class="caption">(\#fig:posNegCorPlots)Sample scatterplots and their correlations. The first row shows variables with a positive relationship, represented by the trend up and to the right. The second row shows variables with a negative trend, where a large value in one variable is associated with a low value in the other.</p>
+</div>
+
+::: {.importantbox}
+The correlation is intended to quantify the strength and direction of a linear trend. However, nonlinear trends, even when strong, sometimes produce correlations that do not reflect the strength of the relationship; see three such examples in Figure \@ref(fig:corForNonLinearPlots).
+:::
+
+<div class="figure" style="text-align: center">
+<img src="03-cor-reg_files/figure-html/corForNonLinearPlots-1.png" alt="Sample scatterplots and their correlations. In each case, there is a strong relationship between the variables. However, the correlation is not very strong, and the relationship is not linear." width="70%" />
+<p class="caption">(\#fig:corForNonLinearPlots)Sample scatterplots and their correlations. In each case, there is a strong relationship between the variables. However, the correlation is not very strong, and the relationship is not linear.</p>
+</div>
+
+
+
+
+
+## Fitting a line by least squares regression
+
+
+### Residuals and residual plots
+
+
+## Types of outliers in linear regression
+
 
 ## `R`: Correlation and regression
 
