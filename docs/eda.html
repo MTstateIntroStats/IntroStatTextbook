@@ -24,7 +24,7 @@
 <meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager" />
 
 
-<meta name="date" content="2020-08-26" />
+<meta name="date" content="2020-08-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,6 @@
   
 <link rel="prev" href="intro-to-data.html"/>
 <link rel="next" href="cor-reg.html"/>
-<script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -51,22 +50,24 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
 
 
 <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -86,7 +87,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -119,7 +120,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="css/oistyle.css" type="text/css" />
+<link rel="stylesheet" href="css\oistyle.css" type="text/css" />
 </head>
 
 <body>
@@ -135,78 +136,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">MSU Intro Stat with R</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
-<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#textbook-overview"><i class="fa fa-check"></i>Textbook overview</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#statistical-computing"><i class="fa fa-check"></i>Statistical computing</a>
-<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#statistical-computing"><i class="fa fa-check"></i>Statistical computing</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#getting-rstudio"><i class="fa fa-check"></i>Getting RStudio</a></li>
 <li><a href="index.html#installing-catstats">Installing <code>catstats</code></a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html"><i class="fa fa-check"></i>About the Authors</a>
-<ul>
+<li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html"><i class="fa fa-check"></i>About the Authors</a><ul>
 <li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html#montana-state-university-authors"><i class="fa fa-check"></i>Montana State University Authors</a></li>
 <li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html#openintro-authors"><i class="fa fa-check"></i>OpenIntro Authors</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="copyright.html"><a href="copyright.html"><i class="fa fa-check"></i>Copyright</a></li>
-<li class="chapter" data-level="1" data-path="intro-to-data.html"><a href="intro-to-data.html"><i class="fa fa-check"></i><b>1</b> Introduction to data</a>
-<ul>
+<li class="chapter" data-level="1" data-path="intro-to-data.html"><a href="intro-to-data.html"><i class="fa fa-check"></i><b>1</b> Introduction to data</a><ul>
 <li class="chapter" data-level="1.1" data-path="intro-to-data.html"><a href="intro-to-data.html#basic-stents-strokes"><i class="fa fa-check"></i><b>1.1</b> Case study: using stents to prevent strokes</a></li>
-<li class="chapter" data-level="1.2" data-path="intro-to-data.html"><a href="intro-to-data.html#data-basics"><i class="fa fa-check"></i><b>1.2</b> Data basics</a>
-<ul>
+<li class="chapter" data-level="1.2" data-path="intro-to-data.html"><a href="intro-to-data.html#data-basics"><i class="fa fa-check"></i><b>1.2</b> Data basics</a><ul>
 <li class="chapter" data-level="1.2.1" data-path="intro-to-data.html"><a href="intro-to-data.html#observations-variables-and-data-frames"><i class="fa fa-check"></i><b>1.2.1</b> Observations, variables, and data frames</a></li>
 <li class="chapter" data-level="1.2.2" data-path="intro-to-data.html"><a href="intro-to-data.html#variable-types"><i class="fa fa-check"></i><b>1.2.2</b> Types of variables</a></li>
 <li class="chapter" data-level="1.2.3" data-path="intro-to-data.html"><a href="intro-to-data.html#variable-relations"><i class="fa fa-check"></i><b>1.2.3</b> Relationships between variables</a></li>
 <li class="chapter" data-level="1.2.4" data-path="intro-to-data.html"><a href="intro-to-data.html#explanatory-and-response-variables"><i class="fa fa-check"></i><b>1.2.4</b> Explanatory and response variables</a></li>
 <li class="chapter" data-level="1.2.5" data-path="intro-to-data.html"><a href="intro-to-data.html#introducing-observational-studies-and-experiments"><i class="fa fa-check"></i><b>1.2.5</b> Introducing observational studies and experiments</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="intro-to-data.html"><a href="intro-to-data.html#sampling-principles-strategies"><i class="fa fa-check"></i><b>1.3</b> Sampling principles and strategies</a>
-<ul>
+<li class="chapter" data-level="1.3" data-path="intro-to-data.html"><a href="intro-to-data.html#sampling-principles-strategies"><i class="fa fa-check"></i><b>1.3</b> Sampling principles and strategies</a><ul>
 <li class="chapter" data-level="1.3.1" data-path="intro-to-data.html"><a href="intro-to-data.html#populations-and-samples"><i class="fa fa-check"></i><b>1.3.1</b> Populations and samples</a></li>
 <li class="chapter" data-level="1.3.2" data-path="intro-to-data.html"><a href="intro-to-data.html#anecdotal-evidence"><i class="fa fa-check"></i><b>1.3.2</b> Anecdotal evidence</a></li>
 <li class="chapter" data-level="1.3.3" data-path="intro-to-data.html"><a href="intro-to-data.html#sampling-from-a-population"><i class="fa fa-check"></i><b>1.3.3</b> Sampling from a population</a></li>
 <li class="chapter" data-level="1.3.4" data-path="intro-to-data.html"><a href="intro-to-data.html#samp-methods"><i class="fa fa-check"></i><b>1.3.4</b> Four sampling methods (special topic)</a></li>
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="intro-to-data.html"><a href="intro-to-data.html#observational-studies"><i class="fa fa-check"></i><b>1.4</b> Observational studies</a></li>
-<li class="chapter" data-level="1.5" data-path="intro-to-data.html"><a href="intro-to-data.html#experiments"><i class="fa fa-check"></i><b>1.5</b> Experiments</a>
-<ul>
+<li class="chapter" data-level="1.5" data-path="intro-to-data.html"><a href="intro-to-data.html#experiments"><i class="fa fa-check"></i><b>1.5</b> Experiments</a><ul>
 <li class="chapter" data-level="1.5.1" data-path="intro-to-data.html"><a href="intro-to-data.html#principles-of-experimental-design"><i class="fa fa-check"></i><b>1.5.1</b> Principles of experimental design</a></li>
 <li class="chapter" data-level="1.5.2" data-path="intro-to-data.html"><a href="intro-to-data.html#reducing-bias-human-experiments"><i class="fa fa-check"></i><b>1.5.2</b> Reducing bias in human experiments</a></li>
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="intro-to-data.html"><a href="intro-to-data.html#scope-of-inference"><i class="fa fa-check"></i><b>1.6</b> Scope of inference</a></li>
-<li class="chapter" data-level="1.7" data-path="intro-to-data.html"><a href="intro-to-data.html#data-in-r"><i class="fa fa-check"></i><b>1.7</b> Data in <code>R</code></a>
-<ul>
+<li class="chapter" data-level="1.7" data-path="intro-to-data.html"><a href="intro-to-data.html#data-in-r"><i class="fa fa-check"></i><b>1.7</b> Data in <code>R</code></a><ul>
 <li class="chapter" data-level="1.7.1" data-path="intro-to-data.html"><a href="intro-to-data.html#dataframes-in-r"><i class="fa fa-check"></i><b>1.7.1</b> Dataframes in <code>R</code></a></li>
 <li class="chapter" data-level="1.7.2" data-path="intro-to-data.html"><a href="intro-to-data.html#datastruc"><i class="fa fa-check"></i><b>1.7.2</b> Tidy structure of data</a></li>
 <li class="chapter" data-level="1.7.3" data-path="intro-to-data.html"><a href="intro-to-data.html#using-the-pipe-to-chain"><i class="fa fa-check"></i><b>1.7.3</b> Using the pipe to chain</a></li>
 <li class="chapter" data-level="1.7.4" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>1.7.4</b> Interactive R tutorials</a></li>
 <li class="chapter" data-level="1.7.5" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>1.7.5</b> R labs</a></li>
 </ul></li>
-<li class="chapter" data-level="1.8" data-path="intro-to-data.html"><a href="intro-to-data.html#chp1-review"><i class="fa fa-check"></i><b>1.8</b> Chapter 1 review</a>
-<ul>
+<li class="chapter" data-level="1.8" data-path="intro-to-data.html"><a href="intro-to-data.html#chp1-review"><i class="fa fa-check"></i><b>1.8</b> Chapter 1 review</a><ul>
 <li class="chapter" data-level="1.8.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>1.8.1</b> Terms</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>2</b> Exploratory data analysis</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="eda.html"><a href="eda.html#categorical-data"><i class="fa fa-check"></i><b>2.1</b> Exploring categorical data</a>
-<ul>
+<li class="chapter" data-level="2" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>2</b> Exploratory data analysis</a><ul>
+<li class="chapter" data-level="2.1" data-path="eda.html"><a href="eda.html#categorical-data"><i class="fa fa-check"></i><b>2.1</b> Exploring categorical data</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="eda.html"><a href="eda.html#contingency-tables-and-conditional-proportions"><i class="fa fa-check"></i><b>2.1.1</b> Contingency tables and conditional proportions</a></li>
 <li class="chapter" data-level="2.1.2" data-path="eda.html"><a href="eda.html#bar-plots-and-mosaic-plots"><i class="fa fa-check"></i><b>2.1.2</b> Bar plots and mosaic plots</a></li>
 <li class="chapter" data-level="2.1.3" data-path="eda.html"><a href="eda.html#why-not-pie-charts"><i class="fa fa-check"></i><b>2.1.3</b> Why not pie charts?</a></li>
 <li class="chapter" data-level="2.1.4" data-path="eda.html"><a href="eda.html#simpsons-paradox"><i class="fa fa-check"></i><b>2.1.4</b> Simpson’s paradox</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="eda.html"><a href="eda.html#probability-with-tables"><i class="fa fa-check"></i><b>2.2</b> Probability with tables</a>
-<ul>
+<li class="chapter" data-level="2.2" data-path="eda.html"><a href="eda.html#probability-with-tables"><i class="fa fa-check"></i><b>2.2</b> Probability with tables</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="eda.html"><a href="eda.html#defining-probability"><i class="fa fa-check"></i><b>2.2.1</b> Defining probability</a></li>
 <li class="chapter" data-level="2.2.2" data-path="eda.html"><a href="eda.html#finding-probabilities-with-tables"><i class="fa fa-check"></i><b>2.2.2</b> Finding probabilities with tables</a></li>
 <li class="chapter" data-level="2.2.3" data-path="eda.html"><a href="eda.html#probability-notation"><i class="fa fa-check"></i><b>2.2.3</b> Probability notation</a></li>
 <li class="chapter" data-level="2.2.4" data-path="eda.html"><a href="eda.html#diagnostic-testing"><i class="fa fa-check"></i><b>2.2.4</b> Diagnostic testing</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="eda.html"><a href="eda.html#quantitative-data"><i class="fa fa-check"></i><b>2.3</b> Exploring quantitative data</a>
-<ul>
+<li class="chapter" data-level="2.3" data-path="eda.html"><a href="eda.html#quantitative-data"><i class="fa fa-check"></i><b>2.3</b> Exploring quantitative data</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="eda.html"><a href="eda.html#scatterplots"><i class="fa fa-check"></i><b>2.3.1</b> Scatterplots for paired data</a></li>
 <li class="chapter" data-level="2.3.2" data-path="eda.html"><a href="eda.html#dotplots"><i class="fa fa-check"></i><b>2.3.2</b> Dot plots and the mean</a></li>
 <li class="chapter" data-level="2.3.3" data-path="eda.html"><a href="eda.html#histograms"><i class="fa fa-check"></i><b>2.3.3</b> Histograms and shape</a></li>
@@ -217,125 +205,106 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.8" data-path="eda.html"><a href="eda.html#transforming-data-special-topic"><i class="fa fa-check"></i><b>2.3.8</b> Transforming data (special topic)</a></li>
 <li class="chapter" data-level="2.3.9" data-path="eda.html"><a href="eda.html#mapping-data"><i class="fa fa-check"></i><b>2.3.9</b> Mapping data</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="eda.html"><a href="eda.html#r-exploratory-data-analysis"><i class="fa fa-check"></i><b>2.4</b> <code>R</code>: Exploratory data analysis</a>
-<ul>
+<li class="chapter" data-level="2.4" data-path="eda.html"><a href="eda.html#r-exploratory-data-analysis"><i class="fa fa-check"></i><b>2.4</b> <code>R</code>: Exploratory data analysis</a><ul>
 <li class="chapter" data-level="2.4.1" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>2.4.1</b> Interactive R tutorials</a></li>
 <li class="chapter" data-level="2.4.2" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>2.4.2</b> R labs</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="eda.html"><a href="eda.html#chp2-review"><i class="fa fa-check"></i><b>2.5</b> Chapter 2 review</a>
-<ul>
+<li class="chapter" data-level="2.5" data-path="eda.html"><a href="eda.html#chp2-review"><i class="fa fa-check"></i><b>2.5</b> Chapter 2 review</a><ul>
 <li class="chapter" data-level="2.5.1" data-path="eda.html"><a href="eda.html#notation-summary"><i class="fa fa-check"></i><b>2.5.1</b> Notation summary</a></li>
 <li class="chapter" data-level="2.5.2" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>2.5.2</b> Terms</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="cor-reg.html"><a href="cor-reg.html"><i class="fa fa-check"></i><b>3</b> Correlation and regression</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="cor-reg.html"><a href="cor-reg.html#r-correlation-and-regression"><i class="fa fa-check"></i><b>3.1</b> <code>R</code>: Correlation and regression</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>3.1.1</b> Interactive R tutorials</a></li>
-<li class="chapter" data-level="3.1.2" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>3.1.2</b> R labs</a></li>
+<li class="chapter" data-level="3" data-path="cor-reg.html"><a href="cor-reg.html"><i class="fa fa-check"></i><b>3</b> Correlation and regression</a><ul>
+<li class="chapter" data-level="3.1" data-path="cor-reg.html"><a href="cor-reg.html#correlation-and-the-coefficient-of-determination"><i class="fa fa-check"></i><b>3.1</b> Correlation and the coefficient of determination</a></li>
+<li class="chapter" data-level="3.2" data-path="cor-reg.html"><a href="cor-reg.html#fitting-a-line-by-least-squares-regression"><i class="fa fa-check"></i><b>3.2</b> Fitting a line by least squares regression</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="cor-reg.html"><a href="cor-reg.html#residuals-and-residual-plots"><i class="fa fa-check"></i><b>3.2.1</b> Residuals and residual plots</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="cor-reg.html"><a href="cor-reg.html#chp3-review"><i class="fa fa-check"></i><b>3.2</b> Chapter 3 review</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>3.2.1</b> Terms</a></li>
-<li class="chapter" data-level="3.2.2" data-path="cor-reg.html"><a href="cor-reg.html#chapter-exercises"><i class="fa fa-check"></i><b>3.2.2</b> Chapter exercises</a></li>
+<li class="chapter" data-level="3.3" data-path="cor-reg.html"><a href="cor-reg.html#types-of-outliers-in-linear-regression"><i class="fa fa-check"></i><b>3.3</b> Types of outliers in linear regression</a></li>
+<li class="chapter" data-level="3.4" data-path="cor-reg.html"><a href="cor-reg.html#r-correlation-and-regression"><i class="fa fa-check"></i><b>3.4</b> <code>R</code>: Correlation and regression</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>3.4.1</b> Interactive R tutorials</a></li>
+<li class="chapter" data-level="3.4.2" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>3.4.2</b> R labs</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="cor-reg.html"><a href="cor-reg.html#chp3-review"><i class="fa fa-check"></i><b>3.5</b> Chapter 3 review</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>3.5.1</b> Terms</a></li>
+<li class="chapter" data-level="3.5.2" data-path="cor-reg.html"><a href="cor-reg.html#chapter-exercises"><i class="fa fa-check"></i><b>3.5.2</b> Chapter exercises</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="mult-reg.html"><a href="mult-reg.html"><i class="fa fa-check"></i><b>4</b> Multiple regression</a>
-<ul>
+<li class="chapter" data-level="4" data-path="mult-reg.html"><a href="mult-reg.html"><i class="fa fa-check"></i><b>4</b> Multiple regression</a><ul>
 <li class="chapter" data-level="4.1" data-path="mult-reg.html"><a href="mult-reg.html#num-vs.-whatever---mlr"><i class="fa fa-check"></i><b>4.1</b> Num vs. whatever - MLR</a></li>
 <li class="chapter" data-level="4.2" data-path="mult-reg.html"><a href="mult-reg.html#parallel-slopes"><i class="fa fa-check"></i><b>4.2</b> Parallel slopes</a></li>
 <li class="chapter" data-level="4.3" data-path="mult-reg.html"><a href="mult-reg.html#hint-at-interaction-planes-and-parallel-planes-but-not-quantify"><i class="fa fa-check"></i><b>4.3</b> Hint at interaction, planes, and parallel planes but not quantify</a></li>
-<li class="chapter" data-level="4.4" data-path="mult-reg.html"><a href="mult-reg.html#r-multiple-and-logistic-regression"><i class="fa fa-check"></i><b>4.4</b> <code>R</code>: Multiple and logistic regression</a>
-<ul>
+<li class="chapter" data-level="4.4" data-path="mult-reg.html"><a href="mult-reg.html#r-multiple-and-logistic-regression"><i class="fa fa-check"></i><b>4.4</b> <code>R</code>: Multiple and logistic regression</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>4.4.1</b> Interactive R tutorials</a></li>
 <li class="chapter" data-level="4.4.2" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>4.4.2</b> R labs</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="mult-reg.html"><a href="mult-reg.html#chp4-review"><i class="fa fa-check"></i><b>4.5</b> Chapter 4 review</a>
-<ul>
+<li class="chapter" data-level="4.5" data-path="mult-reg.html"><a href="mult-reg.html#chp4-review"><i class="fa fa-check"></i><b>4.5</b> Chapter 4 review</a><ul>
 <li class="chapter" data-level="4.5.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>4.5.1</b> Terms</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="inference-cat.html"><a href="inference-cat.html"><i class="fa fa-check"></i><b>5</b> Inference for categorical data</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="inference-cat.html"><a href="inference-cat.html#inf-foundations"><i class="fa fa-check"></i><b>5.1</b> Foundations of inference</a>
-<ul>
+<li class="chapter" data-level="5" data-path="inference-cat.html"><a href="inference-cat.html"><i class="fa fa-check"></i><b>5</b> Inference for categorical data</a><ul>
+<li class="chapter" data-level="5.1" data-path="inference-cat.html"><a href="inference-cat.html#inf-foundations"><i class="fa fa-check"></i><b>5.1</b> Foundations of inference</a><ul>
 <li class="chapter" data-level="5.1.1" data-path="inference-cat.html"><a href="inference-cat.html#Martian"><i class="fa fa-check"></i><b>5.1.1</b> Motivating example: Martian alphabet</a></li>
 <li class="chapter" data-level="5.1.2" data-path="inference-cat.html"><a href="inference-cat.html#var-stat"><i class="fa fa-check"></i><b>5.1.2</b> Variability in a statistic</a></li>
 <li class="chapter" data-level="5.1.3" data-path="inference-cat.html"><a href="inference-cat.html#HypothesisTesting"><i class="fa fa-check"></i><b>5.1.3</b> Hypothesis tests</a></li>
 <li class="chapter" data-level="5.1.4" data-path="inference-cat.html"><a href="inference-cat.html#ConfidenceIntervals"><i class="fa fa-check"></i><b>5.1.4</b> Confidence intervals</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="inference-cat.html"><a href="inference-cat.html#normal"><i class="fa fa-check"></i><b>5.2</b> The normal distribution</a>
-<ul>
+<li class="chapter" data-level="5.2" data-path="inference-cat.html"><a href="inference-cat.html#normal"><i class="fa fa-check"></i><b>5.2</b> The normal distribution</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="inference-cat.html"><a href="inference-cat.html#normal-distribution-model"><i class="fa fa-check"></i><b>5.2.1</b> Normal distribution model</a></li>
 <li class="chapter" data-level="5.2.2" data-path="inference-cat.html"><a href="inference-cat.html#standardizing-with-z-scores"><i class="fa fa-check"></i><b>5.2.2</b> Standardizing with Z-scores</a></li>
 <li class="chapter" data-level="5.2.3" data-path="inference-cat.html"><a href="inference-cat.html#normal-probability-calculations-in-r"><i class="fa fa-check"></i><b>5.2.3</b> Normal probability calculations in <code>R</code></a></li>
 <li class="chapter" data-level="5.2.4" data-path="inference-cat.html"><a href="inference-cat.html#normal-probability-examples"><i class="fa fa-check"></i><b>5.2.4</b> Normal probability examples</a></li>
 <li class="chapter" data-level="5.2.5" data-path="inference-cat.html"><a href="inference-cat.html#rule"><i class="fa fa-check"></i><b>5.2.5</b> 68-95-99.7 rule</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="inference-cat.html"><a href="inference-cat.html#single-prop"><i class="fa fa-check"></i><b>5.3</b> One proportion</a>
-<ul>
+<li class="chapter" data-level="5.3" data-path="inference-cat.html"><a href="inference-cat.html#single-prop"><i class="fa fa-check"></i><b>5.3</b> One proportion</a><ul>
 <li class="chapter" data-level="5.3.1" data-path="inference-cat.html"><a href="inference-cat.html#one-prop-null-boot"><i class="fa fa-check"></i><b>5.3.1</b> Simulation-based test for <span class="math inline">\(H_0: \pi = \pi_0\)</span></a></li>
 <li class="chapter" data-level="5.3.2" data-path="inference-cat.html"><a href="inference-cat.html#boot-ci-prop"><i class="fa fa-check"></i><b>5.3.2</b> Bootstrap confidence interval for <span class="math inline">\(\pi\)</span></a></li>
 <li class="chapter" data-level="5.3.3" data-path="inference-cat.html"><a href="inference-cat.html#theory-prop"><i class="fa fa-check"></i><b>5.3.3</b> Theory-based methods for <span class="math inline">\(\pi\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="inference-cat.html"><a href="inference-cat.html#diff-two-prop"><i class="fa fa-check"></i><b>5.4</b> Difference of two proportions</a>
-<ul>
+<li class="chapter" data-level="5.4" data-path="inference-cat.html"><a href="inference-cat.html#diff-two-prop"><i class="fa fa-check"></i><b>5.4</b> Difference of two proportions</a><ul>
 <li class="chapter" data-level="5.4.1" data-path="inference-cat.html"><a href="inference-cat.html#two-prop-errors"><i class="fa fa-check"></i><b>5.4.1</b> Randomization test for <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span></a></li>
 <li class="chapter" data-level="5.4.2" data-path="inference-cat.html"><a href="inference-cat.html#two-prop-boot-ci"><i class="fa fa-check"></i><b>5.4.2</b> Bootstrap confidence interval for <span class="math inline">\(\pi_1 - \pi_2\)</span></a></li>
 <li class="chapter" data-level="5.4.3" data-path="inference-cat.html"><a href="inference-cat.html#math-2prop"><i class="fa fa-check"></i><b>5.4.3</b> Theory-based methods for <span class="math inline">\(\pi_1 - \pi_2\)</span></a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="inference-cat.html"><a href="inference-cat.html#power"><i class="fa fa-check"></i><b>5.5</b> Power, Errors, and Practical Importance</a></li>
 <li class="chapter" data-level="5.6" data-path="inference-cat.html"><a href="inference-cat.html#summary-of-z-procedures"><i class="fa fa-check"></i><b>5.6</b> Summary of Z-procedures</a></li>
-<li class="chapter" data-level="5.7" data-path="inference-cat.html"><a href="inference-cat.html#r-inference-for-categorical-data"><i class="fa fa-check"></i><b>5.7</b> <code>R</code>: Inference for categorical data</a>
-<ul>
+<li class="chapter" data-level="5.7" data-path="inference-cat.html"><a href="inference-cat.html#r-inference-for-categorical-data"><i class="fa fa-check"></i><b>5.7</b> <code>R</code>: Inference for categorical data</a><ul>
 <li class="chapter" data-level="5.7.1" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>5.7.1</b> Interactive R tutorials</a></li>
 <li class="chapter" data-level="5.7.2" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>5.7.2</b> R labs</a></li>
 </ul></li>
-<li class="chapter" data-level="5.8" data-path="inference-cat.html"><a href="inference-cat.html#chp5-review"><i class="fa fa-check"></i><b>5.8</b> Chapter 5 review</a>
-<ul>
+<li class="chapter" data-level="5.8" data-path="inference-cat.html"><a href="inference-cat.html#chp5-review"><i class="fa fa-check"></i><b>5.8</b> Chapter 5 review</a><ul>
 <li class="chapter" data-level="5.8.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>5.8.1</b> Terms</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="inference-num.html"><a href="inference-num.html"><i class="fa fa-check"></i><b>6</b> Inference for quantitative data</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="inference-num.html"><a href="inference-num.html#one-mean"><i class="fa fa-check"></i><b>6.1</b> One mean</a>
-<ul>
+<li class="chapter" data-level="6" data-path="inference-num.html"><a href="inference-num.html"><i class="fa fa-check"></i><b>6</b> Inference for quantitative data</a><ul>
+<li class="chapter" data-level="6.1" data-path="inference-num.html"><a href="inference-num.html#one-mean"><i class="fa fa-check"></i><b>6.1</b> One mean</a><ul>
 <li class="chapter" data-level="6.1.1" data-path="inference-num.html"><a href="inference-num.html#bootstrap-confidence-interval-for-mu"><i class="fa fa-check"></i><b>6.1.1</b> Bootstrap confidence interval for <span class="math inline">\(\mu\)</span></a></li>
 <li class="chapter" data-level="6.1.2" data-path="inference-num.html"><a href="inference-num.html#one-mean-math"><i class="fa fa-check"></i><b>6.1.2</b> Theory-based inferential methods for <span class="math inline">\(\bar{x}\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="inference-num.html"><a href="inference-num.html#paired-data"><i class="fa fa-check"></i><b>6.2</b> Paired mean difference</a>
-<ul>
+<li class="chapter" data-level="6.2" data-path="inference-num.html"><a href="inference-num.html#paired-data"><i class="fa fa-check"></i><b>6.2</b> Paired mean difference</a><ul>
 <li class="chapter" data-level="6.2.1" data-path="inference-num.html"><a href="inference-num.html#randomization-test-for-h_0-mu_d-0"><i class="fa fa-check"></i><b>6.2.1</b> Randomization test for <span class="math inline">\(H_0: \mu_d = 0\)</span></a></li>
 <li class="chapter" data-level="6.2.2" data-path="inference-num.html"><a href="inference-num.html#bootstrap-confidence-interval-for-mu_d"><i class="fa fa-check"></i><b>6.2.2</b> Bootstrap confidence interval for <span class="math inline">\(\mu_d\)</span></a></li>
 <li class="chapter" data-level="6.2.3" data-path="inference-num.html"><a href="inference-num.html#mathematical-model"><i class="fa fa-check"></i><b>6.2.3</b> Mathematical model</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="inference-num.html"><a href="inference-num.html#differenceOfTwoMeans"><i class="fa fa-check"></i><b>6.3</b> Difference of two means</a>
-<ul>
+<li class="chapter" data-level="6.3" data-path="inference-num.html"><a href="inference-num.html#differenceOfTwoMeans"><i class="fa fa-check"></i><b>6.3</b> Difference of two means</a><ul>
 <li class="chapter" data-level="6.3.1" data-path="inference-num.html"><a href="inference-num.html#rand2mean"><i class="fa fa-check"></i><b>6.3.1</b> Randomization test for <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span></a></li>
 <li class="chapter" data-level="6.3.2" data-path="inference-num.html"><a href="inference-num.html#bootstrap-confidence-interval-for-mu_1---mu_2"><i class="fa fa-check"></i><b>6.3.2</b> Bootstrap confidence interval for <span class="math inline">\(\mu_1 - \mu_2\)</span></a></li>
 <li class="chapter" data-level="6.3.3" data-path="inference-num.html"><a href="inference-num.html#mathematical-model-1"><i class="fa fa-check"></i><b>6.3.3</b> Mathematical model</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="inference-num.html"><a href="inference-num.html#summary-of-t-procedures"><i class="fa fa-check"></i><b>6.4</b> Summary of t-procedures</a></li>
-<li class="chapter" data-level="6.5" data-path="inference-num.html"><a href="inference-num.html#r-inference-for-quantitative-data"><i class="fa fa-check"></i><b>6.5</b> <code>R</code>: Inference for quantitative data</a>
-<ul>
+<li class="chapter" data-level="6.5" data-path="inference-num.html"><a href="inference-num.html#r-inference-for-quantitative-data"><i class="fa fa-check"></i><b>6.5</b> <code>R</code>: Inference for quantitative data</a><ul>
 <li class="chapter" data-level="6.5.1" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>6.5.1</b> Interactive R tutorials</a></li>
 <li class="chapter" data-level="6.5.2" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>6.5.2</b> R labs</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="inference-num.html"><a href="inference-num.html#chp6-review"><i class="fa fa-check"></i><b>6.6</b> Chapter 6 review</a>
-<ul>
+<li class="chapter" data-level="6.6" data-path="inference-num.html"><a href="inference-num.html#chp6-review"><i class="fa fa-check"></i><b>6.6</b> Chapter 6 review</a><ul>
 <li class="chapter" data-level="6.6.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>6.6.1</b> Terms</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="inference-reg.html"><a href="inference-reg.html"><i class="fa fa-check"></i><b>7</b> Inference for regression</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="inference-reg.html"><a href="inference-reg.html#r-inference-for-regression"><i class="fa fa-check"></i><b>7.1</b> <code>R</code>: Inference for regression</a>
-<ul>
+<li class="chapter" data-level="7" data-path="inference-reg.html"><a href="inference-reg.html"><i class="fa fa-check"></i><b>7</b> Inference for regression</a><ul>
+<li class="chapter" data-level="7.1" data-path="inference-reg.html"><a href="inference-reg.html#r-inference-for-regression"><i class="fa fa-check"></i><b>7.1</b> <code>R</code>: Inference for regression</a><ul>
 <li class="chapter" data-level="7.1.1" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>7.1.1</b> Interactive R tutorials</a></li>
 <li class="chapter" data-level="7.1.2" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>7.1.2</b> R labs</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="inference-reg.html"><a href="inference-reg.html#chp7-review"><i class="fa fa-check"></i><b>7.2</b> Chapter 7 review</a>
-<ul>
+<li class="chapter" data-level="7.2" data-path="inference-reg.html"><a href="inference-reg.html#chp7-review"><i class="fa fa-check"></i><b>7.2</b> Chapter 7 review</a><ul>
 <li class="chapter" data-level="7.2.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>7.2.1</b> Terms</a></li>
 </ul></li>
 </ul></li>
@@ -358,7 +327,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="eda" class="section level1" number="2">
+<div id="eda" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> Exploratory data analysis</h1>
 
 <div class="chapterintro">
@@ -367,7 +336,8 @@ We use statistical software for generating the summaries and graphs presented in
 However, since this might be your first exposure to these concepts, we take our time in this chapter to detail how to create them.
 Mastery of the content presented in this chapter will be crucial for understanding the methods and techniques introduced in rest of the book.
 </div>
-<div id="categorical-data" class="section level2" number="2.1">
+
+<div id="categorical-data" class="section level2">
 <h2><span class="header-section-number">2.1</span> Exploring categorical data</h2>
 <p>In this section, we will introduce tables and other basic tools for organizing and analyzing categorical data that are used throughout this book. Table <a href="eda.html#tab:emailDF">2.1</a> displays the first six rows of the <code>email</code> data set containing information on 3,921 emails sent to David Diez’s Gmail account (one of the authors of the <em>OpenIntro</em> textbooks). In this section we will examine whether the presence of numbers, small or large, in an email provides any useful value in classifying email as spam or not spam.
 Descriptions of all five email variables are given in Table <a href="eda.html#tab:emailVariables">2.2</a>.</p>
@@ -375,6 +345,7 @@ Descriptions of all five email variables are given in Table <a href="eda.html#ta
 <div class="data">
 The <code>email</code> data can be found in the <a href="http://openintrostat.github.io/openintro/reference/index.html">openintro</a> package.<a href="#fn22" class="footnote-ref" id="fnref22"><sup>22</sup></a>
 </div>
+
 <table>
 <caption>
 <span id="tab:emailDF">Table 2.1: </span>Six rows from the <code>email</code> data set.
@@ -580,7 +551,7 @@ Factor variable saying whether there was no number, a small number (under 1 mill
 </tr>
 </tbody>
 </table>
-<div id="contingency-tables-and-conditional-proportions" class="section level3" number="2.1.1">
+<div id="contingency-tables-and-conditional-proportions" class="section level3">
 <h3><span class="header-section-number">2.1.1</span> Contingency tables and conditional proportions</h3>
 <p>A summary table for a single categorical variable that reports the number of observations (frequency) in each category is called a <strong>frequency table</strong>. Table
 <a href="eda.html#tab:emailTableNumber">2.3</a> is a frequency table for the <code>number</code> variable.
@@ -732,6 +703,7 @@ Total
 <div class="guidedpractice">
 To determine if a relationship exists between whether an email is spam or not, and whether the email has no numbers, a small number, or a big number, why isn’t it helpful to compare the <em>number</em> of spam emails across the <code>number</code> categories?<a href="#fn23" class="footnote-ref" id="fnref23"><sup>23</sup></a>
 </div>
+
 <p>The proportion of emails that were classified as spam in the data set is <span class="math inline">\(3554/3921 = 0.906\)</span>, or about 91%. Let’s compare this <strong>unconditional proportion</strong> to the <strong>conditional proportions</strong> of spam within each <code>number</code> category: <span class="math inline">\(400/549 = 73\)</span>% of emails with no numbers are spam; <span class="math inline">\(2659/2827 = 94\)</span>% of emails with small numbers are spam; and <span class="math inline">\(495/545 = 91\)</span>% of emails with big numbers are spam. Since these three conditional proportions differ, we say the variables <code>number</code> and <code>type</code> are <em>associated</em> in this data set. Note that some differ from the overall, or unconditional, proportion of spam emails in the data set—91%.</p>
 
 <div class="onebox">
@@ -739,6 +711,7 @@ To determine if a relationship exists between whether an email is spam or not, a
 <p>An <strong>unconditional</strong> proportion is a proportion measured out of the total sample size. A <strong>conditional</strong> proportion is a proportion measured out of a subgroup in the sample.</p>
 If the conditional proportions of a particular outcome (e.g., spam email) within levels of a categorical variable (e.g., whether no number, a small number, or a big number appears in the email) differ across levels, we say those two variables are <strong>associated</strong>. We can also determine if two categorical variables are associated by checking if any of the conditional proportions of the outcome within categories differ from the overall, or <strong>unconditional</strong> proportion.
 </div>
+
 <div id="row-and-column-proportions" class="section level4 unnumbered">
 <h4>Row and column proportions</h4>
 <p>Conditional proportions that condition on a row category are called <strong>row proportions</strong>; conditional proportions that condition on a column category
@@ -928,7 +901,7 @@ the actual parameter values, we like to say, “We don’t know Greek,
 and we don’t know parameters!”</p>
 </div>
 </div>
-<div id="bar-plots-and-mosaic-plots" class="section level3" number="2.1.2">
+<div id="bar-plots-and-mosaic-plots" class="section level3">
 <h3><span class="header-section-number">2.1.2</span> Bar plots and mosaic plots</h3>
 <p>A bar plot is a common way to display a single categorical variable. The left panel of Figure <a href="eda.html#fig:emailNumberBarPlot">2.1</a> shows a <strong>bar plot</strong> for the <code>number</code> variable.
 In the right panel, the counts are converted into proportions (e.g., <span class="math inline">\(549/3921=0.140\)</span> for <code>none</code>).</p>
@@ -963,7 +936,7 @@ Figure 2.3: (a) Mosaic plot for numbers found in emails. (b) Mosaic plot where t
 As another example, the bottom of the third column represents spam emails that had big numbers, and the upper part of the third column represents regular emails that had big numbers. We can again use this plot to see that the <code>type</code> and <code>number</code> variables are associated since some columns are divided in different vertical locations than others, which was the same technique used for checking an association in the standardized version of the segmented bar plot.</p>
 </div>
 </div>
-<div id="why-not-pie-charts" class="section level3" number="2.1.3">
+<div id="why-not-pie-charts" class="section level3">
 <h3><span class="header-section-number">2.1.3</span> Why not pie charts?</h3>
 <p>While pie charts are well known, they are not typically as useful as other charts in a data analysis. A <strong>pie chart</strong> is shown in Figure <a href="eda.html#fig:emailNumberPieChart">2.4</a> alongside a bar plot. It is generally more difficult to compare group sizes in a pie chart (comparing angles) than in a bar plot (comparing heights), especially when categories have nearly identical counts or proportions. In the case of the <code>none</code> and <code>big</code> categories, the difference is so slight you may be unable to distinguish any difference in group sizes for either plot!</p>
 <div class="figure" style="text-align: center"><span id="fig:emailNumberPieChart"></span>
@@ -981,7 +954,7 @@ Figure 2.5: Try comparing the distributions of colors across pie charts A, B, an
 </div>
 <p>If you’re still not convinced that you shouldn’t use pie charts, read <a href="https://www.data-to-viz.com/caveat/pie.html">“The Issue with Pie Chart”</a> on the “from Data to Viz” blog, and <a href="https://www.businessinsider.com/pie-charts-are-the-worst-2013-6">“The Worst Chart in the World”</a> article on Business Insider.</p>
 </div>
-<div id="simpsons-paradox" class="section level3" number="2.1.4">
+<div id="simpsons-paradox" class="section level3">
 <h3><span class="header-section-number">2.1.4</span> Simpson’s paradox</h3>
 <div id="race-and-capital-punishment" class="section level4 unnumbered">
 <h4>Race and capital punishment</h4>
@@ -1082,11 +1055,13 @@ Figure 2.6: Segmented bar plot comparing the proportion of defendants who receiv
 <div class="guidedpractice">
 Is the race of the defendant associated with the sentence of the trial?<a href="#fn26" class="footnote-ref" id="fnref26"><sup>26</sup></a>
 </div>
-<p>Overall, a lower percentage of African American defendants received the death penalty than Caucasian defendants (8% compared to 11%). Given the systemic racism in our society, this may be surprising. Let’s look at the data more closely.</p>
+
+<p>Overall, a lower percentage of African American defendants received the death penalty than Caucasian defendants (8% compared to 11%). Given studies have shown racial bias in sentencing, this may be surprising. Let’s look at the data more closely.</p>
 
 <div class="guidedpractice">
 Since these are <em>observational data</em>, confounding variables are most likely present. Recall, a confounding variable is one that is associated with both the response variable (sentence) and the explanatory variable (race of the defendant). What confounding variables could be present?<a href="#fn27" class="footnote-ref" id="fnref27"><sup>27</sup></a>
 </div>
+
 <p>If we subset the data by the race of the victim, we see a different picture. Table <a href="eda.html#tab:DP2">2.9</a> and Figure <a href="eda.html#fig:DPbarplot2">2.7</a> summarize the same data, but separately for Caucasian and African American homicide victims.</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -1258,12 +1233,13 @@ Figure 2.8: The race of the victim is associated both with the sentence (death p
 <p><strong>Simpson’s Paradox.</strong></p>
 When the association between an explanatory variable and a response variable reverses itself when we examine the association within different levels of a confounding variable, we say that these data exhibit <strong>Simpson’s Paradox</strong>.
 </div>
+
 </div>
 </div>
 </div>
-<div id="probability-with-tables" class="section level2" number="2.2">
+<div id="probability-with-tables" class="section level2">
 <h2><span class="header-section-number">2.2</span> Probability with tables</h2>
-<div id="defining-probability" class="section level3" number="2.2.1">
+<div id="defining-probability" class="section level3">
 <h3><span class="header-section-number">2.2.1</span> Defining probability</h3>
 <p>A <strong>random process</strong> is one in which the outcome is unpredictable. We encounter random processes every day: will it rain today? how many minutes will pass until receiving your next text message? will the Seahawks win the Super Bowl? Though the outcome of one particular random process is unpredictable, if we observe the process many many times, the pattern of outcomes, or its probability distribution, can often be modeled mathematically. Though there are several philosophical definitions of probability, we will use the “frequentist” definition of probability—a long-run relative frequency.</p>
 
@@ -1271,6 +1247,7 @@ When the association between an explanatory variable and a response variable rev
 <p><strong>Probability.</strong></p>
 The <strong>probability</strong> of an event is the long-run proportion of times the event would occur if the random process were repeated indefinitely (under identical conditions).
 </div>
+
 <p>Consider the simple example of flipping a fair coin once. What is the probability the coin lands on heads. From its physical properties, we assume the probability of heads is 0.5, but let’s use simulation to examine the probability. Figure <a href="eda.html#fig:coinflip">2.9</a> shows the long-run proportion of times a simulated coin flip lands on heads on the y-axis, and the number of tosses on the x-axis. Notice how the long-run proportion starts converging to 0.5 as the number of tosses increases.</p>
 <div class="figure" style="text-align: center"><span id="fig:coinflip"></span>
 <img src="02/figures/CoinFlip/Coinflip.png" alt="One simulation of flipping a fair coin, tracking the long-run proportion of times the coin lands on heads." width="75%" />
@@ -1279,7 +1256,7 @@ Figure 2.9: One simulation of flipping a fair coin, tracking the long-run propor
 </p>
 </div>
 </div>
-<div id="finding-probabilities-with-tables" class="section level3" number="2.2.2">
+<div id="finding-probabilities-with-tables" class="section level3">
 <h3><span class="header-section-number">2.2.2</span> Finding probabilities with tables</h3>
 <p>We can solve many real-life probability problems without using any equations by creating a <strong>hypothetical two-way table</strong> of the scenario. This tool is best demonstrated by an example.</p>
 
@@ -1319,6 +1296,7 @@ Figure 2.9: One simulation of flipping a fair coin, tracking the long-run propor
 </table>
 Now we can find the probability of being late to class by reading it off the table: 130/1000 = 0.13.
 </div>
+
 <p>How did we create the table in the last Example? Let’s work through it step-by-step.</p>
 <ol style="list-style-type: decimal">
 <li>Identify the <em>unconditional</em> probabilities given in the problem: 20% chance of parking in Lot 6, which means an 80% chance of parking in Lot 18. Take 20% and 80% of 1000 to fill in the row totals:</li>
@@ -1403,16 +1381,18 @@ Now we can find the probability of being late to class by reading it off the tab
 <div class="guidedpractice">
 In the previous Guided Practice, which of the probabilities are conditional probabilities? which are unconditional?<a href="#fn29" class="footnote-ref" id="fnref29"><sup>29</sup></a>
 </div>
+
 </div>
-<div id="probability-notation" class="section level3" number="2.2.3">
+<div id="probability-notation" class="section level3">
 <h3><span class="header-section-number">2.2.3</span> Probability notation</h3>
 <p>For ease of translating probability problems into calculations, let’s define some notation. We will denote “<strong>events</strong>” (e.g., being late to class) by upper case letters near the beginning of the alphabet, e.g., <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span>. The <strong>probability of an event</strong> <span class="math inline">\(A\)</span> will be denoted by <span class="math inline">\(P(A)\)</span>, so <span class="math inline">\(P(A)\)</span> is a number between 0 and 1. The event that <span class="math inline">\(A\)</span> does <em>not</em> happen is called the <em>complement</em> of <span class="math inline">\(A\)</span> and is denoted by <span class="math inline">\(P(A^C)\)</span>. Sometimes we have additional information that we would like to condition on, and we denote the <strong>conditional probability of <span class="math inline">\(A\)</span> <em>given</em> <span class="math inline">\(B\)</span></strong> by <span class="math inline">\(P(A | B)\)</span>—the probability that <span class="math inline">\(A\)</span> happens given that <span class="math inline">\(B\)</span> has already happened.</p>
 
 <div class="example">
 In our coin flip example, we could let <span class="math inline">\(A\)</span> be the event that the coin lands on heads. Then we can denote the probability that the coin lands on heads by <span class="math inline">\(P(A) = 0.5\)</span>. We could flip the coin twice and let <span class="math inline">\(H_1\)</span> be the event that the first flip lands on heads, and <span class="math inline">\(H_2\)</span> be the event that the second flip lands on heads. Since the coin does not remember its last flip, if the first flip lands on heads, the second flip still has a 50% chance of landing on heads. That is, <span class="math inline">\(P(H_2 | H_1) = 0.5\)</span>.
 </div>
+
 </div>
-<div id="diagnostic-testing" class="section level3" number="2.2.4">
+<div id="diagnostic-testing" class="section level3">
 <h3><span class="header-section-number">2.2.4</span> Diagnostic testing</h3>
 <p>Medical diagnostic tests for diseases spend years in development. Through clinical trials, developers of the diagnostic test are able to determine two important properties of the test:</p>
 <ul>
@@ -1472,11 +1452,12 @@ In our coin flip example, we could let <span class="math inline">\(A\)</span> be
 <div class="guidedpractice">
 How would this probability change if the prevalence were 1/3500? 1/15000? Try it.<a href="#fn31" class="footnote-ref" id="fnref31"><sup>31</sup></a>
 </div>
+
 <p>Why did this counter-intuitive result occur? With such high sensitivity and specificity, why does this test perform so poorly? The answer has to do with the prevalence of the disease. For a rare disease, the very small proportion that test positive out of the very large group of people without the disease will overwhelm the very large proportion that test positive out of the very small group of people with the disease. The number of false positives can be much higher than the number of true positives.</p>
 </div>
 </div>
 </div>
-<div id="quantitative-data" class="section level2" number="2.3">
+<div id="quantitative-data" class="section level2">
 <h2><span class="header-section-number">2.3</span> Exploring quantitative data</h2>
 <p>In this section we will explore techniques for summarizing quantitative variables.
 For example, consider the <code>loan_amount</code> variable from the <code>loan50</code> data set, which represents the loan size for all 50 loans in the data set.
@@ -1489,7 +1470,8 @@ If you’d like to review the variables from either data set, see Tables <a href
 The <code>loan50</code> and <code>email50</code> data sets can be found in the <a href="http://openintrostat.github.io/openintro">openintro</a> package.
 The <code>county</code> data can be found in the <a href="https://openintrostat.github.io/usdata/">usdata</a> package.
 </div>
-<div id="scatterplots" class="section level3" number="2.3.1">
+
+<div id="scatterplots" class="section level3">
 <h3><span class="header-section-number">2.3.1</span> Scatterplots for paired data</h3>
 <p></p>
 <p>A <strong>scatterplot</strong> provides a case-by-case view of data for two quantitative variables.
@@ -1536,15 +1518,18 @@ The relationship is moderate to strong, the direction is negative,
 and there does not appear to be any unusual observations.
 </div>
 
+
 <div class="guidedpractice">
 What do scatterplots reveal about the data, and how are they useful?<a href="#fn32" class="footnote-ref" id="fnref32"><sup>32</sup></a>
 </div>
 
+
 <div class="guidedpractice">
 Describe two variables that would have a horseshoe-shaped association in a scatterplot (<span class="math inline">\(\cap\)</span> or <span class="math inline">\(\frown\)</span>)<a href="#fn33" class="footnote-ref" id="fnref33"><sup>33</sup></a>
 </div>
+
 </div>
-<div id="dotplots" class="section level3" number="2.3.2">
+<div id="dotplots" class="section level3">
 <h3><span class="header-section-number">2.3.2</span> Dot plots and the mean</h3>
 <p>Sometimes we are interested in the distribution of a single variable.
 In these cases, a dot plot provides the most basic of displays.
@@ -1568,13 +1553,16 @@ It is useful to think of the mean as the balancing point of the distribution<a h
 <span class="math display">\[ \bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n} \]</span>
 </div>
 
+
 <div class="guidedpractice">
 Examine the equation for the mean. What does <span class="math inline">\(x_1\)</span> correspond to? And <span class="math inline">\(x_2\)</span> Can you infer a general meaning to what <span class="math inline">\(x_i\)</span> might represent?<a href="#fn35" class="footnote-ref" id="fnref35"><sup>35</sup></a>
 </div>
 
+
 <div class="guidedpractice">
 What was <span class="math inline">\(n\)</span> in this sample of loans?<a href="#fn36" class="footnote-ref" id="fnref36"><sup>36</sup></a>
 </div>
+
 <p>The <code>loan50</code> data set represents a sample from a larger population of loans made through Lending Club.
 We could compute a mean for this population in the same way as the sample mean.
 However, the population mean has a special label: <span class="math inline">\(\mu\)</span>.
@@ -1586,11 +1574,13 @@ Often times it is too expensive or time consuming to measure the population mean
 The Greek letter <span class="math inline">\(\mu\)</span> is pronounced <em>mu</em>, listen to the pronunciation <a href="https://youtu.be/PStgY5AcEIw?t=47">here</a>.
 </div>
 
+
 <div class="example">
 <p>The average interest rate across all loans in the population can be estimated using the sample data. Based on the sample of 50 loans, what would be a reasonable estimate of <span class="math inline">\(\mu_x\)</span>, the mean interest rate for all loans in the full data set?</p>
 <hr />
 The sample mean, 11.57%, provides a rough estimate of <span class="math inline">\(\mu_x\)</span>. While it is not perfect, this statistic our single best guess <strong>point estimate</strong> of the average interest rate of all the loans in the population under study, the parameter. In Chapter <a href="inference-cat.html#inference-cat">5</a> and beyond, we will develop tools to characterize the accuracy of point estimates, like the sample mean. As you might have guessed, point estimates based on larger samples tend to be more accurate than those based on smaller samples.
 </div>
+
 <p>The mean is useful for making comparisons across different samples that may have different sample sizes because it allows us to rescale or standardize a metric into something more easily interpretable and comparable.</p>
 <p>Suppose we would like to understand if a new drug is more effective at treating asthma attacks than the standard drug.
 A trial of 1500 adults is set up, where 500 receive the new drug, and 1000 receive a standard drug in the control group:</p>
@@ -1654,6 +1644,7 @@ Emilio now has put his earnings into a standard unit that is easier to compare w
 Thus, while Francis’ total earnings were larger than Emilio’s, when standardizing by hour, Francis shouldn’t brag.
 </div>
 
+
 <div class="example">
 <p>Suppose we want to compute the average income per person in the US. To do so, we might first think to take the mean of the per capita incomes across the 3,142 counties in the  data set. What would be a better approach?</p>
 <hr />
@@ -1665,8 +1656,9 @@ Had we computed the <em>simple</em> mean of per capita income across counties, t
 This example used what is called a <strong>weighted mean</strong>.
 For more information on this topic, check out the following online supplement regarding <a href="https://www.openintro.org/go/?id=stat_extra_weighted_mean">weighted means</a>.
 </div>
+
 </div>
-<div id="histograms" class="section level3" number="2.3.3">
+<div id="histograms" class="section level3">
 <h3><span class="header-section-number">2.3.3</span> Histograms and shape</h3>
 <p>Dot plots show the exact value for each observation. This is useful for small data sets, but they can become hard to read with larger samples. Rather than showing the value of each observation, we prefer to think of the value as belonging to a <em>bin</em>. For example, in the <code>loan50</code> data set, we created a table of counts for the number of loans with interest rates between 5.0% and 7.5%, then the number of loans with rates between 7.5% and 10.0%, and so on. Observations that fall on the boundary of a bin (e.g., 10.00%) are allocated to the lower bin. This tabulation is shown in Table <a href="eda.html#tab:binnedIntRateAmountTable">2.10</a>. These binned counts are plotted as bars in Figure <a href="eda.html#fig:loan50IntRateHist">2.13</a> into what is called a <strong>histogram</strong>, which resembles a more heavily binned version of the stacked dot plot shown in Figure <a href="eda.html#fig:loan-int-rate-dotplot">2.12</a>.</p>
 <table>
@@ -1759,9 +1751,11 @@ If a distribution has a long left tail, it is <strong>left skewed</strong> or <s
 If a distribution has a long right tail, it is <strong>right skewed</strong> or <strong>positively skewed</strong>.
 </div>
 
+
 <div class="guidedpractice">
 Besides the mean (since it was labeled), what can you see in the dot plot in Figure <a href="eda.html#fig:loan-int-rate-dotplot">2.12</a> that you cannot see in the histogram in Figure <a href="eda.html#fig:loan50IntRateHist">2.13</a>?<a href="#fn38" class="footnote-ref" id="fnref38"><sup>38</sup></a>
 </div>
+
 <p>In addition to looking at whether a distribution is skewed or symmetric, histograms can be used to identify modes. A <strong>mode</strong> is represented by a prominent peak in the distribution. There is only one prominent peak in the histogram of <code>interest_rate</code>.</p>
 <p>A definition of <em>mode</em> sometimes taught in math classes is the value with the most occurrences in the data set. However, for many real-world data sets, it is common to have <em>no</em> observations with the same value in a data set, making this definition impractical in data analysis.</p>
 <p>Figure <a href="eda.html#fig:singleBiMultiModalPlots">2.14</a> shows histograms that have one, two, or three prominent peaks. Such distributions are called <strong>unimodal</strong>, <strong>bimodal</strong>, and <strong>multimodal</strong>, respectively. Any distribution with more than two prominent peaks is called multimodal. Notice that there was one prominent peak in the unimodal distribution with a second less prominent peak that was not counted since it only differs from its neighboring bins by a few observations.</p>
@@ -1776,10 +1770,12 @@ Figure 2.14: Counting only prominent peaks, the distributions are (left to right
 Figure <a href="eda.html#fig:loan50IntRateHist">2.13</a> reveals only one prominent mode in the interest rate. Is the distribution unimodal, bimodal, or multimodal?<a href="#fn39" class="footnote-ref" id="fnref39"><sup>39</sup></a>
 </div>
 
+
 <div class="guidedpractice">
 Height measurements of young students and adult teachers at a K-3 elementary school were taken.
 How many modes would you expect in this height data set?<a href="#fn40" class="footnote-ref" id="fnref40"><sup>40</sup></a>.
 </div>
+
 <p>Looking for modes isn’t about finding a clear and correct answer about the number of modes in a distribution, which is why <em>prominent</em> is not rigorously defined in this book. The most important part of this examination is to better understand your data.</p>
 <p>Another type of plot that is helpful for exploring the shape of a distribution is a smoothed histogram, called a <strong>density plot</strong>. A density plot will scale the <span class="math inline">\(y\)</span>-axis so that the total area under the density curve is equal to one. This allows us to get a sense of what <em>proportion</em> of the data lie in a certain interval, rather than the <em>frequency</em> of data in the interval. We can change the scale of a histogram to plot proportions rather than frequencies, then overlay a density curve on this rescaled histogram, as seen in Figure <a href="eda.html#fig:loan50IntRateDens">2.15</a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:loan50IntRateDens"></span>
@@ -1789,7 +1785,7 @@ Figure 2.15: A density plot of <code>interest_rate</code> overlayed on a histogr
 </p>
 </div>
 </div>
-<div id="variance-sd" class="section level3" number="2.3.4">
+<div id="variance-sd" class="section level3">
 <h3><span class="header-section-number">2.3.4</span> Variance and standard deviation</h3>
 <p>The mean was introduced as a method to describe the center of a data set, and <strong>variability</strong> in the data is also important. Here, we introduce two measures of variability: the variance and the standard deviation. Both of these are very useful in data analysis, even though their formulas are a bit tedious to calculate by hand. The standard deviation is the easier of the two to comprehend, and it roughly describes how far away the typical observation is from the mean.</p>
 <p>We call the distance of an observation from its mean its <strong>deviation</strong>. Below are the deviations for the <span class="math inline">\(1^{st}\)</span>, <span class="math inline">\(2^{nd}\)</span>, <span class="math inline">\(3^{rd}\)</span>, and <span class="math inline">\(50^{th}\)</span> observations in the <code>interest_rate</code> variable:</p>
@@ -1814,11 +1810,13 @@ The standard deviation is useful when considering how far the data are distribut
 If the distribution is bell-shaped, about 70% of the data will be within one standard deviation of the mean and about 95% will be within two standard deviations.
 However, these percentages do not necessarily hold for other shaped distributions!
 </div>
+
 <p>Like the mean, the population values for variance and standard deviation have special symbols: <span class="math inline">\(\sigma^2\)</span> for the variance and <span class="math inline">\(\sigma\)</span> for the standard deviation.</p>
 
 <div class="pronunciation">
 The Greek letter <span class="math inline">\(\sigma\)</span> is pronounced <em>sigma</em>, listen to the pronunciation <a href="https://youtu.be/PStgY5AcEIw?t=72">here</a>.
 </div>
+
 <div class="figure" style="text-align: center"><span id="fig:sdRuleForIntRate"></span>
 <img src="02-eda_files/figure-html/sdRuleForIntRate-1.png" alt="For the `interest_rate` variable, 34 of the 50 loans (68%) had interest rates within 1 standard deviation of the mean, and 48 of the 50 loans (96%) had rates within 2 standard deviations. Usually about 70% of the data are within 1 standard deviation of the mean and 95% within 2 standard deviations, though this is far from a hard rule." width="70%" />
 <p class="caption">
@@ -1837,6 +1835,7 @@ A good description of the shape of a distribution should include modality and wh
 Using Figure <a href="eda.html#fig:severalDiffDistWithSdOf1">2.17</a> as an example, explain why such a description is important.<a href="#fn41" class="footnote-ref" id="fnref41"><sup>41</sup></a>
 </div>
 
+
 <div class="example">
 <p>Describe the distribution of the <code>interest_rate</code> variable using the histogram in Figure <a href="eda.html#fig:loan50IntRateHist">2.13</a>.
 The description should incorporate the center, variability, and shape of the distribution, and it should also be placed in context.
@@ -1845,9 +1844,10 @@ Also note any especially unusual cases.</p>
 The distribution of interest rates is unimodal and skewed to the high end. Many of the rates fall near the mean at 11.57%, and most fall within one standard deviation (5.05%) of the mean.
 There are a few exceptionally large interest rates in the sample that are above 20%.
 </div>
+
 <p>In practice, the variance and standard deviation are sometimes used as a means to an end, where the “end” is being able to accurately estimate the uncertainty associated with a sample statistic. For example, in Chapter <a href="inference-num.html#inference-num">6</a> the standard deviation is used in calculations that help us understand how much a sample mean varies from one sample to the next.</p>
 </div>
-<div id="box-plots-quartiles-and-the-median" class="section level3" number="2.3.5">
+<div id="box-plots-quartiles-and-the-median" class="section level3">
 <h3><span class="header-section-number">2.3.5</span> Box plots, quartiles, and the median</h3>
 <p>A <strong>box plot</strong> (or box-and-whisker plot) summarizes a data set using five statistics while
 also identifying unusual observations. The five statistics—minimum, first quartile,
@@ -2109,10 +2109,12 @@ It is computed as
 where <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span> are the <span class="math inline">\(25^{th}\)</span> and <span class="math inline">\(75^{th}\)</span> percentiles, respectively.
 </div>
 
+
 <div class="guidedpractice">
 What percent of the data fall between <span class="math inline">\(Q_1\)</span> and the median?
 What percent is between the median and <span class="math inline">\(Q_3\)</span>?<a href="#fn43" class="footnote-ref" id="fnref43"><sup>43</sup></a>
 </div>
+
 <p>Extending out from the box, the <strong>whiskers</strong> attempt to capture the data outside of the box.
 The whiskers of a box plot reach to the minimum and the maximum values in the data, unless there are points that are considered unusually high or unusually low, which are identified as potential <strong>outliers</strong> by the box plot.
 These are labeled with a dot on the box plot.
@@ -2131,6 +2133,7 @@ the values <span class="math inline">\(Q_1 - 1.5\times IQR\)</span> and <span cl
 on the plot.
 </div>
 
+
 <div class="onebox">
 <p><strong>Outliers are extreme.</strong></p>
 <p>An <strong>outlier</strong> is an observation that appears extreme relative to the rest of the data.
@@ -2145,8 +2148,9 @@ Examining data for outliers serves many useful purposes, including</p>
 <div class="guidedpractice">
 Using the box plot in Figure <a href="eda.html#fig:loan-int-rate-boxplot-dotplot">2.18</a>, estimate the values of the <span class="math inline">\(Q_1\)</span>, <span class="math inline">\(Q_3\)</span>, and IQR for <code>interest_rate</code> in the <code>loan50</code> data set.<a href="#fn44" class="footnote-ref" id="fnref44"><sup>44</sup></a>
 </div>
+
 </div>
-<div id="describing-and-comparing-quantitative-distributions" class="section level3" number="2.3.6">
+<div id="describing-and-comparing-quantitative-distributions" class="section level3">
 <h3><span class="header-section-number">2.3.6</span> Describing and comparing quantitative distributions</h3>
 <p>As a review, when describing a scatterplot—the association between
 two quantitative variables, we look for the four features:</p>
@@ -2182,8 +2186,9 @@ across the different homeownership categories.</p>
 <p>The median loan amount is higher for those with a mortgage (around $16,000) than for those who own or rent (around $12,000-$13,000). However, variability in loan amounts is similar across homeownership categories, with an IQR of around $15,000 and loans ranging from a few hundred dollars to $40,000. We see from the histograms that the distribution of loan amounts is skewed right for all three homeownership categories, which means the mean loan amount will be higher than the median loan amount. There are no apparent outliers in the mortgage category, but both the rent and own categories have outliers at $40,000.</p>
 Besides center, variability, shape, and outliers, another interesting feature in these distributions is the result of rounding. Loan amounts in the data set are often rounded to the nearest 100, so we see spikes on these values in the histogram—something that is not evident in the box plots.
 </div>
+
 </div>
-<div id="robust-statistics" class="section level3" number="2.3.7">
+<div id="robust-statistics" class="section level3">
 <h3><span class="header-section-number">2.3.7</span> Robust statistics</h3>
 <p>How are the <strong>sample statistics</strong>  of the <code>interest_rate</code> data set affected by the observation, 26.3%?
 What would have happened if this loan had instead been only 15%?
@@ -2305,12 +2310,14 @@ The median and IQR are only sensitive to numbers near <span class="math inline">
 Since values in these regions are stable in the three data sets, the median and IQR estimates are also stable.
 </div>
 
+
 <div class="guidedpractice">
 The distribution of loan amounts in the <code>loan50</code> data set is right skewed, with a few large loans lingering out into the right tail.
 If you were wanting to understand the typical loan size, should you be more interested in the mean or median?<a href="#fn46" class="footnote-ref" id="fnref46"><sup>46</sup></a>
 </div>
+
 </div>
-<div id="transforming-data-special-topic" class="section level3" number="2.3.8">
+<div id="transforming-data-special-topic" class="section level3">
 <h3><span class="header-section-number">2.3.8</span> Transforming data (special topic)</h3>
 <p>When data are very strongly skewed, we sometimes transform them so they are easier to model. A <strong>transformation</strong> is a rescaling of the data using a function.</p>
 <div class="figure" style="text-align: center"><span id="fig:county-pop-transform"></span>
@@ -2325,6 +2332,7 @@ Figure 2.21: Plot A: A histogram of the populations of all US counties. Plot B: 
 <hr />
 Nearly all of the data fall into the left-most bin, and the extreme skew obscures many of the potentially interesting details in the data.
 </div>
+
 <p>There are some standard transformations that may be useful for strongly right skewed data where much of the data is positive but clustered near zero.
 For instance, a plot of the logarithm (base 10) of county populations results in the new histogram in Figure <a href="eda.html#fig:county-pop-transform">2.21</a>.
 This data is symmetric, and any potential outliers appear much less extreme than in the original data set.
@@ -2345,7 +2353,7 @@ Figure 2.22: Plot A: Scatterplot of population change against the population bef
 For instance, the square root (<span class="math inline">\(\sqrt{\text{original observation}}\)</span>) and inverse (<span class="math inline">\(\frac{1}{\text{original observation}}\)</span>) are commonly used by data scientists.
 Common goals in transforming data are to see the data structure differently, reduce skew, assist in modeling, or straighten a nonlinear relationship in a scatterplot.</p>
 </div>
-<div id="mapping-data" class="section level3" number="2.3.9">
+<div id="mapping-data" class="section level3">
 <h3><span class="header-section-number">2.3.9</span> Mapping data</h3>
 <p></p>
 <p>The <code>county</code> data set offers many numerical variables that we could plot using dot plots, scatterplots, or box plots, but these miss the true nature of the data.
@@ -2366,9 +2374,11 @@ In fact, it makes sense for higher rates of unemployment to be closely related t
 One observation that stands out when comparing the two maps: the poverty rate is much higher than the unemployment rate, meaning while many people may be working, they are not making enough to break out of poverty.
 </div>
 
+
 <div class="guidedpractice">
 What interesting features are evident in the median household income intensity map in Figure <a href="eda.html#fig:county-intensity-map-homeownership-median-income">2.24</a>?<a href="#fn47" class="footnote-ref" id="fnref47"><sup>47</sup></a>
 </div>
+
 <div class="figure" style="text-align: center"><span id="fig:county-intensity-map-poverty-unemp"></span>
 <img src="02-eda_files/figure-html/county-intensity-map-poverty-unemp-1.png" alt="Plot A: Intensity map of poverty rate (percent). Plot B: Intensity map of the unemployment rate (percent)." width="70%" />
 <p class="caption">
@@ -2383,9 +2393,9 @@ Figure 2.24: Plot A: Intensity map of homeownership rate (percent). Plot B: Inte
 </div>
 </div>
 </div>
-<div id="r-exploratory-data-analysis" class="section level2" number="2.4">
+<div id="r-exploratory-data-analysis" class="section level2">
 <h2><span class="header-section-number">2.4</span> <code>R</code>: Exploratory data analysis</h2>
-<div id="interactive-r-tutorials" class="section level3" number="2.4.1">
+<div id="interactive-r-tutorials" class="section level3">
 <h3><span class="header-section-number">2.4.1</span> Interactive R tutorials</h3>
 <p>Navigate the concepts you’ve learned in this chapter in R using the following self-paced tutorials.
 All you need is your browser to get started!</p>
@@ -2406,7 +2416,7 @@ All you need is your browser to get started!</p>
 </div>
 <p>You can also access the full list of tutorials supporting this book <a href="https://openintrostat.github.io/ims-tutorials/">here</a>.</p>
 </div>
-<div id="r-labs" class="section level3" number="2.4.2">
+<div id="r-labs" class="section level3">
 <h3><span class="header-section-number">2.4.2</span> R labs</h3>
 <p>Further apply the concepts you’ve learned in this chapter in R with computational labs that walk you through a data analysis case study.</p>
 <div class="singlelab">
@@ -2417,7 +2427,7 @@ All you need is your browser to get started!</p>
 </div>
 </div>
 </div>
-<div id="chp2-review" class="section level2" number="2.5">
+<div id="chp2-review" class="section level2">
 <h2><span class="header-section-number">2.5</span> Chapter 2 review</h2>
 <p>We’re encountered a variety of univariate (one variable) and bivariate (two variable) summary statistics and data visualization methods in this chapter.</p>
 <p>Figure <a href="eda.html#fig:decision-tree-plots">2.25</a> presents a decision tree for deciding which type of plot is most appropriate for a given number and types of variables. In the next chapter, we’ll further explore how to model the association between two quantitative variables, called regression. In Chapter <a href="mult-reg.html#mult-reg">4</a>, we’ll look at exploratory data analysis methods for more than two variables.</p>
@@ -2442,7 +2452,7 @@ Figure 2.25: Decision tree for determining an appropriate plot given a number of
 <!--     color = pal[c(1:9,4,5,5,6,6,6,6,7,7,8,9,9)], -->
 <!--     size = 4#, repel = TRUE -->
 <!--     )  -->
-<div id="notation-summary" class="section level3" number="2.5.1">
+<div id="notation-summary" class="section level3">
 <h3><span class="header-section-number">2.5.1</span> Notation summary</h3>
 <p>In the field of statistics, summary measures that summarize a sample of data are called <strong>statistics</strong>. Numbers that summarize an entire population <strong>parameters</strong>. You can remember
 this distinction by looking at the first letter of each term:</p>
@@ -2488,7 +2498,7 @@ this distinction by looking at the first letter of each term:</p>
 </tbody>
 </table>
 </div>
-<div id="terms" class="section level3" number="2.5.2">
+<div id="terms" class="section level3">
 <h3><span class="header-section-number">2.5.2</span> Terms</h3>
 <p>We introduced the following terms in the chapter.
 If you’re not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
