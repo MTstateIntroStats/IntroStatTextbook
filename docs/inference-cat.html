@@ -24,13 +24,7 @@
 <meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager" />
 
 
-<<<<<<< HEAD
 <meta name="date" content="2020-09-01" />
-||||||| aef4490
-<meta name="date" content="2020-08-26" />
-=======
-<meta name="date" content="2020-08-27" />
->>>>>>> 3945ffde450a2e56a005a25b6fd277dd4cd3e905
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -39,6 +33,7 @@
   
 <link rel="prev" href="mult-reg.html"/>
 <link rel="next" href="inference-num.html"/>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -56,24 +51,22 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -93,7 +86,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -126,7 +119,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="css\oistyle.css" type="text/css" />
+<link rel="stylesheet" href="css/oistyle.css" type="text/css" />
 </head>
 
 <body>
@@ -142,65 +135,78 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">MSU Intro Stat with R</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#textbook-overview"><i class="fa fa-check"></i>Textbook overview</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#statistical-computing"><i class="fa fa-check"></i>Statistical computing</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#statistical-computing"><i class="fa fa-check"></i>Statistical computing</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#getting-rstudio"><i class="fa fa-check"></i>Getting RStudio</a></li>
 <li><a href="index.html#installing-catstats">Installing <code>catstats</code></a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html"><i class="fa fa-check"></i>About the Authors</a><ul>
+<li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html"><i class="fa fa-check"></i>About the Authors</a>
+<ul>
 <li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html#montana-state-university-authors"><i class="fa fa-check"></i>Montana State University Authors</a></li>
 <li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html#openintro-authors"><i class="fa fa-check"></i>OpenIntro Authors</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="copyright.html"><a href="copyright.html"><i class="fa fa-check"></i>Copyright</a></li>
-<li class="chapter" data-level="1" data-path="intro-to-data.html"><a href="intro-to-data.html"><i class="fa fa-check"></i><b>1</b> Introduction to data</a><ul>
+<li class="chapter" data-level="1" data-path="intro-to-data.html"><a href="intro-to-data.html"><i class="fa fa-check"></i><b>1</b> Introduction to data</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="intro-to-data.html"><a href="intro-to-data.html#basic-stents-strokes"><i class="fa fa-check"></i><b>1.1</b> Case study: using stents to prevent strokes</a></li>
-<li class="chapter" data-level="1.2" data-path="intro-to-data.html"><a href="intro-to-data.html#data-basics"><i class="fa fa-check"></i><b>1.2</b> Data basics</a><ul>
+<li class="chapter" data-level="1.2" data-path="intro-to-data.html"><a href="intro-to-data.html#data-basics"><i class="fa fa-check"></i><b>1.2</b> Data basics</a>
+<ul>
 <li class="chapter" data-level="1.2.1" data-path="intro-to-data.html"><a href="intro-to-data.html#observations-variables-and-data-frames"><i class="fa fa-check"></i><b>1.2.1</b> Observations, variables, and data frames</a></li>
 <li class="chapter" data-level="1.2.2" data-path="intro-to-data.html"><a href="intro-to-data.html#variable-types"><i class="fa fa-check"></i><b>1.2.2</b> Types of variables</a></li>
 <li class="chapter" data-level="1.2.3" data-path="intro-to-data.html"><a href="intro-to-data.html#variable-relations"><i class="fa fa-check"></i><b>1.2.3</b> Relationships between variables</a></li>
 <li class="chapter" data-level="1.2.4" data-path="intro-to-data.html"><a href="intro-to-data.html#explanatory-and-response-variables"><i class="fa fa-check"></i><b>1.2.4</b> Explanatory and response variables</a></li>
 <li class="chapter" data-level="1.2.5" data-path="intro-to-data.html"><a href="intro-to-data.html#introducing-observational-studies-and-experiments"><i class="fa fa-check"></i><b>1.2.5</b> Introducing observational studies and experiments</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="intro-to-data.html"><a href="intro-to-data.html#sampling-principles-strategies"><i class="fa fa-check"></i><b>1.3</b> Sampling principles and strategies</a><ul>
+<li class="chapter" data-level="1.3" data-path="intro-to-data.html"><a href="intro-to-data.html#sampling-principles-strategies"><i class="fa fa-check"></i><b>1.3</b> Sampling principles and strategies</a>
+<ul>
 <li class="chapter" data-level="1.3.1" data-path="intro-to-data.html"><a href="intro-to-data.html#populations-and-samples"><i class="fa fa-check"></i><b>1.3.1</b> Populations and samples</a></li>
 <li class="chapter" data-level="1.3.2" data-path="intro-to-data.html"><a href="intro-to-data.html#anecdotal-evidence"><i class="fa fa-check"></i><b>1.3.2</b> Anecdotal evidence</a></li>
 <li class="chapter" data-level="1.3.3" data-path="intro-to-data.html"><a href="intro-to-data.html#sampling-from-a-population"><i class="fa fa-check"></i><b>1.3.3</b> Sampling from a population</a></li>
 <li class="chapter" data-level="1.3.4" data-path="intro-to-data.html"><a href="intro-to-data.html#samp-methods"><i class="fa fa-check"></i><b>1.3.4</b> Four sampling methods (special topic)</a></li>
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="intro-to-data.html"><a href="intro-to-data.html#observational-studies"><i class="fa fa-check"></i><b>1.4</b> Observational studies</a></li>
-<li class="chapter" data-level="1.5" data-path="intro-to-data.html"><a href="intro-to-data.html#experiments"><i class="fa fa-check"></i><b>1.5</b> Experiments</a><ul>
+<li class="chapter" data-level="1.5" data-path="intro-to-data.html"><a href="intro-to-data.html#experiments"><i class="fa fa-check"></i><b>1.5</b> Experiments</a>
+<ul>
 <li class="chapter" data-level="1.5.1" data-path="intro-to-data.html"><a href="intro-to-data.html#principles-of-experimental-design"><i class="fa fa-check"></i><b>1.5.1</b> Principles of experimental design</a></li>
 <li class="chapter" data-level="1.5.2" data-path="intro-to-data.html"><a href="intro-to-data.html#reducing-bias-human-experiments"><i class="fa fa-check"></i><b>1.5.2</b> Reducing bias in human experiments</a></li>
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="intro-to-data.html"><a href="intro-to-data.html#scope-of-inference"><i class="fa fa-check"></i><b>1.6</b> Scope of inference</a></li>
-<li class="chapter" data-level="1.7" data-path="intro-to-data.html"><a href="intro-to-data.html#data-in-r"><i class="fa fa-check"></i><b>1.7</b> Data in <code>R</code></a><ul>
+<li class="chapter" data-level="1.7" data-path="intro-to-data.html"><a href="intro-to-data.html#data-in-r"><i class="fa fa-check"></i><b>1.7</b> Data in <code>R</code></a>
+<ul>
 <li class="chapter" data-level="1.7.1" data-path="intro-to-data.html"><a href="intro-to-data.html#dataframes-in-r"><i class="fa fa-check"></i><b>1.7.1</b> Dataframes in <code>R</code></a></li>
 <li class="chapter" data-level="1.7.2" data-path="intro-to-data.html"><a href="intro-to-data.html#datastruc"><i class="fa fa-check"></i><b>1.7.2</b> Tidy structure of data</a></li>
 <li class="chapter" data-level="1.7.3" data-path="intro-to-data.html"><a href="intro-to-data.html#using-the-pipe-to-chain"><i class="fa fa-check"></i><b>1.7.3</b> Using the pipe to chain</a></li>
 <li class="chapter" data-level="1.7.4" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>1.7.4</b> Interactive R tutorials</a></li>
 <li class="chapter" data-level="1.7.5" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>1.7.5</b> R labs</a></li>
 </ul></li>
-<li class="chapter" data-level="1.8" data-path="intro-to-data.html"><a href="intro-to-data.html#chp1-review"><i class="fa fa-check"></i><b>1.8</b> Chapter 1 review</a><ul>
+<li class="chapter" data-level="1.8" data-path="intro-to-data.html"><a href="intro-to-data.html#chp1-review"><i class="fa fa-check"></i><b>1.8</b> Chapter 1 review</a>
+<ul>
 <li class="chapter" data-level="1.8.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>1.8.1</b> Terms</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>2</b> Exploratory data analysis</a><ul>
-<li class="chapter" data-level="2.1" data-path="eda.html"><a href="eda.html#categorical-data"><i class="fa fa-check"></i><b>2.1</b> Exploring categorical data</a><ul>
+<li class="chapter" data-level="2" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>2</b> Exploratory data analysis</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="eda.html"><a href="eda.html#categorical-data"><i class="fa fa-check"></i><b>2.1</b> Exploring categorical data</a>
+<ul>
 <li class="chapter" data-level="2.1.1" data-path="eda.html"><a href="eda.html#contingency-tables-and-conditional-proportions"><i class="fa fa-check"></i><b>2.1.1</b> Contingency tables and conditional proportions</a></li>
 <li class="chapter" data-level="2.1.2" data-path="eda.html"><a href="eda.html#bar-plots-and-mosaic-plots"><i class="fa fa-check"></i><b>2.1.2</b> Bar plots and mosaic plots</a></li>
 <li class="chapter" data-level="2.1.3" data-path="eda.html"><a href="eda.html#why-not-pie-charts"><i class="fa fa-check"></i><b>2.1.3</b> Why not pie charts?</a></li>
 <li class="chapter" data-level="2.1.4" data-path="eda.html"><a href="eda.html#simpsons-paradox"><i class="fa fa-check"></i><b>2.1.4</b> Simpson’s paradox</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="eda.html"><a href="eda.html#probability-with-tables"><i class="fa fa-check"></i><b>2.2</b> Probability with tables</a><ul>
+<li class="chapter" data-level="2.2" data-path="eda.html"><a href="eda.html#probability-with-tables"><i class="fa fa-check"></i><b>2.2</b> Probability with tables</a>
+<ul>
 <li class="chapter" data-level="2.2.1" data-path="eda.html"><a href="eda.html#defining-probability"><i class="fa fa-check"></i><b>2.2.1</b> Defining probability</a></li>
 <li class="chapter" data-level="2.2.2" data-path="eda.html"><a href="eda.html#finding-probabilities-with-tables"><i class="fa fa-check"></i><b>2.2.2</b> Finding probabilities with tables</a></li>
 <li class="chapter" data-level="2.2.3" data-path="eda.html"><a href="eda.html#probability-notation"><i class="fa fa-check"></i><b>2.2.3</b> Probability notation</a></li>
 <li class="chapter" data-level="2.2.4" data-path="eda.html"><a href="eda.html#diagnostic-testing"><i class="fa fa-check"></i><b>2.2.4</b> Diagnostic testing</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="eda.html"><a href="eda.html#quantitative-data"><i class="fa fa-check"></i><b>2.3</b> Exploring quantitative data</a><ul>
+<li class="chapter" data-level="2.3" data-path="eda.html"><a href="eda.html#quantitative-data"><i class="fa fa-check"></i><b>2.3</b> Exploring quantitative data</a>
+<ul>
 <li class="chapter" data-level="2.3.1" data-path="eda.html"><a href="eda.html#scatterplots"><i class="fa fa-check"></i><b>2.3.1</b> Scatterplots for paired data</a></li>
 <li class="chapter" data-level="2.3.2" data-path="eda.html"><a href="eda.html#dotplots"><i class="fa fa-check"></i><b>2.3.2</b> Dot plots and the mean</a></li>
 <li class="chapter" data-level="2.3.3" data-path="eda.html"><a href="eda.html#histograms"><i class="fa fa-check"></i><b>2.3.3</b> Histograms and shape</a></li>
@@ -211,37 +217,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.8" data-path="eda.html"><a href="eda.html#transforming-data-special-topic"><i class="fa fa-check"></i><b>2.3.8</b> Transforming data (special topic)</a></li>
 <li class="chapter" data-level="2.3.9" data-path="eda.html"><a href="eda.html#mapping-data"><i class="fa fa-check"></i><b>2.3.9</b> Mapping data</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="eda.html"><a href="eda.html#r-exploratory-data-analysis"><i class="fa fa-check"></i><b>2.4</b> <code>R</code>: Exploratory data analysis</a><ul>
+<li class="chapter" data-level="2.4" data-path="eda.html"><a href="eda.html#r-exploratory-data-analysis"><i class="fa fa-check"></i><b>2.4</b> <code>R</code>: Exploratory data analysis</a>
+<ul>
 <li class="chapter" data-level="2.4.1" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>2.4.1</b> Interactive R tutorials</a></li>
 <li class="chapter" data-level="2.4.2" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>2.4.2</b> R labs</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="eda.html"><a href="eda.html#chp2-review"><i class="fa fa-check"></i><b>2.5</b> Chapter 2 review</a><ul>
+<li class="chapter" data-level="2.5" data-path="eda.html"><a href="eda.html#chp2-review"><i class="fa fa-check"></i><b>2.5</b> Chapter 2 review</a>
+<ul>
 <li class="chapter" data-level="2.5.1" data-path="eda.html"><a href="eda.html#notation-summary"><i class="fa fa-check"></i><b>2.5.1</b> Notation summary</a></li>
 <li class="chapter" data-level="2.5.2" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>2.5.2</b> Terms</a></li>
 </ul></li>
 </ul></li>
-<<<<<<< HEAD
 <li class="chapter" data-level="3" data-path="cor-reg.html"><a href="cor-reg.html"><i class="fa fa-check"></i><b>3</b> Correlation and regression</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="cor-reg.html"><a href="cor-reg.html#correlation-and-the-coefficient-of-determination"><i class="fa fa-check"></i><b>3.1</b> Correlation and the coefficient of determination</a></li>
 <li class="chapter" data-level="3.2" data-path="cor-reg.html"><a href="cor-reg.html#fitting-a-line-by-least-squares-regression"><i class="fa fa-check"></i><b>3.2</b> Fitting a line by least squares regression</a>
 <ul>
 <li class="chapter" data-level="3.2.1" data-path="cor-reg.html"><a href="cor-reg.html#residuals-and-residual-plots"><i class="fa fa-check"></i><b>3.2.1</b> Residuals and residual plots</a></li>
-||||||| aef4490
-<li class="chapter" data-level="3" data-path="cor-reg.html"><a href="cor-reg.html"><i class="fa fa-check"></i><b>3</b> Correlation and regression</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="cor-reg.html"><a href="cor-reg.html#r-correlation-and-regression"><i class="fa fa-check"></i><b>3.1</b> <code>R</code>: Correlation and regression</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>3.1.1</b> Interactive R tutorials</a></li>
-<li class="chapter" data-level="3.1.2" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>3.1.2</b> R labs</a></li>
-=======
-<li class="chapter" data-level="3" data-path="cor-reg.html"><a href="cor-reg.html"><i class="fa fa-check"></i><b>3</b> Correlation and regression</a><ul>
-<li class="chapter" data-level="3.1" data-path="cor-reg.html"><a href="cor-reg.html#correlation-and-the-coefficient-of-determination"><i class="fa fa-check"></i><b>3.1</b> Correlation and the coefficient of determination</a></li>
-<li class="chapter" data-level="3.2" data-path="cor-reg.html"><a href="cor-reg.html#fitting-a-line-by-least-squares-regression"><i class="fa fa-check"></i><b>3.2</b> Fitting a line by least squares regression</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="cor-reg.html"><a href="cor-reg.html#residuals-and-residual-plots"><i class="fa fa-check"></i><b>3.2.1</b> Residuals and residual plots</a></li>
->>>>>>> 3945ffde450a2e56a005a25b6fd277dd4cd3e905
 </ul></li>
-<<<<<<< HEAD
 <li class="chapter" data-level="3.3" data-path="cor-reg.html"><a href="cor-reg.html#types-of-outliers-in-linear-regression"><i class="fa fa-check"></i><b>3.3</b> Types of outliers in linear regression</a></li>
 <li class="chapter" data-level="3.4" data-path="cor-reg.html"><a href="cor-reg.html#r-correlation-and-regression"><i class="fa fa-check"></i><b>3.4</b> <code>R</code>: Correlation and regression</a>
 <ul>
@@ -252,99 +245,103 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="3.5.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>3.5.1</b> Terms</a></li>
 <li class="chapter" data-level="3.5.2" data-path="cor-reg.html"><a href="cor-reg.html#chapter-exercises"><i class="fa fa-check"></i><b>3.5.2</b> Chapter exercises</a></li>
-||||||| aef4490
-<li class="chapter" data-level="3.2" data-path="cor-reg.html"><a href="cor-reg.html#chp3-review"><i class="fa fa-check"></i><b>3.2</b> Chapter 3 review</a>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="mult-reg.html"><a href="mult-reg.html"><i class="fa fa-check"></i><b>4</b> Multiple regression</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>3.2.1</b> Terms</a></li>
-<li class="chapter" data-level="3.2.2" data-path="cor-reg.html"><a href="cor-reg.html#chapter-exercises"><i class="fa fa-check"></i><b>3.2.2</b> Chapter exercises</a></li>
-=======
-<li class="chapter" data-level="3.3" data-path="cor-reg.html"><a href="cor-reg.html#types-of-outliers-in-linear-regression"><i class="fa fa-check"></i><b>3.3</b> Types of outliers in linear regression</a></li>
-<li class="chapter" data-level="3.4" data-path="cor-reg.html"><a href="cor-reg.html#r-correlation-and-regression"><i class="fa fa-check"></i><b>3.4</b> <code>R</code>: Correlation and regression</a><ul>
-<li class="chapter" data-level="3.4.1" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>3.4.1</b> Interactive R tutorials</a></li>
-<li class="chapter" data-level="3.4.2" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>3.4.2</b> R labs</a></li>
->>>>>>> 3945ffde450a2e56a005a25b6fd277dd4cd3e905
-</ul></li>
-<li class="chapter" data-level="3.5" data-path="cor-reg.html"><a href="cor-reg.html#chp3-review"><i class="fa fa-check"></i><b>3.5</b> Chapter 3 review</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>3.5.1</b> Terms</a></li>
-<li class="chapter" data-level="3.5.2" data-path="cor-reg.html"><a href="cor-reg.html#chapter-exercises"><i class="fa fa-check"></i><b>3.5.2</b> Chapter exercises</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="mult-reg.html"><a href="mult-reg.html"><i class="fa fa-check"></i><b>4</b> Multiple regression</a><ul>
 <li class="chapter" data-level="4.1" data-path="mult-reg.html"><a href="mult-reg.html#num-vs.-whatever---mlr"><i class="fa fa-check"></i><b>4.1</b> Num vs. whatever - MLR</a></li>
 <li class="chapter" data-level="4.2" data-path="mult-reg.html"><a href="mult-reg.html#parallel-slopes"><i class="fa fa-check"></i><b>4.2</b> Parallel slopes</a></li>
 <li class="chapter" data-level="4.3" data-path="mult-reg.html"><a href="mult-reg.html#hint-at-interaction-planes-and-parallel-planes-but-not-quantify"><i class="fa fa-check"></i><b>4.3</b> Hint at interaction, planes, and parallel planes but not quantify</a></li>
-<li class="chapter" data-level="4.4" data-path="mult-reg.html"><a href="mult-reg.html#r-multiple-and-logistic-regression"><i class="fa fa-check"></i><b>4.4</b> <code>R</code>: Multiple and logistic regression</a><ul>
+<li class="chapter" data-level="4.4" data-path="mult-reg.html"><a href="mult-reg.html#r-multiple-and-logistic-regression"><i class="fa fa-check"></i><b>4.4</b> <code>R</code>: Multiple and logistic regression</a>
+<ul>
 <li class="chapter" data-level="4.4.1" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>4.4.1</b> Interactive R tutorials</a></li>
 <li class="chapter" data-level="4.4.2" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>4.4.2</b> R labs</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="mult-reg.html"><a href="mult-reg.html#chp4-review"><i class="fa fa-check"></i><b>4.5</b> Chapter 4 review</a><ul>
+<li class="chapter" data-level="4.5" data-path="mult-reg.html"><a href="mult-reg.html#chp4-review"><i class="fa fa-check"></i><b>4.5</b> Chapter 4 review</a>
+<ul>
 <li class="chapter" data-level="4.5.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>4.5.1</b> Terms</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="inference-cat.html"><a href="inference-cat.html"><i class="fa fa-check"></i><b>5</b> Inference for categorical data</a><ul>
-<li class="chapter" data-level="5.1" data-path="inference-cat.html"><a href="inference-cat.html#inf-foundations"><i class="fa fa-check"></i><b>5.1</b> Foundations of inference</a><ul>
+<li class="chapter" data-level="5" data-path="inference-cat.html"><a href="inference-cat.html"><i class="fa fa-check"></i><b>5</b> Inference for categorical data</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="inference-cat.html"><a href="inference-cat.html#inf-foundations"><i class="fa fa-check"></i><b>5.1</b> Foundations of inference</a>
+<ul>
 <li class="chapter" data-level="5.1.1" data-path="inference-cat.html"><a href="inference-cat.html#Martian"><i class="fa fa-check"></i><b>5.1.1</b> Motivating example: Martian alphabet</a></li>
 <li class="chapter" data-level="5.1.2" data-path="inference-cat.html"><a href="inference-cat.html#var-stat"><i class="fa fa-check"></i><b>5.1.2</b> Variability in a statistic</a></li>
 <li class="chapter" data-level="5.1.3" data-path="inference-cat.html"><a href="inference-cat.html#HypothesisTesting"><i class="fa fa-check"></i><b>5.1.3</b> Hypothesis tests</a></li>
 <li class="chapter" data-level="5.1.4" data-path="inference-cat.html"><a href="inference-cat.html#ConfidenceIntervals"><i class="fa fa-check"></i><b>5.1.4</b> Confidence intervals</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="inference-cat.html"><a href="inference-cat.html#normal"><i class="fa fa-check"></i><b>5.2</b> The normal distribution</a><ul>
+<li class="chapter" data-level="5.2" data-path="inference-cat.html"><a href="inference-cat.html#normal"><i class="fa fa-check"></i><b>5.2</b> The normal distribution</a>
+<ul>
 <li class="chapter" data-level="5.2.1" data-path="inference-cat.html"><a href="inference-cat.html#normal-distribution-model"><i class="fa fa-check"></i><b>5.2.1</b> Normal distribution model</a></li>
 <li class="chapter" data-level="5.2.2" data-path="inference-cat.html"><a href="inference-cat.html#standardizing-with-z-scores"><i class="fa fa-check"></i><b>5.2.2</b> Standardizing with Z-scores</a></li>
 <li class="chapter" data-level="5.2.3" data-path="inference-cat.html"><a href="inference-cat.html#normal-probability-calculations-in-r"><i class="fa fa-check"></i><b>5.2.3</b> Normal probability calculations in <code>R</code></a></li>
 <li class="chapter" data-level="5.2.4" data-path="inference-cat.html"><a href="inference-cat.html#normal-probability-examples"><i class="fa fa-check"></i><b>5.2.4</b> Normal probability examples</a></li>
 <li class="chapter" data-level="5.2.5" data-path="inference-cat.html"><a href="inference-cat.html#rule"><i class="fa fa-check"></i><b>5.2.5</b> 68-95-99.7 rule</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="inference-cat.html"><a href="inference-cat.html#single-prop"><i class="fa fa-check"></i><b>5.3</b> One proportion</a><ul>
+<li class="chapter" data-level="5.3" data-path="inference-cat.html"><a href="inference-cat.html#single-prop"><i class="fa fa-check"></i><b>5.3</b> One proportion</a>
+<ul>
 <li class="chapter" data-level="5.3.1" data-path="inference-cat.html"><a href="inference-cat.html#one-prop-null-boot"><i class="fa fa-check"></i><b>5.3.1</b> Simulation-based test for <span class="math inline">\(H_0: \pi = \pi_0\)</span></a></li>
 <li class="chapter" data-level="5.3.2" data-path="inference-cat.html"><a href="inference-cat.html#boot-ci-prop"><i class="fa fa-check"></i><b>5.3.2</b> Bootstrap confidence interval for <span class="math inline">\(\pi\)</span></a></li>
 <li class="chapter" data-level="5.3.3" data-path="inference-cat.html"><a href="inference-cat.html#theory-prop"><i class="fa fa-check"></i><b>5.3.3</b> Theory-based methods for <span class="math inline">\(\pi\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="inference-cat.html"><a href="inference-cat.html#diff-two-prop"><i class="fa fa-check"></i><b>5.4</b> Difference of two proportions</a><ul>
+<li class="chapter" data-level="5.4" data-path="inference-cat.html"><a href="inference-cat.html#diff-two-prop"><i class="fa fa-check"></i><b>5.4</b> Difference of two proportions</a>
+<ul>
 <li class="chapter" data-level="5.4.1" data-path="inference-cat.html"><a href="inference-cat.html#two-prop-errors"><i class="fa fa-check"></i><b>5.4.1</b> Randomization test for <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span></a></li>
 <li class="chapter" data-level="5.4.2" data-path="inference-cat.html"><a href="inference-cat.html#two-prop-boot-ci"><i class="fa fa-check"></i><b>5.4.2</b> Bootstrap confidence interval for <span class="math inline">\(\pi_1 - \pi_2\)</span></a></li>
 <li class="chapter" data-level="5.4.3" data-path="inference-cat.html"><a href="inference-cat.html#math-2prop"><i class="fa fa-check"></i><b>5.4.3</b> Theory-based methods for <span class="math inline">\(\pi_1 - \pi_2\)</span></a></li>
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="inference-cat.html"><a href="inference-cat.html#power"><i class="fa fa-check"></i><b>5.5</b> Power, Errors, and Practical Importance</a></li>
 <li class="chapter" data-level="5.6" data-path="inference-cat.html"><a href="inference-cat.html#summary-of-z-procedures"><i class="fa fa-check"></i><b>5.6</b> Summary of Z-procedures</a></li>
-<li class="chapter" data-level="5.7" data-path="inference-cat.html"><a href="inference-cat.html#r-inference-for-categorical-data"><i class="fa fa-check"></i><b>5.7</b> <code>R</code>: Inference for categorical data</a><ul>
+<li class="chapter" data-level="5.7" data-path="inference-cat.html"><a href="inference-cat.html#r-inference-for-categorical-data"><i class="fa fa-check"></i><b>5.7</b> <code>R</code>: Inference for categorical data</a>
+<ul>
 <li class="chapter" data-level="5.7.1" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>5.7.1</b> Interactive R tutorials</a></li>
 <li class="chapter" data-level="5.7.2" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>5.7.2</b> R labs</a></li>
 </ul></li>
-<li class="chapter" data-level="5.8" data-path="inference-cat.html"><a href="inference-cat.html#chp5-review"><i class="fa fa-check"></i><b>5.8</b> Chapter 5 review</a><ul>
+<li class="chapter" data-level="5.8" data-path="inference-cat.html"><a href="inference-cat.html#chp5-review"><i class="fa fa-check"></i><b>5.8</b> Chapter 5 review</a>
+<ul>
 <li class="chapter" data-level="5.8.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>5.8.1</b> Terms</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="inference-num.html"><a href="inference-num.html"><i class="fa fa-check"></i><b>6</b> Inference for quantitative data</a><ul>
-<li class="chapter" data-level="6.1" data-path="inference-num.html"><a href="inference-num.html#one-mean"><i class="fa fa-check"></i><b>6.1</b> One mean</a><ul>
+<li class="chapter" data-level="6" data-path="inference-num.html"><a href="inference-num.html"><i class="fa fa-check"></i><b>6</b> Inference for quantitative data</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="inference-num.html"><a href="inference-num.html#one-mean"><i class="fa fa-check"></i><b>6.1</b> One mean</a>
+<ul>
 <li class="chapter" data-level="6.1.1" data-path="inference-num.html"><a href="inference-num.html#bootstrap-confidence-interval-for-mu"><i class="fa fa-check"></i><b>6.1.1</b> Bootstrap confidence interval for <span class="math inline">\(\mu\)</span></a></li>
 <li class="chapter" data-level="6.1.2" data-path="inference-num.html"><a href="inference-num.html#one-mean-math"><i class="fa fa-check"></i><b>6.1.2</b> Theory-based inferential methods for <span class="math inline">\(\bar{x}\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="inference-num.html"><a href="inference-num.html#paired-data"><i class="fa fa-check"></i><b>6.2</b> Paired mean difference</a><ul>
+<li class="chapter" data-level="6.2" data-path="inference-num.html"><a href="inference-num.html#paired-data"><i class="fa fa-check"></i><b>6.2</b> Paired mean difference</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="inference-num.html"><a href="inference-num.html#randomization-test-for-h_0-mu_d-0"><i class="fa fa-check"></i><b>6.2.1</b> Randomization test for <span class="math inline">\(H_0: \mu_d = 0\)</span></a></li>
 <li class="chapter" data-level="6.2.2" data-path="inference-num.html"><a href="inference-num.html#bootstrap-confidence-interval-for-mu_d"><i class="fa fa-check"></i><b>6.2.2</b> Bootstrap confidence interval for <span class="math inline">\(\mu_d\)</span></a></li>
 <li class="chapter" data-level="6.2.3" data-path="inference-num.html"><a href="inference-num.html#mathematical-model"><i class="fa fa-check"></i><b>6.2.3</b> Mathematical model</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="inference-num.html"><a href="inference-num.html#differenceOfTwoMeans"><i class="fa fa-check"></i><b>6.3</b> Difference of two means</a><ul>
+<li class="chapter" data-level="6.3" data-path="inference-num.html"><a href="inference-num.html#differenceOfTwoMeans"><i class="fa fa-check"></i><b>6.3</b> Difference of two means</a>
+<ul>
 <li class="chapter" data-level="6.3.1" data-path="inference-num.html"><a href="inference-num.html#rand2mean"><i class="fa fa-check"></i><b>6.3.1</b> Randomization test for <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span></a></li>
 <li class="chapter" data-level="6.3.2" data-path="inference-num.html"><a href="inference-num.html#bootstrap-confidence-interval-for-mu_1---mu_2"><i class="fa fa-check"></i><b>6.3.2</b> Bootstrap confidence interval for <span class="math inline">\(\mu_1 - \mu_2\)</span></a></li>
 <li class="chapter" data-level="6.3.3" data-path="inference-num.html"><a href="inference-num.html#mathematical-model-1"><i class="fa fa-check"></i><b>6.3.3</b> Mathematical model</a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="inference-num.html"><a href="inference-num.html#summary-of-t-procedures"><i class="fa fa-check"></i><b>6.4</b> Summary of t-procedures</a></li>
-<li class="chapter" data-level="6.5" data-path="inference-num.html"><a href="inference-num.html#r-inference-for-quantitative-data"><i class="fa fa-check"></i><b>6.5</b> <code>R</code>: Inference for quantitative data</a><ul>
+<li class="chapter" data-level="6.5" data-path="inference-num.html"><a href="inference-num.html#r-inference-for-quantitative-data"><i class="fa fa-check"></i><b>6.5</b> <code>R</code>: Inference for quantitative data</a>
+<ul>
 <li class="chapter" data-level="6.5.1" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>6.5.1</b> Interactive R tutorials</a></li>
 <li class="chapter" data-level="6.5.2" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>6.5.2</b> R labs</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="inference-num.html"><a href="inference-num.html#chp6-review"><i class="fa fa-check"></i><b>6.6</b> Chapter 6 review</a><ul>
+<li class="chapter" data-level="6.6" data-path="inference-num.html"><a href="inference-num.html#chp6-review"><i class="fa fa-check"></i><b>6.6</b> Chapter 6 review</a>
+<ul>
 <li class="chapter" data-level="6.6.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>6.6.1</b> Terms</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="inference-reg.html"><a href="inference-reg.html"><i class="fa fa-check"></i><b>7</b> Inference for regression</a><ul>
-<li class="chapter" data-level="7.1" data-path="inference-reg.html"><a href="inference-reg.html#r-inference-for-regression"><i class="fa fa-check"></i><b>7.1</b> <code>R</code>: Inference for regression</a><ul>
+<li class="chapter" data-level="7" data-path="inference-reg.html"><a href="inference-reg.html"><i class="fa fa-check"></i><b>7</b> Inference for regression</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="inference-reg.html"><a href="inference-reg.html#r-inference-for-regression"><i class="fa fa-check"></i><b>7.1</b> <code>R</code>: Inference for regression</a>
+<ul>
 <li class="chapter" data-level="7.1.1" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>7.1.1</b> Interactive R tutorials</a></li>
 <li class="chapter" data-level="7.1.2" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>7.1.2</b> R labs</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="inference-reg.html"><a href="inference-reg.html#chp7-review"><i class="fa fa-check"></i><b>7.2</b> Chapter 7 review</a><ul>
+<li class="chapter" data-level="7.2" data-path="inference-reg.html"><a href="inference-reg.html#chp7-review"><i class="fa fa-check"></i><b>7.2</b> Chapter 7 review</a>
+<ul>
 <li class="chapter" data-level="7.2.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>7.2.1</b> Terms</a></li>
 </ul></li>
 </ul></li>
@@ -367,7 +364,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="inference-cat" class="section level1">
+<div id="inference-cat" class="section level1" number="5">
 <h1><span class="header-section-number">Chapter 5</span> Inference for categorical data</h1>
 
 <div class="chapterintro">
@@ -381,7 +378,6 @@ While the equations and details change depending on the setting, the foundations
 </ul>
 We will also introduce a new important mathematical model, the <strong>normal distribution</strong> (as the foundation for the <span class="math inline">\(z\)</span>-test).
 </div>
-
 <p>Throughout the book so far, you have worked with data in a variety of contexts.
 You have learned how to summarize and visualize the data as well as how to model multiple variables at the same time.
 Sometimes the data set at hand represents the entire research question.
@@ -395,16 +391,14 @@ However, quantifying the variability in the data is neither obvious nor easy to 
 While the proportions would probably be close to each other, it would be unusual for them to be exactly the same. We would probably observe a small difference due to <em>chance</em>.
 </div>
 
-
 <div class="guidedpractice">
 If we don’t think the side of the room a person sits on in class is related to whether the person owns an Apple product, what assumption are we making about the relationship between these two variables?
 (Reminder: for these Guided Practice questions, you can check your answer in the footnote.)<a href="#fn49" class="footnote-ref" id="fnref49"><sup>49</sup></a>
 </div>
-
 <p>Studying randomness of this form is a key focus of statistics.
 Throughout this chapter, and those that follow, we provide two different approaches for quantifying the variability inherent in data: simulation-based methods and theory-based methods (mathematical models).
 Using the methods provided in this and future chapters, we will be able to draw conclusions beyond the data set at hand to research questions about larger populations.</p>
-<div id="inf-foundations" class="section level2">
+<div id="inf-foundations" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Foundations of inference</h2>
 <p>Given results seen in a sample, the process of determining what we can <em>infer</em> to the
 population based on sample results is called <strong>statistical inference</strong>. Statistical inferential methods enable us to understand and quantify the <em>uncertainty</em> of our sample results. Statistical inference helps us answer two questions about the population:</p>
@@ -416,7 +410,7 @@ population based on sample results is called <strong>statistical inference</stro
 <p>Statistical inference is the practice of making decisions and conclusions from data in the context of uncertainty.
 Errors do occur, just like rare events, and the data set at hand might lead us to the wrong conclusion.
 While a given data set may not always lead us to a correct conclusion, statistical inference gives us tools to control and evaluate how often these errors occur.</p>
-<div id="Martian" class="section level3">
+<div id="Martian" class="section level3" number="5.1.1">
 <h3><span class="header-section-number">5.1.1</span> Motivating example: Martian alphabet</h3>
 <p>How well can humans distinguish one “Martian” letter from another? The Figure <a href="inference-cat.html#fig:kiki-bumba">5.1</a>
 displays two Martian letters—one is Kiki and the another is Bumba. Which do you think
@@ -450,7 +444,6 @@ scenario and use the model to calculate the probability.</li>
 <div class="guidedpractice">
 How could you use a coin or cards to simulate the guesses of one sample of 38 students who cannot read Martian?<a href="#fn52" class="footnote-ref" id="fnref52"><sup>52</sup></a>
 </div>
-
 <p>For this situation—since “just guessing” means you have a 50% chance of guessing correctly—we could simulate a sample of 38 students’ guesses by flipping a coin 38 times and counting the number of times it lands on heads. Using a computer to repeat this process 1,000 times, we create the dot plot in Figure <a href="inference-cat.html#fig:MartianDotPlot">5.2</a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:MartianDotPlot"></span>
 <img src="05-inference-cat_files/figure-html/MartianDotPlot-1.png" alt="A dot plot of 1,000 sample proportions; each calculated by flipping a coin 38 times and calculating the proportion of times the coin landed on heads. None of the 1,000 simulations had sample proportion of at least 89%, which was the proportion observed in the study." width="70%" />
@@ -466,7 +459,7 @@ Figure 5.2: A dot plot of 1,000 sample proportions; each calculated by flipping 
 \]</span>
 Thus, based on this data, we are 95% confident that the probability a human guesses Bumba on the left is somewhere between 73% and 100%.</p>
 </div>
-<div id="var-stat" class="section level3">
+<div id="var-stat" class="section level3" number="5.1.2">
 <h3><span class="header-section-number">5.1.2</span> Variability in a statistic</h3>
 <p>There are two approaches to modeling how a statistic, such as a sample proportion, may vary from sample to sample.
 In the <a href="inference-cat.html#Martian">Martian alphabet example</a>, we used a <strong>simulation-based approach</strong> to model
@@ -478,7 +471,6 @@ mathematical modeling—and involves the normal and <span class="math inline">\(
 <p><strong>Central Limit Theorem.</strong></p>
 For large sample sizes, the <strong>sampling distribution</strong> of a sample proportion (or sample mean) will appear to follow a bell-shaped curve called the <em>normal distribution</em>.
 </div>
-
 <p>An example of a perfect normal distribution is shown in Figure <a href="inference-cat.html#fig:simpleNormal">5.3</a>.
 While the mean (center) and standard deviation (variability) may change for different scenarios, the general shape remains roughly intact.</p>
 <div class="figure" style="text-align: center"><span id="fig:simpleNormal"></span>
@@ -502,9 +494,8 @@ Typically, values of parameters such as <span class="math inline">\(\pi\)</span>
 <p>The <strong>standard deviation</strong> of a sampling distribution for a statistic represents how far away we would expect the statistic to land from the parameter.</p>
 Since the formulas for these standard deviations depend on unknown parameters, we substitute our “best guess” for <span class="math inline">\(\pi\)</span> in the formulas, either from a hypothesis or from a point estimate. The resulting <em>estimated</em> standard deviation is called the <strong>standard error</strong> of the statistic.
 </div>
-
 </div>
-<div id="HypothesisTesting" class="section level3">
+<div id="HypothesisTesting" class="section level3" number="5.1.3">
 <h3><span class="header-section-number">5.1.3</span> Hypothesis tests</h3>
 <p>In the <a href="inference-cat.html#Martian">Martian alphabet example</a>, we utilized a <strong>hypothesis test</strong>, which is a formal technique for evaluating two competing possibilities.
 Each hypothesis test involves a <strong>null hypothesis</strong>, which represents either a skeptical perspective or a perspective of no difference or no effect, and an <strong>alternative hypothesis</strong>, which represents a new perspective such as the possibility that there has been a change or that there is a treatment effect in an experiment. The alternative hypothesis is usually the reason the scientists set out to do the research in the first place.</p>
@@ -520,11 +511,9 @@ which are spoken as “H-nought” and “H_A”</p>
 The <strong>null hypothesis (<span class="math inline">\(H_0\)</span>)</strong> often represents either a skeptical perspective or a claim to be tested. The <strong>alternative hypothesis (<span class="math inline">\(H_A\)</span>)</strong> represents an alternative claim under consideration and is often represented by a range of possible values for the parameter of interest.
 </div>
 
-
 <div class="guidedpractice">
 In the Martian alphabet example, which of the two competing possibilities was the null hypothesis? the alternative hypothesis?<a href="#fn55" class="footnote-ref" id="fnref55"><sup>55</sup></a>
 </div>
-
 <p>The hypothesis testing framework is a very general tool, and we often use it without a second thought.
 If a person makes a somewhat unbelievable claim, we are initially skeptical.
 However, if there is sufficient evidence that supports the claim, we set aside our skepticism.
@@ -538,7 +527,6 @@ The hallmarks of hypothesis testing are also found in the US court system.</p>
 The jury considers whether the evidence is so convincing (strong) that there is no reasonable doubt regarding the person’s guilt.
 That is, the skeptical perspective (null hypothesis) is that the person is innocent until evidence is presented that convinces the jury that the person is guilty (alternative hypothesis). Analogously, in a hypothesis test, we assume the null hypothesis until evidence is presented that convinces us the alternative hypothesis is true.
 </div>
-
 <p>Jurors examine the evidence to see whether it convincingly shows a defendant is guilty.
 Notice that if a jury finds a defendant <em>not guilty</em>, this does not necessarily mean the jury is confident in the person’s innocence.
 They are simply not convinced of the alternative that the person is guilty.</p>
@@ -567,7 +555,6 @@ We typically use a summary statistic of the data, such as a proportion or differ
 This summary value that is used to compute the p-value is often called the <strong>test statistic</strong>.
 </div>
 
-
 <div class="protip">
 <p>When interpreting a p-value, remember that the definition of a p-value has three components. It is a (1) probability. What it is the probability of? It is the probability of (2) our observed sample statistic or one more extreme. Assuming what? It is the probability of our observed sample statistic or one more extreme, (3) assuming the null hypothesis is true:</p>
 <ol style="list-style-type: decimal">
@@ -582,7 +569,6 @@ This summary value that is used to compute the p-value is often called the <stro
 <hr />
 The test statistic in the the Martian alphabet example was the sample proportion, <span class="math inline">\(\frac{34}{38} = 0.895\)</span> (or 89.5%). This is also the <strong>point estimate</strong> of the true probability that humans would choose Bumba on the left.
 </div>
-
 <p>Since the p-value is a probability, its value will always be between 0 and 1. The closer the p-value is to 0, the stronger the evidence we have <em>against the null hypothesis</em>. Why? A small p-value means that our data are <em>unlikely</em> to occur, <em>if</em> the null hypothesis is true. We take that to mean that the null hypothesis isn’t a plausible assumption, and we reject it. This process mimics the scientific method—it is easier to disprove a theory than prove it. If scientists want to find evidence that a new drug reduces the risk of stroke, then they assume it <em>doesn’t</em> reduce the risk of stroke and then show that the observed data are so unlikely to occur that the more plausible explanation is that the drug works.</p>
 Think of p-values as a continuum of strength of evidence against the null, from 0 (extremely strong evidence) to 1 (no evidence). Beyond around 10%, the data provide no evidence against the null hypothesis. Be careful not to equate this with evidence for the null hypothesis, which is incorrect. <em>The absence of evidence is not evidence of absence.</em>
 <div class="figure" style="text-align: center"><span id="fig:pval-continuum"></span>
@@ -629,7 +615,6 @@ Figure 5.4: Strength of evidence against the null for a continuum of p-values. O
 <div class="guidedpractice">
 For which values of the p-value should you “reject” a null hypothesis? “fail to reject” a null hypothesis?<a href="#fn57" class="footnote-ref" id="fnref57"><sup>57</sup></a>
 </div>
-
 <p>In order to decide between these two options, we need a previously set threshold for our p-value: when the p-value is less than a previously set threshold, we reject <span class="math inline">\(H_0\)</span>; otherwise, we fail to reject <span class="math inline">\(H_0\)</span>. This threshold is called the <strong>significance level</strong>, and when the p-value is less than the significance level, we say the results are <strong>statistically significant</strong>. This means the data provide such strong evidence against <span class="math inline">\(H_0\)</span> that we reject the null hypothesis in favor of the alternative hypothesis.
 The significance level, often represented by <span class="math inline">\(\alpha\)</span> (the Greek letter <em>alpha</em>), is typically set to <span class="math inline">\(\alpha = 0.05\)</span>, but can vary depending on the field or the application and the real-life consequences of an incorrect decision.
 Using a significance level of <span class="math inline">\(\alpha = 0.05\)</span> in the Martian alphabet study, we can say that the data provided statistically significant evidence against the null hypothesis.</p>
@@ -638,7 +623,6 @@ Using a significance level of <span class="math inline">\(\alpha = 0.05\)</span>
 <p><strong>Statistical significance.</strong></p>
 We say that the data provide <strong>statistically significant</strong> evidence against the null hypothesis if the p-value is less than some reference value called the <strong>significance level</strong>, denoted by <span class="math inline">\(\alpha\)</span>.
 </div>
-
 
 <div class="onebox">
 <p><strong>What’s so special about 0.05?</strong></p>
@@ -654,11 +638,10 @@ The <em>OpenIntro</em> authors have a video to help clarify <em>why 0.05</em>:
 Sometimes it’s also a good idea to deviate from the standard.
 We’ll discuss when to choose a threshold different than 0.05 in Section <a href="inference-cat.html#two-prop-errors">5.4.1</a>.
 </div>
-
 <p>Statistical significance has been a hot topic in the news, related to the “reproducibility crisis” in some scientific fields. We encourage you to read more about the debate on the use of p-values and statistical significance. A good place to start would be the <em>Nature</em> article, “<a href="https://www.nature.com/articles/d41586-019-00857-9">Scientists rise up against statistical significance</a>,” from March 20, 2019.</p>
 </div>
 </div>
-<div id="ConfidenceIntervals" class="section level3">
+<div id="ConfidenceIntervals" class="section level3" number="5.1.4">
 <h3><span class="header-section-number">5.1.4</span> Confidence intervals</h3>
 <p>A point estimate provides a single plausible value for a parameter.
 However, a point estimate is rarely perfect—usually there is some error in the estimate.
@@ -675,11 +658,9 @@ On the other hand, if we report a range of plausible values—a confidence inter
 There are only <em>two</em> possible decisions in a hypothesis test: (1) reject <span class="math inline">\(H_0\)</span>, or (2) fail to reject <span class="math inline">\(H_0\)</span>. Since one can never prove a null hypothesis—we can only disprove<a href="#fn59" class="footnote-ref" id="fnref59"><sup>59</sup></a> it—we never have the ability to “accept the null.” You may have seen this phrase in other textbooks or articles, but it is incorrect.
 </div>
 
-
 <div class="guidedpractice">
 If we want to be very certain we capture the population parameter, should we use a wider interval or a smaller interval?<a href="#fn60" class="footnote-ref" id="fnref60"><sup>60</sup></a>
 </div>
-
 <p>We will explore both simulation-based methods (bootstrapping) and theory-based methods for creating confidence intervals in this text. Though the details change with different scenarios, theory-based confidence intervals will always take the form:
 <span class="math display">\[
 \mbox{statistic} \pm (\mbox{multiplier}) \times (\mbox{standard error of the statistic})
@@ -697,17 +678,15 @@ The amount we add and subtract to the statistic to calculate the confidence inte
 \mbox{margin of error} = (\mbox{multiplier}) \times (\mbox{standard error of the statistic})
 \]</span>
 </div>
-
 <p>In Section <a href="inference-cat.html#theory-prop">5.3.3</a> we will discuss different percentages for the confidence interval (e.g., 90% confidence interval or 99% confidence interval). Section <a href="inference-cat.html#two-prop-boot-ci">5.4.2</a> provides a longer discussion on what “95% confidence” actually means.</p>
 </div>
 </div>
-<div id="normal" class="section level2">
+<div id="normal" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> The normal distribution</h2>
 
 <div class="todo">
 Update examples in this section to use R rather than table.
 </div>
-
 <p></p>
 <p>Among all the distributions we see in statistics, one is overwhelmingly the most common.
 The symmetric, unimodal, bell curve is ubiquitous throughout statistics.
@@ -721,9 +700,8 @@ Many summary statistics and variables are nearly normal, but none are exactly no
 Thus the normal distribution, while not perfect for any single problem, is very useful for a variety of problems.
 We will use it in data exploration and to solve important problems in statistics.
 </div>
-
 <p>In this section, we will discuss the normal distribution in the context of data to become more familiar with normal distribution techniques.</p>
-<div id="normal-distribution-model" class="section level3">
+<div id="normal-distribution-model" class="section level3" number="5.2.1">
 <h3><span class="header-section-number">5.2.1</span> Normal distribution model</h3>
 <p>The normal distribution always describes a symmetric, unimodal, bell-shaped curve.
 However, normal curves can look different depending on the details of the model.
@@ -752,15 +730,13 @@ Because the mean and standard deviation describe a normal distribution exactly, 
 <div class="guidedpractice">
 Write down the short-hand for a normal distribution with (a) mean 5 and standard deviation 3, (b) mean -100 and standard deviation 10, and (c) mean 2 and standard deviation 9.<a href="#fn62" class="footnote-ref" id="fnref62"><sup>62</sup></a>
 </div>
-
 </div>
-<div id="standardizing-with-z-scores" class="section level3">
+<div id="standardizing-with-z-scores" class="section level3" number="5.2.2">
 <h3><span class="header-section-number">5.2.2</span> Standardizing with Z-scores</h3>
 
 <div class="guidedpractice">
 Table <a href="inference-cat.html#tab:satACTstats">5.1</a> shows the mean and standard deviation for total scores on the SAT and ACT. The distribution of SAT and ACT scores are both nearly normal. Suppose Ann scored 1800 on her SAT and Tom scored 24 on his ACT. Who performed better?<a href="#fn63" class="footnote-ref" id="fnref63"><sup>63</sup></a>
 </div>
-
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:satACTstats">Table 5.1: </span>Mean and standard deviation for the SAT and ACT.
@@ -828,11 +804,9 @@ Z = \frac{x-\mu}{\sigma}
 \end{eqnarray*}\]</span>
 </div>
 
-
 <div class="guidedpractice">
 Use Tom’s ACT score, 24, along with the ACT mean and standard deviation to compute his Z-score.<a href="#fn64" class="footnote-ref" id="fnref64"><sup>64</sup></a>
 </div>
-
 <p>Observations above the mean always have positive Z-scores while those below the mean have negative Z-scores.
 If an observation is equal to the mean (e.g., SAT score of 1500), then the Z-score is <span class="math inline">\(0\)</span>.</p>
 
@@ -840,11 +814,9 @@ If an observation is equal to the mean (e.g., SAT score of 1500), then the Z-sco
 Let <span class="math inline">\(X\)</span> represent a random variable from <span class="math inline">\(N(\mu=3, \sigma=2)\)</span>, and suppose we observe <span class="math inline">\(x=5.19\)</span>. (a) Find the Z-score of <span class="math inline">\(x\)</span>. (b) Use the Z-score to determine how many standard deviations above or below the mean <span class="math inline">\(x\)</span> falls.<a href="#fn65" class="footnote-ref" id="fnref65"><sup>65</sup></a>
 </div>
 
-
 <div class="guidedpractice">
 Head lengths of brushtail possums follow a nearly normal distribution with mean 92.6 mm and standard deviation 3.6 mm. Compute the Z-scores for possums with head lengths of 95.4 mm and 85.8 mm.<a href="#fn66" class="footnote-ref" id="fnref66"><sup>66</sup></a>
 </div>
-
 <p>We can use Z-scores to roughly identify which observations are more unusual than others.
 One observation <span class="math inline">\(x_1\)</span> is said to be more unusual than another observation <span class="math inline">\(x_2\)</span> if the absolute value of its Z-score is larger than the absolute value of the other observation’s Z-score: <span class="math inline">\(|Z_1| &gt; |Z_2|\)</span>.
 This technique is especially insightful when a distribution is symmetric.</p>
@@ -852,9 +824,8 @@ This technique is especially insightful when a distribution is symmetric.</p>
 <div class="guidedpractice">
 Which of the two brushtail possum observations in the previous guided practice is more <em>unusual</em>?<a href="#fn67" class="footnote-ref" id="fnref67"><sup>67</sup></a>
 </div>
-
 </div>
-<div id="normal-probability-calculations-in-r" class="section level3">
+<div id="normal-probability-calculations-in-r" class="section level3" number="5.2.3">
 <h3><span class="header-section-number">5.2.3</span> Normal probability calculations in <code>R</code></h3>
 
 <div class="example">
@@ -862,7 +833,6 @@ Which of the two brushtail possum observations in the previous guided practice i
 <hr />
 Ann’s <strong>percentile</strong> is the percentage of people who earned a lower SAT score than Ann. We shade the area representing those individuals in Figure <a href="inference-cat.html#fig:satBelow1800">5.8</a>. The total area under the normal curve is always equal to 1, and the proportion of people who scored below Ann on the SAT is equal to the <em>area</em> shaded in Figure <a href="inference-cat.html#fig:satBelow1800">5.8</a>: 0.8413. In other words, Ann is in the <span class="math inline">\(84^{th}\)</span> percentile of SAT takers.
 </div>
-
 <div class="figure" style="text-align: center"><span id="fig:satBelow1800"></span>
 <img src="05-inference-cat_files/figure-html/satBelow1800-1.png" alt="The normal model for SAT scores, shading the area of those individuals who scored below Ann." width="70%" />
 <p class="caption">
@@ -871,29 +841,28 @@ Figure 5.8: The normal model for SAT scores, shading the area of those individua
 </div>
 <p>We can use the normal model to find percentiles or probabilities. In <code>R</code>, the function
 to calculate normal probabilities is <code>pnorm()</code>. The <code>normTail()</code> function is available in the <code>openintro</code> R package and will draw the associated curve if it is helpful. In the code below, we find the percentile of <span class="math inline">\(Z=0.43\)</span> is 0.6664, or the <span class="math inline">\(66.64^{th}\)</span> percentile.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="inference-cat.html#cb14-1"></a><span class="kw">pnorm</span>(<span class="fl">0.43</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span>
-<span id="cb14-2"><a href="inference-cat.html#cb14-2"></a><span class="co">#&gt; [1] 0.666</span></span>
-<span id="cb14-3"><a href="inference-cat.html#cb14-3"></a>openintro<span class="op">::</span><span class="kw">normTail</span>(<span class="fl">0.43</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="inference-cat.html#cb14-1" aria-hidden="true"></a><span class="kw">pnorm</span>(<span class="fl">0.43</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span>
+<span id="cb14-2"><a href="inference-cat.html#cb14-2" aria-hidden="true"></a><span class="co">#&gt; [1] 0.666</span></span>
+<span id="cb14-3"><a href="inference-cat.html#cb14-3" aria-hidden="true"></a>openintro<span class="op">::</span><span class="kw">normTail</span>(<span class="fl">0.43</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="05-inference-cat_files/figure-html/unnamed-chunk-40-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>We can also find the Z-score associated with a percentile.
 For example, to identify Z for the <span class="math inline">\(80^{th}\)</span> percentile, we use <code>qnorm()</code> which identifies the <strong>quantile</strong> for a given percentage. The quantile represents the cutoff value. (To remember the function <code>qnorm()</code> as providing a cutoff, notice that both <code>qnorm()</code> and “cutoff” start with the sound “kuh”. To remember the <code>pnorm()</code> function as providing a probability from a given cutoff, notice that both <code>pnorm()</code> and probability start with the sound “puh”.)
 We determine the Z-score for the <span class="math inline">\(80^{th}\)</span> percentile using <code>qnorm()</code>: 0.84.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="inference-cat.html#cb15-1"></a><span class="kw">qnorm</span>(<span class="fl">0.80</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span>
-<span id="cb15-2"><a href="inference-cat.html#cb15-2"></a><span class="co">#&gt; [1] 0.842</span></span>
-<span id="cb15-3"><a href="inference-cat.html#cb15-3"></a>openintro<span class="op">::</span><span class="kw">normTail</span>(<span class="fl">0.80</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="inference-cat.html#cb15-1" aria-hidden="true"></a><span class="kw">qnorm</span>(<span class="fl">0.80</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span>
+<span id="cb15-2"><a href="inference-cat.html#cb15-2" aria-hidden="true"></a><span class="co">#&gt; [1] 0.842</span></span>
+<span id="cb15-3"><a href="inference-cat.html#cb15-3" aria-hidden="true"></a>openintro<span class="op">::</span><span class="kw">normTail</span>(<span class="fl">0.80</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="05-inference-cat_files/figure-html/unnamed-chunk-41-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>We can use these functions with other normal distributions than the standard normal distribution by specifying the mean as the argument for <code>m</code> and the standard deviation as the argument for <code>s</code>. Here we determine the proportion of ACT test takers who scored worse than Tom on the ACT: 0.73.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="inference-cat.html#cb16-1"></a><span class="kw">pnorm</span>(<span class="dv">24</span>, <span class="dt">m =</span> <span class="dv">21</span>, <span class="dt">s =</span> <span class="dv">5</span>)</span>
-<span id="cb16-2"><a href="inference-cat.html#cb16-2"></a><span class="co">#&gt; [1] 0.726</span></span>
-<span id="cb16-3"><a href="inference-cat.html#cb16-3"></a>openintro<span class="op">::</span><span class="kw">normTail</span>(<span class="dv">24</span>, <span class="dt">m =</span> <span class="dv">21</span>, <span class="dt">s =</span> <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="inference-cat.html#cb16-1" aria-hidden="true"></a><span class="kw">pnorm</span>(<span class="dv">24</span>, <span class="dt">m =</span> <span class="dv">21</span>, <span class="dt">s =</span> <span class="dv">5</span>)</span>
+<span id="cb16-2"><a href="inference-cat.html#cb16-2" aria-hidden="true"></a><span class="co">#&gt; [1] 0.726</span></span>
+<span id="cb16-3"><a href="inference-cat.html#cb16-3" aria-hidden="true"></a>openintro<span class="op">::</span><span class="kw">normTail</span>(<span class="dv">24</span>, <span class="dt">m =</span> <span class="dv">21</span>, <span class="dt">s =</span> <span class="dv">5</span>)</span></code></pre></div>
 <p><img src="05-inference-cat_files/figure-html/unnamed-chunk-42-1.png" width="70%" style="display: block; margin: auto;" /></p>
 
 <div class="guidedpractice">
 Determine the proportion of SAT test takers who scored better than Ann on the SAT.<a href="#fn68" class="footnote-ref" id="fnref68"><sup>68</sup></a>
 </div>
-
 </div>
-<div id="normal-probability-examples" class="section level3">
+<div id="normal-probability-examples" class="section level3" number="5.2.4">
 <h3><span class="header-section-number">5.2.4</span> Normal probability examples</h3>
 <p>Cumulative SAT scores are approximated well by a normal model, <span class="math inline">\(N(\mu=1500, \sigma=300)\)</span>.</p>
 
@@ -908,7 +877,6 @@ Z = \frac{x - \mu}{\sigma} = \frac{1630 - 1500}{300} = \frac{130}{300} = 0.43
 We use software to find the percentile of <span class="math inline">\(Z=0.43\)</span>, which yields 0.6664. However, the percentile describes those who had a Z-score <em>lower</em> than 0.43. To find the area <em>above</em> <span class="math inline">\(Z=0.43\)</span>, we compute one minus the area of the lower tail, as seen below.</p>
 The probability Shannon scores at least 1630 on the SAT is 0.3336.
 </div>
-
 <p><img src="05-inference-cat_files/figure-html/satAbove1630-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p><img src="05-inference-cat_files/figure-html/subtractingArea-1.png" width="70%" style="display: block; margin: auto;" /></p>
 
@@ -919,11 +887,9 @@ The picture will provide an estimate of the probability.</p>
 After drawing a figure to represent the situation, identify the Z-score for the observation of interest.
 </div>
 
-
 <div class="guidedpractice">
 If the probability of Shannon scoring at least 1630 is 0.3336, then what is the probability she scores less than 1630? Draw the normal curve representing this exercise, shading the lower region instead of the upper one.<a href="#fn69" class="footnote-ref" id="fnref69"><sup>69</sup></a>
 </div>
-
 
 <div class="example">
 <p>Edward earned a 1400 on his SAT. What is his percentile?</p>
@@ -935,36 +901,25 @@ Z = \frac{x - \mu}{\sigma} = \frac{1400 - 1500}{300} = -0.3333
 \end{eqnarray*}\]</span>
 Using the <code>pnorm()</code> function (either <code>pnorm(-1/3)</code> or <code>pnorm(1400, m=1500, s=300)</code> will give the desired result), the desired probability is <span class="math inline">\(0.3694\)</span>. Edward is at the <span class="math inline">\(37^{th}\)</span> percentile.
 </div>
-
 <p><img src="05-inference-cat_files/figure-html/satBelow1400-1.png" width="70%" style="display: block; margin: auto;" /></p>
 
 <div class="guidedpractice">
 Use the results of the previous example to compute the proportion of SAT takers who did better than Edward. Also draw a new picture.<a href="#fn70" class="footnote-ref" id="fnref70"><sup>70</sup></a>
 </div>
 
-
 <div class="protip">
 <p><strong>Areas to the right.</strong></p>
 The <code>pnorm()</code> function (and the normal probability table in most books) gives the area to the left. If you would like the area to the right, first find the area to the left and then subtract this amount from one. In <code>R</code>, you can also do this by setting the <code>lower.tail</code> argument to <code>FALSE</code>.
 </div>
 
-
 <div class="guidedpractice">
 Stuart earned an SAT score of 2100. Draw a picture for each part. (a) What is his percentile? (b) What percent of SAT takers did better than Stuart?<a href="#fn71" class="footnote-ref" id="fnref71"><sup>71</sup></a>
 </div>
-<<<<<<< HEAD
 <p>Based on a sample of 100 men,<a href="#fn72" class="footnote-ref" id="fnref72"><sup>72</sup></a> the heights of male adults between the ages 20 and 62 in the US is nearly normal with mean 70.0’’ and standard deviation 3.3’’.</p>
-||||||| aef4490
-<p>Based on a sample of 100 men,<a href="#fn71" class="footnote-ref" id="fnref71"><sup>71</sup></a> the heights of male adults between the ages 20 and 62 in the US is nearly normal with mean 70.0’’ and standard deviation 3.3’’.</p>
-=======
-
-<p>Based on a sample of 100 men,<a href="#fn72" class="footnote-ref" id="fnref72"><sup>72</sup></a> the heights of male adults between the ages 20 and 62 in the US is nearly normal with mean 70.0’’ and standard deviation 3.3’’.</p>
->>>>>>> 3945ffde450a2e56a005a25b6fd277dd4cd3e905
 
 <div class="guidedpractice">
 Mike is 5’7’’ and Jim is 6’4’’. (a) What is Mike’s height percentile? (b) What is Jim’s height percentile? Also draw one picture for each part.<a href="#fn73" class="footnote-ref" id="fnref73"><sup>73</sup></a>
 </div>
-
 <p>The last several problems have focused on finding the probability or percentile for a particular observation.
 What if you would like to know the observation corresponding to a particular percentile?</p>
 
@@ -980,9 +935,8 @@ Knowing <span class="math inline">\(Z_{Erik}=-0.25\)</span> and the population p
 \end{eqnarray*}\]</span>
 Solving for <span class="math inline">\(x_{Erik}\)</span> yields the height 69.18 inches. That is, Erik is about 5’9’’ (this is notation for 5-feet, 9-inches).
 </div>
-
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="inference-cat.html#cb17-1"></a><span class="kw">qnorm</span>(<span class="fl">0.4</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span>
-<span id="cb17-2"><a href="inference-cat.html#cb17-2"></a><span class="co">#&gt; [1] -0.253</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="inference-cat.html#cb17-1" aria-hidden="true"></a><span class="kw">qnorm</span>(<span class="fl">0.4</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span>
+<span id="cb17-2"><a href="inference-cat.html#cb17-2" aria-hidden="true"></a><span class="co">#&gt; [1] -0.253</span></span></code></pre></div>
 <p><img src="05-inference-cat_files/figure-html/height40Perc-1.png" width="70%" style="display: block; margin: auto;" /></p>
 
 <div class="example">
@@ -995,9 +949,8 @@ Next, we want to find the Z-score at the <span class="math inline">\(82^{nd}\)</
 \end{eqnarray*}\]</span>
 This yields 73.04 inches or about 6’1’’ as the height at the <span class="math inline">\(82^{nd}\)</span> percentile.
 </div>
-
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="inference-cat.html#cb18-1"></a><span class="kw">qnorm</span>(<span class="fl">0.82</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span>
-<span id="cb18-2"><a href="inference-cat.html#cb18-2"></a><span class="co">#&gt; [1] 0.915</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="inference-cat.html#cb18-1" aria-hidden="true"></a><span class="kw">qnorm</span>(<span class="fl">0.82</span>, <span class="dt">m =</span> <span class="dv">0</span>, <span class="dt">s =</span> <span class="dv">1</span>)</span>
+<span id="cb18-2"><a href="inference-cat.html#cb18-2" aria-hidden="true"></a><span class="co">#&gt; [1] 0.915</span></span></code></pre></div>
 <p><img src="05-inference-cat_files/figure-html/height82Perc-1.png" width="70%" style="display: block; margin: auto;" /></p>
 
 <div class="guidedpractice">
@@ -1023,7 +976,6 @@ This yields 73.04 inches or about 6’1’’ as the height at the <span class="
 <p>The total area under the curve is 1. If we find the area of the two tails that are not shaded (from the previous Guided Practice, these areas are <span class="math inline">\(0.3821\)</span> and <span class="math inline">\(0.1131\)</span>), then we can find the middle area:</p>
 That is, the probability of being between 5’9’’ and 6’2’’ is 0.5048.
 </div>
-
 <p><img src="05-inference-cat_files/figure-html/unnamed-chunk-59-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p><img src="05-inference-cat_files/figure-html/unnamed-chunk-60-1.png" width="70%" style="display: block; margin: auto;" /></p>
 
@@ -1031,13 +983,11 @@ That is, the probability of being between 5’9’’ and 6’2’’ is 0.5048.
 What percent of SAT takers get between 1500 and 2000?<a href="#fn76" class="footnote-ref" id="fnref76"><sup>76</sup></a>
 </div>
 
-
 <div class="guidedpractice">
 What percent of adult males are between 5’5’’ and 5’7’’?<a href="#fn77" class="footnote-ref" id="fnref77"><sup>77</sup></a>
 </div>
-
 </div>
-<div id="rule" class="section level3">
+<div id="rule" class="section level3" number="5.2.5">
 <h3><span class="header-section-number">5.2.5</span> 68-95-99.7 rule</h3>
 <p>Here, we present a useful general rule for the probability of falling within 1, 2, and 3 standard deviations of the mean in the normal distribution. The rule will be useful in a wide range of practical settings, especially when trying to make a quick estimate without a calculator or Z table.</p>
 <div class="figure" style="text-align: center"><span id="fig:er6895997"></span>
@@ -1050,7 +1000,6 @@ Figure 5.9: Probabilities for falling within 1, 2, and 3 standard deviations of 
 <div class="guidedpractice">
 Use <code>pnorm()</code> to confirm that about 68%, 95%, and 99.7% of observations fall within 1, 2, and 3, standard deviations of the mean in the normal distribution, respectively. For instance, first find the area that falls between <span class="math inline">\(Z=-1\)</span> and <span class="math inline">\(Z=1\)</span>, which should have an area of about 0.68. Similarly there should be an area of about 0.95 between <span class="math inline">\(Z=-2\)</span> and <span class="math inline">\(Z=2\)</span>.<a href="#fn78" class="footnote-ref" id="fnref78"><sup>78</sup></a>
 </div>
-
 <p>It is possible for a normal random variable to fall 4, 5, or even more standard deviations from the mean. However, these occurrences are very rare if the data are nearly normal. The probability of being further than 4 standard deviations from the mean is about 1-in-30,000. For 5 and 6 standard deviations, it is about 1-in-3.5 million and 1-in-1 billion, respectively.</p>
 
 <div class="guidedpractice">
@@ -1058,10 +1007,9 @@ SAT scores closely follow the normal model with mean <span class="math inline">\
 (a) About what percent of test takers score 900 to 2100?<br />
 (b) What percent score between 1500 and 2100?<a href="#fn79" class="footnote-ref" id="fnref79"><sup>79</sup></a>
 </div>
-
 </div>
 </div>
-<div id="single-prop" class="section level2">
+<div id="single-prop" class="section level2" number="5.3">
 <h2><span class="header-section-number">5.3</span> One proportion</h2>
 
 <div class="onebox">
@@ -1072,16 +1020,8 @@ SAT scores closely follow the normal model with mean <span class="math inline">\
 <li><span class="math inline">\(\pi\)</span> = population proportion<a href="#fn80" class="footnote-ref" id="fnref80"><sup>80</sup></a>
 </div></li>
 </ul>
-<<<<<<< HEAD
 <p>A single proportion is used to summarize data when we measured a single categorical variable on each observational unit—the single variable is measured as either a success or failure (e.g., “surgical complication” vs. “no surgical complication”)<a href="#fn81" class="footnote-ref" id="fnref81"><sup>81</sup></a>.</p>
 <div id="one-prop-null-boot" class="section level3" number="5.3.1">
-||||||| aef4490
-<p>A single proportion is used to summarize data when we measured a single categorical variable on each observational unit—the single variable is measured as either a success or failure (e.g., “surgical complication” vs. “no surgical complication”)<a href="#fn80" class="footnote-ref" id="fnref80"><sup>80</sup></a>.</p>
-<div id="one-prop-null-boot" class="section level3" number="5.3.1">
-=======
-<p>A single proportion is used to summarize data when we measured a single categorical variable on each observational unit—the single variable is measured as either a success or failure (e.g., “surgical complication” vs. “no surgical complication”)<a href="#fn81" class="footnote-ref" id="fnref81"><sup>81</sup></a>.</p>
-<div id="one-prop-null-boot" class="section level3">
->>>>>>> 3945ffde450a2e56a005a25b6fd277dd4cd3e905
 <h3><span class="header-section-number">5.3.1</span> Simulation-based test for <span class="math inline">\(H_0: \pi = \pi_0\)</span></h3>
 <p>
 In Section <a href="inference-cat.html#HypothesisTesting">5.1.3</a>, we introduced the general steps of a hypothesis test:</p>
@@ -1109,7 +1049,6 @@ She claims this is strong evidence that her work meaningfully contributes to red
 For example, maybe patients who can afford a medical consultant can afford better medical care, which can also lead to a lower complication rate.</p>
 While it is not possible to assess the causal claim, it is still possible to understand the consultant’s true rate of complications.
 </div>
-
 <div id="steps-1-and-2-hypotheses-and-test-statistic" class="section level4 unnumbered">
 <h4>Steps 1 and 2: Hypotheses and test statistic</h4>
 <p>Regardless of if we use simulation-based methods or theory-based methods, the first two steps of a hypothesis test start out the same: setting up hypotheses and summarizing data with a test statistic.
@@ -1124,7 +1063,6 @@ We typically estimate the parameter using a <strong>statistic</strong> from a sa
 <span class="math display">\[\hat{p} = 3 / 62 = 0.048\qquad\text{is used to estimate}\qquad \pi\]</span>
 </div>
 
-
 <div class="protip">
 <p>Summary measures that summarize a sample of data, such as <span class="math inline">\(\hat{p}\)</span>, are called <strong>statistics</strong>. Numbers that summarize an entire population, such as <span class="math inline">\(\pi\)</span>, are called <strong>parameters</strong>. You can remember
 this distinction by looking at the first letter of each term:</p>
@@ -1137,7 +1075,6 @@ Since we rarely can measure the entire population, and thus rarely know
 the actual parameter values, we like to say, “We don’t know Greek,
 and we don’t know parameters!”
 </div>
-
 
 <div class="example">
 <p>Write out hypotheses in both plain and statistical language to test for the association between the consultant’s work and the true complication rate, <span class="math inline">\(\pi\)</span>, for the consultant’s clients.</p>
@@ -1162,14 +1099,7 @@ and we don’t know parameters!”
 <p><strong>Null value of a hypothesis test.</strong></p>
 The <strong>null value</strong> is the reference value for the parameter in <span class="math inline">\(H_0\)</span>, and it is sometimes represented with the parameter’s label with a subscript 0 (or “null”), e.g., <span class="math inline">\(\pi_0\)</span> (just like <span class="math inline">\(H_0\)</span>).
 </div>
-<<<<<<< HEAD
 <p>The deviation of the sample statistic from the null hypothesized parameter is usually quantified with a p-value<a href="#fn83" class="footnote-ref" id="fnref83"><sup>83</sup></a>. The p-value is computed based on the null distribution, which is the distribution of the test statistic if the null hypothesis is true. Supposing the null hypothesis is true, we can compute the p-value by identifying the chance of observing a test statistic that favors the alternative hypothesis at least as strongly as the observed test statistic.</p>
-||||||| aef4490
-<p>The deviation of the sample statistic from the null hypothesized parameter is usually quantified with a p-value<a href="#fn82" class="footnote-ref" id="fnref82"><sup>82</sup></a>. The p-value is computed based on the null distribution, which is the distribution of the test statistic if the null hypothesis is true. Supposing the null hypothesis is true, we can compute the p-value by identifying the chance of observing a test statistic that favors the alternative hypothesis at least as strongly as the observed test statistic.</p>
-=======
-
-<p>The deviation of the sample statistic from the null hypothesized parameter is usually quantified with a p-value<a href="#fn83" class="footnote-ref" id="fnref83"><sup>83</sup></a>. The p-value is computed based on the null distribution, which is the distribution of the test statistic if the null hypothesis is true. Supposing the null hypothesis is true, we can compute the p-value by identifying the chance of observing a test statistic that favors the alternative hypothesis at least as strongly as the observed test statistic.</p>
->>>>>>> 3945ffde450a2e56a005a25b6fd277dd4cd3e905
 
 <div class="onebox">
 <p><strong>Null distribution.</strong></p>
@@ -1178,7 +1108,6 @@ The null distribution can be estimated through simulation (simulation-based meth
 or can be modeled by a mathematical function (theory-based methods),
 as in Section <a href="inference-cat.html#theory-prop">5.3.3</a>.
 </div>
-
 <p>We want to identify the sampling distribution of the test statistic (<span class="math inline">\(\hat{p}\)</span>) if the null hypothesis was true. In other words, we want to see how the sample proportion changes due to chance alone. Then we plan to use this information to decide whether there is enough evidence to reject the null hypothesis.</p>
 <p>Under the null hypothesis, 10% of liver donors have complications during or after surgery. Suppose this rate was really no different for the consultant’s clients (for <em>all</em> the consultant’s clients, not just the 62 previously measured). If this was the case, we could <em>simulate</em> 62 clients to get a sample proportion for the complication rate from the null distribution.</p>
 <p>This is a similar scenario to the one we encountered in Section <a href="inference-cat.html#Martian">5.1.1</a>, with one important difference—the null value is 0.10, not 0.50. Thus, a flipping a coin to simulate whether a client had complications would not be simulating under the correct null hypothesis.</p>
@@ -1186,7 +1115,6 @@ as in Section <a href="inference-cat.html#theory-prop">5.3.3</a>.
 <div class="guidedpractice">
 What physical object could you use to simulate a random sample of 62 clients who had a 10% chance of complications? How would you use this object?<a href="#fn84" class="footnote-ref" id="fnref84"><sup>84</sup></a>
 </div>
-
 <p>Assuming the true complication rate for the consultant’s clients is 10%, each client can be simulated using a bag of marbles with 10% red marbles and 90% white marbles.
 Sampling a marble from the bag (with 10% red marbles) is one way of simulating whether a patient has a complication <em>if the true complication rate is 10%</em> for the data. If we select 62 marbles and then compute the proportion of patients with complications in the simulation, <span class="math inline">\(\hat{p}_{sim}\)</span>, then the resulting sample proportion is calculated exactly from a sample from the null distribution.</p>
 <p>An undergraduate student was paid $2 to complete this simulation. There were 5 simulated cases with a complication and 57 simulated cases without a complication, i.e., <span class="math inline">\(\hat{p}_{sim} = 5/62 = 0.081\)</span>.</p>
@@ -1196,7 +1124,6 @@ Sampling a marble from the bag (with 10% red marbles) is one way of simulating w
 <hr />
 No. To assess the hypotheses, we need to see a distribution of many <span class="math inline">\(\hat{p}_{sim}\)</span>, not just a <em>single</em> draw from this sampling distribution.
 </div>
-
 <p>One simulation isn’t enough to get a sense of the null distribution; many simulation studies are needed. Roughly 10,000 seems sufficient. However, paying someone to simulate 10,000 studies by hand is a waste of time and money. Instead, simulations are typically programmed into a computer, which is much more efficient.</p>
 <p>Figure <a href="inference-cat.html#fig:nullDistForPHatIfLiverTransplantConsultantIsNotHelpful">5.10</a> shows the results of 10,000 simulated studies. The proportions that are equal to or less than <span class="math inline">\(\hat{p}=0.048\)</span> are shaded. The shaded areas represent sample proportions under the null distribution that provide at least as much evidence as <span class="math inline">\(\hat{p}\)</span> favoring the alternative hypothesis. There were 1222 simulated sample proportions with <span class="math inline">\(\hat{p}_{sim} \leq 0.048\)</span>. We use these to construct the null distribution’s left-tail area and find the p-value:
 <span class="math display">\[\begin{align}
@@ -1217,13 +1144,11 @@ Figure 5.10: The null distribution for <span class="math inline">\(\hat{p}\)</sp
 <div class="guidedpractice">
 Because the estimated p-value is 0.1222, which is not small, we have little to no evidence against the null hypothesis. Explain what this means in plain language in the context of the problem.<a href="#fn85" class="footnote-ref" id="fnref85"><sup>85</sup></a>
 </div>
-
 <p></p>
 
 <div class="guidedpractice">
 Does the conclusion in the previous Guided Practice imply there is no real association between the surgical consultant’s work and the risk of complications? Explain.<a href="#fn86" class="footnote-ref" id="fnref86"><sup>86</sup></a>
 </div>
-
 <!--
 Add this to an Appendix someday!
 
@@ -1258,7 +1183,7 @@ If it were plotted, the exact null distribution would look almost identical to t
 -->
 </div>
 </div>
-<div id="boot-ci-prop" class="section level3">
+<div id="boot-ci-prop" class="section level3" number="5.3.2">
 <h3><span class="header-section-number">5.3.2</span> Bootstrap confidence interval for <span class="math inline">\(\pi\)</span></h3>
 <p>A confidence interval provides a range of
 plausible values for the parameter <span class="math inline">\(\pi\)</span>.
@@ -1275,7 +1200,6 @@ So, instead of using a “resample from the population” approach, bootstrappin
 <hr />
 No! Though our decision was to fail to reject the null hypothesis, this does not mean we have evidence <em>for</em> the null hypothesis—we cannot “accept” the null. The sample proportion was <span class="math inline">\(\hat{p} = 3/62 = 0.048\)</span>, which is our point estimate—or “best guess”—of <span class="math inline">\(\pi\)</span>. It wouldn’t make sense that a sample complication rate of 4.8% gives us evidence that the true complication rate was exactly 10%. It`s plausible that the true complication rate is 10%, but there are a range of plausible values for <span class="math inline">\(\pi\)</span>. In this section, we will use a simulation-based method called <strong>bootstrapping</strong> to generate this range of plausible values for <span class="math inline">\(\pi\)</span> using the observed data.
 </div>
-
 <p>In the medical consultant case study, the parameter is <span class="math inline">\(\pi\)</span>, the true probability of a complication for a client of the medical consultant.
 There is no reason to believe that <span class="math inline">\(\pi\)</span> is exactly <span class="math inline">\(\hat{p} = 3/62\)</span>, but there is also no reason to believe that <span class="math inline">\(\pi\)</span> is particularly far from <span class="math inline">\(\hat{p} = 3/62\)</span>.
 By sampling with replacement from the data set (a process called <strong>bootstrapping</strong>), the variability of the possible <span class="math inline">\(\hat{p}\)</span> values can be approximated, which will allow us to generate a range of plausible values for <span class="math inline">\(\pi\)</span>, i.e., a confidence interval.</p>
@@ -1324,7 +1248,6 @@ If we 62 choose marbles out of the bag (one at a time), replacing each chosen ma
 <div class="guidedpractice">
 In a simulation of 62 patients conduced by sampling with replacement from the original sample, about how many would we expect to have had a complication?<a href="#fn88" class="footnote-ref" id="fnref88"><sup>88</sup></a>
 </div>
-
 <p>One simulated bootstrap resample isn’t enough to get a sense of the variability from one bootstrap proportion to another bootstrap proportion, so we repeated the simulation 10,000 times using a computer.
 Figure <a href="inference-cat.html#fig:MedConsBSSim">5.14</a> shows the distribution from the 10,000 bootstrap simulations.
 The bootstrapped proportions vary from about zero to 0.15. By taking the range of the middle 95% of this distribution, we can construct a <strong>95% bootstrapped confidence interval</strong> for <span class="math inline">\(\pi\)</span>. The 2.5<sup>th</sup> percentile is 0, and the 97.5<sup>th</sup> percentile is 0.113, so the middle 95% of the distribution is the range (0, 0.113).
@@ -1342,13 +1265,12 @@ Explain.</p>
 <hr />
 No. Because the interval overlaps 10%, it might be that the consultant’s work is associated with a lower risk of complciations, or it might be that the consulant’s work is associated with a higher risk (i.e., greater than 10%) of complications! Additionally, as previously mentioned, because this is an observational study, even if an association can be measured, there is no evidence that the consultant’s work is the cause of the complication rate (being higher or lower).
 </div>
-
 <!--
 %However, we currently don't have enough data to say whether the corresponding complication rate is any different than 0.10.
 -->
 <p></p>
 </div>
-<div id="theory-prop" class="section level3">
+<div id="theory-prop" class="section level3" number="5.3.3">
 <h3><span class="header-section-number">5.3.3</span> Theory-based methods for <span class="math inline">\(\pi\)</span></h3>
 <p>In Section <a href="inference-cat.html#var-stat">5.1.2</a>, we introduced the normal distribution and showed how it can be used as a mathematical model to describe the variability of a sample mean or sample proportion as a result of the Central Limit Theorem. We explored the normal distribution
 further in Section <a href="inference-cat.html#normal">5.2</a>. Theory-based hypothesis tests and confidence intervals for proportions use the normal distribution to calculate the p-value and to determine the width of the confidence interval.</p>
@@ -1377,14 +1299,12 @@ When these conditions are satisfied, then the sampling
 distribution of <span class="math inline">\(\hat{p}\)</span> is approximately normal with mean
 <span class="math inline">\(\pi\)</span> and standard deviation <span class="math inline">\(\sqrt{\frac{\ \pi(1-\pi)\ }{n}}\)</span>.
 </div>
-
 <p>
 </p>
 
 <div class="tipbox">
 The success-failure condition listed above is only necessary for the sampling distribution of <span class="math inline">\(\hat{p}\)</span> to be approximately normal. The mean of the sampling distribution of <span class="math inline">\(\hat{p}\)</span> is <span class="math inline">\(\pi\)</span>, and the standard deviation is <span class="math inline">\(\sqrt{\frac{\ \pi(1-\pi)\ }{n}}\)</span>, regardless of the sample size.
 </div>
-
 <p>Typically we don’t know the true proportion <span class="math inline">\(\pi\)</span>,
 so we substitute some value to check the success-failure condition
 and to estimate the standard deviation of the sampling distribution of <span class="math inline">\(\hat{p}\)</span>.
@@ -1401,7 +1321,6 @@ in statistics)<a href="#fn89" class="footnote-ref" id="fnref89"><sup>89</sup></a
 <hr />
 The independence assumption may be reasonable if each of the surgeries is from a different surgical team. However, the success-failure condition is not satisfied. Under the null hypothesis, we would anticipate seeing <span class="math inline">\(62\times 0.10=6.2\)</span> complications, not the 10 required for the normal approximation.
 </div>
-
 <p>Since theory-based methods cannot be used on the medical consultant example, we’ll turn to another example to demonstrate these methods, where conditions for approximating the distribution of <span class="math inline">\(\hat{p}\)</span> by a normal distribution are met.</p>
 </div>
 <div id="hypothesis-test-for-h_0-pi-pi_0" class="section level4 unnumbered">
@@ -1431,7 +1350,6 @@ greater than 50% of the population.</p>
 where <span class="math inline">\(\pi\)</span> represents the proportion of <em>all</em> payday loan borrowers that would support the regulation.
 </div>
 
-
 <div class="tipbox">
 <p>Note that the null hypothesis above was stated as <span class="math inline">\(H_0: \pi = 0.50\)</span>, even though saying there is “not majority support” would imply <span class="math inline">\(\pi \leq 0.50\)</span>. Indeed, some textbooks would
 write <span class="math inline">\(H_0: \pi \leq 0.50\)</span> in this case, and it is not an incorrect statement. However,
@@ -1441,7 +1359,6 @@ the null hypothesis, so in this textbook, our null hypothesis will always be of 
 H_0: \mbox{ parameter } = \mbox{ null value}
 \]</span>
 </div>
-
 <p>To apply the normal distribution to model the null distribution, the independence
 and success-failure conditions must be satisfied.
 In a hypothesis test, the success-failure condition is
@@ -1460,7 +1377,6 @@ a regulation.
 Is it reasonable use a normal distribution to model <span class="math inline">\(\hat{p}\)</span>
 for a hypothesis test here?<a href="#fn90" class="footnote-ref" id="fnref90"><sup>90</sup></a>
 </div>
-
 
 <div class="example">
 <p>Continuing the previous Example,
@@ -1495,7 +1411,6 @@ because there is no conclusion, as is the case with larger p-values.
 That is, there is no resolution one way or the other about public opinion.
 We cannot claim that exactly 50% of people support the regulation, but we cannot claim a majority support it either.
 </div>
-
 <div class="figure" style="text-align: center"><span id="fig:paydayCC-norm-pvalue"></span>
 <img src="05-inference-cat_files/figure-html/paydayCC-norm-pvalue-1.png" alt="Approximate sampling distribution of $\hat{p}$ across all possible samples assuming $\pi = 0.50$. The shaded area represents the p-value corresponding to an observed sample proportion of 0.51." width="70%" />
 <p class="caption">
@@ -1518,7 +1433,6 @@ Z = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}
 \]</span>
 where <span class="math inline">\(p_0\)</span> is the null value. The denominator, <span class="math inline">\(\sqrt{\frac{p_0(1-p_0)}{n}}\)</span>, is called the <strong>null standard error</strong> of the sample proportion.
 </div>
-
 <p>With the standardized statistic as our test statistic, we can find
 the p-value as the area under a standard normal distribution at or more extreme
 than our observed <span class="math inline">\(Z\)</span> value.</p>
@@ -1540,7 +1454,6 @@ Z = \frac{0.51 - 0.50}{0.017} = 0.57
 <p>Interpreting this value, we can say that our sample proportion of 0.51 was only 0.57 standard errors above the null value of 0.50.</p>
 Shown in Figure <a href="inference-cat.html#fig:paydayCC-stdnorm-pvalue">5.16</a>, the p-value is the area above <span class="math inline">\(Z = 0.57\)</span> on a standard normal distribution—0.278—the same p-value we would obtain by finding the area above <span class="math inline">\(\hat{p} = 0.51\)</span> on a normal distribution with mean 0.50 and standard deviation 0.017, as in Figure <a href="inference-cat.html#fig:paydayCC-norm-pvalue">5.15</a>.
 </div>
-
 <div class="figure" style="text-align: center"><span id="fig:paydayCC-stdnorm-pvalue"></span>
 <img src="05-inference-cat_files/figure-html/paydayCC-stdnorm-pvalue-1.png" alt="Approximate sampling distribution of $Z$ across all possible samples assuming $\pi = 0.50$. The shaded area represents the p-value corresponding to an observed standardized statistic of 0.57. Compare to Figure @
 ef(fig:paydatCC-norm-pvalue)" width="70%" />
@@ -1590,7 +1503,6 @@ for <span class="math inline">\(\pi\)</span> then takes the form
 <p><span class="math display">\[SD(\hat{p}) \approx \hspace{3mm} SE(\hat{p}) = \sqrt{\frac{(\mbox{best guess of }\pi)(1 - \mbox{best guess of }\pi)}{n}}\]</span></p>
 For hypothesis testing, we often use <span class="math inline">\(p_0\)</span> as the best guess of <span class="math inline">\(\pi\)</span>, as seen in Section <a href="inference-cat.html#theory-prop">5.3.3</a>. For confidence intervals, we typically use <span class="math inline">\(\hat{p}\)</span> as the best guess of <span class="math inline">\(\pi\)</span>.
 </div>
-
 <p></p>
 <!--
 \newcommand{\paydayN}{826}
@@ -1614,7 +1526,6 @@ did search and replace for each term above.  for example 826 for 826
 It is suspected that about 2/3 of all voters support legalized marijuana.
 To understand how the sample proportion (<span class="math inline">\(\hat{p}\)</span>) would vary across the samples, calculate the standard error of <span class="math inline">\(\hat{p}\)</span>.<a href="#fn91" class="footnote-ref" id="fnref91"><sup>91</sup></a></p>
 </div>
-
 
 <div class="example">
 <p>A simple random sample of 826
@@ -1709,7 +1620,6 @@ There are three components to this interval: the point estimate, “1.96”, and
 <div class="guidedpractice">
 If <span class="math inline">\(X\)</span> is a normally distributed random variable, how often will <span class="math inline">\(X\)</span> be within 2.58 standard deviations of the mean?<a href="#fn92" class="footnote-ref" id="fnref92"><sup>92</sup></a>
 </div>
-
 <div class="figure" style="text-align: center"><span id="fig:choosingZForCI"></span>
 <img src="05-inference-cat_files/figure-html/choosingZForCI-1.png" alt="The area between -$z^{\star}$ and $z^{\star}$ increases as $|z^{\star}|$ becomes larger. If the confidence level is 99%, we choose $z^{\star}$ such that 99% of the normal curve is between -$z^{\star}$ and $z^{\star}$, which corresponds to 0.5% in the lower tail and 0.5% in the upper tail: $z^{\star}=2.58$." width="70%" />
 <p class="caption">
@@ -1734,7 +1644,6 @@ label for previous equation?
 Create a 99% confidence interval for the impact of the stent on the risk of stroke using the data from Section <a href="intro-to-data.html#basic-stents-strokes">1.1</a>. The point estimate is 0.090, and the standard error is <span class="math inline">\(SE = 0.028\)</span>. It has been verified for you that the point estimate can reasonably be modeled by a normal distribution.<a href="#fn93" class="footnote-ref" id="fnref93"><sup>93</sup></a>
 </div>
 
-
 <div class="onebox">
 <p><strong>Theory-based <span class="math inline">\((1-\alpha)\times 100\)</span>% confidence interval.</strong></p>
 If the statistic follows the normal model with standard error <span class="math inline">\(SE\)</span>, then a confidence interval for the population parameter is
@@ -1743,27 +1652,25 @@ If the statistic follows the normal model with standard error <span class="math 
 \end{eqnarray*}\]</span>
 where <span class="math inline">\(z^{\star}\)</span> corresponds to the confidence level selected: the middle <span class="math inline">\((1-\alpha)\times 100\)</span>% of a standard normal distribution lies between <span class="math inline">\(-z^{\star}\)</span> and <span class="math inline">\(z^{\star}\)</span>.
 </div>
-
 </div>
 <div id="using-r-to-find-zstar" class="section level4 unnumbered">
 <h4>Using <code>R</code> to find <span class="math inline">\(z^{\star}\)</span></h4>
 <p>Figure <a href="inference-cat.html#fig:choosingZForCI">5.17</a> provides a picture of how to identify <span class="math inline">\(z^{\star}\)</span> based on a confidence level. We select <span class="math inline">\(z^{\star}\)</span> so that the area between -<span class="math inline">\(z^{\star}\)</span> and <span class="math inline">\(z^{\star}\)</span> in the normal model corresponds to the confidence level. In <code>R</code>, you can find <span class="math inline">\(z^{\star}\)</span> using the <code>qnorm()</code> function:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="inference-cat.html#cb19-1"></a><span class="co"># z* for 90% --&gt; alpha = 0.15 --&gt; need 5% on each size:</span></span>
-<span id="cb19-2"><a href="inference-cat.html#cb19-2"></a><span class="kw">qnorm</span>(.<span class="dv">90</span> <span class="op">+</span><span class="st"> </span><span class="fl">.05</span>)</span>
-<span id="cb19-3"><a href="inference-cat.html#cb19-3"></a><span class="co">#&gt; [1] 1.645</span></span>
-<span id="cb19-4"><a href="inference-cat.html#cb19-4"></a></span>
-<span id="cb19-5"><a href="inference-cat.html#cb19-5"></a><span class="co"># z* for 95% --&gt; alpha = 0.05 --&gt; need 2.5% on each size:</span></span>
-<span id="cb19-6"><a href="inference-cat.html#cb19-6"></a><span class="kw">qnorm</span>(.<span class="dv">95</span> <span class="op">+</span><span class="st"> </span><span class="fl">.025</span>)</span>
-<span id="cb19-7"><a href="inference-cat.html#cb19-7"></a><span class="co">#&gt; [1] 1.96</span></span>
-<span id="cb19-8"><a href="inference-cat.html#cb19-8"></a></span>
-<span id="cb19-9"><a href="inference-cat.html#cb19-9"></a><span class="co"># z* for 99% --&gt; alpha = 0.01 --&gt; need .5% on each size:</span></span>
-<span id="cb19-10"><a href="inference-cat.html#cb19-10"></a><span class="kw">qnorm</span>(.<span class="dv">99</span> <span class="op">+</span><span class="st"> </span><span class="fl">.005</span>)</span>
-<span id="cb19-11"><a href="inference-cat.html#cb19-11"></a><span class="co">#&gt; [1] 2.576</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="inference-cat.html#cb19-1" aria-hidden="true"></a><span class="co"># z* for 90% --&gt; alpha = 0.15 --&gt; need 5% on each size:</span></span>
+<span id="cb19-2"><a href="inference-cat.html#cb19-2" aria-hidden="true"></a><span class="kw">qnorm</span>(.<span class="dv">90</span> <span class="op">+</span><span class="st"> </span><span class="fl">.05</span>)</span>
+<span id="cb19-3"><a href="inference-cat.html#cb19-3" aria-hidden="true"></a><span class="co">#&gt; [1] 1.645</span></span>
+<span id="cb19-4"><a href="inference-cat.html#cb19-4" aria-hidden="true"></a></span>
+<span id="cb19-5"><a href="inference-cat.html#cb19-5" aria-hidden="true"></a><span class="co"># z* for 95% --&gt; alpha = 0.05 --&gt; need 2.5% on each size:</span></span>
+<span id="cb19-6"><a href="inference-cat.html#cb19-6" aria-hidden="true"></a><span class="kw">qnorm</span>(.<span class="dv">95</span> <span class="op">+</span><span class="st"> </span><span class="fl">.025</span>)</span>
+<span id="cb19-7"><a href="inference-cat.html#cb19-7" aria-hidden="true"></a><span class="co">#&gt; [1] 1.96</span></span>
+<span id="cb19-8"><a href="inference-cat.html#cb19-8" aria-hidden="true"></a></span>
+<span id="cb19-9"><a href="inference-cat.html#cb19-9" aria-hidden="true"></a><span class="co"># z* for 99% --&gt; alpha = 0.01 --&gt; need .5% on each size:</span></span>
+<span id="cb19-10"><a href="inference-cat.html#cb19-10" aria-hidden="true"></a><span class="kw">qnorm</span>(.<span class="dv">99</span> <span class="op">+</span><span class="st"> </span><span class="fl">.005</span>)</span>
+<span id="cb19-11"><a href="inference-cat.html#cb19-11" aria-hidden="true"></a><span class="co">#&gt; [1] 2.576</span></span></code></pre></div>
 
 <div class="guidedpractice">
 Previously, we found that implanting a stent in the brain of a patient at risk for a stroke <em>increased</em> the risk of a stroke. The study estimated a 9% increase in the number of patients who had a stroke, and the standard error of this estimate was about <span class="math inline">\(SE = 2.8%\)</span>. Compute a 90% confidence interval for the effect.<a href="#fn94" class="footnote-ref" id="fnref94"><sup>94</sup></a>
 </div>
-
 <!--
 #### Choosing a sample size when estimating a proportion {-}
 
@@ -1959,11 +1866,10 @@ not independent are outside the scope of this book.</p>
 <div class="todo">
 Add tappers and listeners case study example from old Ch. 5 here.
 </div>
-
 </div>
 </div>
 </div>
-<div id="diff-two-prop" class="section level2">
+<div id="diff-two-prop" class="section level2" number="5.4">
 <h2><span class="header-section-number">5.4</span> Difference of two proportions</h2>
 
 <div class="onebox">
@@ -1984,14 +1890,14 @@ We’ll look at statistical inference for a difference in proportions
 in two ways: simulation-based methods through a randomization test
 and bootstrap confidence interval, and theory-based methods through
 a two sample <span class="math inline">\(z\)</span>-test and <span class="math inline">\(z\)</span>-interval.</p>
-<div id="two-prop-errors" class="section level3">
+<div id="two-prop-errors" class="section level3" number="5.4.1">
 <h3><span class="header-section-number">5.4.1</span> Randomization test for <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span></h3>
 <p>As you learned in Chapter <a href="intro-to-data.html#intro-to-data">1</a>, a <strong>randomized experiment</strong> is done to assess whether or not one variable (the <strong>explanatory</strong> variable) causes changes in a second variable (the <strong>response</strong> variable).
 Every data set has some variability in it, so to decide whether the variability in the data is due to (1) the causal mechanism (the randomized explanatory variable in the experiment) or instead (2) natural variability inherent to the data, we set up a sham randomized experiment as a comparison.
 That is, we assume that each observational unit would have gotten the exact same response value regardless of the treatment level.
 By reassigning the treatments many many times, we can compare the actual experiment to the sham experiment. If the actual experiment has more extreme results than any of the sham experiments, we are led to believe that it is the explanatory variable which is causing the result and not inherent data variability.
 Using a few different studies, let’s look more carefully at this idea of a <strong>randomization test</strong>.</p>
-<div id="caseStudyGenderDiscrimination" class="section level4">
+<div id="caseStudyGenderDiscrimination" class="section level4" number="5.4.1.1">
 <h4><span class="header-section-number">5.4.1.1</span> Gender discrimination</h4>
 <p></p>
 <p>We consider a study investigating gender discrimination in the 1970s, which is set in the context of personnel decisions within a bank.<a href="#fn95" class="footnote-ref" id="fnref95"><sup>95</sup></a> The research question we hope to answer is, “Are females discriminated against in promotion decisions made by male managers?”</p>
@@ -2006,7 +1912,6 @@ These files were randomly assigned to the subjects.</p>
 <div class="guidedpractice">
 Is this an observational study or an experiment? How does the type of study impact what can be inferred from the results?<a href="#fn96" class="footnote-ref" id="fnref96"><sup>96</sup></a>
 </div>
-
 <p>For each supervisor we recorded the gender associated with the assigned file and the promotion decision.
 Using the results of the study summarized in Table <a href="inference-cat.html#tab:discriminationResults">5.2</a>, we would like to evaluate if females are unfairly discriminated against in promotion decisions.
 In this study, a smaller proportion of females are promoted than males (0.583 versus 0.875), but it is unclear whether the difference provides <em>convincing evidence</em> that females are unfairly discriminated against.</p>
@@ -2113,7 +2018,6 @@ However, we cannot yet be sure if the observed difference represents discriminat
 Generally there is a little bit of fluctuation in sample data, and we wouldn’t expect the sample proportions to be <em>exactly</em> equal, even if the truth was that the promotion decisions were independent of gender.</p>
 Additionally, the researchers used a <strong>convenience sample</strong>—48 male bank supervisors attending a management institute—so we will need to think carefully about to which population we can generalize these results.
 </div>
-
 <p>The previous example is a reminder that the observed outcomes in the sample may not perfectly reflect the true relationships between variables in the underlying population.
 Table <a href="inference-cat.html#tab:discriminationResults">5.2</a> shows there were 7 fewer promotions in the female group than in the male group, a difference in promotion rates of 29.2%:
 <span class="math display">\[
@@ -2250,7 +2154,6 @@ Total
 What is the difference in promotion rates between the two simulated groups in Table <a href="inference-cat.html#tab:discriminationRand1">5.3</a> ?
 How does this compare to the observed difference 29.2% from the actual study?<a href="#fn98" class="footnote-ref" id="fnref98"><sup>98</sup></a>
 </div>
-
 <p>Figure <a href="inference-cat.html#fig:genderrand4">5.20</a> shows that the difference in promotion rates is much larger in the original data than it is in the simulated groups (0.292 &gt;&gt;&gt; 0.042).
 The quantity of interest throughout this case study has been the difference in promotion rates.
 This summary value is the <strong>statistic</strong> of interest (or often the <strong>test statistic</strong>).</p>
@@ -2285,7 +2188,6 @@ Often, sometimes, rarely, or never?</p>
 It appears that a difference of at least 29.2% due to chance alone would only happen about 2% of the time according to Figure <a href="inference-cat.html#fig:discRandDotPlot">5.21</a>.
 Such a low probability indicates that observing such a large difference from chance is rare.
 </div>
-
 <p>The difference of 29.2% is a rare event if there really is no impact from listing gender in the candidates’ files, which provides us with two possible interpretations of the study results:</p>
 <ul>
 <li><p><span class="math inline">\(H_0\)</span>: <strong>Null hypothesis</strong>. Gender has no effect on promotion decision, and we observed a difference that is so large that it would only happen rarely.</p></li>
@@ -2297,14 +2199,13 @@ In our analysis, we determined that there was only a <span class="math inline">\
 <div class="guidedpractice">
 What statistical term is given to the 2% probability of obtaining a sample where <span class="math inline">\(\geq\)</span> 29.2% more males than females get promoted by chance alone?<a href="#fn100" class="footnote-ref" id="fnref100"><sup>100</sup></a>
 </div>
-
 </div>
 <div id="scope-of-inference" class="section level4 unnumbered">
 <h4>Scope of inference</h4>
 <p>Since the study was a randomized experiment, we can conclude that the effect was due to gender discrimination—the gender of the application <em>caused</em> the lower rate of promotion. However, since this study was a convenience sample, we can only generalize this result to individuals similar to those in the study. Thus, we have evidence of gender discrimination, but only among male bank supervisors attending a management institute at the University of North Carolina in 1972 that are similar to those in the study.</p>
 <p></p>
 </div>
-<div id="caseStudyOpportunityCost" class="section level4">
+<div id="caseStudyOpportunityCost" class="section level4" number="5.4.1.2">
 <h4><span class="header-section-number">5.4.1.2</span> Opportunity cost</h4>
 <p>How rational and consistent is the behavior of the typical American college student?
 In this section, we’ll explore whether college student consumers always consider the following: money not spent now can be spent later.</p>
@@ -2319,7 +2220,6 @@ We can summarize the two different perspectives using the null and alternative h
 <div class="guidedpractice">
 How could you design a randomized experiment to test these two hypotheses?<a href="#fn101" class="footnote-ref" id="fnref101"><sup>101</sup></a>
 </div>
-
 <p>In statistical notation, we can define parameters <span class="math inline">\(\pi_{ctrl}\)</span> = the probability a student under a control condition (not reminding them that they can save money for later purchases) refrains from making a purchase, and <span class="math inline">\(\pi_{trmt}\)</span> = the probability a student under a treatment condition (reminding them that they can save money for later purchases) refrains from makes a purchase. Our hypotheses are then</p>
 <ul>
 <li><p><span class="math inline">\(H_0: \pi_{trmt} - \pi_{ctrl} = 0\)</span></p></li>
@@ -2572,7 +2472,6 @@ What would be the expected difference between the proportions of “not buy DVD�
 <hr />
 Since the simulated groups are of equal size, we would expect <span class="math inline">\(53 / 2 = 26.5\)</span>, i.e., 26 or 27, “not buy DVD” cards in each simulated group, yielding a simulated point estimate of 0% . However, due to random fluctuations, we might actually observe a number a little above or below 26 and 27.
 </div>
-
 <!--
 %We'll take the students and randomize them into two new groups, simulated-control and simulated-treatment groups, and then we'll look at the difference in the two groups. 
 -->
@@ -2692,7 +2591,7 @@ Notice that we are able to make a causal statement for this study since the stud
 <h4>Scope of inference</h4>
 <p>Since the study was a randomized experiment, we can conclude that the effect was due to the reminder about saving money for other purchases—the reminder <em>caused</em> the lower rate of purchase. However, since this study used a volunteer sample (students were “recruited”), we can only generalize this result to individuals similar to those in the study. Thus, we have evidence that reminding students that they can save money for later purchases will reduce the chance they will continue with a purchase, but only among students are similar to those in the study.</p>
 </div>
-<div id="caseStudyMalaria" class="section level4">
+<div id="caseStudyMalaria" class="section level4" number="5.4.1.3">
 <h4><span class="header-section-number">5.4.1.3</span> Malaria vaccine</h4>
 </div>
 <div id="observed-data-2" class="section level4 unnumbered">
@@ -2806,7 +2705,6 @@ Is this an observational study or an experiment?
 What implications does the study type have on what can
 be inferred from the results?<a href="#fn104" class="footnote-ref" id="fnref104"><sup>104</sup></a>
 </div>
-
 <p>In this study, a smaller proportion of patients
 who received the vaccine showed signs of an infection
 (35.7% versus 100%).
@@ -2835,7 +2733,6 @@ Whether we write our hypotheses in terms of a difference in proportions or
 a ratio of proportions (relative risk), the hypotheses still have the same interpretation.
 For example, the three null hypotheses <span class="math inline">\(H_0: \pi_{Vac} = \pi_{Pla}\)</span>, <span class="math inline">\(H_0: \pi_{Vac} - \pi_{Pla} = 0\)</span>, and <span class="math inline">\(H_0: \pi_{Vac}/\pi_{Pla} = 1\)</span>, are all algebraicly equivalent.
 </div>
-
 <p>What would it mean if the independence model,
 which says the vaccine had no influence on the
 rate of infection, is true?
@@ -2881,7 +2778,6 @@ that the vaccine was helpful seems more plausible.</p>
 How could you use cards to re-randomize one sample into groups? Remember, in this hypothetical world, we believe each patient that got an infection was going to get it regardless of which group they were in, and we would like to see what happens if we randomly assign these patients to the treatment
 and control groups again.<a href="#fn107" class="footnote-ref" id="fnref107"><sup>107</sup></a>
 </div>
-
 <p>Figure <a href="inference-cat.html#fig:malaria-rand-dot-plot">5.25</a> shows a histogram
 of the relative risks found from 1,000 randomization simulations,
 where each dot represents a simulated relative risk of infection (treatment rate divided by control rate).</p>
@@ -2913,7 +2809,6 @@ happen about 2% of the time according to
 Figure <a href="inference-cat.html#fig:malaria-rand-dot-plot">5.25</a>.
 Such a low probability indicates a rare event.
 </div>
-
 <p>Based on the simulations, we have two options:</p>
 <ol style="list-style-type: decimal">
 <li><p>We conclude that the study results do not provide
@@ -2943,7 +2838,7 @@ While we do not always choose correctly, statistical
 inference gives us tools to control and evaluate how
 often these errors occur.</p>
 </div>
-<div id="types-of-errors" class="section level4">
+<div id="types-of-errors" class="section level4" number="5.4.1.4">
 <h4><span class="header-section-number">5.4.1.4</span> Decision errors</h4>
 <p></p>
 <p>Hypothesis tests are not flawless. Just think of the court system: innocent people are sometimes wrongly convicted and the guilty sometimes walk free.
@@ -3034,11 +2929,9 @@ If the court makes a Type 1 Error, this means the defendant is innocent (<span c
 A Type 2 Error means the court failed to reject <span class="math inline">\(H_0\)</span> (i.e., failed to convict the person) when they were in fact guilty (<span class="math inline">\(H_A\)</span> true).
 </div>
 
-
 <div class="guidedpractice">
 Consider the opportunity cost study where we concluded students were less likely to make a DVD purchase if they were reminded that money not spent now could be spent later. What would a Type 1 Error represent in this context?<a href="#fn109" class="footnote-ref" id="fnref109"><sup>109</sup></a>
 </div>
-
 
 <div class="example">
 <p>How could we reduce the Type 1 Error rate in US courts?
@@ -3047,12 +2940,10 @@ What influence would this have on the Type 2 Error rate?</p>
 To lower the Type 1 Error rate, we might raise our standard for conviction from “beyond a reasonable doubt” to “beyond a conceivable doubt” so fewer people would be wrongly convicted. However, this would also make it more difficult to convict the people who are actually guilty, so we would make more Type 2 Errors.
 </div>
 
-
 <div class="guidedpractice">
 How could we reduce the Type 2 Error rate in US courts?
 What influence would this have on the Type 1 Error rate?<a href="#fn110" class="footnote-ref" id="fnref110"><sup>110</sup></a>
 </div>
-
 <p></p>
 <p>The example and guided practice above provide an important lesson: if we reduce how often we make one type of error, we generally make more of the other type.</p>
 <!--
@@ -3075,9 +2966,8 @@ Here we want to be cautious about failing to reject <span class="math inline">\(
 <p><strong>Significance levels should reflect consequences of errors.</strong></p>
 The significance level selected for a test should reflect the real-world consequences associated with making a Type 1 or Type 2 Error.
 </div>
-
 </div>
-<div id="two-sided-tests" class="section level4">
+<div id="two-sided-tests" class="section level4" number="5.4.1.5">
 <h4><span class="header-section-number">5.4.1.5</span> Two-sided hypotheses</h4>
 <!--
 %_________________
@@ -3126,7 +3016,6 @@ We’ll consider both of these possibilities using a two-sided hypothesis test.<
 <li><p><span class="math inline">\(H_A\)</span>: Blood thinners have a positive impact on survival, i.e., <span class="math inline">\(\pi_t - \pi_c &gt; 0\)</span>.</p></li>
 </ul>
 </div>
-
 <p>There were 50 patients in the experiment who did not receive a blood thinner and 40 patients who did.
 The study results are shown in Table <a href="inference-cat.html#tab:resultsForCPRStudyInSmallSampleSection">5.9</a>.</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
@@ -3199,7 +3088,6 @@ What is the observed survival rate in the control group?
 And in the treatment group?
 Also, provide a point estimate of the difference in survival proportions of the two groups (<span class="math inline">\(\hat{p}_t - \hat{p}_c\)</span>) and the relative “risk” of survival (<span class="math inline">\(\hat{p}_t/\hat{p}_c\)</span>).<a href="#fn112" class="footnote-ref" id="fnref112"><sup>112</sup></a>
 </div>
-
 <p>According to the point estimate, for patients who have undergone CPR outside of the hospital, an additional 13% of these patients survive when they are treated with blood thinners. Interpreting the relative risk, patients in this sample who had undergone CPR outside of the hospital had a 59% higher survival rate when they were treated with blood thinners.
 However, we wonder if this difference could be easily explainable by chance.</p>
 <p>As we did in our past studies this chapter, we will simulate what type of differences we might see from chance alone under the null hypothesis.
@@ -3239,13 +3127,11 @@ We want to be rigorous and keep an open mind when we analyze data and evidence.
 Use a one-sided hypothesis test only if you truly have interest in only one direction.
 </div>
 
-
 <div class="onebox">
 <p><strong>Computing a p-value for a two-sided test.</strong></p>
 If your null distribution is symmetric, first compute the p-value for one tail of the distribution, then double that value to get the two-sided p-value.
 That’s it!<a href="#fn114" class="footnote-ref" id="fnref114"><sup>114</sup></a>
 </div>
-
 
 <div class="example">
 <p>Consider the situation of the medical consultant.
@@ -3257,7 +3143,6 @@ More than ever!
 Since it turns out that we care about a finding in either direction, we should run a two-sided test.
 The p-value for the two-sided test is double that of the one-sided test, here the simulated p-value would be 0.2444.
 </div>
-
 <p>Generally, to find a two-sided p-value we double the single tail area, which remains a reasonable approach even when the sampling distribution is asymmetric.
 However, the approach can result in p-values larger than 1 when the point estimate is very near the mean in the null distribution; in such cases, we write that the p-value is 1.
 Also, very large p-values computed in this way (e.g., 0.85), may also be slightly inflated.
@@ -3285,7 +3170,6 @@ That is, if the null hypothesis is true, then we would observe this situation ab
 By examining these two scenarios, we can determine that we will make a Type 1 Error <span class="math inline">\(5\%+5\%=10\%\)</span> of the time if we are allowed to swap to the “best” one-sided test for the data.
 This is twice the error rate we prescribed with our significance level: <span class="math inline">\(\alpha=0.05\)</span> (!).
 </div>
-
 <div class="figure" style="text-align: center"><span id="fig:type1ErrorDoublingExampleFigure"></span>
 <img src="05-inference-cat_files/figure-html/type1ErrorDoublingExampleFigure-1.png" alt="The shaded regions represent areas where we would reject $H_0$ under the bad practices considered in when $\alpha = 0.05$." width="70%" />
 <p class="caption">
@@ -3299,14 +3183,13 @@ After observing data, it is tempting to turn a two-sided test into a one-sided t
 Avoid this temptation.
 Hypotheses should be set up <em>before</em> observing the data.
 </div>
-
 <!--
 %\Comment{Should we scrap this subsection and example and just leave the caution box? Downside: weakens item 1 near the start of Section \@ref(IntroducingTwoSidedHypotheses).}
 -->
 <p></p>
 </div>
 </div>
-<div id="two-prop-boot-ci" class="section level3">
+<div id="two-prop-boot-ci" class="section level3" number="5.4.2">
 <h3><span class="header-section-number">5.4.2</span> Bootstrap confidence interval for <span class="math inline">\(\pi_1 - \pi_2\)</span></h3>
 <p>In Section <a href="inference-cat.html#two-prop-errors">5.4.1</a>, we worked with the randomization distribution to understand the distribution of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> when the null hypothesis <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span> is true.
 Now, through bootstrapping, we study the variability of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> without the null assumption.</p>
@@ -3395,7 +3278,6 @@ Section <a href="inference-cat.html#math-2prop">5.4.3</a> details the mathematic
 <div class="important">
 Since the multiplier “2” in the SE bootstrap interval comes from the 68-95-99.7 rule for normal distributions, these intervals are only valid when the bootstrap sampling distribution is approximately normal.
 </div>
-
 </div>
 </div>
 <div id="what-does-95-mean" class="section level4 unnumbered">
@@ -3421,7 +3303,7 @@ Indeed, one can show mathematically, that a 95% confidence interval and a two-si
 A full derivation of the explicit connection between confidence intervals and hypothesis tests is beyond the scope of this text.</p>
 </div>
 </div>
-<div id="math-2prop" class="section level3">
+<div id="math-2prop" class="section level3" number="5.4.3">
 <h3><span class="header-section-number">5.4.3</span> Theory-based methods for <span class="math inline">\(\pi_1 - \pi_2\)</span></h3>
 <div id="variability-of-hatp_1---hatp_2" class="section level4 unnumbered">
 <h4>Variability of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span></h4>
@@ -3454,7 +3336,6 @@ approximately normal with mean <span class="math inline">\(\pi_1 - \pi_2\)</span
 where <span class="math inline">\(\pi_1\)</span> and <span class="math inline">\(\pi_2\)</span> represent the population proportions,
 and <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> represent the sample sizes.
 </div>
-
 <p></p>
 <!--
 SE reference above?
@@ -3464,7 +3345,6 @@ SE reference above?
 <div class="tipbox">
 The success-failure condition listed above is only necessary for the sampling distribution of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> to be approximately normal. The mean of the sampling distribution of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> is <span class="math inline">\(\pi_1 - \pi_2\)</span>, and the standard deviation is <span class="math inline">\(\sqrt{\frac{\pi_1(1-\pi_1)}{n_1}+\frac{\pi_1(1-\pi_1)}{n_1}}\)</span>, regardless of the two sample sizes.
 </div>
-
 <p>As in the case of one proportion, we typically don’t know the true proportions <span class="math inline">\(\pi_1\)</span> and <span class="math inline">\(\pi_2\)</span>,
 so we will substitute some value to check the success-failure condition
 and to estimate the standard deviation of the sampling distribution of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span>.</p>
@@ -3481,7 +3361,6 @@ and to estimate the standard deviation of the sampling distribution of <span cla
   \end{eqnarray*}\]</span></p>
 This is the standard error formula we will use when computing confidence intervals for the difference in two proportions.
 </div>
-
 <p>If the conditions for the sampling distribution of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> to be normal are met, we can apply the generic confidence interval formula
 for a difference of two proportions,
 where we use <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> as the point
@@ -3554,7 +3433,6 @@ the difference in sample proportions can be
 reasonably modeled using a normal distribution
 for these data.
 </div>
-
 <!--
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>(\#tab:resultsForCPRStudyInSmallSampleSectionDup)Results for the CPR study.
@@ -3631,7 +3509,6 @@ heart attack patients who have been admitted after
 they have undergone CPR.</p>
 Note, the problem was set up as 90% to indicate that there was not a need for a high level of confidence (such a 95% or 99%). A lower degree of confidence increases potential for error, but it also produces a more narrow interval.
 </div>
-
 <p></p>
 
 <div class="guidedpractice">
@@ -3647,7 +3524,6 @@ those in the study.
 Also interpret the interval in the context of the
 study.<a href="#fn115" class="footnote-ref" id="fnref115"><sup>115</sup></a>
 </div>
-
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:fish-oil-data">Table 5.10: </span>Results for the study on n-3 fatty acid supplement and related health benefits.
@@ -3767,12 +3643,10 @@ No
 Is this study an experiment or an observational study?<a href="#fn116" class="footnote-ref" id="fnref116"><sup>116</sup></a>
 </div>
 
-
 <div class="guidedpractice">
 Set up hypotheses to test whether there was a difference
 in breast cancer deaths in the mammogram and control groups.<a href="#fn117" class="footnote-ref" id="fnref117"><sup>117</sup></a>
 </div>
-
 <p>The research question describing mammograms is set up to address specific hypotheses (in contrast to a confidence interval for a parameter). In order to fully take advantage of the hypothesis testing structure, we assess the randomness under the condition that the null hypothesis is true (as we always do for hypothesis testing).
 Using the data from Table <a href="inference-cat.html#tab:mammogramStudySummaryTable">5.11</a>,
 we will check the conditions for using a normal distribution to
@@ -3818,7 +3692,6 @@ Similarly, <span class="math inline">\(\hat{p}_2 n_2\)</span> represents the num
 of successes in sample 2.
 </div>
 
-
 <div class="example">
 <p>Is it reasonable to model the difference
 in proportions using a normal distribution in this
@@ -3849,7 +3722,6 @@ With both conditions satisfied, we can safely model
 the difference in proportions using a normal
 distribution.
 </div>
-
 <p>We used the pooled proportion to check the success-failure
 condition<a href="#fn118" class="footnote-ref" id="fnref118"><sup>118</sup></a>. We next use it again in the standard error calculation.</p>
 
@@ -3861,7 +3733,6 @@ condition<a href="#fn118" class="footnote-ref" id="fnref118"><sup>118</sup></a>.
   \end{eqnarray*}\]</span></p>
 This is the standard error formula we will use when computing the test statistic for a hypothesis test of <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span>.
 </div>
-
 
 <div class="example">
 <p>Compute the point estimate of the difference
@@ -3895,7 +3766,6 @@ SE = \sqrt{
 \end{align*}\]</span>
 </div>
 
-
 <div class="example">
 <p>Using the point estimate <span class="math inline">\(\hat{p}_{mgm} - \hat{p}_{ctrl} = -0.00012\)</span> and standard error <span class="math inline">\(SE = 0.00070\)</span>, calculate a p-value for the hypothesis test and write a conclusion.</p>
 <hr />
@@ -3907,7 +3777,6 @@ Z = \frac{\text{point estimate} - \text{null value}}{\mbox{Null }SE}
 \end{align*}\]</span></p>
 The lower tail area below -0.17 on a standard normal distribution is 0.4325, which we double to get the p-value: 0.8650 (see Figure <a href="inference-cat.html#fig:mamm-norm">5.37</a>). With this very large p-value, the difference in breast cancer death rates is reasonably explained by chance, and we have no significant evidence that mammograms either decrease or increase the risk of death by breast cancer compared to regular breast exams, among women similar to those in the study.
 </div>
-
 <div class="figure" style="text-align: center"><span id="fig:mamm-norm"></span>
 <img src="05-inference-cat_files/figure-html/mamm-norm-1.png" alt="Standard normal distribution with the p-value shaded. The shaded area represents the probability of observing a difference in sample proportions of -0.17 or further away from zero, if the true proportions were equal." width="70%" />
 <p class="caption">
@@ -3978,7 +3847,7 @@ or emotional harm to patients.</li>
 </div>
 </div>
 </div>
-<div id="power" class="section level2">
+<div id="power" class="section level2" number="5.5">
 <h2><span class="header-section-number">5.5</span> Power, Errors, and Practical Importance</h2>
 
 <div class="todo">
@@ -3992,7 +3861,7 @@ or emotional harm to patients.</li>
 </ul>
 <p><img src="05/images/whalberg.png" width="50%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="summary-of-z-procedures" class="section level2">
+<div id="summary-of-z-procedures" class="section level2" number="5.6">
 <h2><span class="header-section-number">5.6</span> Summary of Z-procedures</h2>
 <p>So far in this chapter, we have seen the normal distribution applied as the appropriate mathematical model in two distinct settings. Although the two data structures are different, their similarities and differences are worth pointing out. We provide Table <a href="inference-cat.html#tab:zcompare">5.12</a> partly as a mechanism for understanding <span class="math inline">\(z\)</span>-procedures and partly to highlight the extremely common usage of the normal distribution in practice.
 You will often hear the following two <span class="math inline">\(z\)</span>-procedures referred to as a <strong>one sample <span class="math inline">\(z\)</span>-test</strong> (<span class="math inline">\(z\)</span>-interval) and <strong>two sample <span class="math inline">\(z\)</span>-test</strong> (<span class="math inline">\(z\)</span>-interval).</p>
@@ -4133,7 +4002,7 @@ conditions
 <li>Put the conclusions in context and in plain language so even non-data scientists can understand the results.</li>
 </ol>
 </div>
-<div id="r-inference-for-categorical-data" class="section level2">
+<div id="r-inference-for-categorical-data" class="section level2" number="5.7">
 <h2><span class="header-section-number">5.7</span> <code>R</code>: Inference for categorical data</h2>
 
 <div class="todo">
@@ -4142,8 +4011,7 @@ Section on doing inference for categorical data in R.
 - Simulation functions in catstats
 - <code>prop.test</code>
 </div>
-
-<div id="interactive-r-tutorials" class="section level3">
+<div id="interactive-r-tutorials" class="section level3" number="5.7.1">
 <h3><span class="header-section-number">5.7.1</span> Interactive R tutorials</h3>
 <p>Navigate the concepts you’ve learned in this chapter in R using the following self-paced tutorials.
 All you need is your browser to get started!</p>
@@ -4173,7 +4041,7 @@ All you need is your browser to get started!</p>
 </div>
 <p>You can also access the full list of tutorials supporting this book <a href="https://openintrostat.github.io/ims-tutorials/">here</a>.</p>
 </div>
-<div id="r-labs" class="section level3">
+<div id="r-labs" class="section level3" number="5.7.2">
 <h3><span class="header-section-number">5.7.2</span> R labs</h3>
 <p>Further apply the concepts you’ve learned in this chapter in R with computational labs that walk you through a data analysis case study.</p>
 <div class="singlelab">
@@ -4190,9 +4058,9 @@ All you need is your browser to get started!</p>
 </div>
 </div>
 </div>
-<div id="chp5-review" class="section level2">
+<div id="chp5-review" class="section level2" number="5.8">
 <h2><span class="header-section-number">5.8</span> Chapter 5 review</h2>
-<div id="terms" class="section level3">
+<div id="terms" class="section level3" number="5.8.1">
 <h3><span class="header-section-number">5.8.1</span> Terms</h3>
 <p>We introduced the following terms in the chapter.
 If you’re not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
@@ -4247,7 +4115,7 @@ success-failure condition
 confidence interval
 </td>
 <td style="text-align:left;">
-one-sided hypothesis test
+one sample <span class="math inline">\(z\)</span>-test
 </td>
 <td style="text-align:left;">
 SE interval
@@ -4261,13 +4129,13 @@ test statistic
 confidence level
 </td>
 <td style="text-align:left;">
-one sample <span class="math inline">\(z\)</span>-test
+one-sided hypothesis test
 </td>
 <td style="text-align:left;">
 simulation
 </td>
 <td style="text-align:left;">
-two-sided hypothesis test
+two sample <span class="math inline">\(z\)</span>-test
 </td>
 </tr>
 <tr>
@@ -4281,7 +4149,7 @@ p-value
 standard error
 </td>
 <td style="text-align:left;">
-two sample <span class="math inline">\(z\)</span>-test
+two-sided hypothesis test
 </td>
 </tr>
 <tr>
