@@ -1,7 +1,13 @@
 --- 
 title: "Montana State Introductory Statistics with R"
 author: "Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager"
+<<<<<<< HEAD
 date: "2020-09-01"
+||||||| aef4490
+date: "2020-08-26"
+=======
+date: "2020-08-27"
+>>>>>>> 3945ffde450a2e56a005a25b6fd277dd4cd3e905
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
