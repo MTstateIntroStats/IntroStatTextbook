@@ -1,0 +1,280 @@
+# Correlation and regression {#cor-reg}
+
+```{block2, type="uptohere", echo=TRUE}
+The content in this chapter is currently just placeholder. We will remove this banner once the chapter content has been updated and ready for review.
+```
+
+
+<!-- - review scatterplots -->
+<!-- - correlation -->
+<!-- - least squares regression line, fitted/predicted values -->
+<!-- - residuals, SSE/SSR/SST, R-squared -->
+<!-- - extrapolation -->
+<!-- - outliers and influential points -->
+	
+```{block2, chp2-intro, type="chapterintro", echo=TRUE}
+Linear regression is a very powerful statistical technique. Many people have some familiarity with regression just from reading the news, where graphs with straight lines are overlaid on scatterplots. Linear models can be used for prediction or to evaluate whether there is a linear relationship between two numerical variables.
+```
+
+Figure \@ref(fig:perfLinearModel) shows two variables whose relationship can be modeled perfectly with a straight line. The equation for the line is
+\[
+y = 5 + 57.49x
+\]
+Imagine what a perfect linear relationship would mean: you would know the exact value of $y$ just by knowing the value of $x$. This is unrealistic in almost any natural process. For example, if we took family income $x$, this value would provide some useful information about how much financial support $y$ a college may offer a prospective student. However, there would still be variability in financial support, even when comparing students whose families have similar financial backgrounds.
+
+```{r perfLinearModel, fig.cap="Requests from twelve separate buyers were simultaneously placed with a trading company to purchase Target Corporation stock (ticker _TGT_, April 26th, 2012), and the total cost of the shares were reported. Because the cost is computed using a linear formula, the linear fit is perfect.", fig.height=10, warning=FALSE}
+data(COL)
+set.seed(4)
+x <- sample(33, 12, prob=c(33:24, 11:33))
+y <- 5 + 57.49*x
+plot(x,y, ylim=range(c(0,y^1.0)), axes=FALSE, xlab='Number of Target Corporation stocks to purchase', ylab='', pch=20, cex=2, cex.axis=1.3, cex.lab=1.3,col=COL[1])
+buildAxis(1,x,4,nMax=4)
+mtext('Total cost of the shares (dollars)', 2, 2.8,cex=1.3)
+par(mgp=c(2.8,0.75,0), las=1)
+buildAxis(2,y,3,nMax=4)
+abline(5, 57.49, col=COL[5])
+```
+
+It is rare for all of the data to fall on a straight line, as seen in the three scatterplots in Figure \@ref(fig:imperfLinearModel). In each case, the data fall around a straight line, even if none of the observations fall exactly on the line. The first plot shows a relatively strong downward linear trend, where the remaining variability in the data around the line is minor relative to the strength of the relationship between $x$ and $y$. The second plot shows an upward trend that, while evident, is not as strong as the first. The last plot shows a very weak downward trend in the data, so slight we can hardly notice it. In each of these examples, we will have some uncertainty regarding our best line of fit. For instance, we might wonder, should we move the line up or down a little, or should we tilt it more or less? 
+
+```{r imperfLinearModel, fig.cap="Three data sets where a linear model may be useful even though the data do not all fall exactly on the line.", out.width="100%"}
+n <- c(75,49,376)
+par(mfrow=c(1,3), mar=c(0,0,0,0), mgp=c(1,.5,0), pin=c(1.4,1.4))
+
+set.seed(3)
+x <- rnorm(n[1], 16, 33)
+y <- 14 - .8*x + rnorm(n[1], sd=12)
+#par(mar=c(2, 2.25, 0.5, 0.8),cex=1.3)
+PlotWLine(x,y)
+
+x <- rnorm(n[2], 1052, 300)
+y <- 1400 + 7*x + rnorm(n[2], sd=4020)
+#par(mar=c(2, 2.9, 0.5, 0.4),cex=1.3)
+PlotWLine(x,y)
+
+x <- c(rnorm(100, 20, 8), runif(n[3]-100, -10, 52))
+y <- 140 - .15*x + rnorm(n[3], sd=102)
+#par(mar=c(2, 3.3, 0.5, 0),cex=1.3)
+PlotWLine(x,y)
+```
+
+Linear regression assumes that the relationship between two variables, $x$ and $y$, can be modeled by a straight line. In other words, the _average_ value of $y$ for a given $x$ can be modeled as
+\[
+\text{mean of } y = \beta_0 + \beta_1x
+\]
+where $\beta_0$ and $\beta_1$ represent two model **parameters**\index{parameter} ($\beta$ is the Greek letter \emph{beta}). These parameters are estimated using data, and we write their point estimates as $b_0$ and $b_1$. When we use $x$ to predict $y$, we usually call $x$ the explanatory or \term{predictor} variable, and we call $y$ the response.
+
+As we move forward in this chapter, we will learn different criteria for line-fitting, and we will also learn about the uncertainty associated with estimates of model parameters. We will also see examples in this chapter where fitting a straight line to the data, even if there is a clear relationship between the variables, is not helpful. One such case is shown in Figure \@ref(fig:notGoodAtAllForALinearModel) where there is a very strong relationship between the variables even though the trend is not linear. We will discuss nonlinear trends in this chapter and the next, but the details of fitting nonlinear models are saved for a later course.
+
+```{r notGoodAtAllForALinearModel, fig.cap="A linear model is not useful in this nonlinear case. These data are from an introductory physics experiment.", fig.height=10}
+data(COL)
+set.seed(3)
+par(mar=c(3,3.5,1,2), mgp=c(1.9,0.6,0), cex=1.3)
+theta <- seq(0, pi/2, length.out=25)
+v <- 12
+x <- 2*v^2*sin(theta)*cos(theta)/9.8 + rnorm(length(theta), sd=0)
+PlotWLine(theta/pi*2*90,x, xlab='Angle of incline (degrees)', ylab='Distance traveled (m)')
+abline(h=0)
+text(mean(theta/pi*2*90), mean(x), 'Best fitting straight line is flat (!)', pos=1, col=COL[4])
+par(mar=rep(0,4))
+theta <- pi/6
+t <- seq(0,2*v/9.8*sin(theta),length.out=15)
+x <- v*t*cos(theta)
+y <- -0.5*9.8*t^2 + v*sin(theta)*t
+abline(h=0)
+```
+
+## Correlation and the coefficient of determination
+
+::: {.onebox}
+**Correlation: strength and direction of a linear relationship**
+
+**Correlation**, which always takes values between -1 and 1, is a summary statistic that describes the strength (by its magnitude) and direction (by its sign) of the linear relationship between two variables. We denote the correlation by $R$ or $r$.
+:::
+
+```{r include=FALSE}
+terms_chp_3 <- c("correlation")
+```
+
+We can compute the correlation using a formula, just as we did with the sample mean and standard deviation. However, this formula is rather complex^[Formally, we can compute the correlation for observations $(x_1, y_1)$, $(x_2, y_2)$, ..., $(x_n, y_n)$ using the formula
+\[
+R = \frac{1}{n-1}\sum_{i=1}^{n} \frac{x_i-\bar{x}}{s_x}\frac{y_i-\bar{y}}{s_y}
+\]
+where $\bar{x}$, $\bar{y}$, $s_x$, and $s_y$ are the sample means and standard deviations for each variable.] so we generally perform the calculations on a computer or calculator. Figure @\ref(fig:posNegCorPlots) shows eight plots and their corresponding correlations. Only when the relationship is perfectly linear is the correlation either -1 or 1. If the relationship is strong and positive, the correlation will be near +1. If it is strong and negative, it will be near -1. If there is no apparent linear relationship between the variables, then the correlation will be near zero.
+
+```{r posNegCorPlots, fig.cap="Sample scatterplots and their correlations. The first row shows variables with a positive relationship, represented by the trend up and to the right. The second row shows variables with a negative trend, where a large value in one variable is associated with a low value in the other.", fig.height=10}
+data(COL)
+data(possum)
+COL <- COL[1,2]
+set.seed(1)
+
+par(mfrow=c(2,4), mar=c(2.7, rep(0.5, 3)), mgp=c(1,0,0))
+
+n <- 50
+x <- c(runif(n[1]-2, 0, 4), 2, 2.1)
+y <- 0.8*x + rnorm(n[1], sd=5)
+plot(x,y, axes=FALSE, pch=20, col=COL[1], cex=1.351, xlim=c(-0.2, 4.2), ylim=c(-9, 17), xlab='')
+box()
+mtext(paste('R =', round(cor(x,y), 2)), side=1, line=1, cex=1.1)
+
+plot(possum$total_l, possum$head_l, pch=20, col=COL[1], cex=1.351, xlab='', ylab='', axes=FALSE)
+box()
+mtext(paste('R =', round(cor(possum$total_l, possum$head_l), 2)), side=1, line=1, cex=1.1)
+
+n <- 50
+x <- c(runif(n[1]-2, 0, 4), 2, 2.1)
+y <- 2*x + rnorm(n[1], sd=0.5)
+plot(x,y, axes=FALSE, pch=20, col=COL[1], cex=1.351, xlim=c(-0.2, 4.2), ylim=c(-2, 9.6), xlab='')
+box()
+mtext(paste('R =', round(cor(x,y), 2)), side=1, line=1, cex=1.1)
+
+n <- 50
+x <- runif(n[1])
+y <- x
+y[y < -2] <- -1.5
+plot(x,y, axes=FALSE, pch=20, col=COL[1], cex=1.351, xlim=c(-0.03, 1.03), ylim=c(-.1, 1.1), xlab='')
+box()
+mtext(paste('R =', format(c(round(cor(x,y), 2), 0.01))[1]), side=1, line=1, cex=1.1)
+
+par(mar=c(2.1,0.5,1.1,0.5))
+
+n <- 50
+x <- c(runif(n[1]-2, 0, 4), 2, 2.1)
+y <- -0.5*x + rnorm(n[1], sd=5)
+plot(x,y, axes=FALSE, pch=20, col=COL[1], cex=1.351, xlim=c(-0.2, 4.2), ylim=c(-17, 14), xlab='')
+box()
+mtext(paste('R =', round(cor(x,y), 2)), side=1, line=1, cex=1.1)
+
+n <- 50
+x <- runif(n[1], -4.8, 4.8)
+y <- -x+rnorm(n[1], sd=3)
+plot(x,y, axes=FALSE, pch=20, col=COL[1], cex=1.351, xlim=c(-5.2, 5.2), ylim=c(-12, 10), xlab='')
+box()
+mtext(paste('R =', format(c(round(cor(x,y), 2), 0.01))[1]), side=1, line=1, cex=1.1)
+
+n <- 50
+x <- runif(n[1])
+y <- -9*x + rnorm(n[1])
+plot(x,y, axes=FALSE, pch=20, col=COL[1], cex=1.351, xlim=c(-0.03, 1.03), ylim=c(-10, 2), xlab='')
+box()
+mtext(paste('R =', round(cor(x,y), 2)), side=1, line=1, cex=1.1)
+
+n <- 50
+x <- runif(n[1])
+y <- -x
+y[y < -2] <- -1.5
+plot(x,y, axes=FALSE, pch=20, col=COL[1], cex=1.351, xlim=c(-0.03, 1.03), ylim=c(-1.2, .2), xlab='')
+box()
+mtext(paste('R =', format(c(round(cor(x,y), 2), 0.01))[1]), side=1, line=1, cex=1.1)
+```
+
+::: {.importantbox}
+The correlation is intended to quantify the strength and direction of a linear trend. However, nonlinear trends, even when strong, sometimes produce correlations that do not reflect the strength of the relationship; see three such examples in Figure \@ref(fig:corForNonLinearPlots).
+:::
+
+```{r corForNonLinearPlots, fig.cap="Sample scatterplots and their correlations. In each case, there is a strong relationship between the variables. However, the correlation is not very strong, and the relationship is not linear.", fig.height=10}
+data(COL)
+COL <- COL[1,2]
+set.seed(1)
+
+par(mfrow=c(1,3), mar=c(2.7, rep(0.5, 3)), mgp=c(1,0,0))
+
+n <- 50
+x <- c(runif(n[1]-2, -2, 2.2), 2, 2.1)
+y <- -10*x^2 + rnorm(n[1], sd=5)
+plot(x,y, axes=FALSE, pch=20, col=COL[1], cex=1.351, xlab='')
+box()
+mtext(paste('R =', round(cor(x,y), 2)), side=1, line=1, cex=1.1)
+
+n <- 50
+x <- c(runif(n[1]-2, -20, 10.2), 2, 2.1)
+y <- -x^3 -10*x^2 + 100*x + rnorm(n[1], sd=120)
+plot(x,y, axes=FALSE, pch=20, col=COL[1], cex=1.351, xlab='')
+box()
+mtext(paste('R =', round(cor(x,y), 2)), side=1, line=1, cex=1.1)
+
+n <- 50
+x <- runif(n[1], -1, 4)
+y <- 0.25*(x>3) + -0.5*(x>2) + 1.7*(x>1) + (x<0)
+x <- c(x,0,0,1,1)
+y <- c(y,rep(0.5,2),rep(1,2)) + rnorm(n[1]+4, sd=0.071)
+yR <- range(y) + c(-1,1)*0.1*diff(range(y))
+plot(x,y, axes=FALSE, pch=20, col=COL[1], cex=1.351, xlab='', ylim=yR)
+box()
+mtext(paste('R =', format(c(round(cor(x,y), 2), 0.01))[1]), side=1, line=1, cex=1.1)
+```
+
+
+
+
+
+## Fitting a line by least squares regression
+
+
+### Residuals and residual plots
+
+
+## Types of outliers in linear regression
+
+
+## `R`: Correlation and regression
+
+### Interactive R tutorials
+
+Navigate the concepts you've learned in this chapter in R using the following self-paced tutorials. 
+All you need is your browser to get started!
+
+::: {.alltutorials}
+[Tutorial 3: Introduction to linear models](https://openintrostat.github.io/ims-tutorials/03-introduction-to-linear-models/)
+:::
+
+::: {.singletutorial}
+[Tutorial 3 - Lesson 1: Visualizing two variales](https://openintro.shinyapps.io/ims-03-introduction-to-linear-models-01/)
+:::
+
+::: {.singletutorial}
+[Tutorial 2 - Lesson 2: Correlation](https://openintro.shinyapps.io/ims-03-introduction-to-linear-models-02/)
+:::
+
+::: {.singletutorial}
+[Tutorial 2 - Lesson 3: Simple linear regression](https://openintro.shinyapps.io/ims-03-introduction-to-linear-models-03/)
+:::
+
+::: {.singletutorial}
+[Tutorial 2 - Lesson 4: Interpreting regression models](https://openintro.shinyapps.io/ims-03-introduction-to-linear-models-04/)
+:::
+
+::: {.singletutorial}
+[Tutorial 2 - Lesson 5: Model fit](https://openintro.shinyapps.io/ims-03-introduction-to-linear-models-05/)
+:::
+
+You can also access the full list of tutorials supporting this book [here](https://openintrostat.github.io/ims-tutorials/).
+
+
+### R labs
+
+Further apply the concepts you've learned in this chapter in R with computational labs that walk you through a data analysis case study.
+
+::: {.singlelab}
+[Introduction to linear regression - Human Freedom Index](http://openintrostat.github.io/oilabs-tidy/08_simple_regression/simple_regression.html)
+:::
+
+::: {.alllabs}
+[Full list of labs supporting OpenIntro::Introduction to Modern Statistics](http://openintrostat.github.io/oilabs-tidy/)
+:::
+
+
+## Chapter 3 review {#chp3-review}
+
+### Terms
+
+We introduced the following terms in the chapter. 
+If you're not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
+We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. 
+However you should be able to easily spot them as **bolded text**.
+
+```{r eval = FALSE}
+make_terms_table(terms_chp_3)
+```
+
+### Chapter exercises

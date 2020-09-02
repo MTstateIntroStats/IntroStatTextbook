@@ -23,8 +23,10 @@ options(digits = 3)
 
 # packages ---------------------------------------------------------------------
 
+suppressMessages(library(broom))
 suppressMessages(library(gghighlight))
 suppressMessages(library(ggmosaic))
+suppressMessages(library(ggridges))
 suppressMessages(library(gridExtra))
 suppressMessages(library(infer))
 suppressMessages(library(janitor))
@@ -36,6 +38,8 @@ suppressMessages(library(patchwork))
 suppressMessages(library(tidyverse))
 suppressMessages(library(scales))
 suppressMessages(library(skimr))
+#suppressMessages(library(threed))
+#suppressMessages(library(ggthreed))
 
 # knitr chunk options ----------------------------------------------------------
 
