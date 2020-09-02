@@ -814,26 +814,7 @@ Models that ignore exceptional (and interesting) cases often perform poorly.
 For instance, if a financial firm ignored the largest market swings -- the "outliers" -- they would soon go bankrupt by making poorly thought-out investments.
 
 
-## Chapter review {#chp3-review}
-
-### Terms
-
-We introduced the following terms in the chapter. 
-If you're not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
-We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. 
-However you should be able to easily spot them as **bolded text**.
-
-<table>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> high leverage </td>
-   <td style="text-align:left;"> influential point </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-</tbody>
-</table>
-
+## `R`: Correlation and regression
 
 ### Interactive R tutorials {#intro-linear-models-r-tutorial}
 
@@ -877,3 +858,24 @@ Further apply the concepts you've learned in this chapter in R with computationa
 ::: {.alllabs}
 [Full list of labs supporting OpenIntro::Introduction to Modern Statistics](http://openintrostat.github.io/oilabs-tidy/)
 :::
+
+## Chapter review {#chp3-review}
+
+### Terms
+
+We introduced the following terms in the chapter. 
+If you're not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
+We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. 
+However you should be able to easily spot them as **bolded text**.
+
+<table>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> high leverage </td>
+   <td style="text-align:left;"> influential point </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+</tbody>
+</table>
+
