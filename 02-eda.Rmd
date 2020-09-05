@@ -1484,7 +1484,7 @@ Transformations other than the logarithm can be useful, too.
 For instance, the square root ($\sqrt{\text{original observation}}$) and inverse ($\frac{1}{\text{original observation}}$) are commonly used by data scientists.
 Common goals in transforming data are to see the data structure differently, reduce skew, assist in modeling, or straighten a nonlinear relationship in a scatterplot.
 
-### Mapping data
+### Mapping data (special topic)
 
 \index{intensity map}
 
