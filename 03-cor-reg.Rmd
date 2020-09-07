@@ -266,7 +266,7 @@ Compute the residuals for the observation marked by a green diamond, $(85.0, 98.
 :::
 
 Residuals are helpful in evaluating how well a linear model fits a data set. 
-We often display them in a such as the one shown in Figure \@ref(fig:scattHeadLTotalLResidualPlot) for the regression line in Figure \@ref(fig:scattHeadLTotalLLine-highlighted). 
+We often display them in a residual plot such as the one shown in Figure \@ref(fig:scattHeadLTotalLResidualPlot) for the regression line in Figure \@ref(fig:scattHeadLTotalLLine-highlighted). 
 The residuals are plotted at their original horizontal locations but with the vertical coordinate as the residual. 
 For instance, the point $(85.0, 98.6)$ (marked by the green diamond) had a predicted value of 91.45 mm and had a residual of 7.15 mm, so in the residual plot it is placed at $(91.45, 7.15)$. 
 Creating a residual plot is sort of like tipping the scatterplot over so the regression line is horizontal. 
@@ -568,7 +568,7 @@ While the linear equation is good at capturing the trend in the data, no individ
 :::
 
 
-A statistical software is usually used to compute the least squares line and the typical output generated as a result of fitting regression models looks like the one shown in Table \@ref(tab:rOutputForIncomeAidLSRLine). 
+Statistical software is usually used to compute the least squares line and the typical output generated as a result of fitting regression models looks like the one shown in Table \@ref(tab:rOutputForIncomeAidLSRLine). 
 For now we will focus on the first column of the output, which lists ${b}_0$ and ${b}_1$. 
 In Chapter \@ref(inference-reg) we will dive deeper into the remaining columns which give us information on how accurate and precise these values of intercept and slope that are calculated from a sample of 50 students are in estimating the population parameters of intercept and slope for *all* students.
 
@@ -583,7 +583,7 @@ If you would like to learn more about using R to fit linear models, see Section 
 #### Calculating the least squares regression line using summary statistics (special topic)
 
 An alternative way of calculating the values of intercept and slope of a least squares line is manual calculations using formulas. 
-While this method is not commonly used by practising statisticians and data scientists, it is useful to work through the first time you're learning about the least squares line and modeling in general. 
+While this method is not commonly used by practicing statisticians and data scientists, it is useful to work through the first time you're learning about the least squares line and modeling in general. 
 Calculating these values by hand leverages two properties of the least squares line: 
 
 - The slope of the least squares line can be estimated by
@@ -889,7 +889,7 @@ $$\widehat{price} = `r m_total_pr_cond_int` + 10.90 \times condnew$$
 
 ::: {.example}
 Interpret the two parameters estimated in the model for the price of Mario Kart in eBay auctions. 
-The intercept is the estimated price when takes value 0, i.e. when the game is in used condition. 
+The intercept is the estimated price when `condnew` takes value 0, i.e. when the game is in used condition. 
 That is, the average selling price of a used version of the game is \$42.87.
 
 ---
@@ -990,7 +990,7 @@ p_2_res + theme(plot.margin = unit(c(0, 10, 5, 0), "pt")) + p_3_res +
 
 :::{ .example}
 There are three plots shown in Figure \@ref(fig:outlierPlots2) along with the least squares line and residual plots. 
-As you did in previous exercise, for each scatterplot and residual plot pair, identify the outliers and note how they influence the least squares line. 
+As you did in the previous exercise, for each scatterplot and residual plot pair, identify the outliers and note how they influence the least squares line. 
 Recall that an outlier is any point that doesn't appear to belong with the vast majority of the other points.
 
 ---
