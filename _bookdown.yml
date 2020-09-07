@@ -16,7 +16,7 @@ rmd_files: [
   "05-inference-cat.Rmd",
   "06-inference-num.Rmd",
   "07-inference-reg.Rmd",
-  #"09-case-studies.Rmd",
+  "09-case-studies.Rmd",
   "10-activities.Rmd",
   "11-references.Rmd"
   ]
