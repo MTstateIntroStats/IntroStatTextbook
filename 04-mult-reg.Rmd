@@ -1,38 +1,63 @@
-# Multiple regression {#mult-reg}
+# Multivariable models {#mult-reg}
 
-```{block2, type="uptohere", echo=TRUE}
-The content in this chapter is currently just placeholder. We will remove this banner once the chapter content has been updated and ready for review.
+::: {.underconstruction}
+This chapter is currently under construction.
+:::
+
+::: {.chapterintro}
+The principles of simple linear regression lay the foundation for more sophisticated regression models used in a wide range of challenging settings. 
+In this chapter, we explore the idea of "multivariable thinking" -- investigating how multiple variables interact with a response variable and with each other -- through a few examples. 
+Multiple regression, which introduces the possibility of more than one predictor in a linear model, and logistic regression, a technique for predicting categorical outcomes with two levels, are presented as special topics not covered in this course.
+:::
+
+## Gapminder world
+
+[Gapminder](https://www.gapminder.org/) is a "fact tank" that uses publicly available world data to produce data visualizations and teaching resources on global development. We will use an excerpt of their data to explore relationships among world health metrics across countries and regions between the years 1952 and 2007. 
+
+```{block2, type="data", echo=TRUE}
+The `gapminder` data can be found in the [gapminder](https://github.com/jennybc/gapminder) package.
 ```
 
+First, let's look at the relationships between Gross Domestic Product (GDP) per capita (a measure of the wealth of a country), Life Expectancy (in years), Population, and Region in the year 2000 Explore individual countries by hovering over the points in Figure \@ref(fig:gapminder-1).
+
 <!-- Example from: https://holtzy.github.io/Pimp-my-rmd/ - interactive graphic! -->
-<!-- ```{r} -->
-<!-- library(ggplot2) -->
-<!-- library(plotly) -->
-<!-- library(gapminder) -->
+```{r gapminder-1, out.width="100%", fig.cap="Scatterplot displaying the relationship between four variables in the year 2000: GDP per capita (x-axis), Life Expectancy (y-axis), Population (size), and Region (color). What does each dot represent?^[Each observational unit is a single country.]"}
+p <- gapminder %>%
+  filter(year==2000) %>%
+  ggplot( aes(gdpPercap, lifeExp, size = pop, color=continent)) +
+  geom_point() +
+  scale_x_log10() +
+  theme_bw() +
+  xlab("GDP per Capita (USD)") + ylab("Life Expectancy (years)") 
 
-<!-- p <- gapminder %>% -->
-<!--   filter(year==1977) %>% -->
-<!--   ggplot( aes(gdpPercap, lifeExp, size = pop, color=continent)) + -->
-<!--   geom_point() + -->
-<!--   scale_x_log10() + -->
-<!--   theme_bw() -->
+ggplotly(p)
+```
 
-<!-- ggplotly(p) -->
-<!-- ``` -->
+How does this pattern compare to what was happening in 1960 (see Figure \@ref(fig:gapminder-2))?
 
-## Num vs. whatever - MLR
+```{r gapminder-2, out.width="100%", fig.cap="Scatterplot displaying the relationship between four variables in the year 1960: GDP per capita (x-axis), Life Expectancy (y-axis), Population (size), and Region (color)."}
+p <- gapminder %>%
+  filter(year==1960) %>%
+  ggplot( aes(gdpPercap, lifeExp, size = pop, color=continent)) +
+  geom_point() +
+  scale_x_log10() +
+  theme_bw() +
+  xlab("GDP per Capita (USD)") + ylab("Life Expectancy (years)") +
+  ggtitle("World Health Indicators in the Year 2000")
 
-- Introduction to multiple regression
+ggplotly(p)
+```
 
-## Parallel slopes
+We can visualize relationships among four variables in the plots above (the two quantitative variables on the x- and y-axes, and categorical variables as size or color), but how could we visualize what happens across time? Hans Rosling has the answer with dynamic visualization. Click on the image below to watch.
 
-## Hint at interaction, planes, and parallel planes but not quantify
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=Z8t4k0Q8e8Y
+" target="_blank"><img src="http://img.youtube.com/vi/Z8t4k0Q8e8Y/0.jpg" 
+alt="Hans Rosling 200 Years" width="240" height="180" border="10" /></a>
 
-- Visualization of higher-dimensional models (rgl demo)
+## Simpson's Paradox, revisited
 
 
-
-## `R`: Multiple and logistic regression
+## `R`: Multiple and logistic regression (special topic)
 
 ### Interactive R tutorials
 
@@ -78,15 +103,16 @@ Further apply the concepts you've learned in this chapter in R with computationa
 :::
 
 
-## Chapter 4 review {#chp4-review}
+<!-- ## Chapter 4 review {#chp4-review} -->
 
-### Terms
+<!-- ### Terms -->
 
-We introduced the following terms in the chapter. 
-If you're not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
-We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. 
-However you should be able to easily spot them as **bolded text**.
+<!-- We introduced the following terms in the chapter.  -->
+<!-- If you're not sure what some of these terms mean, we recommend you go back in the text and review their definitions. -->
+<!-- We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate.  -->
+<!-- However you should be able to easily spot them as **bolded text**. -->
 
-```{r eval = FALSE}
-make_terms_table(terms_chp_4)
-```
+<!-- ```{r eval = FALSE} -->
+<!-- make_terms_table(terms_chp_4) -->
+<!-- ``` -->
+

@@ -14,7 +14,8 @@ suppressMessages(library(gridExtra))
 suppressMessages(library(ggraph))
 suppressMessages(library(igraph))
 suppressMessages(library(RColorBrewer))
-
+suppressMessages(library(plotly))
+suppressMessages(library(gapminder))
 
 ################## Update from ims repo from here down -
 # _common.R based on R4DS: https://github.com/hadley/r4ds/blob/master/_common.R

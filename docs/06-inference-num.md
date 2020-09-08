@@ -2269,13 +2269,13 @@ However you should be able to easily spot them as **bolded text**.
   <tr>
    <td style="text-align:left;"> Central Limit Theorem </td>
    <td style="text-align:left;"> paired $t$-test </td>
-   <td style="text-align:left;"> t-distribution </td>
+   <td style="text-align:left;"> T score </td>
    <td style="text-align:left;">  </td>
   </tr>
   <tr>
    <td style="text-align:left;"> degrees of freedom </td>
    <td style="text-align:left;"> paired data </td>
-   <td style="text-align:left;"> T score </td>
+   <td style="text-align:left;"> t-distribution </td>
    <td style="text-align:left;">  </td>
   </tr>
 </tbody>
