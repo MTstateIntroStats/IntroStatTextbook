@@ -18,41 +18,112 @@ Multiple regression, which introduces the possibility of more than one predictor
 The `gapminder` data can be found in the [gapminder](https://github.com/jennybc/gapminder) package.
 ```
 
-First, let's look at the relationships between Gross Domestic Product (GDP) per capita (a measure of the wealth of a country), Life Expectancy (in years), Population, and Region in the year 2000 Explore individual countries by hovering over the points in Figure \@ref(fig:gapminder-1).
+First, let's look at the relationship between Gross Domestic Product (GDP) per capita (a measure of the wealth of a country) and Life Expectancy (in years) in the year 2007 in Figure \@ref(fig:gdpPercap-lifeExp).
+
+```{r gdpPercap-lifeExp, out.width="100%", fig.cap="Scatterplot displaying the relationship Life Expectancy and GDP per capita in the year 2007. Note that GDP per capita is plotted on the log scale. What does each dot represent?^[Each observational unit is a single country.]"}
+gapminder %>% filter(year==2002) %>%
+  ggplot(aes(x = gdpPercap, y = lifeExp)) +
+  geom_point() +
+  scale_x_log10() +
+  theme_bw() +
+  labs(x = "GDP per Capita (USD)", y = "Life Expectancy (years)")
+```
+
+As one might expect, there is a general positive trend between GDP and life expectancy. But does this trend hold across all regions? Let's explore in Figure \@ref(fig:gdpPercap-lifeExp-continent).
+```{r gdpPercap-lifeExp-continent, out.width="100%", fig.cap="Scatterplot displaying the relationship Life Expectancy and GDP per capita by region in the year 2007. Note that GDP per capita is plotted on the log scale. Regression lines for each continent have been added."}
+gapminder %>% ggplot(aes(x = gdpPercap, y = lifeExp, colour = continent)) +
+  geom_point(cex = 0.1) +
+  geom_smooth(method = "lm", se = FALSE) +
+  scale_x_log10() +
+  theme_bw() +
+  labs(x = "GDP per Capita (USD)", y = "Life Expectancy (years)",
+       colour = "Region")
+```
+
+
+::: {.example}
+Does the relationship between GDP per capita and life expectancy differ across regions of the world?
+
+---
+
+Yes. Looking at Figure \@ref(fig:gdpPercap-lifeExp-continent), the five regression lines have differing slopes, telling us that the estimated change in life expectancy for a given increase in GDP per capita differs across countries. In the Americas and Oceania, life expectancy seems to rise faster with GDP per capita than the other three regions. In this case, we say that GDP per capita **interacts** with continent in its relationship with life expectancy.
+:::
+
+::: {.onebox}
+**Interaction between two explanatory variables.**
+
+If the relationship between an explanatory variable $x$ and response variable $y$ changes for different levels of another variable $z$, then we say that $x$ and $z$ **interact** in their relationship with $y$.
+
+If $x$ and $y$ are quantitative, and $z$ is categorical, as in Figure \@ref(fig:gdpPercap-lifeExp-continent)---where $x$ = GDP per capita, $y$ = life expectancy, and $z$ = continent---then if the different regression lines for each level of $z$ have **parallel slopes**, we say that $x$ and $z$ _do not_ interact. If the slopes are not parallel, then interaction exists between $x$ and $z$.
+:::
+
+```{r include=FALSE}
+terms_chp_4 <- c("interaction", "parallel slopes")
+```
+
+::: {.guidedpractice}
+So far, we've explored relationships between three variables, how could we visualize relationships between five variables?^[Each variable can be mapped to some "aesthetic" of the plot. Aesthetics include position on the x-axis, position on the y-axis, size, color, and shape. Since position and size are quantitative, they should be used for quantitative variables. Categorical variables should be mapped to color or shape, though we could also map them to position on the x-axis or y-axis if the axis lists categories rather than a number line.]
+:::
+
+Let's add another variable to our plot---population. An **aesthetic** is a visual property of the objects in your plot. Each variable is mapped to an aesthetic. Some possible aesthetics and whether they should be used for quantitative or categorical variables are listed in Table \@ref(tab:aesthetics).
+
+```{r aesthetics}
+aesthetics <- tribble(
+  ~Aesthetic,       ~Variable,
+  "Position on the x-axis as a number line",   "Quantitative",
+  "Position on the y-axis as a number line", "Quantitative",
+  "Position on the x-axis as categories",   "Categorical",
+  "Position on the y-axis as categories", "Categorical",
+  "Size", "Quantitative",
+  "Color", "Categorical",
+  "Shape", "Categorical")
+
+aesthetics %>%
+  kable(caption = "Examples of aesthetics and types of variables mapped to these aesthetics.")
+```
+
+In Figure \@ref(fig:gapminder-1), quantitative variables GDP per capita, life expectancy, and population are mapped to aesthetics: position on the $x$-axis, position on the $y$-axis, and population, respectively. The categorical variable Region is mapped to color. Explore individual countries by hovering over the points.
+
+
+<!-- TODO Someday - can't get Population legend to show up when using plotly -->
 
 <!-- Example from: https://holtzy.github.io/Pimp-my-rmd/ - interactive graphic! -->
-```{r gapminder-1, out.width="100%", fig.cap="Scatterplot displaying the relationship between four variables in the year 2000: GDP per capita (x-axis), Life Expectancy (y-axis), Population (size), and Region (color). What does each dot represent?^[Each observational unit is a single country.]"}
+```{r gapminder-1, out.width="100%", fig.cap="Scatterplot displaying the relationship between four variables in the year 2007: GDP per capita (x-axis), Life Expectancy (y-axis), Population (size), and Region (color).]"}
 p <- gapminder %>%
-  filter(year==2000) %>%
-  ggplot( aes(gdpPercap, lifeExp, size = pop, color=continent)) +
-  geom_point() +
+  filter(year==2007) %>%
+  ggplot( aes(x = gdpPercap, y = lifeExp, size = pop, color=continent)) +
+  geom_point(aes(text = country)) +
   scale_x_log10() +
   theme_bw() +
-  xlab("GDP per Capita (USD)") + ylab("Life Expectancy (years)") 
+  labs(x = "GDP per Capita (USD)", y = "Life Expectancy (years)",
+       colour = "Region", size = "Population")  +
+  ggtitle("Year 2007")
 
 ggplotly(p)
 ```
 
-How does this pattern compare to what was happening in 1960 (see Figure \@ref(fig:gapminder-2))?
+How does this pattern compare to what was happening in 1952 (see Figure \@ref(fig:gapminder-2))?
 
-```{r gapminder-2, out.width="100%", fig.cap="Scatterplot displaying the relationship between four variables in the year 1960: GDP per capita (x-axis), Life Expectancy (y-axis), Population (size), and Region (color)."}
+```{r gapminder-2, out.width="100%", fig.cap="Scatterplot displaying the relationship between four variables in the year 1952: GDP per capita (x-axis), Life Expectancy (y-axis), Population (size), and Region (color)."}
 p <- gapminder %>%
-  filter(year==1960) %>%
+  filter(year==1952) %>%
   ggplot( aes(gdpPercap, lifeExp, size = pop, color=continent)) +
-  geom_point() +
+  geom_point(aes(text = country)) +
   scale_x_log10() +
   theme_bw() +
-  xlab("GDP per Capita (USD)") + ylab("Life Expectancy (years)") +
-  ggtitle("World Health Indicators in the Year 2000")
+  labs(x = "GDP per Capita (USD)", y = "Life Expectancy (years)",
+       colour = "Region", size = "Population")  +
+  ggtitle("Year 1952")
 
-ggplotly(p)
+ggplotly(p) %>%
+  layout(showlegend = TRUE)
 ```
 
-We can visualize relationships among four variables in the plots above (the two quantitative variables on the x- and y-axes, and categorical variables as size or color), but how could we visualize what happens across time? Hans Rosling has the answer with dynamic visualization. Click on the image below to watch.
+We can visualize relationships among four variables in the plots above (the two quantitative variables on the x- and y-axes and size, and the categorical variable as color), but how could we visualize what happens across time? Hans Rosling has the answer with dynamic visualization. Click on the image below to watch.
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=Z8t4k0Q8e8Y
 " target="_blank"><img src="http://img.youtube.com/vi/Z8t4k0Q8e8Y/0.jpg" 
-alt="Hans Rosling 200 Years" width="240" height="180" border="10" /></a>
+alt="Hans Rosling 200 Years" width="480" height="360" border="10" /></a>
 
 ## Simpson's Paradox, revisited
 
@@ -61,7 +132,7 @@ alt="Hans Rosling 200 Years" width="240" height="180" border="10" /></a>
 
 ### Interactive R tutorials
 
-Navigate the concepts you've learned in this chapter in R using the following self-paced tutorials. 
+Explore the additional topics of multiple regression and logistic regression in R using the following self-paced tutorials. 
 All you need is your browser to get started!
 
 ::: {.alltutorials}
@@ -103,16 +174,16 @@ Further apply the concepts you've learned in this chapter in R with computationa
 :::
 
 
-<!-- ## Chapter 4 review {#chp4-review} -->
+## Chapter 4 review {#chp4-review}
 
-<!-- ### Terms -->
+### Terms
 
-<!-- We introduced the following terms in the chapter.  -->
-<!-- If you're not sure what some of these terms mean, we recommend you go back in the text and review their definitions. -->
-<!-- We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate.  -->
-<!-- However you should be able to easily spot them as **bolded text**. -->
+We introduced the following terms in the chapter.
+If you're not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
+We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate.
+However you should be able to easily spot them as **bolded text**.
 
-<!-- ```{r eval = FALSE} -->
-<!-- make_terms_table(terms_chp_4) -->
-<!-- ``` -->
+```{r}
+make_terms_table(terms_chp_4)
+```
 

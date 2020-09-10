@@ -1705,10 +1705,10 @@ In this study, a smaller proportion of females are promoted than males (0.583 ve
 <caption>(\#tab:discriminationResults)Summary results for the gender discrimination study.</caption>
  <thead>
 <tr>
-<th style="border-bottom:hidden" colspan="1"></th>
-<th style="border-bottom:hidden" colspan="1"></th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`gender`</div></th>
-<th style="border-bottom:hidden" colspan="1"></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`gender`</div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
 </tr>
   <tr>
    <th style="text-align:left;">  </th>
@@ -1825,10 +1825,10 @@ Table \@ref(tab:discriminationRand1) show the results of one such simulation.
 <caption>(\#tab:discriminationRand1)Simulation results, where the difference in promotion rates between `male` and `female` is purely due to chance.</caption>
  <thead>
 <tr>
-<th style="border-bottom:hidden" colspan="1"></th>
-<th style="border-bottom:hidden" colspan="1"></th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`gender`</div></th>
-<th style="border-bottom:hidden" colspan="1"></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`gender`</div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
 </tr>
   <tr>
    <th style="text-align:left;">  </th>
@@ -2239,10 +2239,10 @@ signs of infection.
 <caption>(\#tab:malaria-vaccine-20-exp-summary)Summary results for the malaria vaccine experiment.</caption>
  <thead>
 <tr>
-<th style="border-bottom:hidden" colspan="1"></th>
-<th style="border-bottom:hidden" colspan="1"></th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`treatment`</div></th>
-<th style="border-bottom:hidden" colspan="1"></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`treatment`</div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
 </tr>
   <tr>
    <th style="text-align:left;">  </th>
@@ -2481,9 +2481,9 @@ We make a statement about which one might be true, but we might choose incorrect
 <caption>(\#tab:fourHTScenarios)Four different scenarios for hypothesis tests.</caption>
  <thead>
 <tr>
-<th style="border-bottom:hidden" colspan="1"></th>
-<th style="border-bottom:hidden" colspan="1"></th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">**Test conclusion**</div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">**Test conclusion**</div></th>
 </tr>
   <tr>
    <th style="text-align:left;">  </th>
@@ -3677,21 +3677,21 @@ However you should be able to easily spot them as **bolded text**.
   </tr>
   <tr>
    <td style="text-align:left;"> confidence interval </td>
-   <td style="text-align:left;"> one-sided hypothesis test </td>
+   <td style="text-align:left;"> one sample $z$-test </td>
    <td style="text-align:left;"> SE interval </td>
    <td style="text-align:left;"> test statistic </td>
   </tr>
   <tr>
    <td style="text-align:left;"> confidence level </td>
-   <td style="text-align:left;"> one sample $z$-test </td>
+   <td style="text-align:left;"> one-sided hypothesis test </td>
    <td style="text-align:left;"> simulation </td>
-   <td style="text-align:left;"> two-sided hypothesis test </td>
+   <td style="text-align:left;"> two sample $z$-test </td>
   </tr>
   <tr>
    <td style="text-align:left;"> confirmation bias </td>
    <td style="text-align:left;"> p-value </td>
    <td style="text-align:left;"> standard error </td>
-   <td style="text-align:left;"> two sample $z$-test </td>
+   <td style="text-align:left;"> two-sided hypothesis test </td>
   </tr>
   <tr>
    <td style="text-align:left;"> hypothesis test </td>
