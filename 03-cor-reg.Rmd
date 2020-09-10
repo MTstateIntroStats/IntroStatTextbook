@@ -131,7 +131,7 @@ ggplot(possum, aes(x = total_l, y = head_l)) +
 
 We want to describe the relationship between the head length and total length variables in the possum data set using a line. 
 In this example, we will use the total length as the predictor variable, $x$, to predict a possum's head length, $y$. 
-We could fit the linear relationship by eye, as in Figure \@ref(fig:scattHeadLTotalLLine). 
+We could fit the linear relationship using technology (criteria to be discussed in Section \@ref(least-squares-regression)), as in Figure \@ref(fig:scattHeadLTotalLLine). 
 
 ```{r scattHeadLTotalLLine, fig.cap = "A reasonable linear model was fit to represent the relationship between head length and total length."}
 ggplot(possum, aes(x = total_l, y = head_l)) +
@@ -249,14 +249,14 @@ Check it against the earlier visual estimate, $-1$.
 
 We first compute the predicted value of the observation marked by a red circle based on the model: 
 
-$$\hat{y} = 43+0.57x = 43+0.57\times 76.0 = 86.3.$$
+$$\hat{y} = 43+0.57x = 43+0.57\times 76.0 = 86.3mm$$
 
 
 Next, we compute the difference of the actual head length and the predicted head length: 
 
-$$e = y - \hat{y} = 85.1 -  86.3 = -1.1.$$
+$$e = y - \hat{y} = 85.1 -  86.3 = -1.2 mm$$
 
-The model's error is $e = -1.1$ mm, which is very close to the
+The model's error is $e = -1.2$ mm, which is very close to the
 visual estimate of $-1$ mm. The negative residual indicates that the linear model overpredicted head length for this particular possum.
 :::
 
@@ -272,7 +272,7 @@ Compute the residuals for the observation marked by a green diamond, $(85.0, 98.
 
 Residuals are helpful in evaluating how well a linear model fits a data set. 
 We often display them in a residual plot such as the one shown in Figure \@ref(fig:scattHeadLTotalLResidualPlot) for the regression line in Figure \@ref(fig:scattHeadLTotalLLine-highlighted). 
-The residuals are plotted at their original horizontal locations but with the vertical coordinate as the residual. 
+The residuals are plotted at their fitted values on the $x$-axis but with the vertical coordinate as the residual. 
 For instance, the point $(85.0, 98.6)$ (marked by the green diamond) had a predicted value of 91.45 mm and had a residual of 7.15 mm, so in the residual plot it is placed at $(91.45, 7.15)$. 
 Creating a residual plot is sort of like tipping the scatterplot over so the regression line is horizontal. 
 
