@@ -402,7 +402,7 @@ Pie charts are nearly useless when trying to compare two categorical variables, 
 
 If you're still not convinced that you shouldn't use pie charts, read ["The Issue with Pie Chart"](https://www.data-to-viz.com/caveat/pie.html) on the "from Data to Viz" blog, and ["The Worst Chart in the World"](https://www.businessinsider.com/pie-charts-are-the-worst-2013-6) article on Business Insider.
 
-### Simpson's paradox
+### Simpson's paradox {#simpson}
 
 #### Race and capital punishment {-}
 

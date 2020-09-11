@@ -1,9 +1,5 @@
 # Multivariable models {#mult-reg}
 
-::: {.underconstruction}
-This chapter is currently under construction.
-:::
-
 ::: {.chapterintro}
 The principles of simple linear regression lay the foundation for more sophisticated regression models used in a wide range of challenging settings. 
 In this chapter, we explore the idea of "multivariable thinking" -- investigating how multiple variables interact with a response variable and with each other -- through a few examples. 
@@ -54,7 +50,7 @@ Yes. Looking at Figure \@ref(fig:gdpPercap-lifeExp-continent), the five regressi
 
 If the relationship between an explanatory variable $x$ and response variable $y$ changes for different levels of another variable $z$, then we say that $x$ and $z$ **interact** in their relationship with $y$.
 
-If $x$ and $y$ are quantitative, and $z$ is categorical, as in Figure \@ref(fig:gdpPercap-lifeExp-continent)---where $x$ = GDP per capita, $y$ = life expectancy, and $z$ = continent---then if the different regression lines for each level of $z$ have **parallel slopes**, we say that $x$ and $z$ _do not_ interact. If the slopes are not parallel, then interaction exists between $x$ and $z$.
+If $x$ and $y$ are quantitative, and $z$ is categorical, as in Figure \@ref(fig:gdpPercap-lifeExp-continent) -- where $x$ = GDP per capita, $y$ = life expectancy, and $z$ = continent -- then if the different regression lines for each level of $z$ have **parallel slopes**, we say that $x$ and $z$ _do not_ interact. If the slopes are not parallel, then interaction exists between $x$ and $z$.
 :::
 
 ```{r include=FALSE}
@@ -65,7 +61,11 @@ terms_chp_4 <- c("interaction", "parallel slopes")
 So far, we've explored relationships between three variables, how could we visualize relationships between five variables?^[Each variable can be mapped to some "aesthetic" of the plot. Aesthetics include position on the x-axis, position on the y-axis, size, color, and shape. Since position and size are quantitative, they should be used for quantitative variables. Categorical variables should be mapped to color or shape, though we could also map them to position on the x-axis or y-axis if the axis lists categories rather than a number line.]
 :::
 
-Let's add another variable to our plot---population. An **aesthetic** is a visual property of the objects in your plot. Each variable is mapped to an aesthetic. Some possible aesthetics and whether they should be used for quantitative or categorical variables are listed in Table \@ref(tab:aesthetics).
+Let's add another variable to our plot -- population. An **aesthetic** is a visual property of the objects in your plot. Each variable is mapped to an aesthetic. Some possible aesthetics and whether they should be used for quantitative or categorical variables are listed in Table \@ref(tab:aesthetics).
+
+```{r include=FALSE}
+terms_chp_4 <- c(terms_chp_4, "aesthetic")
+```
 
 ```{r aesthetics}
 aesthetics <- tribble(
@@ -127,6 +127,109 @@ alt="Hans Rosling 200 Years" width="480" height="360" border="10" /></a>
 
 ## Simpson's Paradox, revisited
 
+Simpson's Paradox was introduced in Section \@ref(simpson) through an example on race and capital punishment. In that example, all three variables of interest were categorical. In this section, we present another example of this paradox using three quantitative variables.
+
+In 1993, respected political essayist George Will, wrote the following criticism of spending on public education in the United States.
+
+> "The 10 states with the lowest per pupil spending included four -- North Dakota, South Dakota, Tennessee, Utah -- among the 10 states with the top SAT scores. Only one of the 10 states with the highest per pupil expenditures -- Wisconsin -- was among the 10 states with the highest SAT scores. New Jersey has the highest per pupil expenditures, an astonishing $10,561, which teachers' unions elsewhere try to use as a negotiating benchmark. New Jersey's rank regarding SAT scores? Thirty-ninth... The fact that the quality of schools... [fails to correlate] with education appropriations will have no effect on the teacher unions' insistence that money is the crucial variable."
+>
+> --- George F. Will, September 12, 1993, "Meaningless Money Factor," _The Washington Post_, C7.
+
+George Will based his claim state expenditures, average SAT scores, and other education-based variables. These data are in the data set `SAT`^[These data can be downloaded from (https://math.montana.edu/courses/s216/data/sat.csv)[https://math.montana.edu/courses/s216/data/sat.csv].], the first six rows of which are displayed in Table \@ref(tab:SATDF). Variables for this data set are described in Table \@ref(tab:SATVariables)
+
+
+```{r SATDF}
+SAT <- read.csv("https://math.montana.edu/courses/s216/data/sat.csv")
+SAT %>% 
+  slice_head(n = 6) %>%
+  kable(caption = "Six rows from the `SAT` data set.",
+        row.names = TRUE)
+```
+
+```{r SATVariables}
+SAT_var_def <- tribble(
+  ~Variable,       ~Description,
+"State", "Name of state",
+"expend", "Expenditure per pupil in average daily attendance in public elementary and secondary schools, 1994-95 (in thousands of dollars)",
+"ratio", "Average pupil/teacher ratio in public elementary and secondary schools, Fall 1994",
+"salary", "Estimated average annual salary of teachers in public elementary and secondary schools, 1994-95 (in thousands of dollars)",
+"frac", "Percentage of all eligible students taking the SAT, 1994-95",
+"verbal", "Average verbal SAT score, 1994-95",
+"math", "Average math SAT score, 1994-95",
+"sat", "Average total score on the SAT, 1994-95"
+)
+
+SAT_var_def %>%
+  kable(caption = "Variables and their descriptions for the `SAT` data set.")
+```
+
+Mr. Will claims that expenditure per pupil has a _negative_ correlation with average SAT scores across states. Is this true? Indeed, the correlation between `expend` and `sat` is equal to $r$ = `r round(cor(SAT$expend, SAT$sat),3)`, and the relationship between the two variables is shown in Figure \@ref(fig:expend-sat). Hover over each point to view data on a particular State.
+
+```{r expend-sat, fig.cap="Expenditure per pupil in average daily attendance in public elementary and secondary schools ($1000) verses average SAT score for the 50 states plus the District of Columbia over school year 1994-1995.", out.width="75%"}
+p <- SAT %>%
+  ggplot(aes(x = expend, y = sat)) +
+  geom_point(aes(text=State)) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(x = "Expenditure per pupil ($1000)",
+       y = "Average SAT score",
+       title = "Average SAT versus school expenditures")
+
+ggplotly(p)
+```
+
+This may seem surprising, but remember -- these are observational data. We cannot conclude, as George Will does, that decreasing expenditures will increase SAT scores. In fact, there is one clear confounding variable in these data: percentage of all eligible students taking the SAT.
+
+::: {.example}
+What **confounding variables** may be present in this study? How could we determine whether a variable is confounding the relationship between school expenditures and SAT scores?
+
+---
+
+In some states at the time these data were collected, it was more common to take the ACT than the SAT. For students in these states, if they wanted to go to a state school, they need only take the ACT. However, if they wanted to attend college in another state, they might take the SAT. Thus, the percent of students taking the SAT in a state, `frac`, could be a confounding variable.
+
+In order for `frac` to be confounding, it needs to be associated with our explanatory variable, `expend`, as well as with the response variable, `sat`. One could look at scatterplots and correlation between `frac` and `expend`, and between `frac` and `sat`, to determine if `frac` is confounding the relationship between `expend` and `sat`.
+:::
+
+```{r include=FALSE}
+terms_chp_4 <- c(terms_chp_4, "confounding variable")
+```
+
+Scatterplots of `expend` versus `frac` and `sat` versus `frac` are displayed in Figure \@ref(fig:expend-sat-frac). The correlation between `expend` and `frac` is `r round(cor(SAT$expend, SAT$frac),3)`, and the correlation between `sat` and `frac` is `r round(cor(SAT$frac, SAT$sat),3)`.
+
+```{r expend-sat-frac, fig.cap="Expenditure per pupil in average daily attendance in public elementary and secondary schools ($1000) and average SAT score plotted against percent of students taking the SAT for the 50 states plus the District of Columbia over school year 1994-1995.", out.width="100%"}
+p1 <- SAT %>%
+  ggplot(aes(x = frac, y = expend)) +
+  geom_point(aes(text=State)) +
+  #geom_smooth(method = "lm", se = FALSE) +
+  labs(y = "Expenditure per pupil ($1000)",
+       x = "Percent taking SAT")
+
+p2 <- SAT %>%
+  ggplot(aes(x = frac, y = sat)) +
+  geom_point(aes(text=State)) +
+  #geom_smooth(method = "lm", se = FALSE) +
+  labs(y = "Average SAT score",
+       x = "Percent taking SAT")
+
+grid.arrange(p1,p2,nrow=1)
+```
+
+Now that we've determined that `frac` is a confounding variable, let's examine if and how it modifies the relationship between `expend` and `sat`. Since it is hard to visualize three quantitative variables -- 3-D scatterplots are difficult to visualize -- let's group the variable `frac` and fit separate regression lines for each group. This model is shown in Figure \@ref(fig:expend-sat-frac-group).
+
+```{r expend-sat-frac-group, out.width="80%", fig.cap="Average SAT score plotted against school expenditures per pupil, categorized by a Low ($<$ 15%), Medium (15-55%), or High ($>$ 55%) percent of students taking the SAT."}
+SAT <- SAT %>% mutate(frac.group = cut(frac, breaks = c(0,15,55,100), labels = c("Low","Med","High"), include.lowest = TRUE))
+
+SAT %>% ggplot(aes(x = expend, y = sat, color = frac.group, shape = frac.group)) +
+  geom_point() +
+  geom_smooth(method = "lm", se=FALSE) +
+  labs(x = "Expenditure per pupil ($1000)",
+       y = "Average SAT score", color = "Percent taking SAT", shape = "Percent taking SAT")
+```
+
+Figure \@ref(fig:expend-sat-frac-group) demonstrates that the overall negative correlation between SAT scores and expenditures disappears, and even turns slightly positive, when we examine this relationship within states with similar fractions of students taking the SAT.
+
+::: {.guidedpractice}
+Why do these data exhibit Simpson's Paradox?^[The direction of a relationship of interest (SAT scores versus expenditures) was _reversed_ when accounting for a third variable (percent taking the SAT).]
+:::
 
 ## Multiple regression (special topic) {#regression-multiple-predictors}
 
@@ -225,7 +328,7 @@ However, we are missing one of the levels: `Not Verified`.
 The missing level is called the **reference level** and it represents the default level that other levels are measured against.
 
 ```{r include=FALSE}
-terms_chp_4 <- c("reference level")
+terms_chp_4 <- c(terms_chp_4, "reference level")
 ```
 
 ```{r intRateVsVerIncomeModel}
