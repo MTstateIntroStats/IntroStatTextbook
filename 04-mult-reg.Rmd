@@ -119,7 +119,7 @@ ggplotly(p) %>%
   layout(showlegend = TRUE)
 ```
 
-We can visualize relationships among four variables in the plots above (the two quantitative variables on the x- and y-axes and size, and the categorical variable as color), but how could we visualize what happens across time? Hans Rosling has the answer with dynamic visualization. Click on the image below to watch.
+We can visualize relationships among four variables in the plots above (the three quantitative variables on the x- and y-axes and size, and the categorical variable as color).  We could even add a fifth variable using another aesthetic, like using shape to represent the most popular religion in each country.  How could we visualize what happens across time? Hans Rosling has the answer with dynamic visualization. Click on the image below to watch.
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=Z8t4k0Q8e8Y
 " target="_blank"><img src="http://img.youtube.com/vi/Z8t4k0Q8e8Y/0.jpg" 
@@ -213,7 +213,7 @@ p2 <- SAT %>%
 grid.arrange(p1,p2,nrow=1)
 ```
 
-Now that we've determined that `frac` is a confounding variable, let's examine if and how it modifies the relationship between `expend` and `sat`. Since it is hard to visualize three quantitative variables -- 3-D scatterplots are difficult to visualize -- let's group the variable `frac` and fit separate regression lines for each group. This model is shown in Figure \@ref(fig:expend-sat-frac-group).
+Now that we've determined that `frac` is a confounding variable, let's examine if and how it modifies the relationship between `expend` and `sat`. Since it is hard to visualize three quantitative variables -- 3-D scatterplots are difficult to visualize -- let's bin the variable `frac` into three groups.  States with fewer than 15% of eligible students taking the SAT will be classified as a low percentage.  States with between 15% - 55% of eligible students taking the SAT will be classified as medium  Those states with more than 55% of eligible students taking the SAT will be called high.  Next, we fit separate regression lines for each group. This model is shown in Figure \@ref(fig:expend-sat-frac-group).
 
 ```{r expend-sat-frac-group, out.width="80%", fig.cap="Average SAT score plotted against school expenditures per pupil, categorized by a Low ($<$ 15%), Medium (15-55%), or High ($>$ 55%) percent of students taking the SAT."}
 SAT <- SAT %>% mutate(frac.group = cut(frac, breaks = c(0,15,55,100), labels = c("Low","Med","High"), include.lowest = TRUE))

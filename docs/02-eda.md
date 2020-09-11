@@ -154,10 +154,10 @@ In this textbook, we generally take the convention of putting the categories of 
 <caption>(\#tab:emailTable)Contingency table of `number` (cols) and `type` (rows) variables.</caption>
  <thead>
 <tr>
-<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
-<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`number`</div></th>
-<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden" colspan="1"></th>
+<th style="border-bottom:hidden" colspan="1"></th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`number`</div></th>
+<th style="border-bottom:hidden" colspan="1"></th>
 </tr>
   <tr>
    <th style="text-align:left;">  </th>
@@ -412,10 +412,10 @@ A 1991 study by Radelet and Pierce examined whether race was associated with whe
 <caption>(\#tab:DP)Contingency table of homicide cases in Florida from 1976 through 1987.</caption>
  <thead>
 <tr>
-<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
-<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Defendant's race</div></th>
-<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden" colspan="1"></th>
+<th style="border-bottom:hidden" colspan="1"></th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Defendant's race</div></th>
+<th style="border-bottom:hidden" colspan="1"></th>
 </tr>
   <tr>
    <th style="text-align:left;">  </th>
@@ -468,10 +468,10 @@ If we subset the data by the race of the victim, we see a different picture. Tab
 <caption>(\#tab:DP2)Contingency table of homicide cases in Florida from 1976 through 1987; sentences classified by defendant's race and victim's race.</caption>
  <thead>
 <tr>
-<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
-<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Death Penalty?</div></th>
-<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden" colspan="1"></th>
+<th style="border-bottom:hidden" colspan="1"></th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Death Penalty?</div></th>
+<th style="border-bottom:hidden" colspan="1"></th>
 </tr>
   <tr>
    <th style="text-align:left;"> Victim's race </th>
@@ -1266,9 +1266,9 @@ These scenarios are plotted alongside the original data in Figure \@ref(fig:loan
 <caption>(\#tab:robustOrNotTable)A comparison of how the median, IQR, mean, and standard deviation change as the value of an extereme observation from the original interest data changes.</caption>
  <thead>
 <tr>
-<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Robust</div></th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Not robust</div></th>
+<th style="border-bottom:hidden" colspan="1"></th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Robust</div></th>
+<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Not robust</div></th>
 </tr>
   <tr>
    <th style="text-align:left;"> Scenario </th>
