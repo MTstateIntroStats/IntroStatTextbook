@@ -4320,10 +4320,162 @@ zsim_table %>%
 
 ```{block2, type="todo", echo=TRUE}
 Section on doing inference for categorical data in R.
+
 - Raw data to tables
 - Simulation functions in catstats
 - `prop.test`
 ```
+### Inference using `R` and `catstats`
+
+**Making tables from raw data** For inference with categorical data, we need counts of observations in each group by outcome.  If our data are in the standard format of one observation per row, we need to `table` the data to obtain the counts in each group.
+
+In the one-proportion case, suppose we have a data frame called `loans` with a variable `regulate` that contains the Yes/No response of the 826 payday loan borrowers from Section \@ref(theory-prop) regarding their support for a regulation to require lenders to pull their credit report and evaluate their debt payments.  We can obtain counts of borrowers for each response using the `table()` function in R:
+
+```{r, echo = FALSE}
+loans <- data.frame(regulate = sample(c(rep("Yes",422), rep("No",404))))
+```
+
+```{r , echo = TRUE}
+table(loans$regulate)
+```
+
+We can also use `table()` to compute the proportions in each group:
+```{r, echo = TRUE}
+#If we know the number of observations:
+table(loans$regulate)/826
+
+#If we don't know the number of observations:
+table(loans$regulate)/length(loans$regulate)
+```
+
+```{r, echo = FALSE}
+buy <- c(rep("buy DVD", 97), rep("not buy DVD", 53))
+group <- rep.int(c("control", "treatment", "control", "treatment"), times = c(56, 41, 19, 34))
+
+opportunity <- data.frame(buy, group)
+```
+
+For comparisons of two proportions, we get a two-way table.  Suppose in this case we have the data from the opportunity cost study in a data frame called `opportunity`, with variables `buy` giving the student's decision and `group` indicating whether they were in the treatment or control group.  The `summary()` function can help us see what variables are in our dataset and the values they take on:
+```{r, echo = TRUE}
+summary(opportunity)
+```
+
+To obtain the two-way table of the choices by group, we again use the `table()` function in `R`.  The key thing to remember here is to put the outcome as the first argument and the grouping as the second:
+
+```{r, echo = TRUE}
+table(opportunity$buy, opportunity$group)
+```
+
+This will set up the table to be useful for making segmented bar plots and using column percentages to compute test statistics.  In order to do either of these things, we need to store the table in an `R` object so we can manipulate it further:
+
+```{r, echo = TRUE}
+data_tbl <- table(opportunity$buy, opportunity$group)
+```
+
+To get column percentages, we use the `prop.table()` function:
+```{r, echo = TRUE}
+prop.table(data_tbl,  #Feed in your two-way table
+           margin = 2)  #Tell it to compute percentages for columns
+```
+
+
+**Simulation-based inference for one and two proportions** For simulation-based inference, we will use functions included in the `catstats` package, created for MSU Statistics courses. See the Welcome section for instructions on how to install `catstats` if you haven't already.  If the package is installed, you can load it into an `R` session to make the functions available using the `library()` function:
+
+```{r, echo = TRUE}
+library(catstats)
+```
+
+Once you have loaded the package, you will be able to use the functions for simulation-based inference. For one-proportion inference, this is the `one_proportion_test()` function and `one_proportion_bootstrap_CI()` function.  Returning to the payday loan regulation example, we can obtain a simulation distribtion and p-value using the following function call:
+```{r , eval = FALSE, echo = TRUE}
+one_proportion_test(
+  probability_success = 0.5, #null hypothesis probability of success
+  sample_size = 826,  #number of observations
+  number_repetitions = 1000,  #number of simulations to create
+  as_extreme_as = 0.51,  #observed statistic
+  direction = "greater",  #alternative hypothesis direction
+  report_value = "proportion"  #Report number or proportion of successes?
+)
+```
+
+Note that the observed statistic (`as_extreme_as`) and the `report_value` input need to match; since we put in the observed statistic as a proportion, we need to tell the function to report the proportion of successes.  If they don't match, you will almost certainly get a p-value of 0 or 1 -- this can happen when there is very strong evidence against the null, but it is always good to check your function inputs when you get an extreme outcome to make sure that is what you should be seeing.
+
+```{r onePropSimInf, echo = TRUE}
+set.seed(10)
+
+one_proportion_test(
+  probability_success = 0.5, #null hypothesis probability of success
+  sample_size = 826,  #number of observations
+  number_repetitions = 1000,  #number of simulations to create
+  as_extreme_as = 0.51,  #observed statistic
+  direction = "greater",  #alternative hypothesis direction
+  report_value = "proportion"  #Report number or proportion of successes?
+)
+```
+
+In the resulting graph, we see the distribution of simulated proportions, with those greater than the observed value of 0.51 highlighted in blue.  In the figure caption, we see that 308 of our 1000 simulations resulted in a proportion of successes at least as large as the observed value, yielding a p-value of 0.308.
+
+To find a confidence interval for the true proportion of payday loan borrowers who support the regulation, we use the `one_proportion_bootstrap_CI()` function:
+
+```{r, echo = TRUE}
+set.seed(17)
+one_proportion_bootstrap_CI(
+  sample_size = 826,  #Number of observations
+  number_successes = 422,  #Number of observed successes 
+  number_repetitions = 1000,  #Number of bootstrap draws
+  confidence_level = 0.95  #Confidence level, as a proportion
+)
+```
+
+This produces a plot of the bootstrapped proportions with the upper and lower bounds of the confidence interval marked, and gives the interval itself in the figure caption: in this case, we are 95% confidence that the true proportion of payday loan borrowers who support the proposed regulation is between 0.479 and 0.546.
+
+For inference about the difference between two proportions, we use the `two_proportion_test()` and `two_proportion_bootstrap_CI()` functions.  These functions assume you have a dataset with the group and outcome included as variables. Using the opportunity cost study, a call to `two_proportion_test()` would look like this:
+```{r, eval = FALSE, echo = TRUE}
+two_proportion_test(
+  formula = buy ~ group,  #always do outcome ~ grouping factor
+  data = opportunity,   #Name of the data set
+  first_in_subtraction = "treatment", #Value of the group variable that is first in order of subtraction
+  response_value_numerator = "not buy DVD",  #Value of outcome that is a "success"
+  number_repetitions = 1000,
+  as_extreme_as = 0.2,  #Observed statistic
+  direction = "greater"  #direction of the alternative hypothesis
+)
+```
+
+There are a couple of things to note here:
+
+* You need to identify which variable is your outcome and which your group using the `function` argument
+* Specify order of subtraction using `first_in_subtraction` by putting in EXACTLY the value of the grouping factor that you want to be first.  Must match capitalization, spaces, etc. for text values!
+* Specify what is a success using `response_value_numerator` but putting in EXACTLY the value of the response that you consider a success.  Again, capitalization, spaces, etc. matter if it is text!
+
+```{r, echo = TRUE}
+set.seed(97)
+two_proportion_test(
+  formula = buy ~ group,  #always do outcome ~ grouping factor
+  data = opportunity,   #Name of the data set
+  first_in_subtraction = "treatment", #Value of the group variable that is first in order of subtraction
+  response_value_numerator = "not buy DVD",  #Value of outcome that is a "success"
+  number_repetitions = 1000,
+  as_extreme_as = 0.2,  #Observed statistic
+  direction = "greater"  #direction of the alternative hypothesis
+)
+```
+
+The results give a segmented bar plot of the data --- you can check that your formula is correct by making sure the grouping is on the x-axis and the outcome is on the y-axis. Look to the top right of the bar plot to check that you have the correct order of subtraction. Next to the bar plot, we have the distribution of simulated differences in proportions, with the observed statistic marked with a vertical line and all values greater (or less, or more extreme) colored red.  The figure caption gives the p-value: in this case 7/1000 = 0.007.
+
+To produce a confidence interval for the true difference in the proportion of students that do or do not buy the DVD, we use `two_proportion_bootstrap_CI()`, which uses most of the same arguments as the `two_proportion_test()` function:
+```{r, echo = TRUE}
+set.seed(532)
+two_proportion_bootstrap_CI(
+   formula = buy ~ group,  #always do outcome ~ grouping factor
+  data = opportunity,   #Name of the data set
+  first_in_subtraction = "treatment", #Value of the group variable that is first in order of subtraction
+  response_value_numerator = "not buy DVD",  #Value of outcome that is a "success"
+  number_repetitions = 1000, #Number of bootstrap samples
+  confidence_level = 0.95  #Confidence level, as a proportion
+)
+```
+
+This produces the distribution of bootstrap values with the bounds of the confidence interval marked, and the value included in the caption.  Here, we are 95% confident that the true proportion of students who receive the treatment that do not buy the DVD than students is between 0.04 and 0.347 higher than the proportion who do not buy the DVD under the control condition.
 
 ### Interactive R tutorials
 
