@@ -4351,28 +4351,28 @@ table(loans$regulate)/826
 table(loans$regulate)/length(loans$regulate)
 ```
 
-```{r buildOpportunityData, echo = FALSE}
-buy <- c(rep("buy DVD", 97), rep("not buy DVD", 53))
-group <- rep.int(c("control", "treatment", "control", "treatment"), times = c(56, 41, 19, 34))
+```{r buildCPRData, echo = FALSE}
+survival <- c(rep("Survived", 25), rep("Died", 65))
+group <- rep.int(c("control", "treatment", "control", "treatment"), times = c(11, 14, 39, 26))
 
-opportunity <- data.frame(buy, group)
+cpr <- data.frame(survival, group)
 ```
 
-For comparisons of two proportions, we get a two-way table.  Suppose in this case we have the data from the opportunity cost study in a data frame called `opportunity`, with variables `buy` giving the student's decision and `group` indicating whether they were in the treatment or control group.  The `summary()` function can help us see what variables are in our dataset and the values they take on:
-```{r showOpportunityData, echo = TRUE}
-summary(opportunity)
+For comparisons of two proportions, we get a two-way table.  Suppose in this case we have the data from the study of the effect of blood thinners on survival after receiving CPR opportunity cost study in a data frame called `cpr`, with variables `survival` giving each patient's outcome decision and `group` indicating whether they were in the treatment (blood thinner) or control (no blood thinner) group.  The `summary()` function can help us see what variables are in our dataset and the values they take on:
+```{r showCPRData, echo = TRUE}
+summary(cpr)
 ```
 
 To obtain the two-way table of the choices by group, we again use the `table()` function in `R`.  The key thing to remember here is to put the outcome as the first argument and the grouping as the second:
 
-```{r crosstabOpportunity, echo = TRUE}
-table(opportunity$buy, opportunity$group)
+```{r crosstabCPR, echo = TRUE}
+table(cpr$survival, cpr$group)
 ```
 
 This will set up the table to be useful for making segmented bar plots and using column percentages to compute test statistics.  In order to do either of these things, we need to store the table in an `R` object so we can manipulate it further:
 
-```{r storeCrostab, echo = TRUE}
-data_tbl <- table(opportunity$buy, opportunity$group)
+```{r storeCrosstab, echo = TRUE}
+data_tbl <- table(cpr$survival, cpr$group)
 ```
 
 To get column percentages, we use the `prop.table()` function:
@@ -4431,16 +4431,16 @@ one_proportion_bootstrap_CI(
 
 This produces a plot of the bootstrapped proportions with the upper and lower bounds of the confidence interval marked, and gives the interval itself in the figure caption: in this case, we are 95% confidence that the true proportion of payday loan borrowers who support the proposed regulation is between 0.479 and 0.546.
 
-For inference about the difference between two proportions, we use the `two_proportion_test()` and `two_proportion_bootstrap_CI()` functions.  These functions assume you have a dataset with the group and outcome included as variables. Using the opportunity cost study, a call to `two_proportion_test()` would look like this:
+For inference about the difference between two proportions, we use the `two_proportion_test()` and `two_proportion_bootstrap_CI()` functions.  These functions assume you have a dataset with the group and outcome included as variables. Using the blood thinner study, a call to `two_proportion_test()` would look like this:
 ```{r twoPropSimCall, eval = FALSE, echo = TRUE}
 two_proportion_test(
-  formula = buy ~ group,  #always do outcome ~ grouping factor
-  data = opportunity,   #Name of the data set
+  formula = survival ~ group,  #always do outcome ~ grouping factor
+  data = cpr,   #Name of the data set
   first_in_subtraction = "treatment", #Value of the group variable that is first in order of subtraction
-  response_value_numerator = "not buy DVD",  #Value of outcome that is a "success"
+  response_value_numerator = "Survived",  #Value of outcome that is a "success"
   number_repetitions = 1000,
-  as_extreme_as = 0.2,  #Observed statistic
-  direction = "greater"  #direction of the alternative hypothesis
+  as_extreme_as = 0.13,  #Observed statistic
+  direction = "two-sided"  #direction of the alternative hypothesis
 )
 ```
 
@@ -4453,32 +4453,32 @@ There are a couple of things to note here:
 ```{r twoPropSimInf, echo = TRUE}
 set.seed(97)
 two_proportion_test(
-  formula = buy ~ group,  #always do outcome ~ grouping factor
-  data = opportunity,   #Name of the data set
+  formula = survival ~ group,  #always do outcome ~ grouping factor
+  data = cpr,   #Name of the data set
   first_in_subtraction = "treatment", #Value of the group variable that is first in order of subtraction
-  response_value_numerator = "not buy DVD",  #Value of outcome that is a "success"
+  response_value_numerator = "Survived",  #Value of outcome that is a "success"
   number_repetitions = 1000,
-  as_extreme_as = 0.2,  #Observed statistic
-  direction = "greater"  #direction of the alternative hypothesis
+  as_extreme_as = 0.13,  #Observed statistic
+  direction = "two-sided"  #direction of the alternative hypothesis
 )
 ```
 
-The results give a segmented bar plot of the data --- you can check that your formula is correct by making sure the grouping is on the x-axis and the outcome is on the y-axis. Look to the top right of the bar plot to check that you have the correct order of subtraction. Next to the bar plot, we have the distribution of simulated differences in proportions, with the observed statistic marked with a vertical line and all values greater (or less, or more extreme) colored red.  The figure caption gives the p-value: in this case 7/1000 = 0.007.
+The results give a segmented bar plot of the data --- you can check that your formula is correct by making sure the grouping is on the x-axis and the outcome is on the y-axis. Look to the top right of the bar plot to check that you have the correct order of subtraction. Next to the bar plot, we have the distribution of simulated differences in proportions, with the observed statistic marked with a vertical line and all values more extreme than the observed statistic (or less, or greater) colored red.  The figure caption gives the p-value: in this case 181/1000 = 0.181.
 
-To produce a confidence interval for the true difference in the proportion of students that do or do not buy the DVD, we use `two_proportion_bootstrap_CI()`, which uses most of the same arguments as the `two_proportion_test()` function:
+To produce a confidence interval for the true difference in the proportion of patients that survive after receiving CPR, we use `two_proportion_bootstrap_CI()`, which uses most of the same arguments as the `two_proportion_test()` function:
 ```{r twoPropBootCI, echo = TRUE}
 set.seed(532)
 two_proportion_bootstrap_CI(
-   formula = buy ~ group,  #always do outcome ~ grouping factor
-  data = opportunity,   #Name of the data set
+   formula = survival ~ group,  #always do outcome ~ grouping factor
+  data = cpr,   #Name of the data set
   first_in_subtraction = "treatment", #Value of the group variable that is first in order of subtraction
-  response_value_numerator = "not buy DVD",  #Value of outcome that is a "success"
+  response_value_numerator = "Survived",  #Value of outcome that is a "success"
   number_repetitions = 1000, #Number of bootstrap samples
-  confidence_level = 0.95  #Confidence level, as a proportion
+  confidence_level = 0.99  #Confidence level, as a proportion
 )
 ```
 
-This produces the distribution of bootstrap values with the bounds of the confidence interval marked, and the value included in the caption.  Here, we are 95% confident that the true proportion of students who receive the treatment that do not buy the DVD than students is between 0.04 and 0.347 higher than the proportion who do not buy the DVD under the control condition.
+This produces the distribution of bootstrap values with the bounds of the confidence interval marked, and the value included in the caption.  Here, we are 99% confident that the true proportion of patients who survive after receiving CPR is between 0.1 lower and 0.35 higher when patients are given blood thinners compared to when they are not.
 
 **Theory-based inference for one and two proportions** For theory-based inference, we can use the built-in `R` function `prop.test()`.  For a one-proportion test, we need to tell it the number of successes, the number of trials, and the null value.  Using the payday loan regulation example, a call would look like this:
 ```{r onePropTheoryCall, echo = TRUE, eval = FALSE}
@@ -4512,53 +4512,45 @@ prop.test(x = 422,  #Number of successes
 
 From this output, we obtain a 95% confidence interval for the true proportion of payday loan borrowers who support the new regulation of (0.477, 0.545).
 
-When comparing two proportions, we use the same function, but the inputs are a little different.  First, we need to create our table of outcomes, which then becomes our primary input to `prop.test()`.  As an example, we will again use the opportunity cost study.  There is one important step to take before creating our table: `R` will always put the values of variables in alphabetical order when building tables, unless told otherwise.
+When comparing two proportions, we use the same function, but the inputs are a little different.  First, we need to create our table of outcomes, which then becomes our primary input to `prop.test()`.  As an example, we will again use the blood thinner study.  There is one important step to take before creating our table: `R` will always put the values of variables in alphabetical order when building tables, unless told otherwise.
 ```{r showTableOrder, echo = TRUE}
-table(opportunity$buy, opportunity$group)
+table(cpr$survival, cpr$group)
 ```
 
 However, `prop.test()` will assume that the top row is a "success" and the order of subtraction is (column 1 - column 2).  Without fixing it, we would get the wrong order of subtraction and the wrong proportion successes in each group.  To fix this, we need to `relevel()` our inputs to tell `R` to put them in the order we want:
 
 ```{r relevelTwoProp, echo = TRUE}
 #Switch order of subtraction:
-opportunity$group <- relevel(opportunity$group, ref = "treatment")
-table(opportunity$buy, opportunity$group)
+cpr$group <- relevel(cpr$group, ref = "treatment")
+table(cpr$survival, cpr$group)
 
 #Switch "success":
-opportunity$buy <- relevel(opportunity$buy, ref = "not buy DVD")
-table(opportunity$buy, opportunity$group)
+cpr$survival <- relevel(cpr$survival, ref = "Survived")
+table(cpr$survival, cpr$group)
 
 
 ```
 
 ```{r twoPropTheoryCall, echo = TRUE, eval = FALSE}
-data_tbl <- table(opportunity$buy, opportunity$group)
+data_tbl <- table(cpr$survival, cpr$group)
 
 prop.test(x = data_tbl,
-          alternative = "greater",
-          conf.level = 0.95, #Confidence level as a proportion
+          alternative = "two.sided",
+          conf.level = 0.99, #Confidence level as a proportion
           correct = FALSE)  #No continuity correction
 ```
-When comparing two proportions, we don't need the `n` or `p` arguments.  We do still have to re-run as "two.sided" to get the correct confidence interval. The observed proportions in each group are given under sample estimates: `R` will always take (prop 1 - prop 2), so our alternative of "greater" means (prop 1 > prop 2). If the observed proportions don't match your calculations of the proportion of successes or are in the wrong order of subtraction, go back and `relevel()` to correct the problem.
+When comparing two proportions, we don't need the `n` or `p` arguments.  Since we have a two-sided alternative, this call also produces the correct confidence interval. The observed proportions in each group are given under sample estimates: `R` will always take (prop 1 - prop 2). If the observed proportions don't match your calculations of the proportion of successes or are in the wrong order of subtraction, go back and `relevel()` to correct the problem.
 
 ```{r twoPropTheoryInf, echo = TRUE}
 data_tbl <- table(opportunity$buy, opportunity$group)
 
 prop.test(x = data_tbl,
-          alternative = "greater",
-          conf.level = 0.95, #Confidence level as a proportion
-          correct = FALSE)  #No continuity correction
-```
-
-Here, we obtain a p-value of 0.0052, strong evidence against the null hypothesis of no difference between the two groups.  
-```{r twoPropTheoryCI, echo = TRUE}
-prop.test(x = data_tbl,
           alternative = "two.sided",
-          conf.level = 0.95, #Confidence level as a proportion
+          conf.level = 0.99, #Confidence level as a proportion
           correct = FALSE)  #No continuity correction
 ```
 
-Our 95% confidence interval for the true difference in the proportion of students who do not buy the DVD is between 0.057 and 0.381 greater for students in the treatment group.
+Here, we obtain a p-value of 0.0104, strong evidence against the null hypothesis of no difference between the two groups. Our 99% confidence interval for the true difference in the proportion of patients who survive is between 0.0056 and 0.4321 greater for patients who receive blood thinners.
 
 ### Interactive R tutorials
 
