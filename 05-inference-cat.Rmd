@@ -4334,16 +4334,16 @@ Section on doing inference for categorical data in R.
 
 In the one-proportion case, suppose we have a data frame called `loans` with a variable `regulate` that contains the Yes/No response of the 826 payday loan borrowers from Section \@ref(theory-prop) regarding their support for a regulation to require lenders to pull their credit report and evaluate their debt payments.  We can obtain counts of borrowers for each response using the `table()` function in R:
 
-```{r, echo = FALSE}
+```{r buildLoanData, echo = FALSE}
 loans <- data.frame(regulate = sample(c(rep("Yes",422), rep("No",404))))
 ```
 
-```{r , echo = TRUE}
+```{r showLoanData, echo = TRUE}
 table(loans$regulate)
 ```
 
 We can also use `table()` to compute the proportions in each group:
-```{r, echo = TRUE}
+```{r tableProportions, echo = TRUE}
 #If we know the number of observations:
 table(loans$regulate)/826
 
@@ -4351,7 +4351,7 @@ table(loans$regulate)/826
 table(loans$regulate)/length(loans$regulate)
 ```
 
-```{r, echo = FALSE}
+```{r buildOpportunityData, echo = FALSE}
 buy <- c(rep("buy DVD", 97), rep("not buy DVD", 53))
 group <- rep.int(c("control", "treatment", "control", "treatment"), times = c(56, 41, 19, 34))
 
@@ -4359,24 +4359,24 @@ opportunity <- data.frame(buy, group)
 ```
 
 For comparisons of two proportions, we get a two-way table.  Suppose in this case we have the data from the opportunity cost study in a data frame called `opportunity`, with variables `buy` giving the student's decision and `group` indicating whether they were in the treatment or control group.  The `summary()` function can help us see what variables are in our dataset and the values they take on:
-```{r, echo = TRUE}
+```{r showOpportunityData, echo = TRUE}
 summary(opportunity)
 ```
 
 To obtain the two-way table of the choices by group, we again use the `table()` function in `R`.  The key thing to remember here is to put the outcome as the first argument and the grouping as the second:
 
-```{r, echo = TRUE}
+```{r crosstabOpportunity, echo = TRUE}
 table(opportunity$buy, opportunity$group)
 ```
 
 This will set up the table to be useful for making segmented bar plots and using column percentages to compute test statistics.  In order to do either of these things, we need to store the table in an `R` object so we can manipulate it further:
 
-```{r, echo = TRUE}
+```{r storeCrostab, echo = TRUE}
 data_tbl <- table(opportunity$buy, opportunity$group)
 ```
 
 To get column percentages, we use the `prop.table()` function:
-```{r, echo = TRUE}
+```{r columnPctsCrosstab, echo = TRUE}
 prop.table(data_tbl,  #Feed in your two-way table
            margin = 2)  #Tell it to compute percentages for columns
 ```
@@ -4384,12 +4384,12 @@ prop.table(data_tbl,  #Feed in your two-way table
 
 **Simulation-based inference for one and two proportions** For simulation-based inference, we will use functions included in the `catstats` package, created for MSU Statistics courses. See the Welcome section for instructions on how to install `catstats` if you haven't already.  If the package is installed, you can load it into an `R` session to make the functions available using the `library()` function:
 
-```{r, echo = TRUE}
+```{r loadCatstats, echo = TRUE}
 library(catstats)
 ```
 
 Once you have loaded the package, you will be able to use the functions for simulation-based inference. For one-proportion inference, this is the `one_proportion_test()` function and `one_proportion_bootstrap_CI()` function.  Returning to the payday loan regulation example, we can obtain a simulation distribtion and p-value using the following function call:
-```{r , eval = FALSE, echo = TRUE}
+```{r showOnePropSimCall, eval = FALSE, echo = TRUE}
 one_proportion_test(
   probability_success = 0.5, #null hypothesis probability of success
   sample_size = 826,  #number of observations
@@ -4419,7 +4419,7 @@ In the resulting graph, we see the distribution of simulated proportions, with t
 
 To find a confidence interval for the true proportion of payday loan borrowers who support the regulation, we use the `one_proportion_bootstrap_CI()` function:
 
-```{r, echo = TRUE}
+```{r onePropBootCI, echo = TRUE}
 set.seed(17)
 one_proportion_bootstrap_CI(
   sample_size = 826,  #Number of observations
@@ -4432,7 +4432,7 @@ one_proportion_bootstrap_CI(
 This produces a plot of the bootstrapped proportions with the upper and lower bounds of the confidence interval marked, and gives the interval itself in the figure caption: in this case, we are 95% confidence that the true proportion of payday loan borrowers who support the proposed regulation is between 0.479 and 0.546.
 
 For inference about the difference between two proportions, we use the `two_proportion_test()` and `two_proportion_bootstrap_CI()` functions.  These functions assume you have a dataset with the group and outcome included as variables. Using the opportunity cost study, a call to `two_proportion_test()` would look like this:
-```{r, eval = FALSE, echo = TRUE}
+```{r twoPropSimCall, eval = FALSE, echo = TRUE}
 two_proportion_test(
   formula = buy ~ group,  #always do outcome ~ grouping factor
   data = opportunity,   #Name of the data set
@@ -4450,7 +4450,7 @@ There are a couple of things to note here:
 * Specify order of subtraction using `first_in_subtraction` by putting in EXACTLY the value of the grouping factor that you want to be first.  Must match capitalization, spaces, etc. for text values!
 * Specify what is a success using `response_value_numerator` but putting in EXACTLY the value of the response that you consider a success.  Again, capitalization, spaces, etc. matter if it is text!
 
-```{r, echo = TRUE}
+```{r twoPropSimInf, echo = TRUE}
 set.seed(97)
 two_proportion_test(
   formula = buy ~ group,  #always do outcome ~ grouping factor
@@ -4466,7 +4466,7 @@ two_proportion_test(
 The results give a segmented bar plot of the data --- you can check that your formula is correct by making sure the grouping is on the x-axis and the outcome is on the y-axis. Look to the top right of the bar plot to check that you have the correct order of subtraction. Next to the bar plot, we have the distribution of simulated differences in proportions, with the observed statistic marked with a vertical line and all values greater (or less, or more extreme) colored red.  The figure caption gives the p-value: in this case 7/1000 = 0.007.
 
 To produce a confidence interval for the true difference in the proportion of students that do or do not buy the DVD, we use `two_proportion_bootstrap_CI()`, which uses most of the same arguments as the `two_proportion_test()` function:
-```{r, echo = TRUE}
+```{r twoPropBootCI, echo = TRUE}
 set.seed(532)
 two_proportion_bootstrap_CI(
    formula = buy ~ group,  #always do outcome ~ grouping factor
@@ -4481,7 +4481,7 @@ two_proportion_bootstrap_CI(
 This produces the distribution of bootstrap values with the bounds of the confidence interval marked, and the value included in the caption.  Here, we are 95% confident that the true proportion of students who receive the treatment that do not buy the DVD than students is between 0.04 and 0.347 higher than the proportion who do not buy the DVD under the control condition.
 
 **Theory-based inference for one and two proportions** For theory-based inference, we can use the built-in `R` function `prop.test()`.  For a one-proportion test, we need to tell it the number of successes, the number of trials, and the null value.  Using the payday loan regulation example, a call would look like this:
-```{r, echo = TRUE, eval = FALSE}
+```{r onePropTheoryCall, echo = TRUE, eval = FALSE}
 prop.test(x = 422,  #Number of successes
           n = 826, #Number of trials
           p = .5, #Null hypothesis value
@@ -4490,7 +4490,7 @@ prop.test(x = 422,  #Number of successes
 ```
 
 Note that the same function will produce the hypothesis test and confidence interval, but to get the correct confidence interval when the alternative hypothesis is one-sided, we will need to re-run the function with a two-sided alternative:
-```{r, echo = TRUE}
+```{r onePropTheoryInf, echo = TRUE}
 prop.test(x = 422,  #Number of successes
           n = 826, #Number of trials
           p = .5, #Null hypothesis value
@@ -4501,7 +4501,7 @@ prop.test(x = 422,  #Number of successes
 
 In this output, we can get $\hat{p} = 0.51$ from the sample estimate, and the p-value of 0.2656 from the second line of the output.  The confidence interval goes to 1 because the function creates a one-sided confidence interval to match the one-sided alternative.  We are not interested in reporting one-sided confidence intervales, so we re-run `prop.test()` with the same values except for a two-sided alternative to get the confidence interval:
 
-```{r}
+```{r onePropTheoryCI, echo = TRUE}
 prop.test(x = 422,  #Number of successes
           n = 826, #Number of trials
           p = .5, #Null hypothesis value
@@ -4513,13 +4513,13 @@ prop.test(x = 422,  #Number of successes
 From this output, we obtain a 95% confidence interval for the true proportion of payday loan borrowers who support the new regulation of (0.477, 0.545).
 
 When comparing two proportions, we use the same function, but the inputs are a little different.  First, we need to create our table of outcomes, which then becomes our primary input to `prop.test()`.  As an example, we will again use the opportunity cost study.  There is one important step to take before creating our table: `R` will always put the values of variables in alphabetical order when building tables, unless told otherwise.
-```{r, echo = TRUE}
+```{r showTableOrder, echo = TRUE}
 table(opportunity$buy, opportunity$group)
 ```
 
 However, `prop.test()` will assume that the top row is a "success" and the order of subtraction is (column 1 - column 2).  Without fixing it, we would get the wrong order of subtraction and the wrong proportion successes in each group.  To fix this, we need to `relevel()` our inputs to tell `R` to put them in the order we want:
 
-```{r, echo = TRUE}
+```{r relevelTwoProp, echo = TRUE}
 #Switch order of subtraction:
 opportunity$group <- relevel(opportunity$group, ref = "treatment")
 table(opportunity$buy, opportunity$group)
@@ -4531,7 +4531,7 @@ table(opportunity$buy, opportunity$group)
 
 ```
 
-```{r, echo = TRUE, eval = FALSE}
+```{r twoPropTheoryCall, echo = TRUE, eval = FALSE}
 data_tbl <- table(opportunity$buy, opportunity$group)
 
 prop.test(x = data_tbl,
@@ -4541,7 +4541,7 @@ prop.test(x = data_tbl,
 ```
 When comparing two proportions, we don't need the `n` or `p` arguments.  We do still have to re-run as "two.sided" to get the correct confidence interval. The observed proportions in each group are given under sample estimates: `R` will always take (prop 1 - prop 2), so our alternative of "greater" means (prop 1 > prop 2). If the observed proportions don't match your calculations of the proportion of successes or are in the wrong order of subtraction, go back and `relevel()` to correct the problem.
 
-```{r, echo = TRUE}
+```{r twoPropTheoryInf, echo = TRUE}
 data_tbl <- table(opportunity$buy, opportunity$group)
 
 prop.test(x = data_tbl,
@@ -4551,7 +4551,7 @@ prop.test(x = data_tbl,
 ```
 
 Here, we obtain a p-value of 0.0052, strong evidence against the null hypothesis of no difference between the two groups.  
-```{r}
+```{r twoPropTheoryCI, echo = TRUE}
 prop.test(x = data_tbl,
           alternative = "two.sided",
           conf.level = 0.95, #Confidence level as a proportion
