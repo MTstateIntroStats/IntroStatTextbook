@@ -4480,6 +4480,86 @@ two_proportion_bootstrap_CI(
 
 This produces the distribution of bootstrap values with the bounds of the confidence interval marked, and the value included in the caption.  Here, we are 95% confident that the true proportion of students who receive the treatment that do not buy the DVD than students is between 0.04 and 0.347 higher than the proportion who do not buy the DVD under the control condition.
 
+**Theory-based inference for one and two proportions** For theory-based inference, we can use the built-in `R` function `prop.test()`.  For a one-proportion test, we need to tell it the number of successes, the number of trials, and the null value.  Using the payday loan regulation example, a call would look like this:
+```{r, echo = TRUE, eval = FALSE}
+prop.test(x = 422,  #Number of successes
+          n = 826, #Number of trials
+          p = .5, #Null hypothesis value
+          alternative = "greater", #direction of alternative,
+          conf.level = 0.95) #Confidence level as a proportion
+```
+
+Note that the same function will produce the hypothesis test and confidence interval, but to get the correct confidence interval when the alternative hypothesis is one-sided, we will need to re-run the function with a two-sided alternative:
+```{r, echo = TRUE}
+prop.test(x = 422,  #Number of successes
+          n = 826, #Number of trials
+          p = .5, #Null hypothesis value
+          alternative = "greater", #direction of alternative,
+          conf.level = 0.95, #Confidence level as a proportion
+          correct = FALSE) #We will not use  a continuity correction
+```
+
+In this output, we can get $\hat{p} = 0.51$ from the sample estimate, and the p-value of 0.2656 from the second line of the output.  The confidence interval goes to 1 because the function creates a one-sided confidence interval to match the one-sided alternative.  We are not interested in reporting one-sided confidence intervales, so we re-run `prop.test()` with the same values except for a two-sided alternative to get the confidence interval:
+
+```{r}
+prop.test(x = 422,  #Number of successes
+          n = 826, #Number of trials
+          p = .5, #Null hypothesis value
+          alternative = "two.sided", #direction of alternative,
+          conf.level = 0.95, #Confidence level as a proportion
+          correct = FALSE) #We will not use  a continuity correction
+```
+
+From this output, we obtain a 95% confidence interval for the true proportion of payday loan borrowers who support the new regulation of (0.477, 0.545).
+
+When comparing two proportions, we use the same function, but the inputs are a little different.  First, we need to create our table of outcomes, which then becomes our primary input to `prop.test()`.  As an example, we will again use the opportunity cost study.  There is one important step to take before creating our table: `R` will always put the values of variables in alphabetical order when building tables, unless told otherwise.
+```{r, echo = TRUE}
+table(opportunity$buy, opportunity$group)
+```
+
+However, `prop.test()` will assume that the top row is a "success" and the order of subtraction is (column 1 - column 2).  Without fixing it, we would get the wrong order of subtraction and the wrong proportion successes in each group.  To fix this, we need to `relevel()` our inputs to tell `R` to put them in the order we want:
+
+```{r, echo = TRUE}
+#Switch order of subtraction:
+opportunity$group <- relevel(opportunity$group, ref = "treatment")
+table(opportunity$buy, opportunity$group)
+
+#Switch "success":
+opportunity$buy <- relevel(opportunity$buy, ref = "not buy DVD")
+table(opportunity$buy, opportunity$group)
+
+
+```
+
+```{r, echo = TRUE, eval = FALSE}
+data_tbl <- table(opportunity$buy, opportunity$group)
+
+prop.test(x = data_tbl,
+          alternative = "greater",
+          conf.level = 0.95, #Confidence level as a proportion
+          correct = FALSE)  #No continuity correction
+```
+When comparing two proportions, we don't need the `n` or `p` arguments.  We do still have to re-run as "two.sided" to get the correct confidence interval. The observed proportions in each group are given under sample estimates: `R` will always take (prop 1 - prop 2), so our alternative of "greater" means (prop 1 > prop 2). If the observed proportions don't match your calculations of the proportion of successes or are in the wrong order of subtraction, go back and `relevel()` to correct the problem.
+
+```{r, echo = TRUE}
+data_tbl <- table(opportunity$buy, opportunity$group)
+
+prop.test(x = data_tbl,
+          alternative = "greater",
+          conf.level = 0.95, #Confidence level as a proportion
+          correct = FALSE)  #No continuity correction
+```
+
+Here, we obtain a p-value of 0.0052, strong evidence against the null hypothesis of no difference between the two groups.  
+```{r}
+prop.test(x = data_tbl,
+          alternative = "two.sided",
+          conf.level = 0.95, #Confidence level as a proportion
+          correct = FALSE)  #No continuity correction
+```
+
+Our 95% confidence interval for the true difference in the proportion of students who do not buy the DVD is between 0.057 and 0.381 greater for students in the treatment group.
+
 ### Interactive R tutorials
 
 Navigate the concepts you've learned in this chapter in R using the following self-paced tutorials. 
