@@ -2204,8 +2204,11 @@ So far in this chapter, we have seen the $t$-distribution applied as the appropr
 ## `R`: Inference for quantitative data
 
 \BeginKnitrBlock{todo}<div class="todo">Section on doing inference for categorical data in R.
+
 - Simulation functions in catstats
-- `t.test`</div>\EndKnitrBlock{todo}
+- `t.test`
+</div>\EndKnitrBlock{todo}
+
 
 ### Interactive R tutorials
 
@@ -2269,13 +2272,13 @@ However you should be able to easily spot them as **bolded text**.
   <tr>
    <td style="text-align:left;"> Central Limit Theorem </td>
    <td style="text-align:left;"> paired $t$-test </td>
-   <td style="text-align:left;"> T score </td>
+   <td style="text-align:left;"> t-distribution </td>
    <td style="text-align:left;">  </td>
   </tr>
   <tr>
    <td style="text-align:left;"> degrees of freedom </td>
    <td style="text-align:left;"> paired data </td>
-   <td style="text-align:left;"> t-distribution </td>
+   <td style="text-align:left;"> T score </td>
    <td style="text-align:left;">  </td>
   </tr>
 </tbody>

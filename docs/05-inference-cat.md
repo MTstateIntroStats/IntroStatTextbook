@@ -3563,9 +3563,318 @@ You will often hear the following two $z$-procedures referred to as a **one samp
 ## `R`: Inference for categorical data
 
 \BeginKnitrBlock{todo}<div class="todo">Section on doing inference for categorical data in R.
+
 - Raw data to tables
 - Simulation functions in catstats
 - `prop.test`</div>\EndKnitrBlock{todo}
+### Inference using `R` and `catstats`
+
+**Making tables from raw data** For inference with categorical data, we need counts of observations in each group by outcome.  If our data are in the standard format of one observation per row, we need to `table` the data to obtain the counts in each group.
+
+In the one-proportion case, suppose we have a data frame called `loans` with a variable `regulate` that contains the Yes/No response of the 826 payday loan borrowers from Section \@ref(theory-prop) regarding their support for a regulation to require lenders to pull their credit report and evaluate their debt payments.  We can obtain counts of borrowers for each response using the `table()` function in R:
+
+
+
+
+```r
+table(loans$regulate)
+#> 
+#>  No Yes 
+#> 404 422
+```
+
+We can also use `table()` to compute the proportions in each group:
+
+```r
+#If we know the number of observations:
+table(loans$regulate)/826
+#> 
+#>        No       Yes 
+#> 0.4891041 0.5108959
+
+#If we don't know the number of observations:
+table(loans$regulate)/length(loans$regulate)
+#> 
+#>        No       Yes 
+#> 0.4891041 0.5108959
+```
+
+
+
+For comparisons of two proportions, we get a two-way table.  Suppose in this case we have the data from the study of the effect of blood thinners on survival after receiving CPR opportunity cost study in a data frame called `cpr`, with variables `survival` giving each patient's outcome decision and `group` indicating whether they were in the treatment (blood thinner) or control (no blood thinner) group.  The `summary()` function can help us see what variables are in our dataset and the values they take on:
+
+```r
+summary(cpr)
+#>      survival        group   
+#>  Died    :65   control  :50  
+#>  Survived:25   treatment:40
+```
+
+To obtain the two-way table of the choices by group, we again use the `table()` function in `R`.  The key thing to remember here is to put the outcome as the first argument and the grouping as the second:
+
+
+```r
+table(cpr$survival, cpr$group)
+#>           
+#>            control treatment
+#>   Died          39        26
+#>   Survived      11        14
+```
+
+This will set up the table to be useful for making segmented bar plots and using column percentages to compute test statistics.  In order to do either of these things, we need to store the table in an `R` object so we can manipulate it further:
+
+
+```r
+data_tbl <- table(cpr$survival, cpr$group)
+```
+
+To get column percentages, we use the `prop.table()` function:
+
+```r
+prop.table(data_tbl,  #Feed in your two-way table
+           margin = 2)  #Tell it to compute percentages for columns
+#>           
+#>            control treatment
+#>   Died        0.78      0.65
+#>   Survived    0.22      0.35
+```
+
+
+**Simulation-based inference for one and two proportions** For simulation-based inference, we will use functions included in the `catstats` package, created for MSU Statistics courses. See the Welcome section for instructions on how to install `catstats` if you haven't already.  If the package is installed, you can load it into an `R` session to make the functions available using the `library()` function:
+
+
+```r
+library(catstats)
+```
+
+Once you have loaded the package, you will be able to use the functions for simulation-based inference. For one-proportion inference, this is the `one_proportion_test()` function and `one_proportion_bootstrap_CI()` function.  Returning to the payday loan regulation example, we can obtain a simulation distribtion and p-value using the following function call:
+
+```r
+one_proportion_test(
+  probability_success = 0.5, #null hypothesis probability of success
+  sample_size = 826,  #number of observations
+  number_repetitions = 1000,  #number of simulations to create
+  as_extreme_as = 0.51,  #observed statistic
+  direction = "greater",  #alternative hypothesis direction
+  report_value = "proportion"  #Report number or proportion of successes?
+)
+```
+
+Note that the observed statistic (`as_extreme_as`) and the `report_value` input need to match; since we put in the observed statistic as a proportion, we need to tell the function to report the proportion of successes.  If they don't match, you will almost certainly get a p-value of 0 or 1 -- this can happen when there is very strong evidence against the null, but it is always good to check your function inputs when you get an extreme outcome to make sure that is what you should be seeing.
+
+
+```r
+set.seed(10)
+
+one_proportion_test(
+  probability_success = 0.5, #null hypothesis probability of success
+  sample_size = 826,  #number of observations
+  number_repetitions = 1000,  #number of simulations to create
+  as_extreme_as = 0.51,  #observed statistic
+  direction = "greater",  #alternative hypothesis direction
+  report_value = "proportion"  #Report number or proportion of successes?
+)
+```
+
+<img src="05-inference-cat_files/figure-html/onePropSimInf-1.png" width="70%" style="display: block; margin: auto;" />
+
+In the resulting graph, we see the distribution of simulated proportions, with those greater than the observed value of 0.51 highlighted in blue.  In the figure caption, we see that 308 of our 1000 simulations resulted in a proportion of successes at least as large as the observed value, yielding a p-value of 0.308.
+
+To find a confidence interval for the true proportion of payday loan borrowers who support the regulation, we use the `one_proportion_bootstrap_CI()` function:
+
+
+```r
+set.seed(17)
+one_proportion_bootstrap_CI(
+  sample_size = 826,  #Number of observations
+  number_successes = 422,  #Number of observed successes 
+  number_repetitions = 1000,  #Number of bootstrap draws
+  confidence_level = 0.95  #Confidence level, as a proportion
+)
+```
+
+<img src="05-inference-cat_files/figure-html/onePropBootCI-1.png" width="70%" style="display: block; margin: auto;" />
+
+This produces a plot of the bootstrapped proportions with the upper and lower bounds of the confidence interval marked, and gives the interval itself in the figure caption: in this case, we are 95% confidence that the true proportion of payday loan borrowers who support the proposed regulation is between 0.479 and 0.546.
+
+For inference about the difference between two proportions, we use the `two_proportion_test()` and `two_proportion_bootstrap_CI()` functions.  These functions assume you have a dataset with the group and outcome included as variables. Using the blood thinner study, a call to `two_proportion_test()` would look like this:
+
+```r
+two_proportion_test(
+  formula = survival ~ group,  #always do outcome ~ grouping factor
+  data = cpr,   #Name of the data set
+  first_in_subtraction = "treatment", #Value of the group variable that is first in order of subtraction
+  response_value_numerator = "Survived",  #Value of outcome that is a "success"
+  number_repetitions = 1000,
+  as_extreme_as = 0.13,  #Observed statistic
+  direction = "two-sided"  #direction of the alternative hypothesis
+)
+```
+
+There are a couple of things to note here:
+
+* You need to identify which variable is your outcome and which your group using the `function` argument
+* Specify order of subtraction using `first_in_subtraction` by putting in EXACTLY the value of the grouping factor that you want to be first.  Must match capitalization, spaces, etc. for text values!
+* Specify what is a success using `response_value_numerator` but putting in EXACTLY the value of the response that you consider a success.  Again, capitalization, spaces, etc. matter if it is text!
+
+
+```r
+set.seed(97)
+two_proportion_test(
+  formula = survival ~ group,  #always do outcome ~ grouping factor
+  data = cpr,   #Name of the data set
+  first_in_subtraction = "treatment", #Value of the group variable that is first in order of subtraction
+  response_value_numerator = "Survived",  #Value of outcome that is a "success"
+  number_repetitions = 1000,
+  as_extreme_as = 0.13,  #Observed statistic
+  direction = "two-sided"  #direction of the alternative hypothesis
+)
+```
+
+<img src="05-inference-cat_files/figure-html/twoPropSimInf-1.png" width="70%" style="display: block; margin: auto;" />
+
+The results give a segmented bar plot of the data --- you can check that your formula is correct by making sure the grouping is on the x-axis and the outcome is on the y-axis. Look to the top right of the bar plot to check that you have the correct order of subtraction. Next to the bar plot, we have the distribution of simulated differences in proportions, with the observed statistic marked with a vertical line and all values more extreme than the observed statistic (or less, or greater) colored red.  The figure caption gives the p-value: in this case 181/1000 = 0.181.
+
+To produce a confidence interval for the true difference in the proportion of patients that survive after receiving CPR, we use `two_proportion_bootstrap_CI()`, which uses most of the same arguments as the `two_proportion_test()` function:
+
+```r
+set.seed(532)
+two_proportion_bootstrap_CI(
+   formula = survival ~ group,  #always do outcome ~ grouping factor
+  data = cpr,   #Name of the data set
+  first_in_subtraction = "treatment", #Value of the group variable that is first in order of subtraction
+  response_value_numerator = "Survived",  #Value of outcome that is a "success"
+  number_repetitions = 1000, #Number of bootstrap samples
+  confidence_level = 0.99  #Confidence level, as a proportion
+)
+```
+
+<img src="05-inference-cat_files/figure-html/twoPropBootCI-1.png" width="70%" style="display: block; margin: auto;" />
+
+This produces the distribution of bootstrap values with the bounds of the confidence interval marked, and the value included in the caption.  Here, we are 99% confident that the true proportion of patients who survive after receiving CPR is between 0.1 lower and 0.35 higher when patients are given blood thinners compared to when they are not.
+
+**Theory-based inference for one and two proportions** For theory-based inference, we can use the built-in `R` function `prop.test()`.  For a one-proportion test, we need to tell it the number of successes, the number of trials, and the null value.  Using the payday loan regulation example, a call would look like this:
+
+```r
+prop.test(x = 422,  #Number of successes
+          n = 826, #Number of trials
+          p = .5, #Null hypothesis value
+          alternative = "greater", #direction of alternative,
+          conf.level = 0.95) #Confidence level as a proportion
+```
+
+Note that the same function will produce the hypothesis test and confidence interval, but to get the correct confidence interval when the alternative hypothesis is one-sided, we will need to re-run the function with a two-sided alternative:
+
+```r
+prop.test(x = 422,  #Number of successes
+          n = 826, #Number of trials
+          p = .5, #Null hypothesis value
+          alternative = "greater", #direction of alternative,
+          conf.level = 0.95, #Confidence level as a proportion
+          correct = FALSE) #We will not use  a continuity correction
+#> 
+#> 	1-sample proportions test without continuity correction
+#> 
+#> data:  422 out of 826, null probability 0.5
+#> X-squared = 0.39225, df = 1, p-value = 0.2656
+#> alternative hypothesis: true p is greater than 0.5
+#> 95 percent confidence interval:
+#>  0.4822979 1.0000000
+#> sample estimates:
+#>         p 
+#> 0.5108959
+```
+
+In this output, we can get $\hat{p} = 0.51$ from the sample estimate, and the p-value of 0.2656 from the second line of the output.  The confidence interval goes to 1 because the function creates a one-sided confidence interval to match the one-sided alternative.  We are not interested in reporting one-sided confidence intervales, so we re-run `prop.test()` with the same values except for a two-sided alternative to get the confidence interval:
+
+
+```r
+prop.test(x = 422,  #Number of successes
+          n = 826, #Number of trials
+          p = .5, #Null hypothesis value
+          alternative = "two.sided", #direction of alternative,
+          conf.level = 0.95, #Confidence level as a proportion
+          correct = FALSE) #We will not use  a continuity correction
+#> 
+#> 	1-sample proportions test without continuity correction
+#> 
+#> data:  422 out of 826, null probability 0.5
+#> X-squared = 0.39225, df = 1, p-value = 0.5311
+#> alternative hypothesis: true p is not equal to 0.5
+#> 95 percent confidence interval:
+#>  0.4768346 0.5448563
+#> sample estimates:
+#>         p 
+#> 0.5108959
+```
+
+From this output, we obtain a 95% confidence interval for the true proportion of payday loan borrowers who support the new regulation of (0.477, 0.545).
+
+When comparing two proportions, we use the same function, but the inputs are a little different.  First, we need to create our table of outcomes, which then becomes our primary input to `prop.test()`.  As an example, we will again use the blood thinner study.  There is one important step to take before creating our table: `R` will always put the values of variables in alphabetical order when building tables, unless told otherwise.
+
+```r
+table(cpr$survival, cpr$group)
+#>           
+#>            control treatment
+#>   Died          39        26
+#>   Survived      11        14
+```
+
+However, `prop.test()` will assume that the top row is a "success" and the order of subtraction is (column 1 - column 2).  Without fixing it, we would get the wrong order of subtraction and the wrong proportion successes in each group.  To fix this, we need to `relevel()` our inputs to tell `R` to put them in the order we want:
+
+
+```r
+#Switch order of subtraction:
+cpr$group <- relevel(cpr$group, ref = "treatment")
+table(cpr$survival, cpr$group)
+#>           
+#>            treatment control
+#>   Died            26      39
+#>   Survived        14      11
+
+#Switch "success":
+cpr$survival <- relevel(cpr$survival, ref = "Survived")
+table(cpr$survival, cpr$group)
+#>           
+#>            treatment control
+#>   Survived        14      11
+#>   Died            26      39
+```
+
+
+```r
+data_tbl <- table(cpr$survival, cpr$group)
+
+prop.test(x = data_tbl,
+          alternative = "two.sided",
+          conf.level = 0.99, #Confidence level as a proportion
+          correct = FALSE)  #No continuity correction
+```
+When comparing two proportions, we don't need the `n` or `p` arguments.  Since we have a two-sided alternative, this call also produces the correct confidence interval. The observed proportions in each group are given under sample estimates: `R` will always take (prop 1 - prop 2). If the observed proportions don't match your calculations of the proportion of successes or are in the wrong order of subtraction, go back and `relevel()` to correct the problem.
+
+
+```r
+data_tbl <- table(cpr$survival, cpr$group)
+
+prop.test(x = data_tbl,
+          alternative = "two.sided",
+          conf.level = 0.99, #Confidence level as a proportion
+          correct = FALSE)  #No continuity correction
+#> 
+#> 	2-sample test for equality of proportions without continuity
+#> 	correction
+#> 
+#> data:  data_tbl
+#> X-squared = 1.872, df = 1, p-value = 0.1712
+#> alternative hypothesis: two.sided
+#> 99 percent confidence interval:
+#>  -0.1398193  0.4598193
+#> sample estimates:
+#> prop 1 prop 2 
+#>   0.56   0.40
+```
+
+Here, we obtain a p-value of 0.0104, strong evidence against the null hypothesis of no difference between the two groups. Our 99% confidence interval for the true difference in the proportion of patients who survive is between 0.0056 and 0.4321 greater for patients who receive blood thinners.
 
 ### Interactive R tutorials
 
@@ -3659,21 +3968,21 @@ However you should be able to easily spot them as **bolded text**.
   </tr>
   <tr>
    <td style="text-align:left;"> confidence interval </td>
-   <td style="text-align:left;"> one sample $z$-test </td>
+   <td style="text-align:left;"> one-sided hypothesis test </td>
    <td style="text-align:left;"> SE interval </td>
    <td style="text-align:left;"> test statistic </td>
   </tr>
   <tr>
    <td style="text-align:left;"> confidence level </td>
-   <td style="text-align:left;"> one-sided hypothesis test </td>
+   <td style="text-align:left;"> one sample $z$-test </td>
    <td style="text-align:left;"> simulation </td>
-   <td style="text-align:left;"> two sample $z$-test </td>
+   <td style="text-align:left;"> two-sided hypothesis test </td>
   </tr>
   <tr>
    <td style="text-align:left;"> confirmation bias </td>
    <td style="text-align:left;"> p-value </td>
    <td style="text-align:left;"> standard error </td>
-   <td style="text-align:left;"> two-sided hypothesis test </td>
+   <td style="text-align:left;"> two sample $z$-test </td>
   </tr>
   <tr>
    <td style="text-align:left;"> hypothesis test </td>
