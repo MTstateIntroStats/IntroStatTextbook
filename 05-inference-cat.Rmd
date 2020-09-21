@@ -2543,15 +2543,16 @@ Table \@ref(tab:OpportunityCostTable) summarizes the study results.
 ```{r OpportunityCostTable}
 temptbl <- tribble(
  ~variable,    ~col1, ~col2, ~col3, 
- "", "control group", "treatment group", "Total",
- "buy DVD", "56", "19", "75",
- "not buy DVD", "41", "34","75",
- "Total", "97", "53", "150"
+ "buy DVD", "56", "41", "97",
+ "not buy DVD", "19", "34","53",
+ "Total", "75", "75", "150"
 )
 
 temptbl %>%
- kable(caption = "Summary of student choices in the opportunity cost study.") %>%
- kable_styling() 
+ kable(caption = "Summary of student choices in the opportunity cost study.",
+    col.names = c("", "control group", "treatment group", "Total")) %>%
+ kable_styling() #%>%
+ #add_header_above(c(" ", "`decision`" = 2, " "))
 ```
 
 <!--
@@ -2565,15 +2566,16 @@ These summaries are given in Table \@ref(tab:OpportunityCostTableRowProp), and a
 ```{r OpportunityCostTableRowProp}
 temptbl <- tribble(
  ~variable,    ~col1, ~col2, ~col3, 
- "", "control group", "treatment group", "Total",
  "buy DVD", "0.747", "0.547", "0.647",
  "not buy DVD", "0.253", "0.453","0.353",
  "Total", "1.00", "1.00", "1.00"
 )
 
 temptbl %>%
- kable(caption = "The data above are now summarized using column proportions. Column proportions are particularly useful here since we can view the proportion of *buy* and *not buy* decisions in each group, and across the whole sample.") %>%
- kable_styling()
+ kable(caption = "The data above are now summarized using row proportions. Row proportions are particularly useful here since we can view the proportion of *buy* and *not buy* decisions in each group.",
+    col.names = c("", "control group", "treatment group", "Total")) %>%
+ kable_styling() #%>%
+ #add_header_above(c( " ", "`decision`" = 2, " "))
 ```
 
 
@@ -2665,15 +2667,16 @@ From this table, we can compute a difference that occurred from chance alone:
 ```{r OpportunityCostTableSimulated}
 temptbl <- tribble(
  ~variable,    ~col1, ~col2, ~col3, 
- "", "control group", "treatment group", "Total",
  "buy DVD", "46", "51", "97",
  "not buy DVD", "29", "24","53",
  "Total", "75", "75", "150"
 )
 
 temptbl %>%
- kable(caption = "Summary of student choices against their simulated groups. The group assignment had no connection to the student decisions, so any difference between the two groups is due to chance.") %>%
- kable_styling()
+ kable(caption = "Summary of student choices against their simulated groups. The group assignment had no connection to the student decisions, so any difference between the two groups is due to chance.",
+    col.names = c( "", "control group", "treatment group", "Total")) %>%
+ kable_styling() #%>%
+ #add_header_above(c( " ", "`decision`" = 2, " "))
 ```
 
 
