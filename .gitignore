@@ -41,3 +41,9 @@ vignettes/*.pdf
 # Bookdown files
 _book
 _bookdown_files
+.Rproj.user
+activities/CPS_2015/DS0001/36525-0001-Data.tsv
+activities/CPS_2015/DS0001/cps_old.csv
+activities/CPS_2015/DS0001/cps_old.csv
+activities/CPS_2015/DS0001/36525-0001-Data.tsv
+activities/CPS_2015/DS0001/cps_old.csv
