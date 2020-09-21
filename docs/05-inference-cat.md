@@ -1705,10 +1705,10 @@ In this study, a smaller proportion of females are promoted than males (0.583 ve
 <caption>(\#tab:discriminationResults)Summary results for the gender discrimination study.</caption>
  <thead>
 <tr>
-<th style="border-bottom:hidden" colspan="1"></th>
-<th style="border-bottom:hidden" colspan="1"></th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`gender`</div></th>
-<th style="border-bottom:hidden" colspan="1"></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`gender`</div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
 </tr>
   <tr>
    <th style="text-align:left;">  </th>
@@ -1825,10 +1825,10 @@ Table \@ref(tab:discriminationRand1) show the results of one such simulation.
 <caption>(\#tab:discriminationRand1)Simulation results, where the difference in promotion rates between `male` and `female` is purely due to chance.</caption>
  <thead>
 <tr>
-<th style="border-bottom:hidden" colspan="1"></th>
-<th style="border-bottom:hidden" colspan="1"></th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`gender`</div></th>
-<th style="border-bottom:hidden" colspan="1"></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`gender`</div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
 </tr>
   <tr>
    <th style="text-align:left;">  </th>
@@ -1992,35 +1992,29 @@ Table \@ref(tab:OpportunityCostTable) summarizes the study results.
 <caption>(\#tab:OpportunityCostTable)Summary of student choices in the opportunity cost study.</caption>
  <thead>
   <tr>
-   <th style="text-align:left;"> variable </th>
-   <th style="text-align:left;"> col1 </th>
-   <th style="text-align:left;"> col2 </th>
-   <th style="text-align:left;"> col3 </th>
+   <th style="text-align:left;">  </th>
+   <th style="text-align:left;"> control group </th>
+   <th style="text-align:left;"> treatment group </th>
+   <th style="text-align:left;"> Total </th>
   </tr>
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> control group </td>
-   <td style="text-align:left;"> treatment group </td>
-   <td style="text-align:left;"> Total </td>
-  </tr>
-  <tr>
    <td style="text-align:left;"> buy DVD </td>
    <td style="text-align:left;"> 56 </td>
-   <td style="text-align:left;"> 19 </td>
-   <td style="text-align:left;"> 75 </td>
+   <td style="text-align:left;"> 41 </td>
+   <td style="text-align:left;"> 97 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> not buy DVD </td>
-   <td style="text-align:left;"> 41 </td>
+   <td style="text-align:left;"> 19 </td>
    <td style="text-align:left;"> 34 </td>
-   <td style="text-align:left;"> 75 </td>
+   <td style="text-align:left;"> 53 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Total </td>
-   <td style="text-align:left;"> 97 </td>
-   <td style="text-align:left;"> 53 </td>
+   <td style="text-align:left;"> 75 </td>
+   <td style="text-align:left;"> 75 </td>
    <td style="text-align:left;"> 150 </td>
   </tr>
 </tbody>
@@ -2035,22 +2029,16 @@ These summaries are given in Table \@ref(tab:OpportunityCostTableRowProp), and a
 
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:OpportunityCostTableRowProp)The data above are now summarized using column proportions. Column proportions are particularly useful here since we can view the proportion of *buy* and *not buy* decisions in each group, and across the whole sample.</caption>
+<caption>(\#tab:OpportunityCostTableRowProp)The data above are now summarized using row proportions. Row proportions are particularly useful here since we can view the proportion of *buy* and *not buy* decisions in each group.</caption>
  <thead>
   <tr>
-   <th style="text-align:left;"> variable </th>
-   <th style="text-align:left;"> col1 </th>
-   <th style="text-align:left;"> col2 </th>
-   <th style="text-align:left;"> col3 </th>
+   <th style="text-align:left;">  </th>
+   <th style="text-align:left;"> control group </th>
+   <th style="text-align:left;"> treatment group </th>
+   <th style="text-align:left;"> Total </th>
   </tr>
  </thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> control group </td>
-   <td style="text-align:left;"> treatment group </td>
-   <td style="text-align:left;"> Total </td>
-  </tr>
   <tr>
    <td style="text-align:left;"> buy DVD </td>
    <td style="text-align:left;"> 0.747 </td>
@@ -2148,19 +2136,13 @@ From this table, we can compute a difference that occurred from chance alone:
 <caption>(\#tab:OpportunityCostTableSimulated)Summary of student choices against their simulated groups. The group assignment had no connection to the student decisions, so any difference between the two groups is due to chance.</caption>
  <thead>
   <tr>
-   <th style="text-align:left;"> variable </th>
-   <th style="text-align:left;"> col1 </th>
-   <th style="text-align:left;"> col2 </th>
-   <th style="text-align:left;"> col3 </th>
+   <th style="text-align:left;">  </th>
+   <th style="text-align:left;"> control group </th>
+   <th style="text-align:left;"> treatment group </th>
+   <th style="text-align:left;"> Total </th>
   </tr>
  </thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> control group </td>
-   <td style="text-align:left;"> treatment group </td>
-   <td style="text-align:left;"> Total </td>
-  </tr>
   <tr>
    <td style="text-align:left;"> buy DVD </td>
    <td style="text-align:left;"> 46 </td>
@@ -2239,10 +2221,10 @@ signs of infection.
 <caption>(\#tab:malaria-vaccine-20-exp-summary)Summary results for the malaria vaccine experiment.</caption>
  <thead>
 <tr>
-<th style="border-bottom:hidden" colspan="1"></th>
-<th style="border-bottom:hidden" colspan="1"></th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`treatment`</div></th>
-<th style="border-bottom:hidden" colspan="1"></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">`treatment`</div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
 </tr>
   <tr>
    <th style="text-align:left;">  </th>
@@ -2481,9 +2463,9 @@ We make a statement about which one might be true, but we might choose incorrect
 <caption>(\#tab:fourHTScenarios)Four different scenarios for hypothesis tests.</caption>
  <thead>
 <tr>
-<th style="border-bottom:hidden" colspan="1"></th>
-<th style="border-bottom:hidden" colspan="1"></th>
-<th style="border-bottom:hidden; padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">**Test conclusion**</div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">**Test conclusion**</div></th>
 </tr>
   <tr>
    <th style="text-align:left;">  </th>
@@ -3677,21 +3659,21 @@ However you should be able to easily spot them as **bolded text**.
   </tr>
   <tr>
    <td style="text-align:left;"> confidence interval </td>
-   <td style="text-align:left;"> one-sided hypothesis test </td>
+   <td style="text-align:left;"> one sample $z$-test </td>
    <td style="text-align:left;"> SE interval </td>
    <td style="text-align:left;"> test statistic </td>
   </tr>
   <tr>
    <td style="text-align:left;"> confidence level </td>
-   <td style="text-align:left;"> one sample $z$-test </td>
+   <td style="text-align:left;"> one-sided hypothesis test </td>
    <td style="text-align:left;"> simulation </td>
-   <td style="text-align:left;"> two-sided hypothesis test </td>
+   <td style="text-align:left;"> two sample $z$-test </td>
   </tr>
   <tr>
    <td style="text-align:left;"> confirmation bias </td>
    <td style="text-align:left;"> p-value </td>
    <td style="text-align:left;"> standard error </td>
-   <td style="text-align:left;"> two sample $z$-test </td>
+   <td style="text-align:left;"> two-sided hypothesis test </td>
   </tr>
   <tr>
    <td style="text-align:left;"> hypothesis test </td>
