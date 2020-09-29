@@ -4072,6 +4072,7 @@ These considerations highlight the complexity around medical care and treatment 
 <!-- ``` -->
 
 
+
 ### Decision errors {#types-of-errors}
 
 \index{hypothesis testing!decision errors|(}
@@ -4152,7 +4153,7 @@ The example and guided practice above provide an important lesson: if we reduce 
 %Hypothesis testing is built around rejecting or failing to reject the null hypothesis. That is, we do not reject $H_0$ unless the data provide strong evidence against it. But what precisely does *strong evidence* mean? As a general rule of thumb, for those cases where the null hypothesis is actually true, we do not want to incorrectly reject $H_0$ more than 5% of the time. This corresponds to our default significance level of $\alpha = 0.05$, which we use as a comparison with the p-value. In the next section, we discuss the appropriateness of different significance levels.
 -->
 
-### Controlling the Type I error rate {-}
+### Controlling the Type I error rate
 
 \index{hypothesis testing!significance level|(}
 \index{significance level|(}
@@ -4160,6 +4161,12 @@ The example and guided practice above provide an important lesson: if we reduce 
 Choosing a significance level for a test is important in many contexts, and the traditional level is 0.05. 
 However, it is sometimes helpful to adjust the significance level based on the application. 
 We may select a level that is smaller or larger than 0.05 depending on the consequences of any conclusions reached from the test.
+
+```{block2, type="important", echo=TRUE}
+**Significance level = probability of making a Type 1 error.**
+
+We reject a null hypothesis if the p-value is less than a chosen significance level, $\alpha$. Therefore, if the null hypothesis is true, but we end up with really unusual data just by chance -- a p-value less than $\alpha$ -- then we mistakenly reject the null hypothesis, making a Type 1 error.
+```
 
 If making a Type 1 Error is dangerous or especially costly, we should choose a small significance level (e.g., 0.01 or 0.001). 
 If we want to be very cautious about rejecting the null hypothesis, we demand very strong evidence favoring the alternative $H_A$ before we would reject $H_0$.
@@ -4171,7 +4178,7 @@ Here we want to be cautious about failing to reject $H_0$ when the null is actua
 ```{block2, type="important", echo=TRUE}
 **Significance levels should reflect consequences of errors.**
 
-The significance level selected for a test should reflect the real-world consequences associated with making a Type 1 or Type 2 Error.
+The significance level selected for a test should reflect the real-world consequences associated with making a Type 1 or Type 2 error.
 ```
 
 
@@ -4241,7 +4248,72 @@ Hypotheses should be set up *before* observing the data.
 
 ### Power
 
-```{r, out.width="50%"}
+When the null hypothesis is true, the probability of a Type 1 error is our chosen significance level, $\alpha$, which means the probability of a correct decision is $1 - \alpha$.
+
+If an alternative hypothesis is true, the probability of a Type 2 error, which we denote by $\beta$, depends on several components:
+
+* significance level
+* sample size
+* whether the alternative hypothesis is one-sided or two-sided
+* standard deviation of the statistic
+* how far the alternative parameter value is from the null value
+
+Only the first three of these components are within the control of the researcher. 
+
+The probability of a correct decision when the alternative hypothesis is true, $1 - \beta$, is called the **power** of the test. Higher **power** means we are more likely to detect an effect that actually exists.
+
+
+```{block2, type="important", echo=TRUE}
+**Power.**
+
+The **power** of a test is the probability of rejecting a false null hypothesis.
+```
+
+```{block2, type="example", echo=TRUE}
+Suppose we would like to test whether less than 65% of a large population approves of a new law: $H_0: \pi = 0.65$ versus $H_A: \pi < 0.65. We collect a random sample of $n = 200$ individuals from this population. For what values of the sample proportion, $\hat{p}$, would we reject $H_0$ using a significance level of $\alpha = 0.05$?
+
+---
+  
+Under the assumption of the null hypothesis, the standard deviation of $\hat{p}$ is $\sqrt{0.65(1-0.65)/200} = 0.0337$. Thus, by the Central Limit Theorem, sample proportions vary according to an approximate normal distribution with mean 0.65 and standard deviation 0.0337. We will reject the null hypothesis that the true proportion is 0.65 if the sample proportion is so low that its probability is less than 0.05, shown in Figure \@ref(fig:power-example).
+
+To be precise, we will reject $H_0$ if $\hat{p}$ is less than the 5th percentile of the null distribution: `qnorm(0.05, 0.65, 0.0337)` = 0.59.
+
+```
+
+```{r power-example, out.width = "80%", fig.cap = "Shaded area on a null distribution where we would reject the null hypothesis. This area is equal to the significance level."}
+include_graphics("05/figures/PowerExample.png")
+```
+
+To calculate power, we need to know the true value of the parameter. In the previous example, the alternative was $H_0: \pi < 0.65$, so if we just say the alternative hypothesis is true, we still do not know the value of $\pi$. Thus, power calculations are done for a specific value of the parameter, and the power changes if the value of the parameter changes.
+
+```{block2, type="example", echo=TRUE}
+Consider again the test of whether less than 65% of a large population approves of a new law: $H_0: \pi = 0.65$ versus $H_A: \pi < 0.65. Suppose the population approval rate is actually $\pi = 0.58$. What is the probability that we will detect this effect?
+
+---
+  
+This example asks us to calculate the power -- the probability our test will provide evidence that $\pi < 0.65$ when the true value of $\pi$ is 0.58. Recall from the previous example that we will reject the null if $\hat{p} < 0.59$. Thus, the power is the probability that $\hat{p}$ will be less than 0.59 when the true proportion is 0.58: `pnorm(0.59, 0.58, 0.0337)` = 0.62. There is only a 62% chance that the data we collect will provide strong enough evidence to conclude $\pi < 0.65$. This probability is represented by the red area in Figure \@ref(fig:power-example-2).
+
+```
+
+```{r power-example-2, out.width = "80%", fig.cap = "The blue distribution is the distribution of sample proportions if the null hypothesis is true, $\\pi = 0.65$ -- the blue shaded area represents the probability we reject a true null hypothesis. The red distribution is the distribution of sample proportions under a particular alternative hypothesis, that $\\pi = 0.58$ -- the red shaded area represents the power."}
+include_graphics("05/figures/PowerExample2.png")
+```
+
+```{block2, type="important", echo=TRUE}
+**Increasing power**
+
+The **power** of a test will _increase_ when:
+  
+* the significance level _increases_
+* the sample size _increases_
+* we change from a two-sided to a one-sided test
+* the standard deviation of the statistic _decreases_
+* how far the alternative parameter value is from the null value _increases_
+
+```
+
+
+```{r, out.width="40%"}
 include_graphics("05/images/Whalberg.png")
 ```
 
