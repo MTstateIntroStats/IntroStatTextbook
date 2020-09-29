@@ -14,7 +14,7 @@ We will also introduce a new important mathematical model, the **normal distribu
 
 
 Throughout the book so far, you have worked with data in a variety of contexts.
-You have learned how to summarize and visualize the data as well as how to model multiple variables at the same time.
+You have learned how to summarize and visualize the data as well as how to visualize multiple variables at the same time.
 Sometimes the data set at hand represents the entire research question.
 But more often than not, the data have been collected to answer a research question about a larger group of which the data are a (hopefully) representative subset.
 
@@ -235,9 +235,9 @@ The test statistic in the the Martian alphabet example was the sample proportion
 Since the p-value is a probability, its value will always be between 0 and 1. The closer the p-value is to 0, the stronger the evidence we have _against the null hypothesis_. Why? A small p-value means that our data are _unlikely_ to occur, _if_ the null hypothesis is true. We take that to mean that the null hypothesis isn't a plausible assumption, and we reject it. This process mimics the scientific method---it is easier to disprove a theory than prove it. If scientists want to find evidence that a new drug reduces the risk of stroke, then they assume it _doesn't_ reduce the risk of stroke and then show that the observed data are so unlikely to occur that the more plausible explanation is that the drug works.
 
 
-Think of p-values as a continuum of strength of evidence against the null, from 0 (extremely strong evidence) to 1 (no evidence). Beyond around 10%, the data provide no evidence against the null hypothesis. Be careful not to equate this with evidence for the null hypothesis, which is incorrect. _The absence of evidence is not evidence of absence._
+Think of p-values as a continuum of strength of evidence against the null, from 0 (extremely strong evidence) to 1 (no evidence). Beyond around 10%, the data provide no evidence against the null hypothesis. Be careful not to equate this with evidence for the null hypothesis, which is incorrect. <p style="color:red;">_The absence of evidence is not evidence of absence._</p>
 <div class="figure" style="text-align: center">
-<img src="05/figures/soe_gradient.png" alt="Strength of evidence against the null for a continuum of p-values. Once the p-value is beyond around 0.10, the data provide no evidence against the null hypothesis." width="100%" />
+<img src="05/figures/soe_gradient_gray.png" alt="Strength of evidence against the null for a continuum of p-values. Once the p-value is beyond around 0.10, the data provide no evidence against the null hypothesis." width="100%" />
 <p class="caption">(\#fig:pval-continuum)Strength of evidence against the null for a continuum of p-values. Once the p-value is beyond around 0.10, the data provide no evidence against the null hypothesis.</p>
 </div>
 
@@ -347,8 +347,6 @@ In Section \@ref(theory-prop) we will discuss different percentages for the conf
 
 
 ## The normal distribution {#normal}
-
-\BeginKnitrBlock{todo}<div class="todo">Update examples in this section to use R rather than table.</div>\EndKnitrBlock{todo}
 
 \index{normal distribution|(}
 
@@ -520,10 +518,10 @@ pnorm(0.43, m = 0, s = 1)
 openintro::normTail(0.43, m = 0, s = 1)
 ```
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-40-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-39-1.png" width="70%" style="display: block; margin: auto;" />
 
 We can also find the Z-score associated with a percentile. 
-For example, to identify Z for the $80^{th}$ percentile, we use `qnorm()` which identifies the **quantile** for a given percentage.  The quantile represents the cutoff value.  (To remember the function `qnorm()` as providing a cutoff, notice that both `qnorm()` and "cutoff" start with the sound "kuh".  To remember the `pnorm()` function as providing a probability from a given cutoff, notice that both `pnorm()` and probability start with the sound "puh".) 
+For example, to identify Z for the $80^{th}$ percentile, we use `qnorm()` which identifies the **quantile** for a given percentage.  The quantile represents the cutoff value.^[To remember the function `qnorm()` as providing a cutoff, notice that both `qnorm()` and "cutoff" start with the sound "kuh".  To remember the `pnorm()` function as providing a probability from a given cutoff, notice that both `pnorm()` and probability start with the sound "puh".] 
 We determine the Z-score for the $80^{th}$ percentile using `qnorm()`: 0.84.
 
 
@@ -533,7 +531,7 @@ qnorm(0.80, m = 0, s = 1)
 openintro::normTail(0.80, m = 0, s = 1)
 ```
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-41-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-40-1.png" width="70%" style="display: block; margin: auto;" />
 
 We can use these functions with other normal distributions than the standard normal distribution by specifying the mean as the argument for `m` and the standard deviation as the argument for `s`. Here we determine the proportion of ACT test takers who scored worse than Tom on the ACT: 0.73.
 
@@ -544,7 +542,7 @@ pnorm(24, m = 21, s = 5)
 openintro::normTail(24, m = 21, s = 5)
 ```
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-42-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-41-1.png" width="70%" style="display: block; margin: auto;" />
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Determine the proportion of SAT test takers who scored better than Ann on the SAT.^[If 84% had lower scores than Ann, the number of people who had better scores must be 16%. (Generally ties are ignored when the normal model, or any other continuous distribution, is used.)]</div>\EndKnitrBlock{guidedpractice}
 
@@ -682,11 +680,11 @@ The total area under the curve is 1. If we find the area of the two tails that a
 That is, the probability of being between 5'9'' and 6'2'' is 0.5048.</div>\EndKnitrBlock{example}
 
 
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-58-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+
 <img src="05-inference-cat_files/figure-html/unnamed-chunk-59-1.png" width="70%" style="display: block; margin: auto;" />
-
-
-
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-60-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 
@@ -1201,9 +1199,13 @@ Shown in Figure \@ref(fig:paydayCC-stdnorm-pvalue), the p-value is the area abov
 
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/paydayCC-stdnorm-pvalue-1.png" alt="Approximate sampling distribution of $Z$ across all possible samples assuming $\pi = 0.50$. The shaded area represents the p-value corresponding to an observed standardized statistic of 0.57. Compare to Figure @ef(fig:paydatCC-norm-pvalue)" width="70%" />
-<p class="caption">(\#fig:paydayCC-stdnorm-pvalue)Approximate sampling distribution of $Z$ across all possible samples assuming $\pi = 0.50$. The shaded area represents the p-value corresponding to an observed standardized statistic of 0.57. Compare to Figure @ef(fig:paydatCC-norm-pvalue)</p>
+<img src="05-inference-cat_files/figure-html/paydayCC-stdnorm-pvalue-1.png" alt="(ref:figname-cap)" width="70%" />
+<p class="caption">(\#fig:paydayCC-stdnorm-pvalue)(ref:figname-cap)</p>
 </div>
+
+
+(ref:figname-cap) Approximate sampling distribution of $Z$ across all possible samples assuming $\pi = 0.50$. The shaded area represents the p-value corresponding to an observed standardized statistic of 0.57. Compare to Figure \@ref(fig:paydayCC-norm-pvalue).
+
 
 \BeginKnitrBlock{onebox}<div class="onebox">**Theory-based hypothesis test for a proportion: one-sample $Z$-test.**
   
@@ -1643,9 +1645,9 @@ for a hypothesis test, we can simulate the null distribution
 of $\hat{p}$ using the null value, $p_0$, as seen in Section \@ref(one-prop-null-boot).  Unfortunately, methods for dealing with observations which are
 not independent are outside the scope of this book.
 
-
-
-\BeginKnitrBlock{todo}<div class="todo">Add tappers and listeners case study example from old Ch. 5 here.</div>\EndKnitrBlock{todo}
+<!-- ```{block2, type = "todo", echo=TRUE} -->
+<!-- Add tappers and listeners case study example from old Ch. 5 here. -->
+<!-- ``` -->
 
 ## Difference of two proportions {#diff-two-prop}
 
@@ -1680,7 +1682,7 @@ Using a few different studies, let's look more carefully at this idea of a **ran
 
 
 
-#### Gender discrimination {#caseStudyGenderDiscrimination}
+#### Case study: Gender discrimination {#caseStudyGenderDiscrimination}
 
 
 \index{data!discrimination|(}
@@ -1933,7 +1935,7 @@ Since the study was a randomized experiment, we can conclude that the effect was
 \index{data!discrimination|)}
 
 
-#### Opportunity cost {#caseStudyOpportunityCost}
+#### Case study: Opportunity cost {#caseStudyOpportunityCost}
 
 How rational and consistent is the behavior of the typical American college student? 
 In this section, we'll explore whether college student consumers always consider the following: money not spent now can be spent later.
@@ -2195,7 +2197,7 @@ Notice that we are able to make a causal statement for this study since the stud
 Since the study was a randomized experiment, we can conclude that the effect was due to the reminder about saving money for other purchases---the reminder _caused_ the lower rate of purchase. However, since this study used a volunteer sample (students were "recruited"), we can only generalize this result to individuals similar to those in the study. Thus, we have evidence that reminding students that they can save money for later purchases will reduce the chance they will continue with a purchase, but only among students are similar to those in the study.
 
 
-#### Malaria vaccine {#caseStudyMalaria}
+#### Case study: Malaria vaccine {#caseStudyMalaria}
 
 #### Observed data {-}
 
@@ -2446,126 +2448,12 @@ While we do not always choose correctly, statistical
 inference gives us tools to control and evaluate how
 often these errors occur.
 
-
-#### Decision errors {#types-of-errors}
-
-\index{hypothesis testing!decision errors|(}
-
-Hypothesis tests are not flawless. Just think of the court system: innocent people are sometimes wrongly convicted and the guilty sometimes walk free. 
-Similarly, data can point to the wrong conclusion. 
-However, what distinguishes statistical hypothesis tests from a court system is that our framework allows us to quantify and control how often the data lead us to the incorrect conclusion.
-
-In a hypothesis test, there are two competing hypotheses: the null and the alternative. 
-We make a statement about which one might be true, but we might choose incorrectly. There are four possible scenarios in a hypothesis test, which are summarized in Table \@ref(tab:fourHTScenarios).
-
-
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>(\#tab:fourHTScenarios)Four different scenarios for hypothesis tests.</caption>
- <thead>
-<tr>
-<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
-<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
-<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">**Test conclusion**</div></th>
-</tr>
-  <tr>
-   <th style="text-align:left;">  </th>
-   <th style="text-align:left;">  </th>
-   <th style="text-align:left;">  </th>
-   <th style="text-align:left;">  </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> Fail to reject $H_0$ </td>
-   <td style="text-align:left;"> Reject $H_0$ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;">  </td>
-   <td style="text-align:left;"> $H_0$ true </td>
-   <td style="text-align:left;"> good decision </td>
-   <td style="text-align:left;"> Type 1 Error </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> **Truth** </td>
-   <td style="text-align:left;"> $H_A$ true </td>
-   <td style="text-align:left;"> Type 2 Error </td>
-   <td style="text-align:left;"> good decision </td>
-  </tr>
-</tbody>
-</table>
-
-
-A **Type 1 Error**\index{Type 1 Error} is rejecting the null hypothesis when $H_0$ is actually true. 
-Since we rejected the null hypothesis in the [gender discrimination](caseStudyGenderDiscrimination), [opportunity cost](caseStudyOpportunityCost), and [malaria](caseStudyMalaria) studies, it is possible that we made a Type 1 Error in one, two, or all three of those studies. 
-
-A **Type 2 Error**\index{Type 2 Error} is failing to reject the null hypothesis when the alternative is actually true. Since we failed to reject the null hypothesis in the [medical consultant](one-prop-null-boot) study, it is possible that we made a Type 2 Error in that study.
-
-
-
-
-\BeginKnitrBlock{example}<div class="example">In a US court, the defendant is either innocent ($H_0$) or guilty ($H_A$). 
-What does a Type 1 Error represent in this context? 
-What does a Type 2 Error represent? 
-Table \@ref(tab:fourHTScenarios) may be useful.
-
----
- 
-If the court makes a Type 1 Error, this means the defendant is innocent ($H_0$ true) but wrongly convicted. 
-A Type 2 Error means the court failed to reject $H_0$ (i.e., failed to convict the person) when they were in fact guilty ($H_A$ true).</div>\EndKnitrBlock{example}
-
-
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Consider the opportunity cost study where we concluded students were less likely to make a DVD purchase if they were reminded that money not spent now could be spent later. What would a Type 1 Error represent in this context?^[Making a Type 1 Error in this context would mean that reminding students that money not spent now can be spent later does not affect their buying habits, despite the strong evidence (the data suggesting otherwise) found in the experiment. Notice that this does *not* necessarily mean something was wrong with the data or that we made a computational mistake. Sometimes data simply point us to the wrong conclusion, which is why scientific studies are often repeated to check initial findings.]</div>\EndKnitrBlock{guidedpractice}
-
-
-\BeginKnitrBlock{example}<div class="example">How could we reduce the Type 1 Error rate in US courts? 
-What influence would this have on the Type 2 Error rate?
-
----
- 
-To lower the Type 1 Error rate, we might raise our standard for conviction from "beyond a reasonable doubt" to "beyond a conceivable doubt" so fewer people would be wrongly convicted. However, this would also make it more difficult to convict the people who are actually guilty, so we would make more Type 2 Errors.</div>\EndKnitrBlock{example}
-
-
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">How could we reduce the Type 2 Error rate in US courts? 
-What influence would this have on the Type 1 Error rate?^[To lower the Type 2 Error rate, we want to convict more guilty people. We could lower the standards for conviction from "beyond a reasonable doubt" to "beyond a little doubt". Lowering the bar for guilt will also result in more wrongful convictions, raising the Type 1 Error rate.]</div>\EndKnitrBlock{guidedpractice}
-
-
-\index{hypothesis testing!decision errors|)}
-
-The example and guided practice above provide an important lesson: if we reduce how often we make one type of error, we generally make more of the other type.
-
-<!--
-%Hypothesis testing is built around rejecting or failing to reject the null hypothesis. That is, we do not reject $H_0$ unless the data provide strong evidence against it. But what precisely does *strong evidence* mean? As a general rule of thumb, for those cases where the null hypothesis is actually true, we do not want to incorrectly reject $H_0$ more than 5% of the time. This corresponds to our default significance level of $\alpha = 0.05$, which we use as a comparison with the p-value. In the next section, we discuss the appropriateness of different significance levels.
--->
-
-#### Choosing a significance level {-}
-
-\index{hypothesis testing!significance level|(}
-\index{significance level|(}
-
-Choosing a significance level for a test is important in many contexts, and the traditional level is 0.05. 
-However, it is sometimes helpful to adjust the significance level based on the application. 
-We may select a level that is smaller or larger than 0.05 depending on the consequences of any conclusions reached from the test.
-
-If making a Type 1 Error is dangerous or especially costly, we should choose a small significance level (e.g., 0.01 or 0.001). 
-If we want to be very cautious about rejecting the null hypothesis, we demand very strong evidence favoring the alternative $H_A$ before we would reject $H_0$.
-
-If a Type 2 Error is relatively more dangerous or much more costly than a Type 1 Error, then we should choose a higher significance level (e.g., 0.10). 
-Here we want to be cautious about failing to reject $H_0$ when the null is actually false.
-
-
-\BeginKnitrBlock{important}<div class="important">**Significance levels should reflect consequences of errors.**
-
-The significance level selected for a test should reflect the real-world consequences associated with making a Type 1 or Type 2 Error.</div>\EndKnitrBlock{important}
-
-#### Two-sided hypotheses {#two-sided-tests}
+### Two-sided hypotheses {#two-sided-tests}
 
 <!--
 %_________________
 %\section[Case study: CPR and blood thinner (randomization)]{Case study: blood thinner and CPR\\(randomization)}
 -->
-
 \index{hypothesis testing!two tails|(}
 
 In in the [gender discrimination](caseStudyGenderDiscrimination) and [opportunity cost](caseStudyOpportunityCost) studies, we explored whether women were discriminated against and whether a simple trick could make students a little thriftier. 
@@ -2573,14 +2461,6 @@ In these two case studies, we've actually ignored some possibilities:
 
 * What if *men* are actually discriminated against?
 * What if the money trick actually makes students *spend more*?
-
-These possibilities weren't considered in our original hypotheses or analyses. 
-The disregard of the extra alternatives may have seemed natural since the data pointed in the directions in which we framed the problems. However, there are two dangers if we ignore possibilities that disagree with our data or that conflict with our world view:
-
-1. Framing an alternative hypothesis simply to match the direction that the data point will generally inflate the Type 1 Error rate. After all the work we've done (and will continue to do) to rigorously control the error rates in hypothesis tests, careless construction of the alternative hypotheses can disrupt that hard work. 
-
-2. If we only use alternative hypotheses that agree with our worldview, then we're going to be subjecting ourselves to **confirmation bias**\index{confirmation bias}, which means we are looking for data that supports our ideas. That's not very scientific, and we can do better!
-
 
 The original hypotheses we've seen are called **one-sided hypothesis tests**\index{one-sided hypothesis test} because they only explored one direction of possibilities. 
 Such hypotheses are appropriate when we are exclusively interested in the single direction, but usually we want to consider all possibilities. 
@@ -2715,7 +2595,7 @@ Use a one-sided hypothesis test only if you truly have interest in only one dire
 If your null distribution is symmetric, first compute the p-value for one tail of the distribution, then double that value to get the two-sided p-value. 
 That's it!^[If the null distribution is not symmetric, then the computer will have to count the proportions in each tail separately, since the two tail proportions may differ.]</div>\EndKnitrBlock{onebox}
 
-\BeginKnitrBlock{example}<div class="example">Consider the situation of the medical consultant. 
+\BeginKnitrBlock{example}<div class="example">Consider the situation of the [medical consultant](one-prop-null-boot). 
 Now that you know about one-sided and two-sided tests, which type of test do you think is more appropriate?
 
 ---
@@ -2731,52 +2611,6 @@ Generally, to find a two-sided p-value we double the single tail area, which rem
 However, the approach can result in p-values larger than 1 when the point estimate is very near the mean in the null distribution; in such cases, we write that the p-value is 1. 
 Also, very large p-values computed in this way (e.g., 0.85), may also be slightly inflated. 
 Typically, we do not worry too much about the precision of very large p-values because they lead to the same analysis conclusion, even if the value is slightly off.
-
-#### Controlling the Type 1 Error rate {-}
-
-Now that we understand the difference between one-sided and two-sided tests, we must recognize when to use each type of test.
-Because of the result of increased error rates, it is never okay to change two-sided tests to one-sided tests after observing the data. 
-We explore the consequences of ignoring this advice in the next example.
-
-\BeginKnitrBlock{example}<div class="example">Using $\alpha=0.05$, we show that freely switching from two-sided tests to one-sided tests will lead us to make twice as many Type 1 Errors as intended.
-
----
- 
-Suppose we are interested in finding any difference from 0. 
-We've created a smooth-looking **null distribution** representing differences due to chance in Figure \@ref(fig:type1ErrorDoublingExampleFigure).
-
-Suppose the sample difference was larger than 0. 
-Then if we can flip to a one-sided test, we would use $H_A$: difference $> 0$. 
-Now if we obtain any observation in the upper 5% of the distribution, we would reject $H_0$ since the p-value would just be a the single tail. 
-Thus, if the null hypothesis is true, we incorrectly reject the null hypothesis about 5% of the time when the sample mean is above the null value, as shown in Figure \@ref(fig:type1ErrorDoublingExampleFigure).
-
-Suppose the sample difference was smaller than 0. 
-Then if we change to a one-sided test, we would use $H_A$: difference $< 0$. 
-If the observed difference falls in the lower 5% of the figure, we would reject $H_0$. 
-That is, if the null hypothesis is true, then we would observe this situation about 5% of the time.
-
-By examining these two scenarios, we can determine that we will make a Type 1 Error $5\%+5\%=10\%$ of the time if we are allowed to swap to the "best" one-sided test for the data. 
-This is twice the error rate we prescribed with our significance level: $\alpha=0.05$ (!).</div>\EndKnitrBlock{example}
-
-
-
-<div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/type1ErrorDoublingExampleFigure-1.png" alt="The shaded regions represent areas where we would reject $H_0$ under the bad practices considered in when $\alpha = 0.05$." width="70%" />
-<p class="caption">(\#fig:type1ErrorDoublingExampleFigure)The shaded regions represent areas where we would reject $H_0$ under the bad practices considered in when $\alpha = 0.05$.</p>
-</div>
-
-\BeginKnitrBlock{importantbox}<div class="importantbox">**Hypothesis tests should be set up *before* seeing the data.**
-
-After observing data, it is tempting to turn a two-sided test into a one-sided test. 
-Avoid this temptation. 
-Hypotheses should be set up *before* observing the data.</div>\EndKnitrBlock{importantbox}
-
-<!--
-%\Comment{Should we scrap this subsection and example and just leave the caution box? Downside: weakens item 1 near the start of Section \@ref(IntroducingTwoSidedHypotheses).}
--->
-
-\index{hypothesis testing!two tails|)}
-
 
 
 ### Bootstrap confidence interval for $\pi_1 - \pi_2$ {#two-prop-boot-ci}
@@ -3464,15 +3298,181 @@ These considerations highlight the complexity around medical care and treatment 
       of the problem.</div>\EndKnitrBlock{onebox}
 -->
 
-## Power, Errors, and Practical Importance {#power}
+## Errors, Power, and Practical Importance {#power}
 
-\BeginKnitrBlock{todo}<div class="todo">- power
-- what affects power
-- what affects width of CIs
-- statistical significance vs practical importance
-- effect size?</div>\EndKnitrBlock{todo}
+<!-- ```{block2, type="todo", echo=TRUE} -->
+<!-- - power -->
+<!-- - what affects power -->
+<!-- - what affects width of CIs -->
+<!-- - statistical significance vs practical importance -->
+<!-- - effect size? -->
+<!-- ``` -->
+
+
+### Decision errors {#types-of-errors}
+
+\index{hypothesis testing!decision errors|(}
+
+Hypothesis tests are not flawless. Just think of the court system: innocent people are sometimes wrongly convicted and the guilty sometimes walk free. 
+Similarly, data can point to the wrong conclusion. 
+However, what distinguishes statistical hypothesis tests from a court system is that our framework allows us to quantify and control how often the data lead us to the incorrect conclusion.
+
+In a hypothesis test, there are two competing hypotheses: the null and the alternative. 
+We make a statement about which one might be true, but we might choose incorrectly. There are four possible scenarios in a hypothesis test, which are summarized in Table \@ref(tab:fourHTScenarios).
+
+
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>(\#tab:fourHTScenarios)Four different scenarios for hypothesis tests.</caption>
+ <thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">**Test conclusion**</div></th>
+</tr>
+  <tr>
+   <th style="text-align:left;">  </th>
+   <th style="text-align:left;">  </th>
+   <th style="text-align:left;">  </th>
+   <th style="text-align:left;">  </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> Fail to reject $H_0$ </td>
+   <td style="text-align:left;"> Reject $H_0$ </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> $H_0$ true </td>
+   <td style="text-align:left;"> good decision </td>
+   <td style="text-align:left;"> Type 1 Error </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> **Truth** </td>
+   <td style="text-align:left;"> $H_A$ true </td>
+   <td style="text-align:left;"> Type 2 Error </td>
+   <td style="text-align:left;"> good decision </td>
+  </tr>
+</tbody>
+</table>
+
+
+A **Type 1 Error**\index{Type 1 Error} is rejecting the null hypothesis when $H_0$ is actually true. 
+Since we rejected the null hypothesis in the [gender discrimination](caseStudyGenderDiscrimination), [opportunity cost](caseStudyOpportunityCost), and [malaria](caseStudyMalaria) studies, it is possible that we made a Type 1 Error in one, two, or all three of those studies. 
+
+A **Type 2 Error**\index{Type 2 Error} is failing to reject the null hypothesis when the alternative is actually true. Since we failed to reject the null hypothesis in the [medical consultant](one-prop-null-boot) study, it is possible that we made a Type 2 Error in that study.
+
+
+
+
+\BeginKnitrBlock{example}<div class="example">In a US court, the defendant is either innocent ($H_0$) or guilty ($H_A$). 
+What does a Type 1 Error represent in this context? 
+What does a Type 2 Error represent? 
+Table \@ref(tab:fourHTScenarios) may be useful.
+
+---
+ 
+If the court makes a Type 1 Error, this means the defendant is innocent ($H_0$ true) but wrongly convicted. 
+A Type 2 Error means the court failed to reject $H_0$ (i.e., failed to convict the person) when they were in fact guilty ($H_A$ true).</div>\EndKnitrBlock{example}
+
+
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Consider the opportunity cost study where we concluded students were less likely to make a DVD purchase if they were reminded that money not spent now could be spent later. What would a Type 1 Error represent in this context?^[Making a Type 1 Error in this context would mean that reminding students that money not spent now can be spent later does not affect their buying habits, despite the strong evidence (the data suggesting otherwise) found in the experiment. Notice that this does *not* necessarily mean something was wrong with the data or that we made a computational mistake. Sometimes data simply point us to the wrong conclusion, which is why scientific studies are often repeated to check initial findings.]</div>\EndKnitrBlock{guidedpractice}
+
+
+\BeginKnitrBlock{example}<div class="example">How could we reduce the Type 1 Error rate in US courts? 
+What influence would this have on the Type 2 Error rate?
+
+---
+ 
+To lower the Type 1 Error rate, we might raise our standard for conviction from "beyond a reasonable doubt" to "beyond a conceivable doubt" so fewer people would be wrongly convicted. However, this would also make it more difficult to convict the people who are actually guilty, so we would make more Type 2 Errors.</div>\EndKnitrBlock{example}
+
+
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">How could we reduce the Type 2 Error rate in US courts? 
+What influence would this have on the Type 1 Error rate?^[To lower the Type 2 Error rate, we want to convict more guilty people. We could lower the standards for conviction from "beyond a reasonable doubt" to "beyond a little doubt". Lowering the bar for guilt will also result in more wrongful convictions, raising the Type 1 Error rate.]</div>\EndKnitrBlock{guidedpractice}
+
+
+\index{hypothesis testing!decision errors|)}
+
+The example and guided practice above provide an important lesson: if we reduce how often we make one type of error, we generally make more of the other type.
+
+<!--
+%Hypothesis testing is built around rejecting or failing to reject the null hypothesis. That is, we do not reject $H_0$ unless the data provide strong evidence against it. But what precisely does *strong evidence* mean? As a general rule of thumb, for those cases where the null hypothesis is actually true, we do not want to incorrectly reject $H_0$ more than 5% of the time. This corresponds to our default significance level of $\alpha = 0.05$, which we use as a comparison with the p-value. In the next section, we discuss the appropriateness of different significance levels.
+-->
+
+### Controlling the Type I error rate {-}
+
+\index{hypothesis testing!significance level|(}
+\index{significance level|(}
+
+Choosing a significance level for a test is important in many contexts, and the traditional level is 0.05. 
+However, it is sometimes helpful to adjust the significance level based on the application. 
+We may select a level that is smaller or larger than 0.05 depending on the consequences of any conclusions reached from the test.
+
+If making a Type 1 Error is dangerous or especially costly, we should choose a small significance level (e.g., 0.01 or 0.001). 
+If we want to be very cautious about rejecting the null hypothesis, we demand very strong evidence favoring the alternative $H_A$ before we would reject $H_0$.
+
+If a Type 2 Error is relatively more dangerous or much more costly than a Type 1 Error, then we should choose a higher significance level (e.g., 0.10). 
+Here we want to be cautious about failing to reject $H_0$ when the null is actually false.
+
+
+\BeginKnitrBlock{important}<div class="important">**Significance levels should reflect consequences of errors.**
+
+The significance level selected for a test should reflect the real-world consequences associated with making a Type 1 or Type 2 Error.</div>\EndKnitrBlock{important}
+
+
+Because of the result of increased error rates, it is never okay to change two-sided tests to one-sided tests after observing the data. There are two dangers if we ignore possibilities that disagree with our data or that conflict with our world view:
+
+1. Framing an alternative hypothesis simply to match the direction that the data point will generally inflate the Type 1 Error rate. After all the work we've done (and will continue to do) to rigorously control the error rates in hypothesis tests, careless construction of the alternative hypotheses can disrupt that hard work. 
+
+2. If we only use alternative hypotheses that agree with our worldview, then we're going to be subjecting ourselves to **confirmation bias**\index{confirmation bias}, which means we are looking for data that supports our ideas. That's not very scientific, and we can do better!
+
+We explore the consequences of ignoring this advice in the next example.
+
+\BeginKnitrBlock{example}<div class="example">Using $\alpha=0.05$, we show that freely switching from two-sided tests to one-sided tests will lead us to make twice as many Type 1 Errors as intended.
+
+---
+ 
+Suppose we are interested in finding any difference from 0. 
+We've created a smooth-looking **null distribution** representing differences due to chance in Figure \@ref(fig:type1ErrorDoublingExampleFigure).
+
+Suppose the sample difference was larger than 0. 
+Then if we can flip to a one-sided test, we would use $H_A$: difference $> 0$. 
+Now if we obtain any observation in the upper 5% of the distribution, we would reject $H_0$ since the p-value would just be a the single tail. 
+Thus, if the null hypothesis is true, we incorrectly reject the null hypothesis about 5% of the time when the sample mean is above the null value, as shown in Figure \@ref(fig:type1ErrorDoublingExampleFigure).
+
+Suppose the sample difference was smaller than 0. 
+Then if we change to a one-sided test, we would use $H_A$: difference $< 0$. 
+If the observed difference falls in the lower 5% of the figure, we would reject $H_0$. 
+That is, if the null hypothesis is true, then we would observe this situation about 5% of the time.
+
+By examining these two scenarios, we can determine that we will make a Type 1 Error $5\%+5\%=10\%$ of the time if we are allowed to swap to the "best" one-sided test for the data. 
+This is twice the error rate we prescribed with our significance level: $\alpha=0.05$ (!).</div>\EndKnitrBlock{example}
+
+
+
+<div class="figure" style="text-align: center">
+<img src="05-inference-cat_files/figure-html/type1ErrorDoublingExampleFigure-1.png" alt="The shaded regions represent areas where we would reject $H_0$ under the bad practices considered in when $\alpha = 0.05$." width="70%" />
+<p class="caption">(\#fig:type1ErrorDoublingExampleFigure)The shaded regions represent areas where we would reject $H_0$ under the bad practices considered in when $\alpha = 0.05$.</p>
+</div>
+
+\BeginKnitrBlock{importantbox}<div class="importantbox">**Hypothesis tests should be set up *before* seeing the data.**
+
+After observing data, it is tempting to turn a two-sided test into a one-sided test. 
+Avoid this temptation. 
+Hypotheses should be set up *before* observing the data.</div>\EndKnitrBlock{importantbox}
+
+<!--
+%\Comment{Should we scrap this subsection and example and just leave the caution box? Downside: weakens item 1 near the start of Section \@ref(IntroducingTwoSidedHypotheses).}
+-->
+
+### Power
 
 <img src="05/images/Whalberg.png" width="50%" style="display: block; margin: auto;" />
+
+
+### Statistical Significance versus Practical Importance
 
 ## Summary of Z-procedures
 
@@ -3562,11 +3562,6 @@ You will often hear the following two $z$-procedures referred to as a **one samp
 
 ## `R`: Inference for categorical data
 
-\BeginKnitrBlock{todo}<div class="todo">Section on doing inference for categorical data in R.
-
-- Raw data to tables
-- Simulation functions in catstats
-- `prop.test`</div>\EndKnitrBlock{todo}
 ### Inference using `R` and `catstats`
 
 **Making tables from raw data** For inference with categorical data, we need counts of observations in each group by outcome.  If our data are in the standard format of one observation per row, we need to `table` the data to obtain the counts in each group.
@@ -3968,21 +3963,21 @@ However you should be able to easily spot them as **bolded text**.
   </tr>
   <tr>
    <td style="text-align:left;"> confidence interval </td>
-   <td style="text-align:left;"> one-sided hypothesis test </td>
+   <td style="text-align:left;"> one sample $z$-test </td>
    <td style="text-align:left;"> SE interval </td>
    <td style="text-align:left;"> test statistic </td>
   </tr>
   <tr>
    <td style="text-align:left;"> confidence level </td>
-   <td style="text-align:left;"> one sample $z$-test </td>
+   <td style="text-align:left;"> one-sided hypothesis test </td>
    <td style="text-align:left;"> simulation </td>
-   <td style="text-align:left;"> two-sided hypothesis test </td>
+   <td style="text-align:left;"> two sample $z$-test </td>
   </tr>
   <tr>
    <td style="text-align:left;"> confirmation bias </td>
    <td style="text-align:left;"> p-value </td>
    <td style="text-align:left;"> standard error </td>
-   <td style="text-align:left;"> two sample $z$-test </td>
+   <td style="text-align:left;"> two-sided hypothesis test </td>
   </tr>
   <tr>
    <td style="text-align:left;"> hypothesis test </td>
