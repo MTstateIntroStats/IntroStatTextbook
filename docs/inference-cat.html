@@ -24,7 +24,7 @@
 <meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager" />
 
 
-<meta name="date" content="2020-09-28" />
+<meta name="date" content="2020-10-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1394,8 +1394,8 @@ H_0: \mbox{ parameter } = \mbox{ null value}
 and success-failure conditions must be satisfied.
 In a hypothesis test, the success-failure condition is
 checked using the null proportion:
-we verify <span class="math inline">\(np_0\)</span> and <span class="math inline">\(n(1-p_0)\)</span> are at least 10,
-where <span class="math inline">\(p_0\)</span> is the null value.</p>
+we verify <span class="math inline">\(n\pi_0\)</span> and <span class="math inline">\(n(1-\pi_0)\)</span> are at least 10,
+where <span class="math inline">\(\pi_0\)</span> is the null value.</p>
 
 <div class="guidedpractice">
 Do payday loan borrowers support a regulation
@@ -1420,9 +1420,9 @@ and evaluate debt payments.</p>
 <p>With hypotheses already set up and conditions checked,
 we can move onto calculations.
 The standard error in the context of a one-proportion
-hypothesis test is computed using the null value, <span class="math inline">\(p_0\)</span>:
+hypothesis test is computed using the null value, <span class="math inline">\(\pi_0\)</span>:
 <span class="math display">\[\begin{align*}
-  SE = \sqrt{\frac{p_0 (1 - p_0)}{n}}
+  SE = \sqrt{\frac{\pi_0 (1 - \pi_0)}{n}}
       = \sqrt{\frac{0.5 (1 - 0.5)}{826}}
       = 0.017
   \end{align*}\]</span>
@@ -1460,9 +1460,9 @@ distribution, this standardized statistic is called <span class="math inline">\(
 <p><strong>Standardized sample proportion.</strong></p>
 The <strong>standardized statistic</strong> for theory-based methods for one proportion is
 <span class="math display">\[
-Z = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}
+Z = \frac{\hat{p} - \pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}}
 \]</span>
-where <span class="math inline">\(p_0\)</span> is the null value. The denominator, <span class="math inline">\(\sqrt{\frac{p_0(1-p_0)}{n}}\)</span>, is called the <strong>null standard error</strong> of the sample proportion.
+where <span class="math inline">\(\pi_0\)</span> is the null value. The denominator, <span class="math inline">\(\sqrt{\frac{\pi_0(1-\pi_0)}{n}}\)</span>, is called the <strong>null standard error</strong> of the sample proportion.
 </div>
 <p>With the standardized statistic as our test statistic, we can find
 the p-value as the area under a standard normal distribution at or more extreme
@@ -1471,10 +1471,10 @@ than our observed <span class="math inline">\(Z\)</span> value.</p>
 <div class="example">
 <p>Do payday loan borrowers support a regulation that would require lenders to pull their credit report and evaluate their debt payments? From a random sample of 826 borrowers, 51% said they would support such a regulation. We set up hypotheses and checked conditions previously. Now calculate and interpret the standardized statistic, then use the standard normal distribution to calculate the approximate p-value.</p>
 <hr />
-<p>Our sample proportion is <span class="math inline">\(\hat{p} = 0.51\)</span>. Since our null value is <span class="math inline">\(p_0 = 0.50\)</span>,<br />
+<p>Our sample proportion is <span class="math inline">\(\hat{p} = 0.51\)</span>. Since our null value is <span class="math inline">\(\pi_0 = 0.50\)</span>,<br />
 the null standard error is
 <span class="math display">\[\begin{align*}
-  SE = \sqrt{\frac{p_0 (1 - p_0)}{n}}
+  SE = \sqrt{\frac{\pi_0 (1 - \pi_0)}{n}}
       = \sqrt{\frac{0.5 (1 - 0.5)}{826}}
       = 0.017
   \end{align*}\]</span></p>
@@ -1497,10 +1497,10 @@ Figure 5.16: Approximate sampling distribution of <span class="math inline">\(Z\
 <p><strong>Theory-based hypothesis test for a proportion: one-sample <span class="math inline">\(Z\)</span>-test.</strong></p>
 <ol style="list-style-type: decimal">
 <li>Frame the research question in terms of hypotheses.</li>
-<li>Using the null value, <span class="math inline">\(p_0\)</span>, verify the conditions for using the normal distribution to approximate the null distribution.</li>
+<li>Using the null value, <span class="math inline">\(\pi_0\)</span>, verify the conditions for using the normal distribution to approximate the null distribution.</li>
 <li>Calculate the test statistic:
 <span class="math display">\[
- Z = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}
+ Z = \frac{\hat{p} - \pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}}
  \]</span></li>
 <li>Use the test statistic and the standard normal distribution to calculate the p-value.</li>
 <li>Make a conclusion based on the p-value, and write a conclusion in context, in plain language, and in terms of the alternative hypothesis.
@@ -1531,7 +1531,7 @@ for <span class="math inline">\(\pi\)</span> then takes the form
 <p><span class="math display">\[SD(\hat{p}) = \sqrt{\frac{\pi(1-\pi)}{n}}\]</span></p>
 <p>Note that we almost never know the true value of <span class="math inline">\(\pi\)</span>, but we can substitute our best guess of <span class="math inline">\(\pi\)</span> to obtain an approximate standard deviation, called the <strong>standard error</strong> of <span class="math inline">\(\hat{p}\)</span>:</p>
 <p><span class="math display">\[SD(\hat{p}) \approx \hspace{3mm} SE(\hat{p}) = \sqrt{\frac{(\mbox{best guess of }\pi)(1 - \mbox{best guess of }\pi)}{n}}\]</span></p>
-For hypothesis testing, we often use <span class="math inline">\(p_0\)</span> as the best guess of <span class="math inline">\(\pi\)</span>, as seen in Section <a href="inference-cat.html#theory-prop">5.3.3</a>. For confidence intervals, we typically use <span class="math inline">\(\hat{p}\)</span> as the best guess of <span class="math inline">\(\pi\)</span>.
+For hypothesis testing, we often use <span class="math inline">\(\pi_0\)</span> as the best guess of <span class="math inline">\(\pi\)</span>, as seen in Section <a href="inference-cat.html#theory-prop">5.3.3</a>. For confidence intervals, we typically use <span class="math inline">\(\hat{p}\)</span> as the best guess of <span class="math inline">\(\pi\)</span>.
 </div>
 <p></p>
 <!--
@@ -1561,7 +1561,7 @@ To understand how the sample proportion (<span class="math inline">\(\hat{p}\)</
 <p>A simple random sample of 826
 payday loan borrowers was surveyed to better
 understand their interests around regulation and costs.
-70% of the responses supported new
+51% of the responses supported new
 regulations on payday lenders.</p>
 <ol style="list-style-type: decimal">
 <li><p>Is it reasonable to model the variability of <span class="math inline">\(\hat{p}\)</span> from sample to sample
@@ -1582,37 +1582,37 @@ of <span class="math inline">\(\pi\)</span> when computing a confidence interval
 <span class="math display">\[\begin{align*}
 \text{Support: }
   n \hat{p} &amp;
-      = 826 \times 0.70
-  \approx 578
+      = 826 \times 0.51
+  \approx 421
 &amp;\text{Not: }
   n (1 - \hat{p}) &amp;
-    = 826 \times (1 - 0.70)
-  \approx 248
+    = 826 \times (1 - 0.51)
+  \approx 405
 \end{align*}\]</span>
 Since both values are at least 10, we can use the normal
 distribution to model the sampling distribution of <span class="math inline">\(\hat{p}\)</span>.</p></li>
 <li><p>Because <span class="math inline">\(\pi\)</span> is unknown and the standard error is for
 a confidence interval, use <span class="math inline">\(\hat{p}\)</span> as our best guess of <span class="math inline">\(\pi\)</span>
 in the formula.</p>
-<p><span class="math inline">\(SE = \sqrt{\frac{0.70 (1 - 0.70)}  {826}} = 0.016\)</span>.</p></li>
+<p><span class="math inline">\(SE = \sqrt{\frac{0.51 (1 - 0.51)}  {826}} = 0.017\)</span>.</p></li>
 <li><p>Using
-the point estimate <span class="math inline">\(0.70\)</span>,
+the point estimate <span class="math inline">\(0.51\)</span>,
 <span class="math inline">\(z^{\star} = 1.96\)</span> for a 95% confidence interval,
 and
-the standard error <span class="math inline">\(SE = 0.016\)</span> from the previous
+the standard error <span class="math inline">\(SE = 0.017\)</span> from the previous
 Guided Practice,
 the confidence interval is
 <span class="math display">\[\begin{eqnarray*}
   \text{point estimate} \ \pm\ z^{\star} \times SE
    \quad\to\quad
-   0.70 \ \pm\ 1.96 \times 0.016
+   0.51 \ \pm\ 1.96 \times 0.017
    \quad\to\quad
-   (0.669, 0.731)
+   (0.477, 0.543)
   \end{eqnarray*}\]</span>
 We are 95% confident that the true proportion of
 payday borrowers who supported regulation at the time
-of the poll was between 0.669 and
-0.731.</p>
+of the poll was between 0.477 and
+0.543.</p>
 </div></li>
 </ol>
 
@@ -1890,7 +1890,7 @@ or technique used to generate the interval or p-value
 change.</p>
 <p>When the success-failure condition isn’t met
 for a hypothesis test, we can simulate the null distribution
-of <span class="math inline">\(\hat{p}\)</span> using the null value, <span class="math inline">\(p_0\)</span>, as seen in Section <a href="inference-cat.html#one-prop-null-boot">5.3.1</a>. Unfortunately, methods for dealing with observations which are
+of <span class="math inline">\(\hat{p}\)</span> using the null value, <span class="math inline">\(\pi_0\)</span>, as seen in Section <a href="inference-cat.html#one-prop-null-boot">5.3.1</a>. Unfortunately, methods for dealing with observations which are
 not independent are outside the scope of this book.</p>
 <!-- ```{block2, type = "todo", echo=TRUE} -->
 <!-- Add tappers and listeners case study example from old Ch. 5 here. -->
@@ -3155,7 +3155,7 @@ SE reference above?
 -->
 
 <div class="tipbox">
-The success-failure condition listed above is only necessary for the sampling distribution of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> to be approximately normal. The mean of the sampling distribution of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> is <span class="math inline">\(\pi_1 - \pi_2\)</span>, and the standard deviation is <span class="math inline">\(\sqrt{\frac{\pi_1(1-\pi_1)}{n_1}+\frac{\pi_1(1-\pi_1)}{n_1}}\)</span>, regardless of the two sample sizes.
+The success-failure condition listed above is only necessary for the sampling distribution of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> to be approximately normal. The mean of the sampling distribution of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> is <span class="math inline">\(\pi_1 - \pi_2\)</span>, and the standard deviation is <span class="math inline">\(\sqrt{\frac{\pi_1(1-\pi_1)}{n_1}+\frac{\pi_2(1-\pi_2)}{n_2}}\)</span>, regardless of the two sample sizes.
 </div>
 <p>As in the case of one proportion, we typically don’t know the true proportions <span class="math inline">\(\pi_1\)</span> and <span class="math inline">\(\pi_2\)</span>,
 so we will substitute some value to check the success-failure condition
@@ -3861,7 +3861,7 @@ The <strong>power</strong> of a test is the probability of rejecting a false nul
 </div>
 
 <div class="example">
-<p>Suppose we would like to test whether less than 65% of a large population approves of a new law: <span class="math inline">\(H_0: \pi = 0.65\)</span> versus $H_A: &lt; 0.65. We collect a random sample of <span class="math inline">\(n = 200\)</span> individuals from this population. For what values of the sample proportion, <span class="math inline">\(\hat{p}\)</span>, would we reject <span class="math inline">\(H_0\)</span> using a significance level of <span class="math inline">\(\alpha = 0.05\)</span>?</p>
+<p>Suppose we would like to test whether less than 65% of a large population approves of a new law: <span class="math inline">\(H_0: \pi = 0.65\)</span> versus <span class="math inline">\(H_A: \pi &lt; 0.65\)</span>. We collect a random sample of <span class="math inline">\(n = 200\)</span> individuals from this population. For what values of the sample proportion, <span class="math inline">\(\hat{p}\)</span>, would we reject <span class="math inline">\(H_0\)</span> using a significance level of <span class="math inline">\(\alpha = 0.05\)</span>?</p>
 <hr />
 <p>Under the assumption of the null hypothesis, the standard deviation of <span class="math inline">\(\hat{p}\)</span> is <span class="math inline">\(\sqrt{0.65(1-0.65)/200} = 0.0337\)</span>. Thus, by the Central Limit Theorem, sample proportions vary according to an approximate normal distribution with mean 0.65 and standard deviation 0.0337. We will reject the null hypothesis that the true proportion is 0.65 if the sample proportion is so low that its probability is less than 0.05, shown in Figure <a href="inference-cat.html#fig:power-example">5.38</a>.</p>
 <p>To be precise, we will reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\hat{p}\)</span> is less than the 5th percentile of the null distribution: <code>qnorm(0.05, 0.65, 0.0337)</code> = 0.59.</p>
@@ -3875,7 +3875,7 @@ Figure 5.38: Shaded area on a null distribution where we would reject the null h
 <p>To calculate power, we need to know the true value of the parameter. In the previous example, the alternative was <span class="math inline">\(H_0: \pi &lt; 0.65\)</span>, so if we just say the alternative hypothesis is true, we still do not know the value of <span class="math inline">\(\pi\)</span>. Thus, power calculations are done for a specific value of the parameter, and the power changes if the value of the parameter changes.</p>
 
 <div class="example">
-<p>Consider again the test of whether less than 65% of a large population approves of a new law: <span class="math inline">\(H_0: \pi = 0.65\)</span> versus $H_A: &lt; 0.65. Suppose the population approval rate is actually <span class="math inline">\(\pi = 0.58\)</span>. What is the probability that we will detect this effect?</p>
+<p>Consider again the test of whether less than 65% of a large population approves of a new law: <span class="math inline">\(H_0: \pi = 0.65\)</span> versus <span class="math inline">\(H_A: \pi &lt; 0.65\)</span>. Suppose the population approval rate is actually <span class="math inline">\(\pi = 0.58\)</span>. What is the probability that we will detect this effect?</p>
 <hr />
 <p>This example asks us to calculate the power – the probability our test will provide evidence that <span class="math inline">\(\pi &lt; 0.65\)</span> when the true value of <span class="math inline">\(\pi\)</span> is 0.58. Recall from the previous example that we will reject the null if <span class="math inline">\(\hat{p} &lt; 0.59\)</span>. Thus, the power is the probability that <span class="math inline">\(\hat{p}\)</span> will be less than 0.59 when the true proportion is 0.58: <code>pnorm(0.59, 0.58, 0.0337)</code> = 0.62. There is only a 62% chance that the data we collect will provide strong enough evidence to conclude <span class="math inline">\(\pi &lt; 0.65\)</span>. This probability is represented by the red area in Figure <a href="inference-cat.html#fig:power-example-2">5.39</a>.</p>
 </div>
@@ -4019,9 +4019,9 @@ conditions
 </ul></li>
 <li>Compute the statistic of interest, the null standard error, and the degrees of freedom. For <span class="math inline">\(df\)</span>, use <span class="math inline">\(n-1\)</span> for one sample, and for two samples use either statistical software or the smaller of <span class="math inline">\(n_1 - 1\)</span> and <span class="math inline">\(n_2 - 1\)</span>.<br />
 </li>
-<li>Compute the T-score using the general formula:
+<li>Compute the Z-score using the general formula:
 <span class="math display">\[
- T = \frac{\mbox{statistic} - \mbox{null value}}{\mbox{null standard error}}
+ Z = \frac{\mbox{statistic} - \mbox{null value}}{\mbox{null standard error}}
  \]</span></li>
 <li>Use the statistical software to find the p-value using the standard normal distribution:
 <ul>

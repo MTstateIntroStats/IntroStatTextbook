@@ -1092,8 +1092,8 @@ To apply the normal distribution to model the null distribution, the independenc
 and success-failure conditions must be satisfied.
 In a hypothesis test, the success-failure condition is
 checked using the null proportion:
-we verify $np_0$ and $n(1-p_0)$ are at least 10,
-where $p_0$ is the null value.
+we verify $n\pi_0$ and $n(1-\pi_0)$ are at least 10,
+where $\pi_0$ is the null value.
 
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Do payday loan borrowers support a regulation
@@ -1125,9 +1125,9 @@ for a hypothesis test here?^[Independence holds since the poll
   With hypotheses already set up and conditions checked,
   we can move onto calculations.
   The standard error in the context of a one-proportion
-  hypothesis test is computed using the null value, $p_0$:
+  hypothesis test is computed using the null value, $\pi_0$:
   \begin{align*}
-  SE = \sqrt{\frac{p_0 (1 - p_0)}{n}}
+  SE = \sqrt{\frac{\pi_0 (1 - \pi_0)}{n}}
       = \sqrt{\frac{0.5 (1 - 0.5)}{826}}
       = 0.017
   \end{align*}
@@ -1168,9 +1168,9 @@ distribution, this standardized statistic is called $Z$, since it is the Z-score
   
 The **standardized statistic** for theory-based methods for one proportion is
 \[
-Z = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}
+Z = \frac{\hat{p} - \pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}}
 \]
-where $p_0$ is the null value. The denominator, $\sqrt{\frac{p_0(1-p_0)}{n}}$, is called the **null standard error** of the sample proportion.</div>\EndKnitrBlock{onebox}
+where $\pi_0$ is the null value. The denominator, $\sqrt{\frac{\pi_0(1-\pi_0)}{n}}$, is called the **null standard error** of the sample proportion.</div>\EndKnitrBlock{onebox}
 
 With the standardized statistic as our test statistic, we can find
 the p-value as the area under a standard normal distribution at or more extreme
@@ -1180,10 +1180,10 @@ than our observed $Z$ value.
 
 ---
   
-Our sample proportion is $\hat{p} = 0.51$. Since our null value is $p_0 = 0.50$,  
+Our sample proportion is $\hat{p} = 0.51$. Since our null value is $\pi_0 = 0.50$,  
 the null standard error is
   \begin{align*}
-  SE = \sqrt{\frac{p_0 (1 - p_0)}{n}}
+  SE = \sqrt{\frac{\pi_0 (1 - \pi_0)}{n}}
       = \sqrt{\frac{0.5 (1 - 0.5)}{826}}
       = 0.017
   \end{align*}
@@ -1210,10 +1210,10 @@ Shown in Figure \@ref(fig:paydayCC-stdnorm-pvalue), the p-value is the area abov
 \BeginKnitrBlock{onebox}<div class="onebox">**Theory-based hypothesis test for a proportion: one-sample $Z$-test.**
   
 1. Frame the research question in terms of hypotheses.
-2. Using the null value, $p_0$, verify the conditions for using the normal distribution to approximate the null distribution.
+2. Using the null value, $\pi_0$, verify the conditions for using the normal distribution to approximate the null distribution.
 3. Calculate the test statistic:
     \[
-    Z = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}
+    Z = \frac{\hat{p} - \pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}}
     \]
 4. Use the test statistic and the standard normal distribution to calculate the p-value.
 5. Make a conclusion based on the p-value, and write a conclusion in context, in plain language, and in terms of the alternative hypothesis.</div>\EndKnitrBlock{onebox}
@@ -1253,7 +1253,7 @@ Note that we almost never know the true value of $\pi$, but we can substitute ou
   
 $$SD(\hat{p}) \approx \hspace{3mm} SE(\hat{p}) = \sqrt{\frac{(\mbox{best guess of }\pi)(1 - \mbox{best guess of }\pi)}{n}}$$
   
-For hypothesis testing, we often use $p_0$ as the best guess of $\pi$, as seen in Section \@ref(theory-prop).  For confidence intervals, we typically use $\hat{p}$ as the best guess of $\pi$.</div>\EndKnitrBlock{onebox}
+For hypothesis testing, we often use $\pi_0$ as the best guess of $\pi$, as seen in Section \@ref(theory-prop).  For confidence intervals, we typically use $\hat{p}$ as the best guess of $\pi$.</div>\EndKnitrBlock{onebox}
 
 \index{data!Payday regulation poll|(}
 
@@ -1286,7 +1286,7 @@ $SE = \sqrt{\frac{2/3 (1 - 2/3)}
 A simple random sample of 826
     payday loan borrowers was surveyed to better
     understand their interests around regulation and costs.
-    70% of the responses supported new
+    51% of the responses supported new
     regulations on payday lenders.
 
   1. Is it reasonable to model the variability of $\hat{p}$ from sample to sample
@@ -1310,12 +1310,12 @@ A simple random sample of 826
     \begin{align*}
     \text{Support: }
       n \hat{p} &
-          = 826 \times 0.70
-      \approx 578
+          = 826 \times 0.51
+      \approx 421
     &\text{Not: }
       n (1 - \hat{p}) &
-        = 826 \times (1 - 0.70)
-      \approx 248
+        = 826 \times (1 - 0.51)
+      \approx 405
     \end{align*}
     Since both values are at least 10, we can use the normal
     distribution to model the sampling distribution of $\hat{p}$.
@@ -1324,28 +1324,28 @@ A simple random sample of 826
 a confidence interval, use $\hat{p}$ as our best guess of $\pi$
 in the formula.
 
-    $SE = \sqrt{\frac{0.70 (1 - 0.70)}
-        {826}} = 0.016$.
+    $SE = \sqrt{\frac{0.51 (1 - 0.51)}
+        {826}} = 0.017$.
 
 3.       
   Using
-  the point estimate $0.70$,
+  the point estimate $0.51$,
   $z^{\star} = 1.96$ for a 95% confidence interval,
   and
-  the standard error $SE = 0.016$ from the previous
+  the standard error $SE = 0.017$ from the previous
   Guided Practice,
   the confidence interval is
   \begin{eqnarray*}
   \text{point estimate} \ \pm\ z^{\star} \times SE
       \quad\to\quad
-      0.70 \ \pm\ 1.96 \times 0.016
+      0.51 \ \pm\ 1.96 \times 0.017
       \quad\to\quad
-      (0.669, 0.731)
+      (0.477, 0.543)
   \end{eqnarray*}
   We are 95% confident that the true proportion of
   payday borrowers who supported regulation at the time
-  of the poll was between 0.669 and
-  0.731.</div>\EndKnitrBlock{example}
+  of the poll was between 0.477 and
+  0.543.</div>\EndKnitrBlock{example}
 
 
 
@@ -1642,7 +1642,7 @@ change.
 
 When the success-failure condition isn't met
 for a hypothesis test, we can simulate the null distribution 
-of $\hat{p}$ using the null value, $p_0$, as seen in Section \@ref(one-prop-null-boot).  Unfortunately, methods for dealing with observations which are
+of $\hat{p}$ using the null value, $\pi_0$, as seen in Section \@ref(one-prop-null-boot).  Unfortunately, methods for dealing with observations which are
 not independent are outside the scope of this book.
 
 <!-- ```{block2, type = "todo", echo=TRUE} -->
@@ -2783,7 +2783,7 @@ The difference $\hat{p}_1 - \hat{p}_2$ can be modeled
 SE reference above?
     \label{seForDiffOfProp}
 -->
-\BeginKnitrBlock{tipbox}<div class="tipbox">The success-failure condition listed above is only necessary for the sampling distribution of $\hat{p}_1 - \hat{p}_2$ to be approximately normal. The mean of the sampling distribution of $\hat{p}_1 - \hat{p}_2$ is $\pi_1 - \pi_2$, and the standard deviation is $\sqrt{\frac{\pi_1(1-\pi_1)}{n_1}+\frac{\pi_1(1-\pi_1)}{n_1}}$, regardless of the two sample sizes.</div>\EndKnitrBlock{tipbox}
+\BeginKnitrBlock{tipbox}<div class="tipbox">The success-failure condition listed above is only necessary for the sampling distribution of $\hat{p}_1 - \hat{p}_2$ to be approximately normal. The mean of the sampling distribution of $\hat{p}_1 - \hat{p}_2$ is $\pi_1 - \pi_2$, and the standard deviation is $\sqrt{\frac{\pi_1(1-\pi_1)}{n_1}+\frac{\pi_2(1-\pi_2)}{n_2}}$, regardless of the two sample sizes.</div>\EndKnitrBlock{tipbox}
 
 
 
@@ -3493,7 +3493,7 @@ The probability of a correct decision when the alternative hypothesis is true, $
 
 The **power** of a test is the probability of rejecting a false null hypothesis.</div>\EndKnitrBlock{important}
 
-\BeginKnitrBlock{example}<div class="example">Suppose we would like to test whether less than 65% of a large population approves of a new law: $H_0: \pi = 0.65$ versus $H_A: \pi < 0.65. We collect a random sample of $n = 200$ individuals from this population. For what values of the sample proportion, $\hat{p}$, would we reject $H_0$ using a significance level of $\alpha = 0.05$?
+\BeginKnitrBlock{example}<div class="example">Suppose we would like to test whether less than 65% of a large population approves of a new law: $H_0: \pi = 0.65$ versus $H_A: \pi < 0.65$. We collect a random sample of $n = 200$ individuals from this population. For what values of the sample proportion, $\hat{p}$, would we reject $H_0$ using a significance level of $\alpha = 0.05$?
 
 ---
   
@@ -3509,7 +3509,7 @@ To be precise, we will reject $H_0$ if $\hat{p}$ is less than the 5th percentile
 
 To calculate power, we need to know the true value of the parameter. In the previous example, the alternative was $H_0: \pi < 0.65$, so if we just say the alternative hypothesis is true, we still do not know the value of $\pi$. Thus, power calculations are done for a specific value of the parameter, and the power changes if the value of the parameter changes.
 
-\BeginKnitrBlock{example}<div class="example">Consider again the test of whether less than 65% of a large population approves of a new law: $H_0: \pi = 0.65$ versus $H_A: \pi < 0.65. Suppose the population approval rate is actually $\pi = 0.58$. What is the probability that we will detect this effect?
+\BeginKnitrBlock{example}<div class="example">Consider again the test of whether less than 65% of a large population approves of a new law: $H_0: \pi = 0.65$ versus $H_A: \pi < 0.65$. Suppose the population approval rate is actually $\pi = 0.58$. What is the probability that we will detect this effect?
 
 ---
   
@@ -3603,9 +3603,9 @@ You will often hear the following two $z$-procedures referred to as a **one samp
    - For a difference of proportions: each sample must separately satisfy the one-sample conditions for the normal distribution, and the data in the groups must also be independent.  
 
 3. Compute the statistic of interest, the null standard error, and the degrees of freedom. For $df$, use $n-1$ for one sample, and for two samples use either statistical software or the smaller of $n_1 - 1$ and $n_2 - 1$.  
-4. Compute the T-score using the general formula:
+4. Compute the Z-score using the general formula:
     \[
-    T = \frac{\mbox{statistic} - \mbox{null value}}{\mbox{null standard error}}
+    Z = \frac{\mbox{statistic} - \mbox{null value}}{\mbox{null standard error}}
     \]
 5. Use the statistical software to find the p-value using the standard normal distribution:
     - Sign in $H_a$ is $<$: p-value = area below Z-score
