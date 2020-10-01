@@ -1764,7 +1764,7 @@ $SE = \sqrt{\frac{2/3 (1 - 2/3)}
 A simple random sample of 826
     payday loan borrowers was surveyed to better
     understand their interests around regulation and costs.
-    70% of the responses supported new
+    51% of the responses supported new
     regulations on payday lenders.
 
   1. Is it reasonable to model the variability of $\hat{p}$ from sample to sample
@@ -1788,12 +1788,12 @@ A simple random sample of 826
     \begin{align*}
     \text{Support: }
       n \hat{p} &
-          = 826 \times 0.70
-      \approx 578
+          = 826 \times 0.51
+      \approx 421
     &\text{Not: }
       n (1 - \hat{p}) &
-        = 826 \times (1 - 0.70)
-      \approx 248
+        = 826 \times (1 - 0.51)
+      \approx 405
     \end{align*}
     Since both values are at least 10, we can use the normal
     distribution to model the sampling distribution of $\hat{p}$.
@@ -1802,28 +1802,28 @@ A simple random sample of 826
 a confidence interval, use $\hat{p}$ as our best guess of $\pi$
 in the formula.
 
-    $SE = \sqrt{\frac{0.70 (1 - 0.70)}
-        {826}} = 0.016$.
+    $SE = \sqrt{\frac{0.51 (1 - 0.51)}
+        {826}} = 0.017$.
 
 3.       
   Using
-  the point estimate $0.70$,
+  the point estimate $0.51$,
   $z^{\star} = 1.96$ for a 95% confidence interval,
   and
-  the standard error $SE = 0.016$ from the previous
+  the standard error $SE = 0.017$ from the previous
   Guided Practice,
   the confidence interval is
   \begin{eqnarray*}
   \text{point estimate} \ \pm\ z^{\star} \times SE
       \quad\to\quad
-      0.70 \ \pm\ 1.96 \times 0.016
+      0.51 \ \pm\ 1.96 \times 0.017
       \quad\to\quad
-      (0.669, 0.731)
+      (0.477, 0.543)
   \end{eqnarray*}
   We are 95% confident that the true proportion of
   payday borrowers who supported regulation at the time
-  of the poll was between 0.669 and
-  0.731.
+  of the poll was between 0.477 and
+  0.543.
 ```
 
 
