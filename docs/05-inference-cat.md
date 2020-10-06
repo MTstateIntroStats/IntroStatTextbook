@@ -164,7 +164,7 @@ if this observed effect represents
 an actual effect in the population, or whether it was simply due to
 chance. 
 We label these two competing claims, $H_0$ and $H_A$,
-which are spoken as "H-nought" and "H_A"
+which are spoken as "H-naught" and "H_A"
   
 The **null hypothesis ($H_0$)** often represents either a skeptical perspective or a claim to be tested. The **alternative hypothesis ($H_A$)** represents an alternative claim under consideration and is often represented by a range of possible values for the parameter of interest. </div>\EndKnitrBlock{onebox}
 
@@ -1124,10 +1124,10 @@ for a hypothesis test here?^[Independence holds since the poll
       
   With hypotheses already set up and conditions checked,
   we can move onto calculations.
-  The standard error in the context of a one-proportion
+  The **null standard error** in the context of a one-proportion
   hypothesis test is computed using the null value, $\pi_0$:
   \begin{align*}
-  SE = \sqrt{\frac{\pi_0 (1 - \pi_0)}{n}}
+  SE_0 = \sqrt{\frac{\pi_0 (1 - \pi_0)}{n}}
       = \sqrt{\frac{0.5 (1 - 0.5)}{826}}
       = 0.017
   \end{align*}
@@ -1161,16 +1161,16 @@ the original statistic as our test statistic. A standardized statistic is comput
 \[
 \mbox{standardized statistic} = \frac{\mbox{observed statistic} - \mbox{null value}}{\mbox{null standard error}}
 \]
-The **null standard error** of the observed statistic is its estimated standard deviation assuming the null hypothesis is true. We can interpret the standardized statistic as _the number of standard errors our observed statistic is above (if positive) or below (if negative) the null value_. When we are modeling the null distribution with a normal
+The **null standard error** ($SE_0$) of the observed statistic is its estimated standard deviation assuming the null hypothesis is true. We can interpret the standardized statistic as _the number of standard errors our observed statistic is above (if positive) or below (if negative) the null value_. When we are modeling the null distribution with a normal
 distribution, this standardized statistic is called $Z$, since it is the Z-score of the sample proportion.
 
 \BeginKnitrBlock{onebox}<div class="onebox">**Standardized sample proportion.**
   
 The **standardized statistic** for theory-based methods for one proportion is
 \[
-Z = \frac{\hat{p} - \pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}}
+Z = \frac{\hat{p} - \pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}} = \frac{\hat{p} - \pi_0}{SE_0}
 \]
-where $\pi_0$ is the null value. The denominator, $\sqrt{\frac{\pi_0(1-\pi_0)}{n}}$, is called the **null standard error** of the sample proportion.</div>\EndKnitrBlock{onebox}
+where $\pi_0$ is the null value. The denominator, $SE_0 = \sqrt{\frac{\pi_0(1-\pi_0)}{n}}$, is called the **null standard error** of the sample proportion.</div>\EndKnitrBlock{onebox}
 
 With the standardized statistic as our test statistic, we can find
 the p-value as the area under a standard normal distribution at or more extreme
@@ -1183,7 +1183,7 @@ than our observed $Z$ value.
 Our sample proportion is $\hat{p} = 0.51$. Since our null value is $\pi_0 = 0.50$,  
 the null standard error is
   \begin{align*}
-  SE = \sqrt{\frac{\pi_0 (1 - \pi_0)}{n}}
+  SE_0 = \sqrt{\frac{\pi_0 (1 - \pi_0)}{n}}
       = \sqrt{\frac{0.5 (1 - 0.5)}{826}}
       = 0.017
   \end{align*}
@@ -1213,7 +1213,7 @@ Shown in Figure \@ref(fig:paydayCC-stdnorm-pvalue), the p-value is the area abov
 2. Using the null value, $\pi_0$, verify the conditions for using the normal distribution to approximate the null distribution.
 3. Calculate the test statistic:
     \[
-    Z = \frac{\hat{p} - \pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}}
+    Z = \frac{\hat{p} - \pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}} = \frac{\hat{p} - \pi_0}{SE_0}
     \]
 4. Use the test statistic and the standard normal distribution to calculate the p-value.
 5. Make a conclusion based on the p-value, and write a conclusion in context, in plain language, and in terms of the alternative hypothesis.</div>\EndKnitrBlock{onebox}
@@ -3171,10 +3171,10 @@ condition^[For an example of a two-proportion
 
 \BeginKnitrBlock{onebox}<div class="onebox">**Standard error of the difference in two proportions, $\hat{p}_1 -\hat{p}_2$: hypothesis tests.**
   
-When conducting a theory-based hypothesis test for $H_0: \pi_1 - \pi_2 = 0$, we substitute the **pooled sample proportion**, $\hat{p}_{pool}$ in for both $\pi_1$ and $\pi_2$ in the expression for the standard deviation of the statistic, resulting in its standard error:
+Since we assume $\pi_1 = \pi_2$ when we conduct a theory-based hypothesis test for $H_0: \pi_1 - \pi_2 = 0$, we substitute the **pooled sample proportion**, $\hat{p}_{pool}$ in for both $\pi_1$ and $\pi_2$ in the expression for the standard deviation of the statistic, resulting in its **null standard error**:
 
 \begin{eqnarray*}
-  SE(\hat{p}_1 -\hat{p}_2) = \sqrt{\frac{\hat{p}_{pool}(1-\hat{p}_{pool})}{n_1} + \frac{\hat{p}_{pool}(1-\hat{p}_{pool})}{n_2}} = \sqrt{\hat{p}_{pool}(1-\hat{p}_{pool})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}
+  SE_0(\hat{p}_1 -\hat{p}_2) = \sqrt{\frac{\hat{p}_{pool}(1-\hat{p}_{pool})}{n_1} + \frac{\hat{p}_{pool}(1-\hat{p}_{pool})}{n_2}} = \sqrt{\hat{p}_{pool}(1-\hat{p}_{pool})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}
   \end{eqnarray*}
 
 This is the standard error formula we will use when computing the test statistic for a hypothesis test of $H_0: \pi_1 - \pi_2 = 0$.</div>\EndKnitrBlock{onebox}
@@ -3204,7 +3204,7 @@ This is the standard error formula we will use when computing the test statistic
   Next, the standard error of $\hat{p}_{mgm} - \hat{p}_{ctrl}$ is calculated
   _using the pooled proportion_, $\hat{p}_{\textit{pool}}$:
 \begin{align*}
-SE = \sqrt{
+SE_0 = \sqrt{
       \frac{\hat{p}_{\textit{pool}}(1-\hat{p}_{\textit{pool}})}
           {n_{mgm}}
       + \frac{\hat{p}_{\textit{pool}}(1-\hat{p}_{\textit{pool}})}
@@ -3577,12 +3577,12 @@ You will often hear the following two $z$-procedures referred to as a **one samp
    <td style="text-align:left;"> diff in props: $\hat{p}_1 - \hat{p}_2$ </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> null standard error </td>
+   <td style="text-align:left;"> null standard error ($SE_0$) </td>
    <td style="text-align:left;"> $\sqrt{\frac{\pi_0(1-\pi_0)}{n}}$ </td>
    <td style="text-align:left;"> $\sqrt{\hat{p}_{pool}(1-\hat{p}_{pool})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}$ </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> standard error </td>
+   <td style="text-align:left;"> standard error ($SE$) </td>
    <td style="text-align:left;"> $\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$ </td>
    <td style="text-align:left;"> $\sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}$ </td>
   </tr>
@@ -3605,7 +3605,7 @@ You will often hear the following two $z$-procedures referred to as a **one samp
 3. Compute the statistic of interest, the null standard error, and the degrees of freedom. For $df$, use $n-1$ for one sample, and for two samples use either statistical software or the smaller of $n_1 - 1$ and $n_2 - 1$.  
 4. Compute the Z-score using the general formula:
     \[
-    Z = \frac{\mbox{statistic} - \mbox{null value}}{\mbox{null standard error}}
+    Z = \frac{\mbox{statistic} - \mbox{null value}}{\mbox{null standard error}} = \frac{\mbox{statistic} - \mbox{null value}}{SE_0}
     \]
 5. Use the statistical software to find the p-value using the standard normal distribution:
     - Sign in $H_a$ is $<$: p-value = area below Z-score
@@ -4027,21 +4027,21 @@ However you should be able to easily spot them as **bolded text**.
   </tr>
   <tr>
    <td style="text-align:left;"> confidence interval </td>
-   <td style="text-align:left;"> one-sided hypothesis test </td>
+   <td style="text-align:left;"> one sample $z$-test </td>
    <td style="text-align:left;"> SE interval </td>
    <td style="text-align:left;"> test statistic </td>
   </tr>
   <tr>
    <td style="text-align:left;"> confidence level </td>
-   <td style="text-align:left;"> one sample $z$-test </td>
+   <td style="text-align:left;"> one-sided hypothesis test </td>
    <td style="text-align:left;"> simulation </td>
-   <td style="text-align:left;"> two-sided hypothesis test </td>
+   <td style="text-align:left;"> two sample $z$-test </td>
   </tr>
   <tr>
    <td style="text-align:left;"> confirmation bias </td>
    <td style="text-align:left;"> p-value </td>
    <td style="text-align:left;"> standard error </td>
-   <td style="text-align:left;"> two sample $z$-test </td>
+   <td style="text-align:left;"> two-sided hypothesis test </td>
   </tr>
   <tr>
    <td style="text-align:left;"> hypothesis test </td>

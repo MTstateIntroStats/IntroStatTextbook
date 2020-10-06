@@ -204,7 +204,7 @@ if this observed effect represents
 an actual effect in the population, or whether it was simply due to
 chance. 
 We label these two competing claims, $H_0$ and $H_A$,
-which are spoken as "H-nought" and "H_A"
+which are spoken as "H-naught" and "H_A"
   
 The **null hypothesis ($H_0$)** often represents either a skeptical perspective or a claim to be tested. The **alternative hypothesis ($H_A$)** represents an alternative claim under consideration and is often represented by a range of possible values for the parameter of interest. 
 ```
@@ -1590,10 +1590,10 @@ Continuing the previous Example,
       
   With hypotheses already set up and conditions checked,
   we can move onto calculations.
-  The standard error in the context of a one-proportion
+  The **null standard error** in the context of a one-proportion
   hypothesis test is computed using the null value, $\pi_0$:
   \begin{align*}
-  SE = \sqrt{\frac{\pi_0 (1 - \pi_0)}{n}}
+  SE_0 = \sqrt{\frac{\pi_0 (1 - \pi_0)}{n}}
       = \sqrt{\frac{0.5 (1 - 0.5)}{826}}
       = 0.017
   \end{align*}
@@ -1628,7 +1628,7 @@ the original statistic as our test statistic. A standardized statistic is comput
 \[
 \mbox{standardized statistic} = \frac{\mbox{observed statistic} - \mbox{null value}}{\mbox{null standard error}}
 \]
-The **null standard error** of the observed statistic is its estimated standard deviation assuming the null hypothesis is true. We can interpret the standardized statistic as _the number of standard errors our observed statistic is above (if positive) or below (if negative) the null value_. When we are modeling the null distribution with a normal
+The **null standard error** ($SE_0$) of the observed statistic is its estimated standard deviation assuming the null hypothesis is true. We can interpret the standardized statistic as _the number of standard errors our observed statistic is above (if positive) or below (if negative) the null value_. When we are modeling the null distribution with a normal
 distribution, this standardized statistic is called $Z$, since it is the Z-score of the sample proportion.
 
 ```{block2, type = "onebox", echo = TRUE}
@@ -1636,9 +1636,9 @@ distribution, this standardized statistic is called $Z$, since it is the Z-score
   
 The **standardized statistic** for theory-based methods for one proportion is
 \[
-Z = \frac{\hat{p} - \pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}}
+Z = \frac{\hat{p} - \pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}} = \frac{\hat{p} - \pi_0}{SE_0}
 \]
-where $\pi_0$ is the null value. The denominator, $\sqrt{\frac{\pi_0(1-\pi_0)}{n}}$, is called the **null standard error** of the sample proportion.
+where $\pi_0$ is the null value. The denominator, $SE_0 = \sqrt{\frac{\pi_0(1-\pi_0)}{n}}$, is called the **null standard error** of the sample proportion.
 ```
 
 With the standardized statistic as our test statistic, we can find
@@ -1653,7 +1653,7 @@ Do payday loan borrowers support a regulation that would require lenders to pull
 Our sample proportion is $\hat{p} = 0.51$. Since our null value is $\pi_0 = 0.50$,  
 the null standard error is
   \begin{align*}
-  SE = \sqrt{\frac{\pi_0 (1 - \pi_0)}{n}}
+  SE_0 = \sqrt{\frac{\pi_0 (1 - \pi_0)}{n}}
       = \sqrt{\frac{0.5 (1 - 0.5)}{826}}
       = 0.017
   \end{align*}
@@ -1685,7 +1685,7 @@ normTail(0, 1, U = 0.57, col = COL[1], xlab =
 2. Using the null value, $\pi_0$, verify the conditions for using the normal distribution to approximate the null distribution.
 3. Calculate the test statistic:
     \[
-    Z = \frac{\hat{p} - \pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}}
+    Z = \frac{\hat{p} - \pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}} = \frac{\hat{p} - \pi_0}{SE_0}
     \]
 4. Use the test statistic and the standard normal distribution to calculate the p-value.
 5. Make a conclusion based on the p-value, and write a conclusion in context, in plain language, and in terms of the alternative hypothesis.
@@ -3921,10 +3921,10 @@ condition^[For an example of a two-proportion
 ```{block2, type = "onebox", echo = TRUE}
 **Standard error of the difference in two proportions, $\hat{p}_1 -\hat{p}_2$: hypothesis tests.**
   
-When conducting a theory-based hypothesis test for $H_0: \pi_1 - \pi_2 = 0$, we substitute the **pooled sample proportion**, $\hat{p}_{pool}$ in for both $\pi_1$ and $\pi_2$ in the expression for the standard deviation of the statistic, resulting in its standard error:
+Since we assume $\pi_1 = \pi_2$ when we conduct a theory-based hypothesis test for $H_0: \pi_1 - \pi_2 = 0$, we substitute the **pooled sample proportion**, $\hat{p}_{pool}$ in for both $\pi_1$ and $\pi_2$ in the expression for the standard deviation of the statistic, resulting in its **null standard error**:
 
 \begin{eqnarray*}
-  SE(\hat{p}_1 -\hat{p}_2) = \sqrt{\frac{\hat{p}_{pool}(1-\hat{p}_{pool})}{n_1} + \frac{\hat{p}_{pool}(1-\hat{p}_{pool})}{n_2}} = \sqrt{\hat{p}_{pool}(1-\hat{p}_{pool})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}
+  SE_0(\hat{p}_1 -\hat{p}_2) = \sqrt{\frac{\hat{p}_{pool}(1-\hat{p}_{pool})}{n_1} + \frac{\hat{p}_{pool}(1-\hat{p}_{pool})}{n_2}} = \sqrt{\hat{p}_{pool}(1-\hat{p}_{pool})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}
   \end{eqnarray*}
 
 This is the standard error formula we will use when computing the test statistic for a hypothesis test of $H_0: \pi_1 - \pi_2 = 0$.
@@ -3956,7 +3956,7 @@ Compute the point estimate of the difference
   Next, the standard error of $\hat{p}_{mgm} - \hat{p}_{ctrl}$ is calculated
   _using the pooled proportion_, $\hat{p}_{\textit{pool}}$:
 \begin{align*}
-SE = \sqrt{
+SE_0 = \sqrt{
       \frac{\hat{p}_{\textit{pool}}(1-\hat{p}_{\textit{pool}})}
           {n_{mgm}}
       + \frac{\hat{p}_{\textit{pool}}(1-\hat{p}_{\textit{pool}})}
@@ -4342,9 +4342,9 @@ zsim_table <- tribble(
 
 "statistic of interest", "proportion: $\\hat{p}$", "diff in props: $\\hat{p}_1 - \\hat{p}_2$",
 
-"null standard error", "$\\sqrt{\\frac{\\pi_0(1-\\pi_0)}{n}}$", "$\\sqrt{\\hat{p}_{pool}(1-\\hat{p}_{pool})\\left(\\frac{1}{n_1} + \\frac{1}{n_2}\\right)}$",
+"null standard error ($SE_0$)", "$\\sqrt{\\frac{\\pi_0(1-\\pi_0)}{n}}$", "$\\sqrt{\\hat{p}_{pool}(1-\\hat{p}_{pool})\\left(\\frac{1}{n_1} + \\frac{1}{n_2}\\right)}$",
 
-"standard error", "$\\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}}$", "$\\sqrt{\\frac{\\hat{p}_1(1-\\hat{p}_1)}{n_1} + \\frac{\\hat{p}_2(1-\\hat{p}_2)}{n_2}}$",
+"standard error ($SE$)", "$\\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}}$", "$\\sqrt{\\frac{\\hat{p}_1(1-\\hat{p}_1)}{n_1} + \\frac{\\hat{p}_2(1-\\hat{p}_2)}{n_2}}$",
 
 "conditions", "1. independence, 2. large samples (at least 10 successes and 10 failures)", "1. independence, 2. large samples (at least 10 successes and 10 failures in each sample)"
 )
@@ -4366,7 +4366,7 @@ zsim_table %>%
 3. Compute the statistic of interest, the null standard error, and the degrees of freedom. For $df$, use $n-1$ for one sample, and for two samples use either statistical software or the smaller of $n_1 - 1$ and $n_2 - 1$.  
 4. Compute the Z-score using the general formula:
     \[
-    Z = \frac{\mbox{statistic} - \mbox{null value}}{\mbox{null standard error}}
+    Z = \frac{\mbox{statistic} - \mbox{null value}}{\mbox{null standard error}} = \frac{\mbox{statistic} - \mbox{null value}}{SE_0}
     \]
 5. Use the statistical software to find the p-value using the standard normal distribution:
     - Sign in $H_a$ is $<$: p-value = area below Z-score
