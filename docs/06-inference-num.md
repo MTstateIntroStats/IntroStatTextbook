@@ -1162,7 +1162,7 @@ That is, the 99% bootstrap SE interval gives potential for UCLA to be lower, on 
 
 
 
-### Mathematical model
+### Mathematical model {#paired-mean-math}
 
 Thinking about the differences as a single observation on an observational unit changes the paired setting into the one-sample setting.
 The mathematical model for the one-sample case is covered in Section \@ref(one-mean-math).
@@ -2209,6 +2209,161 @@ So far in this chapter, we have seen the $t$-distribution applied as the appropr
 - `t.test`
 </div>\EndKnitrBlock{todo}
 
+**Simulation-based inference for paired mean difference** Simulation-based inference for quantitative data will use functions in the `catstats` package, as we did for categorical data.  
+
+
+```r
+library(catstats)
+```
+
+The `catstats` functions for paired data assume that the values for the two groups are in separate columns in a data frame.  We'll work through an example using the tire wear data, which is currently stored in "long format", with one variable for brand and another for tread depth.  First, we'll convert it to "wide format", with a column for each brand. 
+
+```r
+tiresWide <- tires %>% 
+  select(brand, tread, car) %>%   #select only ID, group, and outcome vars
+  pivot_wider(names_from = brand,   #name of variable for group
+              values_from = tread)  #name of variable for outcome
+tiresWide <- as.data.frame(tiresWide)
+```
+
+Once we have this format, all the paired data functions in `catstats` should be able to handle the data.  First, we can get a look at the pairs of observations:
+
+```r
+paired_observed_plot(tiresWide)
+```
+
+<img src="06-inference-num_files/figure-html/observedPlotPaired-1.png" width="70%" style="display: block; margin: auto;" />
+
+This gives us an idea of the distributions within groups and the differences within pairs. To perform the hypothesis test for a difference in tread depth after 1000 miles, we use the `paired_test()` function:
+
+```r
+paired_test(
+  data = tiresWide,  #data frame with observed values in groups
+  shift = -0.002,  #amount to shift differences to bootstrap null distribution
+  direction = "two-sided",  #Direction of hypothesis test
+  as_extreme_as = 0.002, #Observed statistic
+  number_repetitions = 1000,  #number of bootstrap draws for null distribution
+  which_first = 1  #Which column is first in order of subtraction: 1 or 2?
+)
+```
+
+Note that `data` could also be a vector of differences.  If this is all you have, you can do hypothesis testing and generate a confidence interval, but won't be able to use `paired_observed_plot()`.  Now let's take a look at the output of the function:
+
+
+```r
+set.seed(1054)
+paired_test(
+  data = tiresWide,  #data frame with observed values in groups
+  shift = -0.002,  #amount to shift differences to bootstrap null distribution
+  direction = "two-sided",  #Direction of hypothesis test
+  as_extreme_as = 0.002, #Observed statistic
+  number_repetitions = 1000,  #number of bootstrap draws for null distribution
+  which_first = 1  #Which column is first in order of subtraction: 1 or 2?
+)
+```
+
+<img src="06-inference-num_files/figure-html/pairedSimTest-1.png" width="70%" style="display: block; margin: auto;" />
+
+This figure displays the bootstrapped null distribution, with the mean and standard deviation of the draws in the upper right corner. We want to see that the mean is close to the null value (almost always zero).  If it isn't, check the value of the `shift` input, and/or increase the `number_repetitions` if the shift is correct.
+
+The red lines give the cutoffs based on the observed statistic, and values as or more extreme are colored red.  If you are doing a one-sided test, there will only be one line.  The caption of the figure gives the number and proportion of bootstrapped mean differences that are as or more extreme than the observed statistic.  In this case, 20 out of 1000, for a p-value of 0.02.
+
+Finally, we will want to generate a confidence interval for the true mean difference using the `paired_bootstrap_CI()` function.
+
+```r
+set.seed(2374)
+paired_bootstrap_CI(
+  data = tiresWide,   #Wide-form data set or vector of differences
+  number_repetitions = 1000,   #number of draws for bootstrap distribution
+  confidence_level = 0.99,  #Confidence level as a proportion
+  which_first = 1  #Order of subtraction: 1st or 2nd set of values come first?
+)
+```
+
+<img src="06-inference-num_files/figure-html/pairedBootstrapCI-1.png" width="70%" style="display: block; margin: auto;" />
+
+Here we again have a bootstrap distribution, but now it is the bootstrap distribution of the mean difference itself, rather than a bootstrapped null distribution for the mean difference.  We've requested a 99% confidence interval, so the relevant percentiles of the bootstrap distribution are highlighted, and the interval itself is given in the caption.  In this case, we are 99% confident that the true mean difference in tire tread is between 0 and 0.004 inches greater for Brand A.
+
+**Theory-based inference for paired mean difference** To implement theory-based inference for a paired mean difference in `R`, we use the `t.test()` function.  As an example, we'll use the textbook cost data from Section \@ref(paired-data).  There are two ways to put in paired data for a t-test using `t.test()`.  First, we could have the prices of the two groups in two separate variables (in this case, `bookstore_new` and `amazon_new`): 
+
+
+```r
+t.test(x = ucla_textbooks_f18$bookstore_new, #Outcomes for one of each pair
+       y = ucla_textbooks_f18$amazon_new,  #Outcomes for other of each pair
+       paired = TRUE,  #Tell it to do a paired t-test!!
+       alternative = "two.sided",  #Direction of alternative 
+       conf.level = 0.95  #confidence level for interval as a proportion
+)
+```
+
+Important things to note here:
+
+* You must include `paired = TRUE` in your options, or it will do a two-sample t-test.
+* As with categorical data in Chapter \@ref(inference-cat), if you have a one-sided alternative, you will need to re-run the `t.test()` with a two-sided alternative to get the correct confidence interval
+
+Now let's take a look at the output of the call:
+
+```r
+t.test(x = ucla_textbooks_f18$bookstore_new, #Outcomes for first in order of subtraction
+       y = ucla_textbooks_f18$amazon_new,  #Outcomes for second in order of subtraction
+       paired = TRUE,  #Tell it to do a paired t-test!!
+       alternative = "two.sided",  #Direction of alternative 
+       conf.level = 0.95  #confidence level for interval as a proportion
+)
+#> 
+#> 	Paired t-test
+#> 
+#> data:  ucla_textbooks_f18$bookstore_new and ucla_textbooks_f18$amazon_new
+#> t = 2, df = 67, p-value = 0.03
+#> alternative hypothesis: true difference in means is not equal to 0
+#> 95 percent confidence interval:
+#>  0.334 6.832
+#> sample estimates:
+#> mean of the differences 
+#>                    3.58
+```
+
+The output tells you right on top that this is a paired test - if it doesn't, check that you have `paired = TRUE` in your function call.  The next line gives the t-statistic of 2.2012, the degrees of freedom df = 67, and the p-value of 0.03117 (You can look back at Section \@ref(paired-mean-math) to see that these are the same values obtained in the example).  We also get the confidence interval; since we had a two-sided alternative, we get the correct interval for the true mean difference in price of \$0.33 to \$6.83 greater cost from the UCLA bookstore.  The point estimate for the mean difference is the final entry: on average, new bookstore books cost $3.58 more than the same books new from Amazon.
+
+You might also have a single variable in your dataset that contains the differences within pairs: we will create this for the textbook data in a variable called `price_diff`.  This format is also usable with the `t.test()` function:
+
+```r
+ucla_textbooks_f18 %>% 
+  mutate(price_diff = bookstore_new-amazon_new)
+
+t.test(x = ucla_textbooks_f18$price_diff,   #variable with differences
+       alternative = "two.sided",  #direction of alternative hypothesis
+       conf.level = 0.95)  #confidence level as a proportion
+```
+
+This requires two fewer arguments:
+
+* No `y` input, since the differences are contained in a single variable
+* No `paired = TRUE`, since we have already accounted for the pairing by taking the differences.
+
+The output for this will look almost identical to the two-variable version above:
+
+```r
+ucla_textbooks_f18 <- ucla_textbooks_f18 %>% 
+  mutate(price_diff = bookstore_new-amazon_new)
+
+t.test(x = ucla_textbooks_f18$price_diff,   #variable with differences
+       alternative = "two.sided",  #direction of alternative hypothesis
+       conf.level = 0.95)  #confidence level as a proportion
+#> 
+#> 	One Sample t-test
+#> 
+#> data:  ucla_textbooks_f18$price_diff
+#> t = 2, df = 67, p-value = 0.03
+#> alternative hypothesis: true mean is not equal to 0
+#> 95 percent confidence interval:
+#>  0.334 6.832
+#> sample estimates:
+#> mean of x 
+#>      3.58
+```
+
+Since we only input one variable, `t.test()` treats it as a one-sample t-test, but note that this works just fine: the t-statistic, df, p-value, confidence interval, and estimated mean are all the same as when we put in the two groups separately and indicated they were paired.
 
 ### Interactive R tutorials
 
@@ -2272,13 +2427,13 @@ However you should be able to easily spot them as **bolded text**.
   <tr>
    <td style="text-align:left;"> Central Limit Theorem </td>
    <td style="text-align:left;"> paired $t$-test </td>
-   <td style="text-align:left;"> T score </td>
+   <td style="text-align:left;"> t-distribution </td>
    <td style="text-align:left;">  </td>
   </tr>
   <tr>
    <td style="text-align:left;"> degrees of freedom </td>
    <td style="text-align:left;"> paired data </td>
-   <td style="text-align:left;"> t-distribution </td>
+   <td style="text-align:left;"> T score </td>
    <td style="text-align:left;">  </td>
   </tr>
 </tbody>
