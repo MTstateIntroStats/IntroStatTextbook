@@ -3901,6 +3901,40 @@ Figure 5.39: The blue distribution is the distribution of sample proportions if 
 </div>
 <div id="statistical-significance-versus-practical-importance" class="section level3" number="5.5.4">
 <h3><span class="header-section-number">5.5.4</span> Statistical Significance versus Practical Importance</h3>
+
+<div class="example">
+<p>An Austrian study of heights of 507,125 military recruits reported that men born in spring were statistically significantly taller than men born in the fall (p-value &lt; 0.0001). A confidence interval for the true difference in mean height between men born in spring and men born in fall was (0.598, 0.602) cm. Is this result practically important?</p>
+<hr />
+<p>No, these results don’t mean much in this context – a difference in average height of around 0.6 cm would not even be noticeable by the human eye! Just because a result is statistically significant does not mean that it is necessarily practically important – meaningful in the context of the problem.</p>
+</div>
+<p>In the previous example, we saw two groups of men that differed in average height, and that difference was <strong>statistically significant</strong> – that is, the observed difference in sample means of 0.6 cm is very unlikely to occur <em>if the true difference in average height was zero</em>. But, a difference of 0.6 cm in height is not meaningful – not <strong>practically important</strong>.</p>
+<p>Why did this happen? Recall that the variability in sample statistics decreases as the sample size increases. For example, unknown to you, suppose a slight majority of a population, say 50.5%, support a new ballot measure. You want to test <span class="math inline">\(H_0: \pi = 0.50\)</span> versus <span class="math inline">\(H_0: \pi &gt; 0.50\)</span> for this population. Since the true proportion is not exactly 0.50, you can make your p-value smaller than any given significance level as long as you choose a large enough sample size!</p>
+<p>Figure <a href="inference-cat.html#fig:stat-signif">5.40</a> displays this scenario. The distribution of possible sample proportions who support the new ballot measure in samples of size <span class="math inline">\(n = 100,000\)</span> when 50.5% of the population supports the measure is represented by the black normal curve. The dotted red normal curve is the null distribution of sample proportions for <span class="math inline">\(H_0: \pi = 0.5\)</span>. There is very little overlap between the two distributions due to the very large sample size. The shaded blue area represents the power of the test of <span class="math inline">\(H_0: \pi = 0.5\)</span> versus <span class="math inline">\(H_a: \pi &gt; 0.5\)</span> when <span class="math inline">\(\alpha = 0.05\)</span> – 0.885! That is, we have an 88.5% chance that our p-value will be less than 0.05, even though the true proportion is only 0.05 above 0.5!</p>
+<div class="figure" style="text-align: center"><span id="fig:stat-signif"></span>
+<img src="05-inference-cat_files/figure-html/stat-signif-1.png" alt="Black curve: sampling distribution of sample proportions from samples of size 100,000 when the true proportion is 0.505. Red curve: null distribution of sample proportions for a null value of 0.50." width="100%" />
+<p class="caption">
+Figure 5.40: Black curve: sampling distribution of sample proportions from samples of size 100,000 when the true proportion is 0.505. Red curve: null distribution of sample proportions for a null value of 0.50.
+</p>
+</div>
+<!-- Someday - annotate these plots better -->
+
+<div class="guidedpractice">
+If p-values can be made arbitrarily small with large sample sizes, what might tend to happen with small sample sizes? Would small sample sizes be more likely to give practically important results that are not statistically significant? or statistically significant results that are not practically important?<a href="#fn139" class="footnote-ref" id="fnref139"><sup>139</sup></a>
+</div>
+<p>Consider the opposite scenario – small sample sizes with a meaningful difference. Suppose again that you would like to determine if a majority of a population support a new ballot measure. However, you only have the time and money to survey 20 people in the community. Unknown to you, 65% of the population support the measure.</p>
+<p>Examine Figure <a href="inference-cat.html#fig:prac-signif">5.41</a>. The distribution of possible sample proportions who support the new ballot measure in samples of size <span class="math inline">\(n = 20\)</span> when 65% of the population supports the measure is represented by the black normal curve. The dotted red normal curve is the null distribution of sample proportions for <span class="math inline">\(H_0: \pi = 0.5\)</span>. Even though 0.65 is quite a bit higher than 0.50, there is still a lot of overlap between the two distributions due to the small sample size. The shaded blue area represents the power of the test of <span class="math inline">\(H_0: \pi = 0.5\)</span> versus <span class="math inline">\(H_a: \pi &gt; 0.5\)</span> when <span class="math inline">\(\alpha = 0.05\)</span> – only 0.29! That is, even though 65% of the population supports the measure (much higher than 50%), we only have a 29% chance of detecting that difference with our small sample size.</p>
+<div class="figure" style="text-align: center"><span id="fig:prac-signif"></span>
+<img src="05-inference-cat_files/figure-html/prac-signif-1.png" alt="Black curve: approximate sampling distribution of sample proportions from samples of size 20 when the true proportion is 0.65. Red curve: approximate null distribution of sample proportions for a null value of 0.50." width="100%" />
+<p class="caption">
+Figure 5.41: Black curve: approximate sampling distribution of sample proportions from samples of size 20 when the true proportion is 0.65. Red curve: approximate null distribution of sample proportions for a null value of 0.50.
+</p>
+</div>
+
+<div class="onebox">
+<p><strong>Statistical significance versus practical importance.</strong></p>
+<p><em>For large sample sizes, results may be statistically significant, but not practically important.</em> Since sample statistics vary very little among samples with large sample sizes, it is easy for a hypothesis test to result in a very small p-value, even if the observed effect is practically meaningless.</p>
+<em>For small sample sizes, results may be practically important, but not statistically significant.</em> Since studies with small sample sizes tend to have very low power, it is difficult for a hypothesis test to result in a very small p-value, even if the observed effect is quite large.
+</div>
 </div>
 </div>
 <div id="summary-of-z-procedures" class="section level2" number="5.6">
@@ -4320,7 +4354,7 @@ null distribution
 pooled proportion
 </td>
 <td style="text-align:left;">
-statistically significant
+statistical inference
 </td>
 </tr>
 <tr>
@@ -4331,10 +4365,10 @@ bootstrapping
 null hypothesis
 </td>
 <td style="text-align:left;">
-randomization
+practical importance
 </td>
 <td style="text-align:left;">
-success
+statistical significance
 </td>
 </tr>
 <tr>
@@ -4345,10 +4379,10 @@ Central Limit Theorem
 null value
 </td>
 <td style="text-align:left;">
-sampling distribution
+randomization
 </td>
 <td style="text-align:left;">
-success-failure condition
+statistically significant
 </td>
 </tr>
 <tr>
@@ -4359,10 +4393,10 @@ confidence interval
 one sample <span class="math inline">\(z\)</span>-test
 </td>
 <td style="text-align:left;">
-SE interval
+sampling distribution
 </td>
 <td style="text-align:left;">
-test statistic
+success
 </td>
 </tr>
 <tr>
@@ -4373,10 +4407,10 @@ confidence level
 one-sided hypothesis test
 </td>
 <td style="text-align:left;">
-simulation
+SE interval
 </td>
 <td style="text-align:left;">
-two sample <span class="math inline">\(z\)</span>-test
+success-failure condition
 </td>
 </tr>
 <tr>
@@ -4387,10 +4421,10 @@ confirmation bias
 p-value
 </td>
 <td style="text-align:left;">
-standard error
+simulation
 </td>
 <td style="text-align:left;">
-two-sided hypothesis test
+test statistic
 </td>
 </tr>
 <tr>
@@ -4401,10 +4435,10 @@ hypothesis test
 parameter
 </td>
 <td style="text-align:left;">
-standard error for difference in proportions
+standard error
 </td>
 <td style="text-align:left;">
-Type 1 Error
+two sample <span class="math inline">\(z\)</span>-test
 </td>
 </tr>
 <tr>
@@ -4415,10 +4449,10 @@ margin of error
 percentile
 </td>
 <td style="text-align:left;">
-standard error of single proportion
+standard error for difference in proportions
 </td>
 <td style="text-align:left;">
-Type 2 Error
+two-sided hypothesis test
 </td>
 </tr>
 <tr>
@@ -4429,10 +4463,10 @@ normal curve
 percentile interval
 </td>
 <td style="text-align:left;">
-standard normal distribution
+standard error of single proportion
 </td>
 <td style="text-align:left;">
-Z-score
+Type 1 Error
 </td>
 </tr>
 <tr>
@@ -4443,9 +4477,10 @@ normal distribution
 permutation test
 </td>
 <td style="text-align:left;">
-statistic
+standard normal distribution
 </td>
 <td style="text-align:left;">
+Type 2 Error
 </td>
 </tr>
 <tr>
@@ -4456,9 +4491,10 @@ normal model
 point estimate
 </td>
 <td style="text-align:left;">
-statistical inference
+statistic
 </td>
 <td style="text-align:left;">
+Z-score
 </td>
 </tr>
 </tbody>
@@ -4624,6 +4660,7 @@ success-failure condition to be met, see
 Section <a href="inference-cat.html#two-prop-errors">5.4.1</a>.<a href="inference-cat.html#fnref136" class="footnote-back">↩︎</a></p></li>
 <li id="fn137"><p>Making a Type 1 Error in this context would mean that reminding students that money not spent now can be spent later does not affect their buying habits, despite the strong evidence (the data suggesting otherwise) found in the experiment. Notice that this does <em>not</em> necessarily mean something was wrong with the data or that we made a computational mistake. Sometimes data simply point us to the wrong conclusion, which is why scientific studies are often repeated to check initial findings.<a href="inference-cat.html#fnref137" class="footnote-back">↩︎</a></p></li>
 <li id="fn138"><p>To lower the Type 2 Error rate, we want to convict more guilty people. We could lower the standards for conviction from “beyond a reasonable doubt” to “beyond a little doubt”. Lowering the bar for guilt will also result in more wrongful convictions, raising the Type 1 Error rate.<a href="inference-cat.html#fnref138" class="footnote-back">↩︎</a></p></li>
+<li id="fn139"><p>Since hypothesis tests with small sample sizes typically have low power, small sample sizes can result in practically important results that are not statistically significant.<a href="inference-cat.html#fnref139" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

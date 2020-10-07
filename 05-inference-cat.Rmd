@@ -4320,6 +4320,75 @@ include_graphics("05/images/Whalberg.png")
 
 ### Statistical Significance versus Practical Importance
 
+```{block2, type="example", echo=TRUE}
+An Austrian study of heights of 507,125 military recruits reported that men born in spring were statistically significantly taller than men born in the fall (p-value < 0.0001). A confidence interval for the true difference in mean height between men born in spring and men born in fall was (0.598, 0.602) cm. Is this result practically important?
+
+---
+
+No, these results don't mean much in this context -- a difference in average height of around 0.6 cm would not even be noticeable by the human eye! Just because a result is statistically significant does not mean that it is necessarily practically important -- meaningful in the context of the problem.
+
+```
+
+```{r include=FALSE}
+terms_chp_5 <- c(terms_chp_5, "practical importance", "statistical significance")
+```
+
+In the previous example, we saw two groups of men that differed in average height, and that difference was **statistically significant** -- that is, the observed difference in sample means of 0.6 cm is very unlikely to occur _if the true difference in average height was zero_. But, a difference of 0.6 cm in height is not meaningful -- not **practically important**.
+
+Why did this happen? Recall that the variability in sample statistics decreases as the sample size increases. For example, unknown to you, suppose a slight majority of a population, say 50.5%, support a new ballot measure. You want to test $H_0: \pi = 0.50$ versus $H_0: \pi > 0.50$ for this population. Since the true proportion is not exactly 0.50, you can make your p-value smaller than any given significance level as long as you choose a large enough sample size! 
+
+Figure \@ref(fig:stat-signif) displays this scenario. The distribution of possible sample proportions who support the new ballot measure in samples of size $n = 100,000$ when 50.5% of the population supports the measure is represented by the black normal curve. The dotted red normal curve is the null distribution of sample proportions for $H_0: \pi = 0.5$. There is very little overlap between the two distributions due to the very large sample size. The shaded blue area represents the power of the test of $H_0: \pi = 0.5$ versus $H_a: \pi > 0.5$ when $\alpha = 0.05$ -- 0.885! That is, we have an 88.5% chance that our p-value will be less than 0.05, even though the true proportion is only 0.05 above 0.5!
+
+```{r stat-signif, out.width="100%", fig.cap = "Black curve: sampling distribution of sample proportions from samples of size 100,000 when the true proportion is 0.505. Red curve: null distribution of sample proportions for a null value of 0.50." }
+n <- 100000
+m <- 0.505
+s <- sqrt(m*(1-m)/n)
+drawnormal(m = m, s = s, 
+           xlabel = "Sample proportion",
+           shade = TRUE, six.sigma = FALSE, 
+           cex.axis=1.2,cex.lab=1.3, from = 0.49, to = 0.52,
+           x = qnorm(.975, 0.5, s), dir = "upper")
+curve(dnorm(x, 0.5, s), add=TRUE, lty=2, col = "red")
+
+text(x = 0.515, y = 100, paste("power = ", round(pnorm(qnorm(.975, 0.5, s), 0.505, s,lower.tail=FALSE),3)), col = "blue", cex = 1.2)
+```
+
+<!-- Someday - annotate these plots better -->
+
+
+```{block2, type="guidedpractice", echo=TRUE}
+If p-values can be made arbitrarily small with large sample sizes, what might tend to happen with small sample sizes? Would small sample sizes be more likely to give practically important results that are not statistically significant? or statistically significant results that are not practically important?^[Since hypothesis tests with small sample sizes typically have low power, small sample sizes can result in practically important results that are not statistically significant.]
+```
+
+Consider the opposite scenario -- small sample sizes with a meaningful difference. Suppose again that you would like to determine if a majority of a population support a new ballot measure. However, you only have the time and money to survey 20 people in the community. Unknown to you, 65% of the population support the measure.
+
+Examine Figure \@ref(fig:prac-signif). The distribution of possible sample proportions who support the new ballot measure in samples of size $n = 20$ when 65% of the population supports the measure is represented by the black normal curve. The dotted red normal curve is the null distribution of sample proportions for $H_0: \pi = 0.5$. Even though 0.65 is quite a bit higher than 0.50, there is still a lot of overlap between the two distributions due to the small sample size. The shaded blue area represents the power of the test of $H_0: \pi = 0.5$ versus $H_a: \pi > 0.5$ when $\alpha = 0.05$ -- only 0.29! That is, even though 65% of the population supports the measure (much higher than 50%), we only have a 29% chance of detecting that difference with our small sample size.
+
+```{r prac-signif, out.width="100%", fig.cap = "Black curve: approximate sampling distribution of sample proportions from samples of size 20 when the true proportion is 0.65. Red curve: approximate null distribution of sample proportions for a null value of 0.50." }
+n <- 20
+m <- 0.65
+s <- sqrt(m*(1-m)/n)
+drawnormal(m = m, s = s, 
+           xlabel = "Sample proportion",
+           shade = TRUE, six.sigma = FALSE, 
+           cex.axis=1.2,cex.lab=1.3, from = 0, to = 1,
+           x = qnorm(.975, 0.5, s), dir = "upper")
+curve(dnorm(x, 0.5, s), add=TRUE, lty=2, col = "red")
+
+text(x = 0.2, y = 3, paste("power = ", round(pnorm(qnorm(.975, 0.5, s), 0.65, s,lower.tail=FALSE),3)), col = "blue", cex = 1.2)
+```
+
+
+```{block2, type="onebox", echo=TRUE}
+**Statistical significance versus practical importance.**
+
+_For large sample sizes, results may be statistically significant, but not practically important._ Since sample statistics vary very little among samples with large sample sizes, it is easy for a hypothesis test to result in a very small p-value, even if the observed effect is practically meaningless.
+
+_For small sample sizes, results may be practically important, but not statistically significant._ Since studies with small sample sizes tend to have very low power, it is difficult for a hypothesis test to result in a very small p-value, even if the observed effect is quite large.
+```
+
+
+
 ## Summary of Z-procedures
 
 So far in this chapter, we have seen the normal distribution applied as the appropriate mathematical model in two distinct settings.  Although the two data structures are different, their similarities and differences are worth pointing out.  We provide Table \@ref(tab:zcompare) partly as a mechanism for understanding $z$-procedures and partly to highlight the extremely common usage of the normal distribution in practice.
