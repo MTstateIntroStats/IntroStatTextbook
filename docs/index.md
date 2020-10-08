@@ -1,7 +1,7 @@
 --- 
 title: "Montana State Introductory Statistics with R"
 author: "Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager"
-date: "2020-10-07"
+date: "2020-10-08"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -22,7 +22,7 @@ We hope readers will take away three ideas from this book in addition to forming
 3. Data are messy, and statistical tools are imperfect. However, when you understand the strengths and weaknesses of these tools, you can use them to learn interesting things about the world.
 
 
-## Textbook overview {#overview}
+## Textbook overview {-}
 
 This textbook accompanies the curriculum for STAT 216: Introduction to Statistics at Montana State University. The syllabus and other course information can be found
 on the [course webpage](https://math.montana.edu/courses/s216/index.html). Detailed learning outcomes for the course can be found [here](https://github.com/MTstateIntroStats/IntroStatTextbook/blob/master/learning_outcomes.md).
@@ -38,7 +38,7 @@ on the [course webpage](https://math.montana.edu/courses/s216/index.html). Detai
 9. **Case studies.** A series of case studies assigned weekly in this course.
 
 
-## Statistical computing {#computing}
+## Statistical computing {.unnumbered #stat-computing}
 
 STAT 216 and this textbook use [`R`](https://www.r-project.org/) and [RStudio](https://rstudio.com/products/rstudio/) for statistical computing. In particular, we use
 the [`tidyverse`](https://www.tidyverse.org/) collection of packages designed for doing data science.
