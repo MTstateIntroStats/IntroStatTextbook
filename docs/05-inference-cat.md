@@ -3794,7 +3794,7 @@ prop.table(data_tbl,  #Feed in your two-way table
 
 #### Simulation-based inference for one proportion {-}
 
-For simulation-based inference, we will use functions included in the `catstats` package, created for MSU Statistics courses. See the [Statistical computing](stat-computing) section at the beginning of this textbook for instructions on how to install `catstats` if you haven't already.  If the package is installed, you can load it into an `R` session to make the functions available using the `library()` function:
+For simulation-based inference, we will use functions included in the `catstats` package, created for MSU Statistics courses. See the [Statistical computing](#stat-computing) section at the beginning of this textbook for instructions on how to install `catstats` if you haven't already.  If the package is installed, you can load it into an `R` session to make the functions available using the `library()` function:
 
 
 ```r
