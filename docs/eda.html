@@ -24,7 +24,7 @@
 <meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager" />
 
 
-<meta name="date" content="2020-10-08" />
+<meta name="date" content="2020-10-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -233,8 +233,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="eda.html"><a href="eda.html#chp2-review"><i class="fa fa-check"></i><b>2.5</b> Chapter 2 review</a>
 <ul>
-<li class="chapter" data-level="2.5.1" data-path="eda.html"><a href="eda.html#notation-summary"><i class="fa fa-check"></i><b>2.5.1</b> Notation summary</a></li>
-<li class="chapter" data-level="2.5.2" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>2.5.2</b> Terms</a></li>
+<li class="chapter" data-level="2.5.1" data-path="eda.html"><a href="eda.html#data-visualization-summary"><i class="fa fa-check"></i><b>2.5.1</b> Data visualization summary</a></li>
+<li class="chapter" data-level="2.5.2" data-path="eda.html"><a href="eda.html#summary-measures"><i class="fa fa-check"></i><b>2.5.2</b> Summary measures</a></li>
+<li class="chapter" data-level="2.5.3" data-path="eda.html"><a href="eda.html#notation-summary"><i class="fa fa-check"></i><b>2.5.3</b> Notation summary</a></li>
+<li class="chapter" data-level="2.5.4" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>2.5.4</b> Terms</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="cor-reg.html"><a href="cor-reg.html"><i class="fa fa-check"></i><b>3</b> Correlation and regression</a>
@@ -2459,6 +2461,8 @@ All you need is your browser to get started!</p>
 <div id="chp2-review" class="section level2" number="2.5">
 <h2><span class="header-section-number">2.5</span> Chapter 2 review</h2>
 <p>We’re encountered a variety of univariate (one variable) and bivariate (two variable) summary statistics and data visualization methods in this chapter.</p>
+<div id="data-visualization-summary" class="section level3" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Data visualization summary</h3>
 <p>Figure <a href="eda.html#fig:decision-tree-plots">2.25</a> presents a decision tree for deciding which type of plot is most appropriate for a given number and types of variables. In the next chapter, we’ll further explore how to model the association between two quantitative variables, called regression. In Chapter <a href="mult-reg.html#mult-reg">4</a>, we’ll look at exploratory data analysis methods for more than two variables.</p>
 <div class="figure" style="text-align: center"><span id="fig:decision-tree-plots"></span>
 <img src="02-eda_files/figure-html/decision-tree-plots-1.png" alt="Decision tree for determining an appropriate plot  given a number of variables and their types." width="70%" />
@@ -2481,8 +2485,120 @@ Figure 2.25: Decision tree for determining an appropriate plot given a number of
 <!--     color = pal[c(1:9,4,5,5,6,6,6,6,7,7,8,9,9)], -->
 <!--     size = 4#, repel = TRUE -->
 <!--     )  -->
-<div id="notation-summary" class="section level3" number="2.5.1">
-<h3><span class="header-section-number">2.5.1</span> Notation summary</h3>
+</div>
+<div id="summary-measures" class="section level3" number="2.5.2">
+<h3><span class="header-section-number">2.5.2</span> Summary measures</h3>
+<p>Though some of these summary measures will be covered in later chapters, Table <a href="eda.html#summary-measures">2.5.2</a> provides a comprehensive summary of these measures according to the type(s) of variable(s) which they summarize.</p>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:summary-measures">Table 2.12: </span>Summary measures for different types of variables covered in this textbook and Sections where they appear. A binary variable is a categorical variable with only two categories.
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Sections
+</th>
+<th style="text-align:left;">
+Response Variable
+</th>
+<th style="text-align:left;">
+Explanatory Variable
+</th>
+<th style="text-align:left;">
+Summary Measure(s)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+2.1, 5.3
+</td>
+<td style="text-align:left;">
+Binary
+</td>
+<td style="text-align:left;">
+(None)
+</td>
+<td style="text-align:left;">
+One proportion
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2.1, 5.4
+</td>
+<td style="text-align:left;">
+Binary
+</td>
+<td style="text-align:left;">
+Binary
+</td>
+<td style="text-align:left;">
+Difference in proportions, relative risk
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2.3, 6.1
+</td>
+<td style="text-align:left;">
+Quantitative
+</td>
+<td style="text-align:left;">
+(None)
+</td>
+<td style="text-align:left;">
+One mean
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2.3, 6.2
+</td>
+<td style="text-align:left;">
+Quantitative
+</td>
+<td style="text-align:left;">
+Binary (Paired)
+</td>
+<td style="text-align:left;">
+Mean difference
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2.3, 6.3
+</td>
+<td style="text-align:left;">
+Quantitative
+</td>
+<td style="text-align:left;">
+Binary (Independent)
+</td>
+<td style="text-align:left;">
+Difference in means
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2.3, 7.1
+</td>
+<td style="text-align:left;">
+Quantitative
+</td>
+<td style="text-align:left;">
+Quantitative
+</td>
+<td style="text-align:left;">
+Correlation, R-squared, regression slope
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="notation-summary" class="section level3" number="2.5.3">
+<h3><span class="header-section-number">2.5.3</span> Notation summary</h3>
 <p>In the field of statistics, summary measures that summarize a sample of data are called <strong>statistics</strong>. Numbers that summarize an entire population <strong>parameters</strong>. You can remember
 this distinction by looking at the first letter of each term:</p>
 <blockquote>
@@ -2521,14 +2637,19 @@ this distinction by looking at the first letter of each term:</p>
 </tr>
 <tr class="odd">
 <td align="left">Regression line slope</td>
-<td align="center"><span class="math inline">\(b\)</span></td>
-<td align="center"><span class="math inline">\(\beta\)</span></td>
+<td align="center"><span class="math inline">\(b_1\)</span></td>
+<td align="center"><span class="math inline">\(\beta_1\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">Regression line <span class="math inline">\(y\)</span>-intercept</td>
+<td align="center"><span class="math inline">\(b_0\)</span></td>
+<td align="center"><span class="math inline">\(\beta_0\)</span></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="terms" class="section level3" number="2.5.2">
-<h3><span class="header-section-number">2.5.2</span> Terms</h3>
+<div id="terms" class="section level3" number="2.5.4">
+<h3><span class="header-section-number">2.5.4</span> Terms</h3>
 <p>We introduced the following terms in the chapter.
 If you’re not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
 We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate.

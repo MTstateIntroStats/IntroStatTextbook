@@ -1445,6 +1445,8 @@ Further apply the concepts you've learned in this chapter in R with computationa
 
 We're encountered a variety of univariate (one variable) and bivariate (two variable) summary statistics and data visualization methods in this chapter.
 
+### Data visualization summary
+
 Figure \@ref(fig:decision-tree-plots) presents a decision tree for deciding which type of plot is most appropriate for a given number and types of variables. In the next chapter, we'll further explore how to model the association between two quantitative variables, called regression. In Chapter \@ref(mult-reg), we'll look at exploratory data analysis methods for more than two variables.
 
 <div class="figure" style="text-align: center">
@@ -1468,6 +1470,62 @@ Figure \@ref(fig:decision-tree-plots) presents a decision tree for deciding whic
 <!--     size = 4#, repel = TRUE -->
 <!--     )  -->
 
+### Summary measures
+
+Though some of these summary measures will be covered in later chapters, Table \@ref(summary-measures) provides a comprehensive summary of these measures according to the type(s) of variable(s) which they summarize.
+
+
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>(\#tab:summary-measures)Summary measures for different types of variables covered in this textbook and Sections where they appear. A binary variable is a categorical variable with only two categories.</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Sections </th>
+   <th style="text-align:left;"> Response Variable </th>
+   <th style="text-align:left;"> Explanatory Variable </th>
+   <th style="text-align:left;"> Summary Measure(s) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 2.1, 5.3 </td>
+   <td style="text-align:left;"> Binary </td>
+   <td style="text-align:left;"> (None) </td>
+   <td style="text-align:left;"> One proportion </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2.1, 5.4 </td>
+   <td style="text-align:left;"> Binary </td>
+   <td style="text-align:left;"> Binary </td>
+   <td style="text-align:left;"> Difference in proportions, relative risk </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2.3, 6.1 </td>
+   <td style="text-align:left;"> Quantitative </td>
+   <td style="text-align:left;"> (None) </td>
+   <td style="text-align:left;"> One mean </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2.3, 6.2 </td>
+   <td style="text-align:left;"> Quantitative </td>
+   <td style="text-align:left;"> Binary (Paired) </td>
+   <td style="text-align:left;"> Mean difference </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2.3, 6.3 </td>
+   <td style="text-align:left;"> Quantitative </td>
+   <td style="text-align:left;"> Binary (Independent) </td>
+   <td style="text-align:left;"> Difference in means </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2.3, 7.1 </td>
+   <td style="text-align:left;"> Quantitative </td>
+   <td style="text-align:left;"> Quantitative </td>
+   <td style="text-align:left;"> Correlation, R-squared, regression slope </td>
+  </tr>
+</tbody>
+</table>
+
+
 ### Notation summary
 
 In the field of statistics, summary measures that summarize a sample of data are called **statistics**\index{statistic}. Numbers that summarize an entire population **parameters**\index{parameter}. You can remember
@@ -1485,7 +1543,8 @@ We typically use Roman letters to symbolize statistics (e.g., $\bar{x}$, $\hat{p
 |Proportion   |$\hat{p}$|$\pi$|
 |Mean   |$\bar{x}$|$\mu$|
 |Correlation   |$r$|$\rho$|
-|Regression line slope   |$b$|$\beta$|
+|Regression line slope   |$b_1$|$\beta_1$|
+|Regression line $y$-intercept   |$b_0$|$\beta_0$|
 
 ### Terms
 

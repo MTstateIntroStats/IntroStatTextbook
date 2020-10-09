@@ -1650,6 +1650,8 @@ Further apply the concepts you've learned in this chapter in R with computationa
 
 We're encountered a variety of univariate (one variable) and bivariate (two variable) summary statistics and data visualization methods in this chapter.
 
+### Data visualization summary
+
 Figure \@ref(fig:decision-tree-plots) presents a decision tree for deciding which type of plot is most appropriate for a given number and types of variables. In the next chapter, we'll further explore how to model the association between two quantitative variables, called regression. In Chapter \@ref(mult-reg), we'll look at exploratory data analysis methods for more than two variables.
 
 ```{r decision-tree-plots, fig.cap="Decision tree for determining an appropriate plot  given a number of variables and their types.", fig.fullwidth=TRUE}
@@ -1659,7 +1661,7 @@ data <- data.frame(
   level1 = "Resp",
   level2 = c(rep("Quan0",7), rep("Cat0",5)),
   level3 = c(rep(c("None","Cat","Quant"),c(1,2,4)),
-             rep(c("None2","Cat2","Quant2"),c(2,1,2))),
+             rep(c("None2","Cat2","Quant2"),c(2,2,1))),
   level4 = paste0("plot_", letters[1:12])
 )
 
@@ -1687,7 +1689,7 @@ ggraph(mygraph, layout = 'dendrogram', circular = FALSE) +
                   "Smoothed scatterplot", "Segmented bar plot", 
                   "Mosaic plot", "Bar plot")),
     label.padding = unit(0.3, "lines"),
-    color = pal[c(1:9,4,5,5,6,6,6,6,7,7,8,9,9)],
+    color = pal[c(1:9,4,5,5,6,6,6,6,7,7,8,8,9)],
     size = c(4,rep(3.5,20)),
     fontface = c("bold",rep("plain",20)),
     nudge_x = c(rep(.5,9),rep(0,12)),
@@ -1718,6 +1720,29 @@ ggraph(mygraph, layout = 'dendrogram', circular = FALSE) +
 <!--     size = 4#, repel = TRUE -->
 <!--     )  -->
 
+### Summary measures
+
+Though some of these summary measures will be covered in later chapters, Table \@ref(summary-measures) provides a comprehensive summary of these measures according to the type(s) of variable(s) which they summarize.
+
+
+```{r summary-measures}
+temptbl <- tribble(
+ ~variable, ~col1, ~col2, ~col3,
+ "2.1, 5.3", "Binary", "(None)", "One proportion",
+ "2.1, 5.4", "Binary", "Binary", "Difference in proportions, relative risk",
+ "2.3, 6.1", "Quantitative", "(None)", "One mean",
+ "2.3, 6.2", "Quantitative", "Binary (Paired)", "Mean difference",
+ "2.3, 6.3", "Quantitative", "Binary (Independent)", "Difference in means",
+ "2.3, 7.1", "Quantitative", "Quantitative", "Correlation, R-squared, regression slope"
+)
+
+temptbl %>%
+ kable(caption = "Summary measures for different types of variables covered in this textbook and Sections where they appear. A binary variable is a categorical variable with only two categories.",
+  col.names = c("Sections", "Response Variable", "Explanatory Variable", "Summary Measure(s)")) %>%
+ kable_styling() 
+```
+
+
 ### Notation summary
 
 In the field of statistics, summary measures that summarize a sample of data are called **statistics**\index{statistic}. Numbers that summarize an entire population **parameters**\index{parameter}. You can remember
@@ -1735,7 +1760,8 @@ We typically use Roman letters to symbolize statistics (e.g., $\bar{x}$, $\hat{p
 |Proportion   |$\hat{p}$|$\pi$|
 |Mean   |$\bar{x}$|$\mu$|
 |Correlation   |$r$|$\rho$|
-|Regression line slope   |$b$|$\beta$|
+|Regression line slope   |$b_1$|$\beta_1$|
+|Regression line $y$-intercept   |$b_0$|$\beta_0$|
 
 ### Terms
 
