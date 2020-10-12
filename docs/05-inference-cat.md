@@ -920,7 +920,7 @@ No! Though our decision was to fail to reject the null hypothesis, this does not
 
 In the medical consultant case study, the parameter is $\pi$, the true probability of a complication for a client of the medical consultant.
 There is no reason to believe that $\pi$ is exactly $\hat{p} = 3/62$, but there is also no reason to believe that $\pi$ is particularly far from $\hat{p} = 3/62$.
-By sampling with replacement from the data set (a process called **bootstrapping**\index{bootstrapping}), the variability of the possible $\hat{p}$ values can be approximated, which will allow us to generate a range of plausible values for $\pi$, i.e., a confidence interval. 
+By sampling with replacement from the data set (a process called **bootstrapping**\index{bootstrapping}),^[If you're curious where the term "bootstrapping" comes from, it comes from the phrase "lift yourself up by your own bootstraps." Lifting yourself up by your own bootstraps is analogous to creating more samples from the single original sample.] the variability of the possible $\hat{p}$ values can be approximated, which will allow us to generate a range of plausible values for $\pi$, i.e., a confidence interval. 
 
 
 
@@ -955,7 +955,7 @@ However, there is a physical and computational model which produces an equivalen
 Consider the observed data to be a bag of marbles 3 of which are red and 4 of which are white.  By drawing the marbles out of the bag _with replacement_, we depict the same sampling **process** as was done with the infinitely large estimated population.
 Note that when sampling the original observations with replacement, a particular marble may end up in the new sample one time, multiple times, or not at all.  
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Bootstrapping^[If you're curious where the term "bootstrapping" comes from, it comes from the phrase "lift yourself up by your own bootstraps." Lifting yourself up by your own bootstraps is analogous to creating more samples from the single original sample.] from one sample**.
+\BeginKnitrBlock{onebox}<div class="onebox">**Bootstrapping from one sample**.
 
 1. Take a random sample of size $n$ from the original sample, _with replacement_. This is called a **bootstrapped resample**.
 2. Record the sample proportion (or statistic of interest) from the boostrapped resample. This is called a **bootstrapped statistic**.
@@ -978,6 +978,18 @@ The variability in the bootstrapped proportions leads us to believe that the tru
 <p class="caption">(\#fig:MedConsBSSim)The original medical consultant data is bootstrapped 10,000 times. Each simulation creates a sample from the original data where the probability of a complication is $\hat{p} = 3/62$. The bootstrap 2.5 percentile proportion is 0 and the 97.5 percentile is 0.113. The result is: we are confident that, in the population, the true probability of a complication is between 0% and 11.3%.</p>
 </div>
 
+\BeginKnitrBlock{onebox}<div class="onebox">**95% Bootstrap confidence interval for a population proportion $\pi$.**
+
+The 95% bootstrap confidence interval for the parameter $\pi$ can be obtained directly using the ordered values $\hat{p}_{boot}$ values --- the bootstrapped sample proportions. Consider the sorted $\hat{p}_{boot}$ values, and let $\hat{p}_{boot, 0.025}$ be the 2.5^th^ percentile value and $\hat{p}_{boot, 0.025}$ be the 97.5^th^ percentile. The 95% confidence interval is given by:
+<center>
+($\hat{p}_{boot, 0.025}$, $\hat{p}_{boot, 0.975}$)
+</center></div>\EndKnitrBlock{onebox}
+
+
+You can find confidence intervals of difference confidence levels by changing the percent of the distribution you take, e.g., locate the middle 90% of the bootstrapped statistics for a 90% confidence interval.
+
+
+\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">To find the middle 90% of a distribution, which two percentiles would form its boundaries?^[The the middle 95% of a distribution would range from the 5^th^ percentile (the value with 5% of the distribution below) to the 95^th^ percentile (the value with 5% of the distribution above).]</div>\EndKnitrBlock{guidedpractice}
 
 \BeginKnitrBlock{example}<div class="example">The original claim was that the consultant's true rate of complication was under the national rate of 10%. Does the interval estimate of 0 to 11.3% for the true probability of complication indicate that the surgical consultant has a lower rate of complications than the national average?
 Explain.
@@ -2302,7 +2314,7 @@ In terms of relative risk, our null and alternative hypotheses are
 **Independence model** $H_0: \dfrac{\pi_{Vac}}{\pi_{Pla}} = 1$
 <br>
 
-**Alternative model** $H_a: \dfrac{\pi_{Vac}}{\pi_{Pla}} < 1$
+**Alternative model** $H_A: \dfrac{\pi_{Vac}}{\pi_{Pla}} < 1$
 
 \BeginKnitrBlock{tipbox}<div class="tipbox">Whether we write our hypotheses in terms of a difference in proportions or
 a ratio of proportions (relative risk), the hypotheses still have the same interpretation.
@@ -3551,7 +3563,7 @@ In the previous example, we saw two groups of men that differed in average heigh
 
 Why did this happen? Recall that the variability in sample statistics decreases as the sample size increases. For example, unknown to you, suppose a slight majority of a population, say 50.5%, support a new ballot measure. You want to test $H_0: \pi = 0.50$ versus $H_0: \pi > 0.50$ for this population. Since the true proportion is not exactly 0.50, you can make your p-value smaller than any given significance level as long as you choose a large enough sample size! 
 
-Figure \@ref(fig:stat-signif) displays this scenario. The distribution of possible sample proportions who support the new ballot measure in samples of size $n = 100,000$ when 50.5% of the population supports the measure is represented by the black normal curve. The dotted red normal curve is the null distribution of sample proportions for $H_0: \pi = 0.5$. There is very little overlap between the two distributions due to the very large sample size. The shaded blue area represents the power of the test of $H_0: \pi = 0.5$ versus $H_a: \pi > 0.5$ when $\alpha = 0.05$ -- 0.885! That is, we have an 88.5% chance that our p-value will be less than 0.05, even though the true proportion is only 0.05 above 0.5!
+Figure \@ref(fig:stat-signif) displays this scenario. The distribution of possible sample proportions who support the new ballot measure in samples of size $n = 100,000$ when 50.5% of the population supports the measure is represented by the black normal curve. The dotted red normal curve is the null distribution of sample proportions for $H_0: \pi = 0.5$. There is very little overlap between the two distributions due to the very large sample size. The shaded blue area represents the power of the test of $H_0: \pi = 0.5$ versus $H_A: \pi > 0.5$ when $\alpha = 0.05$ -- 0.885! That is, we have an 88.5% chance that our p-value will be less than 0.05, even though the true proportion is only 0.05 above 0.5!
 
 <div class="figure" style="text-align: center">
 <img src="05-inference-cat_files/figure-html/stat-signif-1.png" alt="Black curve: sampling distribution of sample proportions from samples of size 100,000 when the true proportion is 0.505. Red curve: null distribution of sample proportions for a null value of 0.50." width="100%" />
@@ -3565,7 +3577,7 @@ Figure \@ref(fig:stat-signif) displays this scenario. The distribution of possib
 
 Consider the opposite scenario -- small sample sizes with a meaningful difference. Suppose again that you would like to determine if a majority of a population support a new ballot measure. However, you only have the time and money to survey 20 people in the community. Unknown to you, 65% of the population support the measure.
 
-Examine Figure \@ref(fig:prac-signif). The distribution of possible sample proportions who support the new ballot measure in samples of size $n = 20$ when 65% of the population supports the measure is represented by the black normal curve. The dotted red normal curve is the null distribution of sample proportions for $H_0: \pi = 0.5$. Even though 0.65 is quite a bit higher than 0.50, there is still a lot of overlap between the two distributions due to the small sample size. The shaded blue area represents the power of the test of $H_0: \pi = 0.5$ versus $H_a: \pi > 0.5$ when $\alpha = 0.05$ -- only 0.29! That is, even though 65% of the population supports the measure (much higher than 50%), we only have a 29% chance of detecting that difference with our small sample size.
+Examine Figure \@ref(fig:prac-signif). The distribution of possible sample proportions who support the new ballot measure in samples of size $n = 20$ when 65% of the population supports the measure is represented by the black normal curve. The dotted red normal curve is the null distribution of sample proportions for $H_0: \pi = 0.5$. Even though 0.65 is quite a bit higher than 0.50, there is still a lot of overlap between the two distributions due to the small sample size. The shaded blue area represents the power of the test of $H_0: \pi = 0.5$ versus $H_A: \pi > 0.5$ when $\alpha = 0.05$ -- only 0.29! That is, even though 65% of the population supports the measure (much higher than 50%), we only have a 29% chance of detecting that difference with our small sample size.
 
 <div class="figure" style="text-align: center">
 <img src="05-inference-cat_files/figure-html/prac-signif-1.png" alt="Black curve: approximate sampling distribution of sample proportions from samples of size 20 when the true proportion is 0.65. Red curve: approximate null distribution of sample proportions for a null value of 0.50." width="100%" />
@@ -3651,9 +3663,9 @@ You will often hear the following two $z$-procedures referred to as a **one samp
     Z = \frac{\mbox{statistic} - \mbox{null value}}{\mbox{null standard error}} = \frac{\mbox{statistic} - \mbox{null value}}{SE_0}
     \]
 5. Use the statistical software to find the p-value using the standard normal distribution:
-    - Sign in $H_a$ is $<$: p-value = area below Z-score
-    - Sign in $H_a$ is $>$: p-value = area above Z-score
-    - Sign in $H_a$ is $\neq$: p-value = 2 $\times$ area below $-|\mbox{Z-score}|$
+    - Sign in $H_A$ is $<$: p-value = area below Z-score
+    - Sign in $H_A$ is $>$: p-value = area above Z-score
+    - Sign in $H_A$ is $\neq$: p-value = 2 $\times$ area below $-|\mbox{Z-score}|$
 6. Make a conclusion based on the p-value, and write a conclusion in context, in plain language, and in terms of the alternative hypothesis.
 
 **Confidence intervals.** Similarly, the following is how we generally compute a confidence interval using a normal distribution:
@@ -3906,7 +3918,7 @@ prop.test(x = 422,  #Number of successes
 #> 
 #> 	1-sample proportions test with continuity correction
 #> 
-#> data:  422 out of 826, null probability 0.5
+#> data:  422 out of 826
 #> X-squared = 0.34988, df = 1, p-value = 0.2771
 #> alternative hypothesis: true p is greater than 0.5
 #> 95 percent confidence interval:
@@ -3937,7 +3949,7 @@ prop.test(x = 422,  #Number of successes
 #> 
 #> 	1-sample proportions test without continuity correction
 #> 
-#> data:  422 out of 826, null probability 0.5
+#> data:  422 out of 826
 #> X-squared = 0.39225, df = 1, p-value = 0.5311
 #> alternative hypothesis: true p is not equal to 0.5
 #> 95 percent confidence interval:
@@ -3990,7 +4002,7 @@ prop.test(x = c(14, 11), #Number successes in group 1 and group 2
 #> 	2-sample test for equality of proportions without continuity
 #> 	correction
 #> 
-#> data:  c(14, 11) out of c(40, 50)
+#> data:  c out of c14 out of 4011 out of 50
 #> X-squared = 1.872, df = 1, p-value = 0.1712
 #> alternative hypothesis: two.sided
 #> 99 percent confidence interval:
@@ -4057,7 +4069,7 @@ After re-arranging our table, we can use this `data_tbl` as the first argument i
 ```r
 data_tbl <- table(cpr$survival, cpr$group)
 
-prop.test(x = data_tbl,
+stats::prop.test(x = data_tbl,
           alternative = "two.sided",
           conf.level = 0.99, #Confidence level as a proportion
           correct = FALSE)  #No continuity correction

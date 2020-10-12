@@ -12,7 +12,7 @@ The three data structures we detail are:
 
 When appropriate, each of the data structures will be analyzed using the two methods introduced in Section \@ref(inf-foundations): simulation-based and theory-based.
 
-As we build on the inferential ideas, we will visit new foundational concepts in statistical inference.  One key new idea rests in estimating how the sample mean (as opposed to the sample proportion) varies from sample to sample; the resulting value is referred to as the **standard error of the mean**.  We will also introduce a new important mathematical model, the $t$-distribution (as the foundation for the $t$-test).  
+As we build on the inferential ideas, we will visit new foundational concepts in statistical inference.  One key new idea rests in estimating how the sample mean (as opposed to the sample proportion) varies from sample to sample; the resulting value is referred to as the **standard error of the mean**.  We will also introduce a new important mathematical model, the $t$-distribution (as the foundation for the $t$-test).
 ```
 
 
@@ -27,39 +27,31 @@ The techniques described for each setting will vary slightly, but you will be we
 **Notation**.
 
 * $n$ = sample size
-* $\hat{x}$ = sample mean
+* $\bar{x}$ = sample mean
 * $s$ = sample standard deviation
 * $\mu$ = population mean
 * $\sigma$ = population standard deviation
 ```
 
-In this section, we explore the situation where we focus on a single mean of a quantitative variable, and we introduce a new simulation method, **bootstrapping**\index{bootstrap}. 
-Bootstrapping is best suited for modeling studies where the data have been generated through random sampling from a population.
-
-If the goal is to produce a range of possible values for a population value, then in an ideal world, we would sample data from the population again and recompute the sample mean.  
-Then we could do it again. 
-And again. 
-And so on until we have a good sense of the variability of our original estimate. 
-The ideal world where sampling data is free or extremely cheap is almost never the case, and taking repeated samples from a population is usually impossible. 
-So, instead of using a "resample from the population" approach, bootstrapping uses a "resample from the sample" approach.
-
-Sometime the mathematical theory for how an estimate varies is well-known; this is the case for the sample proportion as seen in Section \@ref(theory-prop) and the sample mean seen later in this Chapter. 
-However, some statistics don't have simple theory for how they vary, and bootstrapping provides a computational approach for providing interval estimates for almost any population parameter. 
+A single mean is used to summarize data when we measured a single quantitative variable on each observational unit, e.g., GPA, age, salary. Aside from slight differences in notation, the inferential methods presented in this section will be identical to those for a paired mean difference, as we will see in Section \@ref(paired-data).
 
 ```{r include=FALSE}
 terms_chp_6 <- c("bootstrapping")
 ```
 
 
-
 ### Bootstrap confidence interval for $\mu$
+
+In this section, we will use **bootstrapping**\index{bootstrap}, first introduced in Section \@ref(boot-ci-prop), to construct a confidence interval for a population mean. Recall that bootstrapping is best suited for modeling studies where the data have been generated through random sampling from a population. Our bootstrapped distribution of sample means will mimic the process of randomly sampling from a population to give us a sense of how sample means will vary from sample to sample.
+
+#### Observed data {-}
 
 As an employer who subsidizes housing for your employees, you need to know the average month rental price for a three bedroom flat in Edinburgh.
 In order to walk through the example more clearly, let's say that you are only able to randomly sample five Edinburgh flats (if this were a real example, you would surely be able to take a much larger sample size, possibly even being able to measure the entire population!).
 
 Figure \@ref(fig:5flats) presents the details of the random sample of observations where the monthly rent of five flats has been recorded.
 
-```{r 5flats, fig.cap = "5 flats", warning = FALSE,  out.width="75%"}
+```{r 5flats, fig.cap = "Five randomly sampled flats in Edinburgh.", warning = FALSE,  out.width="75%"}
 include_graphics("06/figures/5flats.png")
 ```
 
@@ -71,35 +63,20 @@ The sample average monthly rent of £ `r mean(edin_3br$price)` is a first guess 
 Indeed, you can see that the observed rent prices vary with a standard deviation of £ `r sd(edin_3br$price)`, and surely the average monthly rent would be different if a different sample of size five had been taken from the population.
 Fortunately, we can use bootstrapping to approximate the variability of the sample mean from sample to sample.
 
-```{block2, type="todo", echo=TRUE}
-Revise below to remove duplication from bootstrap CI for one proportion section.
-```
-
 #### Variability of the statistic {-}
 
 As with the inferential ideas covered in Chapter \@ref(inference-cat), the inferential analysis methods in this chapter are grounded in quantifying how one data set differs from another when they are both taken from the same population.
-It doesn't make sense to take repeated samples from the same population because if you have the means to take more samples, a larger sample size will benefit you more than the exact same sample twice. Instead, with bootstrapping, we measure how the samples behave under an estimate of the population---the sample.
-By taking repeated samples from the estimated population, the variability from sample to sample can be observed.
 
-
-Figure \@ref(fig:bootstrapping) shows how the unknown original population can be estimated by using many duplicates of the sample. This estimated population---consisting of infinitely many copies of the original sample---can then be used to generate bootstrapped resamples.
+Figure \@ref(fig:bootstrapping) shows how the unknown original population of all three bedroom flats in Edinburgh can be estimated by using many duplicates of the sample. This estimated population---consisting of infinitely many copies of the original sample---can then be used to generate bootstrapped resamples.
 
 ```{r bootstrapping, fig.cap = "Using the original sample of five Edinburgh flats to generate an estimated population, which is then used to generate bootstrapped resamples. This process of generating a bootstrapped sample is equivalent to sampling five flats from the original sample, with replacement.", warning = FALSE,  out.width="75%"}
 include_graphics("06/figures/bootstrapping.png")
 ```
 
-It turns out that in practice, it is very difficult for computers to work with an infinite population (with the same proportional breakdown as in the sample).
-However, there is a physical and computational model which produces an equivalent bootstrap distribution of the sample mean in a computationally efficient manner.
-Consider the observed data to be a bag of five marbles. Each marble corresponds to one flat, and is labeled by the rent price.  By drawing the marbles out of the bag _with replacement_ (after we draw one, we put it back before drawing another), we depict the same sampling **process** as was done with the infinitely large estimated population.
-Note in Figure \@ref(fig:bootstrapping) that when sampling the original observations, a particular data point may end up in the new sample one time, several times, or not at all.  
-
-
-
-
 In Figure \@ref(fig:bootstrapping), the repeated bootstrap resamples are obviously different both from each other and from the original sample.
 Since the bootstrap resamples are taken from the same (estimated) population, these differences are due entirely to natural variability in the sampling procedure.
 By summarizing each of the bootstrap resamples (here, using the sample mean), we see, directly, the variability of the sample mean, $\bar{x}$, from sample to sample.
-The distribution of $\hat{x}_{boot}$ for the Edinburgh flats is shown in Figure \@ref(fig:flatsbsmean).
+The distribution of $\bar{x}_{boot}$, the bootstrapped sample means, for the Edinburgh flats is shown in Figure \@ref(fig:flatsbsmean).
 
 ```{r flatsbsmean, fig.cap = "Distribution of bootstrapped means from 1,000 simulated bootstrapped samples generated by sampling with replacement from our original sample of five Edinburgh flats. The histogram provides a sense for the variability of the average rent values from sample to sample for samples of size 5.", warning = FALSE,  fig.width=10}
 set.seed(47)
@@ -147,40 +124,33 @@ text(bsq1[2], 70, round(bsq1[2],1), pos = 3)
 text(bsq1[8], 50, round(bsq1[8],1), pos = 3)
 text(bsq1[1], 50, round(bsq1[1],1), pos = 3)
 par(las = 0)
-mtext("Bootstrapped values of the mean of the monthly flat price", 1, 2.5)
+mtext("Bootstrapped values of the mean of the monthly flat price", 1, 2.5, cex = 1.2)
 ```
 
 The bootstrapped average rent prices vary from £ 1250 to £ 1995 (with a small observed sample of size 5, a bootstrap resample can sometimes, although rarely, include only repeated measurements of the same observation).
 
 ```{block2, type="onebox", echo=TRUE}
-**Bootstrapping**.
+**Bootstrapping from one sample**.
 
 1. Take a random sample of size $n$ from the original sample, _with replacement_. This is called a **bootstrapped resample**.
 2. Record the sample mean (or statistic of interest) from the boostrapped resample. This is called a **bootstrapped statistic**.
 3. Repeat steps (1) and (2) 1000s of times.
-
-Use the standard deviation of the distribution of bootstrapped statistics as your estimate for the standard deviation of the sampling distribution of sample means---the amount we would expect a sample mean to typically deviate from the population mean.
-
-Since this bootstrapped standard deviation of statistics is an _estimate_ of the standard deviation of sample means---and not the actual value, which is unknown---we call this a **standard error** of the sample mean.
 ```
 
 Due to theory that is beyond this text, we know that the bootstrap means $\bar{x}_{boot}$ vary around the original sample mean, $\bar{x}$, in a similar way to how different sample (i.e., different data sets which would produce different $\bar{x}$ values) means vary around the true parameter $\mu$. 
-Therefore, an interval estimate for $\mu$ can be produced using the $\bar{x}_{boot}$ values themselves.The **bootstrap confidence interval** for $\mu$, the population mean rent price for three bedroom flats in Edinburgh, is found by locating the middle 95% (for a 95% confidence interval) of the bootstrapped sample means in Figure \@ref{fig:flatsbsmean}.
+Therefore, an interval estimate for $\mu$ can be produced using the $\bar{x}_{boot}$ values themselves. A 95% **bootstrap confidence interval** for $\mu$, the population mean rent price for three bedroom flats in Edinburgh, is found by locating the middle 95% of the bootstrapped sample means in Figure \@ref(fig:flatsbsmean).
 
 ```{block2, type="onebox", echo=TRUE}
 **95% Bootstrap confidence interval for a population mean $\mu$.**
 
-The 95% bootstrap confidence interval for the parameter $\mu$ can be obtained directly using the ordered values $\bar{x}_{boot}$ values. Consider the sorted $\bar{x}_{boot}$ values, and let $\bar{x}_{boot, 0.025}$ be the 2.5% value and $\bar{x}_{boot, 0.025}$ be the 97.5% value. The 95% confidence interval is given by:
+The 95% bootstrap confidence interval for the parameter $\mu$ can be obtained directly using the ordered values $\bar{x}_{boot}$ values --- the bootstrapped sample means. Consider the sorted $\bar{x}_{boot}$ values, and let $\bar{x}_{boot, 0.025}$ be the 2.5^th^ percentile and $\bar{x}_{boot, 0.025}$ be the 97.5^th^ percentile. The 95% confidence interval is given by:
 <center>
-($\hat{p}_{bs, 0.025}$, $\hat{p}_{bs, 0.975}$)
+($\bar{x}_{boot, 0.025}$, $\bar{x}_{boot, 0.975}$)
 </center>
 ```
 
 You can find confidence intervals of difference confidence levels by changing the percent of the distribution you take, e.g., locate the middle 90% of the bootstrapped statistics for a 90% confidence interval.
 
-```{block2, type = "guidedpractice", echo = TRUE}
-To find the middle 95% of a distribution, which two percentiles would form its boundaries?^[The the middle 95% of a distribution would range from the 2.5th percentile (the value with 2.5% of the distribution below) to the 97.5th percentile (the value with 2.5% of the distribution above). ]
-```
 
 ```{block2, type = "example", echo = TRUE}
 Using Figure \@ref(fig:flatsbsmean), find the 90% and 95% confidence intervals for the true mean monthly rental price of a three bedroom flat in Edinburgh.
@@ -195,7 +165,7 @@ A 95% confidence interval is given by £ 1389.75 to £ 1916.  The conclusion is 
 
 
 
-#### Bootstrap percentile confidence interval for $\sigma$ {-}
+#### Bootstrap percentile confidence interval for $\sigma$ (special topic) {-}
 
 Suppose that the research question at hand seeks to understand how variable the rental price of the flats are in Edinburgh.
 That is, your interest is no longer in the average rental price of the flats but in the *standard deviation* of the rental prices of all three bedroom flats in Edinburgh, $\sigma$.
@@ -218,9 +188,7 @@ The distribution is skewed left and centered near £ 340.23, which is the point 
 ```
 
 ```{block2, type = "guidedpractice", echo = TRUE}
-Using Figure \@ref(fig:flatsbssd), find *and interpret* a 90% confidence interval for the population standard deviation for three bedroom flat prices in Edinburgh.^[By looking at the percentile values in Figure \@ref(fig:flatsbssd), the middle 90% of the bootstrap standard deviations are given by the 5 percentile (£ 153.9) and 95 percentile (£ 385.6).  That is, we are 90% confident that the true standard deviation of rent prices is between £ 153.9 and £ 385.6.
-
-Note, the problem was set up as 90% to indicate that there was not a need for a high level of confidence (such a 95% or 99%).  A lower degree of confidence increases potential for error, but it also produces a more narrow interval. ]
+Using Figure \@ref(fig:flatsbssd), find *and interpret* a 90% confidence interval for the population standard deviation for three bedroom flat prices in Edinburgh.^[By looking at the percentile values in Figure \@ref(fig:flatsbssd), the middle 90% of the bootstrap standard deviations are given by the 5 percentile (£ 153.9) and 95 percentile (£ 385.6).  That is, we are 90% confident that the true standard deviation of rent prices is between £ 153.9 and £ 385.6; or that, on average, rent prices tend to be somewhere between £ 153.9 and £ 385.6 away from the mean. Note, the problem was set up as 90% to indicate that there was not a need for a high level of confidence (such a 95% or 99%).  A lower degree of confidence increases potential for error, but it also produces a more narrow interval.]
 ```
 
 ```{r flatsbssd, fig.cap="The original Edinburgh data is bootstrapped 1,000 times. The histogram provides a sense for the variability of the standard deviation of the rent values from sample to sample.", warning=FALSE, fig.width=12}
@@ -279,6 +247,92 @@ Bootstrapping is a method for capturing the variability of a statistic when the 
 As you might guess, the larger the random sample, the more accurately that sample will represent the target population.
 
 
+
+### Simulation-based test for $H_0: \mu = \mu_0$ {#one-mean-null-boot}
+
+We can also use bootstrapping to conduct a simulation-based test of the null hypothesis that the population mean is equal to a specified value, $\mu_0$, called the null value. In this case, we first **shift** each value in the data set so that the sample distribution is centered at $\mu_0$. Then, we bootstrap from the **shifted data** in order to generate a null distribution of sample means. Consider the following example.
+
+Carl Wunderlich, a German physician, measured body temperatures of around 25,000 adults and found that the average body temperature was 98.6$^{\circ}$F, which we've believed ever since. However, a recent study conducted at Stanford University suggests that the average body temperature may actually be lower than 98.6$^{\circ}$F.^[Protsiv, Ley,Lankester, Hastie, Parsonnet (2020). Decreasing human body temperature in the United States since the Industrial Revolution. eLife 2020;9:e49555, DOI: 10.7554/eLife.49555. [https://elifesciences.org/articles/49555](https://elifesciences.org/articles/49555)]
+
+#### Observed data {-}
+
+```{r body-temp-sim-data, echo=FALSE, collapse=FALSE}
+set.seed(2122)
+temps <- data.frame(temp = rnorm(20, mean = 97.5, sd = 0.4))
+temperatures <- temps$temp
+```
+
+Curious if average body temperature has decreased, you decided to collect data on a random sample of twenty Montana State University students. The mean body temperature in your sample is $\bar{x}$ = `r round(mean(temperatures),2)` degrees F, and the standard deviation is $s$ = `r round(sd(temperatures),2)` degrees F. A dotplot of the data is shown in Figure \@ref(fig:body-temp-hist), with summary statistics displayed below.
+
+```{r body-temp-stats, echo=TRUE, collapse = FALSE}
+favstats(temperatures)
+```
+
+```{r body-temp-hist, fig.cap="Distribution of body temperatures in a random sample of twenty Montana State University students.", out.width = "75%"}
+temps %>% ggplot(aes(x = temp)) +
+  geom_dotplot(fill = COL["blue", "full"]) +
+  labs(x = "Body temperature (degrees F)") +
+    theme(axis.title.y = element_blank(),
+        axis.text.y  = element_blank(),
+        axis.ticks.y = element_blank(),
+        text = element_text(size = 15)) 
+```
+
+#### Shifted bootstrapped null distribution {-}
+
+We would like to test the set of hypotheses $H_0: \mu = 98.6$ versus $H_A: \mu < 98.6$, where $\mu$ is the true mean body temperature among all adults (in degrees F). If we were to simulate sample mean body temperatures under $H_0$, we would expect the null distribution to be centered at $\mu_0$ = 98.6$^\circ$F. However, if we bootstrap sample means from our observed sample, the bootstrap distribution will be centered at the sample mean body temperature $\bar{x}$ = 97.5$^\circ$F.
+
+To use bootstrapping to generate a null distribution of sample means, we first have to **shift the data** to be centered at the null value. We do this by adding $\mu_0 - \bar{x} = 98.6 - 97.5 = 1.1^\circ$F to each body temperature in the sample. This process is displayed in Figure \@ref(fig:shift-boot-dat).
+
+```{r shift-boot-dat, fig.cap="Distribution of body temperatures in a random sample of twenty Montana State University students (blue) and the shifted body temperatures (red), found by adding 1.1 degree F to each original body temperature.", out.width = "75%"}
+temps$shift <- temps$temp + 1.1
+temps.shift <- data.frame(temp <- c(temps$temp, temps$shift), Shifted <- c(rep("No",20), rep("Yes",20)))
+names(temps.shift) <- c("Temperature", "Shifted")
+temps.shift %>% ggplot(aes(x = Temperature, fill = Shifted)) +
+  geom_dotplot() +
+  labs(x = "Body temperature (degrees F)") +
+    theme(axis.title.y = element_blank(),
+        axis.text.y  = element_blank(),
+        axis.ticks.y = element_blank(),
+        text = element_text(size = 15))  +
+  geom_vline(xintercept = 97.5, color = "blue") +
+  geom_vline(xintercept = 98.6, color = "red") +
+  scale_fill_manual(values=c("blue", "red"))
+```
+
+A bootstrapped null distribution generated from sampling 20 shifted temperatures, with replacement, from the shifted data 1,000 times is shown in Figure \@ref(fig:shifted-boot-null).
+
+```{r shifted-boot-null, out.width = "75%", fig.cap = "Bootstrapped null distribution of sample mean temperatures assuming the true mean temperature is 98.6 degrees F."}
+set.seed(2030)
+my.samp <- function(data, n){
+  return(mean(sample(data, n, replace=TRUE)))
+}
+means <- NULL
+for(i in 1:1000){
+  means[i] <- my.samp(temps$shift)
+}
+histPlot(means,
+         xlab = expression(bar(x)[sim]),
+         breaks = seq(98.2, 98.9, by = 0.05),
+         col = COL[7, 3],
+         ylab = "")
+mtext("Number of simulations", 2, 3.3)
+```
+
+```{block2, type="onebox", echo=TRUE}
+**Shifted bootstrap null distribution.**
+
+To simulate a null distribution of sample means under the null hypothesis $H_0: \mu = \mu_0$,
+
+1. Add $\mu_0 - \bar{x}$ to each value in the original sample: 
+  \[
+    x_1 + \mu_0 - \bar{x}, \hspace{2.5mm} x_2 + \mu_0 - \bar{x}, \hspace{2.5mm}  x_3 + \mu_0 - \bar{x}, \hspace{2.5mm}  \ldots, \hspace{2.5mm}  x_n + \mu_0 - \bar{x}.
+  \]
+  Note that if $\bar{x}$ is larger than $\mu$, then the quantity $\mu_0 - \bar{x}$ will be negative, and you will be _subtracting_ the distance between $\mu$ and $\bar{x}$ from each value.
+2. Generate 1000s of bootstrap resamples from this shifted distribution, plotting the shifted bootstrap sample mean each time.
+```
+
+To calculate the p-value, since $H_A: \mu < 98.6$, we find the proportion of simulated sample means that were less than or equal to our original sample mean, $\bar{x}$ = `r round(mean(temperatures),2)`. As shown in Figure \@ref(fig:shifted-boot-null), none of our simulated sample means were 97.5$^\circ$F or lower, giving us very strong evidence that the true mean body temperature among all Montana State University students is less than the commonly accepted 98.6$^\circ$F average temperature.
 
 ### Theory-based inferential methods for $\bar{x}$ {#one-mean-math}
 
@@ -1158,11 +1212,11 @@ is from the null value.
 ```{block2, type="onebox", echo=TRUE}
 **Notation**.
 
-* $n_{diff}$ = sample size of differences in paired samples
-* $\hat{x}_{diff}$ = sample mean of differences in paired samples
-* $s_{diff}$ = sample standard deviation of differences in paired samples
-* $\mu_{diff}$ = population mean of differences in paired samples
-* $\sigma_{diff}$ = population standard deviation of differences in paired samples
+* $n_{d}$ = sample size of differences in paired samples
+* $\hat{x}_{d}$ = sample mean of differences in paired samples
+* $s_{d}$ = sample standard deviation of differences in paired samples
+* $\mu_{d}$ = population mean of differences in paired samples
+* $\sigma_{d}$ = population standard deviation of differences in paired samples
 ```
 
 
@@ -1196,7 +1250,7 @@ temptbl %>%
 terms_chp_6 <- c(terms_chp_6, "paired data")
 ```
 
-### Randomization test for $H_0: \mu_d = 0$
+### Simulation-based test for $H_0: \mu_d = 0$
 
 Consider an experiment done to measure whether tire brand A or tire brand B has longer wear.  That is, after 1,000 miles on a car, which brand of tires has more tread, on average?  
 
@@ -1241,10 +1295,10 @@ ggplot(aes( x = `Tire Brand`, y = tread, color = `Tire Brand`)) +
 
 A randomization test will identify whether the differences seen in the box plot below could have happened just by chance variability.
 As before, we will simulate the variability in the study under the assumption that the null hypothesis is true.
-In this study, the null hypothesis is that average tire tread wear is the same across Brand A and Brand B tires.
+In this study, the null hypothesis is that average difference in tire tread wear between Brand A and Brand B tires is zero. Taking the order of differences to be Brand A $-$ Brand B, we express the hypotheses as follows.
 
-* $H_0: \mu_A = \mu_B$, the average tread wear is the same for the two tire brands.  
-* $H_A: \mu_A \ne \mu_B$, the average tread wear is different across the two tire brands.
+* $H_0: \mu_d = 0$, the true mean difference in tread wear between Brand A and Brand B (A $-$ B) is equal to zero.  
+* $H_A: \mu_d > 0$, the true mean difference in tread wear between Brand A and Brand B (A $-$ B) is greater than zero.
 
 Figure \@ref(fig:pairrand) describes how the tread values can be simulated under the null hypothesis.
 Remember, if the null hypothesis is true, it will not matter which brand is put on which tire because the overall tread wear will be the same across pairs.
@@ -1406,7 +1460,7 @@ include_graphics("06/figures/bootquant3.png")
 
 In Figure \@ref(fig:pairboot), two 99% confidence intervals for the difference in the cost of a new book at the UCLA bookstore compared with Amazon have been calculated.
 The bootstrap percentile interval is computing using the 0.5 percentile and 99.5 percentile bootstrapped differences and is found to be ($ 0.25, $ 7.87).
-The bootstrap SE interval is found by computing the SE of the bootstrapped differences ($s_{diff} =  \$1.64$) and the normal multiplier of $z^* = 2.58$.  The averaged difference is $\bar{x} = \$3.58$.
+The bootstrap SE interval is found by computing the SE of the bootstrapped differences ($s_{d} =  \$1.64$) and the normal multiplier of $z^* = 2.58$.  The averaged difference is $\bar{x}_d = \$3.58$.
 The 99% confidence interval is: $ \$3.58 \pm 2.58 \cdot \$ 1.64 \rightarrow (\$-0.65, \$7.81)$.
 The confidence intervals seem to indicate that the UCLA bookstore price is, on average, higher than the Amazon price.
 However, if the analysis required a strong degree of certainty (e.g., 99% confidence), and the bootstrap SE interval was most appropriate (given a second course in statistics the nuances of the methods were investigated), the results of which book seller is higher is not well determined.
@@ -1534,7 +1588,7 @@ temptbl <- tribble(
 
 temptbl %>%
  kable(caption = "Summary statistics for the 68 price differences.",
-    col.names = c("$n_{diff}$", "$\\bar{x}_{diff}$", "$s_{diff}$")) %>%
+    col.names = c("$n_{d}$", "$\\bar{x}_{d}$", "$s_{d}$")) %>%
  kable_styling() 
 ```
 
@@ -1551,9 +1605,9 @@ Set up a hypothesis test
 We are considering two scenarios: there is no difference
   or there is some difference in average prices.
 
-* $H_0$: $\mu_{diff} = 0$.
+* $H_0$: $\mu_{d} = 0$.
       There is no difference in the average textbook price.
-* $H_A$: $\mu_{diff} \neq 0$.
+* $H_A$: $\mu_{d} \neq 0$.
       There is a difference in average prices.
 
   Next, we check the independence and normality conditions.
@@ -1579,28 +1633,28 @@ Complete the hypothesis test started
 ---
 
 To compute the test  compute the standard error associated with
-  $\bar{x}_{diff}$ using the standard
+  $\bar{x}_{d}$ using the standard
   deviation of the differences
-  ($s_{diff} = 13.42$)
+  ($s_{d} = 13.42$)
   and the number of differences
-  ($n_{diff} = 68$):
+  ($n_{d} = 68$):
   \begin{align*}
-  SE_{\bar{x}_{diff}}
-    = \frac{s_{diff}}{\sqrt{n_{diff}}}
+  SE_{\bar{x}_{d}}
+    = \frac{s_{d}}{\sqrt{n_{d}}}
     = \frac{13.42}{\sqrt{68}} = 1.63
   \end{align*}
   The test statistic is the T-score of
-  $\bar{x}_{diff}$
+  $\bar{x}_{d}$
   under the null condition that the actual mean
   difference is 0:
   \begin{align*}
   T
-    = \frac{\bar{x}_{diff} - 0}
-        {SE_{x_{diff}}}
+    = \frac{\bar{x}_{d} - 0}
+        {SE_{x_{d}}}
     = \frac{3.58 - 0}{1.63} = 2.20
   \end{align*}
   To visualize the p-value, the sampling distribution
-  of $\bar{x}_{diff}$ is drawn as though
+  of $\bar{x}_{d}$ is drawn as though
   $H_0$ is true,
   and the p-value is represented by the two shaded tails in Figure \@ref(fig:textbooksF18HTTails).
 
@@ -1617,7 +1671,7 @@ To compute the test  compute the standard error associated with
 ```
 
 
-```{r textbooksF18HTTails, fig.cap = "Distribution of $\\bar{x}_{diff}$ under the null hypothesis of no difference.  The observed average difference of 2.98 is marked with the shaded areas more extreme than the observed difference given as the p-value.", warning = FALSE, echo = FALSE}
+```{r textbooksF18HTTails, fig.cap = "Distribution of $\\bar{x}_{d}$ under the null hypothesis of no difference.  The observed average difference of 2.98 is marked with the shaded areas more extreme than the observed difference given as the p-value.", warning = FALSE, echo = FALSE}
 
 m <- mean(d$price_diff)
 s <- sd(d$price_diff)
@@ -1633,7 +1687,7 @@ normTail(L = -abs(m),
          # border = COL[4],
          axes = FALSE)
 at <- c(-100, 0, m, 100)
-labels <- expression(0, mu[0]*' = 0', bar(x)[diff]*" = 2.98", 0)
+labels <- expression(0, mu[0]*' = 0', bar(x)[d]*" = 2.98", 0)
 axis(1, at, labels, cex.axis = 0.9)
 
 ```
@@ -2540,9 +2594,9 @@ tsim_table %>%
     T = \frac{\mbox{statistic} - \mbox{null value}}{\mbox{standard error}}
     \]
 5. Use the statistical software to find the p-value using the appropriate $t$-distribution:
-    - Sign in $H_a$ is $<$: p-value = area below T-score
-    - Sign in $H_a$ is $>$: p-value = area above T-score
-    - Sign in $H_a$ is $\neq$: p-value = 2 $\times$ area below $-|\mbox{T-score}|$
+    - Sign in $H_A$ is $<$: p-value = area below T-score
+    - Sign in $H_A$ is $>$: p-value = area above T-score
+    - Sign in $H_A$ is $\neq$: p-value = 2 $\times$ area below $-|\mbox{T-score}|$
 6. Make a conclusion based on the p-value, and write a conclusion in context, in plain language, and in terms of the alternative hypothesis.
 
 **Confidence intervals.** Similarly, the following is how we generally computed a confidence interval using a $t$-distribution:

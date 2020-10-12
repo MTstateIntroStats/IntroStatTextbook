@@ -853,7 +853,7 @@ terms_chp_2 <- c(terms_chp_2, "histogram")
 ```{r binnedIntRateAmountTable}
 loan50 %>%
   mutate(interest_rate_cat = cut(interest_rate, breaks = seq(5, 27.5, 2.5))) %>%
-  count(interest_rate_cat, name = "Count") %>%
+  count(interest_rate_cat) %>%
   separate(interest_rate_cat, into = c("lower", "upper"), sep = ",") %>%
   mutate(
     lower = str_remove(lower, "\\("),
@@ -862,8 +862,8 @@ loan50 %>%
     upper = paste0(upper, "%")
   ) %>%
   unite("Interest rate", lower:upper, sep = " - ") %>%
-  pivot_wider(names_from = `Interest rate`, values_from = Count) %>%
-  bind_cols(tibble("Interest rate" = "Count"), .) %>%
+  pivot_wider(names_from = "Interest rate", values_from = "n") %>%
+  bind_cols(tibble("Interest rate" = "n"), .) %>%
   kable(align = "lccccccccc", caption = "Counts for the binned `interest_rate` data.")
 ```
 

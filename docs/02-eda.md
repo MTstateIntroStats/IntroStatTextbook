@@ -901,7 +901,7 @@ Dot plots show the exact value for each observation. This is useful for small da
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> Count </td>
+   <td style="text-align:left;"> n </td>
    <td style="text-align:center;"> 11 </td>
    <td style="text-align:center;"> 15 </td>
    <td style="text-align:center;"> 8 </td>
