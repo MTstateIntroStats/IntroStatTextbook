@@ -46,7 +46,7 @@ In this section, we will use **bootstrapping**\index{bootstrap}, first introduce
 
 #### Observed data {-}
 
-As an employer who subsidizes housing for your employees, you need to know the average month rental price for a three bedroom flat in Edinburgh.
+As an employer who subsidizes housing for your employees, you need to know the average monthly rental price for a three bedroom flat in Edinburgh.
 In order to walk through the example more clearly, let's say that you are only able to randomly sample five Edinburgh flats (if this were a real example, you would surely be able to take a much larger sample size, possibly even being able to measure the entire population!).
 
 Figure \@ref(fig:5flats) presents the details of the random sample of observations where the monthly rent of five flats has been recorded.
@@ -852,7 +852,7 @@ The observations are a simple random sample,
   The summary statistics in
   Table \@ref(tab:summaryStatsOfHgInMuscleOfRissosDolphins)
   do not suggest any clear outliers, with
-  all observations are within 2.5 standard deviations
+  all observations within 2.5 standard deviations
   of the mean.
   Based on this evidence, the normality condition
   seems reasonable.
