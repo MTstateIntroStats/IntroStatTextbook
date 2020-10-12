@@ -40,7 +40,7 @@ In this section, we will use **bootstrapping**\index{bootstrap}, first introduce
 
 #### Observed data {-}
 
-As an employer who subsidizes housing for your employees, you need to know the average month rental price for a three bedroom flat in Edinburgh.
+As an employer who subsidizes housing for your employees, you need to know the average monthly rental price for a three bedroom flat in Edinburgh.
 In order to walk through the example more clearly, let's say that you are only able to randomly sample five Edinburgh flats (if this were a real example, you would surely be able to take a much larger sample size, possibly even being able to measure the entire population!).
 
 Figure \@ref(fig:5flats) presents the details of the random sample of observations where the monthly rent of five flats has been recorded.
@@ -628,7 +628,7 @@ The observations are a simple random sample,
   The summary statistics in
   Table \@ref(tab:summaryStatsOfHgInMuscleOfRissosDolphins)
   do not suggest any clear outliers, with
-  all observations are within 2.5 standard deviations
+  all observations within 2.5 standard deviations
   of the mean.
   Based on this evidence, the normality condition
   seems reasonable.
@@ -983,7 +983,7 @@ Paired data represent a particular type of experimental structure where the anal
 <tbody>
   <tr>
    <td style="text-align:left;"> Car </td>
-   <td style="text-align:left;"> Brand A vs Brand B </td>
+   <td style="text-align:left;"> Smooth Turn vs Quick Spin </td>
    <td style="text-align:left;"> amount of tire tread after 1,000 miles </td>
    <td style="text-align:left;"> difference in tread </td>
   </tr>
@@ -1025,28 +1025,28 @@ Paired data can arise from two different situations:
 * **Matching**. Paired data using matching occurs when we first match people or units into similar pairs, and then take the difference between the two measurements taken on each person/unit.
 
 ::: {.guidedpractice}
-Which of the examples in Table \@ref(tab:pairedexamples) are paired using repeated measures? paired using matching?^[The examples with cars and people are paired using repeated measures --- each car or person was measured twice (Brand A tire and Brand B tire, or pre-score and post-score). Textbooks would need to be matched since they are not physically in the same location; married couples are matched since we measure the age on each member of the couple separately.]
+Which of the examples in Table \@ref(tab:pairedexamples) are paired using repeated measures? paired using matching?^[The examples with cars and people are paired using repeated measures --- each car or person was measured twice (Smooth Turn tire and Quick Spin tire, or pre-score and post-score). Textbooks would need to be matched since they are not physically in the same location; married couples are matched since we measure the age on each member of the couple separately.]
 ::: 
 
 
 ### Simulation-based test for $H_0: \mu_d = 0$
 
-Consider an experiment done to measure whether tire brand A or tire brand B has longer wear.  That is, after 1,000 miles on a car, which brand of tires has more tread, on average?  
+Consider an experiment done to measure whether tire brand Smooth Turn or tire brand Quick Spin has longer tread wear.  That is, after 1,000 miles on a car, which brand of tires has more tread, on average?  
 
 #### Observed data {-}
 
-The observed data represent 25 tread measurements taken on 25 tires of Brand A and 25 tires of Brand B.
-The study used a total of 25 cars, so on each car, one tire was of Brand A and one was of Brand B.
+The observed data represent 25 tread measurements (in inches) taken on 25 Smooth Turn tires and 25 Quick Spin tires.
+The study used a total of 25 cars, so on each car, one tire was Smooth Turn brand and one was Quick Spin brand.
 Figure \@ref(fig:tiredata) presents the observed data.
-The Brand A manufacturer looks at the box plot below and says:
+The Smooth Turn manufacturer looks at the box plot below and says:
 
-> clearly the tread on Brand A tires is higher, on average, than the tread on Brand B tires after 1,000 miles of driving.
+> clearly the tread on Smooth Turn tires is higher, on average, than the tread on Quick Spin tires after 1,000 miles of driving.
 
-The Brand B manufacturer is skeptical and retorts:  
+The Quick Spin manufacturer is skeptical and retorts:  
 
 > but with only 25 cars, it seems that the variability in road conditions (sometimes on tire hits a pothole, etc.) could be what leads to the small difference in average tread amount.
 
-We'd like to be able to systematically distinguish between what manufacturer A sees in the plot and what manufacturer B sees in the plot.  Fortunately for us, we have an excellent way to simulate the natural variability (from road conditions, etc.) that can lead to tires being worn at different rates.
+We'd like to be able to systematically distinguish between what the Smooth Turn manufacturer sees in the plot and what the Quick Spin manufacturer sees in the plot.  Fortunately for us, we have an excellent way to simulate the natural variability (from road conditions, etc.) that can lead to tires being worn at different rates.
 
 
 <div class="figure" style="text-align: center">
@@ -1054,7 +1054,7 @@ We'd like to be able to systematically distinguish between what manufacturer A s
 <p class="caption">(\#fig:tiredata)Boxplots of the tire tread data and the brand of tire from which the original measurements came.</p>
 </div>
 
-Since these are paired data, we are only interested in the _differences_ in wear of tire tread between the two brands on each car. The dotplot in Figure \@ref(fig:tiredata-diff) displays these differences, with summary statistics displayed below.
+Since these are paired data, we are only interested in the _differences_ in tire tread between the two brands on each car. The dotplot in Figure \@ref(fig:tiredata-diff) displays these differences, with summary statistics displayed below.
 
 
 
@@ -1066,8 +1066,8 @@ favstats(differences)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="06-inference-num_files/figure-html/tiredata-diff-1.png" alt="Difference in wear of tire tread (in inches) after 1,000 miles between the two brands (A -- B)." width="75%" />
-<p class="caption">(\#fig:tiredata-diff)Difference in wear of tire tread (in inches) after 1,000 miles between the two brands (A -- B).</p>
+<img src="06-inference-num_files/figure-html/tiredata-diff-1.png" alt="Difference in tire tread (in inches) remaining after 1,000 miles between the two brands (Smooth Turn -- Quick Spin)." width="75%" />
+<p class="caption">(\#fig:tiredata-diff)Difference in tire tread (in inches) remaining after 1,000 miles between the two brands (Smooth Turn -- Quick Spin).</p>
 </div>
 
 
@@ -1076,10 +1076,10 @@ favstats(differences)
 
 A simulation-based test will identify whether the differences seen in the box plot below could plausibly have happened just by chance variability.
 As before, we will simulate the variability in sample statistics under the assumption that the null hypothesis is true.
-In this study, the null hypothesis is that average difference in tire tread wear between Brand A and Brand B tires is zero. Taking the order of differences to be Brand A $-$ Brand B, we express the hypotheses as follows.
+In this study, the null hypothesis is that average difference in tire tread wear between Smooth Turn and Quick Spin tires is zero. Taking the order of differences to be Smooth Turn $-$ Quick Spin, we express the hypotheses as follows.
 
-* $H_0: \mu_d = 0$, the true mean difference in tread wear between Brand A and Brand B (A $-$ B) is equal to zero.  
-* $H_A: \mu_d > 0$, the true mean difference in tread wear between Brand A and Brand B (A $-$ B) is greater than zero.
+* $H_0: \mu_d = 0$, the true mean difference in tire tread remaining after 1,000 miles between Smooth Turn and Quick Spin (Smooth Turn $-$ Quick Spin) tires is equal to zero.  
+* $H_A: \mu_d > 0$, the true mean difference in tire tread remaining after 1,000 miles between Smooth Turn and Quick Spin (Smooth Turn $-$ Quick Spin) tires is greater than zero.
 
 To simulate the null distribution of mean differences in tread wear, we will implement the same method used in Section \@ref(one-mean-null-boot) using a shifted bootstrap distribution.
 
@@ -1095,21 +1095,21 @@ To simulate a null distribution of sample mean differences under the null hypoth
 2. Generate 1000s of bootstrap resamples from this shifted distribution, plotting the shifted bootstrap sample mean difference each time.</div>\EndKnitrBlock{onebox}
 
 
-To use bootstrapping to generate a null distribution of sample mean differences in tire tread wear, we first have to **shift the data** to be centered at the null value of zero. We do this by adding $-\bar{x}_d = -0.0019646$ to each tread wear difference in the sample, i.e., add 0.0019646 to each value. This process is displayed in Figure \@ref(fig:tiredata-diff-shift).
+To use bootstrapping to generate a null distribution of sample mean differences in tire tread, we first have to **shift the data** to be centered at the null value of zero. We do this by adding $-\bar{x}_d$ = $-$(0.002) to each tire tread difference in the sample, i.e., add 0.002 to each value. This process is displayed in Figure \@ref(fig:tiredata-diff-shift).
 
 <div class="figure" style="text-align: center">
-<img src="06-inference-num_files/figure-html/tiredata-diff-shift-1.png" alt="Difference in wear of tire tread (in inches) after 1,000 miles between the two brands (A -- B) (blue), and the shifted differences in wear of tire treat (red), found by adding 0.0019646 to each original difference." width="75%" />
-<p class="caption">(\#fig:tiredata-diff-shift)Difference in wear of tire tread (in inches) after 1,000 miles between the two brands (A -- B) (blue), and the shifted differences in wear of tire treat (red), found by adding 0.0019646 to each original difference.</p>
+<img src="06-inference-num_files/figure-html/tiredata-diff-shift-1.png" alt="Difference in tire tread (in inches) remaining after 1,000 miles between the two brands (Smooth Turn -- Quick Spin) (blue), and the shifted differences in tire tread (red), found by adding 0.0019646 to each original difference." width="75%" />
+<p class="caption">(\#fig:tiredata-diff-shift)Difference in tire tread (in inches) remaining after 1,000 miles between the two brands (Smooth Turn -- Quick Spin) (blue), and the shifted differences in tire tread (red), found by adding 0.0019646 to each original difference.</p>
 </div>
 
 #### Observed statistic vs. null statistics {-}
 
 
-By repeatedly sampling 25 cars with replacement from the shifted bootstrap null distribution, we can create a distribution of the sample mean difference in tire treat wear, as seen in Figure \@ref(fig:pairRandomiz).
-As expected (because the differences were generated under the null hypothesis), the center of the histogram is zero.
-A line has been drawn at the observed difference which is nowhere near the differences simulated from natural variability when we assume there is no difference in tire tread wear between brands.
-Because the observed statistic is so far away from the natural variability of the randomized differences, we believe that there is a significant difference in tire tread wear between brand A and brand B, on average. To be precise, the proportion of simulated $\bar{x}_d$'s that are greater than or equal to 0.002 inches is 0.011. This p-value gives us strong evidence in favor of our alternative $H_A: \mu_d > 0$.
-Our conclusion is that the extra amount of tire tread in brand A, on average, is due to more than just natural variability.
+By repeatedly sampling 25 cars with replacement from the shifted bootstrap null distribution, we can create a distribution of the sample mean difference in tire tread, as seen in Figure \@ref(fig:pairRandomiz).
+As expected (because the differences were generated under the null hypothesis), the histogram is centered at zero.
+A line has been drawn at the observed mean difference, $\bar{x}_d$ = 0.002, which is nowhere near the differences simulated from natural variability when we assume there is no difference in tire tread wear between brands.
+Because the observed mean difference in tire tread is so far away from the natural variability of the randomized mean differences in tire tread, we believe that there is a significant difference in tire tread wear between Smooth Turn and Quick Spin brand tires, on average. To be precise, the proportion of simulated $\bar{x}_d$'s that are greater than or equal to 0.002 inches is 0.011. This p-value gives us strong evidence in favor of our alternative $H_A: \mu_d > 0$.
+Our conclusion is that the extra amount of tire tread remaining in Smooth Turn brand tires after 1,000 miles, on average, is due to more than just natural variability.
 
 <div class="figure" style="text-align: center">
 <img src="06-inference-num_files/figure-html/pairRandomiz-1.png" alt="Histogram of 1000 simulated mean differences in tire tread wear, assuming that the two brands perform equally, on average." width="70%" />
@@ -1240,7 +1240,7 @@ That is, the 99% bootstrap SE interval gives potential for UCLA to be lower, on 
 
 
 
-### Mathematical model {#paired-mean-math}
+### Theory-based inferential methods for $\bar{x}_d$ {#paired-mean-math}
 
 Thinking about the differences as a single observation on an observational unit changes the paired setting into the one-sample setting.
 The mathematical model for the one-sample case is covered in Section \@ref(one-mean-math).
@@ -2360,7 +2360,7 @@ paired_bootstrap_CI(
 
 <img src="06-inference-num_files/figure-html/pairedBootstrapCI-1.png" width="70%" style="display: block; margin: auto;" />
 
-Here we again have a bootstrap distribution, but now it is the bootstrap distribution of the mean difference itself, rather than a bootstrapped null distribution for the mean difference.  We've requested a 99% confidence interval, so the relevant percentiles of the bootstrap distribution are highlighted, and the interval itself is given in the caption.  In this case, we are 99% confident that the true mean difference in tire tread is between 0 and 0.004 inches greater for Brand A.
+Here we again have a bootstrap distribution, but now it is the bootstrap distribution of the mean difference itself, rather than a bootstrapped null distribution for the mean difference.  We've requested a 99% confidence interval, so the relevant percentiles of the bootstrap distribution are highlighted, and the interval itself is given in the caption.  In this case, we are 99% confident that the true mean difference in tire tread is between 0 and 0.004 inches greater for Smooth Turn.
 
 **Theory-based inference for paired mean difference** To implement theory-based inference for a paired mean difference in `R`, we use the `t.test()` function.  As an example, we'll use the textbook cost data from Section \@ref(paired-data).  There are two ways to put in paired data for a t-test using `t.test()`.  First, we could have the prices of the two groups in two separate variables (in this case, `bookstore_new` and `amazon_new`): 
 
