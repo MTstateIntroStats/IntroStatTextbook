@@ -168,7 +168,7 @@ Recall from Chapter \@ref(eda) that a _distribution_ of a variable is a descript
 Theory-based methods also give us mathematical expressions for the
 standard deviation of a sampling distribution. For instance,
 if the true population proportion is $\pi$, then the standard deviation
-of the sampling distribution of sample proportions---how far away we would expect a sample proportion to be away from the population proportion---is
+of the sampling distribution of sample proportions---how far away we would expect a sample proportion to be away from the population proportion---is^[The notation $SD(\hat{p})$ is function notation --- we are applying the standard deviation function ($SD$) to the statistic $\hat{p}$. This notation does _not_ mean to multiply $SD$ by $\hat{p}$.]
 \[
 SD(\hat{p}) = \sqrt{\frac{\pi(1-\pi)}{n}}.
 \]
@@ -177,9 +177,9 @@ Typically, values of parameters such as $\pi$ are unknown, so we are unable to c
 ```{block2, type="onebox", echo=TRUE}
 **Standard error.**  
 
-The **standard deviation** of a sampling distribution for a statistic represents how far away we would expect the statistic to land from the parameter. 
+The **standard deviation** of a sampling distribution for a statistic, denoted by $SD$(statistic), represents how far away we would expect the statistic to land from the parameter. 
 
-Since the formulas for these standard deviations depend on unknown parameters, we substitute our "best guess" for $\pi$ in the formulas, either from a hypothesis or from a point estimate. The resulting _estimated_ standard deviation is called the **standard error** of the statistic.
+Since the formulas for these standard deviations depend on unknown parameters, we substitute our "best guess" for $\pi$ in the formulas, either from a hypothesis or from a point estimate. The resulting _estimated_ standard deviation is called the **standard error** of the statistic, denoted by $SE$(statistic).
 ```
 
 ```{r include=FALSE}
@@ -204,7 +204,7 @@ if this observed effect represents
 an actual effect in the population, or whether it was simply due to
 chance. 
 We label these two competing claims, $H_0$ and $H_A$,
-which are spoken as "H-naught" and "H_A"
+which are spoken as "H-naught" and "H_A".
   
 The **null hypothesis ($H_0$)** often represents either a skeptical perspective or a claim to be tested. The **alternative hypothesis ($H_A$)** represents an alternative claim under consideration and is often represented by a range of possible values for the parameter of interest. 
 ```
@@ -1464,12 +1464,27 @@ No. Because the interval overlaps 10%, it might be that the consultant's work is
 In Section \@ref(var-stat), we introduced the normal distribution and showed how it can be used as a mathematical model to describe the variability of a sample mean or sample proportion as a result of the Central Limit Theorem. We explored the normal distribution
 further in Section \@ref(normal). Theory-based hypothesis tests and confidence intervals for proportions use the normal distribution to calculate the p-value and to determine the width of the confidence interval.
 
-#### Variability of $\hat{p}$ {-}
+```{block2, type = "important", echo = TRUE}
+**Central Limit Theorem for the sample proportion**  
+  When we collect a sufficiently large sample of
+  $n$ independent observations of a categorical variable from a population with
+  $\pi$ proportion of successes,
+  the sampling distribution of $\hat{p}$ will be nearly
+  normal with
+  \begin{align*}
+  &\text{Mean}=\pi
+  &&\text{Standard Deviation }(SD) = \frac{\pi(1-\pi)}{n}
+  \end{align*}
+```
 
-There are conditions under which a sample proportion $\hat{p}$ is well-modeled using a normal distribution.
+#### Evaluating the two conditions required for modeling $\hat{p}$ using theory-based methods {-}
+
+There are two conditions required to apply the
+Central Limit Theorem\index{Central Limit Theorem}
+for a sample proportion $\hat{p}$.
 When the sample observations
 are independent and the sample size is sufficiently
-large, the normal model will describe the variability quite well; when the observations violate the conditions, the normal model can be inaccurate.
+large, the normal model will describe the variability in sample proportions quite well; when the observations violate the conditions, the normal model can be inaccurate.
 
 ```{block2, type = "onebox", echo = TRUE}
 **Conditions for the sampling distribution of
@@ -1480,11 +1495,11 @@ large, the normal model will describe the variability quite well; when the obser
   proportion $\pi$ can be modeled
   using a normal distribution  when:
 
-1. _Independence_. The sample's observations are independent,
-      e.g., are from a simple random sample.
-2. _Success-failure condition_. We expected to see at least 10 successes and
+1. **Independence.** The sample's observations are independent, i.e., the outcome of one observation does not influence the outcome of another. This condition is met if data come from a simple random sample of the target population.
+
+2. **Success-failure condition.** We expected to see at least 10 successes and
       10 failures in the sample, i.e., $n\pi\geq10$ and
-      $n(1-\pi)\geq10$.
+      $n(1-\pi)\geq10$. This condition is met if we have at least 10 successes and 10 failures in the observed data.
 
   When these conditions are satisfied, then the sampling
   distribution of $\hat{p}$ is approximately normal with mean
@@ -1494,7 +1509,7 @@ large, the normal model will describe the variability quite well; when the obser
 \index{success-failure condition}
 \index{standard error (SE)!single proportion}
   
-```{block2, type="tipbox", echo=TRUE}
+```{block2, type="protip", echo=TRUE}
 The success-failure condition listed above is only necessary for the sampling distribution of $\hat{p}$ to be approximately normal. The mean of the sampling distribution of $\hat{p}$ is $\pi$, and the standard deviation is $\sqrt{\frac{\ \pi(1-\pi)\ }{n}}$, regardless of the sample size.
 ```
   
@@ -1609,7 +1624,7 @@ Continuing the previous Example,
   The **null standard error** in the context of a one proportion
   hypothesis test is computed using the null value, $\pi_0$:
   \begin{align*}
-  SE_0 = \sqrt{\frac{\pi_0 (1 - \pi_0)}{n}}
+  SE_0(\hat{p}) = \sqrt{\frac{\pi_0 (1 - \pi_0)}{n}}
       = \sqrt{\frac{0.5 (1 - 0.5)}{826}}
       = 0.017
   \end{align*}
@@ -1644,7 +1659,7 @@ the original statistic as our test statistic. A standardized statistic is comput
 \[
 \mbox{standardized statistic} = \frac{\mbox{observed statistic} - \mbox{null value}}{\mbox{null standard error}}
 \]
-The **null standard error** ($SE_0$) of the observed statistic is its estimated standard deviation assuming the null hypothesis is true. We can interpret the standardized statistic as _the number of standard errors our observed statistic is above (if positive) or below (if negative) the null value_. When we are modeling the null distribution with a normal
+The **null standard error** ($SE_0(\text{statistic})$) of the observed statistic is its estimated standard deviation assuming the null hypothesis is true. We can interpret the standardized statistic as _the number of standard errors our observed statistic is above (if positive) or below (if negative) the null value_. When we are modeling the null distribution with a normal
 distribution, this standardized statistic is called $Z$, since it is the Z-score of the sample proportion.
 
 ```{block2, type = "onebox", echo = TRUE}
@@ -1652,9 +1667,9 @@ distribution, this standardized statistic is called $Z$, since it is the Z-score
   
 The **standardized statistic** for theory-based methods for one proportion is
 \[
-Z = \frac{\hat{p} - \pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}} = \frac{\hat{p} - \pi_0}{SE_0}
+Z = \frac{\hat{p} - \pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}} = \frac{\hat{p} - \pi_0}{SE_0(\hat{p})}
 \]
-where $\pi_0$ is the null value. The denominator, $SE_0 = \sqrt{\frac{\pi_0(1-\pi_0)}{n}}$, is called the **null standard error** of the sample proportion.
+where $\pi_0$ is the null value. The denominator, $SE_0(\hat{p}) = \sqrt{\frac{\pi_0(1-\pi_0)}{n}}$, is called the **null standard error** of the sample proportion.
 ```
 
 With the standardized statistic as our test statistic, we can find
@@ -1669,7 +1684,7 @@ Do payday loan borrowers support a regulation that would require lenders to pull
 Our sample proportion is $\hat{p} = 0.51$. Since our null value is $\pi_0 = 0.50$,  
 the null standard error is
   \begin{align*}
-  SE_0 = \sqrt{\frac{\pi_0 (1 - \pi_0)}{n}}
+  SE_0(\hat{p}) = \sqrt{\frac{\pi_0 (1 - \pi_0)}{n}}
       = \sqrt{\frac{0.5 (1 - 0.5)}{826}}
       = 0.017
   \end{align*}
@@ -1701,7 +1716,7 @@ normTail(0, 1, U = 0.57, col = COL[1], xlab =
 2. Using the null value, $\pi_0$, verify the conditions for using the normal distribution to approximate the null distribution.
 3. Calculate the test statistic:
     \[
-    Z = \frac{\hat{p} - \pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}} = \frac{\hat{p} - \pi_0}{SE_0}
+    Z = \frac{\hat{p} - \pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}} = \frac{\hat{p} - \pi_0}{SE_0(\hat{p})}
     \]
 4. Use the test statistic and the standard normal distribution to calculate the p-value.
 5. Make a conclusion based on the p-value, and write a conclusion in context, in plain language, and in terms of the alternative hypothesis.
@@ -1727,15 +1742,15 @@ A point estimate is our best guess for the value of the parameter, so it makes s
 normal distribution, the 68-95-99.7 rule tells us that, in general, 95% of observations are within 2 standard errors of the mean.  Here, we use the value 1.96 to be slightly more precise. The confidence interval
 for $\pi$ then takes the form
 \begin{align*}
-\hat{p} \pm z^{\star} \times SE.
+\hat{p} \pm z^{\star} \times SE(\hat{p}).
 \end{align*}
 
-We have seen $\hat{p}$ to be the sample proportion.  The value $z^{\star}$ comes from a standard normal distribution and is determined by the chosen confidence level.  The value of the standard error, $SE$, approximates how far we would expect the sample proportion to fall from $\pi$, and depends heavily on the sample size.
+We have seen $\hat{p}$ to be the sample proportion.  The value $z^{\star}$ comes from a standard normal distribution and is determined by the chosen confidence level.  The value of the standard error of $\hat{p}$, $SE(\hat{p})$, approximates how far we would expect the sample proportion to fall from $\pi$, and depends heavily on the sample size.
 
 ```{block2, type = "onebox", echo = TRUE}
 **Standard error of one proportion, $\hat{p}$.**
   
-When the conditions are met so that the distribution fo $\hat{p}$ is nearly normal, the **variability** of a single proportion, $\hat{p}$ is well described by its standard deviation:
+When the conditions are met so that the distribution for $\hat{p}$ is nearly normal, the **variability** of a single proportion, $\hat{p}$ is well described by its standard deviation:
   
 $$SD(\hat{p}) = \sqrt{\frac{\pi(1-\pi)}{n}}$$
   
@@ -1769,7 +1784,7 @@ did search and replace for each term above.  for example 826 for 826
 Consider taking many polls of registered voters (i.e., random samples) of size 300 and asking them if they support legalized marijuana.
 It is suspected that about 2/3 of all voters support legalized marijuana.
 To understand how the sample proportion ($\hat{p}$) would vary across the samples, calculate the standard error of $\hat{p}$.^[Because the $\pi$ is unknown but expected to be around 2/3, we will use 2/3 in place of $\pi$ in the formula for the standard deviation of $\hat{p}$ and calculate  
-$SE = \sqrt{\frac{2/3 (1 - 2/3)}
+$SE(\hat{p}) = \sqrt{\frac{2/3 (1 - 2/3)}
         {300}} = 0.027$.]
 
 ```
@@ -1818,7 +1833,7 @@ A simple random sample of 826
 a confidence interval, use $\hat{p}$ as our best guess of $\pi$
 in the formula.
 
-    $SE = \sqrt{\frac{0.51 (1 - 0.51)}
+    $SE(\hat{p}) = \sqrt{\frac{0.51 (1 - 0.51)}
         {826}} = 0.017$.
 
 3.       
@@ -3529,12 +3544,13 @@ A full derivation of the explicit connection between confidence intervals and hy
 
 ### Theory-based methods for $\pi_1 - \pi_2$ {#math-2prop}
 
-#### Variability of $\hat{p}_1 - \hat{p}_2$ {-}
-
 Like with $\hat{p}$, the difference of two sample
 proportions $\hat{p}_1 - \hat{p}_2$ can be modeled
 using a normal distribution when certain conditions
 are met.
+
+#### Evaluating the two conditions required for modeling $\pi_1 - \pi_2$ using theory-based methods {-}
+
 First, we require a broader independence condition,
 and secondly,
 the success-failure condition must be met by both groups.
@@ -3545,12 +3561,12 @@ the success-failure condition must be met by both groups.
 The difference $\hat{p}_1 - \hat{p}_2$ can be modeled
   using a normal distribution when
 
-1. *Independence* (extended).  The data are independent within and between
+1. **Independence** (extended).  The data are independent within and between
     the two groups. Generally this is satisfied if the data come from two independent random samples or if the data come from a randomized experiment.
-2. *Success-failure condition.*
+2. **Success-failure condition.**
     The success-failure condition holds for both
     groups, where we check successes and failures
-    in each group separately.
+    in each group separately. This condition is met if we have at least 10 successes and 10 failures in each sample. If data are displayed in a two-way table, this is equivalent to checking that all cells in the table have at least 10 observations.
 
     
   When these conditions are satisfied,
@@ -4427,9 +4443,9 @@ zsim_table <- tribble(
 
 "statistic of interest", "proportion: $\\hat{p}$", "diff in props: $\\hat{p}_1 - \\hat{p}_2$",
 
-"null standard error ($SE_0$)", "$\\sqrt{\\frac{\\pi_0(1-\\pi_0)}{n}}$", "$\\sqrt{\\hat{p}_{pool}(1-\\hat{p}_{pool})\\left(\\frac{1}{n_1} + \\frac{1}{n_2}\\right)}$",
+"null standard error of the statistic ($SE_0(\text{statistic})$)", "$\\sqrt{\\frac{\\pi_0(1-\\pi_0)}{n}}$", "$\\sqrt{\\hat{p}_{pool}(1-\\hat{p}_{pool})\\left(\\frac{1}{n_1} + \\frac{1}{n_2}\\right)}$",
 
-"standard error ($SE$)", "$\\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}}$", "$\\sqrt{\\frac{\\hat{p}_1(1-\\hat{p}_1)}{n_1} + \\frac{\\hat{p}_2(1-\\hat{p}_2)}{n_2}}$",
+"standard error of the statistic ($SE(\text{statistic})$)", "$\\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}}$", "$\\sqrt{\\frac{\\hat{p}_1(1-\\hat{p}_1)}{n_1} + \\frac{\\hat{p}_2(1-\\hat{p}_2)}{n_2}}$",
 
 "conditions", "1. independence, 2. large samples (at least 10 successes and 10 failures)", "1. independence, 2. large samples (at least 10 successes and 10 failures in each sample)"
 )
