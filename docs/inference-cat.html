@@ -349,7 +349,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="6.2.1" data-path="inference-num.html"><a href="inference-num.html#simulation-based-test-for-h_0-mu_d-0"><i class="fa fa-check"></i><b>6.2.1</b> Simulation-based test for <span class="math inline">\(H_0: \mu_d = 0\)</span></a></li>
 <li class="chapter" data-level="6.2.2" data-path="inference-num.html"><a href="inference-num.html#bootstrap-confidence-interval-for-mu_d"><i class="fa fa-check"></i><b>6.2.2</b> Bootstrap confidence interval for <span class="math inline">\(\mu_d\)</span></a></li>
-<li class="chapter" data-level="6.2.3" data-path="inference-num.html"><a href="inference-num.html#paired-mean-math"><i class="fa fa-check"></i><b>6.2.3</b> Mathematical model</a></li>
+<li class="chapter" data-level="6.2.3" data-path="inference-num.html"><a href="inference-num.html#paired-mean-math"><i class="fa fa-check"></i><b>6.2.3</b> Theory-based inferential methods for <span class="math inline">\(\bar{x}_d\)</span></a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="inference-num.html"><a href="inference-num.html#differenceOfTwoMeans"><i class="fa fa-check"></i><b>6.3</b> Difference of two means</a>
 <ul>
@@ -1324,7 +1324,7 @@ No. Because the interval overlaps 10%, it might be that the consultant’s work
 further in Section <a href="inference-cat.html#normal">5.2</a>. Theory-based hypothesis tests and confidence intervals for proportions use the normal distribution to calculate the p-value and to determine the width of the confidence interval.</p>
 
 <div class="important">
-<strong>Central Limit Theorem for the sample proportion</strong><br />
+<p><strong>Central Limit Theorem for the sample proportion.</strong></p>
 When we collect a sufficiently large sample of
 <span class="math inline">\(n\)</span> independent observations of a categorical variable from a population with
 <span class="math inline">\(\pi\)</span> proportion of successes,
@@ -1346,13 +1346,13 @@ large, the normal model will describe the variability in sample proportions quit
 
 <div class="onebox">
 <p><strong>Conditions for the sampling distribution of
-<span class="math inline">\(\hat{p}\)</span> to be normal.</strong></p>
+<span class="math inline">\(\hat{p}\)</span> to be approximately normal.</strong></p>
 <p>The sampling distribution for <span class="math inline">\(\hat{p}\)</span> based on
 a sample of size <span class="math inline">\(n\)</span> from a population with a true
 proportion <span class="math inline">\(\pi\)</span> can be modeled
 using a normal distribution when:</p>
 <ol style="list-style-type: decimal">
-<li><p><strong>Independence.</strong> The sample’s observations are independent, i.e., the outcome of one observation does not influence the outcome of another. This condition is met if data come from a simple random sample of the target population.</p></li>
+<li><p><strong>Independence.</strong> The sample observations are independent, i.e., the outcome of one observation does not influence the outcome of another. This condition is met if data come from a simple random sample of the target population.</p></li>
 <li><p><strong>Success-failure condition.</strong> We expected to see at least 10 successes and
 10 failures in the sample, i.e., <span class="math inline">\(n\pi\geq10\)</span> and
 <span class="math inline">\(n(1-\pi)\geq10\)</span>. This condition is met if we have at least 10 successes and 10 failures in the observed data.</p></li>
@@ -3819,7 +3819,7 @@ What influence would this have on the Type 1 Error rate?<a href="#fn141" class="
 However, it is sometimes helpful to adjust the significance level based on the application.
 We may select a level that is smaller or larger than 0.05 depending on the consequences of any conclusions reached from the test.</p>
 
-<div class="important">
+<div class="onebox">
 <p><strong>Significance level = probability of making a Type 1 error.</strong></p>
 We reject a null hypothesis if the p-value is less than a chosen significance level, <span class="math inline">\(\alpha\)</span>. Therefore, if the null hypothesis is true, but we end up with really unusual data just by chance – a p-value less than <span class="math inline">\(\alpha\)</span> – then we mistakenly reject the null hypothesis, making a Type 1 error.
 </div>
@@ -3886,7 +3886,7 @@ Hypotheses should be set up <em>before</em> observing the data.
 <p>Only the first three of these components are within the control of the researcher.</p>
 <p>The probability of a correct decision when the alternative hypothesis is true, <span class="math inline">\(1 - \beta\)</span>, is called the <strong>power</strong> of the test. Higher <strong>power</strong> means we are more likely to detect an effect that actually exists.</p>
 
-<div class="important">
+<div class="onebox">
 <p><strong>Power.</strong></p>
 The <strong>power</strong> of a test is the probability of rejecting a false null hypothesis.
 </div>
@@ -3918,7 +3918,7 @@ Figure 5.39: The blue distribution is the distribution of sample proportions if 
 </div>
 
 <div class="important">
-<p><strong>Increasing power</strong></p>
+<p><strong>Increasing power.</strong></p>
 <p>The <strong>power</strong> of a test will <em>increase</em> when:</p>
 <ul>
 <li>the significance level <em>increases</em></li>

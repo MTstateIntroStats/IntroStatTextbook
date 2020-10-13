@@ -1009,7 +1009,8 @@ No. Because the interval overlaps 10%, it might be that the consultant's work is
 In Section \@ref(var-stat), we introduced the normal distribution and showed how it can be used as a mathematical model to describe the variability of a sample mean or sample proportion as a result of the Central Limit Theorem. We explored the normal distribution
 further in Section \@ref(normal). Theory-based hypothesis tests and confidence intervals for proportions use the normal distribution to calculate the p-value and to determine the width of the confidence interval.
 
-\BeginKnitrBlock{important}<div class="important">**Central Limit Theorem for the sample proportion**  
+\BeginKnitrBlock{important}<div class="important">**Central Limit Theorem for the sample proportion.**
+  
   When we collect a sufficiently large sample of
   $n$ independent observations of a categorical variable from a population with
   $\pi$ proportion of successes,
@@ -1030,14 +1031,14 @@ are independent and the sample size is sufficiently
 large, the normal model will describe the variability in sample proportions quite well; when the observations violate the conditions, the normal model can be inaccurate.
 
 \BeginKnitrBlock{onebox}<div class="onebox">**Conditions for the sampling distribution of
-    $\hat{p}$ to be normal.**  
+    $\hat{p}$ to be approximately normal.**  
 
   The sampling distribution for $\hat{p}$ based on
   a sample of size $n$ from a population with a true
   proportion $\pi$ can be modeled
   using a normal distribution  when:
 
-1. **Independence.** The sample's observations are independent, i.e., the outcome of one observation does not influence the outcome of another. This condition is met if data come from a simple random sample of the target population.
+1. **Independence.** The sample observations are independent, i.e., the outcome of one observation does not influence the outcome of another. This condition is met if data come from a simple random sample of the target population.
 
 2. **Success-failure condition.** We expected to see at least 10 successes and
       10 failures in the sample, i.e., $n\pi\geq10$ and
@@ -3437,9 +3438,9 @@ Choosing a significance level for a test is important in many contexts, and the 
 However, it is sometimes helpful to adjust the significance level based on the application. 
 We may select a level that is smaller or larger than 0.05 depending on the consequences of any conclusions reached from the test.
 
-\BeginKnitrBlock{important}<div class="important">**Significance level = probability of making a Type 1 error.**
+\BeginKnitrBlock{onebox}<div class="onebox">**Significance level = probability of making a Type 1 error.**
 
-We reject a null hypothesis if the p-value is less than a chosen significance level, $\alpha$. Therefore, if the null hypothesis is true, but we end up with really unusual data just by chance -- a p-value less than $\alpha$ -- then we mistakenly reject the null hypothesis, making a Type 1 error.</div>\EndKnitrBlock{important}
+We reject a null hypothesis if the p-value is less than a chosen significance level, $\alpha$. Therefore, if the null hypothesis is true, but we end up with really unusual data just by chance -- a p-value less than $\alpha$ -- then we mistakenly reject the null hypothesis, making a Type 1 error.</div>\EndKnitrBlock{onebox}
 
 If making a Type 1 Error is dangerous or especially costly, we should choose a small significance level (e.g., 0.01 or 0.001). 
 If we want to be very cautious about rejecting the null hypothesis, we demand very strong evidence favoring the alternative $H_A$ before we would reject $H_0$.
@@ -3515,9 +3516,9 @@ Only the first three of these components are within the control of the researche
 The probability of a correct decision when the alternative hypothesis is true, $1 - \beta$, is called the **power** of the test. Higher **power** means we are more likely to detect an effect that actually exists.
 
 
-\BeginKnitrBlock{important}<div class="important">**Power.**
+\BeginKnitrBlock{onebox}<div class="onebox">**Power.**
 
-The **power** of a test is the probability of rejecting a false null hypothesis.</div>\EndKnitrBlock{important}
+The **power** of a test is the probability of rejecting a false null hypothesis.</div>\EndKnitrBlock{onebox}
 
 \BeginKnitrBlock{example}<div class="example">Suppose we would like to test whether less than 65% of a large population approves of a new law: $H_0: \pi = 0.65$ versus $H_A: \pi < 0.65$. We collect a random sample of $n = 200$ individuals from this population. For what values of the sample proportion, $\hat{p}$, would we reject $H_0$ using a significance level of $\alpha = 0.05$?
 
@@ -3547,7 +3548,7 @@ This example asks us to calculate the power -- the probability our test will pro
 <p class="caption">(\#fig:power-example-2)The blue distribution is the distribution of sample proportions if the null hypothesis is true, $\pi = 0.65$ -- the blue shaded area represents the probability we reject a true null hypothesis. The red distribution is the distribution of sample proportions under a particular alternative hypothesis, that $\pi = 0.58$ -- the red shaded area represents the power.</p>
 </div>
 
-\BeginKnitrBlock{important}<div class="important">**Increasing power**
+\BeginKnitrBlock{important}<div class="important">**Increasing power.**
 
 The **power** of a test will _increase_ when:
   

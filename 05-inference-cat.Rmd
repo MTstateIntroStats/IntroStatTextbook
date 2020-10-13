@@ -1465,7 +1465,8 @@ In Section \@ref(var-stat), we introduced the normal distribution and showed how
 further in Section \@ref(normal). Theory-based hypothesis tests and confidence intervals for proportions use the normal distribution to calculate the p-value and to determine the width of the confidence interval.
 
 ```{block2, type = "important", echo = TRUE}
-**Central Limit Theorem for the sample proportion**  
+**Central Limit Theorem for the sample proportion.**
+  
   When we collect a sufficiently large sample of
   $n$ independent observations of a categorical variable from a population with
   $\pi$ proportion of successes,
@@ -1488,14 +1489,14 @@ large, the normal model will describe the variability in sample proportions quit
 
 ```{block2, type = "onebox", echo = TRUE}
 **Conditions for the sampling distribution of
-    $\hat{p}$ to be normal.**  
+    $\hat{p}$ to be approximately normal.**  
 
   The sampling distribution for $\hat{p}$ based on
   a sample of size $n$ from a population with a true
   proportion $\pi$ can be modeled
   using a normal distribution  when:
 
-1. **Independence.** The sample's observations are independent, i.e., the outcome of one observation does not influence the outcome of another. This condition is met if data come from a simple random sample of the target population.
+1. **Independence.** The sample observations are independent, i.e., the outcome of one observation does not influence the outcome of another. This condition is met if data come from a simple random sample of the target population.
 
 2. **Success-failure condition.** We expected to see at least 10 successes and
       10 failures in the sample, i.e., $n\pi\geq10$ and
@@ -4194,7 +4195,7 @@ Choosing a significance level for a test is important in many contexts, and the 
 However, it is sometimes helpful to adjust the significance level based on the application. 
 We may select a level that is smaller or larger than 0.05 depending on the consequences of any conclusions reached from the test.
 
-```{block2, type="important", echo=TRUE}
+```{block2, type="onebox", echo=TRUE}
 **Significance level = probability of making a Type 1 error.**
 
 We reject a null hypothesis if the p-value is less than a chosen significance level, $\alpha$. Therefore, if the null hypothesis is true, but we end up with really unusual data just by chance -- a p-value less than $\alpha$ -- then we mistakenly reject the null hypothesis, making a Type 1 error.
@@ -4295,7 +4296,7 @@ Only the first three of these components are within the control of the researche
 The probability of a correct decision when the alternative hypothesis is true, $1 - \beta$, is called the **power** of the test. Higher **power** means we are more likely to detect an effect that actually exists.
 
 
-```{block2, type="important", echo=TRUE}
+```{block2, type="onebox", echo=TRUE}
 **Power.**
 
 The **power** of a test is the probability of rejecting a false null hypothesis.
@@ -4332,7 +4333,7 @@ include_graphics("05/figures/PowerExample2.png")
 ```
 
 ```{block2, type="important", echo=TRUE}
-**Increasing power**
+**Increasing power.**
 
 The **power** of a test will _increase_ when:
   
