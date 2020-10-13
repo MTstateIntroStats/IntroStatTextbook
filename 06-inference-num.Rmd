@@ -2579,12 +2579,14 @@ tsim_table %>%
 ```
 
 
-**Hypothesis tests.** When applying the $t$-distribution for a hypothesis test, we proceed as follows:
+**Hypothesis tests.** When applying the $t$-distribution for a hypothesis test involving means, we proceed as follows:
 
 1. Write appropriate hypotheses.  
 2. Verify conditions for using the $t$-distribution.  
-   - One-sample or differences from paired data: the observations (or differences) must be independent and nearly normal. For larger sample sizes, we can relax the nearly normal requirement, e.g., slight skew is okay for sample sizes of 15, moderate skew for sample sizes of 30, and strong skew for sample sizes of 60.  
-   - For a difference of means when the data are not paired: each sample mean must separately satisfy the one-sample conditions for the $t$-distribution, and the data in the groups must also be independent.  
+    * **Independence.** Observational units must be independent. This is typically true if the data came from a random sample (or two random samples, or one random sample randomly assigned to two treatments).
+   * **Normality.** If the sample size is less than 30 and there are no clear outliers in the data, or if the sample size is at least 30
+      and there are no *particularly extreme* outliers,
+      then we can apply the $t$-distribution for a hypothesis tests of means. For a difference of means when the data are not paired, this condition must be met for each of the two samples.  
 
 3. Compute the statistic of interest, the standard error, and the degrees of freedom. For $df$, use $n-1$ for one sample, and for two samples use either statistical software or the smaller of $n_1 - 1$ and $n_2 - 1$.  
 4. Compute the T-score using the general formula:
@@ -2600,7 +2602,7 @@ tsim_table %>%
 **Confidence intervals.** Similarly, the following is how we generally computed a confidence interval using a $t$-distribution:
 
 1. Verify conditions for using the $t$-distribution. (See above.)  
-2. Compute the point estimate of interest, the standard error, the degrees of freedom, and $t^{\star}_{df}$.  
+2. Compute the point estimate of interest, the standard error, the degrees of freedom, and $t^{\star}_{df}$.  The multiplier for a $(1-\alpha)\times100$% confidence interval can be found in `R` by: `qt(1-(alpha/2), df)`. For example, $t^{\star}_{10}$ with 95% confidence is `qt(0.975, 10)` = `r qt(0.975, 10)`.
 3. Calculate the confidence interval using the general formula:
     \[
     \mbox{statistic} \pm\ t_{df}^{\star} SE.
@@ -2611,13 +2613,13 @@ tsim_table %>%
 
 ## `R`: Inference for quantitative data
 
-```{block2, type="todo", echo=TRUE}
-Section on doing inference for categorical data in R.
+<!-- ```{block2, type="todo", echo=TRUE} -->
+<!-- Section on doing inference for categorical data in R. -->
 
-- Simulation functions in catstats
-- `t.test`
+<!-- - Simulation functions in catstats -->
+<!-- - `t.test` -->
 
-```
+<!-- ``` -->
 
 **Simulation-based inference for paired mean difference** Simulation-based inference for quantitative data will use functions in the `catstats` package, as we did for categorical data.  
 
