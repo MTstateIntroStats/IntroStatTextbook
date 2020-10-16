@@ -1004,7 +1004,7 @@ No. Because the interval overlaps 10%, it might be that the consultant's work is
 \index{data!medical consultant|)}
 
 
-### Theory-based methods for $\pi$ {#theory-prop}
+### Theory-based inferential methods for $\pi$ {#theory-prop}
 
 In Section \@ref(var-stat), we introduced the normal distribution and showed how it can be used as a mathematical model to describe the variability of a sample mean or sample proportion as a result of the Central Limit Theorem. We explored the normal distribution
 further in Section \@ref(normal). Theory-based hypothesis tests and confidence intervals for proportions use the normal distribution to calculate the p-value and to determine the width of the confidence interval.
@@ -1909,7 +1909,7 @@ This summary value is the **statistic** of interest (or often the **test statist
 </div>
 
 
-#### Observed statistic vs. null statistics {-}
+#### Observed statistic vs. null value {-}
 
 We computed one possible sample difference in proportions under the null hypothesis in the Guided Practice above, which represents one difference due to chance. 
 While in this first simulation, we physically dealt out files, it is much more efficient to perform this simulation using a computer. 
@@ -2125,7 +2125,7 @@ Let's think about the data in the context of the hypotheses.
 If the null hypothesis ($H_0$) was true and the treatment had no impact on student decisions, then the observed difference between the two groups of 20% could be attributed entirely to chance. 
 If, on the other hand, the alternative hypothesis ($H_A$) is true, then the difference indicates that reminding students about saving for later purchases actually impacts their buying decisions.
 
-#### Observed statistic vs. null statistics {-}
+#### Observed statistic vs. null value {-}
 
 Just like with the gender discrimination study, we can perform a statistical analysis. 
 Using the same randomization technique from the last section, let's see what happens when we simulate the experiment under the scenario where there is no effect from the treatment.
@@ -2395,7 +2395,7 @@ where each dot represents a simulated relative risk of infection (treatment rate
 
 
 
-#### Observed statistic vs null statistics {-}
+#### Observed statistic vs null value {-}
 
 Note that the distribution of these simulated differences
 is centered around 1.
@@ -2768,7 +2768,7 @@ Indeed, one can show mathematically, that a 95% confidence interval and a two-si
 A full derivation of the explicit connection between confidence intervals and hypothesis tests is beyond the scope of this text.
 
 
-### Theory-based methods for $\pi_1 - \pi_2$ {#math-2prop}
+### Theory-based inferential methods for $\pi_1 - \pi_2$ {#math-2prop}
 
 Like with $\hat{p}$, the difference of two sample
 proportions $\hat{p}_1 - \hat{p}_2$ can be modeled
@@ -3689,7 +3689,7 @@ You will often hear the following two $z$-procedures referred to as a **one samp
 2. Compute the statistic of interest, the standard error, and $z^{\star}$.  
 3. Calculate the confidence interval using the general formula:
     \[
-    \mbox{statistic} \pm\ z^{\star} SE.
+    \mbox{statistic} \pm\ z^{\star} SE(\mbox{statistic}).
     \]
 4. Put the conclusions in context and in plain language so even non-data scientists can understand the results.
 

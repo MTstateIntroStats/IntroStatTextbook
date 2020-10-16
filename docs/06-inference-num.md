@@ -1,5 +1,8 @@
 # Inference for quantitative data {#inference-num}
 
+<!-- TODO: Add vocab words to this chapter. -->
+
+
 \BeginKnitrBlock{chapterintro}<div class="chapterintro">Focusing now on statistical inference for quantitative data, we will revisit and expand upon the foundational aspects of hypothesis testing from Section \@ref(inf-foundations).
 
 The important data structure for this chapter is a quantitative response variable (that is, the outcome is numerical).
@@ -202,7 +205,7 @@ To simulate a null distribution of sample means under the null hypothesis $H_0: 
 
 To calculate the p-value, since $H_A: \mu < 98.6$, we find the proportion of simulated sample means that were less than or equal to our original sample mean, $\bar{x}$ = 97.47. As shown in Figure \@ref(fig:shifted-boot-null), none of our simulated sample means were 97.5$^\circ$F or lower, giving us very strong evidence that the true mean body temperature among all Montana State University students is less than the commonly accepted 98.6$^\circ$F average temperature.
 
-### Theory-based inferential methods for $\bar{x}$ {#one-mean-math}
+### Theory-based inferential methods for $\mu$ {#one-mean-math}
 
 As with the sample proportion, the variability of the sample mean is well described by the mathematical theory given by the Central Limit Theorem.  Similar to how we can model the behavior of the sample proportion $\hat{p}$ using a normal distribution, the sample mean $\bar{x}$ can also be modeled using
 a normal distribution when certain conditions are met.
@@ -1109,7 +1112,7 @@ To use bootstrapping to generate a null distribution of sample mean differences 
 <p class="caption">(\#fig:tiredata-diff-shift)Mean difference in tire tread (in inches) remaining after 1,000 miles between the two brands (Smooth Turn -- Quick Spin) (blue), and the shifted mean differences in tire tread (red), found by subtracting 0.00196 to each original difference.</p>
 </div>
 
-#### Observed statistic vs. null statistics {-}
+#### Observed statistic vs. null value {-}
 
 
 By repeatedly sampling 25 cars with replacement from the shifted bootstrap null distribution, we can create a distribution of the sample mean difference in tire tread, as seen in Figure \@ref(fig:pairRandomiz).
@@ -1593,7 +1596,7 @@ We see that, just by chance, the difference in scores can range anywhere from -1
 </div>
 
 
-##### Observed statistic vs. null statistics {-}
+##### Observed statistic vs. null value {-}
 
 The goal of the randomization test is to assess the observed data, here the statistic of interest is $\bar{x}_A - \bar{x}_B = 3.1$.
 The randomization distribution allows us to identify whether a difference of 3.1 points is more than one would expect by natural variability.
@@ -2004,7 +2007,7 @@ for this Guided Practice.^[(a) The difference in sample means is an
 </table>
 
 
-##### Observed statistic vs. null statistics {-}
+##### Observed statistic vs. null value {-}
 
 
 ::: {.important}
@@ -2282,7 +2285,7 @@ So far in this chapter, we have seen the $t$-distribution applied as the appropr
 2. Compute the point estimate of interest, the standard error, the degrees of freedom, and $t^{\star}_{df}$.  The multiplier for a $(1-\alpha)\times100$% confidence interval can be found in `R` by: `qt(1-(alpha/2), df)`. For example, $t^{\star}_{10}$ with 95% confidence is `qt(0.975, 10)` = 2.228.
 3. Calculate the confidence interval using the general formula:
     \[
-    \mbox{statistic} \pm\ t_{df}^{\star} SE.
+    \mbox{statistic} \pm\ t_{df}^{\star} SE(\mbox{statistic}).
     \]
 4. Put the conclusions in context and in plain language so even non-data scientists can understand the results.
 
