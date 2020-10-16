@@ -24,7 +24,7 @@
 <meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager" />
 
 
-<meta name="date" content="2020-10-12" />
+<meta name="date" content="2020-10-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -342,20 +342,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="inference-num.html"><a href="inference-num.html#one-mean"><i class="fa fa-check"></i><b>6.1</b> One mean</a>
 <ul>
 <li class="chapter" data-level="6.1.1" data-path="inference-num.html"><a href="inference-num.html#bootstrap-confidence-interval-for-mu"><i class="fa fa-check"></i><b>6.1.1</b> Bootstrap confidence interval for <span class="math inline">\(\mu\)</span></a></li>
-<li class="chapter" data-level="6.1.2" data-path="inference-num.html"><a href="inference-num.html#one-mean-null-boot"><i class="fa fa-check"></i><b>6.1.2</b> Simulation-based test for <span class="math inline">\(H_0: \mu = \mu_0\)</span></a></li>
+<li class="chapter" data-level="6.1.2" data-path="inference-num.html"><a href="inference-num.html#one-mean-null-boot"><i class="fa fa-check"></i><b>6.1.2</b> Shifted bootstrap test for <span class="math inline">\(H_0: \mu = \mu_0\)</span></a></li>
 <li class="chapter" data-level="6.1.3" data-path="inference-num.html"><a href="inference-num.html#one-mean-math"><i class="fa fa-check"></i><b>6.1.3</b> Theory-based inferential methods for <span class="math inline">\(\bar{x}\)</span></a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="inference-num.html"><a href="inference-num.html#paired-data"><i class="fa fa-check"></i><b>6.2</b> Paired mean difference</a>
 <ul>
-<li class="chapter" data-level="6.2.1" data-path="inference-num.html"><a href="inference-num.html#simulation-based-test-for-h_0-mu_d-0"><i class="fa fa-check"></i><b>6.2.1</b> Simulation-based test for <span class="math inline">\(H_0: \mu_d = 0\)</span></a></li>
+<li class="chapter" data-level="6.2.1" data-path="inference-num.html"><a href="inference-num.html#shifted-bootstrap-test-for-h_0-mu_d-0"><i class="fa fa-check"></i><b>6.2.1</b> Shifted bootstrap test for <span class="math inline">\(H_0: \mu_d = 0\)</span></a></li>
 <li class="chapter" data-level="6.2.2" data-path="inference-num.html"><a href="inference-num.html#bootstrap-confidence-interval-for-mu_d"><i class="fa fa-check"></i><b>6.2.2</b> Bootstrap confidence interval for <span class="math inline">\(\mu_d\)</span></a></li>
-<li class="chapter" data-level="6.2.3" data-path="inference-num.html"><a href="inference-num.html#paired-mean-math"><i class="fa fa-check"></i><b>6.2.3</b> Theory-based inferential methods for <span class="math inline">\(\bar{x}_d\)</span></a></li>
+<li class="chapter" data-level="6.2.3" data-path="inference-num.html"><a href="inference-num.html#paired-mean-math"><i class="fa fa-check"></i><b>6.2.3</b> Theory-based inferential methods for <span class="math inline">\(\mu_d\)</span></a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="inference-num.html"><a href="inference-num.html#differenceOfTwoMeans"><i class="fa fa-check"></i><b>6.3</b> Difference of two means</a>
 <ul>
 <li class="chapter" data-level="6.3.1" data-path="inference-num.html"><a href="inference-num.html#rand2mean"><i class="fa fa-check"></i><b>6.3.1</b> Randomization test for <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span></a></li>
-<li class="chapter" data-level="6.3.2" data-path="inference-num.html"><a href="inference-num.html#bootstrap-confidence-interval-for-mu_1---mu_2"><i class="fa fa-check"></i><b>6.3.2</b> Bootstrap confidence interval for <span class="math inline">\(\mu_1 - \mu_2\)</span></a></li>
-<li class="chapter" data-level="6.3.3" data-path="inference-num.html"><a href="inference-num.html#mathematical-model"><i class="fa fa-check"></i><b>6.3.3</b> Mathematical model</a></li>
+<li class="chapter" data-level="6.3.2" data-path="inference-num.html"><a href="inference-num.html#boot-ci-diff-means"><i class="fa fa-check"></i><b>6.3.2</b> Bootstrap confidence interval for <span class="math inline">\(\mu_1 - \mu_2\)</span></a></li>
+<li class="chapter" data-level="6.3.3" data-path="inference-num.html"><a href="inference-num.html#math2samp"><i class="fa fa-check"></i><b>6.3.3</b> Theory-based inferential methods for <span class="math inline">\(\mu_1 - \mu_2\)</span></a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="inference-num.html"><a href="inference-num.html#summary-of-t-procedures"><i class="fa fa-check"></i><b>6.4</b> Summary of t-procedures</a></li>
 <li class="chapter" data-level="6.5" data-path="inference-num.html"><a href="inference-num.html#r-inference-for-quantitative-data"><i class="fa fa-check"></i><b>6.5</b> <code>R</code>: Inference for quantitative data</a>
@@ -516,7 +516,7 @@ The distribution is skewed left and centered near £340.23, which is the point e
 </div>
 
 <div class="guidedpractice">
-Using Figure <a href="inference-num.html#fig:flatsbssd">6.4</a>, find <em>and interpret</em> a 90% confidence interval for the population standard deviation for three bedroom flat prices in Edinburgh.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>
+Using Figure <a href="inference-num.html#fig:flatsbssd">6.4</a>, find <em>and interpret</em> a 90% confidence interval for the population standard deviation for three bedroom flat prices in Edinburgh.<a href="#fn146" class="footnote-ref" id="fnref146"><sup>146</sup></a>
 </div>
 <div class="figure" style="text-align: center"><span id="fig:flatsbssd"></span>
 <img src="06-inference-num_files/figure-html/flatsbssd-1.png" alt="The original Edinburgh data is bootstrapped 1,000 times. The histogram provides a sense for the variability of the standard deviation of the rent values from sample to sample." width="70%" />
@@ -534,13 +534,13 @@ As you might guess, the larger the random sample, the more accurately that sampl
 </div>
 </div>
 <div id="one-mean-null-boot" class="section level3" number="6.1.2">
-<h3><span class="header-section-number">6.1.2</span> Simulation-based test for <span class="math inline">\(H_0: \mu = \mu_0\)</span></h3>
+<h3><span class="header-section-number">6.1.2</span> Shifted bootstrap test for <span class="math inline">\(H_0: \mu = \mu_0\)</span></h3>
 <p>We can also use bootstrapping to conduct a simulation-based test of the null hypothesis that the population mean is equal to a specified value, <span class="math inline">\(\mu_0\)</span>, called the null value. In this case, we first <strong>shift</strong> each value in the data set so that the sample distribution is centered at <span class="math inline">\(\mu_0\)</span>. Then, we bootstrap from the <strong>shifted data</strong> in order to generate a null distribution of sample means. Consider the following example.</p>
-<p>In 1851, Carl Wunderlich, a German physician, measured body temperatures of around 25,000 adults and found that the average body temperature was 98.6<span class="math inline">\(^{\circ}\)</span>F, which we’ve believed ever since. However, a recent study conducted at Stanford University suggests that the average body temperature may actually be lower than 98.6<span class="math inline">\(^{\circ}\)</span>F.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<p>In 1851, Carl Wunderlich, a German physician, measured body temperatures of around 25,000 adults and found that the average body temperature was 98.6<span class="math inline">\(^{\circ}\)</span>F, which we’ve believed ever since. However, a recent study conducted at Stanford University suggests that the average body temperature may actually be lower than 98.6<span class="math inline">\(^{\circ}\)</span>F.<a href="#fn147" class="footnote-ref" id="fnref147"><sup>147</sup></a></p>
 <div id="observed-data-1" class="section level4 unnumbered">
 <h4>Observed data</h4>
 <p>Curious if average body temperature has decreased since 1851, you decided to collect data on a random sample of twenty Montana State University students. The mean body temperature in your sample is <span class="math inline">\(\bar{x}\)</span> = 97.47<span class="math inline">\(^{\circ}\)</span>F, and the standard deviation is <span class="math inline">\(s\)</span> = 0.35<span class="math inline">\(^{\circ}\)</span>F. A dot plot of the data is shown in Figure <a href="inference-num.html#fig:body-temp-hist">6.5</a>, with summary statistics displayed below.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="inference-num.html#cb1-1" aria-hidden="true"></a><span class="kw">favstats</span>(temperatures)</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="inference-num.html#cb59-1" aria-hidden="true"></a><span class="kw">favstats</span>(temperatures)</span></code></pre></div>
 <pre><code>#&gt;   min   Q1 median   Q3  max mean    sd  n missing
 #&gt;  96.7 97.3   97.5 97.7 98.1 97.5 0.353 20       0</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:body-temp-hist"></span>
@@ -678,7 +678,7 @@ distribution of individual observations is not.
 <p>In this first course in statistics, you aren’t expected
 to develop perfect judgement on the normality condition.
 However, you are expected to be able to handle
-clear cut cases based on the rules of thumb.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+clear cut cases based on the rules of thumb.<a href="#fn148" class="footnote-ref" id="fnref148"><sup>148</sup></a></p>
 <div class="example">
 <p>Consider the following two plots
 that come from simple random samples from
@@ -828,9 +828,9 @@ and shade the area below -2.10.</p>
 <p>Using statistical software, we can obtain a precise
 value: 0.0250.</p>
 </div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="inference-num.html#cb3-1" aria-hidden="true"></a><span class="co"># using pt() to find probability under the $t$-distribution</span></span>
-<span id="cb3-2"><a href="inference-num.html#cb3-2" aria-hidden="true"></a><span class="kw">pt</span>(<span class="op">-</span><span class="fl">2.10</span>, <span class="dt">df =</span> <span class="dv">18</span>)</span>
-<span id="cb3-3"><a href="inference-num.html#cb3-3" aria-hidden="true"></a><span class="co">#&gt; [1] 0.025</span></span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="inference-num.html#cb61-1" aria-hidden="true"></a><span class="co"># using pt() to find probability under the $t$-distribution</span></span>
+<span id="cb61-2"><a href="inference-num.html#cb61-2" aria-hidden="true"></a><span class="kw">pt</span>(<span class="op">-</span><span class="fl">2.10</span>, <span class="dt">df =</span> <span class="dv">18</span>)</span>
+<span id="cb61-3"><a href="inference-num.html#cb61-3" aria-hidden="true"></a><span class="co">#&gt; [1] 0.025</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:tDistDF18LeftTail2Point10"></span>
 <img src="06-inference-num_files/figure-html/tDistDF18LeftTail2Point10-1.png" alt="The $t$-distribution with 18 degrees of freedom. The area below -2.10 has been shaded." width="70%" />
 <p class="caption">
@@ -850,12 +850,12 @@ about 0.05, so we should expect the <span class="math inline">\(t\)</span>-distr
 to give us a value in this neighborhood.
 Using statistical software: 0.0573.</p>
 </div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="inference-num.html#cb4-1" aria-hidden="true"></a><span class="co"># using pt() to find probability under the $t$-distribution</span></span>
-<span id="cb4-2"><a href="inference-num.html#cb4-2" aria-hidden="true"></a><span class="kw">pt</span>(<span class="fl">1.65</span>, <span class="dt">df =</span> <span class="dv">20</span>, <span class="dt">lower.tail=</span><span class="ot">FALSE</span>)</span>
-<span id="cb4-3"><a href="inference-num.html#cb4-3" aria-hidden="true"></a><span class="co">#&gt; [1] 0.0573</span></span>
-<span id="cb4-4"><a href="inference-num.html#cb4-4" aria-hidden="true"></a><span class="co"># or</span></span>
-<span id="cb4-5"><a href="inference-num.html#cb4-5" aria-hidden="true"></a><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pt</span>(<span class="fl">1.65</span>, <span class="dt">df =</span> <span class="dv">20</span>)</span>
-<span id="cb4-6"><a href="inference-num.html#cb4-6" aria-hidden="true"></a><span class="co">#&gt; [1] 0.0573</span></span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="inference-num.html#cb62-1" aria-hidden="true"></a><span class="co"># using pt() to find probability under the $t$-distribution</span></span>
+<span id="cb62-2"><a href="inference-num.html#cb62-2" aria-hidden="true"></a><span class="kw">pt</span>(<span class="fl">1.65</span>, <span class="dt">df =</span> <span class="dv">20</span>, <span class="dt">lower.tail=</span><span class="ot">FALSE</span>)</span>
+<span id="cb62-3"><a href="inference-num.html#cb62-3" aria-hidden="true"></a><span class="co">#&gt; [1] 0.0573</span></span>
+<span id="cb62-4"><a href="inference-num.html#cb62-4" aria-hidden="true"></a><span class="co"># or</span></span>
+<span id="cb62-5"><a href="inference-num.html#cb62-5" aria-hidden="true"></a><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pt</span>(<span class="fl">1.65</span>, <span class="dt">df =</span> <span class="dv">20</span>)</span>
+<span id="cb62-6"><a href="inference-num.html#cb62-6" aria-hidden="true"></a><span class="co">#&gt; [1] 0.0573</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:tDistDF20RightTail1Point65"></span>
 <img src="06-inference-num_files/figure-html/tDistDF20RightTail1Point65-1.png" alt="Top: The $t$-distribution with 20 degrees of freedom, with the area above 1.65 shaded. Bottom: The $t$-distribution with 2 degrees of freedom, with the area further than 3 units from 0 shaded." width="70%" /><img src="06-inference-num_files/figure-html/tDistDF20RightTail1Point65-2.png" alt="Top: The $t$-distribution with 20 degrees of freedom, with the area above 1.65 shaded. Bottom: The $t$-distribution with 2 degrees of freedom, with the area further than 3 units from 0 shaded." width="70%" />
 <p class="caption">
@@ -879,12 +879,12 @@ tails beyond 3 units totals 0.0955.
 This area is dramatically different than what
 we obtain from the normal distribution.</p>
 </div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="inference-num.html#cb5-1" aria-hidden="true"></a><span class="co"># using pt() to find probability under the $t$-distribution</span></span>
-<span id="cb5-2"><a href="inference-num.html#cb5-2" aria-hidden="true"></a><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="kw">pt</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dt">df =</span> <span class="dv">2</span>)</span>
-<span id="cb5-3"><a href="inference-num.html#cb5-3" aria-hidden="true"></a><span class="co">#&gt; [1] 0.0955</span></span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="inference-num.html#cb63-1" aria-hidden="true"></a><span class="co"># using pt() to find probability under the $t$-distribution</span></span>
+<span id="cb63-2"><a href="inference-num.html#cb63-2" aria-hidden="true"></a><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="kw">pt</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dt">df =</span> <span class="dv">2</span>)</span>
+<span id="cb63-3"><a href="inference-num.html#cb63-3" aria-hidden="true"></a><span class="co">#&gt; [1] 0.0955</span></span></code></pre></div>
 <div class="guidedpractice">
 <p>What proportion of the <span class="math inline">\(t\)</span>-distribution with 19 degrees
-of freedom falls above -1.79 units?<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
+of freedom falls above -1.79 units?<a href="#fn149" class="footnote-ref" id="fnref149"><sup>149</sup></a></p>
 </div>
 <p>
 </p>
@@ -1005,11 +1005,11 @@ The area below -2.10 will also be equal to 2.5%.
 That is, 95% of the <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(df = 18\)</span>
 lies within 2.10 units of 0.</p>
 </div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="inference-num.html#cb6-1" aria-hidden="true"></a><span class="co"># use qt() to find the t-cutoff (with 95% in the middle)</span></span>
-<span id="cb6-2"><a href="inference-num.html#cb6-2" aria-hidden="true"></a><span class="kw">qt</span>(<span class="fl">0.025</span>, <span class="dt">df =</span> <span class="dv">18</span>)</span>
-<span id="cb6-3"><a href="inference-num.html#cb6-3" aria-hidden="true"></a><span class="co">#&gt; [1] -2.1</span></span>
-<span id="cb6-4"><a href="inference-num.html#cb6-4" aria-hidden="true"></a><span class="kw">qt</span>(<span class="fl">0.975</span>, <span class="dt">df =</span> <span class="dv">18</span>)</span>
-<span id="cb6-5"><a href="inference-num.html#cb6-5" aria-hidden="true"></a><span class="co">#&gt; [1] 2.1</span></span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="inference-num.html#cb64-1" aria-hidden="true"></a><span class="co"># use qt() to find the t-cutoff (with 95% in the middle)</span></span>
+<span id="cb64-2"><a href="inference-num.html#cb64-2" aria-hidden="true"></a><span class="kw">qt</span>(<span class="fl">0.025</span>, <span class="dt">df =</span> <span class="dv">18</span>)</span>
+<span id="cb64-3"><a href="inference-num.html#cb64-3" aria-hidden="true"></a><span class="co">#&gt; [1] -2.1</span></span>
+<span id="cb64-4"><a href="inference-num.html#cb64-4" aria-hidden="true"></a><span class="kw">qt</span>(<span class="fl">0.975</span>, <span class="dt">df =</span> <span class="dv">18</span>)</span>
+<span id="cb64-5"><a href="inference-num.html#cb64-5" aria-hidden="true"></a><span class="co">#&gt; [1] 2.1</span></span></code></pre></div>
 <div class="example">
 <p>Compute and interpret the 95% confidence interval
 for the average mercury content in Risso’s dolphins.</p>
@@ -1025,8 +1025,8 @@ in the population of Risso’s dolphins is between 3.29 and 5.51 <span class="ma
 which is considered extremely high.</p>
 </div>
 <p></p>
-<div class="onebox">
-<p><strong>Finding a <span class="math inline">\(t\)</span>-confidence interval for the mean, <span class="math inline">\(\mu\)</span>.</strong></p>
+<div class="important">
+<p><strong>Finding a <span class="math inline">\(t\)</span>-confidence interval for a population mean, <span class="math inline">\(\mu\)</span>.</strong></p>
 <p>Based on a sample of <span class="math inline">\(n\)</span> independent and nearly normal
 observations, a confidence interval for the population
 mean is
@@ -1044,7 +1044,7 @@ the sample.</p>
 <p>The FDA’s webpage provides some data on mercury content of fish.
 Based on a sample of 15 croaker white fish (Pacific), a sample mean and standard deviation were computed as 0.287 and 0.069 ppm (parts per million), respectively.
 The 15 observations ranged from 0.18 to 0.41 ppm. We will assume these observations are independent.
-Based on the summary statistics of the data, do you have any objections to the normality condition of the individual observations?<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
+Based on the summary statistics of the data, do you have any objections to the normality condition of the individual observations?<a href="#fn150" class="footnote-ref" id="fnref150"><sup>150</sup></a></p>
 </div>
 <p></p>
 <div class="example">
@@ -1061,11 +1061,11 @@ we choose <span class="math inline">\(t_{14}^{\star}\)</span> so that the two-ta
 is 0.1:
 <span class="math inline">\(t^{\star}_{14} = 1.76\)</span>.</p>
 </div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="inference-num.html#cb7-1" aria-hidden="true"></a><span class="co"># use qt() to find the t-cutoff (with 90% in the middle)</span></span>
-<span id="cb7-2"><a href="inference-num.html#cb7-2" aria-hidden="true"></a><span class="kw">qt</span>(<span class="fl">0.05</span>, <span class="dt">df =</span> <span class="dv">14</span>)</span>
-<span id="cb7-3"><a href="inference-num.html#cb7-3" aria-hidden="true"></a><span class="co">#&gt; [1] -1.76</span></span>
-<span id="cb7-4"><a href="inference-num.html#cb7-4" aria-hidden="true"></a><span class="kw">qt</span>(<span class="fl">0.95</span>, <span class="dt">df =</span> <span class="dv">14</span>)</span>
-<span id="cb7-5"><a href="inference-num.html#cb7-5" aria-hidden="true"></a><span class="co">#&gt; [1] 1.76</span></span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="inference-num.html#cb65-1" aria-hidden="true"></a><span class="co"># use qt() to find the t-cutoff (with 90% in the middle)</span></span>
+<span id="cb65-2"><a href="inference-num.html#cb65-2" aria-hidden="true"></a><span class="kw">qt</span>(<span class="fl">0.05</span>, <span class="dt">df =</span> <span class="dv">14</span>)</span>
+<span id="cb65-3"><a href="inference-num.html#cb65-3" aria-hidden="true"></a><span class="co">#&gt; [1] -1.76</span></span>
+<span id="cb65-4"><a href="inference-num.html#cb65-4" aria-hidden="true"></a><span class="kw">qt</span>(<span class="fl">0.95</span>, <span class="dt">df =</span> <span class="dv">14</span>)</span>
+<span id="cb65-5"><a href="inference-num.html#cb65-5" aria-hidden="true"></a><span class="co">#&gt; [1] 1.76</span></span></code></pre></div>
 <!--
 \begin{important}{Confidence interval for a single mean}
   Once you've determined a one-mean confidence interval
@@ -1088,13 +1088,13 @@ is 0.1:
 \end{important}
 -->
 <div class="guidedpractice">
-<p>Using the information and results of the previous Guided Practice and Example, compute a 90% confidence interval for the average mercury content of croaker white fish (Pacific).<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></p>
+<p>Using the information and results of the previous Guided Practice and Example, compute a 90% confidence interval for the average mercury content of croaker white fish (Pacific).<a href="#fn151" class="footnote-ref" id="fnref151"><sup>151</sup></a></p>
 </div>
 <div class="guidedpractice">
 <p>The 90% confidence interval from the previous
 Guided Practice is 0.256 ppm to 0.318 ppm.
 Can we say that 90% of croaker white fish (Pacific)
-have mercury levels between 0.256 and 0.318 ppm?<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a></p>
+have mercury levels between 0.256 and 0.318 ppm?<a href="#fn152" class="footnote-ref" id="fnref152"><sup>152</sup></a></p>
 </div>
 <p></p>
 </div>
@@ -1109,7 +1109,7 @@ hypothesis tests for the mean.</p>
 <p><span class="math display">\[\begin{align*}
 T = \frac{\bar{x} - \mbox{null value}}{s/\sqrt{n}}
 \end{align*}\]</span></p>
-<p>When the null hypothesis is true and the conditions are met, T has a t-distribution with <span class="math inline">\(df = n - 1\)</span>.</p>
+<p>When the null hypothesis is true and the conditions are met, T has a <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(df = n - 1\)</span>.</p>
 <p>Conditions:</p>
 <ul>
 <li>independently observed data<br />
@@ -1127,17 +1127,17 @@ T = \frac{\bar{x} - \mbox{null value}}{s/\sqrt{n}}
 \newcommand{\cherryblossomz}{2.37}
 -->
 <div class="guidedpractice">
-<p>Compare the T score — the standardized sample mean — to the Z score — the standardized sample proportion — presented in Section <a href="inference-cat.html#theory-prop">5.3.3</a>. Why do we use a “Z” when standardizing proportions, but a “T” when standardizing means?<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a></p>
+<p>Compare the T score — the standardized sample mean — to the Z score — the standardized sample proportion — presented in Section <a href="inference-cat.html#theory-prop">5.3.3</a>. Why do we use a “Z” when standardizing proportions, but a “T” when standardizing means?<a href="#fn153" class="footnote-ref" id="fnref153"><sup>153</sup></a></p>
 </div>
 <p>Is the typical US runner getting faster or slower over time? We consider this question in the context of the Cherry Blossom Race, which is a 10-mile race in Washington, DC each spring.</p>
 <p>The average time for all runners who finished the Cherry Blossom Race in 2006 was 93.29 minutes (93 minutes and about 17 seconds). We want to determine using data from 100 participants in the 2017 Cherry Blossom Race whether runners in this race are getting faster or slower, versus the other possibility that there has been no change.</p>
 <div class="guidedpractice">
-<p>What are appropriate hypotheses for this context?<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a></p>
+<p>What are appropriate hypotheses for this context?<a href="#fn154" class="footnote-ref" id="fnref154"><sup>154</sup></a></p>
 </div>
 <div class="guidedpractice">
 <p>The data come from a simple random sample of all participants, so the observations are independent.
 <img src="06-inference-num_files/figure-html/unnamed-chunk-22-1.png" width="70%" style="display: block; margin: auto;" />
-A histogram of the race times is given to evaluate if we can move forward with a t-test. Should we be worried about the normality condition?<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a></p>
+A histogram of the race times is given to evaluate if we can move forward with a t-test. Should we be worried about the normality condition?<a href="#fn155" class="footnote-ref" id="fnref155"><sup>155</sup></a></p>
 </div>
 <p>When completing a hypothesis test for the one-sample mean,
 the process is nearly identical to completing a hypothesis
@@ -1192,9 +1192,9 @@ the data provide strong evidence that the average
 run time for the Cherry Blossom Run in 2017 is different
 than the 2006 average.</p>
 </div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="inference-num.html#cb8-1" aria-hidden="true"></a><span class="co"># using pt() to find the p-value</span></span>
-<span id="cb8-2"><a href="inference-num.html#cb8-2" aria-hidden="true"></a><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pt</span>(<span class="fl">2.37</span>, <span class="dt">df =</span> <span class="dv">99</span>)</span>
-<span id="cb8-3"><a href="inference-num.html#cb8-3" aria-hidden="true"></a><span class="co">#&gt; [1] 0.00986</span></span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="inference-num.html#cb66-1" aria-hidden="true"></a><span class="co"># using pt() to find the p-value</span></span>
+<span id="cb66-2"><a href="inference-num.html#cb66-2" aria-hidden="true"></a><span class="dv">1</span> <span class="op">-</span><span class="st"> </span><span class="kw">pt</span>(<span class="fl">2.37</span>, <span class="dt">df =</span> <span class="dv">99</span>)</span>
+<span id="cb66-3"><a href="inference-num.html#cb66-3" aria-hidden="true"></a><span class="co">#&gt; [1] 0.00986</span></span></code></pre></div>
 <div class="protip">
 <p><strong>When using a <span class="math inline">\(t\)</span>-distribution, we use a T score (similar to a Z score).</strong></p>
 <p>To help us remember to use the <span class="math inline">\(t\)</span>-distribution,
@@ -1318,8 +1318,8 @@ data set.
 <p>For inferential methods applied to paired data, the analysis is virtually identical to the one-sample approach given in Section <a href="inference-num.html#one-mean">6.1</a>.
 The key to working with paired data is to consider the measurement of interest to be the <em>difference</em> in measured values across the pair of observations.
 Thinking about the differences as a single observation on an observational unit changes the paired setting into the one-sample setting.</p>
-<div id="simulation-based-test-for-h_0-mu_d-0" class="section level3" number="6.2.1">
-<h3><span class="header-section-number">6.2.1</span> Simulation-based test for <span class="math inline">\(H_0: \mu_d = 0\)</span></h3>
+<div id="shifted-bootstrap-test-for-h_0-mu_d-0" class="section level3" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Shifted bootstrap test for <span class="math inline">\(H_0: \mu_d = 0\)</span></h3>
 <p>Consider an experiment done to measure whether tire brand Smooth Turn or tire brand Quick Spin has longer tread wear. That is, after 1,000 miles on a car, which brand of tires has more tread, on average?</p>
 <div id="observed-data-3" class="section level4 unnumbered">
 <h4>Observed data</h4>
@@ -1342,9 +1342,9 @@ Figure 6.13: Boxplots of the tire tread remaining after 1,000 miles by the brand
 </p>
 </div>
 <p>Since these are paired data, we are only interested in the <em>differences</em> in tire tread between the two brands on each car. The dotplot in Figure <a href="inference-num.html#fig:tiredata-diff">6.14</a> displays these differences, with summary statistics displayed below.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="inference-num.html#cb9-1" aria-hidden="true"></a><span class="kw">favstats</span>(differences)</span>
-<span id="cb9-2"><a href="inference-num.html#cb9-2" aria-hidden="true"></a><span class="co">#&gt;       min        Q1  median     Q3    max    mean      sd  n missing</span></span>
-<span id="cb9-3"><a href="inference-num.html#cb9-3" aria-hidden="true"></a><span class="co">#&gt;  -0.00506 -0.000972 0.00205 0.0042 0.0107 0.00196 0.00431 25       0</span></span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="inference-num.html#cb67-1" aria-hidden="true"></a><span class="kw">favstats</span>(differences)</span>
+<span id="cb67-2"><a href="inference-num.html#cb67-2" aria-hidden="true"></a><span class="co">#&gt;       min        Q1  median     Q3    max    mean      sd  n missing</span></span>
+<span id="cb67-3"><a href="inference-num.html#cb67-3" aria-hidden="true"></a><span class="co">#&gt;  -0.00506 -0.000972 0.00205 0.0042 0.0107 0.00196 0.00431 25       0</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:tiredata-diff"></span>
 <img src="06-inference-num_files/figure-html/tiredata-diff-1.png" alt="Difference in tire tread (in inches) remaining after 1,000 miles between the two brands (Smooth Turn -- Quick Spin)." width="75%" />
 <p class="caption">
@@ -1368,7 +1368,7 @@ In this study, the null hypothesis is that average difference in tire tread wear
 <p><strong>Shifted bootstrap null distribution for a sample mean difference.</strong></p>
 <p>To simulate a null distribution of sample mean differences under the null hypothesis <span class="math inline">\(H_0: \mu_d = 0\)</span>,</p>
 <ol style="list-style-type: decimal">
-<li>Subtract <span class="math inline">\(\bar{x}_d\)</span> from each difference in the original sample:<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a><br />
+<li>Subtract <span class="math inline">\(\bar{x}_d\)</span> from each difference in the original sample:<a href="#fn156" class="footnote-ref" id="fnref156"><sup>156</sup></a><br />
 <span class="math display">\[
  x_1 - \bar{x}_d , \hspace{2.5mm} x_2 - \bar{x}_d, \hspace{2.5mm}  x_3 - \bar{x}_d, \hspace{2.5mm}  \ldots, \hspace{2.5mm}  x_n - \bar{x}_d.
   \]</span>
@@ -1527,7 +1527,7 @@ M60W
 </tbody>
 </table>
 <p>A dot plot of the data is shown in Figure <a href="inference-num.html#fig:text-price-hist">6.17</a>, with summary statistics displayed below.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="inference-num.html#cb10-1" aria-hidden="true"></a><span class="kw">favstats</span>(ucla_textbooks_f18<span class="op">$</span>price_diff)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="inference-num.html#cb68-1" aria-hidden="true"></a><span class="kw">favstats</span>(ucla_textbooks_f18<span class="op">$</span>price_diff)</span></code></pre></div>
 <pre><code>#&gt;    min     Q1 median   Q3  max mean   sd  n missing
 #&gt;  -12.2 -0.992  0.625 2.99 75.2 3.58 13.4 68       0</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:text-price-hist"></span>
@@ -1566,7 +1566,7 @@ Figure 6.18: Bootstrap distribution for the average difference in new book price
 </div>
 </div>
 <div id="paired-mean-math" class="section level3" number="6.2.3">
-<h3><span class="header-section-number">6.2.3</span> Theory-based inferential methods for <span class="math inline">\(\bar{x}_d\)</span></h3>
+<h3><span class="header-section-number">6.2.3</span> Theory-based inferential methods for <span class="math inline">\(\mu_d\)</span></h3>
 <p>Thinking about the paired differences as a single observation on an observational unit, theory-based inferential methods for a paired mean difference are identical to theory-based methods for a single mean. Theory-based methods for the one sample mean case are covered in Section <a href="inference-num.html#one-mean-math">6.1.3</a>. The only difference between the methods in Section <a href="inference-num.html#one-mean">6.1</a> and the methods described in this section is notation, shown below. The subscript “d” stands for “difference” since our variable is a paired difference.</p>
 <table>
 <thead>
@@ -1763,7 +1763,7 @@ on average, less expensive.
 How should this conclusion affect UCLA student
 buying habits?
 Should UCLA students always buy their books
-on Amazon?<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a>
+on Amazon?<a href="#fn157" class="footnote-ref" id="fnref157"><sup>157</sup></a>
 </div>
 <p>
 </p>
@@ -1779,8 +1779,8 @@ on Amazon?<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a>
 <li><span class="math inline">\(n_1\)</span>, <span class="math inline">\(n_2\)</span> = sample sizes of two independent samples</li>
 <li><span class="math inline">\(\bar{x}_1\)</span>, <span class="math inline">\(\bar{x}_2\)</span> = sample means of two independent samples</li>
 <li><span class="math inline">\(s_1\)</span>, <span class="math inline">\(s_2\)</span> = sample standard deviations of two independent samples</li>
-<li><span class="math inline">\(\mu_1\)</span>, <span class="math inline">\(\mu_2\)</span> = population means of two independent samples</li>
-<li><span class="math inline">\(\sigma_1\)</span>, <span class="math inline">\(\sigma_2\)</span> = population standard deviations of two independent samples
+<li><span class="math inline">\(\mu_1\)</span>, <span class="math inline">\(\mu_2\)</span> = population means of two independent populations</li>
+<li><span class="math inline">\(\sigma_1\)</span>, <span class="math inline">\(\sigma_2\)</span> = population standard deviations of two independent populations
 </div></li>
 </ul>
 <p>In this section we consider a difference in
@@ -1790,7 +1790,7 @@ Just as with a single sample, we identify conditions to ensure
 we can use the <span class="math inline">\(t\)</span>-distribution with a point estimate
 of the difference, <span class="math inline">\(\bar{x}_1 - \bar{x}_2\)</span>,
 and a new standard error formula.</p>
-<p>The details for working through inferential problems in the two independent means setting are strikingly similar to those applied to the two independent proportions stetting.
+<p>The details for working through inferential problems in the two independent means setting are strikingly similar to those applied to the two independent proportions setting.
 We first cover a randomization test where the observations are shuffled under the assumption that the null hypothesis is true.
 Then we bootstrap the data (with no imposed null hypothesis) to create a confidence interval for the true difference in population means, <span class="math inline">\(\mu_1 - \mu_2\)</span>.
 The mathematical model, here the <span class="math inline">\(t\)</span>-distribution, is able to describe both the randomization test and the boostrapping as long as the conditions are met.</p>
@@ -1826,7 +1826,7 @@ from mothers who don’t smoke?”</p>
 <span class="math inline">\(\bar{x}\)</span>
 </th>
 <th style="text-align:right;">
-s
+<span class="math inline">\(s\)</span>
 </th>
 <th style="text-align:right;">
 minimum
@@ -1885,29 +1885,23 @@ B
 Figure 6.21: Exam scores for students given one of three different exams.
 </p>
 </div>
-
 <div class="guidedpractice">
-Construct hypotheses to evaluate whether the observed
+<p>Construct hypotheses to evaluate whether the observed
 difference in sample means, <span class="math inline">\(\bar{x}_A - \bar{x}_B=3.1\)</span>,
 is due to chance. We will later evaluate these hypotheses
-using <span class="math inline">\(\alpha = 0.01\)</span>.<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>
+by computing a p-value for the test.<a href="#fn158" class="footnote-ref" id="fnref158"><sup>158</sup></a></p>
 </div>
-
 <div class="guidedpractice">
-Before moving on to evaluate the hypotheses in the previous Guided Practice, let’s think carefully about the dataset. Are the observations across the two groups independent? Are there any concerns about outliers?<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a>
+<p>Before moving on to evaluate the hypotheses in the previous Guided Practice, let’s think carefully about the dataset. Are the observations across the two groups independent? Are there any concerns about outliers?<a href="#fn159" class="footnote-ref" id="fnref159"><sup>159</sup></a></p>
 </div>
 </div>
 <div id="variability-of-the-statistic-4" class="section level5 unnumbered">
 <h5>Variability of the statistic</h5>
-
-<div class="todo">
-need to talk about the way to randomize is almost identical to chapter 5 &amp; 6. a new plot will probably help (but again, very similar to 5.7)
-</div>
-<p>In Section <a href="inference-cat.html#two-prop-errors">5.4.1</a>, the variability of the statistic (previously: <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span>) was visualized after shuffling the observations across the two treatment groups many times.
+<p>In Section <a href="inference-cat.html#diff-two-prop">5.4</a>, the variability of the statistic (previously: <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span>) was visualized after shuffling the observations across the two treatment groups many times.
 The shuffling process implements the null hypothesis model (that there is no effect of the treatment).
 In the exam example, the null hypothesis is that exam A and exam B are equally difficult, so the average scores across the two tests should be the same.
 If the exams were equally difficult, <em>due to natural variability</em>, we would sometimes expect students to do slightly better on exam A (<span class="math inline">\(\bar{x}_A &gt; \bar{x}_B\)</span>) and sometimes expect students to do slightly better on exam B (<span class="math inline">\(\bar{x}_B &gt; \bar{x}_A\)</span>).
-The question at hand is: does <span class="math inline">\(\bar{x}_A - \bar{x}_B=3.1\)</span> indicate that exam A is easier than exam B.</p>
+The question at hand is: Does <span class="math inline">\(\bar{x}_A - \bar{x}_B=3.1\)</span> indicate that exam A is easier than exam B?.</p>
 <p>Figure <a href="inference-num.html#fig:rand2means">6.22</a> shows the process of randomizing the exam to the observed exam scores.
 If the null hypothesis is true, then the score on each exam should represent the true student ability on that material.
 It shouldn’t matter whether they were given exam A or exam B.
@@ -1930,7 +1924,7 @@ Figure 6.23: Histogram of differences in means, calculated from 1000 different r
 </div>
 <div id="observed-statistic-vs.-null-statistics-2" class="section level5 unnumbered">
 <h5>Observed statistic vs. null statistics</h5>
-<p>The goal of the randomization test is to assess the observed data, here the statistic of interest is <span class="math inline">\(\bar{x}_A - \bar{x}_B=3.1\)</span>.
+<p>The goal of the randomization test is to assess the observed data, here the statistic of interest is <span class="math inline">\(\bar{x}_A - \bar{x}_B = 3.1\)</span>.
 The randomization distribution allows us to identify whether a difference of 3.1 points is more than one would expect by natural variability.
 By plotting the value of 3.1 on Figure <a href="inference-num.html#fig:randexamspval">6.24</a>, we can measure how different or similar 3.1 is to the randomized differences which were generated under the null hypothesis.</p>
 <div class="figure" style="text-align: center"><span id="fig:randexamspval"></span>
@@ -1939,29 +1933,21 @@ By plotting the value of 3.1 on Figure <a href="inference-num.html#fig:randexams
 Figure 6.24: Histogram of differences in means, calculated from 1000 different randomizations of the exam types. The observed difference of 3.1 points is plotted as a vertical line, and the area more extreme than 3.1 is shaded to represent the p-value.
 </p>
 </div>
-
 <div class="example">
 <p>Approximate the p-value depicted in Figure <a href="inference-num.html#fig:randexamspval">6.24</a>, and provide a conclusion in the context of the case study.</p>
 <hr />
-<p>Using software, we can find the number of shuffled differences in means that are less than the observed difference (of 3.14) is 19 (our of 1000 randomizations). So 10% of the simulations are larger than the observed difference. To get the p-value, we double the proportion of randomized differences which are larger than the observed difference, p-value = 0.2.</p>
-Previously, we specified that we would use <span class="math inline">\(\alpha = 0.01\)</span>.
-Since the p-value is larger than <span class="math inline">\(\alpha\)</span>,
-we do not reject the null hypothesis.
-That is, the data do not convincingly show that one exam
+<p>Using software, we find that 231 of the 1000 shuffled differences in means are as or further away from zero as our observed difference of 3.1. That is, 23.1% of the shuffled statistics lie in the shaded blue area in Figure <a href="inference-num.html#fig:randexamspval">6.24</a>. Thus, our p-value is 0.231.</p>
+<p>With this large of a p-value, the data do not convincingly show that one exam
 version is more difficult than the other, and the teacher
 should not be convinced that she should add points to the
-Version B exam scores.
+Version B exam scores.</p>
 </div>
-<pre><code>#&gt; # A tibble: 1 x 1
-#&gt;   p_value
-#&gt;     &lt;dbl&gt;
-#&gt; 1     0.1</code></pre>
-<p>The large p-value and consistency of <span class="math inline">\(\bar{x}_A - \bar{x}_B=3.1\)</span> with the randomized differences leads us to <em>not reject the null hypothesis</em>. Said differently, there is no evidence to think that one of the tests is easier than the other.
-One might be inclined to conclude that the tests have the same level of difficulty, but that conclusion would be wrong.
+<p>The large p-value and consistency of <span class="math inline">\(\bar{x}_A - \bar{x}_B=3.1\)</span> with the randomized differences leads us to <em>not reject the null hypothesis</em>. Said differently, there is no evidence to think that one of the tests is easier than the other.</p>
+<p>One might be inclined to conclude that the tests have the same level of difficulty, but that conclusion would be wrong. Indeed, our best point estimate of the true average difference in means between the two tests is 3.1!
 The hypothesis testing framework is set up only to reject a null claim, it is not set up to validate a null claim.
-As we concluded, the data are consistent with exams A and B being equally difficult, but the data are also consistent with exam A being 3.1 points “easier” than exam B.
-The data are not able to adjudicate on whether the exams are equally hard or whether one of them is slightly easier.
-Indeed, conclusions where the null hypothesis is not rejected often seem unsatisfactory.
+As we concluded, the data are consistent with exams A and B being equally difficult, but the data are also consistent with exam A being 3.1 points “easier” than exam B. In fact, as we’ll see in the next section, since a 95% confidence interval for <span class="math inline">\(\mu_A - \mu_B\)</span> is (-2.0, 8.3), these data are consistent with any difference between exam A being 2.0 points “harder” to exam A being 8.3 points “easier.”
+The data are not able to adjudicate on whether the exams are equally hard or whether one of them is slightly easier.</p>
+<p>Conclusions where the null hypothesis is not rejected often seem unsatisfactory.
 However, in this case, the teacher and class are probably all relieved that there is no evidence to demonstrate that one of the exams is more difficult than the other.</p>
 <!--
 Below is the t-test for the example above using a randomization test.  Doesn't seem like we need both.
@@ -2022,26 +2008,33 @@ Otherwise we use the smaller of $n_1-1$ and $n_2-1$: $df=26$.
 <p></p>
 </div>
 </div>
-<div id="bootstrap-confidence-interval-for-mu_1---mu_2" class="section level3" number="6.3.2">
+<div id="boot-ci-diff-means" class="section level3" number="6.3.2">
 <h3><span class="header-section-number">6.3.2</span> Bootstrap confidence interval for <span class="math inline">\(\mu_1 - \mu_2\)</span></h3>
 <p>
 </p>
+<p>Before providing a full example working through a bootstrap analysis on actual data, consider a fictional situation where you would like to compare the average price of a car at one Awesome Auto franchise (Group 1) to the average price of a car at a different Awesome Auto franchise (Group 2). You are only able to randomly sample five cars from each Awesome Auto franchise, and you measure the selling price of each car in the sample. The process of bootstrapping can be applied to <em>each</em> Group separately, and the differences of means recalculated each time. Figure <a href="inference-num.html#fig:bootmeans2means">6.25</a> visually describes the bootstrap process when interest is in a statistic computed on two separate samples. The analysis proceeds as in the one sample case, but now the (single) statistic of interest is the <em>difference in sample means</em>. That is, a bootstrap resample is done on each of the groups separately, but the results are combined to have a single bootstrapped difference in means. Repetition will produce 1000s of bootstrapped differences in means, and the histogram will describe the natural sampling variability associated with the difference in means.</p>
+<div class="figure" style="text-align: center"><span id="fig:bootmeans2means"></span>
+<img src="06/figures/bootmeans2means.png" alt="For the two group comparison, 1000 bootstrap resamples are taken  separately on each group, and the difference in sample means is calculated for each pair of bootstrap resamples.  The set of 1000 differences is then analyzed as the distribution of the statistic of interest, with conclusions drawn on the parameter of interest." width="75%" />
+<p class="caption">
+Figure 6.25: For the two group comparison, 1000 bootstrap resamples are taken separately on each group, and the difference in sample means is calculated for each pair of bootstrap resamples. The set of 1000 differences is then analyzed as the distribution of the statistic of interest, with conclusions drawn on the parameter of interest.
+</p>
+</div>
+<div id="observed-data-7" class="section level5 unnumbered">
+<h5>Observed data</h5>
 <p>Does treatment using embryonic stem cells (ESCs)
 help improve heart function following a heart attack?
 Table <a href="inference-num.html#tab:statsSheepEscStudy">6.6</a> contains summary statistics
 for an experiment to test ESCs in sheep that had a heart attack.
 Each of these sheep was randomly assigned to the ESC
-or control group, and the change in their hearts’ pumping
+or control group, and the percent change in their hearts’ pumping
 capacity was measured in the study.
-Figure <a href="inference-num.html#fig:stemCellTherapyForHearts">6.29</a> provides
+Figure <a href="inference-num.html#fig:stemCellTherapyForHearts">6.26</a> provides
 histograms of the two data sets.
 A positive value corresponds to increased pumping capacity,
 which generally suggests a stronger recovery.
-Our goal will be to identify a 95% confidence interval
+Our goal will be to identify a 90% confidence interval
 for the effect of ESCs on the change in heart pumping
 capacity relative to the control group.</p>
-<div id="observed-data-7" class="section level5 unnumbered">
-<h5>Observed data</h5>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:statsSheepEscStudy">Table 6.6: </span>Summary statistics of the embryonic stem cell study.
@@ -2057,7 +2050,7 @@ capacity relative to the control group.</p>
 <span class="math inline">\(\bar{x}\)</span>
 </th>
 <th style="text-align:right;">
-s
+<span class="math inline">\(s\)</span>
 </th>
 </tr>
 </thead>
@@ -2092,52 +2085,77 @@ control
 </tr>
 </tbody>
 </table>
-<p>The point estimate of the difference in the heart pumping variable
+<div class="figure" style="text-align: center"><span id="fig:stemCellTherapyForHearts"></span>
+<img src="06-inference-num_files/figure-html/stemCellTherapyForHearts-1.png" alt="Histograms for both the embryonic stem cell and control group." width="70%" /><img src="06-inference-num_files/figure-html/stemCellTherapyForHearts-2.png" alt="Histograms for both the embryonic stem cell and control group." width="70%" />
+<p class="caption">
+Figure 6.26: Histograms for both the embryonic stem cell and control group.
+</p>
+</div>
+<p>The point estimate of the true difference in the mean heart pumping variable
 is straightforward to find: it is the difference in the sample means.
 <span class="math display">\[\begin{align*}
 \bar{x}_{esc} - \bar{x}_{control}\ 
   =\ 3.50 - (-4.33)\ 
   =\ 7.83
 \end{align*}\]</span></p>
+<div class="guidedpractice">
+<p>Identify the roles of the two variables in this study — which variable is the explanatory variable and which is the response? What is the scope of inference for this study?<a href="#fn160" class="footnote-ref" id="fnref160"><sup>160</sup></a></p>
+</div>
 </div>
 <div id="variability-of-the-statistic-5" class="section level5 unnumbered">
 <h5>Variability of the statistic</h5>
 <p>As we saw in Section <a href="inference-cat.html#two-prop-boot-ci">5.4.3</a>, we will use bootstrapping to estimate the variability associated with the difference in sample means when taking repeated samples. In a method akin to two proportions, a <em>separate</em> sample is taken with replacement from each group (here ESCs and control), the sample means are calculated, and their difference is taken. The entire process is repeated multiple times to produce a bootstrap distribution of the difference in sample means (<em>without</em> the null hypothesis assumption).</p>
-<p>Figure <a href="inference-num.html#fig:bootexamsci">6.26</a> displays the variability of the differences in means with the 90% percentile and SE CIs super imposed.</p>
-
-<div class="todo">
-<p>one we have the whole example, write up a bit about how the two different intervals are constructed (including the calculated value of the SE of the difference in means)</p>
-with the cars, we can compare two different cities. link each bootstrap sample, create the interval, etc.
-</div>
-<div class="figure" style="text-align: center"><span id="fig:boot2mean"></span>
-<img src="06/figures/boot2mean.png" alt="first figure with the ? pop, then sample, then estimate of the pop. need to re-do with cars" width="75%" />
-<p class="caption">
-Figure 6.25: first figure with the ? pop, then sample, then estimate of the pop. need to re-do with cars
-</p>
-</div>
+<p>Figure <a href="inference-num.html#fig:bootexamsci">6.27</a> displays the variability of the differences in sample means with the percentile bootstrap 90% confidence interval super imposed.</p>
 <div class="figure" style="text-align: center"><span id="fig:bootexamsci"></span>
-<img src="06-inference-num_files/figure-html/bootexamsci-1.png" alt="Histogram of differences in means after 1000 bootstrap samples from each of the two groups.  The observed difference is plotted as a black vertical line at 7.83.  The blue and green lines provide the percentile bootstrap and SE boostrap confidence intervals, respectively, for the difference in true population means." width="70%" />
+<img src="06-inference-num_files/figure-html/bootexamsci-1.png" alt="Histogram of differences in means after 1000 bootstrap resamples are taken from each of the two groups.  The observed difference in means from the original data is plotted as a black vertical line at 7.83.  The blue lines provide the percentile bootstrap 90% confidence interval for the difference in true population means." width="70%" />
 <p class="caption">
-Figure 6.26: Histogram of differences in means after 1000 bootstrap samples from each of the two groups. The observed difference is plotted as a black vertical line at 7.83. The blue and green lines provide the percentile bootstrap and SE boostrap confidence intervals, respectively, for the difference in true population means.
+Figure 6.27: Histogram of differences in means after 1000 bootstrap resamples are taken from each of the two groups. The observed difference in means from the original data is plotted as a black vertical line at 7.83. The blue lines provide the percentile bootstrap 90% confidence interval for the difference in true population means.
 </p>
 </div>
-
 <div class="example">
-<p>Choose one of the boostrap confidence intervals for the true difference in average pumping capacity, <span class="math inline">\(\mu_{esc} - \mu_{control}\)</span>. Does the interval show that there is a difference across the two treatments?</p>
+<p>Does the bootstrap confidence interval for the true difference in average change in pumping capacity, <span class="math inline">\(\mu_{esc} - \mu_{control}\)</span>, show that there is a difference across the two treatments?</p>
 <hr />
-<p>Because the 90% intervals above do not overlap zero (zero is never one of the bootstrapped differences, 95% or 99% intervals would have given the same conclusion!), we conclude tha the ESC treatment is significantly better with respect to heart pumping capacity than the treatment.</p>
-Beause the study is a randomized controled experiment, we can conclude that it is the treatment (ESC) whic is causing the change in pumping capacity.
+<p>Because the 90% interval displayed above overlaps zero (note that zero is never one of the bootstrapped differences so 95% and 99% intervals would have given the same conclusion!), we conclude that the ESC treatment is significantly better with respect to heart pumping capacity than the treatment.</p>
+<p>Because the study is a randomized controlled experiment, we can conclude that it is the treatment (ESC) which is causing the change in pumping capacity.</p>
 </div>
 </div>
 </div>
-<div id="mathematical-model" class="section level3" number="6.3.3">
-<h3><span class="header-section-number">6.3.3</span> Mathematical model</h3>
-<div id="t-test-for-mu_1---mu_2" class="section level4" number="6.3.3.1">
-<h4><span class="header-section-number">6.3.3.1</span> <span class="math inline">\(t\)</span>-test for <span class="math inline">\(\mu_1 - \mu_2\)</span></h4>
+<div id="math2samp" class="section level3" number="6.3.3">
+<h3><span class="header-section-number">6.3.3</span> Theory-based inferential methods for <span class="math inline">\(\mu_1 - \mu_2\)</span></h3>
+<p>As in the one-mean and paired mean difference scenarios, a difference in sample means can be modeled by a <span class="math inline">\(t\)</span>-distribution under certain conditions. These conditions are the same as in the one-mean and paired mean difference scenarios, but now the conditions need to be met for <em>each sample</em>. Similarly, we will compute a test statistic and a theory-based confidence interval using the standard error formula for a difference in sample means.</p>
+<p></p>
+<div class="important">
+<p><strong>Using the <span class="math inline">\(t\)</span>-distribution for a difference in means.</strong></p>
+<p>The <span class="math inline">\(t\)</span>-distribution can be used for inference when working
+with the standardized difference of two means if</p>
+<ul>
+<li><em>Independence</em> (extended).
+The data are independent within and between
+the two groups, e.g., the data come from
+independent random samples or from a
+randomized experiment.<br />
+</li>
+<li><em>Normality</em>.
+We check the outliers for
+each group separately.</li>
+</ul>
+<p>The standard error may be computed as
+<span class="math display">\[
+SE(\bar{x}_1 - \bar{x}_2) = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_1}},
+\]</span></p>
+<p>The official formula for the degrees of freedom is quite
+complex and is generally computed using software,
+so instead you may use the smaller of
+<span class="math inline">\(n_1 - 1\)</span> and <span class="math inline">\(n_2 - 1\)</span> for the degrees of freedom
+if software isn’t readily available.</p>
+</div>
+<p></p>
+<div id="t-test-for-mu_1---mu_2" class="section level4 unnumbered">
+<h4><span class="math inline">\(t\)</span>-test for <span class="math inline">\(\mu_1 - \mu_2\)</span></h4>
 <div id="observed-data-8" class="section level5 unnumbered">
 <h5>Observed data</h5>
 <p></p>
-<p>A data set called <code>ncbirths</code> represents a random sample of 150 cases of mothers and their newborns in North Carolina over a year. Four cases from this data set are represented in Table <a href="inference-num.html#tab:babySmokeDF">6.7</a>. We are particularly interested in two variables: <code>weight</code> and <code>smoke</code>. The <code>weight</code> variable represents the weights of the newborns and the <code>smoke</code> variable describes which mothers smoked during pregnancy. We would like to know, is there convincing evidence that newborns from mothers who smoke have a different average birth weight than newborns from mothers who don’t smoke? We will use the North Carolina sample to try to answer this question. The smoking group includes 50 cases and the nonsmoking group contains 100 cases.</p>
+<p>A dataset called <code>ncbirths</code> represents a random sample of 150 cases of mothers and their newborns in North Carolina over a year. Four cases from this data set are represented in Table <a href="inference-num.html#tab:babySmokeDF">6.7</a>. We are particularly interested in two variables: <code>weight</code> and <code>smoke</code>. The <code>weight</code> variable represents the weights of the newborns and the <code>smoke</code> variable describes which mothers smoked during pregnancy. We would like to know, is there convincing evidence that newborns from mothers who smoke have a different average birth weight than newborns from mothers who don’t smoke? We will use the North Carolina sample to try to answer this question. The smoking group includes 50 cases and the nonsmoking group contains 100 cases.</p>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:babySmokeDF">Table 6.7: </span>Four cases from the <code>ncbirths</code> data set. The value <code>NA</code>, shown for the first two entries of the first variable, indicates that piece of data is missing.
@@ -2150,14 +2168,8 @@ fage
 <th style="text-align:right;">
 mage
 </th>
-<th style="text-align:left;">
-mature
-</th>
 <th style="text-align:right;">
 weeks
-</th>
-<th style="text-align:left;">
-premie
 </th>
 <th style="text-align:right;">
 visits
@@ -2170,9 +2182,6 @@ gained
 </th>
 <th style="text-align:right;">
 weight
-</th>
-<th style="text-align:left;">
-lowbirthweight
 </th>
 <th style="text-align:left;">
 gender
@@ -2193,14 +2202,8 @@ NA
 <td style="text-align:right;">
 13
 </td>
-<td style="text-align:left;">
-younger mom
-</td>
 <td style="text-align:right;">
 39
-</td>
-<td style="text-align:left;">
-full term
 </td>
 <td style="text-align:right;">
 10
@@ -2213,9 +2216,6 @@ not married
 </td>
 <td style="text-align:right;">
 7.63
-</td>
-<td style="text-align:left;">
-not low
 </td>
 <td style="text-align:left;">
 male
@@ -2234,14 +2234,8 @@ NA
 <td style="text-align:right;">
 14
 </td>
-<td style="text-align:left;">
-younger mom
-</td>
 <td style="text-align:right;">
 42
-</td>
-<td style="text-align:left;">
-full term
 </td>
 <td style="text-align:right;">
 15
@@ -2254,9 +2248,6 @@ not married
 </td>
 <td style="text-align:right;">
 7.88
-</td>
-<td style="text-align:left;">
-not low
 </td>
 <td style="text-align:left;">
 male
@@ -2275,14 +2266,8 @@ not white
 <td style="text-align:right;">
 15
 </td>
-<td style="text-align:left;">
-younger mom
-</td>
 <td style="text-align:right;">
 37
-</td>
-<td style="text-align:left;">
-full term
 </td>
 <td style="text-align:right;">
 11
@@ -2295,9 +2280,6 @@ not married
 </td>
 <td style="text-align:right;">
 6.63
-</td>
-<td style="text-align:left;">
-not low
 </td>
 <td style="text-align:left;">
 female
@@ -2316,14 +2298,8 @@ white
 <td style="text-align:right;">
 15
 </td>
-<td style="text-align:left;">
-younger mom
-</td>
 <td style="text-align:right;">
 41
-</td>
-<td style="text-align:left;">
-full term
 </td>
 <td style="text-align:right;">
 6
@@ -2338,9 +2314,6 @@ not married
 8.00
 </td>
 <td style="text-align:left;">
-not low
-</td>
-<td style="text-align:left;">
 male
 </td>
 <td style="text-align:left;">
@@ -2352,7 +2325,6 @@ white
 </tr>
 </tbody>
 </table>
-
 <div class="example">
 <p>Set up appropriate hypotheses to evaluate
 whether there is a relationship between a mother smoking
@@ -2362,21 +2334,22 @@ and average birth weight.</p>
 between the groups.</p>
 <ul>
 <li><span class="math inline">\(H_0\)</span>: There is no difference in average birth weight for
-newborns from mothers who did and did not smoke.
-In statistical notation: <span class="math inline">\(\mu_{n} - \mu_{s} = 0\)</span>,
-where <span class="math inline">\(\mu_{n}\)</span> represents non-smoking mothers and
-<span class="math inline">\(\mu_s\)</span> represents mothers who smoked.<br />
-</li>
-<li><span class="math inline">\(H_A\)</span>: There is some difference in average newborn weights
-from mothers who did and did not smoke
-(<span class="math inline">\(\mu_{n} - \mu_{s} \neq 0\)</span>).
-</div></li>
+newborns from mothers who did and did not smoke.<br />
+In statistical notation: <span class="math inline">\(H_0: \mu_{n} - \mu_{s} = 0\)</span>,
+where <span class="math inline">\(\mu_{n}\)</span> represents the true mean birth weight for babies of non-smoking mothers and
+<span class="math inline">\(\mu_s\)</span> represents the true mean birth weight for babies of mothers who smoked.</li>
 </ul>
+<p>The alternative hypothesis represents the research question.</p>
+<ul>
+<li><span class="math inline">\(H_A\)</span>: There is some difference in average newborn weights
+from mothers who did and did not smoke (<span class="math inline">\(\mu_{n} - \mu_{s} \neq 0\)</span>).</li>
+</ul>
+</div>
 </div>
 <div id="variability-of-the-statistic-6" class="section level5 unnumbered">
 <h5>Variability of the statistic</h5>
 <p>We check the two conditions necessary to model the difference
-in sample means using the <span class="math inline">\(t\)</span>-distribution.</p>
+in sample means using the <span class="math inline">\(t\)</span>-distribution: the <strong>independence</strong> and <strong>normality</strong> conditions <em>for each sample</em>.</p>
 <ul>
 <li>Because the data come from a simple random sample,
 the observations are independent,
@@ -2384,7 +2357,7 @@ both within and between samples.<br />
 </li>
 <li>With both data sets over 30 observations,
 we inspect the data in
-Figure <a href="inference-num.html#fig:babySmokePlotOfTwoGroupsToExamineSkew">6.27</a>
+Figure <a href="inference-num.html#fig:babySmokePlotOfTwoGroupsToExamineSkew">6.28</a>
 for any particularly extreme outliers
 and find none.</li>
 </ul>
@@ -2393,20 +2366,19 @@ in sample means may be modeled using a <span class="math inline">\(t\)</span>-di
 <div class="figure" style="text-align: center"><span id="fig:babySmokePlotOfTwoGroupsToExamineSkew"></span>
 <img src="06-inference-num_files/figure-html/babySmokePlotOfTwoGroupsToExamineSkew-1.png" alt="The top panel represents birth weights for infants whose mothers smoked. The bottom panel represents the birth weights for infants whose mothers who did not smoke." width="70%" /><img src="06-inference-num_files/figure-html/babySmokePlotOfTwoGroupsToExamineSkew-2.png" alt="The top panel represents birth weights for infants whose mothers smoked. The bottom panel represents the birth weights for infants whose mothers who did not smoke." width="70%" />
 <p class="caption">
-Figure 6.27: The top panel represents birth weights for infants whose mothers smoked. The bottom panel represents the birth weights for infants whose mothers who did not smoke.
+Figure 6.28: The top panel represents birth weights for infants whose mothers smoked. The bottom panel represents the birth weights for infants whose mothers who did not smoke.
 </p>
 </div>
-
 <div class="guidedpractice">
 <p>The summary statistics in Table <a href="inference-num.html#tab:SumStatsBirthWeightNewbornsSmoke">6.8</a> may be useful
-for this Guided Practice.<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a></p>
+for this Guided Practice.<a href="#fn161" class="footnote-ref" id="fnref161"><sup>161</sup></a></p>
 <ol style="list-style-type: lower-alpha">
 <li>What is the point estimate of the population difference,
 <span class="math inline">\(\mu_{n} - \mu_{s}\)</span>?</li>
 <li>Compute the standard error of the point estimate from
-part (a).
-</div></li>
+part a.</li>
 </ol>
+</div>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:SumStatsBirthWeightNewbornsSmoke">Table 6.8: </span>Summary statistics for the <code>ncbirths</code> data set.
@@ -2415,10 +2387,10 @@ part (a).
 <tr>
 <th style="text-align:left;">
 </th>
-<th style="text-align:right;">
+<th style="text-align:left;">
 smoker
 </th>
-<th style="text-align:right;">
+<th style="text-align:left;">
 nonsmoker
 </th>
 </tr>
@@ -2428,10 +2400,10 @@ nonsmoker
 <td style="text-align:left;">
 mean
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 6.78
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 7.18
 </td>
 </tr>
@@ -2439,10 +2411,10 @@ mean
 <td style="text-align:left;">
 st. dev.
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 1.43
 </td>
-<td style="text-align:right;">
+<td style="text-align:left;">
 1.60
 </td>
 </tr>
@@ -2450,11 +2422,11 @@ st. dev.
 <td style="text-align:left;">
 samp. size
 </td>
-<td style="text-align:right;">
-50.00
+<td style="text-align:left;">
+50
 </td>
-<td style="text-align:right;">
-100.00
+<td style="text-align:left;">
+100
 </td>
 </tr>
 </tbody>
@@ -2462,12 +2434,25 @@ samp. size
 </div>
 <div id="observed-statistic-vs.-null-statistics-3" class="section level5 unnumbered">
 <h5>Observed statistic vs. null statistics</h5>
-
+<div class="important">
+<p><strong>The test statistic for comparing two means is a T.</strong></p>
+<p>The T score is a ratio of how the groups differ as compared to how the observations within a group vary.</p>
+<p><span class="math display">\[\begin{align*}
+T = \frac{\bar{x}_1 - \bar{x}_2 - 0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}
+\end{align*}\]</span></p>
+<p>When the null hypothesis is true and the conditions are met, T has a <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(df = min(n_1 - 1, n_2 -1)\)</span>.</p>
+<p>Conditions:</p>
+<ul>
+<li>independent observations within and across groups<br />
+</li>
+<li>large samples and no extreme outliers<br />
+</li>
+</ul>
+</div>
 <div class="example">
-<p>Complete the hypothesis test started in the previous Example and Guided Practice on <code>ncbirths</code> dataset and research question. Use a significance level of <span class="math inline">\(\alpha=0.05\)</span>.
+<p>Complete the hypothesis test started in the previous Example and Guided Practice on the <code>ncbirths</code> dataset and research question.<br />
 For reference, <span class="math inline">\(\bar{x}_{n} - \bar{x}_{s} = 0.40\)</span>,
-<span class="math inline">\(SE = 0.26\)</span>, and the sample sizes were <span class="math inline">\(n_n = 100\)</span>
-and <span class="math inline">\(n_s = 50\)</span>.</p>
+<span class="math inline">\(SE(\bar{x}_{n} - \bar{x}_{s}) = 0.26\)</span>, and the sample sizes were <span class="math inline">\(n_n = 100\)</span> and <span class="math inline">\(n_s = 50\)</span>.</p>
 <hr />
 <p>We can find the test statistic for this test
 using the previous information:
@@ -2475,37 +2460,36 @@ using the previous information:
   T = \frac{\ 0.40 - 0\ }{0.26} = 1.54
   \end{align*}\]</span>
 The p-value is represented by the two shaded tails
-in Figure <a href="inference-num.html#fig:distOfDiffOfSampleMeansForBWOfBabySmokeData">6.28</a></p>
-<p>We find the single tail area using software. We’ll use the
+in Figure <a href="inference-num.html#fig:distOfDiffOfSampleMeansForBWOfBabySmokeData">6.29</a></p>
+<p>We find the single tail area using software. (See <code>R</code> code below.) We’ll use the
 smaller of <span class="math inline">\(n_n - 1 = 99\)</span> and <span class="math inline">\(n_s - 1 = 49\)</span> as the
 degrees of freedom: <span class="math inline">\(df = 49\)</span>.
 The one tail area is 0.065;
 doubling this value gives the two-tail area and p-value,
 0.135.</p>
-The p-value is larger than the significance value, 0.05,
-so we do not reject the null hypothesis.
+<p>A p-value of 0.135 provides little to no evidence against the null hypothesis.
 There is insufficient evidence to say there is a difference
 in average birth weight of newborns from North Carolina mothers
 who did smoke during pregnancy and newborns from North Carolina
-mothers who did not smoke during pregnancy.
+mothers who did not smoke during pregnancy.</p>
 </div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="inference-num.html#cb70-1" aria-hidden="true"></a><span class="kw">pt</span>(<span class="fl">1.54</span>, <span class="dt">df =</span> <span class="dv">49</span>, <span class="dt">lower.tail =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb70-2"><a href="inference-num.html#cb70-2" aria-hidden="true"></a><span class="co">#&gt; [1] 0.065</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:distOfDiffOfSampleMeansForBWOfBabySmokeData"></span>
-<img src="06-inference-num_files/figure-html/distOfDiffOfSampleMeansForBWOfBabySmokeData-1.png" alt="The mathematical model for the T statistic when the null hypothesis is true.  As expected, the curve is centered at zero (the null value).  The observered statistic is also plotted with the area more extreme than the observed statistic plotted to indicate the p-value." width="70%" />
+<img src="06-inference-num_files/figure-html/distOfDiffOfSampleMeansForBWOfBabySmokeData-1.png" alt="The mathematical model for the T statistic when the null hypothesis is true: a $t$-distribution with $min(100-1, 50-1) = 49$ degrees of freedom.  As expected, the curve is centered at zero (the null value).  The T score is also plotted with the area more extreme than the observed T score plotted to indicate the p-value." width="70%" />
 <p class="caption">
-Figure 6.28: The mathematical model for the T statistic when the null hypothesis is true. As expected, the curve is centered at zero (the null value). The observered statistic is also plotted with the area more extreme than the observed statistic plotted to indicate the p-value.
+Figure 6.29: The mathematical model for the T statistic when the null hypothesis is true: a <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(min(100-1, 50-1) = 49\)</span> degrees of freedom. As expected, the curve is centered at zero (the null value). The T score is also plotted with the area more extreme than the observed T score plotted to indicate the p-value.
 </p>
 </div>
-
 <div class="guidedpractice">
-We’ve seen much research suggesting smoking is harmful
+<p>We’ve seen much research suggesting smoking is harmful
 during pregnancy, so how could we fail to reject the null
-hypothesis in the previous Example?<a href="#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a>
+hypothesis in the previous Example?<a href="#fn162" class="footnote-ref" id="fnref162"><sup>162</sup></a></p>
 </div>
-
 <div class="guidedpractice">
-If we made a Type 2 Error and there is a difference,
+<p>If we made a Type 2 Error and there is a difference,
 what could we have done differently in data collection
-to be more likely to detect the difference?<a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a>
+to be more likely to detect the difference?<a href="#fn163" class="footnote-ref" id="fnref163"><sup>163</sup></a></p>
 </div>
 <p>Public service announcement: while we have used this relatively
 small data set as an example, larger data sets show that women
@@ -2522,7 +2506,7 @@ And some women would prefer having smaller babies.</em>
 </blockquote>
 <p>Fact check: the babies from women who smoke are not actually
 as healthy as the babies from women who do not
-smoke.<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a></p>
+smoke.<a href="#fn164" class="footnote-ref" id="fnref164"><sup>164</sup></a></p>
 <!--
 % Resource on this topic:
 % http://archive.tobacco.org/Documents/documentquotes.html
@@ -2532,144 +2516,68 @@ smoke.<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a></p>
 </div>
 <div id="t-confidence-interval-for-mu_1---mu_2" class="section level4 unnumbered">
 <h4><span class="math inline">\(t\)</span> confidence interval for <span class="math inline">\(\mu_1 - \mu_2\)</span></h4>
-<div id="observed-data-9" class="section level5 unnumbered">
-<h5>Observed data</h5>
-<p>As with hypothesis testing, for the question of whether we can model the difference
-using a <span class="math inline">\(t\)</span>-distribution, we’ll need to check new conditions.
-Like the 2-proportion cases, we will require a more
-robust version of independence so we are confident
-the two groups are also independent.
-Secondly, we also check for normality in each
-group separately, which in practice is a check
-for outliers.</p>
-<p></p>
-<!--
-%\begin{examplewrap}
-%\begin{nexample}{Set up hypotheses that will be used to test whether there is convincing evidence that ESCs actually increase the amount of blood the heart pumps. Also, check conditions for using the $t$-distribution for inference with the point estimate $\bar{x}_1 - \bar{x}_2$. To assist in this assessment, the data are presented in Figure \ref{stemCellTherapyForHearts}.}\label{exampleToEvaluteWhetherESCsAreHelpfulInImprovingHeartFunctionInSheep}
-%We first setup the hypotheses:
-%\begin{itemize}
-%\setlength{\itemsep}{0mm}
-%\item[$H_0$:] The stem cells do not improve heart pumping function. $\mu_{esc} - \mu_{control} = 0$.
-%\item[$H_A$:] The stem cells do improve heart pumping function. $\mu_{esc} - \mu_{control} > 0$.
-%\end{itemize}
-%\end{nexample}
-%\end{examplewrap}
--->
-
-<div class="onebox">
-<p><strong>Using the <span class="math inline">\(t\)</span>-distribution for a difference in means.</strong></p>
-<p>The <span class="math inline">\(t\)</span>-distribution can be used for inference when working
-with the standardized difference of two means if</p>
-<ul>
-<li><em>Independence</em> (extended).
-The data are independent within and between
-the two groups, e.g., the data come from
-independent random samples or from a
-randomized experiment.<br />
-</li>
-<li><em>Normality</em>.
-We check the outliers for
-each group separately.</li>
-</ul>
-<p>The standard error may be computed as
+<div class="important">
+<p><strong>Finding a <span class="math inline">\(t\)</span>-confidence interval for a difference in population means, <span class="math inline">\(\mu_1 - \mu_2\)</span>.</strong></p>
+<p>Based on two independent samples of <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> observational units, respectively, with no clear outliers, a confidence interval for a difference in population
+means is
 <span class="math display">\[\begin{align*}
-  SE
-    = \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}
-  \end{align*}\]</span></p>
-The official formula for the degrees of freedom is quite
-complex and is generally computed using software,
-so instead you may use the smaller of
-<span class="math inline">\(n_1 - 1\)</span> and <span class="math inline">\(n_2 - 1\)</span> for the degrees of freedom
-if software isn’t readily available.
+  \text{point estimate} \ &amp;\pm\  t^{\star}_{df} \times SE(\text{point estimate}) \\
+  &amp;\to \\
+  \bar{x}_1 - \bar{x}_2 \ &amp;\pm\  t^{\star}_{df} \times \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_1}}
+  \end{align*}\]</span>
+where <span class="math inline">\(\bar{x}_1\)</span> and <span class="math inline">\(\bar{x}_2\)</span> are the two sample means, <span class="math inline">\(t^{\star}_{df}\)</span>
+corresponds to the confidence level and degrees of freedom
+<span class="math inline">\(df\)</span>, and <span class="math inline">\(SE\)</span> is the standard error as estimated by
+the sample.</p>
 </div>
-<p></p>
-</div>
-<div id="variability-of-the-statistic-7" class="section level5 unnumbered">
-<h5>Variability of the statistic</h5>
-
 <div class="example">
-<p>Can the <span class="math inline">\(t\)</span>-distribution be used to make
-inference using the point estimate,
+<p>Consider again the data from Section <a href="inference-num.html#boot-ci-diff-means">6.3.2</a> on the use of embryonic stem cells (ESCs) to improve heart function. Can the <span class="math inline">\(t\)</span>-distribution be used to make
+inference on the true difference in average change in heart pumping function using the point estimate,
 <span class="math inline">\(\bar{x}_{esc} - \bar{x}_{control} = 7.83\)</span>?</p>
 <hr />
 <p>First, we check for independence.
 Because the sheep were randomized into
 the groups, independence within
 and between groups is satisfied.</p>
-<p>Figure <a href="inference-num.html#fig:stemCellTherapyForHearts">6.29</a>
+<p>Figure <a href="inference-num.html#fig:stemCellTherapyForHearts">6.26</a>
 does not reveal any clear outliers
 in either group.
-(The ESC group does look a bit more variability,
+(The ESC group does have a bit more variability,
 but this is not the same as having clear outliers.)</p>
-With both conditions met, we can use the
-<span class="math inline">\(t\)</span>-distribution to model the difference of sample means.
-</div>
-<div class="figure" style="text-align: center"><span id="fig:stemCellTherapyForHearts"></span>
-<img src="06-inference-num_files/figure-html/stemCellTherapyForHearts-1.png" alt="Histograms for both the embryonic stem cell and control group." width="70%" /><img src="06-inference-num_files/figure-html/stemCellTherapyForHearts-2.png" alt="Histograms for both the embryonic stem cell and control group." width="70%" />
-<p class="caption">
-Figure 6.29: Histograms for both the embryonic stem cell and control group.
-</p>
+<p>With both conditions met, we can use the
+<span class="math inline">\(t\)</span>-distribution to model the difference of sample means.</p>
 </div>
 <p>Generally, we use statistical software to find the appropriate
-degrees of freedom, or if software isn’t available,
+degrees of freedom using the raw data, or if software isn’t available,
 we can use the smaller
-of <span class="math inline">\(n_1 - 1\)</span> and <span class="math inline">\(n_2 - 1\)</span> for the degrees of freedom,
-e.g., if using a <span class="math inline">\(t\)</span>-table to find tail areas.
-For transparency in the Examples and Guided Practice,
-we’ll use the latter approach for finding <span class="math inline">\(df\)</span>;
-in the case of the ESC example, this means we’ll use <span class="math inline">\(df = 8\)</span>.</p>
-
+of <span class="math inline">\(n_1 - 1\)</span> and <span class="math inline">\(n_2 - 1\)</span> for the degrees of freedom.
+In the case of the ESC example, this means we’ll use <span class="math inline">\(df = 8\)</span>.</p>
 <div class="example">
 <p>Calculate a 95% confidence interval for the
-effect of ESCs on the change in heart pumping capacity of
-sheep after they’ve suffered a heart attack.</p>
+true difference in mean change in heart pumping capacity of
+sheep after they’ve suffered a heart attack between the ESC treatment and the control treatment.</p>
 <hr />
-We will use the sample difference and the standard error that
-we computed earlier calculations:
+<p>First, compute the point estimate and its standard error:
 <span class="math display">\[\begin{align*}
-  \bar{x}_{esc} - \bar{x}_{control} = 7.83
-  &amp;&amp; SE = \sqrt{\frac{5.17^2}{9} + \frac{2.76^2}{9}} = 1.95
+  \bar{x}_{esc} - \bar{x}_{control} &amp;= 3.50 - (-4.33) = 7.83\\   
+  SE(\bar{x}_{esc} - \bar{x}_{control}) &amp;= \sqrt{\frac{5.17^2}{9} + \frac{2.76^2}{9}} = 1.95
   \end{align*}\]</span>
 Using <span class="math inline">\(df = 8\)</span>, we can identify the
-multiplier of <span class="math inline">\(t^{\star}_{8} = 2.31\)</span>
-for a 95% confidence interval.
+critical value of <span class="math inline">\(t^{\star}_{8} = 2.31\)</span>
+for a 95% confidence interval. (See <code>R</code> code below.)
 Finally, we can enter the values into the confidence
 interval formula:
 <span class="math display">\[\begin{align*}
-  \text{point estimate} \ \pm\ t^{\star} \times SE
-    \quad\rightarrow\quad 7.83 \ \pm\ 2.31\times 1.95
+   7.83 \ \pm\ 2.31\times 1.95
     \quad\rightarrow\quad (3.32, 12.34)
   \end{align*}\]</span>
 We are 95% confident that embryonic stem cells improve
-the heart’s pumping function in sheep that have suffered
-a heart attack by 3.32% to 12.34% .
+the mean change in heart’s pumping function in sheep that have suffered
+a heart attack by 3.32% to 12.34%.</p>
 </div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="inference-num.html#cb71-1" aria-hidden="true"></a><span class="kw">qt</span>(<span class="fl">0.975</span>, <span class="dt">df =</span> <span class="dv">8</span>)</span>
+<span id="cb71-2"><a href="inference-num.html#cb71-2" aria-hidden="true"></a><span class="co">#&gt; [1] 2.31</span></span></code></pre></div>
 <p></p>
-<!--
-As with past statistical inference applications,
-there is a well-trodden procedure.
-\begin{description}
-\setlength{\itemsep}{0mm}
-\item[Prepare.]
-    Retrieve critical contextual information,
-    and if appropriate, set up hypotheses.
-\item[Check.]
-    Ensure the required conditions are reasonably
-    satisfied.
-\item[Calculate.]
-    Find the standard error, and then construct
-    a confidence interval, or if conducting
-    a hypothesis test, find a test statistic
-    and p-value.
-\item[Conclude.]
-    Interpret the results in the context of the
-    application.
-\end{description}
-The details change a little from one setting to the next,
-but this general approach remain the same.
-
--->
-</div>
 </div>
 </div>
 </div>
@@ -2817,7 +2725,7 @@ then we can apply the <span class="math inline">\(t\)</span>-distribution for a 
 </li>
 <li>Compute the T-score using the general formula:
 <span class="math display">\[
- T = \frac{\mbox{statistic} - \mbox{null value}}{\mbox{standard error}}
+ T = \frac{\mbox{statistic} - \mbox{null value}}{\mbox{standard error of the statistic}} = \frac{\mbox{statistic} - \mbox{null value}}{SE(\mbox{statistic})}
  \]</span></li>
 <li>Use the statistical software to find the p-value using the appropriate <span class="math inline">\(t\)</span>-distribution:
 <ul>
@@ -2847,109 +2755,109 @@ then we can apply the <span class="math inline">\(t\)</span>-distribution for a 
 <!-- - `t.test` -->
 <!-- ``` -->
 <p><strong>Simulation-based inference for paired mean difference</strong> Simulation-based inference for quantitative data will use functions in the <code>catstats</code> package, as we did for categorical data.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="inference-num.html#cb13-1" aria-hidden="true"></a><span class="kw">library</span>(catstats)</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="inference-num.html#cb72-1" aria-hidden="true"></a><span class="kw">library</span>(catstats)</span></code></pre></div>
 <p>The <code>catstats</code> functions for paired data assume that the values for the two groups are in separate columns in a data frame. We’ll work through an example using the tire wear data, which is currently stored in “long format”, with one variable for brand and another for tread depth. First, we’ll convert it to “wide format”, with a column for each brand.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="inference-num.html#cb14-1" aria-hidden="true"></a>tiresWide &lt;-<span class="st"> </span>tires <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb14-2"><a href="inference-num.html#cb14-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">select</span>(brand, tread, car) <span class="op">%&gt;%</span><span class="st">   </span><span class="co">#select only ID, group, and outcome vars</span></span>
-<span id="cb14-3"><a href="inference-num.html#cb14-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> brand,   <span class="co">#name of variable for group</span></span>
-<span id="cb14-4"><a href="inference-num.html#cb14-4" aria-hidden="true"></a>              <span class="dt">values_from =</span> tread)  <span class="co">#name of variable for outcome</span></span>
-<span id="cb14-5"><a href="inference-num.html#cb14-5" aria-hidden="true"></a>tiresWide &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(tiresWide)</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="inference-num.html#cb73-1" aria-hidden="true"></a>tiresWide &lt;-<span class="st"> </span>tires <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb73-2"><a href="inference-num.html#cb73-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">select</span>(brand, tread, car) <span class="op">%&gt;%</span><span class="st">   </span><span class="co">#select only ID, group, and outcome vars</span></span>
+<span id="cb73-3"><a href="inference-num.html#cb73-3" aria-hidden="true"></a><span class="st">  </span><span class="kw">pivot_wider</span>(<span class="dt">names_from =</span> brand,   <span class="co">#name of variable for group</span></span>
+<span id="cb73-4"><a href="inference-num.html#cb73-4" aria-hidden="true"></a>              <span class="dt">values_from =</span> tread)  <span class="co">#name of variable for outcome</span></span>
+<span id="cb73-5"><a href="inference-num.html#cb73-5" aria-hidden="true"></a>tiresWide &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(tiresWide)</span></code></pre></div>
 <p>Once we have this format, all the paired data functions in <code>catstats</code> should be able to handle the data. First, we can get a look at the pairs of observations:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="inference-num.html#cb15-1" aria-hidden="true"></a><span class="kw">paired_observed_plot</span>(tiresWide)</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="inference-num.html#cb74-1" aria-hidden="true"></a><span class="kw">paired_observed_plot</span>(tiresWide)</span></code></pre></div>
 <p><img src="06-inference-num_files/figure-html/observedPlotPaired-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>This gives us an idea of the distributions within groups and the differences within pairs. To perform the hypothesis test for a difference in tread depth after 1000 miles, we use the <code>paired_test()</code> function:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="inference-num.html#cb16-1" aria-hidden="true"></a><span class="kw">paired_test</span>(</span>
-<span id="cb16-2"><a href="inference-num.html#cb16-2" aria-hidden="true"></a>  <span class="dt">data =</span> tiresWide,  <span class="co">#data frame with observed values in groups</span></span>
-<span id="cb16-3"><a href="inference-num.html#cb16-3" aria-hidden="true"></a>  <span class="dt">shift =</span> <span class="fl">-0.002</span>,  <span class="co">#amount to shift differences to bootstrap null distribution</span></span>
-<span id="cb16-4"><a href="inference-num.html#cb16-4" aria-hidden="true"></a>  <span class="dt">direction =</span> <span class="st">&quot;two-sided&quot;</span>,  <span class="co">#Direction of hypothesis test</span></span>
-<span id="cb16-5"><a href="inference-num.html#cb16-5" aria-hidden="true"></a>  <span class="dt">as_extreme_as =</span> <span class="fl">0.002</span>, <span class="co">#Observed statistic</span></span>
-<span id="cb16-6"><a href="inference-num.html#cb16-6" aria-hidden="true"></a>  <span class="dt">number_repetitions =</span> <span class="dv">1000</span>,  <span class="co">#number of bootstrap draws for null distribution</span></span>
-<span id="cb16-7"><a href="inference-num.html#cb16-7" aria-hidden="true"></a>  <span class="dt">which_first =</span> <span class="dv">1</span>  <span class="co">#Which column is first in order of subtraction: 1 or 2?</span></span>
-<span id="cb16-8"><a href="inference-num.html#cb16-8" aria-hidden="true"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="inference-num.html#cb75-1" aria-hidden="true"></a><span class="kw">paired_test</span>(</span>
+<span id="cb75-2"><a href="inference-num.html#cb75-2" aria-hidden="true"></a>  <span class="dt">data =</span> tiresWide,  <span class="co">#data frame with observed values in groups</span></span>
+<span id="cb75-3"><a href="inference-num.html#cb75-3" aria-hidden="true"></a>  <span class="dt">shift =</span> <span class="fl">-0.002</span>,  <span class="co">#amount to shift differences to bootstrap null distribution</span></span>
+<span id="cb75-4"><a href="inference-num.html#cb75-4" aria-hidden="true"></a>  <span class="dt">direction =</span> <span class="st">&quot;two-sided&quot;</span>,  <span class="co">#Direction of hypothesis test</span></span>
+<span id="cb75-5"><a href="inference-num.html#cb75-5" aria-hidden="true"></a>  <span class="dt">as_extreme_as =</span> <span class="fl">0.002</span>, <span class="co">#Observed statistic</span></span>
+<span id="cb75-6"><a href="inference-num.html#cb75-6" aria-hidden="true"></a>  <span class="dt">number_repetitions =</span> <span class="dv">1000</span>,  <span class="co">#number of bootstrap draws for null distribution</span></span>
+<span id="cb75-7"><a href="inference-num.html#cb75-7" aria-hidden="true"></a>  <span class="dt">which_first =</span> <span class="dv">1</span>  <span class="co">#Which column is first in order of subtraction: 1 or 2?</span></span>
+<span id="cb75-8"><a href="inference-num.html#cb75-8" aria-hidden="true"></a>)</span></code></pre></div>
 <p>Note that <code>data</code> could also be a vector of differences. If this is all you have, you can do hypothesis testing and generate a confidence interval, but won’t be able to use <code>paired_observed_plot()</code>. Now let’s take a look at the output of the function:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="inference-num.html#cb17-1" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1054</span>)</span>
-<span id="cb17-2"><a href="inference-num.html#cb17-2" aria-hidden="true"></a><span class="kw">paired_test</span>(</span>
-<span id="cb17-3"><a href="inference-num.html#cb17-3" aria-hidden="true"></a>  <span class="dt">data =</span> tiresWide,  <span class="co">#data frame with observed values in groups</span></span>
-<span id="cb17-4"><a href="inference-num.html#cb17-4" aria-hidden="true"></a>  <span class="dt">shift =</span> <span class="fl">-0.002</span>,  <span class="co">#amount to shift differences to bootstrap null distribution</span></span>
-<span id="cb17-5"><a href="inference-num.html#cb17-5" aria-hidden="true"></a>  <span class="dt">direction =</span> <span class="st">&quot;two-sided&quot;</span>,  <span class="co">#Direction of hypothesis test</span></span>
-<span id="cb17-6"><a href="inference-num.html#cb17-6" aria-hidden="true"></a>  <span class="dt">as_extreme_as =</span> <span class="fl">0.002</span>, <span class="co">#Observed statistic</span></span>
-<span id="cb17-7"><a href="inference-num.html#cb17-7" aria-hidden="true"></a>  <span class="dt">number_repetitions =</span> <span class="dv">1000</span>,  <span class="co">#number of bootstrap draws for null distribution</span></span>
-<span id="cb17-8"><a href="inference-num.html#cb17-8" aria-hidden="true"></a>  <span class="dt">which_first =</span> <span class="dv">1</span>  <span class="co">#Which column is first in order of subtraction: 1 or 2?</span></span>
-<span id="cb17-9"><a href="inference-num.html#cb17-9" aria-hidden="true"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="inference-num.html#cb76-1" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">1054</span>)</span>
+<span id="cb76-2"><a href="inference-num.html#cb76-2" aria-hidden="true"></a><span class="kw">paired_test</span>(</span>
+<span id="cb76-3"><a href="inference-num.html#cb76-3" aria-hidden="true"></a>  <span class="dt">data =</span> tiresWide,  <span class="co">#data frame with observed values in groups</span></span>
+<span id="cb76-4"><a href="inference-num.html#cb76-4" aria-hidden="true"></a>  <span class="dt">shift =</span> <span class="fl">-0.002</span>,  <span class="co">#amount to shift differences to bootstrap null distribution</span></span>
+<span id="cb76-5"><a href="inference-num.html#cb76-5" aria-hidden="true"></a>  <span class="dt">direction =</span> <span class="st">&quot;two-sided&quot;</span>,  <span class="co">#Direction of hypothesis test</span></span>
+<span id="cb76-6"><a href="inference-num.html#cb76-6" aria-hidden="true"></a>  <span class="dt">as_extreme_as =</span> <span class="fl">0.002</span>, <span class="co">#Observed statistic</span></span>
+<span id="cb76-7"><a href="inference-num.html#cb76-7" aria-hidden="true"></a>  <span class="dt">number_repetitions =</span> <span class="dv">1000</span>,  <span class="co">#number of bootstrap draws for null distribution</span></span>
+<span id="cb76-8"><a href="inference-num.html#cb76-8" aria-hidden="true"></a>  <span class="dt">which_first =</span> <span class="dv">1</span>  <span class="co">#Which column is first in order of subtraction: 1 or 2?</span></span>
+<span id="cb76-9"><a href="inference-num.html#cb76-9" aria-hidden="true"></a>)</span></code></pre></div>
 <p><img src="06-inference-num_files/figure-html/pairedSimTest-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>This figure displays the bootstrapped null distribution, with the mean and standard deviation of the draws in the upper right corner. We want to see that the mean is close to the null value (almost always zero). If it isn’t, check the value of the <code>shift</code> input, and/or increase the <code>number_repetitions</code> if the shift is correct.</p>
 <p>The red lines give the cutoffs based on the observed statistic, and values as or more extreme are colored red. If you are doing a one-sided test, there will only be one line. The caption of the figure gives the number and proportion of bootstrapped mean differences that are as or more extreme than the observed statistic. In this case, 20 out of 1000, for a p-value of 0.02.</p>
 <p>Finally, we will want to generate a confidence interval for the true mean difference using the <code>paired_bootstrap_CI()</code> function.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="inference-num.html#cb18-1" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">2374</span>)</span>
-<span id="cb18-2"><a href="inference-num.html#cb18-2" aria-hidden="true"></a><span class="kw">paired_bootstrap_CI</span>(</span>
-<span id="cb18-3"><a href="inference-num.html#cb18-3" aria-hidden="true"></a>  <span class="dt">data =</span> tiresWide,   <span class="co">#Wide-form data set or vector of differences</span></span>
-<span id="cb18-4"><a href="inference-num.html#cb18-4" aria-hidden="true"></a>  <span class="dt">number_repetitions =</span> <span class="dv">1000</span>,   <span class="co">#number of draws for bootstrap distribution</span></span>
-<span id="cb18-5"><a href="inference-num.html#cb18-5" aria-hidden="true"></a>  <span class="dt">confidence_level =</span> <span class="fl">0.99</span>,  <span class="co">#Confidence level as a proportion</span></span>
-<span id="cb18-6"><a href="inference-num.html#cb18-6" aria-hidden="true"></a>  <span class="dt">which_first =</span> <span class="dv">1</span>  <span class="co">#Order of subtraction: 1st or 2nd set of values come first?</span></span>
-<span id="cb18-7"><a href="inference-num.html#cb18-7" aria-hidden="true"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="inference-num.html#cb77-1" aria-hidden="true"></a><span class="kw">set.seed</span>(<span class="dv">2374</span>)</span>
+<span id="cb77-2"><a href="inference-num.html#cb77-2" aria-hidden="true"></a><span class="kw">paired_bootstrap_CI</span>(</span>
+<span id="cb77-3"><a href="inference-num.html#cb77-3" aria-hidden="true"></a>  <span class="dt">data =</span> tiresWide,   <span class="co">#Wide-form data set or vector of differences</span></span>
+<span id="cb77-4"><a href="inference-num.html#cb77-4" aria-hidden="true"></a>  <span class="dt">number_repetitions =</span> <span class="dv">1000</span>,   <span class="co">#number of draws for bootstrap distribution</span></span>
+<span id="cb77-5"><a href="inference-num.html#cb77-5" aria-hidden="true"></a>  <span class="dt">confidence_level =</span> <span class="fl">0.99</span>,  <span class="co">#Confidence level as a proportion</span></span>
+<span id="cb77-6"><a href="inference-num.html#cb77-6" aria-hidden="true"></a>  <span class="dt">which_first =</span> <span class="dv">1</span>  <span class="co">#Order of subtraction: 1st or 2nd set of values come first?</span></span>
+<span id="cb77-7"><a href="inference-num.html#cb77-7" aria-hidden="true"></a>)</span></code></pre></div>
 <p><img src="06-inference-num_files/figure-html/pairedBootstrapCI-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Here we again have a bootstrap distribution, but now it is the bootstrap distribution of the mean difference itself, rather than a bootstrapped null distribution for the mean difference. We’ve requested a 99% confidence interval, so the relevant percentiles of the bootstrap distribution are highlighted, and the interval itself is given in the caption. In this case, we are 99% confident that the true mean difference in tire tread is between 0 and 0.004 inches greater for Smooth Turn.</p>
 <p><strong>Theory-based inference for paired mean difference</strong> To implement theory-based inference for a paired mean difference in <code>R</code>, we use the <code>t.test()</code> function. As an example, we’ll use the textbook cost data from Section <a href="inference-num.html#paired-data">6.2</a>. There are two ways to put in paired data for a t-test using <code>t.test()</code>. First, we could have the prices of the two groups in two separate variables (in this case, <code>bookstore_new</code> and <code>amazon_new</code>):</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="inference-num.html#cb19-1" aria-hidden="true"></a><span class="kw">t.test</span>(<span class="dt">x =</span> ucla_textbooks_f18<span class="op">$</span>bookstore_new, <span class="co">#Outcomes for one of each pair</span></span>
-<span id="cb19-2"><a href="inference-num.html#cb19-2" aria-hidden="true"></a>       <span class="dt">y =</span> ucla_textbooks_f18<span class="op">$</span>amazon_new,  <span class="co">#Outcomes for other of each pair</span></span>
-<span id="cb19-3"><a href="inference-num.html#cb19-3" aria-hidden="true"></a>       <span class="dt">paired =</span> <span class="ot">TRUE</span>,  <span class="co">#Tell it to do a paired t-test!!</span></span>
-<span id="cb19-4"><a href="inference-num.html#cb19-4" aria-hidden="true"></a>       <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,  <span class="co">#Direction of alternative </span></span>
-<span id="cb19-5"><a href="inference-num.html#cb19-5" aria-hidden="true"></a>       <span class="dt">conf.level =</span> <span class="fl">0.95</span>  <span class="co">#confidence level for interval as a proportion</span></span>
-<span id="cb19-6"><a href="inference-num.html#cb19-6" aria-hidden="true"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="inference-num.html#cb78-1" aria-hidden="true"></a><span class="kw">t.test</span>(<span class="dt">x =</span> ucla_textbooks_f18<span class="op">$</span>bookstore_new, <span class="co">#Outcomes for one of each pair</span></span>
+<span id="cb78-2"><a href="inference-num.html#cb78-2" aria-hidden="true"></a>       <span class="dt">y =</span> ucla_textbooks_f18<span class="op">$</span>amazon_new,  <span class="co">#Outcomes for other of each pair</span></span>
+<span id="cb78-3"><a href="inference-num.html#cb78-3" aria-hidden="true"></a>       <span class="dt">paired =</span> <span class="ot">TRUE</span>,  <span class="co">#Tell it to do a paired t-test!!</span></span>
+<span id="cb78-4"><a href="inference-num.html#cb78-4" aria-hidden="true"></a>       <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,  <span class="co">#Direction of alternative </span></span>
+<span id="cb78-5"><a href="inference-num.html#cb78-5" aria-hidden="true"></a>       <span class="dt">conf.level =</span> <span class="fl">0.95</span>  <span class="co">#confidence level for interval as a proportion</span></span>
+<span id="cb78-6"><a href="inference-num.html#cb78-6" aria-hidden="true"></a>)</span></code></pre></div>
 <p>Important things to note here:</p>
 <ul>
 <li>You must include <code>paired = TRUE</code> in your options, or it will do a two-sample t-test.</li>
 <li>As with categorical data in Chapter <a href="inference-cat.html#inference-cat">5</a>, if you have a one-sided alternative, you will need to re-run the <code>t.test()</code> with a two-sided alternative to get the correct confidence interval</li>
 </ul>
 <p>Now let’s take a look at the output of the call:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="inference-num.html#cb20-1" aria-hidden="true"></a><span class="kw">t.test</span>(<span class="dt">x =</span> ucla_textbooks_f18<span class="op">$</span>bookstore_new, <span class="co">#Outcomes for first in order of subtraction</span></span>
-<span id="cb20-2"><a href="inference-num.html#cb20-2" aria-hidden="true"></a>       <span class="dt">y =</span> ucla_textbooks_f18<span class="op">$</span>amazon_new,  <span class="co">#Outcomes for second in order of subtraction</span></span>
-<span id="cb20-3"><a href="inference-num.html#cb20-3" aria-hidden="true"></a>       <span class="dt">paired =</span> <span class="ot">TRUE</span>,  <span class="co">#Tell it to do a paired t-test!!</span></span>
-<span id="cb20-4"><a href="inference-num.html#cb20-4" aria-hidden="true"></a>       <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,  <span class="co">#Direction of alternative </span></span>
-<span id="cb20-5"><a href="inference-num.html#cb20-5" aria-hidden="true"></a>       <span class="dt">conf.level =</span> <span class="fl">0.95</span>  <span class="co">#confidence level for interval as a proportion</span></span>
-<span id="cb20-6"><a href="inference-num.html#cb20-6" aria-hidden="true"></a>)</span>
-<span id="cb20-7"><a href="inference-num.html#cb20-7" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb20-8"><a href="inference-num.html#cb20-8" aria-hidden="true"></a><span class="co">#&gt; 	Paired t-test</span></span>
-<span id="cb20-9"><a href="inference-num.html#cb20-9" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb20-10"><a href="inference-num.html#cb20-10" aria-hidden="true"></a><span class="co">#&gt; data:  ucla_textbooks_f18$bookstore_new and ucla_textbooks_f18$amazon_new</span></span>
-<span id="cb20-11"><a href="inference-num.html#cb20-11" aria-hidden="true"></a><span class="co">#&gt; t = 2, df = 67, p-value = 0.03</span></span>
-<span id="cb20-12"><a href="inference-num.html#cb20-12" aria-hidden="true"></a><span class="co">#&gt; alternative hypothesis: true difference in means is not equal to 0</span></span>
-<span id="cb20-13"><a href="inference-num.html#cb20-13" aria-hidden="true"></a><span class="co">#&gt; 95 percent confidence interval:</span></span>
-<span id="cb20-14"><a href="inference-num.html#cb20-14" aria-hidden="true"></a><span class="co">#&gt;  0.334 6.832</span></span>
-<span id="cb20-15"><a href="inference-num.html#cb20-15" aria-hidden="true"></a><span class="co">#&gt; sample estimates:</span></span>
-<span id="cb20-16"><a href="inference-num.html#cb20-16" aria-hidden="true"></a><span class="co">#&gt; mean of the differences </span></span>
-<span id="cb20-17"><a href="inference-num.html#cb20-17" aria-hidden="true"></a><span class="co">#&gt;                    3.58</span></span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="inference-num.html#cb79-1" aria-hidden="true"></a><span class="kw">t.test</span>(<span class="dt">x =</span> ucla_textbooks_f18<span class="op">$</span>bookstore_new, <span class="co">#Outcomes for first in order of subtraction</span></span>
+<span id="cb79-2"><a href="inference-num.html#cb79-2" aria-hidden="true"></a>       <span class="dt">y =</span> ucla_textbooks_f18<span class="op">$</span>amazon_new,  <span class="co">#Outcomes for second in order of subtraction</span></span>
+<span id="cb79-3"><a href="inference-num.html#cb79-3" aria-hidden="true"></a>       <span class="dt">paired =</span> <span class="ot">TRUE</span>,  <span class="co">#Tell it to do a paired t-test!!</span></span>
+<span id="cb79-4"><a href="inference-num.html#cb79-4" aria-hidden="true"></a>       <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,  <span class="co">#Direction of alternative </span></span>
+<span id="cb79-5"><a href="inference-num.html#cb79-5" aria-hidden="true"></a>       <span class="dt">conf.level =</span> <span class="fl">0.95</span>  <span class="co">#confidence level for interval as a proportion</span></span>
+<span id="cb79-6"><a href="inference-num.html#cb79-6" aria-hidden="true"></a>)</span>
+<span id="cb79-7"><a href="inference-num.html#cb79-7" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb79-8"><a href="inference-num.html#cb79-8" aria-hidden="true"></a><span class="co">#&gt; 	Paired t-test</span></span>
+<span id="cb79-9"><a href="inference-num.html#cb79-9" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb79-10"><a href="inference-num.html#cb79-10" aria-hidden="true"></a><span class="co">#&gt; data:  ucla_textbooks_f18$bookstore_new and ucla_textbooks_f18$amazon_new</span></span>
+<span id="cb79-11"><a href="inference-num.html#cb79-11" aria-hidden="true"></a><span class="co">#&gt; t = 2, df = 67, p-value = 0.03</span></span>
+<span id="cb79-12"><a href="inference-num.html#cb79-12" aria-hidden="true"></a><span class="co">#&gt; alternative hypothesis: true difference in means is not equal to 0</span></span>
+<span id="cb79-13"><a href="inference-num.html#cb79-13" aria-hidden="true"></a><span class="co">#&gt; 95 percent confidence interval:</span></span>
+<span id="cb79-14"><a href="inference-num.html#cb79-14" aria-hidden="true"></a><span class="co">#&gt;  0.334 6.832</span></span>
+<span id="cb79-15"><a href="inference-num.html#cb79-15" aria-hidden="true"></a><span class="co">#&gt; sample estimates:</span></span>
+<span id="cb79-16"><a href="inference-num.html#cb79-16" aria-hidden="true"></a><span class="co">#&gt; mean of the differences </span></span>
+<span id="cb79-17"><a href="inference-num.html#cb79-17" aria-hidden="true"></a><span class="co">#&gt;                    3.58</span></span></code></pre></div>
 <p>The output tells you right on top that this is a paired test - if it doesn’t, check that you have <code>paired = TRUE</code> in your function call. The next line gives the t-statistic of 2.2012, the degrees of freedom df = 67, and the p-value of 0.03117 (You can look back at Section <a href="inference-num.html#paired-mean-math">6.2.3</a> to see that these are the same values obtained in the example). We also get the confidence interval; since we had a two-sided alternative, we get the correct interval for the true mean difference in price of $0.33 to $6.83 greater cost from the UCLA Bookstore. The point estimate for the mean difference is the final entry: on average, new bookstore books cost $3.58 more than the same books new from Amazon.</p>
 <p>You might also have a single variable in your dataset that contains the differences within pairs: we will create this for the textbook data in a variable called <code>price_diff</code>. This format is also usable with the <code>t.test()</code> function:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="inference-num.html#cb21-1" aria-hidden="true"></a>ucla_textbooks_f18 <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb21-2"><a href="inference-num.html#cb21-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">price_diff =</span> bookstore_new<span class="op">-</span>amazon_new)</span>
-<span id="cb21-3"><a href="inference-num.html#cb21-3" aria-hidden="true"></a></span>
-<span id="cb21-4"><a href="inference-num.html#cb21-4" aria-hidden="true"></a><span class="kw">t.test</span>(<span class="dt">x =</span> ucla_textbooks_f18<span class="op">$</span>price_diff,   <span class="co">#variable with differences</span></span>
-<span id="cb21-5"><a href="inference-num.html#cb21-5" aria-hidden="true"></a>       <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,  <span class="co">#direction of alternative hypothesis</span></span>
-<span id="cb21-6"><a href="inference-num.html#cb21-6" aria-hidden="true"></a>       <span class="dt">conf.level =</span> <span class="fl">0.95</span>)  <span class="co">#confidence level as a proportion</span></span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="inference-num.html#cb80-1" aria-hidden="true"></a>ucla_textbooks_f18 <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb80-2"><a href="inference-num.html#cb80-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">price_diff =</span> bookstore_new<span class="op">-</span>amazon_new)</span>
+<span id="cb80-3"><a href="inference-num.html#cb80-3" aria-hidden="true"></a></span>
+<span id="cb80-4"><a href="inference-num.html#cb80-4" aria-hidden="true"></a><span class="kw">t.test</span>(<span class="dt">x =</span> ucla_textbooks_f18<span class="op">$</span>price_diff,   <span class="co">#variable with differences</span></span>
+<span id="cb80-5"><a href="inference-num.html#cb80-5" aria-hidden="true"></a>       <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,  <span class="co">#direction of alternative hypothesis</span></span>
+<span id="cb80-6"><a href="inference-num.html#cb80-6" aria-hidden="true"></a>       <span class="dt">conf.level =</span> <span class="fl">0.95</span>)  <span class="co">#confidence level as a proportion</span></span></code></pre></div>
 <p>This requires two fewer arguments:</p>
 <ul>
 <li>No <code>y</code> input, since the differences are contained in a single variable</li>
 <li>No <code>paired = TRUE</code>, since we have already accounted for the pairing by taking the differences.</li>
 </ul>
 <p>The output for this will look almost identical to the two-variable version above:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="inference-num.html#cb22-1" aria-hidden="true"></a>ucla_textbooks_f18 &lt;-<span class="st"> </span>ucla_textbooks_f18 <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb22-2"><a href="inference-num.html#cb22-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">price_diff =</span> bookstore_new<span class="op">-</span>amazon_new)</span>
-<span id="cb22-3"><a href="inference-num.html#cb22-3" aria-hidden="true"></a></span>
-<span id="cb22-4"><a href="inference-num.html#cb22-4" aria-hidden="true"></a><span class="kw">t.test</span>(<span class="dt">x =</span> ucla_textbooks_f18<span class="op">$</span>price_diff,   <span class="co">#variable with differences</span></span>
-<span id="cb22-5"><a href="inference-num.html#cb22-5" aria-hidden="true"></a>       <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,  <span class="co">#direction of alternative hypothesis</span></span>
-<span id="cb22-6"><a href="inference-num.html#cb22-6" aria-hidden="true"></a>       <span class="dt">conf.level =</span> <span class="fl">0.95</span>)  <span class="co">#confidence level as a proportion</span></span>
-<span id="cb22-7"><a href="inference-num.html#cb22-7" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb22-8"><a href="inference-num.html#cb22-8" aria-hidden="true"></a><span class="co">#&gt; 	One Sample t-test</span></span>
-<span id="cb22-9"><a href="inference-num.html#cb22-9" aria-hidden="true"></a><span class="co">#&gt; </span></span>
-<span id="cb22-10"><a href="inference-num.html#cb22-10" aria-hidden="true"></a><span class="co">#&gt; data:  ucla_textbooks_f18$price_diff</span></span>
-<span id="cb22-11"><a href="inference-num.html#cb22-11" aria-hidden="true"></a><span class="co">#&gt; t = 2, df = 67, p-value = 0.03</span></span>
-<span id="cb22-12"><a href="inference-num.html#cb22-12" aria-hidden="true"></a><span class="co">#&gt; alternative hypothesis: true mean is not equal to 0</span></span>
-<span id="cb22-13"><a href="inference-num.html#cb22-13" aria-hidden="true"></a><span class="co">#&gt; 95 percent confidence interval:</span></span>
-<span id="cb22-14"><a href="inference-num.html#cb22-14" aria-hidden="true"></a><span class="co">#&gt;  0.334 6.832</span></span>
-<span id="cb22-15"><a href="inference-num.html#cb22-15" aria-hidden="true"></a><span class="co">#&gt; sample estimates:</span></span>
-<span id="cb22-16"><a href="inference-num.html#cb22-16" aria-hidden="true"></a><span class="co">#&gt; mean of x </span></span>
-<span id="cb22-17"><a href="inference-num.html#cb22-17" aria-hidden="true"></a><span class="co">#&gt;      3.58</span></span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="inference-num.html#cb81-1" aria-hidden="true"></a>ucla_textbooks_f18 &lt;-<span class="st"> </span>ucla_textbooks_f18 <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb81-2"><a href="inference-num.html#cb81-2" aria-hidden="true"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">price_diff =</span> bookstore_new<span class="op">-</span>amazon_new)</span>
+<span id="cb81-3"><a href="inference-num.html#cb81-3" aria-hidden="true"></a></span>
+<span id="cb81-4"><a href="inference-num.html#cb81-4" aria-hidden="true"></a><span class="kw">t.test</span>(<span class="dt">x =</span> ucla_textbooks_f18<span class="op">$</span>price_diff,   <span class="co">#variable with differences</span></span>
+<span id="cb81-5"><a href="inference-num.html#cb81-5" aria-hidden="true"></a>       <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,  <span class="co">#direction of alternative hypothesis</span></span>
+<span id="cb81-6"><a href="inference-num.html#cb81-6" aria-hidden="true"></a>       <span class="dt">conf.level =</span> <span class="fl">0.95</span>)  <span class="co">#confidence level as a proportion</span></span>
+<span id="cb81-7"><a href="inference-num.html#cb81-7" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb81-8"><a href="inference-num.html#cb81-8" aria-hidden="true"></a><span class="co">#&gt; 	One Sample t-test</span></span>
+<span id="cb81-9"><a href="inference-num.html#cb81-9" aria-hidden="true"></a><span class="co">#&gt; </span></span>
+<span id="cb81-10"><a href="inference-num.html#cb81-10" aria-hidden="true"></a><span class="co">#&gt; data:  ucla_textbooks_f18$price_diff</span></span>
+<span id="cb81-11"><a href="inference-num.html#cb81-11" aria-hidden="true"></a><span class="co">#&gt; t = 2, df = 67, p-value = 0.03</span></span>
+<span id="cb81-12"><a href="inference-num.html#cb81-12" aria-hidden="true"></a><span class="co">#&gt; alternative hypothesis: true mean is not equal to 0</span></span>
+<span id="cb81-13"><a href="inference-num.html#cb81-13" aria-hidden="true"></a><span class="co">#&gt; 95 percent confidence interval:</span></span>
+<span id="cb81-14"><a href="inference-num.html#cb81-14" aria-hidden="true"></a><span class="co">#&gt;  0.334 6.832</span></span>
+<span id="cb81-15"><a href="inference-num.html#cb81-15" aria-hidden="true"></a><span class="co">#&gt; sample estimates:</span></span>
+<span id="cb81-16"><a href="inference-num.html#cb81-16" aria-hidden="true"></a><span class="co">#&gt; mean of x </span></span>
+<span id="cb81-17"><a href="inference-num.html#cb81-17" aria-hidden="true"></a><span class="co">#&gt;      3.58</span></span></code></pre></div>
 <p>Since we only input one variable, <code>t.test()</code> treats it as a one-sample t-test, but note that this works just fine: the t-statistic, df, p-value, confidence interval, and estimated mean are all the same as when we put in the two groups separately and indicated they were paired.</p>
 <div id="interactive-r-tutorials" class="section level3" number="6.5.1">
 <h3><span class="header-section-number">6.5.1</span> Interactive R tutorials</h3>
@@ -3041,29 +2949,29 @@ t-distribution
 </div>
 <div class="footnotes">
 <hr />
-<ol start="1">
-<li id="fn1"><p>By looking at the percentile values in Figure <a href="inference-num.html#fig:flatsbssd">6.4</a>, the middle 90% of the bootstrap standard deviations are given by the 5<sup>th</sup> percentile (£153.9) and 95<sup>th</sup> percentile (£385.6). That is, we are 90% confident that the true standard deviation of rent prices is between £153.9 and £385.6; or that, on average, rent prices tend to be somewhere between £153.9 and £385.6 away from the mean rent price. Note, the problem was set up as 90% to indicate that there was not a need for a high level of confidence (such a 95% or 99%). A lower degree of confidence increases potential for error, but it also produces a more narrow interval.<a href="inference-num.html#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>Protsiv, Ley,Lankester, Hastie, Parsonnet (2020). Decreasing human body temperature in the United States since the Industrial Revolution. eLife 2020;9:e49555, DOI: 10.7554/eLife.49555. <a href="https://elifesciences.org/articles/49555">https://elifesciences.org/articles/49555</a><a href="inference-num.html#fnref2" class="footnote-back">↩︎</a></p></li>
-<li id="fn3"><p>More
+<ol start="146">
+<li id="fn146"><p>By looking at the percentile values in Figure <a href="inference-num.html#fig:flatsbssd">6.4</a>, the middle 90% of the bootstrap standard deviations are given by the 5<sup>th</sup> percentile (£153.9) and 95<sup>th</sup> percentile (£385.6). That is, we are 90% confident that the true standard deviation of rent prices is between £153.9 and £385.6; or that, on average, rent prices tend to be somewhere between £153.9 and £385.6 away from the mean rent price. Note, the problem was set up as 90% to indicate that there was not a need for a high level of confidence (such a 95% or 99%). A lower degree of confidence increases potential for error, but it also produces a more narrow interval.<a href="inference-num.html#fnref146" class="footnote-back">↩︎</a></p></li>
+<li id="fn147"><p>Protsiv, Ley,Lankester, Hastie, Parsonnet (2020). Decreasing human body temperature in the United States since the Industrial Revolution. eLife 2020;9:e49555, DOI: 10.7554/eLife.49555. <a href="https://elifesciences.org/articles/49555">https://elifesciences.org/articles/49555</a><a href="inference-num.html#fnref147" class="footnote-back">↩︎</a></p></li>
+<li id="fn148"><p>More
 nuanced guidelines would consider further relaxing
 the <em>particularly extreme outlier</em> check when the
 sample size is very large.
-However, we’ll leave further discussion here to a future course.<a href="inference-num.html#fnref3" class="footnote-back">↩︎</a></p></li>
-<li id="fn4"><p>We want to find the shaded area <em>above</em> -1.79 (we leave the picture to you). The lower tail area has an area of 0.0447, so the upper area would have an area of <span class="math inline">\(1 - 0.0447 = 0.9553\)</span>.<a href="inference-num.html#fnref4" class="footnote-back">↩︎</a></p></li>
-<li id="fn5"><p>The sample size is under 30, so we check for obvious outliers: since all observations are within 2 standard deviations of the mean, there are no such clear outliers.<a href="inference-num.html#fnref5" class="footnote-back">↩︎</a></p></li>
-<li id="fn6"><p><span class="math inline">\(\bar{x} \ \pm\ t^{\star}_{14} \times SE(\bar{x})  \ \to\  0.287 \ \pm\  1.76 \times 0.0178  \ \to\ (0.256, 0.318)\)</span>.
+However, we’ll leave further discussion here to a future course.<a href="inference-num.html#fnref148" class="footnote-back">↩︎</a></p></li>
+<li id="fn149"><p>We want to find the shaded area <em>above</em> -1.79 (we leave the picture to you). The lower tail area has an area of 0.0447, so the upper area would have an area of <span class="math inline">\(1 - 0.0447 = 0.9553\)</span>.<a href="inference-num.html#fnref149" class="footnote-back">↩︎</a></p></li>
+<li id="fn150"><p>The sample size is under 30, so we check for obvious outliers: since all observations are within 2 standard deviations of the mean, there are no such clear outliers.<a href="inference-num.html#fnref150" class="footnote-back">↩︎</a></p></li>
+<li id="fn151"><p><span class="math inline">\(\bar{x} \ \pm\ t^{\star}_{14} \times SE(\bar{x})  \ \to\  0.287 \ \pm\  1.76 \times 0.0178  \ \to\ (0.256, 0.318)\)</span>.
 We are 90% confident that the average mercury content
-of croaker white fish (Pacific) is between 0.256 and 0.318 ppm.<a href="inference-num.html#fnref6" class="footnote-back">↩︎</a></p></li>
-<li id="fn7"><p>No, a confidence interval only provides a range
+of croaker white fish (Pacific) is between 0.256 and 0.318 ppm.<a href="inference-num.html#fnref151" class="footnote-back">↩︎</a></p></li>
+<li id="fn152"><p>No, a confidence interval only provides a range
 of plausible values for a population parameter,
 in this case the population <em>mean</em>.
 It does not describe what we might observe
-for <em>individual</em> observations.<a href="inference-num.html#fnref7" class="footnote-back">↩︎</a></p></li>
-<li id="fn8"><p>The letter “Z” is typically used when its distribution follows a standard normal distribution. We use “T” when the test statistic follows a <span class="math inline">\(t\)</span>-distribution.<a href="inference-num.html#fnref8" class="footnote-back">↩︎</a></p></li>
-<li id="fn9"><p><span class="math inline">\(H_0\)</span>: The average 10-mile run time was the same for 2006 and 2017. <span class="math inline">\(\mu = 93.29\)</span> minutes. <span class="math inline">\(H_A\)</span>: The average 10-mile run time for 2017 was <em>different</em> than that of 2006. <span class="math inline">\(\mu \neq 93.29\)</span> minutes.<a href="inference-num.html#fnref9" class="footnote-back">↩︎</a></p></li>
-<li id="fn10"><p>With a sample of 100, we should only be concerned if there is are particularly extreme outliers. The histogram of the data doesn’t show any outliers of concern (and arguably, no outliers at all).<a href="inference-num.html#fnref10" class="footnote-back">↩︎</a></p></li>
-<li id="fn11"><p>Subtracting the sample mean is equivalent to adding <span class="math inline">\(\mu_0 - \bar{x}_d\)</span> when the null value is <span class="math inline">\(\mu_d = 0\)</span>. Thus, we are using the same process as that described in Section <a href="inference-num.html#one-mean-null-boot">6.1.2</a>.<a href="inference-num.html#fnref11" class="footnote-back">↩︎</a></p></li>
-<li id="fn12"><p>The average price difference
+for <em>individual</em> observations.<a href="inference-num.html#fnref152" class="footnote-back">↩︎</a></p></li>
+<li id="fn153"><p>The letter “Z” is typically used when its distribution follows a standard normal distribution. We use “T” when the test statistic follows a <span class="math inline">\(t\)</span>-distribution.<a href="inference-num.html#fnref153" class="footnote-back">↩︎</a></p></li>
+<li id="fn154"><p><span class="math inline">\(H_0\)</span>: The average 10-mile run time was the same for 2006 and 2017. <span class="math inline">\(\mu = 93.29\)</span> minutes. <span class="math inline">\(H_A\)</span>: The average 10-mile run time for 2017 was <em>different</em> than that of 2006. <span class="math inline">\(\mu \neq 93.29\)</span> minutes.<a href="inference-num.html#fnref154" class="footnote-back">↩︎</a></p></li>
+<li id="fn155"><p>With a sample of 100, we should only be concerned if there is are particularly extreme outliers. The histogram of the data doesn’t show any outliers of concern (and arguably, no outliers at all).<a href="inference-num.html#fnref155" class="footnote-back">↩︎</a></p></li>
+<li id="fn156"><p>Subtracting the sample mean is equivalent to adding <span class="math inline">\(\mu_0 - \bar{x}_d\)</span> when the null value is <span class="math inline">\(\mu_d = 0\)</span>. Thus, we are using the same process as that described in Section <a href="inference-num.html#one-mean-null-boot">6.1.2</a>.<a href="inference-num.html#fnref156" class="footnote-back">↩︎</a></p></li>
+<li id="fn157"><p>The average price difference
 is only mildly useful for this question.
 Examine the distribution shown in
 Figure <a href="inference-num.html#fig:diffInTextbookPricesF18">6.19</a>.
@@ -3088,38 +2996,38 @@ lower than those of the UCLA Bookstore’s and by
 a large margin, making the case to use Amazon over
 the UCLA Bookstore quite compelling at that time.
 Now we frequently check multiple websites
-to find the best price.<a href="inference-num.html#fnref12" class="footnote-back">↩︎</a></p></li>
-<li id="fn13"><p><span class="math inline">\(H_0\)</span>: the exams are equally difficult, on average. <span class="math inline">\(\mu_A - \mu_B = 0\)</span>. <span class="math inline">\(H_A\)</span>: one exam was more difficult than the other, on average. <span class="math inline">\(\mu_A - \mu_B \neq 0\)</span>.<a href="inference-num.html#fnref13" class="footnote-back">↩︎</a></p></li>
-<li id="fn14"><p>
+to find the best price.<a href="inference-num.html#fnref157" class="footnote-back">↩︎</a></p></li>
+<li id="fn158"><p><span class="math inline">\(H_0\)</span>: the exams are equally difficult, on average. <span class="math inline">\(\mu_A - \mu_B = 0\)</span>. <span class="math inline">\(H_A\)</span>: one exam was more difficult than the other, on average. <span class="math inline">\(\mu_A - \mu_B \neq 0.\)</span><a href="inference-num.html#fnref158" class="footnote-back">↩︎</a></p></li>
+<li id="fn159"><p>
 (a) Since the exams were shuffled,
 the “treatment” in this case was randomly assigned,
 so independence within and between groups is satisfied.
 (b) The summary statistics suggest the data are roughly
 symmetric about the mean, and the min/max values don’t
-suggest any outliers of concern.<a href="inference-num.html#fnref14" class="footnote-back">↩︎</a></p></li>
-<li id="fn15"><p>(a) The difference in sample means is an
+suggest any outliers of concern.<a href="inference-num.html#fnref159" class="footnote-back">↩︎</a></p></li>
+<li id="fn160"><p>Since the research question asks if ESCs help improve heart function, the explanatory variable is the treatment (ESC or control), and the response variable is the change in heart pumping capacity. Since sheep were randomly assigned to treatment groups, this study is a randomized experiment, and any changes in the mean response can be attributed to the treatment — cause-and-effect conclusions can be made. However, since it is not clear if the sheep were a random sample from a larger population of sheep, we can only generalize to sheep similar to those seen in the sample.<a href="inference-num.html#fnref160" class="footnote-back">↩︎</a></p></li>
+<li id="fn161"><p>(a) The difference in sample means is an
 appropriate point estimate: <span class="math inline">\(\bar{x}_{n} - \bar{x}_{s} = 0.40\)</span>.
 (b) The standard error of the estimate can be
 calculated using the standard error formula:
 <span class="math display">\[\begin{align*}
   SE
-    = \sqrt{\frac{\sigma_n^2}{n_n} + \frac{\sigma_s^2}{n_s}}
-      \approx \sqrt{\frac{s_n^2}{n_n} + \frac{s_s^2}{n_s}}
+    = \sqrt{\frac{s_n^2}{n_n} + \frac{s_s^2}{n_s}}
     = \sqrt{\frac{1.60^2}{100} + \frac{1.43^2}{50}}
     = 0.26
-  \end{align*}\]</span><a href="inference-num.html#fnref15" class="footnote-back">↩︎</a></p></li>
-<li id="fn16"><p>It is possible that there is a difference
+  \end{align*}\]</span><a href="inference-num.html#fnref161" class="footnote-back">↩︎</a></p></li>
+<li id="fn162"><p>It is possible that there is a difference
 but we did not detect it.
-If there is a difference, we made a Type 2 Error.<a href="inference-num.html#fnref16" class="footnote-back">↩︎</a></p></li>
-<li id="fn17"><p>We could have collected more data.
+If there is a difference, we made a Type 2 Error.<a href="inference-num.html#fnref162" class="footnote-back">↩︎</a></p></li>
+<li id="fn163"><p>We could have collected more data.
 If the sample sizes are larger, we tend to have
 a better shot at finding a difference if one exists.
 In fact, this is exactly what we would find if we
-examined a larger data set!<a href="inference-num.html#fnref17" class="footnote-back">↩︎</a></p></li>
-<li id="fn18"><p>You can watch an episode of John Oliver
+examined a larger data set!<a href="inference-num.html#fnref163" class="footnote-back">↩︎</a></p></li>
+<li id="fn164"><p>You can watch an episode of John Oliver
 on <a href="youtu.be/6UsHHOCH4q8"><em>Last Week Tonight</em></a> to explore the present day
 offenses of the tobacco industry.
-Please be aware that there is some adult language.<a href="inference-num.html#fnref18" class="footnote-back">↩︎</a></p></li>
+Please be aware that there is some adult language.<a href="inference-num.html#fnref164" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

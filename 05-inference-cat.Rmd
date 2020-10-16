@@ -4444,9 +4444,9 @@ zsim_table <- tribble(
 
 "statistic of interest", "proportion: $\\hat{p}$", "diff in props: $\\hat{p}_1 - \\hat{p}_2$",
 
-"null standard error of the statistic ($SE_0(\text{statistic})$)", "$\\sqrt{\\frac{\\pi_0(1-\\pi_0)}{n}}$", "$\\sqrt{\\hat{p}_{pool}(1-\\hat{p}_{pool})\\left(\\frac{1}{n_1} + \\frac{1}{n_2}\\right)}$",
+"null standard error of the statistic", "$\\sqrt{\\frac{\\pi_0(1-\\pi_0)}{n}}$", "$\\sqrt{\\hat{p}_{pool}(1-\\hat{p}_{pool})\\left(\\frac{1}{n_1} + \\frac{1}{n_2}\\right)}$",
 
-"standard error of the statistic ($SE(\text{statistic})$)", "$\\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}}$", "$\\sqrt{\\frac{\\hat{p}_1(1-\\hat{p}_1)}{n_1} + \\frac{\\hat{p}_2(1-\\hat{p}_2)}{n_2}}$",
+"standard error of the statistic", "$\\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}}$", "$\\sqrt{\\frac{\\hat{p}_1(1-\\hat{p}_1)}{n_1} + \\frac{\\hat{p}_2(1-\\hat{p}_2)}{n_2}}$",
 
 "conditions", "1. independence, 2. large samples (at least 10 successes and 10 failures)", "1. independence, 2. large samples (at least 10 successes and 10 failures in each sample)"
 )
@@ -4468,7 +4468,7 @@ zsim_table %>%
 3. Compute the statistic of interest, the null standard error, and the degrees of freedom. For $df$, use $n-1$ for one sample, and for two samples use either statistical software or the smaller of $n_1 - 1$ and $n_2 - 1$.  
 4. Compute the Z-score using the general formula:
     \[
-    Z = \frac{\mbox{statistic} - \mbox{null value}}{\mbox{null standard error}} = \frac{\mbox{statistic} - \mbox{null value}}{SE_0}
+    Z = \frac{\mbox{statistic} - \mbox{null value}}{\mbox{null standard error of the statistic}} = \frac{\mbox{statistic} - \mbox{null value}}{SE_0(\mbox{statistic})}
     \]
 5. Use the statistical software to find the p-value using the standard normal distribution:
     - Sign in $H_A$ is $<$: p-value = area below Z-score

@@ -3647,12 +3647,12 @@ You will often hear the following two $z$-procedures referred to as a **one samp
    <td style="text-align:left;"> diff in props: $\hat{p}_1 - \hat{p}_2$ </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> null standard error of the statistic ($SE_0(	ext{statistic})$) </td>
+   <td style="text-align:left;"> null standard error of the statistic </td>
    <td style="text-align:left;"> $\sqrt{\frac{\pi_0(1-\pi_0)}{n}}$ </td>
    <td style="text-align:left;"> $\sqrt{\hat{p}_{pool}(1-\hat{p}_{pool})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}$ </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> standard error of the statistic ($SE(	ext{statistic})$) </td>
+   <td style="text-align:left;"> standard error of the statistic </td>
    <td style="text-align:left;"> $\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}$ </td>
    <td style="text-align:left;"> $\sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}$ </td>
   </tr>
@@ -3675,7 +3675,7 @@ You will often hear the following two $z$-procedures referred to as a **one samp
 3. Compute the statistic of interest, the null standard error, and the degrees of freedom. For $df$, use $n-1$ for one sample, and for two samples use either statistical software or the smaller of $n_1 - 1$ and $n_2 - 1$.  
 4. Compute the Z-score using the general formula:
     \[
-    Z = \frac{\mbox{statistic} - \mbox{null value}}{\mbox{null standard error}} = \frac{\mbox{statistic} - \mbox{null value}}{SE_0}
+    Z = \frac{\mbox{statistic} - \mbox{null value}}{\mbox{null standard error of the statistic}} = \frac{\mbox{statistic} - \mbox{null value}}{SE_0(\mbox{statistic})}
     \]
 5. Use the statistical software to find the p-value using the standard normal distribution:
     - Sign in $H_A$ is $<$: p-value = area below Z-score
