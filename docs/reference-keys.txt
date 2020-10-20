@@ -446,6 +446,7 @@ randslope
 bootbeta1
 mathslope
 tech-cond-linmod
+r-inference-for-regression
 interactive-r-tutorials-5
 r-labs-6
 chp7-review

@@ -333,12 +333,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1.2" data-path="inference-reg.html"><a href="inference-reg.html#bootbeta1"><i class="fa fa-check"></i><b>7.1.2</b> Bootstrap confidence interval for <span class="math inline">\(\beta_1\)</span></a></li>
 <li class="chapter" data-level="7.1.3" data-path="inference-reg.html"><a href="inference-reg.html#mathslope"><i class="fa fa-check"></i><b>7.1.3</b> Theory-based inferential methods for <span class="math inline">\(\beta_1\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="inference-reg.html"><a href="inference-reg.html#tech-cond-linmod"><i class="fa fa-check"></i><b>7.2</b> Checking model conditions</a><ul>
-<li class="chapter" data-level="7.2.1" data-path="inference-reg.html"><a href="inference-reg.html#interactive-r-tutorials-5"><i class="fa fa-check"></i><b>7.2.1</b> Interactive <code>R</code> tutorials</a></li>
-<li class="chapter" data-level="7.2.2" data-path="inference-reg.html"><a href="inference-reg.html#r-labs-6"><i class="fa fa-check"></i><b>7.2.2</b> <code>R</code> labs</a></li>
+<li class="chapter" data-level="7.2" data-path="inference-reg.html"><a href="inference-reg.html#tech-cond-linmod"><i class="fa fa-check"></i><b>7.2</b> Checking model conditions</a></li>
+<li class="chapter" data-level="7.3" data-path="inference-reg.html"><a href="inference-reg.html#r-inference-for-regression"><i class="fa fa-check"></i><b>7.3</b> <code>R</code>: Inference for regression</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="inference-reg.html"><a href="inference-reg.html#interactive-r-tutorials-5"><i class="fa fa-check"></i><b>7.3.1</b> Interactive <code>R</code> tutorials</a></li>
+<li class="chapter" data-level="7.3.2" data-path="inference-reg.html"><a href="inference-reg.html#r-labs-6"><i class="fa fa-check"></i><b>7.3.2</b> <code>R</code> labs</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="inference-reg.html"><a href="inference-reg.html#chp7-review"><i class="fa fa-check"></i><b>7.3</b> Chapter 7 review</a><ul>
-<li class="chapter" data-level="7.3.1" data-path="inference-reg.html"><a href="inference-reg.html#terms-6"><i class="fa fa-check"></i><b>7.3.1</b> Terms</a></li>
+<li class="chapter" data-level="7.4" data-path="inference-reg.html"><a href="inference-reg.html#chp7-review"><i class="fa fa-check"></i><b>7.4</b> Chapter 7 review</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="inference-reg.html"><a href="inference-reg.html#terms-6"><i class="fa fa-check"></i><b>7.4.1</b> Terms</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="case-studies.html"><a href="case-studies.html"><i class="fa fa-check"></i><b>8</b> Appendix: Case studies</a></li>
@@ -903,7 +904,7 @@ regression output from Table <a href="inference-reg.html#tab:rOutputForIncomeAid
     (-0.&amp;0648, -0.0214)
   \end{aligned}\]</span>
 We are 95% confident that, with each $1000 increase in
-family income, the university’s gift aid is predicted to decrease on average by between $21,400 to $64,800.</p>
+family income, the university’s gift aid is predicted to decrease on average by between $21.40 to $64.80.</p>
 </div>
 <p>On the topic of intervals in this book, we’ve focused exclusively on
 confidence intervals for model parameters. However, there are other
@@ -936,7 +937,7 @@ Chapter <a href="#multi-logistic-models"><strong>??</strong></a>.</p></li>
 <li><p><strong>Nearly normal residuals.</strong> Generally, the residuals must be nearly normal. When this condition
 is found to be unreasonable, it is usually because of outliers or
 concerns about influential points, which we’ll talk about more in
-Section \2ref(outliers-in-regression). An example of a
+Section <a href="cor-reg.html#outliers-in-regression">3.3</a>. An example of a
 residual that would be a potentially concern is shown in
 Figure <a href="inference-reg.html#fig:whatCanGoWrongWithLinearModel">7.17</a>, where one observation is
 clearly much further from the regression line than the others.</p></li>
@@ -1007,11 +1008,85 @@ However, data that exhibit non-equal variance across the range of x-values will 
 We will discuss some of the extended modeling and associated inference in Section <a href="#inf-mult-reg"><strong>??</strong></a> and Section <a href="#inf-log-reg"><strong>??</strong></a>.
 However, many of the techniques used to deal with technical condition violations are outside the scope of this text, but they are taught in universities in the very next class after this one.
 If you are working with linear models or curious to learn more, we recommend that you continue learning about statistical methods applicable to a larger class of datasets.</p>
-<p>##<code>R</code>: Inference for regression</p>
 </div>
 </div>
+</div>
+<div id="r-inference-for-regression" class="section level2">
+<h2><span class="header-section-number">7.3</span> <code>R</code>: Inference for regression</h2>
+<p><strong>Simulation-based inferece for the regression slope</strong> As a demonstration, we will apply the simulation-based inference functions for regression in the <code>catstats</code> package to our data on the change in House seats in the President’s party at midterm elections as a function of national unemployment rate. We need to drop the Great Depression years before we perform our simulations:</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1"><span class="co">#load data</span></a>
+<a class="sourceLine" id="cb90-2" title="2"><span class="kw">data</span>(midterms_house)</a>
+<a class="sourceLine" id="cb90-3" title="3"><span class="co">#Drop Great Depression years</span></a>
+<a class="sourceLine" id="cb90-4" title="4">d &lt;-<span class="st"> </span>midterms_house <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb90-5" title="5"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>(year <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">1935</span>, <span class="dv">1939</span>)))</a></code></pre></div>
+<p>Now that we have the correct data, we can perform a randomization test of the slope in the simple linear regression.</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1"><span class="kw">library</span>(catstats)</a>
+<a class="sourceLine" id="cb91-2" title="2"><span class="kw">set.seed</span>(<span class="dv">621311</span>)</a>
+<a class="sourceLine" id="cb91-3" title="3"><span class="kw">regression_test</span>(</a>
+<a class="sourceLine" id="cb91-4" title="4">  <span class="dt">formula =</span> house_change <span class="op">~</span><span class="st"> </span>unemp,  <span class="co">#Always use response ~ explanatory</span></a>
+<a class="sourceLine" id="cb91-5" title="5">  <span class="dt">data =</span> d,  <span class="co">#name of data set</span></a>
+<a class="sourceLine" id="cb91-6" title="6">  <span class="dt">statistic =</span> <span class="st">&quot;slope&quot;</span>, <span class="co">#Can also test correlation</span></a>
+<a class="sourceLine" id="cb91-7" title="7">  <span class="dt">direction =</span> <span class="st">&quot;less&quot;</span>, <span class="co">#Direction of alternative hypothesis</span></a>
+<a class="sourceLine" id="cb91-8" title="8">  <span class="dt">as_extreme_as =</span> <span class="fl">-0.89</span>, <span class="co">#Observed slope</span></a>
+<a class="sourceLine" id="cb91-9" title="9">  <span class="dt">number_repetitions =</span> <span class="dv">1000</span>  <span class="co">#Number of simulations</span></a>
+<a class="sourceLine" id="cb91-10" title="10">)</a></code></pre></div>
+<p><img src="07-inference-reg_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>The results give a scatterplot of the observed data with the regression line superimposed, and gives the observed slope (this should match what you put in for <code>as_extreme_as</code>). Next to the scatterplot, we have the null distribution of the slope coefficient, with the observed slope indicated by a vertical line and all value more extreme highlighted in red. The caption gives the number of simulations resulting in a slope more extreme than the observed; in this case, 118/1000, for an approximate p-value of 0.118.</p>
+<p>To obtain a confidence interval for the slope, we use <code>regression_bootstrap_CI()</code>, with essentially the same arguments as <code>regression_test()</code>.</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" title="1"><span class="kw">set.seed</span>(<span class="dv">31143518</span>)</a>
+<a class="sourceLine" id="cb92-2" title="2"><span class="kw">regression_bootstrap_CI</span>(</a>
+<a class="sourceLine" id="cb92-3" title="3">  <span class="dt">formula =</span> house_change <span class="op">~</span><span class="st"> </span>unemp,  <span class="co">#Always use response ~ explanatory</span></a>
+<a class="sourceLine" id="cb92-4" title="4">  <span class="dt">data =</span> d,  <span class="co">#name of data set</span></a>
+<a class="sourceLine" id="cb92-5" title="5">  <span class="dt">statistic =</span> <span class="st">&quot;slope&quot;</span>, <span class="co">#Can also test correlation</span></a>
+<a class="sourceLine" id="cb92-6" title="6">  <span class="dt">confidence_level =</span> <span class="fl">0.95</span>, <span class="co">#confidence level as a proportion</span></a>
+<a class="sourceLine" id="cb92-7" title="7">  <span class="dt">number_repetitions =</span> <span class="dv">1000</span>  <span class="co">#Number of simulations</span></a>
+<a class="sourceLine" id="cb92-8" title="8">)</a></code></pre></div>
+<p><img src="07-inference-reg_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>Here we have the bootstrap distribution of the slope based on the observed data, with the upper and lower bounds of the confidence interval highlighted in red. The confidence interval is also given in the caption of the figure. Here, we are 95% confident that the true change in the number of seats in the House of Representatives for each additional percentage point in unemployment is between a decrease of 2.6 percent of seats and an increase of 0.3 percent of seats.</p>
+<p><strong>Theory-based inference for the regression slope</strong> We will revisit the gift aid and income data. We want to know whether there is evidence to suggest that the slope of gift aid as a function of family income is non-zero. The function for linear regression in <code>R</code> is <code>lm()</code>. When doing linear regression, we want to save the regression results so we can get complete output using <code>summary()</code>:</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1"><span class="kw">data</span>(elmhurst)</a>
+<a class="sourceLine" id="cb93-2" title="2">gift_reg &lt;-<span class="st"> </span><span class="kw">lm</span>(gift_aid<span class="op">~</span>family_income, <span class="co">#Always use reponse ~ explanatory</span></a>
+<a class="sourceLine" id="cb93-3" title="3">               <span class="dt">data =</span> elmhurst)  <span class="co">#Name of data set</span></a>
+<a class="sourceLine" id="cb93-4" title="4"><span class="kw">summary</span>(gift_reg)  <span class="co">#Obtain full results for regression</span></a>
+<a class="sourceLine" id="cb93-5" title="5"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb93-6" title="6"><span class="co">#&gt; Call:</span></a>
+<a class="sourceLine" id="cb93-7" title="7"><span class="co">#&gt; lm(formula = gift_aid ~ family_income, data = elmhurst)</span></a>
+<a class="sourceLine" id="cb93-8" title="8"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb93-9" title="9"><span class="co">#&gt; Residuals:</span></a>
+<a class="sourceLine" id="cb93-10" title="10"><span class="co">#&gt;     Min      1Q  Median      3Q     Max </span></a>
+<a class="sourceLine" id="cb93-11" title="11"><span class="co">#&gt; -10.113  -3.623  -0.216   3.159  11.571 </span></a>
+<a class="sourceLine" id="cb93-12" title="12"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb93-13" title="13"><span class="co">#&gt; Coefficients:</span></a>
+<a class="sourceLine" id="cb93-14" title="14"><span class="co">#&gt;               Estimate Std. Error t value Pr(&gt;|t|)    </span></a>
+<a class="sourceLine" id="cb93-15" title="15"><span class="co">#&gt; (Intercept)    24.3193     1.2915   18.83  &lt; 2e-16 ***</span></a>
+<a class="sourceLine" id="cb93-16" title="16"><span class="co">#&gt; family_income  -0.0431     0.0108   -3.98  0.00023 ***</span></a>
+<a class="sourceLine" id="cb93-17" title="17"><span class="co">#&gt; ---</span></a>
+<a class="sourceLine" id="cb93-18" title="18"><span class="co">#&gt; Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></a>
+<a class="sourceLine" id="cb93-19" title="19"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb93-20" title="20"><span class="co">#&gt; Residual standard error: 4.78 on 48 degrees of freedom</span></a>
+<a class="sourceLine" id="cb93-21" title="21"><span class="co">#&gt; Multiple R-squared:  0.249,  Adjusted R-squared:  0.233 </span></a>
+<a class="sourceLine" id="cb93-22" title="22"><span class="co">#&gt; F-statistic: 15.9 on 1 and 48 DF,  p-value: 0.000229</span></a></code></pre></div>
+<p>This produces a lot of output; we will focus on the <em>Coefficients</em> section. This gives us the estimated value for the slope, the standard error of the estimate, the t-statistic, and the p-value. We want the row labeled with the name of our explanatory variable, <code>family_income</code>. We estimate the slope to be -0.043 thousand dollars per additional thousand dollars in family income, and we have strong evidence against the null hypothesis that the slope is 0.</p>
+<p>We can compute confidence intervals by hand using the reported estimate, standard error, and df. We will need to compute a t-value as in Chapter @(inference-num):</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1"><span class="co">#Get t-star for 90% confidence interval</span></a>
+<a class="sourceLine" id="cb94-2" title="2"><span class="kw">qt</span>(.<span class="dv">95</span>, <span class="dt">df =</span> <span class="dv">48</span>)</a>
+<a class="sourceLine" id="cb94-3" title="3"><span class="co">#&gt; [1] 1.68</span></a></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1"><span class="co">#Lower confidence bound</span></a>
+<a class="sourceLine" id="cb95-2" title="2"><span class="fl">-0.04307</span> <span class="op">-</span><span class="st"> </span><span class="fl">1.677224</span><span class="op">*</span><span class="fl">0.01081</span></a>
+<a class="sourceLine" id="cb95-3" title="3"><span class="co">#&gt; [1] -0.0612</span></a>
+<a class="sourceLine" id="cb95-4" title="4"></a>
+<a class="sourceLine" id="cb95-5" title="5"><span class="co">#Upper confidence bound</span></a>
+<a class="sourceLine" id="cb95-6" title="6"><span class="fl">-0.04307</span> <span class="op">+</span><span class="st"> </span><span class="fl">1.677224</span><span class="op">*</span><span class="fl">0.01081</span></a>
+<a class="sourceLine" id="cb95-7" title="7"><span class="co">#&gt; [1] -0.0249</span></a></code></pre></div>
+<p>We can also use the <code>confint()</code> function in <code>R</code> to compute confidence intervals for regression coefficients.</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" title="1"><span class="kw">confint</span>(gift_reg,   <span class="co">#name of regression results</span></a>
+<a class="sourceLine" id="cb96-2" title="2">        <span class="dt">level =</span> <span class="fl">0.9</span>)  <span class="co">#confidence level as a proportion</span></a>
+<a class="sourceLine" id="cb96-3" title="3"><span class="co">#&gt;                   5 %    95 %</span></a>
+<a class="sourceLine" id="cb96-4" title="4"><span class="co">#&gt; (Intercept)   22.1533 26.4854</span></a>
+<a class="sourceLine" id="cb96-5" title="5"><span class="co">#&gt; family_income -0.0612 -0.0249</span></a></code></pre></div>
+<p>In either case, we are 90% confident that gift aid will be $24.94 to $61.20 less per $1000 increase in family income.</p>
 <div id="interactive-r-tutorials-5" class="section level3">
-<h3><span class="header-section-number">7.2.1</span> Interactive <code>R</code> tutorials</h3>
+<h3><span class="header-section-number">7.3.1</span> Interactive <code>R</code> tutorials</h3>
 <p>Navigate the concepts you’ve learned in this chapter in <code>R</code> using the following self-paced tutorials.
 All you need is your browser to get started!</p>
 <div class="alltutorials">
@@ -1035,7 +1110,7 @@ All you need is your browser to get started!</p>
 <p>You can also access the full list of tutorials supporting this book <a href="https://openintrostat.github.io/ims-tutorials/">here</a>.</p>
 </div>
 <div id="r-labs-6" class="section level3">
-<h3><span class="header-section-number">7.2.2</span> <code>R</code> labs</h3>
+<h3><span class="header-section-number">7.3.2</span> <code>R</code> labs</h3>
 <p>Further apply the concepts you’ve learned in this chapter in <code>R</code> with computational labs that walk you through a data analysis case study.</p>
 <div class="singlelab">
 <p><a href="http://openintrostat.github.io/oilabs-tidy/09_multiple_regression/multiple_regression.html">Multiple linear regression - Grading the professor</a></p>
@@ -1046,9 +1121,9 @@ All you need is your browser to get started!</p>
 </div>
 </div>
 <div id="chp7-review" class="section level2">
-<h2><span class="header-section-number">7.3</span> Chapter 7 review</h2>
+<h2><span class="header-section-number">7.4</span> Chapter 7 review</h2>
 <div id="terms-6" class="section level3">
-<h3><span class="header-section-number">7.3.1</span> Terms</h3>
+<h3><span class="header-section-number">7.4.1</span> Terms</h3>
 <p>We introduced the following terms in the chapter.
 If you’re not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
 We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate.
