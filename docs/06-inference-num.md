@@ -91,6 +91,7 @@ The bootstrapped average rent prices vary from £1250 to £1995 (with a small ob
 Due to theory that is beyond this text, we know that the bootstrap means $\bar{x}_{boot}$ vary around the original sample mean, $\bar{x}$, in a similar way to how different sample (i.e., different data sets which would produce different $\bar{x}$ values) means vary around the true parameter $\mu$. 
 Therefore, an interval estimate for $\mu$ can be produced using the $\bar{x}_{boot}$ values themselves. A 95% **bootstrap confidence interval** for $\mu$, the population mean rent price for three bedroom flats in Edinburgh, is found by locating the middle 95% of the bootstrapped sample means in Figure \@ref(fig:flatsbsmean).
 
+
 \BeginKnitrBlock{onebox}<div class="onebox">**95% Bootstrap confidence interval for a population mean $\mu$.**
 
 The 95% bootstrap confidence interval for the parameter $\mu$ can be obtained directly using the ordered values $\bar{x}_{boot}$ values --- the bootstrapped sample means. Consider the sorted $\bar{x}_{boot}$ values, and let $\bar{x}_{boot, 0.025}$ be the 2.5^th^ percentile and $\bar{x}_{boot, 0.025}$ be the 97.5^th^ percentile. The 95% confidence interval is given by:
@@ -2301,6 +2302,50 @@ So far in this chapter, we have seen the $t$-distribution applied as the appropr
 
 <!-- ``` -->
 
+**Using the $t$-distribution** First, we'll review how to obtain probabilities and critical values for the $t$-distribution using `R`.  If you have a $t$-statistic and degrees of freedom, you can find the probability under the $t$-distribution corresponding to a one- or two-tailed hypothesis test using `pt()` (short for "probability from $t$-distribution").
+
+The tricky part is making sure you get the correct area under the distribution.  For our example, assume we have 12 degrees of freedom.  If your $t$-statistic is positive, say $t = 1.33$:
+
+```r
+#Area less than observed:
+pt(1.33, df = 12)
+#> [1] 0.896
+
+#Area greater than observed:
+1-pt(1.33, df = 12)
+#> [1] 0.104
+
+#Area at least as large as observed:
+2*(1-pt(1.33, df = 12))
+#> [1] 0.208
+```
+
+If your $t$-statistic is negative, say $t = -2.75$:
+
+```r
+#Area less than observed:
+pt(-2.75, df = 12)
+#> [1] 0.0088
+
+#Area greater than observed:
+1-pt(-2.75, df = 12)
+#> [1] 0.991
+
+#Area at least as large as observed:
+2*pt(-2.75, df = 12)
+#> [1] 0.0176
+```
+
+The difference comes in when you want the area further than $t$ units from 0: if $t$ is positive, then "further" is greater than $t$ and less than negative $t$, or double the area greater than $t$, since the $t$-distribution is symmetric.  If $t$ is negative, then "further" is less than $t$ and greater than positive $t$, or double the area less than $t$.
+
+To find $t^*_{df}$ using `R`, we use the `qt()` function (short for "quantile of $t$-distribution").  You will need the degrees of freedom and the confidence level for your confidence interval.  Suppose we have 27 degrees of freedom and want a 99\% confidence interval.  To get the middle 99\% of the $t$-distribution, we need to have the cutoff at 0.5\% and 99.5\%:
+
+```
+#> [1] -2.77
+#> [1] 2.77
+```
+
+
 **Simulation-based inference for paired mean difference** Simulation-based inference for quantitative data will use functions in the `catstats` package, as we did for categorical data.  
 
 
@@ -2457,6 +2502,89 @@ t.test(x = ucla_textbooks_f18$price_diff,   #variable with differences
 
 Since we only input one variable, `t.test()` treats it as a one-sample t-test, but note that this works just fine: the t-statistic, df, p-value, confidence interval, and estimated mean are all the same as when we put in the two groups separately and indicated they were paired.
 
+**Simulation-based inference for the difference of two means** We can perform simulation-based inference for a difference in means using the `two_mean_test()` and `two_mean_bootstrap_CI()` functions in the `catstats` package.  As a working example, let's look at the embryonic stem cell data from Section \@ref(rand2mean).
+
+```r
+#load data from openintro package
+data (stem_cell)
+
+#Compute change in pumping capacity
+stem_cell <- stem_cell %>%
+  mutate(change = after - before)
+```
+
+To perform the simulation-based test for the difference in the mean change in heart pumping capacity, we will use the `two_mean_test()` function in the `catstats` package, which is very similar to the use of the `two_proportion_test()` function in Chapter @\ref(inference-cat):
+
+```r
+set.seed(4750)
+two_mean_test(
+  formula = change ~ trmt,  #Always use response ~ explanatory
+  data = stem_cell,  # name of data set
+  first_in_subtraction = "esc",  #value of group variable to be 1st in subtraction
+  direction = "two-sided",  #direction of alternative
+  as_extreme_as = 7.83,  #observed statistic
+  number_repetitions = 1000  #number of simulations
+)
+```
+
+<img src="06-inference-num_files/figure-html/unnamed-chunk-50-1.png" width="70%" style="display: block; margin: auto;" />
+
+The results give a side-by-side boxplot of the observed data with the observed difference and order of subtraction at the top.  Check that you had the right value for the observed difference!  Next to the bar plot, we have the null distribution of simulated differences in means, with the observed statistic marked with a vertical red line, and all values as or more extreme than the observed statistic colored red.  The figure caption gives the approximate p-value: in this case 1/1000 = 0.001.
+
+\BeginKnitrBlock{important}<div class="important">There are a couple of things to note when using the `two_mean_test` function:
+
+* You need to identify which variable is your response and which your explanatory variable using the `formula` argument.
+* Specify order of subtraction using `first_in_subtraction` by putting in EXACTLY the category of the explanatory variable that you want to be first, in quotes --- must match capitalization, spaces, etc. for text values!</div>\EndKnitrBlock{important}
+
+We use bootstrapping to find a confidence interval for the true difference in means with the `two_mean_bootstrap_CI()` function.  The arguments will be very similar to `two_mean_test()`, with the addition of the confidence level.
+
+
+```r
+set.seed(450)
+two_mean_bootstrap_CI(
+  formula = change ~ trmt,  #Always use response ~ explanatory
+  data = stem_cell,  # name of data set
+  first_in_subtraction = "esc",  #value of group variable to be 1st in subtraction
+  confidence_level = 0.9, #confidence level as a proportion
+  number_repetitions = 1000  #number of bootstrap samples
+)
+```
+
+<img src="06-inference-num_files/figure-html/unnamed-chunk-52-1.png" width="70%" style="display: block; margin: auto;" />
+
+The function produces the bootstrap distribution of the difference in means, with the upper and lower percentiles of the confidence range marked with vertical lines.  The figure caption gives the estimated confidence interval.  In this case, we are 90% confidence that ESCs increase the change in heart pumping capacity by between 4.72 and 11.09 percentage points on average. 
+
+**Theory-based inference for the difference of two means** To demonstrate theory-based methods in `R` for a difference in means, we will continue use the embryonic stem cell data.  Something to keep in mind as we work through the example: are theory-based methods appropriate here?  Are the results different than the results from the simulation-based methods?
+
+To perform theory-based inference, we will again use the `t.test()` function in `R`.  Remember that we sometimes need to change the reference category of the explanatory variable to have the correct order of subtraction - in this case, the default is `ctrl - esc`, since `ctrl` is first alphabetically.  We can get our preferred order of subtracation of `esc-ctrl` this way:
+
+```r
+stem_cell$trmt <- relevel(stem_cell$trmt, ref = "esc")
+```
+
+
+
+```r
+t.test(stem_cell$change ~ stem_cell$trmt, #Always use response ~ explanatory
+       alternative = "two.sided", # Direction of alternative
+       conf.level = 0.9)  #confidence level as a proportion
+#> 
+#> 	Welch Two Sample t-test
+#> 
+#> data:  stem_cell$change by stem_cell$trmt
+#> t = 4, df = 12, p-value = 0.002
+#> alternative hypothesis: true difference in means is not equal to 0
+#> 90 percent confidence interval:
+#>   4.35 11.31
+#> sample estimates:
+#>  mean in group esc mean in group ctrl 
+#>               3.50              -4.33
+```
+
+The results here should look familiar from the paired t-test above. We have the t-statistic, degrees of freedom, p-values, confidence interval, and group-specific means.  The degrees of freedom may look a little strange - remember that the correct formula is very complex - here we obtain 12.225 df.  If you were computing the results by hand using `pt()` and `qt()` as we saw earlier in this section, you would use 8 df, since $n_1 -1 = n_2 -1 = 8$.  In the end, we conclude that there is strong evidence against the null hypothesis of no difference in the mean change in heart pumping capacity (p = 0.0017).
+
+Remember that if you have a one-sided alternative, you will need to run `t.test()` with a two-sided alternative to get the correct confidence interval!  Your reminder will be an 'Inf' in the confidence interval results, which means `R` is computing a one-sided confidence interval.  Here, we have a two-sided alternative, so we can use the CI as reported: we are 90% confident that the true average improvement in heart pumping capacity due to ESCs is between 4.35 and 11.31 percentage points.
+
 ### Interactive R tutorials
 
 Navigate the concepts you've learned in this chapter in R using the following self-paced tutorials. 
@@ -2519,13 +2647,13 @@ However you should be able to easily spot them as **bolded text**.
   <tr>
    <td style="text-align:left;"> Central Limit Theorem </td>
    <td style="text-align:left;"> paired $t$-test </td>
-   <td style="text-align:left;"> T score </td>
+   <td style="text-align:left;"> t-distribution </td>
    <td style="text-align:left;">  </td>
   </tr>
   <tr>
    <td style="text-align:left;"> degrees of freedom </td>
    <td style="text-align:left;"> paired data </td>
-   <td style="text-align:left;"> t-distribution </td>
+   <td style="text-align:left;"> T score </td>
    <td style="text-align:left;">  </td>
   </tr>
 </tbody>

@@ -3766,8 +3766,8 @@ glimpse(cpr)
 ```
 #> Rows: 90
 #> Columns: 2
-#> $ survival <fct> Survived, Survived, Survived, Survived, Survived, Survived, …
-#> $ group    <fct> control, control, control, control, control, control, contro…
+#> $ survival <fct> Survived, Survived, Survived, Survived, Survived, Survived...
+#> $ group    <fct> control, control, control, control, control, control, cont...
 ```
 
 ```r
@@ -4264,13 +4264,13 @@ However you should be able to easily spot them as **bolded text**.
   </tr>
   <tr>
    <td style="text-align:left;"> confidence interval </td>
-   <td style="text-align:left;"> one sample $z$-test </td>
+   <td style="text-align:left;"> one-sided hypothesis test </td>
    <td style="text-align:left;"> sampling distribution </td>
    <td style="text-align:left;"> success </td>
   </tr>
   <tr>
    <td style="text-align:left;"> confidence level </td>
-   <td style="text-align:left;"> one-sided hypothesis test </td>
+   <td style="text-align:left;"> one sample $z$-test </td>
    <td style="text-align:left;"> SE interval </td>
    <td style="text-align:left;"> success-failure condition </td>
   </tr>
@@ -4284,13 +4284,13 @@ However you should be able to easily spot them as **bolded text**.
    <td style="text-align:left;"> hypothesis test </td>
    <td style="text-align:left;"> parameter </td>
    <td style="text-align:left;"> standard error </td>
-   <td style="text-align:left;"> two sample $z$-test </td>
+   <td style="text-align:left;"> two-sided hypothesis test </td>
   </tr>
   <tr>
    <td style="text-align:left;"> margin of error </td>
    <td style="text-align:left;"> percentile </td>
    <td style="text-align:left;"> standard error for difference in proportions </td>
-   <td style="text-align:left;"> two-sided hypothesis test </td>
+   <td style="text-align:left;"> two sample $z$-test </td>
   </tr>
   <tr>
    <td style="text-align:left;"> normal curve </td>
