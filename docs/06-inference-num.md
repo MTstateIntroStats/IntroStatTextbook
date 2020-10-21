@@ -2428,7 +2428,7 @@ Here we again have a bootstrap distribution, but now it is the bootstrap distrib
 t.test(x = ucla_textbooks_f18$bookstore_new, #Outcomes for one of each pair
        y = ucla_textbooks_f18$amazon_new,  #Outcomes for other of each pair
        paired = TRUE,  #Tell it to do a paired t-test!!
-       alternative = "two.sided",  #Direction of alternative 
+       alternative = "greater",  #Direction of alternative 
        conf.level = 0.95  #confidence level for interval as a proportion
 )
 ```
@@ -2444,9 +2444,27 @@ Now let's take a look at the output of the call:
 t.test(x = ucla_textbooks_f18$bookstore_new, #Outcomes for first in order of subtraction
        y = ucla_textbooks_f18$amazon_new,  #Outcomes for second in order of subtraction
        paired = TRUE,  #Tell it to do a paired t-test!!
-       alternative = "two.sided",  #Direction of alternative 
+       alternative = "greater",  #Direction of alternative 
        conf.level = 0.95  #confidence level for interval as a proportion
 )
+#> 
+#> 	Paired t-test
+#> 
+#> data:  ucla_textbooks_f18$bookstore_new and ucla_textbooks_f18$amazon_new
+#> t = 2, df = 67, p-value = 0.02
+#> alternative hypothesis: true difference in means is greater than 0
+#> 95 percent confidence interval:
+#>  0.868   Inf
+#> sample estimates:
+#> mean of the differences 
+#>                    3.58
+```
+
+The output tells you right on top that this is a paired test - if it doesn't, check that you have `paired = TRUE` in your function call.  The next line gives the t-statistic of 2.20, the degrees of freedom df = 67, and the p-value of 0.0156 (You can look back at Section \@ref(paired-mean-math) to see that these are the same values obtained in the example). The point estimate for the mean difference is the final entry: on average, new bookstore books cost $3.58 more than the same books new from Amazon.
+
+The confidence interval given is a one-sided confidence interval, since we have a one-sided alternative.  We need to re-run with `alternative = "two.sided"` to get the correct interval for the true mean difference in price of \$0.33 to \$6.83 greater cost when buying from the UCLA Bookstore compared to buying from Amazon.  
+
+```
 #> 
 #> 	Paired t-test
 #> 
@@ -2460,8 +2478,6 @@ t.test(x = ucla_textbooks_f18$bookstore_new, #Outcomes for first in order of sub
 #>                    3.58
 ```
 
-The output tells you right on top that this is a paired test - if it doesn't, check that you have `paired = TRUE` in your function call.  The next line gives the t-statistic of 2.2012, the degrees of freedom df = 67, and the p-value of 0.03117 (You can look back at Section \@ref(paired-mean-math) to see that these are the same values obtained in the example).  We also get the confidence interval; since we had a two-sided alternative, we get the correct interval for the true mean difference in price of \$0.33 to \$6.83 greater cost from the UCLA Bookstore.  The point estimate for the mean difference is the final entry: on average, new bookstore books cost $3.58 more than the same books new from Amazon.
-
 You might also have a single variable in your dataset that contains the differences within pairs: we will create this for the textbook data in a variable called `price_diff`.  This format is also usable with the `t.test()` function:
 
 ```r
@@ -2469,7 +2485,7 @@ ucla_textbooks_f18 %>%
   mutate(price_diff = bookstore_new-amazon_new)
 
 t.test(x = ucla_textbooks_f18$price_diff,   #variable with differences
-       alternative = "two.sided",  #direction of alternative hypothesis
+       alternative = "greater",  #direction of alternative hypothesis
        conf.level = 0.95)  #confidence level as a proportion
 ```
 
@@ -2485,16 +2501,16 @@ ucla_textbooks_f18 <- ucla_textbooks_f18 %>%
   mutate(price_diff = bookstore_new-amazon_new)
 
 t.test(x = ucla_textbooks_f18$price_diff,   #variable with differences
-       alternative = "two.sided",  #direction of alternative hypothesis
+       alternative = "greater",  #direction of alternative hypothesis
        conf.level = 0.95)  #confidence level as a proportion
 #> 
 #> 	One Sample t-test
 #> 
 #> data:  ucla_textbooks_f18$price_diff
-#> t = 2, df = 67, p-value = 0.03
-#> alternative hypothesis: true mean is not equal to 0
+#> t = 2, df = 67, p-value = 0.02
+#> alternative hypothesis: true mean is greater than 0
 #> 95 percent confidence interval:
-#>  0.334 6.832
+#>  0.868   Inf
 #> sample estimates:
 #> mean of x 
 #>      3.58
@@ -2513,7 +2529,7 @@ stem_cell <- stem_cell %>%
   mutate(change = after - before)
 ```
 
-To perform the simulation-based test for the difference in the mean change in heart pumping capacity, we will use the `two_mean_test()` function in the `catstats` package, which is very similar to the use of the `two_proportion_test()` function in Chapter @\ref(inference-cat):
+To perform the simulation-based test for the difference in the mean change in heart pumping capacity, we will use the `two_mean_test()` function in the `catstats` package, which is very similar to the use of the `two_proportion_test()` function in Chapter \@ref(inference-cat):
 
 ```r
 set.seed(4750)
@@ -2522,14 +2538,14 @@ two_mean_test(
   data = stem_cell,  # name of data set
   first_in_subtraction = "esc",  #value of group variable to be 1st in subtraction
   direction = "two-sided",  #direction of alternative
-  as_extreme_as = 7.83,  #observed statistic
+  as_extreme_as = 7.833,  #observed statistic
   number_repetitions = 1000  #number of simulations
 )
 ```
 
-<img src="06-inference-num_files/figure-html/unnamed-chunk-50-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="06-inference-num_files/figure-html/unnamed-chunk-51-1.png" width="70%" style="display: block; margin: auto;" />
 
-The results give a side-by-side boxplot of the observed data with the observed difference and order of subtraction at the top.  Check that you had the right value for the observed difference!  Next to the bar plot, we have the null distribution of simulated differences in means, with the observed statistic marked with a vertical red line, and all values as or more extreme than the observed statistic colored red.  The figure caption gives the approximate p-value: in this case 1/1000 = 0.001.
+The results give a side-by-side boxplot of the observed data with the observed difference and order of subtraction at the top.  Check that you had the right value for the observed difference!  Next to the box plot, we have the null distribution of simulated differences in means, with the observed statistic marked with a vertical red line, and all values as or more extreme than the observed statistic colored red.  The figure caption gives the approximate p-value: for this set of 1000 simulations, we have only 1/1000 = 0.001.
 
 \BeginKnitrBlock{important}<div class="important">There are a couple of things to note when using the `two_mean_test` function:
 
@@ -2550,7 +2566,7 @@ two_mean_bootstrap_CI(
 )
 ```
 
-<img src="06-inference-num_files/figure-html/unnamed-chunk-52-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="06-inference-num_files/figure-html/unnamed-chunk-53-1.png" width="70%" style="display: block; margin: auto;" />
 
 The function produces the bootstrap distribution of the difference in means, with the upper and lower percentiles of the confidence range marked with vertical lines.  The figure caption gives the estimated confidence interval.  In this case, we are 90% confidence that ESCs increase the change in heart pumping capacity by between 4.72 and 11.09 percentage points on average. 
 
@@ -2581,9 +2597,9 @@ t.test(stem_cell$change ~ stem_cell$trmt, #Always use response ~ explanatory
 #>               3.50              -4.33
 ```
 
-The results here should look familiar from the paired t-test above. We have the t-statistic, degrees of freedom, p-values, confidence interval, and group-specific means.  The degrees of freedom may look a little strange - remember that the correct formula is very complex - here we obtain 12.225 df.  If you were computing the results by hand using `pt()` and `qt()` as we saw earlier in this section, you would use 8 df, since $n_1 -1 = n_2 -1 = 8$.  In the end, we conclude that there is strong evidence against the null hypothesis of no difference in the mean change in heart pumping capacity (p = 0.0017).
+The results here should look familiar from the paired t-test above. We have the t-statistic, degrees of freedom, p-values, confidence interval, and group-specific means.  The degrees of freedom may look a little strange - remember that the correct formula is very complex! - here we obtain 12.225 df.  If you were computing the results by hand using `pt()` and `qt()` as we saw earlier in this section, you would use 8 df, since $n_1 -1 = n_2 -1 = 8$.  In the end, we conclude that there is strong evidence against the null hypothesis of no difference in the mean change in heart pumping capacity (p = 0.002).
 
-Remember that if you have a one-sided alternative, you will need to run `t.test()` with a two-sided alternative to get the correct confidence interval!  Your reminder will be an 'Inf' in the confidence interval results, which means `R` is computing a one-sided confidence interval.  Here, we have a two-sided alternative, so we can use the CI as reported: we are 90% confident that the true average improvement in heart pumping capacity due to ESCs is between 4.35 and 11.31 percentage points.
+Remember that if you have a one-sided alternative, you will need to run `t.test()` with a two-sided alternative to get the correct confidence interval!  Your reminder will be an `Inf` in the confidence interval results, which means `R` is computing a one-sided confidence interval.  Here, we have a two-sided alternative, so we can use the CI as reported: we are 90% confident that the true average improvement in heart pumping capacity due to ESCs is between 4.35 and 11.31 percentage points.
 
 ### Interactive R tutorials
 

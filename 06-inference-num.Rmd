@@ -2760,7 +2760,7 @@ Important things to note here:
 * As with categorical data in Chapter \@ref(inference-cat), if you have a one-sided alternative, you will need to re-run the `t.test()` with a two-sided alternative to get the correct confidence interval
 
 Now let's take a look at the output of the call:
-```{r pairedTheoryEval, echo = TRUE}
+```{r pairedTheoryEval, echo = TRUE, digits = 3}
 t.test(x = ucla_textbooks_f18$bookstore_new, #Outcomes for first in order of subtraction
        y = ucla_textbooks_f18$amazon_new,  #Outcomes for second in order of subtraction
        paired = TRUE,  #Tell it to do a paired t-test!!
@@ -2787,7 +2787,7 @@ ucla_textbooks_f18 %>%
   mutate(price_diff = bookstore_new-amazon_new)
 
 t.test(x = ucla_textbooks_f18$price_diff,   #variable with differences
-       alternative = "two.sided",  #direction of alternative hypothesis
+       alternative = "greater",  #direction of alternative hypothesis
        conf.level = 0.95)  #confidence level as a proportion
 ```
 
@@ -2802,7 +2802,7 @@ ucla_textbooks_f18 <- ucla_textbooks_f18 %>%
   mutate(price_diff = bookstore_new-amazon_new)
 
 t.test(x = ucla_textbooks_f18$price_diff,   #variable with differences
-       alternative = "two.sided",  #direction of alternative hypothesis
+       alternative = "greater",  #direction of alternative hypothesis
        conf.level = 0.95)  #confidence level as a proportion
 ```
 

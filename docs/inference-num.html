@@ -2806,7 +2806,7 @@ then we can apply the <span class="math inline">\(t\)</span>-distribution for a 
 <div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1"><span class="kw">t.test</span>(<span class="dt">x =</span> ucla_textbooks_f18<span class="op">$</span>bookstore_new, <span class="co">#Outcomes for one of each pair</span></a>
 <a class="sourceLine" id="cb81-2" title="2">       <span class="dt">y =</span> ucla_textbooks_f18<span class="op">$</span>amazon_new,  <span class="co">#Outcomes for other of each pair</span></a>
 <a class="sourceLine" id="cb81-3" title="3">       <span class="dt">paired =</span> <span class="ot">TRUE</span>,  <span class="co">#Tell it to do a paired t-test!!</span></a>
-<a class="sourceLine" id="cb81-4" title="4">       <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,  <span class="co">#Direction of alternative </span></a>
+<a class="sourceLine" id="cb81-4" title="4">       <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>,  <span class="co">#Direction of alternative </span></a>
 <a class="sourceLine" id="cb81-5" title="5">       <span class="dt">conf.level =</span> <span class="fl">0.95</span>  <span class="co">#confidence level for interval as a proportion</span></a>
 <a class="sourceLine" id="cb81-6" title="6">)</a></code></pre></div>
 <p>Important things to note here:</p>
@@ -2818,71 +2818,83 @@ then we can apply the <span class="math inline">\(t\)</span>-distribution for a 
 <div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1"><span class="kw">t.test</span>(<span class="dt">x =</span> ucla_textbooks_f18<span class="op">$</span>bookstore_new, <span class="co">#Outcomes for first in order of subtraction</span></a>
 <a class="sourceLine" id="cb82-2" title="2">       <span class="dt">y =</span> ucla_textbooks_f18<span class="op">$</span>amazon_new,  <span class="co">#Outcomes for second in order of subtraction</span></a>
 <a class="sourceLine" id="cb82-3" title="3">       <span class="dt">paired =</span> <span class="ot">TRUE</span>,  <span class="co">#Tell it to do a paired t-test!!</span></a>
-<a class="sourceLine" id="cb82-4" title="4">       <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,  <span class="co">#Direction of alternative </span></a>
+<a class="sourceLine" id="cb82-4" title="4">       <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>,  <span class="co">#Direction of alternative </span></a>
 <a class="sourceLine" id="cb82-5" title="5">       <span class="dt">conf.level =</span> <span class="fl">0.95</span>  <span class="co">#confidence level for interval as a proportion</span></a>
 <a class="sourceLine" id="cb82-6" title="6">)</a>
 <a class="sourceLine" id="cb82-7" title="7"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb82-8" title="8"><span class="co">#&gt;  Paired t-test</span></a>
 <a class="sourceLine" id="cb82-9" title="9"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb82-10" title="10"><span class="co">#&gt; data:  ucla_textbooks_f18$bookstore_new and ucla_textbooks_f18$amazon_new</span></a>
-<a class="sourceLine" id="cb82-11" title="11"><span class="co">#&gt; t = 2, df = 67, p-value = 0.03</span></a>
-<a class="sourceLine" id="cb82-12" title="12"><span class="co">#&gt; alternative hypothesis: true difference in means is not equal to 0</span></a>
+<a class="sourceLine" id="cb82-11" title="11"><span class="co">#&gt; t = 2, df = 67, p-value = 0.02</span></a>
+<a class="sourceLine" id="cb82-12" title="12"><span class="co">#&gt; alternative hypothesis: true difference in means is greater than 0</span></a>
 <a class="sourceLine" id="cb82-13" title="13"><span class="co">#&gt; 95 percent confidence interval:</span></a>
-<a class="sourceLine" id="cb82-14" title="14"><span class="co">#&gt;  0.334 6.832</span></a>
+<a class="sourceLine" id="cb82-14" title="14"><span class="co">#&gt;  0.868   Inf</span></a>
 <a class="sourceLine" id="cb82-15" title="15"><span class="co">#&gt; sample estimates:</span></a>
 <a class="sourceLine" id="cb82-16" title="16"><span class="co">#&gt; mean of the differences </span></a>
 <a class="sourceLine" id="cb82-17" title="17"><span class="co">#&gt;                    3.58</span></a></code></pre></div>
-<p>The output tells you right on top that this is a paired test - if it doesn’t, check that you have <code>paired = TRUE</code> in your function call. The next line gives the t-statistic of 2.2012, the degrees of freedom df = 67, and the p-value of 0.03117 (You can look back at Section <a href="inference-num.html#paired-mean-math">6.2.3</a> to see that these are the same values obtained in the example). We also get the confidence interval; since we had a two-sided alternative, we get the correct interval for the true mean difference in price of $0.33 to $6.83 greater cost from the UCLA Bookstore. The point estimate for the mean difference is the final entry: on average, new bookstore books cost $3.58 more than the same books new from Amazon.</p>
+<p>The output tells you right on top that this is a paired test - if it doesn’t, check that you have <code>paired = TRUE</code> in your function call. The next line gives the t-statistic of 2.20, the degrees of freedom df = 67, and the p-value of 0.0156 (You can look back at Section <a href="inference-num.html#paired-mean-math">6.2.3</a> to see that these are the same values obtained in the example). The point estimate for the mean difference is the final entry: on average, new bookstore books cost $3.58 more than the same books new from Amazon.</p>
+<p>The confidence interval given is a one-sided confidence interval, since we have a one-sided alternative. We need to re-run with <code>alternative = "two.sided"</code> to get the correct interval for the true mean difference in price of $0.33 to $6.83 greater cost when buying from the UCLA Bookstore compared to buying from Amazon.</p>
+<pre><code>#&gt; 
+#&gt;  Paired t-test
+#&gt; 
+#&gt; data:  ucla_textbooks_f18$bookstore_new and ucla_textbooks_f18$amazon_new
+#&gt; t = 2, df = 67, p-value = 0.03
+#&gt; alternative hypothesis: true difference in means is not equal to 0
+#&gt; 95 percent confidence interval:
+#&gt;  0.334 6.832
+#&gt; sample estimates:
+#&gt; mean of the differences 
+#&gt;                    3.58</code></pre>
 <p>You might also have a single variable in your dataset that contains the differences within pairs: we will create this for the textbook data in a variable called <code>price_diff</code>. This format is also usable with the <code>t.test()</code> function:</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1">ucla_textbooks_f18 <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb83-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">price_diff =</span> bookstore_new<span class="op">-</span>amazon_new)</a>
-<a class="sourceLine" id="cb83-3" title="3"></a>
-<a class="sourceLine" id="cb83-4" title="4"><span class="kw">t.test</span>(<span class="dt">x =</span> ucla_textbooks_f18<span class="op">$</span>price_diff,   <span class="co">#variable with differences</span></a>
-<a class="sourceLine" id="cb83-5" title="5">       <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,  <span class="co">#direction of alternative hypothesis</span></a>
-<a class="sourceLine" id="cb83-6" title="6">       <span class="dt">conf.level =</span> <span class="fl">0.95</span>)  <span class="co">#confidence level as a proportion</span></a></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1">ucla_textbooks_f18 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb84-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">price_diff =</span> bookstore_new<span class="op">-</span>amazon_new)</a>
+<a class="sourceLine" id="cb84-3" title="3"></a>
+<a class="sourceLine" id="cb84-4" title="4"><span class="kw">t.test</span>(<span class="dt">x =</span> ucla_textbooks_f18<span class="op">$</span>price_diff,   <span class="co">#variable with differences</span></a>
+<a class="sourceLine" id="cb84-5" title="5">       <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>,  <span class="co">#direction of alternative hypothesis</span></a>
+<a class="sourceLine" id="cb84-6" title="6">       <span class="dt">conf.level =</span> <span class="fl">0.95</span>)  <span class="co">#confidence level as a proportion</span></a></code></pre></div>
 <p>This requires two fewer arguments:</p>
 <ul>
 <li>No <code>y</code> input, since the differences are contained in a single variable</li>
 <li>No <code>paired = TRUE</code>, since we have already accounted for the pairing by taking the differences.</li>
 </ul>
 <p>The output for this will look almost identical to the two-variable version above:</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1">ucla_textbooks_f18 &lt;-<span class="st"> </span>ucla_textbooks_f18 <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb84-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">price_diff =</span> bookstore_new<span class="op">-</span>amazon_new)</a>
-<a class="sourceLine" id="cb84-3" title="3"></a>
-<a class="sourceLine" id="cb84-4" title="4"><span class="kw">t.test</span>(<span class="dt">x =</span> ucla_textbooks_f18<span class="op">$</span>price_diff,   <span class="co">#variable with differences</span></a>
-<a class="sourceLine" id="cb84-5" title="5">       <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,  <span class="co">#direction of alternative hypothesis</span></a>
-<a class="sourceLine" id="cb84-6" title="6">       <span class="dt">conf.level =</span> <span class="fl">0.95</span>)  <span class="co">#confidence level as a proportion</span></a>
-<a class="sourceLine" id="cb84-7" title="7"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb84-8" title="8"><span class="co">#&gt;  One Sample t-test</span></a>
-<a class="sourceLine" id="cb84-9" title="9"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb84-10" title="10"><span class="co">#&gt; data:  ucla_textbooks_f18$price_diff</span></a>
-<a class="sourceLine" id="cb84-11" title="11"><span class="co">#&gt; t = 2, df = 67, p-value = 0.03</span></a>
-<a class="sourceLine" id="cb84-12" title="12"><span class="co">#&gt; alternative hypothesis: true mean is not equal to 0</span></a>
-<a class="sourceLine" id="cb84-13" title="13"><span class="co">#&gt; 95 percent confidence interval:</span></a>
-<a class="sourceLine" id="cb84-14" title="14"><span class="co">#&gt;  0.334 6.832</span></a>
-<a class="sourceLine" id="cb84-15" title="15"><span class="co">#&gt; sample estimates:</span></a>
-<a class="sourceLine" id="cb84-16" title="16"><span class="co">#&gt; mean of x </span></a>
-<a class="sourceLine" id="cb84-17" title="17"><span class="co">#&gt;      3.58</span></a></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1">ucla_textbooks_f18 &lt;-<span class="st"> </span>ucla_textbooks_f18 <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb85-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">price_diff =</span> bookstore_new<span class="op">-</span>amazon_new)</a>
+<a class="sourceLine" id="cb85-3" title="3"></a>
+<a class="sourceLine" id="cb85-4" title="4"><span class="kw">t.test</span>(<span class="dt">x =</span> ucla_textbooks_f18<span class="op">$</span>price_diff,   <span class="co">#variable with differences</span></a>
+<a class="sourceLine" id="cb85-5" title="5">       <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>,  <span class="co">#direction of alternative hypothesis</span></a>
+<a class="sourceLine" id="cb85-6" title="6">       <span class="dt">conf.level =</span> <span class="fl">0.95</span>)  <span class="co">#confidence level as a proportion</span></a>
+<a class="sourceLine" id="cb85-7" title="7"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb85-8" title="8"><span class="co">#&gt;  One Sample t-test</span></a>
+<a class="sourceLine" id="cb85-9" title="9"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb85-10" title="10"><span class="co">#&gt; data:  ucla_textbooks_f18$price_diff</span></a>
+<a class="sourceLine" id="cb85-11" title="11"><span class="co">#&gt; t = 2, df = 67, p-value = 0.02</span></a>
+<a class="sourceLine" id="cb85-12" title="12"><span class="co">#&gt; alternative hypothesis: true mean is greater than 0</span></a>
+<a class="sourceLine" id="cb85-13" title="13"><span class="co">#&gt; 95 percent confidence interval:</span></a>
+<a class="sourceLine" id="cb85-14" title="14"><span class="co">#&gt;  0.868   Inf</span></a>
+<a class="sourceLine" id="cb85-15" title="15"><span class="co">#&gt; sample estimates:</span></a>
+<a class="sourceLine" id="cb85-16" title="16"><span class="co">#&gt; mean of x </span></a>
+<a class="sourceLine" id="cb85-17" title="17"><span class="co">#&gt;      3.58</span></a></code></pre></div>
 <p>Since we only input one variable, <code>t.test()</code> treats it as a one-sample t-test, but note that this works just fine: the t-statistic, df, p-value, confidence interval, and estimated mean are all the same as when we put in the two groups separately and indicated they were paired.</p>
 <p><strong>Simulation-based inference for the difference of two means</strong> We can perform simulation-based inference for a difference in means using the <code>two_mean_test()</code> and <code>two_mean_bootstrap_CI()</code> functions in the <code>catstats</code> package. As a working example, let’s look at the embryonic stem cell data from Section <a href="inference-num.html#rand2mean">6.3.1</a>.</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1"><span class="co">#load data from openintro package</span></a>
-<a class="sourceLine" id="cb85-2" title="2"><span class="kw">data</span> (stem_cell)</a>
-<a class="sourceLine" id="cb85-3" title="3"></a>
-<a class="sourceLine" id="cb85-4" title="4"><span class="co">#Compute change in pumping capacity</span></a>
-<a class="sourceLine" id="cb85-5" title="5">stem_cell &lt;-<span class="st"> </span>stem_cell <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb85-6" title="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">change =</span> after <span class="op">-</span><span class="st"> </span>before)</a></code></pre></div>
-<p>To perform the simulation-based test for the difference in the mean change in heart pumping capacity, we will use the <code>two_mean_test()</code> function in the <code>catstats</code> package, which is very similar to the use of the <code>two_proportion_test()</code> function in Chapter @(inference-cat):</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1"><span class="kw">set.seed</span>(<span class="dv">4750</span>)</a>
-<a class="sourceLine" id="cb86-2" title="2"><span class="kw">two_mean_test</span>(</a>
-<a class="sourceLine" id="cb86-3" title="3">  <span class="dt">formula =</span> change <span class="op">~</span><span class="st"> </span>trmt,  <span class="co">#Always use response ~ explanatory</span></a>
-<a class="sourceLine" id="cb86-4" title="4">  <span class="dt">data =</span> stem_cell,  <span class="co"># name of data set</span></a>
-<a class="sourceLine" id="cb86-5" title="5">  <span class="dt">first_in_subtraction =</span> <span class="st">&quot;esc&quot;</span>,  <span class="co">#value of group variable to be 1st in subtraction</span></a>
-<a class="sourceLine" id="cb86-6" title="6">  <span class="dt">direction =</span> <span class="st">&quot;two-sided&quot;</span>,  <span class="co">#direction of alternative</span></a>
-<a class="sourceLine" id="cb86-7" title="7">  <span class="dt">as_extreme_as =</span> <span class="fl">7.83</span>,  <span class="co">#observed statistic</span></a>
-<a class="sourceLine" id="cb86-8" title="8">  <span class="dt">number_repetitions =</span> <span class="dv">1000</span>  <span class="co">#number of simulations</span></a>
-<a class="sourceLine" id="cb86-9" title="9">)</a></code></pre></div>
-<p><img src="06-inference-num_files/figure-html/unnamed-chunk-50-1.png" width="70%" style="display: block; margin: auto;" /></p>
-<p>The results give a side-by-side boxplot of the observed data with the observed difference and order of subtraction at the top. Check that you had the right value for the observed difference! Next to the bar plot, we have the null distribution of simulated differences in means, with the observed statistic marked with a vertical red line, and all values as or more extreme than the observed statistic colored red. The figure caption gives the approximate p-value: in this case 1/1000 = 0.001.</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1"><span class="co">#load data from openintro package</span></a>
+<a class="sourceLine" id="cb86-2" title="2"><span class="kw">data</span> (stem_cell)</a>
+<a class="sourceLine" id="cb86-3" title="3"></a>
+<a class="sourceLine" id="cb86-4" title="4"><span class="co">#Compute change in pumping capacity</span></a>
+<a class="sourceLine" id="cb86-5" title="5">stem_cell &lt;-<span class="st"> </span>stem_cell <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb86-6" title="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">change =</span> after <span class="op">-</span><span class="st"> </span>before)</a></code></pre></div>
+<p>To perform the simulation-based test for the difference in the mean change in heart pumping capacity, we will use the <code>two_mean_test()</code> function in the <code>catstats</code> package, which is very similar to the use of the <code>two_proportion_test()</code> function in Chapter <a href="inference-cat.html#inference-cat">5</a>:</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1"><span class="kw">set.seed</span>(<span class="dv">4750</span>)</a>
+<a class="sourceLine" id="cb87-2" title="2"><span class="kw">two_mean_test</span>(</a>
+<a class="sourceLine" id="cb87-3" title="3">  <span class="dt">formula =</span> change <span class="op">~</span><span class="st"> </span>trmt,  <span class="co">#Always use response ~ explanatory</span></a>
+<a class="sourceLine" id="cb87-4" title="4">  <span class="dt">data =</span> stem_cell,  <span class="co"># name of data set</span></a>
+<a class="sourceLine" id="cb87-5" title="5">  <span class="dt">first_in_subtraction =</span> <span class="st">&quot;esc&quot;</span>,  <span class="co">#value of group variable to be 1st in subtraction</span></a>
+<a class="sourceLine" id="cb87-6" title="6">  <span class="dt">direction =</span> <span class="st">&quot;two-sided&quot;</span>,  <span class="co">#direction of alternative</span></a>
+<a class="sourceLine" id="cb87-7" title="7">  <span class="dt">as_extreme_as =</span> <span class="fl">7.833</span>,  <span class="co">#observed statistic</span></a>
+<a class="sourceLine" id="cb87-8" title="8">  <span class="dt">number_repetitions =</span> <span class="dv">1000</span>  <span class="co">#number of simulations</span></a>
+<a class="sourceLine" id="cb87-9" title="9">)</a></code></pre></div>
+<p><img src="06-inference-num_files/figure-html/unnamed-chunk-51-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>The results give a side-by-side boxplot of the observed data with the observed difference and order of subtraction at the top. Check that you had the right value for the observed difference! Next to the box plot, we have the null distribution of simulated differences in means, with the observed statistic marked with a vertical red line, and all values as or more extreme than the observed statistic colored red. The figure caption gives the approximate p-value: for this set of 1000 simulations, we have only 1/1000 = 0.001.</p>
 
 <div class="important">
 <p>There are a couple of things to note when using the <code>two_mean_test</code> function:</p>
@@ -2892,35 +2904,35 @@ then we can apply the <span class="math inline">\(t\)</span>-distribution for a 
 </div></li>
 </ul>
 <p>We use bootstrapping to find a confidence interval for the true difference in means with the <code>two_mean_bootstrap_CI()</code> function. The arguments will be very similar to <code>two_mean_test()</code>, with the addition of the confidence level.</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1"><span class="kw">set.seed</span>(<span class="dv">450</span>)</a>
-<a class="sourceLine" id="cb87-2" title="2"><span class="kw">two_mean_bootstrap_CI</span>(</a>
-<a class="sourceLine" id="cb87-3" title="3">  <span class="dt">formula =</span> change <span class="op">~</span><span class="st"> </span>trmt,  <span class="co">#Always use response ~ explanatory</span></a>
-<a class="sourceLine" id="cb87-4" title="4">  <span class="dt">data =</span> stem_cell,  <span class="co"># name of data set</span></a>
-<a class="sourceLine" id="cb87-5" title="5">  <span class="dt">first_in_subtraction =</span> <span class="st">&quot;esc&quot;</span>,  <span class="co">#value of group variable to be 1st in subtraction</span></a>
-<a class="sourceLine" id="cb87-6" title="6">  <span class="dt">confidence_level =</span> <span class="fl">0.9</span>, <span class="co">#confidence level as a proportion</span></a>
-<a class="sourceLine" id="cb87-7" title="7">  <span class="dt">number_repetitions =</span> <span class="dv">1000</span>  <span class="co">#number of bootstrap samples</span></a>
-<a class="sourceLine" id="cb87-8" title="8">)</a></code></pre></div>
-<p><img src="06-inference-num_files/figure-html/unnamed-chunk-52-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1"><span class="kw">set.seed</span>(<span class="dv">450</span>)</a>
+<a class="sourceLine" id="cb88-2" title="2"><span class="kw">two_mean_bootstrap_CI</span>(</a>
+<a class="sourceLine" id="cb88-3" title="3">  <span class="dt">formula =</span> change <span class="op">~</span><span class="st"> </span>trmt,  <span class="co">#Always use response ~ explanatory</span></a>
+<a class="sourceLine" id="cb88-4" title="4">  <span class="dt">data =</span> stem_cell,  <span class="co"># name of data set</span></a>
+<a class="sourceLine" id="cb88-5" title="5">  <span class="dt">first_in_subtraction =</span> <span class="st">&quot;esc&quot;</span>,  <span class="co">#value of group variable to be 1st in subtraction</span></a>
+<a class="sourceLine" id="cb88-6" title="6">  <span class="dt">confidence_level =</span> <span class="fl">0.9</span>, <span class="co">#confidence level as a proportion</span></a>
+<a class="sourceLine" id="cb88-7" title="7">  <span class="dt">number_repetitions =</span> <span class="dv">1000</span>  <span class="co">#number of bootstrap samples</span></a>
+<a class="sourceLine" id="cb88-8" title="8">)</a></code></pre></div>
+<p><img src="06-inference-num_files/figure-html/unnamed-chunk-53-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>The function produces the bootstrap distribution of the difference in means, with the upper and lower percentiles of the confidence range marked with vertical lines. The figure caption gives the estimated confidence interval. In this case, we are 90% confidence that ESCs increase the change in heart pumping capacity by between 4.72 and 11.09 percentage points on average.</p>
 <p><strong>Theory-based inference for the difference of two means</strong> To demonstrate theory-based methods in <code>R</code> for a difference in means, we will continue use the embryonic stem cell data. Something to keep in mind as we work through the example: are theory-based methods appropriate here? Are the results different than the results from the simulation-based methods?</p>
 <p>To perform theory-based inference, we will again use the <code>t.test()</code> function in <code>R</code>. Remember that we sometimes need to change the reference category of the explanatory variable to have the correct order of subtraction - in this case, the default is <code>ctrl - esc</code>, since <code>ctrl</code> is first alphabetically. We can get our preferred order of subtracation of <code>esc-ctrl</code> this way:</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1">stem_cell<span class="op">$</span>trmt &lt;-<span class="st"> </span><span class="kw">relevel</span>(stem_cell<span class="op">$</span>trmt, <span class="dt">ref =</span> <span class="st">&quot;esc&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1"><span class="kw">t.test</span>(stem_cell<span class="op">$</span>change <span class="op">~</span><span class="st"> </span>stem_cell<span class="op">$</span>trmt, <span class="co">#Always use response ~ explanatory</span></a>
-<a class="sourceLine" id="cb89-2" title="2">       <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="co"># Direction of alternative</span></a>
-<a class="sourceLine" id="cb89-3" title="3">       <span class="dt">conf.level =</span> <span class="fl">0.9</span>)  <span class="co">#confidence level as a proportion</span></a>
-<a class="sourceLine" id="cb89-4" title="4"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb89-5" title="5"><span class="co">#&gt;  Welch Two Sample t-test</span></a>
-<a class="sourceLine" id="cb89-6" title="6"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb89-7" title="7"><span class="co">#&gt; data:  stem_cell$change by stem_cell$trmt</span></a>
-<a class="sourceLine" id="cb89-8" title="8"><span class="co">#&gt; t = 4, df = 12, p-value = 0.002</span></a>
-<a class="sourceLine" id="cb89-9" title="9"><span class="co">#&gt; alternative hypothesis: true difference in means is not equal to 0</span></a>
-<a class="sourceLine" id="cb89-10" title="10"><span class="co">#&gt; 90 percent confidence interval:</span></a>
-<a class="sourceLine" id="cb89-11" title="11"><span class="co">#&gt;   4.35 11.31</span></a>
-<a class="sourceLine" id="cb89-12" title="12"><span class="co">#&gt; sample estimates:</span></a>
-<a class="sourceLine" id="cb89-13" title="13"><span class="co">#&gt;  mean in group esc mean in group ctrl </span></a>
-<a class="sourceLine" id="cb89-14" title="14"><span class="co">#&gt;               3.50              -4.33</span></a></code></pre></div>
-<p>The results here should look familiar from the paired t-test above. We have the t-statistic, degrees of freedom, p-values, confidence interval, and group-specific means. The degrees of freedom may look a little strange - remember that the correct formula is very complex - here we obtain 12.225 df. If you were computing the results by hand using <code>pt()</code> and <code>qt()</code> as we saw earlier in this section, you would use 8 df, since <span class="math inline">\(n_1 -1 = n_2 -1 = 8\)</span>. In the end, we conclude that there is strong evidence against the null hypothesis of no difference in the mean change in heart pumping capacity (p = 0.0017).</p>
-<p>Remember that if you have a one-sided alternative, you will need to run <code>t.test()</code> with a two-sided alternative to get the correct confidence interval! Your reminder will be an ‘Inf’ in the confidence interval results, which means <code>R</code> is computing a one-sided confidence interval. Here, we have a two-sided alternative, so we can use the CI as reported: we are 90% confident that the true average improvement in heart pumping capacity due to ESCs is between 4.35 and 11.31 percentage points.</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1">stem_cell<span class="op">$</span>trmt &lt;-<span class="st"> </span><span class="kw">relevel</span>(stem_cell<span class="op">$</span>trmt, <span class="dt">ref =</span> <span class="st">&quot;esc&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1"><span class="kw">t.test</span>(stem_cell<span class="op">$</span>change <span class="op">~</span><span class="st"> </span>stem_cell<span class="op">$</span>trmt, <span class="co">#Always use response ~ explanatory</span></a>
+<a class="sourceLine" id="cb90-2" title="2">       <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="co"># Direction of alternative</span></a>
+<a class="sourceLine" id="cb90-3" title="3">       <span class="dt">conf.level =</span> <span class="fl">0.9</span>)  <span class="co">#confidence level as a proportion</span></a>
+<a class="sourceLine" id="cb90-4" title="4"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb90-5" title="5"><span class="co">#&gt;  Welch Two Sample t-test</span></a>
+<a class="sourceLine" id="cb90-6" title="6"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb90-7" title="7"><span class="co">#&gt; data:  stem_cell$change by stem_cell$trmt</span></a>
+<a class="sourceLine" id="cb90-8" title="8"><span class="co">#&gt; t = 4, df = 12, p-value = 0.002</span></a>
+<a class="sourceLine" id="cb90-9" title="9"><span class="co">#&gt; alternative hypothesis: true difference in means is not equal to 0</span></a>
+<a class="sourceLine" id="cb90-10" title="10"><span class="co">#&gt; 90 percent confidence interval:</span></a>
+<a class="sourceLine" id="cb90-11" title="11"><span class="co">#&gt;   4.35 11.31</span></a>
+<a class="sourceLine" id="cb90-12" title="12"><span class="co">#&gt; sample estimates:</span></a>
+<a class="sourceLine" id="cb90-13" title="13"><span class="co">#&gt;  mean in group esc mean in group ctrl </span></a>
+<a class="sourceLine" id="cb90-14" title="14"><span class="co">#&gt;               3.50              -4.33</span></a></code></pre></div>
+<p>The results here should look familiar from the paired t-test above. We have the t-statistic, degrees of freedom, p-values, confidence interval, and group-specific means. The degrees of freedom may look a little strange - remember that the correct formula is very complex! - here we obtain 12.225 df. If you were computing the results by hand using <code>pt()</code> and <code>qt()</code> as we saw earlier in this section, you would use 8 df, since <span class="math inline">\(n_1 -1 = n_2 -1 = 8\)</span>. In the end, we conclude that there is strong evidence against the null hypothesis of no difference in the mean change in heart pumping capacity (p = 0.002).</p>
+<p>Remember that if you have a one-sided alternative, you will need to run <code>t.test()</code> with a two-sided alternative to get the correct confidence interval! Your reminder will be an <code>Inf</code> in the confidence interval results, which means <code>R</code> is computing a one-sided confidence interval. Here, we have a two-sided alternative, so we can use the CI as reported: we are 90% confident that the true average improvement in heart pumping capacity due to ESCs is between 4.35 and 11.31 percentage points.</p>
 <div id="interactive-r-tutorials-4" class="section level3">
 <h3><span class="header-section-number">6.5.1</span> Interactive R tutorials</h3>
 <p>Navigate the concepts you’ve learned in this chapter in R using the following self-paced tutorials.
