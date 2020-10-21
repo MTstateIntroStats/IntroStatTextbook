@@ -1029,9 +1029,9 @@ regression_test(
 )
 ```
 
-The results give a scatterplot of the observed data with the regression line superimposed, and gives the observed slope (this should match what you put in for `as_extreme_as`).  Next to the scatterplot, we have the null distribution of the slope coefficient, with the observed slope indicated by a vertical line and all value more extreme highlighted in red.  The caption gives the number of simulations resulting in a slope more extreme than the observed; in this case, 118/1000, for an approximate p-value of 0.118.
+The results give a scatterplot of the observed data with the regression line superimposed, and gives the observed slope (this should match what you put in for `as_extreme_as`).  Next to the scatterplot, we have the null distribution of the slope coefficient, with the observed slope indicated by a vertical line and all values more extreme highlighted in red.  The caption gives the number of simulations resulting in a slope more extreme than the observed: in this simulation we have 118/1000, for an approximate p-value of 0.118.
 
-To obtain a confidence interval for the slope, we use `regression_bootstrap_CI()`, with essentially the same arguments as `regression_test()`.
+To obtain a confidence interval for the slope, we use `regression_bootstrap_CI()`, with the same core arguments as `regression_test()`.
 ```{r, echo = TRUE}
 set.seed(31143518)
 regression_bootstrap_CI(
@@ -1045,9 +1045,17 @@ regression_bootstrap_CI(
 
 Here we have the bootstrap distribution of the slope based on the observed data, with the upper and lower bounds of the confidence interval highlighted in red.  The confidence interval is also given in the caption of the figure.  Here, we are 95% confident that the true change in the number of seats in the House of Representatives for each additional percentage point in unemployment is between a decrease of 2.6 percent of seats and an increase of 0.3 percent of seats.
 
-**Theory-based inference for the regression slope** We will revisit the gift aid and income data.  We want to know whether there is evidence to suggest that the slope of gift aid as a function of family income is non-zero.  The function for linear regression in `R` is `lm()`.  When doing linear regression, we want to save the regression results so we can get complete output using `summary()`:
-```{r, echo = TRUE}
+Notice that the bootstrap distribution is not symmetric for this example! Because of this, the bootstrap confidence interval is different from what we would obtain from theory-based methods: (-2.6, 0.8).  This is because the LINE technical conditions are not all satisfactorily met, though this is hard to see from the scatterplot for these data.
+
+**Theory-based inference for the regression slope** To demonstrate theory-based inference in `R`, we will revisit the gift aid and income data.  We want to know whether there is evidence to suggest that the slope of gift aid as a function of family income is non-zero.  The function for linear regression in `R` is `lm()`. Unlike `prob.test()` and `t.test()`, just running `lm()` doesn't print all the information we need.  This will produce only the coefficient estimates.
+```{r}
 data(elmhurst)
+lm(gift_aid~family_income, #Always use reponse ~ explanatory
+   data = elmhurst)  #Name of data set
+```
+
+Instead, when doing linear regression, we want to save the regression results so we can get complete output using `summary()`:
+```{r, echo = TRUE}
 gift_reg <- lm(gift_aid~family_income, #Always use reponse ~ explanatory
                data = elmhurst)  #Name of data set
 summary(gift_reg)  #Obtain full results for regression
@@ -1055,7 +1063,7 @@ summary(gift_reg)  #Obtain full results for regression
 
 This produces a lot of output; we will focus on the *Coefficients* section.  This gives us the estimated value for the slope, the standard error of the estimate, the t-statistic, and the p-value.  We want the row labeled with the name of our explanatory variable, `family_income`.  We estimate the slope to be -0.043 thousand dollars per additional thousand dollars in family income, and we have strong evidence against the null hypothesis that the slope is 0.
 
-We can compute confidence intervals by hand using the reported estimate, standard error, and df.  We will need to compute a t-value as in Chapter @\ref(inference-num):
+We can compute confidence intervals by hand using the reported estimate, standard error, and df.  We will need to compute a t-value as in Chapter \@ref(inference-num):
 ```{r, echo = TRUE}
 #Get t-star for 90% confidence interval
 qt(.95, df = 48)
@@ -1075,7 +1083,7 @@ confint(gift_reg,   #name of regression results
         level = 0.9)  #confidence level as a proportion
 ```
 
-In either case, we are 90% confident that gift aid will be \$24.94 to \$61.20 less per $1000 increase in family income.
+In either case, we are 90% confident that gift aid will be \$24.90 to \$61.20 less per $1000 increase in family income.
 
 ### Interactive `R` tutorials
 
