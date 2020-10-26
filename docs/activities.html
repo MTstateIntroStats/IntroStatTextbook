@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 Appendix: Activities | Montana State Introductory Statistics with R</title>
   <meta name="description" content="Open resources textbook for Stat 216 at Montana State University" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 Appendix: Activities | Montana State Introductory Statistics with R" />
   <meta property="og:type" content="book" />
@@ -32,6 +32,7 @@
   
 <link rel="prev" href="case-studies.html"/>
 <link rel="next" href="references.html"/>
+<script src="libs/header-attrs-2.3/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -53,7 +54,7 @@
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
 <script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
-<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
@@ -63,25 +64,26 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -90,9 +92,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -141,65 +143,78 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">MSU Intro Stat with R</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#textbook-overview"><i class="fa fa-check"></i>Textbook overview</a></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html#stat-computing"><i class="fa fa-check"></i>Statistical computing</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#stat-computing"><i class="fa fa-check"></i>Statistical computing</a>
+<ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#getting-rstudio"><i class="fa fa-check"></i>Getting RStudio</a></li>
 <li><a href="index.html#installing-catstats">Installing <code>catstats</code></a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html"><i class="fa fa-check"></i>About the Authors</a><ul>
+<li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html"><i class="fa fa-check"></i>About the Authors</a>
+<ul>
 <li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html#montana-state-university-authors"><i class="fa fa-check"></i>Montana State University Authors</a></li>
 <li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html#openintro-authors"><i class="fa fa-check"></i>OpenIntro Authors</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="copyright.html"><a href="copyright.html"><i class="fa fa-check"></i>Copyright</a></li>
-<li class="chapter" data-level="1" data-path="intro-to-data.html"><a href="intro-to-data.html"><i class="fa fa-check"></i><b>1</b> Introduction to data</a><ul>
+<li class="chapter" data-level="1" data-path="intro-to-data.html"><a href="intro-to-data.html"><i class="fa fa-check"></i><b>1</b> Introduction to data</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="intro-to-data.html"><a href="intro-to-data.html#basic-stents-strokes"><i class="fa fa-check"></i><b>1.1</b> Case study: using stents to prevent strokes</a></li>
-<li class="chapter" data-level="1.2" data-path="intro-to-data.html"><a href="intro-to-data.html#data-basics"><i class="fa fa-check"></i><b>1.2</b> Data basics</a><ul>
+<li class="chapter" data-level="1.2" data-path="intro-to-data.html"><a href="intro-to-data.html#data-basics"><i class="fa fa-check"></i><b>1.2</b> Data basics</a>
+<ul>
 <li class="chapter" data-level="1.2.1" data-path="intro-to-data.html"><a href="intro-to-data.html#observations-variables-and-data-frames"><i class="fa fa-check"></i><b>1.2.1</b> Observations, variables, and data frames</a></li>
 <li class="chapter" data-level="1.2.2" data-path="intro-to-data.html"><a href="intro-to-data.html#variable-types"><i class="fa fa-check"></i><b>1.2.2</b> Types of variables</a></li>
 <li class="chapter" data-level="1.2.3" data-path="intro-to-data.html"><a href="intro-to-data.html#variable-relations"><i class="fa fa-check"></i><b>1.2.3</b> Relationships between variables</a></li>
 <li class="chapter" data-level="1.2.4" data-path="intro-to-data.html"><a href="intro-to-data.html#explanatory-and-response-variables"><i class="fa fa-check"></i><b>1.2.4</b> Explanatory and response variables</a></li>
 <li class="chapter" data-level="1.2.5" data-path="intro-to-data.html"><a href="intro-to-data.html#introducing-observational-studies-and-experiments"><i class="fa fa-check"></i><b>1.2.5</b> Introducing observational studies and experiments</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="intro-to-data.html"><a href="intro-to-data.html#sampling-principles-strategies"><i class="fa fa-check"></i><b>1.3</b> Sampling principles and strategies</a><ul>
+<li class="chapter" data-level="1.3" data-path="intro-to-data.html"><a href="intro-to-data.html#sampling-principles-strategies"><i class="fa fa-check"></i><b>1.3</b> Sampling principles and strategies</a>
+<ul>
 <li class="chapter" data-level="1.3.1" data-path="intro-to-data.html"><a href="intro-to-data.html#populations-and-samples"><i class="fa fa-check"></i><b>1.3.1</b> Populations and samples</a></li>
 <li class="chapter" data-level="1.3.2" data-path="intro-to-data.html"><a href="intro-to-data.html#anecdotal-evidence"><i class="fa fa-check"></i><b>1.3.2</b> Anecdotal evidence</a></li>
 <li class="chapter" data-level="1.3.3" data-path="intro-to-data.html"><a href="intro-to-data.html#sampling-from-a-population"><i class="fa fa-check"></i><b>1.3.3</b> Sampling from a population</a></li>
 <li class="chapter" data-level="1.3.4" data-path="intro-to-data.html"><a href="intro-to-data.html#samp-methods"><i class="fa fa-check"></i><b>1.3.4</b> Four sampling methods (special topic)</a></li>
 </ul></li>
 <li class="chapter" data-level="1.4" data-path="intro-to-data.html"><a href="intro-to-data.html#observational-studies"><i class="fa fa-check"></i><b>1.4</b> Observational studies</a></li>
-<li class="chapter" data-level="1.5" data-path="intro-to-data.html"><a href="intro-to-data.html#experiments"><i class="fa fa-check"></i><b>1.5</b> Experiments</a><ul>
+<li class="chapter" data-level="1.5" data-path="intro-to-data.html"><a href="intro-to-data.html#experiments"><i class="fa fa-check"></i><b>1.5</b> Experiments</a>
+<ul>
 <li class="chapter" data-level="1.5.1" data-path="intro-to-data.html"><a href="intro-to-data.html#principles-of-experimental-design"><i class="fa fa-check"></i><b>1.5.1</b> Principles of experimental design</a></li>
 <li class="chapter" data-level="1.5.2" data-path="intro-to-data.html"><a href="intro-to-data.html#reducing-bias-human-experiments"><i class="fa fa-check"></i><b>1.5.2</b> Reducing bias in human experiments</a></li>
 </ul></li>
 <li class="chapter" data-level="1.6" data-path="intro-to-data.html"><a href="intro-to-data.html#scope-of-inference"><i class="fa fa-check"></i><b>1.6</b> Scope of inference</a></li>
-<li class="chapter" data-level="1.7" data-path="intro-to-data.html"><a href="intro-to-data.html#data-in-r"><i class="fa fa-check"></i><b>1.7</b> Data in <code>R</code></a><ul>
+<li class="chapter" data-level="1.7" data-path="intro-to-data.html"><a href="intro-to-data.html#data-in-r"><i class="fa fa-check"></i><b>1.7</b> Data in <code>R</code></a>
+<ul>
 <li class="chapter" data-level="1.7.1" data-path="intro-to-data.html"><a href="intro-to-data.html#dataframes-in-r"><i class="fa fa-check"></i><b>1.7.1</b> Dataframes in <code>R</code></a></li>
 <li class="chapter" data-level="1.7.2" data-path="intro-to-data.html"><a href="intro-to-data.html#datastruc"><i class="fa fa-check"></i><b>1.7.2</b> Tidy structure of data</a></li>
 <li class="chapter" data-level="1.7.3" data-path="intro-to-data.html"><a href="intro-to-data.html#using-the-pipe-to-chain"><i class="fa fa-check"></i><b>1.7.3</b> Using the pipe to chain</a></li>
 <li class="chapter" data-level="1.7.4" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>1.7.4</b> Interactive R tutorials</a></li>
 <li class="chapter" data-level="1.7.5" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>1.7.5</b> R labs</a></li>
 </ul></li>
-<li class="chapter" data-level="1.8" data-path="intro-to-data.html"><a href="intro-to-data.html#chp1-review"><i class="fa fa-check"></i><b>1.8</b> Chapter 1 review</a><ul>
+<li class="chapter" data-level="1.8" data-path="intro-to-data.html"><a href="intro-to-data.html#chp1-review"><i class="fa fa-check"></i><b>1.8</b> Chapter 1 review</a>
+<ul>
 <li class="chapter" data-level="1.8.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>1.8.1</b> Terms</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>2</b> Exploratory data analysis</a><ul>
-<li class="chapter" data-level="2.1" data-path="eda.html"><a href="eda.html#categorical-data"><i class="fa fa-check"></i><b>2.1</b> Exploring categorical data</a><ul>
+<li class="chapter" data-level="2" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>2</b> Exploratory data analysis</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="eda.html"><a href="eda.html#categorical-data"><i class="fa fa-check"></i><b>2.1</b> Exploring categorical data</a>
+<ul>
 <li class="chapter" data-level="2.1.1" data-path="eda.html"><a href="eda.html#contingency-tables-and-conditional-proportions"><i class="fa fa-check"></i><b>2.1.1</b> Contingency tables and conditional proportions</a></li>
 <li class="chapter" data-level="2.1.2" data-path="eda.html"><a href="eda.html#bar-plots-and-mosaic-plots"><i class="fa fa-check"></i><b>2.1.2</b> Bar plots and mosaic plots</a></li>
 <li class="chapter" data-level="2.1.3" data-path="eda.html"><a href="eda.html#why-not-pie-charts"><i class="fa fa-check"></i><b>2.1.3</b> Why not pie charts?</a></li>
 <li class="chapter" data-level="2.1.4" data-path="eda.html"><a href="eda.html#simpson"><i class="fa fa-check"></i><b>2.1.4</b> Simpson’s paradox</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="eda.html"><a href="eda.html#probability-with-tables"><i class="fa fa-check"></i><b>2.2</b> Probability with tables</a><ul>
+<li class="chapter" data-level="2.2" data-path="eda.html"><a href="eda.html#probability-with-tables"><i class="fa fa-check"></i><b>2.2</b> Probability with tables</a>
+<ul>
 <li class="chapter" data-level="2.2.1" data-path="eda.html"><a href="eda.html#defining-probability"><i class="fa fa-check"></i><b>2.2.1</b> Defining probability</a></li>
 <li class="chapter" data-level="2.2.2" data-path="eda.html"><a href="eda.html#finding-probabilities-with-tables"><i class="fa fa-check"></i><b>2.2.2</b> Finding probabilities with tables</a></li>
 <li class="chapter" data-level="2.2.3" data-path="eda.html"><a href="eda.html#probability-notation"><i class="fa fa-check"></i><b>2.2.3</b> Probability notation</a></li>
 <li class="chapter" data-level="2.2.4" data-path="eda.html"><a href="eda.html#diagnostic-testing"><i class="fa fa-check"></i><b>2.2.4</b> Diagnostic testing</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="eda.html"><a href="eda.html#quantitative-data"><i class="fa fa-check"></i><b>2.3</b> Exploring quantitative data</a><ul>
+<li class="chapter" data-level="2.3" data-path="eda.html"><a href="eda.html#quantitative-data"><i class="fa fa-check"></i><b>2.3</b> Exploring quantitative data</a>
+<ul>
 <li class="chapter" data-level="2.3.1" data-path="eda.html"><a href="eda.html#scatterplots"><i class="fa fa-check"></i><b>2.3.1</b> Scatterplots for paired data</a></li>
 <li class="chapter" data-level="2.3.2" data-path="eda.html"><a href="eda.html#dotplots"><i class="fa fa-check"></i><b>2.3.2</b> Dot plots and the mean</a></li>
 <li class="chapter" data-level="2.3.3" data-path="eda.html"><a href="eda.html#histograms"><i class="fa fa-check"></i><b>2.3.3</b> Histograms and shape</a></li>
@@ -210,25 +225,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.8" data-path="eda.html"><a href="eda.html#transforming-data-special-topic"><i class="fa fa-check"></i><b>2.3.8</b> Transforming data (special topic)</a></li>
 <li class="chapter" data-level="2.3.9" data-path="eda.html"><a href="eda.html#mapping-data-special-topic"><i class="fa fa-check"></i><b>2.3.9</b> Mapping data (special topic)</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="eda.html"><a href="eda.html#r-exploratory-data-analysis"><i class="fa fa-check"></i><b>2.4</b> <code>R</code>: Exploratory data analysis</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="eda.html"><a href="eda.html#interactive-r-tutorials-1"><i class="fa fa-check"></i><b>2.4.1</b> Interactive R tutorials</a></li>
-<li class="chapter" data-level="2.4.2" data-path="eda.html"><a href="eda.html#r-labs-1"><i class="fa fa-check"></i><b>2.4.2</b> R labs</a></li>
+<li class="chapter" data-level="2.4" data-path="eda.html"><a href="eda.html#r-exploratory-data-analysis"><i class="fa fa-check"></i><b>2.4</b> <code>R</code>: Exploratory data analysis</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>2.4.1</b> Interactive R tutorials</a></li>
+<li class="chapter" data-level="2.4.2" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>2.4.2</b> R labs</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="eda.html"><a href="eda.html#chp2-review"><i class="fa fa-check"></i><b>2.5</b> Chapter 2 review</a><ul>
+<li class="chapter" data-level="2.5" data-path="eda.html"><a href="eda.html#chp2-review"><i class="fa fa-check"></i><b>2.5</b> Chapter 2 review</a>
+<ul>
 <li class="chapter" data-level="2.5.1" data-path="eda.html"><a href="eda.html#data-visualization-summary"><i class="fa fa-check"></i><b>2.5.1</b> Data visualization summary</a></li>
 <li class="chapter" data-level="2.5.2" data-path="eda.html"><a href="eda.html#summary-measures"><i class="fa fa-check"></i><b>2.5.2</b> Summary measures</a></li>
 <li class="chapter" data-level="2.5.3" data-path="eda.html"><a href="eda.html#notation-summary"><i class="fa fa-check"></i><b>2.5.3</b> Notation summary</a></li>
-<li class="chapter" data-level="2.5.4" data-path="eda.html"><a href="eda.html#terms-1"><i class="fa fa-check"></i><b>2.5.4</b> Terms</a></li>
+<li class="chapter" data-level="2.5.4" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>2.5.4</b> Terms</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="cor-reg.html"><a href="cor-reg.html"><i class="fa fa-check"></i><b>3</b> Correlation and regression</a><ul>
-<li class="chapter" data-level="3.1" data-path="cor-reg.html"><a href="cor-reg.html#fit-line-res-cor"><i class="fa fa-check"></i><b>3.1</b> Fitting a line, residuals, and correlation</a><ul>
+<li class="chapter" data-level="3" data-path="cor-reg.html"><a href="cor-reg.html"><i class="fa fa-check"></i><b>3</b> Correlation and regression</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="cor-reg.html"><a href="cor-reg.html#fit-line-res-cor"><i class="fa fa-check"></i><b>3.1</b> Fitting a line, residuals, and correlation</a>
+<ul>
 <li class="chapter" data-level="3.1.1" data-path="cor-reg.html"><a href="cor-reg.html#fitting-a-line-to-data"><i class="fa fa-check"></i><b>3.1.1</b> Fitting a line to data</a></li>
 <li class="chapter" data-level="3.1.2" data-path="cor-reg.html"><a href="cor-reg.html#using-linear-regression-to-predict-possum-head-lengths"><i class="fa fa-check"></i><b>3.1.2</b> Using linear regression to predict possum head lengths</a></li>
 <li class="chapter" data-level="3.1.3" data-path="cor-reg.html"><a href="cor-reg.html#residuals"><i class="fa fa-check"></i><b>3.1.3</b> Residuals</a></li>
 <li class="chapter" data-level="3.1.4" data-path="cor-reg.html"><a href="cor-reg.html#describing-linear-relationships-with-correlation"><i class="fa fa-check"></i><b>3.1.4</b> Describing linear relationships with correlation</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="cor-reg.html"><a href="cor-reg.html#least-squares-regression"><i class="fa fa-check"></i><b>3.2</b> Least squares regression</a><ul>
+<li class="chapter" data-level="3.2" data-path="cor-reg.html"><a href="cor-reg.html#least-squares-regression"><i class="fa fa-check"></i><b>3.2</b> Least squares regression</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="cor-reg.html"><a href="cor-reg.html#gift-aid-for-freshman-at-elmhurst-college"><i class="fa fa-check"></i><b>3.2.1</b> Gift aid for freshman at Elmhurst College</a></li>
 <li class="chapter" data-level="3.2.2" data-path="cor-reg.html"><a href="cor-reg.html#an-objective-measure-for-finding-the-best-line"><i class="fa fa-check"></i><b>3.2.2</b> An objective measure for finding the best line</a></li>
 <li class="chapter" data-level="3.2.3" data-path="cor-reg.html"><a href="cor-reg.html#finding-and-interpreting-the-least-squares-line"><i class="fa fa-check"></i><b>3.2.3</b> Finding and interpreting the least squares line</a></li>
@@ -236,110 +256,134 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.5" data-path="cor-reg.html"><a href="cor-reg.html#describing-the-strength-of-a-fit"><i class="fa fa-check"></i><b>3.2.5</b> Describing the strength of a fit</a></li>
 <li class="chapter" data-level="3.2.6" data-path="cor-reg.html"><a href="cor-reg.html#categprical-predictor-two-levels"><i class="fa fa-check"></i><b>3.2.6</b> Categorical predictors with two levels (special topic)</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="cor-reg.html"><a href="cor-reg.html#outliers-in-regression"><i class="fa fa-check"></i><b>3.3</b> Outliers in linear regression</a><ul>
+<li class="chapter" data-level="3.3" data-path="cor-reg.html"><a href="cor-reg.html#outliers-in-regression"><i class="fa fa-check"></i><b>3.3</b> Outliers in linear regression</a>
+<ul>
 <li class="chapter" data-level="3.3.1" data-path="cor-reg.html"><a href="cor-reg.html#types-of-outliers"><i class="fa fa-check"></i><b>3.3.1</b> Types of outliers</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="cor-reg.html"><a href="cor-reg.html#r-correlation-and-regression"><i class="fa fa-check"></i><b>3.4</b> <code>R</code>: Correlation and regression</a><ul>
+<li class="chapter" data-level="3.4" data-path="cor-reg.html"><a href="cor-reg.html#r-correlation-and-regression"><i class="fa fa-check"></i><b>3.4</b> <code>R</code>: Correlation and regression</a>
+<ul>
 <li class="chapter" data-level="3.4.1" data-path="cor-reg.html"><a href="cor-reg.html#intro-linear-models-r-tutorial"><i class="fa fa-check"></i><b>3.4.1</b> Interactive R tutorials</a></li>
-<li class="chapter" data-level="3.4.2" data-path="cor-reg.html"><a href="cor-reg.html#r-labs-2"><i class="fa fa-check"></i><b>3.4.2</b> R labs</a></li>
+<li class="chapter" data-level="3.4.2" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>3.4.2</b> R labs</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="cor-reg.html"><a href="cor-reg.html#chp3-review"><i class="fa fa-check"></i><b>3.5</b> Chapter review</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="cor-reg.html"><a href="cor-reg.html#terms-2"><i class="fa fa-check"></i><b>3.5.1</b> Terms</a></li>
+<li class="chapter" data-level="3.5" data-path="cor-reg.html"><a href="cor-reg.html#chp3-review"><i class="fa fa-check"></i><b>3.5</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>3.5.1</b> Terms</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="mult-reg.html"><a href="mult-reg.html"><i class="fa fa-check"></i><b>4</b> Multivariable models</a><ul>
+<li class="chapter" data-level="4" data-path="mult-reg.html"><a href="mult-reg.html"><i class="fa fa-check"></i><b>4</b> Multivariable models</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="mult-reg.html"><a href="mult-reg.html#gapminder-world"><i class="fa fa-check"></i><b>4.1</b> Gapminder world</a></li>
 <li class="chapter" data-level="4.2" data-path="mult-reg.html"><a href="mult-reg.html#simpsons-paradox-revisited"><i class="fa fa-check"></i><b>4.2</b> Simpson’s Paradox, revisited</a></li>
-<li class="chapter" data-level="4.3" data-path="mult-reg.html"><a href="mult-reg.html#regression-multiple-predictors"><i class="fa fa-check"></i><b>4.3</b> Multiple regression (special topic)</a><ul>
+<li class="chapter" data-level="4.3" data-path="mult-reg.html"><a href="mult-reg.html#regression-multiple-predictors"><i class="fa fa-check"></i><b>4.3</b> Multiple regression (special topic)</a>
+<ul>
 <li class="chapter" data-level="4.3.1" data-path="mult-reg.html"><a href="mult-reg.html#ind-and-cat-predictors"><i class="fa fa-check"></i><b>4.3.1</b> Indicator and categorical predictors</a></li>
 <li class="chapter" data-level="4.3.2" data-path="mult-reg.html"><a href="mult-reg.html#many-predictors-in-a-model"><i class="fa fa-check"></i><b>4.3.2</b> Many predictors in a model</a></li>
-<li class="chapter" data-level="4.3.3" data-path="mult-reg.html"><a href="mult-reg.html#interactive-r-tutorials-2"><i class="fa fa-check"></i><b>4.3.3</b> Interactive R tutorials</a></li>
-<li class="chapter" data-level="4.3.4" data-path="mult-reg.html"><a href="mult-reg.html#r-labs-3"><i class="fa fa-check"></i><b>4.3.4</b> R labs</a></li>
+<li class="chapter" data-level="4.3.3" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>4.3.3</b> Interactive R tutorials</a></li>
+<li class="chapter" data-level="4.3.4" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>4.3.4</b> R labs</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="mult-reg.html"><a href="mult-reg.html#chp4-review"><i class="fa fa-check"></i><b>4.4</b> Chapter 4 review</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="mult-reg.html"><a href="mult-reg.html#terms-3"><i class="fa fa-check"></i><b>4.4.1</b> Terms</a></li>
+<li class="chapter" data-level="4.4" data-path="mult-reg.html"><a href="mult-reg.html#chp4-review"><i class="fa fa-check"></i><b>4.4</b> Chapter 4 review</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>4.4.1</b> Terms</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="inference-cat.html"><a href="inference-cat.html"><i class="fa fa-check"></i><b>5</b> Inference for categorical data</a><ul>
-<li class="chapter" data-level="5.1" data-path="inference-cat.html"><a href="inference-cat.html#inf-foundations"><i class="fa fa-check"></i><b>5.1</b> Foundations of inference</a><ul>
+<li class="chapter" data-level="5" data-path="inference-cat.html"><a href="inference-cat.html"><i class="fa fa-check"></i><b>5</b> Inference for categorical data</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="inference-cat.html"><a href="inference-cat.html#inf-foundations"><i class="fa fa-check"></i><b>5.1</b> Foundations of inference</a>
+<ul>
 <li class="chapter" data-level="5.1.1" data-path="inference-cat.html"><a href="inference-cat.html#Martian"><i class="fa fa-check"></i><b>5.1.1</b> Motivating example: Martian alphabet</a></li>
 <li class="chapter" data-level="5.1.2" data-path="inference-cat.html"><a href="inference-cat.html#var-stat"><i class="fa fa-check"></i><b>5.1.2</b> Variability in a statistic</a></li>
 <li class="chapter" data-level="5.1.3" data-path="inference-cat.html"><a href="inference-cat.html#HypothesisTesting"><i class="fa fa-check"></i><b>5.1.3</b> Hypothesis tests</a></li>
 <li class="chapter" data-level="5.1.4" data-path="inference-cat.html"><a href="inference-cat.html#ConfidenceIntervals"><i class="fa fa-check"></i><b>5.1.4</b> Confidence intervals</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="inference-cat.html"><a href="inference-cat.html#normal"><i class="fa fa-check"></i><b>5.2</b> The normal distribution</a><ul>
+<li class="chapter" data-level="5.2" data-path="inference-cat.html"><a href="inference-cat.html#normal"><i class="fa fa-check"></i><b>5.2</b> The normal distribution</a>
+<ul>
 <li class="chapter" data-level="5.2.1" data-path="inference-cat.html"><a href="inference-cat.html#normal-distribution-model"><i class="fa fa-check"></i><b>5.2.1</b> Normal distribution model</a></li>
 <li class="chapter" data-level="5.2.2" data-path="inference-cat.html"><a href="inference-cat.html#standardizing-with-z-scores"><i class="fa fa-check"></i><b>5.2.2</b> Standardizing with Z-scores</a></li>
 <li class="chapter" data-level="5.2.3" data-path="inference-cat.html"><a href="inference-cat.html#normal-probability-calculations-in-r"><i class="fa fa-check"></i><b>5.2.3</b> Normal probability calculations in <code>R</code></a></li>
 <li class="chapter" data-level="5.2.4" data-path="inference-cat.html"><a href="inference-cat.html#normal-probability-examples"><i class="fa fa-check"></i><b>5.2.4</b> Normal probability examples</a></li>
 <li class="chapter" data-level="5.2.5" data-path="inference-cat.html"><a href="inference-cat.html#rule"><i class="fa fa-check"></i><b>5.2.5</b> 68-95-99.7 rule</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="inference-cat.html"><a href="inference-cat.html#single-prop"><i class="fa fa-check"></i><b>5.3</b> One proportion</a><ul>
+<li class="chapter" data-level="5.3" data-path="inference-cat.html"><a href="inference-cat.html#single-prop"><i class="fa fa-check"></i><b>5.3</b> One proportion</a>
+<ul>
 <li class="chapter" data-level="5.3.1" data-path="inference-cat.html"><a href="inference-cat.html#one-prop-null-boot"><i class="fa fa-check"></i><b>5.3.1</b> Simulation-based test for <span class="math inline">\(H_0: \pi = \pi_0\)</span></a></li>
 <li class="chapter" data-level="5.3.2" data-path="inference-cat.html"><a href="inference-cat.html#boot-ci-prop"><i class="fa fa-check"></i><b>5.3.2</b> Bootstrap confidence interval for <span class="math inline">\(\pi\)</span></a></li>
 <li class="chapter" data-level="5.3.3" data-path="inference-cat.html"><a href="inference-cat.html#theory-prop"><i class="fa fa-check"></i><b>5.3.3</b> Theory-based inferential methods for <span class="math inline">\(\pi\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="inference-cat.html"><a href="inference-cat.html#diff-two-prop"><i class="fa fa-check"></i><b>5.4</b> Difference of two proportions</a><ul>
+<li class="chapter" data-level="5.4" data-path="inference-cat.html"><a href="inference-cat.html#diff-two-prop"><i class="fa fa-check"></i><b>5.4</b> Difference of two proportions</a>
+<ul>
 <li class="chapter" data-level="5.4.1" data-path="inference-cat.html"><a href="inference-cat.html#two-prop-errors"><i class="fa fa-check"></i><b>5.4.1</b> Randomization test for <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span></a></li>
 <li class="chapter" data-level="5.4.2" data-path="inference-cat.html"><a href="inference-cat.html#two-sided-tests"><i class="fa fa-check"></i><b>5.4.2</b> Two-sided hypotheses</a></li>
 <li class="chapter" data-level="5.4.3" data-path="inference-cat.html"><a href="inference-cat.html#two-prop-boot-ci"><i class="fa fa-check"></i><b>5.4.3</b> Bootstrap confidence interval for <span class="math inline">\(\pi_1 - \pi_2\)</span></a></li>
 <li class="chapter" data-level="5.4.4" data-path="inference-cat.html"><a href="inference-cat.html#math-2prop"><i class="fa fa-check"></i><b>5.4.4</b> Theory-based inferential methods for <span class="math inline">\(\pi_1 - \pi_2\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="inference-cat.html"><a href="inference-cat.html#power"><i class="fa fa-check"></i><b>5.5</b> Errors, Power, and Practical Importance</a><ul>
+<li class="chapter" data-level="5.5" data-path="inference-cat.html"><a href="inference-cat.html#power"><i class="fa fa-check"></i><b>5.5</b> Errors, Power, and Practical Importance</a>
+<ul>
 <li class="chapter" data-level="5.5.1" data-path="inference-cat.html"><a href="inference-cat.html#types-of-errors"><i class="fa fa-check"></i><b>5.5.1</b> Decision errors</a></li>
 <li class="chapter" data-level="5.5.2" data-path="inference-cat.html"><a href="inference-cat.html#controlling-the-type-i-error-rate"><i class="fa fa-check"></i><b>5.5.2</b> Controlling the Type I error rate</a></li>
 <li class="chapter" data-level="5.5.3" data-path="inference-cat.html"><a href="inference-cat.html#power-1"><i class="fa fa-check"></i><b>5.5.3</b> Power</a></li>
 <li class="chapter" data-level="5.5.4" data-path="inference-cat.html"><a href="inference-cat.html#statistical-significance-versus-practical-importance"><i class="fa fa-check"></i><b>5.5.4</b> Statistical Significance versus Practical Importance</a></li>
 </ul></li>
 <li class="chapter" data-level="5.6" data-path="inference-cat.html"><a href="inference-cat.html#summary-of-z-procedures"><i class="fa fa-check"></i><b>5.6</b> Summary of Z-procedures</a></li>
-<li class="chapter" data-level="5.7" data-path="inference-cat.html"><a href="inference-cat.html#r-inference-for-categorical-data"><i class="fa fa-check"></i><b>5.7</b> <code>R</code>: Inference for categorical data</a><ul>
+<li class="chapter" data-level="5.7" data-path="inference-cat.html"><a href="inference-cat.html#r-inference-for-categorical-data"><i class="fa fa-check"></i><b>5.7</b> <code>R</code>: Inference for categorical data</a>
+<ul>
 <li class="chapter" data-level="5.7.1" data-path="inference-cat.html"><a href="inference-cat.html#inference-using-r-and-catstats"><i class="fa fa-check"></i><b>5.7.1</b> Inference using <code>R</code> and <code>catstats</code></a></li>
 <li class="chapter" data-level="5.7.2" data-path="inference-cat.html"><a href="inference-cat.html#catstats-function-summary"><i class="fa fa-check"></i><b>5.7.2</b> <code>catstats</code> function summary</a></li>
-<li class="chapter" data-level="5.7.3" data-path="inference-cat.html"><a href="inference-cat.html#interactive-r-tutorials-3"><i class="fa fa-check"></i><b>5.7.3</b> Interactive R tutorials</a></li>
-<li class="chapter" data-level="5.7.4" data-path="inference-cat.html"><a href="inference-cat.html#r-labs-4"><i class="fa fa-check"></i><b>5.7.4</b> R labs</a></li>
+<li class="chapter" data-level="5.7.3" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>5.7.3</b> Interactive R tutorials</a></li>
+<li class="chapter" data-level="5.7.4" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>5.7.4</b> R labs</a></li>
 </ul></li>
-<li class="chapter" data-level="5.8" data-path="inference-cat.html"><a href="inference-cat.html#chp5-review"><i class="fa fa-check"></i><b>5.8</b> Chapter 5 review</a><ul>
-<li class="chapter" data-level="5.8.1" data-path="inference-cat.html"><a href="inference-cat.html#terms-4"><i class="fa fa-check"></i><b>5.8.1</b> Terms</a></li>
+<li class="chapter" data-level="5.8" data-path="inference-cat.html"><a href="inference-cat.html#chp5-review"><i class="fa fa-check"></i><b>5.8</b> Chapter 5 review</a>
+<ul>
+<li class="chapter" data-level="5.8.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>5.8.1</b> Terms</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="inference-num.html"><a href="inference-num.html"><i class="fa fa-check"></i><b>6</b> Inference for quantitative data</a><ul>
-<li class="chapter" data-level="6.1" data-path="inference-num.html"><a href="inference-num.html#one-mean"><i class="fa fa-check"></i><b>6.1</b> One mean</a><ul>
+<li class="chapter" data-level="6" data-path="inference-num.html"><a href="inference-num.html"><i class="fa fa-check"></i><b>6</b> Inference for quantitative data</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="inference-num.html"><a href="inference-num.html#one-mean"><i class="fa fa-check"></i><b>6.1</b> One mean</a>
+<ul>
 <li class="chapter" data-level="6.1.1" data-path="inference-num.html"><a href="inference-num.html#bootstrap-confidence-interval-for-mu"><i class="fa fa-check"></i><b>6.1.1</b> Bootstrap confidence interval for <span class="math inline">\(\mu\)</span></a></li>
 <li class="chapter" data-level="6.1.2" data-path="inference-num.html"><a href="inference-num.html#one-mean-null-boot"><i class="fa fa-check"></i><b>6.1.2</b> Shifted bootstrap test for <span class="math inline">\(H_0: \mu = \mu_0\)</span></a></li>
 <li class="chapter" data-level="6.1.3" data-path="inference-num.html"><a href="inference-num.html#one-mean-math"><i class="fa fa-check"></i><b>6.1.3</b> Theory-based inferential methods for <span class="math inline">\(\mu\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="inference-num.html"><a href="inference-num.html#paired-data"><i class="fa fa-check"></i><b>6.2</b> Paired mean difference</a><ul>
+<li class="chapter" data-level="6.2" data-path="inference-num.html"><a href="inference-num.html#paired-data"><i class="fa fa-check"></i><b>6.2</b> Paired mean difference</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="inference-num.html"><a href="inference-num.html#shifted-bootstrap-test-for-h_0-mu_d-0"><i class="fa fa-check"></i><b>6.2.1</b> Shifted bootstrap test for <span class="math inline">\(H_0: \mu_d = 0\)</span></a></li>
 <li class="chapter" data-level="6.2.2" data-path="inference-num.html"><a href="inference-num.html#bootstrap-confidence-interval-for-mu_d"><i class="fa fa-check"></i><b>6.2.2</b> Bootstrap confidence interval for <span class="math inline">\(\mu_d\)</span></a></li>
 <li class="chapter" data-level="6.2.3" data-path="inference-num.html"><a href="inference-num.html#paired-mean-math"><i class="fa fa-check"></i><b>6.2.3</b> Theory-based inferential methods for <span class="math inline">\(\mu_d\)</span></a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="inference-num.html"><a href="inference-num.html#differenceOfTwoMeans"><i class="fa fa-check"></i><b>6.3</b> Difference of two means</a><ul>
+<li class="chapter" data-level="6.3" data-path="inference-num.html"><a href="inference-num.html#differenceOfTwoMeans"><i class="fa fa-check"></i><b>6.3</b> Difference of two means</a>
+<ul>
 <li class="chapter" data-level="6.3.1" data-path="inference-num.html"><a href="inference-num.html#rand2mean"><i class="fa fa-check"></i><b>6.3.1</b> Randomization test for <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span></a></li>
 <li class="chapter" data-level="6.3.2" data-path="inference-num.html"><a href="inference-num.html#boot-ci-diff-means"><i class="fa fa-check"></i><b>6.3.2</b> Bootstrap confidence interval for <span class="math inline">\(\mu_1 - \mu_2\)</span></a></li>
 <li class="chapter" data-level="6.3.3" data-path="inference-num.html"><a href="inference-num.html#math2samp"><i class="fa fa-check"></i><b>6.3.3</b> Theory-based inferential methods for <span class="math inline">\(\mu_1 - \mu_2\)</span></a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="inference-num.html"><a href="inference-num.html#summary-of-t-procedures"><i class="fa fa-check"></i><b>6.4</b> Summary of t-procedures</a></li>
-<li class="chapter" data-level="6.5" data-path="inference-num.html"><a href="inference-num.html#r-inference-for-quantitative-data"><i class="fa fa-check"></i><b>6.5</b> <code>R</code>: Inference for quantitative data</a><ul>
-<li class="chapter" data-level="6.5.1" data-path="inference-num.html"><a href="inference-num.html#interactive-r-tutorials-4"><i class="fa fa-check"></i><b>6.5.1</b> Interactive R tutorials</a></li>
-<li class="chapter" data-level="6.5.2" data-path="inference-num.html"><a href="inference-num.html#r-labs-5"><i class="fa fa-check"></i><b>6.5.2</b> R labs</a></li>
+<li class="chapter" data-level="6.5" data-path="inference-num.html"><a href="inference-num.html#r-inference-for-quantitative-data"><i class="fa fa-check"></i><b>6.5</b> <code>R</code>: Inference for quantitative data</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>6.5.1</b> Interactive R tutorials</a></li>
+<li class="chapter" data-level="6.5.2" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>6.5.2</b> R labs</a></li>
 </ul></li>
-<li class="chapter" data-level="6.6" data-path="inference-num.html"><a href="inference-num.html#chp6-review"><i class="fa fa-check"></i><b>6.6</b> Chapter 6 review</a><ul>
-<li class="chapter" data-level="6.6.1" data-path="inference-num.html"><a href="inference-num.html#terms-5"><i class="fa fa-check"></i><b>6.6.1</b> Terms</a></li>
+<li class="chapter" data-level="6.6" data-path="inference-num.html"><a href="inference-num.html#chp6-review"><i class="fa fa-check"></i><b>6.6</b> Chapter 6 review</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>6.6.1</b> Terms</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="inference-reg.html"><a href="inference-reg.html"><i class="fa fa-check"></i><b>7</b> Inference for regression</a><ul>
-<li class="chapter" data-level="7.1" data-path="inference-reg.html"><a href="inference-reg.html#inferenceForLinearRegression"><i class="fa fa-check"></i><b>7.1</b> Inference for linear regression</a><ul>
+<li class="chapter" data-level="7" data-path="inference-reg.html"><a href="inference-reg.html"><i class="fa fa-check"></i><b>7</b> Inference for regression</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="inference-reg.html"><a href="inference-reg.html#inferenceForLinearRegression"><i class="fa fa-check"></i><b>7.1</b> Inference for linear regression</a>
+<ul>
 <li class="chapter" data-level="7.1.1" data-path="inference-reg.html"><a href="inference-reg.html#randslope"><i class="fa fa-check"></i><b>7.1.1</b> Randomization test for <span class="math inline">\(H_0: \beta_1= 0\)</span></a></li>
 <li class="chapter" data-level="7.1.2" data-path="inference-reg.html"><a href="inference-reg.html#bootbeta1"><i class="fa fa-check"></i><b>7.1.2</b> Bootstrap confidence interval for <span class="math inline">\(\beta_1\)</span></a></li>
 <li class="chapter" data-level="7.1.3" data-path="inference-reg.html"><a href="inference-reg.html#mathslope"><i class="fa fa-check"></i><b>7.1.3</b> Theory-based inferential methods for <span class="math inline">\(\beta_1\)</span></a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="inference-reg.html"><a href="inference-reg.html#tech-cond-linmod"><i class="fa fa-check"></i><b>7.2</b> Checking model conditions</a></li>
-<li class="chapter" data-level="7.3" data-path="inference-reg.html"><a href="inference-reg.html#r-inference-for-regression"><i class="fa fa-check"></i><b>7.3</b> <code>R</code>: Inference for regression</a><ul>
-<li class="chapter" data-level="7.3.1" data-path="inference-reg.html"><a href="inference-reg.html#interactive-r-tutorials-5"><i class="fa fa-check"></i><b>7.3.1</b> Interactive <code>R</code> tutorials</a></li>
-<li class="chapter" data-level="7.3.2" data-path="inference-reg.html"><a href="inference-reg.html#r-labs-6"><i class="fa fa-check"></i><b>7.3.2</b> <code>R</code> labs</a></li>
+<li class="chapter" data-level="7.3" data-path="inference-reg.html"><a href="inference-reg.html#r-inference-for-regression"><i class="fa fa-check"></i><b>7.3</b> <code>R</code>: Inference for regression</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>7.3.1</b> Interactive <code>R</code> tutorials</a></li>
+<li class="chapter" data-level="7.3.2" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>7.3.2</b> <code>R</code> labs</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="inference-reg.html"><a href="inference-reg.html#chp7-review"><i class="fa fa-check"></i><b>7.4</b> Chapter 7 review</a><ul>
-<li class="chapter" data-level="7.4.1" data-path="inference-reg.html"><a href="inference-reg.html#terms-6"><i class="fa fa-check"></i><b>7.4.1</b> Terms</a></li>
+<li class="chapter" data-level="7.4" data-path="inference-reg.html"><a href="inference-reg.html#chp7-review"><i class="fa fa-check"></i><b>7.4</b> Chapter 7 review</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>7.4.1</b> Terms</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="case-studies.html"><a href="case-studies.html"><i class="fa fa-check"></i><b>8</b> Appendix: Case studies</a></li>
@@ -362,7 +406,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="activities" class="section level1">
+<div id="activities" class="section level1" number="9">
 <h1><span class="header-section-number">Chapter 9</span> Appendix: Activities</h1>
 <p>Each week, you will work through an in-class activity with your team mates and the guidance of your instructor. We recommend you purchase a printed copy of the activity coursepack from the MSU Bookstore and bring this to class each day. If you cannot purchase the printed coursepack, you may print and activities from this Appendix and bring them to class with you.</p>
 <table>
