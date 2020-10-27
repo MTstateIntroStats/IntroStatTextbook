@@ -3661,6 +3661,16 @@ You will often hear the following two $z$-procedures referred to as a **one samp
    <td style="text-align:left;"> 1. independence, 2. large samples (at least 10 successes and 10 failures) </td>
    <td style="text-align:left;"> 1. independence, 2. large samples (at least 10 successes and 10 failures in each sample) </td>
   </tr>
+  <tr>
+   <td style="text-align:left;"> Theory-based R functions </td>
+   <td style="text-align:left;"> prop.test </td>
+   <td style="text-align:left;"> prop.test </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Simulation-based R catstats functions </td>
+   <td style="text-align:left;"> one_proportion_test, one_proportion_bootstrap_CI </td>
+   <td style="text-align:left;"> two_proportion_test, two_proportion_bootstrap_CI </td>
+  </tr>
 </tbody>
 </table>
 
@@ -3869,7 +3879,7 @@ one_proportion_bootstrap_CI(
 This produces a plot of the bootstrapped proportions with the upper and lower bounds of the confidence interval marked, and gives the interval itself in the figure caption: in this case, we are 95% confident that the true proportion of payday loan borrowers who support the proposed regulation is between 0.479 and 0.546.
 
 
-#### Simulation-based inference for two proportions {-}
+#### Simulation-based inference for difference in two proportions {-}
 
 For inference about the difference between two proportions, we use the `two_proportion_test()` and `two_proportion_bootstrap_CI()` functions.  These functions assume you have a data frame with the group and outcome included as variables. Using the CPR and blood thinner study, a call to `two_proportion_test()` would look like this:
 
@@ -4115,18 +4125,18 @@ In the previous section, you were introduced to four new `R` functions in the `c
 
     * `probability_success` = null value
     * `sample_size` = sample size ($n$)
-    * `number_repetitions` = number of simulated samples to generate (should be at least 1000!)
-    * `as_extreme_as` = value of observed statistic
-    * `direction` = one of `"greater"`, `"less"`, or `"two-sided"` (quotations are important here!) to match the sign in $H_A$
     * `report_value` = one of `"number"` or `"proportion"` (quotations are important here!) to simulate either sample counts or sample proportions (needs to match the form of the observed statistic)  
+    * `direction` = one of `"greater"`, `"less"`, or `"two-sided"` (quotations are important here!) to match the sign in $H_A$
+    * `as_extreme_as` = value of observed statistic
+    * `number_repetitions` = number of simulated samples to generate (should be at least 1000!)
 <br>
     
 2. `one_proportion_bootstrap_CI`: Bootstrap confidence interval for one proportion.  
 
     * `sample_size` = sample size ($n$)
     * `number_successes` = number of successes (note that $\hat{p}$ = `number_successes`/`sample_size`)
-    * `number_repetitions` = number of simulated samples to generate (should be at least 1000!)
     * `confidence_level` = confidence level as a decimal (e.g., 0.90, 0.95, etc)
+    * `number_repetitions` = number of simulated samples to generate (should be at least 1000!)
 <br>
     
 3. `two_proportion_test`: Simulation-based hypothesis test for a single proportion.  
@@ -4135,9 +4145,9 @@ In the previous section, you were introduced to four new `R` functions in the `c
     * `data` = name of data set
     * `first_in_subtraction` = category of the explanatory variable which should be first in subtraction, written in quotations
     * `response_value_numerator` = category of the response variable which we are counting as a "success", written in quotations
-    * `number_repetitions` = number of simulated samples to generate (should be at least 1000!)
-    * `as_extreme_as` = value of observed difference in proportions
     * `direction` = one of `"greater"`, `"less"`, or `"two-sided"` (quotations are important here!) to match the sign in $H_A$
+    * `as_extreme_as` = value of observed difference in proportions
+    * `number_repetitions` = number of simulated samples to generate (should be at least 1000!)
 <br>
        
 4. `two_proportion_bootstrap_CI`: Bootstrap confidence interval for one proportion.  
@@ -4146,8 +4156,8 @@ In the previous section, you were introduced to four new `R` functions in the `c
     * `data` = name of data set
     * `first_in_subtraction` = category of the explanatory variable which should be first in subtraction, written in quotations
     * `response_value_numerator` = category of the response variable which we are counting as a "success", written in quotations
-    * `number_repetitions` = number of simulated samples to generate (should be at least 1000!)
     * `confidence_level` = confidence level as a decimal (e.g., 0.90, 0.95, etc)
+    * `number_repetitions` = number of simulated samples to generate (should be at least 1000!)
 
 <!-- to make pretty someday.... -->
 <!-- ```{r catstats-sum-prop} -->

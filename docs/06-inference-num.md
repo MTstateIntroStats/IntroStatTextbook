@@ -2256,6 +2256,18 @@ So far in this chapter, we have seen the $t$-distribution applied as the appropr
    <td style="text-align:left;"> 1. independence, 2. normality or large samples </td>
    <td style="text-align:left;"> 1. independence, 2. normality or large samples </td>
   </tr>
+  <tr>
+   <td style="text-align:left;"> Theory-based R functions </td>
+   <td style="text-align:left;"> t.test </td>
+   <td style="text-align:left;"> t.test </td>
+   <td style="text-align:left;"> t.test </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Simulation-based R catstats functions </td>
+   <td style="text-align:left;"> paired_test, paired_bootstrap_CI </td>
+   <td style="text-align:left;"> paired_test, paired_bootstrap_CI </td>
+   <td style="text-align:left;"> two_mean_test, two_mean_bootstrap_CI </td>
+  </tr>
 </tbody>
 </table>
 
@@ -2302,7 +2314,11 @@ So far in this chapter, we have seen the $t$-distribution applied as the appropr
 
 <!-- ``` -->
 
-**Using the $t$-distribution** First, we'll review how to obtain probabilities and critical values for the $t$-distribution using `R`.  If you have a $t$-statistic and degrees of freedom, you can find the probability under the $t$-distribution corresponding to a one- or two-tailed hypothesis test using `pt()` (short for "probability from $t$-distribution").
+### Inference using `R` and `catstats`
+
+#### Using the $t$-distribution {-} 
+
+First, we'll review how to obtain probabilities and critical values for the $t$-distribution using `R`.  If you have a $t$-statistic and degrees of freedom, you can find the probability under the $t$-distribution corresponding to a one- or two-tailed hypothesis test using `pt()` (short for "probability from $t$-distribution").
 
 The tricky part is making sure you get the correct area under the distribution.  For our example, assume we have 12 degrees of freedom.  If your $t$-statistic is positive, say $t = 1.33$:
 
@@ -2346,7 +2362,9 @@ To find $t^*_{df}$ using `R`, we use the `qt()` function (short for "quantile of
 ```
 
 
-**Simulation-based inference for paired mean difference** Simulation-based inference for quantitative data will use functions in the `catstats` package, as we did for categorical data.  
+#### Simulation-based inference for paired mean difference {-}
+
+Simulation-based inference for quantitative data will use functions in the `catstats` package, as we did for categorical data.  
 
 
 ```r
@@ -2421,7 +2439,9 @@ paired_bootstrap_CI(
 
 Here we again have a bootstrap distribution, but now it is the bootstrap distribution of the mean difference itself, rather than a bootstrapped null distribution for the mean difference.  We've requested a 99% confidence interval, so the relevant percentiles of the bootstrap distribution are highlighted, and the interval itself is given in the caption.  In this case, we are 99% confident that the true mean difference in tire tread is between 0 and 0.004 inches greater for Smooth Turn.
 
-**Theory-based inference for paired mean difference** To implement theory-based inference for a paired mean difference in `R`, we use the `t.test()` function.  As an example, we'll use the textbook cost data from Section \@ref(paired-data).  There are two ways to put in paired data for a t-test using `t.test()`.  First, we could have the prices of the two groups in two separate variables (in this case, `bookstore_new` and `amazon_new`): 
+#### Theory-based inference for paired mean difference {-} 
+
+To implement theory-based inference for a paired mean difference in `R`, we use the `t.test()` function.  As an example, we'll use the textbook cost data from Section \@ref(paired-data).  There are two ways to put in paired data for a t-test using `t.test()`.  First, we could have the prices of the two groups in two separate variables (in this case, `bookstore_new` and `amazon_new`): 
 
 
 ```r
@@ -2518,7 +2538,9 @@ t.test(x = ucla_textbooks_f18$price_diff,   #variable with differences
 
 Since we only input one variable, `t.test()` treats it as a one-sample t-test, but note that this works just fine: the t-statistic, df, p-value, confidence interval, and estimated mean are all the same as when we put in the two groups separately and indicated they were paired.
 
-**Simulation-based inference for the difference of two means** We can perform simulation-based inference for a difference in means using the `two_mean_test()` and `two_mean_bootstrap_CI()` functions in the `catstats` package.  As a working example, let's look at the embryonic stem cell data from Section \@ref(rand2mean).
+#### Simulation-based inference for the difference of two means {-} 
+
+We can perform simulation-based inference for a difference in means using the `two_mean_test()` and `two_mean_bootstrap_CI()` functions in the `catstats` package.  As a working example, let's look at the embryonic stem cell data from Section \@ref(rand2mean).
 
 ```r
 #load data from openintro package
@@ -2570,7 +2592,9 @@ two_mean_bootstrap_CI(
 
 The function produces the bootstrap distribution of the difference in means, with the upper and lower percentiles of the confidence range marked with vertical lines.  The figure caption gives the estimated confidence interval.  In this case, we are 90% confidence that ESCs increase the change in heart pumping capacity by between 4.72 and 11.09 percentage points on average. 
 
-**Theory-based inference for the difference of two means** To demonstrate theory-based methods in `R` for a difference in means, we will continue use the embryonic stem cell data.  Something to keep in mind as we work through the example: are theory-based methods appropriate here?  Are the results different than the results from the simulation-based methods?
+#### Theory-based inference for the difference of two means {-} 
+
+To demonstrate theory-based methods in `R` for a difference in means, we will continue use the embryonic stem cell data.  Something to keep in mind as we work through the example: are theory-based methods appropriate here?  Are the results different than the results from the simulation-based methods?
 
 To perform theory-based inference, we will again use the `t.test()` function in `R`.  Remember that we sometimes need to change the reference category of the explanatory variable to have the correct order of subtraction - in this case, the default is `ctrl - esc`, since `ctrl` is first alphabetically.  We can get our preferred order of subtracation of `esc-ctrl` this way:
 
@@ -2600,6 +2624,60 @@ t.test(stem_cell$change ~ stem_cell$trmt, #Always use response ~ explanatory
 The results here should look familiar from the paired t-test above. We have the t-statistic, degrees of freedom, p-values, confidence interval, and group-specific means.  The degrees of freedom may look a little strange - remember that the correct formula is very complex! - here we obtain 12.225 df.  If you were computing the results by hand using `pt()` and `qt()` as we saw earlier in this section, you would use 8 df, since $n_1 -1 = n_2 -1 = 8$.  In the end, we conclude that there is strong evidence against the null hypothesis of no difference in the mean change in heart pumping capacity (p = 0.002).
 
 Remember that if you have a one-sided alternative, you will need to run `t.test()` with a two-sided alternative to get the correct confidence interval!  Your reminder will be an `Inf` in the confidence interval results, which means `R` is computing a one-sided confidence interval.  Here, we have a two-sided alternative, so we can use the CI as reported: we are 90% confident that the true average improvement in heart pumping capacity due to ESCs is between 4.35 and 11.31 percentage points.
+
+
+### `catstats` function summary
+
+In the previous section, you were introduced to four new `R` 
+functions in the `catstats` library. Here we provide a summary of 
+these functions, plus a summary of the `paired_observed_plot` 
+function that can be used to plot paired data. You can also access 
+the help files for these functions using the `?` command. For 
+example, type `?paired_test` into your `R` console to bring up the 
+help file for the `paired_test` function.
+<br>
+    
+1. `paired_observed_plot`: Produce plot of observed matched pairs data. (Note: Input must be observed value for each member of the pair, not differences.)
+
+    * `data` = two-column data frame, with values for each group in the two columns
+
+2. `paired_test`: Simulation-based hypothesis test for a paired mean difference.  
+
+    * `data` = vector of observed differences; or two-column data frame, with values for each group in the two columns
+    * `which_first` = name of group which should be first in order of subtraction (if data is two-column data frame)  
+    * `shift` = amount to shift differences for bootstrapping of null distribution
+    * `direction` = one of `"greater"`, `"less"`, or `"two-sided"` (quotations are important here!) to match the sign in $H_A$
+    * `as_extreme_as` = value of observed statistic
+    * `number_repetitions` = number of simulated samples to generate (should be at least 1000!)
+<br>
+    
+3. `paired_bootstrap_CI`: Bootstrap confidence interval for a paired mean difference.  
+
+    * `data` = vector of observed differences; or two-column data frame, with values for each group in the two columns
+    * `which_first` = name of group which should be first in order of subtraction (if data is two-column data frame)  
+    * `confidence_level` = confidence level as a decimal (e.g., 0.90, 0.95, etc)
+    * `number_repetitions` = number of simulated samples to generate (should be at least 1000!)
+<br>
+    
+4. `two_mean_test`: Simulation-based hypothesis test for a difference in two means.  
+
+    * `formula` = `y ~ x` where `y` is the name of the quantitative response variable in the data set and `x` is the name of the binary explanatory variable
+    * `data` = name of data set
+    * `first_in_subtraction` = category of the explanatory variable which should be first in subtraction, written in quotations
+    * `direction` = one of `"greater"`, `"less"`, or `"two-sided"` (quotations are important here!) to match the sign in $H_A$
+    * `as_extreme_as` = value of observed difference in proportions
+    * `number_repetitions` = number of simulated samples to generate (should be at least 1000!)
+<br>
+       
+5. `two_mean_bootstrap_CI`: Bootstrap confidence interval for a difference in two means.  
+
+   * `formula` = `y ~ x` where `y` is the name of the quantitative response variable in the data set and `x` is the name of the binary explanatory variable
+    * `data` = name of data set
+    * `first_in_subtraction` = category of the explanatory variable which should be first in subtraction, written in quotations
+    * `confidence_level` = confidence level as a decimal (e.g., 0.90, 0.95, etc)
+    * `number_repetitions` = number of simulated samples to generate (should be at least 1000!)
+
+
 
 ### Interactive R tutorials
 

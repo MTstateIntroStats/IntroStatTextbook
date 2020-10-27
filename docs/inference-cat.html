@@ -359,8 +359,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.4" data-path="inference-num.html"><a href="inference-num.html#summary-of-t-procedures"><i class="fa fa-check"></i><b>6.4</b> Summary of t-procedures</a></li>
 <li class="chapter" data-level="6.5" data-path="inference-num.html"><a href="inference-num.html#r-inference-for-quantitative-data"><i class="fa fa-check"></i><b>6.5</b> <code>R</code>: Inference for quantitative data</a>
 <ul>
-<li class="chapter" data-level="6.5.1" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>6.5.1</b> Interactive R tutorials</a></li>
-<li class="chapter" data-level="6.5.2" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>6.5.2</b> R labs</a></li>
+<li class="chapter" data-level="6.5.1" data-path="inference-cat.html"><a href="inference-cat.html#inference-using-r-and-catstats"><i class="fa fa-check"></i><b>6.5.1</b> Inference using <code>R</code> and <code>catstats</code></a></li>
+<li class="chapter" data-level="6.5.2" data-path="inference-cat.html"><a href="inference-cat.html#catstats-function-summary"><i class="fa fa-check"></i><b>6.5.2</b> <code>catstats</code> function summary</a></li>
+<li class="chapter" data-level="6.5.3" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>6.5.3</b> Interactive R tutorials</a></li>
+<li class="chapter" data-level="6.5.4" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>6.5.4</b> R labs</a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="inference-num.html"><a href="inference-num.html#chp6-review"><i class="fa fa-check"></i><b>6.6</b> Chapter 6 review</a>
 <ul>
@@ -378,8 +380,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2" data-path="inference-reg.html"><a href="inference-reg.html#tech-cond-linmod"><i class="fa fa-check"></i><b>7.2</b> Checking model conditions</a></li>
 <li class="chapter" data-level="7.3" data-path="inference-reg.html"><a href="inference-reg.html#r-inference-for-regression"><i class="fa fa-check"></i><b>7.3</b> <code>R</code>: Inference for regression</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>7.3.1</b> Interactive <code>R</code> tutorials</a></li>
-<li class="chapter" data-level="7.3.2" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>7.3.2</b> <code>R</code> labs</a></li>
+<li class="chapter" data-level="7.3.1" data-path="inference-cat.html"><a href="inference-cat.html#inference-using-r-and-catstats"><i class="fa fa-check"></i><b>7.3.1</b> Inference using <code>R</code> and <code>catstats</code></a></li>
+<li class="chapter" data-level="7.3.2" data-path="inference-cat.html"><a href="inference-cat.html#catstats-function-summary"><i class="fa fa-check"></i><b>7.3.2</b> <code>catstats</code> function summary</a></li>
+<li class="chapter" data-level="7.3.3" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>7.3.3</b> Interactive <code>R</code> tutorials</a></li>
+<li class="chapter" data-level="7.3.4" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>7.3.4</b> <code>R</code> labs</a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="inference-reg.html"><a href="inference-reg.html#chp7-review"><i class="fa fa-check"></i><b>7.4</b> Chapter 7 review</a>
 <ul>
@@ -4074,6 +4078,28 @@ conditions
 <li>independence, 2. large samples (at least 10 successes and 10 failures in each sample)
 </td>
 </tr>
+<tr>
+<td style="text-align:left;">
+Theory-based R functions
+</td>
+<td style="text-align:left;">
+prop.test
+</td>
+<td style="text-align:left;">
+prop.test
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Simulation-based R catstats functions
+</td>
+<td style="text-align:left;">
+one_proportion_test, one_proportion_bootstrap_CI
+</td>
+<td style="text-align:left;">
+two_proportion_test, two_proportion_bootstrap_CI
+</td>
+</tr>
 </tbody>
 </table></li>
 </ol></li>
@@ -4200,8 +4226,8 @@ Note that the observed statistic (<code>as_extreme_as</code>) and the <code>repo
 <p><img src="05-inference-cat_files/figure-html/onePropBootCI-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>This produces a plot of the bootstrapped proportions with the upper and lower bounds of the confidence interval marked, and gives the interval itself in the figure caption: in this case, we are 95% confident that the true proportion of payday loan borrowers who support the proposed regulation is between 0.479 and 0.546.</p>
 </div>
-<div id="simulation-based-inference-for-two-proportions" class="section level4 unnumbered">
-<h4>Simulation-based inference for two proportions</h4>
+<div id="simulation-based-inference-for-difference-in-two-proportions" class="section level4 unnumbered">
+<h4>Simulation-based inference for difference in two proportions</h4>
 <p>For inference about the difference between two proportions, we use the <code>two_proportion_test()</code> and <code>two_proportion_bootstrap_CI()</code> functions. These functions assume you have a data frame with the group and outcome included as variables. Using the CPR and blood thinner study, a call to <code>two_proportion_test()</code> would look like this:</p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="inference-cat.html#cb41-1" aria-hidden="true"></a><span class="kw">two_proportion_test</span>(</span>
 <span id="cb41-2"><a href="inference-cat.html#cb41-2" aria-hidden="true"></a>  <span class="dt">formula =</span> survival <span class="op">~</span><span class="st"> </span>group,  <span class="co">#Always do response ~ explanatory</span></span>
@@ -4372,18 +4398,19 @@ Use the <code>R</code> output to find the value of the Z-statistic.<a href="#fn1
 <ul>
 <li><code>probability_success</code> = null value</li>
 <li><code>sample_size</code> = sample size (<span class="math inline">\(n\)</span>)</li>
-<li><code>number_repetitions</code> = number of simulated samples to generate (should be at least 1000!)</li>
-<li><code>as_extreme_as</code> = value of observed statistic</li>
-<li><code>direction</code> = one of <code>"greater"</code>, <code>"less"</code>, or <code>"two-sided"</code> (quotations are important here!) to match the sign in <span class="math inline">\(H_A\)</span></li>
 <li><code>report_value</code> = one of <code>"number"</code> or <code>"proportion"</code> (quotations are important here!) to simulate either sample counts or sample proportions (needs to match the form of the observed statistic)<br />
+</li>
+<li><code>direction</code> = one of <code>"greater"</code>, <code>"less"</code>, or <code>"two-sided"</code> (quotations are important here!) to match the sign in <span class="math inline">\(H_A\)</span></li>
+<li><code>as_extreme_as</code> = value of observed statistic</li>
+<li><code>number_repetitions</code> = number of simulated samples to generate (should be at least 1000!)
 <br></li>
 </ul></li>
 <li><p><code>one_proportion_bootstrap_CI</code>: Bootstrap confidence interval for one proportion.</p>
 <ul>
 <li><code>sample_size</code> = sample size (<span class="math inline">\(n\)</span>)</li>
 <li><code>number_successes</code> = number of successes (note that <span class="math inline">\(\hat{p}\)</span> = <code>number_successes</code>/<code>sample_size</code>)</li>
-<li><code>number_repetitions</code> = number of simulated samples to generate (should be at least 1000!)</li>
-<li><code>confidence_level</code> = confidence level as a decimal (e.g., 0.90, 0.95, etc)
+<li><code>confidence_level</code> = confidence level as a decimal (e.g., 0.90, 0.95, etc)</li>
+<li><code>number_repetitions</code> = number of simulated samples to generate (should be at least 1000!)
 <br></li>
 </ul></li>
 <li><p><code>two_proportion_test</code>: Simulation-based hypothesis test for a single proportion.</p>
@@ -4392,9 +4419,9 @@ Use the <code>R</code> output to find the value of the Z-statistic.<a href="#fn1
 <li><code>data</code> = name of data set</li>
 <li><code>first_in_subtraction</code> = category of the explanatory variable which should be first in subtraction, written in quotations</li>
 <li><code>response_value_numerator</code> = category of the response variable which we are counting as a “success”, written in quotations</li>
-<li><code>number_repetitions</code> = number of simulated samples to generate (should be at least 1000!)</li>
+<li><code>direction</code> = one of <code>"greater"</code>, <code>"less"</code>, or <code>"two-sided"</code> (quotations are important here!) to match the sign in <span class="math inline">\(H_A\)</span></li>
 <li><code>as_extreme_as</code> = value of observed difference in proportions</li>
-<li><code>direction</code> = one of <code>"greater"</code>, <code>"less"</code>, or <code>"two-sided"</code> (quotations are important here!) to match the sign in <span class="math inline">\(H_A\)</span>
+<li><code>number_repetitions</code> = number of simulated samples to generate (should be at least 1000!)
 <br></li>
 </ul></li>
 <li><p><code>two_proportion_bootstrap_CI</code>: Bootstrap confidence interval for one proportion.</p>
@@ -4403,8 +4430,8 @@ Use the <code>R</code> output to find the value of the Z-statistic.<a href="#fn1
 <li><code>data</code> = name of data set</li>
 <li><code>first_in_subtraction</code> = category of the explanatory variable which should be first in subtraction, written in quotations</li>
 <li><code>response_value_numerator</code> = category of the response variable which we are counting as a “success”, written in quotations</li>
-<li><code>number_repetitions</code> = number of simulated samples to generate (should be at least 1000!)</li>
 <li><code>confidence_level</code> = confidence level as a decimal (e.g., 0.90, 0.95, etc)</li>
+<li><code>number_repetitions</code> = number of simulated samples to generate (should be at least 1000!)</li>
 </ul></li>
 </ol>
 <!-- to make pretty someday.... -->

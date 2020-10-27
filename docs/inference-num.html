@@ -359,8 +359,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.4" data-path="inference-num.html"><a href="inference-num.html#summary-of-t-procedures"><i class="fa fa-check"></i><b>6.4</b> Summary of t-procedures</a></li>
 <li class="chapter" data-level="6.5" data-path="inference-num.html"><a href="inference-num.html#r-inference-for-quantitative-data"><i class="fa fa-check"></i><b>6.5</b> <code>R</code>: Inference for quantitative data</a>
 <ul>
-<li class="chapter" data-level="6.5.1" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>6.5.1</b> Interactive R tutorials</a></li>
-<li class="chapter" data-level="6.5.2" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>6.5.2</b> R labs</a></li>
+<li class="chapter" data-level="6.5.1" data-path="inference-cat.html"><a href="inference-cat.html#inference-using-r-and-catstats"><i class="fa fa-check"></i><b>6.5.1</b> Inference using <code>R</code> and <code>catstats</code></a></li>
+<li class="chapter" data-level="6.5.2" data-path="inference-cat.html"><a href="inference-cat.html#catstats-function-summary"><i class="fa fa-check"></i><b>6.5.2</b> <code>catstats</code> function summary</a></li>
+<li class="chapter" data-level="6.5.3" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>6.5.3</b> Interactive R tutorials</a></li>
+<li class="chapter" data-level="6.5.4" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>6.5.4</b> R labs</a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="inference-num.html"><a href="inference-num.html#chp6-review"><i class="fa fa-check"></i><b>6.6</b> Chapter 6 review</a>
 <ul>
@@ -378,8 +380,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2" data-path="inference-reg.html"><a href="inference-reg.html#tech-cond-linmod"><i class="fa fa-check"></i><b>7.2</b> Checking model conditions</a></li>
 <li class="chapter" data-level="7.3" data-path="inference-reg.html"><a href="inference-reg.html#r-inference-for-regression"><i class="fa fa-check"></i><b>7.3</b> <code>R</code>: Inference for regression</a>
 <ul>
-<li class="chapter" data-level="7.3.1" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>7.3.1</b> Interactive <code>R</code> tutorials</a></li>
-<li class="chapter" data-level="7.3.2" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>7.3.2</b> <code>R</code> labs</a></li>
+<li class="chapter" data-level="7.3.1" data-path="inference-cat.html"><a href="inference-cat.html#inference-using-r-and-catstats"><i class="fa fa-check"></i><b>7.3.1</b> Inference using <code>R</code> and <code>catstats</code></a></li>
+<li class="chapter" data-level="7.3.2" data-path="inference-cat.html"><a href="inference-cat.html#catstats-function-summary"><i class="fa fa-check"></i><b>7.3.2</b> <code>catstats</code> function summary</a></li>
+<li class="chapter" data-level="7.3.3" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>7.3.3</b> Interactive <code>R</code> tutorials</a></li>
+<li class="chapter" data-level="7.3.4" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>7.3.4</b> <code>R</code> labs</a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="inference-reg.html"><a href="inference-reg.html#chp7-review"><i class="fa fa-check"></i><b>7.4</b> Chapter 7 review</a>
 <ul>
@@ -2712,6 +2716,34 @@ conditions
 <li>independence, 2. normality or large samples
 </td>
 </tr>
+<tr>
+<td style="text-align:left;">
+Theory-based R functions
+</td>
+<td style="text-align:left;">
+t.test
+</td>
+<td style="text-align:left;">
+t.test
+</td>
+<td style="text-align:left;">
+t.test
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Simulation-based R catstats functions
+</td>
+<td style="text-align:left;">
+paired_test, paired_bootstrap_CI
+</td>
+<td style="text-align:left;">
+paired_test, paired_bootstrap_CI
+</td>
+<td style="text-align:left;">
+two_mean_test, two_mean_bootstrap_CI
+</td>
+</tr>
 </tbody>
 </table></li>
 </ol></li>
@@ -2761,7 +2793,11 @@ then we can apply the <span class="math inline">\(t\)</span>-distribution for a 
 <!-- - Simulation functions in catstats -->
 <!-- - `t.test` -->
 <!-- ``` -->
-<p><strong>Using the <span class="math inline">\(t\)</span>-distribution</strong> First, we’ll review how to obtain probabilities and critical values for the <span class="math inline">\(t\)</span>-distribution using <code>R</code>. If you have a <span class="math inline">\(t\)</span>-statistic and degrees of freedom, you can find the probability under the <span class="math inline">\(t\)</span>-distribution corresponding to a one- or two-tailed hypothesis test using <code>pt()</code> (short for “probability from <span class="math inline">\(t\)</span>-distribution”).</p>
+<div id="inference-using-r-and-catstats" class="section level3" number="6.5.1">
+<h3><span class="header-section-number">6.5.1</span> Inference using <code>R</code> and <code>catstats</code></h3>
+<div id="using-the-t-distribution" class="section level4 unnumbered">
+<h4>Using the <span class="math inline">\(t\)</span>-distribution</h4>
+<p>First, we’ll review how to obtain probabilities and critical values for the <span class="math inline">\(t\)</span>-distribution using <code>R</code>. If you have a <span class="math inline">\(t\)</span>-statistic and degrees of freedom, you can find the probability under the <span class="math inline">\(t\)</span>-distribution corresponding to a one- or two-tailed hypothesis test using <code>pt()</code> (short for “probability from <span class="math inline">\(t\)</span>-distribution”).</p>
 <p>The tricky part is making sure you get the correct area under the distribution. For our example, assume we have 12 degrees of freedom. If your <span class="math inline">\(t\)</span>-statistic is positive, say <span class="math inline">\(t = 1.33\)</span>:</p>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="inference-num.html#cb72-1" aria-hidden="true"></a><span class="co">#Area less than observed:</span></span>
 <span id="cb72-2"><a href="inference-num.html#cb72-2" aria-hidden="true"></a><span class="kw">pt</span>(<span class="fl">1.33</span>, <span class="dt">df =</span> <span class="dv">12</span>)</span>
@@ -2790,7 +2826,10 @@ then we can apply the <span class="math inline">\(t\)</span>-distribution for a 
 <p>To find <span class="math inline">\(t^*_{df}\)</span> using <code>R</code>, we use the <code>qt()</code> function (short for “quantile of <span class="math inline">\(t\)</span>-distribution”). You will need the degrees of freedom and the confidence level for your confidence interval. Suppose we have 27 degrees of freedom and want a 99% confidence interval. To get the middle 99% of the <span class="math inline">\(t\)</span>-distribution, we need to have the cutoff at 0.5% and 99.5%:</p>
 <pre><code>#&gt; [1] -2.77
 #&gt; [1] 2.77</code></pre>
-<p><strong>Simulation-based inference for paired mean difference</strong> Simulation-based inference for quantitative data will use functions in the <code>catstats</code> package, as we did for categorical data.</p>
+</div>
+<div id="simulation-based-inference-for-paired-mean-difference" class="section level4 unnumbered">
+<h4>Simulation-based inference for paired mean difference</h4>
+<p>Simulation-based inference for quantitative data will use functions in the <code>catstats</code> package, as we did for categorical data.</p>
 <div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="inference-num.html#cb75-1" aria-hidden="true"></a><span class="kw">library</span>(catstats)</span></code></pre></div>
 <p>The <code>catstats</code> functions for paired data assume that the values for the two groups are in separate columns in a data frame. We’ll work through an example using the tire wear data, which is currently stored in “long format”, with one variable for brand and another for tread depth. First, we’ll convert it to “wide format”, with a column for each brand.</p>
 <div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="inference-num.html#cb76-1" aria-hidden="true"></a>tiresWide &lt;-<span class="st"> </span>tires <span class="op">%&gt;%</span><span class="st"> </span></span>
@@ -2833,7 +2872,10 @@ then we can apply the <span class="math inline">\(t\)</span>-distribution for a 
 <span id="cb80-7"><a href="inference-num.html#cb80-7" aria-hidden="true"></a>)</span></code></pre></div>
 <p><img src="06-inference-num_files/figure-html/pairedBootstrapCI-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>Here we again have a bootstrap distribution, but now it is the bootstrap distribution of the mean difference itself, rather than a bootstrapped null distribution for the mean difference. We’ve requested a 99% confidence interval, so the relevant percentiles of the bootstrap distribution are highlighted, and the interval itself is given in the caption. In this case, we are 99% confident that the true mean difference in tire tread is between 0 and 0.004 inches greater for Smooth Turn.</p>
-<p><strong>Theory-based inference for paired mean difference</strong> To implement theory-based inference for a paired mean difference in <code>R</code>, we use the <code>t.test()</code> function. As an example, we’ll use the textbook cost data from Section <a href="inference-num.html#paired-data">6.2</a>. There are two ways to put in paired data for a t-test using <code>t.test()</code>. First, we could have the prices of the two groups in two separate variables (in this case, <code>bookstore_new</code> and <code>amazon_new</code>):</p>
+</div>
+<div id="theory-based-inference-for-paired-mean-difference" class="section level4 unnumbered">
+<h4>Theory-based inference for paired mean difference</h4>
+<p>To implement theory-based inference for a paired mean difference in <code>R</code>, we use the <code>t.test()</code> function. As an example, we’ll use the textbook cost data from Section <a href="inference-num.html#paired-data">6.2</a>. There are two ways to put in paired data for a t-test using <code>t.test()</code>. First, we could have the prices of the two groups in two separate variables (in this case, <code>bookstore_new</code> and <code>amazon_new</code>):</p>
 <div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="inference-num.html#cb81-1" aria-hidden="true"></a><span class="kw">t.test</span>(<span class="dt">x =</span> ucla_textbooks_f18<span class="op">$</span>bookstore_new, <span class="co">#Outcomes for one of each pair</span></span>
 <span id="cb81-2"><a href="inference-num.html#cb81-2" aria-hidden="true"></a>       <span class="dt">y =</span> ucla_textbooks_f18<span class="op">$</span>amazon_new,  <span class="co">#Outcomes for other of each pair</span></span>
 <span id="cb81-3"><a href="inference-num.html#cb81-3" aria-hidden="true"></a>       <span class="dt">paired =</span> <span class="ot">TRUE</span>,  <span class="co">#Tell it to do a paired t-test!!</span></span>
@@ -2907,7 +2949,10 @@ then we can apply the <span class="math inline">\(t\)</span>-distribution for a 
 <span id="cb85-16"><a href="inference-num.html#cb85-16" aria-hidden="true"></a><span class="co">#&gt; mean of x </span></span>
 <span id="cb85-17"><a href="inference-num.html#cb85-17" aria-hidden="true"></a><span class="co">#&gt;      3.58</span></span></code></pre></div>
 <p>Since we only input one variable, <code>t.test()</code> treats it as a one-sample t-test, but note that this works just fine: the t-statistic, df, p-value, confidence interval, and estimated mean are all the same as when we put in the two groups separately and indicated they were paired.</p>
-<p><strong>Simulation-based inference for the difference of two means</strong> We can perform simulation-based inference for a difference in means using the <code>two_mean_test()</code> and <code>two_mean_bootstrap_CI()</code> functions in the <code>catstats</code> package. As a working example, let’s look at the embryonic stem cell data from Section <a href="inference-num.html#rand2mean">6.3.1</a>.</p>
+</div>
+<div id="simulation-based-inference-for-the-difference-of-two-means" class="section level4 unnumbered">
+<h4>Simulation-based inference for the difference of two means</h4>
+<p>We can perform simulation-based inference for a difference in means using the <code>two_mean_test()</code> and <code>two_mean_bootstrap_CI()</code> functions in the <code>catstats</code> package. As a working example, let’s look at the embryonic stem cell data from Section <a href="inference-num.html#rand2mean">6.3.1</a>.</p>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="inference-num.html#cb86-1" aria-hidden="true"></a><span class="co">#load data from openintro package</span></span>
 <span id="cb86-2"><a href="inference-num.html#cb86-2" aria-hidden="true"></a><span class="kw">data</span> (stem_cell)</span>
 <span id="cb86-3"><a href="inference-num.html#cb86-3" aria-hidden="true"></a></span>
@@ -2945,7 +2990,10 @@ then we can apply the <span class="math inline">\(t\)</span>-distribution for a 
 <span id="cb88-8"><a href="inference-num.html#cb88-8" aria-hidden="true"></a>)</span></code></pre></div>
 <p><img src="06-inference-num_files/figure-html/unnamed-chunk-53-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>The function produces the bootstrap distribution of the difference in means, with the upper and lower percentiles of the confidence range marked with vertical lines. The figure caption gives the estimated confidence interval. In this case, we are 90% confidence that ESCs increase the change in heart pumping capacity by between 4.72 and 11.09 percentage points on average.</p>
-<p><strong>Theory-based inference for the difference of two means</strong> To demonstrate theory-based methods in <code>R</code> for a difference in means, we will continue use the embryonic stem cell data. Something to keep in mind as we work through the example: are theory-based methods appropriate here? Are the results different than the results from the simulation-based methods?</p>
+</div>
+<div id="theory-based-inference-for-the-difference-of-two-means" class="section level4 unnumbered">
+<h4>Theory-based inference for the difference of two means</h4>
+<p>To demonstrate theory-based methods in <code>R</code> for a difference in means, we will continue use the embryonic stem cell data. Something to keep in mind as we work through the example: are theory-based methods appropriate here? Are the results different than the results from the simulation-based methods?</p>
 <p>To perform theory-based inference, we will again use the <code>t.test()</code> function in <code>R</code>. Remember that we sometimes need to change the reference category of the explanatory variable to have the correct order of subtraction - in this case, the default is <code>ctrl - esc</code>, since <code>ctrl</code> is first alphabetically. We can get our preferred order of subtracation of <code>esc-ctrl</code> this way:</p>
 <div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="inference-num.html#cb89-1" aria-hidden="true"></a>stem_cell<span class="op">$</span>trmt &lt;-<span class="st"> </span><span class="kw">relevel</span>(stem_cell<span class="op">$</span>trmt, <span class="dt">ref =</span> <span class="st">&quot;esc&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="inference-num.html#cb90-1" aria-hidden="true"></a><span class="kw">t.test</span>(stem_cell<span class="op">$</span>change <span class="op">~</span><span class="st"> </span>stem_cell<span class="op">$</span>trmt, <span class="co">#Always use response ~ explanatory</span></span>
@@ -2964,8 +3012,65 @@ then we can apply the <span class="math inline">\(t\)</span>-distribution for a 
 <span id="cb90-14"><a href="inference-num.html#cb90-14" aria-hidden="true"></a><span class="co">#&gt;               3.50              -4.33</span></span></code></pre></div>
 <p>The results here should look familiar from the paired t-test above. We have the t-statistic, degrees of freedom, p-values, confidence interval, and group-specific means. The degrees of freedom may look a little strange - remember that the correct formula is very complex! - here we obtain 12.225 df. If you were computing the results by hand using <code>pt()</code> and <code>qt()</code> as we saw earlier in this section, you would use 8 df, since <span class="math inline">\(n_1 -1 = n_2 -1 = 8\)</span>. In the end, we conclude that there is strong evidence against the null hypothesis of no difference in the mean change in heart pumping capacity (p = 0.002).</p>
 <p>Remember that if you have a one-sided alternative, you will need to run <code>t.test()</code> with a two-sided alternative to get the correct confidence interval! Your reminder will be an <code>Inf</code> in the confidence interval results, which means <code>R</code> is computing a one-sided confidence interval. Here, we have a two-sided alternative, so we can use the CI as reported: we are 90% confident that the true average improvement in heart pumping capacity due to ESCs is between 4.35 and 11.31 percentage points.</p>
-<div id="interactive-r-tutorials" class="section level3" number="6.5.1">
-<h3><span class="header-section-number">6.5.1</span> Interactive R tutorials</h3>
+</div>
+</div>
+<div id="catstats-function-summary" class="section level3" number="6.5.2">
+<h3><span class="header-section-number">6.5.2</span> <code>catstats</code> function summary</h3>
+<p>In the previous section, you were introduced to four new <code>R</code>
+functions in the <code>catstats</code> library. Here we provide a summary of
+these functions, plus a summary of the <code>paired_observed_plot</code>
+function that can be used to plot paired data. You can also access
+the help files for these functions using the <code>?</code> command. For
+example, type <code>?paired_test</code> into your <code>R</code> console to bring up the
+help file for the <code>paired_test</code> function.
+<br></p>
+<ol style="list-style-type: decimal">
+<li><p><code>paired_observed_plot</code>: Produce plot of observed matched pairs data. (Note: Input must be observed value for each member of the pair, not differences.)</p>
+<ul>
+<li><code>data</code> = two-column data frame, with values for each group in the two columns</li>
+</ul></li>
+<li><p><code>paired_test</code>: Simulation-based hypothesis test for a paired mean difference.</p>
+<ul>
+<li><code>data</code> = vector of observed differences; or two-column data frame, with values for each group in the two columns</li>
+<li><code>which_first</code> = name of group which should be first in order of subtraction (if data is two-column data frame)<br />
+</li>
+<li><code>shift</code> = amount to shift differences for bootstrapping of null distribution</li>
+<li><code>direction</code> = one of <code>"greater"</code>, <code>"less"</code>, or <code>"two-sided"</code> (quotations are important here!) to match the sign in <span class="math inline">\(H_A\)</span></li>
+<li><code>as_extreme_as</code> = value of observed statistic</li>
+<li><code>number_repetitions</code> = number of simulated samples to generate (should be at least 1000!)
+<br></li>
+</ul></li>
+<li><p><code>paired_bootstrap_CI</code>: Bootstrap confidence interval for a paired mean difference.</p>
+<ul>
+<li><code>data</code> = vector of observed differences; or two-column data frame, with values for each group in the two columns</li>
+<li><code>which_first</code> = name of group which should be first in order of subtraction (if data is two-column data frame)<br />
+</li>
+<li><code>confidence_level</code> = confidence level as a decimal (e.g., 0.90, 0.95, etc)</li>
+<li><code>number_repetitions</code> = number of simulated samples to generate (should be at least 1000!)
+<br></li>
+</ul></li>
+<li><p><code>two_mean_test</code>: Simulation-based hypothesis test for a difference in two means.</p>
+<ul>
+<li><code>formula</code> = <code>y ~ x</code> where <code>y</code> is the name of the quantitative response variable in the data set and <code>x</code> is the name of the binary explanatory variable</li>
+<li><code>data</code> = name of data set</li>
+<li><code>first_in_subtraction</code> = category of the explanatory variable which should be first in subtraction, written in quotations</li>
+<li><code>direction</code> = one of <code>"greater"</code>, <code>"less"</code>, or <code>"two-sided"</code> (quotations are important here!) to match the sign in <span class="math inline">\(H_A\)</span></li>
+<li><code>as_extreme_as</code> = value of observed difference in proportions</li>
+<li><code>number_repetitions</code> = number of simulated samples to generate (should be at least 1000!)
+<br></li>
+</ul></li>
+<li><p><code>two_mean_bootstrap_CI</code>: Bootstrap confidence interval for a difference in two means.</p>
+<ul>
+<li><code>formula</code> = <code>y ~ x</code> where <code>y</code> is the name of the quantitative response variable in the data set and <code>x</code> is the name of the binary explanatory variable</li>
+<li><code>data</code> = name of data set</li>
+<li><code>first_in_subtraction</code> = category of the explanatory variable which should be first in subtraction, written in quotations</li>
+<li><code>confidence_level</code> = confidence level as a decimal (e.g., 0.90, 0.95, etc)</li>
+<li><code>number_repetitions</code> = number of simulated samples to generate (should be at least 1000!)</li>
+</ul></li>
+</ol>
+</div>
+<div id="interactive-r-tutorials" class="section level3" number="6.5.3">
+<h3><span class="header-section-number">6.5.3</span> Interactive R tutorials</h3>
 <p>Navigate the concepts you’ve learned in this chapter in R using the following self-paced tutorials.
 All you need is your browser to get started!</p>
 <div class="alltutorials">
@@ -2985,8 +3090,8 @@ All you need is your browser to get started!</p>
 </div>
 <p>You can also access the full list of tutorials supporting this book <a href="https://openintrostat.github.io/ims-tutorials/">here</a>.</p>
 </div>
-<div id="r-labs" class="section level3" number="6.5.2">
-<h3><span class="header-section-number">6.5.2</span> R labs</h3>
+<div id="r-labs" class="section level3" number="6.5.4">
+<h3><span class="header-section-number">6.5.4</span> R labs</h3>
 <p>Further apply the concepts you’ve learned in this chapter in R with computational labs that walk you through a data analysis case study.</p>
 <div class="singlelab">
 <p><a href="http://openintrostat.github.io/oilabs-tidy/07_inf_for_numerical_data/inf_for_numerical_data.html">Inference for numerical responses - Youth Risk Behavior Surveillance System</a></p>
