@@ -1825,7 +1825,7 @@ The $t$-distribution can be used for inference when working
 
 The standard error may be computed as
   \[
-SE(\bar{x}_1 - \bar{x}_2) = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_1}},
+SE(\bar{x}_1 - \bar{x}_2) = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}},
 \]
 
 The official formula for the degrees of freedom is quite
