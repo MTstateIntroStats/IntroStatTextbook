@@ -436,6 +436,8 @@ boot-ci-diff-means
 math2samp
 summary-of-t-procedures
 r-inference-for-quantitative-data
+inference-using-r-and-catstats-1
+catstats-function-summary-1
 interactive-r-tutorials-4
 r-labs-5
 chp6-review
@@ -447,6 +449,8 @@ bootbeta1
 mathslope
 tech-cond-linmod
 r-inference-for-regression
+inference-using-r-and-catstats-2
+catstats-function-summary-2
 interactive-r-tutorials-5
 r-labs-6
 chp7-review

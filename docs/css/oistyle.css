@@ -50,7 +50,6 @@
 
 
 /* COPY AND PASTE BELOW FROM IMS REPO
-
 /* OpenIntro custom environments */
 /* Based on custom block code above, and made to look similar to OS4 styling */
 
@@ -88,9 +87,9 @@
   color: #569BBD;
 }
 
-/* example */
+/* workedexample */
 
-.example {
+.workedexample{
   padding: 1em 1em 1em 4em;
   margin-top: 30px;
   margin-bottom: 30px;
@@ -101,7 +100,7 @@
   background-position: 0.5em 1em;
 }
 
-.example:before {
+.workedexample:before {
   content: "Example:";
   clear: right;
   display: block;
@@ -244,8 +243,25 @@
   list-style-type: lower-alpha !important;
 }
 
+.sectionexercise ol ol ol {
+  list-style-type: lower-roman !important;
+}
+
 .sectionexercise strong {
   color: #569BBD; /* openintro::COL[1,1] */
+}
+
+/* Counting exercise solutions - odd numbers only */
+
+.section-exercise-solution ol {
+  counter-reset: odd-numbers -1;
+  list-style-type: none !important;
+}
+.section-exercise-solution li {
+  counter-increment: odd-numbers 2;
+}
+.section-exercise-solution li:before {
+  content: counter(odd-numbers) ".";
 }
 
 /* Other formatting */
@@ -333,3 +349,14 @@ h3 {
   width: 49%;
   text-align: left;
 }
+
+/* overwrite bs4_book style */
+
+img.cover {
+  box-shadow: none;
+}
+
+.inline-figure {
+  border: none;
+}
+

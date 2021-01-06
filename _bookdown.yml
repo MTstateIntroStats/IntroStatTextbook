@@ -6,9 +6,6 @@ delete_merged_file: true
 new_session: yes
 rmd_files: [
   "index.Rmd",
-  "00a-authors.Rmd",
-  "00b-copyright.Rmd",
-  #"00c-toc.Rmd",
   "01-intro-to-data.Rmd",
   "02-eda.Rmd",
   "03-cor-reg.Rmd",

@@ -1,6 +1,6 @@
 --- 
 title: "Montana State Introductory Statistics with R"
-subtitle: "Fall 2020"
+subtitle: "Spring 2021"
 author: "Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager"
 site: bookdown::bookdown_site
 documentclass: book
@@ -30,42 +30,56 @@ on the [course webpage](https://math.montana.edu/courses/s216/index.html). Detai
 1. **Introduction to data.** Data structures, variables, and basic data collection techniques.
 2. **Exploratory data analysis.** Data visualization and summarization for one and two variables, with a taste of probability.
 3. **Correlation and regression.** Visualizing, describing, and quantifying relationships between two quantitative variables.
-4. **Multiple regression.** Descriptive summaries for quantifying the relationship between many variables.
-5. **Foundations for inference.** Case studies are used to introduce the ideas of statistical inference with randomization and simulations. 
-6. **Inference for categorical data.** Inference for one or two proportions using simulation and randomization techniques as well as the normal distribution.
-7. **Inference for numerical data.** Inference for one or two means using simulation and randomization techniques as well as the $t$-distribution.
-8. **Inference for regression.** Inference for a regression slope or correlation using simulation and randomization techniques as well as the $t$-distribution.
-9. **Case studies.** A series of case studies assigned weekly in this course.
+4. **Multivariable models.** Descriptive summaries for quantifying the relationship between many variables.
+5. **Inference for categorical data.** Inference for one or two proportions using simulation and randomization techniques as well as the normal distribution.
+6. **Inference for quantitative data.** Inference for one or two means using simulation and randomization techniques as well as the $t$-distribution.
+7. **Inference for regression.** Inference for a regression slope or correlation using simulation and randomization techniques as well as the $t$-distribution.
+8. **Case studies.** A series of case studies assigned weekly in this course.
+9. **Activities.** *Stat 216 Coursepack* reading guides and in-class activities.
 
 
 ## Statistical computing {.unnumbered #stat-computing}
 
-STAT 216 and this textbook use [`R`](https://www.r-project.org/) and [RStudio](https://rstudio.com/products/rstudio/) for statistical computing. In particular, we use
+STAT 216 and this textbook use [`R`](https://www.r-project.org/) and [RStudio](https://rstudio.com/products/rstudio/) for statistical computing. `R` and RStudio are free and open source. `R` is the programming language that runs computations, while RStudio is the interface in which you engage with `R` (called an "integrated development environment", or IDE).
+
+Since `R` is open source, users can contribute "packages" --- collections of `R` functions. There are over 16,000 available packages! In particular, we use
 the [`tidyverse`](https://www.tidyverse.org/) collection of packages designed for doing data science.
 STAT 216 also has its own `R` package called [`catstats`](https://github.com/greenwood-stat/catstats), which contains all of the functions
 for running simulation-based inference in this course.
 
-### Getting RStudio {-}
+### Accessing RStudio {-}
 
-Students have four options for accessing this free software:
+MSU hosts its own web based version of RStudio, which can be found at: [rstudio.math.montana.edu](https://rstudio.math.montana.edu/). 
 
-1. Download to your own laptop. (Note R and RStudio will not run on iPad, notebooks, or Chromebooks. If you have one of these devices, see the cloud-based option below.)
+Your username is your NetID, and your password is the password associated with your NetID.
 
-* Download and install [R](https://cloud.r-project.org/).
-* Download and install [RStudio Desktop](https://rstudio.com/products/rstudio/).
-* Install the `catstats` package.
+All registered Stat 216 students should have access to this server. If you are enrolled in the course, but receive the error "Incorrect or invalide username/password" when attempting to log in, please email Stat 216 Faculty Course Supervisor [Dr.\ Stacey Hancock](mailto:stacey.hancock@montana.edu).
 
-2. Use RStudio through the [RStudio Cloud](https://login.rstudio.cloud/register?redirect=https%3A%2F%2Fclient.login.rstudio.cloud%2Foauth%2Flogin%3Fshow_auth%3D0%26show_login%3D1%26show_setup%3D1). This resource allows you to use RStudio through a web browser. It is free for use, but it does limit you to a certain number of project hours per month.
+*Note that any work you save on the server will be deleted, and your access will be removed after the semester ends. Thus, if you would like to save any files, export them to your own computer prior to the end of the semester.*
 
-3. Use RStudio through an MSU [virtual machine](https://studentlabs.montana.edu/remotelabs/howto.html).
+### Other options for accessing RStudio {-}
 
-4. Use RStudio in an MSU on-campus computer lab. 
+We recommend using RStudio through the MSU RStudio server, but there are other options for accessing this free software:
+
+1. Use RStudio through an MSU [virtual machine](https://studentlabs.montana.edu/remotelabs/howto.html).
+
+2. Use RStudio in an MSU on-campus computer lab. 
+
+3. Use RStudio through the [RStudio Cloud](https://login.rstudio.cloud/register?redirect=https%3A%2F%2Fclient.login.rstudio.cloud%2Foauth%2Flogin%3Fshow_auth%3D0%26show_login%3D1%26show_setup%3D1). This resource allows you to use RStudio through a web browser. It is free for use, but it does limit you to a certain number of project hours per month.
+
+4. Download `R` and RStudio to your own laptop. (Note: `R` and RStudio will not run on iPad, notebooks, or Chromebooks.)
+
+a. Download and install [R](https://cloud.r-project.org/).
+b. Download and install [RStudio Desktop](https://rstudio.com/products/rstudio/).
+c. Install the `catstats` package.
 
 View this [tutorial video on installing R and RStudio](https://greenwood-stat.shinyapps.io/InstallDemo/) if you would
 like additional installation instructions.
 
 
 ### Installing `catstats` {-}
+
+**You only need to read this section if you are running RStudio on your own laptop**, in which case you need to install the `R` packages used in this course.
 
 To use the `R` functions in the `catstats` package, you need to first install the `remotes` package,
 and then install `catstats` from Github.
@@ -90,6 +104,50 @@ library(catstats)
 Note that the `catstats` package will install all of the packages needed to run code in this textbook,
 so you will not need to load other packages (e.g., `openintro`) once you load `catstats` into your `R` session.
 
+## About the Authors {-}
+
+### Montana State University Authors {-}
+
+[Nicole Carnegie](https://math.montana.edu/directory/faculty/2040044/nicole-carnegie){target="_blank"} <br>
+Associate Professor of Statistics <br>
+nicole.carnegie@montana.edu <br>
+
+<br>
+
+[Stacey Hancock](http://www.math.montana.edu/shancock/){target="_blank"}  <br>
+Assistant Professor of Statistics <br>
+stacey.hancock@montana.edu <br>
+
+<br>
+
+Elijah Meyer <br>
+PhD Statistics Graduate Student <br>
+elijah.meyer@montana.edu <br>
+
+<br>
+[Jade Schmidt](http://www.math.montana.edu/directory/faculty/1524571/jade-schmidt){target="_blank"} <br>
+Student Success Coordinator for Statistics <br>
+jade.schmidt2@montana.edu <br>
+
+<br>
+[Melinda Yager](http://www.math.montana.edu/directory/faculty/1582830/melinda-yager){target="_blank"} <br>
+Assistant Coordinator for Statistics <br>
+melinda.yager@montana.edu <br>
+
+<br>
+
+### OpenIntro Authors {-}
+
+[Mine Çetinkaya-Rundel](http://mine-cr.com/) <br>
+mine@openintro.org <br>
+University of Edinburgh, Duke University, RStudio <br>
+
+<br>
+
+[Johanna Hardin](https://research.pomona.edu/johardin/) <br>
+jo@openintro.org <br>
+Pomona College <br>
+
 ## Acknowledgements {-}
 
 This resource is largely a derivative of the 1st and 2nd
@@ -99,3 +157,17 @@ without which this
 effort would not have been possible. The authors would
 also like to thank the Montana State University Library,
 who generously funded this project.
+
+## Licensing {-}
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />
+
+This resource is released under a [Creative Commons BY-NC-SA 4.0 license](https://creativecommons.org/licenses/by-nc-sa/4.0/) unless otherwise noted. 
+
+Visit the following link for guidelines when the textbook's source files are modified and/or shared, and for additional copyright information:
+
+[http://www.openintro.org/perm/stat2nd_v1.txt](http://www.openintro.org/perm/stat2nd_v1.txt)
+ 
+To cite this resource please use:
+ 
+Carnegie, N., Hancock, S., Meyer, E., Schmidt, J., and Yager, M. (2021). *Montana State Introductory Statistics with R*. Montana State University. [https://mtstateintrostats.github.io/IntroStatTextbook/](https://mtstateintrostats.github.io/IntroStatTextbook/). Adapted from Çetinkaya-Rundel, M. and Hardin, J. (2021). _Introduction to Modern Statistics_. OpenIntro. [https://openintro-ims.netlify.app/](https://openintro-ims.netlify.app/).

@@ -1,14 +1,19 @@
 # Copyright
 
-This textbook is available under a
-Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported license (CC BY-NC-SA):
+[*Montana State Introductory Statistics with R*](https://mtstateintrostats.github.io/IntroStatTextbook/) is released
+under a [Creative Commons BY-NC-SA 4.0 license](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+unless otherwise noted. 
 
-http://creativecommons.org/licenses/by-nc-sa/3.0/
+This textbook is adapted from Çetinkaya-Rundel, M. and Hardin, J. (2021).
+_Introduction to Modern Statistics_. OpenIntro.
+[https://openintro-ims.netlify.app/](https://openintro-ims.netlify.app/).
 
-This textbook was derived from the 1st and 2nd editions
-of the OpenIntro [_Introductory Statistics with Randomization
-and Simulation_](https://www.openintro.org/book/isrs/) textbook.
-Visit the following link for further copyright information:
+Visit the following link for guidelines when the textbook's source files are modified and/or shared, and for additional copyright information:
 
-http://www.openintro.org/perm/stat2nd_v1.txt
+[http://www.openintro.org/perm/stat2nd_v1.txt](http://www.openintro.org/perm/stat2nd_v1.txt)
+
+To cite this resource please use:
+ 
+Carnegie, N., Hancock, S., Meyer, E., Schmidt, J., and Yager, M. (2021). *Montana State Introductory Statistics with R*. Montana State University. [https://mtstateintrostats.github.io/IntroStatTextbook/](https://mtstateintrostats.github.io/IntroStatTextbook/). 
+Adapted from Çetinkaya-Rundel, M. and Hardin, J. (2021). _Introduction to Modern Statistics_. OpenIntro. [https://openintro-ims.netlify.app/](https://openintro-ims.netlify.app/).
 
