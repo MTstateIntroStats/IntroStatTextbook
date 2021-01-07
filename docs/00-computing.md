@@ -17,9 +17,10 @@ All registered students should have access to this server. If you are enrolled i
 
 After logging in, you will see the RStudio working environment, displayed in Figure \@ref(fig:rstudio-env) below.
 
-```{r rstudio-env, fig.cap = "RStudio working environment.", out.width="100%"}
-include_graphics("00/images/RStudio-env.png")
-```
+<div class="figure" style="text-align: center">
+<img src="00/images/RStudio-env.png" alt="RStudio working environment." width="100%" />
+<p class="caption">(\#fig:rstudio-env)RStudio working environment.</p>
+</div>
 
 ## Projects
 
@@ -27,38 +28,28 @@ The RStudio workflow operates best by the use of "Projects". Think of a "Project
 
 1. In the top right corner, you will see a dropdown menu next to "Project" that currently says "(None)". Click on this menu and choose "New Project". 
 
-```{r, out.width="100%"}
-include_graphics("00/images/open-project2.png")
-```
+<img src="00/images/open-project2.png" width="100%" style="display: block; margin: auto;" />
 
 OR Click on the "File" menu in the top left and select "New Project".
     
-```{r, out.width="100%"}
-include_graphics("00/images/open-project.png")
-```
+<img src="00/images/open-project.png" width="100%" style="display: block; margin: auto;" />
 
 
 2. A "New Project Wizard" window should pop up. Click "New Directory".
-```{r, out.width="70%"}
-include_graphics("00/images/new-project-step1.png")
-```
+<img src="00/images/new-project-step1.png" width="70%" style="display: block; margin: auto;" />
 
 
 
 |          Then click "New Project".
 
-```{r, out.width="70%"}
-include_graphics("00/images/new-project-step2.png")
-```
+<img src="00/images/new-project-step2.png" width="70%" style="display: block; margin: auto;" />
 
 
 3. Give your project directory a name (e.g., Assignment1). _Do not use spaces or other characters in the name._ 
     - Click "Browse" and choose a location where you would like to save your project. If you click on the "Home" button, it will leave the location as "~", as shown below. Alternatively, you can create a new folder to store your project. Note that this location is on your server account, not on your computer. 
     - Leave all other boxes unchecked, and click "Create Project". 
 
-```{r, out.width="70%"}
-include_graphics("00/images/new-project-step3.png")
-```
+<img src="00/images/new-project-step3.png" width="70%" style="display: block; margin: auto;" />
 
 You should notice the project name appear as a folder under the "Files" window in the bottom right. If you click on that folder, you will see the project file (with an .Rproj extension). Save any script files, data sets, or other files related to this project in the same folder.
 
@@ -81,7 +72,8 @@ A window in the top left of the RStudio environment will appear. This is your sc
 
 1. Open a new `R` script file.
 2. Type the following commands in the file:
-```{r, echo=TRUE, eval=FALSE}
+
+```r
 3+5
 sqrt(10)
 ```
@@ -91,37 +83,33 @@ sqrt(10)
 ![](00/images/run.png){width=5in}
 
 Both your code and the output from the code should appear in the Console window.
-```{r, echo=FALSE, eval=TRUE}
-3+5
-sqrt(10)
+
+```
+#> [1] 8
+#> [1] 3.16
 ```
 
 To save your script file, click the Save icon, or go to File -> Save. Browse to the location where you'd like to save the file (which should be the same folder as the current Project file), name the file, and click Save. The name of the `R` script file should have changed to the name you chose (e.g., MyFirstScript.R), and the file should appear in your list of files in the bottom right.
 
-```{r, out.width="100%"}
-include_graphics("00/images/save-script.png")
-```
+<img src="00/images/save-script.png" width="100%" style="display: block; margin: auto;" />
 
 
 ## Loading data
 
 RStudio can load data from a variety of sources, including .txt, .csv, or .xlsx files, and can even load data from a website. For all of the activities and assignments in this course, you will be loading a data set from the Stat 216 website. The code for loading these data sets will be included in a provided `R` script file. For example, the following code will load the "Current Population Survey" data set for Activity 3, and save it in an object called "CPS".
 
-```{r, echo=TRUE, eval=FALSE}
+
+```r
 CPS <- read.csv("https://math.montana.edu/courses/s216/data/cps.csv")
 ```
 
 After running this line of code, you will see the object `CPS` appear in your "Environment" list, with the information that the data set contains 534 observations and 11 variables measured on those observations.
 
-```{r, out.width="60%"}
-include_graphics("00/images/cps-object.png")
-```
+<img src="00/images/cps-object.png" width="60%" style="display: block; margin: auto;" />
 
 Clicking on the name `CPS` or typing the command `View(CPS)` opens a new window that displays the data set.
 
-```{r, out.width="70%"}
-include_graphics("00/images/cps-view.png")
-```
+<img src="00/images/cps-view.png" width="70%" style="display: block; margin: auto;" />
 
 For your course project, you will have your own data set file which you will need to import into RStudio. To read a data set file into RStudio when using the MSU server, you first need to upload the data set into your project. Once the data set is in your server account files, you can use the "Import Dataset" button to import the data set from that location.
 
@@ -131,18 +119,14 @@ First, download any of the data sets shown on the [Stat 216 webpage](https://mat
 
 1. In RStudio, click the "Upload" button under the "Files" tab in the bottom right.
 
-```{r, out.width="50%"}
-include_graphics("00/images/upload.png")
-```
+<img src="00/images/upload.png" width="50%" style="display: block; margin: auto;" />
 
 a. Click the "Browse" button and navigate to the location on the *server* where you would like to save the data set.
 b. Click "Choose File", and navigate to where you saved the data set on *your computer*. Click on the data set file name, click "Choose for Upload", then click "OK".
 
 2. Under the "Environment" tab, click "Import Dataset".
 
-```{r, out.width="60%"}
-include_graphics("00/images/import-data.png")
-```
+<img src="00/images/import-data.png" width="60%" style="display: block; margin: auto;" />
 
 A drop-down menu will appear, and you can choose the type of file in which your data is stored. Common formats include text files (e.g., .csv, .txt) --- select "From Text (readr)" --- and Excel spreadsheets (.xlsx) --- select "From Excel".
 
@@ -159,9 +143,7 @@ Since you will be working in RStudio on a server, and not on your local computer
 
 You can export any of the `R` script files saved in your server files (or any other type of file) by checking the box next to the file, then clicking "More", and "Export". It will ask you to specify a name for the file. Then click "Download".
 
-```{r, out.width="60%"}
-include_graphics("00/images/export-script.png")
-```
+<img src="00/images/export-script.png" width="60%" style="display: block; margin: auto;" />
 
 ### Try it! {-}
 
@@ -175,7 +157,8 @@ To export a plot, we first need to create a plot.
 
 1. Copy and paste the following code into your script file; then highlight the code and click Run. (You will see this code in Activity 3!)
 
-```{r, eval = FALSE, echo = TRUE}
+
+```r
 library(tidyverse) 
 
 myopia <- read.csv("https://math.montana.edu/courses/s216/data/ChildrenLightSight.csv") 
@@ -193,9 +176,7 @@ A bar plot should appear under the "Plots" tab.
 
 2. Click the "Export" button, and then you can choose to export the plot either as an image file (e.g., .png, .jpeg), a pdf file, or to copy to the clipboard (e.g., for pasting into a Word document).
 
-```{r, out.width="60%"}
-include_graphics("00/images/myopia.png")
-```
+<img src="00/images/myopia.png" width="60%" style="display: block; margin: auto;" />
 
 If you are saving the plot to your computer (rather than copying the plot), a window will pop up with various options. Choose the directory on *your computer* where you would like to save the file, give your plot a name, change the dimensions if desired, and click Save.
 
@@ -203,9 +184,7 @@ If you are saving the plot to your computer (rather than copying the plot), a wi
 
 In the RStudio environment, next to your NetID in the top right corner is a "home" icon. Click this icon, and it will take you to your dashboard.
 
-```{r, out.width="100%"}
-include_graphics("00/images/home.png")
-```
+<img src="00/images/home.png" width="100%" style="display: block; margin: auto;" />
 
 From here, you can see how many sessions you have running under the "Sessions" title, and you will see your list of projects under the "Projects" title. You can click on any of these sessions or projects to return to that session/project.
 

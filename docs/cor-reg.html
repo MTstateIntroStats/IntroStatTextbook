@@ -54,6 +54,7 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="rstudio.html">Preliminaries: Getting started in RStudio</a></li>
 <li><a class="" href="intro-to-data.html"><span class="header-section-number">1</span> Introduction to data</a></li>
 <li><a class="" href="eda.html"><span class="header-section-number">2</span> Exploratory data analysis</a></li>
 <li><a class="active" href="cor-reg.html"><span class="header-section-number">3</span> Correlation and regression</a></li>
@@ -437,7 +438,7 @@ price_paid
 For now, we won’t worry about the <code>price_paid</code> variable.
 We should also note that these data are from the 2011-2012 academic year, and all monetary amounts are given in $1,000s, i.e., the family income of the first student in the data shown in Table <a href="cor-reg.html#tab:elmhurst-data">3.1</a> is $92,900 and they received a gift aid of $21,700. (The data source states that all numbers have been rounded to the nearest whole dollar.)</p>
 <p>Using these data, we can estimate the linear regression line by fitting a <code>l</code>inear <code>m</code>odel to the data with the <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> function in <code>R</code>.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">gift_aid</span> <span class="op">~</span> <span class="va">family_income</span>, data <span class="op">=</span> <span class="va">elmhurst</span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Call:</span>

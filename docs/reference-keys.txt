@@ -1,3 +1,4 @@
+fig:rstudio-env
 fig:data-science-explore
 tab:stentStudyResultsDF
 tab:stentStudyResultsDFsummary
@@ -298,6 +299,14 @@ fig:elmhurstScatterWLSROnly-CLTsection
 tab:rOutputForIncomeAidLSRLineInInferenceSection
 exm:unlabeled-div-96
 fig:whatCanGoWrongWithLinearModel
+logging-into-the-rstudio-server
+projects
+r-script-files
+loading-data
+exporting-files
+home
+troubleshooting
+extra-references
 intro-to-data
 basic-stents-strokes
 data-basics

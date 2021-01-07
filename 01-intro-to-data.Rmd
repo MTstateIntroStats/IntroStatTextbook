@@ -1191,7 +1191,7 @@ include_graphics("01/figures/ScopeOfInference/ScopeOfInference.png")
 ```
 
 
-## Data in `R`
+## Data in `R` {#data-in-r}
 
 `R` is a powerful and open source software tool for working with data. 
 Throughout this text, we provide some guidance on how to use `R` within the

@@ -54,6 +54,7 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="rstudio.html">Preliminaries: Getting started in RStudio</a></li>
 <li><a class="active" href="intro-to-data.html"><span class="header-section-number">1</span> Introduction to data</a></li>
 <li><a class="" href="eda.html"><span class="header-section-number">2</span> Exploratory data analysis</a></li>
 <li><a class="" href="cor-reg.html"><span class="header-section-number">3</span> Correlation and regression</a></li>
@@ -1505,7 +1506,7 @@ of an RMarkdown file.</p>
 We can use the <code>glimpse()</code> function to see the variables included in the data set
 and their data type. Or, we could use the <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code> function to see the first
 few rows of the data set.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">email50</span><span class="op">)</span>
 <span class="fu">glimpse</span><span class="op">(</span><span class="va">email50</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 50</span>
@@ -1531,7 +1532,7 @@ few rows of the data set.</p>
 <span class="co">#&gt; $ urgent_subj  &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</span>
 <span class="co">#&gt; $ exclaim_mess &lt;dbl&gt; 8, 1, 2, 1, 43, 0, 0, 2, 22, 3, 13, 1, 2, 2, 21, 10, 0, …</span>
 <span class="co">#&gt; $ number       &lt;fct&gt; small, big, none, small, small, small, small, small, sma…</span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">email50</span><span class="op">)</span> 
 <span class="co">#&gt; # A tibble: 6 x 21</span>
 <span class="co">#&gt;    spam to_multiple  from    cc sent_email time                image attach</span>
@@ -1553,7 +1554,7 @@ When extracted, these columns can be thought of as vectors. With these vectors, 
 For example, <code>data$variable[2]</code> would extract the second entry (row) of the <code>variable</code> column.</p>
 <p>Because a dataframe can be (roughly) thought of as a set of many different vectors, you can extract rows and columns from a dataframe using familiar matrix notation (e.g. <code>[row, column]</code>.
 For example <code>data[i,j]</code> will extract the <span class="math inline">\((i,j)^{th}\)</span> entry of data, <code>data[i, ]</code> will extract the <span class="math inline">\(i^{th}\)</span> row, and <code>data[ , j]</code> will extract the <span class="math inline">\(j^{th}\)</span> column. Notice, when extracting an entire row (or column), you do not need to specify the columns (or rows) you would like, which is why the second entry does not contain a number.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">email50</span><span class="op">$</span><span class="va">num_char</span>
 <span class="co">#&gt;  [1] 21.705  7.011  0.631  2.454 41.623  0.057  0.809  5.229  9.277 17.170</span>
 <span class="co">#&gt; [11] 64.401 10.368 42.793  0.451 29.233  9.794  2.139  0.130  4.945 11.533</span>
@@ -1749,7 +1750,7 @@ Two hundred observations were randomly sampled from the High School and Beyond s
 Of interest is the proportion of students at each of the two types of school, <code>public</code> and <code>privaate</code>.</p>
 <p>We use the <code>table</code> command to tabulate how many of each type of school are in the data set. Notice that the same result is produced by the <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> command with <code>table</code> and the chaining syntax done with <code>%&gt;%</code>.</p>
 <div style="float: left; width: 49.5%;">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">hsb2</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">hsb2</span><span class="op">$</span><span class="va">schtyp</span><span class="op">)</span>  
 <span class="co">#&gt; </span>
@@ -1757,7 +1758,7 @@ Of interest is the proportion of students at each of the two types of school, <c
 <span class="co">#&gt;     168      32</span></code></pre></div>
 </div>
 <div style="float: left; width: 49.5%;">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">hsb2</span> <span class="op">%&gt;%</span> 
   <span class="fu">select</span><span class="op">(</span><span class="va">schtyp</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="op">)</span>
@@ -1769,7 +1770,7 @@ Of interest is the proportion of students at each of the two types of school, <c
 First, we should take note of another piece of <code>R</code> syntax: the double equal sign.
 This is the logical test for “is equal to”.
 In other words, we first determine if school type is equal to public for each of the observations in the data set and filter for those where this is true.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Filter for public schools</span>
 <span class="va">hsb2_public</span> <span class="op">&lt;-</span> <span class="va">hsb2</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">schtyp</span> <span class="op">==</span> <span class="st">"public"</span><span class="op">)</span></code></pre></div>
@@ -1778,17 +1779,17 @@ In other words, we first determine if school type is equal to public for each of
 First, we need to calculate the average reading score with the mean function.
 This will give us the mean value, 52.23.
 However, in order to be able to refer back to this value later on, we might want to store it as an object that we can refer to by name.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Calculate average reading score and show the value</span>
 <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">hsb2</span><span class="op">$</span><span class="va">read</span><span class="op">)</span>
 <span class="co">#&gt; [1] 52.2</span></code></pre></div>
 <p>So instead of just printing the result, let’s save it as a new object called <code>avg_read</code>.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Calculate average reading score and store as avg_read</span>
 <span class="va">avg_read</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">hsb2</span><span class="op">$</span><span class="va">read</span><span class="op">)</span></code></pre></div>
 <p>Before we more on, a quick tip: most often you’ll want to do both; see the value and also store it for later use. The approach we used here, running the mean function twice, is redundant.</p>
 <p>Instead, you can simply wrap your assignment code in parentheses so that <code>R</code> will not only assign the average value of reading test scores to avg read, but it will also print out its value.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Do both</span>
 <span class="op">(</span><span class="va">avg_read</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">hsb2</span><span class="op">$</span><span class="va">read</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] 52.2</span></code></pre></div>
@@ -1800,7 +1801,7 @@ Note that we are using a new variable name here in order to not overwrite the ex
 The new variable <code>read_cat</code> will be a column in the existing data frame <code>hsb2</code>.
 To indicate that the <code>mutate</code> function came from the <code>dplyr</code> package, we use the <code>pacakge::function</code> syntax.
 It is not usually necessary to provide the package name (unless there is ambiguity about where the function came from).</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">hsb2</span> <span class="op">&lt;-</span> <span class="va">hsb2</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>read_cat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">read</span> <span class="op">&lt;</span> <span class="va">avg_read</span>, 
                                                  <span class="st">"below average"</span>, <span class="st">"at or above average"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>The decision criteria for this new variable is based on a TRUE/FALSE question: if the reading score of the student is below the average reading score, label “below average”, otherwise, label “at or above average”.</p>
@@ -2074,7 +2075,7 @@ response variable
 </div>
 
   <div class="chapter-nav">
-<div class="prev"><a href="index.html">Welcome</a></div>
+<div class="prev"><a href="rstudio.html">Preliminaries: Getting started in RStudio</a></div>
 <div class="next"><a href="eda.html"><span class="header-section-number">2</span> Exploratory data analysis</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
