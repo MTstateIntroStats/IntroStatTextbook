@@ -216,7 +216,6 @@ Remember, even experienced `R` users still get errors! It's all part of the lear
 There are many websites designed to provide help on how to use `R` and RStudio, but it is sometimes hard to find help at the right level. Here are some additional recommended websites for getting started in `R` and RStudio in STAT 216:
 
 * [RStudio IDE Cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf): For an annotated picture of the RStudio environment, coding keyboard shortcuts, and probably more than you want to know about the features of RStudio, refer to this two-page "cheatsheet". RStudio produces many of these cheatsheets. The [Data visualization with `ggplot2` cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf) is also helpful in this course.
-    - 
 
 * [Using RStudio](http://homepages.gac.edu/~anienow2/MCS_142/R/index.html): This is the RStudio help pages for the introductory statistics course at Gustavus Adolphus College. Like MSU, students use RStudio through a server; however, they use `R` Markdown documents, which are slightly more involved than the `R` script files we use in STAT 216. These pages have some tips on how to get started, and brief instructions for creating tables, statistics, plots, and theory-based tests.
 
