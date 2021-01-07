@@ -455,5 +455,3 @@ interactive-r-tutorials-5
 r-labs-6
 chp7-review
 terms-6
-case-studies
-activities

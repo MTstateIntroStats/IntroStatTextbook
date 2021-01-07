@@ -6,6 +6,7 @@ delete_merged_file: true
 new_session: yes
 rmd_files: [
   "index.Rmd",
+  # "00-computing.Rmd",
   "01-intro-to-data.Rmd",
   "02-eda.Rmd",
   "03-cor-reg.Rmd",
@@ -13,9 +14,7 @@ rmd_files: [
   "05-inference-cat.Rmd",
   "06-inference-num.Rmd",
   "07-inference-reg.Rmd",
-  "09-case-studies.Rmd",
-  "10-activities.Rmd",
-  "11-references.Rmd"
+  "08-references.Rmd"
   ]
 before_chapter_script: "_common.R"
 output: bookdown::gitbook

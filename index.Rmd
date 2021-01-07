@@ -34,8 +34,14 @@ on the [course webpage](https://math.montana.edu/courses/s216/index.html). Detai
 5. **Inference for categorical data.** Inference for one or two proportions using simulation and randomization techniques as well as the normal distribution.
 6. **Inference for quantitative data.** Inference for one or two means using simulation and randomization techniques as well as the $t$-distribution.
 7. **Inference for regression.** Inference for a regression slope or correlation using simulation and randomization techniques as well as the $t$-distribution.
-8. **Case studies.** A series of case studies assigned weekly in this course.
-9. **Activities.** *Stat 216 Coursepack* reading guides and in-class activities.
+
+## STAT 216 Coursepack {-}
+
+Each week, you will work through an in-class activity with your team mates and the guidance of your instructor. These activities, as well as reading guides to guide you in taking notes on the required readings and videos, are included in the _STAT 216 Coursepack_. This course requires you to purchase a printed copy of the _STAT 216 coursepack_ and bring it with you to class each day. 
+
+The coursepack is available for purchase through the [MSU Bookstore](https://www.msubookstore.org/). You may purchase the coursepack in person, or you may purchase online and have the coursepack shipped to you. The coursepack will be available in the MSU Bookstore on the first day of classes. Chapter 1 of the coursepack is provided here if you do not have the coursepack by your first day of class.
+
+* [STAT 216 Coursepack: Chapter 1](Coursepack-Ch1.pdf)
 
 
 ## Statistical computing {.unnumbered #stat-computing}
@@ -102,7 +108,7 @@ library(catstats)
 Note that the `catstats` package will install all of the packages needed to run code in this textbook,
 so you will not need to load other packages (e.g., `openintro`) once you load `catstats` into your `R` session.
 
-## About the Authors {-}
+## About the authors {-}
 
 ### Montana State University Authors {-}
 
