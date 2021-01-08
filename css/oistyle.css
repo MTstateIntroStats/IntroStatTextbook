@@ -29,24 +29,30 @@
 }
 
 .onebox {
-  padding: 1em 1em 1em 1em;
+  padding: 1em 1em 1em 4em;
   margin-top: 30px;
   margin-bottom: 30px;
   background: #f5f5f5 5px center/3em no-repeat;
-  border-top: 1px solid #569BBD;    /* openintro::COL[1,1] */
-  border-bottom: 1px solid #569BBD; /* openintro::COL[1,1] */
+  border-top: 1px solid #E97583;
+  border-bottom: 1px solid #E97583;
+  background-image: url("../images/onebox.png");
+  background-position: 0.5em 1em;
 }
 
 .onebox strong {
-  color: #569BBD;
+  color: #E97583;
 }
 
 /* Usage:
-/* .protip = something for students to keep in mind that might trip them up (e.g., observed vs simulated stat)
-/* .important = something really important, e.g., association /neq causation
-/* .guidedpractice = practice problem where answer is in footnote
-/* .example = practice problem where answer is in the same box
-/* .onebox = generic box without an icon; start with bold followed by period. Use for definitions. **Vocab word.** Return - blank line - definition
+/* Defined above -
+/* .protip = (lightbulb) something for students to keep in mind that might trip them up (e.g., observed vs simulated stat)
+/* .important = (diamond with ! inside) something really important, e.g., association /neq causation
+/* .onebox = (red flag) start with bold followed by period. Use for definitions. **Vocab word.** Return - blank line - definition (same as .important defined below)
+
+/* Defined in IMS --
+/* .guidedpractice = (notes with pencil) practice problem where answer is in footnote
+/* .workedexample = (notes) practice problem where answer is in the same box
+/* .caution = (stop sign) not currently used
 
 
 /* COPY AND PASTE BELOW FROM IMS REPO

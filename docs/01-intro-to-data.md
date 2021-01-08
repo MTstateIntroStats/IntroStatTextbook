@@ -1,8 +1,10 @@
 # Introduction to data {#intro-to-data}
 
-\BeginKnitrBlock{chapterintro}<div class="chapterintro">Scientists seek to answer questions using rigorous methods and careful observations. 
+::: {.chapterintro}
+Scientists seek to answer questions using rigorous methods and careful observations. 
 These observations---collected from the likes of field notes, surveys, and experiments---form the backbone of a statistical investigation and are called **data**. 
-Statistics is the study of how best to collect, analyze, and draw conclusions from data, and in this first chapter, we focus on both the properties of data and on the collection of data.</div>\EndKnitrBlock{chapterintro}
+Statistics is the study of how best to collect, analyze, and draw conclusions from data, and in this first chapter, we focus on both the properties of data and on the collection of data.
+:::
 
 
 
@@ -17,7 +19,7 @@ Though we were calculating probabilities in the 16th century, and the first US C
 
 
 
-With the rise of data science, however, we may not start with a research question,
+With the rise of data science, however, we might not start with a research question,
 and instead start with a data set^[Data used in this context are called "found data."].
 In this case, the statistical investigation process looks more like the data exploration cycle found in Figure \@ref(fig:data-science-explore) taken from @R4DS.
 
@@ -56,48 +58,50 @@ Researchers studied the effect of stents at two time points: 30 days after enrol
 The data collected on 5 of these patients are summarized in Table \@ref(tab:stentStudyResultsDF). 
 Patient outcomes are recorded as `stroke` or `no event`, representing whether or not the patient had a stroke during that time period.
 
-\BeginKnitrBlock{data}<div class="data">The `stent30` and `stent365` data sets from this study can be found in the [openintro](http://openintrostat.github.io/openintro/reference/index.html) package.</div>\EndKnitrBlock{data}
+::: {.data}
+The data from this study can be found in the [openintro](http://openintrostat.github.io/openintro) package: [`stent30`](http://openintrostat.github.io/openintro/reference/stent30.html) and [`stent365`](http://openintrostat.github.io/openintro/reference/stent365.html).
+:::
 
-<table>
+<table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
 <caption>(\#tab:stentStudyResultsDF)Results for five patients from the stent study.</caption>
  <thead>
   <tr>
+   <th style="text-align:right;"> patient </th>
    <th style="text-align:left;"> group </th>
    <th style="text-align:left;"> 30 days </th>
    <th style="text-align:left;"> 365 days </th>
-   <th style="text-align:right;"> patient </th>
   </tr>
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> treatment </td>
-   <td style="text-align:left;"> no event </td>
-   <td style="text-align:left;"> no event </td>
    <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> treatment </td>
+   <td style="text-align:left;"> no event </td>
+   <td style="text-align:left;"> no event </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> treatment </td>
-   <td style="text-align:left;"> stroke </td>
-   <td style="text-align:left;"> stroke </td>
    <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> treatment </td>
+   <td style="text-align:left;"> stroke </td>
+   <td style="text-align:left;"> stroke </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> treatment </td>
-   <td style="text-align:left;"> no event </td>
-   <td style="text-align:left;"> no event </td>
    <td style="text-align:right;"> 3 </td>
-  </tr>
-  <tr>
    <td style="text-align:left;"> treatment </td>
    <td style="text-align:left;"> no event </td>
    <td style="text-align:left;"> no event </td>
-   <td style="text-align:right;"> 4 </td>
   </tr>
   <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> treatment </td>
+   <td style="text-align:left;"> no event </td>
+   <td style="text-align:left;"> no event </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5 </td>
    <td style="text-align:left;"> control </td>
    <td style="text-align:left;"> no event </td>
    <td style="text-align:left;"> no event </td>
-   <td style="text-align:right;"> 5 </td>
   </tr>
 </tbody>
 </table>
@@ -159,9 +163,11 @@ The data summarized in this table can also be visualized with a \index{barplot}*
 <p class="caption">(\#fig:stentStudyResultsDFbarplot)Segmented barplot of outcomes in stent study by group and time.</p>
 </div>
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Of the 224 patients in the treatment group, 45 had a stroke by the end of the first year. 
+::: {.guidedpractice}
+Of the 224 patients in the treatment group, 45 had a stroke by the end of the first year. 
 Using these two numbers, compute the proportion of patients in the treatment group who had a stroke by the end of their first year.
-(Please note: answers to all Guided Practice exercises are provided using footnotes.)^[The proportion of the 224 patients who had a stroke within 365 days: $45/224 = 0.20$.]</div>\EndKnitrBlock{guidedpractice}
+(Note: answers to all Guided Practice exercises are provided in footnotes!)^[The proportion of the 224 patients who had a stroke within 365 days: $45/224 = 0.20$.]
+:::
 
 We can compute summary statistics from the table to give us a better idea of  how the impact of the stent treatment differed between the two groups.
 A **summary statistic** is a single number summarizing a large amount of data.
@@ -186,11 +192,13 @@ So what we are really asking is the following: is the difference so large that w
 
 While we don't yet have our statistical tools to fully address this question on our own, we can comprehend the conclusions of the published analysis: there was compelling evidence of harm by stents in this study of stroke patients.
 
-\BeginKnitrBlock{importantbox}<div class="importantbox">**Be careful.**
+::: {.important}
+**Be careful.**
 Do not generalize the results of this study to all patients and all stents.
 This study looked at patients with very specific characteristics who volunteered to be a part of this study and who may not be representative of all stroke patients.
 In addition, there are many types of stents and this study only considered the self-expanding Wingspan stent (Boston Scientific).
-However, this study does leave us with an important lesson: we should keep our eyes open for surprises.</div>\EndKnitrBlock{importantbox}
+However, this study does leave us with an important lesson: we should keep our eyes open for surprises.
+:::
 
 \index{data!stroke|)}
 
@@ -206,22 +214,27 @@ Effective presentation and description of data is a first step in most analyses.
 
 Here, we will consider loans offered through the Lending Club, a peer-to-peer lending company. Such data could be used to explore characteristics of people receiving loans from the platform, such as job titles, annual income, or home ownership. Table \@ref(tab:loan50DF) displays six rows of a data set for 50 randomly sampled loans. These observations will be referred to as the `loan50` data set.
 
-\BeginKnitrBlock{data}<div class="data">The `loan50` data can be found in the [openintro](http://openintrostat.github.io/openintro/reference/index.html) package.</div>\EndKnitrBlock{data}
+::: {.data}
+The data can be found in the [openintro](http://openintrostat.github.io/openintro) package: [`loan50`](http://openintrostat.github.io/openintro/reference/loan50.html).
+:::
 
 Each row in the table represents a single loan. 
 The formal name for a row is a **case** or \index{unit of observation}**observational unit**. Since there are 50 observational units in our data set, the **sample size**, denoted by $n$, is 50 ($n = 50$).
-The columns represent characteristics of each loan, where each column is referred to as a **variable**.
+The columns represent characteristics of each loan, where each column is referred to as a **variable**. For example, the first row represents a loan of \$7,500 with an interest rate of 7.34\%, where the borrower is based in Maryland (MD) and has an income of \$70,000.
 
-\BeginKnitrBlock{tip}<div class="tip">A variable is something that can be measured on an individual observational unit.
-Be careful not to confuse summary statistics---calculated from a *group* of observational units---with variables.</div>\EndKnitrBlock{tip}
+::: {.protip}
+A variable is something that can be measured on an individual observational unit.
+Be careful not to confuse summary statistics---calculated from a *group* of observational units---with variables.
+:::
 
-For example, the first row represents a loan of \$7,500 with an interest rate of 7.34\%, where the borrower is based in Maryland (MD) and has an income of \$70,000.
 
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">What is the grade of the first loan in Table \@ref(tab:loan50DF)?
+::: {.guidedpractice}
+What is the grade of the first loan in Table \@ref(tab:loan50DF)?
 And what is the home ownership status of the borrower for that first loan?
-Reminder: for these Guided Practice questions, you can check your answer in the footnote.^[The loan's grade is B, and the borrower rents their residence.]</div>\EndKnitrBlock{guidedpractice}
+Reminder: for these Guided Practice questions, you can check your answer in the footnote.^[The loan's grade is B, and the borrower rents their residence.]
+:::
 
 In practice, it is especially important to ask clarifying questions to ensure important aspects of the data are understood.
 For instance, it is always important to be sure we know what each variable means and its units of measurement.
@@ -355,14 +368,18 @@ Each row of a data frame corresponds to a unique case (observational unit), and 
 When recording data, use a data frame unless you have a very good reason to use a different structure.
 This structure allows new cases to be added as rows or new variables as new columns.
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">The grades for assignments, quizzes, and exams in a course are often recorded in a gradebook that takes the form of a data frame. 
-How might you organize a course's grade data using a data frame?^[There are multiple strategies that can be followed. One common strategy is to have each student represented by a row, and then add a column for each assignment, quiz, or exam. Under this setup, it is easy to review a single line to understand the grade history of a student. There should also be columns to include student information, such as one column to list student names.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+The grades for assignments, quizzes, and exams in a course are often recorded in a gradebook that takes the form of a data frame. 
+How might you organize a course's grade data using a data frame?^[There are multiple strategies that can be followed. One common strategy is to have each student represented by a row, and then add a column for each assignment, quiz, or exam. Under this setup, it is easy to review a single line to understand the grade history of a student. There should also be columns to include student information, such as one column to list student names.]
+:::
 
 \index{data!county|(}
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">We consider data for 3,142 counties in the United States,
+::: {.guidedpractice}
+We consider data for 3,142 counties in the United States,
 which include the name of each county, the state where it resides, its population in 2017, how its population changed from 2010 to 2017, poverty rate, and nine additional characteristics.
-How might these data be organized in a data frame?^[Each county may be viewed as a case, and there are eleven pieces of information recorded for each case. A table with 3,142 rows and 14 columns could hold these data, where each row represents a county and each column represents a particular piece of information.]</div>\EndKnitrBlock{guidedpractice}
+How might these data be organized in a data frame?^[Each county may be viewed as a case, and there are eleven pieces of information recorded for each case. A table with 3,142 rows and 14 columns could hold these data, where each row represents a county and each column represents a particular piece of information.]
+:::
 
 The data described in the Guided Practice above represent the **county** data set, which is shown as a data frame in Table \@ref(tab:countyDF).
 The variables as well as the variables in the data set that did not fit in Table \@ref(tab:countyDF) are described in Table \@ref(tab:countyVariables)
@@ -503,7 +520,9 @@ The variables as well as the variables in the data set that did not fit in Table
 </tbody>
 </table>
 
-\BeginKnitrBlock{data}<div class="data">The `county` data can be found in the [openintro](http://openintrostat.github.io/openintro/reference/index.html) package.</div>\EndKnitrBlock{data}
+::: {.data}
+These data can be found in the [usdata](http://openintrostat.github.io/usdata) package: [`county`](http://openintrostat.github.io/usdata/reference/county.html).
+:::
 
 ### Types of variables {#variable-types}
 
@@ -539,7 +558,8 @@ To simplify analyses, any ordinal variable in this book will be treated as a nom
 <p class="caption">(\#fig:variables)Breakdown of variables into their respective types.</p>
 </div>
 
-\BeginKnitrBlock{example}<div class="example">Data were collected about students in a statistics course.
+::: {.workedexample}
+Data were collected about students in a statistics course.
 Three variables were recorded for each student: number of siblings, student height, and whether the student had previously taken a statistics course.
 Classify each of the variables as continuous quantitative, discrete quantitative, or categorical. 
 
@@ -548,13 +568,16 @@ Classify each of the variables as continuous quantitative, discrete quantitative
 The number of siblings and student height represent quantitative variables.
 Because the number of siblings is a count, it is discrete.
 Height varies continuously, so it is a continuous quantitative variable.
-The last variable classifies students into two categories---those who have and those who have not taken a statistics course---which makes this variable categorical.</div>\EndKnitrBlock{example}
+The last variable classifies students into two categories---those who have and those who have not taken a statistics course---which makes this variable categorical.
+:::
 
 \index{data!stroke}
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">An experiment is evaluating the effectiveness of a new drug in treating migraines.
+::: {.guidedpractice}
+An experiment is evaluating the effectiveness of a new drug in treating migraines.
 A `group` variable is used to indicate the experiment group for each patient: treatment or control.
-The `num_migraines` variable represents the number of migraines the patient experienced during a 3-month period. Classify each variable as either quantitative or categorical?^[The `group` variable can take just one of two group names, making it categorical. The `num_migraines` variable describes a count of the number of migraines, which is an outcome where basic arithmetic is sensible, which means this is numerical outcome; more specifically, since it represents a count, `num_migraines` is a discrete quantitative variable.]</div>\EndKnitrBlock{guidedpractice}
+The `num_migraines` variable represents the number of migraines the patient experienced during a 3-month period. Classify each variable as either quantitative or categorical?^[The `group` variable can take just one of two group names, making it categorical. The `num_migraines` variable describes a count of the number of migraines, which is an outcome where basic arithmetic is sensible, which means this is numerical outcome; more specifically, since it represents a count, `num_migraines` is a discrete quantitative variable.]
+:::
 
 ### Relationships between variables {#variable-relations}
 
@@ -589,16 +612,20 @@ Associated variables can also be called **dependent** variables and vice-versa.
 
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Examine the variables in the `loan50` data set, which are described in Table \@ref(tab:loan50Variables).
-Create two questions about possible relationships between variables in `loan50` that are of interest to you.^[Two example questions: (1) What is the relationship between loan amount and total income? (2) If someone's income is above the average, will their interest rate tend to be above or below the average?]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+Examine the variables in the `loan50` data set, which are described in Table \@ref(tab:loan50Variables).
+Create two questions about possible relationships between variables in `loan50` that are of interest to you.^[Two example questions: (1) What is the relationship between loan amount and total income? (2) If someone's income is above the average, will their interest rate tend to be above or below the average?]
+:::
 
-\BeginKnitrBlock{example}<div class="example">This example examines the relationship between the change in population from 2010 to 2017 and median household income for counties, which is visualized as a scatterplot in Figure \@ref(fig:county-pop-change-med-hh-income).
+::: {.workedexample}
+This example examines the relationship between the change in population from 2010 to 2017 and median household income for counties, which is visualized as a scatterplot in Figure \@ref(fig:county-pop-change-med-hh-income).
 Are these variables associated?
 
 ---
 
 The larger the median household income for a county, the higher the population growth observed for the county.
-While this trend isn't true for every county, the trend in the plot is evident. Since there is some relationship between the variables, they are associated.</div>\EndKnitrBlock{example}
+While this trend isn't true for every county, the trend in the plot is evident. Since there is some relationship between the variables, they are associated.
+:::
 
 <div class="figure" style="text-align: center">
 <img src="01-intro-to-data_files/figure-html/county-pop-change-med-hh-income-1.png" alt="A scatterplot showing `pop_change` against `median_hh_income`. Owsley County of Kentucky, is highlighted, which lost 3.63% of its population from 2010 to 2017 and had median household income of $22,736." width="70%" />
@@ -615,9 +642,11 @@ That is, two variables are independent if there is no evident relationship betwe
 
 
 
-\BeginKnitrBlock{importantbox}<div class="importantbox">**Associated or independent, not both.**
+::: {.important}
+**Associated or independent, not both.**
 A pair of variables are either related in some way (associated) or not (independent).
-No pair of variables is both associated and independent.</div>\EndKnitrBlock{importantbox}
+No pair of variables is both associated and independent.
+:::
 
 ### Explanatory and response variables
 
@@ -633,17 +662,21 @@ If this is our underlying belief, then *median household income* is the **explan
 
 \index{data!county|)}
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Explanatory and response variables.**
+::: {.onebox}
+**Explanatory and response variables.**
   
 When we suspect one variable might causally affect another,
 we label the first variable the explanatory variable
 and the second the response variable. 
+The main reason for this is that observational studies do not control for confounding variables.
+We will revisit this idea when we discuss experiments later in the book.
 
 <center>
 explanatory variable $\rightarrow$ *might affect* $\rightarrow$ response variable
 </center>
 <br>
-For many pairs of variables, there is no hypothesized relationship, and these labels would not be applied to either variable in such cases.</div>\EndKnitrBlock{onebox}
+For many pairs of variables, there is no hypothesized relationship, and these labels would not be applied to either variable in such cases.
+:::
 
 Bear in mind that the act of labeling the variables in this way does nothing to guarantee that a causal relationship exists.
 A formal evaluation to check whether one variable causes a change in another requires an experiment.
@@ -670,8 +703,10 @@ Note that the case study in Section \@ref(basic-stents-strokes) did not use a pl
 
 
 
-\BeginKnitrBlock{importantbox}<div class="importantbox">**Association $\neq$ Causation.**
-In general, association does not imply causation, and causation can only be inferred from a randomized experiment.</div>\EndKnitrBlock{importantbox}
+::: {.important}
+**Association $\neq$ Causation.**
+In general, association does not imply causation, and causation can only be inferred from a randomized experiment.
+:::
 
 
 ## Sampling principles and strategies {#sampling-principles-strategies}
@@ -700,7 +735,9 @@ For instance, 60 swordfish (or some other number) in the population might be sel
 
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">For the second and third questions above, identify the target population and what represents an individual case.^[The question *"Over the last 5 years, what is the average time to complete a degree for Duke undergrads?"* is only relevant to students who complete their degree; the average cannot be computed using a student who never finished her degree. Thus, only Duke undergrads who graduated in the last five years represent cases in the population under consideration. Each such student is an individual case. For the question *"Does a new drug reduce the number of deaths in patients with severe heart disease?"*, a person with severe heart disease represents a case. The population includes all people with severe heart disease.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+For the second and third questions above, identify the target population and what represents an individual case.^[The question *"Over the last 5 years, what is the average time to complete a degree for Duke undergrads?"* is only relevant to students who complete their degree; the average cannot be computed using a student who never finished her degree. Thus, only Duke undergrads who graduated in the last five years represent cases in the population under consideration. Each such student is an individual case. For the question *"Does a new drug reduce the number of deaths in patients with severe heart disease?"*, a person with severe heart disease represents a case. The population includes all people with severe heart disease.]
+:::
 
 ### Anecdotal evidence
 
@@ -720,12 +757,14 @@ Second, and more importantly, it is unclear whether these cases are actually rep
 
 
 
-\BeginKnitrBlock{importantbox}<div class="importantbox">**Anecdotal evidence.**
+::: {.important}
+**Anecdotal evidence.**
 Be careful of data collected in a haphazard fashion.
-Such evidence may be true and verifiable, but it may only represent extraordinary cases.</div>\EndKnitrBlock{importantbox}
+Such evidence may be true and verifiable, but it may only represent extraordinary cases.
+:::
 
 <div class="figure" style="text-align: center">
-<img src="01/images/mn-winter/mn-winter.jpg" alt="In February 2010, some media pundits cited one large snow storm as evidence against global warming. As comedian Jon Stewart pointed out, &quot;It is one storm, in one region, of one country.&quot;" width="80%" />
+<img src="01/images/mn-winter/mn-winter.jpg" alt="In February 2010, some media pundits cited one large snow storm as evidence against global warming. As comedian Jon Stewart pointed out, &quot;It is one storm, in one region, of one country.&quot;" width="50%" />
 <p class="caption">(\#fig:mn-winter)In February 2010, some media pundits cited one large snow storm as evidence against global warming. As comedian Jon Stewart pointed out, "It is one storm, in one region, of one country."</p>
 </div>
 
@@ -751,14 +790,16 @@ We pick samples randomly to reduce the chance we introduce biases.
 <p class="caption">(\#fig:pop-to-sample)In this graphic, five graduates are randomly selected from the population (all graduates in the last 5 years) to be included in the sample.</p>
 </div>
 
-\BeginKnitrBlock{example}<div class="example">Suppose we ask a student who happens to be majoring in nutrition to select several graduates for the study.
+::: {.workedexample}
+Suppose we ask a student who happens to be majoring in nutrition to select several graduates for the study.
 What kind of students do you think they might collect?
 Do you think their sample would be representative of all graduates?
 
 ---
 
 Perhaps they would pick a disproportionate number of graduates from health-related fields. Or perhaps their selection would be a good representation of the population.
-When selecting samples by hand, we run the risk of picking a **biased** sample, even if our bias is unintended.</div>\EndKnitrBlock{example}
+When selecting samples by hand, we run the risk of picking a **biased** sample, even if our bias is unintended.
+:::
 
 
 
@@ -772,19 +813,23 @@ This introduces **bias** into a sampling method.
 
 
 
-\BeginKnitrBlock{onebox}<div class="onebox">There are three common types of **sampling bias** we will discuss:
+::: {.onebox}
+There are three common types of **sampling bias** we will discuss:
 
 1. **Selection bias**\index{selection bias}: the method in how your sample is selected tends to produce samples that either over-represent or under-represent certain portions of the population.
 1. **Non-response bias**\index{non-response bias}: individuals selected for the sample are unwilling or cannot respond.
-1. **Response bias**\index{response bias}: individuals selected for the sample respond in a way that does not accurately represent the truth---due to question wording, lack of anonymity, or other issues.</div>\EndKnitrBlock{onebox}
+1. **Response bias**\index{response bias}: individuals selected for the sample respond in a way that does not accurately represent the truth---due to question wording, lack of anonymity, or other issues.
+:::
 
 A common downfall in survey studies is a **convenience sample**\index{convenience sample}, where individuals who are easily accessible are more likely to be included in the sample.
 For instance, if a political survey is done by stopping people walking in the Bronx, this will not represent all of New York City.
 It is often difficult to discern what sub-population a convenience sample represents.
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Is a convenience sample an example of selection bias, non-response bias,
+::: {.guidedpractice}
+Is a convenience sample an example of selection bias, non-response bias,
 or response bias?^[A convenience sample is an example of selection bias, because the
-                   way in which the sample is _selected_ is biased.]</div>\EndKnitrBlock{guidedpractice}
+                   way in which the sample is _selected_ is biased.]
+:::
 
 Sampling randomly helps resolve _selection bias_.
 The most basic random sample is called a **simple random sample**, and is equivalent to using a raffle to select cases.
@@ -803,11 +848,14 @@ This *non-response bias* can produce results in the sample that do not accuratel
 <p class="caption">(\#fig:survey-sample)Due to the possibility of non-response, survey studies may only reach a certain group within the population. It is difficult, and often times impossible, to completely fix this problem.</p>
 </div>
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Asking the uninformed.** Popular late night host Jimmy Kimmel has a segment on his show called "Lie Witness News," where Kimmel's staff take to the streets to ask pedestrians about recent stories in the news. However, these recent stories are not really stories at all---they're fake. Without fail, those asked always express an opinion, unflinchingly. Why? People do not like to appear as if they don't know what they're talking about, so we make up answers. For an entertaining display of this fascinating psychological example of response bias, watch the [Coachella 2013 episode of Lie Witness News](https://www.youtube.com/watch?v=W_IzYUJANfk). </div>\EndKnitrBlock{onebox}
+::: {.onebox}
+**Asking the uninformed.** Popular late night host Jimmy Kimmel has a segment on his show called "Lie Witness News," where Kimmel's staff take to the streets to ask pedestrians about recent stories in the news. However, these recent stories are not really stories at all---they're fake. Without fail, those asked always express an opinion, unflinchingly. Why? People do not like to appear as if they don't know what they're talking about, so we make up answers. For an entertaining display of this fascinating psychological example of response bias, watch the [Coachella 2013 episode of Lie Witness News](https://www.youtube.com/watch?v=W_IzYUJANfk). 
+:::
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">We can easily access ratings for products, sellers, and companies through websites. These ratings are based only on those people who go out of their way to provide a rating. If 50% of online reviews for a product are negative, do you think this means that 50% of buyers are dissatisfied with the product? Why or why not?^[Answers will vary. From our own anecdotal experiences, we believe people tend to rant more about products that fell below expectations than rave about those that perform as expected. For this reason, we suspect there is a negative bias in product ratings on sites like Amazon. Additionally, those with strong opinions (positive or negative) are more inclined to take the time to write a review. However, since our experiences may not be representative, we also keep an open mind.]</div>\EndKnitrBlock{guidedpractice}
-
+::: {.guidedpractice}
+We can easily access ratings for products, sellers, and companies through websites. These ratings are based only on those people who go out of their way to provide a rating. If 50% of online reviews for a product are negative, do you think this means that 50% of buyers are dissatisfied with the product? Why or why not?^[Answers will vary. From our own anecdotal experiences, we believe people tend to rant more about products that fell below expectations than rave about those that perform as expected. For this reason, we suspect there is a negative bias in product ratings on sites like Amazon. Additionally, those with strong opinions (positive or negative) are more inclined to take the time to write a review. However, since our experiences may not be representative, we also keep an open mind.]
+:::
 
 
 \index{sample!bias|)}
@@ -853,12 +901,14 @@ The analysis methods introduced in this book would need to be extended to analyz
 
 
 
-\BeginKnitrBlock{example}<div class="example">Why would it be good for cases within each stratum to be very similar?
+::: {.workedexample}
+Why would it be good for cases within each stratum to be very similar?
 
 ---
 
 We might get a more stable estimate for the subpopulation in a stratum if the cases are very similar, leading to more precise estimates within each group. 
-When we combine these estimates into a single estimate for the full population, that population estimate will tend to be more precise since each individual group estimate is itself more precise.</div>\EndKnitrBlock{example}
+When we combine these estimates into a single estimate for the full population, that population estimate will tend to be more precise since each individual group estimate is itself more precise.
+:::
 
 In a **cluster sample**, we break up the population into many groups, called **clusters**. 
 Then we sample a fixed number of clusters and include all observations from each of those clusters in the sample. 
@@ -878,7 +928,8 @@ Also, unlike stratified sampling, these approaches are most helpful when there i
 For example, if neighborhoods represented clusters, then cluster or multistage sampling work best when the neighborhoods are very diverse.
 A downside of these methods is that more advanced techniques are typically required to analyze the data, though the methods in this book can be extended to handle such data.
 
-\BeginKnitrBlock{example}<div class="example">Suppose we are interested in estimating the malaria rate in a densely tropical portion of rural Indonesia.
+::: {.workedexample}
+Suppose we are interested in estimating the malaria rate in a densely tropical portion of rural Indonesia.
 We learn that there are 30 villages in that part of the Indonesian jungle, each more or less similar to the next, but the distances between the villages is substantial. Our goal is to test 150 individuals for malaria.
 What sampling method should be employed?
 
@@ -888,7 +939,8 @@ A simple random sample would likely draw individuals from all 30 villages, which
 Stratified sampling would be a challenge since it is unclear how we would build strata of similar individuals. 
 However, cluster sampling or multistage sampling seem like very good ideas. 
 If we decided to use multistage sampling, we might randomly select half of the villages, then randomly select 10 people from each. 
-This would probably reduce our data collection costs substantially in comparison to a simple random sample, and the cluster sample would still give us reliable information, even if we would need to analyze the data with slightly more advanced methods than we discuss in this book.</div>\EndKnitrBlock{example}
+This would probably reduce our data collection costs substantially in comparison to a simple random sample, and the cluster sample would still give us reliable information, even if we would need to analyze the data with slightly more advanced methods than we discuss in this book.
+:::
 
 
 ## Observational studies
@@ -900,7 +952,9 @@ For instance, the loan data and county data described in Section \@ref(data-basi
 
 Observational studies are generally only sufficient to show associations or form hypotheses that can be later checked with experiments. Making causal conclusions based on experiments is often reasonable. However, making the same causal conclusions based on observational data can be treacherous and is not recommended. Indeed, making causal conclusions based on observational data is arguably the most common mistake in our news headlines and social media posts!
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Suppose an observational study tracked sunscreen use and skin cancer, and it was found that the more sunscreen someone used, the more likely the person was to have skin cancer. Does this mean sunscreen *causes* skin cancer?^[No! See the paragraph following this guided practice for an explanation.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+Suppose an observational study tracked sunscreen use and skin cancer, and it was found that the more sunscreen someone used, the more likely the person was to have skin cancer. Does this mean sunscreen *causes* skin cancer?^[No! See the paragraph following this guided practice for an explanation.]
+:::
 
 Some previous research tells us that using sunscreen actually reduces skin cancer risk, so maybe there is another variable that can explain this hypothetical association between sunscreen usage and skin cancer. 
 One important piece of information that is absent is sun exposure. If someone is out in the sun all day, they are more likely to use sunscreen *and* more likely to get skin cancer. Exposure to the sun is unaccounted for in the simple investigation.
@@ -918,20 +972,26 @@ http://onlinelibrary.wiley.com/doi/10.1002/ijc.22745/full
 Sun exposure is what is called a **confounding variable**^[Also called a **lurking variable**, **confounding factor**, or a **confounder**.], which is a variable that is associated with both the explanatory and response variables. 
 While one method to justify making causal conclusions from observational studies is to exhaust the search for confounding variables, there is no guarantee that all confounding variables can be examined or measured.
 
-\BeginKnitrBlock{onebox}<div class="onebox">A **confounding variable** is a variable that is _both_
+::: {.onebox}
+A **confounding variable** is a variable that is _both_
 
 1. associated with the explanatory variable, _and_
 2. associated with the response variable.
 
-When both these conditions are met, if we observe an association between the explanatory variable and the response variable in the data, we cannot be sure if this association is due to the explanatory variable or the confounding variable---the explanatory and confounding variables are "confounded."</div>\EndKnitrBlock{onebox}
+When both these conditions are met, if we observe an association between the explanatory variable and the response variable in the data, we cannot be sure if this association is due to the explanatory variable or the confounding variable---the explanatory and confounding variables are "confounded."
+:::
 
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Figure \@ref(fig:county-multi-unit-homeownership) shows a negative association between the homeownership rate and the percentage of multi-unit structures in a county.
+::: {.guidedpractice}
+Figure \@ref(fig:county-multi-unit-homeownership) shows a negative association between the homeownership rate and the percentage of multi-unit structures in a county.
 However, it is unreasonable to conclude that there is a causal relationship between the two variables.
-Suggest a variable that might explain the negative relationship.^[Answers will vary. Population density may be important. If a county is very dense, then this may require a larger fraction of residents to live in multi-unit structures. Additionally, the high density may contribute to increases in property value, making homeownership infeasible for many residents.]</div>\EndKnitrBlock{guidedpractice}
+Suggest a variable that might explain the negative relationship.^[Answers will vary. Population density may be important. If a county is very dense, then this may require a larger fraction of residents to live in multi-unit structures. Additionally, the high density may contribute to increases in property value, making homeownership infeasible for many residents.]
+:::
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Houndstongue (a noxious weed) is found in abundance on private and public lands that have been grazed by cattle. Houndstongue is rarely found on lands that have been grazed by mountain goats. One investigator concluded that houndstongue infestations could be reduced by importing mountain goats to the infested areas. What is wrong with this conclusion?^[Just because mountain goat grazing is associated with an absence of houndstongue doesn't mean the mountain goats are the cause behind the houndstongue reduction! One obvious confounding variable is elevation---elevation is associated with the presence/absence of houndstongue (houndstongue tends to grow at lower elevation) and is also associated with the presence/absence of mountain goats (mountain goats prefer higher elevations).]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+Houndstongue (a noxious weed) is found in abundance on private and public lands that have been grazed by cattle. Houndstongue is rarely found on lands that have been grazed by mountain goats. One investigator concluded that houndstongue infestations could be reduced by importing mountain goats to the infested areas. What is wrong with this conclusion?^[Just because mountain goat grazing is associated with an absence of houndstongue doesn't mean the mountain goats are the cause behind the houndstongue reduction! One obvious confounding variable is elevation---elevation is associated with the presence/absence of houndstongue (houndstongue tends to grow at lower elevation) and is also associated with the presence/absence of mountain goats (mountain goats prefer higher elevations).]
+:::
 
 Observational studies come in two forms: prospective and retrospective studies.
 A **prospective study** identifies individuals and collects information as events unfold.
@@ -1026,11 +1086,15 @@ To guard against this bias, which again has been found to have a measurable effe
 
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Look back to the study in Section \@ref(basic-stents-strokes) where researchers were testing whether stents were effective at reducing strokes in at-risk patients. 
-Is this an experiment? Was the study blinded? Was it double-blinded?^[The researchers assigned the patients into their treatment groups, so this study was an experiment. However, the patients could distinguish what treatment they received, so this study was not blind. The study could not be double-blind since it was not blind.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+Look back to the study in Section \@ref(basic-stents-strokes) where researchers were testing whether stents were effective at reducing strokes in at-risk patients. 
+Is this an experiment? Was the study blinded? Was it double-blinded?^[The researchers assigned the patients into their treatment groups, so this study was an experiment. However, the patients could distinguish what treatment they received, so this study was not blind. The study could not be double-blind since it was not blind.]
+:::
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">For the study in Section \@ref(basic-stents-strokes), could the researchers have employed a placebo?
-If so, what would that placebo have looked like?^[Ultimately, can we make patients think they got treated from a surgery? In fact, we can, and some experiments use a **sham surgery**. In a sham surgery, the patient does undergo surgery, but the patient does not receive the full treatment, though they will still get a placebo effect.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+For the study in Section \@ref(basic-stents-strokes), could the researchers have employed a placebo?
+If so, what would that placebo have looked like?^[Ultimately, can we make patients think they got treated from a surgery? In fact, we can, and some experiments use a **sham surgery**. In a sham surgery, the patient does undergo surgery, but the patient does not receive the full treatment, though they will still get a placebo effect.]
+:::
 
 You may have many questions about the ethics of sham surgeries to create a placebo.
 These questions may have even arisen in your mind when in the general experiment context, where a possibly helpful treatment was withheld from individuals in the control group; the main difference is that a sham surgery tends to create additional risk, while withholding a treatment only maintains a person's risk.
@@ -1064,10 +1128,8 @@ Throughout this text, we provide some guidance on how to use `R` within the
 context of the statistical content that is being covered.  
 
 As educators, we see the value of teaching with modern software to
-empower students to take optimal advantage of the concepts they are learning.
-However, we understand the limitations of some educational structures, and we
-know that not every classroom will be able to implement `R` alongside the 
-statistical concepts. Generally, we will present the `R` techniques at the end
+empower students to take optimal advantage of the concepts they are learning. 
+Generally, we will present the `R` techniques at the end
 of each chapter. There are times in the text when the concepts are not
 distinguishable from the software, and in those cases, we have have provided the
 `R` code within the main body of the chapter.
@@ -1080,8 +1142,24 @@ We start with an introduction to `R`, focused on how data sets are structured in
 Throughout the text, we will work with many different data sets. Some data sets
 are pre-loaded into `R`, some get loaded through `R` packages, and some data sets
 will be created by the student. Data sets can be viewed through the RStudio
-environment, but the data can also be investigated through the notebook features
-of an RMarkdown file.
+environment, and can also be investigated through various `R` **functions**.
+
+::: {.onebox}
+Similar to the notation for a mathematical function, an `R` **function** takes the form:
+  
+> `function_name(arguments to the function)`
+
+The `function_name` is the name of the function, such as `mean`, `read.csv`, or `lm`. You can access the help file for any named function by preceding it with a question mark: `?read.csv`.
+
+The arguments to the function are the inputs to the function. These can be data sets, parameter values, or other options.
+:::
+
+In `R`, all functions take arguments in round parentheses (as opposed to subsetting observations or variables from data objects which happen with square parentheses).  
+
+::: {.guidedpractice}
+In the `R` console, type `?read.csv`. This will bring up the help file for the `read.csv()` function. What are the first two arguments to this function?^[The first argument is the `file` --- the name of the file or website which the data are to be read from. The second argument is `header` --- a **logical** argument (`TRUE` or `FALSE`) for whether the file contains a header row of variables or not.]
+:::
+
 
 Consider the \data{email50} data that was described previously in this chapter.  
 We can use the `glimpse()` function to see the variables included in the data set
@@ -1141,110 +1219,60 @@ For example, `data$variable` would extract the `variable` column from the `data`
 When extracted, these columns can be thought of as vectors. With these vectors, if you desired to pull off a specific entry, you could use square brackets (`[ ]`), with the index (number) of the entry you wish to extract in the brackets. 
 For example, `data$variable[2]` would extract the second entry (row) of the `variable` column. 
 
-Because a dataframe can be (roughly) thought of as a set of many different vectors, you can extract rows and columns from a dataframe using familiar matrix notation (e.g. `[row, column]`. 
+Because a dataframe can be (roughly) thought of as a set of many different vectors, you can extract rows and columns from a dataframe using familiar matrix notation (e.g. `[row, column]`). 
 For example `data[i,j]` will extract the $(i,j)^{th}$ entry of data, `data[i, ]` will extract the $i^{th}$ row, and `data[ , j]` will extract the $j^{th}$ column. Notice, when extracting an  entire row (or column), you do not need to specify the columns (or rows) you would like, which is why the second entry does not contain a number. 
 
 
 ```r
-email50$num_char
+email50$num_char # The num_char variable column
 #>  [1] 21.705  7.011  0.631  2.454 41.623  0.057  0.809  5.229  9.277 17.170
 #> [11] 64.401 10.368 42.793  0.451 29.233  9.794  2.139  0.130  4.945 11.533
 #> [21]  5.682  6.768  0.086  3.070 26.520 26.255  5.259  2.780  5.864  9.928
 #> [31] 25.209  6.563 24.599 25.757  0.409 11.223  3.778  1.493 10.613  0.493
 #> [41]  4.415 14.156  9.491 24.837  0.684 13.502  2.789  1.169  8.937 15.829
-email50[47,3]
+email50[47,3] # The entry in the 47th row and 3rd column
 #> # A tibble: 1 x 1
 #>    from
 #>   <dbl>
 #> 1     1
+email50[47,] # The 47th row
+#> # A tibble: 1 x 21
+#>    spam to_multiple  from    cc sent_email time                image attach
+#>   <dbl>       <dbl> <dbl> <int>      <dbl> <dttm>              <dbl>  <dbl>
+#> 1     0           1     1     0          0 2012-03-06 07:10:00     0      0
+#> # … with 13 more variables: dollar <dbl>, winner <fct>, inherit <dbl>,
+#> #   viagra <dbl>, password <dbl>, num_char <dbl>, line_breaks <int>,
+#> #   format <dbl>, re_subj <dbl>, exclaim_subj <dbl>, urgent_subj <dbl>,
+#> #   exclaim_mess <dbl>, number <fct>
 ```
 
-<table>
-<caption>(\#tab:ca)Data from the 47th row of the email data set.</caption>
- <thead>
-  <tr>
-   <th style="text-align:right;"> spam </th>
-   <th style="text-align:right;"> to_multiple </th>
-   <th style="text-align:right;"> from </th>
-   <th style="text-align:right;"> cc </th>
-   <th style="text-align:right;"> sent_email </th>
-   <th style="text-align:left;"> time </th>
-   <th style="text-align:right;"> image </th>
-   <th style="text-align:right;"> attach </th>
-   <th style="text-align:right;"> dollar </th>
-   <th style="text-align:left;"> winner </th>
-   <th style="text-align:right;"> inherit </th>
-   <th style="text-align:right;"> viagra </th>
-   <th style="text-align:right;"> password </th>
-   <th style="text-align:right;"> num_char </th>
-   <th style="text-align:right;"> line_breaks </th>
-   <th style="text-align:right;"> format </th>
-   <th style="text-align:right;"> re_subj </th>
-   <th style="text-align:right;"> exclaim_subj </th>
-   <th style="text-align:right;"> urgent_subj </th>
-   <th style="text-align:right;"> exclaim_mess </th>
-   <th style="text-align:left;"> number </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:left;"> 2012-01-02 14:24:21 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:left;"> no </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 8.72 </td>
-   <td style="text-align:right;"> 185 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:left;"> small </td>
-  </tr>
-</tbody>
-</table>
+
 
 ### Tidy structure of data {#datastruc}
 
 For plotting, analyses, model building, etc., the data should be structured according to certain principles.   
 Hadley Wickham provides a thorough discussion and advice for cleaning up the data in @Wickham2014.
 
-* *Tidy data*: rows (cases/observational units) and columns (variables).  
+::: {.onebox}
+**Tidy data.**
+
+A data set in which the rows are the observational units and the columns are the variables.  
 The key is that *every* row is a case and *every* column is a variable.  
 No exceptions.
-* Creating tidy data is often not trivial.
+:::
 
+Creating tidy data is often not trivial! However, data sets provided in this course will always be in the tidy data form.
 
-Within `R` (really within any type of computing language, Python, SQL, Java, etc.), it is important to understand how to build data using the patterns of the language.  
-Some things to consider:
-
-* `object_name <- anything` is a way of assigning `anything` to the new `object_name`.
-* `object_name <- function_name(data_table, arguments)` is a way of using a function to create a new object.
-* `object_name <- data_table %>% function_name(arguments)` uses chaining syntax as an extension of the ideas of functions.  
-In chaining, the value on the left side of `%>%` becomes the *first argument* to the function on the right side.
-
-``` 
-object_name <- data_table %>%
-                    function_name(arguments) %>% 
-                    another_function_name(other_arguments)
-```
-
-is extended chaining.  `%>%` is never at the front of the line, it is always connecting one idea with the continuation of that idea on the next line.
-
-* In `R`, all functions take arguments in round parentheses (as opposed to subsetting observations or variables from data objects which happen with square parentheses).  Additionally, the spot to the left of `%>%` is always a data table.
-
-* The pipe syntax should be read as *then*, `%>%`.
 
 ### Using the pipe to chain
+
+Within `R` (really within any type of computing language, Python, SQL, Java, etc.), it is important to understand how to build data using the patterns of the language.  
+
+In `R`, the syntax `<-` is called the **assignment** character; it is used to store the output of some function or set of operations in what we call an **object**. Some things to consider:
+
+* `object_name <- anything` is a way of *assigning* `anything` to the new `object_name`.
+* `object_name <- function_name(data_table, arguments)` is a way of using a function to create a new object.
+* `object_name <- data_table %>% function_name(arguments)` uses *chaining syntax* called the **pipe operator** (`%>%`) as an extension of the ideas of functions.  
 
 The pipe syntax (`%>%`) takes a data frame (or data table) and sends it to the argument of a function.  The mapping goes to the first available argument in the function.  
 For example:
@@ -1253,27 +1281,45 @@ For example:
 
 ` y %>% f(x, ., z)` is the same as `f(x,y,z)`
 
-Pipes are used commonly with functions in the `dplyr` package (see `R` examples in Chapter \@ref(eda)) and they allow us to sequentially build data wrangling operations. 
-We’ll start with short pipes and throughout the course build up to longer pipes that perform multiple operations.
+In chaining, the value on the left side of `%>%` becomes the *first argument* to the function on the right side. This can be extended to multiple lines of code:
 
-Consider the \data{hsb2} data, High School and Beyond survey.  
-Two hundred observations were randomly sampled from the High School and Beyond survey, a survey conducted on high school seniors by the National Center of Education Statistics.
-Of interest is the proportion of students at each of the two types of school, `public` and `privaate`.
+``` 
+object_name <- data_table %>%
+                    function_name(arguments) %>% 
+                    another_function_name(other_arguments)
+```
+
+This is called extended chaining.  
+
+Some properties of the pipe syntax (`%>%`) to keep in mind:
+
+* `%>%` is never at the front of the line, it is always connecting one idea with the continuation of that idea on the next line.
+
+* The spot to the left of the first `%>%` is always a data table.
+
+* The pipe syntax should be read as *then*, `%>%`.
+
+
+Pipes are used commonly with functions in the `dplyr` package (see `R` examples in Chapter \@ref(eda)) and they allow us to sequentially build data wrangling operations.
+Pipes are also helpful when creating data visualizations in the `ggplot2` package.
+
+### A data wrangling example
+
+Consider the built-in data set `hsb2` --- the "High School and Beyond" survey.  
+Two hundred observations were randomly sampled from the "High School and Beyond" survey, a survey conducted on high school seniors by the National Center of Education Statistics.
+Of interest is the proportion of students at each of the two types of school, `public` and `private`.
 
 We use the `table` command to tabulate how many of each type of school are in the data set.  Notice that the same result is produced by the `$` command with `table` and the chaining syntax done with `%>%`.
 
-<div style="float: left; width: 49.5%;">
 
 ```r
-data(hsb2)
-table(hsb2$schtyp)  
+data(hsb2) # Load the data
+table(hsb2$schtyp) 
 #> 
 #>  public private 
 #>     168      32
 ```
-</div>
-
-<div style="float: left; width: 49.5%;">
+is equivalent to
 
 ```r
 hsb2 %>% 
@@ -1283,13 +1329,13 @@ hsb2 %>%
 #>  public private 
 #>     168      32
 ```
-</div>
 
 
-What if we are interested only in `public` schools?  
-First, we should take note of another piece of `R` syntax: the double equal sign. 
-This is the logical test for “is equal to”. 
-In other words, we first determine if school type is equal to public for each of the observations in the data set and filter for those where this is true.
+#### Filtering {-}
+What if we are interested only in `public` schools?
+First, we should take note of another piece of `R` syntax: the double equal sign: `==`. 
+This is the logical test for "is equal to". 
+In other words, we first determine if school type is equal to public for each of the observations in the data set and `filter` for those where this is true.
 
 
 ```r
@@ -1298,11 +1344,13 @@ hsb2_public <- hsb2 %>%
   filter(schtyp == "public")
 ```
   
-We can read this as: “take the `hsb2` data frame and `pipe` it into the `filter` function. Filter the data for `cases where school type is equal to public`. Then, `assign` the resulting data frame to a new object called `hsb2 underscore public`.”  
+We can read this as: "take the `hsb2` data frame and `pipe` it into the `filter` function. Filter the data for `cases where school type is equal to public`. Then, `assign` the resulting data frame to a new object called `hsb2 underscore public`."  
   
+  
+#### Mutating {-}
 Suppose we are not interested in the actual reading score of students, but instead whether their reading score is below average or at or above average. 
-First, we need to calculate the average reading score with the mean function. 
-This will give us the mean value, 52.23. 
+First, we need to calculate the average reading score with the `mean()` function. 
+This will give us the mean value, 52.23.
 However, in order to be able to refer back to this value later on, we might want to store it as an object that we can refer to by name.
 
 
@@ -1320,45 +1368,37 @@ So instead of just printing the result, let’s save it as a new object called `
 avg_read <- mean(hsb2$read)
 ```
 
-Before we more on, a quick tip: most often you’ll want to do both; see the value and also store it for later use. The approach we used here, running the mean function twice, is redundant.
-
-Instead, you can simply wrap your assignment code in parentheses so that `R` will not only assign the average value of reading test scores to avg read, but it will also print out its value.
-
-
-```r
-# Do both
-(avg_read <- mean(hsb2$read))
-#> [1] 52.2
-```
-
 Next we need to determine whether each student is below or at or above average. For example, a reading score of 57 is above average, so is 68, but 44 is below. 
 Obviously, going through each record like this would be tedious and error prone.
 
-Instead we can create this new variable with the mutate function from the `dplyr` package.
+Instead we can create this new variable with the `mutate()` function from the `dplyr` package (included in the `tidyverse` package).
 
-We start with the data frame, `hsb2`, and pipe it into `mutate`, to create a new variable called `read_cat` (`cat` for `cat`egorical). 
+We start with the data frame, `hsb2`, and pipe it into `mutate()`, to create a new variable called `read_cat` (`cat` for `cat`egorical). 
 Note that we are using a new variable name here in order to not overwrite the existing reading score variable.
 The new variable `read_cat` will be a column in the existing data frame `hsb2`.
-To indicate that the `mutate` function came from the `dplyr` package, we use the `pacakge::function` syntax.
-It is not usually necessary to provide the package name (unless there is ambiguity about where the function came from).
 
 
 
 ```r
-hsb2 <- hsb2 %>% dplyr::mutate(read_cat = ifelse(read < avg_read, 
-                                                 "below average", "at or above average"))
+hsb2 <- hsb2 %>% mutate(read_cat = 
+                          ifelse(read < avg_read, 
+                                 "below average", 
+                                 "at or above average"
+                                 )
+                        )
 ```
 
-The decision criteria for this new variable is based on a TRUE/FALSE question: if the reading score of the student is below the average reading score, label “below average”, otherwise, label “at or above average”.
+The decision criteria for this new variable is based on a TRUE/FALSE question: if the reading score of the student is below the average reading score, label "below average", otherwise, label "at or above average".
 
-This can be accomplished using the `ifelse` function in `R`.
+This can be accomplished using the `ifelse()` function in `R`. Look at its helpfile by typing `?ifelse` into the `R` console window.
 
-The first argument of the function is the logical test.
+* The first argument of the function is the logical test.
 
-The second argument is what to do if the result of the logical test is TRUE, in other words, if the student’s score is below the average score, and the last argument is what to do if the result is FALSE.
+* The second argument is what to do if the result of the logical test is TRUE, in other words, if the student’s score is below the average score.
 
-The `ifelse` function can be used for more complicated discretization rules as well, by nesting many `ifelse` statements within each other. 
-This is not necessary for this example, but it will come up later in the course.
+* The last argument is what to do if the result is FALSE.
+
+
 
 ### Interactive R tutorials
 
@@ -1506,3 +1546,14 @@ However you should be able to easily spot them as **bolded text**.
 </table>
 
 
+### Key ideas
+
+* A data set is comprised of measurements of **variables** on **observational units**. The type of variable can be **quantitative** or **categorical**, and a variable's role can be an **explanatory variable** or **response variable**.
+
+* Statistical inference uses data from a **sample** to make inferences about a larger, target **population**. We can only generalize our results from the sample to the target population if the sampling methods were **unbiased**. One unbiased sampling method is a **simple random sample**, where you _randomly select_ your observational units for the sample from the complete list of observational units in the target population.
+
+* Various types of **bias** can arise in studies, particularly in surveys of individuals. A study is biased if the way it was conducted would _systematically_ under-represent or over-represent certain groups or responses. **Selection bias** occurs when the method of selecting the sample is biased (e.g., convenience sample); **non-response bias** occurs when individuals who were selected for the study do not respond or cannot be reached; **response bias** occurs when the responses of individuals to not reflect the truth (e.g., due to confidentiality concerns, question wording, or sensitive topics).
+
+* In an **observational study**, we merely _observe_ the behavior of the individuals in the study; we do not manipulate the variables on the individuals in any way. In a **randomized experiment**, we _randomly assign_ values of an explanatory variable to the observational units, then observe the response variable. Random assignment allows us to investigate causal relationships because it balances out any potential **confounding variables**, on average.
+
+* The **scope of inference** of a study described to which population the results can be _generalized_, and if any associations in the data can be assumed to be a _cause-and-effect relationship_. We can only generalize to the target population if the sampling method was unbiased (e.g., simple random sample). We can only conclude cause-and-effect if the study design was a randomized experiment.

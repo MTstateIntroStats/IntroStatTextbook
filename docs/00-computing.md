@@ -3,7 +3,7 @@
 In STAT 216, we will use the statistical package `R` to analyze data through the IDE (integrated development environment) RStudio. 
 We recommend accessing this program through the MSU RStudio server: [rstudio.math.montana.edu/](https://rstudio.math.montana.edu/). Please reference the [Statistical computing](#stat-computing) section of the Welcome chapter for instructions on how to download and install `R` and RStudio on your own computer.
 
-We will begin to learn how to code in `R` in Section @\ref(data-in-r). This preliminaries chapter will introduce you to the RStudio environment itself.
+We will begin to learn how to code in `R` in Section @\ref(#data-in-r). This preliminaries chapter will introduce you to the RStudio environment itself.
 
 ## Logging into the RStudio server
 
@@ -13,7 +13,7 @@ When you navigate to the [MSU RStudio server](https://rstudio.math.montana.edu/)
 
 Your username is your NetID, and your password is the password associated with your NetID. 
 
-All registered students should have access to this server. If you are enrolled in the course, but receive the error "Incorrect or invalide username/password" when attempting to log in, please email Stat 216 Faculty Course Supervisor [Dr.\ Stacey Hancock](mailto:stacey.hancock@montana.edu).
+All registered students should have access to this server. If you are enrolled in the course, but receive the error "Incorrect or invalid username/password" when attempting to log in, please email Stat 216 Faculty Course Supervisor [Dr.\ Stacey Hancock](mailto:stacey.hancock@montana.edu).
 
 After logging in, you will see the RStudio working environment, displayed in Figure \@ref(fig:rstudio-env) below.
 

@@ -4,11 +4,12 @@ subtitle: "Spring 2021"
 author: "Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager"
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: [book.bib, packages.bib]
+bibliography: [book.bib, packages.bib, eoce.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: MTstateIntroStats/IntroStatTextbook
 description: "Open resources textbook for Stat 216 at Montana State University"
+monofont: "Source Code Pro"
 header-includes:
 - \usepackage{subfig}
 ---

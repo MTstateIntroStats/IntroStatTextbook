@@ -17,5 +17,5 @@ rmd_files: [
   "08-references.Rmd"
   ]
 before_chapter_script: "_common.R"
-output: bookdown::gitbook
+output: bookdown::bs4_book
 output_dir: "docs"

@@ -367,7 +367,7 @@ We consider the percent change in the number of seats of the President’s
 party (e.g., percent change in the number of seats for Republicans in
 2018) against the unemployment rate.</p>
 <div class="guidedpractice">
-<p>What are the observational units in this data set?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;We measured the unemployment rate and percent change in House seats for the President’s party for each midterm election from 1898 to 2018, except those elections during the Great Depression. Thus, the observational unit is a single midterm election.&lt;/p&gt;"><sup>165</sup></a></p>
+<p>What are the observational units in this data set?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;We measured the unemployment rate and percent change in House seats for the President’s party for each midterm election from 1898 to 2018, except those elections during the Great Depression. Thus, the observational unit is a single midterm election.&lt;/p&gt;"><sup>166</sup></a></p>
 </div>
 <p>Examining the data, there are no clear deviations from linearity or substantial outliers (see Section <a href="inference-reg.html#tech-cond-linmod">7.2</a> for a discussion on using residuals to visualize how well a linear model fits the data).
 While the data are collected sequentially, a separate analysis was used to check for any apparent correlation between successive observations in time; no such correlation was found.</p>
@@ -387,7 +387,7 @@ unemployment may not help us understand what would happen
 in other years where the unemployment is only modestly high.
 On the other hand, these are exceptional cases, and we would
 be discarding important information if we exclude them from
-a final analysis.&lt;/p&gt;"><sup>166</sup></a></p>
+a final analysis.&lt;/p&gt;"><sup>167</sup></a></p>
 </div>
 <p>There is a negative slope in the line shown in Figure <a href="inference-reg.html#fig:unemploymentAndChangeInHouse">7.15</a>. However, this slope (and the
 y-intercept) are only estimates of the parameter values. We might
@@ -477,7 +477,7 @@ unemp
 </tbody>
 </table></div>
 <div class="example">
-<p><span id="exm:unlabeled-div-93" class="example"><strong>Example 7.1  </strong></span>What do the first and second columns of Table <a href="inference-reg.html#tab:midtermUnempRegTable">7.2</a> represent?</p>
+<p><span id="exm:unlabeled-div-88" class="example"><strong>Example 7.1  </strong></span>What do the first and second columns of Table <a href="inference-reg.html#tab:midtermUnempRegTable">7.2</a> represent?</p>
 <hr>
 <p>The entries in the first column represent the least squares estimates, <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span>. Using the estimates, we could write the equation for the least
 square regression line as <span class="math display">\[\begin{aligned}
@@ -499,12 +499,12 @@ T
   = -1.07\end{aligned}\]</span> This corresponds to the third column of
 Table <a href="inference-reg.html#tab:midtermUnempRegTable">7.2</a> .</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-94" class="example"><strong>Example 7.2  </strong></span>Use Table <a href="inference-reg.html#tab:midtermUnempRegTable">7.2</a> to determine the p-value for the
+<p><span id="exm:unlabeled-div-89" class="example"><strong>Example 7.2  </strong></span>Use Table <a href="inference-reg.html#tab:midtermUnempRegTable">7.2</a> to determine the p-value for the
 hypothesis test.</p>
 <hr>
 <p>The last column of the table gives the p-value for a
 <em>two-sided</em> hypothesis test for the coefficient of the unemployment rate:
-0.296. However, our test is <em>one-sided</em> — we are only interested in detecting if the true slope coefficient is negative. Since our estimated slope coefficient is negative, our one-sided p-value is just half of the two-sided p-value: 0.148.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Note that if our slope coefficient had been positive — the &lt;em&gt;opposite&lt;/em&gt; sign as &lt;span class="math inline"&gt;\(H_A\)&lt;/span&gt; — then the one-sided p-value would be the probability of observing that value or lower, or &lt;span class="math inline"&gt;\(1 - 0.296/2 = 1 - 0.148 = 0.852\)&lt;/span&gt;.&lt;/p&gt;'><sup>167</sup></a> With this p-value, the data do not provide convincing evidence that a
+0.296. However, our test is <em>one-sided</em> — we are only interested in detecting if the true slope coefficient is negative. Since our estimated slope coefficient is negative, our one-sided p-value is just half of the two-sided p-value: 0.148.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Note that if our slope coefficient had been positive — the &lt;em&gt;opposite&lt;/em&gt; sign as &lt;span class="math inline"&gt;\(H_A\)&lt;/span&gt; — then the one-sided p-value would be the probability of observing that value or lower, or &lt;span class="math inline"&gt;\(1 - 0.296/2 = 1 - 0.148 = 0.852\)&lt;/span&gt;.&lt;/p&gt;'><sup>168</sup></a> With this p-value, the data do not provide convincing evidence that a
 higher unemployment rate has a negative correlation with percent of seats lost in the house. In other words, we do not have significant evidence for the political theory that the higher the unemployment rate, the worse the President’s party will do in the midterm elections.</p>
 </div>
 </div>
@@ -513,7 +513,7 @@ higher unemployment rate has a negative correlation with percent of seats lost i
 </h4>
 <p>As the final step in a mathematical hypothesis test for the slope, we use the information provided to make a conclusion about whether or not the data could have come from a population where the true slope was zero (i.e., <span class="math inline">\(\beta_1 = 0\)</span>). Before evaluating the formal hypothesis claim, sometimes it is important to check your intuition. Based on everything we’ve seen in the examples above describing the variability of a line from sample to sample, as yourself if the linear relationship given by the data could have come from a population in which the slope was truly zero.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-95" class="example"><strong>Example 7.3  </strong></span>Elmhurst College in Illinois released anonymized data for family income and financial support provided by the school for Elmhurst’s first-year students in 2011. Figure <a href="inference-reg.html#fig:elmhurstScatterWLSROnly-CLTsection">7.16</a> shows the least-squares regression line fit to a scatterplot of a sample of the data. How sure are you that the slope is
+<p><span id="exm:unlabeled-div-90" class="example"><strong>Example 7.3  </strong></span>Elmhurst College in Illinois released anonymized data for family income and financial support provided by the school for Elmhurst’s first-year students in 2011. Figure <a href="inference-reg.html#fig:elmhurstScatterWLSROnly-CLTsection">7.16</a> shows the least-squares regression line fit to a scatterplot of a sample of the data. How sure are you that the slope is
 statistically significantly different from zero? That is, do you think a
 formal hypothesis test would reject the claim that the true slope of the
 line should be zero?</p>
@@ -606,7 +606,7 @@ interested in: 0.0002.
 The p-value is so small that we have very strong evidence that family income and financial aid at Elmhurst
 College for freshman entering in the year 2011 are
 correlated and the true slope parameter differs from 0,
-just as we believed in our analysis of Figure &lt;a href="inference-reg.html#fig:elmhurstScatterWLSROnly-CLTsection"&gt;7.16&lt;/a&gt;.&lt;/p&gt;'><sup>168</sup></a>
+just as we believed in our analysis of Figure &lt;a href="inference-reg.html#fig:elmhurstScatterWLSROnly-CLTsection"&gt;7.16&lt;/a&gt;.&lt;/p&gt;'><sup>169</sup></a>
 </li>
 </ul>
 </div>
@@ -637,7 +637,7 @@ corresponding to the confidence level with the model’s degrees of
 freedom. For simple linear regression, the model’s degrees of freedom are <span class="math inline">\(n-1\)</span>.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-96" class="example"><strong>Example 7.4  </strong></span>Compute a 95% confidence interval for the slope coefficient using the
+<p><span id="exm:unlabeled-div-91" class="example"><strong>Example 7.4  </strong></span>Compute a 95% confidence interval for the slope coefficient using the
 regression output from Table <a href="inference-reg.html#tab:rOutputForIncomeAidLSRLineInInferenceSection">7.3</a>.</p>
 <hr>
 <p>The point estimate is <span class="math inline">\(b_1 = -0.0431\)</span> and the standard error is <span class="math inline">\(SE(b_1) = 0.0108\)</span>. The degrees of freedom for the distribution are <span class="math inline">\(df = n - 2 = 48\)</span>, and are typically noted in the regression output, allowing us to identify <span class="math inline">\(t_{48}^{\star} = 2.01\)</span> for use in the confidence interval.</p>
@@ -703,7 +703,7 @@ Figure 7.17: Four examples showing when the methods in this chapter are insuffic
 </div>
 <div class="guidedpractice">
 <p>Should we have concerns about applying least squares regression to the
-Elmhurst data in Figure <a href="cor-reg.html#fig:elmhurstScatterW2Lines">3.13</a>?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The trend appears to be linear, the data fall around the line with no obvious outliers, the variance is roughly constant. These are also not time series observations. Least squares regression can be applied to these data.&lt;/p&gt;"><sup>169</sup></a></p>
+Elmhurst data in Figure <a href="cor-reg.html#fig:elmhurstScatterW2Lines">3.13</a>?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The trend appears to be linear, the data fall around the line with no obvious outliers, the variance is roughly constant. These are also not time series observations. Least squares regression can be applied to these data.&lt;/p&gt;"><sup>170</sup></a></p>
 </div>
 <p>The technical conditions are often remembered using the <strong>LINE</strong> mnemonic.
 The linearity, normality, and equality of variance conditions usually can be assessed through residual plots, as seen in Figure <a href="inference-reg.html#fig:whatCanGoWrongWithLinearModel">7.17</a>.
@@ -769,14 +769,14 @@ However, data that exhibit non-equal variance across the range of <span class="m
 <h4>Simulation-based inference for the regression slope<a class="anchor" aria-label="anchor" href="#simulation-based-inference-for-the-regression-slope"><i class="fas fa-link"></i></a>
 </h4>
 <p>As a demonstration, we will apply the simulation-based inference functions for regression in the <code>catstats</code> package to our data on the change in House seats in the President’s party at midterm elections as a function of national unemployment rate. We need to drop the Great Depression years before we perform our simulations:</p>
-<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#load data</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">midterms_house</span><span class="op">)</span>
 <span class="co">#Drop Great Depression years</span>
 <span class="va">d</span> <span class="op">&lt;-</span> <span class="va">midterms_house</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="op">(</span><span class="va">year</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1935</span>, <span class="fl">1939</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>Now that we have the correct data, we can perform a randomization test of the slope in the simple linear regression.</p>
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">catstats</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">621311</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/catstats/man/regression_test.html">regression_test</a></span><span class="op">(</span>
@@ -790,7 +790,7 @@ However, data that exhibit non-equal variance across the range of <span class="m
 <div class="inline-figure"><img src="07-inference-reg_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>The results give a scatterplot of the observed data with the regression line superimposed, and gives the observed slope (this should match what you put in for <code>as_extreme_as</code>). Next to the scatterplot, we have the null distribution of the slope coefficient, with the observed slope indicated by a vertical line and all values more extreme highlighted in red. The caption gives the number of simulations resulting in a slope more extreme than the observed: in this simulation we have 118/1000, for an approximate p-value of 0.118.</p>
 <p>To obtain a confidence interval for the slope, we use <code><a href="https://rdrr.io/pkg/catstats/man/regression_bootstrap_CI.html">regression_bootstrap_CI()</a></code>, with the same core arguments as <code><a href="https://rdrr.io/pkg/catstats/man/regression_test.html">regression_test()</a></code>.</p>
-<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">31143518</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/catstats/man/regression_bootstrap_CI.html">regression_bootstrap_CI</a></span><span class="op">(</span>
   formula <span class="op">=</span> <span class="va">house_change</span> <span class="op">~</span> <span class="va">unemp</span>,  <span class="co">#Always use response ~ explanatory</span>
@@ -815,7 +815,7 @@ However, data that exhibit non-equal variance across the range of <span class="m
 #&gt;   (Intercept)  family_income  
 #&gt;       24.3193        -0.0431</code></pre>
 <p>Instead, when doing linear regression, we want to save the regression results so we can get complete output using <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code>:</p>
-<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gift_reg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">gift_aid</span><span class="op">~</span><span class="va">family_income</span>, <span class="co">#Always use reponse ~ explanatory</span>
                data <span class="op">=</span> <span class="va">elmhurst</span><span class="op">)</span>  <span class="co">#Name of data set</span>
 <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">gift_reg</span><span class="op">)</span>  <span class="co">#Obtain full results for regression</span>
@@ -839,11 +839,11 @@ However, data that exhibit non-equal variance across the range of <span class="m
 <span class="co">#&gt; F-statistic: 15.9 on 1 and 48 DF,  p-value: 0.000229</span></code></pre></div>
 <p>This produces a lot of output; we will focus on the <em>Coefficients</em> section. This gives us the estimated value for the slope, the standard error of the estimate, the t-statistic, and the p-value. We want the row labeled with the name of our explanatory variable, <code>family_income</code>. We estimate the slope to be -0.043 thousand dollars per additional thousand dollars in family income, and we have strong evidence against the null hypothesis that the slope is 0.</p>
 <p>We can compute confidence intervals by hand using the reported estimate, standard error, and df. We will need to compute a t-value as in Chapter <a href="inference-num.html#inference-num">6</a>:</p>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#Get t-star for 90% confidence interval</span>
 <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">.95</span>, df <span class="op">=</span> <span class="fl">48</span><span class="op">)</span>
 <span class="co">#&gt; [1] 1.68</span></code></pre></div>
-<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#Lower confidence bound</span>
 <span class="op">-</span><span class="fl">0.04307</span> <span class="op">-</span> <span class="fl">1.677224</span><span class="op">*</span><span class="fl">0.01081</span>
 <span class="co">#&gt; [1] -0.0612</span>
@@ -852,7 +852,7 @@ However, data that exhibit non-equal variance across the range of <span class="m
 <span class="op">-</span><span class="fl">0.04307</span> <span class="op">+</span> <span class="fl">1.677224</span><span class="op">*</span><span class="fl">0.01081</span>
 <span class="co">#&gt; [1] -0.0249</span></code></pre></div>
 <p>We can also use the <code><a href="https://rdrr.io/r/stats/confint.html">confint()</a></code> function in <code>R</code> to compute confidence intervals for regression coefficients.</p>
-<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="va">gift_reg</span>,   <span class="co">#name of regression results</span>
         level <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span>  <span class="co">#confidence level as a proportion</span>
 <span class="co">#&gt;                   5 %    95 %</span>
