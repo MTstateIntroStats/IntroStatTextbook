@@ -13,7 +13,7 @@ When you navigate to the [MSU RStudio server](https://rstudio.math.montana.edu/)
 
 Your username is your NetID, and your password is the password associated with your NetID. 
 
-All registered students should have access to this server. If you are enrolled in the course, but receive the error "Incorrect or invalid username/password" when attempting to log in, please email Stat 216 Faculty Course Supervisor [Dr.\ Stacey Hancock](mailto:stacey.hancock@montana.edu).
+All registered students should have access to this server. If you are enrolled in the course, but receive the error "Incorrect or invalid username/password" when attempting to log in, please email your name, section number, and NetID to Stat 216 Faculty Course Supervisor [Dr.\ Stacey Hancock](mailto:stacey.hancock@montana.edu).
 
 After logging in, you will see the RStudio working environment, displayed in Figure \@ref(fig:rstudio-env) below.
 
