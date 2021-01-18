@@ -232,7 +232,7 @@ Be careful not to confuse summary statistics---calculated from a *group* of obse
 
 ::: {.guidedpractice}
 What is the grade of the first loan in Table \@ref(tab:loan50DF)?
-And what is the home ownership status of the borrower for that first loan?
+What is the home ownership status of the borrower for that first loan?
 Reminder: for these Guided Practice questions, you can check your answer in the footnote.^[The loan's grade is B, and the borrower rents their residence.]
 :::
 
@@ -576,7 +576,7 @@ The last variable classifies students into two categories---those who have and t
 ::: {.guidedpractice}
 An experiment is evaluating the effectiveness of a new drug in treating migraines.
 A `group` variable is used to indicate the experiment group for each patient: treatment or control.
-The `num_migraines` variable represents the number of migraines the patient experienced during a 3-month period. Classify each variable as either quantitative or categorical?^[The `group` variable can take just one of two group names, making it categorical. The `num_migraines` variable describes a count of the number of migraines, which is an outcome where basic arithmetic is sensible, which means this is numerical outcome; more specifically, since it represents a count, `num_migraines` is a discrete quantitative variable.]
+The `num_migraines` variable represents the number of migraines the patient experienced during a 3-month period. Classify each variable as either quantitative or categorical.^[The `group` variable can take just one of two group names, making it categorical. The `num_migraines` variable describes a count of the number of migraines, which is an outcome where basic arithmetic is sensible, which means this is numerical outcome; more specifically, since it represents a count, `num_migraines` is a discrete quantitative variable.]
 :::
 
 ### Relationships between variables {#variable-relations}

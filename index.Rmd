@@ -38,7 +38,7 @@ on the [course webpage](https://math.montana.edu/courses/s216/index.html). Detai
 
 ## STAT 216 Coursepack {-}
 
-Each week, you will work through an in-class activity with your team mates and the guidance of your instructor. These activities, as well as reading guides to guide you in taking notes on the required readings and videos, are included in the _STAT 216 Coursepack_. This course requires you to purchase a printed copy of the _STAT 216 coursepack_ and bring it with you to class each day. 
+Each week, you will work through an in-class activity with your team mates and the guidance of your instructor. These activities, as well as reading guides to guide you in taking notes on the required readings and videos, are included in the _STAT 216 Coursepack_. This course requires you to purchase a printed copy of the _STAT 216 Coursepack_ and bring it with you to class each day. 
 
 The coursepack is available for purchase through the [MSU Bookstore](https://www.msubookstore.org/). You may purchase the coursepack in person, or you may purchase online and have the coursepack shipped to you. The coursepack will be available in the MSU Bookstore on the first day of classes. Chapter 1 of the coursepack is provided here if you do not have the coursepack by your first day of class.
 
@@ -60,7 +60,8 @@ MSU hosts its own web based version of RStudio, which can be found at: [rstudio.
 
 Your username is your NetID, and your password is the password associated with your NetID.
 
-All registered Stat 216 students should have access to this server. If you are enrolled in the course, but receive the error "Incorrect or invalide username/password" when attempting to log in, please email Stat 216 Faculty Course Supervisor [Dr.\ Stacey Hancock](mailto:stacey.hancock@montana.edu).
+All registered Stat 216 students should have access to this server. If you are enrolled in the course, but receive the error "Incorrect or invalid username/password" when attempting to log in, please email Stat 216 Faculty Course Supervisor [Dr.\ Stacey Hancock](mailto:stacey.hancock@montana.edu).
+If you continue to have issues logging in, see the following section for other options for accessing RStudio.
 
 *Note that any work you save on the server will be deleted, and your access will be removed after the semester ends. Thus, if you would like to save any files, export them to your own computer prior to the end of the semester.*
 
