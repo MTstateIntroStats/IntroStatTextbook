@@ -986,7 +986,11 @@ If we square these deviations and then take an average, the result is equal to t
 
 
 
-$$ s^2 = \frac{(-0.67)^2 + (-1.65)^2 + (14.73)^2 + \cdots + (-5.49)^2}{50 - 1} = \frac{0.45 + 2.72 + \cdots + 30.14}{49} = 25.52 $$
+\begin{align*}
+s^2 &= \frac{(-0.67)^2 + (-1.65)^2 + (14.73)^2 + \cdots + (-5.49)^2}{50 - 1} \\
+&= \frac{0.45 + 2.72 + \cdots + 30.14}{49} \\
+&= 25.52
+\end{align*}
 
 We divide by $n - 1$, rather than dividing by $n$, when computing a sample's variance; there's some mathematical nuance here, but the end result is that doing this makes this statistic slightly more reliable and useful.
 
@@ -1443,7 +1447,95 @@ Further apply the concepts you've learned in this chapter in R with computationa
 
 ## Chapter 2 review {#chp2-review}
 
-We're encountered a variety of univariate (one variable) and bivariate (two variable) summary statistics and data visualization methods in this chapter.
+### Terms
+
+We introduced the following terms in the chapter. 
+If you're not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
+We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. 
+However you should be able to easily spot them as **bolded text**.
+
+<table>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> average </td>
+   <td style="text-align:left;"> first quartile </td>
+   <td style="text-align:left;"> outliers </td>
+   <td style="text-align:left;"> statistic </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> bar plot </td>
+   <td style="text-align:left;"> form </td>
+   <td style="text-align:left;"> parameter </td>
+   <td style="text-align:left;"> strength </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> bimodal </td>
+   <td style="text-align:left;"> frequency </td>
+   <td style="text-align:left;"> pie chart </td>
+   <td style="text-align:left;"> symmetric </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> box plot </td>
+   <td style="text-align:left;"> histogram </td>
+   <td style="text-align:left;"> point estimate </td>
+   <td style="text-align:left;"> tail </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> column proportions </td>
+   <td style="text-align:left;"> intensity map </td>
+   <td style="text-align:left;"> relative frequency </td>
+   <td style="text-align:left;"> third quartile </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> column totals </td>
+   <td style="text-align:left;"> interquartile range </td>
+   <td style="text-align:left;"> right skewed </td>
+   <td style="text-align:left;"> transformation </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> contingency table </td>
+   <td style="text-align:left;"> IQR </td>
+   <td style="text-align:left;"> robust statistics </td>
+   <td style="text-align:left;"> two-way table </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> data density </td>
+   <td style="text-align:left;"> left skewed </td>
+   <td style="text-align:left;"> row proportions </td>
+   <td style="text-align:left;"> unimodal </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> density plot </td>
+   <td style="text-align:left;"> mean </td>
+   <td style="text-align:left;"> row totals </td>
+   <td style="text-align:left;"> variability </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> deviation </td>
+   <td style="text-align:left;"> median </td>
+   <td style="text-align:left;"> scatterplot </td>
+   <td style="text-align:left;"> variance </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> direction </td>
+   <td style="text-align:left;"> mosaic plot </td>
+   <td style="text-align:left;"> segmented bar plot </td>
+   <td style="text-align:left;"> weighted mean </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> distribution </td>
+   <td style="text-align:left;"> multimodal </td>
+   <td style="text-align:left;"> Simpson's Paradox </td>
+   <td style="text-align:left;"> whiskers </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> dot plot </td>
+   <td style="text-align:left;"> outlier </td>
+   <td style="text-align:left;"> standard deviation </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+</tbody>
+</table>
 
 ### Data visualization summary
 
@@ -1546,92 +1638,14 @@ We typically use Roman letters to symbolize statistics (e.g., $\bar{x}$, $\hat{p
 |Regression line slope   |$b_1$|$\beta_1$|
 |Regression line $y$-intercept   |$b_0$|$\beta_0$|
 
-### Terms
+### Key ideas
 
-We introduced the following terms in the chapter. 
-If you're not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
-We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. 
-However you should be able to easily spot them as **bolded text**.
+We've encountered a variety of univariate (one variable) and bivariate (two variable) summary statistics and data visualization methods in this chapter. In addition to the notation, summary statistics, and data visualization method summaries above, here are the key ideas from this chapter.
 
-<table>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> average </td>
-   <td style="text-align:left;"> first quartile </td>
-   <td style="text-align:left;"> outliers </td>
-   <td style="text-align:left;"> statistic </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> bar plot </td>
-   <td style="text-align:left;"> form </td>
-   <td style="text-align:left;"> parameter </td>
-   <td style="text-align:left;"> strength </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> bimodal </td>
-   <td style="text-align:left;"> frequency </td>
-   <td style="text-align:left;"> pie chart </td>
-   <td style="text-align:left;"> symmetric </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> box plot </td>
-   <td style="text-align:left;"> histogram </td>
-   <td style="text-align:left;"> point estimate </td>
-   <td style="text-align:left;"> tail </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> column proportions </td>
-   <td style="text-align:left;"> intensity map </td>
-   <td style="text-align:left;"> relative frequency </td>
-   <td style="text-align:left;"> third quartile </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> column totals </td>
-   <td style="text-align:left;"> interquartile range </td>
-   <td style="text-align:left;"> right skewed </td>
-   <td style="text-align:left;"> transformation </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> contingency table </td>
-   <td style="text-align:left;"> IQR </td>
-   <td style="text-align:left;"> robust statistics </td>
-   <td style="text-align:left;"> two-way table </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> data density </td>
-   <td style="text-align:left;"> left skewed </td>
-   <td style="text-align:left;"> row proportions </td>
-   <td style="text-align:left;"> unimodal </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> density plot </td>
-   <td style="text-align:left;"> mean </td>
-   <td style="text-align:left;"> row totals </td>
-   <td style="text-align:left;"> variability </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> deviation </td>
-   <td style="text-align:left;"> median </td>
-   <td style="text-align:left;"> scatterplot </td>
-   <td style="text-align:left;"> variance </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> direction </td>
-   <td style="text-align:left;"> mosaic plot </td>
-   <td style="text-align:left;"> segmented bar plot </td>
-   <td style="text-align:left;"> weighted mean </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> distribution </td>
-   <td style="text-align:left;"> multimodal </td>
-   <td style="text-align:left;"> Simpson's Paradox </td>
-   <td style="text-align:left;"> whiskers </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> dot plot </td>
-   <td style="text-align:left;"> outlier </td>
-   <td style="text-align:left;"> standard deviation </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-</tbody>
-</table>
+* Probabilities and sample proportions can be either **unconditional** or **conditional**. An unconditional probability or proportion is a proportion measured on the entire population; whereas a conditional probability or proportion is a proportion measured on a subgroup of the population. When computing probabilities using a contingency table, unconditional probabilities are computed by dividing a cell total by the overall total; conditional probabilities are computed by dividing a cell total by a row or column total.
+
+* Two variables are **associated** when the behavior of one variable depends on the value of the other variable. For two categorical variables, this occurs when some or all of the conditional proportions in each category of one variable change across categories of the other variable. Two quantitative variables are associated when a trend is apparent on a scatterplot. Recall from Chapter @\ref(#intro-to-data), *association does not imply causation*!
+
+* When describing the **distribution** of a single quantitative variable on a histogram, dot plot, or box plot, we look for (1) center, (2) variability, (3) shape, and (4) outliers.
+
+* When describing the relationship shown between two quantitative variables in a scatterplot, we look for (1) form, (2) direction, (3) strength, and (4) outliers.

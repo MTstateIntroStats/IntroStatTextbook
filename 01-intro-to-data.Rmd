@@ -1458,6 +1458,8 @@ make_terms_table(terms_chp_1)
 
 ### Key ideas
 
+This chapter introduced us to data --- how it is collected, how it is organized into a data frame, and the scope of inference allowed by the study design. 
+
 * A data set is comprised of measurements of **variables** on **observational units**. The type of variable can be **quantitative** or **categorical**, and a variable's role can be an **explanatory variable** or **response variable**.
 
 * Statistical inference uses data from a **sample** to make inferences about a larger, target **population**. We can only generalize our results from the sample to the target population if the sampling methods were **unbiased**. One unbiased sampling method is a **simple random sample**, where you _randomly select_ your observational units for the sample from the complete list of observational units in the target population.

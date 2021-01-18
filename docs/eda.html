@@ -1522,7 +1522,11 @@ Figure 2.15: A density plot of <code>interest_rate</code> overlayed on a histogr
 <p>We call the distance of an observation from its mean its <strong>deviation</strong>. Below are the deviations for the <span class="math inline">\(1^{st}\)</span>, <span class="math inline">\(2^{nd}\)</span>, <span class="math inline">\(3^{rd}\)</span>, and <span class="math inline">\(50^{th}\)</span> observations in the <code>interest_rate</code> variable:</p>
 <p><span class="math display">\[ x_1 - \bar{x} = 10.9 - 11.57 = -0.67 \]</span> <span class="math display">\[ x_2 - \bar{x} = 9.92 - 11.57 = -1.65 \]</span> <span class="math display">\[ x_3 - \bar{x} = 26.3 - 11.57 = 14.73 \]</span> <span class="math display">\[ \vdots \]</span> <span class="math display">\[ x_{50} - \bar{x} = 6.08 - 11.57 = -5.49 \]</span></p>
 <p>If we square these deviations and then take an average, the result is equal to the sample <strong>variance</strong>, denoted by <span class="math inline">\(s^2\)</span>:</p>
-<p><span class="math display">\[ s^2 = \frac{(-0.67)^2 + (-1.65)^2 + (14.73)^2 + \cdots + (-5.49)^2}{50 - 1} = \frac{0.45 + 2.72 + \cdots + 30.14}{49} = 25.52 \]</span></p>
+<p><span class="math display">\[\begin{align*}
+s^2 &amp;= \frac{(-0.67)^2 + (-1.65)^2 + (14.73)^2 + \cdots + (-5.49)^2}{50 - 1} \\
+&amp;= \frac{0.45 + 2.72 + \cdots + 30.14}{49} \\
+&amp;= 25.52
+\end{align*}\]</span></p>
 <p>We divide by <span class="math inline">\(n - 1\)</span>, rather than dividing by <span class="math inline">\(n\)</span>, when computing a sample’s variance; there’s some mathematical nuance here, but the end result is that doing this makes this statistic slightly more reliable and useful.</p>
 <p>Notice that squaring the deviations does two things. First, it makes large values relatively much larger. Second, it gets rid of any negative signs.</p>
 <p>The <strong>standard deviation</strong> is defined as the square root of the variance:</p>
@@ -2167,198 +2171,9 @@ All you need is your browser to get started!</p>
 <h2>
 <span class="header-section-number">2.5</span> Chapter 2 review<a class="anchor" aria-label="anchor" href="#chp2-review"><i class="fas fa-link"></i></a>
 </h2>
-<p>We’re encountered a variety of univariate (one variable) and bivariate (two variable) summary statistics and data visualization methods in this chapter.</p>
-<div id="data-visualization-summary" class="section level3" number="2.5.1">
+<div id="terms-1" class="section level3" number="2.5.1">
 <h3>
-<span class="header-section-number">2.5.1</span> Data visualization summary<a class="anchor" aria-label="anchor" href="#data-visualization-summary"><i class="fas fa-link"></i></a>
-</h3>
-<p>Figure <a href="eda.html#fig:decision-tree-plots">2.25</a> presents a decision tree for deciding which type of plot is most appropriate for a given number and types of variables. In the next chapter, we’ll further explore how to model the association between two quantitative variables, called regression. In Chapter <a href="mult-reg.html#mult-reg">4</a>, we’ll look at exploratory data analysis methods for more than two variables.</p>
-<div class="figure" style="text-align: center">
-<span id="fig:decision-tree-plots"></span>
-<img src="02-eda_files/figure-html/decision-tree-plots-1.png" alt="Decision tree for determining an appropriate plot  given a number of variables and their types." width="70%"><p class="caption">
-Figure 2.25: Decision tree for determining an appropriate plot given a number of variables and their types.
-</p>
-</div>
-<!-- geom_node_label( -->
-<!--     aes(   label=c("Response variable", -->
-<!--                    "Quantitative", "Categorical", -->
-<!--                   rep(c("Quantitative","Categorical","None"),2), -->
-<!--                   "Scatterplot", -->
-<!--                   "Stacked histogram",  -->
-<!--                   "Side-by-side boxplots", "Boxplot", -->
-<!--                   "Density plot", "Histogram", -->
-<!--                   "Dotplot", "Side-by-side boxplots", -->
-<!--                   "Smoothed scatterplot", "Segmented bar plot",  -->
-<!--                   "Mosaic plot", "Bar plot")), -->
-<!--     label.padding = unit(0.5, "lines"), -->
-<!--     color = pal[c(1:9,4,5,5,6,6,6,6,7,7,8,9,9)], -->
-<!--     size = 4#, repel = TRUE -->
-<!--     )  -->
-</div>
-<div id="summary-measures" class="section level3" number="2.5.2">
-<h3>
-<span class="header-section-number">2.5.2</span> Summary measures<a class="anchor" aria-label="anchor" href="#summary-measures"><i class="fas fa-link"></i></a>
-</h3>
-<p>Though some of these summary measures will be covered in later chapters, Table <a href="eda.html#summary-measures">2.5.2</a> provides a comprehensive summary of these measures according to the type(s) of variable(s) which they summarize.</p>
-<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>
-<span id="tab:summary-measures">Table 2.12: </span>Summary measures for different types of variables covered in this textbook and Sections where they appear. A binary variable is a categorical variable with only two categories.
-</caption>
-<thead><tr>
-<th style="text-align:left;">
-Sections
-</th>
-<th style="text-align:left;">
-Response Variable
-</th>
-<th style="text-align:left;">
-Explanatory Variable
-</th>
-<th style="text-align:left;">
-Summary Measure(s)
-</th>
-</tr></thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-2.1, 5.3
-</td>
-<td style="text-align:left;">
-Binary
-</td>
-<td style="text-align:left;">
-(None)
-</td>
-<td style="text-align:left;">
-One proportion
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2.1, 5.4
-</td>
-<td style="text-align:left;">
-Binary
-</td>
-<td style="text-align:left;">
-Binary
-</td>
-<td style="text-align:left;">
-Difference in proportions, relative risk
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2.3, 6.1
-</td>
-<td style="text-align:left;">
-Quantitative
-</td>
-<td style="text-align:left;">
-(None)
-</td>
-<td style="text-align:left;">
-One mean
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2.3, 6.2
-</td>
-<td style="text-align:left;">
-Quantitative
-</td>
-<td style="text-align:left;">
-Binary (Paired)
-</td>
-<td style="text-align:left;">
-Mean difference
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2.3, 6.3
-</td>
-<td style="text-align:left;">
-Quantitative
-</td>
-<td style="text-align:left;">
-Binary (Independent)
-</td>
-<td style="text-align:left;">
-Difference in means
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2.3, 7.1
-</td>
-<td style="text-align:left;">
-Quantitative
-</td>
-<td style="text-align:left;">
-Quantitative
-</td>
-<td style="text-align:left;">
-Correlation, R-squared, regression slope
-</td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<div id="notation-summary" class="section level3" number="2.5.3">
-<h3>
-<span class="header-section-number">2.5.3</span> Notation summary<a class="anchor" aria-label="anchor" href="#notation-summary"><i class="fas fa-link"></i></a>
-</h3>
-<p>In the field of statistics, summary measures that summarize a sample of data are called <strong>statistics</strong>. Numbers that summarize an entire population <strong>parameters</strong>. You can remember
-this distinction by looking at the first letter of each term:</p>
-<blockquote>
-<p><strong><em>S</em></strong>tatistics summarize <strong><em>S</em></strong>amples.<br><strong><em>P</em></strong>arameters summarize <strong><em>P</em></strong>opulations.</p>
-</blockquote>
-<p>We typically use Roman letters to symbolize statistics (e.g., <span class="math inline">\(\bar{x}\)</span>, <span class="math inline">\(\hat{p}\)</span>), and Greek letters to symbolize parameters (e.g., <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\pi\)</span>).</p>
-<div class="inline-table"><table class="table table-sm">
-<thead><tr class="header">
-<th align="left">Summary Measure</th>
-<th align="center">Statistic</th>
-<th align="center">Parameter</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td align="left">Sample size</td>
-<td align="center"><span class="math inline">\(n\)</span></td>
-<td align="center"><span class="math inline">\(-\)</span></td>
-</tr>
-<tr class="even">
-<td align="left">Proportion</td>
-<td align="center"><span class="math inline">\(\hat{p}\)</span></td>
-<td align="center"><span class="math inline">\(\pi\)</span></td>
-</tr>
-<tr class="odd">
-<td align="left">Mean</td>
-<td align="center"><span class="math inline">\(\bar{x}\)</span></td>
-<td align="center"><span class="math inline">\(\mu\)</span></td>
-</tr>
-<tr class="even">
-<td align="left">Correlation</td>
-<td align="center"><span class="math inline">\(r\)</span></td>
-<td align="center"><span class="math inline">\(\rho\)</span></td>
-</tr>
-<tr class="odd">
-<td align="left">Regression line slope</td>
-<td align="center"><span class="math inline">\(b_1\)</span></td>
-<td align="center"><span class="math inline">\(\beta_1\)</span></td>
-</tr>
-<tr class="even">
-<td align="left">Regression line <span class="math inline">\(y\)</span>-intercept</td>
-<td align="center"><span class="math inline">\(b_0\)</span></td>
-<td align="center"><span class="math inline">\(\beta_0\)</span></td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<div id="terms-1" class="section level3" number="2.5.4">
-<h3>
-<span class="header-section-number">2.5.4</span> Terms<a class="anchor" aria-label="anchor" href="#terms-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5.1</span> Terms<a class="anchor" aria-label="anchor" href="#terms-1"><i class="fas fa-link"></i></a>
 </h3>
 <p>We introduced the following terms in the chapter.
 If you’re not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
@@ -2548,6 +2363,206 @@ standard deviation
 </tr>
 </tbody></table></div>
 </div>
+<div id="data-visualization-summary" class="section level3" number="2.5.2">
+<h3>
+<span class="header-section-number">2.5.2</span> Data visualization summary<a class="anchor" aria-label="anchor" href="#data-visualization-summary"><i class="fas fa-link"></i></a>
+</h3>
+<p>Figure <a href="eda.html#fig:decision-tree-plots">2.25</a> presents a decision tree for deciding which type of plot is most appropriate for a given number and types of variables. In the next chapter, we’ll further explore how to model the association between two quantitative variables, called regression. In Chapter <a href="mult-reg.html#mult-reg">4</a>, we’ll look at exploratory data analysis methods for more than two variables.</p>
+<div class="figure" style="text-align: center">
+<span id="fig:decision-tree-plots"></span>
+<img src="02-eda_files/figure-html/decision-tree-plots-1.png" alt="Decision tree for determining an appropriate plot  given a number of variables and their types." width="70%"><p class="caption">
+Figure 2.25: Decision tree for determining an appropriate plot given a number of variables and their types.
+</p>
+</div>
+<!-- geom_node_label( -->
+<!--     aes(   label=c("Response variable", -->
+<!--                    "Quantitative", "Categorical", -->
+<!--                   rep(c("Quantitative","Categorical","None"),2), -->
+<!--                   "Scatterplot", -->
+<!--                   "Stacked histogram",  -->
+<!--                   "Side-by-side boxplots", "Boxplot", -->
+<!--                   "Density plot", "Histogram", -->
+<!--                   "Dotplot", "Side-by-side boxplots", -->
+<!--                   "Smoothed scatterplot", "Segmented bar plot",  -->
+<!--                   "Mosaic plot", "Bar plot")), -->
+<!--     label.padding = unit(0.5, "lines"), -->
+<!--     color = pal[c(1:9,4,5,5,6,6,6,6,7,7,8,9,9)], -->
+<!--     size = 4#, repel = TRUE -->
+<!--     )  -->
+</div>
+<div id="summary-measures" class="section level3" number="2.5.3">
+<h3>
+<span class="header-section-number">2.5.3</span> Summary measures<a class="anchor" aria-label="anchor" href="#summary-measures"><i class="fas fa-link"></i></a>
+</h3>
+<p>Though some of these summary measures will be covered in later chapters, Table <a href="eda.html#summary-measures">2.5.3</a> provides a comprehensive summary of these measures according to the type(s) of variable(s) which they summarize.</p>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:summary-measures">Table 2.12: </span>Summary measures for different types of variables covered in this textbook and Sections where they appear. A binary variable is a categorical variable with only two categories.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+Sections
+</th>
+<th style="text-align:left;">
+Response Variable
+</th>
+<th style="text-align:left;">
+Explanatory Variable
+</th>
+<th style="text-align:left;">
+Summary Measure(s)
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+2.1, 5.3
+</td>
+<td style="text-align:left;">
+Binary
+</td>
+<td style="text-align:left;">
+(None)
+</td>
+<td style="text-align:left;">
+One proportion
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2.1, 5.4
+</td>
+<td style="text-align:left;">
+Binary
+</td>
+<td style="text-align:left;">
+Binary
+</td>
+<td style="text-align:left;">
+Difference in proportions, relative risk
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2.3, 6.1
+</td>
+<td style="text-align:left;">
+Quantitative
+</td>
+<td style="text-align:left;">
+(None)
+</td>
+<td style="text-align:left;">
+One mean
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2.3, 6.2
+</td>
+<td style="text-align:left;">
+Quantitative
+</td>
+<td style="text-align:left;">
+Binary (Paired)
+</td>
+<td style="text-align:left;">
+Mean difference
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2.3, 6.3
+</td>
+<td style="text-align:left;">
+Quantitative
+</td>
+<td style="text-align:left;">
+Binary (Independent)
+</td>
+<td style="text-align:left;">
+Difference in means
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2.3, 7.1
+</td>
+<td style="text-align:left;">
+Quantitative
+</td>
+<td style="text-align:left;">
+Quantitative
+</td>
+<td style="text-align:left;">
+Correlation, R-squared, regression slope
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div id="notation-summary" class="section level3" number="2.5.4">
+<h3>
+<span class="header-section-number">2.5.4</span> Notation summary<a class="anchor" aria-label="anchor" href="#notation-summary"><i class="fas fa-link"></i></a>
+</h3>
+<p>In the field of statistics, summary measures that summarize a sample of data are called <strong>statistics</strong>. Numbers that summarize an entire population <strong>parameters</strong>. You can remember
+this distinction by looking at the first letter of each term:</p>
+<blockquote>
+<p><strong><em>S</em></strong>tatistics summarize <strong><em>S</em></strong>amples.<br><strong><em>P</em></strong>arameters summarize <strong><em>P</em></strong>opulations.</p>
+</blockquote>
+<p>We typically use Roman letters to symbolize statistics (e.g., <span class="math inline">\(\bar{x}\)</span>, <span class="math inline">\(\hat{p}\)</span>), and Greek letters to symbolize parameters (e.g., <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\pi\)</span>).</p>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="left">Summary Measure</th>
+<th align="center">Statistic</th>
+<th align="center">Parameter</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Sample size</td>
+<td align="center"><span class="math inline">\(n\)</span></td>
+<td align="center"><span class="math inline">\(-\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">Proportion</td>
+<td align="center"><span class="math inline">\(\hat{p}\)</span></td>
+<td align="center"><span class="math inline">\(\pi\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">Mean</td>
+<td align="center"><span class="math inline">\(\bar{x}\)</span></td>
+<td align="center"><span class="math inline">\(\mu\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">Correlation</td>
+<td align="center"><span class="math inline">\(r\)</span></td>
+<td align="center"><span class="math inline">\(\rho\)</span></td>
+</tr>
+<tr class="odd">
+<td align="left">Regression line slope</td>
+<td align="center"><span class="math inline">\(b_1\)</span></td>
+<td align="center"><span class="math inline">\(\beta_1\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">Regression line <span class="math inline">\(y\)</span>-intercept</td>
+<td align="center"><span class="math inline">\(b_0\)</span></td>
+<td align="center"><span class="math inline">\(\beta_0\)</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div id="key-ideas-1" class="section level3" number="2.5.5">
+<h3>
+<span class="header-section-number">2.5.5</span> Key ideas<a class="anchor" aria-label="anchor" href="#key-ideas-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>We’ve encountered a variety of univariate (one variable) and bivariate (two variable) summary statistics and data visualization methods in this chapter. In addition to the notation, summary statistics, and data visualization method summaries above, here are the key ideas from this chapter.</p>
+<ul>
+<li><p>Probabilities and sample proportions can be either <strong>unconditional</strong> or <strong>conditional</strong>. An unconditional probability or proportion is a proportion measured on the entire population; whereas a conditional probability or proportion is a proportion measured on a subgroup of the population. When computing probabilities using a contingency table, unconditional probabilities are computed by dividing a cell total by the overall total; conditional probabilities are computed by dividing a cell total by a row or column total.</p></li>
+<li><p>Two variables are <strong>associated</strong> when the behavior of one variable depends on the value of the other variable. For two categorical variables, this occurs when some or all of the conditional proportions in each category of one variable change across categories of the other variable. Two quantitative variables are associated when a trend is apparent on a scatterplot. Recall from Chapter @(#intro-to-data), <em>association does not imply causation</em>!</p></li>
+<li><p>When describing the <strong>distribution</strong> of a single quantitative variable on a histogram, dot plot, or box plot, we look for (1) center, (2) variability, (3) shape, and (4) outliers.</p></li>
+<li><p>When describing the relationship shown between two quantitative variables in a scatterplot, we look for (1) form, (2) direction, (3) strength, and (4) outliers.</p></li>
+</ul>
+</div>
 </div>
 </div>
 
@@ -2595,10 +2610,11 @@ standard deviation
 </li>
 <li>
 <a class="nav-link" href="#chp2-review"><span class="header-section-number">2.5</span> Chapter 2 review</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#data-visualization-summary"><span class="header-section-number">2.5.1</span> Data visualization summary</a></li>
-<li><a class="nav-link" href="#summary-measures"><span class="header-section-number">2.5.2</span> Summary measures</a></li>
-<li><a class="nav-link" href="#notation-summary"><span class="header-section-number">2.5.3</span> Notation summary</a></li>
-<li><a class="nav-link" href="#terms-1"><span class="header-section-number">2.5.4</span> Terms</a></li>
+<li><a class="nav-link" href="#terms-1"><span class="header-section-number">2.5.1</span> Terms</a></li>
+<li><a class="nav-link" href="#data-visualization-summary"><span class="header-section-number">2.5.2</span> Data visualization summary</a></li>
+<li><a class="nav-link" href="#summary-measures"><span class="header-section-number">2.5.3</span> Summary measures</a></li>
+<li><a class="nav-link" href="#notation-summary"><span class="header-section-number">2.5.4</span> Notation summary</a></li>
+<li><a class="nav-link" href="#key-ideas-1"><span class="header-section-number">2.5.5</span> Key ideas</a></li>
 </ul>
 </li>
 </ul>

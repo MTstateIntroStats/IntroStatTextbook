@@ -354,10 +354,11 @@ r-exploratory-data-analysis
 interactive-r-tutorials-1
 r-labs-1
 chp2-review
+terms-1
 data-visualization-summary
 summary-measures
 notation-summary
-terms-1
+key-ideas-1
 cor-reg
 fit-line-res-cor
 fitting-a-line-to-data
