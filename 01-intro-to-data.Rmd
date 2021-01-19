@@ -1460,12 +1460,21 @@ make_terms_table(terms_chp_1)
 
 This chapter introduced us to data --- how it is collected, how it is organized into a data frame, and the scope of inference allowed by the study design. 
 
-* A data set is comprised of measurements of **variables** on **observational units**. The type of variable can be **quantitative** or **categorical**, and a variable's role can be an **explanatory variable** or **response variable**.
+* A data set is comprised of measurements of **variables** on **observational units**.
+The type of variable can be **quantitative** or **categorical**, and a variable's role can be an **explanatory variable** or **response variable**.
 
-* Statistical inference uses data from a **sample** to make inferences about a larger, target **population**. We can only generalize our results from the sample to the target population if the sampling methods were **unbiased**. One unbiased sampling method is a **simple random sample**, where you _randomly select_ your observational units for the sample from the complete list of observational units in the target population.
+* Statistical inference uses data from a **sample** to make inferences about a larger, target **population**.
+We can only generalize our results from the sample to the target population if the sampling methods were **unbiased**.
+One unbiased sampling method is a **simple random sample**, where you _randomly select_ your observational units for the sample from the complete list of observational units in the target population.
 
-* Various types of **bias** can arise in studies, particularly in surveys of individuals. A study is biased if the way it was conducted would _systematically_ under-represent or over-represent certain groups or responses. **Selection bias** occurs when the method of selecting the sample is biased (e.g., convenience sample); **non-response bias** occurs when individuals who were selected for the study do not respond or cannot be reached; **response bias** occurs when the responses of individuals do not reflect the truth (e.g., due to confidentiality concerns, question wording, or sensitive topics).
+* Various types of **bias** can arise in studies, particularly in surveys of individuals.
+A study is biased if the way it was conducted would _systematically_ under-represent or over-represent certain groups or responses.
+**Selection bias** occurs when the method of selecting the sample is biased (e.g., convenience sample);
+**non-response bias** occurs when individuals who were selected for the study do not respond or cannot be reached;
+**response bias** occurs when the responses of individuals do not reflect the truth (e.g., due to confidentiality concerns, question wording, or sensitive topics).
 
 * In an **observational study**, we merely _observe_ the behavior of the individuals in the study; we do not manipulate the variables on the individuals in any way. In a **randomized experiment**, we _randomly assign_ values of an explanatory variable to the observational units, then observe the response variable. Random assignment allows us to investigate causal relationships because it balances out any potential **confounding variables**, on average.
 
-* The **scope of inference** of a study is described by which population the results can be _generalized_, and if any associations in the data can be assumed to be a _cause-and-effect relationship_. We can only generalize to the target population if the sampling method was unbiased (e.g., simple random sample). We can only conclude cause-and-effect if the study design was a randomized experiment.
+* The **scope of inference** of a study answers two questions: (1) To which population can the results can be _generalized_?  (2) Can we assume any of the associations in the data are due to a _cause-and-effect relationship_?
+We can only generalize to the target population if the sampling method was unbiased (e.g., simple random sample).
+We can only conclude cause-and-effect if the study design was a randomized experiment.
