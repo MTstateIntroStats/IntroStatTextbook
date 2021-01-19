@@ -1758,7 +1758,7 @@ temptbl %>%
 
 ### Notation summary
 
-In the field of statistics, summary measures that summarize a sample of data are called **statistics**\index{statistic}. Numbers that summarize an entire population **parameters**\index{parameter}. You can remember
+In the field of statistics, summary measures that summarize a sample of data are called **statistics**\index{statistic}. Numbers that summarize an entire population are called **parameters**\index{parameter}. You can remember
 this distinction by looking at the first letter of each term: 
 
 > **_S_**tatistics summarize **_S_**amples.  
