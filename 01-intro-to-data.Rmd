@@ -758,7 +758,7 @@ terms_chp_1 <- c(terms_chp_1, "convenience sample")
 There are three common types of **sampling bias** we will discuss:
 
 1. **Selection bias**\index{selection bias}: the method in how your sample is selected tends to produce samples that either over-represent or under-represent certain portions of the population.
-1. **Non-response bias**\index{non-response bias}: individuals selected for the sample are unwilling or cannot respond.
+1. **Non-response bias**\index{non-response bias}: individuals selected for the sample are unwilling to answer some or all questions, cannot respond, or refuse to participate.
 1. **Response bias**\index{response bias}: individuals selected for the sample respond in a way that does not accurately represent the truth---due to question wording, lack of anonymity, or other issues.
 :::
 

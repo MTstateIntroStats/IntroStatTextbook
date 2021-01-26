@@ -287,7 +287,7 @@ Whether the email was written using HTML (e.g., may have included bolding or act
 number
 </td>
 <td style="text-align:left;">
-Factor variable saying whether there was no number, a small number (under 1 million), or a big number.
+Categorical variable saying whether there was no number, a small number (under 1 million), or a big number.
 </td>
 </tr>
 </tbody>
@@ -333,10 +333,10 @@ in this way is called a <strong>contingency table</strong> or <strong>two-way ta
 Each value in the table represents the number of times, or <strong>frequency</strong>
 a particular combination of variable outcomes occurred.
 For example, the value 149 corresponds to the number of emails
-in the data set that are spam <em>and</em> had no number listed in the email.
+in the data set that are not spam <em>and</em> had no number listed in the email.
 Row and column totals are also included.
 The <strong>row totals</strong> provide the total counts across each row
-(e.g., <span class="math inline">\(149 + 168 + 50 = 367\)</span>), and <strong>column totals</strong> are total
+(e.g., there are <span class="math inline">\(149 + 168 + 50 = 367\)</span> emails classified as not spam), and <strong>column totals</strong> are total
 counts down each column.</p>
 <p>In this textbook, we generally take the convention of putting the categories of the explanatory variable as the columns and the categories of the response variable as the rows (if there exists and explanatory-response relationship between the two variables).</p>
 <div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
@@ -437,12 +437,12 @@ Total
 </tr>
 </tbody>
 </table></div>
-<p>We would like to examine whether the presence of numbers, small or large, in an email provides any useful value in classifying email as spam or not spam—that is, is there an <strong>association</strong> between the variables <code>number</code> and <code>type</code>?</p>
+<p>We would like to examine whether the presence of numbers—none, small or large—in an email provides any useful value in classifying email as spam or not spam—that is, is there an <strong>association</strong> between the variables <code>number</code> and <code>type</code>?</p>
 
 <div class="guidedpractice">
 To determine if a relationship exists between whether an email is spam or not, and whether the email has no numbers, a small number, or a big number, why isn’t it helpful to compare the <em>number</em> of spam emails across the <code>number</code> categories?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Since the sample sizes in the three &lt;code&gt;number&lt;/code&gt; categories differ (549 emails with no numbers; 2827 emails with a small number; 545 emails with a big number), we need to compare the &lt;em&gt;proportion&lt;/em&gt; of spam emails across categories rather than the count.&lt;/p&gt;"><sup>24</sup></a>
 </div>
-<p>The proportion of emails that were classified as spam in the data set is <span class="math inline">\(3554/3921 = 0.906\)</span>, or about 91%. Let’s compare this <strong>unconditional proportion</strong> to the <strong>conditional proportions</strong> of spam within each <code>number</code> category: <span class="math inline">\(400/549 = 73\)</span>% of emails with no numbers are spam; <span class="math inline">\(2659/2827 = 94\)</span>% of emails with small numbers are spam; and <span class="math inline">\(495/545 = 91\)</span>% of emails with big numbers are spam. Since these three conditional proportions differ, we say the variables <code>number</code> and <code>type</code> are <em>associated</em> in this data set. Note that some differ from the overall, or unconditional, proportion of spam emails in the data set—91%.</p>
+<p>The proportion of emails that were classified as spam in the data set is <span class="math inline">\(3554/3921 = 0.906\)</span>, or about 91%. Let’s compare this <strong>unconditional proportion</strong> to the <strong>conditional proportions</strong> of spam <em>within</em> each <code>number</code> category: <span class="math inline">\(400/549 \approx 73\%\)</span> of emails with no numbers are spam; <span class="math inline">\(2659/2827 \approx 94\%\)</span> of emails with small numbers are spam; and <span class="math inline">\(495/545 \approx 91\%\)</span> of emails with big numbers are spam. Since these three conditional proportions differ, we say the variables <code>number</code> and <code>type</code> are <em>associated</em> in this data set. Note that some differ from the overall, or unconditional, proportion of spam emails in the data set—91%.</p>
 
 <div class="onebox">
 <p><strong>Association between two categorical variables.</strong></p>
@@ -454,7 +454,7 @@ If the conditional proportions of a particular outcome (e.g., spam email) within
 </h4>
 <p>Conditional proportions that condition on a row category are called <strong>row proportions</strong>; conditional proportions that condition on a column category
 are called <strong>column proportions</strong>.</p>
-<p>Table <a href="eda.html#tab:rowPropSpamNumber">2.5</a> shows the row proportions for Table <a href="eda.html#tab:emailTable">2.4</a>. The row proportions are computed as the counts divided by their row totals. The value 149 at the intersection of <code>type</code> and <code>none</code> is replaced by <span class="math inline">\(149/367=0.406\)</span>, i.e., 149 divided by its row total, 367. So what does 0.406 represent? It corresponds to the conditional proportion of spam emails in the sample that do not have any numbers.</p>
+<p>Table <a href="eda.html#tab:rowPropSpamNumber">2.5</a> shows the row proportions for Table <a href="eda.html#tab:emailTable">2.4</a>. The row proportions are computed as the counts divided by their row totals. The frequnecy 149 at the intersection of <code>not spam</code> and <code>none</code> is replaced by <span class="math inline">\(149/367=0.406\)</span>, i.e., 149 divided by its row total, 367. So what does 0.406 represent? It corresponds to the conditional proportion of spam emails in the sample that do not have any numbers.</p>
 <div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:rowPropSpamNumber">Table 2.5: </span>A contingency table with row proportions for the <code>type</code> and <code>number</code> variables.
@@ -641,8 +641,8 @@ and we don’t know parameters!”</p>
 In the right panel, the counts are converted into proportions (e.g., <span class="math inline">\(549/3921=0.140\)</span> for <code>none</code>).</p>
 <div class="figure" style="text-align: center">
 <span id="fig:emailNumberBarPlot"></span>
-<img src="02-eda_files/figure-html/emailNumberBarPlot-1.png" alt="Two bar plots of `number`. The left panel shows the counts, and the right panel shows the proportions in each group." width="50%"><img src="02-eda_files/figure-html/emailNumberBarPlot-2.png" alt="Two bar plots of `number`. The left panel shows the counts, and the right panel shows the proportions in each group." width="50%"><p class="caption">
-Figure 2.1: Two bar plots of <code>number</code>. The left panel shows the counts, and the right panel shows the proportions in each group.
+<img src="02-eda_files/figure-html/emailNumberBarPlot-1.png" alt="Two bar plots of `number`. The left panel shows the counts on the $y$-axis, and the right panel shows the proportions in each group on the $y$-axis." width="50%"><img src="02-eda_files/figure-html/emailNumberBarPlot-2.png" alt="Two bar plots of `number`. The left panel shows the counts on the $y$-axis, and the right panel shows the proportions in each group on the $y$-axis." width="50%"><p class="caption">
+Figure 2.1: Two bar plots of <code>number</code>. The left panel shows the counts on the <span class="math inline">\(y\)</span>-axis, and the right panel shows the proportions in each group on the <span class="math inline">\(y\)</span>-axis.
 </p>
 </div>
 <p>Bar plots are also used to display the relationship between two categorical variables.

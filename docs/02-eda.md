@@ -103,7 +103,7 @@ Descriptions of all five email variables are given in Table \@ref(tab:emailVaria
   </tr>
   <tr>
    <td style="text-align:left;"> number </td>
-   <td style="text-align:left;"> Factor variable saying whether there was no number, a small number (under 1 million), or a big number. </td>
+   <td style="text-align:left;"> Categorical variable saying whether there was no number, a small number (under 1 million), or a big number. </td>
   </tr>
 </tbody>
 </table>
@@ -140,10 +140,10 @@ in this way is called a **contingency table** or **two-way table**.
 Each value in the table represents the number of times, or **frequency**
 a particular combination of variable outcomes occurred.
 For example, the value 149 corresponds to the number of emails
-in the data set that are spam _and_ had no number listed in the email.
+in the data set that are not spam _and_ had no number listed in the email.
 Row and column totals are also included.
 The **row totals** provide the total counts across each row
-(e.g., $149 + 168 + 50 = 367$), and **column totals** are total
+(e.g., there are $149 + 168 + 50 = 367$ emails classified as not spam), and **column totals** are total
 counts down each column.
 
 In this textbook, we generally take the convention of putting the categories of the explanatory variable as the columns and the categories of the response variable as the rows (if there exists and explanatory-response relationship between the two variables).
@@ -196,10 +196,10 @@ In this textbook, we generally take the convention of putting the categories of 
 </tbody>
 </table>
 
-We would like to examine whether the presence of numbers, small or large, in an email provides any useful value in classifying email as spam or not spam---that is, is there an **association** between the variables `number` and `type`? 
+We would like to examine whether the presence of numbers---none, small or large---in an email provides any useful value in classifying email as spam or not spam---that is, is there an **association** between the variables `number` and `type`? 
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">To determine if a relationship exists between whether an email is spam or not, and whether the email has no numbers, a small number, or a big number, why isn't it helpful to compare the _number_ of spam emails across the `number` categories?^[Since the sample sizes in the three `number` categories differ (549 emails with no numbers; 2827 emails with a small number; 545 emails with a big number), we need to compare the _proportion_ of spam emails across categories rather than the count.]</div>\EndKnitrBlock{guidedpractice}
-The proportion of emails that were classified as spam in the data set is $3554/3921 = 0.906$, or about 91%. Let's compare this **unconditional proportion** to the **conditional proportions** of spam within each `number` category: $400/549 = 73$% of emails with no numbers are spam; $2659/2827 = 94$% of emails with small numbers are spam; and $495/545 = 91$% of emails with big numbers are spam. Since these three conditional proportions differ, we say the variables `number` and `type` are _associated_ in this data set. Note that some differ from the overall, or unconditional, proportion of spam emails in the data set---91%.
+The proportion of emails that were classified as spam in the data set is $3554/3921 = 0.906$, or about 91%. Let's compare this **unconditional proportion** to the **conditional proportions** of spam _within_ each `number` category: $400/549 \approx 73\%$ of emails with no numbers are spam; $2659/2827 \approx 94\%$ of emails with small numbers are spam; and $495/545 \approx 91\%$ of emails with big numbers are spam. Since these three conditional proportions differ, we say the variables `number` and `type` are _associated_ in this data set. Note that some differ from the overall, or unconditional, proportion of spam emails in the data set---91%.
 
 \BeginKnitrBlock{onebox}<div class="onebox">**Association between two categorical variables.**
   
@@ -214,7 +214,7 @@ are called **column proportions**.
 
 
 
-Table \@ref(tab:rowPropSpamNumber) shows the row proportions for Table \@ref(tab:emailTable). The row proportions are computed as the counts divided by their row totals. The value 149 at the intersection of `type` and `none` is replaced by $149/367=0.406$, i.e., 149 divided by its row total, 367. So what does 0.406 represent? It corresponds to the conditional proportion of spam emails in the sample that do not have any numbers.
+Table \@ref(tab:rowPropSpamNumber) shows the row proportions for Table \@ref(tab:emailTable). The row proportions are computed as the counts divided by their row totals. The frequnecy 149 at the intersection of `not spam` and `none` is replaced by $149/367=0.406$, i.e., 149 divided by its row total, 367. So what does 0.406 represent? It corresponds to the conditional proportion of spam emails in the sample that do not have any numbers.
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>(\#tab:rowPropSpamNumber)A contingency table with row proportions for the `type` and `number` variables.</caption>
@@ -341,8 +341,8 @@ A bar plot is a common way to display a single categorical variable. The left pa
 In the right panel, the counts are converted into proportions (e.g., $549/3921=0.140$ for `none`).
 
 <div class="figure" style="text-align: center">
-<img src="02-eda_files/figure-html/emailNumberBarPlot-1.png" alt="Two bar plots of `number`. The left panel shows the counts, and the right panel shows the proportions in each group." width="50%" /><img src="02-eda_files/figure-html/emailNumberBarPlot-2.png" alt="Two bar plots of `number`. The left panel shows the counts, and the right panel shows the proportions in each group." width="50%" />
-<p class="caption">(\#fig:emailNumberBarPlot)Two bar plots of `number`. The left panel shows the counts, and the right panel shows the proportions in each group.</p>
+<img src="02-eda_files/figure-html/emailNumberBarPlot-1.png" alt="Two bar plots of `number`. The left panel shows the counts on the $y$-axis, and the right panel shows the proportions in each group on the $y$-axis." width="50%" /><img src="02-eda_files/figure-html/emailNumberBarPlot-2.png" alt="Two bar plots of `number`. The left panel shows the counts on the $y$-axis, and the right panel shows the proportions in each group on the $y$-axis." width="50%" />
+<p class="caption">(\#fig:emailNumberBarPlot)Two bar plots of `number`. The left panel shows the counts on the $y$-axis, and the right panel shows the proportions in each group on the $y$-axis.</p>
 </div>
 
 Bar plots are also used to display the relationship between two categorical variables.
