@@ -58,10 +58,19 @@ for running simulation-based inference in this course.
 
 MSU hosts its own web based version of RStudio, which can be found at: [rstudio.math.montana.edu](https://rstudio.math.montana.edu/). 
 
-Your username is your NetID, and your password is the password associated with your NetID.
+<!-- The information below is repeated in computing chapter. -->
 
-All registered Stat 216 students should have access to this server. If you are enrolled in the course, but receive the error "Incorrect or invalid username/password" when attempting to log in, please email Stat 216 Faculty Course Supervisor [Dr.\ Stacey Hancock](mailto:stacey.hancock@montana.edu).
-If you continue to have issues logging in, see the following section for other options for accessing RStudio.
+Your username is your 7-character NetID (in the form x##x###, where x is a letter and # is a number), and your password is the password associated with your NetID. 
+
+All registered Stat 216 students should have access to this server. If you are enrolled in the course, but receive the error "Incorrect or invalid username/password" when attempting to log in, take the following steps:
+
+1. Ensure that you are using your 7-character NetID as your username. This is of the form x##x###, where x is a letter and # is a number. Your email address will not work to log into the RStudio server.  
+2. Ensure that you are using the correct password that is associated with your NetID account. You can do this by logging into another site that requires your NetID (e.g., MyInfo) with the same credentials.
+3. Reset your NetID password at [password.montana.edu
+](http://password.montana.edu/). Your NetID password expires 180 days from the day you set it. If your password has expired, you will not be able to log into the RStudio server.
+
+After you have tried all the steps above, if you continue to have issues logging in, please email Stat 216 Faculty Course Supervisor [Dr.\ Stacey Hancock](mailto:stacey.hancock@montana.edu).
+You may also refer to the following section for other options for accessing RStudio.
 
 *Note that any work you save on the server will be deleted, and your access will be removed after the semester ends. Thus, if you would like to save any files, export them to your own computer prior to the end of the semester.*
 

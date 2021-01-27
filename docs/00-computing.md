@@ -11,9 +11,17 @@ When you navigate to the [MSU RStudio server](https://rstudio.math.montana.edu/)
 
 ![](00/images/sign-in.png){width=3in}
 
-Your username is your NetID, and your password is the password associated with your NetID. 
+Your username is your 7-character NetID (in the form x##x###, where x is a letter and # is a number), and your password is the password associated with your NetID. 
 
-All registered students should have access to this server. If you are enrolled in the course, but receive the error "Incorrect or invalid username/password" when attempting to log in, please email your name, section number, and NetID to Stat 216 Faculty Course Supervisor [Dr.\ Stacey Hancock](mailto:stacey.hancock@montana.edu). If you continue to have issues logging in, see the [Statistical computing](#stat-computing) section of the Welcome chapter for other options for accessing RStudio.
+All registered Stat 216 students should have access to this server. If you are enrolled in the course, but receive the error "Incorrect or invalid username/password" when attempting to log in, take the following steps:
+
+1. Ensure that you are using your 7-character NetID as your username. This is of the form x##x###, where x is a letter and # is a number. Your email address will not work to log into the RStudio server.  
+2. Ensure that you are using the correct password that is associated with your NetID account. You can do this by logging into another site that requires your NetID (e.g., MyInfo) with the same credentials.
+3. Reset your NetID password at [password.montana.edu
+](http://password.montana.edu/). Your NetID password expires 180 days from the day you set it. If your password has expired, you will not be able to log into the RStudio server.
+
+After you have tried all the steps above, if you continue to have issues logging in, please email Stat 216 Faculty Course Supervisor [Dr.\ Stacey Hancock](mailto:stacey.hancock@montana.edu).
+You may also refer to the [Statistical computing](#stat-computing) section of the Welcome chapter for other options for accessing RStudio.
 
 After logging in, you will see the RStudio working environment, displayed in Figure \@ref(fig:rstudio-env) below.
 
