@@ -78,9 +78,9 @@ You may also refer to the following section for other options for accessing RStu
 
 We recommend using RStudio through the MSU RStudio server, but there are other options for accessing this free software:
 
-1. Use RStudio through an MSU [virtual machine](https://studentlabs.montana.edu/remotelabs/howto.html).
+1. Use RStudio through an MSU [virtual machine](https://studentlabs.montana.edu/remotelabs/howto.html). Enter your 7-character NetID and password, then select "MSU" from the drop-down menu (_not_ "GFCMSU" or "MSUNORTHERN"). Upon logging in, select the "CLS-STAT-REMOTE" virtual machine. You will then see an RStudio icon on the virtual desktop.
 
-2. Use RStudio in an MSU on-campus computer lab. 
+2. Use RStudio on an MSU on-campus computer lab. 
 
 3. Use RStudio through the [RStudio Cloud](https://login.rstudio.cloud/register?redirect=https%3A%2F%2Fclient.login.rstudio.cloud%2Foauth%2Flogin%3Fshow_auth%3D0%26show_login%3D1%26show_setup%3D1). This resource allows you to use RStudio through a web browser. It is free for use, but it does limit you to a certain number of project hours per month.
 
