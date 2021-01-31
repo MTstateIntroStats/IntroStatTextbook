@@ -82,7 +82,7 @@ We recommend using RStudio through the MSU RStudio server, but there are other o
 
 2. Use RStudio on an MSU on-campus computer lab. 
 
-3. Use RStudio through the [RStudio Cloud](https://login.rstudio.cloud/register?redirect=https%3A%2F%2Fclient.login.rstudio.cloud%2Foauth%2Flogin%3Fshow_auth%3D0%26show_login%3D1%26show_setup%3D1). This resource allows you to use RStudio through a web browser. It is free for use, but it does limit you to a certain number of project hours per month.
+3. Use RStudio through the [RStudio Cloud](https://rstudio.cloud/). This resource allows you to use RStudio through a web browser. It is free for use, but it does limit you to a certain number of project hours per month.
 
 4. Download `R` and RStudio to your own laptop. (Note: `R` and RStudio will not run on iPad, notebooks, or Chromebooks.)
 
