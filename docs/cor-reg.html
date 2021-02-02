@@ -694,7 +694,7 @@ This corresponds exactly to the R-squared value:</p>
 The squared correlation coefficient, <span class="math inline">\(R^2\)</span>, is also called the <strong>coefficient of determination</strong>.</p>
 <div class="important">
 <p><strong>Coefficient of determination: proportion of variability in the response explained by the model.</strong></p>
-<p>Since <span class="math inline">\(R\)</span> is always between -1 and 1, <span class="math inline">\(R^2\)</span> will always be between 0 and 1. This statistic is called the <strong>coefficient of determination</strong> and measures the proportion of variation in the response variable, <span class="math inline">\(y\)</span>, that can be explained by the linear model with predictor <span class="math inline">\(x\)</span>.</p>
+<p>Since <span class="math inline">\(R\)</span> is always between <span class="math inline">\(-1\)</span> and <span class="math inline">\(1\)</span>, <span class="math inline">\(R^2\)</span> will always be between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>. This statistic is called the <strong>coefficient of determination</strong> and measures the proportion of variation in the response variable, <span class="math inline">\(y\)</span>, that can be explained by the linear model with predictor <span class="math inline">\(x\)</span>.</p>
 </div>
 <div class="example">
 <p><span id="exm:unlabeled-div-20" class="example"><strong>Example 3.8  </strong></span>Examine the scatterplot of head length (mm) versus total length (cm) of possums in Figure <a href="cor-reg.html#fig:scattHeadLTotalLLine">3.6</a>.
@@ -1016,6 +1016,26 @@ sum of squared error
 </tr>
 </tbody></table></div>
 </div>
+<div id="key-ideas-2" class="section level3" number="3.5.2">
+<h3>
+<span class="header-section-number">3.5.2</span> Key ideas<a class="anchor" aria-label="anchor" href="#key-ideas-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>This chapter build upon the graphical methods for two quantitative variables discussed in Section <a href="eda.html#quantitative-data">2.3</a> and explored additional exploratory data analysis methods for examining the relationship between two quantitative variables: the least squares regression line, correlation, and R-squared.</p>
+<ul>
+<li><p>Two variables are <strong>associated</strong> when the behavior of one variable depends on the value of the other variable. For two quantitative variables, this occurs when a trend is apparent on a scatterplot. If this trend is linear with a non-zero slope, we say the two quantitative variables are <strong>correlated</strong>. Recall again from Chapter <a href="intro-to-data.html#intro-to-data">1</a>, <em>association does not imply causation</em>!</p></li>
+<li><p>A <strong>least squares regression line</strong> represents the <em>predicted</em> value of the response variable, <span class="math inline">\(y\)</span>, for a given <span class="math inline">\(x\)</span>-value. Since the actual observed values of the response variable are denoted by <span class="math inline">\(y\)</span>, we denote the predicted values by <span class="math inline">\(\hat{y}\)</span>.</p></li>
+<li><p>The <strong>slope</strong> of the regression line is the predicted change in the response variable that is associated with a one-unit increase in <span class="math inline">\(x\)</span>.</p></li>
+<li><p>The <span class="math inline">\(y\)</span>-<strong>intercept</strong> of the regression line is the predicted value of the response variable when <span class="math inline">\(x = 0\)</span>. If the collected data did not include <span class="math inline">\(x\)</span>-values near zero, then this prediction is an example of <strong>extrapolation</strong> — using the regression line to make predictions outside the range of observed data.</p></li>
+<li><p>A regression line only provides a predicted response value, which may or may not be close to the value we would actually observe. A numerical measure of this “prediction error” is the <strong>residual</strong> = (observed <span class="math inline">\(y\)</span>-value) <span class="math inline">\(-\)</span> (predicted <span class="math inline">\(\hat{y}\)</span>-value); that is, the distance from the observed <span class="math inline">\(y\)</span>-value to the regression line. Positive residuals indicate that the observed <span class="math inline">\(y\)</span>-value is <em>above</em> the regression line (our regression model underestimated the response); negative residuals indicate that the observed <span class="math inline">\(y\)</span>-value is <em>below</em> the regression line (our regression model overestimated the response).</p></li>
+<li><p>The <strong>correlation coefficient</strong> (or just “correlation”) between two quantitative variables, denoted by <span class="math inline">\(r\)</span> or <span class="math inline">\(R\)</span>, is a number between <span class="math inline">\(-1\)</span> and <span class="math inline">\(1\)</span> that measures the <em>strength</em> (by its magnitude) and <em>direction</em> (by its sign) of the <em>linear</em> relationship between the two variables. Correlation is only useful if the two quantitative variables are linearly associated.</p></li>
+<li><p>The <strong>coefficient of determination</strong>, or <strong>R-squared</strong> is a number between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> that measures the proportion of the variation in the response variable that can be explained by knowing the <span class="math inline">\(x\)</span>-value. It can be computed by squaring the correlation coefficient (<span class="math inline">\(r^2\)</span>), or by using sample variances:
+<span class="math display">\[
+R^2 = \frac{s^2_{y}-s^2_{RES}}{s^2_{y}},
+\]</span>
+where <span class="math inline">\(s^2_{y}\)</span> is the sample variance of the observed <span class="math inline">\(y\)</span>-values, and <span class="math inline">\(s^2_{RES}\)</span> is the sample variance of the residuals.</p></li>
+<li><p>An <strong>outlier</strong> is a point that does not follow the general pattern of the data. An <strong>influential point</strong> is an outlier that tends to pull the slope of the line (or correlation) up or down from what we would have seen had we fit a regression line without it. An observation with an <span class="math inline">\(x\)</span>-value that is far away from the center of the observed <span class="math inline">\(x\)</span>-values is said to have <strong>high leverage</strong>, and has the <em>potential</em> to be an influential point.</p></li>
+</ul>
+</div>
 </div>
 </div>
 
@@ -1054,7 +1074,10 @@ sum of squared error
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#chp3-review"><span class="header-section-number">3.5</span> Chapter review</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#terms-2"><span class="header-section-number">3.5.1</span> Terms</a></li></ul>
+<a class="nav-link" href="#chp3-review"><span class="header-section-number">3.5</span> Chapter review</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#terms-2"><span class="header-section-number">3.5.1</span> Terms</a></li>
+<li><a class="nav-link" href="#key-ideas-2"><span class="header-section-number">3.5.2</span> Key ideas</a></li>
+</ul>
 </li>
 </ul>
 

@@ -380,6 +380,7 @@ intro-linear-models-r-tutorial
 r-labs-2
 chp3-review
 terms-2
+key-ideas-2
 mult-reg
 gapminder-world
 simpsons-paradox-revisited

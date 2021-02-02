@@ -618,7 +618,7 @@ The squared correlation coefficient, $R^2$, is also called the **coefficient of 
 ::: {.important}
 **Coefficient of determination: proportion of variability in the response explained by the model.**
 
-Since $R$ is always between -1 and 1, $R^2$ will always be between 0 and 1. This statistic is called the **coefficient of determination** and measures the proportion of variation in the response variable, $y$, that can be explained by the linear model with predictor $x$.
+Since $R$ is always between $-1$ and $1$, $R^2$ will always be between $0$ and $1$. This statistic is called the **coefficient of determination** and measures the proportion of variation in the response variable, $y$, that can be explained by the linear model with predictor $x$.
 :::
 
 ::: {.example}
@@ -924,3 +924,26 @@ However you should be able to easily spot them as **bolded text**.
 </tbody>
 </table>
 
+### Key ideas
+
+This chapter build upon the graphical methods for two quantitative variables discussed in Section \@ref(quantitative-data) and explored additional exploratory data analysis methods for examining the relationship between two quantitative variables: the least squares regression line, correlation, and R-squared.
+
+* Two variables are **associated** when the behavior of one variable depends on the value of the other variable. For two quantitative variables, this occurs when a trend is apparent on a scatterplot. If this trend is linear with a non-zero slope, we say the two quantitative variables are **correlated**. Recall again from Chapter \@ref(intro-to-data), *association does not imply causation*!
+
+* A **least squares regression line** represents the _predicted_ value of the response variable, $y$, for a given $x$-value. Since the actual observed values of the response variable are denoted by $y$, we denote the predicted values by $\hat{y}$.
+
+* The **slope** of the regression line is the predicted change in the response variable that is associated with a one-unit increase in $x$.
+
+* The $y$-**intercept** of the regression line is the predicted value of the response variable when $x = 0$. If the collected data did not include $x$-values near zero, then this prediction is an example of **extrapolation** --- using the regression line to make predictions outside the range of observed data.
+
+* A regression line only provides a predicted response value, which may or may not be close to the value we would actually observe. A numerical measure of this "prediction  error" is the **residual** = (observed $y$-value) $-$ (predicted $\hat{y}$-value); that is, the distance from the observed $y$-value to the regression line. Positive residuals indicate that the observed $y$-value is _above_ the regression line (our regression model underestimated the response); negative residuals indicate that the observed $y$-value is _below_ the regression line (our regression model overestimated the response).
+
+* The **correlation coefficient** (or just "correlation") between two quantitative variables, denoted by $r$ or $R$, is a number between $-1$ and $1$ that measures the _strength_ (by its magnitude) and _direction_ (by its sign) of the _linear_ relationship between the two variables. Correlation is only useful if the two quantitative variables are linearly associated.
+
+* The **coefficient of determination**, or **R-squared** is a number between $0$ and $1$ that measures the proportion of the variation in the response variable that can be explained by knowing the $x$-value. It can be computed by squaring the correlation coefficient ($r^2$), or by using sample variances:
+$$
+R^2 = \frac{s^2_{y}-s^2_{RES}}{s^2_{y}},
+$$
+where $s^2_{y}$ is the sample variance of the observed $y$-values, and $s^2_{RES}$ is the sample variance of the residuals.
+
+* An **outlier** is a point that does not follow the general pattern of the data. An **influential point** is an outlier that tends to pull the slope of the line (or correlation) up or down from what we would have seen had we fit a regression line without it. An observation with an $x$-value that is far away from the center of the observed $x$-values is said to have **high leverage**, and has the _potential_ to be an influential point.
