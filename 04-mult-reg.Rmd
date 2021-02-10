@@ -620,3 +620,12 @@ However you should be able to easily spot them as **bolded text**.
 make_terms_table(terms_chp_4)
 ```
 
+### Key ideas
+
+In this chapter, we started to think about associations between more than two variables. 
+
+* When building data visualizations, we map different variables to different **aesthetics**. For example, a quantitative explanatory variable is mapped to position on the $x$-axis, a quantitative response variable is mapped to position on the $y$-axis, and a categorical variable may be mapped to color or shape of the plotting character.
+
+* A common three-variable situation is one in which we add a categorical variable to a scatterplot, by using colors and/or different point symbols. If the slope of the regression line differs across categories, we say that the _relationship_ or _association_ between the two quantitative variables differs across levels of the categorical variable. This is called **interaction** --- the two explanatory variables _interact_ in their relationship with the response variable.
+
+* **Simpson's Paradox** can occur between three variables of any type (categorical or quantitative). Simpson's Paradox occurs when the overall association between two of the variables of interest _reverses_ when we account for a third variable. For example, overall, the slope between two quantitative variables $x$ and $y$ may be positive, but when we look at the slope fitted to a subset of the data in a certain category of a third variable, the slope is negative. 

@@ -391,6 +391,7 @@ interactive-r-tutorials-2
 r-labs-3
 chp4-review
 terms-3
+key-ideas-3
 inference-cat
 inf-foundations
 Martian

@@ -88,10 +88,9 @@ We recommend using RStudio through the MSU RStudio server, but there are other o
 3. Use RStudio through the [RStudio Cloud](https://rstudio.cloud/). This resource allows you to use RStudio through a web browser. It is free for use, but it does limit you to a certain number of project hours per month.
 
 4. Download `R` and RStudio to your own laptop. (Note: `R` and RStudio will not run on iPad, notebooks, or Chromebooks.)
-
-a. Download and install [R](https://cloud.r-project.org/).
-b. Download and install [RStudio Desktop](https://rstudio.com/products/rstudio/).
-c. Install the `catstats` package.
+    a. Download and install [R](https://cloud.r-project.org/).
+    b. Download and install [RStudio Desktop](https://rstudio.com/products/rstudio/).
+    c. Install the `catstats` package.
 
 View this [tutorial video on installing R and RStudio](https://greenwood-stat.shinyapps.io/InstallDemo/) if you would
 like additional installation instructions.
