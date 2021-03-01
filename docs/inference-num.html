@@ -6,13 +6,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 6 Inference for quantitative data | Montana State Introductory Statistics with R</title>
 <meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.7.1/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="libs/plotly-binding-4.9.2.2/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet">
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="libs/plotly-binding-4.9.2.2/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet">
 <script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script><script type="text/x-mathjax-config">
     const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
     for (let popover of popovers){
@@ -181,7 +181,7 @@ The 95% bootstrap confidence interval for the parameter <span class="math inline
 <p>You can find confidence intervals of difference confidence levels by changing the percent of the distribution you take, e.g., locate the middle 90% of the bootstrapped statistics for a 90% confidence interval.</p>
 
 <div class="example">
-<p><span id="exm:unlabeled-div-67" class="example"><strong>Example 6.1  </strong></span>Using Figure <a href="inference-num.html#fig:flatsbsmean">6.3</a>, find the 90% and 95% confidence intervals for the true mean monthly rental price of a three bedroom flat in Edinburgh.</p>
+<p><span id="exm:unlabeled-div-57" class="example"><strong>Example 6.1  </strong></span>Using Figure <a href="inference-num.html#fig:flatsbsmean">6.3</a>, find the 90% and 95% confidence intervals for the true mean monthly rental price of a three bedroom flat in Edinburgh.</p>
 <hr>
 <p>A 90% confidence interval is given by (£1429, £1876). The conclusion is that we are 90% confident that the true average rental price for three bedroom flats in Edinburgh lies somewhere between £1429 and £1876.</p>
 A 95% confidence interval is given by (£1389.75, £1916). The conclusion is that we are 95% confident that the true average rental price for three bedroom flats in Edinburgh lies somewhere between £1389.75 and £1916.
@@ -199,7 +199,7 @@ Although there is a mathematical model which describes how <span class="math inl
 But even without the mathematical model, bootstrapping can be used to find a confidence interval for the parameter <span class="math inline">\(\sigma\)</span>.</p>
 
 <div class="example">
-<p><span id="exm:unlabeled-div-68" class="example"><strong>Example 6.2  </strong></span>Describe the bootstrap distribution for the standard deviation shown in Figure <a href="inference-num.html#fig:flatsbssd">6.4</a>.</p>
+<p><span id="exm:unlabeled-div-58" class="example"><strong>Example 6.2  </strong></span>Describe the bootstrap distribution for the standard deviation shown in Figure <a href="inference-num.html#fig:flatsbssd">6.4</a>.</p>
 <hr>
 The distribution is skewed left and centered near £340.23, which is the point estimate from the original data. Most observations in this distribution lie between £0 and £408.1.
 </div>
@@ -391,7 +391,7 @@ the &lt;em&gt;particularly extreme outlier&lt;/em&gt; check when the
 sample size is very large.
 However, we’ll leave further discussion here to a future course.&lt;/p&gt;"><sup>149</sup></a></p>
 <div class="example">
-<p><span id="exm:unlabeled-div-69" class="example"><strong>Example 6.3  </strong></span>Consider the following two plots
+<p><span id="exm:unlabeled-div-59" class="example"><strong>Example 6.3  </strong></span>Consider the following two plots
 that come from simple random samples from
 different populations.
 Their sample sizes are <span class="math inline">\(n_1 = 15\)</span> and <span class="math inline">\(n_2 = 50\)</span>.</p>
@@ -531,7 +531,7 @@ for those who wish to use this option.
 <p>For the examples and guided practices below, use <code>R</code> to find the answers. We recommend trying the problems so as to get a sense for how the <span class="math inline">\(t\)</span>-distribution can vary in width depending on the degrees of freedom, and to confirm your working
 understanding of the <span class="math inline">\(t\)</span>-distribution.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-70" class="example"><strong>Example 6.4  </strong></span>What proportion of the <span class="math inline">\(t\)</span>-distribution
+<p><span id="exm:unlabeled-div-60" class="example"><strong>Example 6.4  </strong></span>What proportion of the <span class="math inline">\(t\)</span>-distribution
 with 18 degrees of freedom falls below -2.10?</p>
 <hr>
 <p>Just like a normal probability problem, we first draw
@@ -551,7 +551,7 @@ Figure 6.10: The <span class="math inline">\(t\)</span>-distribution with 18 deg
 </p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-71" class="example"><strong>Example 6.5  </strong></span>A <span class="math inline">\(t\)</span>-distribution with 20 degrees of freedom
+<p><span id="exm:unlabeled-div-61" class="example"><strong>Example 6.5  </strong></span>A <span class="math inline">\(t\)</span>-distribution with 20 degrees of freedom
 is shown in the top panel of
 Figure <a href="inference-num.html#fig:tDistDF20RightTail1Point65">6.11</a>.
 Estimate the proportion of the distribution falling
@@ -577,7 +577,7 @@ Figure 6.11: Top: The <span class="math inline">\(t\)</span>-distribution with 2
 </p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-72" class="example"><strong>Example 6.6  </strong></span>A <span class="math inline">\(t\)</span>-distribution with 2 degrees of freedom
+<p><span id="exm:unlabeled-div-62" class="example"><strong>Example 6.6  </strong></span>A <span class="math inline">\(t\)</span>-distribution with 2 degrees of freedom
 is shown in the bottom panel of
 Figure <a href="inference-num.html#fig:tDistDF20RightTail1Point65">6.11</a>.
 Estimate the proportion of the distribution falling more
@@ -666,7 +666,7 @@ maximum
 </tr></tbody>
 </table></div>
 <div class="example">
-<p><span id="exm:unlabeled-div-73" class="example"><strong>Example 6.7  </strong></span>Are the independence and
+<p><span id="exm:unlabeled-div-63" class="example"><strong>Example 6.7  </strong></span>Are the independence and
 normality conditions satisfied for this data set?</p>
 <hr>
 <p>The observations are a simple random sample,
@@ -687,7 +687,7 @@ seems reasonable.</p>
 \end{align*}\]</span>
 where <span class="math inline">\(df = n - 1\)</span> when computing a one-sample <span class="math inline">\(t\)</span>-interval.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-74" class="example"><strong>Example 6.8  </strong></span>Using the summary statistics in
+<p><span id="exm:unlabeled-div-64" class="example"><strong>Example 6.8  </strong></span>Using the summary statistics in
 Table <a href="inference-num.html#tab:summaryStatsOfHgInMuscleOfRissosDolphins">6.1</a>,
 compute the standard error for the average
 mercury content in the <span class="math inline">\(n = 19\)</span> dolphins.</p>
@@ -704,7 +704,7 @@ the fraction of the <span class="math inline">\(t\)</span>-distribution with <sp
 of freedom within a distance <span class="math inline">\(t^{\star}_{df}\)</span>
 of 0 matches the confidence level of interest.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-75" class="example"><strong>Example 6.9  </strong></span>When <span class="math inline">\(n = 19\)</span>, what is the appropriate
+<p><span id="exm:unlabeled-div-65" class="example"><strong>Example 6.9  </strong></span>When <span class="math inline">\(n = 19\)</span>, what is the appropriate
 degrees of freedom?
 Find <span class="math inline">\(t^{\star}_{df}\)</span> for this degrees of freedom
 and the confidence level of 95%.</p>
@@ -725,7 +725,7 @@ lies within 2.10 units of 0.</p>
 <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.975</span>, df <span class="op">=</span> <span class="fl">18</span><span class="op">)</span>
 <span class="co">#&gt; [1] 2.1</span></code></pre></div>
 <div class="example">
-<p><span id="exm:unlabeled-div-76" class="example"><strong>Example 6.10  </strong></span>Compute and interpret the 95% confidence interval
+<p><span id="exm:unlabeled-div-66" class="example"><strong>Example 6.10  </strong></span>Compute and interpret the 95% confidence interval
 for the average mercury content in Risso’s dolphins.</p>
 <hr>
 <p>We can construct the confidence interval as
@@ -762,7 +762,7 @@ Based on the summary statistics of the data, do you have any objections to the n
 </div>
 <p></p>
 <div class="example">
-<p><span id="exm:unlabeled-div-77" class="example"><strong>Example 6.11  </strong></span>Calculate the standard error of
+<p><span id="exm:unlabeled-div-67" class="example"><strong>Example 6.11  </strong></span>Calculate the standard error of
 <span class="math inline">\(\bar{x}\)</span> using the data summaries in the previous Guided Practice. If we are to use the <span class="math inline">\(t\)</span>-distribution to create a
 90% confidence interval for the actual mean of the
 mercury content, identify the degrees of freedom
@@ -871,7 +871,7 @@ a <span class="math inline">\(t\)</span>-distribution for calculating the tail a
 Then we find the p-value using the same ideas we used
 previously: find the area under the <span class="math inline">\(t\)</span>-distribution as or more extreme than our T score.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-78" class="example"><strong>Example 6.12  </strong></span>With both the independence
+<p><span id="exm:unlabeled-div-68" class="example"><strong>Example 6.12  </strong></span>With both the independence
 and normality conditions satisfied,
 we can proceed with a hypothesis test using
 the <span class="math inline">\(t\)</span>-distribution.
@@ -1395,7 +1395,7 @@ we applied in
 Section <a href="inference-num.html#one-mean-math">6.1.3</a>.</p>
 
 <div class="example">
-<p><span id="exm:unlabeled-div-79" class="example"><strong>Example 6.13  </strong></span>Set up a hypothesis test
+<p><span id="exm:unlabeled-div-69" class="example"><strong>Example 6.13  </strong></span>Set up a hypothesis test
 to determine whether, on average, the UCLA Bookstore’s price for
 a new textbook is higher than the price of the same
 book on Amazon.
@@ -1432,7 +1432,7 @@ we can move forward with the <span class="math inline">\(t\)</span>-distribution
 <p>As mentioned previously, the methods applied to a difference will be identical to the one-sample techniques. Therefore, the full hypothesis test framework is given as an example.</p>
 
 <div class="example">
-<p><span id="exm:unlabeled-div-80" class="example"><strong>Example 6.14  </strong></span>Complete the hypothesis test started
+<p><span id="exm:unlabeled-div-70" class="example"><strong>Example 6.14  </strong></span>Complete the hypothesis test started
 in the previous Example.</p>
 <hr>
 <p>To start, compute the standard error associated with
@@ -1478,7 +1478,7 @@ Figure 6.20: Distribution of <span class="math inline">\(\bar{x}_{d}\)</span> un
 <!-- TODO later - add note to compare to 99% CI in previous section, which contained zero. -->
 
 <div class="example">
-<p><span id="exm:unlabeled-div-81" class="example"><strong>Example 6.15  </strong></span>Create a theory-based 95% confidence interval for the average price difference between books at the UCLA Bookstore and books on Amazon.</p>
+<p><span id="exm:unlabeled-div-71" class="example"><strong>Example 6.15  </strong></span>Create a theory-based 95% confidence interval for the average price difference between books at the UCLA Bookstore and books on Amazon.</p>
 <hr>
 <p>Conditions
 for using theory-based methods have already been verified and the standard error
@@ -1719,7 +1719,7 @@ Figure 6.24: Histogram of differences in means, calculated from 1000 different r
 </p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-82" class="example"><strong>Example 6.16  </strong></span>Approximate the p-value depicted in Figure <a href="inference-num.html#fig:randexamspval">6.24</a>, and provide a conclusion in the context of the case study.</p>
+<p><span id="exm:unlabeled-div-72" class="example"><strong>Example 6.16  </strong></span>Approximate the p-value depicted in Figure <a href="inference-num.html#fig:randexamspval">6.24</a>, and provide a conclusion in the context of the case study.</p>
 <hr>
 <p>Using software, we find that 231 of the 1000 shuffled differences in means are as or further away from zero as our observed difference of 3.1. That is, 23.1% of the shuffled statistics lie in the shaded blue area in Figure <a href="inference-num.html#fig:randexamspval">6.24</a>. Thus, our p-value is 0.231.</p>
 <p>With this large of a p-value, the data do not convincingly show that one exam
@@ -1900,7 +1900,7 @@ Figure 6.27: Histogram of differences in means after 1000 bootstrap resamples ar
 </p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-83" class="example"><strong>Example 6.17  </strong></span>Does the bootstrap confidence interval for the true difference in average change in pumping capacity, <span class="math inline">\(\mu_{esc} - \mu_{control}\)</span>, show that there is a difference across the two treatments?</p>
+<p><span id="exm:unlabeled-div-73" class="example"><strong>Example 6.17  </strong></span>Does the bootstrap confidence interval for the true difference in average change in pumping capacity, <span class="math inline">\(\mu_{esc} - \mu_{control}\)</span>, show that there is a difference across the two treatments?</p>
 <hr>
 <p>Because the 90% interval displayed does not contain zero (note that zero is never one of the bootstrapped differences so 95% and 99% intervals would have given the same conclusion!), we conclude that the ESC treatment is significantly better with respect to heart pumping capacity than the treatment.</p>
 <p>Because the study is a randomized controlled experiment, we can conclude that it is the treatment (ESC) which is causing the change in pumping capacity.</p>
@@ -2118,7 +2118,7 @@ white
 </tbody>
 </table></div>
 <div class="example">
-<p><span id="exm:unlabeled-div-84" class="example"><strong>Example 6.18  </strong></span>Set up appropriate hypotheses to evaluate
+<p><span id="exm:unlabeled-div-74" class="example"><strong>Example 6.18  </strong></span>Set up appropriate hypotheses to evaluate
 whether there is a relationship between a mother smoking
 and average birth weight.</p>
 <hr>
@@ -2253,7 +2253,7 @@ T = \frac{\bar{x}_1 - \bar{x}_2 - 0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}
 </ul>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-85" class="example"><strong>Example 6.19  </strong></span>Complete the hypothesis test started in the previous Example and Guided Practice on the <code>ncbirths</code> dataset and research question.<br>
+<p><span id="exm:unlabeled-div-75" class="example"><strong>Example 6.19  </strong></span>Complete the hypothesis test started in the previous Example and Guided Practice on the <code>ncbirths</code> dataset and research question.<br>
 For reference, <span class="math inline">\(\bar{x}_{n} - \bar{x}_{s} = 0.40\)</span>,
 <span class="math inline">\(SE(\bar{x}_{n} - \bar{x}_{s}) = 0.26\)</span>, and the sample sizes were <span class="math inline">\(n_n = 100\)</span> and <span class="math inline">\(n_s = 50\)</span>.</p>
 <hr>
@@ -2346,7 +2346,7 @@ corresponds to the confidence level and degrees of freedom
 the sample.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-86" class="example"><strong>Example 6.20  </strong></span>Consider again the data from Section <a href="inference-num.html#boot-ci-diff-means">6.3.2</a> on the use of embryonic stem cells (ESCs) to improve heart function. Can the <span class="math inline">\(t\)</span>-distribution be used to make
+<p><span id="exm:unlabeled-div-76" class="example"><strong>Example 6.20  </strong></span>Consider again the data from Section <a href="inference-num.html#boot-ci-diff-means">6.3.2</a> on the use of embryonic stem cells (ESCs) to improve heart function. Can the <span class="math inline">\(t\)</span>-distribution be used to make
 inference on the true difference in average change in heart pumping function using the point estimate,
 <span class="math inline">\(\bar{x}_{esc} - \bar{x}_{control} = 7.83\)</span>?</p>
 <hr>
@@ -2368,7 +2368,7 @@ we can use the smaller
 of <span class="math inline">\(n_1 - 1\)</span> and <span class="math inline">\(n_2 - 1\)</span> for the degrees of freedom.
 In the case of the ESC example, this means we’ll use <span class="math inline">\(df = 8\)</span>.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-87" class="example"><strong>Example 6.21  </strong></span>Calculate a 95% confidence interval for the
+<p><span id="exm:unlabeled-div-77" class="example"><strong>Example 6.21  </strong></span>Calculate a 95% confidence interval for the
 true difference in mean change in heart pumping capacity of
 sheep after they’ve suffered a heart attack between the ESC treatment and the control treatment.</p>
 <hr>

@@ -835,11 +835,13 @@ Sampling a marble from the bag (with 10% red marbles) is one way of simulating w
 
 An undergraduate student was paid $2 to complete this simulation. There were 5 simulated cases with a complication and 57 simulated cases without a complication, i.e., $\hat{p}_{sim} = 5/62 = 0.081$.
 
-\BeginKnitrBlock{example}<div class="example">Is this one simulation enough to determine whether or not we should reject the null hypothesis?
+::: {.workedexample}
+Is this one simulation enough to determine whether or not we should reject the null hypothesis?
 
 ---
   
-No. To assess the hypotheses, we need to see a distribution of many $\hat{p}_{sim}$, not just a *single* draw from this sampling distribution.</div>\EndKnitrBlock{example}
+No. To assess the hypotheses, we need to see a distribution of many $\hat{p}_{sim}$, not just a *single* draw from this sampling distribution.
+:::
 
 
 One simulation isn't enough to get a sense of the null distribution; many simulation studies are needed. Roughly 10,000 seems sufficient. However, paying someone to simulate 10,000 studies by hand is a waste of time and money. Instead, simulations are typically programmed into a computer, which is much more efficient.
@@ -1018,7 +1020,7 @@ further in Section \@ref(normal). Theory-based hypothesis tests and confidence i
   normal with
   \begin{align*}
   &\text{Mean}=\pi
-  &&\text{Standard Deviation }(SD) = \frac{\pi(1-\pi)}{n}
+  &&\text{Standard Deviation }(SD) = \sqrt{\frac{\pi(1-\pi)}{n}}
   \end{align*}</div>\EndKnitrBlock{important}
 
 #### Evaluating the two conditions required for modeling $\hat{p}$ using theory-based methods {-}
@@ -1086,7 +1088,8 @@ We would like to know: would borrowers support this form
 of regulation?
 
 
-\BeginKnitrBlock{example}<div class="example">Set up hypotheses to evaluate whether borrowers
+::: {.workedexample}
+Set up hypotheses to evaluate whether borrowers
 have a majority support for this
 type of regulation. We take "majority" to mean
 greater than 50% of the population.
@@ -1103,7 +1106,8 @@ In statistical notation,
 * $H_0$: $\pi = 0.50$
 * $H_A$: $\pi > 0.50$,
 
-where $\pi$ represents the proportion of _all_ payday loan borrowers that would support the regulation.</div>\EndKnitrBlock{example}
+where $\pi$ represents the proportion of _all_ payday loan borrowers that would support the regulation.
+:::
 
 \BeginKnitrBlock{tipbox}<div class="tipbox">Note that the null hypothesis above was stated as $H_0: \pi = 0.50$, even though saying there is "not majority support" would imply $\pi \leq 0.50$. Indeed, some textbooks would
 write $H_0: \pi \leq 0.50$ in this case, and it is not an incorrect statement. However,
@@ -1139,7 +1143,8 @@ for a hypothesis test here?^[Independence holds since the poll
     $n(1 - p_0) = 826 \times 0.5 = 413$.  Recall that here, the best guess for $\pi$ is $p_0$ which comes from the null hypothesis (because we assume the null hypothesis is true when performing the testing procedure steps).  $H_0$: there is not support for the regulation; $H_0$: $\pi \leq 0.50$. $H_A$: the majority of borrowers support the regulation; $H_A$: $\pi > 0.50$.]</div>\EndKnitrBlock{guidedpractice}
 
     
-\BeginKnitrBlock{example}<div class="example">Continuing the previous Example,
+::: {.workedexample}
+Continuing the previous Example,
     evaluate whether the poll on lending regulations provides convincing evidence
     that a majority of payday loan borrowers support
     a new regulation that would
@@ -1174,7 +1179,8 @@ for a hypothesis test here?^[Independence holds since the poll
   You'll note that this conclusion is somewhat unsatisfactory
   because there is no conclusion, as is the case with larger p-values.
   That is, there is no resolution one way or the other about public opinion.
-  We cannot claim that exactly 50% of people support the regulation, but we cannot claim   a majority support it either.</div>\EndKnitrBlock{example}
+  We cannot claim that exactly 50% of people support the regulation, but we cannot claim   a majority support it either.
+:::
 
   
 <div class="figure" style="text-align: center">
@@ -1202,7 +1208,8 @@ With the standardized statistic as our test statistic, we can find
 the p-value as the area under a standard normal distribution at or more extreme
 than our observed $Z$ value.
 
-\BeginKnitrBlock{example}<div class="example">Do payday loan borrowers support a regulation that would require lenders to pull their credit report and evaluate their debt payments? From a random sample of 826 borrowers, 51% said they would support such a regulation. We set up hypotheses and checked conditions previously. Now calculate and interpret the standardized statistic, then use the standard normal distribution to calculate the approximate p-value.
+::: {.workedexample}
+Do payday loan borrowers support a regulation that would require lenders to pull their credit report and evaluate their debt payments? From a random sample of 826 borrowers, 51% said they would support such a regulation. We set up hypotheses and checked conditions previously. Now calculate and interpret the standardized statistic, then use the standard normal distribution to calculate the approximate p-value.
 
 ---
   
@@ -1221,7 +1228,8 @@ Z = \frac{0.51 - 0.50}{0.017} = 0.57
 
 Interpreting this value, we can say that our sample proportion of 0.51 was only 0.57 standard errors above the null value of 0.50. 
 
-Shown in Figure \@ref(fig:paydayCC-stdnorm-pvalue), the p-value is the area above $Z = 0.57$ on a standard normal distribution---0.278---the same p-value we would obtain by finding the area above $\hat{p} = 0.51$ on a normal distribution with mean 0.50 and standard deviation 0.017, as in Figure \@ref(fig:paydayCC-norm-pvalue).</div>\EndKnitrBlock{example}
+Shown in Figure \@ref(fig:paydayCC-stdnorm-pvalue), the p-value is the area above $Z = 0.57$ on a standard normal distribution---0.278---the same p-value we would obtain by finding the area above $\hat{p} = 0.51$ on a normal distribution with mean 0.50 and standard deviation 0.017, as in Figure \@ref(fig:paydayCC-norm-pvalue).
+:::
 
 
 <div class="figure" style="text-align: center">
@@ -1308,7 +1316,7 @@ $SE(\hat{p}) = \sqrt{\frac{2/3 (1 - 2/3)}
 </div>\EndKnitrBlock{guidedpractice}
 
 
-\BeginKnitrBlock{example}<div class="example">
+::: {.workedexample}
 A simple random sample of 826
     payday loan borrowers was surveyed to better
     understand their interests around regulation and costs.
@@ -1371,7 +1379,8 @@ in the formula.
   We are 95% confident that the true proportion of
   payday borrowers who supported regulation at the time
   of the poll was between 0.477 and
-  0.543.</div>\EndKnitrBlock{example}
+  0.543.
+:::
 
 
 
@@ -2406,7 +2415,8 @@ fluctuation, where *near* is pretty generous in this
 case since the sample sizes are so small in this study.
 
 
-\BeginKnitrBlock{example}<div class="example">How often would you observe a sample relative risk
+::: {.workedexample}
+How often would you observe a sample relative risk
     of at most 0.357 (at least a 64.3% reduction in risk on vaccine)
     according to Figure \@ref(fig:malaria-rand-dot-plot)?
     Often, sometimes, rarely, or never?
@@ -2416,7 +2426,8 @@ case since the sample sizes are so small in this study.
   It appears that a 64.3% reduction in risk due to chance alone would only
   happen about 2% of the time according to
   Figure \@ref(fig:malaria-rand-dot-plot).
-  Such a low probability indicates a rare event.</div>\EndKnitrBlock{example}
+  Such a low probability indicates a rare event.
+:::
 
 
 Based on the simulations, we have two options:   
@@ -2839,9 +2850,8 @@ for a difference of two proportions,
 where we use $\hat{p}_1 - \hat{p}_2$ as the point
 estimate and substitute the $SE$ formula above:
 \begin{align*}
-&\text{point estimate} \ \pm\  z^{\star} \times SE
-&&\to
-&&\hat{p}_1 - \hat{p}_2 \ \pm\ 
+\text{point estimate} \ &\pm\  z^{\star} \times SE  \quad\to\\
+\hat{p}_1 - \hat{p}_2 \ &\pm\ 
     z^{\star} \times
    \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}
 \end{align*}
@@ -2882,7 +2892,8 @@ Think about these steps when you apply statistical methods.
 
 
 
-\BeginKnitrBlock{example}<div class="example">We reconsider the experiment for patients
+::: {.workedexample}
+We reconsider the experiment for patients
     who underwent cardiopulmonary resuscitation (CPR)
     for a heart attack and were
     subsequently admitted to a
@@ -2912,7 +2923,8 @@ Think about these steps when you apply statistical methods.
   With both conditions satisfied,
   the difference in sample proportions can be
   reasonably modeled using a normal distribution
-  for these data.</div>\EndKnitrBlock{example}
+  for these data.
+:::
 
 <!--
 <table class="table" style="margin-left: auto; margin-right: auto;">
@@ -2951,7 +2963,8 @@ Think about these steps when you apply statistical methods.
 </table>
 -->
 
-\BeginKnitrBlock{example}<div class="example">Create and interpret a 90% confidence interval of the
+::: {.workedexample}
+Create and interpret a 90% confidence interval of the
     difference for the survival rates in the CPR study.
 
 ---
@@ -2976,9 +2989,8 @@ We'll use $\pi_t$ for the true survival
   \end{align*}
   For a 90% confidence interval, we use $z^{\star} = 1.65$:
   \begin{align*}
-  \text{point estimate} \ \pm\ z^{\star} \times SE
-    \quad \to \quad 0.13 \ \pm\ 1.65 \times  0.095
-    \quad \to \quad (-0.027, 0.287)
+  \text{point estimate} &\pm\ z^{\star} \times SE \quad \to\\
+   0.13 \ &\pm\ 1.65 \times  0.095 \quad = \quad (-0.027, 0.287)
   \end{align*}
   We are 90% confident that the survival probability for those
   patients given blood thinners is between 0.027 lower to 0.287 higher
@@ -2990,7 +3002,8 @@ We'll use $\pi_t$ for the true survival
   heart attack patients who have been admitted after
   they have undergone CPR.
   
-  Note, the problem was set up as 90% to indicate that there was not a need for a high level of confidence (such a 95% or 99%).  A lower degree of confidence increases potential for error, but it also produces a more narrow interval. </div>\EndKnitrBlock{example}
+  Note, the problem was set up as 90% to indicate that there was not a need for a high level of confidence (such a 95% or 99%).  A lower degree of confidence increases potential for error, but it also produces a more narrow interval. 
+:::
 
 \index{data!CPR and blood thinner|)}
 
@@ -3144,7 +3157,7 @@ death rates $\pi_{mgm}$ and $\pi_{ctrl}$
   success-failure condition and estimate the standard error:
   \begin{eqnarray*}
   \hat{p}_{\textit{pool}}
-    = \frac{\text{number of "successes"}}
+    = \frac{\text{number of successes}}
       {\text{number of cases}}
     = \frac{\hat{p}_1 n_1 + \hat{p}_2 n_2}{n_1 + n_2}
   \end{eqnarray*}
@@ -3158,7 +3171,8 @@ death rates $\pi_{mgm}$ and $\pi_{ctrl}$
   of successes in sample 2.</div>\EndKnitrBlock{onebox}
 
 
-\BeginKnitrBlock{example}<div class="example">Is it reasonable to model the difference
+::: {.workedexample}
+Is it reasonable to model the difference
     in proportions using a normal distribution in this
     study?
   
@@ -3187,7 +3201,8 @@ death rates $\pi_{mgm}$ and $\pi_{ctrl}$
   all values are at least 10.
   With both conditions satisfied, we can safely model
   the difference in proportions using a normal
-  distribution.</div>\EndKnitrBlock{example}
+  distribution.
+:::
 
 
 We used the pooled proportion to check the success-failure
@@ -3200,14 +3215,16 @@ condition^[For an example of a two proportion
   
 Since we assume $\pi_1 = \pi_2$ when we conduct a theory-based hypothesis test for $H_0: \pi_1 - \pi_2 = 0$, we substitute the **pooled sample proportion**, $\hat{p}_{pool}$ in for both $\pi_1$ and $\pi_2$ in the expression for the standard deviation of the statistic, resulting in its **null standard error**:
 
-\begin{eqnarray*}
-  SE_0(\hat{p}_1 -\hat{p}_2) = \sqrt{\frac{\hat{p}_{pool}(1-\hat{p}_{pool})}{n_1} + \frac{\hat{p}_{pool}(1-\hat{p}_{pool})}{n_2}} = \sqrt{\hat{p}_{pool}(1-\hat{p}_{pool})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}
-  \end{eqnarray*}
+\begin{align*}
+  SE_0(\hat{p}_1 -\hat{p}_2) &= \sqrt{\frac{\hat{p}_{pool}(1-\hat{p}_{pool})}{n_1} + \frac{\hat{p}_{pool}(1-\hat{p}_{pool})}{n_2}} \\
+  &= \sqrt{\hat{p}_{pool}(1-\hat{p}_{pool})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}
+  \end{align*}
 
 This is the standard error formula we will use when computing the test statistic for a hypothesis test of $H_0: \pi_1 - \pi_2 = 0$.</div>\EndKnitrBlock{onebox}
 
 
-\BeginKnitrBlock{example}<div class="example">Compute the point estimate of the difference
+::: {.workedexample}
+Compute the point estimate of the difference
     in breast cancer death rates in the two groups,
     and use the pooled proportion
     $\hat{p}_{\textit{pool}} = 0.0112$ to calculate
@@ -3238,11 +3255,13 @@ SE_0 = \sqrt{
           {n_{ctrl}}
     }
 	= 0.00070
-\end{align*}</div>\EndKnitrBlock{example}
+\end{align*}
+:::
 
 
 
-\BeginKnitrBlock{example}<div class="example">Using the point estimate $\hat{p}_{mgm} - \hat{p}_{ctrl} = -0.00012$ and standard error $SE = 0.00070$, calculate a p-value for the hypothesis test and write a conclusion.
+::: {.workedexample}
+Using the point estimate $\hat{p}_{mgm} - \hat{p}_{ctrl} = -0.00012$ and standard error $SE = 0.00070$, calculate a p-value for the hypothesis test and write a conclusion.
 
 ---
   
@@ -3253,7 +3272,8 @@ Z = \frac{\text{point estimate} - \text{null value}}{\mbox{Null }SE}
 	= -0.17
 \end{align*}
 
-The lower tail area below -0.17 on a standard normal distribution is 0.4325, which we double to get the p-value: 0.8650 (see Figure \@ref(fig:mamm-norm)). With this very large p-value, the difference in breast cancer death rates is reasonably explained by chance, and we have no significant evidence that mammograms either decrease or increase the risk of death by breast cancer compared to regular breast exams, among women similar to those in the study.</div>\EndKnitrBlock{example}
+The lower tail area below -0.17 on a standard normal distribution is 0.4325, which we double to get the p-value: 0.8650 (see Figure \@ref(fig:mamm-norm)). With this very large p-value, the difference in breast cancer death rates is reasonably explained by chance, and we have no significant evidence that mammograms either decrease or increase the risk of death by breast cancer compared to regular breast exams, among women similar to those in the study.
+:::
 
 <div class="figure" style="text-align: center">
 <img src="05-inference-cat_files/figure-html/mamm-norm-1.png" alt="Standard normal distribution with the p-value shaded. The shaded area represents the probability of observing a difference in sample proportions of -0.17 or further away from zero, if the true proportions were equal." width="70%" />

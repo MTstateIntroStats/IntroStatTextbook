@@ -6,13 +6,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 5 Inference for categorical data | Montana State Introductory Statistics with R</title>
 <meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.7.1/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="libs/plotly-binding-4.9.2.2/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet">
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="libs/plotly-binding-4.9.2.2/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet">
 <script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script><script type="text/x-mathjax-config">
     const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
     for (let popover of popovers){
@@ -874,11 +874,10 @@ What physical object could you use to simulate a random sample of 62 clients who
 <p>Assuming the true complication rate for the consultant’s clients is 10%, each client can be simulated using a bag of marbles with 10% red marbles and 90% white marbles.
 Sampling a marble from the bag (with 10% red marbles) is one way of simulating whether a patient has a complication <em>if the true complication rate is 10%</em> for the data. If we select 62 marbles and then compute the proportion of patients with complications in the simulation, <span class="math inline">\(\hat{p}_{sim}\)</span>, then the resulting sample proportion is calculated exactly from a sample from the null distribution.</p>
 <p>An undergraduate student was paid $2 to complete this simulation. There were 5 simulated cases with a complication and 57 simulated cases without a complication, i.e., <span class="math inline">\(\hat{p}_{sim} = 5/62 = 0.081\)</span>.</p>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-43" class="example"><strong>Example 5.11  </strong></span>Is this one simulation enough to determine whether or not we should reject the null hypothesis?</p>
+<div class="workedexample">
+<p>Is this one simulation enough to determine whether or not we should reject the null hypothesis?</p>
 <hr>
-No. To assess the hypotheses, we need to see a distribution of many <span class="math inline">\(\hat{p}_{sim}\)</span>, not just a <em>single</em> draw from this sampling distribution.
+<p>No. To assess the hypotheses, we need to see a distribution of many <span class="math inline">\(\hat{p}_{sim}\)</span>, not just a <em>single</em> draw from this sampling distribution.</p>
 </div>
 <p>One simulation isn’t enough to get a sense of the null distribution; many simulation studies are needed. Roughly 10,000 seems sufficient. However, paying someone to simulate 10,000 studies by hand is a waste of time and money. Instead, simulations are typically programmed into a computer, which is much more efficient.</p>
 <p>Figure <a href="inference-cat.html#fig:nullDistForPHatIfLiverTransplantConsultantIsNotHelpful">5.10</a> shows the results of 10,000 simulated studies. The proportions that are equal to or less than <span class="math inline">\(\hat{p}=0.048\)</span> are shaded. The shaded areas represent sample proportions under the null distribution that provide at least as much evidence as <span class="math inline">\(\hat{p}\)</span> favoring the alternative hypothesis. There were 1222 simulated sample proportions with <span class="math inline">\(\hat{p}_{sim} \leq 0.048\)</span>. We use these to construct the null distribution’s left-tail area and find the p-value:
@@ -955,7 +954,7 @@ So, instead of using a “resample from the population” approach, bootstrappin
 <p></p>
 
 <div class="example">
-<p><span id="exm:unlabeled-div-44" class="example"><strong>Example 5.12  </strong></span>Let’s revisit our medical consultant example from Section <a href="inference-cat.html#one-prop-null-boot">5.3.1</a>. This consultant tried to attract patients by noting the average complication rate for liver donor surgeries in the US is about 10%, but her clients have had only 3 complications in the 62 liver donor surgeries she has facilitated. This data, however, did not provide sufficient evidence that the consultant’s complication rate was less than 10%, since the p-value was approximately 0.122. Does this mean we can conclude that the consultant’s complication rate was equal to 10%?</p>
+<p><span id="exm:unlabeled-div-43" class="example"><strong>Example 5.11  </strong></span>Let’s revisit our medical consultant example from Section <a href="inference-cat.html#one-prop-null-boot">5.3.1</a>. This consultant tried to attract patients by noting the average complication rate for liver donor surgeries in the US is about 10%, but her clients have had only 3 complications in the 62 liver donor surgeries she has facilitated. This data, however, did not provide sufficient evidence that the consultant’s complication rate was less than 10%, since the p-value was approximately 0.122. Does this mean we can conclude that the consultant’s complication rate was equal to 10%?</p>
 <hr>
 No! Though our decision was to fail to reject the null hypothesis, this does not mean we have evidence <em>for</em> the null hypothesis—we cannot “accept” the null. The sample proportion was <span class="math inline">\(\hat{p} = 3/62 = 0.048\)</span>, which is our point estimate—or “best guess”—of <span class="math inline">\(\pi\)</span>. It wouldn’t make sense that a sample complication rate of 4.8% gives us evidence that the true complication rate was exactly 10%. It`s plausible that the true complication rate is 10%, but there are a range of plausible values for <span class="math inline">\(\pi\)</span>. In this section, we will use a simulation-based method called <strong>bootstrapping</strong> to generate this range of plausible values for <span class="math inline">\(\pi\)</span> using the observed data.
 </div>
@@ -1034,7 +1033,7 @@ To find the middle 90% of a distribution, which two percentiles would form its b
 </div>
 
 <div class="example">
-<p><span id="exm:unlabeled-div-45" class="example"><strong>Example 5.13  </strong></span>The original claim was that the consultant’s true rate of complication was under the national rate of 10%. Does the interval estimate of 0 to 11.3% for the true probability of complication indicate that the surgical consultant has a lower rate of complications than the national average?
+<p><span id="exm:unlabeled-div-44" class="example"><strong>Example 5.12  </strong></span>The original claim was that the consultant’s true rate of complication was under the national rate of 10%. Does the interval estimate of 0 to 11.3% for the true probability of complication indicate that the surgical consultant has a lower rate of complications than the national average?
 Explain.</p>
 <hr>
 No. Because the interval overlaps 10%, it might be that the consultant’s work is associated with a lower risk of complciations, or it might be that the consulant’s work is associated with a higher risk (i.e., greater than 10%) of complications! Additionally, as previously mentioned, because this is an observational study, even if an association can be measured, there is no evidence that the consultant’s work is the cause of the complication rate (being higher or lower).
@@ -1060,7 +1059,7 @@ the sampling distribution of <span class="math inline">\(\hat{p}\)</span> will b
 normal with
 <span class="math display">\[\begin{align*}
   &amp;\text{Mean}=\pi
-  &amp;&amp;\text{Standard Deviation }(SD) = \frac{\pi(1-\pi)}{n}
+  &amp;&amp;\text{Standard Deviation }(SD) = \sqrt{\frac{\pi(1-\pi)}{n}}
   \end{align*}\]</span>
 </div>
 <div id="evaluating-the-two-conditions-required-for-modeling-hatp-using-theory-based-methods" class="section level4 unnumbered">
@@ -1111,7 +1110,7 @@ book in what is a large library of statistical methods that
 are suitable for a very wide range of data and contexts.&lt;/p&gt;"><sup>112</sup></a>.</p>
 
 <div class="example">
-<p><span id="exm:unlabeled-div-46" class="example"><strong>Example 5.14  </strong></span>In the examples based on large sample theory, we modeled <span class="math inline">\(\hat{p}\)</span> using the normal distribution. Why is this not appropriate for the study on the medical consultant?</p>
+<p><span id="exm:unlabeled-div-45" class="example"><strong>Example 5.13  </strong></span>In the examples based on large sample theory, we modeled <span class="math inline">\(\hat{p}\)</span> using the normal distribution. Why is this not appropriate for the study on the medical consultant?</p>
 <hr>
 The independence assumption may be reasonable if each of the surgeries is from a different surgical team. However, the success-failure condition is not satisfied. Under the null hypothesis, we would anticipate seeing <span class="math inline">\(62\times 0.10=6.2\)</span> complications, not the 10 required for the normal approximation.
 </div>
@@ -1125,9 +1124,8 @@ would be required to do a credit check and evaluate debt
 payments against the borrower’s finances.
 We would like to know: would borrowers support this form
 of regulation?</p>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-47" class="example"><strong>Example 5.15  </strong></span>Set up hypotheses to evaluate whether borrowers
+<div class="workedexample">
+<p>Set up hypotheses to evaluate whether borrowers
 have a majority support for this
 type of regulation. We take “majority” to mean
 greater than 50% of the population.</p>
@@ -1147,7 +1145,7 @@ greater than 50% of the population.</p>
 <li>
 <span class="math inline">\(H_A\)</span>: <span class="math inline">\(\pi &gt; 0.50\)</span>,</li>
 </ul>
-where <span class="math inline">\(\pi\)</span> represents the proportion of <em>all</em> payday loan borrowers that would support the regulation.
+<p>where <span class="math inline">\(\pi\)</span> represents the proportion of <em>all</em> payday loan borrowers that would support the regulation.</p>
 </div>
 
 <div class="tipbox">
@@ -1183,9 +1181,8 @@ using the null value (&lt;span class="math inline"&gt;\(p_0 = 0.5\)&lt;/span&gt;
 &lt;span class="math inline"&gt;\(np_0 = 826 \times 0.5 = 413\)&lt;/span&gt;,
 &lt;span class="math inline"&gt;\(n(1 - p_0) = 826 \times 0.5 = 413\)&lt;/span&gt;. Recall that here, the best guess for &lt;span class="math inline"&gt;\(\pi\)&lt;/span&gt; is &lt;span class="math inline"&gt;\(p_0\)&lt;/span&gt; which comes from the null hypothesis (because we assume the null hypothesis is true when performing the testing procedure steps). &lt;span class="math inline"&gt;\(H_0\)&lt;/span&gt;: there is not support for the regulation; &lt;span class="math inline"&gt;\(H_0\)&lt;/span&gt;: &lt;span class="math inline"&gt;\(\pi \leq 0.50\)&lt;/span&gt;. &lt;span class="math inline"&gt;\(H_A\)&lt;/span&gt;: the majority of borrowers support the regulation; &lt;span class="math inline"&gt;\(H_A\)&lt;/span&gt;: &lt;span class="math inline"&gt;\(\pi &amp;gt; 0.50\)&lt;/span&gt;.&lt;/p&gt;'><sup>113</sup></a>
 </div>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-48" class="example"><strong>Example 5.16  </strong></span>Continuing the previous Example,
+<div class="workedexample">
+<p>Continuing the previous Example,
 evaluate whether the poll on lending regulations provides convincing evidence
 that a majority of payday loan borrowers support
 a new regulation that would
@@ -1212,10 +1209,10 @@ is 0.278, the area above
 <p>With a p-value of 0.278, the poll does not provide convincing evidence that
 a majority of payday loan borrowers support regulations around credit checks and evaluation of
 debt payments.</p>
-You’ll note that this conclusion is somewhat unsatisfactory
+<p>You’ll note that this conclusion is somewhat unsatisfactory
 because there is no conclusion, as is the case with larger p-values.
 That is, there is no resolution one way or the other about public opinion.
-We cannot claim that exactly 50% of people support the regulation, but we cannot claim a majority support it either.
+We cannot claim that exactly 50% of people support the regulation, but we cannot claim a majority support it either.</p>
 </div>
 <div class="figure" style="text-align: center">
 <span id="fig:paydayCC-norm-pvalue"></span>
@@ -1242,9 +1239,8 @@ where <span class="math inline">\(\pi_0\)</span> is the null value. The denomina
 <p>With the standardized statistic as our test statistic, we can find
 the p-value as the area under a standard normal distribution at or more extreme
 than our observed <span class="math inline">\(Z\)</span> value.</p>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-49" class="example"><strong>Example 5.17  </strong></span>Do payday loan borrowers support a regulation that would require lenders to pull their credit report and evaluate their debt payments? From a random sample of 826 borrowers, 51% said they would support such a regulation. We set up hypotheses and checked conditions previously. Now calculate and interpret the standardized statistic, then use the standard normal distribution to calculate the approximate p-value.</p>
+<div class="workedexample">
+<p>Do payday loan borrowers support a regulation that would require lenders to pull their credit report and evaluate their debt payments? From a random sample of 826 borrowers, 51% said they would support such a regulation. We set up hypotheses and checked conditions previously. Now calculate and interpret the standardized statistic, then use the standard normal distribution to calculate the approximate p-value.</p>
 <hr>
 <p>Our sample proportion is <span class="math inline">\(\hat{p} = 0.51\)</span>. Since our null value is <span class="math inline">\(\pi_0 = 0.50\)</span>,<br>
 the null standard error is
@@ -1258,7 +1254,7 @@ the null standard error is
 Z = \frac{0.51 - 0.50}{0.017} = 0.57
 \end{align*}\]</span></p>
 <p>Interpreting this value, we can say that our sample proportion of 0.51 was only 0.57 standard errors above the null value of 0.50.</p>
-Shown in Figure <a href="inference-cat.html#fig:paydayCC-stdnorm-pvalue">5.16</a>, the p-value is the area above <span class="math inline">\(Z = 0.57\)</span> on a standard normal distribution—0.278—the same p-value we would obtain by finding the area above <span class="math inline">\(\hat{p} = 0.51\)</span> on a normal distribution with mean 0.50 and standard deviation 0.017, as in Figure <a href="inference-cat.html#fig:paydayCC-norm-pvalue">5.15</a>.
+<p>Shown in Figure <a href="inference-cat.html#fig:paydayCC-stdnorm-pvalue">5.16</a>, the p-value is the area above <span class="math inline">\(Z = 0.57\)</span> on a standard normal distribution—0.278—the same p-value we would obtain by finding the area above <span class="math inline">\(\hat{p} = 0.51\)</span> on a normal distribution with mean 0.50 and standard deviation 0.017, as in Figure <a href="inference-cat.html#fig:paydayCC-norm-pvalue">5.15</a>.</p>
 </div>
 <div class="figure" style="text-align: center">
 <span id="fig:paydayCC-stdnorm-pvalue"></span>
@@ -1335,8 +1331,7 @@ did search and replace for each term above.  for example 826 for 826
 It is suspected that about 2/3 of all voters support legalized marijuana.
 To understand how the sample proportion (<span class="math inline">\(\hat{p}\)</span>) would vary across the samples, calculate the standard error of <span class="math inline">\(\hat{p}\)</span>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Because the &lt;span class="math inline"&gt;\(\pi\)&lt;/span&gt; is unknown but expected to be around 2/3, we will use 2/3 in place of &lt;span class="math inline"&gt;\(\pi\)&lt;/span&gt; in the formula for the standard deviation of &lt;span class="math inline"&gt;\(\hat{p}\)&lt;/span&gt; and calculate&lt;br&gt;&lt;span class="math inline"&gt;\(SE(\hat{p}) = \sqrt{\frac{2/3 (1 - 2/3)}  {300}} = 0.027\)&lt;/span&gt;.&lt;/p&gt;'><sup>114</sup></a></p>
 </div>
-
-<div class="example">
+<div class="workedexample">
 <p>A simple random sample of 826
 payday loan borrowers was surveyed to better
 understand their interests around regulation and costs.
@@ -1378,8 +1373,7 @@ a confidence interval, use <span class="math inline">\(\hat{p}\)</span> as our b
 in the formula.</p>
 <p><span class="math inline">\(SE(\hat{p}) = \sqrt{\frac{0.51 (1 - 0.51)}  {826}} = 0.017\)</span>.</p>
 </li>
-<li>
-<p>Using
+<li><p>Using
 the point estimate <span class="math inline">\(0.51\)</span>,
 <span class="math inline">\(z^{\star} = 1.96\)</span> for a 95% confidence interval,
 and
@@ -1396,11 +1390,9 @@ the confidence interval is
 We are 95% confident that the true proportion of
 payday borrowers who supported regulation at the time
 of the poll was between 0.477 and
-0.543.</p>
-</li>
+0.543.</p></li>
 </ol>
 </div>
-
 
 <div class="onebox">
 <p><strong>Constructing a confidence interval for a single proportion.</strong></p>
@@ -1845,7 +1837,7 @@ Figure 5.18: The gender descrimination study can be thought of as 48 red and bla
 </div>
 
 <div class="example">
-<p><span id="exm:unlabeled-div-50" class="example"><strong>Example 5.18  </strong></span>Statisticians are sometimes called upon to evaluate the strength of evidence.
+<p><span id="exm:unlabeled-div-46" class="example"><strong>Example 5.14  </strong></span>Statisticians are sometimes called upon to evaluate the strength of evidence.
 When looking at the rates of promotion for males and females in this study, why might we be tempted to immediately conclude that females are being discriminated against?</p>
 <hr>
 <p>The large difference in promotion rates (58.3% for females versus 87.5% for males) suggest there might be discrimination against women in promotion decisions.
@@ -2019,7 +2011,7 @@ Figure 5.21: A dot plot of differences from 100 simulations produced under the n
 Because we simulated differences in a way that made no distinction between men and women, this makes sense: we should expect differences from chance alone to fall around zero with some random fluctuation for each simulation.</p>
 
 <div class="example">
-<p><span id="exm:unlabeled-div-51" class="example"><strong>Example 5.19  </strong></span>How often would you observe a difference of at least 29.2% (0.292) according to Figure <a href="inference-cat.html#fig:discRandDotPlot">5.21</a>?
+<p><span id="exm:unlabeled-div-47" class="example"><strong>Example 5.15  </strong></span>How often would you observe a difference of at least 29.2% (0.292) according to Figure <a href="inference-cat.html#fig:discRandDotPlot">5.21</a>?
 Often, sometimes, rarely, or never?</p>
 <hr>
 It appears that a difference of at least 29.2% due to chance alone would only happen about 2% of the time according to Figure <a href="inference-cat.html#fig:discRandDotPlot">5.21</a>.
@@ -2283,7 +2275,7 @@ Then we shuffle these cards thoroughly and divide them into two stacks of size 7
 Any observed difference between the proportions of “not buy DVD” cards (what we earlier defined as <em>success</em>) can be attributed entirely to chance.</p>
 
 <div class="example">
-<p><span id="exm:unlabeled-div-52" class="example"><strong>Example 5.20  </strong></span>If we are randomly assigning the cards into the simulated treatment and control groups, how many “not buy DVD” cards would we expect to end up with in each simulated group?
+<p><span id="exm:unlabeled-div-48" class="example"><strong>Example 5.16  </strong></span>If we are randomly assigning the cards into the simulated treatment and control groups, how many “not buy DVD” cards would we expect to end up with in each simulated group?
 What would be the expected difference between the proportions of “not buy DVD” cards in each group?</p>
 <hr>
 Since the simulated groups are of equal size, we would expect <span class="math inline">\(53 / 2 = 26.5\)</span>, i.e., 26 or 27, “not buy DVD” cards in each simulated group, yielding a simulated point estimate of 0% . However, due to random fluctuations, we might actually observe a number a little above or below 26 and 27.
@@ -2614,17 +2606,16 @@ model was true, and under this condition,
 we expect the difference to be near one with some random
 fluctuation, where <em>near</em> is pretty generous in this
 case since the sample sizes are so small in this study.</p>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-53" class="example"><strong>Example 5.21  </strong></span>How often would you observe a sample relative risk
+<div class="workedexample">
+<p>How often would you observe a sample relative risk
 of at most 0.357 (at least a 64.3% reduction in risk on vaccine)
 according to Figure <a href="inference-cat.html#fig:malaria-rand-dot-plot">5.25</a>?
 Often, sometimes, rarely, or never?</p>
 <hr>
-It appears that a 64.3% reduction in risk due to chance alone would only
+<p>It appears that a 64.3% reduction in risk due to chance alone would only
 happen about 2% of the time according to
 Figure <a href="inference-cat.html#fig:malaria-rand-dot-plot">5.25</a>.
-Such a low probability indicates a rare event.
+Such a low probability indicates a rare event.</p>
 </div>
 <p>Based on the simulations, we have two options:</p>
 <ol style="list-style-type: decimal">
@@ -2709,7 +2700,7 @@ Each patient was randomly assigned to either receive a blood thinner (treatment 
 The outcome variable of interest was whether the patient survived for at least 24 hours.</p>
 
 <div class="example">
-<p><span id="exm:unlabeled-div-54" class="example"><strong>Example 5.22  </strong></span>Form hypotheses for this study in plain and statistical language.
+<p><span id="exm:unlabeled-div-49" class="example"><strong>Example 5.17  </strong></span>Form hypotheses for this study in plain and statistical language.
 Let <span class="math inline">\(\pi_c\)</span> represent the true survival rate of people who do not receive a blood thinner (corresponding to the control group) and <span class="math inline">\(\pi_t\)</span> represent the true survival rate for people receiving a blood thinner (corresponding to the treatment group).</p>
 <hr>
 <p>We want to understand whether blood thinners are helpful or harmful.
@@ -2842,7 +2833,7 @@ That’s it!<a class="footnote-ref" tabindex="0" data-toggle="popover" data-cont
 </div>
 
 <div class="example">
-<p><span id="exm:unlabeled-div-55" class="example"><strong>Example 5.23  </strong></span>Consider the situation of the <a href="one-prop-null-boot">medical consultant</a>.
+<p><span id="exm:unlabeled-div-50" class="example"><strong>Example 5.18  </strong></span>Consider the situation of the <a href="one-prop-null-boot">medical consultant</a>.
 Now that you know about one-sided and two-sided tests, which type of test do you think is more appropriate?</p>
 <hr>
 The setting has been framed in the context of the consultant being helpful (which is what led us to a one-sided test originally), but what if the consultant actually performed <em>worse</em> than the average?
@@ -3048,9 +3039,8 @@ for a difference of two proportions,
 where we use <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> as the point
 estimate and substitute the <span class="math inline">\(SE\)</span> formula above:
 <span class="math display">\[\begin{align*}
-&amp;\text{point estimate} \ \pm\  z^{\star} \times SE
-&amp;&amp;\to
-&amp;&amp;\hat{p}_1 - \hat{p}_2 \ \pm\ 
+\text{point estimate} \ &amp;\pm\  z^{\star} \times SE  \quad\to\\
+\hat{p}_1 - \hat{p}_2 \ &amp;\pm\ 
     z^{\star} \times
    \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}
 \end{align*}\]</span></p>
@@ -3085,9 +3075,8 @@ Think about these steps when you apply statistical methods.
       Interpret the confidence interval in the context
       of the problem.</div>\EndKnitrBlock{onebox}
 -->
-
-<div class="example">
-<p><span id="exm:unlabeled-div-56" class="example"><strong>Example 5.24  </strong></span>We reconsider the experiment for patients
+<div class="workedexample">
+<p>We reconsider the experiment for patients
 who underwent cardiopulmonary resuscitation (CPR)
 for a heart attack and were
 subsequently admitted to a
@@ -3110,10 +3099,10 @@ each group.
 We have at least 10 successes and 10 failures in
 each experiment arm (11, 14, 39, 26),
 so this condition is also satisfied.</p>
-With both conditions satisfied,
+<p>With both conditions satisfied,
 the difference in sample proportions can be
 reasonably modeled using a normal distribution
-for these data.
+for these data.</p>
 </div>
 <!--
 <table class="table" style="margin-left: auto; margin-right: auto;">
@@ -3151,9 +3140,8 @@ for these data.
 </tbody>
 </table>
 -->
-
-<div class="example">
-<p><span id="exm:unlabeled-div-57" class="example"><strong>Example 5.25  </strong></span>Create and interpret a 90% confidence interval of the
+<div class="workedexample">
+<p>Create and interpret a 90% confidence interval of the
 difference for the survival rates in the CPR study.</p>
 <hr>
 <p>We’ll use <span class="math inline">\(\pi_t\)</span> for the true survival
@@ -3176,9 +3164,8 @@ in the formula in the confidence interval context:
   \end{align*}\]</span>
 For a 90% confidence interval, we use <span class="math inline">\(z^{\star} = 1.65\)</span>:
 <span class="math display">\[\begin{align*}
-  \text{point estimate} \ \pm\ z^{\star} \times SE
-    \quad \to \quad 0.13 \ \pm\ 1.65 \times  0.095
-    \quad \to \quad (-0.027, 0.287)
+  \text{point estimate} &amp;\pm\ z^{\star} \times SE \quad \to\\
+   0.13 \ &amp;\pm\ 1.65 \times  0.095 \quad = \quad (-0.027, 0.287)
   \end{align*}\]</span>
 We are 90% confident that the survival probability for those
 patients given blood thinners is between 0.027 lower to 0.287 higher
@@ -3189,7 +3176,7 @@ we do not have enough information to say
 whether blood thinners help or harm
 heart attack patients who have been admitted after
 they have undergone CPR.</p>
-Note, the problem was set up as 90% to indicate that there was not a need for a high level of confidence (such a 95% or 99%). A lower degree of confidence increases potential for error, but it also produces a more narrow interval.
+<p>Note, the problem was set up as 90% to indicate that there was not a need for a high level of confidence (such a 95% or 99%). A lower degree of confidence increases potential for error, but it also produces a more narrow interval.</p>
 </div>
 <p></p>
 
@@ -3378,7 +3365,7 @@ to verify the
 success-failure condition and estimate the standard error:
 <span class="math display">\[\begin{eqnarray*}
   \hat{p}_{\textit{pool}}
-    = \frac{\text{number of "successes"}}
+    = \frac{\text{number of successes}}
       {\text{number of cases}}
     = \frac{\hat{p}_1 n_1 + \hat{p}_2 n_2}{n_1 + n_2}
   \end{eqnarray*}\]</span>
@@ -3391,13 +3378,12 @@ sample 1 since
 Similarly, <span class="math inline">\(\hat{p}_2 n_2\)</span> represents the number
 of successes in sample 2.
 </div>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-58" class="example"><strong>Example 5.26  </strong></span>Is it reasonable to model the difference
+<div class="workedexample">
+<p>Is it reasonable to model the difference
 in proportions using a normal distribution in this
 study?</p>
 <hr>
-Because the patients are randomized, they can be treated
+<p>Because the patients are randomized, they can be treated
 as independent, both within and between groups.
 We also must check the success-failure condition for each group.
 Under the null hypothesis, the proportions <span class="math inline">\(\pi_{mgm}\)</span>
@@ -3420,7 +3406,7 @@ The success-failure condition is satisfied since
 all values are at least 10.
 With both conditions satisfied, we can safely model
 the difference in proportions using a normal
-distribution.
+distribution.</p>
 </div>
 <p>We used the pooled proportion to check the success-failure
 condition<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;For an example of a two proportion
@@ -3431,14 +3417,14 @@ Section &lt;a href="inference-cat.html#two-prop-errors"&gt;5.4.1&lt;/a&gt;.&lt;/
 <div class="onebox">
 <p><strong>Standard error of the difference in two proportions, <span class="math inline">\(\hat{p}_1 -\hat{p}_2\)</span>: hypothesis tests.</strong></p>
 <p>Since we assume <span class="math inline">\(\pi_1 = \pi_2\)</span> when we conduct a theory-based hypothesis test for <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span>, we substitute the <strong>pooled sample proportion</strong>, <span class="math inline">\(\hat{p}_{pool}\)</span> in for both <span class="math inline">\(\pi_1\)</span> and <span class="math inline">\(\pi_2\)</span> in the expression for the standard deviation of the statistic, resulting in its <strong>null standard error</strong>:</p>
-<p><span class="math display">\[\begin{eqnarray*}
-  SE_0(\hat{p}_1 -\hat{p}_2) = \sqrt{\frac{\hat{p}_{pool}(1-\hat{p}_{pool})}{n_1} + \frac{\hat{p}_{pool}(1-\hat{p}_{pool})}{n_2}} = \sqrt{\hat{p}_{pool}(1-\hat{p}_{pool})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}
-  \end{eqnarray*}\]</span></p>
+<p><span class="math display">\[\begin{align*}
+  SE_0(\hat{p}_1 -\hat{p}_2) &amp;= \sqrt{\frac{\hat{p}_{pool}(1-\hat{p}_{pool})}{n_1} + \frac{\hat{p}_{pool}(1-\hat{p}_{pool})}{n_2}} \\
+  &amp;= \sqrt{\hat{p}_{pool}(1-\hat{p}_{pool})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}
+  \end{align*}\]</span></p>
 This is the standard error formula we will use when computing the test statistic for a hypothesis test of <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span>.
 </div>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-59" class="example"><strong>Example 5.27  </strong></span>Compute the point estimate of the difference
+<div class="workedexample">
+<p>Compute the point estimate of the difference
 in breast cancer death rates in the two groups,
 and use the pooled proportion
 <span class="math inline">\(\hat{p}_{\textit{pool}} = 0.0112\)</span> to calculate
@@ -3456,7 +3442,7 @@ rates is
   \end{align*}\]</span>
 The breast cancer death rate in the mammogram group
 was 0.00012 less than in the control group.</p>
-Next, the standard error of <span class="math inline">\(\hat{p}_{mgm} - \hat{p}_{ctrl}\)</span> is calculated
+<p>Next, the standard error of <span class="math inline">\(\hat{p}_{mgm} - \hat{p}_{ctrl}\)</span> is calculated
 <em>using the pooled proportion</em>, <span class="math inline">\(\hat{p}_{\textit{pool}}\)</span>:
 <span class="math display">\[\begin{align*}
 SE_0 = \sqrt{
@@ -3466,11 +3452,10 @@ SE_0 = \sqrt{
           {n_{ctrl}}
     }
     = 0.00070
-\end{align*}\]</span>
+\end{align*}\]</span></p>
 </div>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-60" class="example"><strong>Example 5.28  </strong></span>Using the point estimate <span class="math inline">\(\hat{p}_{mgm} - \hat{p}_{ctrl} = -0.00012\)</span> and standard error <span class="math inline">\(SE = 0.00070\)</span>, calculate a p-value for the hypothesis test and write a conclusion.</p>
+<div class="workedexample">
+<p>Using the point estimate <span class="math inline">\(\hat{p}_{mgm} - \hat{p}_{ctrl} = -0.00012\)</span> and standard error <span class="math inline">\(SE = 0.00070\)</span>, calculate a p-value for the hypothesis test and write a conclusion.</p>
 <hr>
 <p>Just like in past tests, we first compute a test statistic and draw a picture:
 <span class="math display">\[\begin{align*}
@@ -3478,7 +3463,7 @@ Z = \frac{\text{point estimate} - \text{null value}}{\mbox{Null }SE}
     = \frac{-0.00012 - 0}{0.00070}
     = -0.17
 \end{align*}\]</span></p>
-The lower tail area below -0.17 on a standard normal distribution is 0.4325, which we double to get the p-value: 0.8650 (see Figure <a href="inference-cat.html#fig:mamm-norm">5.36</a>). With this very large p-value, the difference in breast cancer death rates is reasonably explained by chance, and we have no significant evidence that mammograms either decrease or increase the risk of death by breast cancer compared to regular breast exams, among women similar to those in the study.
+<p>The lower tail area below -0.17 on a standard normal distribution is 0.4325, which we double to get the p-value: 0.8650 (see Figure <a href="inference-cat.html#fig:mamm-norm">5.36</a>). With this very large p-value, the difference in breast cancer death rates is reasonably explained by chance, and we have no significant evidence that mammograms either decrease or increase the risk of death by breast cancer compared to regular breast exams, among women similar to those in the study.</p>
 </div>
 <div class="figure" style="text-align: center">
 <span id="fig:mamm-norm"></span>
@@ -3645,7 +3630,7 @@ Since we rejected the null hypothesis in the <a href="caseStudyGenderDiscriminat
 <p>A <strong>Type 2 Error</strong> is failing to reject the null hypothesis when the alternative is actually true. Since we failed to reject the null hypothesis in the <a href="one-prop-null-boot">medical consultant</a> study, it is possible that we made a Type 2 Error in that study.</p>
 
 <div class="example">
-<p><span id="exm:unlabeled-div-61" class="example"><strong>Example 5.29  </strong></span>In a US court, the defendant is either innocent (<span class="math inline">\(H_0\)</span>) or guilty (<span class="math inline">\(H_A\)</span>).
+<p><span id="exm:unlabeled-div-51" class="example"><strong>Example 5.19  </strong></span>In a US court, the defendant is either innocent (<span class="math inline">\(H_0\)</span>) or guilty (<span class="math inline">\(H_A\)</span>).
 What does a Type 1 Error represent in this context?
 What does a Type 2 Error represent?
 Table <a href="inference-cat.html#tab:fourHTScenarios">5.11</a> may be useful.</p>
@@ -3659,7 +3644,7 @@ Consider the opportunity cost study where we concluded students were less likely
 </div>
 
 <div class="example">
-<p><span id="exm:unlabeled-div-62" class="example"><strong>Example 5.30  </strong></span>How could we reduce the Type 1 Error rate in US courts?
+<p><span id="exm:unlabeled-div-52" class="example"><strong>Example 5.20  </strong></span>How could we reduce the Type 1 Error rate in US courts?
 What influence would this have on the Type 2 Error rate?</p>
 <hr>
 To lower the Type 1 Error rate, we might raise our standard for conviction from “beyond a reasonable doubt” to “beyond a conceivable doubt” so fewer people would be wrongly convicted. However, this would also make it more difficult to convict the people who are actually guilty, so we would make more Type 2 Errors.
@@ -3706,7 +3691,7 @@ The significance level selected for a test should reflect the real-world consequ
 <p>We explore the consequences of ignoring this advice in the next example.</p>
 
 <div class="example">
-<p><span id="exm:unlabeled-div-63" class="example"><strong>Example 5.31  </strong></span>Using <span class="math inline">\(\alpha=0.05\)</span>, we show that freely switching from two-sided tests to one-sided tests will lead us to make twice as many Type 1 Errors as intended.</p>
+<p><span id="exm:unlabeled-div-53" class="example"><strong>Example 5.21  </strong></span>Using <span class="math inline">\(\alpha=0.05\)</span>, we show that freely switching from two-sided tests to one-sided tests will lead us to make twice as many Type 1 Errors as intended.</p>
 <hr>
 <p>Suppose we are interested in finding any difference from 0.
 We’ve created a smooth-looking <strong>null distribution</strong> representing differences due to chance in Figure <a href="inference-cat.html#fig:type1ErrorDoublingExampleFigure">5.37</a>.</p>
@@ -3760,7 +3745,7 @@ The <strong>power</strong> of a test is the probability of rejecting a false nul
 </div>
 
 <div class="example">
-<p><span id="exm:unlabeled-div-64" class="example"><strong>Example 5.32  </strong></span>Suppose we would like to test whether less than 65% of a large population approves of a new law: <span class="math inline">\(H_0: \pi = 0.65\)</span> versus <span class="math inline">\(H_A: \pi &lt; 0.65\)</span>. We collect a random sample of <span class="math inline">\(n = 200\)</span> individuals from this population. For what values of the sample proportion, <span class="math inline">\(\hat{p}\)</span>, would we reject <span class="math inline">\(H_0\)</span> using a significance level of <span class="math inline">\(\alpha = 0.05\)</span>?</p>
+<p><span id="exm:unlabeled-div-54" class="example"><strong>Example 5.22  </strong></span>Suppose we would like to test whether less than 65% of a large population approves of a new law: <span class="math inline">\(H_0: \pi = 0.65\)</span> versus <span class="math inline">\(H_A: \pi &lt; 0.65\)</span>. We collect a random sample of <span class="math inline">\(n = 200\)</span> individuals from this population. For what values of the sample proportion, <span class="math inline">\(\hat{p}\)</span>, would we reject <span class="math inline">\(H_0\)</span> using a significance level of <span class="math inline">\(\alpha = 0.05\)</span>?</p>
 <hr>
 <p>Under the assumption of the null hypothesis, the standard deviation of <span class="math inline">\(\hat{p}\)</span> is <span class="math inline">\(\sqrt{0.65(1-0.65)/200} = 0.0337\)</span>. Thus, by the Central Limit Theorem, sample proportions vary according to an approximate normal distribution with mean 0.65 and standard deviation 0.0337. We will reject the null hypothesis that the true proportion is 0.65 if the sample proportion is so low that its probability is less than 0.05, shown in Figure <a href="inference-cat.html#fig:power-example">5.38</a>.</p>
 <p>To be precise, we will reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\hat{p}\)</span> is less than the 5th percentile of the null distribution: <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm(0.05, 0.65, 0.0337)</a></code> = 0.59.</p>
@@ -3774,7 +3759,7 @@ Figure 5.38: Shaded area on a null distribution where we would reject the null h
 <p>To calculate power, we need to know the true value of the parameter. In the previous example, the alternative was <span class="math inline">\(H_0: \pi &lt; 0.65\)</span>, so if we just say the alternative hypothesis is true, we still do not know the value of <span class="math inline">\(\pi\)</span>. Thus, power calculations are done for a specific value of the parameter, and the power changes if the value of the parameter changes.</p>
 
 <div class="example">
-<p><span id="exm:unlabeled-div-65" class="example"><strong>Example 5.33  </strong></span>Consider again the test of whether less than 65% of a large population approves of a new law: <span class="math inline">\(H_0: \pi = 0.65\)</span> versus <span class="math inline">\(H_A: \pi &lt; 0.65\)</span>. Suppose the population approval rate is actually <span class="math inline">\(\pi = 0.58\)</span>. What is the probability that we will detect this effect?</p>
+<p><span id="exm:unlabeled-div-55" class="example"><strong>Example 5.23  </strong></span>Consider again the test of whether less than 65% of a large population approves of a new law: <span class="math inline">\(H_0: \pi = 0.65\)</span> versus <span class="math inline">\(H_A: \pi &lt; 0.65\)</span>. Suppose the population approval rate is actually <span class="math inline">\(\pi = 0.58\)</span>. What is the probability that we will detect this effect?</p>
 <hr>
 <p>This example asks us to calculate the power – the probability our test will provide evidence that <span class="math inline">\(\pi &lt; 0.65\)</span> when the true value of <span class="math inline">\(\pi\)</span> is 0.58. Recall from the previous example that we will reject the null if <span class="math inline">\(\hat{p} &lt; 0.59\)</span>. Thus, the power is the probability that <span class="math inline">\(\hat{p}\)</span> will be less than 0.59 when the true proportion is 0.58: <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm(0.59, 0.58, 0.0337)</a></code> = 0.62. There is only a 62% chance that the data we collect will provide strong enough evidence to conclude <span class="math inline">\(\pi &lt; 0.65\)</span>. This probability is represented by the red area in Figure <a href="inference-cat.html#fig:power-example-2">5.39</a>.</p>
 </div>
@@ -3808,7 +3793,7 @@ Figure 5.39: The blue distribution is the distribution of sample proportions if 
 </h3>
 
 <div class="example">
-<p><span id="exm:unlabeled-div-66" class="example"><strong>Example 5.34  </strong></span>An Austrian study of heights of 507,125 military recruits reported that men born in spring were statistically significantly taller than men born in the fall (p-value &lt; 0.0001). A confidence interval for the true difference in mean height between men born in spring and men born in fall was (0.598, 0.602) cm. Is this result practically important?</p>
+<p><span id="exm:unlabeled-div-56" class="example"><strong>Example 5.24  </strong></span>An Austrian study of heights of 507,125 military recruits reported that men born in spring were statistically significantly taller than men born in the fall (p-value &lt; 0.0001). A confidence interval for the true difference in mean height between men born in spring and men born in fall was (0.598, 0.602) cm. Is this result practically important?</p>
 <hr>
 <p>No, these results don’t mean much in this context – a difference in average height of around 0.6 cm would not even be noticeable by the human eye! Just because a result is statistically significant does not mean that it is necessarily practically important – meaningful in the context of the problem.</p>
 </div>
