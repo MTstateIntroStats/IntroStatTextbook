@@ -344,7 +344,7 @@ As with the sample proportion, the variability of the sample mean is well descri
 a normal distribution when certain conditions are met.
 However, because of missing information about the inherent variability in the population, a $t$-distribution is used in place of the standard normal when performing hypothesis test or confidence interval analyses.
 
-::: {.importantbox}
+::: {.onebox}
 **Central Limit Theorem for the sample mean.**  
   When we collect a sufficiently large sample of
   $n$ independent observations from a population with
@@ -949,7 +949,7 @@ We can construct the confidence interval as
 
 \index{data!dolphins and mercury|)}
 
-::: {.important}
+::: {.onebox}
 **Finding a $t$-confidence interval for a population mean, $\mu$.**
   
   Based on a sample of $n$ independent and nearly normal
@@ -2225,7 +2225,7 @@ As in the one-mean and paired mean difference scenarios, a difference in sample 
 
 \index{point estimate!difference of means|)}
 
-::: {.important}
+::: {.onebox}
 **Using the $t$-distribution for a difference in means.**
 
 The $t$-distribution can be used for inference when working
@@ -2374,7 +2374,7 @@ temptbl %>%
 ##### Observed statistic vs. null value {-}
 
 
-::: {.important}
+::: {.onebox}
 **The test statistic for comparing two means is a T.**
   
 The T score is a ratio of how the groups differ as compared to how the observations within a group vary.
@@ -2491,7 +2491,7 @@ smoke.^[You can watch an episode of John Oliver
 
 #### $t$ confidence interval for $\mu_1 - \mu_2$ {-}
 
-::: {.important}
+::: {.onebox}
 **Finding a $t$-confidence interval for a difference in population means, $\mu_1 - \mu_2$.**
   
   Based on two independent samples of $n_1$ and $n_2$ observational units, respectively, with no clear outliers, a confidence interval for a difference in population

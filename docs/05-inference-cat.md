@@ -1137,7 +1137,7 @@ No. Because the interval overlaps 10%, it might be that the consultant's work is
 In Section \@ref(var-stat), we introduced the normal distribution and showed how it can be used as a mathematical model to describe the variability of a sample mean or sample proportion as a result of the Central Limit Theorem. We explored the normal distribution
 further in Section \@ref(normal). Theory-based hypothesis tests and confidence intervals for proportions use the normal distribution to calculate the p-value and to determine the width of the confidence interval.
 
-::: {.importantbox}
+::: {.onebox}
 **Central Limit Theorem for the sample proportion.**
   
   When we collect a sufficiently large sample of
@@ -3608,7 +3608,7 @@ This example asks us to calculate the power -- the probability our test will pro
 <p class="caption">(\#fig:power-example-2)The blue distribution is the distribution of sample proportions if the null hypothesis is true, $\pi = 0.65$ -- the blue shaded area represents the probability we reject a true null hypothesis. The red distribution is the distribution of sample proportions under a particular alternative hypothesis, that $\pi = 0.58$ -- the red shaded area represents the power.</p>
 </div>
 
-::: {.importantbox}
+::: {.onebox}
 **Increasing power.**
 
 The **power** of a test will _increase_ when:

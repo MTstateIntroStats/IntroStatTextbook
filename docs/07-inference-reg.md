@@ -517,7 +517,7 @@ Similar to how we can conduct a hypothesis test for a model coefficient
 using regression output, we can also construct a confidence interval for
 that coefficient.
 
-::: {.importantbox}
+::: {.onebox}
 **Confidence intervals for coefficients** 
 
 Confidence intervals for model

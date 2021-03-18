@@ -209,7 +209,7 @@ For example, the residual for the observation marked by a yellow triangle is lar
 Figure 3.8: A reasonable linear model was fit to represent the relationship between head length and total length, with three points and their residuals highlighted.
 </p>
 </div>
-<div class="importantbox">
+<div class="onebox">
 <p><strong>Residual: Difference between observed and expected.</strong></p>
 <p>The <strong>residual</strong> of the <span class="math inline">\(i^{th}\)</span> observation <span class="math inline">\((x_i, y_i)\)</span> is the difference of the observed response (<span class="math inline">\(y_i\)</span>) and the response we would predict based on the model fit (<span class="math inline">\(\hat{y}_i\)</span>):</p>
 <p><span class="math display">\[e_i = y_i - \hat{y}_i\]</span></p>
@@ -274,7 +274,7 @@ Figure 3.10: Sample data with their best fitting lines (top row) and their corre
 </h3>
 <p>We’ve seen plots with strong linear relationships and others with very weak linear relationships.
 It would be useful if we could quantify the strength of these linear relationships with a statistic.</p>
-<div class="importantbox">
+<div class="onebox">
 <p><strong>Correlation: strength and direction of a linear relationship.</strong></p>
 <p><strong>Correlation</strong> which always takes values between -1 and 1, is a summary statistic that describes the strength (by its magnitude) and direction (by its sign) of the linear relationship between two variables. We denote the correlation by <span class="math inline">\(R\)</span> or <span class="math inline">\(r\)</span>.</p>
 </div>
@@ -463,7 +463,7 @@ That is, increasing a student’s family income may not cause the student’s ai
 The meaning of the intercept is relevant to this application since the family income for some students at Elmhurst is $0.
 In other applications, the intercept may have little or no practical value if there are no observations where <span class="math inline">\(x\)</span> is near zero.</p>
 </div>
-<div class="importantbox">
+<div class="onebox">
 <p><strong>Interpreting parameters estimated by least squares.</strong></p>
 <p>The <strong>slope</strong> describes the estimated difference in the <span class="math inline">\(y\)</span> variable if the explanatory variable <span class="math inline">\(x\)</span> for a case happened to be one unit larger.</p>
 <p>The <strong>intercept</strong> describes the average outcome of <span class="math inline">\(y\)</span> if <span class="math inline">\(x=0\)</span> <em>and</em> the linear model is valid all the way to <span class="math inline">\(x=0\)</span>, which in many applications is not the case.</p>
@@ -620,7 +620,7 @@ R
 </div>
 <p>You might recall the form of a line from math class, which we can use to find the model fit, including the estimate of <span class="math inline">\(b_0\)</span>. Given the slope of a line and a point on the line, <span class="math inline">\((x_0, y_0)\)</span>, the equation for the line can be written as</p>
 <p><span class="math display">\[y - y_0 = slope\times (x - x_0)\]</span></p>
-<div class="importantbox">
+<div class="onebox">
 <p><strong>Identifying the least squares line from summary statistics.</strong></p>
 <p>To identify the least squares line from summary statistics:</p>
 <ul>
@@ -692,7 +692,7 @@ or about 25% in the data’s variation by using information about family income 
 This corresponds exactly to the R-squared value:</p>
 <p><span class="math display">\[R = -0.499 \rightarrow R^2 = 0.25\]</span>
 The squared correlation coefficient, <span class="math inline">\(R^2\)</span>, is also called the <strong>coefficient of determination</strong>.</p>
-<div class="importantbox">
+<div class="onebox">
 <p><strong>Coefficient of determination: proportion of variability in the response explained by the model.</strong></p>
 <p>Since <span class="math inline">\(R\)</span> is always between <span class="math inline">\(-1\)</span> and <span class="math inline">\(1\)</span>, <span class="math inline">\(R^2\)</span> will always be between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>. This statistic is called the <strong>coefficient of determination</strong> and measures the proportion of variation in the response variable, <span class="math inline">\(y\)</span>, that can be explained by the linear model with predictor <span class="math inline">\(x\)</span>.</p>
 </div>
@@ -715,7 +715,7 @@ Figure 3.14: For these 104 possums, the range of head lengths is about 103 <span
 <p>If a linear model has a very strong negative relationship with a correlation of -0.97, how much of the variation in the response is explained by the explanatory variable?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;About &lt;span class="math inline"&gt;\(R^2 = (-0.97)^2 = 0.94\)&lt;/span&gt; or 94% of the variation is explained by the linear model.&lt;/p&gt;'><sup>60</sup></a></p>
 </div>
 <p>More generally, <span class="math inline">\(R^2\)</span> can be calculated as a ratio of a measure of variability around the line divided by a measure of total variability.</p>
-<div class="importantbox">
+<div class="onebox">
 <p><strong>Sums of squares to measure variability in <span class="math inline">\(y\)</span>.</strong></p>
 <p>We can measure the variability in the <span class="math inline">\(y\)</span> values by how far they tend to fall from their mean, <span class="math inline">\(\bar{y}\)</span>. We define this value as the <strong>total sum of squares</strong>,</p>
 <p><span class="math display">\[
@@ -830,7 +830,7 @@ That is, the average selling price of a used version of the game is $42.87.</p>
 <hr>
 <p>The slope indicates that, on average, new games sell for about $10.90 more than used games.</p>
 </div>
-<div class="importantbox">
+<div class="onebox">
 <p><strong>Interpreting model estimates for categorical predictors.</strong></p>
 <p>The estimated intercept is the value of the response variable for the first category (i.e. the category corresponding to an indicator value of 0).
 The estimated slope is the average change in the response variable between the two categories.</p>
@@ -887,13 +887,13 @@ Figure 3.17: Three plots, each with a least squares line and residual plot. All 
 You will probably find that there is some trend in the main clouds of Plots C, D, and E.
 In these cases, the outliers influenced the slope of the least squares lines.
 In Plot E, data with no clear trend were assigned a line with a large trend simply due to one outlier (!).</p>
-<div class="importantbox">
+<div class="onebox">
 <p><strong>Leverage.</strong></p>
 <p>Points that fall horizontally away from the center of the cloud tend to pull harder on the line, so we call them points with <strong>high leverage</strong>.</p>
 </div>
 <p>Points that fall horizontally far from the line are points of high leverage; these points can strongly influence the slope of the least squares line.
 If one of these high leverage points does appear to actually invoke its influence on the slope of the line – as in Plots C, D, and E of Figures <a href="cor-reg.html#fig:outlierPlots1">3.16</a> and <a href="cor-reg.html#fig:outlierPlots2">3.17</a> – then we call it an <strong>influential point</strong>.</p>
-<div class="importantbox">
+<div class="onebox">
 <p><strong>Influential point.</strong></p>
 <p>A point is <strong>influential</strong> if, had we fitted the line without it, the influential point would have been unusually far from the least squares line.
 Influential points tend to pull the slope of the line up or down from what we would have seen had we fit the regression line without it.</p>

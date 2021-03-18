@@ -144,7 +144,7 @@ For example, the residual for the observation marked by a yellow triangle is lar
 <p class="caption">(\#fig:scattHeadLTotalLLine-highlighted)A reasonable linear model was fit to represent the relationship between head length and total length, with three points and their residuals highlighted.</p>
 </div>
 
-::: {.importantbox}
+::: {.onebox}
 **Residual: Difference between observed and expected.**
 
 The **residual** of the $i^{th}$ observation $(x_i, y_i)$ is the difference of the observed response ($y_i$) and the response we would predict based on the model fit ($\hat{y}_i$): 
@@ -228,7 +228,7 @@ We will address this sort of scenario in Chapter \@ref(inference-reg).
 We've seen plots with strong linear relationships and others with very weak linear relationships. 
 It would be useful if we could quantify the strength of these linear relationships with a statistic.
 
-::: {.importantbox}
+::: {.onebox}
 **Correlation: strength and direction of a linear relationship.** 
 
 **Correlation** which always takes values between -1 and 1, is a summary statistic that describes the strength (by its magnitude) and direction (by its sign) of the linear relationship between two variables. We denote the correlation by $R$ or $r$.
@@ -402,7 +402,7 @@ The meaning of the intercept is relevant to this application since the family in
 In other applications, the intercept may have little or no practical value if there are no observations where $x$ is near zero.
 :::
 
-::: {.importantbox}
+::: {.onebox}
 **Interpreting parameters estimated by least squares.** 
 
 The **slope** describes the estimated difference in the $y$ variable if the explanatory variable $x$ for a case happened to be one unit larger. 
@@ -520,7 +520,7 @@ You might recall the form of a line from math class, which we can use to find th
 $$y - y_0 = slope\times (x - x_0)$$
 
 
-::: {.importantbox}
+::: {.onebox}
 **Identifying the least squares line from summary statistics.** 
 
 To identify the least squares line from summary statistics:
@@ -610,7 +610,7 @@ $$R = -0.499 \rightarrow R^2 = 0.25$$
 The squared correlation coefficient, $R^2$, is also called the **coefficient of determination**. 
 
 
-::: {.importantbox}
+::: {.onebox}
 **Coefficient of determination: proportion of variability in the response explained by the model.**
 
 Since $R$ is always between $-1$ and $1$, $R^2$ will always be between $0$ and $1$. This statistic is called the **coefficient of determination** and measures the proportion of variation in the response variable, $y$, that can be explained by the linear model with predictor $x$.
@@ -639,7 +639,7 @@ If a linear model has a very strong negative relationship with a correlation of 
 
 More generally, $R^2$ can be calculated as a ratio of a measure of variability around the line divided by a measure of total variability.
 
-::: {.importantbox}
+::: {.onebox}
 **Sums of squares to measure variability in $y$.**
 
 We can measure the variability in the $y$ values by how far they tend to fall from their mean, $\bar{y}$. We define this value as the **total sum of squares**,
@@ -751,7 +751,7 @@ The slope indicates that, on average, new games sell for about \$10.90 more than
 :::
 
 
-::: {.importantbox}
+::: {.onebox}
 **Interpreting model estimates for categorical predictors.** 
 
 The estimated intercept is the value of the response variable for the first category (i.e. the category corresponding to an indicator value of 0). 
@@ -812,7 +812,7 @@ You will probably find that there is some trend in the main clouds of Plots C,�
 In these cases, the outliers influenced the slope of the least squares lines. 
 In Plot E, data with no clear trend were assigned a line with a large trend simply due to one outlier (!).
 
-::: {.importantbox}
+::: {.onebox}
 **Leverage.** 
 
 Points that fall horizontally away from the center of the cloud tend to pull harder on the line, so we call them points with **high leverage**.
@@ -821,7 +821,7 @@ Points that fall horizontally away from the center of the cloud tend to pull har
 Points that fall horizontally far from the line are points of high leverage; these points can strongly influence the slope of the least squares line. 
 If one of these high leverage points does appear to actually invoke its influence on the slope of the line -- as in Plots C, D, and E of Figures \@ref(fig:outlierPlots1) and \@ref(fig:outlierPlots2) -- then we call it an **influential point**. 
 
-::: {.importantbox}
+::: {.onebox}
 **Influential point.** 
 
 A point is **influential** if, had we fitted the line without it, the influential point would have been unusually far from the least squares line.

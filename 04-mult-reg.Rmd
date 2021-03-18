@@ -475,7 +475,7 @@ tidy(m_full) %>%
 ```
 
 
-::: {.importantbox}
+::: {.onebox}
 **Multiple regression model.** 
 
 A multiple regression model is a linear model with many predictors. In general, we write the model as
