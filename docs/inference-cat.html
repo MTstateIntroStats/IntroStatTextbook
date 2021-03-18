@@ -2879,22 +2879,24 @@ is created by randomly sampling with replacement from the original sample.</p>
 Figure 5.29: Bootstrapped resamples from two separate estimated populations.
 </p>
 </div>
-<p>The variability of the statistic (the difference in sample proportions) can be calculated by taking one treatment bootstrap sample and one control bootstrap sample and calculating the difference of the bootstrap survival proportions. Figure @(boot2samp2) displays one bootstrap resample from each of the estimated populations, with the difference in sample proportions calculated between the treatment bootstrap sample and the control bootstrap sample.</p>
+<p>The variability of the statistic (the difference in sample proportions) can be calculated by taking one treatment bootstrap sample and one control bootstrap sample and calculating the difference of the bootstrap survival proportions. Figure <a href="#boot2samp2"><strong>??</strong></a> displays one bootstrap resample from each of the estimated populations, with the difference in sample proportions calculated between the treatment bootstrap sample and the control bootstrap sample.</p>
 <div class="figure" style="text-align: center">
 <span id="fig:boot2samp2"></span>
 <img src="05/figures/boot2prop3.png" alt="The bootstrap resample on the left is from the first estimated population; the one on the right from the second. In this case, the value of the simulated bootstrap statistic would be $\hat{p}_1 - \hat{p}_2 = \frac{2}{7}-\frac{1}{7}$." width="75%"><p class="caption">
 Figure 5.30: The bootstrap resample on the left is from the first estimated population; the one on the right from the second. In this case, the value of the simulated bootstrap statistic would be <span class="math inline">\(\hat{p}_1 - \hat{p}_2 = \frac{2}{7}-\frac{1}{7}\)</span>.
 </p>
 </div>
-<p>As always, the variability of the difference in proportions can only be estimated by repeated simulations, in this case, repeated bootstrap samples. Figure <a href="inference-cat.html#fig:boot2samp3">5.31</a> shows multiple bootstrap differences calculated for each of the repeated bootstrap samples.</p>
+<p>As always, the variability of the difference in proportions can only be estimated by repeated simulations, in this case, repeated bootstrap samples.
+Figure <a href="inference-cat.html#fig:boot2samp3">5.31</a> shows multiple bootstrap differences calculated for each of the repeated bootstrap samples.</p>
 <div class="figure" style="text-align: center">
 <span id="fig:boot2samp3"></span>
-<img src="05/figures/boot2prop2.png" alt="in this graph, some kind of connection between each of the two sides" width="75%"><p class="caption">
-Figure 5.31: in this graph, some kind of connection between each of the two sides
+<img src="05/figures/boot2prop2.png" alt="For each pair of bootstrap samples, we calculate the difference in sample proportions." width="75%"><p class="caption">
+Figure 5.31: For each pair of bootstrap samples, we calculate the difference in sample proportions.
 </p>
 </div>
 <p>Repeated bootstrap simulations lead to a bootstrap sampling distribution of the statistic of interest, here the difference in sample proportions.
-Figure <a href="inference-cat.html#fig:boot2samp1">5.32</a> visualizes the process in the toy example, and Figure <a href="inference-cat.html#fig:bootCPR1000">5.33</a> shows 1000 bootstrap differences in proportions for the CPR data.</p>
+Figure <a href="inference-cat.html#fig:boot2samp1">5.32</a> visualizes the process in the toy example, and Figure <a href="inference-cat.html#fig:bootCPR1000">5.33</a> shows 1000 bootstrap differences in proportions for the CPR data.
+Note that the CPR data includes 40 and 50 people in the respective groups, and the toy example includes 7 and 9 people in the two groups. Accordingly, the variability in the distribution of sample proportions is higher for the toy example. When using the mathematical model (see Section <a href="inference-cat.html#math-2prop">5.4.4</a>), the standard error for the difference in proportions is inversely related to the sample size.</p>
 <div class="figure" style="text-align: center">
 <span id="fig:boot2samp1"></span>
 <img src="05/figures/boot2prop1.png" alt="The process of repeatedly resampling from the estimated population (sampling with replacement from the original sample), computing a difference in sample proportions from each pair of samples, then plotting this distribution." width="100%"><p class="caption">
@@ -3365,8 +3367,8 @@ to verify the
 success-failure condition and estimate the standard error:
 <span class="math display">\[\begin{eqnarray*}
   \hat{p}_{\textit{pool}}
-    = \frac{\text{number of successes}}
-      {\text{number of cases}}
+    = \frac{\text{total number of successes}}
+      {\text{total number of cases}}
     = \frac{\hat{p}_1 n_1 + \hat{p}_2 n_2}{n_1 + n_2}
   \end{eqnarray*}\]</span>
 Here <span class="math inline">\(\hat{p}_1 n_1\)</span> represents the number of successes in

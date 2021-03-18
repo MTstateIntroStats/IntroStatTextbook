@@ -3325,22 +3325,23 @@ include_graphics("05/figures/boot2propresamps.png")
 ```
 
 
-The variability of the statistic (the difference in sample proportions) can be calculated by taking one treatment bootstrap sample and one control bootstrap sample and calculating the difference of the bootstrap survival proportions.  Figure @\ref(boot2samp2) displays one bootstrap resample from each of the estimated populations, with the difference in sample proportions calculated between the treatment bootstrap sample and the control bootstrap sample.  
+The variability of the statistic (the difference in sample proportions) can be calculated by taking one treatment bootstrap sample and one control bootstrap sample and calculating the difference of the bootstrap survival proportions.  Figure \@ref(boot2samp2) displays one bootstrap resample from each of the estimated populations, with the difference in sample proportions calculated between the treatment bootstrap sample and the control bootstrap sample.  
 
 
 ```{r boot2samp2, fig.cap = "The bootstrap resample on the left is from the first estimated population; the one on the right from the second. In this case, the value of the simulated bootstrap statistic would be $\\hat{p}_1 - \\hat{p}_2 = \\frac{2}{7}-\\frac{1}{7}$.", warning = FALSE, out.width="75%"}
 include_graphics("05/figures/boot2prop3.png")
 ```
 
+As always, the variability of the difference in proportions can only be estimated by repeated simulations, in this case, repeated bootstrap samples.
+Figure \@ref(fig:boot2samp3) shows multiple bootstrap differences calculated for each of the repeated bootstrap samples.
 
-As always, the variability of the difference in proportions can only be estimated by repeated simulations, in this case, repeated bootstrap samples.  Figure \@ref(fig:boot2samp3) shows multiple bootstrap differences calculated for each of the repeated bootstrap samples.
-
-```{r boot2samp3, fig.cap = "in this graph, some kind of connection between each of the two sides", warning = FALSE,  out.width="75%"}
+```{r boot2samp3, fig.cap = "For each pair of bootstrap samples, we calculate the difference in sample proportions.", warning = FALSE,  out.width="75%"}
 include_graphics("05/figures/boot2prop2.png")
 ```
 
 Repeated bootstrap simulations lead to a bootstrap sampling distribution of the statistic of interest, here the difference in sample proportions.
 Figure \@ref(fig:boot2samp1) visualizes the process in the toy example, and Figure \@ref(fig:bootCPR1000) shows 1000 bootstrap differences in proportions for the CPR data.
+Note that the CPR data includes 40 and 50 people in the respective groups, and the toy example includes 7 and 9 people in the two groups. Accordingly, the variability in the distribution of sample proportions is higher for the toy example. When using the mathematical model (see Section \@ref(math-2prop)), the standard error for the difference in proportions is inversely related to the sample size.
 
 ```{r boot2samp1, fig.cap = "The process of repeatedly resampling from the estimated population (sampling with replacement from the original sample), computing a difference in sample proportions from each pair of samples, then plotting this distribution.", warning = FALSE,  out.width="100%"}
 include_graphics("05/figures/boot2prop1.png")
@@ -3350,18 +3351,28 @@ include_graphics("05/figures/boot2prop1.png")
 
 set.seed(47)
 exp_gp  <- rep(c("blood_thinner", "control"), c(40, 50))
-outcome <- c(rep(c('survived', 'died'), c(11, 39)),
-             rep(c('survived', 'died'), c(14, 26)))
+#outcome <- c(rep(c('survived', 'died'), c(11, 39)),
+#             rep(c('survived', 'died'), c(14, 26)))
+outcome <- c(rep(c('survived', 'died'), c(14, 26)),
+             rep(c('survived', 'died'), c(11, 39)))
 
 nsim    <- 1000
-n       <- length(exp_gp)
+#n       <- length(exp_gp)
+gp1     <- "blood_thinner"
+n1      <- length(exp_gp[exp_gp == gp1])
+gp2     <- "control"
+n2      <- length(exp_gp[exp_gp == gp2])
 success <- "survived"
 
-SimulateTable <- function(exp_gp, outcome, ...) {
-  bsobs <- sample(1:n, replace = TRUE)
-  table(exp_gp[bsobs], outcome[bsobs])
+# SimulateTable <- function(exp_gp, outcome, ...) {
+#   bsobs <- sample(1:n, replace = TRUE)
+#   table(exp_gp[bsobs], outcome[bsobs])
+# }
+SimulateTable <- function(exp_gp, outcome, ...){
+   bsobs1 <- sample(1:n1, replace = TRUE)
+   bsobs2 <- sample((n1+1):(n1+n2), replace = TRUE)
+   table(exp_gp[c(bsobs1,bsobs2)], outcome[c(bsobs1,bsobs2)])
 }
-
 
 sim_tables <-
     lapply(1:nsim, SimulateTable,
@@ -3369,7 +3380,8 @@ sim_tables <-
         outcome = outcome)
 result <- sim_tables %>%
     lapply(function(x) {
-    	  x[1, 1] / sum(x[1, ]) - x[2, 1] / sum(x[2, ])
+#    	  x[1, 1] / sum(x[1, ]) - x[2, 1] / sum(x[2, ])
+    	  x[1, 2] / sum(x[1, ]) - x[2, 2] / sum(x[2, ])
     	}) %>%
     	unlist()
 
@@ -3388,17 +3400,19 @@ for (i in 1:length(diffs)) {
 breaks <- seq(min(result)-.05, max(result)+ .05, by = (max(result) - min(result) )/ 20)
 
 histPlot(X, Y, breaks = breaks,
-     xlim = c(-.3,.3),
+     #xlim = c(-.3,.3),
+     xlim = c(min(result)-.05, max(result)+.05),
      xlab = "Difference in Survival Rates",
      ylab = "",
      axes = FALSE,
      #ylim = c(0, max(Y)),
      col = COL[1],
      pch = 20)
- at <- seq(-0.3, 0.3, 0.1)
- labels <- c(-0.3, "", -0.1, 0, 0.1, "", 0.3)
-axis(1, at, labels)
-abline(h = 0)
+ #at <- seq(-0.3, 0.3, 0.1)
+ #labels <- c(-0.3, "", -0.1, 0, 0.1, "", 0.3)
+axis(1)
+#axis(1, at, labels)
+#abline(h = 0)
 #points(X[X > 0.64], Y[X > 0.64], lwd=3, col = COL[4], cex=0.4)
 ```
 
@@ -3894,8 +3908,8 @@ terms_chp_5 <- c(terms_chp_5, "pooled proportion")
   success-failure condition and estimate the standard error:
   \begin{eqnarray*}
   \hat{p}_{\textit{pool}}
-    = \frac{\text{number of successes}}
-      {\text{number of cases}}
+    = \frac{\text{total number of successes}}
+      {\text{total number of cases}}
     = \frac{\hat{p}_1 n_1 + \hat{p}_2 n_2}{n_1 + n_2}
   \end{eqnarray*}
   Here $\hat{p}_1 n_1$ represents the number of successes in

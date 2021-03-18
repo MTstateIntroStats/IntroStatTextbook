@@ -2681,7 +2681,7 @@ is created by randomly sampling with replacement from the original sample.
 </div>
 
 
-The variability of the statistic (the difference in sample proportions) can be calculated by taking one treatment bootstrap sample and one control bootstrap sample and calculating the difference of the bootstrap survival proportions.  Figure @\ref(boot2samp2) displays one bootstrap resample from each of the estimated populations, with the difference in sample proportions calculated between the treatment bootstrap sample and the control bootstrap sample.  
+The variability of the statistic (the difference in sample proportions) can be calculated by taking one treatment bootstrap sample and one control bootstrap sample and calculating the difference of the bootstrap survival proportions.  Figure \@ref(boot2samp2) displays one bootstrap resample from each of the estimated populations, with the difference in sample proportions calculated between the treatment bootstrap sample and the control bootstrap sample.  
 
 
 <div class="figure" style="text-align: center">
@@ -2689,16 +2689,17 @@ The variability of the statistic (the difference in sample proportions) can be c
 <p class="caption">(\#fig:boot2samp2)The bootstrap resample on the left is from the first estimated population; the one on the right from the second. In this case, the value of the simulated bootstrap statistic would be $\hat{p}_1 - \hat{p}_2 = \frac{2}{7}-\frac{1}{7}$.</p>
 </div>
 
-
-As always, the variability of the difference in proportions can only be estimated by repeated simulations, in this case, repeated bootstrap samples.  Figure \@ref(fig:boot2samp3) shows multiple bootstrap differences calculated for each of the repeated bootstrap samples.
+As always, the variability of the difference in proportions can only be estimated by repeated simulations, in this case, repeated bootstrap samples.
+Figure \@ref(fig:boot2samp3) shows multiple bootstrap differences calculated for each of the repeated bootstrap samples.
 
 <div class="figure" style="text-align: center">
-<img src="05/figures/boot2prop2.png" alt="in this graph, some kind of connection between each of the two sides" width="75%" />
-<p class="caption">(\#fig:boot2samp3)in this graph, some kind of connection between each of the two sides</p>
+<img src="05/figures/boot2prop2.png" alt="For each pair of bootstrap samples, we calculate the difference in sample proportions." width="75%" />
+<p class="caption">(\#fig:boot2samp3)For each pair of bootstrap samples, we calculate the difference in sample proportions.</p>
 </div>
 
 Repeated bootstrap simulations lead to a bootstrap sampling distribution of the statistic of interest, here the difference in sample proportions.
 Figure \@ref(fig:boot2samp1) visualizes the process in the toy example, and Figure \@ref(fig:bootCPR1000) shows 1000 bootstrap differences in proportions for the CPR data.
+Note that the CPR data includes 40 and 50 people in the respective groups, and the toy example includes 7 and 9 people in the two groups. Accordingly, the variability in the distribution of sample proportions is higher for the toy example. When using the mathematical model (see Section \@ref(math-2prop)), the standard error for the difference in proportions is inversely related to the sample size.
 
 <div class="figure" style="text-align: center">
 <img src="05/figures/boot2prop1.png" alt="The process of repeatedly resampling from the estimated population (sampling with replacement from the original sample), computing a difference in sample proportions from each pair of samples, then plotting this distribution." width="100%" />
@@ -3157,8 +3158,8 @@ death rates $\pi_{mgm}$ and $\pi_{ctrl}$
   success-failure condition and estimate the standard error:
   \begin{eqnarray*}
   \hat{p}_{\textit{pool}}
-    = \frac{\text{number of successes}}
-      {\text{number of cases}}
+    = \frac{\text{total number of successes}}
+      {\text{total number of cases}}
     = \frac{\hat{p}_1 n_1 + \hat{p}_2 n_2}{n_1 + n_2}
   \end{eqnarray*}
   Here $\hat{p}_1 n_1$ represents the number of successes in
