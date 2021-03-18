@@ -2881,44 +2881,34 @@ Figure 5.32: The process of repeatedly resampling from the estimated population 
 Figure 5.33: A histogram of differences in proportions (treatment <span class="math inline">\(-\)</span> control) from 1000 bootstrap simulations using the CPR data.
 </p>
 </div>
-</div>
-<div id="percentile-vs.-se-bootstrap-confidence-intervals" class="section level4 unnumbered">
-<h4>Percentile vs. SE bootstrap confidence intervals<a class="anchor" aria-label="anchor" href="#percentile-vs.-se-bootstrap-confidence-intervals"><i class="fas fa-link"></i></a>
-</h4>
-<p>Figure <a href="inference-cat.html#fig:bootCPR1000">5.33</a> provides an estimate for the variability of the difference in survival proportions from sample to sample, The values in the histogram can be used in two different ways to create a confidence interval for the parameter of interest: <span class="math inline">\(\pi_1 - \pi_2\)</span>.</p>
-<div id="percentile-bootstrap-interval" class="section level5 unnumbered">
-<h5>Percentile bootstrap interval<a class="anchor" aria-label="anchor" href="#percentile-bootstrap-interval"><i class="fas fa-link"></i></a>
-</h5>
-<p>As in Section <a href="inference-cat.html#boot-ci-prop">5.3.2</a>, the bootstrap confidence interval can be calculated directly from the bootstrapped differences in Figure <a href="inference-cat.html#fig:bootCPR1000">5.33</a>. The interval created from the percentiles of the distribution is called the <strong>percentile interval</strong>.
-Note that here we calculate the 90% confidence interval by finding the 5<sup>th</sup> and 95<sup>th</sup> percentile values from the bootstrapped differences.
-The bootstrap 5 percentile proportion is -0.155 and the 95 percentile is 0.167.
-The result is: we are 90% confident that, in the population, the true difference in probability of survival (treatment <span class="math inline">\(-\)</span> control) is between -0.155 and 0.167.
-More clearly, we are 90% confident that the probability of survival for heart attack patients who underwent CPR on blood thinners is between 0.155 less to 0.167 more than that for patients who were not given blood thinners. The interval shows that we do not have much definitive evidence of the affect of blood thinners, one way or another.</p>
+<p>Figure <a href="inference-cat.html#fig:bootCPR1000">5.33</a> provides an estimate for the variability of the difference in survival proportions from sample to sample. As in Section <a href="inference-cat.html#boot-ci-prop">5.3.2</a>, the bootstrap confidence interval can be calculated directly from the bootstrapped differences in Figure <a href="inference-cat.html#fig:bootCPR1000">5.33</a> by finding the percentiles of the distribution that correspond to the confidence level.
+For example, here we calculate the 90% confidence interval by finding the 5<sup>th</sup> and 95<sup>th</sup> percentile values from the bootstrapped differences.
+The bootstrap 5<sup>th</sup> percentile proportion is -0.03 and the 95<sup>th</sup> percentile is 0.28.
+The result is: we are 90% confident that, in the population, the true difference in probability of survival (treatment <span class="math inline">\(-\)</span> control) is between -0.03 and 0.28.
+More clearly, we are 90% confident that the probability of survival for heart attack patients who underwent CPR on blood thinners is between 0.03 less to 0.28 more than that for patients who were not given blood thinners. The interval shows that we do not have much definitive evidence of the affect of blood thinners, one way or another.</p>
 <div class="figure" style="text-align: center">
 <span id="fig:bootCPR1000CI"></span>
-<img src="05-inference-cat_files/figure-html/bootCPR1000CI-1.png" alt="The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the probability of survival in the treatment group is $\hat{p}_{t}  = 14/40$ and the probability of survival in the control group is $\hat{p}_{c} = 11/50$. " width="70%"><p class="caption">
-Figure 5.34: The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the probability of survival in the treatment group is <span class="math inline">\(\hat{p}_{t} = 14/40\)</span> and the probability of survival in the control group is <span class="math inline">\(\hat{p}_{c} = 11/50\)</span>.
+<img src="05-inference-cat_files/figure-html/bootCPR1000CI-1.png" alt="The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the proportion who survived in the treatment group is $\hat{p}_{t}  = 14/40$ and the proportion who survived in the control group is $\hat{p}_{c} = 11/50$. " width="70%"><p class="caption">
+Figure 5.34: The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the proportion who survived in the treatment group is <span class="math inline">\(\hat{p}_{t} = 14/40\)</span> and the proportion who survived in the control group is <span class="math inline">\(\hat{p}_{c} = 11/50\)</span>.
 </p>
 </div>
-</div>
-<div id="se-bootstrap-interval" class="section level5 unnumbered">
-<h5>SE bootstrap interval<a class="anchor" aria-label="anchor" href="#se-bootstrap-interval"><i class="fas fa-link"></i></a>
-</h5>
-<p>Alternatively, we can use the variability in the bootstrapped differences to calculate a standard error of the difference.
-The resulting interval is called the <strong>SE interval</strong>.
-Section <a href="inference-cat.html#math-2prop">5.4.4</a> details the mathematical model for the standard error of the difference in sample proportions, but the bootstrap distribution typically does an excellent job of estimating the variability.</p>
-<p><span class="math display">\[SE(\hat{p}_t - \hat{p}_c) \approx SD(\hat{p}_{bs,t} - \hat{p}_{bs,c}) = 0.0975\]</span></p>
-<p>The variability of the bootstrapped difference in proportions was calculated in <code>R</code> using the <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code> function, but any statistical software will calculate the standard deviation of the differences, here, the exact quantity we hope to approximate.</p>
-<p>Note that we do not know know the true distribution of <span class="math inline">\(\hat{p}_t - \hat{p}_c\)</span>, so we will use a rough approximation to find a confidence interval for <span class="math inline">\(\pi_t - \pi_c\)</span>. As seen in the bootstrap histograms, the shape of the distribution is roughly symmetric and bell-shaped. So for a rough approximation, we will apply the 68-95-99.7 rule which tells us that 95% of observed differences should be roughly no farther than 2 SE from the true parameter difference. An approximate 95% confidence interval for <span class="math inline">\(\pi_t - \pi_c\)</span> is given by:</p>
-<p><span class="math display">\[\begin{align*}
-\hat{p}_t - \hat{p}_c \pm 2 \cdot SE \ \ \ \rightarrow \ \ \ 14/40 - 11/50 \pm 2 \cdot 0.0975 \ \ \  \rightarrow \ \ \  (-0.065, 0.325)
-\end{align*}\]</span></p>
-<p>We are 95% confident that the true value of <span class="math inline">\(\pi_t - \pi_c\)</span> is between -0.065 and 0.325. Again, the wide confidence interval that overlaps zero indicates that the study provides very little evidence about the effectiveness of blood thinners.</p>
-
-<div class="important">
-Since the multiplier “2” in the SE bootstrap interval comes from the 68-95-99.7 rule for normal distributions, these intervals are only valid when the bootstrap sampling distribution is approximately normal.
-</div>
-</div>
+<!-- ##### SE bootstrap interval {-} -->
+<!-- Alternatively, we can use the variability in the bootstrapped differences to calculate a standard error of the difference. -->
+<!-- The resulting interval is called the **SE interval**. -->
+<!-- Section \@ref(math-2prop) details the mathematical model for the standard error of the difference in sample proportions, but the bootstrap distribution typically does an excellent job of estimating the variability. -->
+<!-- ```{r include=FALSE} -->
+<!-- terms_chp_5 <- c(terms_chp_5, "SE interval") -->
+<!-- ``` -->
+<!-- $$SE(\hat{p}_t - \hat{p}_c) \approx SD(\hat{p}_{bs,t} - \hat{p}_{bs,c}) = 0.0975$$ -->
+<!-- The variability of the bootstrapped difference in proportions was calculated in `R` using the `sd()` function, but any statistical software will calculate the standard deviation of the differences, here, the exact quantity we hope to approximate. -->
+<!-- Note that we do not know know the true distribution of $\hat{p}_t - \hat{p}_c$, so we will use a rough approximation to find a confidence interval for $\pi_t - \pi_c$.  As seen in the bootstrap histograms, the shape of the distribution is roughly symmetric and bell-shaped.  So for a rough approximation, we will apply the 68-95-99.7 rule which tells us that 95% of observed differences should be roughly no farther than 2 SE from the true parameter difference.  An approximate 95% confidence interval for $\pi_t - \pi_c$ is given by: -->
+<!-- \begin{align*} -->
+<!-- \hat{p}_t - \hat{p}_c \pm 2 \cdot SE \ \ \ \rightarrow \ \ \ 14/40 - 11/50 \pm 2 \cdot 0.0975 \ \ \  \rightarrow \ \ \  (-0.065, 0.325) -->
+<!-- \end{align*} -->
+<!-- We are 95% confident that the true value of $\pi_t - \pi_c$ is between -0.065 and 0.325.  Again, the wide confidence interval that overlaps zero indicates that the study provides very little evidence about the effectiveness of blood thinners. -->
+<!-- ```{block2, type="important", echo=TRUE} -->
+<!-- Since the multiplier "2" in the SE bootstrap interval comes from the 68-95-99.7 rule for normal distributions, these intervals are only valid when the bootstrap sampling distribution is approximately normal. -->
+<!-- ``` -->
 </div>
 <div id="what-does-95-mean" class="section level4 unnumbered">
 <h4>What does 95% mean?<a class="anchor" aria-label="anchor" href="#what-does-95-mean"><i class="fas fa-link"></i></a>
@@ -4403,10 +4393,10 @@ alternative hypothesis
 null distribution
 </td>
 <td style="text-align:left;">
-pooled proportion
+practical importance
 </td>
 <td style="text-align:left;">
-statistical inference
+statistically significant
 </td>
 </tr>
 <tr>
@@ -4417,10 +4407,10 @@ bootstrapping
 null hypothesis
 </td>
 <td style="text-align:left;">
-practical importance
+randomization
 </td>
 <td style="text-align:left;">
-statistical significance
+success
 </td>
 </tr>
 <tr>
@@ -4431,10 +4421,10 @@ Central Limit Theorem
 null value
 </td>
 <td style="text-align:left;">
-randomization
+sampling distribution
 </td>
 <td style="text-align:left;">
-statistically significant
+success-failure condition
 </td>
 </tr>
 <tr>
@@ -4445,10 +4435,10 @@ confidence interval
 one sample <span class="math inline">\(z\)</span>-test
 </td>
 <td style="text-align:left;">
-sampling distribution
+simulation
 </td>
 <td style="text-align:left;">
-success
+test statistic
 </td>
 </tr>
 <tr>
@@ -4459,10 +4449,10 @@ confidence level
 one-sided hypothesis test
 </td>
 <td style="text-align:left;">
-SE interval
+standard error
 </td>
 <td style="text-align:left;">
-success-failure condition
+two sample <span class="math inline">\(z\)</span>-test
 </td>
 </tr>
 <tr>
@@ -4473,10 +4463,10 @@ confirmation bias
 p-value
 </td>
 <td style="text-align:left;">
-simulation
+standard error for difference in proportions
 </td>
 <td style="text-align:left;">
-test statistic
+two-sided hypothesis test
 </td>
 </tr>
 <tr>
@@ -4487,10 +4477,10 @@ hypothesis test
 parameter
 </td>
 <td style="text-align:left;">
-standard error
+standard error of single proportion
 </td>
 <td style="text-align:left;">
-two sample <span class="math inline">\(z\)</span>-test
+Type 1 Error
 </td>
 </tr>
 <tr>
@@ -4501,34 +4491,6 @@ margin of error
 percentile
 </td>
 <td style="text-align:left;">
-standard error for difference in proportions
-</td>
-<td style="text-align:left;">
-two-sided hypothesis test
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-normal curve
-</td>
-<td style="text-align:left;">
-percentile interval
-</td>
-<td style="text-align:left;">
-standard error of single proportion
-</td>
-<td style="text-align:left;">
-Type 1 Error
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-normal distribution
-</td>
-<td style="text-align:left;">
-permutation test
-</td>
-<td style="text-align:left;">
 standard normal distribution
 </td>
 <td style="text-align:left;">
@@ -4537,16 +4499,42 @@ Type 2 Error
 </tr>
 <tr>
 <td style="text-align:left;">
-normal model
+normal curve
 </td>
 <td style="text-align:left;">
-point estimate
+permutation test
 </td>
 <td style="text-align:left;">
 statistic
 </td>
 <td style="text-align:left;">
 Z-score
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+normal distribution
+</td>
+<td style="text-align:left;">
+point estimate
+</td>
+<td style="text-align:left;">
+statistical inference
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+normal model
+</td>
+<td style="text-align:left;">
+pooled proportion
+</td>
+<td style="text-align:left;">
+statistical significance
+</td>
+<td style="text-align:left;">
 </td>
 </tr>
 </tbody></table></div>

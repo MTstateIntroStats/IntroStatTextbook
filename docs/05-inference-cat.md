@@ -2747,48 +2747,45 @@ Note that the CPR data includes 40 and 50 people in the respective groups, and t
 </div>
 
 
-#### Percentile vs. SE bootstrap confidence intervals {-}
-
-Figure \@ref(fig:bootCPR1000) provides an estimate for the variability of the difference in survival proportions from sample to sample,  The values in the histogram can be used in two different ways to create a confidence interval for the parameter of interest:  $\pi_1 - \pi_2$.
-
-##### Percentile bootstrap interval {-}
-
-As in Section \@ref(boot-ci-prop), the bootstrap confidence interval can be calculated directly from the bootstrapped differences in Figure \@ref(fig:bootCPR1000).  The interval created from the percentiles of the distribution is called the **percentile interval**.
-Note that here we calculate the 90% confidence interval by finding the 5^th^ and 95^th^ percentile values from the bootstrapped differences.
-The bootstrap 5 percentile proportion is -0.155 and the 95 percentile is 0.167.
-The result is: we are 90% confident that, in the population, the true difference in probability of survival (treatment $-$ control) is between -0.155 and 0.167. 
-More clearly, we are 90% confident that the probability of survival for heart attack patients who underwent CPR on blood thinners is between 0.155 less to 0.167 more than that for patients who were not given blood thinners. The interval shows that we do not have much definitive evidence of the affect of blood thinners, one way or another.
-
+Figure \@ref(fig:bootCPR1000) provides an estimate for the variability of the difference in survival proportions from sample to sample. As in Section \@ref(boot-ci-prop), the bootstrap confidence interval can be calculated directly from the bootstrapped differences in Figure \@ref(fig:bootCPR1000) by finding the percentiles of the distribution that correspond to the confidence level.
+For example, here we calculate the 90% confidence interval by finding the 5^th^ and 95^th^ percentile values from the bootstrapped differences.
+The bootstrap 5^th^ percentile proportion is -0.03 and the 95^th^ percentile is 0.28.
+The result is: we are 90% confident that, in the population, the true difference in probability of survival (treatment $-$ control) is between -0.03 and 0.28. 
+More clearly, we are 90% confident that the probability of survival for heart attack patients who underwent CPR on blood thinners is between 0.03 less to 0.28 more than that for patients who were not given blood thinners. The interval shows that we do not have much definitive evidence of the affect of blood thinners, one way or another.
 
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/bootCPR1000CI-1.png" alt="The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the probability of survival in the treatment group is $\hat{p}_{t}  = 14/40$ and the probability of survival in the control group is $\hat{p}_{c} = 11/50$. " width="70%" />
-<p class="caption">(\#fig:bootCPR1000CI)The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the probability of survival in the treatment group is $\hat{p}_{t}  = 14/40$ and the probability of survival in the control group is $\hat{p}_{c} = 11/50$. </p>
+<img src="05-inference-cat_files/figure-html/bootCPR1000CI-1.png" alt="The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the proportion who survived in the treatment group is $\hat{p}_{t}  = 14/40$ and the proportion who survived in the control group is $\hat{p}_{c} = 11/50$. " width="70%" />
+<p class="caption">(\#fig:bootCPR1000CI)The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the proportion who survived in the treatment group is $\hat{p}_{t}  = 14/40$ and the proportion who survived in the control group is $\hat{p}_{c} = 11/50$. </p>
 </div>
 
 
 
-##### SE bootstrap interval {-}
+<!-- ##### SE bootstrap interval {-} -->
 
-Alternatively, we can use the variability in the bootstrapped differences to calculate a standard error of the difference.
-The resulting interval is called the **SE interval**.
-Section \@ref(math-2prop) details the mathematical model for the standard error of the difference in sample proportions, but the bootstrap distribution typically does an excellent job of estimating the variability.
+<!-- Alternatively, we can use the variability in the bootstrapped differences to calculate a standard error of the difference. -->
+<!-- The resulting interval is called the **SE interval**. -->
+<!-- Section \@ref(math-2prop) details the mathematical model for the standard error of the difference in sample proportions, but the bootstrap distribution typically does an excellent job of estimating the variability. -->
 
+<!-- ```{r include=FALSE} -->
+<!-- terms_chp_5 <- c(terms_chp_5, "SE interval") -->
+<!-- ``` -->
 
+<!-- $$SE(\hat{p}_t - \hat{p}_c) \approx SD(\hat{p}_{bs,t} - \hat{p}_{bs,c}) = 0.0975$$ -->
 
-$$SE(\hat{p}_t - \hat{p}_c) \approx SD(\hat{p}_{bs,t} - \hat{p}_{bs,c}) = 0.0975$$
+<!-- The variability of the bootstrapped difference in proportions was calculated in `R` using the `sd()` function, but any statistical software will calculate the standard deviation of the differences, here, the exact quantity we hope to approximate. -->
 
-The variability of the bootstrapped difference in proportions was calculated in `R` using the `sd()` function, but any statistical software will calculate the standard deviation of the differences, here, the exact quantity we hope to approximate.
+<!-- Note that we do not know know the true distribution of $\hat{p}_t - \hat{p}_c$, so we will use a rough approximation to find a confidence interval for $\pi_t - \pi_c$.  As seen in the bootstrap histograms, the shape of the distribution is roughly symmetric and bell-shaped.  So for a rough approximation, we will apply the 68-95-99.7 rule which tells us that 95% of observed differences should be roughly no farther than 2 SE from the true parameter difference.  An approximate 95% confidence interval for $\pi_t - \pi_c$ is given by: -->
 
-Note that we do not know know the true distribution of $\hat{p}_t - \hat{p}_c$, so we will use a rough approximation to find a confidence interval for $\pi_t - \pi_c$.  As seen in the bootstrap histograms, the shape of the distribution is roughly symmetric and bell-shaped.  So for a rough approximation, we will apply the 68-95-99.7 rule which tells us that 95% of observed differences should be roughly no farther than 2 SE from the true parameter difference.  An approximate 95% confidence interval for $\pi_t - \pi_c$ is given by:
+<!-- \begin{align*} -->
+<!-- \hat{p}_t - \hat{p}_c \pm 2 \cdot SE \ \ \ \rightarrow \ \ \ 14/40 - 11/50 \pm 2 \cdot 0.0975 \ \ \  \rightarrow \ \ \  (-0.065, 0.325) -->
+<!-- \end{align*} -->
 
-\begin{align*}
-\hat{p}_t - \hat{p}_c \pm 2 \cdot SE \ \ \ \rightarrow \ \ \ 14/40 - 11/50 \pm 2 \cdot 0.0975 \ \ \  \rightarrow \ \ \  (-0.065, 0.325)
-\end{align*}
+<!-- We are 95% confident that the true value of $\pi_t - \pi_c$ is between -0.065 and 0.325.  Again, the wide confidence interval that overlaps zero indicates that the study provides very little evidence about the effectiveness of blood thinners. -->
 
-We are 95% confident that the true value of $\pi_t - \pi_c$ is between -0.065 and 0.325.  Again, the wide confidence interval that overlaps zero indicates that the study provides very little evidence about the effectiveness of blood thinners.
-
-\BeginKnitrBlock{important}<div class="important">Since the multiplier "2" in the SE bootstrap interval comes from the 68-95-99.7 rule for normal distributions, these intervals are only valid when the bootstrap sampling distribution is approximately normal.</div>\EndKnitrBlock{important}
+<!-- ```{block2, type="important", echo=TRUE} -->
+<!-- Since the multiplier "2" in the SE bootstrap interval comes from the 68-95-99.7 rule for normal distributions, these intervals are only valid when the bootstrap sampling distribution is approximately normal. -->
+<!-- ``` -->
 
 #### What does 95% mean? {-}
 
@@ -4325,68 +4322,68 @@ However you should be able to easily spot them as **bolded text**.
   <tr>
    <td style="text-align:left;"> alternative hypothesis </td>
    <td style="text-align:left;"> null distribution </td>
-   <td style="text-align:left;"> pooled proportion </td>
-   <td style="text-align:left;"> statistical inference </td>
+   <td style="text-align:left;"> practical importance </td>
+   <td style="text-align:left;"> statistically significant </td>
   </tr>
   <tr>
    <td style="text-align:left;"> bootstrapping </td>
    <td style="text-align:left;"> null hypothesis </td>
-   <td style="text-align:left;"> practical importance </td>
-   <td style="text-align:left;"> statistical significance </td>
+   <td style="text-align:left;"> randomization </td>
+   <td style="text-align:left;"> success </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Central Limit Theorem </td>
    <td style="text-align:left;"> null value </td>
-   <td style="text-align:left;"> randomization </td>
-   <td style="text-align:left;"> statistically significant </td>
+   <td style="text-align:left;"> sampling distribution </td>
+   <td style="text-align:left;"> success-failure condition </td>
   </tr>
   <tr>
    <td style="text-align:left;"> confidence interval </td>
    <td style="text-align:left;"> one sample $z$-test </td>
-   <td style="text-align:left;"> sampling distribution </td>
-   <td style="text-align:left;"> success </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> confidence level </td>
-   <td style="text-align:left;"> one-sided hypothesis test </td>
-   <td style="text-align:left;"> SE interval </td>
-   <td style="text-align:left;"> success-failure condition </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> confirmation bias </td>
-   <td style="text-align:left;"> p-value </td>
    <td style="text-align:left;"> simulation </td>
    <td style="text-align:left;"> test statistic </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> hypothesis test </td>
-   <td style="text-align:left;"> parameter </td>
+   <td style="text-align:left;"> confidence level </td>
+   <td style="text-align:left;"> one-sided hypothesis test </td>
    <td style="text-align:left;"> standard error </td>
    <td style="text-align:left;"> two sample $z$-test </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> margin of error </td>
-   <td style="text-align:left;"> percentile </td>
+   <td style="text-align:left;"> confirmation bias </td>
+   <td style="text-align:left;"> p-value </td>
    <td style="text-align:left;"> standard error for difference in proportions </td>
    <td style="text-align:left;"> two-sided hypothesis test </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> normal curve </td>
-   <td style="text-align:left;"> percentile interval </td>
+   <td style="text-align:left;"> hypothesis test </td>
+   <td style="text-align:left;"> parameter </td>
    <td style="text-align:left;"> standard error of single proportion </td>
    <td style="text-align:left;"> Type 1 Error </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> normal distribution </td>
-   <td style="text-align:left;"> permutation test </td>
+   <td style="text-align:left;"> margin of error </td>
+   <td style="text-align:left;"> percentile </td>
    <td style="text-align:left;"> standard normal distribution </td>
    <td style="text-align:left;"> Type 2 Error </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> normal model </td>
-   <td style="text-align:left;"> point estimate </td>
+   <td style="text-align:left;"> normal curve </td>
+   <td style="text-align:left;"> permutation test </td>
    <td style="text-align:left;"> statistic </td>
    <td style="text-align:left;"> Z-score </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> normal distribution </td>
+   <td style="text-align:left;"> point estimate </td>
+   <td style="text-align:left;"> statistical inference </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> normal model </td>
+   <td style="text-align:left;"> pooled proportion </td>
+   <td style="text-align:left;"> statistical significance </td>
+   <td style="text-align:left;">  </td>
   </tr>
 </tbody>
 </table>

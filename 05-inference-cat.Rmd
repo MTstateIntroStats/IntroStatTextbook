@@ -3348,23 +3348,15 @@ include_graphics("05/figures/boot2prop1.png")
 
 set.seed(47)
 exp_gp  <- rep(c("blood_thinner", "control"), c(40, 50))
-#outcome <- c(rep(c('survived', 'died'), c(11, 39)),
-#             rep(c('survived', 'died'), c(14, 26)))
 outcome <- c(rep(c('survived', 'died'), c(14, 26)),
              rep(c('survived', 'died'), c(11, 39)))
 
 nsim    <- 1000
-#n       <- length(exp_gp)
 gp1     <- "blood_thinner"
 n1      <- length(exp_gp[exp_gp == gp1])
 gp2     <- "control"
 n2      <- length(exp_gp[exp_gp == gp2])
-success <- "survived"
 
-# SimulateTable <- function(exp_gp, outcome, ...) {
-#   bsobs <- sample(1:n, replace = TRUE)
-#   table(exp_gp[bsobs], outcome[bsobs])
-# }
 SimulateTable <- function(exp_gp, outcome, ...){
    bsobs1 <- sample(1:n1, replace = TRUE)
    bsobs2 <- sample((n1+1):(n1+n2), replace = TRUE)
@@ -3377,7 +3369,6 @@ sim_tables <-
         outcome = outcome)
 result <- sim_tables %>%
     lapply(function(x) {
-#    	  x[1, 1] / sum(x[1, ]) - x[2, 1] / sum(x[2, ])
     	  x[1, 2] / sum(x[1, ]) - x[2, 2] / sum(x[2, ])
     	}) %>%
     	unlist()
@@ -3397,40 +3388,26 @@ for (i in 1:length(diffs)) {
 breaks <- seq(min(result)-.05, max(result)+ .05, by = (max(result) - min(result) )/ 20)
 
 histPlot(X, Y, breaks = breaks,
-     #xlim = c(-.3,.3),
      xlim = c(min(result)-.05, max(result)+.05),
-     xlab = "Difference in Survival Rates",
+     xlab = "Bootstrapped Difference in Proportion Surviving (Treatment - Control)",
      ylab = "",
      axes = FALSE,
-     #ylim = c(0, max(Y)),
      col = COL[1],
      pch = 20)
- #at <- seq(-0.3, 0.3, 0.1)
- #labels <- c(-0.3, "", -0.1, 0, 0.1, "", 0.3)
 axis(1)
-#axis(1, at, labels)
-#abline(h = 0)
-#points(X[X > 0.64], Y[X > 0.64], lwd=3, col = COL[4], cex=0.4)
+
+cpr.90ci <- as.vector(quantile(result, c(0.05,0.95)))
 ```
 
 
-#### Percentile vs. SE bootstrap confidence intervals {-}
+Figure \@ref(fig:bootCPR1000) provides an estimate for the variability of the difference in survival proportions from sample to sample. As in Section \@ref(boot-ci-prop), the bootstrap confidence interval can be calculated directly from the bootstrapped differences in Figure \@ref(fig:bootCPR1000) by finding the percentiles of the distribution that correspond to the confidence level.
+For example, here we calculate the 90% confidence interval by finding the 5^th^ and 95^th^ percentile values from the bootstrapped differences.
+The bootstrap 5^th^ percentile proportion is `r cpr.90ci[1]` and the 95^th^ percentile is `r cpr.90ci[2]`.
+The result is: we are 90% confident that, in the population, the true difference in probability of survival (treatment $-$ control) is between `r cpr.90ci[1]` and `r cpr.90ci[2]`. 
+More clearly, we are 90% confident that the probability of survival for heart attack patients who underwent CPR on blood thinners is between `r abs(cpr.90ci[1])` less to `r cpr.90ci[2]` more than that for patients who were not given blood thinners. The interval shows that we do not have much definitive evidence of the affect of blood thinners, one way or another.
 
-Figure \@ref(fig:bootCPR1000) provides an estimate for the variability of the difference in survival proportions from sample to sample,  The values in the histogram can be used in two different ways to create a confidence interval for the parameter of interest:  $\pi_1 - \pi_2$.
 
-##### Percentile bootstrap interval {-}
-
-As in Section \@ref(boot-ci-prop), the bootstrap confidence interval can be calculated directly from the bootstrapped differences in Figure \@ref(fig:bootCPR1000).  The interval created from the percentiles of the distribution is called the **percentile interval**.
-Note that here we calculate the 90% confidence interval by finding the 5^th^ and 95^th^ percentile values from the bootstrapped differences.
-The bootstrap 5 percentile proportion is -0.155 and the 95 percentile is 0.167.
-The result is: we are 90% confident that, in the population, the true difference in probability of survival (treatment $-$ control) is between -0.155 and 0.167. 
-More clearly, we are 90% confident that the probability of survival for heart attack patients who underwent CPR on blood thinners is between 0.155 less to 0.167 more than that for patients who were not given blood thinners. The interval shows that we do not have much definitive evidence of the affect of blood thinners, one way or another.
-
-```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "percentile interval")
-```
-
-```{r bootCPR1000CI, fig.cap="The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the probability of survival in the treatment group is $\\hat{p}_{t}  = 14/40$ and the probability of survival in the control group is $\\hat{p}_{c} = 11/50$. ", warning=FALSE, fig.width=10}
+```{r bootCPR1000CI, fig.cap="The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the proportion who survived in the treatment group is $\\hat{p}_{t}  = 14/40$ and the proportion who survived in the control group is $\\hat{p}_{c} = 11/50$. ", warning=FALSE, fig.width=10}
 
 #result from previous R chunk
 bsq <- quantile(result, probs = c(0.01, 0.025, 0.05, 0.1, 0.9, 0.95, 0.975, 0.99))
@@ -3458,37 +3435,37 @@ lines(c(bsq[3], bsq[3]), c(0, 80), lty = 3, lwd = 3)
 text(bsq[6], 80, "95 percentile", pos = 3)
 text(bsq[3], 80, "5 percentile", pos = 3)
 par(las = 0)
-mtext("Bootstrapped values of the proportion of surgical complications", 1, 2.5)
+mtext("Bootstrapped Difference in Proportion Surviving (Treatment - Control)", 1, 2.5)
 
 ```
 
 
 
-##### SE bootstrap interval {-}
+<!-- ##### SE bootstrap interval {-} -->
 
-Alternatively, we can use the variability in the bootstrapped differences to calculate a standard error of the difference.
-The resulting interval is called the **SE interval**.
-Section \@ref(math-2prop) details the mathematical model for the standard error of the difference in sample proportions, but the bootstrap distribution typically does an excellent job of estimating the variability.
+<!-- Alternatively, we can use the variability in the bootstrapped differences to calculate a standard error of the difference. -->
+<!-- The resulting interval is called the **SE interval**. -->
+<!-- Section \@ref(math-2prop) details the mathematical model for the standard error of the difference in sample proportions, but the bootstrap distribution typically does an excellent job of estimating the variability. -->
 
-```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "SE interval")
-```
+<!-- ```{r include=FALSE} -->
+<!-- terms_chp_5 <- c(terms_chp_5, "SE interval") -->
+<!-- ``` -->
 
-$$SE(\hat{p}_t - \hat{p}_c) \approx SD(\hat{p}_{bs,t} - \hat{p}_{bs,c}) = 0.0975$$
+<!-- $$SE(\hat{p}_t - \hat{p}_c) \approx SD(\hat{p}_{bs,t} - \hat{p}_{bs,c}) = 0.0975$$ -->
 
-The variability of the bootstrapped difference in proportions was calculated in `R` using the `sd()` function, but any statistical software will calculate the standard deviation of the differences, here, the exact quantity we hope to approximate.
+<!-- The variability of the bootstrapped difference in proportions was calculated in `R` using the `sd()` function, but any statistical software will calculate the standard deviation of the differences, here, the exact quantity we hope to approximate. -->
 
-Note that we do not know know the true distribution of $\hat{p}_t - \hat{p}_c$, so we will use a rough approximation to find a confidence interval for $\pi_t - \pi_c$.  As seen in the bootstrap histograms, the shape of the distribution is roughly symmetric and bell-shaped.  So for a rough approximation, we will apply the 68-95-99.7 rule which tells us that 95% of observed differences should be roughly no farther than 2 SE from the true parameter difference.  An approximate 95% confidence interval for $\pi_t - \pi_c$ is given by:
+<!-- Note that we do not know know the true distribution of $\hat{p}_t - \hat{p}_c$, so we will use a rough approximation to find a confidence interval for $\pi_t - \pi_c$.  As seen in the bootstrap histograms, the shape of the distribution is roughly symmetric and bell-shaped.  So for a rough approximation, we will apply the 68-95-99.7 rule which tells us that 95% of observed differences should be roughly no farther than 2 SE from the true parameter difference.  An approximate 95% confidence interval for $\pi_t - \pi_c$ is given by: -->
 
-\begin{align*}
-\hat{p}_t - \hat{p}_c \pm 2 \cdot SE \ \ \ \rightarrow \ \ \ 14/40 - 11/50 \pm 2 \cdot 0.0975 \ \ \  \rightarrow \ \ \  (-0.065, 0.325)
-\end{align*}
+<!-- \begin{align*} -->
+<!-- \hat{p}_t - \hat{p}_c \pm 2 \cdot SE \ \ \ \rightarrow \ \ \ 14/40 - 11/50 \pm 2 \cdot 0.0975 \ \ \  \rightarrow \ \ \  (-0.065, 0.325) -->
+<!-- \end{align*} -->
 
-We are 95% confident that the true value of $\pi_t - \pi_c$ is between -0.065 and 0.325.  Again, the wide confidence interval that overlaps zero indicates that the study provides very little evidence about the effectiveness of blood thinners.
+<!-- We are 95% confident that the true value of $\pi_t - \pi_c$ is between -0.065 and 0.325.  Again, the wide confidence interval that overlaps zero indicates that the study provides very little evidence about the effectiveness of blood thinners. -->
 
-```{block2, type="important", echo=TRUE}
-Since the multiplier "2" in the SE bootstrap interval comes from the 68-95-99.7 rule for normal distributions, these intervals are only valid when the bootstrap sampling distribution is approximately normal.
-```
+<!-- ```{block2, type="important", echo=TRUE} -->
+<!-- Since the multiplier "2" in the SE bootstrap interval comes from the 68-95-99.7 rule for normal distributions, these intervals are only valid when the bootstrap sampling distribution is approximately normal. -->
+<!-- ``` -->
 
 #### What does 95% mean? {-}
 
