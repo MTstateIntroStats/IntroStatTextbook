@@ -46,13 +46,14 @@
 /* Usage:
 /* Defined above -
 /* .protip = (lightbulb) something for students to keep in mind that might trip them up (e.g., observed vs simulated stat)
-/* .important = (diamond with ! inside) something really important, e.g., association /neq causation
+/* .importantbox = (diamond with ! inside) something really important, e.g., association /neq causation
 /* .onebox = (red flag) start with bold followed by period. Use for definitions. **Vocab word.** Return - blank line - definition (same as .important defined below)
 
 /* Defined in IMS --
 /* .guidedpractice = (notes with pencil) practice problem where answer is in footnote
 /* .workedexample = (notes) practice problem where answer is in the same box
 /* .caution = (stop sign) not currently used
+/* .data = R data sets
 
 
 /* COPY AND PASTE BELOW FROM IMS REPO

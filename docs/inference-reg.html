@@ -367,7 +367,7 @@ We consider the percent change in the number of seats of the President’s
 party (e.g., percent change in the number of seats for Republicans in
 2018) against the unemployment rate.</p>
 <div class="guidedpractice">
-<p>What are the observational units in this data set?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;We measured the unemployment rate and percent change in House seats for the President’s party for each midterm election from 1898 to 2018, except those elections during the Great Depression. Thus, the observational unit is a single midterm election.&lt;/p&gt;"><sup>166</sup></a></p>
+<p>What are the observational units in this data set?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;We measured the unemployment rate and percent change in House seats for the President’s party for each midterm election from 1898 to 2018, except those elections during the Great Depression. Thus, the observational unit is a single midterm election.&lt;/p&gt;"><sup>170</sup></a></p>
 </div>
 <p>Examining the data, there are no clear deviations from linearity or substantial outliers (see Section <a href="inference-reg.html#tech-cond-linmod">7.2</a> for a discussion on using residuals to visualize how well a linear model fits the data).
 While the data are collected sequentially, a separate analysis was used to check for any apparent correlation between successive observations in time; no such correlation was found.</p>
@@ -387,7 +387,7 @@ unemployment may not help us understand what would happen
 in other years where the unemployment is only modestly high.
 On the other hand, these are exceptional cases, and we would
 be discarding important information if we exclude them from
-a final analysis.&lt;/p&gt;"><sup>167</sup></a></p>
+a final analysis.&lt;/p&gt;"><sup>171</sup></a></p>
 </div>
 <p>There is a negative slope in the line shown in Figure <a href="inference-reg.html#fig:unemploymentAndChangeInHouse">7.15</a>. However, this slope (and the
 y-intercept) are only estimates of the parameter values. We might
@@ -476,8 +476,8 @@ unemp
 </tr>
 </tbody>
 </table></div>
-<div class="example">
-<p><span id="exm:unlabeled-div-54" class="example"><strong>Example 7.1  </strong></span>What do the first and second columns of Table <a href="inference-reg.html#tab:midtermUnempRegTable">7.2</a> represent?</p>
+<div class="workedexample">
+<p>What do the first and second columns of Table <a href="inference-reg.html#tab:midtermUnempRegTable">7.2</a> represent?</p>
 <hr>
 <p>The entries in the first column represent the least squares estimates, <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span>. Using the estimates, we could write the equation for the least
 square regression line as <span class="math display">\[\begin{aligned}
@@ -498,13 +498,13 @@ T
   = \frac{-0.89 - 0}{0.835}
   = -1.07\end{aligned}\]</span> This corresponds to the third column of
 Table <a href="inference-reg.html#tab:midtermUnempRegTable">7.2</a> .</p>
-<div class="example">
-<p><span id="exm:unlabeled-div-55" class="example"><strong>Example 7.2  </strong></span>Use Table <a href="inference-reg.html#tab:midtermUnempRegTable">7.2</a> to determine the p-value for the
+<div class="workedexample">
+<p>Use Table <a href="inference-reg.html#tab:midtermUnempRegTable">7.2</a> to determine the p-value for the
 hypothesis test.</p>
 <hr>
 <p>The last column of the table gives the p-value for a
 <em>two-sided</em> hypothesis test for the coefficient of the unemployment rate:
-0.296. However, our test is <em>one-sided</em> — we are only interested in detecting if the true slope coefficient is negative. Since our estimated slope coefficient is negative, our one-sided p-value is just half of the two-sided p-value: 0.148.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Note that if our slope coefficient had been positive — the &lt;em&gt;opposite&lt;/em&gt; sign as &lt;span class="math inline"&gt;\(H_A\)&lt;/span&gt; — then the one-sided p-value would be the probability of observing that value or lower, or &lt;span class="math inline"&gt;\(1 - 0.296/2 = 1 - 0.148 = 0.852\)&lt;/span&gt;.&lt;/p&gt;'><sup>168</sup></a> With this p-value, the data do not provide convincing evidence that a
+0.296. However, our test is <em>one-sided</em> — we are only interested in detecting if the true slope coefficient is negative. Since our estimated slope coefficient is negative, our one-sided p-value is just half of the two-sided p-value: 0.148.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Note that if our slope coefficient had been positive — the &lt;em&gt;opposite&lt;/em&gt; sign as &lt;span class="math inline"&gt;\(H_A\)&lt;/span&gt; — then the one-sided p-value would be the probability of observing that value or lower, or &lt;span class="math inline"&gt;\(1 - 0.296/2 = 1 - 0.148 = 0.852\)&lt;/span&gt;.&lt;/p&gt;'><sup>172</sup></a> With this p-value, the data do not provide convincing evidence that a
 higher unemployment rate has a negative correlation with percent of seats lost in the house. In other words, we do not have significant evidence for the political theory that the higher the unemployment rate, the worse the President’s party will do in the midterm elections.</p>
 </div>
 </div>
@@ -512,8 +512,8 @@ higher unemployment rate has a negative correlation with percent of seats lost i
 <h4>Intuition vs. formal inference<a class="anchor" aria-label="anchor" href="#intuition-vs.-formal-inference"><i class="fas fa-link"></i></a>
 </h4>
 <p>As the final step in a mathematical hypothesis test for the slope, we use the information provided to make a conclusion about whether or not the data could have come from a population where the true slope was zero (i.e., <span class="math inline">\(\beta_1 = 0\)</span>). Before evaluating the formal hypothesis claim, sometimes it is important to check your intuition. Based on everything we’ve seen in the examples above describing the variability of a line from sample to sample, as yourself if the linear relationship given by the data could have come from a population in which the slope was truly zero.</p>
-<div class="example">
-<p><span id="exm:unlabeled-div-56" class="example"><strong>Example 7.3  </strong></span>Elmhurst College in Illinois released anonymized data for family income and financial support provided by the school for Elmhurst’s first-year students in 2011. Figure <a href="inference-reg.html#fig:elmhurstScatterWLSROnly-CLTsection">7.16</a> shows the least-squares regression line fit to a scatterplot of a sample of the data. How sure are you that the slope is
+<div class="workedexample">
+<p>Elmhurst College in Illinois released anonymized data for family income and financial support provided by the school for Elmhurst’s first-year students in 2011. Figure <a href="inference-reg.html#fig:elmhurstScatterWLSROnly-CLTsection">7.16</a> shows the least-squares regression line fit to a scatterplot of a sample of the data. How sure are you that the slope is
 statistically significantly different from zero? That is, do you think a
 formal hypothesis test would reject the claim that the true slope of the
 line should be zero?</p>
@@ -606,11 +606,11 @@ interested in: 0.0002.
 The p-value is so small that we have very strong evidence that family income and financial aid at Elmhurst
 College for freshman entering in the year 2011 are
 correlated and the true slope parameter differs from 0,
-just as we believed in our analysis of Figure &lt;a href="inference-reg.html#fig:elmhurstScatterWLSROnly-CLTsection"&gt;7.16&lt;/a&gt;.&lt;/p&gt;'><sup>169</sup></a>
+just as we believed in our analysis of Figure &lt;a href="inference-reg.html#fig:elmhurstScatterWLSROnly-CLTsection"&gt;7.16&lt;/a&gt;.&lt;/p&gt;'><sup>173</sup></a>
 </li>
 </ul>
 </div>
-<div class="caution">
+<div class="importantbox">
 <p><strong>Inference for regression.</strong></p>
 <p>We usually rely on statistical software to
 identify point estimates, standard errors, test statistics, and p-values
@@ -626,7 +626,7 @@ conditions are met. See Section <a href="inference-reg.html#tech-cond-linmod">7.
 <p>Similar to how we can conduct a hypothesis test for a model coefficient
 using regression output, we can also construct a confidence interval for
 that coefficient.</p>
-<div class="important">
+<div class="importantbox">
 <p><strong>Confidence intervals for coefficients</strong></p>
 <p>Confidence intervals for model
 coefficients (e.g., the <span class="math inline">\(y\)</span>-intercept or the slope) can be computed using the <span class="math inline">\(t\)</span>-distribution:
@@ -636,8 +636,8 @@ coefficients (e.g., the <span class="math inline">\(y\)</span>-intercept or the 
 corresponding to the confidence level with the model’s degrees of
 freedom. For simple linear regression, the model’s degrees of freedom are <span class="math inline">\(n-1\)</span>.</p>
 </div>
-<div class="example">
-<p><span id="exm:unlabeled-div-57" class="example"><strong>Example 7.4  </strong></span>Compute a 95% confidence interval for the slope coefficient using the
+<div class="workedexample">
+<p>Compute a 95% confidence interval for the slope coefficient using the
 regression output from Table <a href="inference-reg.html#tab:rOutputForIncomeAidLSRLineInInferenceSection">7.3</a>.</p>
 <hr>
 <p>The point estimate is <span class="math inline">\(b_1 = -0.0431\)</span> and the standard error is <span class="math inline">\(SE(b_1) = 0.0108\)</span>. The degrees of freedom for the distribution are <span class="math inline">\(df = n - 2 = 48\)</span>, and are typically noted in the regression output, allowing us to identify <span class="math inline">\(t_{48}^{\star} = 2.01\)</span> for use in the confidence interval.</p>
@@ -703,7 +703,7 @@ Figure 7.17: Four examples showing when the methods in this chapter are insuffic
 </div>
 <div class="guidedpractice">
 <p>Should we have concerns about applying least squares regression to the
-Elmhurst data in Figure <a href="cor-reg.html#fig:elmhurstScatterW2Lines">3.13</a>?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The trend appears to be linear, the data fall around the line with no obvious outliers, the variance is roughly constant. These are also not time series observations. Least squares regression can be applied to these data.&lt;/p&gt;"><sup>170</sup></a></p>
+Elmhurst data in Figure <a href="cor-reg.html#fig:elmhurstScatterW2Lines">3.13</a>?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The trend appears to be linear, the data fall around the line with no obvious outliers, the variance is roughly constant. These are also not time series observations. Least squares regression can be applied to these data.&lt;/p&gt;"><sup>174</sup></a></p>
 </div>
 <p>The technical conditions are often remembered using the <strong>LINE</strong> mnemonic.
 The linearity, normality, and equality of variance conditions usually can be assessed through residual plots, as seen in Figure <a href="inference-reg.html#fig:whatCanGoWrongWithLinearModel">7.17</a>.

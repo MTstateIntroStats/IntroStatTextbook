@@ -1,20 +1,20 @@
 # Exploratory data analysis {#eda}
 
-```{block2, chp1-intro, type="chapterintro", echo=TRUE}
+::: {.chapterintro}
 This chapter focuses on the mechanics and construction of summary statistics and graphs.
 We use statistical software for generating the summaries and graphs presented in this chapter and book.
 However, since this might be your first exposure to these concepts, we take our time in this chapter to detail how to create them.
 Mastery of the content presented in this chapter will be crucial for understanding the methods and techniques introduced in rest of the book.
-```
+:::
 
 ## Exploring categorical data {#categorical-data}
 
 In this section, we will introduce tables and other basic tools for organizing and analyzing categorical data that are used throughout this book. Table \@ref(tab:emailDF) displays the first six rows of the `email` data set containing information on 3,921 emails sent to David Diez's Gmail account (one of the authors of the _OpenIntro_ textbooks). In this section we will examine whether the presence of numbers, small or large, in an email provides any useful value in classifying email as spam or not spam.
 Descriptions of all five email variables are given in Table \@ref(tab:emailVariables).
 
-```{block2, type="data", echo=TRUE}
+::: {.data}
 The `email` data can be found in the [openintro](http://openintrostat.github.io/openintro/reference/index.html) package.^[The `email` data set found in the `openintro` package defines the variable `spam` as 0 (not spam) or 1 (spam), and `format` as 0 (not HTML) or 1 (HTML). When variables are defined in this way---coded as the numbers 0 and 1 rather than the category names---they are called **indicator variables*** or **dummy variables**. In this section of the textbook, we have re-coded `spam` to be the variable `type`, which takes on values "not spam" or "spam", and we have re-coded the variable `format` to take on values "not HTML" or "HTML".]
-```
+:::
 
 ```{r emailDF}
 data(email)
@@ -94,18 +94,19 @@ temptbl %>%
 
 We would like to examine whether the presence of numbers---none, small or large---in an email provides any useful value in classifying email as spam or not spam---that is, is there an **association** between the variables `number` and `type`? 
 
-```{block2, type="guidedpractice", echo=TRUE}
+::: {.guidedpractice}
 To determine if a relationship exists between whether an email is spam or not, and whether the email has no numbers, a small number, or a big number, why isn't it helpful to compare the _number_ of spam emails across the `number` categories?^[Since the sample sizes in the three `number` categories differ (549 emails with no numbers; 2827 emails with a small number; 545 emails with a big number), we need to compare the _proportion_ of spam emails across categories rather than the count.]
-```
+:::
+
 The proportion of emails that were classified as spam in the data set is $3554/3921 = 0.906$, or about 91%. Let's compare this **unconditional proportion** to the **conditional proportions** of spam _within_ each `number` category: $400/549 \approx 73\%$ of emails with no numbers are spam; $2659/2827 \approx 94\%$ of emails with small numbers are spam; and $495/545 \approx 91\%$ of emails with big numbers are spam. Since these three conditional proportions differ, we say the variables `number` and `type` are _associated_ in this data set. Note that some differ from the overall, or unconditional, proportion of spam emails in the data set---91%.
 
-```{block2, type="onebox", echo=TRUE}
+::: {.onebox}
 **Association between two categorical variables.**
   
 An **unconditional** proportion is a proportion measured out of the total sample size. A **conditional** proportion is a proportion measured out of a subgroup in the sample.
 
 If the conditional proportions of a particular outcome (e.g., spam email) within levels of a categorical variable (e.g., whether no number, a small number, or a big number appears in the email) differ across levels, we say those two variables are **associated**. We can also determine if two categorical variables are associated by checking if any of the conditional proportions of the outcome within categories differ from the overall, or **unconditional** proportion.
-```
+:::
 
 #### Row and column proportions {-}
 
@@ -141,15 +142,15 @@ g.prop %>%
 ```
 
 
-```{block2, type="guidedpractice"}
+::: {.guidedpractice}
 What does 0.458 represent in Table \@ref(tab:rowPropSpamNumber)? What does 0.059 represent in Table \@ref(tab:colPropSpamNumber)?^[0.458 represents the proportion of spam emails that had a small number. 0.058 represents the fraction of emails with small numbers that are spam.]
-```
+:::
 
-```{block2, type="guidedpractice"}
+::: {.guidedpractice}
 What does 0.139 at the intersection of `not~spam` and `big` represent in Table \@ref(tab:rowPropSpamNumber)? What does 0.908 represent in the Table \@ref(tab:colPropSpamNumber)?^[0.139 represents the fraction of non-spam email that had a big number. 0.908 represents the fraction of emails with big numbers that are non-spam emails.]
-```
+:::
 
-```{block2, type="example"}
+::: {.workedexample}
 Data scientists use statistics to filter spam from incoming email messages. By noting specific characteristics of an email, a data scientist may be able to classify some emails as spam or not spam with high accuracy.
 One of those characteristics is whether the email contains no numbers, small numbers, or big numbers. Another characteristic is whether or not an email has any HTML content. A contingency table `type` and `format` variables from the `email` data set are shown in Table \@ref(tab:emailSpamHTMLTableTotals). Recall that an HTML email is an email with the capacity for special formatting, e.g., bold text. In Table~ \@ref(tab:emailSpamHTMLTableTotals), which would be more helpful to someone hoping to classify email as spam or regular email: row or column proportions?
   
@@ -158,7 +159,7 @@ One of those characteristics is whether the email contains no numbers, small num
 Such a person would be interested in how the proportion of spam changes within each email format. This corresponds to column proportions: the proportion of spam in plain text emails and the proportion of spam in HTML emails.
 
 If we generate the column proportions, we can see that a higher fraction of plain text emails are spam ($209/1195 = 17.5\%$) than compared to HTML emails ($158/2726 = 5.8\%$). This information on its own is insufficient to classify an email as spam or not spam, as over 80\% of plain text emails are not spam. Yet, when we carefully combine this information with many other characteristics, such as \var{number} and other variables, we stand a reasonable chance of being able to classify some email as spam or not spam. \GLMSection{This is a topic we will return to in Chapter~\ref{multipleRegressionAndANOVA}.}{}
-```
+:::
 
 ```{r emailSpamHTMLTableTotals}
 g <- table(email$spam, email$format)[2:1,]
@@ -174,9 +175,9 @@ g %>%
 
 The previous Example points out that row and column proportions are not equivalent. Before settling on one form for a table, it is important to consider each to ensure that the most useful table is constructed.
 
-```{block2, type="guidedpractice"}
+::: {.guidedpractice}
 Look back to Tables \@ref(rowPropSpamNumber) and \@ref(colPropSpamNumber). Which would be more useful to someone hoping to identify spam emails using the `number` variable?^[The column proportions in Table \@ref(colPropSpamNumber) will probably be most useful, which makes it easier to see that emails with small numbers are spam about 5.9% of the time (relatively rare). We would also see that about 27.1% of emails with no numbers are spam, and 9.2% of emails with big numbers are spam.]
-```
+:::
 
 
 #### Sample proportions and population proportions {-}
@@ -226,9 +227,9 @@ terms_chp_2 <- c(terms_chp_2, "bar plot", "segmented bar plot")
 
 A segmented bar plot is a graphical display of contingency table information. For example, segmented bar plots representing Table \@ref(tab:colPropSpamNumber) is shown in Figure \@ref(fig:emailSpamNumberSegBar), where we have first created a non-standardized segmented bar plot using the `number` variable and then separated each group by the levels of `type`. The standardized segmented bar plot using the column proportions of Table \@ref(tab:colPropSpamNumber) is a helpful visualization of the fraction of spam emails in each level of `number`.
 
-```{block2, type="important"}
+::: {.importantbox}
 In a segmented bar plot, the explanatory variable is plotted on the $x$-axis, while the response variable is displayed by different colors within each bar, defined by the legend.
-```
+:::
 
 ```{r emailSpamNumberSegBar, fig.cap="(a) Segmented bar plot for numbers found in emails, where the counts have been further broken down by `type`. (b) Segmented bar plot using column proportions of each type within each `number` category.", fig.show="hold", out.width="50%"}
 email %>%
@@ -240,17 +241,17 @@ email %>%
   xlab("(b)") + ylab("Proportion")
 ```
 
-```{block2, type="guidedpractice"}
+::: {.guidedpractice}
 In the segmented bar plots in Figure \@ref(fig:emailSpamNumberSegBar), which variable is the explanatory variable? the response variable?^[The numbers found in emails (`number`) is the explanatory variable; whether the email is spam or not spam is the response variable.]
-```
+:::
 
-```{block2, type="example"}
+::: {.workedexample}
 Examine both of the segmented bar plots in Figure \@ref(fig:emailSpamNumberSegBar). Which is more useful?
   
 ---
 
 Plot (a) contains more information, but plot (b) presents the information more clearly. Plot (b) makes it clear that emails with no number have a relatively high rate of spam email---about 27%! On the other hand, less than 10% of email with small or big numbers are spam.
-```
+:::
 
 Since the proportion of spam changes across the groups in Figure \@ref(fig:emailSpamNumberSegBar) (seen in plot (b)), we can conclude the variables are dependent, which is something we were also able to discern using the column proportions in Table \@ref(tab:colPropSpamNumber). Because both the `none` and `big` groups have relatively few observations compared to the `small` group, the association is more difficult to see in plot (a) of Figure \@ref(fig:emailSpamNumberSegBar).
 
@@ -271,9 +272,9 @@ mosaicplot(number ~ factor(spam, levels=c(0,1), labels=c("not spam","spam")), da
 This one-variable mosaic plot is further divided into pieces in Figure \@ref(fig:emailNumberMosaic) plot (b) using the `type` variable. Each column is split proportionally according to the fraction of emails that were spam in each number category. For example, the second column, representing emails with only small numbers, was divided into emails that were spam (lower) and not spam (upper). 
 As another example, the bottom of the third column represents spam emails that had big numbers, and the upper part of the third column represents regular emails that had big numbers. We can again use this plot to see that the `type` and `number` variables are associated since some columns are divided in different vertical locations than others, which was the same technique used for checking an association in the standardized version of the segmented bar plot.
 
-```{block2, type="important"}
+::: {.importantbox}
 As in a segmented bar plot, the explanatory variable is plotted on the $x$-axis of a mosaic plot, i.e., the explanatory variable is represented by columns, while the response variable is displayed by different colors within each column, defined by the legend.
-```
+:::
 
 ### Why not pie charts?
 
@@ -361,15 +362,15 @@ temptbl %>% ggplot(aes(x = variable, y=col1, fill=factor(col2, levels=c("No DP",
 ```
 
 
-```{block2, type="guidedpractice", echo=TRUE}
+::: {.guidedpractice}
 Is the race of the defendant associated with the sentence of the trial?^[Yes. The conditional proportions of receiving the death penalty given race differ: 11% of Caucasian defendants received the death penalty, versus 8% of African American defendants received the death penalty.]
-```
+:::
 
 Overall, a lower percentage of African American defendants received the death penalty than Caucasian defendants (8% compared to 11%). Given studies have shown racial bias in sentencing, this may be surprising. Let's look at the data more closely.
 
-```{block2, type="guidedpractice", echo=TRUE}
+::: {.guidedpractice}
 Since these are _observational data_, confounding variables are most likely present. Recall, a confounding variable is one that is associated with both the response variable (sentence) and the explanatory variable (race of the defendant). What confounding variables could be present?^[The confounding variable we will consider here is race of the victim. Other confounding variables may include socioeconomic status (since SES is related to race, and a higher SES may allow you to hire a better lawyer---though this explanation is opposite of the association we see in the data) or district (the racial makeup would differ across districts, and maybe districts with a larger proportion of Caucasians also tend to invoke the death penalty more often).]
-```
+:::
 
 If we subset the data by the race of the victim, we see a different picture. Table \@ref(tab:DP2) and Figure \@ref(fig:DPbarplot2) summarize the same data, but separately for Caucasian and African American homicide victims.
 
@@ -452,11 +453,11 @@ temptbl2 %>% ggplot(aes(x = variable, y=col1, fill=factor(col2, levels=c("No DP"
 
 Thus, the extremely low chance of a homicide case resulting in the death penalty for African Americans combined with the fact that most cases with African American defendants also had an African American victim results in an overall lower rate of death penalty sentences for African American defendants than for Caucasian defendants. The overall results in Figure \@ref(fig:DPbarplot) and the results in each subgroup of Figure \@ref(fig:DPbarplot2) are both valid---they are not the result of any "bad statistics"---but they suggest opposite conclusions. Data such as these, where an observed effect _reverses_ itself when you examine the variables within subgroups, exhibit **Simpson's Paradox**.
 
-```{block2, type="onebox", echo=TRUE}
+::: {.onebox}
 **Simpson's Paradox.**
 
 When the association between an explanatory variable and a response variable reverses itself when we examine the association within different levels of a confounding variable, we say that these data exhibit **Simpson's Paradox**.
-```
+:::
 
 ```{r include=FALSE}
 terms_chp_2 <- c(terms_chp_2, "Simpson's Paradox")
@@ -472,11 +473,11 @@ terms_chp_2 <- c(terms_chp_2, "Simpson's Paradox")
 
 A **random process** is  one in which the outcome is unpredictable. We encounter random processes every day: will it rain today? how many minutes will pass until receiving your next text message? will the Seahawks win the Super Bowl? Though the outcome of one particular random process is unpredictable, if we observe the process many many times, the pattern of outcomes, or its probability distribution, can often be modeled mathematically. Though there are several philosophical definitions of probability, we will use the "frequentist" definition of probability---a long-run relative frequency.
 
-```{block2, type="onebox", echo=TRUE}
+::: {.onebox}
 **Probability.**
 
 The **probability** of an event is the long-run proportion of times the event would occur if the random process were repeated indefinitely (under identical conditions).
-```
+:::
 
 Consider the simple example of flipping a fair coin once. What is the probability the coin lands on heads. From its physical properties, we assume the probability of heads is 0.5, but let's use simulation to examine the probability. Figure \@ref(fig:coinflip) shows the long-run proportion of times a simulated coin flip lands on heads on the y-axis, and the number of tosses on the x-axis. Notice how the long-run proportion starts converging to 0.5 as the number of tosses increases.
 
@@ -489,7 +490,7 @@ include_graphics("02/figures/CoinFlip/Coinflip.png")
 
 We can solve many real-life probability problems without using any equations by creating a **hypothetical two-way table** of the scenario. This tool is best demonstrated by an example.
 
-```{block2, type="example", echo = TRUE}
+::: {.workedexample}
 As a student at Montana State University, suppose your first class on Mondays is in Wilson Hall at 8:00am and you commute to school. You have a Bobcat parking permit. From past experience, you know that there is a 20% chance of finding an open parking spot in Lot 6 by Animal Bioscience. Otherwise, you have to park in Lot 18 by graduate housing. If you find a spot in Lot 6, you only have a 5\% chance of being late to class. However, if you have to park in Lot 18, you have a 15\% chance of being late to class. What is the probability that you will be late to class this Monday?
   
 ---
@@ -503,7 +504,7 @@ There are two random variables in this scenario: whether you park in Lot 6 or Lo
 | Total  | 130           | 870               | 1000  |
 
 Now we can find the probability of being late to class by reading it off the table: 130/1000 = 0.13.
-```
+:::
 
 How did we create the table in the last Example? Let's work through it step-by-step.
 
@@ -525,28 +526,28 @@ How did we create the table in the last Example? Let's work through it step-by-s
 
 3. Use subtraction to fill in the remaining cells for the column "Not late to class." Use addition to find the column totals.
 
-```{block2, type="guidedpractice", echo=TRUE}
+::: {.guidedpractice}
 Using the hypothetical two-way table given in the last Example, find the following probabilities:
 
 1. What is the probability you are not late to class?
 2. What is the probability that you park in Lot 6 and you are not late to class?
 3. Given that you were late to class, what is the probability you parked in Lot 18?^[1. $870/1000 = 0.87$; 2. $190/1000 = 0.19$; 3. $120/130 = 0.923$]
-```
+:::
 
 
 Carefully read how each of the probabilities is described in the Guided Practice---note the subtle difference between "the probability of being late to class, _given_ that you parked in Lot 18" ($120/800 = 0.15$) and "the probability of parking in Lot 18, given that you were late to class" ($120/130 = 0.923$). When we are given extra information, this is called a **conditional probability**, and the denominator in the probability calculation is a row total (e.g., 800) or column total (e.g., 130) rather than the overall total in the hypothetical two-way table.
 
-```{block2, type="guidedpractice", echo=TRUE}
+::: {.guidedpractice}
 In the previous Guided Practice, which of the probabilities are conditional probabilities? which are unconditional?^[Probabilities in (1) and (2) are unconditional; the probability asked for in (3) is conditional.]
-```
+:::
 
 ### Probability notation
 
 For ease of translating probability problems into calculations, let's define some notation. We will denote "**events**" (e.g., being late to class) by upper case letters near the beginning of the alphabet, e.g., $A$, $B$, $C$. The **probability of an event** $A$ will be denoted by $P(A)$, so $P(A)$ is a number between 0 and 1. The event that $A$ does _not_ happen is called the _complement_ of $A$ and is denoted by $P(A^C)$. Sometimes we have additional information that we would like to condition on, and we denote the **conditional probability of $A$ _given_ $B$** by $P(A | B)$---the probability that $A$ happens given that $B$ has already happened.
 
-```{block2, type="example", echo=TRUE}
+::: {.workedexample}
 In our coin flip example, we could let $A$ be the event that the coin lands on heads. Then we can denote the probability that the coin lands on heads by $P(A) = 0.5$. We could flip the coin twice and let $H_1$ be the event that the first flip lands on heads, and $H_2$ be the event that the second flip lands on heads. Since the coin does not remember its last flip, if the first flip lands on heads, the second flip still has a 50\% chance of landing on heads. That is, $P(H_2 | H_1) = 0.5$.
-```
+:::
 
 
 ### Diagnostic testing
@@ -560,13 +561,13 @@ A good diagnostic test has very high (near 100\%) sensitivity and specificity. H
 
 * We will call the proportion of the population that has the disease---the probability of contracting the disease---the **prevalence** (incidence) of a disease.
 
-```{block2, type="guidedpractice", echo=TRUE}
+::: {.guidedpractice}
 Let $D$ be the event that an individual has the disease and $T$ be the event that an individual tests positive. How would you express each of the following quantities using probability notation?
   
   1. sensitivity
   2. specificity
   3. prevalence^[1. sensitivity = $P(T | D)$; 2. specificity = $P(T^C | D^C)$; 3. prevalence = $P(D)$]
-```
+:::
 
 Note that sensitivity and specificity are conditional probabilities, while prevalence is an unconditional probability. While the above probabilities are useful information, if you test positive on a diagnostic test, none of these quantities is the probability you really want to know: the conditional probability of having the disease, given you tested positive, $P(D | T)$.
 
@@ -585,9 +586,9 @@ For our calculations, let's use a prevalence of 1 in 10,000. Then out of 100,000
 
 Now we can read off the desired probability from the table: of the 30 male newborns we'd expect to test positive, only 10 of them actually have muscular dystrophy. This means the chance Baby Jeff has muscular dystrophy is only about 33%! 
 
-```{block2, type="guidedpractice", echo=TRUE}
+::: {.guidedpractice}
 How would this probability change if the prevalence were 1/3500? 1/15000? Try it.^[If the prevalence were 1/3500, the probability of actually having muscular dystrophy given that the baby tests positive is 0.588 (slightly better than just flipping a coin for a test!). With  prevalence of 1/15000, this probability decreases to 0.250.]
-```
+:::
 
 Why did this counter-intuitive result occur? With such high sensitivity and specificity, why does this test perform so poorly? The answer has to do with the prevalence of the disease. For a rare disease, the very small proportion that test positive out of the very large group of people without the disease will overwhelm the very large proportion that test positive out of the very small group of people with the disease. The number of false positives can be much higher than the number of true positives.
 
@@ -605,10 +606,10 @@ Throughout this section and the next, we will apply these methods using the `loa
 If you'd like to review the variables from either data set, see Tables \@ref(tab:loan50Variables) and \@ref(tab:countyVariables).
 
 
-```{block2, type="data", echo=TRUE}
+::: {.data}
 The `loan50` and `email50` data sets can be found in the [openintro](http://openintrostat.github.io/openintro) package.
 The `county` data can be found in the [usdata](https://openintrostat.github.io/usdata/) package.
-```
+:::
 
 
 
@@ -671,7 +672,7 @@ ggplot(county, aes(x = poverty/100, y = median_hh_income)) +
 ```
 
 
-```{block2, type="example", echo=TRUE}
+::: {.workedexample}
 Figure \@ref(fig:median-hh-income-poverty) shows a plot of median household income against the poverty rate for 3,142 counties.
 What can be said about the relationship between these variables?
 
@@ -680,17 +681,17 @@ What can be said about the relationship between these variables?
 The relationship is evidently **nonlinear**, as highlighted by the dashed line. This is different from previous scatterplots we have seen, which show relationships that do not show much, if any, curvature in the trend.
 The relationship is moderate to strong, the direction is negative,
 and there does not appear to be any unusual observations.
-```
+:::
 
 
 
-```{block2, type="guidedpractice", echo=TRUE}
+::: {.guidedpractice}
 What do scatterplots reveal about the data, and how are they useful?^[Answers may vary. Scatterplots are helpful in quickly spotting associations relating variables, whether those associations come in the form of simple trends or whether those relationships are more complex.]
-```
+:::
 
-```{block2, type="guidedpractice", echo=TRUE}
+::: {.guidedpractice}
 Describe two variables that would have a horseshoe-shaped association in a scatterplot ($\cap$ or $\frown$)^[Consider the case where your vertical axis represents something "good" and your horizontal axis represents something that is only good in moderation. Health and water consumption fit this description: we require some water to survive, but consume too much and it become toxic and can kill a person.]
-```
+:::
 
 
 ### Dot plots and the mean {#dotplots}
@@ -738,21 +739,21 @@ The letter $x$ is being used as a generic placeholder for the variable and the b
 It is useful to think of the mean as the balancing point of the distribution^[For
 more practice with this concept of the mean as a balancing point, see this [Khan Academy article](https://www.khanacademy.org/math/ap-statistics/summarizing-quantitative-data-ap/mean-median-more/a/mean-as-the-balancing-point).], and it's shown as a triangle in Figure \@ref(fig:loan-int-rate-dotplot).
 
-```{block2, type="onebox", echo=TRUE}
+::: {.onebox}
 **Mean.**
   
 The sample mean can be calculated as the sum of the observed values divided by the number of observations:
 
 \[ \bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n} \]
-```
+:::
 
-```{block2, type="guidedpractice", echo=TRUE}
+::: {.guidedpractice}
 Examine the equation for the mean. What does $x_1$ correspond to? And $x_2$ Can you infer a general meaning to what $x_i$ might represent?^[$x_1$ corresponds to the interest rate for the first loan in the sample, $x_2$ to the second loan's interest rate, and $x_i$ corresponds to the interest rate for the $i^{th}$ loan in the data set. For example, if $i = 4$, then we're examining $x_4$, which refers to the fourth observation in the data set.]
-```
+:::
 
-```{block2, type="guidedpractice", echo=TRUE}
+::: {.guidedpractice}
 What was $n$ in this sample of loans?^[The sample size was $n = 50$.]
-```
+:::
 
 The `loan50` data set represents a sample from a larger population of loans made through Lending Club.
 We could compute a mean for this population in the same way as the sample mean.
@@ -761,19 +762,19 @@ The symbol $\mu$ is the Greek letter *mu* and represents the average of all obse
 Sometimes a subscript, such as $_x$, is used to represent which variable the population mean refers to, e.g., $\mu_x$.
 Often times it is too expensive or time consuming to measure the population mean precisely, so we often estimate $\mu$ using the sample mean, $\bar{x}$.
 
-```{block2, type="pronunciation", echo=TRUE}
+::: {.pronunciation}
 The Greek letter $\mu$ is pronounced *mu*, listen to the pronunciation [here](https://youtu.be/PStgY5AcEIw?t=47).
-```
+:::
 
 
 
-```{block2, type="example", echo=TRUE}
+::: {.workedexample}
 The average interest rate across all loans in the population can be estimated using the sample data. Based on the sample of 50 loans, what would be a reasonable estimate of $\mu_x$, the mean interest rate for all loans in the full data set?
 
 ---
   
 The sample mean, 11.57%, provides a rough estimate of $\mu_x$. While it is not perfect, this statistic our single best guess **point estimate**\index{point estimate} of the average interest rate of all the loans in the population under study, the parameter. In Chapter \@ref(inference-cat) and beyond, we will develop tools to characterize the accuracy of point estimates, like the sample mean. As you might have guessed, point estimates based on larger samples tend to be more accurate than those based on smaller samples.
-```
+:::
 
 The mean is useful for making comparisons across different samples that may have different sample sizes because it allows us to rescale or standardize a metric into something more easily interpretable and comparable. 
 
@@ -800,7 +801,7 @@ Instead, we should look at the average number of asthma attacks per patient in e
 The standard drug has a lower average number of asthma attacks per patient than the average in the treatment group.
 
 
-```{block2, type="example", echo=TRUE}
+::: {.workedexample}
 Emilio opened a food truck last year where he sells burritos, and his business has stabilized over the last 4 months.
 Over that 4 month period, he has made $11,000 while working 625 hours.
 Emilio's competition, Francis, has made $13,000 over the last 4 months while working 800 hours. Francis brags to Emilio that her business is more profitable. Is Francis' claim warranted?
@@ -819,10 +820,10 @@ In comparison, Francis' average hourly wage was
 \[ \frac{\$13000}{800\text{ hours}} = \$16.25\text{ per hour} \]
 
 Thus, while Francis' total earnings were larger than Emilio's, when standardizing by hour, Francis shouldn't brag.
-```
+:::
 
 
-```{block2, type="example", echo=TRUE}
+::: {.workedexample}
 Suppose we want to compute the average income per person in the US. To do so, we might first think to take the mean of the per capita incomes across the 3,142 counties in the \data{county} data set. What would be a better approach?
 
 ---
@@ -835,7 +836,7 @@ Had we computed the *simple* mean of per capita income across counties, the resu
 
 This example used what is called a **weighted mean**.
 For more information on this topic, check out the following online supplement regarding [weighted means](https://www.openintro.org/go/?id=stat_extra_weighted_mean).
-```
+:::
 
 
 ```{r include=FALSE}
@@ -892,15 +893,15 @@ Data sets with the reverse characteristic---a long, thinner tail to the left---a
 terms_chp_2 <- c(terms_chp_2, "tail", "right skewed", "left skewed", "symmetric")
 ```
 
-```{block2, type="onebox", echo=TRUE}
+::: {.onebox}
 When data trail off in one direction, the distribution has a **long tail**.
 If a distribution has a long left tail, it is **left skewed** or **negatively skewed**.
 If a distribution has a long right tail, it is **right skewed** or **positively skewed**.
-```
+:::
 
-```{block2, type="guidedpractice", echo=TRUE}
+::: {.guidedpractice}
 Besides the mean (since it was labeled), what can you see in the dot plot in Figure \@ref(fig:loan-int-rate-dotplot) that you cannot see in the histogram in Figure \@ref(fig:loan50IntRateHist)?^[The interest rates for individual loans.]
-```
+:::
 
 In addition to looking at whether a distribution is skewed or symmetric, histograms can be used to identify modes. A **mode** is represented by a prominent peak in the distribution. There is only one prominent peak in the histogram of `interest_rate`.
 
@@ -938,14 +939,14 @@ p_multi <- ggplot(df_modes, aes(x = multi)) +
 p_uni + p_bi + p_multi
 ```
 
-```{block2, type="example", echo=TRUE}
+::: {.guidedpractice}
 Figure \@ref(fig:loan50IntRateHist) reveals only one prominent mode in the interest rate. Is the distribution unimodal, bimodal, or multimodal?^[Unimodal Remember that *uni* stands for 1 (think *uni*cycles). Similarly, *bi* stands for 2 (think *bi*cycles). We are hoping a *multi*cycle will be invented to complete this analogy.]
-```
+:::
 
-```{block2, type="guidedpractice", echo=TRUE}
+::: {.guidedpractice}
 Height measurements of young students and adult teachers at a K-3 elementary school were taken.
 How many modes would you expect in this height data set?^[There might be two height groups visible in the data set: one of the students and one of the adults. That is, the data are probably bimodal.].
-```
+:::
 
 Looking for modes isn't about finding a clear and correct answer about the number of modes in a distribution, which is why *prominent*\index{prominent} is not rigorously defined in this book. The most important part of this examination is to better understand your data.
 
@@ -1010,7 +1011,7 @@ While often omitted, a subscript of $_x$ may be added to the variance and standa
 terms_chp_2 <- c(terms_chp_2, "standard deviation")
 ```
 
-```{block2, type="onebox", echo=TRUE}
+::: {.onebox}
 **Variance and standard deviation.**
   
 The sample variance is the (near) average squared distance from the mean:
@@ -1023,13 +1024,13 @@ The standard deviation is useful when considering how far the data are distribut
 _The standard deviation represents the typical deviation of observations from the mean._
 If the distribution is bell-shaped, about 70% of the data will be within one standard deviation of the mean and about 95% will be within two standard deviations.
 However, these percentages do not necessarily hold for other shaped distributions!
-```
+:::
 
 Like the mean, the population values for variance and standard deviation have special symbols: $\sigma^2$ for the variance and $\sigma$ for the standard deviation.
 
-```{block2, type="pronunciation", echo=TRUE}
+::: {.pronunciation}
 The Greek letter $\sigma$ is pronounced *sigma*, listen to the pronunciation [here](https://youtu.be/PStgY5AcEIw?t=72).
-```
+:::
 
 ```{r sdRuleForIntRate, fig.cap = "For the `interest_rate` variable, 34 of the 50 loans (68%) had interest rates within 1 standard deviation of the mean, and 48 of the 50 loans (96%) had rates within 2 standard deviations. Usually about 70% of the data are within 1 standard deviation of the mean and 95% within 2 standard deviations, though this is far from a hard rule."}
 box_sd1 <- data.frame(
@@ -1093,12 +1094,12 @@ ggplot(dists_mean0_sd1, aes(x = x)) +
                aes(x = x, y = y), fill = COL["gray", "full"], alpha = 0.3)
 ```
 
-```{block2, type="guidedpractice", echo=TRUE}
+::: {.guidedpractice}
 A good description of the shape of a distribution should include modality and whether the distribution is symmetric or skewed to one side.
 Using Figure \@ref(fig:severalDiffDistWithSdOf1) as an example, explain why such a description is important.^[Figure \@ref(fig:severalDiffDistWithSdOf1) shows three distributions that look quite different, but all have the same mean, variance, and standard deviation. Using modality, we can distinguish between the first plot (bimodal) and the last two (unimodal). Using skewness, we can distinguish between the last plot (right skewed) and the first two. While a picture, like a histogram, tells a more complete story, we can use modality and shape (symmetry/skew) to characterize basic information about a distribution.]
-```
+:::
 
-```{block2, type="example", echo=TRUE}
+::: {.workedexample}
 Describe the distribution of the `interest_rate` variable using the histogram in Figure \@ref(fig:loan50IntRateHist). 
 The description should incorporate the center, variability, and shape of the distribution, and it should also be placed in context. 
 Also note any especially unusual cases.
@@ -1107,7 +1108,7 @@ Also note any especially unusual cases.
   
 The distribution of interest rates is unimodal and skewed to the high end. Many of the rates fall near the mean at 11.57%, and most fall within one standard deviation (5.05%) of the mean. 
 There are a few exceptionally large interest rates in the sample that are above 20%.
-```
+:::
 
 In practice, the variance and standard deviation are sometimes used as a means to an end, where the "end" is being able to accurately estimate the uncertainty associated with a sample statistic. For example, in Chapter \@ref(inference-num) the standard deviation is used in calculations that help us understand how much a sample mean varies from one sample to the next.
 
@@ -1174,7 +1175,7 @@ When there are an odd number of observations, there will be exactly one observat
 terms_chp_2 <- c(terms_chp_2, "median")
 ```
 
-```{block2, type="onebox", echo=TRUE}
+::: {.onebox}
 **Median: the number in the middle.**  
   
 If the data are ordered from smallest to largest, the **median** is the observation right in the middle.
@@ -1184,7 +1185,7 @@ Mathematically, if we denote the sample size by $n$, then
 
 * if $n$ is odd, the median is the $[(n+1)/2]^{th}$ smallest value in the data set, and
 * if $n$ is even, the median is the average of the $(n/2)^{th}$ and $(n/2+1)^{th}$ smallest values in the data set.
-```
+:::
 
 The second step in building a box plot is drawing a rectangle to represent the middle 50% of the data.
 The length of the the box is called the **interquartile range**, or **IQR** for short.
@@ -1196,7 +1197,7 @@ The two boundaries of the box are called the **first quartile** (the $25^{th}$ p
 terms_chp_2 <- c(terms_chp_2, "interquartile range", "IQR", "first quartile", "third quartile")
 ```
 
-```{block2, type="onebox", echo=TRUE}
+::: {.onebox}
 **Interquartile range (IQR).**
   
 The IQR interquartile range is the length of the box in a box plot.
@@ -1205,12 +1206,12 @@ It is computed as
   IQR = Q_3 - Q_1,
 \]
 where $Q_1$ and $Q_3$ are the $25^{th}$ and $75^{th}$ percentiles, respectively.
-```
+:::
 
-```{block2, type="guidedpractice", echo=TRUE}
+::: {.guidedpractice}
 What percent of the data fall between $Q_1$ and the median?
 What percent is between the median and $Q_3$?^[Since $Q_1$ and $Q_3$ capture the middle 50% of the data and the median splits the data in the middle, 25% of the data fall between $Q_1$ and the median, and another 25% falls between the median and $Q_3$.]
-```
+:::
 
 Extending out from the box, the **whiskers** attempt to capture the data outside of the box.
 The whiskers of a box plot reach to the minimum and the maximum values in the data, unless there are points that are considered unusually high or unusually low, which are identified as potential **outliers** by the box plot. 
@@ -1225,11 +1226,11 @@ the upper whisker does not extend to the last two points, `r sort(loan50$interes
 $Q_3 + 1.5\times IQR$, and so it extends only to the last point below this limit.
 The lower whisker stops at the minimum value in the data set, `r min(loan50$interest_rate)`%, since there are no outliers on the lower end of the distribution. 
 
-```{block2, type="protip", echo=TRUE}
+::: {.protip}
 The whiskers extend to actual data points---not the limits for outliers. That is,
 the values $Q_1 - 1.5\times IQR$ and $Q_3 + 1.5\times IQR$ should not be shown
 on the plot.
-```
+:::
 
 
 
@@ -1237,7 +1238,7 @@ on the plot.
 terms_chp_2 <- c(terms_chp_2, "outlier", "whiskers")
 ```
 
-```{block2, type="onebox", echo=TRUE}
+::: {.onebox}
 **Outliers are extreme.**
   
 An **outlier** is an observation that appears extreme relative to the rest of the data. 
@@ -1246,11 +1247,11 @@ Examining data for outliers serves many useful purposes, including
 - identifying strong skew \index{skew!strong} in the distribution,
 - identifying possible data collection or data entry errors, and 
 - providing insight into interesting properties of the data.
-```
+:::
 
-```{block2, type="guidedpractice", echo=TRUE}
+::: {.guidedpractice}
 Using the box plot in Figure \@ref(fig:loan-int-rate-boxplot-dotplot), estimate the values of the $Q_1$, $Q_3$, and IQR for `interest_rate` in the `loan50` data set.^[These visual estimates will vary a little from one person to the next: $Q_1 \approx$ 8%, $Q_3 \approx$ 14%, IQR $\approx$ 14 - 8 = 6%.]
-```
+:::
 
 ### Describing and comparing quantitative distributions
 
@@ -1290,7 +1291,7 @@ grid.arrange(plot1, plot2, nrow=1)
 
 We see immediately that some features are easier to discern in box plots, while others in histograms. Shape is shown more clearly in histograms, while center (as measured by the median) is easy to compare across groups in the side-by-side box plots.
 
-```{block2, type="example", echo=TRUE}
+::: {.workedexample}
 Using Figure \@ref(fig:homeownership-interest-boxplots) write a few sentences comparing the distributions of loan amount
 across the different homeownership categories.
   
@@ -1299,7 +1300,7 @@ across the different homeownership categories.
 The median loan amount is higher for those with a mortgage (around $16,000) than for those who own or rent (around $12,000-$13,000). However, variability in loan amounts is similar across homeownership categories, with an IQR of around $15,000 and loans ranging from a few hundred dollars to $40,000. We see from the histograms that the distribution of loan amounts is skewed right for all three homeownership categories, which means the mean loan amount will be higher than the median loan amount. There are no apparent outliers in the mortgage category, but both the rent and own categories have outliers at $40,000.
 
 Besides center, variability, shape, and outliers, another interesting feature in these distributions is the result of rounding. Loan amounts in the data set are often rounded to the nearest 100, so we see spikes on these values in the histogram---something that is not evident in the box plots.
-```
+:::
 
 ### Robust statistics
 
@@ -1395,10 +1396,10 @@ loan50_robust_check %>%
   add_header_above(c(" " = 1, "Robust" = 2, "Not robust" = 2))
 ```
 
-```{block2, type="guidedpractice", echo=TRUE}
+::: {.guidedpractice}
 (a) Which is more affected by extreme observations, the mean or median?  
 (b) Is the standard deviation or IQR more affected by extreme observations?^[(a) Mean is affected more. (b) Standard deviation is affected more.]
-```
+:::
 
 The median and IQR are called **robust statistics** because extreme observations have little effect on their values---moving the most extreme value generally has little influence on these statistics.
 On the other hand, the mean and standard deviation are more heavily influenced by changes in extreme observations, which can be important in some situations. Additionally, the mean tends to get pulled in the direction of a distribution's skewness, while the skewness has little affect on the median.
@@ -1407,7 +1408,7 @@ On the other hand, the mean and standard deviation are more heavily influenced b
 terms_chp_2 <- c(terms_chp_2, "robust statistics")
 ```
 
-```{block2, type="example", echo=TRUE}
+::: {.workedexample}
 The median and IQR did not change under the three scenarios in Table \@ref(tab:robustOrNotTable). 
 Why might this be the case?
   
@@ -1415,12 +1416,12 @@ Why might this be the case?
   
 The median and IQR are only sensitive to numbers near $Q_1$, the median, and $Q_3$. 
 Since values in these regions are stable in the three data sets, the median and IQR estimates are also stable.
-```
+:::
 
-```{block2, type="guidedpractice", echo=TRUE}
+::: {.guidedpractice}
 The distribution of loan amounts in the `loan50` data set is right skewed, with a few large loans lingering out into the right tail.
 If you were wanting to understand the typical loan size, should you be more interested in the mean or median?^[If we are looking to simply understand what a typical individual loan looks like, the median is probably more useful. However, if the goal is to understand something that scales well, such as the total amount of money we might need to have on hand if we were to offer 1,000 loans, then the mean would be more useful.]
-```
+:::
 
 ### Transforming data (special topic)
 
@@ -1443,13 +1444,13 @@ p_pop_log <- ggplot(county, aes(x = log(pop2017, base = 10))) +
 p_pop + p_pop_log
 ```
 
-```{block2, type = "example", echo=TRUE}
+::: {.workedexample}
 Consider the histogram of county populations shown in the left of Figure \@ref(fig:county-pop-transform), which shows extreme skew\index{skew!extreme}. What is not so useful about this plot?
   
 ---
   
 Nearly all of the data fall into the left-most bin, and the extreme skew obscures many of the potentially interesting details in the data.
-```
+:::
 
 There are some standard transformations that may be useful for strongly right skewed data where much of the data is positive but clustered near zero.
 For instance, a plot of the logarithm (base 10) of county populations results in the new histogram in Figure \@ref(fig:county-pop-transform).
@@ -1502,7 +1503,7 @@ The intensity maps are not generally very helpful for getting precise values in 
 terms_chp_2 <- c(terms_chp_2, "intensity map")
 ```
 
-```{block2, type="example", echo=TRUE}
+::: {.workedexample}
 What interesting features are evident in the poverty and unemployment rate intensity maps?
   
 ---
@@ -1514,11 +1515,11 @@ The unemployment rate follows similar trends, and we can see correspondence betw
 variables. 
 In fact, it makes sense for higher rates of unemployment to be closely related to poverty rates.
 One observation that stands out when comparing the two maps: the poverty rate is much higher than the unemployment rate, meaning while many people may be working, they are not making enough to break out of poverty.
-```
+:::
 
-```{block2, type="guidedpractice", echo=TRUE}
+::: {.guidedpractice}
 What interesting features are evident in the median household income intensity map in Figure \@ref(fig:county-intensity-map-homeownership-median-income)?^[Note: answers will vary. There is some correspondence between high earning and metropolitan areas, where we can see darker spots (higher median household income), though there are several exceptions. You might look for large cities you are familiar with and try to spot them on the map as dark spots.]
-```
+:::
 
 ```{r county-map-prep}
 dfips <- maps::county.fips %>%

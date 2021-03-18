@@ -3,7 +3,8 @@
 <!-- TODO: Add vocab words to this chapter. -->
 
 
-\BeginKnitrBlock{chapterintro}<div class="chapterintro">Focusing now on statistical inference for quantitative data, we will revisit and expand upon the foundational aspects of hypothesis testing from Section \@ref(inf-foundations).
+::: {.chapterintro}
+Focusing now on statistical inference for quantitative data, we will revisit and expand upon the foundational aspects of hypothesis testing from Section \@ref(inf-foundations).
 
 The important data structure for this chapter is a quantitative response variable (that is, the outcome is numerical).
 The three data structures we detail are: 
@@ -14,7 +15,8 @@ The three data structures we detail are:
 
 When appropriate, each of the data structures will be analyzed using the two methods introduced in Section \@ref(inf-foundations): simulation-based and theory-based.
 
-As we build on the inferential ideas, we will visit new foundational concepts in statistical inference.  One key new idea rests in estimating how the sample mean (as opposed to the sample proportion) varies from sample to sample; the resulting value is referred to as the **standard error of the mean**.  We will also introduce a new important mathematical model, the $t$-distribution (as the foundation for the $t$-test).</div>\EndKnitrBlock{chapterintro}
+As we build on the inferential ideas, we will visit new foundational concepts in statistical inference.  One key new idea rests in estimating how the sample mean (as opposed to the sample proportion) varies from sample to sample; the resulting value is referred to as the **standard error of the mean**.  We will also introduce a new important mathematical model, the $t$-distribution (as the foundation for the $t$-test).
+:::
 
 
 To summarize a quantitative response variable, we focus on the sample mean (instead of, for example, the sample median or the range of the observations) because of the well-studied mathematical model which describes the behavior of the sample mean.
@@ -24,13 +26,15 @@ The techniques described for each setting will vary slightly, but you will be we
 
 ## One mean {#one-mean}
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Notation.**
+::: {.onebox}
+**Notation.**
 
 * $n$ = sample size
 * $\bar{x}$ = sample mean
 * $s$ = sample standard deviation
 * $\mu$ = population mean
-* $\sigma$ = population standard deviation</div>\EndKnitrBlock{onebox}
+* $\sigma$ = population standard deviation
+:::
 
 A single mean is used to summarize data when we measured a single quantitative variable on each observational unit, e.g., GPA, age, salary. Aside from slight differences in notation, the inferential methods presented in this section will be identical to those for a paired mean difference, as we will see in Section \@ref(paired-data).
 
@@ -82,34 +86,40 @@ The distribution of $\bar{x}_{boot}$, the bootstrapped sample means, for the Edi
 
 The bootstrapped average rent prices vary from £1250 to £1995 (with a small observed sample of size 5, a bootstrap resample can sometimes, although rarely, include only repeated measurements of the same observation).
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Bootstrapping from one sample.**
+::: {.onebox}
+**Bootstrapping from one sample.**
 
 1. Take a random sample of size $n$ from the original sample, _with replacement_. This is called a **bootstrapped resample**.
 2. Record the sample mean (or statistic of interest) from the bootstrapped resample. This is called a **bootstrapped statistic**.
-3. Repeat steps (1) and (2) 1000s of times.</div>\EndKnitrBlock{onebox}
+3. Repeat steps (1) and (2) 1000s of times.
+:::
 
 Due to theory that is beyond this text, we know that the bootstrap means $\bar{x}_{boot}$ vary around the original sample mean, $\bar{x}$, in a similar way to how different sample (i.e., different data sets which would produce different $\bar{x}$ values) means vary around the true parameter $\mu$. 
 Therefore, an interval estimate for $\mu$ can be produced using the $\bar{x}_{boot}$ values themselves. A 95% **bootstrap confidence interval** for $\mu$, the population mean rent price for three bedroom flats in Edinburgh, is found by locating the middle 95% of the bootstrapped sample means in Figure \@ref(fig:flatsbsmean).
 
 
-\BeginKnitrBlock{onebox}<div class="onebox">**95% Bootstrap confidence interval for a population mean $\mu$.**
+::: {.onebox}
+**95% Bootstrap confidence interval for a population mean $\mu$.**
 
 The 95% bootstrap confidence interval for the parameter $\mu$ can be obtained directly using the ordered values $\bar{x}_{boot}$ values --- the bootstrapped sample means. Consider the sorted $\bar{x}_{boot}$ values, and let $\bar{x}_{boot, 0.025}$ be the 2.5^th^ percentile and $\bar{x}_{boot, 0.025}$ be the 97.5^th^ percentile. The 95% confidence interval is given by:
 <center>
 ($\bar{x}_{boot, 0.025}$, $\bar{x}_{boot, 0.975}$)
-</center></div>\EndKnitrBlock{onebox}
+</center>
+:::
 
 You can find confidence intervals of difference confidence levels by changing the percent of the distribution you take, e.g., locate the middle 90% of the bootstrapped statistics for a 90% confidence interval.
 
 
-\BeginKnitrBlock{example}<div class="example">Using Figure \@ref(fig:flatsbsmean), find the 90% and 95% confidence intervals for the true mean monthly rental price of a three bedroom flat in Edinburgh.
+::: {.workedexample}
+Using Figure \@ref(fig:flatsbsmean), find the 90% and 95% confidence intervals for the true mean monthly rental price of a three bedroom flat in Edinburgh.
 
 ---
 
 A 90% confidence interval is given by (£1429, £1876).  The conclusion is that we are 90% confident that the true average rental price for three bedroom flats in Edinburgh lies somewhere between £1429 and £1876.
 
 
-A 95% confidence interval is given by (£1389.75, £1916).  The conclusion is that we are 95% confident that the true average rental price for three bedroom flats in Edinburgh lies somewhere between £1389.75 and £1916.</div>\EndKnitrBlock{example}
+A 95% confidence interval is given by (£1389.75, £1916).  The conclusion is that we are 95% confident that the true average rental price for three bedroom flats in Edinburgh lies somewhere between £1389.75 and £1916.
+:::
 
 
 
@@ -125,13 +135,17 @@ But even without the mathematical model, bootstrapping can be used to find a con
 
 
 
-\BeginKnitrBlock{example}<div class="example">Describe the bootstrap distribution for the standard deviation shown in Figure \@ref(fig:flatsbssd).
+::: {.workedexample}
+Describe the bootstrap distribution for the standard deviation shown in Figure \@ref(fig:flatsbssd).
 
 ---
   
-The distribution is skewed left and centered near £340.23, which is the point estimate from the original data. Most observations in this distribution lie between £0 and £408.1.</div>\EndKnitrBlock{example}
+The distribution is skewed left and centered near £340.23, which is the point estimate from the original data. Most observations in this distribution lie between £0 and £408.1.
+:::
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Using Figure \@ref(fig:flatsbssd), find *and interpret* a 90% confidence interval for the population standard deviation for three bedroom flat prices in Edinburgh.^[By looking at the percentile values in Figure \@ref(fig:flatsbssd), the middle 90% of the bootstrap standard deviations are given by the 5^th^ percentile (£153.9) and 95^th^ percentile (£385.6).  That is, we are 90% confident that the true standard deviation of rent prices is between £153.9 and £385.6; or that, on average, rent prices tend to be somewhere between £153.9 and £385.6 away from the mean rent price. Note, the problem was set up as 90% to indicate that there was not a need for a high level of confidence (such a 95% or 99%).  A lower degree of confidence increases potential for error, but it also produces a more narrow interval.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+Using Figure \@ref(fig:flatsbssd), find *and interpret* a 90% confidence interval for the population standard deviation for three bedroom flat prices in Edinburgh.^[By looking at the percentile values in Figure \@ref(fig:flatsbssd), the middle 90% of the bootstrap standard deviations are given by the 5^th^ percentile (£153.9) and 95^th^ percentile (£385.6).  That is, we are 90% confident that the true standard deviation of rent prices is between £153.9 and £385.6; or that, on average, rent prices tend to be somewhere between £153.9 and £385.6 away from the mean rent price. Note, the problem was set up as 90% to indicate that there was not a need for a high level of confidence (such a 95% or 99%).  A lower degree of confidence increases potential for error, but it also produces a more narrow interval.]
+:::
 
 <div class="figure" style="text-align: center">
 <img src="06-inference-num_files/figure-html/flatsbssd-1.png" alt="The original Edinburgh data is bootstrapped 1,000 times. The histogram provides a sense for the variability of the standard deviation of the rent values from sample to sample." width="70%" />
@@ -193,7 +207,8 @@ A bootstrapped null distribution generated from sampling 20 shifted temperatures
 <p class="caption">(\#fig:shifted-boot-null)Bootstrapped null distribution of sample mean temperatures assuming the true mean temperature is 98.6 degrees F.</p>
 </div>
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Shifted bootstrap null distribution for a sample mean.**
+::: {.onebox}
+**Shifted bootstrap null distribution for a sample mean.**
 
 To simulate a null distribution of sample means under the null hypothesis $H_0: \mu = \mu_0$:
 
@@ -202,7 +217,8 @@ To simulate a null distribution of sample means under the null hypothesis $H_0: 
     x_1 + \mu_0 - \bar{x}, \hspace{2.5mm} x_2 + \mu_0 - \bar{x}, \hspace{2.5mm}  x_3 + \mu_0 - \bar{x}, \hspace{2.5mm}  \ldots, \hspace{2.5mm}  x_n + \mu_0 - \bar{x}.
   \]
   Note that if $\bar{x}$ is larger than $\mu$, then the quantity $\mu_0 - \bar{x}$ will be negative, and you will be _subtracting_ the distance between $\mu$ and $\bar{x}$ from each value.
-2. Generate 1000s of bootstrap resamples from this shifted distribution, plotting the shifted bootstrap sample mean each time.</div>\EndKnitrBlock{onebox}
+2. Generate 1000s of bootstrap resamples from this shifted distribution, plotting the shifted bootstrap sample mean each time.
+:::
 
 To calculate the p-value, since $H_A: \mu < 98.6$, we find the proportion of simulated sample means that were less than or equal to our original sample mean, $\bar{x}$ = 97.47. As shown in Figure \@ref(fig:shifted-boot-null), none of our simulated sample means were 97.5$^\circ$F or lower, giving us very strong evidence that the true mean body temperature among all Montana State University students is less than the commonly accepted 98.6$^\circ$F average temperature.
 
@@ -212,7 +228,8 @@ As with the sample proportion, the variability of the sample mean is well descri
 a normal distribution when certain conditions are met.
 However, because of missing information about the inherent variability in the population, a $t$-distribution is used in place of the standard normal when performing hypothesis test or confidence interval analyses.
 
-\BeginKnitrBlock{important}<div class="important">**Central Limit Theorem for the sample mean.**  
+::: {.importantbox}
+**Central Limit Theorem for the sample mean.**  
   When we collect a sufficiently large sample of
   $n$ independent observations from a population with
   mean $\mu$ and standard deviation $\sigma$,
@@ -221,7 +238,8 @@ However, because of missing information about the inherent variability in the po
   \begin{align*}
   &\text{Mean}=\mu
   &&\text{Standard Deviation }(SD) = \frac{\sigma}{\sqrt{n}}
-  \end{align*}</div>\EndKnitrBlock{important}
+  \end{align*}
+:::
 
 
 Before diving into confidence intervals and hypothesis
@@ -253,7 +271,8 @@ When the sample observations
 are independent and the sample size is sufficiently
 large, the normal model will describe the variability in sample means quite well; when the observations violate the conditions, the normal model can be inaccurate.
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Conditions for the modeling
+::: {.onebox}
+**Conditions for the modeling
     $\bar{x}$  using theory-based methods.**  
 
   The sampling distribution for $\bar{x}$ based on
@@ -281,9 +300,11 @@ large, the normal model will describe the variability in sample means quite well
     
       When these conditions are satisfied, then the sampling
   distribution of $\bar{x}$ is approximately normal with mean
-  $\mu$ and standard deviation $\frac{\sigma}{\sqrt{n}}$.</div>\EndKnitrBlock{onebox}
+  $\mu$ and standard deviation $\frac{\sigma}{\sqrt{n}}$.
+:::
 
-\BeginKnitrBlock{important}<div class="important">**General rule: how to perform the normality check.**
+::: {.importantbox}
+**General rule: how to perform the normality check.**
   
   There is no perfect way to check the normality condition,
   so instead we use two general rules: 
@@ -297,7 +318,8 @@ large, the normal model will describe the variability in sample means quite well
       and there are no *particularly extreme* outliers,
       then we typically assume the sampling distribution
       of $\bar{x}$ is nearly normal, even if the underlying
-      distribution of individual observations is not.</div>\EndKnitrBlock{important}
+      distribution of individual observations is not.
+:::
 
 
 
@@ -873,7 +895,7 @@ What are appropriate hypotheses for this context?^[$H_0$: The average 10-mile ru
 
 ::: {.guidedpractice}
 The data come from a simple random sample of all participants, so the observations are independent.
-<img src="06-inference-num_files/figure-html/unnamed-chunk-22-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="06-inference-num_files/figure-html/unnamed-chunk-12-1.png" width="70%" style="display: block; margin: auto;" />
 A histogram of the race times is given to evaluate if we can move forward with a t-test. Should we be worried about the normality condition?^[With a sample of 100, we should only be concerned if there is are particularly extreme outliers. The histogram of the data doesn't show any outliers of concern (and arguably, no outliers at all).]
 ::: 
 
@@ -966,13 +988,15 @@ is from the null value.
 
 ## Paired mean difference {#paired-data}
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Notation**.
+::: {.onebox}
+**Notation**.
 
 * $n$ = number of pairs in paired samples
 * $\bar{x}_{d}$ = sample mean of differences in paired samples
 * $s_{d}$ = sample standard deviation of differences in paired samples
 * $\mu_{d}$ = population mean of differences in paired samples
-* $\sigma_{d}$ = population standard deviation of differences in paired samples</div>\EndKnitrBlock{onebox}
+* $\sigma_{d}$ = population standard deviation of differences in paired samples
+:::
 
 
 Paired data represent a particular type of experimental structure where the analysis is somewhat akin to a one-sample analysis (see Section \@ref(one-mean)) but has other features that resemble a two-sample analysis (which we will see in Section \@ref(differenceOfTwoMeans)).  Quantitative measurements are made on each of two different levels of an explanatory variable, but those measurements are **paired** --- each observational unit consists of two measurements, and the two measurements are subtracted such that only the difference is retained.  Table \@ref(tab:pairedexamples) presents some examples of studies where paired designs were implemented.
@@ -1016,12 +1040,14 @@ Paired data represent a particular type of experimental structure where the anal
 </table>
 
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Paired data.**
+::: {.onebox}
+**Paired data.**
 
   Two sets of observations are *paired* if each
   observation in one set has a special correspondence
   or connection with exactly one observation in the other
-  data set.</div>\EndKnitrBlock{onebox}
+  data set.
+:::
 
 
 
@@ -1094,7 +1120,8 @@ In this study, the null hypothesis is that average difference in tire tread wear
 
 To simulate the null distribution of mean differences in tread, we will implement the same method used in Section \@ref(one-mean-null-boot) using a shifted bootstrap distribution.
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Shifted bootstrap null distribution for a sample mean difference.**
+::: {.onebox}
+**Shifted bootstrap null distribution for a sample mean difference.**
 
 To simulate a null distribution of sample mean differences under the null hypothesis $H_0: \mu_d = 0$,
 
@@ -1103,7 +1130,8 @@ To simulate a null distribution of sample mean differences under the null hypoth
     x_1 - \bar{x}_d , \hspace{2.5mm} x_2 - \bar{x}_d, \hspace{2.5mm}  x_3 - \bar{x}_d, \hspace{2.5mm}  \ldots, \hspace{2.5mm}  x_n - \bar{x}_d.
   \]
   Note that if $\bar{x}_d$ is a negative number, then you will be _adding_ the distance between $0$ and $\bar{x}_d$ to each value.
-2. Generate 1000s of bootstrap resamples from this shifted distribution, plotting the shifted bootstrap sample mean difference each time.</div>\EndKnitrBlock{onebox}
+2. Generate 1000s of bootstrap resamples from this shifted distribution, plotting the shifted bootstrap sample mean difference each time.
+:::
 
 
 To use bootstrapping to generate a null distribution of sample mean differences in tire tread, we first have to **shift the data** to be centered at the null value of zero. We shift the data by subtracting $\bar{x}_d$ = 0.00196 from each tire tread difference in the sample. This process is displayed in Figure \@ref(fig:tiredata-diff-shift).
@@ -1148,7 +1176,9 @@ We sampled 201 UCLA courses.
 Of those, 68
 required books could be found on Amazon.
 
-\BeginKnitrBlock{data}<div class="data">The `ucla_textbooks_f18` data can be found in the [openintro](http://openintrostat.github.io/openintro/reference/index.html) package.</div>\EndKnitrBlock{data}
+::: {.data}
+The `ucla_textbooks_f18` data can be found in the [openintro](http://openintrostat.github.io/openintro/reference/index.html) package.
+:::
 
 A portion of the data set from these courses
 is shown in Table \@ref(tab:textbooksDF),
@@ -1315,7 +1345,8 @@ we applied in
 Section \@ref(one-mean-math).
 
 
-\BeginKnitrBlock{example}<div class="example">Set up a hypothesis test
+::: {.workedexample}
+Set up a hypothesis test
     to determine whether, on average, the UCLA Bookstore's price for
     a new textbook is higher than the price of the same
     book on Amazon.
@@ -1344,13 +1375,15 @@ Next, we check the independence and normality conditions:
   of $\bar{x}$ is satisfied.
 
 With these conditions satisfied,
-  we can move forward with the $t$-distribution.</div>\EndKnitrBlock{example}
+  we can move forward with the $t$-distribution.
+:::
 
 ##### Observed statistic vs. null statistics {-}
 
 As mentioned previously, the methods applied to a difference will be identical to the one-sample techniques.  Therefore, the full hypothesis test framework is given as an example.
 
-\BeginKnitrBlock{example}<div class="example">
+::: {.workedexample}
+
 Complete the hypothesis test started
     in the previous Example.
 
@@ -1391,7 +1424,8 @@ To start, compute the standard error associated with
 
   In conclusion, we have strong evidence that
   Amazon prices are, on average, lower than the
-  UCLA Bookstore prices for UCLA courses.</div>\EndKnitrBlock{example}
+  UCLA Bookstore prices for UCLA courses.
+:::
 
 
 <div class="figure" style="text-align: center">
@@ -1401,7 +1435,8 @@ To start, compute the standard error associated with
 
 <!-- TODO later - add note to compare to 99% CI in previous section, which contained zero. -->
 
-\BeginKnitrBlock{example}<div class="example">Create a theory-based 95% confidence interval for the average price difference between books at the UCLA Bookstore and books on Amazon.
+::: {.workedexample}
+Create a theory-based 95% confidence interval for the average price difference between books at the UCLA Bookstore and books on Amazon.
 
 ---
 
@@ -1422,9 +1457,11 @@ To find the confidence interval,
   \end{align*}
   We are 95% confident that Amazon is, on average,
   between $0.32 and $6.84 less expensive
-  than the UCLA Bookstore for UCLA course books.</div>\EndKnitrBlock{example}
+  than the UCLA Bookstore for UCLA course books.
+:::
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">We have strong evidence that Amazon is,
+::: {.guidedpractice}
+We have strong evidence that Amazon is,
 on average, less expensive.
 How should this conclusion affect UCLA student
 buying habits?
@@ -1454,7 +1491,8 @@ on Amazon?^[The average price difference
   a large margin, making the case to use Amazon over
   the UCLA Bookstore quite compelling at that time.
   Now we frequently check multiple websites
-  to find the best price.]</div>\EndKnitrBlock{guidedpractice}
+  to find the best price.]
+:::
 
 
 \index{data!textbooks|)}
@@ -1464,13 +1502,15 @@ on Amazon?^[The average price difference
 
 ## Difference of two means {#differenceOfTwoMeans}
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Notation.**
+::: {.onebox}
+**Notation.**
 
 * $n_1$, $n_2$ = sample sizes of two independent samples
 * $\bar{x}_1$, $\bar{x}_2$ = sample means of two independent samples
 * $s_1$, $s_2$ = sample standard deviations of two independent samples
 * $\mu_1$, $\mu_2$ = population means of two independent populations
-* $\sigma_1$, $\sigma_2$ = population standard deviations of two independent populations</div>\EndKnitrBlock{onebox}
+* $\sigma_1$, $\sigma_2$ = population standard deviations of two independent populations
+:::
 
 In this section we consider a difference in
 two population means, $\mu_1 - \mu_2$, under the condition
@@ -2565,14 +2605,16 @@ two_mean_test(
 )
 ```
 
-<img src="06-inference-num_files/figure-html/unnamed-chunk-51-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="06-inference-num_files/figure-html/unnamed-chunk-32-1.png" width="70%" style="display: block; margin: auto;" />
 
 The results give a side-by-side boxplot of the observed data with the observed difference and order of subtraction at the top.  Check that you had the right value for the observed difference!  Next to the box plot, we have the null distribution of simulated differences in means, with the observed statistic marked with a vertical red line, and all values as or more extreme than the observed statistic colored red.  The figure caption gives the approximate p-value: for this set of 1000 simulations, we have only 1/1000 = 0.001.
 
-\BeginKnitrBlock{important}<div class="important">There are a couple of things to note when using the `two_mean_test` function:
+::: {.importantbox}
+There are a couple of things to note when using the `two_mean_test` function:
 
 * You need to identify which variable is your response and which your explanatory variable using the `formula` argument.
-* Specify order of subtraction using `first_in_subtraction` by putting in EXACTLY the category of the explanatory variable that you want to be first, in quotes --- must match capitalization, spaces, etc. for text values!</div>\EndKnitrBlock{important}
+* Specify order of subtraction using `first_in_subtraction` by putting in EXACTLY the category of the explanatory variable that you want to be first, in quotes --- must match capitalization, spaces, etc. for text values!
+:::
 
 We use bootstrapping to find a confidence interval for the true difference in means with the `two_mean_bootstrap_CI()` function.  The arguments will be very similar to `two_mean_test()`, with the addition of the confidence level.
 
@@ -2588,7 +2630,7 @@ two_mean_bootstrap_CI(
 )
 ```
 
-<img src="06-inference-num_files/figure-html/unnamed-chunk-53-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="06-inference-num_files/figure-html/unnamed-chunk-33-1.png" width="70%" style="display: block; margin: auto;" />
 
 The function produces the bootstrap distribution of the difference in means, with the upper and lower percentiles of the confidence range marked with vertical lines.  The figure caption gives the estimated confidence interval.  In this case, we are 90% confidence that ESCs increase the change in heart pumping capacity by between 4.72 and 11.09 percentage points on average. 
 

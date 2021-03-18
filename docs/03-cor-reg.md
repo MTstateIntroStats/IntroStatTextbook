@@ -1,8 +1,3 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
 # Correlation and regression {#cor-reg}
 
 ::: {.chapterintro}
@@ -149,7 +144,7 @@ For example, the residual for the observation marked by a yellow triangle is lar
 <p class="caption">(\#fig:scattHeadLTotalLLine-highlighted)A reasonable linear model was fit to represent the relationship between head length and total length, with three points and their residuals highlighted.</p>
 </div>
 
-::: {.important}
+::: {.importantbox}
 **Residual: Difference between observed and expected.**
 
 The **residual** of the $i^{th}$ observation $(x_i, y_i)$ is the difference of the observed response ($y_i$) and the response we would predict based on the model fit ($\hat{y}_i$): 
@@ -160,7 +155,7 @@ We typically identify $\hat{y}_i$ by plugging $x_i$ into the model.
 :::
 
 
-::: {.example}
+::: {.workedexample}
 The linear fit shown in Figure \@ref(fig:scattHeadLTotalLLine-highlighted) is given as $\hat{y} = 43+0.57x$.
 Based on this line, formally compute the residual of the observation
 $(76.0, 85.1)$. 
@@ -203,7 +198,7 @@ Creating a residual plot is sort of like tipping the scatterplot over so the reg
 <p class="caption">(\#fig:scattHeadLTotalLResidualPlot)Residual plot for the model predicting head length from total length for brushtail possums.</p>
 </div>
 
-::: {.example}
+::: {.workedexample}
 One purpose of residual plots is to identify characteristics or patterns still apparent in data after fitting a model.
 Figure \@ref(fig:sampleLinesAndResPlots) shows three scatterplots with linear models in the first row and residual plots in the second row. Can you identify any patterns remaining in the residuals? 
 
@@ -233,7 +228,7 @@ We will address this sort of scenario in Chapter \@ref(inference-reg).
 We've seen plots with strong linear relationships and others with very weak linear relationships. 
 It would be useful if we could quantify the strength of these linear relationships with a statistic.
 
-::: {.important}
+::: {.importantbox}
 **Correlation: strength and direction of a linear relationship.** 
 
 **Correlation** which always takes values between -1 and 1, is a summary statistic that describes the strength (by its magnitude) and direction (by its sign) of the linear relationship between two variables. We denote the correlation by $R$ or $r$.
@@ -390,7 +385,7 @@ The model output tells us that the intercept is approximately 24.319 and the slo
 But what do these values mean? 
 Interpreting parameters in a regression model is often one of the most important steps in the analysis.
 
-::: {.example}
+::: {.workedexample}
 The intercept and slope estimates for the Elmhurst data are $b_0$ = 24.319 and $b_1$ = -0.043.
 What do these numbers really mean? 
 
@@ -407,7 +402,7 @@ The meaning of the intercept is relevant to this application since the family in
 In other applications, the intercept may have little or no practical value if there are no observations where $x$ is near zero.
 :::
 
-::: {.important}
+::: {.importantbox}
 **Interpreting parameters estimated by least squares.** 
 
 The **slope** describes the estimated difference in the $y$ variable if the explanatory variable $x$ for a case happened to be one unit larger. 
@@ -416,7 +411,7 @@ The **intercept** describes the average outcome of $y$ if $x=0$ *and* the linear
 :::
 
 
-::: {.example}
+::: {.workedexample}
 Suppose a high school senior is considering Elmhurst College. 
 Can they simply use the linear equation that we have estimated to calculate her financial aid from the university? 
 
@@ -510,7 +505,7 @@ We could plot the point $(102, 19.9)$ on Figure \@ref(fig:elmhurstScatterW2Lines
 
 Next, we formally find the point estimates $b_0$ and $b_1$ of the parameters $\beta_0$ and $\beta_1$.
 
-::: {.example}
+::: {.workedexample}
 Using the summary statistics in Table \@ref(tab:summaryStatsElmhurstRegr), compute the slope for the regression line of gift aid against family income.
 
 ---
@@ -525,7 +520,7 @@ You might recall the form of a line from math class, which we can use to find th
 $$y - y_0 = slope\times (x - x_0)$$
 
 
-::: {.important}
+::: {.importantbox}
 **Identifying the least squares line from summary statistics.** 
 
 To identify the least squares line from summary statistics:
@@ -536,7 +531,7 @@ To identify the least squares line from summary statistics:
 :::
 
 
-::: {.example}
+::: {.workedexample}
 Using the point (102, 19.9) from the sample means and the slope estimate $b_1 = -0.0431$, find the least-squares line for predicting aid based on family income.
 
 ---
@@ -571,7 +566,7 @@ Linear regression is simply a modeling framework.
 The truth is almost always much more complex than our simple line. 
 For example, we do not know how the data outside of our limited window will behave.
 
-::: {.example}
+::: {.workedexample}
 Use the model $\widehat{aid} = 24.3 - 0.0431 \times \textit{family_income}$ to estimate the aid of another freshman student whose family had income of $1 million.
 
 ---
@@ -615,13 +610,13 @@ $$R = -0.499 \rightarrow R^2 = 0.25$$
 The squared correlation coefficient, $R^2$, is also called the **coefficient of determination**. 
 
 
-::: {.important}
+::: {.importantbox}
 **Coefficient of determination: proportion of variability in the response explained by the model.**
 
 Since $R$ is always between $-1$ and $1$, $R^2$ will always be between $0$ and $1$. This statistic is called the **coefficient of determination** and measures the proportion of variation in the response variable, $y$, that can be explained by the linear model with predictor $x$.
 :::
 
-::: {.example}
+::: {.workedexample}
 Examine the scatterplot of head length (mm) versus total length (cm) of possums in Figure \@ref(fig:scattHeadLTotalLLine). 
 The correlation between these two variables is $R = 0.69$. 
 Find and interpret the coefficient of determination.
@@ -644,7 +639,7 @@ If a linear model has a very strong negative relationship with a correlation of 
 
 More generally, $R^2$ can be calculated as a ratio of a measure of variability around the line divided by a measure of total variability.
 
-::: {.important}
+::: {.importantbox}
 **Sums of squares to measure variability in $y$.**
 
 We can measure the variability in the $y$ values by how far they tend to fall from their mean, $\bar{y}$. We define this value as the **total sum of squares**,
@@ -668,7 +663,7 @@ $$
 
 
 
-::: {.example}
+::: {.workedexample}
 Among 104 possums, the total variability in head length (mm) is $SST = 1315.2$^[$SST$ can be calculated by finding the sample variance, $s^2$ and multiplying by $n-1$.]. The sum of squared residuals is $SSE = 687.0$. Find $R^2$.
 
 ---
@@ -745,7 +740,7 @@ Using values from Table \@ref(tab:marioKartNewUsedRegrSummary), the model equati
 $$\widehat{price} = 42.871 + 10.90 \times condnew$$
 
 
-::: {.example}
+::: {.workedexample}
 Interpret the two parameters estimated in the model for the price of Mario Kart in eBay auctions. 
 The intercept is the estimated price when `condnew` takes value 0, i.e. when the game is in used condition. 
 That is, the average selling price of a used version of the game is \$42.87.
@@ -756,7 +751,7 @@ The slope indicates that, on average, new games sell for about \$10.90 more than
 :::
 
 
-::: {.important}
+::: {.importantbox}
 **Interpreting model estimates for categorical predictors.** 
 
 The estimated intercept is the value of the response variable for the first category (i.e. the category corresponding to an indicator value of 0). 
@@ -774,7 +769,7 @@ These points are especially important because they can have a strong influence o
 
 ### Types of outliers
 
-:::{ .example}
+:::{ .workedexample}
 There are three plots shown in Figure \@ref(fig:outlierPlots1) along with the least squares line and residual plots. 
 For each scatterplot and residual plot pair, identify the outliers and note how they influence the least squares line. 
 Recall that an outlier is any point that doesn't appear to belong with the vast majority of the other points.
@@ -793,7 +788,7 @@ Recall that an outlier is any point that doesn't appear to belong with the vast 
 <p class="caption">(\#fig:outlierPlots1)Three plots, each with a least squares line and residual plot. All data sets have at least one outlier.</p>
 </div>
 
-:::{ .example}
+:::{ .workedexample}
 There are three plots shown in Figure \@ref(fig:outlierPlots2) along with the least squares line and residual plots. 
 As you did in the previous exercise, for each scatterplot and residual plot pair, identify the outliers and note how they influence the least squares line. 
 Recall that an outlier is any point that doesn't appear to belong with the vast majority of the other points.
@@ -817,7 +812,7 @@ You will probably find that there is some trend in the main clouds of Plots C,�
 In these cases, the outliers influenced the slope of the least squares lines. 
 In Plot E, data with no clear trend were assigned a line with a large trend simply due to one outlier (!).
 
-::: {.important}
+::: {.importantbox}
 **Leverage.** 
 
 Points that fall horizontally away from the center of the cloud tend to pull harder on the line, so we call them points with **high leverage**.
@@ -826,7 +821,7 @@ Points that fall horizontally away from the center of the cloud tend to pull har
 Points that fall horizontally far from the line are points of high leverage; these points can strongly influence the slope of the least squares line. 
 If one of these high leverage points does appear to actually invoke its influence on the slope of the line -- as in Plots C, D, and E of Figures \@ref(fig:outlierPlots1) and \@ref(fig:outlierPlots2) -- then we call it an **influential point**. 
 
-::: {.important}
+::: {.importantbox}
 **Influential point.** 
 
 A point is **influential** if, had we fitted the line without it, the influential point would have been unusually far from the least squares line.

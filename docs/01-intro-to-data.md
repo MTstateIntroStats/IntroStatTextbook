@@ -192,7 +192,7 @@ So what we are really asking is the following: is the difference so large that w
 
 While we don't yet have our statistical tools to fully address this question on our own, we can comprehend the conclusions of the published analysis: there was compelling evidence of harm by stents in this study of stroke patients.
 
-::: {.important}
+::: {.importantbox}
 **Be careful.**
 Do not generalize the results of this study to all patients and all stents.
 This study looked at patients with very specific characteristics who volunteered to be a part of this study and who may not be representative of all stroke patients.
@@ -642,7 +642,7 @@ That is, two variables are independent if there is no evident relationship betwe
 
 
 
-::: {.important}
+::: {.importantbox}
 **Associated or independent, not both.**
 A pair of variables are either related in some way (associated) or not (independent).
 No pair of variables is both associated and independent.
@@ -703,7 +703,7 @@ Note that the case study in Section \@ref(basic-stents-strokes) did not use a pl
 
 
 
-::: {.important}
+::: {.importantbox}
 **Association $\neq$ Causation.**
 In general, association does not imply causation, and causation can only be inferred from a randomized experiment.
 :::
@@ -757,7 +757,7 @@ Second, and more importantly, it is unclear whether these cases are actually rep
 
 
 
-::: {.important}
+::: {.importantbox}
 **Anecdotal evidence.**
 Be careful of data collected in a haphazard fashion.
 Such evidence may be true and verifiable, but it may only represent extraordinary cases.

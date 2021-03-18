@@ -380,7 +380,7 @@ squares regression line in Figure \@ref(fig:unemploymentAndChangeInHouse). The r
 </tbody>
 </table>
 
-::: {.example}
+::: {.workedexample}
 What do the first and second columns of Table \@ref(tab:midtermUnempRegTable)  represent?
 
 ---
@@ -408,7 +408,7 @@ T
 Table \@ref(tab:midtermUnempRegTable) .
 
 
-::: {.example}
+::: {.workedexample}
 Use Table \@ref(tab:midtermUnempRegTable) to determine the p-value for the
 hypothesis test. 
 
@@ -428,7 +428,7 @@ higher unemployment rate has a negative correlation with percent of seats lost i
 As the final step in a mathematical hypothesis test for the slope, we use the information provided to make a conclusion about whether or not the data could have come from a population where the true slope was zero (i.e., $\beta_1 = 0$). Before evaluating the formal hypothesis claim, sometimes it is important to check your intuition.  Based on everything we've seen in the examples above describing the variability of a line from sample to sample, as yourself if the linear relationship given by the data could have come from a population in which the slope was truly zero.
 
 
-::: {.example}
+::: {.workedexample}
 Elmhurst College in Illinois released anonymized data for family income and financial support provided by the school for Elmhurst's first-year students in 2011. Figure \@ref(fig:elmhurstScatterWLSROnly-CLTsection) shows the least-squares regression line fit to a scatterplot of a sample of the data. How sure are you that the slope is
 statistically significantly different from zero? That is, do you think a
 formal hypothesis test would reject the claim that the true slope of the
@@ -499,7 +499,7 @@ evaluate the following hypotheses.
 
 
 
-::: {.caution}
+::: {.importantbox}
 **Inference for regression.**
 
 We usually rely on statistical software to
@@ -517,7 +517,7 @@ Similar to how we can conduct a hypothesis test for a model coefficient
 using regression output, we can also construct a confidence interval for
 that coefficient.
 
-::: {.important}
+::: {.importantbox}
 **Confidence intervals for coefficients** 
 
 Confidence intervals for model
@@ -529,7 +529,7 @@ corresponding to the confidence level with the model's degrees of
 freedom. For simple linear regression, the model's degrees of freedom are $n-1$.
 :::
 
-::: {.example}
+::: {.workedexample}
 Compute a 95% confidence interval for the slope coefficient using the
 regression output from Table \@ref(tab:rOutputForIncomeAidLSRLineInInferenceSection). 
 

@@ -209,14 +209,14 @@ For example, the residual for the observation marked by a yellow triangle is lar
 Figure 3.8: A reasonable linear model was fit to represent the relationship between head length and total length, with three points and their residuals highlighted.
 </p>
 </div>
-<div class="important">
+<div class="importantbox">
 <p><strong>Residual: Difference between observed and expected.</strong></p>
 <p>The <strong>residual</strong> of the <span class="math inline">\(i^{th}\)</span> observation <span class="math inline">\((x_i, y_i)\)</span> is the difference of the observed response (<span class="math inline">\(y_i\)</span>) and the response we would predict based on the model fit (<span class="math inline">\(\hat{y}_i\)</span>):</p>
 <p><span class="math display">\[e_i = y_i - \hat{y}_i\]</span></p>
 <p>We typically identify <span class="math inline">\(\hat{y}_i\)</span> by plugging <span class="math inline">\(x_i\)</span> into the model.</p>
 </div>
-<div class="example">
-<p><span id="exm:unlabeled-div-13" class="example"><strong>Example 3.1  </strong></span>The linear fit shown in Figure <a href="cor-reg.html#fig:scattHeadLTotalLLine-highlighted">3.8</a> is given as <span class="math inline">\(\hat{y} = 43+0.57x\)</span>.
+<div class="workedexample">
+<p>The linear fit shown in Figure <a href="cor-reg.html#fig:scattHeadLTotalLLine-highlighted">3.8</a> is given as <span class="math inline">\(\hat{y} = 43+0.57x\)</span>.
 Based on this line, formally compute the residual of the observation
 <span class="math inline">\((76.0, 85.1)\)</span>.
 This observation is marked by a red circle in Figure <a href="cor-reg.html#fig:scattHeadLTotalLLine-highlighted">3.8</a>.
@@ -230,10 +230,10 @@ Check it against the earlier visual estimate, <span class="math inline">\(-1\)<
 visual estimate of <span class="math inline">\(-1\)</span> mm. The negative residual indicates that the linear model overpredicted head length for this particular possum.</p>
 </div>
 <div class="guidedpractice">
-<p>If a model underestimates an observation, will the residual be positive or negative? What about if it overestimates the observation?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;If a model underestimates an observation, then the model estimate is below the actual. The residual, which is the actual observation value minus the model estimate, must then be positive. The opposite is true when the model overestimates the observation: the residual is negative.&lt;/p&gt;"><sup>49</sup></a></p>
+<p>If a model underestimates an observation, will the residual be positive or negative? What about if it overestimates the observation?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;If a model underestimates an observation, then the model estimate is below the actual. The residual, which is the actual observation value minus the model estimate, must then be positive. The opposite is true when the model overestimates the observation: the residual is negative.&lt;/p&gt;"><sup>53</sup></a></p>
 </div>
 <div class="guidedpractice">
-<p>Compute the residuals for the observation marked by a green diamond, <span class="math inline">\((85.0, 98.6)\)</span>, and the observation marked by a yellow triangle, <span class="math inline">\((95.5, 94.0)\)</span>, in the figure using the linear relationship <span class="math inline">\(\hat{y} = 43 + 0.57x\)</span>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Green diamond: &lt;span class="math inline"&gt;\(\hat{y} = 43+0.57x = 43+0.57\times 85.0 = 91.45 \rightarrow e = y - \hat{y} = 98.6-91.45=7.15\)&lt;/span&gt;. This is close to the earlier estimate of 7. Yellow triangle: &lt;span class="math inline"&gt;\(\hat{y} = 43+0.57x = 97.44 \rightarrow e = -3.44\)&lt;/span&gt;. This is also close to the estimate of -4.&lt;/p&gt;'><sup>50</sup></a></p>
+<p>Compute the residuals for the observation marked by a green diamond, <span class="math inline">\((85.0, 98.6)\)</span>, and the observation marked by a yellow triangle, <span class="math inline">\((95.5, 94.0)\)</span>, in the figure using the linear relationship <span class="math inline">\(\hat{y} = 43 + 0.57x\)</span>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Green diamond: &lt;span class="math inline"&gt;\(\hat{y} = 43+0.57x = 43+0.57\times 85.0 = 91.45 \rightarrow e = y - \hat{y} = 98.6-91.45=7.15\)&lt;/span&gt;. This is close to the earlier estimate of 7. Yellow triangle: &lt;span class="math inline"&gt;\(\hat{y} = 43+0.57x = 97.44 \rightarrow e = -3.44\)&lt;/span&gt;. This is also close to the estimate of -4.&lt;/p&gt;'><sup>54</sup></a></p>
 </div>
 <p>Residuals are helpful in evaluating how well a linear model fits a data set.
 We often display them in a residual plot such as the one shown in Figure <a href="cor-reg.html#fig:scattHeadLTotalLResidualPlot">3.9</a> for the regression line in Figure <a href="cor-reg.html#fig:scattHeadLTotalLLine-highlighted">3.8</a>.
@@ -246,8 +246,8 @@ Creating a residual plot is sort of like tipping the scatterplot over so the reg
 Figure 3.9: Residual plot for the model predicting head length from total length for brushtail possums.
 </p>
 </div>
-<div class="example">
-<p><span id="exm:unlabeled-div-14" class="example"><strong>Example 3.2  </strong></span>One purpose of residual plots is to identify characteristics or patterns still apparent in data after fitting a model.
+<div class="workedexample">
+<p>One purpose of residual plots is to identify characteristics or patterns still apparent in data after fitting a model.
 Figure <a href="cor-reg.html#fig:sampleLinesAndResPlots">3.10</a> shows three scatterplots with linear models in the first row and residual plots in the second row. Can you identify any patterns remaining in the residuals?</p>
 <hr>
 <p>In the first data set (first column), the residuals show no obvious patterns.
@@ -274,12 +274,12 @@ Figure 3.10: Sample data with their best fitting lines (top row) and their corre
 </h3>
 <p>We’ve seen plots with strong linear relationships and others with very weak linear relationships.
 It would be useful if we could quantify the strength of these linear relationships with a statistic.</p>
-<div class="important">
+<div class="importantbox">
 <p><strong>Correlation: strength and direction of a linear relationship.</strong></p>
 <p><strong>Correlation</strong> which always takes values between -1 and 1, is a summary statistic that describes the strength (by its magnitude) and direction (by its sign) of the linear relationship between two variables. We denote the correlation by <span class="math inline">\(R\)</span> or <span class="math inline">\(r\)</span>.</p>
 </div>
 <p>We can compute the correlation using a formula, just as we did with the sample mean and standard deviation.
-This formula is rather complex<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Formally, we can compute the correlation for observations &lt;span class="math inline"&gt;\((x_1, y_1)\)&lt;/span&gt;, &lt;span class="math inline"&gt;\((x_2, y_2)\)&lt;/span&gt;, ..., &lt;span class="math inline"&gt;\((x_n, y_n)\)&lt;/span&gt; using the formula &lt;span class="math display"&gt;\[R = \frac{1}{n-1} \sum_{i=1}^{n} \frac{x_i-\bar{x}}{s_x}\frac{y_i-\bar{y}}{s_y}\]&lt;/span&gt; where &lt;span class="math inline"&gt;\(\bar{x}\)&lt;/span&gt;, &lt;span class="math inline"&gt;\(\bar{y}\)&lt;/span&gt;, &lt;span class="math inline"&gt;\(s_x\)&lt;/span&gt;, and &lt;span class="math inline"&gt;\(s_y\)&lt;/span&gt; are the sample means and standard deviations for each variable.&lt;/p&gt;'><sup>51</sup></a>,
+This formula is rather complex<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Formally, we can compute the correlation for observations &lt;span class="math inline"&gt;\((x_1, y_1)\)&lt;/span&gt;, &lt;span class="math inline"&gt;\((x_2, y_2)\)&lt;/span&gt;, ..., &lt;span class="math inline"&gt;\((x_n, y_n)\)&lt;/span&gt; using the formula &lt;span class="math display"&gt;\[R = \frac{1}{n-1} \sum_{i=1}^{n} \frac{x_i-\bar{x}}{s_x}\frac{y_i-\bar{y}}{s_y}\]&lt;/span&gt; where &lt;span class="math inline"&gt;\(\bar{x}\)&lt;/span&gt;, &lt;span class="math inline"&gt;\(\bar{y}\)&lt;/span&gt;, &lt;span class="math inline"&gt;\(s_x\)&lt;/span&gt;, and &lt;span class="math inline"&gt;\(s_y\)&lt;/span&gt; are the sample means and standard deviations for each variable.&lt;/p&gt;'><sup>55</sup></a>,
 and like with other statistics, we generally perform the calculations on a computer or calculator.
 Figure <a href="cor-reg.html#fig:posNegCorPlots">3.11</a> shows eight plots and their corresponding correlations. Only when the relationship is perfectly linear is the correlation either -1 or 1. If the relationship is strong and positive, the correlation will be near +1. If it is strong and negative, it will be near -1. If there is no apparent linear relationship between the variables, then the correlation will be near zero.</p>
 <div class="figure" style="text-align: center">
@@ -300,7 +300,7 @@ Figure 3.12: Sample scatterplots and their correlations. In each case, there is 
 <div class="guidedpractice">
 <p>No straight line is a good fit for the data sets represented in Figure <a href="cor-reg.html#fig:corForNonLinearPlots">3.12</a>.
 Try drawing nonlinear curves on each plot.
-Once you create a curve for each, describe what is important in your fit.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;We’ll leave it to you to draw the lines. In general, the lines you draw should be close to most points and reflect overall trends in the data.&lt;/p&gt;"><sup>52</sup></a></p>
+Once you create a curve for each, describe what is important in your fit.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;We’ll leave it to you to draw the lines. In general, the lines you draw should be close to most points and reflect overall trends in the data.&lt;/p&gt;"><sup>56</sup></a></p>
 </div>
 </div>
 </div>
@@ -324,7 +324,7 @@ Figure 3.13: Gift aid and family income for a random sample of 50 freshman stude
 </p>
 </div>
 <div class="guidedpractice">
-<p>Is the correlation positive or negative in Figure <a href="cor-reg.html#fig:elmhurstScatterW2Lines">3.13</a>?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Larger family incomes are associated with lower amounts of aid, so the correlation will be negative. Using a computer, the correlation can be computed: -0.499.&lt;/p&gt;"><sup>53</sup></a></p>
+<p>Is the correlation positive or negative in Figure <a href="cor-reg.html#fig:elmhurstScatterW2Lines">3.13</a>?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Larger family incomes are associated with lower amounts of aid, so the correlation will be negative. Using a computer, the correlation can be computed: -0.499.&lt;/p&gt;"><sup>57</sup></a></p>
 </div>
 </div>
 <div id="an-objective-measure-for-finding-the-best-line" class="section level3" number="3.2.2">
@@ -346,7 +346,7 @@ The following are three possible reasons to choose this option instead of trying
 <li>Computing the least squares line is widely supported in statistical software.</li>
 <li>In many applications, a residual twice as large as another residual is more than twice as bad. For example, being off by 4 is usually more than twice as bad as being off by 2. Squaring the residuals accounts for this discrepancy.</li>
 </ol>
-<p>The first two reasons are largely for tradition and convenience; the last reason explains why the least squares criterion is typically most helpful.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;There are applications where the sum of residual magnitudes may be more useful, and there are plenty of other criteria we might consider. However, this book only applies the least squares criterion.&lt;/p&gt;"><sup>54</sup></a></p>
+<p>The first two reasons are largely for tradition and convenience; the last reason explains why the least squares criterion is typically most helpful.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;There are applications where the sum of residual magnitudes may be more useful, and there are plenty of other criteria we might consider. However, this book only applies the least squares criterion.&lt;/p&gt;"><sup>58</sup></a></p>
 </div>
 <div id="finding-and-interpreting-the-least-squares-line" class="section level3" number="3.2.3">
 <h3>
@@ -450,8 +450,8 @@ We should also note that these data are from the 2011-2012 academic year, and al
 <p>The model output tells us that the intercept is approximately 24.319 and the slope is approximately -0.043.</p>
 <p>But what do these values mean?
 Interpreting parameters in a regression model is often one of the most important steps in the analysis.</p>
-<div class="example">
-<p><span id="exm:unlabeled-div-15" class="example"><strong>Example 3.3  </strong></span>The intercept and slope estimates for the Elmhurst data are <span class="math inline">\(b_0\)</span> = 24.319 and <span class="math inline">\(b_1\)</span> = -0.043.
+<div class="workedexample">
+<p>The intercept and slope estimates for the Elmhurst data are <span class="math inline">\(b_0\)</span> = 24.319 and <span class="math inline">\(b_1\)</span> = -0.043.
 What do these numbers really mean?</p>
 <hr>
 <p>Interpreting the slope parameter is helpful in almost any application.
@@ -463,13 +463,13 @@ That is, increasing a student’s family income may not cause the student’s ai
 The meaning of the intercept is relevant to this application since the family income for some students at Elmhurst is $0.
 In other applications, the intercept may have little or no practical value if there are no observations where <span class="math inline">\(x\)</span> is near zero.</p>
 </div>
-<div class="important">
+<div class="importantbox">
 <p><strong>Interpreting parameters estimated by least squares.</strong></p>
 <p>The <strong>slope</strong> describes the estimated difference in the <span class="math inline">\(y\)</span> variable if the explanatory variable <span class="math inline">\(x\)</span> for a case happened to be one unit larger.</p>
 <p>The <strong>intercept</strong> describes the average outcome of <span class="math inline">\(y\)</span> if <span class="math inline">\(x=0\)</span> <em>and</em> the linear model is valid all the way to <span class="math inline">\(x=0\)</span>, which in many applications is not the case.</p>
 </div>
-<div class="example">
-<p><span id="exm:unlabeled-div-16" class="example"><strong>Example 3.4  </strong></span>Suppose a high school senior is considering Elmhurst College.
+<div class="workedexample">
+<p>Suppose a high school senior is considering Elmhurst College.
 Can they simply use the linear equation that we have estimated to calculate her financial aid from the university?</p>
 <hr>
 <p>She may use it as an estimate, though some qualifiers on this approach are important.
@@ -612,15 +612,15 @@ R
 </tr></tbody>
 </table></div>
 <p>Next, we formally find the point estimates <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> of the parameters <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>.</p>
-<div class="example">
-<p><span id="exm:unlabeled-div-17" class="example"><strong>Example 3.5  </strong></span>Using the summary statistics in Table <a href="cor-reg.html#tab:summaryStatsElmhurstRegr">3.3</a>, compute the slope for the regression line of gift aid against family income.</p>
+<div class="workedexample">
+<p>Using the summary statistics in Table <a href="cor-reg.html#tab:summaryStatsElmhurstRegr">3.3</a>, compute the slope for the regression line of gift aid against family income.</p>
 <hr>
 <p>Compute the slope using the summary statistics from Table <a href="cor-reg.html#tab:summaryStatsElmhurstRegr">3.3</a>:</p>
 <p><span class="math display">\[b_1 = \frac{s_y}{s_x} r = \frac{5.46}{63.2}(-0.499) = -0.0431\]</span></p>
 </div>
 <p>You might recall the form of a line from math class, which we can use to find the model fit, including the estimate of <span class="math inline">\(b_0\)</span>. Given the slope of a line and a point on the line, <span class="math inline">\((x_0, y_0)\)</span>, the equation for the line can be written as</p>
 <p><span class="math display">\[y - y_0 = slope\times (x - x_0)\]</span></p>
-<div class="important">
+<div class="importantbox">
 <p><strong>Identifying the least squares line from summary statistics.</strong></p>
 <p>To identify the least squares line from summary statistics:</p>
 <ul>
@@ -629,8 +629,8 @@ R
 <li>Simplify the equation, which would reveal that <span class="math inline">\(b_0 = \bar{y} - b_1 \bar{x}\)</span>.</li>
 </ul>
 </div>
-<div class="example">
-<p><span id="exm:unlabeled-div-18" class="example"><strong>Example 3.6  </strong></span>Using the point (102, 19.9) from the sample means and the slope estimate <span class="math inline">\(b_1 = -0.0431\)</span>, find the least-squares line for predicting aid based on family income.</p>
+<div class="workedexample">
+<p>Using the point (102, 19.9) from the sample means and the slope estimate <span class="math inline">\(b_1 = -0.0431\)</span>, find the least-squares line for predicting aid based on family income.</p>
 <hr>
 <p>Apply the point-slope equation using <span class="math inline">\((102, 19.9)\)</span> and the slope <span class="math inline">\(b_1 = -0.0431\)</span>:</p>
 <p><span class="math display">\[\begin{aligned}
@@ -651,7 +651,7 @@ The final equation should always include a “hat” on the variable being predi
 <span class="header-section-number">3.2.4</span> Extrapolation is treacherous<a class="anchor" aria-label="anchor" href="#extrapolation-is-treacherous"><i class="fas fa-link"></i></a>
 </h3>
 <blockquote>
-<p><em>When those blizzards hit the East Coast this winter, it proved to my satisfaction that global warming was a fraud. That snow was freezing cold. But in an alarming trend, temperatures this spring have risen. Consider this: On February <span class="math inline">\(6^{th}\)</span> it was 10 degrees. Today it hit almost 80. At this rate, by August it will be 220 degrees. So clearly folks the climate debate rages on.</em><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="http://www.cc.com/video-clips/l4nkoq" class="uri"&gt;http://www.cc.com/video-clips/l4nkoq&lt;/a&gt;&lt;/p&gt;'><sup>55</sup></a></p>
+<p><em>When those blizzards hit the East Coast this winter, it proved to my satisfaction that global warming was a fraud. That snow was freezing cold. But in an alarming trend, temperatures this spring have risen. Consider this: On February <span class="math inline">\(6^{th}\)</span> it was 10 degrees. Today it hit almost 80. At this rate, by August it will be 220 degrees. So clearly folks the climate debate rages on.</em><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="http://www.cc.com/video-clips/l4nkoq" class="uri"&gt;http://www.cc.com/video-clips/l4nkoq&lt;/a&gt;&lt;/p&gt;'><sup>59</sup></a></p>
 <p>Stephen Colbert<br>
 April 6th, 2010</p>
 </blockquote>
@@ -659,8 +659,8 @@ April 6th, 2010</p>
 Linear regression is simply a modeling framework.
 The truth is almost always much more complex than our simple line.
 For example, we do not know how the data outside of our limited window will behave.</p>
-<div class="example">
-<p><span id="exm:unlabeled-div-19" class="example"><strong>Example 3.7  </strong></span>Use the model <span class="math inline">\(\widehat{aid} = 24.3 - 0.0431 \times \textit{family_income}\)</span> to estimate the aid of another freshman student whose family had income of $1 million.</p>
+<div class="workedexample">
+<p>Use the model <span class="math inline">\(\widehat{aid} = 24.3 - 0.0431 \times \textit{family_income}\)</span> to estimate the aid of another freshman student whose family had income of $1 million.</p>
 <hr>
 <p>We want to calculate the aid for a family with $1 million income.
 Note that in our model, this will be represented as 1,000 since the data are in $1,000s.</p>
@@ -692,12 +692,12 @@ or about 25% in the data’s variation by using information about family income 
 This corresponds exactly to the R-squared value:</p>
 <p><span class="math display">\[R = -0.499 \rightarrow R^2 = 0.25\]</span>
 The squared correlation coefficient, <span class="math inline">\(R^2\)</span>, is also called the <strong>coefficient of determination</strong>.</p>
-<div class="important">
+<div class="importantbox">
 <p><strong>Coefficient of determination: proportion of variability in the response explained by the model.</strong></p>
 <p>Since <span class="math inline">\(R\)</span> is always between <span class="math inline">\(-1\)</span> and <span class="math inline">\(1\)</span>, <span class="math inline">\(R^2\)</span> will always be between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>. This statistic is called the <strong>coefficient of determination</strong> and measures the proportion of variation in the response variable, <span class="math inline">\(y\)</span>, that can be explained by the linear model with predictor <span class="math inline">\(x\)</span>.</p>
 </div>
-<div class="example">
-<p><span id="exm:unlabeled-div-20" class="example"><strong>Example 3.8  </strong></span>Examine the scatterplot of head length (mm) versus total length (cm) of possums in Figure <a href="cor-reg.html#fig:scattHeadLTotalLLine">3.6</a>.
+<div class="workedexample">
+<p>Examine the scatterplot of head length (mm) versus total length (cm) of possums in Figure <a href="cor-reg.html#fig:scattHeadLTotalLLine">3.6</a>.
 The correlation between these two variables is <span class="math inline">\(R = 0.69\)</span>.
 Find and interpret the coefficient of determination.</p>
 <hr>
@@ -712,16 +712,16 @@ Figure 3.14: For these 104 possums, the range of head lengths is about 103 <span
 </p>
 </div>
 <div class="guidedpractice">
-<p>If a linear model has a very strong negative relationship with a correlation of -0.97, how much of the variation in the response is explained by the explanatory variable?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;About &lt;span class="math inline"&gt;\(R^2 = (-0.97)^2 = 0.94\)&lt;/span&gt; or 94% of the variation is explained by the linear model.&lt;/p&gt;'><sup>56</sup></a></p>
+<p>If a linear model has a very strong negative relationship with a correlation of -0.97, how much of the variation in the response is explained by the explanatory variable?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;About &lt;span class="math inline"&gt;\(R^2 = (-0.97)^2 = 0.94\)&lt;/span&gt; or 94% of the variation is explained by the linear model.&lt;/p&gt;'><sup>60</sup></a></p>
 </div>
 <p>More generally, <span class="math inline">\(R^2\)</span> can be calculated as a ratio of a measure of variability around the line divided by a measure of total variability.</p>
-<div class="important">
+<div class="importantbox">
 <p><strong>Sums of squares to measure variability in <span class="math inline">\(y\)</span>.</strong></p>
 <p>We can measure the variability in the <span class="math inline">\(y\)</span> values by how far they tend to fall from their mean, <span class="math inline">\(\bar{y}\)</span>. We define this value as the <strong>total sum of squares</strong>,</p>
 <p><span class="math display">\[
 SST = (y_1 - \bar{y})^2 + (y_2 - \bar{y})^2 + \cdots + (y_n - \bar{y})^2.
 \]</span></p>
-<p>Left-over variability in the <span class="math inline">\(y\)</span> values if we know <span class="math inline">\(x\)</span> can be measured by the <strong>sum of squared errors</strong>, or sum of squared residuals<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;The difference &lt;span class="math inline"&gt;\(SST - SSE\)&lt;/span&gt; is called the &lt;strong&gt;regression sum of squares&lt;/strong&gt;, &lt;span class="math inline"&gt;\(SSR\)&lt;/span&gt;, and can also be calculated as &lt;span class="math inline"&gt;\(SSR = (\hat{y}_1 - \bar{y})^2 + (\hat{y}_2 - \bar{y})^2 + \cdots + (\hat{y}_n - \bar{y})^2\)&lt;/span&gt;. &lt;span class="math inline"&gt;\(SSR\)&lt;/span&gt; represents the variation in &lt;span class="math inline"&gt;\(y\)&lt;/span&gt; that was accounted for in our model.&lt;/p&gt;'><sup>57</sup></a>,</p>
+<p>Left-over variability in the <span class="math inline">\(y\)</span> values if we know <span class="math inline">\(x\)</span> can be measured by the <strong>sum of squared errors</strong>, or sum of squared residuals<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;The difference &lt;span class="math inline"&gt;\(SST - SSE\)&lt;/span&gt; is called the &lt;strong&gt;regression sum of squares&lt;/strong&gt;, &lt;span class="math inline"&gt;\(SSR\)&lt;/span&gt;, and can also be calculated as &lt;span class="math inline"&gt;\(SSR = (\hat{y}_1 - \bar{y})^2 + (\hat{y}_2 - \bar{y})^2 + \cdots + (\hat{y}_n - \bar{y})^2\)&lt;/span&gt;. &lt;span class="math inline"&gt;\(SSR\)&lt;/span&gt; represents the variation in &lt;span class="math inline"&gt;\(y\)&lt;/span&gt; that was accounted for in our model.&lt;/p&gt;'><sup>61</sup></a>,</p>
 <p><span class="math display">\[
 SSE = (y_1 - \hat{y}_1)^2 + (y_2 - \hat{y}_2)^2 + \cdots + (y_n - \hat{y}_n)^2 = e_{1}^2 + e_{2}^2 + \dots + e_{n}^2
 \]</span></p>
@@ -730,8 +730,8 @@ SSE = (y_1 - \hat{y}_1)^2 + (y_2 - \hat{y}_2)^2 + \cdots + (y_n - \hat{y}_n)^2 =
 R^2 = \frac{SST - SSE}{SST} = 1 - \frac{SSE}{SST}
 \]</span></p>
 </div>
-<div class="example">
-<p><span id="exm:unlabeled-div-21" class="example"><strong>Example 3.9  </strong></span>Among 104 possums, the total variability in head length (mm) is <span class="math inline">\(SST = 1315.2\)</span><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="math inline"&gt;\(SST\)&lt;/span&gt; can be calculated by finding the sample variance, &lt;span class="math inline"&gt;\(s^2\)&lt;/span&gt; and multiplying by &lt;span class="math inline"&gt;\(n-1\)&lt;/span&gt;.&lt;/p&gt;'><sup>58</sup></a>. The sum of squared residuals is <span class="math inline">\(SSE = 687.0\)</span>. Find <span class="math inline">\(R^2\)</span>.</p>
+<div class="workedexample">
+<p>Among 104 possums, the total variability in head length (mm) is <span class="math inline">\(SST = 1315.2\)</span><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="math inline"&gt;\(SST\)&lt;/span&gt; can be calculated by finding the sample variance, &lt;span class="math inline"&gt;\(s^2\)&lt;/span&gt; and multiplying by &lt;span class="math inline"&gt;\(n-1\)&lt;/span&gt;.&lt;/p&gt;'><sup>62</sup></a>. The sum of squared residuals is <span class="math inline">\(SSE = 687.0\)</span>. Find <span class="math inline">\(R^2\)</span>.</p>
 <hr>
 <p>Since we know <span class="math inline">\(SSE\)</span> and <span class="math inline">\(SST\)</span>, we can calculate <span class="math inline">\(R^2\)</span> as</p>
 <p><span class="math display">\[
@@ -823,14 +823,14 @@ condnew
 </table></div>
 <p>Using values from Table <a href="cor-reg.html#tab:marioKartNewUsedRegrSummary">3.4</a>, the model equation can be summarized as</p>
 <p><span class="math display">\[\widehat{price} = 42.871 + 10.90 \times condnew\]</span></p>
-<div class="example">
-<p><span id="exm:unlabeled-div-22" class="example"><strong>Example 3.10  </strong></span>Interpret the two parameters estimated in the model for the price of Mario Kart in eBay auctions.
+<div class="workedexample">
+<p>Interpret the two parameters estimated in the model for the price of Mario Kart in eBay auctions.
 The intercept is the estimated price when <code>condnew</code> takes value 0, i.e. when the game is in used condition.
 That is, the average selling price of a used version of the game is $42.87.</p>
 <hr>
 <p>The slope indicates that, on average, new games sell for about $10.90 more than used games.</p>
 </div>
-<div class="important">
+<div class="importantbox">
 <p><strong>Interpreting model estimates for categorical predictors.</strong></p>
 <p>The estimated intercept is the value of the response variable for the first category (i.e. the category corresponding to an indicator value of 0).
 The estimated slope is the average change in the response variable between the two categories.</p>
@@ -849,8 +849,8 @@ These points are especially important because they can have a strong influence o
 <h3>
 <span class="header-section-number">3.3.1</span> Types of outliers<a class="anchor" aria-label="anchor" href="#types-of-outliers"><i class="fas fa-link"></i></a>
 </h3>
-<div class="example">
-<p><span id="exm:unlabeled-div-23" class="example"><strong>Example 3.11  </strong></span>There are three plots shown in Figure <a href="cor-reg.html#fig:outlierPlots1">3.16</a> along with the least squares line and residual plots.
+<div class="workedexample">
+<p>There are three plots shown in Figure <a href="cor-reg.html#fig:outlierPlots1">3.16</a> along with the least squares line and residual plots.
 For each scatterplot and residual plot pair, identify the outliers and note how they influence the least squares line.
 Recall that an outlier is any point that doesn’t appear to belong with the vast majority of the other points.</p>
 <hr>
@@ -866,8 +866,8 @@ Recall that an outlier is any point that doesn’t appear to belong with the vas
 Figure 3.16: Three plots, each with a least squares line and residual plot. All data sets have at least one outlier.
 </p>
 </div>
-<div class="example">
-<p><span id="exm:unlabeled-div-24" class="example"><strong>Example 3.12  </strong></span>There are three plots shown in Figure <a href="cor-reg.html#fig:outlierPlots2">3.17</a> along with the least squares line and residual plots.
+<div class="workedexample">
+<p>There are three plots shown in Figure <a href="cor-reg.html#fig:outlierPlots2">3.17</a> along with the least squares line and residual plots.
 As you did in the previous exercise, for each scatterplot and residual plot pair, identify the outliers and note how they influence the least squares line.
 Recall that an outlier is any point that doesn’t appear to belong with the vast majority of the other points.</p>
 <hr>
@@ -887,13 +887,13 @@ Figure 3.17: Three plots, each with a least squares line and residual plot. All 
 You will probably find that there is some trend in the main clouds of Plots C, D, and E.
 In these cases, the outliers influenced the slope of the least squares lines.
 In Plot E, data with no clear trend were assigned a line with a large trend simply due to one outlier (!).</p>
-<div class="important">
+<div class="importantbox">
 <p><strong>Leverage.</strong></p>
 <p>Points that fall horizontally away from the center of the cloud tend to pull harder on the line, so we call them points with <strong>high leverage</strong>.</p>
 </div>
 <p>Points that fall horizontally far from the line are points of high leverage; these points can strongly influence the slope of the least squares line.
 If one of these high leverage points does appear to actually invoke its influence on the slope of the line – as in Plots C, D, and E of Figures <a href="cor-reg.html#fig:outlierPlots1">3.16</a> and <a href="cor-reg.html#fig:outlierPlots2">3.17</a> – then we call it an <strong>influential point</strong>.</p>
-<div class="important">
+<div class="importantbox">
 <p><strong>Influential point.</strong></p>
 <p>A point is <strong>influential</strong> if, had we fitted the line without it, the influential point would have been unusually far from the least squares line.
 Influential points tend to pull the slope of the line up or down from what we would have seen had we fit the regression line without it.</p>

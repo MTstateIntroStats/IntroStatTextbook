@@ -10,9 +10,9 @@ Multiple regression, which introduces the possibility of more than one predictor
 
 [Gapminder](https://www.gapminder.org/) is a "fact tank" that uses publicly available world data to produce data visualizations and teaching resources on global development. We will use an excerpt of their data to explore relationships among world health metrics across countries and regions between the years 1952 and 2007. 
 
-```{block2, type="data", echo=TRUE}
+::: {.data}
 The `gapminder` data can be found in the [gapminder](https://github.com/jennybc/gapminder) package.
-```
+:::
 
 First, let's look at the relationship between Gross Domestic Product (GDP) per capita (a measure of the wealth of a country) and Life Expectancy (in years) in the year 2007 in Figure \@ref(fig:gdpPercap-lifeExp).
 
@@ -37,7 +37,7 @@ gapminder %>% ggplot(aes(x = gdpPercap, y = lifeExp, colour = continent)) +
 ```
 
 
-::: {.example}
+::: {.workedexample}
 Does the relationship between GDP per capita and life expectancy differ across regions of the world?
 
 ---
@@ -179,7 +179,7 @@ ggplotly(p)
 
 This may seem surprising, but remember -- these are observational data. We cannot conclude, as George Will does, that decreasing expenditures will increase SAT scores. In fact, there is one clear confounding variable in these data: percentage of all eligible students taking the SAT.
 
-::: {.example}
+::: {.workedexample}
 What **confounding variables** may be present in this study? How could we determine whether a variable is confounding the relationship between school expenditures and SAT scores?
 
 ---
@@ -308,7 +308,7 @@ tidy(m_bankruptcy) %>%
   kable_styling(full_width = FALSE)
 ```
 
-::: {.example}
+::: {.workedexample}
 Interpret the coefficient for the past bankruptcy variable in the model. Is this coefficient significantly different from 0? 
 
 ---
@@ -339,7 +339,7 @@ tidy(m_verified_income) %>%
   kable_styling(full_width = FALSE)
 ```
 
-::: {.example}
+::: {.workedexample}
 How would we write an equation for this regression model?
 
 ---
@@ -358,7 +358,7 @@ value of `verified` and 0 if it took any other value.
 The notation $\text{variable}_{\text{level}}$ may feel a bit confusing. 
 Let's figure out how to use the equation for each level of the `verified_income` variable.
 
-::: {.example}
+::: {.workedexample}
 Using the model for predicting interest rate from income verification type, compute the average interest rate for borrowers whose income source and amount are both unverified. 
 
 ---
@@ -372,7 +372,7 @@ Because the level does not have its own coefficient and it is the reference valu
 :::
 
 
-::: {.example}
+::: {.workedexample}
 Using the model for predicting interest rate from income verification type, compute the average interest rate for borrowers whose income source and amount are both unverified. 
 
 ---
@@ -390,7 +390,7 @@ Compute the average interest rate for borrowers whose income source and amount a
 :::
 
 
-::: {.important}
+::: {.importantbox}
 **Predictors with several categories.**
 
 When fitting a regression model with a categorical variable that has $k$ levels where $k > 2$, software will provide a coefficient for $k - 1$ of those levels. 
@@ -475,7 +475,7 @@ tidy(m_full) %>%
 ```
 
 
-::: {.important}
+::: {.importantbox}
 **Multiple regression model.** 
 
 A multiple regression model is a linear model with many predictors. In general, we write the model as
@@ -487,7 +487,7 @@ We always estimate the $\beta_i$ parameters using statistical software.
 :::
 
 
-::: {.example}
+::: {.workedexample}
 Write out the regression model using the point estimates from Table \@ref(tab:loansFullModelOutput). 
 How many predictors are there in this model?
 
@@ -536,7 +536,7 @@ The observed interest rate was 14.07%, which leads to a residual of $e_1 = 14.07
 :::
 
 
-::: {.example}
+::: {.workedexample}
 We estimated a coefficient for in Section \@ref(ind-and-cat-predictors) of $b_4 = 0.74$ with a standard error of $SE_{b_1} = 0.15$ when using simple linear regression. 
 Why is there a difference between that estimate and the estimated coefficient of 0.39 in the multiple regression setting?
 

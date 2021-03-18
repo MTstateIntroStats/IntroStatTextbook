@@ -1,6 +1,7 @@
 # Inference for categorical data {#inference-cat}
 
-\BeginKnitrBlock{chapterintro}<div class="chapterintro">Statistical inference is primarily concerned with understanding and quantifying the _uncertainty_ of parameter estimates---that is, how variable is a sample statistic
+::: {.chapterintro}
+Statistical inference is primarily concerned with understanding and quantifying the _uncertainty_ of parameter estimates---that is, how variable is a sample statistic
 from sample to sample?
 While the equations and details change depending on the setting, the foundations for inference are the same throughout all of statistics. We will begin this chapter with a discussion of the foundations of inference, and introduce the two primary vehicles of inference: the **hypothesis test** and **confidence interval**.
 
@@ -9,8 +10,8 @@ The rest of this chapter focuses on statistical inference for categorical data. 
 * one binary variable, summarized using a single proportion, and 
 * two binary variables, summarized using a difference (or ratio) of two proportions.
 
-We will also introduce a new important mathematical model, the **normal distribution** (as the foundation for the $z$-test).</div>\EndKnitrBlock{chapterintro}
-
+We will also introduce a new important mathematical model, the **normal distribution** (as the foundation for the $z$-test).
+:::
 
 
 Throughout the book so far, you have worked with data in a variety of contexts.
@@ -33,8 +34,10 @@ While the proportions would probably be close to each other, it would be unusual
 
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">If we don't think the side of the room a person sits on in class is related to whether the person owns an Apple product, what assumption are we making about the relationship between these two variables?
-(Reminder: for these Guided Practice questions, you can check your answer in the footnote.)^[We would be assuming that these two variables are **independent**\index{independent}.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+If we don't think the side of the room a person sits on in class is related to whether the person owns an Apple product, what assumption are we making about the relationship between these two variables?
+(Reminder: for these Guided Practice questions, you can check your answer in the footnote.)^[We would be assuming that these two variables are **independent**\index{independent}.]
+:::
 
 Studying randomness of this form is a key focus of statistics. 
 Throughout this chapter, and those that follow, we provide two different approaches for quantifying the variability inherent in data: simulation-based methods and theory-based methods (mathematical models).
@@ -87,7 +90,9 @@ simulated samples where we saw 34 or more students guessing correctly, or
 * **Theory-based method**: develop a mathematical model for the sample proportion in this
 scenario and use the model to calculate the probability.
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">How could you use a coin or cards to simulate the guesses of one sample of 38 students who cannot read Martian?^[A fair coin has a 50% chance of landing on heads, which is the chance a student would guess Bumba correctly if they were just guessing. Thus, toss a coin 38 times with heads representing "guess correctly"; then calculate the proportion of tosses that landed on heads. Another option would be to 10 black cards and 10 red cards, letting red represent "guess correctly". Shuffle the cards and draw one card, record if it is red or black, then replace the card and shuffle again. Do this 38 times and calculate the proportion of red cards observed.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+How could you use a coin or cards to simulate the guesses of one sample of 38 students who cannot read Martian?^[A fair coin has a 50% chance of landing on heads, which is the chance a student would guess Bumba correctly if they were just guessing. Thus, toss a coin 38 times with heads representing "guess correctly"; then calculate the proportion of tosses that landed on heads. Another option would be to 10 black cards and 10 red cards, letting red represent "guess correctly". Shuffle the cards and draw one card, record if it is red or black, then replace the card and shuffle again. Do this 38 times and calculate the proportion of red cards observed.]
+:::
 
 For this situation---since "just guessing" means you have a 50% chance of guessing correctly---we could simulate a sample of 38 students' guesses by flipping a coin 38 times and counting the number of times it lands on heads. Using a computer to repeat this process 1,000 times, we create the dot plot in Figure \@ref(fig:MartianDotPlot).
 
@@ -118,9 +123,11 @@ mathematical modeling---and involves the normal and $t$ probability distribution
 
 All of the theory-based methods discussed in this book work (under certain conditions) because of a very important theorem in Statistics called the **Central Limit Theorem**.
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Central Limit Theorem.**\index{Central Limit Theorem}
+::: {.onebox}
+**Central Limit Theorem.**\index{Central Limit Theorem}
 
-For large sample sizes, the **sampling distribution** of a sample proportion (or sample mean) will appear to follow a bell-shaped curve called the *normal distribution*.</div>\EndKnitrBlock{onebox}
+For large sample sizes, the **sampling distribution** of a sample proportion (or sample mean) will appear to follow a bell-shaped curve called the *normal distribution*.
+:::
 
 
 
@@ -143,11 +150,13 @@ SD(\hat{p}) = \sqrt{\frac{\pi(1-\pi)}{n}}.
 \]
 Typically, values of parameters such as $\pi$ are unknown, so we are unable to calculate these standard deviations. In this case, we substitute our "best guess" for $\pi$ in the formulas, either from a hypothesis or from a point estimate.
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Standard error.**  
+::: {.onebox}
+**Standard error.**  
 
 The **standard deviation** of a sampling distribution for a statistic, denoted by $SD$(statistic), represents how far away we would expect the statistic to land from the parameter. 
 
-Since the formulas for these standard deviations depend on unknown parameters, we substitute our "best guess" for $\pi$ in the formulas, either from a hypothesis or from a point estimate. The resulting _estimated_ standard deviation is called the **standard error** of the statistic, denoted by $SE$(statistic).</div>\EndKnitrBlock{onebox}
+Since the formulas for these standard deviations depend on unknown parameters, we substitute our "best guess" for $\pi$ in the formulas, either from a hypothesis or from a point estimate. The resulting _estimated_ standard deviation is called the **standard error** of the statistic, denoted by $SE$(statistic).
+:::
 
 
 
@@ -159,7 +168,8 @@ Each hypothesis test involves a **null hypothesis**\index{null hypothesis}, whic
 
 
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Null and alternative hypotheses.**
+::: {.onebox}
+**Null and alternative hypotheses.**
 
 When we observe an effect in a sample, we would like to determine
 if this observed effect represents
@@ -168,9 +178,12 @@ chance.
 We label these two competing claims, $H_0$ and $H_A$,
 which are spoken as "H-naught" and "H_A".
   
-The **null hypothesis ($H_0$)** often represents either a skeptical perspective or a claim to be tested. The **alternative hypothesis ($H_A$)** represents an alternative claim under consideration and is often represented by a range of possible values for the parameter of interest. </div>\EndKnitrBlock{onebox}
+The **null hypothesis ($H_0$)** often represents either a skeptical perspective or a claim to be tested. The **alternative hypothesis ($H_A$)** represents an alternative claim under consideration and is often represented by a range of possible values for the parameter of interest. 
+:::
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">In the Martian alphabet example, which of the two competing possibilities was the null hypothesis? the alternative hypothesis?^[The first possibility (_We can't read Martian, and these results just occurred by chance._) was the null hypothesis; the second possibility (_We can read Martian, and these results reflect this ability._) was the alternative hypothesis.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+In the Martian alphabet example, which of the two competing possibilities was the null hypothesis? the alternative hypothesis?^[The first possibility (_We can't read Martian, and these results just occurred by chance._) was the null hypothesis; the second possibility (_We can read Martian, and these results reflect this ability._) was the alternative hypothesis.]
+:::
 
 The hypothesis testing framework is a very general tool, and we often use it without a second thought. 
 If a person makes a somewhat unbelievable claim, we are initially skeptical. 
@@ -187,7 +200,6 @@ A US court considers two possible claims about a defendant: they are either inno
  
 The jury considers whether the evidence is so convincing (strong) that there is no reasonable doubt regarding the person's guilt. 
 That is, the skeptical perspective (null hypothesis) is that the person is innocent until evidence is presented that convinces the jury that the person is guilty (alternative hypothesis). Analogously, in a hypothesis test, we assume the null hypothesis until evidence is presented that convinces us the alternative hypothesis is true.
-
 :::
 
 
@@ -216,19 +228,23 @@ Here, we concluded that humans have a preference for choosing Bumba on the left.
 
 The less than 1-in-1000 chance is what we call a **p-value**, which is a probability quantifying the strength of the evidence against the null hypothesis and in favor of the alternative. 
 
-\BeginKnitrBlock{onebox}<div class="onebox">**p-value.**
+::: {.onebox}
+**p-value.**
 
 The **p-value**\index{hypothesis testing!p-value|textbf} is the probability of observing data at least as favorable to the alternative hypothesis as our current data set, if the null hypothesis were true. 
 We typically use a summary statistic of the data, such as a proportion or difference in proportions, to help compute the p-value and evaluate the hypotheses. 
-This summary value that is used to compute the p-value is often called the **test statistic**\index{test statistic}.</div>\EndKnitrBlock{onebox}
+This summary value that is used to compute the p-value is often called the **test statistic**\index{test statistic}.
+:::
 
 
 
-\BeginKnitrBlock{protip}<div class="protip">When interpreting a p-value, remember that the definition of a p-value has three components. It is a (1) probability. What it is the probability of? It is the probability of (2) our observed sample statistic or one more extreme. Assuming what? It is the probability of our observed sample statistic or one more extreme, (3) assuming the null hypothesis is true:
+::: {.protip}
+When interpreting a p-value, remember that the definition of a p-value has three components. It is a (1) probability. What it is the probability of? It is the probability of (2) our observed sample statistic or one more extreme. Assuming what? It is the probability of our observed sample statistic or one more extreme, (3) assuming the null hypothesis is true:
   
 (1) probability
 (2) data^[Technically, the observed sample statistic or one more extreme in the direction of our alternative. But it is helpful to just remember this as "the data".]
-(3) null hypothesis</div>\EndKnitrBlock{protip}
+(3) null hypothesis
+:::
 
 ::: {.workedexample}
 What was the test statistic in the [Martian alphabet example](#Martian)?
@@ -270,13 +286,15 @@ Think of p-values as a continuum of strength of evidence against the null, from 
 
 Regardless of the data structure or analysis method, the hypothesis testing framework always follows the same steps---only the details for how we model randomness in the data change.
 
-\BeginKnitrBlock{onebox}<div class="onebox">**General steps of a hypothesis test.** Every hypothesis test follows these same general steps:
+::: {.onebox}
+**General steps of a hypothesis test.** Every hypothesis test follows these same general steps:
 
 1. Frame the research question in terms of hypotheses.
 2. Collect and summarize data using a test statistic.
 3. Assume the null hypothesis is true, and simulate or mathematically model a null distribution for the test statistic.
 4. Compare the observed test statistic to the null distribution to calculate a p-value.
-5. Make a conclusion based on the p-value, and write a conclusion in context, in plain language, and in terms of the alternative hypothesis.</div>\EndKnitrBlock{onebox}
+5. Make a conclusion based on the p-value, and write a conclusion in context, in plain language, and in terms of the alternative hypothesis.
+:::
 
 
 #### Decisions and statistical significance {-}
@@ -286,17 +304,22 @@ In some cases, a **decision** to the hypothesis test is needed, with the two pos
 * Reject the null hypothesis
 * Fail to reject the null hypothesis
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">For which values of the p-value should you "reject" a null hypothesis? "fail to reject" a null hypothesis?^[Since a smaller p-value gives you stronger evidence _against_ the null hypothesis, we reject $H_0$ when the p-value is very small, and fail to reject $H_0$ when the p-value is not small.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+For which values of the p-value should you "reject" a null hypothesis? "fail to reject" a null hypothesis?^[Since a smaller p-value gives you stronger evidence _against_ the null hypothesis, we reject $H_0$ when the p-value is very small, and fail to reject $H_0$ when the p-value is not small.]
+:::
 
 In order to decide between these two options, we need a previously set threshold for our p-value:  when the p-value is less than a previously set threshold, we reject $H_0$; otherwise, we fail to reject $H_0$. This threshold is called the **significance level**\index{hypothesis testing!significance level}\index{significance level}, and when the p-value is less than the significance level, we say the results are **statistically significant**. This means the data provide such strong evidence against $H_0$ that we reject the null hypothesis in favor of the alternative hypothesis. 
 The significance level, often represented by $\alpha$ (the Greek letter *alpha*), is typically set to $\alpha = 0.05$, but can vary depending on the field or the application and the real-life consequences of an incorrect decision. 
 Using a significance level of $\alpha = 0.05$ in the Martian alphabet study, we can say that the data provided statistically significant evidence against the null hypothesis.
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Statistical significance.**
+::: {.onebox}
+**Statistical significance.**
 
-We say that the data provide **statistically significant**\index{hypothesis testing!statistically significant|textbf} evidence against the null hypothesis if the p-value is less than some reference value called the **significance level**\index{significance level}, denoted by $\alpha$.</div>\EndKnitrBlock{onebox}
+We say that the data provide **statistically significant**\index{hypothesis testing!statistically significant|textbf} evidence against the null hypothesis if the p-value is less than some reference value called the **significance level**\index{significance level}, denoted by $\alpha$.
+:::
 
-\BeginKnitrBlock{onebox}<div class="onebox">**What's so special about 0.05?**
+::: {.onebox}
+**What's so special about 0.05?**
 
 We often use a threshold of 0.05 to determine whether a result is statistically significant. 
 But why 0.05? 
@@ -308,7 +331,8 @@ The _OpenIntro_ authors have a video to help clarify *why 0.05*:
 </center>
 <br>
 Sometimes it's also a good idea to deviate from the standard. 
-We'll discuss when to choose a threshold different than 0.05 in Section \@ref(two-prop-errors).</div>\EndKnitrBlock{onebox}
+We'll discuss when to choose a threshold different than 0.05 in Section \@ref(two-prop-errors).
+:::
 
 
 Statistical significance has been a hot topic in the news, related to the "reproducibility crisis" in some scientific fields. We encourage you to read more about the debate on the use of p-values and statistical significance. A good place to start would be the _Nature_ article, "[Scientists rise up against statistical significance](https://www.nature.com/articles/d41586-019-00857-9)," from March 20, 2019.
@@ -329,9 +353,13 @@ On the other hand, if we report a range of plausible values---a confidence inter
 
 This reasoning also explains why we can never prove a null hypothesis. Sample statistics will vary from sample to sample. While we can quantify this uncertainty (e.g., we are 95% sure the statistic is within 0.15 of the parameter), we can never be certain that the parameter is an exact value. For example, suppose you want to test whether a coin is a fair coin, i.e., $H_0: \pi = 0.50$ versus $H_0: \pi \neq 0.50$, so you toss the coin 10 times to collect data. In those 10 tosses, 6 land on heads and 4 land on tails, resulting in a p-value of 0.754^[You will get more practice calculating p-values such as these in this Chapter.]. We don't have enough evidence to show that the coin is biased, but surely we wouldn't say we just proved the coin is fair!
 
-\BeginKnitrBlock{importantbox}<div class="importantbox">There are only _two_ possible decisions in a hypothesis test: (1) reject $H_0$, or (2) fail to reject $H_0$. Since one can never prove a null hypothesis---we can only disprove^[Since statistical methods are grounded in probability, technically we can only find strong evidence against a hypothesis, not disprove it.] it---we never have the ability to "accept the null." You may have seen this phrase in other textbooks or articles, but it is incorrect.</div>\EndKnitrBlock{importantbox}
+::: {.importantbox}
+There are only _two_ possible decisions in a hypothesis test: (1) reject $H_0$, or (2) fail to reject $H_0$. Since one can never prove a null hypothesis---we can only disprove^[Since statistical methods are grounded in probability, technically we can only find strong evidence against a hypothesis, not disprove it.] it---we never have the ability to "accept the null." You may have seen this phrase in other textbooks or articles, but it is incorrect.
+:::
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">If we want to be very certain we capture the population parameter, should we use a wider interval or a smaller interval?^[If we want to be more certain we will capture the fish, we might use a wider net. Likewise, we use a wider confidence interval if we want to be more certain that we capture the parameter.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+If we want to be very certain we capture the population parameter, should we use a wider interval or a smaller interval?^[If we want to be more certain we will capture the fish, we might use a wider net. Likewise, we use a wider confidence interval if we want to be more certain that we capture the parameter.]
+:::
 
 We will explore both simulation-based methods (bootstrapping) and theory-based methods for creating confidence intervals in this text. Though the details change with different scenarios, theory-based confidence intervals will always take the form:
 \[
@@ -339,7 +367,8 @@ We will explore both simulation-based methods (bootstrapping) and theory-based m
 \]
 The statistic is our best guess for the value of the parameter, so it makes sense to build the confidence interval around that value. The standard error, which is a measure of the uncertainty associated with the statistic, provides a guide for how large we should make the confidence interval. The multiplier is determined by how confident we'd like to be, and tells us how many standard errors we need to add and subtract from the statistic. The amount we add and subtract from the statistic is called the **margin of error**.
 
-\BeginKnitrBlock{onebox}<div class="onebox">**General form of a confidence interval.**
+::: {.onebox}
+**General form of a confidence interval.**
 
 The general form of a **theory-based confidence interval** for an unknown parameter is
 \[
@@ -348,7 +377,8 @@ The general form of a **theory-based confidence interval** for an unknown parame
 The amount we add and subtract to the statistic to calculate the confidence interval is called the **margin of error**.
 \[
 \mbox{margin of error} = (\mbox{multiplier}) \times (\mbox{standard error of the statistic})
-\]</div>\EndKnitrBlock{onebox}
+\]
+:::
 
 In Section \@ref(theory-prop) we will discuss different percentages for the confidence interval (e.g., 90% confidence interval or 99% confidence interval).  Section \@ref(two-prop-boot-ci) provides a longer discussion on what "95% confidence" actually means.
 
@@ -367,11 +397,13 @@ Additionally, some variables such as SAT scores and heights of US adult males cl
 
 
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Normal distribution facts.**
+::: {.onebox}
+**Normal distribution facts.**
 
 Many summary statistics and variables are nearly normal, but none are exactly normal. 
 Thus the normal distribution, while not perfect for any single problem, is very useful for a variety of problems. 
-We will use it in data exploration and to solve important problems in statistics.</div>\EndKnitrBlock{onebox}
+We will use it in data exploration and to solve important problems in statistics.
+:::
 
 In this section, we will discuss the normal distribution in the context of data to become more familiar with normal distribution techniques. 
 
@@ -414,12 +446,16 @@ Because the mean and standard deviation describe a normal distribution exactly, 
 
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Write down the short-hand for a normal distribution with (a) mean 5 and standard deviation 3, (b) mean -100 and standard deviation 10, and (c) mean 2 and standard deviation 9.^[(a) $N(\mu=5,\sigma=3)$. (b) $N(\mu=-100, \sigma=10)$. (c) $N(\mu=2, \sigma=9)$.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+Write down the short-hand for a normal distribution with (a) mean 5 and standard deviation 3, (b) mean -100 and standard deviation 10, and (c) mean 2 and standard deviation 9.^[(a) $N(\mu=5,\sigma=3)$. (b) $N(\mu=-100, \sigma=10)$. (c) $N(\mu=2, \sigma=9)$.]
+:::
 
 
 ### Standardizing with Z-scores
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Table \@ref(tab:satACTstats) shows the mean and standard deviation for total scores on the SAT and ACT. The distribution of SAT and ACT scores are both nearly normal. Suppose Ann scored 1800 on her SAT and Tom scored 24 on his ACT. Who performed better?^[We use the standard deviation as a guide. Ann is 1 standard deviation above average on the SAT: $1500 + 300=1800$. Tom is 0.6 standard deviations above the mean on the ACT: $21+0.6\times 5=24$. In Figure \@ref(fig:satActNormals), we can see that Ann tends to do better with respect to everyone else than Tom did, so her score was better.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+Table \@ref(tab:satACTstats) shows the mean and standard deviation for total scores on the SAT and ACT. The distribution of SAT and ACT scores are both nearly normal. Suppose Ann scored 1800 on her SAT and Tom scored 24 on his ACT. Who performed better?^[We use the standard deviation as a guide. Ann is 1 standard deviation above average on the SAT: $1500 + 300=1800$. Tom is 0.6 standard deviations above the mean on the ACT: $21+0.6\times 5=24$. In Figure \@ref(fig:satActNormals), we can see that Ann tends to do better with respect to everyone else than Tom did, so her score was better.]
+:::
 
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
@@ -471,31 +507,41 @@ Z_{Ann} = \frac{x_{Ann} - \mu_{SAT}}{\sigma_{SAT}} = \frac{1800-1500}{300} = 1
 \end{eqnarray*}
 
 
-\BeginKnitrBlock{onebox}<div class="onebox">**The Z-score.**
+::: {.onebox}
+**The Z-score.**
 
 The Z-score of an observation is the number of standard deviations it falls above or below the mean. 
 We compute the Z-score for an observation $x$ that follows a distribution with mean $\mu$ and standard deviation $\sigma$ by first subtracting its mean, then dividing by its standard deviation:
 \begin{eqnarray*}
 Z = \frac{x-\mu}{\sigma}
-\end{eqnarray*}</div>\EndKnitrBlock{onebox}
+\end{eqnarray*}
+:::
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Use Tom's ACT score, 24, along with the ACT mean and standard deviation to compute his Z-score.^[$Z_{Tom} = \frac{x_{Tom} - \mu_{ACT}}{\sigma_{ACT}} = \frac{24 - 21}{5} = 0.6$]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+Use Tom's ACT score, 24, along with the ACT mean and standard deviation to compute his Z-score.^[$Z_{Tom} = \frac{x_{Tom} - \mu_{ACT}}{\sigma_{ACT}} = \frac{24 - 21}{5} = 0.6$]
+:::
 
 Observations above the mean always have positive Z-scores while those below the mean have negative Z-scores. 
 If an observation is equal to the mean (e.g., SAT score of 1500), then the Z-score is $0$.
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Let $X$ represent a random variable from $N(\mu=3, \sigma=2)$, and suppose we observe $x=5.19$. (a) Find the Z-score of $x$. (b) Use the Z-score to determine how many standard deviations above or below the mean $x$ falls.^[(a) Its Z-score is given by $Z = \frac{x-\mu}{\sigma} = \frac{5.19 - 3}{2} = 2.19/2 = 1.095$. (b) The observation $x$ is 1.095 standard deviations *above* the mean. We know it must be above the mean since $Z$ is positive.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+Let $X$ represent a random variable from $N(\mu=3, \sigma=2)$, and suppose we observe $x=5.19$. (a) Find the Z-score of $x$. (b) Use the Z-score to determine how many standard deviations above or below the mean $x$ falls.^[(a) Its Z-score is given by $Z = \frac{x-\mu}{\sigma} = \frac{5.19 - 3}{2} = 2.19/2 = 1.095$. (b) The observation $x$ is 1.095 standard deviations *above* the mean. We know it must be above the mean since $Z$ is positive.]
+:::
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Head lengths of brushtail possums follow a nearly normal distribution with mean 92.6 mm and standard deviation 3.6 mm. Compute the Z-scores for possums with head lengths of 95.4 mm and 85.8 mm.^[For $x_1=95.4$ mm: $Z_1 = \frac{x_1 - \mu}{\sigma} = \frac{95.4 - 92.6}{3.6} = 0.78$. For $x_2=85.8$ mm: $Z_2 = \frac{85.8 - 92.6}{3.6} = -1.89$.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+Head lengths of brushtail possums follow a nearly normal distribution with mean 92.6 mm and standard deviation 3.6 mm. Compute the Z-scores for possums with head lengths of 95.4 mm and 85.8 mm.^[For $x_1=95.4$ mm: $Z_1 = \frac{x_1 - \mu}{\sigma} = \frac{95.4 - 92.6}{3.6} = 0.78$. For $x_2=85.8$ mm: $Z_2 = \frac{85.8 - 92.6}{3.6} = -1.89$.]
+:::
 
 We can use Z-scores to roughly identify which observations are more unusual than others. 
 One observation $x_1$ is said to be more unusual than another observation $x_2$ if the absolute value of its Z-score is larger than the absolute value of the other observation's Z-score: $|Z_1| > |Z_2|$. 
 This technique is especially insightful when a distribution is symmetric.
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Which of the two brushtail possum observations in the previous guided practice is more *unusual*?^[Because the *absolute value* of Z-score for the second observation is larger than that of the first, the second observation has a more unusual head length.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+Which of the two brushtail possum observations in the previous guided practice is more *unusual*?^[Because the *absolute value* of Z-score for the second observation is larger than that of the first, the second observation has a more unusual head length.]
+:::
 
 
 ### Normal probability calculations in `R`
@@ -527,7 +573,7 @@ pnorm(0.43, m = 0, s = 1)
 openintro::normTail(0.43, m = 0, s = 1)
 ```
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-35-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-12-1.png" width="70%" style="display: block; margin: auto;" />
 
 We can also find the Z-score associated with a percentile. 
 For example, to identify Z for the $80^{th}$ percentile, we use `qnorm()` which identifies the **quantile** for a given percentage.  The quantile represents the cutoff value.^[To remember the function `qnorm()` as providing a cutoff, notice that both `qnorm()` and "cutoff" start with the sound "kuh".  To remember the `pnorm()` function as providing a probability from a given cutoff, notice that both `pnorm()` and probability start with the sound "puh".] 
@@ -540,7 +586,7 @@ qnorm(0.80, m = 0, s = 1)
 openintro::normTail(0.80, m = 0, s = 1)
 ```
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-36-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-13-1.png" width="70%" style="display: block; margin: auto;" />
 
 We can use these functions with other normal distributions than the standard normal distribution by specifying the mean as the argument for `m` and the standard deviation as the argument for `s`. Here we determine the proportion of ACT test takers who scored worse than Tom on the ACT: 0.73.
 
@@ -551,9 +597,11 @@ pnorm(24, m = 21, s = 5)
 openintro::normTail(24, m = 21, s = 5)
 ```
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-37-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" />
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Determine the proportion of SAT test takers who scored better than Ann on the SAT.^[If 84% had lower scores than Ann, the number of people who had better scores must be 16%. (Generally ties are ignored when the normal model, or any other continuous distribution, is used.)]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+Determine the proportion of SAT test takers who scored better than Ann on the SAT.^[If 84% had lower scores than Ann, the number of people who had better scores must be 16%. (Generally ties are ignored when the normal model, or any other continuous distribution, is used.)]
+:::
 
 
 ### Normal probability examples
@@ -583,15 +631,19 @@ The probability Shannon scores at least 1630 on the SAT is 0.3336.
 <img src="05-inference-cat_files/figure-html/subtractingArea-1.png" width="70%" style="display: block; margin: auto;" />
 
 
-\BeginKnitrBlock{protip}<div class="protip">**Always draw a picture first, and find the Z-score second.**
+::: {.protip}
+**Always draw a picture first, and find the Z-score second.**
 
 For any normal probability situation, *always always always* draw and label the normal curve and shade the area of interest first. 
 The picture will provide an estimate of the probability.
 
-After drawing a figure to represent the situation, identify the Z-score for the observation of interest.</div>\EndKnitrBlock{protip}
+After drawing a figure to represent the situation, identify the Z-score for the observation of interest.
+:::
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">If the probability of Shannon scoring at least 1630 is 0.3336, then what is the probability she scores less than 1630? Draw the normal curve representing this exercise, shading the lower region instead of the upper one.^[We found the probability to be 0.6664. A picture for this exercise is represented by the shaded area below "0.6664".]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+If the probability of Shannon scoring at least 1630 is 0.3336, then what is the probability she scores less than 1630? Draw the normal curve representing this exercise, shading the lower region instead of the upper one.^[We found the probability to be 0.6664. A picture for this exercise is represented by the shaded area below "0.6664".]
+:::
 
 ::: {.workedexample}
 Edward earned a 1400 on his SAT. What is his percentile?
@@ -611,19 +663,27 @@ Using the `pnorm()` function (either `pnorm(-1/3)` or `pnorm(1400, m=1500, s=300
 <img src="05-inference-cat_files/figure-html/satBelow1400-1.png" width="70%" style="display: block; margin: auto;" />
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Use the results of the previous example to compute the proportion of SAT takers who did better than Edward. Also draw a new picture.^[If Edward did better than 37% of SAT takers, then about 63% must have done better than him. 
-\includegraphics[height=14mm]{02/figures/satBelow1400/satAbove1400}]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+Use the results of the previous example to compute the proportion of SAT takers who did better than Edward. Also draw a new picture.^[If Edward did better than 37% of SAT takers, then about 63% must have done better than him. 
+\includegraphics[height=14mm]{02/figures/satBelow1400/satAbove1400}]
+:::
 
 
-\BeginKnitrBlock{protip}<div class="protip">**Areas to the right.**
+::: {.protip}
+**Areas to the right.**
 
-The `pnorm()` function (and the normal probability table in most books) gives the area to the left. If you would like the area to the right, first find the area to the left and then subtract this amount from one. In `R`, you can also do this by setting the `lower.tail` argument to `FALSE`.</div>\EndKnitrBlock{protip}
+The `pnorm()` function (and the normal probability table in most books) gives the area to the left. If you would like the area to the right, first find the area to the left and then subtract this amount from one. In `R`, you can also do this by setting the `lower.tail` argument to `FALSE`.
+:::
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Stuart earned an SAT score of 2100. Draw a picture for each part. (a) What is his percentile? (b) What percent of SAT takers did better than Stuart?^[Numerical answers: (a) 0.9772. (b) 0.0228.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+Stuart earned an SAT score of 2100. Draw a picture for each part. (a) What is his percentile? (b) What percent of SAT takers did better than Stuart?^[Numerical answers: (a) 0.9772. (b) 0.0228.]
+:::
 
 Based on a sample of 100 men,^[This sample was taken from the USDA Food Commodity Intake Database.] the heights of male adults between the ages 20 and 62 in the US is nearly normal with mean 70.0'' and standard deviation 3.3''.
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Mike is 5'7'' and Jim is 6'4''. (a) What is Mike's height percentile? (b) What is Jim's height percentile? Also draw one picture for each part.^[First put the heights into inches: 67 and 76 inches. Figures are shown below. (a) $Z_{Mike} = \frac{67 - 70}{3.3} = -0.91\ \to\ 0.1814$. (b) $Z_{Jim} = \frac{76 - 70}{3.3} = 1.82\ \to\ 0.9656$. \\\includegraphics[height=14mm]{02/figures/mikeAndJimPercentiles/mikeAndJimPercentiles}]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+Mike is 5'7'' and Jim is 6'4''. (a) What is Mike's height percentile? (b) What is Jim's height percentile? Also draw one picture for each part.^[First put the heights into inches: 67 and 76 inches. Figures are shown below. (a) $Z_{Mike} = \frac{67 - 70}{3.3} = -0.91\ \to\ 0.1814$. (b) $Z_{Jim} = \frac{76 - 70}{3.3} = 1.82\ \to\ 0.9656$. \\\includegraphics[height=14mm]{02/figures/mikeAndJimPercentiles/mikeAndJimPercentiles}]
+:::
 
 The last several problems have focused on finding the probability or percentile for a particular observation. 
 What if you would like to know the observation corresponding to a particular percentile?
@@ -679,11 +739,15 @@ qnorm(0.82, m = 0, s = 1)
 <img src="05-inference-cat_files/figure-html/height82Perc-1.png" width="70%" style="display: block; margin: auto;" />
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">(a) What is the $95^{th}$ percentile for SAT scores?   
-(b) What is the $97.5^{th}$ percentile of the male heights? As always with normal probability problems, first draw a picture.^[Remember: draw a picture first, then find the Z-score. (We leave the pictures to you.) The Z-score can be found by using the percentiles and the normal probability table. (a) We look for 0.95 in the probability portion (middle part) of the normal probability table, which leads us to row 1.6 and (about) column 0.05, i.e., $Z_{95}=1.65$. Knowing $Z_{95}=1.65$, $\mu = 1500$, and $\sigma = 300$, we setup the Z-score formula: $1.65 = \frac{x_{95} - 1500}{300}$. We solve for $x_{95}$: $x_{95} = 1995$. (b) Similarly, we find $Z_{97.5} = 1.96$, again setup the Z-score formula for the heights, and calculate $x_{97.5} = 76.5$.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+(a) What is the $95^{th}$ percentile for SAT scores?   
+(b) What is the $97.5^{th}$ percentile of the male heights? As always with normal probability problems, first draw a picture.^[Remember: draw a picture first, then find the Z-score. (We leave the pictures to you.) The Z-score can be found by using the percentiles and the normal probability table. (a) We look for 0.95 in the probability portion (middle part) of the normal probability table, which leads us to row 1.6 and (about) column 0.05, i.e., $Z_{95}=1.65$. Knowing $Z_{95}=1.65$, $\mu = 1500$, and $\sigma = 300$, we setup the Z-score formula: $1.65 = \frac{x_{95} - 1500}{300}$. We solve for $x_{95}$: $x_{95} = 1995$. (b) Similarly, we find $Z_{97.5} = 1.96$, again setup the Z-score formula for the heights, and calculate $x_{97.5} = 76.5$.]
+:::
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">(a) What is the probability that a randomly selected male adult is at least 6'2'' (74 inches)?  
-(b) What is the probability that a male adult is shorter than 5'9'' (69 inches)?^[Numerical answers: (a) 0.1131. (b) 0.3821.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+(a) What is the probability that a randomly selected male adult is at least 6'2'' (74 inches)?  
+(b) What is the probability that a male adult is shorter than 5'9'' (69 inches)?^[Numerical answers: (a) 0.1131. (b) 0.3821.]
+:::
 
 ::: {.workedexample}
 What is the probability that a random adult male is between 5'9'' and 6'2''?
@@ -699,18 +763,22 @@ That is, the probability of being between 5'9'' and 6'2'' is 0.5048.
 :::
 
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-49-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-50-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">What percent of SAT takers get between 1500 and 2000?^[This is an abbreviated solution. (Be sure to draw a figure!) First find the percent who get below 1500 and the percent that get above 2000: $Z_{1500} = 0.00 \to 0.5000$ (area below), $Z_{2000} = 1.67 \to 0.0475$ (area above). Final answer: $1.0000-0.5000 - 0.0475 = 0.4525$.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+What percent of SAT takers get between 1500 and 2000?^[This is an abbreviated solution. (Be sure to draw a figure!) First find the percent who get below 1500 and the percent that get above 2000: $Z_{1500} = 0.00 \to 0.5000$ (area below), $Z_{2000} = 1.67 \to 0.0475$ (area above). Final answer: $1.0000-0.5000 - 0.0475 = 0.4525$.]
+:::
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">What percent of adult males are between 5'5'' and 5'7''?^[5'5'' is 65 inches. 5'7'' is 67 inches. Numerical solution: $1.000 - 0.0649 - 0.8183 = 0.1168$, i.e., 11.68%.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+What percent of adult males are between 5'5'' and 5'7''?^[5'5'' is 65 inches. 5'7'' is 67 inches. Numerical solution: $1.000 - 0.0649 - 0.8183 = 0.1168$, i.e., 11.68%.]
+:::
 
 ### 68-95-99.7 rule
 
@@ -724,23 +792,29 @@ Here, we present a useful general rule for the probability of falling within 1, 
 
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Use `pnorm()` to confirm that about 68%, 95%, and 99.7% of observations fall within 1, 2, and 3, standard deviations of the mean in the normal distribution, respectively. For instance, first find the area that falls between $Z=-1$ and $Z=1$, which should have an area of about 0.68. Similarly there should be an area of about 0.95 between $Z=-2$ and $Z=2$.^[First draw the pictures. To find the area between $Z=-1$ and $Z=1$, use `pnorm()` to determine the areas below $Z=-1$ and above $Z=1$. Next verify the area between $Z=-1$ and $Z=1$ is about 0.68. Repeat this for $Z=-2$ to $Z=2$ and also for $Z=-3$ to $Z=3$.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+Use `pnorm()` to confirm that about 68%, 95%, and 99.7% of observations fall within 1, 2, and 3, standard deviations of the mean in the normal distribution, respectively. For instance, first find the area that falls between $Z=-1$ and $Z=1$, which should have an area of about 0.68. Similarly there should be an area of about 0.95 between $Z=-2$ and $Z=2$.^[First draw the pictures. To find the area between $Z=-1$ and $Z=1$, use `pnorm()` to determine the areas below $Z=-1$ and above $Z=1$. Next verify the area between $Z=-1$ and $Z=1$ is about 0.68. Repeat this for $Z=-2$ to $Z=2$ and also for $Z=-3$ to $Z=3$.]
+:::
 
 It is possible for a normal random variable to fall 4, 5, or even more standard deviations from the mean. However, these occurrences are very rare if the data are nearly normal. The probability of being further than 4 standard deviations from the mean is about 1-in-30,000. For 5 and 6 standard deviations, it is about 1-in-3.5 million and 1-in-1 billion, respectively.
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">SAT scores closely follow the normal model with mean $\mu = 1500$ and standard deviation $\sigma = 300$.   
+::: {.guidedpractice}
+SAT scores closely follow the normal model with mean $\mu = 1500$ and standard deviation $\sigma = 300$.   
 (a) About what percent of test takers score 900 to 2100?  
-(b) What percent score between 1500 and 2100?^[(a) 900 and 2100 represent two standard deviations above and below the mean, which means about 95% of test takers will score between 900 and 2100. (b) Since the normal model is symmetric, then half of the test takers from part (a) ($\frac{95\%}{2} = 47.5\%$ of all test takers) will score 900 to 1500 while 47.5% score between 1500 and 2100.]</div>\EndKnitrBlock{guidedpractice}
+(b) What percent score between 1500 and 2100?^[(a) 900 and 2100 represent two standard deviations above and below the mean, which means about 95% of test takers will score between 900 and 2100. (b) Since the normal model is symmetric, then half of the test takers from part (a) ($\frac{95\%}{2} = 47.5\%$ of all test takers) will score 900 to 1500 while 47.5% score between 1500 and 2100.]
+:::
 
 
 
 ## One proportion {#single-prop}
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Notation**.
+::: {.onebox}
+**Notation**.
 
 * $n$ = sample size (number of observational units in the data set)
 * $\hat{p}$ = sample proportion (number of "successes" divided by the sample size)
-* $\pi$ = population proportion^[When you see $\pi$ in this textbook, it will always symbolize a (typically unknown) population proportion, not the value 3.14....]</div>\EndKnitrBlock{onebox}
+* $\pi$ = population proportion^[When you see $\pi$ in this textbook, it will always symbolize a (typically unknown) population proportion, not the value 3.14....]
+:::
 
 A single proportion is used to summarize data when we measured a single categorical variable on each observational unit---the single variable is measured as either a success or failure (e.g., "surgical complication" vs. "no surgical complication")^[The terms "success" and "failure" may not actually represent outcomes we view as successful or not, but it is the typical generic way to referring to the possible outcomes of a binary variable. The "success" is whatever we count when calculating our sample proportion.]. 
 
@@ -750,13 +824,15 @@ A single proportion is used to summarize data when we measured a single categori
 \index{data!medical consultant|(}
 In Section \@ref(HypothesisTesting), we introduced the general steps of a hypothesis test:
 
-\BeginKnitrBlock{onebox}<div class="onebox">**General steps of a hypothesis test.** Every hypothesis test follows these same general steps:
+::: {.onebox}
+**General steps of a hypothesis test.** Every hypothesis test follows these same general steps:
 
 1. Frame the research question in terms of hypotheses.
 2. Collect and summarize data using a test statistic.
 3. Assume the null hypothesis is true, and simulate or mathematically model a null distribution for the test statistic.
 4. Compare the observed test statistic to the null distribution to calculate a p-value.
-5. Make a conclusion based on the p-value, and write a conclusion in context, in plain language, and in terms of the alternative hypothesis.</div>\EndKnitrBlock{onebox}
+5. Make a conclusion based on the p-value, and write a conclusion in context, in plain language, and in terms of the alternative hypothesis.
+:::
 
 
 ::: {.workedexample}
@@ -784,7 +860,8 @@ Regardless of if we use simulation-based methods or theory-based methods, the fi
 We will let $\pi$ represent the true complication rate for liver donors working with this consultant. This "true" complication probability is called the **parameter** of interest^[Parameters were first introduced in Section \@ref(dotplots)].
 The sample proportion for the complication rate is 3 complications divided by the 62 surgeries the consultant has worked on: $\hat{p} = 3/62 = 0.048$. Since this value is estimated from sample data, it is called a **statistic**. The statistic $\hat{p}$ is also our point estimate, or "best guess," for $\pi$, and we will use is as our **test statistic**.
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Parameters and statistics.**\index{parameter}
+::: {.onebox}
+**Parameters and statistics.**\index{parameter}
 
 A **parameter** is the "true" value of interest. 
 We typically estimate the parameter using a **statistic** from a sample of data. When a statistic is used as an estimate of a parameter, it is called a **point estimate**.
@@ -792,11 +869,13 @@ We typically estimate the parameter using a **statistic** from a sample of data.
 For example, we estimate the probability $\pi$ of a complication for a client of the medical consultant by examining the past complications rates of her clients:
 
  
-$$\hat{p} = 3 / 62 = 0.048\qquad\text{is used to estimate}\qquad \pi$$</div>\EndKnitrBlock{onebox}
+$$\hat{p} = 3 / 62 = 0.048\qquad\text{is used to estimate}\qquad \pi$$
+:::
 
 
 
-\BeginKnitrBlock{protip}<div class="protip">Summary measures that summarize a sample of data, such as $\hat{p}$, are called **statistics**\index{statistic}. Numbers that summarize an entire population, such as $\pi$, are called **parameters**\index{parameter}. You can remember
+::: {.protip}
+Summary measures that summarize a sample of data, such as $\hat{p}$, are called **statistics**\index{statistic}. Numbers that summarize an entire population, such as $\pi$, are called **parameters**\index{parameter}. You can remember
 this distinction by looking at the first letter of each term: 
 
 > **_S_**tatistics summarize **_S_**amples.  
@@ -805,7 +884,8 @@ this distinction by looking at the first letter of each term:
 We typically use Roman letters to symbolize statistics (e.g., $\bar{x}$, $\hat{p}$), and Greek letters to symbolize parameters (e.g., $\mu$, $\pi$).
 Since we rarely can measure the entire population, and thus rarely know
 the actual parameter values, we like to say, "We don't know Greek,
-and we don't know parameters!"</div>\EndKnitrBlock{protip}
+and we don't know parameters!"
+:::
 
 ::: {.workedexample}
 Write out hypotheses in both plain and statistical language to test for the association between the consultant's work and the true complication rate, $\pi$, for the consultant's clients.
@@ -828,21 +908,25 @@ In statistical language:
 
 To assess these hypotheses, we need to evaluate the possibility of getting a sample proportion as far below the null value, $0.10$, as what was observed ($0.048$), _if the null hypothesis were true_. 
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Null value of a hypothesis test.**
+::: {.onebox}
+**Null value of a hypothesis test.**
 
-The **null value** is the reference value for the parameter in $H_0$, and it is sometimes represented with the parameter's label with a subscript 0 (or "null"), e.g., $\pi_0$ (just like $H_0$).</div>\EndKnitrBlock{onebox}
+The **null value** is the reference value for the parameter in $H_0$, and it is sometimes represented with the parameter's label with a subscript 0 (or "null"), e.g., $\pi_0$ (just like $H_0$).
+:::
 
 
 
 The deviation of the sample statistic from the null hypothesized parameter is usually quantified with a p-value^[Now would be a good time to review the definition of a p-value in Section \@ref(HypothesisTesting)!]. The p-value is computed based on the null distribution, which is the distribution of the test statistic if the null hypothesis is true. Supposing the null hypothesis is true, we can compute the p-value by identifying the chance of observing a test statistic that favors the alternative hypothesis at least as strongly as the observed test statistic. 
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Null distribution.**
+::: {.onebox}
+**Null distribution.**
   
 The **null distribution** of a test statistic is the sampling distribution of that statistic _under the assumption of the null hypothesis_. It describes how that statistic would vary from sample to sample, if the null hypothesis were true. 
 
 The null distribution can be estimated through simulation (simulation-based methods), as in this section,
 or can be modeled by a mathematical function (theory-based methods),
-as in Section \@ref(theory-prop).</div>\EndKnitrBlock{onebox}
+as in Section \@ref(theory-prop).
+:::
 
 
 
@@ -852,7 +936,9 @@ Under the null hypothesis, 10% of liver donors have complications during or afte
 
 This is a similar scenario to the one we encountered in Section \@ref(Martian), with one important difference---the null value is 0.10, not 0.50. Thus, a flipping a coin to simulate whether a client had complications would not be simulating under the correct null hypothesis.
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">What physical object could you use to simulate a random sample of 62 clients who had a 10% chance of complications? How would you use this object?^[One option would be to use a spinner with 10% shaded red, and the rest shaded green. Each spin of the spinner would represent one client. Spin the spinner 62 times and count the number of times the spinner lands on red. The proportion of times the spinner lands on red represents a simulated $\hat{p}$ under the assumption that $\pi = 0.10$. Other objects include: a bag of marbles with 10% red marbles and 90% white marbles, or 10 cards where 1 is red and 9 are white. Sampling 62 times with replacement from these collections would simulate one sample of clients.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+What physical object could you use to simulate a random sample of 62 clients who had a 10% chance of complications? How would you use this object?^[One option would be to use a spinner with 10% shaded red, and the rest shaded green. Each spin of the spinner would represent one client. Spin the spinner 62 times and count the number of times the spinner lands on red. The proportion of times the spinner lands on red represents a simulated $\hat{p}$ under the assumption that $\pi = 0.10$. Other objects include: a bag of marbles with 10% red marbles and 90% white marbles, or 10 cards where 1 is red and 9 are white. Sampling 62 times with replacement from these collections would simulate one sample of clients.]
+:::
 
 Assuming the true complication rate for the consultant's clients is 10%, each client can be simulated using a bag of marbles with 10% red marbles and 90% white marbles.
 Sampling a marble from the bag (with 10% red marbles) is one way of simulating whether a patient has a complication *if the true complication rate is 10%* for the data. If we select 62 marbles and then compute the proportion of patients with complications in the simulation, $\hat{p}_{sim}$, then the resulting sample proportion is calculated exactly from a sample from the null distribution.
@@ -885,11 +971,15 @@ Of the 10,000 simulated $\hat{p}_{sim}$, 1222 were equal to or smaller than $\ha
 
 #### Step 5: Conclusion {-}
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Because the estimated p-value is 0.1222, which is not small, we have little to no evidence against the null hypothesis. Explain what this means in plain language in the context of the problem.^[There isn't sufficiently strong evidence to support the claim that fewer than 10% of the consultant's clients experience complications. That is, there isn't sufficiently strong evidence to support an association between the consultant's work and fewer surgery complications.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+Because the estimated p-value is 0.1222, which is not small, we have little to no evidence against the null hypothesis. Explain what this means in plain language in the context of the problem.^[There isn't sufficiently strong evidence to support the claim that fewer than 10% of the consultant's clients experience complications. That is, there isn't sufficiently strong evidence to support an association between the consultant's work and fewer surgery complications.]
+:::
 
 \index{data!medical consultant|)}
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Does the conclusion in the previous Guided Practice imply there is no real association between the surgical consultant's work and the risk of complications? Explain.^[No. It might be that the consultant's work is associated with a reduction but that there isn't enough data to convincingly show this connection.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+Does the conclusion in the previous Guided Practice imply there is no real association between the surgical consultant's work and the risk of complications? Explain.^[No. It might be that the consultant's work is associated with a reduction but that there isn't enough data to convincingly show this connection.]
+:::
 
 
 <!--
@@ -983,17 +1073,21 @@ However, there is a physical and computational model which produces an equivalen
 Consider the observed data to be a bag of marbles 3 of which are red and 4 of which are white.  By drawing the marbles out of the bag _with replacement_, we depict the same sampling **process** as was done with the infinitely large estimated population.
 Note that when sampling the original observations with replacement, a particular marble may end up in the new sample one time, multiple times, or not at all.  
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Bootstrapping from one sample**.
+::: {.onebox}
+**Bootstrapping from one sample**.
 
 1. Take a random sample of size $n$ from the original sample, _with replacement_. This is called a **bootstrapped resample**.
 2. Record the sample proportion (or statistic of interest) from the boostrapped resample. This is called a **bootstrapped statistic**.
-3. Repeat steps (1) and (2) 1000s of times to create a distribution of bootstrapped statistics.</div>\EndKnitrBlock{onebox}
+3. Repeat steps (1) and (2) 1000s of times to create a distribution of bootstrapped statistics.
+:::
 
 If we apply the bootstrap sampling process to the medical consultant example, we consider each client to be one of the marbles in the bag.
 There will be 59 white marbles (no complication) and 3 red marbles (complication).
 If we 62 choose marbles out of the bag (one at a time), replacing each chosen marble after its color is recorded, and compute the proportion of simulated patients with complications, $\hat{p}_{bs}$, then this "bootstrap" proportion represents a single simulated proportion from the "resample from the sample" approach.
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">In a simulation of 62 patients conduced by sampling with replacement from the original sample, about how many would we expect to have had a complication?^[Since in the original sample, 3 out of 62, or about 5% had complications, we could expect about 5% of the patients (6.2 on average) in the simulation will have a complication, though we will see a little variation from one simulation to the next.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+In a simulation of 62 patients conduced by sampling with replacement from the original sample, about how many would we expect to have had a complication?^[Since in the original sample, 3 out of 62, or about 5% had complications, we could expect about 5% of the patients (6.2 on average) in the simulation will have a complication, though we will see a little variation from one simulation to the next.]
+:::
 
 One simulated bootstrap resample isn't enough to get a sense of the variability from one bootstrap proportion to another bootstrap proportion, so we repeated the simulation 10,000 times using a computer.
 Figure \@ref(fig:MedConsBSSim) shows the distribution from the 10,000 bootstrap simulations. 
@@ -1006,18 +1100,22 @@ The variability in the bootstrapped proportions leads us to believe that the tru
 <p class="caption">(\#fig:MedConsBSSim)The original medical consultant data is bootstrapped 10,000 times. Each simulation creates a sample from the original data where the probability of a complication is $\hat{p} = 3/62$. The bootstrap 2.5 percentile proportion is 0 and the 97.5 percentile is 0.113. The result is: we are confident that, in the population, the true probability of a complication is between 0% and 11.3%.</p>
 </div>
 
-\BeginKnitrBlock{onebox}<div class="onebox">**95% Bootstrap confidence interval for a population proportion $\pi$.**
+::: {.onebox}
+**95% Bootstrap confidence interval for a population proportion $\pi$.**
 
 The 95% bootstrap confidence interval for the parameter $\pi$ can be obtained directly using the ordered values $\hat{p}_{boot}$ values --- the bootstrapped sample proportions. Consider the sorted $\hat{p}_{boot}$ values, and let $\hat{p}_{boot, 0.025}$ be the 2.5^th^ percentile value and $\hat{p}_{boot, 0.025}$ be the 97.5^th^ percentile. The 95% confidence interval is given by:
 <center>
 ($\hat{p}_{boot, 0.025}$, $\hat{p}_{boot, 0.975}$)
-</center></div>\EndKnitrBlock{onebox}
+</center>
+:::
 
 
 You can find confidence intervals of difference confidence levels by changing the percent of the distribution you take, e.g., locate the middle 90% of the bootstrapped statistics for a 90% confidence interval.
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">To find the middle 90% of a distribution, which two percentiles would form its boundaries?^[The the middle 95% of a distribution would range from the 5^th^ percentile (the value with 5% of the distribution below) to the 95^th^ percentile (the value with 5% of the distribution above).]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+To find the middle 90% of a distribution, which two percentiles would form its boundaries?^[The the middle 95% of a distribution would range from the 5^th^ percentile (the value with 5% of the distribution below) to the 95^th^ percentile (the value with 5% of the distribution above).]
+:::
 
 ::: {.workedexample}
 The original claim was that the consultant's true rate of complication was under the national rate of 10%. Does the interval estimate of 0 to 11.3% for the true probability of complication indicate that the surgical consultant has a lower rate of complications than the national average?
@@ -1039,7 +1137,8 @@ No. Because the interval overlaps 10%, it might be that the consultant's work is
 In Section \@ref(var-stat), we introduced the normal distribution and showed how it can be used as a mathematical model to describe the variability of a sample mean or sample proportion as a result of the Central Limit Theorem. We explored the normal distribution
 further in Section \@ref(normal). Theory-based hypothesis tests and confidence intervals for proportions use the normal distribution to calculate the p-value and to determine the width of the confidence interval.
 
-\BeginKnitrBlock{important}<div class="important">**Central Limit Theorem for the sample proportion.**
+::: {.importantbox}
+**Central Limit Theorem for the sample proportion.**
   
   When we collect a sufficiently large sample of
   $n$ independent observations of a categorical variable from a population with
@@ -1049,7 +1148,8 @@ further in Section \@ref(normal). Theory-based hypothesis tests and confidence i
   \begin{align*}
   &\text{Mean}=\pi
   &&\text{Standard Deviation }(SD) = \sqrt{\frac{\pi(1-\pi)}{n}}
-  \end{align*}</div>\EndKnitrBlock{important}
+  \end{align*}
+:::
 
 #### Evaluating the two conditions required for modeling $\hat{p}$ using theory-based methods {-}
 
@@ -1060,7 +1160,8 @@ When the sample observations
 are independent and the sample size is sufficiently
 large, the normal model will describe the variability in sample proportions quite well; when the observations violate the conditions, the normal model can be inaccurate.
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Conditions for the sampling distribution of
+::: {.onebox}
+**Conditions for the sampling distribution of
     $\hat{p}$ to be approximately normal.**  
 
   The sampling distribution for $\hat{p}$ based on
@@ -1076,12 +1177,15 @@ large, the normal model will describe the variability in sample proportions quit
 
   When these conditions are satisfied, then the sampling
   distribution of $\hat{p}$ is approximately normal with mean
-  $\pi$ and standard deviation $\sqrt{\frac{\ \pi(1-\pi)\ }{n}}$.</div>\EndKnitrBlock{onebox}
+  $\pi$ and standard deviation $\sqrt{\frac{\ \pi(1-\pi)\ }{n}}$.
+:::
 
 \index{success-failure condition}
 \index{standard error (SE)!single proportion}
   
-\BeginKnitrBlock{protip}<div class="protip">The success-failure condition listed above is only necessary for the sampling distribution of $\hat{p}$ to be approximately normal. The mean of the sampling distribution of $\hat{p}$ is $\pi$, and the standard deviation is $\sqrt{\frac{\ \pi(1-\pi)\ }{n}}$, regardless of the sample size.</div>\EndKnitrBlock{protip}
+::: {.protip}
+The success-failure condition listed above is only necessary for the sampling distribution of $\hat{p}$ to be approximately normal. The mean of the sampling distribution of $\hat{p}$ is $\pi$, and the standard deviation is $\sqrt{\frac{\ \pi(1-\pi)\ }{n}}$, regardless of the sample size.
+:::
   
 
 
@@ -1139,14 +1243,16 @@ In statistical notation,
 where $\pi$ represents the proportion of _all_ payday loan borrowers that would support the regulation.
 :::
 
-\BeginKnitrBlock{tipbox}<div class="tipbox">Note that the null hypothesis above was stated as $H_0: \pi = 0.50$, even though saying there is "not majority support" would imply $\pi \leq 0.50$. Indeed, some textbooks would
+::: {.protip}
+Note that the null hypothesis above was stated as $H_0: \pi = 0.50$, even though saying there is "not majority support" would imply $\pi \leq 0.50$. Indeed, some textbooks would
 write $H_0: \pi \leq 0.50$ in this case, and it is not an incorrect statement. However,
 when calculating the p-value, we need to assume a particular value for $\pi$ under
 the null hypothesis, so in this textbook, our null hypothesis will always be of the form:
   
 \[
 H_0: \mbox{ parameter } = \mbox{ null value}
-\]</div>\EndKnitrBlock{tipbox}
+\]
+:::
 
 To apply the normal distribution to model the null distribution, the independence
 and success-failure conditions must be satisfied.
@@ -1156,7 +1262,8 @@ we verify $n\pi_0$ and $n(1-\pi_0)$ are at least 10,
 where $\pi_0$ is the null value.
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Do payday loan borrowers support a regulation
+::: {.guidedpractice}
+Do payday loan borrowers support a regulation
 that would
 require lenders to pull their credit report
 and evaluate their debt payments?
@@ -1170,7 +1277,8 @@ for a hypothesis test here?^[Independence holds since the poll
     which is checked
     using the null value ($p_0 = 0.5$) from $H_0$:
     $np_0 = 826 \times 0.5 = 413$,
-    $n(1 - p_0) = 826 \times 0.5 = 413$.  Recall that here, the best guess for $\pi$ is $p_0$ which comes from the null hypothesis (because we assume the null hypothesis is true when performing the testing procedure steps).  $H_0$: there is not support for the regulation; $H_0$: $\pi \leq 0.50$. $H_A$: the majority of borrowers support the regulation; $H_A$: $\pi > 0.50$.]</div>\EndKnitrBlock{guidedpractice}
+    $n(1 - p_0) = 826 \times 0.5 = 413$.  Recall that here, the best guess for $\pi$ is $p_0$ which comes from the null hypothesis (because we assume the null hypothesis is true when performing the testing procedure steps).  $H_0$: there is not support for the regulation; $H_0$: $\pi \leq 0.50$. $H_A$: the majority of borrowers support the regulation; $H_A$: $\pi > 0.50$.]
+:::
 
     
 ::: {.workedexample}
@@ -1226,13 +1334,15 @@ the original statistic as our test statistic. A standardized statistic is comput
 The **null standard error** ($SE_0(\text{statistic})$) of the observed statistic is its estimated standard deviation assuming the null hypothesis is true. We can interpret the standardized statistic as _the number of standard errors our observed statistic is above (if positive) or below (if negative) the null value_. When we are modeling the null distribution with a normal
 distribution, this standardized statistic is called $Z$, since it is the Z-score of the sample proportion.
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Standardized sample proportion.**
+::: {.onebox}
+**Standardized sample proportion.**
   
 The **standardized statistic** for theory-based methods for one proportion is
 \[
 Z = \frac{\hat{p} - \pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}} = \frac{\hat{p} - \pi_0}{SE_0(\hat{p})}
 \]
-where $\pi_0$ is the null value. The denominator, $SE_0(\hat{p}) = \sqrt{\frac{\pi_0(1-\pi_0)}{n}}$, is called the **null standard error** of the sample proportion.</div>\EndKnitrBlock{onebox}
+where $\pi_0$ is the null value. The denominator, $SE_0(\hat{p}) = \sqrt{\frac{\pi_0(1-\pi_0)}{n}}$, is called the **null standard error** of the sample proportion.
+:::
 
 With the standardized statistic as our test statistic, we can find
 the p-value as the area under a standard normal distribution at or more extreme
@@ -1271,7 +1381,8 @@ Shown in Figure \@ref(fig:paydayCC-stdnorm-pvalue), the p-value is the area abov
 (ref:figname-cap) Approximate sampling distribution of $Z$ across all possible samples assuming $\pi = 0.50$. The shaded area represents the p-value corresponding to an observed standardized statistic of 0.57. Compare to Figure \@ref(fig:paydayCC-norm-pvalue).
 
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Theory-based hypothesis test for a proportion: one-sample $Z$-test.**
+::: {.onebox}
+**Theory-based hypothesis test for a proportion: one-sample $Z$-test.**
   
 1. Frame the research question in terms of hypotheses.
 2. Using the null value, $\pi_0$, verify the conditions for using the normal distribution to approximate the null distribution.
@@ -1280,7 +1391,8 @@ Shown in Figure \@ref(fig:paydayCC-stdnorm-pvalue), the p-value is the area abov
     Z = \frac{\hat{p} - \pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}} = \frac{\hat{p} - \pi_0}{SE_0(\hat{p})}
     \]
 4. Use the test statistic and the standard normal distribution to calculate the p-value.
-5. Make a conclusion based on the p-value, and write a conclusion in context, in plain language, and in terms of the alternative hypothesis.</div>\EndKnitrBlock{onebox}
+5. Make a conclusion based on the p-value, and write a conclusion in context, in plain language, and in terms of the alternative hypothesis.
+:::
 
 
 <!-- Move this paragraph to the right place: -->
@@ -1307,7 +1419,8 @@ for $\pi$ then takes the form
 
 We have seen $\hat{p}$ to be the sample proportion.  The value $z^{\star}$ comes from a standard normal distribution and is determined by the chosen confidence level.  The value of the standard error of $\hat{p}$, $SE(\hat{p})$, approximates how far we would expect the sample proportion to fall from $\pi$, and depends heavily on the sample size.
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Standard error of one proportion, $\hat{p}$.**
+::: {.guidedpractice}
+**Standard error of one proportion, $\hat{p}$.**
   
 When the conditions are met so that the distribution for $\hat{p}$ is nearly normal, the **variability** of a single proportion, $\hat{p}$ is well described by its standard deviation:
   
@@ -1317,7 +1430,8 @@ Note that we almost never know the true value of $\pi$, but we can substitute ou
   
 $$SD(\hat{p}) \approx \hspace{3mm} SE(\hat{p}) = \sqrt{\frac{(\mbox{best guess of }\pi)(1 - \mbox{best guess of }\pi)}{n}}$$
   
-For hypothesis testing, we often use $\pi_0$ as the best guess of $\pi$, as seen in Section \@ref(theory-prop).  For confidence intervals, we typically use $\hat{p}$ as the best guess of $\pi$.</div>\EndKnitrBlock{onebox}
+For hypothesis testing, we often use $\pi_0$ as the best guess of $\pi$, as seen in Section \@ref(theory-prop).  For confidence intervals, we typically use $\hat{p}$ as the best guess of $\pi$.
+:::
 
 \index{data!Payday regulation poll|(}
 
@@ -1338,12 +1452,14 @@ did search and replace for each term above.  for example 826 for 826
 
 -->
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Consider taking many polls of registered voters (i.e., random samples) of size 300 and asking them if they support legalized marijuana.
+::: {.guidedpractice}
+Consider taking many polls of registered voters (i.e., random samples) of size 300 and asking them if they support legalized marijuana.
 It is suspected that about 2/3 of all voters support legalized marijuana.
 To understand how the sample proportion ($\hat{p}$) would vary across the samples, calculate the standard error of $\hat{p}$.^[Because the $\pi$ is unknown but expected to be around 2/3, we will use 2/3 in place of $\pi$ in the formula for the standard deviation of $\hat{p}$ and calculate  
 $SE(\hat{p}) = \sqrt{\frac{2/3 (1 - 2/3)}
         {300}} = 0.027$.]
-</div>\EndKnitrBlock{guidedpractice}
+
+:::
 
 
 ::: {.workedexample}
@@ -1410,7 +1526,8 @@ in the formula.
 
 
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Constructing a confidence interval for a single proportion.**
+::: {.onebox}
+**Constructing a confidence interval for a single proportion.**
 
 There are four steps to constructing a confidence
   interval for $p$.
@@ -1427,7 +1544,8 @@ There are four steps to constructing a confidence
 4. Apply the general confidence interval formula $\mbox{statistic} \pm (\mbox{multiplier}) \times SE$:
   \[
     \hat{p} \pm z^{\star}\times \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
-  \]</div>\EndKnitrBlock{onebox}
+  \]
+:::
 
 
 
@@ -1446,7 +1564,9 @@ There are three components to this interval: the point estimate, "1.96", and the
 
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">If $X$ is a normally distributed random variable, how often will $X$ be within 2.58 standard deviations of the mean?^[This is equivalent to asking how often the $Z$ score will be larger than -2.58 but less than 2.58. (For a picture, see Figure \@ref(fig:choosingZForCI).) To determine this probability, look up -2.58 and 2.58 in the normal probability table (0.0049 and 0.9951). Thus, there is a $0.9951-0.0049 \approx 0.99$ probability that the unobserved random variable $X$ will be within 2.58 standard deviations of the mean.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+If $X$ is a normally distributed random variable, how often will $X$ be within 2.58 standard deviations of the mean?^[This is equivalent to asking how often the $Z$ score will be larger than -2.58 but less than 2.58. (For a picture, see Figure \@ref(fig:choosingZForCI).) To determine this probability, look up -2.58 and 2.58 in the normal probability table (0.0049 and 0.9951). Thus, there is a $0.9951-0.0049 \approx 0.99$ probability that the unobserved random variable $X$ will be within 2.58 standard deviations of the mean.]
+:::
 
 
 <div class="figure" style="text-align: center">
@@ -1474,17 +1594,21 @@ label for previous equation?
 The normal approximation is crucial to the precision of the $z^\star$ confidence intervals. When the normal model is not a good fit, we will use alternative distributions that better characterize the sampling distribution or we will use bootstrapping procedures.
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Create a 99% confidence interval for the impact of the stent on the risk of stroke using the data from Section \@ref(basic-stents-strokes). The point estimate is 0.090, and the standard error is $SE = 0.028$. It has been verified for you that the point estimate can reasonably be modeled by a normal distribution.^[Since the necessary conditions for applying the normal model have already been checked for us, we can go straight to the construction of the confidence interval: $\text{point estimate}\ \pm\ 2.58 \times SE \rightarrow (0.018, 0.162)$. We are 99% confident that implanting a stent in the brain of a patient who is at risk of stroke increases the risk of stroke within 30 days by a rate of 0.018 to 0.162 (assuming the patients are representative of the population).]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+Create a 99% confidence interval for the impact of the stent on the risk of stroke using the data from Section \@ref(basic-stents-strokes). The point estimate is 0.090, and the standard error is $SE = 0.028$. It has been verified for you that the point estimate can reasonably be modeled by a normal distribution.^[Since the necessary conditions for applying the normal model have already been checked for us, we can go straight to the construction of the confidence interval: $\text{point estimate}\ \pm\ 2.58 \times SE \rightarrow (0.018, 0.162)$. We are 99% confident that implanting a stent in the brain of a patient who is at risk of stroke increases the risk of stroke within 30 days by a rate of 0.018 to 0.162 (assuming the patients are representative of the population).]
+:::
 
 
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Theory-based $(1-\alpha)\times 100$% confidence interval.**
+::: {.onebox}
+**Theory-based $(1-\alpha)\times 100$% confidence interval.**
 
 If the statistic follows the normal model with standard error $SE$, then a confidence interval for the population parameter is
 \begin{eqnarray*}
 \text{statistic}\ \pm\ z^{\star} \times SE
 \end{eqnarray*}
-where $z^{\star}$ corresponds to the confidence level selected: the middle $(1-\alpha)\times 100$% of a standard normal distribution lies between $-z^{\star}$ and $z^{\star}$.</div>\EndKnitrBlock{onebox}
+where $z^{\star}$ corresponds to the confidence level selected: the middle $(1-\alpha)\times 100$% of a standard normal distribution lies between $-z^{\star}$ and $z^{\star}$.
+:::
 
 #### Using `R` to find $z^{\star}$ {-}
 
@@ -1509,185 +1633,10 @@ qnorm(.99 + .005)
 
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Previously, we found that implanting a stent in the brain of a patient at risk for a stroke *increased* the risk of a stroke. The study estimated a 9% increase in the number of patients who had a stroke, and the standard error of this estimate was about $SE = 2.8%$. Compute a 90% confidence interval for the effect.^[We must find $z^{\star}$ such that 90% of the distribution falls between -$z^{\star}$ and $z^{\star}$ in the standard normal model, $N(\mu=0, \sigma=1)$. We can find -$z^{\star}$ from a standard normal distribution by looking for a lower tail of 5% (the other 5% is in the upper tail), thus $z^{\star}=1.645$. The 90% confidence interval can then be computed as $\text{point estimate}\ \pm\ 1.65\times SE \to (4.4\%, 13.6\%)$. (Note: The conditions for normality had earlier been confirmed for us.) That is, we are 90% confident that implanting a stent in a stroke patient's brain increased the risk of stroke within 30 days by 4.4% to 13.6%.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+Previously, we found that implanting a stent in the brain of a patient at risk for a stroke *increased* the risk of a stroke. The study estimated a 9% increase in the number of patients who had a stroke, and the standard error of this estimate was about $SE = 2.8%$. Compute a 90% confidence interval for the effect.^[We must find $z^{\star}$ such that 90% of the distribution falls between -$z^{\star}$ and $z^{\star}$ in the standard normal model, $N(\mu=0, \sigma=1)$. We can find -$z^{\star}$ from a standard normal distribution by looking for a lower tail of 5% (the other 5% is in the upper tail), thus $z^{\star}=1.645$. The 90% confidence interval can then be computed as $\text{point estimate}\ \pm\ 1.65\times SE \to (4.4\%, 13.6\%)$. (Note: The conditions for normality had earlier been confirmed for us.) That is, we are 90% confident that implanting a stent in a stroke patient's brain increased the risk of stroke within 30 days by 4.4% to 13.6%.]
+:::
 
-
-<!--
-#### Choosing a sample size when estimating a proportion {-}
-
-\BeginKnitrBlock{onebox}<div class="onebox">**Margin of error.**
-
-In a confidence interval, $z^{\star}\times SE$ is called the **margin of error**\index{margin of error}.</div>\EndKnitrBlock{onebox}
-
-
-\index{margin of error|(}
-
-When collecting data, we choose a sample size suitable
-for the purpose of the study. 
-You might agree that the following interval estimate would not be particularly useful: a 95% confidence interval for the proportion of liver transplants with complications is between 0 and 1.
-Often times "suitable for the study" means choosing a sample size large
-enough that the **margin of error**\index{margin of error} --
-which is the part we add and subtract from the point
-estimate in a confidence interval --
-is sufficiently small that the result is useful.
-For example, our task might be to find a sample size
-$n$ so that the sample proportion is within $\pm 0.04$
-of the actual proportion in a 95% confidence interval.
-
-<!--
-% For example, the margin of error for a point estimate using 95% confidence can be written as $1.96\times SE$. We set up a general equation to represent the problem:
-%\begin{align*}
-%ME = z^{\star} \times SE \leq m
-%\end{align*}
-%where $ME$ represented the actual margin of error and $z^{\star}$ was chosen to correspond to the confidence level. The standard error formula is specified to correspond to the particular setting. For instance, in the case of means, the standard error was given as $\sigma / \sqrt{n}$. In the case of a single proportion, we use $\sqrt{p(1-p) / n\ }$ for the standard error.
-
-
-\index{data!Student football stadium|(}
-
-\BeginKnitrBlock{example}<div class="example">A university newspaper is conducting
-    a survey to determine what fraction of students
-    support a $200 per year increase in fees to pay
-    for a new football stadium.
-    How big of a sample is required to ensure the
-    margin of error is smaller than 0.04 using a
-    95% confidence level?
-
----
-      
-  The margin of error for a sample proportion is
-  \begin{align*}
-  z^{\star} \sqrt{\frac{p (1 - p)}{n}}
-  \end{align*}
-  Our goal is to find the smallest sample size $n$
-  so that this margin of error is smaller than $0.04$.
-  For a 95% confidence level, the value $z^{\star}$
-  corresponds to 1.96:
-  \begin{align*}
-  1.96\times \sqrt{\frac{p(1-p)}{n}} \ < \ 0.04
-  \end{align*}
-  There are two unknowns in the equation: $p$ and $n$.
-  If we have an estimate of $p$, perhaps from a prior
-  survey, we could enter in that value and solve for $n$.
-  If we have no such estimate, we must use some other
-  value for $p$.
-  It turns out that the margin of error is largest
-  when $p$ is 0.5, so we typically use this
-  \emph{worst case value} if no estimate of the
-  proportion is available:
-  \begin{align*}
-	1.96\times \sqrt{\frac{0.5(1-0.5)}{n}} &\ < \ 0.04 \\
-	1.96^2\times \frac{0.5(1-0.5)}{n} &\ < \ 0.04^2 \\
-	1.96^2\times \frac{0.5(1-0.5)}{0.04^2} &\ < \ n \\
-	600.25 &\ < \  n
-  \end{align*}
-  We would need over 600.25 participants, which means
-  we need 601 participants or more, to ensure the
-  sample proportion is within 0.04 of the true proportion
-  with 95% confidence.</div>\EndKnitrBlock{example}
-
-\index{data!Student football stadium|)}
-
-When an estimate of the proportion is available, we use it in place of the worst case proportion value, 0.5.
-
-
-\index{data!Tire failure rate|(}
-
-\BeginKnitrBlock{todo}<div class="todo">not sure why the footnote didn't go into the footnote</div>\EndKnitrBlock{todo}
-
-
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">A manager is about to oversee the mass
-production of a new tire model in her factory,
-and she would like to estimate what proportion of
-these tires will be rejected through quality control.
-The quality control team has monitored the last three
-tire models produced by the factory,
-failing 1.7% of tires in the first model,
-6.2% of the second model,
-and 1.3% of the third model.
-The manager would like to examine enough tires
-to estimate the failure rate of the new tire model
-to within about 1% with a 90% confidence level.
-There are three different failure rates to choose from.
-Perform the sample size computation for each separately,
-and identify three sample sizes to consider.^[For a 90% confidence interval, $z^{\star} = 1.65$,
-  and since an estimate of the proportion 0.017 is available,
-  we'll use it in the margin of error formula:
-  \begin{align*}
-  1.65\times \sqrt{\frac{0.017(1-0.017)}{n}} &\ < \ 0.01
-    \qquad\to\qquad
-      \frac{0.017(1-0.017)}{n} \ < \ 
-          \left(\frac{0.01}{1.65}\right)^2
-    \qquad\to\qquad
-      454.96 \ < \ n
-  \end{align*}
-  For sample size calculations, we always round up,
-  so the first tire model suggests 455 tires would
-  be sufficient.
-
-  A similar computation can be accomplished using 0.062
-  and 0.013 for $p$, and you should verify that using these
-  proportions results in minimum sample sizes of 1584
-  and 350 tires, respectively.]</div>\EndKnitrBlock{guidedpractice}
-
-\BeginKnitrBlock{example}<div class="example">The sample sizes vary widely in the previous
-    Guided Practice.
-    Which of the three would you suggest using?
-    What would influence your choice?
-
----
-      
-  We could examine which of the old models is most
-  like the new model, then choose the corresponding sample
-  size.
-  Or if two of the previous estimates are based on small
-  samples while the other is based on a larger sample,
-  we might consider the value corresponding to the larger
-  sample.
-  There are also other reasonable approaches.
-
-  Also observe that the success-failure
-  condition would need to be checked in the final sample.
-  For instance, if we sampled $n = 1584$ tires and found
-  a failure rate of 0.5%, the normal approximation would
-  not be reasonable, and we would require more advanced
-  statistical methods for creating the confidence interval.</div>\EndKnitrBlock{example}
-
-\index{data!Tire failure rate|)}
-\index{data!Payday regulation poll|(}
-
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Suppose we want to continually track the support
-of payday borrowers for regulation on lenders,
-where we would conduct a new poll every month.
-Running such frequent polls is expensive, so we decide
-a wider margin of error of 5% for each individual survey
-would be acceptable.
-Based on a previous sample of borrowers where
-70% supported some form of regulation,
-how big should our monthly sample be for a margin
-of error of 0.04 with 95% confidence?^[We complete the same computations as before,
-   except now we use $0.70$ instead of $0.5$
-   for $p$:
-   \begin{align*}
-   1.96\times \sqrt{\frac{p(1-p)}{n}}
-       \approx 1.96\times
-           \sqrt{\frac{0.70(1-0.70)}
-               {n}}
-       &\leq 0.05
-     \qquad\to\qquad
-       n \geq 322.7
-  \end{align*}
-  A sample size of 323 or more would be reasonable.
-  (Reminder: always round up for sample size calculations!)
-  Given that we plan to track this poll over time,
-  we also may want to periodically repeat these calculations
-  to ensure that we're being thoughtful in our sample
-  size recommendations in case the baseline rate fluctuates.]</div>\EndKnitrBlock{guidedpractice}
-
-\index{data!Payday regulation poll|)}
-\index{margin of error|)}
-
-{\input{ch_inference_for_props/TeX/inference_for_a_single_proportion.tex}}
--->
 
 #### Violating conditions {-}
 
@@ -1705,17 +1654,17 @@ for a hypothesis test, we can simulate the null distribution
 of $\hat{p}$ using the null value, $\pi_0$, as seen in Section \@ref(one-prop-null-boot).  Unfortunately, methods for dealing with observations which are
 not independent are outside the scope of this book.
 
-<!-- ```{block2, type = "todo", echo=TRUE} -->
-<!-- Add tappers and listeners case study example from old Ch. 5 here. -->
-<!-- ``` -->
+
 
 ## Difference of two proportions {#diff-two-prop}
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Notation.**
+::: {.onebox}
+**Notation.**
 
 * $n_1$, $n_2$ = sample sizes of two independent samples
 * $\hat{p}_1$, $\hat{p}_2$ = sample proportions of two independent samples
-* $\pi_1$, $\pi_2$ = population proportions of two independent samples</div>\EndKnitrBlock{onebox}
+* $\pi_1$, $\pi_2$ = population proportions of two independent samples
+:::
 
 
 We now extend the methods from Section \@ref(single-prop) to apply confidence intervals and hypothesis tests to differences in population proportions that come from two groups: $\pi_1 - \pi_2$.
@@ -1756,7 +1705,9 @@ They were asked to assume the role of the personnel director of a bank and were 
 The files given to the participants were identical, except that half of them indicated the candidate was male and the other half indicated the candidate was female. 
 These files were randomly assigned to the subjects.
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Is this an observational study or an experiment? How does the type of study impact what can be inferred from the results?^[The study is an experiment, as subjects were randomly assigned a "male" file or a "female" file (remember, all the files were actually identical in content). Since this is an experiment, the results can be used to evaluate a causal relationship between gender of a candidate and the promotion decision.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+Is this an observational study or an experiment? How does the type of study impact what can be inferred from the results?^[The study is an experiment, as subjects were randomly assigned a "male" file or a "female" file (remember, all the files were actually identical in content). Since this is an experiment, the results can be used to evaluate a causal relationship between gender of a candidate and the promotion decision.]
+:::
 
 For each supervisor we recorded the gender associated with the assigned file and the promotion decision. 
 Using the results of the study summarized in Table \@ref(tab:discriminationResults), we would like to evaluate if females are unfairly discriminated against in promotion decisions. 
@@ -1929,9 +1880,11 @@ Table \@ref(tab:discriminationRand1) show the results of one such simulation.
 
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">What is the difference in promotion rates between the two simulated groups in Table \@ref(tab:discriminationRand1) ? 
+::: {.guidedpractice}
+What is the difference in promotion rates between the two simulated groups in Table \@ref(tab:discriminationRand1) ? 
 How does this compare to the observed difference 29.2% from the actual study?^[$18/24 - 17/24=0.042$ or about 4.2% in favor of the men. 
-This difference due to chance is much smaller than the difference observed in the actual groups.]</div>\EndKnitrBlock{guidedpractice}
+This difference due to chance is much smaller than the difference observed in the actual groups.]
+:::
 
 
 
@@ -1990,7 +1943,9 @@ This type of situation is typical of our daily lives: each possible event in its
 We should be cautious not to misinterpret such anecdotal evidence.]
 In our analysis, we determined that there was only a $\approx$ 2% probability of obtaining a sample where $\geq$ 29.2% more males than females get promoted by chance alone, so we conclude that the data provide strong evidence of gender discrimination against women by the supervisors. 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">What statistical term is given to the 2% probability of obtaining a sample where $\geq$ 29.2% more males than females get promoted by chance alone?^[This probability of the results we see in our study, under the assumption of no discrimination, is the **p-value**.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+What statistical term is given to the 2% probability of obtaining a sample where $\geq$ 29.2% more males than females get promoted by chance alone?^[This probability of the results we see in our study, under the assumption of no discrimination, is the **p-value**.]
+:::
 
 #### Scope of inference {-}
 
@@ -2012,7 +1967,9 @@ We can summarize the two different perspectives using the null and alternative h
 
 * $H_A$: **Alternative hypothesis**. Reminding students that they can save money for later purchases will reduce the chance they will continue with a purchase.
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">How could you design a randomized experiment to test these two hypotheses?^[With a sample of students, randomly assign half of them to the control condition, and the other half to the treatment condition. For those in the control condition, present them with a situation where an item is on sale and ask if they would like to buy the item. For those in the treatment condition, present them with the same situation, but also remind them that they can save money for later purchases, then ask if they would like to buy the item. Compute and compare the proportions who refrained from purchasing the item in each group.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+How could you design a randomized experiment to test these two hypotheses?^[With a sample of students, randomly assign half of them to the control condition, and the other half to the treatment condition. For those in the control condition, present them with a situation where an item is on sale and ask if they would like to buy the item. For those in the treatment condition, present them with the same situation, but also remind them that they can save money for later purchases, then ask if they would like to buy the item. Compute and compare the proportions who refrained from purchasing the item in each group.]
+:::
 
 In statistical notation, we can define parameters $\pi_{ctrl}$ = the probability a student under a control condition (not reminding them that they can save money for later purchases) refrains from making a purchase, and $\pi_{trmt}$ = the probability a student under a treatment condition (reminding them that they can save money for later purchases) refrains from makes a purchase. Our hypotheses are then
 
@@ -2327,7 +2284,8 @@ signs of infection.
 </tbody>
 </table>
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Is this an observational study or an experiment?
+::: {.guidedpractice}
+Is this an observational study or an experiment?
 What implications does the study type have on what can
 be inferred from the results?^[The
   study is an experiment, as patients were randomly
@@ -2335,7 +2293,8 @@ be inferred from the results?^[The
   Since this is an experiment, the results can be used
   to evaluate a causal relationship between the malaria
   vaccine and whether patients showed signs
-  of an infection.]</div>\EndKnitrBlock{guidedpractice}
+  of an infection.]
+:::
 
 In this study, a smaller proportion of patients
 who received the vaccine showed signs of an infection
@@ -2370,9 +2329,11 @@ In terms of relative risk, our null and alternative hypotheses are
 
 **Alternative model** $H_A: \dfrac{\pi_{Vac}}{\pi_{Pla}} < 1$
 
-\BeginKnitrBlock{tipbox}<div class="tipbox">Whether we write our hypotheses in terms of a difference in proportions or
+::: {.protip}
+Whether we write our hypotheses in terms of a difference in proportions or
 a ratio of proportions (relative risk), the hypotheses still have the same interpretation.
-For example, the three null hypotheses $H_0: \pi_{Vac} = \pi_{Pla}$, $H_0: \pi_{Vac} - \pi_{Pla} = 0$, and $H_0: \pi_{Vac}/\pi_{Pla} = 1$, are all algebraicly equivalent.</div>\EndKnitrBlock{tipbox}
+For example, the three null hypotheses $H_0: \pi_{Vac} = \pi_{Pla}$, $H_0: \pi_{Vac} - \pi_{Pla} = 0$, and $H_0: \pi_{Vac}/\pi_{Pla} = 1$, are all algebraicly equivalent.
+:::
 
 What would it mean if the independence model,
 which says the vaccine had no influence on the
@@ -2419,10 +2380,12 @@ that the vaccine was helpful seems more plausible.
 
 We can again randomize the responses (`infection` or `no infection`) to the treatment conditions under the null hypothesis of independence, but this time, we'll compute sample relative risks with each simulated sample. 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">How could you use cards to re-randomize one sample into groups? Remember, in this hypothetical world, we believe each patient that got an infection was going to get it regardless of which group they were in, and we would like to see what happens if we randomly assign these patients to the treatment
+::: {.guidedpractice}
+How could you use cards to re-randomize one sample into groups? Remember, in this hypothetical world, we believe each patient that got an infection was going to get it regardless of which group they were in, and we would like to see what happens if we randomly assign these patients to the treatment
 and control groups again.^[1. Take 20 notecards to represent the 20 patients, where we write down "infection" on 11 cards and "no infection" on 9 cards.
 2. Thoroughly shuffle the notecards and deal 14 into
-a "vaccine" pile and 6 into a "placebo" pile. 3. Compute the proportion of "infection" cards in the "vaccine" pile and divide it by the proportion of "infection" cards in the "placebo" pile to get the simulated sample relative risk.]</div>\EndKnitrBlock{guidedpractice}
+a "vaccine" pile and 6 into a "placebo" pile. 3. Compute the proportion of "infection" cards in the "vaccine" pile and divide it by the proportion of "infection" cards in the "placebo" pile to get the simulated sample relative risk.]
+:::
 
 Figure \@ref(fig:malaria-rand-dot-plot) shows a histogram
 of the relative risks found from 1,000 randomization simulations,
@@ -2606,12 +2569,14 @@ The study results are shown in Table \@ref(tab:resultsForCPRStudyInSmallSampleSe
 </tbody>
 </table>
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">What is the observed survival rate in the control group? 
+::: {.guidedpractice}
+What is the observed survival rate in the control group? 
 And in the treatment group? 
 Also, provide a point estimate of the difference in survival proportions of the two groups ($\hat{p}_t - \hat{p}_c$) and the relative "risk" of survival ($\hat{p}_t/\hat{p}_c$).^[Observed control survival rate: $\hat{p}_c = \frac{11}{50} = 0.22$. 
 Treatment survival rate: $\hat{p}_t = \frac{14}{40} = 0.35$. 
 Observed difference: $\hat{p}_t - \hat{p}_c = 0.35 - 0.22 = 0.13$.
-Relative risk: $\hat{p}_t/\hat{p}_c = 0.35/0.22 = 1.59$]</div>\EndKnitrBlock{guidedpractice}
+Relative risk: $\hat{p}_t/\hat{p}_c = 0.35/0.22 = 1.59$]
+:::
 
 According to the point estimate, for patients who have undergone CPR outside of the hospital, an additional 13% of these patients survive when they are treated with blood thinners. Interpreting the relative risk, patients in this sample who had undergone CPR outside of the hospital had a 59% higher survival rate when they were treated with blood thinners.
 However, we wonder if this difference could be easily explainable by chance.
@@ -2655,15 +2620,19 @@ With this large p-value, we do not find statistically significant evidence that 
 
 \index{data!CPR and blood thinner|)}
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Default to a two-sided test.**
+::: {.onebox}
+**Default to a two-sided test.**
 
 We want to be rigorous and keep an open mind when we analyze data and evidence. 
-Use a one-sided hypothesis test only if you truly have interest in only one direction.</div>\EndKnitrBlock{onebox}
+Use a one-sided hypothesis test only if you truly have interest in only one direction.
+:::
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Computing a p-value for a two-sided test.**
+::: {.onebox}
+**Computing a p-value for a two-sided test.**
 
 If your null distribution is symmetric, first compute the p-value for one tail of the distribution, then double that value to get the two-sided p-value. 
-That's it!^[If the null distribution is not symmetric, then the computer will have to count the proportions in each tail separately, since the two tail proportions may differ.]</div>\EndKnitrBlock{onebox}
+That's it!^[If the null distribution is not symmetric, then the computer will have to count the proportions in each tail separately, since the two tail proportions may differ.]
+:::
 
 ::: {.workedexample}
 Consider the situation of the [medical consultant](one-prop-null-boot). 
@@ -2825,7 +2794,8 @@ First, we require a broader independence condition,
 and secondly,
 the success-failure condition must be met by both groups.
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Conditions for the sampling distribution of $\hat{p}_1 -\hat{p}_2$ to be normal.**
+::: {.onebox}
+**Conditions for the sampling distribution of $\hat{p}_1 -\hat{p}_2$ to be normal.**
   
 The difference $\hat{p}_1 - \hat{p}_2$ can be modeled
   using a normal distribution when
@@ -2846,7 +2816,8 @@ The difference $\hat{p}_1 - \hat{p}_2$ can be modeled
   SD(\hat{p}_1 - \hat{p}_2) = \sqrt{\frac{\pi_1(1-\pi_1)}{n_1} + \frac{\pi_2(1-\pi_2)}{n_2}}
   \end{eqnarray*}
   where $\pi_1$ and $\pi_2$ represent the population proportions,
-  and $n_1$ and $n_2$ represent the sample sizes.</div>\EndKnitrBlock{onebox}
+  and $n_1$ and $n_2$ represent the sample sizes.
+:::
 
 \index{standard error (SE)!difference in proportions}
 
@@ -2854,7 +2825,9 @@ The difference $\hat{p}_1 - \hat{p}_2$ can be modeled
 SE reference above?
     \label{seForDiffOfProp}
 -->
-\BeginKnitrBlock{tipbox}<div class="tipbox">The success-failure condition listed above is only necessary for the sampling distribution of $\hat{p}_1 - \hat{p}_2$ to be approximately normal. The mean of the sampling distribution of $\hat{p}_1 - \hat{p}_2$ is $\pi_1 - \pi_2$, and the standard deviation is $\sqrt{\frac{\pi_1(1-\pi_1)}{n_1}+\frac{\pi_2(1-\pi_2)}{n_2}}$, regardless of the two sample sizes.</div>\EndKnitrBlock{tipbox}
+::: {.protip}
+The success-failure condition listed above is only necessary for the sampling distribution of $\hat{p}_1 - \hat{p}_2$ to be approximately normal. The mean of the sampling distribution of $\hat{p}_1 - \hat{p}_2$ is $\pi_1 - \pi_2$, and the standard deviation is $\sqrt{\frac{\pi_1(1-\pi_1)}{n_1}+\frac{\pi_2(1-\pi_2)}{n_2}}$, regardless of the two sample sizes.
+:::
 
 
 
@@ -2868,7 +2841,8 @@ and to estimate the standard deviation of the sampling distribution of $\hat{p}_
 
 \index{data!CPR and blood thinner|(}
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Standard error of the difference in two proportions, $\hat{p}_1 -\hat{p}_2$: confidence intervals.**
+::: {.onebox}
+**Standard error of the difference in two proportions, $\hat{p}_1 -\hat{p}_2$: confidence intervals.**
   
 When computing a theory-based confidence interval for $\pi_1 - \pi_2$, we substitute $\hat{p}_1$ for $\pi_1$ and $\hat{p}_2$ for $\pi_2$ in the expression for the standard deviation of the statistic, resulting in its standard error:
 
@@ -2876,7 +2850,8 @@ When computing a theory-based confidence interval for $\pi_1 - \pi_2$, we substi
   SE(\hat{p}_1 -\hat{p}_2) = \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}
   \end{eqnarray*}
 
-This is the standard error formula we will use when computing confidence intervals for the difference in two proportions.</div>\EndKnitrBlock{onebox}
+This is the standard error formula we will use when computing confidence intervals for the difference in two proportions.
+:::
 
 If the conditions for the sampling distribution of $\hat{p}_1 - \hat{p}_2$ to be normal are met, we can apply the generic confidence interval formula
 for a difference of two proportions,
@@ -3040,7 +3015,8 @@ We'll use $\pi_t$ for the true survival
 
 \index{data!CPR and blood thinner|)}
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">A 5-year experiment
+::: {.guidedpractice}
+A 5-year experiment
 was conducted to evaluate the effectiveness
 of fish oils on reducing cardiovascular events,
 where each subject was randomized into one of two
@@ -3066,7 +3042,8 @@ We are 95% confident that fish oils decreases
   Because the interval is entirely below 0, and the treatment was randomly assigned,
   the data provide strong evidence
   that fish oil supplements reduce heart attacks
-  in patients like those in the study.]</div>\EndKnitrBlock{guidedpractice}
+  in patients like those in the study.]
+:::
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>(\#tab:fish-oil-data)Results for the study on n-3 fatty acid supplement and related health benefits.</caption>
@@ -3141,12 +3118,15 @@ If mammograms are much more effective than non-mammogram breast cancer exams, th
 </table>
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Is this study an experiment or an observational study?^[This is an experiment. Patients were randomized
+::: {.guidedpractice}
+Is this study an experiment or an observational study?^[This is an experiment. Patients were randomized
     to receive mammograms or a standard breast cancer exam.
-    We will be able to make causal conclusions based on this study.]</div>\EndKnitrBlock{guidedpractice}
+    We will be able to make causal conclusions based on this study.]
+:::
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Set up hypotheses to test whether there was a difference
+::: {.guidedpractice}
+Set up hypotheses to test whether there was a difference
 in breast cancer deaths in the mammogram and control groups.^[$H_0$: the breast cancer death rate for patients
     screened using mammograms is the same as the breast cancer
     death rate for patients in the control,
@@ -3154,7 +3134,8 @@ in breast cancer deaths in the mammogram and control groups.^[$H_0$: the breast 
     $H_A$: the breast cancer death rate for patients screened
     using mammograms is different than the breast cancer death
     rate for patients in the control,
-    $\pi_{mgm} - \pi_{ctrl} \neq 0$.]</div>\EndKnitrBlock{guidedpractice}
+    $\pi_{mgm} - \pi_{ctrl} \neq 0$.]
+:::
 
 The research question describing mammograms is set up to address specific hypotheses (in contrast to a confidence interval for a parameter).  In order to fully take advantage of the hypothesis testing structure, we assess the randomness under the condition that the null hypothesis is true (as we always do for hypothesis testing).
 Using the data from Table \@ref(tab:mammogramStudySummaryTable),
@@ -3182,7 +3163,8 @@ death rates $\pi_{mgm}$ and $\pi_{ctrl}$
 
 
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Use the pooled proportion when $H_0$ is $\pi_1 - \pi_2 = 0$.**
+::: {.onebox}
+**Use the pooled proportion when $H_0$ is $\pi_1 - \pi_2 = 0$.**
   
   When the null hypothesis is that the proportions are equal,
   use the pooled proportion ($\hat{p}_{\textit{pool}}$)
@@ -3201,7 +3183,8 @@ death rates $\pi_{mgm}$ and $\pi_{ctrl}$
     = \frac{\text{number of successes in sample 1}}{n_1}
   \end{eqnarray*}
   Similarly, $\hat{p}_2 n_2$ represents the number
-  of successes in sample 2.</div>\EndKnitrBlock{onebox}
+  of successes in sample 2.
+:::
 
 
 ::: {.workedexample}
@@ -3244,7 +3227,8 @@ condition^[For an example of a two proportion
   success-failure condition to be met, see
   Section \@ref(two-prop-errors).].  We next use it again in the standard error calculation.
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Standard error of the difference in two proportions, $\hat{p}_1 -\hat{p}_2$: hypothesis tests.**
+::: {.onebox}
+**Standard error of the difference in two proportions, $\hat{p}_1 -\hat{p}_2$: hypothesis tests.**
   
 Since we assume $\pi_1 = \pi_2$ when we conduct a theory-based hypothesis test for $H_0: \pi_1 - \pi_2 = 0$, we substitute the **pooled sample proportion**, $\hat{p}_{pool}$ in for both $\pi_1$ and $\pi_2$ in the expression for the standard deviation of the statistic, resulting in its **null standard error**:
 
@@ -3253,7 +3237,8 @@ Since we assume $\pi_1 = \pi_2$ when we conduct a theory-based hypothesis test f
   &= \sqrt{\hat{p}_{pool}(1-\hat{p}_{pool})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}
   \end{align*}
 
-This is the standard error formula we will use when computing the test statistic for a hypothesis test of $H_0: \pi_1 - \pi_2 = 0$.</div>\EndKnitrBlock{onebox}
+This is the standard error formula we will use when computing the test statistic for a hypothesis test of $H_0: \pi_1 - \pi_2 = 0$.
+:::
 
 
 ::: {.workedexample}
@@ -3461,7 +3446,9 @@ A Type 2 Error means the court failed to reject $H_0$ (i.e., failed to convict t
 :::
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Consider the opportunity cost study where we concluded students were less likely to make a DVD purchase if they were reminded that money not spent now could be spent later. What would a Type 1 Error represent in this context?^[Making a Type 1 Error in this context would mean that reminding students that money not spent now can be spent later does not affect their buying habits, despite the strong evidence (the data suggesting otherwise) found in the experiment. Notice that this does *not* necessarily mean something was wrong with the data or that we made a computational mistake. Sometimes data simply point us to the wrong conclusion, which is why scientific studies are often repeated to check initial findings.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+Consider the opportunity cost study where we concluded students were less likely to make a DVD purchase if they were reminded that money not spent now could be spent later. What would a Type 1 Error represent in this context?^[Making a Type 1 Error in this context would mean that reminding students that money not spent now can be spent later does not affect their buying habits, despite the strong evidence (the data suggesting otherwise) found in the experiment. Notice that this does *not* necessarily mean something was wrong with the data or that we made a computational mistake. Sometimes data simply point us to the wrong conclusion, which is why scientific studies are often repeated to check initial findings.]
+:::
 
 
 ::: {.workedexample}
@@ -3474,8 +3461,10 @@ To lower the Type 1 Error rate, we might raise our standard for conviction from 
 :::
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">How could we reduce the Type 2 Error rate in US courts? 
-What influence would this have on the Type 1 Error rate?^[To lower the Type 2 Error rate, we want to convict more guilty people. We could lower the standards for conviction from "beyond a reasonable doubt" to "beyond a little doubt". Lowering the bar for guilt will also result in more wrongful convictions, raising the Type 1 Error rate.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+How could we reduce the Type 2 Error rate in US courts? 
+What influence would this have on the Type 1 Error rate?^[To lower the Type 2 Error rate, we want to convict more guilty people. We could lower the standards for conviction from "beyond a reasonable doubt" to "beyond a little doubt". Lowering the bar for guilt will also result in more wrongful convictions, raising the Type 1 Error rate.]
+:::
 
 
 \index{hypothesis testing!decision errors|)}
@@ -3495,9 +3484,11 @@ Choosing a significance level for a test is important in many contexts, and the 
 However, it is sometimes helpful to adjust the significance level based on the application. 
 We may select a level that is smaller or larger than 0.05 depending on the consequences of any conclusions reached from the test.
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Significance level = probability of making a Type 1 error.**
+::: {.onebox}
+**Significance level = probability of making a Type 1 error.**
 
-We reject a null hypothesis if the p-value is less than a chosen significance level, $\alpha$. Therefore, if the null hypothesis is true, but we end up with really unusual data just by chance -- a p-value less than $\alpha$ -- then we mistakenly reject the null hypothesis, making a Type 1 error.</div>\EndKnitrBlock{onebox}
+We reject a null hypothesis if the p-value is less than a chosen significance level, $\alpha$. Therefore, if the null hypothesis is true, but we end up with really unusual data just by chance -- a p-value less than $\alpha$ -- then we mistakenly reject the null hypothesis, making a Type 1 error.
+:::
 
 If making a Type 1 Error is dangerous or especially costly, we should choose a small significance level (e.g., 0.01 or 0.001). 
 If we want to be very cautious about rejecting the null hypothesis, we demand very strong evidence favoring the alternative $H_A$ before we would reject $H_0$.
@@ -3506,9 +3497,11 @@ If a Type 2 Error is relatively more dangerous or much more costly than a Type 1
 Here we want to be cautious about failing to reject $H_0$ when the null is actually false.
 
 
-\BeginKnitrBlock{important}<div class="important">**Significance levels should reflect consequences of errors.**
+::: {.importantbox}
+**Significance levels should reflect consequences of errors.**
 
-The significance level selected for a test should reflect the real-world consequences associated with making a Type 1 or Type 2 error.</div>\EndKnitrBlock{important}
+The significance level selected for a test should reflect the real-world consequences associated with making a Type 1 or Type 2 error.
+:::
 
 
 Because of the result of increased error rates, it is never okay to change two-sided tests to one-sided tests after observing the data. There are two dangers if we ignore possibilities that disagree with our data or that conflict with our world view:
@@ -3548,11 +3541,13 @@ This is twice the error rate we prescribed with our significance level: $\alpha=
 <p class="caption">(\#fig:type1ErrorDoublingExampleFigure)The shaded regions represent areas where we would reject $H_0$ under the bad practices considered in when $\alpha = 0.05$.</p>
 </div>
 
-\BeginKnitrBlock{importantbox}<div class="importantbox">**Hypothesis tests should be set up *before* seeing the data.**
+::: {.importantbox}
+**Hypothesis tests should be set up *before* seeing the data.**
 
 After observing data, it is tempting to turn a two-sided test into a one-sided test. 
 Avoid this temptation. 
-Hypotheses should be set up *before* observing the data.</div>\EndKnitrBlock{importantbox}
+Hypotheses should be set up *before* observing the data.
+:::
 
 <!--
 %\Comment{Should we scrap this subsection and example and just leave the caution box? Downside: weakens item 1 near the start of Section \@ref(IntroducingTwoSidedHypotheses).}
@@ -3575,9 +3570,11 @@ Only the first three of these components are within the control of the researche
 The probability of a correct decision when the alternative hypothesis is true, $1 - \beta$, is called the **power** of the test. Higher **power** means we are more likely to detect an effect that actually exists.
 
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Power.**
+::: {.onebox}
+**Power.**
 
-The **power** of a test is the probability of rejecting a false null hypothesis.</div>\EndKnitrBlock{onebox}
+The **power** of a test is the probability of rejecting a false null hypothesis.
+:::
 
 ::: {.workedexample}
 Suppose we would like to test whether less than 65% of a large population approves of a new law: $H_0: \pi = 0.65$ versus $H_A: \pi < 0.65$. We collect a random sample of $n = 200$ individuals from this population. For what values of the sample proportion, $\hat{p}$, would we reject $H_0$ using a significance level of $\alpha = 0.05$?
@@ -3611,7 +3608,8 @@ This example asks us to calculate the power -- the probability our test will pro
 <p class="caption">(\#fig:power-example-2)The blue distribution is the distribution of sample proportions if the null hypothesis is true, $\pi = 0.65$ -- the blue shaded area represents the probability we reject a true null hypothesis. The red distribution is the distribution of sample proportions under a particular alternative hypothesis, that $\pi = 0.58$ -- the red shaded area represents the power.</p>
 </div>
 
-\BeginKnitrBlock{important}<div class="important">**Increasing power.**
+::: {.importantbox}
+**Increasing power.**
 
 The **power** of a test will _increase_ when:
   
@@ -3620,7 +3618,8 @@ The **power** of a test will _increase_ when:
 * we change from a two-sided to a one-sided test
 * the standard deviation of the statistic _decreases_
 * how far the alternative parameter value is from the null value _increases_
-</div>\EndKnitrBlock{important}
+
+:::
 
 
 <img src="05/images/Whalberg.png" width="40%" style="display: block; margin: auto;" />
@@ -3653,7 +3652,9 @@ Figure \@ref(fig:stat-signif) displays this scenario. The distribution of possib
 <!-- Someday - annotate these plots better -->
 
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">If p-values can be made arbitrarily small with large sample sizes, what might tend to happen with small sample sizes? Would small sample sizes be more likely to give practically important results that are not statistically significant? or statistically significant results that are not practically important?^[Since hypothesis tests with small sample sizes typically have low power, small sample sizes can result in practically important results that are not statistically significant.]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+If p-values can be made arbitrarily small with large sample sizes, what might tend to happen with small sample sizes? Would small sample sizes be more likely to give practically important results that are not statistically significant? or statistically significant results that are not practically important?^[Since hypothesis tests with small sample sizes typically have low power, small sample sizes can result in practically important results that are not statistically significant.]
+:::
 
 Consider the opposite scenario -- small sample sizes with a meaningful difference. Suppose again that you would like to determine if a majority of a population support a new ballot measure. However, you only have the time and money to survey 20 people in the community. Unknown to you, 65% of the population support the measure.
 
@@ -3665,11 +3666,13 @@ Examine Figure \@ref(fig:prac-signif). The distribution of possible sample propo
 </div>
 
 
-\BeginKnitrBlock{onebox}<div class="onebox">**Statistical significance versus practical importance.**
+::: {.onebox}
+**Statistical significance versus practical importance.**
 
 _For large sample sizes, results may be statistically significant, but not practically important._ Since sample statistics vary very little among samples with large sample sizes, it is easy for a hypothesis test to result in a very small p-value, even if the observed effect is practically meaningless.
 
-_For small sample sizes, results may be practically important, but not statistically significant._ Since studies with small sample sizes tend to have very low power, it is difficult for a hypothesis test to result in a very small p-value, even if the observed effect is quite large.</div>\EndKnitrBlock{onebox}
+_For small sample sizes, results may be practically important, but not statistically significant._ Since studies with small sample sizes tend to have very low power, it is difficult for a hypothesis test to result in a very small p-value, even if the observed effect is quite large.
+:::
 
 
 
@@ -3921,7 +3924,9 @@ one_proportion_test(
 
 <img src="05-inference-cat_files/figure-html/onePropSimInf-1.png" width="70%" style="display: block; margin: auto;" />
 
-\BeginKnitrBlock{important}<div class="important">Note that the observed statistic (`as_extreme_as`) and the `report_value` input need to match; since we put in the observed statistic as a proportion, we need to tell the function to report the proportion of successes.  If they don't match, you will almost certainly get a p-value of 0 or 1 -- this can happen when there is very strong evidence against the null, but it is always good to check your function inputs when you get an extreme outcome to make sure that is what you should be seeing.</div>\EndKnitrBlock{important}
+::: {.importantbox}
+Note that the observed statistic (`as_extreme_as`) and the `report_value` input need to match; since we put in the observed statistic as a proportion, we need to tell the function to report the proportion of successes.  If they don't match, you will almost certainly get a p-value of 0 or 1 -- this can happen when there is very strong evidence against the null, but it is always good to check your function inputs when you get an extreme outcome to make sure that is what you should be seeing.
+:::
 
 In the resulting graph, we see the null distribution of simulated proportions, with those greater than the observed value of 0.51 highlighted in blue.  In the figure caption, we see that 308 of our 1000 simulations resulted in a proportion of successes at least as large as the observed value, yielding an approximate p-value of 0.308.
 
@@ -3967,11 +3972,13 @@ two_proportion_test(
 
 The results give a segmented bar plot of the data --- you can check that your formula is correct by making sure the explanatory variable is on the $x$-axis and the response variable is on the $y$-axis. Look to the top right of the bar plot to check that you have the correct order of subtraction. Next to the bar plot, we have the null distribution of simulated differences in proportions, with the observed statistic marked with a vertical line and all values as or more extreme than the observed statistic colored red.  The figure caption gives the approximate p-value: in this case 181/1000 = 0.181.
 
-\BeginKnitrBlock{important}<div class="important">There are a couple of things to note when using the `two_proportion_test` function:
+::: {.importantbox}
+There are a couple of things to note when using the `two_proportion_test` function:
 
 * You need to identify which variable is your outcome and which your group using the `formula` argument.
 * Specify order of subtraction using `first_in_subtraction` by putting in EXACTLY the category of the explanatory variable that you want to be first, in quotes --- must match capitalization, spaces, etc. for text values!
-* Specify what is a success using `response_value_numerator` but putting in EXACTLY the category of the response that you consider a success, in quotes. Again, capitalization, spaces, etc. matter here!</div>\EndKnitrBlock{important}
+* Specify what is a success using `response_value_numerator` but putting in EXACTLY the category of the response that you consider a success, in quotes. Again, capitalization, spaces, etc. matter here!
+:::
 
 To produce a confidence interval for the true difference in the proportion of patients that survive after receiving CPR, we use `two_proportion_bootstrap_CI()`, which uses most of the same arguments as the `two_proportion_test()` function:
 
@@ -4020,9 +4027,13 @@ prop.test(x = 422,  #Number of successes
 
 In this output, we can get our observed statistic $\hat{p} = 0.51$ in the last line of the output (under `sample estimates: p`), and the p-value of 0.2656 from the second line of the output. You should always check that the null value and the alternative hypothesis in the output matches the problem.
 
-\BeginKnitrBlock{important}<div class="important">You might have noticed that the test statistic reported in the output is `X-squared` rather than our Z-statistic. This test statistic is equal to our Z-statistic squared, and the p-value is found from what is called a $\chi^2$ distribution (pronounced "kai squared"). To get the Z-statistic from the `X-squared` statistic, take the positive square root if $\hat{p} > \pi_0$, and the negative square root if $\hat{p} < \pi_0$.</div>\EndKnitrBlock{important}
+::: {.importantbox}
+You might have noticed that the test statistic reported in the output is `X-squared` rather than our Z-statistic. This test statistic is equal to our Z-statistic squared, and the p-value is found from what is called a $\chi^2$ distribution (pronounced "kai squared"). To get the Z-statistic from the `X-squared` statistic, take the positive square root if $\hat{p} > \pi_0$, and the negative square root if $\hat{p} < \pi_0$.
+:::
 
-\BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Use the `R` output to find the value of the Z-statistic.^[Since our sample proportion $\hat{p} = 0.511$ is larger than the null value $\pi_0 = 0.5$, we know our Z-statistic will be positive. Thus, $Z = +\sqrt{0.34988} = 0.592$. Check these values using the formula for the Z-statistic presented in Section \@ref(theory-prop).]</div>\EndKnitrBlock{guidedpractice}
+::: {.guidedpractice}
+Use the `R` output to find the value of the Z-statistic.^[Since our sample proportion $\hat{p} = 0.511$ is larger than the null value $\pi_0 = 0.5$, we know our Z-statistic will be positive. Thus, $Z = +\sqrt{0.34988} = 0.592$. Check these values using the formula for the Z-statistic presented in Section \@ref(theory-prop).]
+:::
 
 The `prop.test()` function will also produce the theory-based confidence interval, but to get the correct confidence interval, **we need to run the function with a two-sided alternative**:^[If you run `prop.test` with a one-sided alternative (`"greater"` or `"less"`), then `R` will report what is called a "one-sided confidence interval", where one of the endpoints is either 0 (for a "less" alternative) or 1 (for a "greater" alternative). This is equivalent to only producing an upper bound or a lower bound, respectively, for the parameter of interest.]
 

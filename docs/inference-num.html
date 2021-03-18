@@ -75,7 +75,6 @@
 <span class="header-section-number">6</span> Inference for quantitative data<a class="anchor" aria-label="anchor" href="#inference-num"><i class="fas fa-link"></i></a>
 </h1>
 <!-- TODO: Add vocab words to this chapter. -->
-
 <div class="chapterintro">
 <p>Focusing now on statistical inference for quantitative data, we will revisit and expand upon the foundational aspects of hypothesis testing from Section <a href="inference-cat.html#inf-foundations">5.1</a>.</p>
 <p>The important data structure for this chapter is a quantitative response variable (that is, the outcome is numerical).
@@ -86,7 +85,7 @@ The three data structures we detail are:</p>
 <li>a quantitative response variable broken down by a binary explanatory variable, summarized by a difference in means.</li>
 </ul>
 <p>When appropriate, each of the data structures will be analyzed using the two methods introduced in Section <a href="inference-cat.html#inf-foundations">5.1</a>: simulation-based and theory-based.</p>
-As we build on the inferential ideas, we will visit new foundational concepts in statistical inference. One key new idea rests in estimating how the sample mean (as opposed to the sample proportion) varies from sample to sample; the resulting value is referred to as the <strong>standard error of the mean</strong>. We will also introduce a new important mathematical model, the <span class="math inline">\(t\)</span>-distribution (as the foundation for the <span class="math inline">\(t\)</span>-test).
+<p>As we build on the inferential ideas, we will visit new foundational concepts in statistical inference. One key new idea rests in estimating how the sample mean (as opposed to the sample proportion) varies from sample to sample; the resulting value is referred to as the <strong>standard error of the mean</strong>. We will also introduce a new important mathematical model, the <span class="math inline">\(t\)</span>-distribution (as the foundation for the <span class="math inline">\(t\)</span>-test).</p>
 </div>
 <p>To summarize a quantitative response variable, we focus on the sample mean (instead of, for example, the sample median or the range of the observations) because of the well-studied mathematical model which describes the behavior of the sample mean.
 The sample mean will be calculated in one group, two paired groups, and two independent groups. We will not cover mathematical models which describe other statistics, but the bootstrap and randomization techniques described below are immediately extendable to any function of the observed data.
@@ -95,7 +94,6 @@ The techniques described for each setting will vary slightly, but you will be we
 <h2>
 <span class="header-section-number">6.1</span> One mean<a class="anchor" aria-label="anchor" href="#one-mean"><i class="fas fa-link"></i></a>
 </h2>
-
 <div class="onebox">
 <p><strong>Notation.</strong></p>
 <ul>
@@ -108,11 +106,9 @@ The techniques described for each setting will vary slightly, but you will be we
 <li>
 <span class="math inline">\(\mu\)</span> = population mean</li>
 <li>
-<span class="math inline">\(\sigma\)</span> = population standard deviation
-</li>
+<span class="math inline">\(\sigma\)</span> = population standard deviation</li>
 </ul>
 </div>
-
 <p>A single mean is used to summarize data when we measured a single quantitative variable on each observational unit, e.g., GPA, age, salary. Aside from slight differences in notation, the inferential methods presented in this section will be identical to those for a paired mean difference, as we will see in Section <a href="inference-num.html#paired-data">6.2</a>.</p>
 <div id="bootstrap-confidence-interval-for-mu" class="section level3" number="6.1.1">
 <h3>
@@ -157,20 +153,16 @@ Figure 6.3: Distribution of bootstrapped means from 1,000 simulated bootstrapped
 </p>
 </div>
 <p>The bootstrapped average rent prices vary from £1250 to £1995 (with a small observed sample of size 5, a bootstrap resample can sometimes, although rarely, include only repeated measurements of the same observation).</p>
-
 <div class="onebox">
 <p><strong>Bootstrapping from one sample.</strong></p>
 <ol style="list-style-type: decimal">
 <li>Take a random sample of size <span class="math inline">\(n\)</span> from the original sample, <em>with replacement</em>. This is called a <strong>bootstrapped resample</strong>.</li>
 <li>Record the sample mean (or statistic of interest) from the bootstrapped resample. This is called a <strong>bootstrapped statistic</strong>.</li>
-<li>Repeat steps (1) and (2) 1000s of times.
-</li>
+<li>Repeat steps (1) and (2) 1000s of times.</li>
 </ol>
 </div>
-
 <p>Due to theory that is beyond this text, we know that the bootstrap means <span class="math inline">\(\bar{x}_{boot}\)</span> vary around the original sample mean, <span class="math inline">\(\bar{x}\)</span>, in a similar way to how different sample (i.e., different data sets which would produce different <span class="math inline">\(\bar{x}\)</span> values) means vary around the true parameter <span class="math inline">\(\mu\)</span>.
 Therefore, an interval estimate for <span class="math inline">\(\mu\)</span> can be produced using the <span class="math inline">\(\bar{x}_{boot}\)</span> values themselves. A 95% <strong>bootstrap confidence interval</strong> for <span class="math inline">\(\mu\)</span>, the population mean rent price for three bedroom flats in Edinburgh, is found by locating the middle 95% of the bootstrapped sample means in Figure <a href="inference-num.html#fig:flatsbsmean">6.3</a>.</p>
-
 <div class="onebox">
 <p><strong>95% Bootstrap confidence interval for a population mean <span class="math inline">\(\mu\)</span>.</strong></p>
 The 95% bootstrap confidence interval for the parameter <span class="math inline">\(\mu\)</span> can be obtained directly using the ordered values <span class="math inline">\(\bar{x}_{boot}\)</span> values — the bootstrapped sample means. Consider the sorted <span class="math inline">\(\bar{x}_{boot}\)</span> values, and let <span class="math inline">\(\bar{x}_{boot, 0.025}\)</span> be the 2.5<sup>th</sup> percentile and <span class="math inline">\(\bar{x}_{boot, 0.025}\)</span> be the 97.5<sup>th</sup> percentile. The 95% confidence interval is given by:
@@ -179,12 +171,11 @@ The 95% bootstrap confidence interval for the parameter <span class="math inline
 </center>
 </div>
 <p>You can find confidence intervals of difference confidence levels by changing the percent of the distribution you take, e.g., locate the middle 90% of the bootstrapped statistics for a 90% confidence interval.</p>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-33" class="example"><strong>Example 6.1  </strong></span>Using Figure <a href="inference-num.html#fig:flatsbsmean">6.3</a>, find the 90% and 95% confidence intervals for the true mean monthly rental price of a three bedroom flat in Edinburgh.</p>
+<div class="workedexample">
+<p>Using Figure <a href="inference-num.html#fig:flatsbsmean">6.3</a>, find the 90% and 95% confidence intervals for the true mean monthly rental price of a three bedroom flat in Edinburgh.</p>
 <hr>
 <p>A 90% confidence interval is given by (£1429, £1876). The conclusion is that we are 90% confident that the true average rental price for three bedroom flats in Edinburgh lies somewhere between £1429 and £1876.</p>
-A 95% confidence interval is given by (£1389.75, £1916). The conclusion is that we are 95% confident that the true average rental price for three bedroom flats in Edinburgh lies somewhere between £1389.75 and £1916.
+<p>A 95% confidence interval is given by (£1389.75, £1916). The conclusion is that we are 95% confident that the true average rental price for three bedroom flats in Edinburgh lies somewhere between £1389.75 and £1916.</p>
 </div>
 </div>
 <div id="bootstrap-percentile-confidence-interval-for-sigma-special-topic" class="section level4 unnumbered">
@@ -197,15 +188,13 @@ The point estimate of the five observations is calculated to be <span class="mat
 While <span class="math inline">\(s =\)</span> £340.23 might be a good guess for <span class="math inline">\(\sigma\)</span>, we prefer to have an interval.
 Although there is a mathematical model which describes how <span class="math inline">\(s\)</span> varies from sample to sample, the mathematical model will not be presented in this text.
 But even without the mathematical model, bootstrapping can be used to find a confidence interval for the parameter <span class="math inline">\(\sigma\)</span>.</p>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-34" class="example"><strong>Example 6.2  </strong></span>Describe the bootstrap distribution for the standard deviation shown in Figure <a href="inference-num.html#fig:flatsbssd">6.4</a>.</p>
+<div class="workedexample">
+<p>Describe the bootstrap distribution for the standard deviation shown in Figure <a href="inference-num.html#fig:flatsbssd">6.4</a>.</p>
 <hr>
-The distribution is skewed left and centered near £340.23, which is the point estimate from the original data. Most observations in this distribution lie between £0 and £408.1.
+<p>The distribution is skewed left and centered near £340.23, which is the point estimate from the original data. Most observations in this distribution lie between £0 and £408.1.</p>
 </div>
-
 <div class="guidedpractice">
-Using Figure <a href="inference-num.html#fig:flatsbssd">6.4</a>, find <em>and interpret</em> a 90% confidence interval for the population standard deviation for three bedroom flat prices in Edinburgh.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;By looking at the percentile values in Figure &lt;a href="inference-num.html#fig:flatsbssd"&gt;6.4&lt;/a&gt;, the middle 90% of the bootstrap standard deviations are given by the 5&lt;sup&gt;th&lt;/sup&gt; percentile (£153.9) and 95&lt;sup&gt;th&lt;/sup&gt; percentile (£385.6). That is, we are 90% confident that the true standard deviation of rent prices is between £153.9 and £385.6; or that, on average, rent prices tend to be somewhere between £153.9 and £385.6 away from the mean rent price. Note, the problem was set up as 90% to indicate that there was not a need for a high level of confidence (such a 95% or 99%). A lower degree of confidence increases potential for error, but it also produces a more narrow interval.&lt;/p&gt;'><sup>147</sup></a>
+<p>Using Figure <a href="inference-num.html#fig:flatsbssd">6.4</a>, find <em>and interpret</em> a 90% confidence interval for the population standard deviation for three bedroom flat prices in Edinburgh.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;By looking at the percentile values in Figure &lt;a href="inference-num.html#fig:flatsbssd"&gt;6.4&lt;/a&gt;, the middle 90% of the bootstrap standard deviations are given by the 5&lt;sup&gt;th&lt;/sup&gt; percentile (£153.9) and 95&lt;sup&gt;th&lt;/sup&gt; percentile (£385.6). That is, we are 90% confident that the true standard deviation of rent prices is between £153.9 and £385.6; or that, on average, rent prices tend to be somewhere between £153.9 and £385.6 away from the mean rent price. Note, the problem was set up as 90% to indicate that there was not a need for a high level of confidence (such a 95% or 99%). A lower degree of confidence increases potential for error, but it also produces a more narrow interval.&lt;/p&gt;'><sup>151</sup></a></p>
 </div>
 <div class="figure" style="text-align: center">
 <span id="fig:flatsbssd"></span>
@@ -228,7 +217,7 @@ As you might guess, the larger the random sample, the more accurately that sampl
 <span class="header-section-number">6.1.2</span> Shifted bootstrap test for <span class="math inline">\(H_0: \mu = \mu_0\)</span><a class="anchor" aria-label="anchor" href="#one-mean-null-boot"><i class="fas fa-link"></i></a>
 </h3>
 <p>We can also use bootstrapping to conduct a simulation-based test of the null hypothesis that the population mean is equal to a specified value, <span class="math inline">\(\mu_0\)</span>, called the null value. In this case, we first <strong>shift</strong> each value in the data set so that the sample distribution is centered at <span class="math inline">\(\mu_0\)</span>. Then, we bootstrap from the <strong>shifted data</strong> in order to generate a null distribution of sample means. Consider the following example.</p>
-<p>In 1851, Carl Wunderlich, a German physician, measured body temperatures of around 25,000 adults and found that the average body temperature was 98.6<span class="math inline">\(^{\circ}\)</span>F, which we’ve believed ever since. However, a recent study conducted at Stanford University suggests that the average body temperature may actually be lower than 98.6<span class="math inline">\(^{\circ}\)</span>F.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Protsiv, Ley,Lankester, Hastie, Parsonnet (2020). Decreasing human body temperature in the United States since the Industrial Revolution. eLife 2020;9:e49555, DOI: 10.7554/eLife.49555. &lt;a href="https://elifesciences.org/articles/49555"&gt;https://elifesciences.org/articles/49555&lt;/a&gt;&lt;/p&gt;'><sup>148</sup></a></p>
+<p>In 1851, Carl Wunderlich, a German physician, measured body temperatures of around 25,000 adults and found that the average body temperature was 98.6<span class="math inline">\(^{\circ}\)</span>F, which we’ve believed ever since. However, a recent study conducted at Stanford University suggests that the average body temperature may actually be lower than 98.6<span class="math inline">\(^{\circ}\)</span>F.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Protsiv, Ley,Lankester, Hastie, Parsonnet (2020). Decreasing human body temperature in the United States since the Industrial Revolution. eLife 2020;9:e49555, DOI: 10.7554/eLife.49555. &lt;a href="https://elifesciences.org/articles/49555"&gt;https://elifesciences.org/articles/49555&lt;/a&gt;&lt;/p&gt;'><sup>152</sup></a></p>
 <div id="observed-data-5" class="section level4 unnumbered">
 <h4>Observed data<a class="anchor" aria-label="anchor" href="#observed-data-5"><i class="fas fa-link"></i></a>
 </h4>
@@ -262,7 +251,6 @@ Figure 6.6: Distribution of body temperatures in a random sample of twenty Monta
 Figure 6.7: Bootstrapped null distribution of sample mean temperatures assuming the true mean temperature is 98.6 degrees F.
 </p>
 </div>
-
 <div class="onebox">
 <p><strong>Shifted bootstrap null distribution for a sample mean.</strong></p>
 <p>To simulate a null distribution of sample means under the null hypothesis <span class="math inline">\(H_0: \mu = \mu_0\)</span>:</p>
@@ -272,11 +260,9 @@ Figure 6.7: Bootstrapped null distribution of sample mean temperatures assuming 
  x_1 + \mu_0 - \bar{x}, \hspace{2.5mm} x_2 + \mu_0 - \bar{x}, \hspace{2.5mm}  x_3 + \mu_0 - \bar{x}, \hspace{2.5mm}  \ldots, \hspace{2.5mm}  x_n + \mu_0 - \bar{x}.
   \]</span>
 Note that if <span class="math inline">\(\bar{x}\)</span> is larger than <span class="math inline">\(\mu\)</span>, then the quantity <span class="math inline">\(\mu_0 - \bar{x}\)</span> will be negative, and you will be <em>subtracting</em> the distance between <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\bar{x}\)</span> from each value.</li>
-<li>Generate 1000s of bootstrap resamples from this shifted distribution, plotting the shifted bootstrap sample mean each time.
-</li>
+<li>Generate 1000s of bootstrap resamples from this shifted distribution, plotting the shifted bootstrap sample mean each time.</li>
 </ol>
 </div>
-
 <p>To calculate the p-value, since <span class="math inline">\(H_A: \mu &lt; 98.6\)</span>, we find the proportion of simulated sample means that were less than or equal to our original sample mean, <span class="math inline">\(\bar{x}\)</span> = 97.47. As shown in Figure <a href="inference-num.html#fig:shifted-boot-null">6.7</a>, none of our simulated sample means were 97.5<span class="math inline">\(^\circ\)</span>F or lower, giving us very strong evidence that the true mean body temperature among all Montana State University students is less than the commonly accepted 98.6<span class="math inline">\(^\circ\)</span>F average temperature.</p>
 </div>
 </div>
@@ -287,9 +273,8 @@ Note that if <span class="math inline">\(\bar{x}\)</span> is larger than <span c
 <p>As with the sample proportion, the variability of the sample mean is well described by the mathematical theory given by the Central Limit Theorem. Similar to how we can model the behavior of the sample proportion <span class="math inline">\(\hat{p}\)</span> using a normal distribution, the sample mean <span class="math inline">\(\bar{x}\)</span> can also be modeled using
 a normal distribution when certain conditions are met.
 However, because of missing information about the inherent variability in the population, a <span class="math inline">\(t\)</span>-distribution is used in place of the standard normal when performing hypothesis test or confidence interval analyses.</p>
-
-<div class="important">
-<strong>Central Limit Theorem for the sample mean.</strong><br>
+<div class="importantbox">
+<p><strong>Central Limit Theorem for the sample mean.</strong><br>
 When we collect a sufficiently large sample of
 <span class="math inline">\(n\)</span> independent observations from a population with
 mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>,
@@ -298,7 +283,7 @@ normal with
 <span class="math display">\[\begin{align*}
   &amp;\text{Mean}=\mu
   &amp;&amp;\text{Standard Deviation }(SD) = \frac{\sigma}{\sqrt{n}}
-  \end{align*}\]</span>
+  \end{align*}\]</span></p>
 </div>
 <p>Before diving into confidence intervals and hypothesis
 tests using <span class="math inline">\(\bar{x}\)</span>, we first need to cover two topics:</p>
@@ -326,7 +311,6 @@ for a sample mean <span class="math inline">\(\bar{x}\)</span>.
 When the sample observations
 are independent and the sample size is sufficiently
 large, the normal model will describe the variability in sample means quite well; when the observations violate the conditions, the normal model can be inaccurate.</p>
-
 <div class="onebox">
 <p><strong>Conditions for the modeling
 <span class="math inline">\(\bar{x}\)</span> using theory-based methods.</strong></p>
@@ -358,9 +342,7 @@ distribution of <span class="math inline">\(\bar{x}\)</span> is approximately no
 </li>
 </ol>
 </div>
-
-
-<div class="important">
+<div class="importantbox">
 <p><strong>General rule: how to perform the normality check.</strong></p>
 <p>There is no perfect way to check the normality condition,
 so instead we use two general rules:</p>
@@ -377,11 +359,9 @@ condition.<br>
 and there are no <em>particularly extreme</em> outliers,
 then we typically assume the sampling distribution
 of <span class="math inline">\(\bar{x}\)</span> is nearly normal, even if the underlying
-distribution of individual observations is not.
-</li>
+distribution of individual observations is not.</li>
 </ul>
 </div>
-
 <p>In this first course in statistics, you aren’t expected
 to develop perfect judgement on the normality condition.
 However, you are expected to be able to handle
@@ -389,9 +369,9 @@ clear cut cases based on the rules of thumb.<a class="footnote-ref" tabindex="0"
 nuanced guidelines would consider further relaxing
 the &lt;em&gt;particularly extreme outlier&lt;/em&gt; check when the
 sample size is very large.
-However, we’ll leave further discussion here to a future course.&lt;/p&gt;"><sup>149</sup></a></p>
+However, we’ll leave further discussion here to a future course.&lt;/p&gt;"><sup>153</sup></a></p>
 <div class="example">
-<p><span id="exm:unlabeled-div-35" class="example"><strong>Example 6.3  </strong></span>Consider the following two plots
+<p><span id="exm:unlabeled-div-1" class="example"><strong>Example 6.1  </strong></span>Consider the following two plots
 that come from simple random samples from
 different populations.
 Their sample sizes are <span class="math inline">\(n_1 = 15\)</span> and <span class="math inline">\(n_2 = 50\)</span>.</p>
@@ -531,7 +511,7 @@ for those who wish to use this option.
 <p>For the examples and guided practices below, use <code>R</code> to find the answers. We recommend trying the problems so as to get a sense for how the <span class="math inline">\(t\)</span>-distribution can vary in width depending on the degrees of freedom, and to confirm your working
 understanding of the <span class="math inline">\(t\)</span>-distribution.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-36" class="example"><strong>Example 6.4  </strong></span>What proportion of the <span class="math inline">\(t\)</span>-distribution
+<p><span id="exm:unlabeled-div-2" class="example"><strong>Example 6.2  </strong></span>What proportion of the <span class="math inline">\(t\)</span>-distribution
 with 18 degrees of freedom falls below -2.10?</p>
 <hr>
 <p>Just like a normal probability problem, we first draw
@@ -551,7 +531,7 @@ Figure 6.10: The <span class="math inline">\(t\)</span>-distribution with 18 deg
 </p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-37" class="example"><strong>Example 6.5  </strong></span>A <span class="math inline">\(t\)</span>-distribution with 20 degrees of freedom
+<p><span id="exm:unlabeled-div-3" class="example"><strong>Example 6.3  </strong></span>A <span class="math inline">\(t\)</span>-distribution with 20 degrees of freedom
 is shown in the top panel of
 Figure <a href="inference-num.html#fig:tDistDF20RightTail1Point65">6.11</a>.
 Estimate the proportion of the distribution falling
@@ -577,7 +557,7 @@ Figure 6.11: Top: The <span class="math inline">\(t\)</span>-distribution with 2
 </p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-38" class="example"><strong>Example 6.6  </strong></span>A <span class="math inline">\(t\)</span>-distribution with 2 degrees of freedom
+<p><span id="exm:unlabeled-div-4" class="example"><strong>Example 6.4  </strong></span>A <span class="math inline">\(t\)</span>-distribution with 2 degrees of freedom
 is shown in the bottom panel of
 Figure <a href="inference-num.html#fig:tDistDF20RightTail1Point65">6.11</a>.
 Estimate the proportion of the distribution falling more
@@ -599,7 +579,7 @@ we obtain from the normal distribution.</p>
 <span class="co">#&gt; [1] 0.0955</span></code></pre></div>
 <div class="guidedpractice">
 <p>What proportion of the <span class="math inline">\(t\)</span>-distribution with 19 degrees
-of freedom falls above -1.79 units?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;We want to find the shaded area &lt;em&gt;above&lt;/em&gt; -1.79 (we leave the picture to you). The lower tail area has an area of 0.0447, so the upper area would have an area of &lt;span class="math inline"&gt;\(1 - 0.0447 = 0.9553\)&lt;/span&gt;.&lt;/p&gt;'><sup>150</sup></a></p>
+of freedom falls above -1.79 units?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;We want to find the shaded area &lt;em&gt;above&lt;/em&gt; -1.79 (we leave the picture to you). The lower tail area has an area of 0.0447, so the upper area would have an area of &lt;span class="math inline"&gt;\(1 - 0.0447 = 0.9553\)&lt;/span&gt;.&lt;/p&gt;'><sup>154</sup></a></p>
 </div>
 <p>
 </p>
@@ -666,7 +646,7 @@ maximum
 </tr></tbody>
 </table></div>
 <div class="example">
-<p><span id="exm:unlabeled-div-39" class="example"><strong>Example 6.7  </strong></span>Are the independence and
+<p><span id="exm:unlabeled-div-5" class="example"><strong>Example 6.5  </strong></span>Are the independence and
 normality conditions satisfied for this data set?</p>
 <hr>
 <p>The observations are a simple random sample,
@@ -687,7 +667,7 @@ seems reasonable.</p>
 \end{align*}\]</span>
 where <span class="math inline">\(df = n - 1\)</span> when computing a one-sample <span class="math inline">\(t\)</span>-interval.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-40" class="example"><strong>Example 6.8  </strong></span>Using the summary statistics in
+<p><span id="exm:unlabeled-div-6" class="example"><strong>Example 6.6  </strong></span>Using the summary statistics in
 Table <a href="inference-num.html#tab:summaryStatsOfHgInMuscleOfRissosDolphins">6.1</a>,
 compute the standard error for the average
 mercury content in the <span class="math inline">\(n = 19\)</span> dolphins.</p>
@@ -704,7 +684,7 @@ the fraction of the <span class="math inline">\(t\)</span>-distribution with <sp
 of freedom within a distance <span class="math inline">\(t^{\star}_{df}\)</span>
 of 0 matches the confidence level of interest.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-41" class="example"><strong>Example 6.9  </strong></span>When <span class="math inline">\(n = 19\)</span>, what is the appropriate
+<p><span id="exm:unlabeled-div-7" class="example"><strong>Example 6.7  </strong></span>When <span class="math inline">\(n = 19\)</span>, what is the appropriate
 degrees of freedom?
 Find <span class="math inline">\(t^{\star}_{df}\)</span> for this degrees of freedom
 and the confidence level of 95%.</p>
@@ -725,7 +705,7 @@ lies within 2.10 units of 0.</p>
 <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.975</span>, df <span class="op">=</span> <span class="fl">18</span><span class="op">)</span>
 <span class="co">#&gt; [1] 2.1</span></code></pre></div>
 <div class="example">
-<p><span id="exm:unlabeled-div-42" class="example"><strong>Example 6.10  </strong></span>Compute and interpret the 95% confidence interval
+<p><span id="exm:unlabeled-div-8" class="example"><strong>Example 6.8  </strong></span>Compute and interpret the 95% confidence interval
 for the average mercury content in Risso’s dolphins.</p>
 <hr>
 <p>We can construct the confidence interval as
@@ -758,11 +738,11 @@ the sample.</p>
 <p>The FDA’s webpage provides some data on mercury content of fish.
 Based on a sample of 15 croaker white fish (Pacific), a sample mean and standard deviation were computed as 0.287 and 0.069 ppm (parts per million), respectively.
 The 15 observations ranged from 0.18 to 0.41 ppm. We will assume these observations are independent.
-Based on the summary statistics of the data, do you have any objections to the normality condition of the individual observations?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The sample size is under 30, so we check for obvious outliers: since all observations are within 2 standard deviations of the mean, there are no such clear outliers.&lt;/p&gt;"><sup>151</sup></a></p>
+Based on the summary statistics of the data, do you have any objections to the normality condition of the individual observations?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The sample size is under 30, so we check for obvious outliers: since all observations are within 2 standard deviations of the mean, there are no such clear outliers.&lt;/p&gt;"><sup>155</sup></a></p>
 </div>
 <p></p>
 <div class="example">
-<p><span id="exm:unlabeled-div-43" class="example"><strong>Example 6.11  </strong></span>Calculate the standard error of
+<p><span id="exm:unlabeled-div-9" class="example"><strong>Example 6.9  </strong></span>Calculate the standard error of
 <span class="math inline">\(\bar{x}\)</span> using the data summaries in the previous Guided Practice. If we are to use the <span class="math inline">\(t\)</span>-distribution to create a
 90% confidence interval for the actual mean of the
 mercury content, identify the degrees of freedom
@@ -805,7 +785,7 @@ is 0.1:
 <div class="guidedpractice">
 <p>Using the information and results of the previous Guided Practice and Example, compute a 90% confidence interval for the average mercury content of croaker white fish (Pacific).<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="math inline"&gt;\(\bar{x} \ \pm\ t^{\star}_{14} \times SE(\bar{x})  \ \to\  0.287 \ \pm\  1.76 \times 0.0178  \ \to\ (0.256, 0.318)\)&lt;/span&gt;.
 We are 90% confident that the average mercury content
-of croaker white fish (Pacific) is between 0.256 and 0.318 ppm.&lt;/p&gt;'><sup>152</sup></a></p>
+of croaker white fish (Pacific) is between 0.256 and 0.318 ppm.&lt;/p&gt;'><sup>156</sup></a></p>
 </div>
 <div class="guidedpractice">
 <p>The 90% confidence interval from the previous
@@ -815,7 +795,7 @@ have mercury levels between 0.256 and 0.318 ppm?<a class="footnote-ref" tabindex
 of plausible values for a population parameter,
 in this case the population &lt;em&gt;mean&lt;/em&gt;.
 It does not describe what we might observe
-for &lt;em&gt;individual&lt;/em&gt; observations.&lt;/p&gt;"><sup>153</sup></a></p>
+for &lt;em&gt;individual&lt;/em&gt; observations.&lt;/p&gt;"><sup>157</sup></a></p>
 </div>
 <p></p>
 </div>
@@ -849,17 +829,17 @@ T = \frac{\bar{x} - \mbox{null value}}{s/\sqrt{n}}
 \newcommand{\cherryblossomz}{2.37}
 -->
 <div class="guidedpractice">
-<p>Compare the T score — the standardized sample mean — to the Z score — the standardized sample proportion — presented in Section <a href="inference-cat.html#theory-prop">5.3.3</a>. Why do we use a “Z” when standardizing proportions, but a “T” when standardizing means?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;The letter “Z” is typically used when its distribution follows a standard normal distribution. We use “T” when the test statistic follows a &lt;span class="math inline"&gt;\(t\)&lt;/span&gt;-distribution.&lt;/p&gt;'><sup>154</sup></a></p>
+<p>Compare the T score — the standardized sample mean — to the Z score — the standardized sample proportion — presented in Section <a href="inference-cat.html#theory-prop">5.3.3</a>. Why do we use a “Z” when standardizing proportions, but a “T” when standardizing means?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;The letter “Z” is typically used when its distribution follows a standard normal distribution. We use “T” when the test statistic follows a &lt;span class="math inline"&gt;\(t\)&lt;/span&gt;-distribution.&lt;/p&gt;'><sup>158</sup></a></p>
 </div>
 <p>Is the typical US runner getting faster or slower over time? We consider this question in the context of the Cherry Blossom Race, which is a 10-mile race in Washington, DC each spring.</p>
 <p>The average time for all runners who finished the Cherry Blossom Race in 2006 was 93.29 minutes (93 minutes and about 17 seconds). We want to determine using data from 100 participants in the 2017 Cherry Blossom Race whether runners in this race are getting faster or slower, versus the other possibility that there has been no change.</p>
 <div class="guidedpractice">
-<p>What are appropriate hypotheses for this context?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="math inline"&gt;\(H_0\)&lt;/span&gt;: The average 10-mile run time was the same for 2006 and 2017. &lt;span class="math inline"&gt;\(\mu = 93.29\)&lt;/span&gt; minutes. &lt;span class="math inline"&gt;\(H_A\)&lt;/span&gt;: The average 10-mile run time for 2017 was &lt;em&gt;different&lt;/em&gt; than that of 2006. &lt;span class="math inline"&gt;\(\mu \neq 93.29\)&lt;/span&gt; minutes.&lt;/p&gt;'><sup>155</sup></a></p>
+<p>What are appropriate hypotheses for this context?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="math inline"&gt;\(H_0\)&lt;/span&gt;: The average 10-mile run time was the same for 2006 and 2017. &lt;span class="math inline"&gt;\(\mu = 93.29\)&lt;/span&gt; minutes. &lt;span class="math inline"&gt;\(H_A\)&lt;/span&gt;: The average 10-mile run time for 2017 was &lt;em&gt;different&lt;/em&gt; than that of 2006. &lt;span class="math inline"&gt;\(\mu \neq 93.29\)&lt;/span&gt; minutes.&lt;/p&gt;'><sup>159</sup></a></p>
 </div>
 <div class="guidedpractice">
 <p>The data come from a simple random sample of all participants, so the observations are independent.
-<img src="06-inference-num_files/figure-html/unnamed-chunk-22-1.png" width="70%" style="display: block; margin: auto;">
-A histogram of the race times is given to evaluate if we can move forward with a t-test. Should we be worried about the normality condition?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;With a sample of 100, we should only be concerned if there is are particularly extreme outliers. The histogram of the data doesn’t show any outliers of concern (and arguably, no outliers at all).&lt;/p&gt;"><sup>156</sup></a></p>
+<img src="06-inference-num_files/figure-html/unnamed-chunk-12-1.png" width="70%" style="display: block; margin: auto;">
+A histogram of the race times is given to evaluate if we can move forward with a t-test. Should we be worried about the normality condition?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;With a sample of 100, we should only be concerned if there is are particularly extreme outliers. The histogram of the data doesn’t show any outliers of concern (and arguably, no outliers at all).&lt;/p&gt;"><sup>160</sup></a></p>
 </div>
 <p>When completing a hypothesis test for the one-sample mean,
 the process is nearly identical to completing a hypothesis
@@ -871,7 +851,7 @@ a <span class="math inline">\(t\)</span>-distribution for calculating the tail a
 Then we find the p-value using the same ideas we used
 previously: find the area under the <span class="math inline">\(t\)</span>-distribution as or more extreme than our T score.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-44" class="example"><strong>Example 6.12  </strong></span>With both the independence
+<p><span id="exm:unlabeled-div-10" class="example"><strong>Example 6.10  </strong></span>With both the independence
 and normality conditions satisfied,
 we can proceed with a hypothesis test using
 the <span class="math inline">\(t\)</span>-distribution.
@@ -935,7 +915,6 @@ is from the null value.</p>
 <h2>
 <span class="header-section-number">6.2</span> Paired mean difference<a class="anchor" aria-label="anchor" href="#paired-data"><i class="fas fa-link"></i></a>
 </h2>
-
 <div class="onebox">
 <p><strong>Notation</strong>.</p>
 <ul>
@@ -948,11 +927,9 @@ is from the null value.</p>
 <li>
 <span class="math inline">\(\mu_{d}\)</span> = population mean of differences in paired samples</li>
 <li>
-<span class="math inline">\(\sigma_{d}\)</span> = population standard deviation of differences in paired samples
-</li>
+<span class="math inline">\(\sigma_{d}\)</span> = population standard deviation of differences in paired samples</li>
 </ul>
 </div>
-
 <p>Paired data represent a particular type of experimental structure where the analysis is somewhat akin to a one-sample analysis (see Section <a href="inference-num.html#one-mean">6.1</a>) but has other features that resemble a two-sample analysis (which we will see in Section <a href="inference-num.html#differenceOfTwoMeans">6.3</a>). Quantitative measurements are made on each of two different levels of an explanatory variable, but those measurements are <strong>paired</strong> — each observational unit consists of two measurements, and the two measurements are subtracted such that only the difference is retained. Table <a href="inference-num.html#tab:pairedexamples">6.2</a> presents some examples of studies where paired designs were implemented.</p>
 <div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -1033,10 +1010,10 @@ difference in score
 </table></div>
 <div class="onebox">
 <p><strong>Paired data.</strong></p>
-Two sets of observations are <em>paired</em> if each
+<p>Two sets of observations are <em>paired</em> if each
 observation in one set has a special correspondence
 or connection with exactly one observation in the other
-data set.
+data set.</p>
 </div>
 <!-- Paired data can arise from two different situations: -->
 <!-- * **Repeated measures**.  Paired data using repeated measures occurs when we measure the same person or unit twice and take the difference between those measurements. -->
@@ -1099,20 +1076,17 @@ In this study, the null hypothesis is that average difference in tire tread wear
 <span class="math inline">\(H_A: \mu_d \neq 0\)</span>, the true mean difference in tire tread remaining after 1,000 miles between Smooth Turn and Quick Spin (Smooth Turn <span class="math inline">\(-\)</span> Quick Spin) tires is not equal to zero.</li>
 </ul>
 <p>To simulate the null distribution of mean differences in tread, we will implement the same method used in Section <a href="inference-num.html#one-mean-null-boot">6.1.2</a> using a shifted bootstrap distribution.</p>
-
 <div class="onebox">
 <p><strong>Shifted bootstrap null distribution for a sample mean difference.</strong></p>
 <p>To simulate a null distribution of sample mean differences under the null hypothesis <span class="math inline">\(H_0: \mu_d = 0\)</span>,</p>
 <ol style="list-style-type: decimal">
-<li>Subtract <span class="math inline">\(\bar{x}_d\)</span> from each difference in the original sample:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Subtracting the sample mean is equivalent to adding &lt;span class="math inline"&gt;\(\mu_0 - \bar{x}_d\)&lt;/span&gt; when the null value is &lt;span class="math inline"&gt;\(\mu_d = 0\)&lt;/span&gt;. Thus, we are using the same process as that described in Section &lt;a href="inference-num.html#one-mean-null-boot"&gt;6.1.2&lt;/a&gt;.&lt;/p&gt;'><sup>157</sup></a><br><span class="math display">\[
+<li>Subtract <span class="math inline">\(\bar{x}_d\)</span> from each difference in the original sample:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Subtracting the sample mean is equivalent to adding &lt;span class="math inline"&gt;\(\mu_0 - \bar{x}_d\)&lt;/span&gt; when the null value is &lt;span class="math inline"&gt;\(\mu_d = 0\)&lt;/span&gt;. Thus, we are using the same process as that described in Section &lt;a href="inference-num.html#one-mean-null-boot"&gt;6.1.2&lt;/a&gt;.&lt;/p&gt;'><sup>161</sup></a><br><span class="math display">\[
  x_1 - \bar{x}_d , \hspace{2.5mm} x_2 - \bar{x}_d, \hspace{2.5mm}  x_3 - \bar{x}_d, \hspace{2.5mm}  \ldots, \hspace{2.5mm}  x_n - \bar{x}_d.
   \]</span>
 Note that if <span class="math inline">\(\bar{x}_d\)</span> is a negative number, then you will be <em>adding</em> the distance between <span class="math inline">\(0\)</span> and <span class="math inline">\(\bar{x}_d\)</span> to each value.</li>
-<li>Generate 1000s of bootstrap resamples from this shifted distribution, plotting the shifted bootstrap sample mean difference each time.
-</li>
+<li>Generate 1000s of bootstrap resamples from this shifted distribution, plotting the shifted bootstrap sample mean difference each time.</li>
 </ol>
 </div>
-
 <p>To use bootstrapping to generate a null distribution of sample mean differences in tire tread, we first have to <strong>shift the data</strong> to be centered at the null value of zero. We shift the data by subtracting <span class="math inline">\(\bar{x}_d\)</span> = 0.00196 from each tire tread difference in the sample. This process is displayed in Figure <a href="inference-num.html#fig:tiredata-diff-shift">6.15</a>.</p>
 <div class="figure" style="text-align: center">
 <span id="fig:tiredata-diff-shift"></span>
@@ -1155,9 +1129,8 @@ how is the UCLA Bookstore doing today?</p>
 <p>We sampled 201 UCLA courses.
 Of those, 68
 required books could be found on Amazon.</p>
-
 <div class="data">
-The <code>ucla_textbooks_f18</code> data can be found in the <a href="http://openintrostat.github.io/openintro/reference/index.html">openintro</a> package.
+<p>The <code>ucla_textbooks_f18</code> data can be found in the <a href="http://openintrostat.github.io/openintro/reference/index.html">openintro</a> package.</p>
 </div>
 <p>A portion of the data set from these courses
 is shown in Table <a href="inference-num.html#tab:textbooksDF">6.3</a>,
@@ -1393,9 +1366,8 @@ Figure 6.19: Histogram of the difference in price for each book sampled.
 we simply analyze the differences using the same one sample <span class="math inline">\(t\)</span>-distribution techniques
 we applied in
 Section <a href="inference-num.html#one-mean-math">6.1.3</a>.</p>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-45" class="example"><strong>Example 6.13  </strong></span>Set up a hypothesis test
+<div class="workedexample">
+<p>Set up a hypothesis test
 to determine whether, on average, the UCLA Bookstore’s price for
 a new textbook is higher than the price of the same
 book on Amazon.
@@ -1422,17 +1394,16 @@ so independence is reasonable.</p></li>
 are particularly extreme, so the normality
 of <span class="math inline">\(\bar{x}\)</span> is satisfied.</p></li>
 </ul>
-With these conditions satisfied,
-we can move forward with the <span class="math inline">\(t\)</span>-distribution.
+<p>With these conditions satisfied,
+we can move forward with the <span class="math inline">\(t\)</span>-distribution.</p>
 </div>
 </div>
 <div id="observed-statistic-vs.-null-statistics" class="section level5 unnumbered">
 <h5>Observed statistic vs. null statistics<a class="anchor" aria-label="anchor" href="#observed-statistic-vs.-null-statistics"><i class="fas fa-link"></i></a>
 </h5>
 <p>As mentioned previously, the methods applied to a difference will be identical to the one-sample techniques. Therefore, the full hypothesis test framework is given as an example.</p>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-46" class="example"><strong>Example 6.14  </strong></span>Complete the hypothesis test started
+<div class="workedexample">
+<p>Complete the hypothesis test started
 in the previous Example.</p>
 <hr>
 <p>To start, compute the standard error associated with
@@ -1465,9 +1436,9 @@ and the p-value is represented by the shaded upper tail in Figure <a href="infer
 to the area above 2.20 on a <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(df = n - 1\)</span> = 68 <span class="math inline">\(-\)</span> 1 = 67 degrees of freedom.</p>
 <p>Using the <code>pt</code> function in <code>R</code>, we find the
 upper tail area of 0.0156.</p>
-In conclusion, we have strong evidence that
+<p>In conclusion, we have strong evidence that
 Amazon prices are, on average, lower than the
-UCLA Bookstore prices for UCLA courses.
+UCLA Bookstore prices for UCLA courses.</p>
 </div>
 <div class="figure" style="text-align: center">
 <span id="fig:textbooksF18HTTails"></span>
@@ -1476,14 +1447,13 @@ Figure 6.20: Distribution of <span class="math inline">\(\bar{x}_{d}\)</span> un
 </p>
 </div>
 <!-- TODO later - add note to compare to 99% CI in previous section, which contained zero. -->
-
-<div class="example">
-<p><span id="exm:unlabeled-div-47" class="example"><strong>Example 6.15  </strong></span>Create a theory-based 95% confidence interval for the average price difference between books at the UCLA Bookstore and books on Amazon.</p>
+<div class="workedexample">
+<p>Create a theory-based 95% confidence interval for the average price difference between books at the UCLA Bookstore and books on Amazon.</p>
 <hr>
 <p>Conditions
 for using theory-based methods have already been verified and the standard error
 computed in the previous Example.</p>
-To find the confidence interval,
+<p>To find the confidence interval,
 identify <span class="math inline">\(t^{\star}_{67}\)</span> using the <code>R</code> command: <code><a href="https://rdrr.io/r/stats/TDist.html">qt(0.975, 67)</a></code> = 2.00,
 and plug it, the point estimate,
 and the standard error into the confidence
@@ -1496,11 +1466,10 @@ interval formula:
   \end{align*}\]</span>
 We are 95% confident that Amazon is, on average,
 between $0.32 and $6.84 less expensive
-than the UCLA Bookstore for UCLA course books.
+than the UCLA Bookstore for UCLA course books.</p>
 </div>
-
 <div class="guidedpractice">
-We have strong evidence that Amazon is,
+<p>We have strong evidence that Amazon is,
 on average, less expensive.
 How should this conclusion affect UCLA student
 buying habits?
@@ -1530,7 +1499,7 @@ lower than those of the UCLA Bookstore’s and by
 a large margin, making the case to use Amazon over
 the UCLA Bookstore quite compelling at that time.
 Now we frequently check multiple websites
-to find the best price.&lt;/p&gt;'><sup>158</sup></a>
+to find the best price.&lt;/p&gt;'><sup>162</sup></a></p>
 </div>
 <p>
 </p>
@@ -1541,7 +1510,6 @@ to find the best price.&lt;/p&gt;'><sup>158</sup></a>
 <h2>
 <span class="header-section-number">6.3</span> Difference of two means<a class="anchor" aria-label="anchor" href="#differenceOfTwoMeans"><i class="fas fa-link"></i></a>
 </h2>
-
 <div class="onebox">
 <p><strong>Notation.</strong></p>
 <ul>
@@ -1554,11 +1522,9 @@ to find the best price.&lt;/p&gt;'><sup>158</sup></a>
 <li>
 <span class="math inline">\(\mu_1\)</span>, <span class="math inline">\(\mu_2\)</span> = population means of two independent populations</li>
 <li>
-<span class="math inline">\(\sigma_1\)</span>, <span class="math inline">\(\sigma_2\)</span> = population standard deviations of two independent populations
-</li>
+<span class="math inline">\(\sigma_1\)</span>, <span class="math inline">\(\sigma_2\)</span> = population standard deviations of two independent populations</li>
 </ul>
 </div>
-
 <p>In this section we consider a difference in
 two population means, <span class="math inline">\(\mu_1 - \mu_2\)</span>, under the condition
 that the data are not paired.
@@ -1666,7 +1632,7 @@ Figure 6.21: Exam scores for students given one of three different exams.
 <p>Construct hypotheses to evaluate whether the observed
 difference in sample means, <span class="math inline">\(\bar{x}_A - \bar{x}_B=3.1\)</span>,
 is due to chance. We will later evaluate these hypotheses
-by computing a p-value for the test.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="math inline"&gt;\(H_0\)&lt;/span&gt;: the exams are equally difficult, on average. &lt;span class="math inline"&gt;\(\mu_A - \mu_B = 0\)&lt;/span&gt;. &lt;span class="math inline"&gt;\(H_A\)&lt;/span&gt;: one exam was more difficult than the other, on average. &lt;span class="math inline"&gt;\(\mu_A - \mu_B \neq 0.\)&lt;/span&gt;&lt;/p&gt;'><sup>159</sup></a></p>
+by computing a p-value for the test.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="math inline"&gt;\(H_0\)&lt;/span&gt;: the exams are equally difficult, on average. &lt;span class="math inline"&gt;\(\mu_A - \mu_B = 0\)&lt;/span&gt;. &lt;span class="math inline"&gt;\(H_A\)&lt;/span&gt;: one exam was more difficult than the other, on average. &lt;span class="math inline"&gt;\(\mu_A - \mu_B \neq 0.\)&lt;/span&gt;&lt;/p&gt;'><sup>163</sup></a></p>
 </div>
 <div class="guidedpractice">
 <p>Before moving on to evaluate the hypotheses in the previous Guided Practice, let’s think carefully about the dataset. Are the observations across the two groups independent? Are there any concerns about outliers?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;
@@ -1675,7 +1641,7 @@ the “treatment” in this case was randomly assigned,
 so independence within and between groups is satisfied.
 (b) The summary statistics suggest the data are roughly
 symmetric about the mean, and the min/max values don’t
-suggest any outliers of concern.&lt;/p&gt;"><sup>160</sup></a></p>
+suggest any outliers of concern.&lt;/p&gt;"><sup>164</sup></a></p>
 </div>
 </div>
 <div id="variability-of-the-statistic-8" class="section level5 unnumbered">
@@ -1719,7 +1685,7 @@ Figure 6.24: Histogram of differences in means, calculated from 1000 different r
 </p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-48" class="example"><strong>Example 6.16  </strong></span>Approximate the p-value depicted in Figure <a href="inference-num.html#fig:randexamspval">6.24</a>, and provide a conclusion in the context of the case study.</p>
+<p><span id="exm:unlabeled-div-11" class="example"><strong>Example 6.11  </strong></span>Approximate the p-value depicted in Figure <a href="inference-num.html#fig:randexamspval">6.24</a>, and provide a conclusion in the context of the case study.</p>
 <hr>
 <p>Using software, we find that 231 of the 1000 shuffled differences in means are as or further away from zero as our observed difference of 3.1. That is, 23.1% of the shuffled statistics lie in the shaded blue area in Figure <a href="inference-num.html#fig:randexamspval">6.24</a>. Thus, our p-value is 0.231.</p>
 <p>With this large of a p-value, the data do not convincingly show that one exam
@@ -1885,7 +1851,7 @@ is straightforward to find: it is the difference in the sample means.
   =\ 7.83
 \end{align*}\]</span></p>
 <div class="guidedpractice">
-<p>Identify the roles of the two variables in this study — which variable is the explanatory variable and which is the response? What is the scope of inference for this study?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Since the research question asks if ESCs help improve heart function, the explanatory variable is the treatment (ESC or control), and the response variable is the change in heart pumping capacity. Since sheep were randomly assigned to treatment groups, this study is a randomized experiment, and any changes in the mean response can be attributed to the treatment — cause-and-effect conclusions can be made. However, since it is not clear if the sheep were a random sample from a larger population of sheep, we can only generalize to sheep similar to those seen in the sample.&lt;/p&gt;"><sup>161</sup></a></p>
+<p>Identify the roles of the two variables in this study — which variable is the explanatory variable and which is the response? What is the scope of inference for this study?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Since the research question asks if ESCs help improve heart function, the explanatory variable is the treatment (ESC or control), and the response variable is the change in heart pumping capacity. Since sheep were randomly assigned to treatment groups, this study is a randomized experiment, and any changes in the mean response can be attributed to the treatment — cause-and-effect conclusions can be made. However, since it is not clear if the sheep were a random sample from a larger population of sheep, we can only generalize to sheep similar to those seen in the sample.&lt;/p&gt;"><sup>165</sup></a></p>
 </div>
 </div>
 <div id="variability-of-the-statistic-9" class="section level5 unnumbered">
@@ -1900,7 +1866,7 @@ Figure 6.27: Histogram of differences in means after 1000 bootstrap resamples ar
 </p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-49" class="example"><strong>Example 6.17  </strong></span>Does the bootstrap confidence interval for the true difference in average change in pumping capacity, <span class="math inline">\(\mu_{esc} - \mu_{control}\)</span>, show that there is a difference across the two treatments?</p>
+<p><span id="exm:unlabeled-div-12" class="example"><strong>Example 6.12  </strong></span>Does the bootstrap confidence interval for the true difference in average change in pumping capacity, <span class="math inline">\(\mu_{esc} - \mu_{control}\)</span>, show that there is a difference across the two treatments?</p>
 <hr>
 <p>Because the 90% interval displayed does not contain zero (note that zero is never one of the bootstrapped differences so 95% and 99% intervals would have given the same conclusion!), we conclude that the ESC treatment is significantly better with respect to heart pumping capacity than the treatment.</p>
 <p>Because the study is a randomized controlled experiment, we can conclude that it is the treatment (ESC) which is causing the change in pumping capacity.</p>
@@ -2118,7 +2084,7 @@ white
 </tbody>
 </table></div>
 <div class="example">
-<p><span id="exm:unlabeled-div-50" class="example"><strong>Example 6.18  </strong></span>Set up appropriate hypotheses to evaluate
+<p><span id="exm:unlabeled-div-13" class="example"><strong>Example 6.13  </strong></span>Set up appropriate hypotheses to evaluate
 whether there is a relationship between a mother smoking
 and average birth weight.</p>
 <hr>
@@ -2175,7 +2141,7 @@ calculated using the standard error formula:
     = \sqrt{\frac{s_n^2}{n_n} + \frac{s_s^2}{n_s}}
     = \sqrt{\frac{1.60^2}{100} + \frac{1.43^2}{50}}
     = 0.26
-  \end{align*}\]&lt;/span&gt;&lt;/p&gt;'><sup>162</sup></a></p>
+  \end{align*}\]&lt;/span&gt;&lt;/p&gt;'><sup>166</sup></a></p>
 <ol style="list-style-type: lower-alpha">
 <li>What is the point estimate of the population difference,
 <span class="math inline">\(\mu_{n} - \mu_{s}\)</span>?</li>
@@ -2253,7 +2219,7 @@ T = \frac{\bar{x}_1 - \bar{x}_2 - 0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}
 </ul>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-51" class="example"><strong>Example 6.19  </strong></span>Complete the hypothesis test started in the previous Example and Guided Practice on the <code>ncbirths</code> dataset and research question.<br>
+<p><span id="exm:unlabeled-div-14" class="example"><strong>Example 6.14  </strong></span>Complete the hypothesis test started in the previous Example and Guided Practice on the <code>ncbirths</code> dataset and research question.<br>
 For reference, <span class="math inline">\(\bar{x}_{n} - \bar{x}_{s} = 0.40\)</span>,
 <span class="math inline">\(SE(\bar{x}_{n} - \bar{x}_{s}) = 0.26\)</span>, and the sample sizes were <span class="math inline">\(n_n = 100\)</span> and <span class="math inline">\(n_s = 50\)</span>.</p>
 <hr>
@@ -2290,7 +2256,7 @@ Figure 6.29: The mathematical model for the T statistic when the null hypothesis
 during pregnancy, so how could we fail to reject the null
 hypothesis in the previous Example?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;It is possible that there is a difference
 but we did not detect it.
-If there is a difference, we made a Type 2 Error.&lt;/p&gt;"><sup>163</sup></a></p>
+If there is a difference, we made a Type 2 Error.&lt;/p&gt;"><sup>167</sup></a></p>
 </div>
 <div class="guidedpractice">
 <p>If we made a Type 2 Error and there is a difference,
@@ -2299,7 +2265,7 @@ to be more likely to detect the difference?<a class="footnote-ref" tabindex="0" 
 If the sample sizes are larger, we tend to have
 a better shot at finding a difference if one exists.
 In fact, this is exactly what we would find if we
-examined a larger data set!&lt;/p&gt;"><sup>164</sup></a></p>
+examined a larger data set!&lt;/p&gt;"><sup>168</sup></a></p>
 </div>
 <p>Public service announcement: while we have used this relatively
 small data set as an example, larger data sets show that women
@@ -2319,7 +2285,7 @@ as healthy as the babies from women who do not
 smoke.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;You can watch an episode of John Oliver
 on &lt;a href="youtu.be/6UsHHOCH4q8"&gt;&lt;em&gt;Last Week Tonight&lt;/em&gt;&lt;/a&gt; to explore the present day
 offenses of the tobacco industry.
-Please be aware that there is some adult language.&lt;/p&gt;'><sup>165</sup></a></p>
+Please be aware that there is some adult language.&lt;/p&gt;'><sup>169</sup></a></p>
 <!--
 % Resource on this topic:
 % http://archive.tobacco.org/Documents/documentquotes.html
@@ -2346,7 +2312,7 @@ corresponds to the confidence level and degrees of freedom
 the sample.</p>
 </div>
 <div class="example">
-<p><span id="exm:unlabeled-div-52" class="example"><strong>Example 6.20  </strong></span>Consider again the data from Section <a href="inference-num.html#boot-ci-diff-means">6.3.2</a> on the use of embryonic stem cells (ESCs) to improve heart function. Can the <span class="math inline">\(t\)</span>-distribution be used to make
+<p><span id="exm:unlabeled-div-15" class="example"><strong>Example 6.15  </strong></span>Consider again the data from Section <a href="inference-num.html#boot-ci-diff-means">6.3.2</a> on the use of embryonic stem cells (ESCs) to improve heart function. Can the <span class="math inline">\(t\)</span>-distribution be used to make
 inference on the true difference in average change in heart pumping function using the point estimate,
 <span class="math inline">\(\bar{x}_{esc} - \bar{x}_{control} = 7.83\)</span>?</p>
 <hr>
@@ -2368,7 +2334,7 @@ we can use the smaller
 of <span class="math inline">\(n_1 - 1\)</span> and <span class="math inline">\(n_2 - 1\)</span> for the degrees of freedom.
 In the case of the ESC example, this means we’ll use <span class="math inline">\(df = 8\)</span>.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-53" class="example"><strong>Example 6.21  </strong></span>Calculate a 95% confidence interval for the
+<p><span id="exm:unlabeled-div-16" class="example"><strong>Example 6.16  </strong></span>Calculate a 95% confidence interval for the
 true difference in mean change in heart pumping capacity of
 sheep after they’ve suffered a heart attack between the ESC treatment and the control treatment.</p>
 <hr>
@@ -2800,18 +2766,15 @@ then we can apply the <span class="math inline">\(t\)</span>-distribution for a 
   as_extreme_as <span class="op">=</span> <span class="fl">7.833</span>,  <span class="co">#observed statistic</span>
   number_repetitions <span class="op">=</span> <span class="fl">1000</span>  <span class="co">#number of simulations</span>
 <span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="06-inference-num_files/figure-html/unnamed-chunk-51-1.png" width="70%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="06-inference-num_files/figure-html/unnamed-chunk-32-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>The results give a side-by-side boxplot of the observed data with the observed difference and order of subtraction at the top. Check that you had the right value for the observed difference! Next to the box plot, we have the null distribution of simulated differences in means, with the observed statistic marked with a vertical red line, and all values as or more extreme than the observed statistic colored red. The figure caption gives the approximate p-value: for this set of 1000 simulations, we have only 1/1000 = 0.001.</p>
-
-<div class="important">
+<div class="importantbox">
 <p>There are a couple of things to note when using the <code>two_mean_test</code> function:</p>
 <ul>
 <li>You need to identify which variable is your response and which your explanatory variable using the <code>formula</code> argument.</li>
-<li>Specify order of subtraction using <code>first_in_subtraction</code> by putting in EXACTLY the category of the explanatory variable that you want to be first, in quotes — must match capitalization, spaces, etc. for text values!
-</li>
+<li>Specify order of subtraction using <code>first_in_subtraction</code> by putting in EXACTLY the category of the explanatory variable that you want to be first, in quotes — must match capitalization, spaces, etc. for text values!</li>
 </ul>
 </div>
-
 <p>We use bootstrapping to find a confidence interval for the true difference in means with the <code><a href="https://rdrr.io/pkg/catstats/man/two_mean_bootstrap_CI.html">two_mean_bootstrap_CI()</a></code> function. The arguments will be very similar to <code><a href="https://rdrr.io/pkg/catstats/man/two_mean_test.html">two_mean_test()</a></code>, with the addition of the confidence level.</p>
 <div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">450</span><span class="op">)</span>
@@ -2822,7 +2785,7 @@ then we can apply the <span class="math inline">\(t\)</span>-distribution for a 
   confidence_level <span class="op">=</span> <span class="fl">0.9</span>, <span class="co">#confidence level as a proportion</span>
   number_repetitions <span class="op">=</span> <span class="fl">1000</span>  <span class="co">#number of bootstrap samples</span>
 <span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="06-inference-num_files/figure-html/unnamed-chunk-53-1.png" width="70%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="06-inference-num_files/figure-html/unnamed-chunk-33-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>The function produces the bootstrap distribution of the difference in means, with the upper and lower percentiles of the confidence range marked with vertical lines. The figure caption gives the estimated confidence interval. In this case, we are 90% confidence that ESCs increase the change in heart pumping capacity by between 4.72 and 11.09 percentage points on average.</p>
 </div>
 <div id="theory-based-inference-for-the-difference-of-two-means" class="section level4 unnumbered">
