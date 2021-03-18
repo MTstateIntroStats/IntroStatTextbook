@@ -395,6 +395,7 @@ interactive-r-tutorials-3
 r-labs-4
 chp5-review
 terms-4
+key-ideas-4
 inference-num
 one-mean
 bootstrap-confidence-interval-for-mu

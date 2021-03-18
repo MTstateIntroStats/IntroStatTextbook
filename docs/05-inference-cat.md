@@ -4388,3 +4388,33 @@ However you should be able to easily spot them as **bolded text**.
 </tbody>
 </table>
 
+### Key ideas
+
+In this chapter, we introduced statistical inference methods --- both simulation-based and theory-based --- for scenarios involving one or two categorical variables.
+
+* All of statistical inference revolves around the idea of **sampling variability**: as we take different samples from the population, the value of the sample statistic will vary. In this chapter, we explored sampling variability of a single proportion and a difference in two proportions. If we see some sort of effect in our sample, was it just due to chance? or was it indicative of an actual effect in the population? **Statistical inference** is how we answer this question. 
+
+* A **hypothesis test** answers the question "how strong is the _evidence_ of an effect?" A **confidence interval** answers the question "how _large_ is the effect?"
+
+* The general steps of a **hypothesis test** are:
+
+    1. Frame the research question in terms of hypotheses.
+    2. Collect and summarize data using a test statistic.
+    3. Assume the null hypothesis is true, and simulate or mathematically model a null distribution for the test statistic.
+    4. Compare the observed test statistic to the null distribution to calculate a p-value.
+    5. Make a conclusion based on the p-value, and write a conclusion in context, in plain language, and in terms of the alternative hypothesis.
+    
+* A **p-value** is the probability of observing data like ours, or data with a more extreme effect, under the assumption of the null hypothesis. How we define "more extreme" depends on the direction of the alternative hypothesis. The p-value is the answer to the question "_if the null hypothesis were true_, what are the chances of observing data like mine?"  
+
+    - A small p-value indicates that the observed data would have been unusual if the null hypothesis were true, and thus we have evidence against the null hypothesis.
+    - A p-value that is not small indicates that the observed data are plausible under the assumption of the null hypothesis, and thus we do not have evidence against the null hypothesis.
+
+* Since decisions in hypothesis testing are based on probabilities (i.e., p-values), it's possible to make the wrong decision. A **Type 1 error** occurs when we reject a true null hypothesis. If we fail to reject a false null hypothesis, we have committed a **Type 2 error**. 
+
+* The **power** of a hypothesis test is the probability of rejecting the null hypothesis, which varies depending on the true value of the parameter. Power typically increases as the sample size increases. Thus, small samples may show an effect in the sample that is **practically important** --- may matter in real life --- but the test did not have high enough power to reject the null hypothesis, so was not statistically significant. On the other hand, large samples may show an effect in the sample that isn't very meaningful, or not practically important, but is **statistically significant** due to high power.
+
+* A **simulation-based confidence interval** takes percentiles of a bootstrap distribution of sample statistics as its endpoints. For example, a 95% confidence interval is the interval from the 2.5^th^ percentile to the 97.5^th^ percentile --- those percentiles that capture the middle 95% of the bootstrap distribution.
+
+* A **theory-based confidence interval** is always of the form: statistic $\pi$ (multiplier) $\times$ (standard error of the statistic). The amount we add and subtract to the statistic ((multiplier) $\times$ (standard error of the statistic)) is called the **margin of error**. The mathematical model for the sampling variability of a sample proportion or difference in sample proportions is the **normal distribution**, which is due to the **Central Limit Theorem**.
+
+* All statistical inference methods require that certain **validity conditions** are met; otherwise, the methods are not valid. All methods in this textbook require that the observations in our data set are **independent**. Additionally, theory-based methods require that we have a large enough sample size so that the Central Limit Theorem can apply. For proportions, this condition is known as the **success-failure condition**. 

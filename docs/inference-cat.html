@@ -4539,6 +4539,38 @@ statistical significance
 </tr>
 </tbody></table></div>
 </div>
+<div id="key-ideas-4" class="section level3" number="5.8.2">
+<h3>
+<span class="header-section-number">5.8.2</span> Key ideas<a class="anchor" aria-label="anchor" href="#key-ideas-4"><i class="fas fa-link"></i></a>
+</h3>
+<p>In this chapter, we introduced statistical inference methods — both simulation-based and theory-based — for scenarios involving one or two categorical variables.</p>
+<ul>
+<li><p>All of statistical inference revolves around the idea of <strong>sampling variability</strong>: as we take different samples from the population, the value of the sample statistic will vary. In this chapter, we explored sampling variability of a single proportion and a difference in two proportions. If we see some sort of effect in our sample, was it just due to chance? or was it indicative of an actual effect in the population? <strong>Statistical inference</strong> is how we answer this question.</p></li>
+<li><p>A <strong>hypothesis test</strong> answers the question “how strong is the <em>evidence</em> of an effect?” A <strong>confidence interval</strong> answers the question “how <em>large</em> is the effect?”</p></li>
+<li>
+<p>The general steps of a <strong>hypothesis test</strong> are:</p>
+<ol style="list-style-type: decimal">
+<li>Frame the research question in terms of hypotheses.</li>
+<li>Collect and summarize data using a test statistic.</li>
+<li>Assume the null hypothesis is true, and simulate or mathematically model a null distribution for the test statistic.</li>
+<li>Compare the observed test statistic to the null distribution to calculate a p-value.</li>
+<li>Make a conclusion based on the p-value, and write a conclusion in context, in plain language, and in terms of the alternative hypothesis.</li>
+</ol>
+</li>
+<li>
+<p>A <strong>p-value</strong> is the probability of observing data like ours, or data with a more extreme effect, under the assumption of the null hypothesis. How we define “more extreme” depends on the direction of the alternative hypothesis. The p-value is the answer to the question “<em>if the null hypothesis were true</em>, what are the chances of observing data like mine?”</p>
+<ul>
+<li>A small p-value indicates that the observed data would have been unusual if the null hypothesis were true, and thus we have evidence against the null hypothesis.</li>
+<li>A p-value that is not small indicates that the observed data are plausible under the assumption of the null hypothesis, and thus we do not have evidence against the null hypothesis.</li>
+</ul>
+</li>
+<li><p>Since decisions in hypothesis testing are based on probabilities (i.e., p-values), it’s possible to make the wrong decision. A <strong>Type 1 error</strong> occurs when we reject a true null hypothesis. If we fail to reject a false null hypothesis, we have committed a <strong>Type 2 error</strong>.</p></li>
+<li><p>The <strong>power</strong> of a hypothesis test is the probability of rejecting the null hypothesis, which varies depending on the true value of the parameter. Power typically increases as the sample size increases. Thus, small samples may show an effect in the sample that is <strong>practically important</strong> — may matter in real life — but the test did not have high enough power to reject the null hypothesis, so was not statistically significant. On the other hand, large samples may show an effect in the sample that isn’t very meaningful, or not practically important, but is <strong>statistically significant</strong> due to high power.</p></li>
+<li><p>A <strong>simulation-based confidence interval</strong> takes percentiles of a bootstrap distribution of sample statistics as its endpoints. For example, a 95% confidence interval is the interval from the 2.5<sup>th</sup> percentile to the 97.5<sup>th</sup> percentile — those percentiles that capture the middle 95% of the bootstrap distribution.</p></li>
+<li><p>A <strong>theory-based confidence interval</strong> is always of the form: statistic <span class="math inline">\(\pi\)</span> (multiplier) <span class="math inline">\(\times\)</span> (standard error of the statistic). The amount we add and subtract to the statistic ((multiplier) <span class="math inline">\(\times\)</span> (standard error of the statistic)) is called the <strong>margin of error</strong>. The mathematical model for the sampling variability of a sample proportion or difference in sample proportions is the <strong>normal distribution</strong>, which is due to the <strong>Central Limit Theorem</strong>.</p></li>
+<li><p>All statistical inference methods require that certain <strong>validity conditions</strong> are met; otherwise, the methods are not valid. All methods in this textbook require that the observations in our data set are <strong>independent</strong>. Additionally, theory-based methods require that we have a large enough sample size so that the Central Limit Theorem can apply. For proportions, this condition is known as the <strong>success-failure condition</strong>.</p></li>
+</ul>
+</div>
 </div>
 </div>
 
@@ -4599,7 +4631,10 @@ statistical significance
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#chp5-review"><span class="header-section-number">5.8</span> Chapter 5 review</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#terms-4"><span class="header-section-number">5.8.1</span> Terms</a></li></ul>
+<a class="nav-link" href="#chp5-review"><span class="header-section-number">5.8</span> Chapter 5 review</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#terms-4"><span class="header-section-number">5.8.1</span> Terms</a></li>
+<li><a class="nav-link" href="#key-ideas-4"><span class="header-section-number">5.8.2</span> Key ideas</a></li>
+</ul>
 </li>
 </ul>
 
