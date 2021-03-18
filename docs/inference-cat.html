@@ -92,11 +92,10 @@ Sometimes the data set at hand represents the entire research question.
 But more often than not, the data have been collected to answer a research question about a larger group of which the data are a (hopefully) representative subset.</p>
 <p>You may agree that there is almost always variability in data (one data set will not be identical to a second data set even if they are both collected from the same population using the same methods).
 However, quantifying the variability in the data is neither obvious nor easy to do (<strong>how</strong> different is one data set from another?).</p>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-33" class="example"><strong>Example 5.1  </strong></span>Suppose your professor splits the students in class into two groups: students on the left and students on the right. If <span class="math inline">\(\hat{p}_{_L}\)</span> and <span class="math inline">\(\hat{p}_{_R}\)</span> represent the proportion of students who own an Apple product on the left and right, respectively, would you be surprised if <span class="math inline">\(\hat{p}_{_L}\)</span> did not <em>exactly</em> equal <span class="math inline">\(\hat{p}_{_R}\)</span>?</p>
+<div class="workedexample">
+<p>Suppose your professor splits the students in class into two groups: students on the left and students on the right. If <span class="math inline">\(\hat{p}_{_L}\)</span> and <span class="math inline">\(\hat{p}_{_R}\)</span> represent the proportion of students who own an Apple product on the left and right, respectively, would you be surprised if <span class="math inline">\(\hat{p}_{_L}\)</span> did not <em>exactly</em> equal <span class="math inline">\(\hat{p}_{_R}\)</span>?</p>
 <hr>
-While the proportions would probably be close to each other, it would be unusual for them to be exactly the same. We would probably observe a small difference due to <em>chance</em>.
+<p>While the proportions would probably be close to each other, it would be unusual for them to be exactly the same. We would probably observe a small difference due to <em>chance</em>.</p>
 </div>
 
 <div class="guidedpractice">
@@ -238,12 +237,11 @@ The hallmarks of hypothesis testing are also found in the US court system.</p>
 <div id="the-us-court-system" class="section level4 unnumbered">
 <h4>The US court system<a class="anchor" aria-label="anchor" href="#the-us-court-system"><i class="fas fa-link"></i></a>
 </h4>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-34" class="example"><strong>Example 5.2  </strong></span>A US court considers two possible claims about a defendant: they are either innocent or guilty. If we set these claims up in a hypothesis framework, which would be the null hypothesis and which the alternative?</p>
+<div class="workedexample">
+<p>A US court considers two possible claims about a defendant: they are either innocent or guilty. If we set these claims up in a hypothesis framework, which would be the null hypothesis and which the alternative?</p>
 <hr>
-The jury considers whether the evidence is so convincing (strong) that there is no reasonable doubt regarding the person’s guilt.
-That is, the skeptical perspective (null hypothesis) is that the person is innocent until evidence is presented that convinces the jury that the person is guilty (alternative hypothesis). Analogously, in a hypothesis test, we assume the null hypothesis until evidence is presented that convinces us the alternative hypothesis is true.
+<p>The jury considers whether the evidence is so convincing (strong) that there is no reasonable doubt regarding the person’s guilt.
+That is, the skeptical perspective (null hypothesis) is that the person is innocent until evidence is presented that convinces the jury that the person is guilty (alternative hypothesis). Analogously, in a hypothesis test, we assume the null hypothesis until evidence is presented that convinces us the alternative hypothesis is true.</p>
 </div>
 <p>Jurors examine the evidence to see whether it convincingly shows a defendant is guilty.
 Notice that if a jury finds a defendant <em>not guilty</em>, this does not necessarily mean the jury is confident in the person’s innocence.
@@ -285,11 +283,10 @@ This summary value that is used to compute the p-value is often called the <stro
 </ol>
 </div>
 
-
-<div class="example">
-<p><span id="exm:unlabeled-div-35" class="example"><strong>Example 5.3  </strong></span>What was the test statistic in the <a href="inference-cat.html#Martian">Martian alphabet example</a>?</p>
+<div class="workedexample">
+<p>What was the test statistic in the <a href="inference-cat.html#Martian">Martian alphabet example</a>?</p>
 <hr>
-The test statistic in the the Martian alphabet example was the sample proportion, <span class="math inline">\(\frac{34}{38} = 0.895\)</span> (or 89.5%). This is also the <strong>point estimate</strong> of the true probability that humans would choose Bumba on the left.
+<p>The test statistic in the the Martian alphabet example was the sample proportion, <span class="math inline">\(\frac{34}{38} = 0.895\)</span> (or 89.5%). This is also the <strong>point estimate</strong> of the true probability that humans would choose Bumba on the left.</p>
 </div>
 <p>Since the p-value is a probability, its value will always be between 0 and 1. The closer the p-value is to 0, the stronger the evidence we have <em>against the null hypothesis</em>. Why? A small p-value means that our data are <em>unlikely</em> to occur, <em>if</em> the null hypothesis is true. We take that to mean that the null hypothesis isn’t a plausible assumption, and we reject it. This process mimics the scientific method—it is easier to disprove a theory than prove it. If scientists want to find evidence that a new drug reduces the risk of stroke, then they assume it <em>doesn’t</em> reduce the risk of stroke and then show that the observed data are so unlikely to occur that the more plausible explanation is that the drug works.</p>
 Think of p-values as a continuum of strength of evidence against the null, from 0 (extremely strong evidence) to 1 (no evidence). Beyond around 10%, the data provide no evidence against the null hypothesis. Be careful not to equate this with evidence for the null hypothesis, which is incorrect.
@@ -558,11 +555,10 @@ Which of the two brushtail possum observations in the previous guided practice i
 <h3>
 <span class="header-section-number">5.2.3</span> Normal probability calculations in <code>R</code><a class="anchor" aria-label="anchor" href="#normal-probability-calculations-in-r"><i class="fas fa-link"></i></a>
 </h3>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-36" class="example"><strong>Example 5.4  </strong></span>Ann from the SAT Guided Practice earned a score of 1800 on her SAT with a corresponding <span class="math inline">\(Z=1\)</span>. She would like to know what percentile she falls in among all SAT test-takers.</p>
+<div class="workedexample">
+<p>Ann from the SAT Guided Practice earned a score of 1800 on her SAT with a corresponding <span class="math inline">\(Z=1\)</span>. She would like to know what percentile she falls in among all SAT test-takers.</p>
 <hr>
-Ann’s <strong>percentile</strong> is the percentage of people who earned a lower SAT score than Ann. We shade the area representing those individuals in Figure <a href="inference-cat.html#fig:satBelow1800">5.8</a>. The total area under the normal curve is always equal to 1, and the proportion of people who scored below Ann on the SAT is equal to the <em>area</em> shaded in Figure <a href="inference-cat.html#fig:satBelow1800">5.8</a>: 0.8413. In other words, Ann is in the <span class="math inline">\(84^{th}\)</span> percentile of SAT takers.
+<p>Ann’s <strong>percentile</strong> is the percentage of people who earned a lower SAT score than Ann. We shade the area representing those individuals in Figure <a href="inference-cat.html#fig:satBelow1800">5.8</a>. The total area under the normal curve is always equal to 1, and the proportion of people who scored below Ann on the SAT is equal to the <em>area</em> shaded in Figure <a href="inference-cat.html#fig:satBelow1800">5.8</a>: 0.8413. In other words, Ann is in the <span class="math inline">\(84^{th}\)</span> percentile of SAT takers.</p>
 </div>
 <div class="figure" style="text-align: center">
 <span id="fig:satBelow1800"></span>
@@ -576,7 +572,7 @@ to calculate normal probabilities is <code><a href="https://rdrr.io/r/stats/Norm
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">0.43</span>, m <span class="op">=</span> <span class="fl">0</span>, s <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
 <span class="co">#&gt; [1] 0.666</span>
 <span class="fu">openintro</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/openintro/man/normTail.html">normTail</a></span><span class="op">(</span><span class="fl">0.43</span>, m <span class="op">=</span> <span class="fl">0</span>, s <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="05-inference-cat_files/figure-html/unnamed-chunk-39-1.png" width="70%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="05-inference-cat_files/figure-html/unnamed-chunk-35-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>We can also find the Z-score associated with a percentile.
 For example, to identify Z for the <span class="math inline">\(80^{th}\)</span> percentile, we use <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code> which identifies the <strong>quantile</strong> for a given percentage. The quantile represents the cutoff value.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;To remember the function &lt;code&gt;qnorm()&lt;/code&gt; as providing a cutoff, notice that both &lt;code&gt;qnorm()&lt;/code&gt; and “cutoff” start with the sound “kuh”. To remember the &lt;code&gt;pnorm()&lt;/code&gt; function as providing a probability from a given cutoff, notice that both &lt;code&gt;pnorm()&lt;/code&gt; and probability start with the sound “puh”.&lt;/p&gt;"><sup>89</sup></a>
 We determine the Z-score for the <span class="math inline">\(80^{th}\)</span> percentile using <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code>: 0.84.</p>
@@ -584,13 +580,13 @@ We determine the Z-score for the <span class="math inline">\(80^{th}\)</span> pe
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.80</span>, m <span class="op">=</span> <span class="fl">0</span>, s <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
 <span class="co">#&gt; [1] 0.842</span>
 <span class="fu">openintro</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/openintro/man/normTail.html">normTail</a></span><span class="op">(</span><span class="fl">0.80</span>, m <span class="op">=</span> <span class="fl">0</span>, s <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="05-inference-cat_files/figure-html/unnamed-chunk-40-1.png" width="70%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="05-inference-cat_files/figure-html/unnamed-chunk-36-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>We can use these functions with other normal distributions than the standard normal distribution by specifying the mean as the argument for <code>m</code> and the standard deviation as the argument for <code>s</code>. Here we determine the proportion of ACT test takers who scored worse than Tom on the ACT: 0.73.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="fl">24</span>, m <span class="op">=</span> <span class="fl">21</span>, s <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
 <span class="co">#&gt; [1] 0.726</span>
 <span class="fu">openintro</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/openintro/man/normTail.html">normTail</a></span><span class="op">(</span><span class="fl">24</span>, m <span class="op">=</span> <span class="fl">21</span>, s <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="05-inference-cat_files/figure-html/unnamed-chunk-41-1.png" width="70%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="05-inference-cat_files/figure-html/unnamed-chunk-37-1.png" width="70%" style="display: block; margin: auto;"></div>
 
 <div class="guidedpractice">
 Determine the proportion of SAT test takers who scored better than Ann on the SAT.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;If 84% had lower scores than Ann, the number of people who had better scores must be 16%. (Generally ties are ignored when the normal model, or any other continuous distribution, is used.)&lt;/p&gt;"><sup>90</sup></a>
@@ -601,9 +597,8 @@ Determine the proportion of SAT test takers who scored better than Ann on the SA
 <span class="header-section-number">5.2.4</span> Normal probability examples<a class="anchor" aria-label="anchor" href="#normal-probability-examples"><i class="fas fa-link"></i></a>
 </h3>
 <p>Cumulative SAT scores are approximated well by a normal model, <span class="math inline">\(N(\mu=1500, \sigma=300)\)</span>.</p>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-37" class="example"><strong>Example 5.5  </strong></span>Shannon is a randomly selected SAT taker, and nothing is known about Shannon’s SAT aptitude. What is the probability that Shannon scores at least 1630 on her SATs?</p>
+<div class="workedexample">
+<p>Shannon is a randomly selected SAT taker, and nothing is known about Shannon’s SAT aptitude. What is the probability that Shannon scores at least 1630 on her SATs?</p>
 <hr>
 <p>First, always draw and label a picture of the normal distribution. (Drawings need not be exact to be useful.) We are interested in the chance she scores above 1630, so we shade the upper tail. See the normal curve below.</p>
 <p>The picture shows the mean and the values at 2 standard deviations above and below the mean. The simplest way to find the shaded area under the curve makes use of the Z-score of the cutoff value. With <span class="math inline">\(\mu=1500\)</span>, <span class="math inline">\(\sigma=300\)</span>, and the cutoff value <span class="math inline">\(x=1630\)</span>, the Z-score is computed as
@@ -611,7 +606,7 @@ Determine the proportion of SAT test takers who scored better than Ann on the SA
 Z = \frac{x - \mu}{\sigma} = \frac{1630 - 1500}{300} = \frac{130}{300} = 0.43
 \end{eqnarray*}\]</span>
 We use software to find the percentile of <span class="math inline">\(Z=0.43\)</span>, which yields 0.6664. However, the percentile describes those who had a Z-score <em>lower</em> than 0.43. To find the area <em>above</em> <span class="math inline">\(Z=0.43\)</span>, we compute one minus the area of the lower tail, as seen below.</p>
-The probability Shannon scores at least 1630 on the SAT is 0.3336.
+<p>The probability Shannon scores at least 1630 on the SAT is 0.3336.</p>
 </div>
 <div class="inline-figure"><img src="05-inference-cat_files/figure-html/satAbove1630-1.png" width="70%" style="display: block; margin: auto;"></div>
 <div class="inline-figure"><img src="05-inference-cat_files/figure-html/subtractingArea-1.png" width="70%" style="display: block; margin: auto;"></div>
@@ -626,16 +621,15 @@ After drawing a figure to represent the situation, identify the Z-score for the 
 <div class="guidedpractice">
 If the probability of Shannon scoring at least 1630 is 0.3336, then what is the probability she scores less than 1630? Draw the normal curve representing this exercise, shading the lower region instead of the upper one.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;We found the probability to be 0.6664. A picture for this exercise is represented by the shaded area below “0.6664”.&lt;/p&gt;"><sup>91</sup></a>
 </div>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-38" class="example"><strong>Example 5.6  </strong></span>Edward earned a 1400 on his SAT. What is his percentile?</p>
+<div class="workedexample">
+<p>Edward earned a 1400 on his SAT. What is his percentile?</p>
 <hr>
 <p>First, a picture is needed. Edward’s percentile is the proportion of people who do not get as high as a 1400. These are the scores to the left of 1400.</p>
-Identifying the mean <span class="math inline">\(\mu=1500\)</span>, the standard deviation <span class="math inline">\(\sigma=300\)</span>, and the cutoff for the tail area <span class="math inline">\(x=1400\)</span> makes it easy to compute the Z-score:
+<p>Identifying the mean <span class="math inline">\(\mu=1500\)</span>, the standard deviation <span class="math inline">\(\sigma=300\)</span>, and the cutoff for the tail area <span class="math inline">\(x=1400\)</span> makes it easy to compute the Z-score:
 <span class="math display">\[\begin{eqnarray*}
 Z = \frac{x - \mu}{\sigma} = \frac{1400 - 1500}{300} = -0.3333
 \end{eqnarray*}\]</span>
-Using the <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code> function (either <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm(-1/3)</a></code> or <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm(1400, m=1500, s=300)</a></code> will give the desired result), the desired probability is <span class="math inline">\(0.3694\)</span>. Edward is at the <span class="math inline">\(37^{th}\)</span> percentile.
+Using the <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code> function (either <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm(-1/3)</a></code> or <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm(1400, m=1500, s=300)</a></code> will give the desired result), the desired probability is <span class="math inline">\(0.3694\)</span>. Edward is at the <span class="math inline">\(37^{th}\)</span> percentile.</p>
 </div>
 <div class="inline-figure"><img src="05-inference-cat_files/figure-html/satBelow1400-1.png" width="70%" style="display: block; margin: auto;"></div>
 
@@ -659,33 +653,31 @@ Mike is 5’7’’ and Jim is 6’4’’. (a) What is Mike’s height percenti
 </div>
 <p>The last several problems have focused on finding the probability or percentile for a particular observation.
 What if you would like to know the observation corresponding to a particular percentile?</p>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-39" class="example"><strong>Example 5.7  </strong></span>Erik’s height is at the <span class="math inline">\(40^{th}\)</span> percentile. How tall is he?</p>
+<div class="workedexample">
+<p>Erik’s height is at the <span class="math inline">\(40^{th}\)</span> percentile. How tall is he?</p>
 <hr>
 <p>As always, first draw the picture (see below).</p>
 <p>In this case, the lower tail probability is known (0.40), which can be shaded on the diagram. We want to find the observation that corresponds to this value. As a first step in this direction, we determine the Z-score associated with the <span class="math inline">\(40^{th}\)</span> percentile.</p>
 <p>Because the percentile is below 50%, we know <span class="math inline">\(Z\)</span> will be negative. Looking in the negative part of the normal probability table, we search for the probability <em>inside</em> the table closest to 0.4000. We find that 0.4000 falls in row <span class="math inline">\(-0.2\)</span> and between columns <span class="math inline">\(0.05\)</span> and <span class="math inline">\(0.06\)</span>. Since it falls closer to <span class="math inline">\(0.05\)</span>, we take this one: <span class="math inline">\(Z=-0.25\)</span>.</p>
-Knowing <span class="math inline">\(Z_{Erik}=-0.25\)</span> and the population parameters <span class="math inline">\(\mu=70\)</span> and <span class="math inline">\(\sigma=3.3\)</span> inches, the Z-score formula can be set up to determine Erik’s unknown height, labeled <span class="math inline">\(x_{Erik}\)</span>:
+<p>Knowing <span class="math inline">\(Z_{Erik}=-0.25\)</span> and the population parameters <span class="math inline">\(\mu=70\)</span> and <span class="math inline">\(\sigma=3.3\)</span> inches, the Z-score formula can be set up to determine Erik’s unknown height, labeled <span class="math inline">\(x_{Erik}\)</span>:
 <span class="math display">\[\begin{eqnarray*}
 -0.25 = Z_{Erik} = \frac{x_{Erik} - \mu}{\sigma} = \frac{x_{Erik} - 70}{3.3}
 \end{eqnarray*}\]</span>
-Solving for <span class="math inline">\(x_{Erik}\)</span> yields the height 69.18 inches. That is, Erik is about 5’9’’ (this is notation for 5-feet, 9-inches).
+Solving for <span class="math inline">\(x_{Erik}\)</span> yields the height 69.18 inches. That is, Erik is about 5’9’’ (this is notation for 5-feet, 9-inches).</p>
 </div>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.4</span>, m <span class="op">=</span> <span class="fl">0</span>, s <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
 <span class="co">#&gt; [1] -0.253</span></code></pre></div>
 <div class="inline-figure"><img src="05-inference-cat_files/figure-html/height40Perc-1.png" width="70%" style="display: block; margin: auto;"></div>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-40" class="example"><strong>Example 5.8  </strong></span>What is the adult male height at the <span class="math inline">\(82^{nd}\)</span> percentile?</p>
+<div class="workedexample">
+<p>What is the adult male height at the <span class="math inline">\(82^{nd}\)</span> percentile?</p>
 <hr>
 <p>Again, we draw the figure first (see below).</p>
-Next, we want to find the Z-score at the <span class="math inline">\(82^{nd}\)</span> percentile, which will be a positive value. Using <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code>, the <span class="math inline">\(82^{nd}\)</span> percentile corresponds to <span class="math inline">\(Z=0.92\)</span>. Finally, the height <span class="math inline">\(x\)</span> is found using the Z-score formula with the known mean <span class="math inline">\(\mu\)</span>, standard deviation <span class="math inline">\(\sigma\)</span>, and Z-score <span class="math inline">\(Z=0.92\)</span>:
+<p>Next, we want to find the Z-score at the <span class="math inline">\(82^{nd}\)</span> percentile, which will be a positive value. Using <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code>, the <span class="math inline">\(82^{nd}\)</span> percentile corresponds to <span class="math inline">\(Z=0.92\)</span>. Finally, the height <span class="math inline">\(x\)</span> is found using the Z-score formula with the known mean <span class="math inline">\(\mu\)</span>, standard deviation <span class="math inline">\(\sigma\)</span>, and Z-score <span class="math inline">\(Z=0.92\)</span>:
 <span class="math display">\[\begin{eqnarray*}
 0.92 = Z = \frac{x-\mu}{\sigma} = \frac{x - 70}{3.3}
 \end{eqnarray*}\]</span>
-This yields 73.04 inches or about 6’1’’ as the height at the <span class="math inline">\(82^{nd}\)</span> percentile.
+This yields 73.04 inches or about 6’1’’ as the height at the <span class="math inline">\(82^{nd}\)</span> percentile.</p>
 </div>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.82</span>, m <span class="op">=</span> <span class="fl">0</span>, s <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
@@ -711,16 +703,15 @@ This yields 73.04 inches or about 6’1’’ as the height at the <span class="
 </ol>
 </div>
 
-
-<div class="example">
-<p><span id="exm:unlabeled-div-41" class="example"><strong>Example 5.9  </strong></span>What is the probability that a random adult male is between 5’9’’ and 6’2’’?</p>
+<div class="workedexample">
+<p>What is the probability that a random adult male is between 5’9’’ and 6’2’’?</p>
 <hr>
 <p>These heights correspond to 69 inches and 74 inches. First, draw the figure. The area of interest is no longer an upper or lower tail.</p>
 <p>The total area under the curve is 1. If we find the area of the two tails that are not shaded (from the previous Guided Practice, these areas are <span class="math inline">\(0.3821\)</span> and <span class="math inline">\(0.1131\)</span>), then we can find the middle area:</p>
-That is, the probability of being between 5’9’’ and 6’2’’ is 0.5048.
+<p>That is, the probability of being between 5’9’’ and 6’2’’ is 0.5048.</p>
 </div>
-<div class="inline-figure"><img src="05-inference-cat_files/figure-html/unnamed-chunk-58-1.png" width="70%" style="display: block; margin: auto;"></div>
-<div class="inline-figure"><img src="05-inference-cat_files/figure-html/unnamed-chunk-59-1.png" width="70%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="05-inference-cat_files/figure-html/unnamed-chunk-49-1.png" width="70%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="05-inference-cat_files/figure-html/unnamed-chunk-50-1.png" width="70%" style="display: block; margin: auto;"></div>
 
 <div class="guidedpractice">
 What percent of SAT takers get between 1500 and 2000?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;This is an abbreviated solution. (Be sure to draw a figure!) First find the percent who get below 1500 and the percent that get above 2000: &lt;span class="math inline"&gt;\(Z_{1500} = 0.00 \to 0.5000\)&lt;/span&gt; (area below), &lt;span class="math inline"&gt;\(Z_{2000} = 1.67 \to 0.0475\)&lt;/span&gt; (area above). Final answer: &lt;span class="math inline"&gt;\(1.0000-0.5000 - 0.0475 = 0.4525\)&lt;/span&gt;.&lt;/p&gt;'><sup>98</sup></a>
@@ -792,9 +783,8 @@ In Section <a href="inference-cat.html#HypothesisTesting">5.1.3</a>, we introduc
 </ol>
 </div>
 
-
-<div class="example">
-<p><span id="exm:unlabeled-div-42" class="example"><strong>Example 5.10  </strong></span>People providing an organ for donation sometimes seek the help of a special medical consultant.
+<div class="workedexample">
+<p>People providing an organ for donation sometimes seek the help of a special medical consultant.
 These consultants assist the patient in all aspects of the surgery, with the goal of reducing the possibility of complications during the medical procedure and recovery.
 Patients might choose a consultant based in part on the historical complication rate of the consultant’s clients.</p>
 <p>One consultant tried to attract patients by noting the average complication rate for liver donor surgeries in the US is about 10%, but her clients have had only 3 complications in the 62 liver donor surgeries she has facilitated.
@@ -803,7 +793,7 @@ She claims this is strong evidence that her work meaningfully contributes to red
 <hr>
 <p>No. The claim is that there is a causal connection, but the data are observational, so we must be on the lookout for confounding variables.
 For example, maybe patients who can afford a medical consultant can afford better medical care, which can also lead to a lower complication rate.</p>
-While it is not possible to assess the causal claim, it is still possible to understand the consultant’s true rate of complications.
+<p>While it is not possible to assess the causal claim, it is still possible to understand the consultant’s true rate of complications.</p>
 </div>
 <div id="steps-1-and-2-hypotheses-and-test-statistic" class="section level4 unnumbered">
 <h4>Steps 1 and 2: Hypotheses and test statistic<a class="anchor" aria-label="anchor" href="#steps-1-and-2-hypotheses-and-test-statistic"><i class="fas fa-link"></i></a>
@@ -831,8 +821,7 @@ Since we rarely can measure the entire population, and thus rarely know
 the actual parameter values, we like to say, “We don’t know Greek,
 and we don’t know parameters!”
 </div>
-
-<div class="example">
+<div class="workedexample">
 <p>Write out hypotheses in both plain and statistical language to test for the association between the consultant’s work and the true complication rate, <span class="math inline">\(\pi\)</span>, for the consultant’s clients.</p>
 <hr>
 <p>In words:</p>
@@ -841,10 +830,9 @@ and we don’t know parameters!”
 </blockquote>
 <p>In statistical language:</p>
 <blockquote>
-<span class="math inline">\(H_0: \pi=0.10\)</span><br><span class="math inline">\(H_A: \pi&lt;0.10\)</span>
+<p><span class="math inline">\(H_0: \pi=0.10\)</span><br><span class="math inline">\(H_A: \pi&lt;0.10\)</span></p>
 </blockquote>
 </div>
-
 </div>
 <div id="steps-3-and-4-null-distribution-and-p-value" class="section level4 unnumbered">
 <h4>Steps 3 and 4: Null distribution and p-value<a class="anchor" aria-label="anchor" href="#steps-3-and-4-null-distribution-and-p-value"><i class="fas fa-link"></i></a>
@@ -952,11 +940,10 @@ And so on until we have a good sense of the variability of our original estimate
 The ideal world where sampling data is free or extremely cheap is almost never the case, and taking repeated samples from a population is usually impossible.
 So, instead of using a “resample from the population” approach, bootstrapping uses a “resample from the sample” approach.</p>
 <p></p>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-43" class="example"><strong>Example 5.11  </strong></span>Let’s revisit our medical consultant example from Section <a href="inference-cat.html#one-prop-null-boot">5.3.1</a>. This consultant tried to attract patients by noting the average complication rate for liver donor surgeries in the US is about 10%, but her clients have had only 3 complications in the 62 liver donor surgeries she has facilitated. This data, however, did not provide sufficient evidence that the consultant’s complication rate was less than 10%, since the p-value was approximately 0.122. Does this mean we can conclude that the consultant’s complication rate was equal to 10%?</p>
+<div class="workedexample">
+<p>Let’s revisit our medical consultant example from Section <a href="inference-cat.html#one-prop-null-boot">5.3.1</a>. This consultant tried to attract patients by noting the average complication rate for liver donor surgeries in the US is about 10%, but her clients have had only 3 complications in the 62 liver donor surgeries she has facilitated. This data, however, did not provide sufficient evidence that the consultant’s complication rate was less than 10%, since the p-value was approximately 0.122. Does this mean we can conclude that the consultant’s complication rate was equal to 10%?</p>
 <hr>
-No! Though our decision was to fail to reject the null hypothesis, this does not mean we have evidence <em>for</em> the null hypothesis—we cannot “accept” the null. The sample proportion was <span class="math inline">\(\hat{p} = 3/62 = 0.048\)</span>, which is our point estimate—or “best guess”—of <span class="math inline">\(\pi\)</span>. It wouldn’t make sense that a sample complication rate of 4.8% gives us evidence that the true complication rate was exactly 10%. It`s plausible that the true complication rate is 10%, but there are a range of plausible values for <span class="math inline">\(\pi\)</span>. In this section, we will use a simulation-based method called <strong>bootstrapping</strong> to generate this range of plausible values for <span class="math inline">\(\pi\)</span> using the observed data.
+<p>No! Though our decision was to fail to reject the null hypothesis, this does not mean we have evidence <em>for</em> the null hypothesis—we cannot “accept” the null. The sample proportion was <span class="math inline">\(\hat{p} = 3/62 = 0.048\)</span>, which is our point estimate—or “best guess”—of <span class="math inline">\(\pi\)</span>. It wouldn’t make sense that a sample complication rate of 4.8% gives us evidence that the true complication rate was exactly 10%. It`s plausible that the true complication rate is 10%, but there are a range of plausible values for <span class="math inline">\(\pi\)</span>. In this section, we will use a simulation-based method called <strong>bootstrapping</strong> to generate this range of plausible values for <span class="math inline">\(\pi\)</span> using the observed data.</p>
 </div>
 <p>In the medical consultant case study, the parameter is <span class="math inline">\(\pi\)</span>, the true probability of a complication for a client of the medical consultant.
 There is no reason to believe that <span class="math inline">\(\pi\)</span> is exactly <span class="math inline">\(\hat{p} = 3/62\)</span>, but there is also no reason to believe that <span class="math inline">\(\pi\)</span> is particularly far from <span class="math inline">\(\hat{p} = 3/62\)</span>.
@@ -1031,12 +1018,11 @@ The 95% bootstrap confidence interval for the parameter <span class="math inline
 <div class="guidedpractice">
 To find the middle 90% of a distribution, which two percentiles would form its boundaries?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The the middle 95% of a distribution would range from the 5&lt;sup&gt;th&lt;/sup&gt; percentile (the value with 5% of the distribution below) to the 95&lt;sup&gt;th&lt;/sup&gt; percentile (the value with 5% of the distribution above).&lt;/p&gt;"><sup>111</sup></a>
 </div>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-44" class="example"><strong>Example 5.12  </strong></span>The original claim was that the consultant’s true rate of complication was under the national rate of 10%. Does the interval estimate of 0 to 11.3% for the true probability of complication indicate that the surgical consultant has a lower rate of complications than the national average?
+<div class="workedexample">
+<p>The original claim was that the consultant’s true rate of complication was under the national rate of 10%. Does the interval estimate of 0 to 11.3% for the true probability of complication indicate that the surgical consultant has a lower rate of complications than the national average?
 Explain.</p>
 <hr>
-No. Because the interval overlaps 10%, it might be that the consultant’s work is associated with a lower risk of complciations, or it might be that the consulant’s work is associated with a higher risk (i.e., greater than 10%) of complications! Additionally, as previously mentioned, because this is an observational study, even if an association can be measured, there is no evidence that the consultant’s work is the cause of the complication rate (being higher or lower).
+<p>No. Because the interval overlaps 10%, it might be that the consultant’s work is associated with a lower risk of complciations, or it might be that the consulant’s work is associated with a higher risk (i.e., greater than 10%) of complications! Additionally, as previously mentioned, because this is an observational study, even if an association can be measured, there is no evidence that the consultant’s work is the cause of the complication rate (being higher or lower).</p>
 </div>
 <!--
 %However, we currently don't have enough data to say whether the corresponding complication rate is any different than 0.10.
@@ -1108,11 +1094,10 @@ in statistics)<a class="footnote-ref" tabindex="0" data-toggle="popover" data-co
 problems, do remember that this is just the first
 book in what is a large library of statistical methods that
 are suitable for a very wide range of data and contexts.&lt;/p&gt;"><sup>112</sup></a>.</p>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-45" class="example"><strong>Example 5.13  </strong></span>In the examples based on large sample theory, we modeled <span class="math inline">\(\hat{p}\)</span> using the normal distribution. Why is this not appropriate for the study on the medical consultant?</p>
+<div class="workedexample">
+<p>In the examples based on large sample theory, we modeled <span class="math inline">\(\hat{p}\)</span> using the normal distribution. Why is this not appropriate for the study on the medical consultant?</p>
 <hr>
-The independence assumption may be reasonable if each of the surgeries is from a different surgical team. However, the success-failure condition is not satisfied. Under the null hypothesis, we would anticipate seeing <span class="math inline">\(62\times 0.10=6.2\)</span> complications, not the 10 required for the normal approximation.
+<p>The independence assumption may be reasonable if each of the surgeries is from a different surgical team. However, the success-failure condition is not satisfied. Under the null hypothesis, we would anticipate seeing <span class="math inline">\(62\times 0.10=6.2\)</span> complications, not the 10 required for the normal approximation.</p>
 </div>
 <p>Since theory-based methods cannot be used on the medical consultant example, we’ll turn to another example to demonstrate these methods, where conditions for approximating the distribution of <span class="math inline">\(\hat{p}\)</span> by a normal distribution are met.</p>
 </div>
@@ -1353,18 +1338,10 @@ independent and representative of the population of
 interest.</p>
 <p>We also must check the success-failure condition,
 which we do using <span class="math inline">\(\hat{p}\)</span> in place
-of <span class="math inline">\(\pi\)</span> when computing a confidence interval:
-<span class="math display">\[\begin{align*}
-\text{Support: }
-  n \hat{p} &amp;
-      = 826 \times 0.51
-  \approx 421
-&amp;\text{Not: }
-  n (1 - \hat{p}) &amp;
-    = 826 \times (1 - 0.51)
-  \approx 405
-\end{align*}\]</span>
-Since both values are at least 10, we can use the normal
+of <span class="math inline">\(\pi\)</span> when computing a confidence interval:</p>
+<p>Support: <span class="math inline">\(n \hat{p} = 826 \times 0.51 \approx 421 &gt; 10\)</span></p>
+<p>Not: <span class="math inline">\(n (1 - \hat{p}) = 826 \times (1 - 0.51) \approx 405 &gt; 10\)</span></p>
+<p>Since both values are at least 10, we can use the normal
 distribution to model the sampling distribution of <span class="math inline">\(\hat{p}\)</span>.</p>
 </li>
 <li>
@@ -1380,13 +1357,13 @@ and
 the standard error <span class="math inline">\(SE = 0.017\)</span> from the previous
 Guided Practice,
 the confidence interval is
-<span class="math display">\[\begin{eqnarray*}
-  \text{point estimate} \ \pm\ z^{\star} \times SE
+<span class="math display">\[\begin{align*}
+  \text{point estimate} &amp;\pm\ z^{\star} \times SE \\
    \quad\to\quad
-   0.51 \ \pm\ 1.96 \times 0.017
+   0.51 \ &amp;\pm\ 1.96 \times 0.017 \\
    \quad\to\quad
-   (0.477, 0.543)
-  \end{eqnarray*}\]</span>
+   (0.477, &amp;0.543)
+  \end{align*}\]</span>
 We are 95% confident that the true proportion of
 payday borrowers who supported regulation at the time
 of the poll was between 0.477 and
@@ -1471,15 +1448,15 @@ where <span class="math inline">\(z^{\star}\)</span> corresponds to the confiden
 </h4>
 <p>Figure <a href="inference-cat.html#fig:choosingZForCI">5.17</a> provides a picture of how to identify <span class="math inline">\(z^{\star}\)</span> based on a confidence level. We select <span class="math inline">\(z^{\star}\)</span> so that the area between -<span class="math inline">\(z^{\star}\)</span> and <span class="math inline">\(z^{\star}\)</span> in the normal model corresponds to the confidence level. In <code>R</code>, you can find <span class="math inline">\(z^{\star}\)</span> using the <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code> function:</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># z* for 90% --&gt; alpha = 0.15 --&gt; need 5% on each size:</span>
+<code class="sourceCode R"><span class="co"># z* for 90% --&gt; alpha = 0.15 --&gt; need 5% on each side:</span>
 <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">.90</span> <span class="op">+</span> <span class="fl">.05</span><span class="op">)</span>
 <span class="co">#&gt; [1] 1.645</span>
 
-<span class="co"># z* for 95% --&gt; alpha = 0.05 --&gt; need 2.5% on each size:</span>
+<span class="co"># z* for 95% --&gt; alpha = 0.05 --&gt; need 2.5% on each side:</span>
 <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">.95</span> <span class="op">+</span> <span class="fl">.025</span><span class="op">)</span>
 <span class="co">#&gt; [1] 1.96</span>
 
-<span class="co"># z* for 99% --&gt; alpha = 0.01 --&gt; need .5% on each size:</span>
+<span class="co"># z* for 99% --&gt; alpha = 0.01 --&gt; need .5% on each side:</span>
 <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">.99</span> <span class="op">+</span> <span class="fl">.005</span><span class="op">)</span>
 <span class="co">#&gt; [1] 2.576</span></code></pre></div>
 
@@ -1835,15 +1812,14 @@ Total
 Figure 5.18: The gender descrimination study can be thought of as 48 red and black cards.
 </p>
 </div>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-46" class="example"><strong>Example 5.14  </strong></span>Statisticians are sometimes called upon to evaluate the strength of evidence.
+<div class="workedexample">
+<p>Statisticians are sometimes called upon to evaluate the strength of evidence.
 When looking at the rates of promotion for males and females in this study, why might we be tempted to immediately conclude that females are being discriminated against?</p>
 <hr>
 <p>The large difference in promotion rates (58.3% for females versus 87.5% for males) suggest there might be discrimination against women in promotion decisions.
 However, we cannot yet be sure if the observed difference represents discrimination or is just from random chance.
 Generally there is a little bit of fluctuation in sample data, and we wouldn’t expect the sample proportions to be <em>exactly</em> equal, even if the truth was that the promotion decisions were independent of gender.</p>
-Additionally, the researchers used a <strong>convenience sample</strong>—48 male bank supervisors attending a management institute—so we will need to think carefully about to which population we can generalize these results.
+<p>Additionally, the researchers used a <strong>convenience sample</strong>—48 male bank supervisors attending a management institute—so we will need to think carefully about to which population we can generalize these results.</p>
 </div>
 <p>The previous example is a reminder that the observed outcomes in the sample may not perfectly reflect the true relationships between variables in the underlying population.
 Table <a href="inference-cat.html#tab:discriminationResults">5.2</a> shows there were 7 fewer promotions in the female group than in the male group, a difference in promotion rates of 29.2%:
@@ -2009,13 +1985,12 @@ Figure 5.21: A dot plot of differences from 100 simulations produced under the n
 </div>
 <p>Note that the distribution of these simulated differences in proportions is centered around 0.
 Because we simulated differences in a way that made no distinction between men and women, this makes sense: we should expect differences from chance alone to fall around zero with some random fluctuation for each simulation.</p>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-47" class="example"><strong>Example 5.15  </strong></span>How often would you observe a difference of at least 29.2% (0.292) according to Figure <a href="inference-cat.html#fig:discRandDotPlot">5.21</a>?
+<div class="workedexample">
+<p>How often would you observe a difference of at least 29.2% (0.292) according to Figure <a href="inference-cat.html#fig:discRandDotPlot">5.21</a>?
 Often, sometimes, rarely, or never?</p>
 <hr>
-It appears that a difference of at least 29.2% due to chance alone would only happen about 2% of the time according to Figure <a href="inference-cat.html#fig:discRandDotPlot">5.21</a>.
-Such a low probability indicates that observing such a large difference from chance is rare.
+<p>It appears that a difference of at least 29.2% due to chance alone would only happen about 2% of the time according to Figure <a href="inference-cat.html#fig:discRandDotPlot">5.21</a>.
+Such a low probability indicates that observing such a large difference from chance is rare.</p>
 </div>
 <p>The difference of 29.2% is a rare event if there really is no impact from listing gender in the candidates’ files, which provides us with two possible interpretations of the study results:</p>
 <ul>
@@ -2273,12 +2248,11 @@ We start with 150 index cards and label each card to indicate the distribution o
 That is, 53 cards will be labeled “not buy DVD” to represent the 53 students who opted not to buy, and 97 will be labeled “buy DVD” for the other 97 students.
 Then we shuffle these cards thoroughly and divide them into two stacks of size 75, representing the simulated treatment and control groups.
 Any observed difference between the proportions of “not buy DVD” cards (what we earlier defined as <em>success</em>) can be attributed entirely to chance.</p>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-48" class="example"><strong>Example 5.16  </strong></span>If we are randomly assigning the cards into the simulated treatment and control groups, how many “not buy DVD” cards would we expect to end up with in each simulated group?
+<div class="workedexample">
+<p>If we are randomly assigning the cards into the simulated treatment and control groups, how many “not buy DVD” cards would we expect to end up with in each simulated group?
 What would be the expected difference between the proportions of “not buy DVD” cards in each group?</p>
 <hr>
-Since the simulated groups are of equal size, we would expect <span class="math inline">\(53 / 2 = 26.5\)</span>, i.e., 26 or 27, “not buy DVD” cards in each simulated group, yielding a simulated point estimate of 0% . However, due to random fluctuations, we might actually observe a number a little above or below 26 and 27.
+<p>Since the simulated groups are of equal size, we would expect <span class="math inline">\(53 / 2 = 26.5\)</span>, i.e., 26 or 27, “not buy DVD” cards in each simulated group, yielding a simulated point estimate of 0% . However, due to random fluctuations, we might actually observe a number a little above or below 26 and 27.</p>
 </div>
 <!--
 %We'll take the students and randomize them into two new groups, simulated-control and simulated-treatment groups, and then we'll look at the difference in the two groups. 
@@ -2698,9 +2672,8 @@ For instance, blood thinners may be used to help release a clot that is causing 
 <p>Here we consider an experiment with patients who underwent CPR for a heart attack and were subsequently admitted to a hospital.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;B&lt;span class="math inline"&gt;\(\ddot{\text{o}}\)&lt;/span&gt;ttiger et al. “Efficacy and safety of thrombolytic therapy after initially unsuccessful cardiopulmonary resuscitation: a prospective clinical trial.” The Lancet, 2001.&lt;/p&gt;'><sup>132</sup></a>
 Each patient was randomly assigned to either receive a blood thinner (treatment group) or not receive a blood thinner (control group).
 The outcome variable of interest was whether the patient survived for at least 24 hours.</p>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-49" class="example"><strong>Example 5.17  </strong></span>Form hypotheses for this study in plain and statistical language.
+<div class="workedexample">
+<p>Form hypotheses for this study in plain and statistical language.
 Let <span class="math inline">\(\pi_c\)</span> represent the true survival rate of people who do not receive a blood thinner (corresponding to the control group) and <span class="math inline">\(\pi_t\)</span> represent the true survival rate for people receiving a blood thinner (corresponding to the treatment group).</p>
 <hr>
 <p>We want to understand whether blood thinners are helpful or harmful.
@@ -2831,16 +2804,15 @@ Use a one-sided hypothesis test only if you truly have interest in only one dire
 If your null distribution is symmetric, first compute the p-value for one tail of the distribution, then double that value to get the two-sided p-value.
 That’s it!<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;If the null distribution is not symmetric, then the computer will have to count the proportions in each tail separately, since the two tail proportions may differ.&lt;/p&gt;"><sup>136</sup></a>
 </div>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-50" class="example"><strong>Example 5.18  </strong></span>Consider the situation of the <a href="one-prop-null-boot">medical consultant</a>.
+<div class="workedexample">
+<p>Consider the situation of the <a href="one-prop-null-boot">medical consultant</a>.
 Now that you know about one-sided and two-sided tests, which type of test do you think is more appropriate?</p>
 <hr>
-The setting has been framed in the context of the consultant being helpful (which is what led us to a one-sided test originally), but what if the consultant actually performed <em>worse</em> than the average?
+<p>The setting has been framed in the context of the consultant being helpful (which is what led us to a one-sided test originally), but what if the consultant actually performed <em>worse</em> than the average?
 Would we care?
 More than ever!
 Since it turns out that we care about a finding in either direction, we should run a two-sided test.
-The p-value for the two-sided test is double that of the one-sided test, here the simulated p-value would be 0.2444.
+The p-value for the two-sided test is double that of the one-sided test, here the simulated p-value would be 0.2444.</p>
 </div>
 <p>Generally, to find a two-sided p-value we double the single tail area, which remains a reasonable approach even when the sampling distribution is asymmetric.
 However, the approach can result in p-values larger than 1 when the point estimate is very near the mean in the null distribution; in such cases, we write that the p-value is 1.
@@ -3630,26 +3602,24 @@ good decision
 <p>A <strong>Type 1 Error</strong> is rejecting the null hypothesis when <span class="math inline">\(H_0\)</span> is actually true.
 Since we rejected the null hypothesis in the <a href="caseStudyGenderDiscrimination">gender discrimination</a>, <a href="caseStudyOpportunityCost">opportunity cost</a>, and <a href="caseStudyMalaria">malaria</a> studies, it is possible that we made a Type 1 Error in one, two, or all three of those studies.</p>
 <p>A <strong>Type 2 Error</strong> is failing to reject the null hypothesis when the alternative is actually true. Since we failed to reject the null hypothesis in the <a href="one-prop-null-boot">medical consultant</a> study, it is possible that we made a Type 2 Error in that study.</p>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-51" class="example"><strong>Example 5.19  </strong></span>In a US court, the defendant is either innocent (<span class="math inline">\(H_0\)</span>) or guilty (<span class="math inline">\(H_A\)</span>).
+<div class="workedexample">
+<p>In a US court, the defendant is either innocent (<span class="math inline">\(H_0\)</span>) or guilty (<span class="math inline">\(H_A\)</span>).
 What does a Type 1 Error represent in this context?
 What does a Type 2 Error represent?
 Table <a href="inference-cat.html#tab:fourHTScenarios">5.11</a> may be useful.</p>
 <hr>
-If the court makes a Type 1 Error, this means the defendant is innocent (<span class="math inline">\(H_0\)</span> true) but wrongly convicted.
-A Type 2 Error means the court failed to reject <span class="math inline">\(H_0\)</span> (i.e., failed to convict the person) when they were in fact guilty (<span class="math inline">\(H_A\)</span> true).
+<p>If the court makes a Type 1 Error, this means the defendant is innocent (<span class="math inline">\(H_0\)</span> true) but wrongly convicted.
+A Type 2 Error means the court failed to reject <span class="math inline">\(H_0\)</span> (i.e., failed to convict the person) when they were in fact guilty (<span class="math inline">\(H_A\)</span> true).</p>
 </div>
 
 <div class="guidedpractice">
 Consider the opportunity cost study where we concluded students were less likely to make a DVD purchase if they were reminded that money not spent now could be spent later. What would a Type 1 Error represent in this context?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Making a Type 1 Error in this context would mean that reminding students that money not spent now can be spent later does not affect their buying habits, despite the strong evidence (the data suggesting otherwise) found in the experiment. Notice that this does &lt;em&gt;not&lt;/em&gt; necessarily mean something was wrong with the data or that we made a computational mistake. Sometimes data simply point us to the wrong conclusion, which is why scientific studies are often repeated to check initial findings.&lt;/p&gt;"><sup>141</sup></a>
 </div>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-52" class="example"><strong>Example 5.20  </strong></span>How could we reduce the Type 1 Error rate in US courts?
+<div class="workedexample">
+<p>How could we reduce the Type 1 Error rate in US courts?
 What influence would this have on the Type 2 Error rate?</p>
 <hr>
-To lower the Type 1 Error rate, we might raise our standard for conviction from “beyond a reasonable doubt” to “beyond a conceivable doubt” so fewer people would be wrongly convicted. However, this would also make it more difficult to convict the people who are actually guilty, so we would make more Type 2 Errors.
+<p>To lower the Type 1 Error rate, we might raise our standard for conviction from “beyond a reasonable doubt” to “beyond a conceivable doubt” so fewer people would be wrongly convicted. However, this would also make it more difficult to convict the people who are actually guilty, so we would make more Type 2 Errors.</p>
 </div>
 
 <div class="guidedpractice">
@@ -3691,9 +3661,8 @@ The significance level selected for a test should reflect the real-world consequ
 <li><p>If we only use alternative hypotheses that agree with our worldview, then we’re going to be subjecting ourselves to <strong>confirmation bias</strong>, which means we are looking for data that supports our ideas. That’s not very scientific, and we can do better!</p></li>
 </ol>
 <p>We explore the consequences of ignoring this advice in the next example.</p>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-53" class="example"><strong>Example 5.21  </strong></span>Using <span class="math inline">\(\alpha=0.05\)</span>, we show that freely switching from two-sided tests to one-sided tests will lead us to make twice as many Type 1 Errors as intended.</p>
+<div class="workedexample">
+<p>Using <span class="math inline">\(\alpha=0.05\)</span>, we show that freely switching from two-sided tests to one-sided tests will lead us to make twice as many Type 1 Errors as intended.</p>
 <hr>
 <p>Suppose we are interested in finding any difference from 0.
 We’ve created a smooth-looking <strong>null distribution</strong> representing differences due to chance in Figure <a href="inference-cat.html#fig:type1ErrorDoublingExampleFigure">5.37</a>.</p>
@@ -3705,8 +3674,8 @@ Thus, if the null hypothesis is true, we incorrectly reject the null hypothesis 
 Then if we change to a one-sided test, we would use <span class="math inline">\(H_A\)</span>: difference <span class="math inline">\(&lt; 0\)</span>.
 If the observed difference falls in the lower 5% of the figure, we would reject <span class="math inline">\(H_0\)</span>.
 That is, if the null hypothesis is true, then we would observe this situation about 5% of the time.</p>
-By examining these two scenarios, we can determine that we will make a Type 1 Error <span class="math inline">\(5\%+5\%=10\%\)</span> of the time if we are allowed to swap to the “best” one-sided test for the data.
-This is twice the error rate we prescribed with our significance level: <span class="math inline">\(\alpha=0.05\)</span> (!).
+<p>By examining these two scenarios, we can determine that we will make a Type 1 Error <span class="math inline">\(5\%+5\%=10\%\)</span> of the time if we are allowed to swap to the “best” one-sided test for the data.
+This is twice the error rate we prescribed with our significance level: <span class="math inline">\(\alpha=0.05\)</span> (!).</p>
 </div>
 <div class="figure" style="text-align: center">
 <span id="fig:type1ErrorDoublingExampleFigure"></span>
@@ -3745,9 +3714,8 @@ Hypotheses should be set up <em>before</em> observing the data.
 <p><strong>Power.</strong></p>
 The <strong>power</strong> of a test is the probability of rejecting a false null hypothesis.
 </div>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-54" class="example"><strong>Example 5.22  </strong></span>Suppose we would like to test whether less than 65% of a large population approves of a new law: <span class="math inline">\(H_0: \pi = 0.65\)</span> versus <span class="math inline">\(H_A: \pi &lt; 0.65\)</span>. We collect a random sample of <span class="math inline">\(n = 200\)</span> individuals from this population. For what values of the sample proportion, <span class="math inline">\(\hat{p}\)</span>, would we reject <span class="math inline">\(H_0\)</span> using a significance level of <span class="math inline">\(\alpha = 0.05\)</span>?</p>
+<div class="workedexample">
+<p>Suppose we would like to test whether less than 65% of a large population approves of a new law: <span class="math inline">\(H_0: \pi = 0.65\)</span> versus <span class="math inline">\(H_A: \pi &lt; 0.65\)</span>. We collect a random sample of <span class="math inline">\(n = 200\)</span> individuals from this population. For what values of the sample proportion, <span class="math inline">\(\hat{p}\)</span>, would we reject <span class="math inline">\(H_0\)</span> using a significance level of <span class="math inline">\(\alpha = 0.05\)</span>?</p>
 <hr>
 <p>Under the assumption of the null hypothesis, the standard deviation of <span class="math inline">\(\hat{p}\)</span> is <span class="math inline">\(\sqrt{0.65(1-0.65)/200} = 0.0337\)</span>. Thus, by the Central Limit Theorem, sample proportions vary according to an approximate normal distribution with mean 0.65 and standard deviation 0.0337. We will reject the null hypothesis that the true proportion is 0.65 if the sample proportion is so low that its probability is less than 0.05, shown in Figure <a href="inference-cat.html#fig:power-example">5.38</a>.</p>
 <p>To be precise, we will reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\hat{p}\)</span> is less than the 5th percentile of the null distribution: <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm(0.05, 0.65, 0.0337)</a></code> = 0.59.</p>
@@ -3759,9 +3727,8 @@ Figure 5.38: Shaded area on a null distribution where we would reject the null h
 </p>
 </div>
 <p>To calculate power, we need to know the true value of the parameter. In the previous example, the alternative was <span class="math inline">\(H_0: \pi &lt; 0.65\)</span>, so if we just say the alternative hypothesis is true, we still do not know the value of <span class="math inline">\(\pi\)</span>. Thus, power calculations are done for a specific value of the parameter, and the power changes if the value of the parameter changes.</p>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-55" class="example"><strong>Example 5.23  </strong></span>Consider again the test of whether less than 65% of a large population approves of a new law: <span class="math inline">\(H_0: \pi = 0.65\)</span> versus <span class="math inline">\(H_A: \pi &lt; 0.65\)</span>. Suppose the population approval rate is actually <span class="math inline">\(\pi = 0.58\)</span>. What is the probability that we will detect this effect?</p>
+<div class="workedexample">
+<p>Consider again the test of whether less than 65% of a large population approves of a new law: <span class="math inline">\(H_0: \pi = 0.65\)</span> versus <span class="math inline">\(H_A: \pi &lt; 0.65\)</span>. Suppose the population approval rate is actually <span class="math inline">\(\pi = 0.58\)</span>. What is the probability that we will detect this effect?</p>
 <hr>
 <p>This example asks us to calculate the power – the probability our test will provide evidence that <span class="math inline">\(\pi &lt; 0.65\)</span> when the true value of <span class="math inline">\(\pi\)</span> is 0.58. Recall from the previous example that we will reject the null if <span class="math inline">\(\hat{p} &lt; 0.59\)</span>. Thus, the power is the probability that <span class="math inline">\(\hat{p}\)</span> will be less than 0.59 when the true proportion is 0.58: <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm(0.59, 0.58, 0.0337)</a></code> = 0.62. There is only a 62% chance that the data we collect will provide strong enough evidence to conclude <span class="math inline">\(\pi &lt; 0.65\)</span>. This probability is represented by the red area in Figure <a href="inference-cat.html#fig:power-example-2">5.39</a>.</p>
 </div>
@@ -3793,9 +3760,8 @@ Figure 5.39: The blue distribution is the distribution of sample proportions if 
 <h3>
 <span class="header-section-number">5.5.4</span> Statistical Significance versus Practical Importance<a class="anchor" aria-label="anchor" href="#statistical-significance-versus-practical-importance"><i class="fas fa-link"></i></a>
 </h3>
-
-<div class="example">
-<p><span id="exm:unlabeled-div-56" class="example"><strong>Example 5.24  </strong></span>An Austrian study of heights of 507,125 military recruits reported that men born in spring were statistically significantly taller than men born in the fall (p-value &lt; 0.0001). A confidence interval for the true difference in mean height between men born in spring and men born in fall was (0.598, 0.602) cm. Is this result practically important?</p>
+<div class="workedexample">
+<p>An Austrian study of heights of 507,125 military recruits reported that men born in spring were statistically significantly taller than men born in the fall (p-value &lt; 0.0001). A confidence interval for the true difference in mean height between men born in spring and men born in fall was (0.598, 0.602) cm. Is this result practically important?</p>
 <hr>
 <p>No, these results don’t mean much in this context – a difference in average height of around 0.6 cm would not even be noticeable by the human eye! Just because a result is statistically significant does not mean that it is necessarily practically important – meaningful in the context of the problem.</p>
 </div>

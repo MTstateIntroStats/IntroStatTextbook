@@ -23,11 +23,13 @@ However, quantifying the variability in the data is neither obvious nor easy to 
 
 
 
-\BeginKnitrBlock{example}<div class="example">Suppose your professor splits the students in class into two groups: students on the left and students on the right. If $\hat{p}_{_L}$ and $\hat{p}_{_R}$ represent the proportion of students who own an Apple product on the left and right, respectively, would you be surprised if $\hat{p}_{_L}$ did not *exactly* equal $\hat{p}_{_R}$?
+::: {.workedexample}
+Suppose your professor splits the students in class into two groups: students on the left and students on the right. If $\hat{p}_{_L}$ and $\hat{p}_{_R}$ represent the proportion of students who own an Apple product on the left and right, respectively, would you be surprised if $\hat{p}_{_L}$ did not *exactly* equal $\hat{p}_{_R}$?
 
 ---
 
-While the proportions would probably be close to each other, it would be unusual for them to be exactly the same. We would probably observe a small difference due to *chance*.</div>\EndKnitrBlock{example}
+While the proportions would probably be close to each other, it would be unusual for them to be exactly the same. We would probably observe a small difference due to *chance*.
+:::
 
 
 
@@ -178,12 +180,15 @@ The hallmarks of hypothesis testing are also found in the US court system.
 #### The US court system {-}
 
 
-\BeginKnitrBlock{example}<div class="example">A US court considers two possible claims about a defendant: they are either innocent or guilty. If we set these claims up in a hypothesis framework, which would be the null hypothesis and which the alternative?
+::: {.workedexample}
+A US court considers two possible claims about a defendant: they are either innocent or guilty. If we set these claims up in a hypothesis framework, which would be the null hypothesis and which the alternative?
 
 ---
  
 The jury considers whether the evidence is so convincing (strong) that there is no reasonable doubt regarding the person's guilt. 
-That is, the skeptical perspective (null hypothesis) is that the person is innocent until evidence is presented that convinces the jury that the person is guilty (alternative hypothesis). Analogously, in a hypothesis test, we assume the null hypothesis until evidence is presented that convinces us the alternative hypothesis is true.</div>\EndKnitrBlock{example}
+That is, the skeptical perspective (null hypothesis) is that the person is innocent until evidence is presented that convinces the jury that the person is guilty (alternative hypothesis). Analogously, in a hypothesis test, we assume the null hypothesis until evidence is presented that convinces us the alternative hypothesis is true.
+
+:::
 
 
 Jurors examine the evidence to see whether it convincingly shows a defendant is guilty. 
@@ -225,11 +230,13 @@ This summary value that is used to compute the p-value is often called the **tes
 (2) data^[Technically, the observed sample statistic or one more extreme in the direction of our alternative. But it is helpful to just remember this as "the data".]
 (3) null hypothesis</div>\EndKnitrBlock{protip}
 
-\BeginKnitrBlock{example}<div class="example">What was the test statistic in the [Martian alphabet example](#Martian)?
+::: {.workedexample}
+What was the test statistic in the [Martian alphabet example](#Martian)?
  
 ---
  
-The test statistic in the the Martian alphabet example was the sample proportion, $\frac{34}{38} = 0.895$ (or 89.5%). This is also the **point estimate** of the true probability that humans would choose Bumba on the left.</div>\EndKnitrBlock{example}
+The test statistic in the the Martian alphabet example was the sample proportion, $\frac{34}{38} = 0.895$ (or 89.5%). This is also the **point estimate** of the true probability that humans would choose Bumba on the left.
+:::
 
 
 Since the p-value is a probability, its value will always be between 0 and 1. The closer the p-value is to 0, the stronger the evidence we have _against the null hypothesis_. Why? A small p-value means that our data are _unlikely_ to occur, _if_ the null hypothesis is true. We take that to mean that the null hypothesis isn't a plausible assumption, and we reject it. This process mimics the scientific method---it is easier to disprove a theory than prove it. If scientists want to find evidence that a new drug reduces the risk of stroke, then they assume it _doesn't_ reduce the risk of stroke and then show that the observed data are so unlikely to occur that the more plausible explanation is that the drug works.
@@ -493,11 +500,13 @@ This technique is especially insightful when a distribution is symmetric.
 
 ### Normal probability calculations in `R`
 
-\BeginKnitrBlock{example}<div class="example">Ann from the SAT Guided Practice earned a score of 1800 on her SAT with a corresponding $Z=1$. She would like to know what percentile she falls in among all SAT test-takers.
+::: {.workedexample}
+Ann from the SAT Guided Practice earned a score of 1800 on her SAT with a corresponding $Z=1$. She would like to know what percentile she falls in among all SAT test-takers.
 
 ---
  
-Ann's **percentile**\index{percentile} is the percentage of people who earned a lower SAT score than Ann. We shade the area representing those individuals in Figure \@ref(fig:satBelow1800). The total area under the normal curve is always equal to 1, and the proportion of people who scored below Ann on the SAT is equal to the *area* shaded in Figure \@ref(fig:satBelow1800): 0.8413. In other words, Ann is in the $84^{th}$ percentile of SAT takers.</div>\EndKnitrBlock{example}
+Ann's **percentile**\index{percentile} is the percentage of people who earned a lower SAT score than Ann. We shade the area representing those individuals in Figure \@ref(fig:satBelow1800). The total area under the normal curve is always equal to 1, and the proportion of people who scored below Ann on the SAT is equal to the *area* shaded in Figure \@ref(fig:satBelow1800): 0.8413. In other words, Ann is in the $84^{th}$ percentile of SAT takers.
+:::
 
 
 
@@ -518,7 +527,7 @@ pnorm(0.43, m = 0, s = 1)
 openintro::normTail(0.43, m = 0, s = 1)
 ```
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-39-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-35-1.png" width="70%" style="display: block; margin: auto;" />
 
 We can also find the Z-score associated with a percentile. 
 For example, to identify Z for the $80^{th}$ percentile, we use `qnorm()` which identifies the **quantile** for a given percentage.  The quantile represents the cutoff value.^[To remember the function `qnorm()` as providing a cutoff, notice that both `qnorm()` and "cutoff" start with the sound "kuh".  To remember the `pnorm()` function as providing a probability from a given cutoff, notice that both `pnorm()` and probability start with the sound "puh".] 
@@ -531,7 +540,7 @@ qnorm(0.80, m = 0, s = 1)
 openintro::normTail(0.80, m = 0, s = 1)
 ```
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-40-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-36-1.png" width="70%" style="display: block; margin: auto;" />
 
 We can use these functions with other normal distributions than the standard normal distribution by specifying the mean as the argument for `m` and the standard deviation as the argument for `s`. Here we determine the proportion of ACT test takers who scored worse than Tom on the ACT: 0.73.
 
@@ -542,7 +551,7 @@ pnorm(24, m = 21, s = 5)
 openintro::normTail(24, m = 21, s = 5)
 ```
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-41-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-37-1.png" width="70%" style="display: block; margin: auto;" />
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Determine the proportion of SAT test takers who scored better than Ann on the SAT.^[If 84% had lower scores than Ann, the number of people who had better scores must be 16%. (Generally ties are ignored when the normal model, or any other continuous distribution, is used.)]</div>\EndKnitrBlock{guidedpractice}
 
@@ -551,7 +560,8 @@ openintro::normTail(24, m = 21, s = 5)
 
 Cumulative SAT scores are approximated well by a normal model, $N(\mu=1500, \sigma=300)$.
 
-\BeginKnitrBlock{example}<div class="example">Shannon is a randomly selected SAT taker, and nothing is known about Shannon's SAT aptitude. What is the probability that Shannon scores at least 1630 on her SATs?
+::: {.workedexample}
+Shannon is a randomly selected SAT taker, and nothing is known about Shannon's SAT aptitude. What is the probability that Shannon scores at least 1630 on her SATs?
 
 ---
 
@@ -564,7 +574,8 @@ Z = \frac{x - \mu}{\sigma} = \frac{1630 - 1500}{300} = \frac{130}{300} = 0.43
 \end{eqnarray*}
 We use software to find the percentile of $Z=0.43$, which yields 0.6664. However, the percentile describes those who had a Z-score *lower* than 0.43. To find the area *above* $Z=0.43$, we compute one minus the area of the lower tail, as seen below.
 
-The probability Shannon scores at least 1630 on the SAT is 0.3336.</div>\EndKnitrBlock{example}
+The probability Shannon scores at least 1630 on the SAT is 0.3336.
+:::
 
 <img src="05-inference-cat_files/figure-html/satAbove1630-1.png" width="70%" style="display: block; margin: auto;" />
 
@@ -582,7 +593,8 @@ After drawing a figure to represent the situation, identify the Z-score for the 
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">If the probability of Shannon scoring at least 1630 is 0.3336, then what is the probability she scores less than 1630? Draw the normal curve representing this exercise, shading the lower region instead of the upper one.^[We found the probability to be 0.6664. A picture for this exercise is represented by the shaded area below "0.6664".]</div>\EndKnitrBlock{guidedpractice}
 
-\BeginKnitrBlock{example}<div class="example">Edward earned a 1400 on his SAT. What is his percentile?
+::: {.workedexample}
+Edward earned a 1400 on his SAT. What is his percentile?
 
 ---
  
@@ -592,7 +604,8 @@ Identifying the mean $\mu=1500$, the standard deviation $\sigma=300$, and the cu
 \begin{eqnarray*}
 Z = \frac{x - \mu}{\sigma} = \frac{1400 - 1500}{300} = -0.3333
 \end{eqnarray*}
-Using the `pnorm()` function (either `pnorm(-1/3)` or `pnorm(1400, m=1500, s=300)` will give the desired result), the desired probability is $0.3694$. Edward is at the $37^{th}$ percentile.</div>\EndKnitrBlock{example}
+Using the `pnorm()` function (either `pnorm(-1/3)` or `pnorm(1400, m=1500, s=300)` will give the desired result), the desired probability is $0.3694$. Edward is at the $37^{th}$ percentile.
+:::
 
 
 <img src="05-inference-cat_files/figure-html/satBelow1400-1.png" width="70%" style="display: block; margin: auto;" />
@@ -616,7 +629,8 @@ The last several problems have focused on finding the probability or percentile 
 What if you would like to know the observation corresponding to a particular percentile?
 
 
-\BeginKnitrBlock{example}<div class="example">Erik's height is at the $40^{th}$ percentile. How tall is he?
+::: {.workedexample}
+Erik's height is at the $40^{th}$ percentile. How tall is he?
 
 ---
 
@@ -630,7 +644,8 @@ Knowing $Z_{Erik}=-0.25$ and the population parameters $\mu=70$ and $\sigma=3.3$
 \begin{eqnarray*}
 -0.25 = Z_{Erik} = \frac{x_{Erik} - \mu}{\sigma} = \frac{x_{Erik} - 70}{3.3}
 \end{eqnarray*}
-Solving for $x_{Erik}$ yields the height 69.18 inches. That is, Erik is about 5'9'' (this is notation for 5-feet, 9-inches).</div>\EndKnitrBlock{example}
+Solving for $x_{Erik}$ yields the height 69.18 inches. That is, Erik is about 5'9'' (this is notation for 5-feet, 9-inches).
+:::
 
 
 ```r
@@ -641,7 +656,8 @@ qnorm(0.4, m = 0, s = 1)
 <img src="05-inference-cat_files/figure-html/height40Perc-1.png" width="70%" style="display: block; margin: auto;" />
 
 
-\BeginKnitrBlock{example}<div class="example">What is the adult male height at the $82^{nd}$ percentile?
+::: {.workedexample}
+What is the adult male height at the $82^{nd}$ percentile?
  
 ---
  
@@ -651,7 +667,8 @@ Next, we want to find the Z-score at the $82^{nd}$ percentile, which will be a p
 \begin{eqnarray*}
 0.92 = Z = \frac{x-\mu}{\sigma} = \frac{x - 70}{3.3}
 \end{eqnarray*}
-This yields 73.04 inches or about 6'1'' as the height at the $82^{nd}$ percentile.</div>\EndKnitrBlock{example}
+This yields 73.04 inches or about 6'1'' as the height at the $82^{nd}$ percentile.
+:::
 
 
 ```r
@@ -668,7 +685,8 @@ qnorm(0.82, m = 0, s = 1)
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">(a) What is the probability that a randomly selected male adult is at least 6'2'' (74 inches)?  
 (b) What is the probability that a male adult is shorter than 5'9'' (69 inches)?^[Numerical answers: (a) 0.1131. (b) 0.3821.]</div>\EndKnitrBlock{guidedpractice}
 
-\BeginKnitrBlock{example}<div class="example">What is the probability that a random adult male is between 5'9'' and 6'2''?
+::: {.workedexample}
+What is the probability that a random adult male is between 5'9'' and 6'2''?
  
 ---
  
@@ -677,14 +695,15 @@ These heights correspond to 69 inches and 74 inches. First, draw the figure. The
 
 The total area under the curve is 1. If we find the area of the two tails that are not shaded (from the previous Guided Practice, these areas are $0.3821$ and $0.1131$), then we can find the middle area:
   
-That is, the probability of being between 5'9'' and 6'2'' is 0.5048.</div>\EndKnitrBlock{example}
+That is, the probability of being between 5'9'' and 6'2'' is 0.5048.
+:::
 
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-58-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-49-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-59-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-50-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 
@@ -740,7 +759,8 @@ In Section \@ref(HypothesisTesting), we introduced the general steps of a hypoth
 5. Make a conclusion based on the p-value, and write a conclusion in context, in plain language, and in terms of the alternative hypothesis.</div>\EndKnitrBlock{onebox}
 
 
-\BeginKnitrBlock{example}<div class="example">People providing an organ for donation sometimes seek the help of a special medical consultant. 
+::: {.workedexample}
+People providing an organ for donation sometimes seek the help of a special medical consultant. 
 These consultants assist the patient in all aspects of the surgery, with the goal of reducing the possibility of complications during the medical procedure and recovery. 
 Patients might choose a consultant based in part on the historical complication rate of the consultant's clients.
 
@@ -754,7 +774,8 @@ Using these data, is it possible to assess the consultant's claim that her work 
 No. The claim is that there is a causal connection, but the data are observational, so we must be on the lookout for confounding variables. 
 For example, maybe patients who can afford a medical consultant can afford better medical care, which can also lead to a lower complication rate.
 
-While it is not possible to assess the causal claim, it is still possible to understand the consultant's true rate of complications.</div>\EndKnitrBlock{example}
+While it is not possible to assess the causal claim, it is still possible to understand the consultant's true rate of complications.
+:::
 
 
 #### Steps 1 and 2: Hypotheses and test statistic {-}
@@ -786,7 +807,8 @@ Since we rarely can measure the entire population, and thus rarely know
 the actual parameter values, we like to say, "We don't know Greek,
 and we don't know parameters!"</div>\EndKnitrBlock{protip}
 
-\BeginKnitrBlock{example}<div class="example">Write out hypotheses in both plain and statistical language to test for the association between the consultant's work and the true complication rate, $\pi$, for the consultant's clients.
+::: {.workedexample}
+Write out hypotheses in both plain and statistical language to test for the association between the consultant's work and the true complication rate, $\pi$, for the consultant's clients.
 
 ---
   
@@ -798,7 +820,9 @@ In words:
 In statistical language:
 
 > $H_0: \pi=0.10$  
-> $H_A: \pi<0.10$</div>\EndKnitrBlock{example}
+> $H_A: \pi<0.10$
+
+:::
 
 #### Steps 3 and 4: Null distribution and p-value {-}
 
@@ -914,11 +938,13 @@ So, instead of using a "resample from the population" approach, bootstrapping us
 
 \index{data!medical consultant|(}
 
-\BeginKnitrBlock{example}<div class="example">Let's revisit our medical consultant example from Section \@ref(one-prop-null-boot). This consultant tried to attract patients by noting the average complication rate for liver donor surgeries in the US is about 10%, but her clients have had only 3 complications in the 62 liver donor surgeries she has facilitated. This data, however, did not provide sufficient evidence that the consultant's complication rate was less than 10%, since the p-value was approximately 0.122. Does this mean we can conclude that the consultant's complication rate was equal to 10%?
+::: {.workedexample}
+Let's revisit our medical consultant example from Section \@ref(one-prop-null-boot). This consultant tried to attract patients by noting the average complication rate for liver donor surgeries in the US is about 10%, but her clients have had only 3 complications in the 62 liver donor surgeries she has facilitated. This data, however, did not provide sufficient evidence that the consultant's complication rate was less than 10%, since the p-value was approximately 0.122. Does this mean we can conclude that the consultant's complication rate was equal to 10%?
 
 ---
 
-No! Though our decision was to fail to reject the null hypothesis, this does not mean we have evidence _for_ the null hypothesis---we cannot "accept" the null. The sample proportion was $\hat{p} = 3/62 = 0.048$, which is our point estimate---or "best guess"---of $\pi$. It wouldn't make sense that a sample complication rate of 4.8% gives us evidence that the true complication rate was exactly 10%. It`s plausible that the true complication rate is 10%, but there are a range of plausible values for $\pi$. In this section, we will use a simulation-based method called **bootstrapping** to generate this range of plausible values for $\pi$ using the observed data.</div>\EndKnitrBlock{example}
+No! Though our decision was to fail to reject the null hypothesis, this does not mean we have evidence _for_ the null hypothesis---we cannot "accept" the null. The sample proportion was $\hat{p} = 3/62 = 0.048$, which is our point estimate---or "best guess"---of $\pi$. It wouldn't make sense that a sample complication rate of 4.8% gives us evidence that the true complication rate was exactly 10%. It`s plausible that the true complication rate is 10%, but there are a range of plausible values for $\pi$. In this section, we will use a simulation-based method called **bootstrapping** to generate this range of plausible values for $\pi$ using the observed data.
+:::
 
 In the medical consultant case study, the parameter is $\pi$, the true probability of a complication for a client of the medical consultant.
 There is no reason to believe that $\pi$ is exactly $\hat{p} = 3/62$, but there is also no reason to believe that $\pi$ is particularly far from $\hat{p} = 3/62$.
@@ -993,12 +1019,14 @@ You can find confidence intervals of difference confidence levels by changing th
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">To find the middle 90% of a distribution, which two percentiles would form its boundaries?^[The the middle 95% of a distribution would range from the 5^th^ percentile (the value with 5% of the distribution below) to the 95^th^ percentile (the value with 5% of the distribution above).]</div>\EndKnitrBlock{guidedpractice}
 
-\BeginKnitrBlock{example}<div class="example">The original claim was that the consultant's true rate of complication was under the national rate of 10%. Does the interval estimate of 0 to 11.3% for the true probability of complication indicate that the surgical consultant has a lower rate of complications than the national average?
+::: {.workedexample}
+The original claim was that the consultant's true rate of complication was under the national rate of 10%. Does the interval estimate of 0 to 11.3% for the true probability of complication indicate that the surgical consultant has a lower rate of complications than the national average?
 Explain.
 
 ---
 
-No. Because the interval overlaps 10%, it might be that the consultant's work is associated with a lower risk of complciations, or it might be that the consulant's work is associated with a higher risk (i.e., greater than 10%) of complications! Additionally, as previously mentioned, because this is an observational study, even if an association can be measured, there is no evidence that the consultant's work is the cause of the complication rate (being higher or lower). </div>\EndKnitrBlock{example}
+No. Because the interval overlaps 10%, it might be that the consultant's work is associated with a lower risk of complciations, or it might be that the consulant's work is associated with a higher risk (i.e., greater than 10%) of complications! Additionally, as previously mentioned, because this is an observational study, even if an association can be measured, there is no evidence that the consultant's work is the cause of the complication rate (being higher or lower). 
+:::
 
 <!--
 %However, we currently don't have enough data to say whether the corresponding complication rate is any different than 0.10.
@@ -1071,11 +1099,13 @@ problems, do remember that this is just the first
 book in what is a large library of statistical methods that
 are suitable for a very wide range of data and contexts.].
 
-\BeginKnitrBlock{example}<div class="example">In the examples based on large sample theory, we modeled $\hat{p}$ using the normal distribution. Why is this not appropriate for the study on the medical consultant?
+::: {.workedexample}
+In the examples based on large sample theory, we modeled $\hat{p}$ using the normal distribution. Why is this not appropriate for the study on the medical consultant?
   
 ---
   
-The independence assumption may be reasonable if each of the surgeries is from a different surgical team. However, the success-failure condition is not satisfied. Under the null hypothesis, we would anticipate seeing $62\times 0.10=6.2$ complications, not the 10 required for the normal approximation.</div>\EndKnitrBlock{example}
+The independence assumption may be reasonable if each of the surgeries is from a different surgical team. However, the success-failure condition is not satisfied. Under the null hypothesis, we would anticipate seeing $62\times 0.10=6.2$ complications, not the 10 required for the normal approximation.
+:::
 
 Since theory-based methods cannot be used on the medical consultant example, we'll turn to another example to demonstrate these methods, where conditions for approximating the distribution of $\hat{p}$ by a normal distribution are met.
 
@@ -1341,16 +1371,11 @@ A simple random sample of 826
     We also must check the success-failure condition,
     which we do using $\hat{p}$ in place
     of $\pi$ when computing a confidence interval:
-    \begin{align*}
-    \text{Support: }
-      n \hat{p} &
-          = 826 \times 0.51
-      \approx 421
-    &\text{Not: }
-      n (1 - \hat{p}) &
-        = 826 \times (1 - 0.51)
-      \approx 405
-    \end{align*}
+    
+    Support: $n \hat{p} = 826 \times 0.51 \approx 421 > 10$
+    
+    Not: $n (1 - \hat{p}) = 826 \times (1 - 0.51) \approx 405 > 10$
+
     Since both values are at least 10, we can use the normal
     distribution to model the sampling distribution of $\hat{p}$.
   
@@ -1369,13 +1394,13 @@ in the formula.
   the standard error $SE = 0.017$ from the previous
   Guided Practice,
   the confidence interval is
-  \begin{eqnarray*}
-  \text{point estimate} \ \pm\ z^{\star} \times SE
+  \begin{align*}
+  \text{point estimate} &\pm\ z^{\star} \times SE \\
       \quad\to\quad
-      0.51 \ \pm\ 1.96 \times 0.017
+      0.51 \ &\pm\ 1.96 \times 0.017 \\
       \quad\to\quad
-      (0.477, 0.543)
-  \end{eqnarray*}
+      (0.477, &0.543)
+  \end{align*}
   We are 95% confident that the true proportion of
   payday borrowers who supported regulation at the time
   of the poll was between 0.477 and
@@ -1469,15 +1494,15 @@ Figure \@ref(fig:choosingZForCI) provides a picture of how to identify $z^{\star
 
 
 ```r
-# z* for 90% --> alpha = 0.15 --> need 5% on each size:
+# z* for 90% --> alpha = 0.15 --> need 5% on each side:
 qnorm(.90 + .05)
 #> [1] 1.645
 
-# z* for 95% --> alpha = 0.05 --> need 2.5% on each size:
+# z* for 95% --> alpha = 0.05 --> need 2.5% on each side:
 qnorm(.95 + .025)
 #> [1] 1.96
 
-# z* for 99% --> alpha = 0.01 --> need .5% on each size:
+# z* for 99% --> alpha = 0.01 --> need .5% on each side:
 qnorm(.99 + .005)
 #> [1] 2.576
 ```
@@ -1788,7 +1813,8 @@ The data are visualized in Figure \@ref(fig:genderrand1).  Note that the promote
 <p class="caption">(\#fig:genderrand1)The gender descrimination study can be thought of as 48 red and black cards.</p>
 </div>
 
-\BeginKnitrBlock{example}<div class="example">Statisticians are sometimes called upon to evaluate the strength of evidence. 
+::: {.workedexample}
+Statisticians are sometimes called upon to evaluate the strength of evidence. 
 When looking at the rates of promotion for males and females in this study, why might we be tempted to immediately conclude that females are being discriminated against?
  
 ---
@@ -1797,7 +1823,8 @@ The large difference in promotion rates (58.3% for females versus 87.5% for male
 However, we cannot yet be sure if the observed difference represents discrimination or is just from random chance. 
 Generally there is a little bit of fluctuation in sample data, and we wouldn't expect the sample proportions to be *exactly* equal, even if the truth was that the promotion decisions were independent of gender.
 
-Additionally, the researchers used a **convenience sample**---48 male bank supervisors attending a management institute---so we will need to think carefully about to which population we can generalize these results.</div>\EndKnitrBlock{example}
+Additionally, the researchers used a **convenience sample**---48 male bank supervisors attending a management institute---so we will need to think carefully about to which population we can generalize these results.
+:::
 
 The previous example is a reminder that the observed outcomes in the sample may not perfectly reflect the true relationships between variables in the underlying population.
 Table \@ref(tab:discriminationResults) shows there were 7 fewer promotions in the female group than in the male group, a difference in promotion rates of 29.2%:
@@ -1936,13 +1963,15 @@ Figure \@ref(fig:discRandDotPlot) shows a plot of the differences found from 100
 Note that the distribution of these simulated differences in proportions is centered around 0. 
 Because we simulated differences in a way that made no distinction between men and women, this makes sense: we should expect differences from chance alone to fall around zero with some random fluctuation for each simulation.
 
-\BeginKnitrBlock{example}<div class="example">How often would you observe a difference of at least 29.2% (0.292) according to Figure \@ref(fig:discRandDotPlot)? 
+::: {.workedexample}
+How often would you observe a difference of at least 29.2% (0.292) according to Figure \@ref(fig:discRandDotPlot)? 
 Often, sometimes, rarely, or never?
  
 ---
  
 It appears that a difference of at least 29.2% due to chance alone would only happen about 2% of the time according to Figure \@ref(fig:discRandDotPlot). 
-Such a low probability indicates that observing such a large difference from chance is rare.</div>\EndKnitrBlock{example}
+Such a low probability indicates that observing such a large difference from chance is rare.
+:::
 
 The difference of 29.2% is a rare event if there really is no impact from listing gender in the candidates' files, which provides us with two possible interpretations of the study results:
 
@@ -2145,12 +2174,14 @@ That is, 53 cards will be labeled "not buy DVD" to represent the 53 students who
 Then we shuffle these cards thoroughly and divide them into two stacks of size 75, representing the simulated treatment and control groups. 
 Any observed difference between the proportions of "not buy DVD" cards (what we earlier defined as *success*) can be attributed entirely to chance.
 
-\BeginKnitrBlock{example}<div class="example">If we are randomly assigning the cards into the simulated treatment and control groups, how many "not buy DVD" cards would we expect to end up with in each simulated group? 
+::: {.workedexample}
+If we are randomly assigning the cards into the simulated treatment and control groups, how many "not buy DVD" cards would we expect to end up with in each simulated group? 
 What would be the expected difference between the proportions of "not buy DVD" cards in each group?
 
 ---
 
-Since the simulated groups are of equal size, we would expect $53 / 2 = 26.5$, i.e., 26 or 27, "not buy DVD" cards in each simulated group, yielding a simulated point estimate of 0% . However, due to random fluctuations, we might actually observe a number a little above or below 26 and 27.</div>\EndKnitrBlock{example}
+Since the simulated groups are of equal size, we would expect $53 / 2 = 26.5$, i.e., 26 or 27, "not buy DVD" cards in each simulated group, yielding a simulated point estimate of 0% . However, due to random fluctuations, we might actually observe a number a little above or below 26 and 27.
+:::
 
 <!--
 %We'll take the students and randomize them into two new groups, simulated-control and simulated-treatment groups, and then we'll look at the difference in the two groups. 
@@ -2519,7 +2550,8 @@ Each patient was randomly assigned to either receive a blood thinner (treatment 
 The outcome variable of interest was whether the patient survived for at least 24 hours.
 
 
-\BeginKnitrBlock{example}<div class="example">Form hypotheses for this study in plain and statistical language. 
+::: {.workedexample}
+Form hypotheses for this study in plain and statistical language. 
 Let $\pi_c$ represent the true survival rate of people who do not receive a blood thinner (corresponding to the control group) and $\pi_t$ represent the true survival rate for people receiving a blood thinner (corresponding to the treatment group).
 
 ---
@@ -2536,7 +2568,8 @@ Note that if we had done a one-sided hypothesis test, the resulting hypotheses w
 * $H_0$: Blood thinners do not have a positive overall survival effect, i.e., $\pi_t - \pi_c = 0$.
 
 * $H_A$: Blood thinners have a positive impact on survival, i.e., $\pi_t - \pi_c > 0$.
-</div>\EndKnitrBlock{example}
+
+:::
 
 There were 50 patients in the experiment who did not receive a blood thinner and 40 patients who did. 
 The study results are shown in Table \@ref(tab:resultsForCPRStudyInSmallSampleSection).
@@ -2632,7 +2665,8 @@ Use a one-sided hypothesis test only if you truly have interest in only one dire
 If your null distribution is symmetric, first compute the p-value for one tail of the distribution, then double that value to get the two-sided p-value. 
 That's it!^[If the null distribution is not symmetric, then the computer will have to count the proportions in each tail separately, since the two tail proportions may differ.]</div>\EndKnitrBlock{onebox}
 
-\BeginKnitrBlock{example}<div class="example">Consider the situation of the [medical consultant](one-prop-null-boot). 
+::: {.workedexample}
+Consider the situation of the [medical consultant](one-prop-null-boot). 
 Now that you know about one-sided and two-sided tests, which type of test do you think is more appropriate?
 
 ---
@@ -2641,7 +2675,8 @@ The setting has been framed in the context of the consultant being helpful (whic
 Would we care? 
 More than ever! 
 Since it turns out that we care about a finding in either direction, we should run a two-sided test. 
-The p-value for the two-sided test is double that of the one-sided test, here the simulated p-value would be 0.2444.</div>\EndKnitrBlock{example}
+The p-value for the two-sided test is double that of the one-sided test, here the simulated p-value would be 0.2444.
+:::
 
 
 Generally, to find a two-sided p-value we double the single tail area, which remains a reasonable approach even when the sampling distribution is asymmetric.
@@ -3416,7 +3451,8 @@ A **Type 2 Error**\index{Type 2 Error} is failing to reject the null hypothesis 
 
 
 
-\BeginKnitrBlock{example}<div class="example">In a US court, the defendant is either innocent ($H_0$) or guilty ($H_A$). 
+::: {.workedexample}
+In a US court, the defendant is either innocent ($H_0$) or guilty ($H_A$). 
 What does a Type 1 Error represent in this context? 
 What does a Type 2 Error represent? 
 Table \@ref(tab:fourHTScenarios) may be useful.
@@ -3424,18 +3460,21 @@ Table \@ref(tab:fourHTScenarios) may be useful.
 ---
  
 If the court makes a Type 1 Error, this means the defendant is innocent ($H_0$ true) but wrongly convicted. 
-A Type 2 Error means the court failed to reject $H_0$ (i.e., failed to convict the person) when they were in fact guilty ($H_A$ true).</div>\EndKnitrBlock{example}
+A Type 2 Error means the court failed to reject $H_0$ (i.e., failed to convict the person) when they were in fact guilty ($H_A$ true).
+:::
 
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">Consider the opportunity cost study where we concluded students were less likely to make a DVD purchase if they were reminded that money not spent now could be spent later. What would a Type 1 Error represent in this context?^[Making a Type 1 Error in this context would mean that reminding students that money not spent now can be spent later does not affect their buying habits, despite the strong evidence (the data suggesting otherwise) found in the experiment. Notice that this does *not* necessarily mean something was wrong with the data or that we made a computational mistake. Sometimes data simply point us to the wrong conclusion, which is why scientific studies are often repeated to check initial findings.]</div>\EndKnitrBlock{guidedpractice}
 
 
-\BeginKnitrBlock{example}<div class="example">How could we reduce the Type 1 Error rate in US courts? 
+::: {.workedexample}
+How could we reduce the Type 1 Error rate in US courts? 
 What influence would this have on the Type 2 Error rate?
 
 ---
  
-To lower the Type 1 Error rate, we might raise our standard for conviction from "beyond a reasonable doubt" to "beyond a conceivable doubt" so fewer people would be wrongly convicted. However, this would also make it more difficult to convict the people who are actually guilty, so we would make more Type 2 Errors.</div>\EndKnitrBlock{example}
+To lower the Type 1 Error rate, we might raise our standard for conviction from "beyond a reasonable doubt" to "beyond a conceivable doubt" so fewer people would be wrongly convicted. However, this would also make it more difficult to convict the people who are actually guilty, so we would make more Type 2 Errors.
+:::
 
 
 \BeginKnitrBlock{guidedpractice}<div class="guidedpractice">How could we reduce the Type 2 Error rate in US courts? 
@@ -3483,7 +3522,8 @@ Because of the result of increased error rates, it is never okay to change two-s
 
 We explore the consequences of ignoring this advice in the next example.
 
-\BeginKnitrBlock{example}<div class="example">Using $\alpha=0.05$, we show that freely switching from two-sided tests to one-sided tests will lead us to make twice as many Type 1 Errors as intended.
+::: {.workedexample}
+Using $\alpha=0.05$, we show that freely switching from two-sided tests to one-sided tests will lead us to make twice as many Type 1 Errors as intended.
 
 ---
  
@@ -3501,7 +3541,8 @@ If the observed difference falls in the lower 5% of the figure, we would reject 
 That is, if the null hypothesis is true, then we would observe this situation about 5% of the time.
 
 By examining these two scenarios, we can determine that we will make a Type 1 Error $5\%+5\%=10\%$ of the time if we are allowed to swap to the "best" one-sided test for the data. 
-This is twice the error rate we prescribed with our significance level: $\alpha=0.05$ (!).</div>\EndKnitrBlock{example}
+This is twice the error rate we prescribed with our significance level: $\alpha=0.05$ (!).
+:::
 
 
 
@@ -3541,14 +3582,16 @@ The probability of a correct decision when the alternative hypothesis is true, $
 
 The **power** of a test is the probability of rejecting a false null hypothesis.</div>\EndKnitrBlock{onebox}
 
-\BeginKnitrBlock{example}<div class="example">Suppose we would like to test whether less than 65% of a large population approves of a new law: $H_0: \pi = 0.65$ versus $H_A: \pi < 0.65$. We collect a random sample of $n = 200$ individuals from this population. For what values of the sample proportion, $\hat{p}$, would we reject $H_0$ using a significance level of $\alpha = 0.05$?
+::: {.workedexample}
+Suppose we would like to test whether less than 65% of a large population approves of a new law: $H_0: \pi = 0.65$ versus $H_A: \pi < 0.65$. We collect a random sample of $n = 200$ individuals from this population. For what values of the sample proportion, $\hat{p}$, would we reject $H_0$ using a significance level of $\alpha = 0.05$?
 
 ---
   
 Under the assumption of the null hypothesis, the standard deviation of $\hat{p}$ is $\sqrt{0.65(1-0.65)/200} = 0.0337$. Thus, by the Central Limit Theorem, sample proportions vary according to an approximate normal distribution with mean 0.65 and standard deviation 0.0337. We will reject the null hypothesis that the true proportion is 0.65 if the sample proportion is so low that its probability is less than 0.05, shown in Figure \@ref(fig:power-example).
 
 To be precise, we will reject $H_0$ if $\hat{p}$ is less than the 5th percentile of the null distribution: `qnorm(0.05, 0.65, 0.0337)` = 0.59.
-</div>\EndKnitrBlock{example}
+
+:::
 
 <div class="figure" style="text-align: center">
 <img src="05/figures/PowerExample.png" alt="Shaded area on a null distribution where we would reject the null hypothesis. This area is equal to the significance level." width="80%" />
@@ -3557,12 +3600,14 @@ To be precise, we will reject $H_0$ if $\hat{p}$ is less than the 5th percentile
 
 To calculate power, we need to know the true value of the parameter. In the previous example, the alternative was $H_0: \pi < 0.65$, so if we just say the alternative hypothesis is true, we still do not know the value of $\pi$. Thus, power calculations are done for a specific value of the parameter, and the power changes if the value of the parameter changes.
 
-\BeginKnitrBlock{example}<div class="example">Consider again the test of whether less than 65% of a large population approves of a new law: $H_0: \pi = 0.65$ versus $H_A: \pi < 0.65$. Suppose the population approval rate is actually $\pi = 0.58$. What is the probability that we will detect this effect?
+::: {.workedexample}
+Consider again the test of whether less than 65% of a large population approves of a new law: $H_0: \pi = 0.65$ versus $H_A: \pi < 0.65$. Suppose the population approval rate is actually $\pi = 0.58$. What is the probability that we will detect this effect?
 
 ---
   
 This example asks us to calculate the power -- the probability our test will provide evidence that $\pi < 0.65$ when the true value of $\pi$ is 0.58. Recall from the previous example that we will reject the null if $\hat{p} < 0.59$. Thus, the power is the probability that $\hat{p}$ will be less than 0.59 when the true proportion is 0.58: `pnorm(0.59, 0.58, 0.0337)` = 0.62. There is only a 62% chance that the data we collect will provide strong enough evidence to conclude $\pi < 0.65$. This probability is represented by the red area in Figure \@ref(fig:power-example-2).
-</div>\EndKnitrBlock{example}
+
+:::
 
 <div class="figure" style="text-align: center">
 <img src="05/figures/PowerExample2.png" alt="The blue distribution is the distribution of sample proportions if the null hypothesis is true, $\pi = 0.65$ -- the blue shaded area represents the probability we reject a true null hypothesis. The red distribution is the distribution of sample proportions under a particular alternative hypothesis, that $\pi = 0.58$ -- the red shaded area represents the power." width="80%" />
@@ -3586,12 +3631,14 @@ The **power** of a test will _increase_ when:
 
 ### Statistical Significance versus Practical Importance
 
-\BeginKnitrBlock{example}<div class="example">An Austrian study of heights of 507,125 military recruits reported that men born in spring were statistically significantly taller than men born in the fall (p-value < 0.0001). A confidence interval for the true difference in mean height between men born in spring and men born in fall was (0.598, 0.602) cm. Is this result practically important?
+::: {.workedexample}
+An Austrian study of heights of 507,125 military recruits reported that men born in spring were statistically significantly taller than men born in the fall (p-value < 0.0001). A confidence interval for the true difference in mean height between men born in spring and men born in fall was (0.598, 0.602) cm. Is this result practically important?
 
 ---
 
 No, these results don't mean much in this context -- a difference in average height of around 0.6 cm would not even be noticeable by the human eye! Just because a result is statistically significant does not mean that it is necessarily practically important -- meaningful in the context of the problem.
-</div>\EndKnitrBlock{example}
+
+:::
 
 
 
