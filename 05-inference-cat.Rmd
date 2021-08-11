@@ -2780,7 +2780,7 @@ Since the study was a randomized experiment, we can conclude that the effect was
 
 \index{data!discrimination|)}
 
-#### Case study: CPR and blood thinner {#cpr} {-} 
+#### Case study: CPR and blood thinner {#cpr}
 \index{data!CPR and blood thinner|(}
 
 Cardiopulmonary resuscitation (CPR) is a procedure used on individuals suffering a heart attack when other emergency resources are unavailable. 
@@ -4410,7 +4410,7 @@ group <- factor(rep.int(c("control", "treatment", "control", "treatment"), times
 cpr <- data.frame(survival, group)
 ```
 
-For comparisons of two proportions, we get a two-way table.  Consider the case study of the effect of blood thinners on survival after receiving CPR from Section \@ref(two-sided-tests). Data from this study are stored in a data frame called `cpr`, with variables `survival` -- giving each patient's outcome decision -- and `group` -- indicating whether they were in the treatment (blood thinner) or control (no blood thinner) group. The `glimpse()` and `summary()` functions can help us see what variables are in our dataset and the values they take on:
+For comparisons of two proportions, we get a two-way table.  Consider the case study of the effect of blood thinners on survival after receiving CPR from Section \@ref(two-prop-errors). Data from this study are stored in a data frame called `cpr`, with variables `survival` -- giving each patient's outcome decision -- and `group` -- indicating whether they were in the treatment (blood thinner) or control (no blood thinner) group. The `glimpse()` and `summary()` functions can help us see what variables are in our data set and the values they take on:
 ```{r showCPRData, echo = TRUE, collapse = FALSE}
 glimpse(cpr)
 summary(cpr)
