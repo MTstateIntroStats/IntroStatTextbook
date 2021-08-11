@@ -117,10 +117,10 @@ are called **column proportions**.
 terms_chp_2 <- c(terms_chp_2, "row proportions", "column proportions")
 ```
 
-Table \@ref(tab:rowPropSpamNumber) shows the row proportions for Table \@ref(tab:emailTable). The row proportions are computed as the counts divided by their row totals. The frequnecy 149 at the intersection of `not spam` and `none` is replaced by $149/367=0.406$, i.e., 149 divided by its row total, 367. So what does 0.406 represent? It corresponds to the conditional proportion of spam emails in the sample that do not have any numbers.
+Table \@ref(tab:rowPropSpamNumber) shows the row proportions for Table \@ref(tab:emailTable). The row proportions are computed as the counts divided by their row totals. The frequnecy 149 at the intersection of `not spam` and `none` is replaced by $149/367=0.406$, i.e., 149 divided by its row total, 367. So what does 0.406 represent? It corresponds to the conditional proportion of non-spam emails in the sample that do not have any numbers.
 
 ```{r rowPropSpamNumber}
-g <- table(email$spam, email$number)[2:1,]
+g <- table(email$spam, email$number)[1:2,]
 g.prop <- round(g / rep(rowSums(g), 3), 3)
 dimnames(g.prop)[[1]] <- c("spam", "not spam")
 
