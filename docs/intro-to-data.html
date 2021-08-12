@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 1 Introduction to data | Montana State Introductory Statistics with R</title>
 <meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.7.1/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="libs/plotly-binding-4.9.2.2/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script><script type="text/x-mathjax-config">
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="libs/plotly-binding-4.9.4.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet">
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script><script type="text/x-mathjax-config">
     const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
     for (let popover of popovers){
       const div = document.createElement('div');
@@ -79,7 +79,7 @@
 These observations—collected from the likes of field notes, surveys, and experiments—form the backbone of a statistical investigation and are called <strong>data</strong>.
 Statistics is the study of how best to collect, analyze, and draw conclusions from data, and in this first chapter, we focus on both the properties of data and on the collection of data.</p>
 </div>
-<p>Though we were calculating probabilities in the 16th century, and the first US Census was directed by Thomas Jefferson in 1790<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://www.census.gov/history/www/through_the_decades/overview/1790.html" class="uri"&gt;https://www.census.gov/history/www/through_the_decades/overview/1790.html&lt;/a&gt;&lt;/p&gt;'><sup>1</sup></a>, the discipline of statistics as we know it came about in the 1800s. Up until the 21st century, the <strong>statistical investigation process</strong> looked something like this (adapted from <span class="citation">Tintle et al. (<a href="references.html#ref-ISI2016" role="doc-biblioref">2016</a>)</span>):</p>
+<p>Though we were calculating probabilities in the 16th century, and the first US Census was directed by Thomas Jefferson in 1790<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://www.census.gov/history/www/through_the_decades/overview/1790.html" class="uri"&gt;https://www.census.gov/history/www/through_the_decades/overview/1790.html&lt;/a&gt;&lt;/p&gt;'><sup>1</sup></a>, the discipline of statistics as we know it came about in the 1800s. Up until the 21st century, the <strong>statistical investigation process</strong> looked something like this (adapted from <span class="citation"><a href="references.html#ref-ISI2016" role="doc-biblioref">Tintle et al.</a> (<a href="references.html#ref-ISI2016" role="doc-biblioref">2016</a>)</span>):</p>
 <ol style="list-style-type: decimal">
 <li>Ask a research question.</li>
 <li>Design a study and collect data.</li>
@@ -90,7 +90,7 @@ Statistics is the study of how best to collect, analyze, and draw conclusions fr
 </ol>
 <p>With the rise of data science, however, we might not start with a research question,
 and instead start with a data set<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Data used in this context are called “found data.”&lt;/p&gt;"><sup>2</sup></a>.
-In this case, the statistical investigation process looks more like the data exploration cycle found in Figure <a href="intro-to-data.html#fig:data-science-explore">1.1</a> taken from <span class="citation">Wickham and Grolemund (<a href="references.html#ref-R4DS" role="doc-biblioref">2017</a>)</span>.</p>
+In this case, the statistical investigation process looks more like the data exploration cycle found in Figure <a href="intro-to-data.html#fig:data-science-explore">1.1</a> taken from <span class="citation"><a href="references.html#ref-R4DS" role="doc-biblioref">Wickham and Grolemund</a> (<a href="references.html#ref-R4DS" role="doc-biblioref">2017</a>)</span>.</p>
 <div class="figure" style="text-align: center">
 <span id="fig:data-science-explore"></span>
 <img src="01/images/data-science-explore.png" alt="Wickham and Grolemund's data exploration cycle (2017)." width="75%"><p class="caption">
@@ -106,7 +106,7 @@ Figure 1.1: Wickham and Grolemund’s data exploration cycle (2017).
 <p>In this section, we introduce a classic challenge in statistics: evaluating the efficacy of a medical treatment.
 Terms in this section, and indeed much of this chapter, will all be revisited later in the text.
 The plan for now is simply to get a sense of the role statistics can play in practice.</p>
-<p>Here, we will consider an experiment that studies effectiveness of stents in treating patients at risk of stroke <span class="citation">(Chimowitz et al. <a href="references.html#ref-chimowitz2011stenting" role="doc-biblioref">2011</a>)</span>.
+<p>Here, we will consider an experiment that studies effectiveness of stents in treating patients at risk of stroke <span class="citation">(<a href="references.html#ref-chimowitz2011stenting" role="doc-biblioref">Chimowitz et al. 2011</a>)</span>.
 Stents are small mesh tubes that are placed inside narrow or weak arteries to assist in patient recovery after cardiac events and reduce the risk of an additional heart attack or death.</p>
 <p>Many doctors have hoped that there would be similar benefits for patients at risk of stroke. We start by writing the principal question the researchers hope to answer:</p>
 <blockquote>
@@ -1418,7 +1418,7 @@ If so, what would that placebo have looked like?<a class="footnote-ref" tabindex
 </div>
 <p>You may have many questions about the ethics of sham surgeries to create a placebo.
 These questions may have even arisen in your mind when in the general experiment context, where a possibly helpful treatment was withheld from individuals in the control group; the main difference is that a sham surgery tends to create additional risk, while withholding a treatment only maintains a person’s risk.</p>
-<p>There are always multiple viewpoints of experiments and placebos, and rarely is it obvious which is ethically “correct”.
+<p>There are always multiple viewpoints of experiments and placebos, and rarely is it obvious which is ethically “correct.”
 For instance, is it ethical to use a sham surgery when it creates a risk to the patient?
 However, if we don’t use sham surgeries, we may promote the use of a costly treatment that has no real effect; if this happens, money and other resources will be diverted away from other treatments that are known to be helpful.
 Ultimately, this is a difficult situation where we cannot perfectly protect both the patients who have volunteered for the study and the patients who may benefit (or not) from the treatment in the future.</p>
@@ -1488,27 +1488,27 @@ few rows of the data set.</p>
 <span class="fu">glimpse</span><span class="op">(</span><span class="va">email50</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 50</span>
 <span class="co">#&gt; Columns: 21</span>
-<span class="co">#&gt; $ spam         &lt;dbl&gt; 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0,…</span>
-<span class="co">#&gt; $ to_multiple  &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,…</span>
-<span class="co">#&gt; $ from         &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…</span>
-<span class="co">#&gt; $ cc           &lt;int&gt; 0, 0, 4, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,…</span>
-<span class="co">#&gt; $ sent_email   &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1,…</span>
-<span class="co">#&gt; $ time         &lt;dttm&gt; 2012-01-04 06:19:16, 2012-02-16 13:10:06, 2012-01-04 08…</span>
-<span class="co">#&gt; $ image        &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</span>
-<span class="co">#&gt; $ attach       &lt;dbl&gt; 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 0,…</span>
-<span class="co">#&gt; $ dollar       &lt;dbl&gt; 0, 0, 0, 0, 9, 0, 0, 0, 0, 23, 4, 0, 3, 2, 0, 0, 0, 0, 0…</span>
-<span class="co">#&gt; $ winner       &lt;fct&gt; no, no, no, no, no, no, no, no, no, no, no, no, yes, no,…</span>
-<span class="co">#&gt; $ inherit      &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</span>
-<span class="co">#&gt; $ viagra       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</span>
-<span class="co">#&gt; $ password     &lt;dbl&gt; 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 8,…</span>
-<span class="co">#&gt; $ num_char     &lt;dbl&gt; 21.705, 7.011, 0.631, 2.454, 41.623, 0.057, 0.809, 5.229…</span>
-<span class="co">#&gt; $ line_breaks  &lt;int&gt; 551, 183, 28, 61, 1088, 5, 17, 88, 242, 578, 1167, 198, …</span>
-<span class="co">#&gt; $ format       &lt;dbl&gt; 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1,…</span>
-<span class="co">#&gt; $ re_subj      &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0,…</span>
-<span class="co">#&gt; $ exclaim_subj &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</span>
-<span class="co">#&gt; $ urgent_subj  &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…</span>
-<span class="co">#&gt; $ exclaim_mess &lt;dbl&gt; 8, 1, 2, 1, 43, 0, 0, 2, 22, 3, 13, 1, 2, 2, 21, 10, 0, …</span>
-<span class="co">#&gt; $ number       &lt;fct&gt; small, big, none, small, small, small, small, small, sma…</span></code></pre></div>
+<span class="co">#&gt; $ spam         &lt;dbl&gt; 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, ...</span>
+<span class="co">#&gt; $ to_multiple  &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, ...</span>
+<span class="co">#&gt; $ from         &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...</span>
+<span class="co">#&gt; $ cc           &lt;int&gt; 0, 0, 4, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...</span>
+<span class="co">#&gt; $ sent_email   &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, ...</span>
+<span class="co">#&gt; $ time         &lt;dttm&gt; 2012-01-04 06:19:16, 2012-02-16 13:10:06, 2012-01-04 ...</span>
+<span class="co">#&gt; $ image        &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...</span>
+<span class="co">#&gt; $ attach       &lt;dbl&gt; 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, ...</span>
+<span class="co">#&gt; $ dollar       &lt;dbl&gt; 0, 0, 0, 0, 9, 0, 0, 0, 0, 23, 4, 0, 3, 2, 0, 0, 0, 0,...</span>
+<span class="co">#&gt; $ winner       &lt;fct&gt; no, no, no, no, no, no, no, no, no, no, no, no, yes, n...</span>
+<span class="co">#&gt; $ inherit      &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...</span>
+<span class="co">#&gt; $ viagra       &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...</span>
+<span class="co">#&gt; $ password     &lt;dbl&gt; 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, ...</span>
+<span class="co">#&gt; $ num_char     &lt;dbl&gt; 21.705, 7.011, 0.631, 2.454, 41.623, 0.057, 0.809, 5.2...</span>
+<span class="co">#&gt; $ line_breaks  &lt;int&gt; 551, 183, 28, 61, 1088, 5, 17, 88, 242, 578, 1167, 198...</span>
+<span class="co">#&gt; $ format       &lt;dbl&gt; 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, ...</span>
+<span class="co">#&gt; $ re_subj      &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, ...</span>
+<span class="co">#&gt; $ exclaim_subj &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...</span>
+<span class="co">#&gt; $ urgent_subj  &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...</span>
+<span class="co">#&gt; $ exclaim_mess &lt;dbl&gt; 8, 1, 2, 1, 43, 0, 0, 2, 22, 3, 13, 1, 2, 2, 21, 10, 0...</span>
+<span class="co">#&gt; $ number       &lt;fct&gt; small, big, none, small, small, small, small, small, s...</span></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">email50</span><span class="op">)</span> 
 <span class="co">#&gt; # A tibble: 6 x 21</span>
@@ -1520,7 +1520,7 @@ few rows of the data set.</p>
 <span class="co">#&gt; 4     0           0     1     0          0 2012-01-04 10:49:52     0      0</span>
 <span class="co">#&gt; 5     0           0     1     0          0 2012-01-27 02:34:45     0      0</span>
 <span class="co">#&gt; 6     0           0     1     0          0 2012-01-17 10:31:57     0      0</span>
-<span class="co">#&gt; # … with 13 more variables: dollar &lt;dbl&gt;, winner &lt;fct&gt;, inherit &lt;dbl&gt;,</span>
+<span class="co">#&gt; # ... with 13 more variables: dollar &lt;dbl&gt;, winner &lt;fct&gt;, inherit &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   viagra &lt;dbl&gt;, password &lt;dbl&gt;, num_char &lt;dbl&gt;, line_breaks &lt;int&gt;,</span>
 <span class="co">#&gt; #   format &lt;dbl&gt;, re_subj &lt;dbl&gt;, exclaim_subj &lt;dbl&gt;, urgent_subj &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   exclaim_mess &lt;dbl&gt;, number &lt;fct&gt;</span></code></pre></div>
@@ -1548,7 +1548,7 @@ For example <code>data[i,j]</code> will extract the <span class="math inline">\(
 <span class="co">#&gt;    spam to_multiple  from    cc sent_email time                image attach</span>
 <span class="co">#&gt;   &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;      &lt;dbl&gt; &lt;dttm&gt;              &lt;dbl&gt;  &lt;dbl&gt;</span>
 <span class="co">#&gt; 1     0           1     1     0          0 2012-03-06 07:10:00     0      0</span>
-<span class="co">#&gt; # … with 13 more variables: dollar &lt;dbl&gt;, winner &lt;fct&gt;, inherit &lt;dbl&gt;,</span>
+<span class="co">#&gt; # ... with 13 more variables: dollar &lt;dbl&gt;, winner &lt;fct&gt;, inherit &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   viagra &lt;dbl&gt;, password &lt;dbl&gt;, num_char &lt;dbl&gt;, line_breaks &lt;int&gt;,</span>
 <span class="co">#&gt; #   format &lt;dbl&gt;, re_subj &lt;dbl&gt;, exclaim_subj &lt;dbl&gt;, urgent_subj &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   exclaim_mess &lt;dbl&gt;, number &lt;fct&gt;</span></code></pre></div>
@@ -1558,7 +1558,7 @@ For example <code>data[i,j]</code> will extract the <span class="math inline">\(
 <span class="header-section-number">1.7.2</span> Tidy structure of data<a class="anchor" aria-label="anchor" href="#datastruc"><i class="fas fa-link"></i></a>
 </h3>
 <p>For plotting, analyses, model building, etc., the data should be structured according to certain principles.<br>
-Hadley Wickham provides a thorough discussion and advice for cleaning up the data in <span class="citation">Wickham and others (<a href="references.html#ref-Wickham2014" role="doc-biblioref">2014</a>)</span>.</p>
+Hadley Wickham provides a thorough discussion and advice for cleaning up the data in <span class="citation"><a href="references.html#ref-Wickham2014" role="doc-biblioref">Wickham and others</a> (<a href="references.html#ref-Wickham2014" role="doc-biblioref">2014</a>)</span>.</p>
 <div class="onebox">
 <p><strong>Tidy data.</strong></p>
 <p>A data set in which the rows are the observational units and the columns are the variables.<br>
@@ -1626,7 +1626,7 @@ Of interest is the proportion of students at each of the two types of school, <c
 </h4>
 <p>What if we are interested only in <code>public</code> schools?
 First, we should take note of another piece of <code>R</code> syntax: the double equal sign: <code><a href="https://rdrr.io/r/base/Comparison.html">==</a></code>.
-This is the logical test for “is equal to”.
+This is the logical test for “is equal to.”
 In other words, we first determine if school type is equal to public for each of the observations in the data set and <code>filter</code> for those where this is true.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Filter for public schools</span>
@@ -1662,7 +1662,7 @@ The new variable <code>read_cat</code> will be a column in the existing data fra
                                  <span class="st">"at or above average"</span>
                                  <span class="op">)</span>
                         <span class="op">)</span></code></pre></div>
-<p>The decision criteria for this new variable is based on a TRUE/FALSE question: if the reading score of the student is below the average reading score, label “below average”, otherwise, label “at or above average”.</p>
+<p>The decision criteria for this new variable is based on a TRUE/FALSE question: if the reading score of the student is below the average reading score, label “below average,” otherwise, label “at or above average.”</p>
 <p>This can be accomplished using the <code><a href="https://rdrr.io/r/base/ifelse.html">ifelse()</a></code> function in <code>R</code>. Look at its helpfile by typing <code><a href="https://rdrr.io/r/base/ifelse.html">?ifelse</a></code> into the <code>R</code> console window.</p>
 <ul>
 <li><p>The first argument of the function is the logical test.</p></li>

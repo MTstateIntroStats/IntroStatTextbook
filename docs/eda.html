@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 2 Exploratory data analysis | Montana State Introductory Statistics with R</title>
 <meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.7.1/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="libs/plotly-binding-4.9.2.2/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script><script type="text/x-mathjax-config">
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="libs/plotly-binding-4.9.4.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet">
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script><script type="text/x-mathjax-config">
     const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
     for (let popover of popovers){
       const div = document.createElement('div');
@@ -87,7 +87,7 @@ Mastery of the content presented in this chapter will be crucial for understandi
 <p>In this section, we will introduce tables and other basic tools for organizing and analyzing categorical data that are used throughout this book. Table <a href="eda.html#tab:emailDF">2.1</a> displays the first six rows of the <code>email</code> data set containing information on 3,921 emails sent to David Diez’s Gmail account (one of the authors of the <em>OpenIntro</em> textbooks). In this section we will examine whether the presence of numbers, small or large, in an email provides any useful value in classifying email as spam or not spam.
 Descriptions of all five email variables are given in Table <a href="eda.html#tab:emailVariables">2.2</a>.</p>
 <div class="data">
-<p>The <code>email</code> data can be found in the <a href="http://openintrostat.github.io/openintro/reference/index.html">openintro</a> package.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The &lt;code&gt;email&lt;/code&gt; data set found in the &lt;code&gt;openintro&lt;/code&gt; package defines the variable &lt;code&gt;spam&lt;/code&gt; as 0 (not spam) or 1 (spam), and &lt;code&gt;format&lt;/code&gt; as 0 (not HTML) or 1 (HTML). When variables are defined in this way—coded as the numbers 0 and 1 rather than the category names—they are called &lt;strong&gt;indicator variables&lt;/strong&gt;* or &lt;strong&gt;dummy variables&lt;/strong&gt;. In this section of the textbook, we have re-coded &lt;code&gt;spam&lt;/code&gt; to be the variable &lt;code&gt;type&lt;/code&gt;, which takes on values “not spam” or “spam”, and we have re-coded the variable &lt;code&gt;format&lt;/code&gt; to take on values “not HTML” or “HTML”.&lt;/p&gt;"><sup>23</sup></a></p>
+<p>The <code>email</code> data can be found in the <a href="http://openintrostat.github.io/openintro/reference/index.html">openintro</a> package.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The &lt;code&gt;email&lt;/code&gt; data set found in the &lt;code&gt;openintro&lt;/code&gt; package defines the variable &lt;code&gt;spam&lt;/code&gt; as 0 (not spam) or 1 (spam), and &lt;code&gt;format&lt;/code&gt; as 0 (not HTML) or 1 (HTML). When variables are defined in this way—coded as the numbers 0 and 1 rather than the category names—they are called &lt;strong&gt;indicator variables&lt;/strong&gt;* or &lt;strong&gt;dummy variables&lt;/strong&gt;. In this section of the textbook, we have re-coded &lt;code&gt;spam&lt;/code&gt; to be the variable &lt;code&gt;type&lt;/code&gt;, which takes on values “not spam” or “spam,” and we have re-coded the variable &lt;code&gt;format&lt;/code&gt; to take on values “not HTML” or “HTML.”&lt;/p&gt;"><sup>23</sup></a></p>
 </div>
 <div class="inline-table"><table class="table table-sm">
 <caption>
@@ -450,7 +450,7 @@ Total
 </h4>
 <p>Conditional proportions that condition on a row category are called <strong>row proportions</strong>; conditional proportions that condition on a column category
 are called <strong>column proportions</strong>.</p>
-<p>Table <a href="eda.html#tab:rowPropSpamNumber">2.5</a> shows the row proportions for Table <a href="eda.html#tab:emailTable">2.4</a>. The row proportions are computed as the counts divided by their row totals. The frequnecy 149 at the intersection of <code>not spam</code> and <code>none</code> is replaced by <span class="math inline">\(149/367=0.406\)</span>, i.e., 149 divided by its row total, 367. So what does 0.406 represent? It corresponds to the conditional proportion of spam emails in the sample that do not have any numbers.</p>
+<p>Table <a href="eda.html#tab:rowPropSpamNumber">2.5</a> shows the row proportions for Table <a href="eda.html#tab:emailTable">2.4</a>. The row proportions are computed as the counts divided by their row totals. The frequnecy 149 at the intersection of <code>not spam</code> and <code>none</code> is replaced by <span class="math inline">\(149/367=0.406\)</span>, i.e., 149 divided by its row total, 367. So what does 0.406 represent? It corresponds to the conditional proportion of non-spam emails in the sample that do not have any numbers.</p>
 <div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:rowPropSpamNumber">Table 2.5: </span>A contingency table with row proportions for the <code>type</code> and <code>number</code> variables.
@@ -474,20 +474,6 @@ big
 spam
 </td>
 <td style="text-align:right;">
-0.406
-</td>
-<td style="text-align:right;">
-0.458
-</td>
-<td style="text-align:right;">
-0.136
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-not spam
-</td>
-<td style="text-align:right;">
 0.113
 </td>
 <td style="text-align:right;">
@@ -495,6 +481,20 @@ not spam
 </td>
 <td style="text-align:right;">
 0.139
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not spam
+</td>
+<td style="text-align:right;">
+0.406
+</td>
+<td style="text-align:right;">
+0.458
+</td>
+<td style="text-align:right;">
+0.136
 </td>
 </tr>
 </tbody>
@@ -523,20 +523,6 @@ big
 spam
 </td>
 <td style="text-align:right;">
-0.271
-</td>
-<td style="text-align:right;">
-0.059
-</td>
-<td style="text-align:right;">
-0.092
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-not spam
-</td>
-<td style="text-align:right;">
 0.729
 </td>
 <td style="text-align:right;">
@@ -544,6 +530,20 @@ not spam
 </td>
 <td style="text-align:right;">
 0.908
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not spam
+</td>
+<td style="text-align:right;">
+0.271
+</td>
+<td style="text-align:right;">
+0.059
+</td>
+<td style="text-align:right;">
+0.092
 </td>
 </tr>
 </tbody>
@@ -724,7 +724,7 @@ Figure 2.5: Try comparing the distributions of colors across pie charts A, B, an
 <div id="race-and-capital-punishment" class="section level4 unnumbered">
 <h4>Race and capital punishment<a class="anchor" aria-label="anchor" href="#race-and-capital-punishment"><i class="fas fa-link"></i></a>
 </h4>
-<p>A 1991 study by Radelet and Pierce examined whether race was associated with whether the death penalty was invoked in homicide cases<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;This example is adapted from &lt;span class="citation"&gt;Agresti (&lt;a href="references.html#ref-Agresti2007" role="doc-biblioref"&gt;2007&lt;/a&gt;)&lt;/span&gt; (p. 49-52).&lt;/p&gt;'><sup>30</sup></a>. Table <a href="eda.html#tab:DP">2.8</a> and Figure <a href="eda.html#fig:DPbarplot">2.6</a> summarize data on 674 defendants in indictments involving cases with multiple murders in Florida from 1976 through 1987.</p>
+<p>A 1991 study by Radelet and Pierce examined whether race was associated with whether the death penalty was invoked in homicide cases<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;This example is adapted from &lt;span class="citation"&gt;&lt;a href="references.html#ref-Agresti2007" role="doc-biblioref"&gt;Agresti&lt;/a&gt; (&lt;a href="references.html#ref-Agresti2007" role="doc-biblioref"&gt;2007&lt;/a&gt;)&lt;/span&gt; (p. 49-52).&lt;/p&gt;'><sup>30</sup></a>. Table <a href="eda.html#tab:DP">2.8</a> and Figure <a href="eda.html#fig:DPbarplot">2.6</a> summarize data on 674 defendants in indictments involving cases with multiple murders in Florida from 1976 through 1987.</p>
 <div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:DP">Table 2.8: </span>Contingency table of homicide cases in Florida from 1976 through 1987.
@@ -1172,7 +1172,7 @@ Figure 2.9: One simulation of flipping a fair coin, tracking the long-run propor
 <div id="the-case-of-baby-jeff" class="section level4 unnumbered">
 <h4>The case of Baby Jeff<a class="anchor" aria-label="anchor" href="#the-case-of-baby-jeff"><i class="fas fa-link"></i></a>
 </h4>
-<p>The following case study was presented by <span class="citation">Slawson and Shaughnessy (<a href="references.html#ref-bayes2002" role="doc-biblioref">2002</a>)</span>. A poster in a hospital’s newborn nursery announced that all male newborns would be screened for muscular dystrophy using a heel stick blood test for creatinine phosphokinase (CPK). The test characteristics of the screening tests were nearly perfect: a sensitivity of 100% and a specificity of 99.98%. The prevalence of muscular dystrophy in male newborns ranges from 1 in 3,500 to 1 in 15,000. Baby Jeff had an abnormal CPK test. The parents of the baby wanted to know, “What is the chance that our son has muscular dystrophy?” Doctors informed the parents that though not 100% likely, it was highly probable. First, take a minute and predict this probability – what do you think? 80% chance? 99% chance? Let’s investigate using a two-way table of a hypothetical population of 100,000 male newborns.</p>
+<p>The following case study was presented by <span class="citation"><a href="references.html#ref-bayes2002" role="doc-biblioref">Slawson and Shaughnessy</a> (<a href="references.html#ref-bayes2002" role="doc-biblioref">2002</a>)</span>. A poster in a hospital’s newborn nursery announced that all male newborns would be screened for muscular dystrophy using a heel stick blood test for creatinine phosphokinase (CPK). The test characteristics of the screening tests were nearly perfect: a sensitivity of 100% and a specificity of 99.98%. The prevalence of muscular dystrophy in male newborns ranges from 1 in 3,500 to 1 in 15,000. Baby Jeff had an abnormal CPK test. The parents of the baby wanted to know, “What is the chance that our son has muscular dystrophy?” Doctors informed the parents that though not 100% likely, it was highly probable. First, take a minute and predict this probability – what do you think? 80% chance? 99% chance? Let’s investigate using a two-way table of a hypothetical population of 100,000 male newborns.</p>
 <p>For our calculations, let’s use a prevalence of 1 in 10,000. Then out of 100,000 hypothetical male newborns, we would expect 1 in 10,000 to have muscular dystrophy, or 10: <span class="math inline">\((1/10000)\times 100000 = 10\)</span>. The sensitivity of the test is perfect, so all 10 of the male newborns with muscular dystrophy will test positive. Of the <span class="math inline">\(100000-10 = 99,990\)</span> male newborns that do not have muscular dystrophy, 99.98% will test negative: <span class="math inline">\((0.9998)\times 99990 = 99,970\)</span> infants. That leaves <span class="math inline">\(99990 - 99970 = 20\)</span> male newborns that test positive even though they do not have muscular dystrophy. This allows us to fill in the counts in our hypothetical two-way table:</p>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr class="header">

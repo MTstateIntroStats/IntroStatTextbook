@@ -223,7 +223,7 @@ are called **column proportions**.
 
 
 
-Table \@ref(tab:rowPropSpamNumber) shows the row proportions for Table \@ref(tab:emailTable). The row proportions are computed as the counts divided by their row totals. The frequnecy 149 at the intersection of `not spam` and `none` is replaced by $149/367=0.406$, i.e., 149 divided by its row total, 367. So what does 0.406 represent? It corresponds to the conditional proportion of spam emails in the sample that do not have any numbers.
+Table \@ref(tab:rowPropSpamNumber) shows the row proportions for Table \@ref(tab:emailTable). The row proportions are computed as the counts divided by their row totals. The frequnecy 149 at the intersection of `not spam` and `none` is replaced by $149/367=0.406$, i.e., 149 divided by its row total, 367. So what does 0.406 represent? It corresponds to the conditional proportion of non-spam emails in the sample that do not have any numbers.
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>(\#tab:rowPropSpamNumber)A contingency table with row proportions for the `type` and `number` variables.</caption>
@@ -238,15 +238,15 @@ Table \@ref(tab:rowPropSpamNumber) shows the row proportions for Table \@ref(tab
 <tbody>
   <tr>
    <td style="text-align:left;"> spam </td>
-   <td style="text-align:right;"> 0.406 </td>
-   <td style="text-align:right;"> 0.458 </td>
-   <td style="text-align:right;"> 0.136 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> not spam </td>
    <td style="text-align:right;"> 0.113 </td>
    <td style="text-align:right;"> 0.748 </td>
    <td style="text-align:right;"> 0.139 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> not spam </td>
+   <td style="text-align:right;"> 0.406 </td>
+   <td style="text-align:right;"> 0.458 </td>
+   <td style="text-align:right;"> 0.136 </td>
   </tr>
 </tbody>
 </table>
@@ -266,15 +266,15 @@ A contingency table of the column proportions is computed in a similar way, wher
 <tbody>
   <tr>
    <td style="text-align:left;"> spam </td>
-   <td style="text-align:right;"> 0.271 </td>
-   <td style="text-align:right;"> 0.059 </td>
-   <td style="text-align:right;"> 0.092 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> not spam </td>
    <td style="text-align:right;"> 0.729 </td>
    <td style="text-align:right;"> 0.941 </td>
    <td style="text-align:right;"> 0.908 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> not spam </td>
+   <td style="text-align:right;"> 0.271 </td>
+   <td style="text-align:right;"> 0.059 </td>
+   <td style="text-align:right;"> 0.092 </td>
   </tr>
 </tbody>
 </table>

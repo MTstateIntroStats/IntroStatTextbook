@@ -1311,12 +1311,12 @@ If it were plotted, the exact null distribution would look almost identical to t
 \index{hypothesis testing!two tails|(}
 
 Consider the situation of the [medical consultant](one-prop-null-boot). 
-The setting has been framed in the context of the consultant being helpful (which is what led us to consider whether the consultant's patients had a complication rate **below** 10%).  This original hypothesis is called a **one-sided hypothesis test**\index{one-sided hypothesis test} because it only explored one direction of possibilities. 
+The setting has been framed in the context of the consultant being helpful (which is what led us to consider whether the consultant's patients had a complication rate *below* 10%).  This original hypothesis is called a **one-sided hypothesis test**\index{one-sided hypothesis test} because it only explored one direction of possibilities. 
 
 But what if the consultant actually performed *worse* than the average? 
 Would we care? 
 More than ever! 
-Since it turns out that we care about a finding in either direction, we should run a **two-sided hypothesis tests**\index{two-sided hypothesis test}.
+Since it turns out that we care about a finding in either direction, we should run a **two-sided hypothesis test**\index{two-sided hypothesis test}.
 
 
 ```{r include=FALSE}
@@ -1352,9 +1352,9 @@ However, we wonder if this difference could be easily explainable by chance.
 
 Recall previously in this chapter, we simulated what type of proportions we might see from chance alone under the null hypothesis. 
 By using marbles, cards, or a spinner to reflect the null hypothesis, we can simulate what would happen to 62 'patients' *if the true complication rate is 10%*.
-After repeating this simulation 10,000 times, we can built a **null distribution**\index{null distribution} of the sample proportions shown in Figure \@ref(fig:nullDistForPHatIfLiverTransplantConsultantIsNotHelpful). 
+After repeating this simulation 10,000 times, we can built a **null distribution**\index{null distribution} of the sample proportions shown in Figure \@ref(fig:nullDistForPHatIfLiverTransplantConsultantIsNotHelpful2). 
 
-```{r nullDistForPHatIfLiverTransplantConsultantIsNotHelpful, fig.cap="The null distribution for $\\hat{p}$, created from 10,000 simulated studies. ", warning=FALSE, fig.width=10}
+```{r nullDistForPHatIfLiverTransplantConsultantIsNotHelpful2, fig.cap="The null distribution for $\\hat{p}$, created from 10,000 simulated studies. ", warning=FALSE, fig.width=10}
 
 pHat <- rbinom(10^4, 62, 0.1) / 62
 M    <- max(pHat) * 62
@@ -1408,10 +1408,10 @@ par(las = 0)
 mtext("Number of simulations", 2, 3.3)
 ```
 
-From previously, we know that 12.22% of the simulations lie at or below the observed proportion of 0.048.  Figure \@ref(fig:Medical-consultant-two-sided) shows that an additional 0.0811 or 8.11% of simulations fall at or above 0.152.  This indicates the p-value for this two-sided test is 0.1222 + 0.0811 = 0.2033.
+From previously, we know that 12.22% of the simulations lie at or below the observed proportion of 0.048.  Figure \@ref(fig:Medical-consultant-two-sided) shows that an additional 0.0811 or 8.11% of simulations fall at or above 0.152.  This indicates the p-value for this two-sided test is 0.1222 + 0.0811 = 0.2033. With this large p-value, we do not find statistically significant evidence that the medical consultant's patients had a complication rate different from 10%. 
 
-In Section \@ref(theory-prop), you will learn that the null distribution will be symmetric under certain conditions.  In this situation, we can find a two-sided p-value by merely taking the single tail (in this case, 0.1222) and double it to get the two-sided p-value: 0.2444. *Note that the example here does not satisfy the conditions and the null distribution is not symmetric.  This results in the 'doubled' p-value of 0.2444 not being a good estimate of the calculated two-sided p-value of 0.2033.*
-With this large p-value, we do not find statistically significant evidence that the medical consultant's patients had a complication rate different from 10%. 
+In Section \@ref(theory-prop), you will learn that the null distribution will be symmetric under certain conditions.  When the null distribution is symmetric, we can find a two-sided p-value by merely taking the single tail (in this case, 0.1222) and double it to get the two-sided p-value: 0.2444. Note that the example here does not satisfy the conditions and the null distribution in Figure \@ref(fig:Medical-consultant-two-sided) is not symmetric.  This results in the 'doubled' p-value of 0.2444 not being a good estimate of the calculated two-sided p-value of 0.2033.
+
 
 
 \index{data!medical consultant|(}
@@ -2294,9 +2294,9 @@ Using $\alpha=0.05$, we show that freely switching from two-sided tests to one-s
 ---
  
 Suppose we are interested in finding if a proportion differs from 0.5. 
-We've created a smooth-looking **null distribution** representing differences due to chance in Figure \@ref(fig:type1ErrorDoublingExampleFigure).
+We've created a smooth-looking **null distribution** representing proportions due to chance in Figure \@ref(fig:type1ErrorDoublingExampleFigure).
 
-Suppose the sample proportion was larger than 05. 
+Suppose the sample proportion was larger than 0.5. 
 Then if we can flip to a one-sided test, we would use $H_A$: proportion $> 0.5$. 
 Now if we obtain any observation in the upper 5% of the distribution, we would reject $H_0$ since the p-value would just be a the single tail. 
 Thus, if the null hypothesis is true, we incorrectly reject the null hypothesis about 5% of the time when the sample proportion is above the null value, as shown in Figure \@ref(fig:type1ErrorDoublingExampleFigure).

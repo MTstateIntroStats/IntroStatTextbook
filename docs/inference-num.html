@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 6 Inference for quantitative data | Montana State Introductory Statistics with R</title>
 <meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.7.1/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="libs/plotly-binding-4.9.2.2/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script><script type="text/x-mathjax-config">
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="libs/plotly-binding-4.9.4.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet">
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script><script type="text/x-mathjax-config">
     const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
     for (let popover of popovers){
       const div = document.createElement('div');
@@ -114,7 +114,7 @@ The techniques described for each setting will vary slightly, but you will be we
 <h3>
 <span class="header-section-number">6.1.1</span> Bootstrap confidence interval for <span class="math inline">\(\mu\)</span><a class="anchor" aria-label="anchor" href="#bootstrap-confidence-interval-for-mu"><i class="fas fa-link"></i></a>
 </h3>
-<p>In this section, we will use <strong>bootstrapping</strong>, first introduced in Section <a href="inference-cat.html#boot-ci-prop">5.3.2</a>, to construct a confidence interval for a population mean. Recall that bootstrapping is best suited for modeling studies where the data have been generated through random sampling from a population. Our bootstrapped distribution of sample means will mimic the process of randomly sampling from a population to give us a sense of how sample means will vary from sample to sample.</p>
+<p>In this section, we will use <strong>bootstrapping</strong>, first introduced in Section <a href="inference-cat.html#boot-ci-prop">5.3.3</a>, to construct a confidence interval for a population mean. Recall that bootstrapping is best suited for modeling studies where the data have been generated through random sampling from a population. Our bootstrapped distribution of sample means will mimic the process of randomly sampling from a population to give us a sense of how sample means will vary from sample to sample.</p>
 <div id="observed-data-4" class="section level4 unnumbered">
 <h4>Observed data<a class="anchor" aria-label="anchor" href="#observed-data-4"><i class="fas fa-link"></i></a>
 </h4>
@@ -829,7 +829,7 @@ T = \frac{\bar{x} - \mbox{null value}}{s/\sqrt{n}}
 \newcommand{\cherryblossomz}{2.37}
 -->
 <div class="guidedpractice">
-<p>Compare the T score — the standardized sample mean — to the Z score — the standardized sample proportion — presented in Section <a href="inference-cat.html#theory-prop">5.3.3</a>. Why do we use a “Z” when standardizing proportions, but a “T” when standardizing means?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;The letter “Z” is typically used when its distribution follows a standard normal distribution. We use “T” when the test statistic follows a &lt;span class="math inline"&gt;\(t\)&lt;/span&gt;-distribution.&lt;/p&gt;'><sup>158</sup></a></p>
+<p>Compare the T score — the standardized sample mean — to the Z score — the standardized sample proportion — presented in Section <a href="inference-cat.html#theory-prop">5.3.4</a>. Why do we use a “Z” when standardizing proportions, but a “T” when standardizing means?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;The letter “Z” is typically used when its distribution follows a standard normal distribution. We use “T” when the test statistic follows a &lt;span class="math inline"&gt;\(t\)&lt;/span&gt;-distribution.&lt;/p&gt;'><sup>158</sup></a></p>
 </div>
 <p>Is the typical US runner getting faster or slower over time? We consider this question in the context of the Cherry Blossom Race, which is a 10-mile race in Washington, DC each spring.</p>
 <p>The average time for all runners who finished the Cherry Blossom Race in 2006 was 93.29 minutes (93 minutes and about 17 seconds). We want to determine using data from 100 participants in the 2017 Cherry Blossom Race whether runners in this race are getting faster or slower, versus the other possibility that there has been no change.</p>
@@ -1647,7 +1647,7 @@ suggest any outliers of concern.&lt;/p&gt;"><sup>164</sup></a></p>
 <div id="variability-of-the-statistic-8" class="section level5 unnumbered">
 <h5>Variability of the statistic<a class="anchor" aria-label="anchor" href="#variability-of-the-statistic-8"><i class="fas fa-link"></i></a>
 </h5>
-<p>In Section <a href="inference-cat.html#diff-two-prop">5.4</a>, the variability of the statistic (previously: <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span>) was visualized after shuffling the observations across the two treatment groups many times.
+<p>In Section <a href="inference-cat.html#diff-two-prop">5.5</a>, the variability of the statistic (previously: <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span>) was visualized after shuffling the observations across the two treatment groups many times.
 The shuffling process implements the null hypothesis model (that there is no effect of the treatment).
 In the exam example, the null hypothesis is that exam A and exam B are equally difficult, so the average scores across the two tests should be the same.
 If the exams were equally difficult, <em>due to natural variability</em>, we would sometimes expect students to do slightly better on exam A (<span class="math inline">\(\bar{x}_A &gt; \bar{x}_B\)</span>) and sometimes expect students to do slightly better on exam B (<span class="math inline">\(\bar{x}_B &gt; \bar{x}_A\)</span>).
@@ -1857,7 +1857,7 @@ is straightforward to find: it is the difference in the sample means.
 <div id="variability-of-the-statistic-9" class="section level5 unnumbered">
 <h5>Variability of the statistic<a class="anchor" aria-label="anchor" href="#variability-of-the-statistic-9"><i class="fas fa-link"></i></a>
 </h5>
-<p>As we saw in Section <a href="inference-cat.html#two-prop-boot-ci">5.4.3</a>, we will use bootstrapping to estimate the variability associated with the difference in sample means when taking repeated samples. In a method akin to two proportions, a <em>separate</em> sample is taken with replacement from each group (here ESCs and control), the sample means are calculated, and their difference is taken. The entire process is repeated multiple times to produce a bootstrap distribution of the difference in sample means (<em>without</em> the null hypothesis assumption).</p>
+<p>As we saw in Section <a href="inference-cat.html#two-prop-boot-ci">5.5.2</a>, we will use bootstrapping to estimate the variability associated with the difference in sample means when taking repeated samples. In a method akin to two proportions, a <em>separate</em> sample is taken with replacement from each group (here ESCs and control), the sample means are calculated, and their difference is taken. The entire process is repeated multiple times to produce a bootstrap distribution of the difference in sample means (<em>without</em> the null hypothesis assumption).</p>
 <p>Figure <a href="inference-num.html#fig:bootexamsci">6.27</a> displays the variability of the differences in sample means with the percentile bootstrap 90% confidence interval super imposed.</p>
 <div class="figure" style="text-align: center">
 <span id="fig:bootexamsci"></span>
@@ -2615,7 +2615,7 @@ then we can apply the <span class="math inline">\(t\)</span>-distribution for a 
 <p>Simulation-based inference for quantitative data will use functions in the <code>catstats</code> package, as we did for categorical data.</p>
 <div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">catstats</span><span class="op">)</span></code></pre></div>
-<p>The <code>catstats</code> functions for paired data assume that the values for the two groups are in separate columns in a data frame. We’ll work through an example using the tire wear data, which is currently stored in “long format”, with one variable for brand and another for tread depth. First, we’ll convert it to “wide format”, with a column for each brand.</p>
+<p>The <code>catstats</code> functions for paired data assume that the values for the two groups are in separate columns in a data frame. We’ll work through an example using the tire wear data, which is currently stored in “long format,” with one variable for brand and another for tread depth. First, we’ll convert it to “wide format,” with a column for each brand.</p>
 <div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tiresWide</span> <span class="op">&lt;-</span> <span class="va">tires</span> <span class="op">%&gt;%</span> 
   <span class="fu">select</span><span class="op">(</span><span class="va">brand</span>, <span class="va">tread</span>, <span class="va">car</span><span class="op">)</span> <span class="op">%&gt;%</span>   <span class="co">#select only ID, group, and outcome vars</span>
@@ -2979,7 +2979,7 @@ Central Limit Theorem
 paired <span class="math inline">\(t\)</span>-test
 </td>
 <td style="text-align:left;">
-T score
+t-distribution
 </td>
 <td style="text-align:left;">
 </td>
@@ -2992,7 +2992,7 @@ degrees of freedom
 paired data
 </td>
 <td style="text-align:left;">
-t-distribution
+T score
 </td>
 <td style="text-align:left;">
 </td>
