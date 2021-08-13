@@ -2655,7 +2655,7 @@ t.test(stem_cell$change ~ stem_cell$trmt, #Always use response ~ explanatory
 #> 
 #> data:  stem_cell$change by stem_cell$trmt
 #> t = 4, df = 12, p-value = 0.002
-#> alternative hypothesis: true difference in means is not equal to 0
+#> alternative hypothesis: true difference in means between group esc and group ctrl is not equal to 0
 #> 90 percent confidence interval:
 #>   4.35 11.31
 #> sample estimates:

@@ -1,79 +1,472 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="" xml:lang="">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 2 Exploratory data analysis | Montana State Introductory Statistics with R</title>
-<meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="libs/plotly-binding-4.9.4.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet">
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script><script type="text/x-mathjax-config">
-    const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-    for (let popover of popovers){
-      const div = document.createElement('div');
-      div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-      div.innerHTML = popover.getAttribute('data-content');
-      
-      // Will this work with TeX on its own line?
-      var has_math = div.querySelector("span.math");
-      if (has_math) {
-        document.body.appendChild(div);
-      	MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-      	MathJax.Hub.Queue(function(){
-          popover.setAttribute('data-content', div.innerHTML);
-      	})
-      }
-    }
-    </script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="css/oistyle.css">
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Exploratory data analysis | Montana State Introductory Statistics with R</title>
+  <meta name="description" content="Open resources textbook for Stat 216 at Montana State University" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Exploratory data analysis | Montana State Introductory Statistics with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Open resources textbook for Stat 216 at Montana State University" />
+  <meta name="github-repo" content="MTstateIntroStats/IntroStatTextbook" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Exploratory data analysis | Montana State Introductory Statistics with R" />
+  
+  <meta name="twitter:description" content="Open resources textbook for Stat 216 at Montana State University" />
+  
+
+<meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro-to-data.html"/>
+<link rel="next" href="cor-reg.html"/>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/oistyle.css" type="text/css" />
 </head>
-<body data-spy="scroll" data-target="#toc">
 
-<div class="container-fluid">
-<div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+<body>
 
-    <div class="d-flex align-items-start justify-content-between">
-      <h1>
-        <a href="index.html" title="Spring 2021">Montana State Introductory Statistics with R</a>:
-        <small class="text-muted">Spring 2021</small>
-      </h1>
-      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
-    </div>
 
-    <div id="main-nav" class="collapse-lg">
-      <form role="search">
-        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-</form>
 
-      <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Welcome</a></li>
-<li><a class="" href="rstudio.html">Preliminaries: Getting started in RStudio</a></li>
-<li><a class="" href="intro-to-data.html"><span class="header-section-number">1</span> Introduction to data</a></li>
-<li><a class="active" href="eda.html"><span class="header-section-number">2</span> Exploratory data analysis</a></li>
-<li><a class="" href="cor-reg.html"><span class="header-section-number">3</span> Correlation and regression</a></li>
-<li><a class="" href="mult-reg.html"><span class="header-section-number">4</span> Multivariable models</a></li>
-<li><a class="" href="inference-cat.html"><span class="header-section-number">5</span> Inference for categorical data</a></li>
-<li><a class="" href="inference-num.html"><span class="header-section-number">6</span> Inference for quantitative data</a></li>
-<li><a class="" href="inference-reg.html"><span class="header-section-number">7</span> Inference for regression</a></li>
-<li><a class="" href="references.html">References</a></li>
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MSU Intro Stat with R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#textbook-overview"><i class="fa fa-check"></i>Textbook overview</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#stat-216-coursepack"><i class="fa fa-check"></i>STAT 216 Coursepack</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#stat-computing"><i class="fa fa-check"></i>Statistical computing</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#accessing-rstudio"><i class="fa fa-check"></i>Accessing RStudio</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#other-options-for-accessing-rstudio"><i class="fa fa-check"></i>Other options for accessing RStudio</a></li>
+<li><a href="index.html#installing-catstats">Installing <code>catstats</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#about-the-authors"><i class="fa fa-check"></i>About the authors</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#montana-state-university-authors"><i class="fa fa-check"></i>Montana State University Authors</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#openintro-authors"><i class="fa fa-check"></i>OpenIntro Authors</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#licensing"><i class="fa fa-check"></i>Licensing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html"><i class="fa fa-check"></i>Preliminaries: Getting started in RStudio</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="rstudio.html"><a href="rstudio.html#logging-into-the-rstudio-server"><i class="fa fa-check"></i><b>0.1</b> Logging into the RStudio server</a></li>
+<li class="chapter" data-level="0.2" data-path="rstudio.html"><a href="rstudio.html#projects"><i class="fa fa-check"></i><b>0.2</b> Projects</a></li>
+<li class="chapter" data-level="0.3" data-path="rstudio.html"><a href="rstudio.html#r-script-files"><i class="fa fa-check"></i><b>0.3</b> <code>R</code> script files</a>
+<ul>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#try-it"><i class="fa fa-check"></i>Try it!</a></li>
+</ul></li>
+<li class="chapter" data-level="0.4" data-path="rstudio.html"><a href="rstudio.html#loading-data"><i class="fa fa-check"></i><b>0.4</b> Loading data</a>
+<ul>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#try-it-1"><i class="fa fa-check"></i>Try it!</a></li>
+</ul></li>
+<li class="chapter" data-level="0.5" data-path="rstudio.html"><a href="rstudio.html#exporting-files"><i class="fa fa-check"></i><b>0.5</b> Exporting files</a>
+<ul>
+<li><a href="rstudio.html#exporting-r-script-files">Exporting <code>R</code> script files</a></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#try-it-2"><i class="fa fa-check"></i>Try it!</a></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#exporting-plots"><i class="fa fa-check"></i>Exporting plots</a></li>
+<li class="chapter" data-level="" data-path="rstudio.html"><a href="rstudio.html#try-it-3"><i class="fa fa-check"></i>Try it!</a></li>
+</ul></li>
+<li class="chapter" data-level="0.6" data-path="rstudio.html"><a href="rstudio.html#home"><i class="fa fa-check"></i><b>0.6</b> Home</a></li>
+<li class="chapter" data-level="0.7" data-path="rstudio.html"><a href="rstudio.html#troubleshooting"><i class="fa fa-check"></i><b>0.7</b> Troubleshooting</a></li>
+<li class="chapter" data-level="0.8" data-path="rstudio.html"><a href="rstudio.html#extra-references"><i class="fa fa-check"></i><b>0.8</b> Extra references</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro-to-data.html"><a href="intro-to-data.html"><i class="fa fa-check"></i><b>1</b> Introduction to data</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro-to-data.html"><a href="intro-to-data.html#basic-stents-strokes"><i class="fa fa-check"></i><b>1.1</b> Case study: using stents to prevent strokes</a></li>
+<li class="chapter" data-level="1.2" data-path="intro-to-data.html"><a href="intro-to-data.html#data-basics"><i class="fa fa-check"></i><b>1.2</b> Data basics</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="intro-to-data.html"><a href="intro-to-data.html#observations-variables-and-data-frames"><i class="fa fa-check"></i><b>1.2.1</b> Observations, variables, and data frames</a></li>
+<li class="chapter" data-level="1.2.2" data-path="intro-to-data.html"><a href="intro-to-data.html#variable-types"><i class="fa fa-check"></i><b>1.2.2</b> Types of variables</a></li>
+<li class="chapter" data-level="1.2.3" data-path="intro-to-data.html"><a href="intro-to-data.html#variable-relations"><i class="fa fa-check"></i><b>1.2.3</b> Relationships between variables</a></li>
+<li class="chapter" data-level="1.2.4" data-path="intro-to-data.html"><a href="intro-to-data.html#explanatory-and-response-variables"><i class="fa fa-check"></i><b>1.2.4</b> Explanatory and response variables</a></li>
+<li class="chapter" data-level="1.2.5" data-path="intro-to-data.html"><a href="intro-to-data.html#introducing-observational-studies-and-experiments"><i class="fa fa-check"></i><b>1.2.5</b> Introducing observational studies and experiments</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="intro-to-data.html"><a href="intro-to-data.html#sampling-principles-strategies"><i class="fa fa-check"></i><b>1.3</b> Sampling principles and strategies</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="intro-to-data.html"><a href="intro-to-data.html#populations-and-samples"><i class="fa fa-check"></i><b>1.3.1</b> Populations and samples</a></li>
+<li class="chapter" data-level="1.3.2" data-path="intro-to-data.html"><a href="intro-to-data.html#anecdotal-evidence"><i class="fa fa-check"></i><b>1.3.2</b> Anecdotal evidence</a></li>
+<li class="chapter" data-level="1.3.3" data-path="intro-to-data.html"><a href="intro-to-data.html#sampling-from-a-population"><i class="fa fa-check"></i><b>1.3.3</b> Sampling from a population</a></li>
+<li class="chapter" data-level="1.3.4" data-path="intro-to-data.html"><a href="intro-to-data.html#samp-methods"><i class="fa fa-check"></i><b>1.3.4</b> Four sampling methods (special topic)</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="intro-to-data.html"><a href="intro-to-data.html#observational-studies"><i class="fa fa-check"></i><b>1.4</b> Observational studies</a></li>
+<li class="chapter" data-level="1.5" data-path="intro-to-data.html"><a href="intro-to-data.html#experiments"><i class="fa fa-check"></i><b>1.5</b> Experiments</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="intro-to-data.html"><a href="intro-to-data.html#principles-of-experimental-design"><i class="fa fa-check"></i><b>1.5.1</b> Principles of experimental design</a></li>
+<li class="chapter" data-level="1.5.2" data-path="intro-to-data.html"><a href="intro-to-data.html#reducing-bias-human-experiments"><i class="fa fa-check"></i><b>1.5.2</b> Reducing bias in human experiments</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="intro-to-data.html"><a href="intro-to-data.html#scope-of-inference"><i class="fa fa-check"></i><b>1.6</b> Scope of inference</a></li>
+<li class="chapter" data-level="1.7" data-path="intro-to-data.html"><a href="intro-to-data.html#data-in-r"><i class="fa fa-check"></i><b>1.7</b> Data in <code>R</code></a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="intro-to-data.html"><a href="intro-to-data.html#dataframes-in-r"><i class="fa fa-check"></i><b>1.7.1</b> Dataframes in <code>R</code></a></li>
+<li class="chapter" data-level="1.7.2" data-path="intro-to-data.html"><a href="intro-to-data.html#datastruc"><i class="fa fa-check"></i><b>1.7.2</b> Tidy structure of data</a></li>
+<li class="chapter" data-level="1.7.3" data-path="intro-to-data.html"><a href="intro-to-data.html#using-the-pipe-to-chain"><i class="fa fa-check"></i><b>1.7.3</b> Using the pipe to chain</a></li>
+<li class="chapter" data-level="1.7.4" data-path="intro-to-data.html"><a href="intro-to-data.html#a-data-wrangling-example"><i class="fa fa-check"></i><b>1.7.4</b> A data wrangling example</a></li>
+<li class="chapter" data-level="1.7.5" data-path="intro-to-data.html"><a href="intro-to-data.html#interactive-r-tutorials"><i class="fa fa-check"></i><b>1.7.5</b> Interactive R tutorials</a></li>
+<li class="chapter" data-level="1.7.6" data-path="intro-to-data.html"><a href="intro-to-data.html#r-labs"><i class="fa fa-check"></i><b>1.7.6</b> R labs</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="intro-to-data.html"><a href="intro-to-data.html#chp1-review"><i class="fa fa-check"></i><b>1.8</b> Chapter 1 review</a>
+<ul>
+<li class="chapter" data-level="1.8.1" data-path="intro-to-data.html"><a href="intro-to-data.html#terms"><i class="fa fa-check"></i><b>1.8.1</b> Terms</a></li>
+<li class="chapter" data-level="1.8.2" data-path="intro-to-data.html"><a href="intro-to-data.html#key-ideas"><i class="fa fa-check"></i><b>1.8.2</b> Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="eda.html"><a href="eda.html"><i class="fa fa-check"></i><b>2</b> Exploratory data analysis</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="eda.html"><a href="eda.html#categorical-data"><i class="fa fa-check"></i><b>2.1</b> Exploring categorical data</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="eda.html"><a href="eda.html#contingency-tables-and-conditional-proportions"><i class="fa fa-check"></i><b>2.1.1</b> Contingency tables and conditional proportions</a></li>
+<li class="chapter" data-level="2.1.2" data-path="eda.html"><a href="eda.html#bar-plots-and-mosaic-plots"><i class="fa fa-check"></i><b>2.1.2</b> Bar plots and mosaic plots</a></li>
+<li class="chapter" data-level="2.1.3" data-path="eda.html"><a href="eda.html#why-not-pie-charts"><i class="fa fa-check"></i><b>2.1.3</b> Why not pie charts?</a></li>
+<li class="chapter" data-level="2.1.4" data-path="eda.html"><a href="eda.html#simpson"><i class="fa fa-check"></i><b>2.1.4</b> Simpson’s paradox</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="eda.html"><a href="eda.html#probability-with-tables"><i class="fa fa-check"></i><b>2.2</b> Probability with tables</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="eda.html"><a href="eda.html#defining-probability"><i class="fa fa-check"></i><b>2.2.1</b> Defining probability</a></li>
+<li class="chapter" data-level="2.2.2" data-path="eda.html"><a href="eda.html#finding-probabilities-with-tables"><i class="fa fa-check"></i><b>2.2.2</b> Finding probabilities with tables</a></li>
+<li class="chapter" data-level="2.2.3" data-path="eda.html"><a href="eda.html#probability-notation"><i class="fa fa-check"></i><b>2.2.3</b> Probability notation</a></li>
+<li class="chapter" data-level="2.2.4" data-path="eda.html"><a href="eda.html#diagnostic-testing"><i class="fa fa-check"></i><b>2.2.4</b> Diagnostic testing</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="eda.html"><a href="eda.html#quantitative-data"><i class="fa fa-check"></i><b>2.3</b> Exploring quantitative data</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="eda.html"><a href="eda.html#scatterplots"><i class="fa fa-check"></i><b>2.3.1</b> Scatterplots for paired data</a></li>
+<li class="chapter" data-level="2.3.2" data-path="eda.html"><a href="eda.html#dotplots"><i class="fa fa-check"></i><b>2.3.2</b> Dot plots and the mean</a></li>
+<li class="chapter" data-level="2.3.3" data-path="eda.html"><a href="eda.html#histograms"><i class="fa fa-check"></i><b>2.3.3</b> Histograms and shape</a></li>
+<li class="chapter" data-level="2.3.4" data-path="eda.html"><a href="eda.html#variance-sd"><i class="fa fa-check"></i><b>2.3.4</b> Variance and standard deviation</a></li>
+<li class="chapter" data-level="2.3.5" data-path="eda.html"><a href="eda.html#box-plots-quartiles-and-the-median"><i class="fa fa-check"></i><b>2.3.5</b> Box plots, quartiles, and the median</a></li>
+<li class="chapter" data-level="2.3.6" data-path="eda.html"><a href="eda.html#describing-and-comparing-quantitative-distributions"><i class="fa fa-check"></i><b>2.3.6</b> Describing and comparing quantitative distributions</a></li>
+<li class="chapter" data-level="2.3.7" data-path="eda.html"><a href="eda.html#robust-statistics"><i class="fa fa-check"></i><b>2.3.7</b> Robust statistics</a></li>
+<li class="chapter" data-level="2.3.8" data-path="eda.html"><a href="eda.html#transforming-data-special-topic"><i class="fa fa-check"></i><b>2.3.8</b> Transforming data (special topic)</a></li>
+<li class="chapter" data-level="2.3.9" data-path="eda.html"><a href="eda.html#mapping-data-special-topic"><i class="fa fa-check"></i><b>2.3.9</b> Mapping data (special topic)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="eda.html"><a href="eda.html#r-exploratory-data-analysis"><i class="fa fa-check"></i><b>2.4</b> <code>R</code>: Exploratory data analysis</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="eda.html"><a href="eda.html#interactive-r-tutorials-1"><i class="fa fa-check"></i><b>2.4.1</b> Interactive R tutorials</a></li>
+<li class="chapter" data-level="2.4.2" data-path="eda.html"><a href="eda.html#r-labs-1"><i class="fa fa-check"></i><b>2.4.2</b> R labs</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="eda.html"><a href="eda.html#chp2-review"><i class="fa fa-check"></i><b>2.5</b> Chapter 2 review</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="eda.html"><a href="eda.html#terms-1"><i class="fa fa-check"></i><b>2.5.1</b> Terms</a></li>
+<li class="chapter" data-level="2.5.2" data-path="eda.html"><a href="eda.html#data-visualization-summary"><i class="fa fa-check"></i><b>2.5.2</b> Data visualization summary</a></li>
+<li class="chapter" data-level="2.5.3" data-path="eda.html"><a href="eda.html#summary-measures"><i class="fa fa-check"></i><b>2.5.3</b> Summary measures</a></li>
+<li class="chapter" data-level="2.5.4" data-path="eda.html"><a href="eda.html#notation-summary"><i class="fa fa-check"></i><b>2.5.4</b> Notation summary</a></li>
+<li class="chapter" data-level="2.5.5" data-path="eda.html"><a href="eda.html#key-ideas-1"><i class="fa fa-check"></i><b>2.5.5</b> Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="cor-reg.html"><a href="cor-reg.html"><i class="fa fa-check"></i><b>3</b> Correlation and regression</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="cor-reg.html"><a href="cor-reg.html#fit-line-res-cor"><i class="fa fa-check"></i><b>3.1</b> Fitting a line, residuals, and correlation</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="cor-reg.html"><a href="cor-reg.html#fitting-a-line-to-data"><i class="fa fa-check"></i><b>3.1.1</b> Fitting a line to data</a></li>
+<li class="chapter" data-level="3.1.2" data-path="cor-reg.html"><a href="cor-reg.html#using-linear-regression-to-predict-possum-head-lengths"><i class="fa fa-check"></i><b>3.1.2</b> Using linear regression to predict possum head lengths</a></li>
+<li class="chapter" data-level="3.1.3" data-path="cor-reg.html"><a href="cor-reg.html#residuals"><i class="fa fa-check"></i><b>3.1.3</b> Residuals</a></li>
+<li class="chapter" data-level="3.1.4" data-path="cor-reg.html"><a href="cor-reg.html#describing-linear-relationships-with-correlation"><i class="fa fa-check"></i><b>3.1.4</b> Describing linear relationships with correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="cor-reg.html"><a href="cor-reg.html#least-squares-regression"><i class="fa fa-check"></i><b>3.2</b> Least squares regression</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="cor-reg.html"><a href="cor-reg.html#gift-aid-for-freshman-at-elmhurst-college"><i class="fa fa-check"></i><b>3.2.1</b> Gift aid for freshman at Elmhurst College</a></li>
+<li class="chapter" data-level="3.2.2" data-path="cor-reg.html"><a href="cor-reg.html#an-objective-measure-for-finding-the-best-line"><i class="fa fa-check"></i><b>3.2.2</b> An objective measure for finding the best line</a></li>
+<li class="chapter" data-level="3.2.3" data-path="cor-reg.html"><a href="cor-reg.html#finding-and-interpreting-the-least-squares-line"><i class="fa fa-check"></i><b>3.2.3</b> Finding and interpreting the least squares line</a></li>
+<li class="chapter" data-level="3.2.4" data-path="cor-reg.html"><a href="cor-reg.html#extrapolation-is-treacherous"><i class="fa fa-check"></i><b>3.2.4</b> Extrapolation is treacherous</a></li>
+<li class="chapter" data-level="3.2.5" data-path="cor-reg.html"><a href="cor-reg.html#describing-the-strength-of-a-fit"><i class="fa fa-check"></i><b>3.2.5</b> Describing the strength of a fit</a></li>
+<li class="chapter" data-level="3.2.6" data-path="cor-reg.html"><a href="cor-reg.html#categprical-predictor-two-levels"><i class="fa fa-check"></i><b>3.2.6</b> Categorical predictors with two levels (special topic)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="cor-reg.html"><a href="cor-reg.html#outliers-in-regression"><i class="fa fa-check"></i><b>3.3</b> Outliers in linear regression</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="cor-reg.html"><a href="cor-reg.html#types-of-outliers"><i class="fa fa-check"></i><b>3.3.1</b> Types of outliers</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="cor-reg.html"><a href="cor-reg.html#r-correlation-and-regression"><i class="fa fa-check"></i><b>3.4</b> <code>R</code>: Correlation and regression</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="cor-reg.html"><a href="cor-reg.html#intro-linear-models-r-tutorial"><i class="fa fa-check"></i><b>3.4.1</b> Interactive R tutorials</a></li>
+<li class="chapter" data-level="3.4.2" data-path="cor-reg.html"><a href="cor-reg.html#r-labs-2"><i class="fa fa-check"></i><b>3.4.2</b> R labs</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="cor-reg.html"><a href="cor-reg.html#chp3-review"><i class="fa fa-check"></i><b>3.5</b> Chapter review</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="cor-reg.html"><a href="cor-reg.html#terms-2"><i class="fa fa-check"></i><b>3.5.1</b> Terms</a></li>
+<li class="chapter" data-level="3.5.2" data-path="cor-reg.html"><a href="cor-reg.html#key-ideas-2"><i class="fa fa-check"></i><b>3.5.2</b> Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="mult-reg.html"><a href="mult-reg.html"><i class="fa fa-check"></i><b>4</b> Multivariable models</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="mult-reg.html"><a href="mult-reg.html#gapminder-world"><i class="fa fa-check"></i><b>4.1</b> Gapminder world</a></li>
+<li class="chapter" data-level="4.2" data-path="mult-reg.html"><a href="mult-reg.html#simpsons-paradox-revisited"><i class="fa fa-check"></i><b>4.2</b> Simpson’s Paradox, revisited</a></li>
+<li class="chapter" data-level="4.3" data-path="mult-reg.html"><a href="mult-reg.html#regression-multiple-predictors"><i class="fa fa-check"></i><b>4.3</b> Multiple regression (special topic)</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="mult-reg.html"><a href="mult-reg.html#ind-and-cat-predictors"><i class="fa fa-check"></i><b>4.3.1</b> Indicator and categorical predictors</a></li>
+<li class="chapter" data-level="4.3.2" data-path="mult-reg.html"><a href="mult-reg.html#many-predictors-in-a-model"><i class="fa fa-check"></i><b>4.3.2</b> Many predictors in a model</a></li>
+<li class="chapter" data-level="4.3.3" data-path="mult-reg.html"><a href="mult-reg.html#interactive-r-tutorials-2"><i class="fa fa-check"></i><b>4.3.3</b> Interactive R tutorials</a></li>
+<li class="chapter" data-level="4.3.4" data-path="mult-reg.html"><a href="mult-reg.html#r-labs-3"><i class="fa fa-check"></i><b>4.3.4</b> R labs</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="mult-reg.html"><a href="mult-reg.html#chp4-review"><i class="fa fa-check"></i><b>4.4</b> Chapter 4 review</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="mult-reg.html"><a href="mult-reg.html#terms-3"><i class="fa fa-check"></i><b>4.4.1</b> Terms</a></li>
+<li class="chapter" data-level="4.4.2" data-path="mult-reg.html"><a href="mult-reg.html#key-ideas-3"><i class="fa fa-check"></i><b>4.4.2</b> Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="inference-cat.html"><a href="inference-cat.html"><i class="fa fa-check"></i><b>5</b> Inference for categorical data</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="inference-cat.html"><a href="inference-cat.html#inf-foundations"><i class="fa fa-check"></i><b>5.1</b> Foundations of inference</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="inference-cat.html"><a href="inference-cat.html#Martian"><i class="fa fa-check"></i><b>5.1.1</b> Motivating example: Martian alphabet</a></li>
+<li class="chapter" data-level="5.1.2" data-path="inference-cat.html"><a href="inference-cat.html#var-stat"><i class="fa fa-check"></i><b>5.1.2</b> Variability in a statistic</a></li>
+<li class="chapter" data-level="5.1.3" data-path="inference-cat.html"><a href="inference-cat.html#HypothesisTesting"><i class="fa fa-check"></i><b>5.1.3</b> Hypothesis tests</a></li>
+<li class="chapter" data-level="5.1.4" data-path="inference-cat.html"><a href="inference-cat.html#ConfidenceIntervals"><i class="fa fa-check"></i><b>5.1.4</b> Confidence intervals</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="inference-cat.html"><a href="inference-cat.html#normal"><i class="fa fa-check"></i><b>5.2</b> The normal distribution</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="inference-cat.html"><a href="inference-cat.html#normal-distribution-model"><i class="fa fa-check"></i><b>5.2.1</b> Normal distribution model</a></li>
+<li class="chapter" data-level="5.2.2" data-path="inference-cat.html"><a href="inference-cat.html#standardizing-with-z-scores"><i class="fa fa-check"></i><b>5.2.2</b> Standardizing with Z-scores</a></li>
+<li class="chapter" data-level="5.2.3" data-path="inference-cat.html"><a href="inference-cat.html#normal-probability-calculations-in-r"><i class="fa fa-check"></i><b>5.2.3</b> Normal probability calculations in <code>R</code></a></li>
+<li class="chapter" data-level="5.2.4" data-path="inference-cat.html"><a href="inference-cat.html#normal-probability-examples"><i class="fa fa-check"></i><b>5.2.4</b> Normal probability examples</a></li>
+<li class="chapter" data-level="5.2.5" data-path="inference-cat.html"><a href="inference-cat.html#rule"><i class="fa fa-check"></i><b>5.2.5</b> 68-95-99.7 rule</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="inference-cat.html"><a href="inference-cat.html#single-prop"><i class="fa fa-check"></i><b>5.3</b> One proportion</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="inference-cat.html"><a href="inference-cat.html#one-prop-null-boot"><i class="fa fa-check"></i><b>5.3.1</b> Simulation-based test for <span class="math inline">\(H_0: \pi = \pi_0\)</span></a></li>
+<li class="chapter" data-level="5.3.2" data-path="inference-cat.html"><a href="inference-cat.html#two-sided-tests"><i class="fa fa-check"></i><b>5.3.2</b> Two-sided hypotheses</a></li>
+<li class="chapter" data-level="5.3.3" data-path="inference-cat.html"><a href="inference-cat.html#boot-ci-prop"><i class="fa fa-check"></i><b>5.3.3</b> Bootstrap confidence interval for <span class="math inline">\(\pi\)</span></a></li>
+<li class="chapter" data-level="5.3.4" data-path="inference-cat.html"><a href="inference-cat.html#theory-prop"><i class="fa fa-check"></i><b>5.3.4</b> Theory-based inferential methods for <span class="math inline">\(\pi\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="inference-cat.html"><a href="inference-cat.html#power"><i class="fa fa-check"></i><b>5.4</b> Errors, Power, and Practical Importance</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="inference-cat.html"><a href="inference-cat.html#types-of-errors"><i class="fa fa-check"></i><b>5.4.1</b> Decision errors</a></li>
+<li class="chapter" data-level="5.4.2" data-path="inference-cat.html"><a href="inference-cat.html#controlling-the-type-i-error-rate"><i class="fa fa-check"></i><b>5.4.2</b> Controlling the Type I error rate</a></li>
+<li class="chapter" data-level="5.4.3" data-path="inference-cat.html"><a href="inference-cat.html#power-1"><i class="fa fa-check"></i><b>5.4.3</b> Power</a></li>
+<li class="chapter" data-level="5.4.4" data-path="inference-cat.html"><a href="inference-cat.html#statistical-significance-versus-practical-importance"><i class="fa fa-check"></i><b>5.4.4</b> Statistical Significance versus Practical Importance</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="inference-cat.html"><a href="inference-cat.html#diff-two-prop"><i class="fa fa-check"></i><b>5.5</b> Difference of two proportions</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="inference-cat.html"><a href="inference-cat.html#two-prop-errors"><i class="fa fa-check"></i><b>5.5.1</b> Randomization test for <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span></a></li>
+<li class="chapter" data-level="5.5.2" data-path="inference-cat.html"><a href="inference-cat.html#two-prop-boot-ci"><i class="fa fa-check"></i><b>5.5.2</b> Bootstrap confidence interval for <span class="math inline">\(\pi_1 - \pi_2\)</span></a></li>
+<li class="chapter" data-level="5.5.3" data-path="inference-cat.html"><a href="inference-cat.html#math-2prop"><i class="fa fa-check"></i><b>5.5.3</b> Theory-based inferential methods for <span class="math inline">\(\pi_1 - \pi_2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="inference-cat.html"><a href="inference-cat.html#summary-of-z-procedures"><i class="fa fa-check"></i><b>5.6</b> Summary of Z-procedures</a></li>
+<li class="chapter" data-level="5.7" data-path="inference-cat.html"><a href="inference-cat.html#r-inference-for-categorical-data"><i class="fa fa-check"></i><b>5.7</b> <code>R</code>: Inference for categorical data</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="inference-cat.html"><a href="inference-cat.html#inference-using-r-and-catstats"><i class="fa fa-check"></i><b>5.7.1</b> Inference using <code>R</code> and <code>catstats</code></a></li>
+<li class="chapter" data-level="5.7.2" data-path="inference-cat.html"><a href="inference-cat.html#catstats-function-summary"><i class="fa fa-check"></i><b>5.7.2</b> <code>catstats</code> function summary</a></li>
+<li class="chapter" data-level="5.7.3" data-path="inference-cat.html"><a href="inference-cat.html#interactive-r-tutorials-3"><i class="fa fa-check"></i><b>5.7.3</b> Interactive R tutorials</a></li>
+<li class="chapter" data-level="5.7.4" data-path="inference-cat.html"><a href="inference-cat.html#r-labs-4"><i class="fa fa-check"></i><b>5.7.4</b> R labs</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="inference-cat.html"><a href="inference-cat.html#chp5-review"><i class="fa fa-check"></i><b>5.8</b> Chapter 5 review</a>
+<ul>
+<li class="chapter" data-level="5.8.1" data-path="inference-cat.html"><a href="inference-cat.html#terms-4"><i class="fa fa-check"></i><b>5.8.1</b> Terms</a></li>
+<li class="chapter" data-level="5.8.2" data-path="inference-cat.html"><a href="inference-cat.html#key-ideas-4"><i class="fa fa-check"></i><b>5.8.2</b> Key ideas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="inference-num.html"><a href="inference-num.html"><i class="fa fa-check"></i><b>6</b> Inference for quantitative data</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="inference-num.html"><a href="inference-num.html#one-mean"><i class="fa fa-check"></i><b>6.1</b> One mean</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="inference-num.html"><a href="inference-num.html#bootstrap-confidence-interval-for-mu"><i class="fa fa-check"></i><b>6.1.1</b> Bootstrap confidence interval for <span class="math inline">\(\mu\)</span></a></li>
+<li class="chapter" data-level="6.1.2" data-path="inference-num.html"><a href="inference-num.html#one-mean-null-boot"><i class="fa fa-check"></i><b>6.1.2</b> Shifted bootstrap test for <span class="math inline">\(H_0: \mu = \mu_0\)</span></a></li>
+<li class="chapter" data-level="6.1.3" data-path="inference-num.html"><a href="inference-num.html#one-mean-math"><i class="fa fa-check"></i><b>6.1.3</b> Theory-based inferential methods for <span class="math inline">\(\mu\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="inference-num.html"><a href="inference-num.html#paired-data"><i class="fa fa-check"></i><b>6.2</b> Paired mean difference</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="inference-num.html"><a href="inference-num.html#shifted-bootstrap-test-for-h_0-mu_d-0"><i class="fa fa-check"></i><b>6.2.1</b> Shifted bootstrap test for <span class="math inline">\(H_0: \mu_d = 0\)</span></a></li>
+<li class="chapter" data-level="6.2.2" data-path="inference-num.html"><a href="inference-num.html#bootstrap-confidence-interval-for-mu_d"><i class="fa fa-check"></i><b>6.2.2</b> Bootstrap confidence interval for <span class="math inline">\(\mu_d\)</span></a></li>
+<li class="chapter" data-level="6.2.3" data-path="inference-num.html"><a href="inference-num.html#paired-mean-math"><i class="fa fa-check"></i><b>6.2.3</b> Theory-based inferential methods for <span class="math inline">\(\mu_d\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="inference-num.html"><a href="inference-num.html#differenceOfTwoMeans"><i class="fa fa-check"></i><b>6.3</b> Difference of two means</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="inference-num.html"><a href="inference-num.html#rand2mean"><i class="fa fa-check"></i><b>6.3.1</b> Randomization test for <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span></a></li>
+<li class="chapter" data-level="6.3.2" data-path="inference-num.html"><a href="inference-num.html#boot-ci-diff-means"><i class="fa fa-check"></i><b>6.3.2</b> Bootstrap confidence interval for <span class="math inline">\(\mu_1 - \mu_2\)</span></a></li>
+<li class="chapter" data-level="6.3.3" data-path="inference-num.html"><a href="inference-num.html#math2samp"><i class="fa fa-check"></i><b>6.3.3</b> Theory-based inferential methods for <span class="math inline">\(\mu_1 - \mu_2\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="inference-num.html"><a href="inference-num.html#summary-of-t-procedures"><i class="fa fa-check"></i><b>6.4</b> Summary of t-procedures</a></li>
+<li class="chapter" data-level="6.5" data-path="inference-num.html"><a href="inference-num.html#r-inference-for-quantitative-data"><i class="fa fa-check"></i><b>6.5</b> <code>R</code>: Inference for quantitative data</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="inference-num.html"><a href="inference-num.html#inference-using-r-and-catstats-1"><i class="fa fa-check"></i><b>6.5.1</b> Inference using <code>R</code> and <code>catstats</code></a></li>
+<li class="chapter" data-level="6.5.2" data-path="inference-num.html"><a href="inference-num.html#catstats-function-summary-1"><i class="fa fa-check"></i><b>6.5.2</b> <code>catstats</code> function summary</a></li>
+<li class="chapter" data-level="6.5.3" data-path="inference-num.html"><a href="inference-num.html#interactive-r-tutorials-4"><i class="fa fa-check"></i><b>6.5.3</b> Interactive R tutorials</a></li>
+<li class="chapter" data-level="6.5.4" data-path="inference-num.html"><a href="inference-num.html#r-labs-5"><i class="fa fa-check"></i><b>6.5.4</b> R labs</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="inference-num.html"><a href="inference-num.html#chp6-review"><i class="fa fa-check"></i><b>6.6</b> Chapter 6 review</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="inference-num.html"><a href="inference-num.html#terms-5"><i class="fa fa-check"></i><b>6.6.1</b> Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="inference-reg.html"><a href="inference-reg.html"><i class="fa fa-check"></i><b>7</b> Inference for regression</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="inference-reg.html"><a href="inference-reg.html#inferenceForLinearRegression"><i class="fa fa-check"></i><b>7.1</b> Inference for linear regression</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="inference-reg.html"><a href="inference-reg.html#randslope"><i class="fa fa-check"></i><b>7.1.1</b> Randomization test for <span class="math inline">\(H_0: \beta_1= 0\)</span></a></li>
+<li class="chapter" data-level="7.1.2" data-path="inference-reg.html"><a href="inference-reg.html#bootbeta1"><i class="fa fa-check"></i><b>7.1.2</b> Bootstrap confidence interval for <span class="math inline">\(\beta_1\)</span></a></li>
+<li class="chapter" data-level="7.1.3" data-path="inference-reg.html"><a href="inference-reg.html#mathslope"><i class="fa fa-check"></i><b>7.1.3</b> Theory-based inferential methods for <span class="math inline">\(\beta_1\)</span></a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="inference-reg.html"><a href="inference-reg.html#tech-cond-linmod"><i class="fa fa-check"></i><b>7.2</b> Checking model conditions</a></li>
+<li class="chapter" data-level="7.3" data-path="inference-reg.html"><a href="inference-reg.html#r-inference-for-regression"><i class="fa fa-check"></i><b>7.3</b> <code>R</code>: Inference for regression</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="inference-reg.html"><a href="inference-reg.html#inference-using-r-and-catstats-2"><i class="fa fa-check"></i><b>7.3.1</b> Inference using <code>R</code> and <code>catstats</code></a></li>
+<li class="chapter" data-level="7.3.2" data-path="inference-reg.html"><a href="inference-reg.html#catstats-function-summary-2"><i class="fa fa-check"></i><b>7.3.2</b> <code>catstats</code> function summary</a></li>
+<li class="chapter" data-level="7.3.3" data-path="inference-reg.html"><a href="inference-reg.html#interactive-r-tutorials-5"><i class="fa fa-check"></i><b>7.3.3</b> Interactive <code>R</code> tutorials</a></li>
+<li class="chapter" data-level="7.3.4" data-path="inference-reg.html"><a href="inference-reg.html#r-labs-6"><i class="fa fa-check"></i><b>7.3.4</b> <code>R</code> labs</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="inference-reg.html"><a href="inference-reg.html#chp7-review"><i class="fa fa-check"></i><b>7.4</b> Chapter 7 review</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="inference-reg.html"><a href="inference-reg.html#terms-6"><i class="fa fa-check"></i><b>7.4.1</b> Terms</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
-        <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/MTstateIntroStats/IntroStatTextbook">View book source <i class="fab fa-github"></i></a></p>
-        </div>
       </nav>
-</div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="eda" class="section level1" number="2">
-<h1>
-<span class="header-section-number">2</span> Exploratory data analysis<a class="anchor" aria-label="anchor" href="#eda"><i class="fas fa-link"></i></a>
-</h1>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Montana State Introductory Statistics with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="eda" class="section level1" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Exploratory data analysis</h1>
 <div class="chapterintro">
 <p>This chapter focuses on the mechanics and construction of summary statistics and graphs.
 We use statistical software for generating the summaries and graphs presented in this chapter and book.
@@ -81,19 +474,18 @@ However, since this might be your first exposure to these concepts, we take our 
 Mastery of the content presented in this chapter will be crucial for understanding the methods and techniques introduced in rest of the book.</p>
 </div>
 <div id="categorical-data" class="section level2" number="2.1">
-<h2>
-<span class="header-section-number">2.1</span> Exploring categorical data<a class="anchor" aria-label="anchor" href="#categorical-data"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">2.1</span> Exploring categorical data</h2>
 <p>In this section, we will introduce tables and other basic tools for organizing and analyzing categorical data that are used throughout this book. Table <a href="eda.html#tab:emailDF">2.1</a> displays the first six rows of the <code>email</code> data set containing information on 3,921 emails sent to David Diez’s Gmail account (one of the authors of the <em>OpenIntro</em> textbooks). In this section we will examine whether the presence of numbers, small or large, in an email provides any useful value in classifying email as spam or not spam.
 Descriptions of all five email variables are given in Table <a href="eda.html#tab:emailVariables">2.2</a>.</p>
 <div class="data">
-<p>The <code>email</code> data can be found in the <a href="http://openintrostat.github.io/openintro/reference/index.html">openintro</a> package.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The &lt;code&gt;email&lt;/code&gt; data set found in the &lt;code&gt;openintro&lt;/code&gt; package defines the variable &lt;code&gt;spam&lt;/code&gt; as 0 (not spam) or 1 (spam), and &lt;code&gt;format&lt;/code&gt; as 0 (not HTML) or 1 (HTML). When variables are defined in this way—coded as the numbers 0 and 1 rather than the category names—they are called &lt;strong&gt;indicator variables&lt;/strong&gt;* or &lt;strong&gt;dummy variables&lt;/strong&gt;. In this section of the textbook, we have re-coded &lt;code&gt;spam&lt;/code&gt; to be the variable &lt;code&gt;type&lt;/code&gt;, which takes on values “not spam” or “spam,” and we have re-coded the variable &lt;code&gt;format&lt;/code&gt; to take on values “not HTML” or “HTML.”&lt;/p&gt;"><sup>23</sup></a></p>
+<p>The <code>email</code> data can be found in the <a href="http://openintrostat.github.io/openintro/reference/index.html">openintro</a> package.<a href="#fn23" class="footnote-ref" id="fnref23"><sup>23</sup></a></p>
 </div>
-<div class="inline-table"><table class="table table-sm">
+<table>
 <caption>
 <span id="tab:emailDF">Table 2.1: </span>Six rows from the <code>email</code> data set.
 </caption>
-<thead><tr>
+<thead>
+<tr>
 <th style="text-align:left;">
 </th>
 <th style="text-align:left;">
@@ -111,7 +503,8 @@ format
 <th style="text-align:left;">
 number
 </th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
@@ -234,19 +627,21 @@ none
 </td>
 </tr>
 </tbody>
-</table></div>
-<div class="inline-table"><table class="table table-sm">
+</table>
+<table>
 <caption>
 <span id="tab:emailVariables">Table 2.2: </span>Variables and their descriptions for the <code>email</code> data set.
 </caption>
-<thead><tr>
+<thead>
+<tr>
 <th style="text-align:left;">
 variable
 </th>
 <th style="text-align:left;">
 description
 </th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
@@ -289,20 +684,19 @@ Categorical variable saying whether there was no number, a small number (under 1
 </td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <div id="contingency-tables-and-conditional-proportions" class="section level3" number="2.1.1">
-<h3>
-<span class="header-section-number">2.1.1</span> Contingency tables and conditional proportions<a class="anchor" aria-label="anchor" href="#contingency-tables-and-conditional-proportions"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">2.1.1</span> Contingency tables and conditional proportions</h3>
 <p>A summary table for a single categorical variable that reports the number of observations (frequency) in each category is called a <strong>frequency table</strong>. Table
 <a href="eda.html#tab:emailTableNumber">2.3</a> is a frequency table for the <code>number</code> variable.
 If we replaced the counts with percentages or proportions (relative frequencies),
 the table would be called a <strong>relative frequency table</strong>.</p>
-<div class="inline-table"><table class="table table-sm">
+<table>
 <caption>
 <span id="tab:emailTableNumber">Table 2.3: </span>Frequency table of <code>Number</code> variable.
 </caption>
-<thead><tr>
+<thead>
+<tr>
 <th style="text-align:right;">
 none
 </th>
@@ -312,8 +706,10 @@ small
 <th style="text-align:right;">
 big
 </th>
-</tr></thead>
-<tbody><tr>
+</tr>
+</thead>
+<tbody>
+<tr>
 <td style="text-align:right;">
 549
 </td>
@@ -323,8 +719,9 @@ big
 <td style="text-align:right;">
 545
 </td>
-</tr></tbody>
-</table></div>
+</tr>
+</tbody>
+</table>
 <p>Table <a href="eda.html#tab:emailTable">2.4</a> summarizes two variables:
 <code>type</code> (spam or not spam) and <code>number</code>. A table that summarizes data for two categorical variables
 in this way is called a <strong>contingency table</strong> or <strong>two-way table</strong>.
@@ -337,7 +734,7 @@ The <strong>row totals</strong> provide the total counts across each row
 (e.g., there are <span class="math inline">\(149 + 168 + 50 = 367\)</span> emails classified as not spam), and <strong>column totals</strong> are total
 counts down each column.</p>
 <p>In this textbook, we generally take the convention of putting the categories of the explanatory variable as the columns and the categories of the response variable as the rows (if there exists and explanatory-response relationship between the two variables).</p>
-<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:emailTable">Table 2.4: </span>Contingency table of <code>number</code> (cols) and <code>type</code> (rows) variables.
 </caption>
@@ -434,10 +831,10 @@ Total
 </td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <p>We would like to examine whether the presence of numbers—none, small or large—in an email provides any useful value in classifying email as spam or not spam—that is, is there an <strong>association</strong> between the variables <code>number</code> and <code>type</code>?</p>
 <div class="guidedpractice">
-<p>To determine if a relationship exists between whether an email is spam or not, and whether the email has no numbers, a small number, or a big number, why isn’t it helpful to compare the <em>number</em> of spam emails across the <code>number</code> categories?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Since the sample sizes in the three &lt;code&gt;number&lt;/code&gt; categories differ (549 emails with no numbers; 2827 emails with a small number; 545 emails with a big number), we need to compare the &lt;em&gt;proportion&lt;/em&gt; of spam emails across categories rather than the count.&lt;/p&gt;"><sup>24</sup></a></p>
+<p>To determine if a relationship exists between whether an email is spam or not, and whether the email has no numbers, a small number, or a big number, why isn’t it helpful to compare the <em>number</em> of spam emails across the <code>number</code> categories?<a href="#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a></p>
 </div>
 <p>The proportion of emails that were classified as spam in the data set is <span class="math inline">\(3554/3921 = 0.906\)</span>, or about 91%. Let’s compare this <strong>unconditional proportion</strong> to the <strong>conditional proportions</strong> of spam <em>within</em> each <code>number</code> category: <span class="math inline">\(400/549 \approx 73\%\)</span> of emails with no numbers are spam; <span class="math inline">\(2659/2827 \approx 94\%\)</span> of emails with small numbers are spam; and <span class="math inline">\(495/545 \approx 91\%\)</span> of emails with big numbers are spam. Since these three conditional proportions differ, we say the variables <code>number</code> and <code>type</code> are <em>associated</em> in this data set. Note that some differ from the overall, or unconditional, proportion of spam emails in the data set—91%.</p>
 <div class="onebox">
@@ -446,16 +843,16 @@ Total
 <p>If the conditional proportions of a particular outcome (e.g., spam email) within levels of a categorical variable (e.g., whether no number, a small number, or a big number appears in the email) differ across levels, we say those two variables are <strong>associated</strong>. We can also determine if two categorical variables are associated by checking if any of the conditional proportions of the outcome within categories differ from the overall, or <strong>unconditional</strong> proportion.</p>
 </div>
 <div id="row-and-column-proportions" class="section level4 unnumbered">
-<h4>Row and column proportions<a class="anchor" aria-label="anchor" href="#row-and-column-proportions"><i class="fas fa-link"></i></a>
-</h4>
+<h4>Row and column proportions</h4>
 <p>Conditional proportions that condition on a row category are called <strong>row proportions</strong>; conditional proportions that condition on a column category
 are called <strong>column proportions</strong>.</p>
 <p>Table <a href="eda.html#tab:rowPropSpamNumber">2.5</a> shows the row proportions for Table <a href="eda.html#tab:emailTable">2.4</a>. The row proportions are computed as the counts divided by their row totals. The frequnecy 149 at the intersection of <code>not spam</code> and <code>none</code> is replaced by <span class="math inline">\(149/367=0.406\)</span>, i.e., 149 divided by its row total, 367. So what does 0.406 represent? It corresponds to the conditional proportion of non-spam emails in the sample that do not have any numbers.</p>
-<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:rowPropSpamNumber">Table 2.5: </span>A contingency table with row proportions for the <code>type</code> and <code>number</code> variables.
 </caption>
-<thead><tr>
+<thead>
+<tr>
 <th style="text-align:left;">
 </th>
 <th style="text-align:right;">
@@ -467,7 +864,8 @@ small
 <th style="text-align:right;">
 big
 </th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
@@ -498,13 +896,14 @@ not spam
 </td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <p>A contingency table of the column proportions is computed in a similar way, where each column proportion is computed as the count divided by the corresponding column total. Table <a href="eda.html#tab:colPropSpamNumber">2.6</a> shows such a table, and here the value 0.729 indicates that 72.9% of emails with no numbers were spam. This rate of spam is much lower than emails with only small numbers (94.1%) or big numbers (90.8%). Because these spam rates vary between the three levels of <code>number</code> (<code>none</code>, <code>small</code>, <code>big</code>), this provides evidence that the <code>spam</code> and <code>number</code> variables are associated in this data set.</p>
-<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:colPropSpamNumber">Table 2.6: </span>A contingency table with column proportions for the <code>type</code> and <code>number</code> variables.
 </caption>
-<thead><tr>
+<thead>
+<tr>
 <th style="text-align:left;">
 </th>
 <th style="text-align:right;">
@@ -516,7 +915,8 @@ small
 <th style="text-align:right;">
 big
 </th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
@@ -547,25 +947,26 @@ not spam
 </td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <div class="guidedpractice">
-<p>What does 0.458 represent in Table <a href="eda.html#tab:rowPropSpamNumber">2.5</a>? What does 0.059 represent in Table <a href="eda.html#tab:colPropSpamNumber">2.6</a>?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;0.458 represents the proportion of spam emails that had a small number. 0.058 represents the fraction of emails with small numbers that are spam.&lt;/p&gt;"><sup>25</sup></a></p>
+<p>What does 0.458 represent in Table <a href="eda.html#tab:rowPropSpamNumber">2.5</a>? What does 0.059 represent in Table <a href="eda.html#tab:colPropSpamNumber">2.6</a>?<a href="#fn25" class="footnote-ref" id="fnref25"><sup>25</sup></a></p>
 </div>
 <div class="guidedpractice">
-<p>What does 0.139 at the intersection of <code>not~spam</code> and <code>big</code> represent in Table <a href="eda.html#tab:rowPropSpamNumber">2.5</a>? What does 0.908 represent in the Table <a href="eda.html#tab:colPropSpamNumber">2.6</a>?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;0.139 represents the fraction of non-spam email that had a big number. 0.908 represents the fraction of emails with big numbers that are non-spam emails.&lt;/p&gt;"><sup>26</sup></a></p>
+<p>What does 0.139 at the intersection of <code>not~spam</code> and <code>big</code> represent in Table <a href="eda.html#tab:rowPropSpamNumber">2.5</a>? What does 0.908 represent in the Table <a href="eda.html#tab:colPropSpamNumber">2.6</a>?<a href="#fn26" class="footnote-ref" id="fnref26"><sup>26</sup></a></p>
 </div>
 <div class="workedexample">
 <p>Data scientists use statistics to filter spam from incoming email messages. By noting specific characteristics of an email, a data scientist may be able to classify some emails as spam or not spam with high accuracy.
 One of those characteristics is whether the email contains no numbers, small numbers, or big numbers. Another characteristic is whether or not an email has any HTML content. A contingency table <code>type</code> and <code>format</code> variables from the <code>email</code> data set are shown in Table <a href="eda.html#tab:emailSpamHTMLTableTotals">2.7</a>. Recall that an HTML email is an email with the capacity for special formatting, e.g., bold text. In Table~ <a href="eda.html#tab:emailSpamHTMLTableTotals">2.7</a>, which would be more helpful to someone hoping to classify email as spam or regular email: row or column proportions?</p>
-<hr>
+<hr />
 <p>Such a person would be interested in how the proportion of spam changes within each email format. This corresponds to column proportions: the proportion of spam in plain text emails and the proportion of spam in HTML emails.</p>
 <p>If we generate the column proportions, we can see that a higher fraction of plain text emails are spam (<span class="math inline">\(209/1195 = 17.5\%\)</span>) than compared to HTML emails (<span class="math inline">\(158/2726 = 5.8\%\)</span>). This information on its own is insufficient to classify an email as spam or not spam, as over 80% of plain text emails are not spam. Yet, when we carefully combine this information with many other characteristics, such as  and other variables, we stand a reasonable chance of being able to classify some email as spam or not spam. </p>
 </div>
-<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:emailSpamHTMLTableTotals">Table 2.7: </span>A contingency table for <code>type</code> and <code>format</code>.
 </caption>
-<thead><tr>
+<thead>
+<tr>
 <th style="text-align:left;">
 </th>
 <th style="text-align:right;">
@@ -577,7 +978,8 @@ HTML
 <th style="text-align:right;">
 Total
 </th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
@@ -622,19 +1024,19 @@ Total
 </td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <p>The previous Example points out that row and column proportions are not equivalent. Before settling on one form for a table, it is important to consider each to ensure that the most useful table is constructed.</p>
 <div class="guidedpractice">
-<p>Look back to Tables <a href="#rowPropSpamNumber"><strong>??</strong></a> and <a href="#colPropSpamNumber"><strong>??</strong></a>. Which would be more useful to someone hoping to identify spam emails using the <code>number</code> variable?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;The column proportions in Table &lt;a href="#colPropSpamNumber"&gt;&lt;strong&gt;??&lt;/strong&gt;&lt;/a&gt; will probably be most useful, which makes it easier to see that emails with small numbers are spam about 5.9% of the time (relatively rare). We would also see that about 27.1% of emails with no numbers are spam, and 9.2% of emails with big numbers are spam.&lt;/p&gt;'><sup>27</sup></a></p>
+<p>Look back to Tables <a href="#rowPropSpamNumber"><strong>??</strong></a> and <a href="#colPropSpamNumber"><strong>??</strong></a>. Which would be more useful to someone hoping to identify spam emails using the <code>number</code> variable?<a href="#fn27" class="footnote-ref" id="fnref27"><sup>27</sup></a></p>
 </div>
 </div>
 <div id="sample-proportions-and-population-proportions" class="section level4 unnumbered">
-<h4>Sample proportions and population proportions<a class="anchor" aria-label="anchor" href="#sample-proportions-and-population-proportions"><i class="fas fa-link"></i></a>
-</h4>
+<h4>Sample proportions and population proportions</h4>
 <p>In the field of statistics, summary measures that summarize a sample of data are called <strong>statistics</strong>. Numbers that summarize an entire population are called <strong>parameters</strong>. You can remember
 this distinction by looking at the first letter of each term:</p>
 <blockquote>
-<p><strong><em>S</em></strong>tatistics summarize <strong><em>S</em></strong>amples.<br><strong><em>P</em></strong>arameters summarize <strong><em>P</em></strong>opulations.</p>
+<p><strong><em>S</em></strong>tatistics summarize <strong><em>S</em></strong>amples.<br />
+<strong><em>P</em></strong>arameters summarize <strong><em>P</em></strong>opulations.</p>
 </blockquote>
 <p>Proportions calculated from a sample of data are denoted by <span class="math inline">\(\hat{p}\)</span>.
 In our example, we were interested in the proportion of spam emails in our data set, so we could denote this by <span class="math inline">\(\hat{p} = 0.91\)</span>. If there are different groups we want to summarize with a proportion, we can add subscripts: <span class="math inline">\(\hat{p}_{none} = 0.73\)</span>, <span class="math inline">\(\hat{p}_{small} = 0.94\)</span>, and <span class="math inline">\(\hat{p}_{big} = 0.91\)</span>. Each of these values is a statistic since it is computed from a sample of data.</p>
@@ -646,14 +1048,12 @@ and we don’t know parameters!”</p>
 </div>
 </div>
 <div id="bar-plots-and-mosaic-plots" class="section level3" number="2.1.2">
-<h3>
-<span class="header-section-number">2.1.2</span> Bar plots and mosaic plots<a class="anchor" aria-label="anchor" href="#bar-plots-and-mosaic-plots"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">2.1.2</span> Bar plots and mosaic plots</h3>
 <p>A bar plot is a common way to display a single categorical variable. The left panel of Figure <a href="eda.html#fig:emailNumberBarPlot">2.1</a> shows a <strong>bar plot</strong> for the <code>number</code> variable.
 In the right panel, the counts are converted into proportions (e.g., <span class="math inline">\(549/3921=0.140\)</span> for <code>none</code>).</p>
-<div class="figure" style="text-align: center">
-<span id="fig:emailNumberBarPlot"></span>
-<img src="02-eda_files/figure-html/emailNumberBarPlot-1.png" alt="Two bar plots of `number`. The left panel shows the counts on the $y$-axis, and the right panel shows the proportions in each group on the $y$-axis." width="50%"><img src="02-eda_files/figure-html/emailNumberBarPlot-2.png" alt="Two bar plots of `number`. The left panel shows the counts on the $y$-axis, and the right panel shows the proportions in each group on the $y$-axis." width="50%"><p class="caption">
+<div class="figure" style="text-align: center"><span id="fig:emailNumberBarPlot"></span>
+<img src="02-eda_files/figure-html/emailNumberBarPlot-1.png" alt="Two bar plots of `number`. The left panel shows the counts on the $y$-axis, and the right panel shows the proportions in each group on the $y$-axis." width="50%" /><img src="02-eda_files/figure-html/emailNumberBarPlot-2.png" alt="Two bar plots of `number`. The left panel shows the counts on the $y$-axis, and the right panel shows the proportions in each group on the $y$-axis." width="50%" />
+<p class="caption">
 Figure 2.1: Two bar plots of <code>number</code>. The left panel shows the counts on the <span class="math inline">\(y\)</span>-axis, and the right panel shows the proportions in each group on the <span class="math inline">\(y\)</span>-axis.
 </p>
 </div>
@@ -664,29 +1064,28 @@ another categorical variable, it is called a <strong>segmented bar plot</strong>
 <div class="importantbox">
 <p>In a segmented bar plot, the explanatory variable is plotted on the <span class="math inline">\(x\)</span>-axis, while the response variable is displayed by different colors within each bar, defined by the legend.</p>
 </div>
-<div class="figure" style="text-align: center">
-<span id="fig:emailSpamNumberSegBar"></span>
-<img src="02-eda_files/figure-html/emailSpamNumberSegBar-1.png" alt="(a) Segmented bar plot for numbers found in emails, where the counts have been further broken down by `type`. (b) Segmented bar plot using column proportions of each type within each `number` category." width="50%"><img src="02-eda_files/figure-html/emailSpamNumberSegBar-2.png" alt="(a) Segmented bar plot for numbers found in emails, where the counts have been further broken down by `type`. (b) Segmented bar plot using column proportions of each type within each `number` category." width="50%"><p class="caption">
+<div class="figure" style="text-align: center"><span id="fig:emailSpamNumberSegBar"></span>
+<img src="02-eda_files/figure-html/emailSpamNumberSegBar-1.png" alt="(a) Segmented bar plot for numbers found in emails, where the counts have been further broken down by `type`. (b) Segmented bar plot using column proportions of each type within each `number` category." width="50%" /><img src="02-eda_files/figure-html/emailSpamNumberSegBar-2.png" alt="(a) Segmented bar plot for numbers found in emails, where the counts have been further broken down by `type`. (b) Segmented bar plot using column proportions of each type within each `number` category." width="50%" />
+<p class="caption">
 Figure 2.2: (a) Segmented bar plot for numbers found in emails, where the counts have been further broken down by <code>type</code>. (b) Segmented bar plot using column proportions of each type within each <code>number</code> category.
 </p>
 </div>
 <div class="guidedpractice">
-<p>In the segmented bar plots in Figure <a href="eda.html#fig:emailSpamNumberSegBar">2.2</a>, which variable is the explanatory variable? the response variable?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The numbers found in emails (&lt;code&gt;number&lt;/code&gt;) is the explanatory variable; whether the email is spam or not spam is the response variable.&lt;/p&gt;"><sup>28</sup></a></p>
+<p>In the segmented bar plots in Figure <a href="eda.html#fig:emailSpamNumberSegBar">2.2</a>, which variable is the explanatory variable? the response variable?<a href="#fn28" class="footnote-ref" id="fnref28"><sup>28</sup></a></p>
 </div>
 <div class="workedexample">
 <p>Examine both of the segmented bar plots in Figure <a href="eda.html#fig:emailSpamNumberSegBar">2.2</a>. Which is more useful?</p>
-<hr>
+<hr />
 <p>Plot (a) contains more information, but plot (b) presents the information more clearly. Plot (b) makes it clear that emails with no number have a relatively high rate of spam email—about 27%! On the other hand, less than 10% of email with small or big numbers are spam.</p>
 </div>
 <p>Since the proportion of spam changes across the groups in Figure <a href="eda.html#fig:emailSpamNumberSegBar">2.2</a> (seen in plot (b)), we can conclude the variables are dependent, which is something we were also able to discern using the column proportions in Table <a href="eda.html#tab:colPropSpamNumber">2.6</a>. Because both the <code>none</code> and <code>big</code> groups have relatively few observations compared to the <code>small</code> group, the association is more difficult to see in plot (a) of Figure <a href="eda.html#fig:emailSpamNumberSegBar">2.2</a>.</p>
 <p>In some other cases, a segmented bar plot that is not standardized will be more useful in communicating important information. Before settling on a particular segmented bar plot, create standardized and non-standardized forms and decide which is more effective at communicating features of the data.</p>
 <div id="mosaic-plots" class="section level4 unnumbered">
-<h4>Mosaic plots<a class="anchor" aria-label="anchor" href="#mosaic-plots"><i class="fas fa-link"></i></a>
-</h4>
+<h4>Mosaic plots</h4>
 <p>A <strong>mosaic plot</strong> is a graphical display of contingency table information that is similar to a bar plot for one variable or a segmented bar plot when using two variables. Figure <a href="eda.html#fig:emailNumberMosaic">2.3</a> plot (a) shows a mosaic plot for the <code>number</code> variable. Each column represents a level of <code>number</code>, and the column widths correspond to the proportion of emails of each number type. For instance, there are fewer emails with no numbers than emails with only small numbers, so the no number email column is slimmer. In general, mosaic plots use box <em>areas</em> to represent the number of observations.</p>
-<div class="figure" style="text-align: center">
-<span id="fig:emailNumberMosaic"></span>
-<img src="02-eda_files/figure-html/emailNumberMosaic-1.png" alt="(a) Mosaic plot for numbers found in emails. (b) Mosaic plot where the `number` counts have been further broken down by `type`." width="50%"><img src="02-eda_files/figure-html/emailNumberMosaic-2.png" alt="(a) Mosaic plot for numbers found in emails. (b) Mosaic plot where the `number` counts have been further broken down by `type`." width="50%"><p class="caption">
+<div class="figure" style="text-align: center"><span id="fig:emailNumberMosaic"></span>
+<img src="02-eda_files/figure-html/emailNumberMosaic-1.png" alt="(a) Mosaic plot for numbers found in emails. (b) Mosaic plot where the `number` counts have been further broken down by `type`." width="50%" /><img src="02-eda_files/figure-html/emailNumberMosaic-2.png" alt="(a) Mosaic plot for numbers found in emails. (b) Mosaic plot where the `number` counts have been further broken down by `type`." width="50%" />
+<p class="caption">
 Figure 2.3: (a) Mosaic plot for numbers found in emails. (b) Mosaic plot where the <code>number</code> counts have been further broken down by <code>type</code>.
 </p>
 </div>
@@ -698,34 +1097,29 @@ As another example, the bottom of the third column represents spam emails that h
 </div>
 </div>
 <div id="why-not-pie-charts" class="section level3" number="2.1.3">
-<h3>
-<span class="header-section-number">2.1.3</span> Why not pie charts?<a class="anchor" aria-label="anchor" href="#why-not-pie-charts"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">2.1.3</span> Why not pie charts?</h3>
 <p>While pie charts are well known, they are not typically as useful as other charts in a data analysis. A <strong>pie chart</strong> is shown in Figure <a href="eda.html#fig:emailNumberPieChart">2.4</a> alongside a bar plot. It is generally more difficult to compare group sizes in a pie chart (comparing angles) than in a bar plot (comparing heights), especially when categories have nearly identical counts or proportions. In the case of the <code>none</code> and <code>big</code> categories, the difference is so slight you may be unable to distinguish any difference in group sizes for either plot!</p>
-<div class="figure" style="text-align: center">
-<span id="fig:emailNumberPieChart"></span>
-<img src="02-eda_files/figure-html/emailNumberPieChart-1.png" alt="A pie chart and bar plot of `number` for the `email` data set. This is the only pie chart you will see in this book!" width="50%"><img src="02-eda_files/figure-html/emailNumberPieChart-2.png" alt="A pie chart and bar plot of `number` for the `email` data set. This is the only pie chart you will see in this book!" width="50%"><p class="caption">
+<div class="figure" style="text-align: center"><span id="fig:emailNumberPieChart"></span>
+<img src="02-eda_files/figure-html/emailNumberPieChart-1.png" alt="A pie chart and bar plot of `number` for the `email` data set. This is the only pie chart you will see in this book!" width="50%" /><img src="02-eda_files/figure-html/emailNumberPieChart-2.png" alt="A pie chart and bar plot of `number` for the `email` data set. This is the only pie chart you will see in this book!" width="50%" />
+<p class="caption">
 Figure 2.4: A pie chart and bar plot of <code>number</code> for the <code>email</code> data set. This is the only pie chart you will see in this book!
 </p>
 </div>
 <p>Pie charts are nearly useless when trying to compare two categorical variables, as is shown in Figure <a href="eda.html#fig:worst-pie-chart">2.5</a>.</p>
-<div class="figure" style="text-align: center">
-<span id="fig:worst-pie-chart"></span>
-<img src="02-eda_files/figure-html/worst-pie-chart-1.png" alt="Try comparing the distributions of colors across pie charts A, B, and C---it's impossible!^[R code from User:Schutz for Wikipedia on 28 August 2007]" width="75%"><p class="caption">
-Figure 2.5: Try comparing the distributions of colors across pie charts A, B, and C—it’s impossible!<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;R code from User:Schutz for Wikipedia on 28 August 2007&lt;/p&gt;"><sup>29</sup></a>
+<div class="figure" style="text-align: center"><span id="fig:worst-pie-chart"></span>
+<img src="02-eda_files/figure-html/worst-pie-chart-1.png" alt="Try comparing the distributions of colors across pie charts A, B, and C---it's impossible!^[R code from User:Schutz for Wikipedia on 28 August 2007]" width="75%" />
+<p class="caption">
+Figure 2.5: Try comparing the distributions of colors across pie charts A, B, and C—it’s impossible!<a href="#fn29" class="footnote-ref" id="fnref29"><sup>29</sup></a>
 </p>
 </div>
 <p>If you’re still not convinced that you shouldn’t use pie charts, read <a href="https://www.data-to-viz.com/caveat/pie.html">“The Issue with Pie Chart”</a> on the “from Data to Viz” blog, and <a href="https://www.businessinsider.com/pie-charts-are-the-worst-2013-6">“The Worst Chart in the World”</a> article on Business Insider.</p>
 </div>
 <div id="simpson" class="section level3" number="2.1.4">
-<h3>
-<span class="header-section-number">2.1.4</span> Simpson’s paradox<a class="anchor" aria-label="anchor" href="#simpson"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">2.1.4</span> Simpson’s paradox</h3>
 <div id="race-and-capital-punishment" class="section level4 unnumbered">
-<h4>Race and capital punishment<a class="anchor" aria-label="anchor" href="#race-and-capital-punishment"><i class="fas fa-link"></i></a>
-</h4>
-<p>A 1991 study by Radelet and Pierce examined whether race was associated with whether the death penalty was invoked in homicide cases<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;This example is adapted from &lt;span class="citation"&gt;&lt;a href="references.html#ref-Agresti2007" role="doc-biblioref"&gt;Agresti&lt;/a&gt; (&lt;a href="references.html#ref-Agresti2007" role="doc-biblioref"&gt;2007&lt;/a&gt;)&lt;/span&gt; (p. 49-52).&lt;/p&gt;'><sup>30</sup></a>. Table <a href="eda.html#tab:DP">2.8</a> and Figure <a href="eda.html#fig:DPbarplot">2.6</a> summarize data on 674 defendants in indictments involving cases with multiple murders in Florida from 1976 through 1987.</p>
-<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<h4>Race and capital punishment</h4>
+<p>A 1991 study by Radelet and Pierce examined whether race was associated with whether the death penalty was invoked in homicide cases<a href="#fn30" class="footnote-ref" id="fnref30"><sup>30</sup></a>. Table <a href="eda.html#tab:DP">2.8</a> and Figure <a href="eda.html#fig:DPbarplot">2.6</a> summarize data on 674 defendants in indictments involving cases with multiple murders in Florida from 1976 through 1987.</p>
+<table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:DP">Table 2.8: </span>Contingency table of homicide cases in Florida from 1976 through 1987.
 </caption>
@@ -810,22 +1204,22 @@ Total
 </td>
 </tr>
 </tbody>
-</table></div>
-<div class="figure" style="text-align: center">
-<span id="fig:DPbarplot"></span>
-<img src="02-eda_files/figure-html/DPbarplot-1.png" alt="Segmented bar plot comparing the proportion of defendants who received the death penalty between Caucasians and African Americans." width="70%"><p class="caption">
+</table>
+<div class="figure" style="text-align: center"><span id="fig:DPbarplot"></span>
+<img src="02-eda_files/figure-html/DPbarplot-1.png" alt="Segmented bar plot comparing the proportion of defendants who received the death penalty between Caucasians and African Americans." width="70%" />
+<p class="caption">
 Figure 2.6: Segmented bar plot comparing the proportion of defendants who received the death penalty between Caucasians and African Americans.
 </p>
 </div>
 <div class="guidedpractice">
-<p>Is the race of the defendant associated with the sentence of the trial?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Yes. The conditional proportions of receiving the death penalty given race differ: 11% of Caucasian defendants received the death penalty, versus 8% of African American defendants received the death penalty.&lt;/p&gt;"><sup>31</sup></a></p>
+<p>Is the race of the defendant associated with the sentence of the trial?<a href="#fn31" class="footnote-ref" id="fnref31"><sup>31</sup></a></p>
 </div>
 <p>Overall, a lower percentage of African American defendants received the death penalty than Caucasian defendants (8% compared to 11%). Given studies have shown racial bias in sentencing, this may be surprising. Let’s look at the data more closely.</p>
 <div class="guidedpractice">
-<p>Since these are <em>observational data</em>, confounding variables are most likely present. Recall, a confounding variable is one that is associated with both the response variable (sentence) and the explanatory variable (race of the defendant). What confounding variables could be present?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The confounding variable we will consider here is race of the victim. Other confounding variables may include socioeconomic status (since SES is related to race, and a higher SES may allow you to hire a better lawyer—though this explanation is opposite of the association we see in the data) or district (the racial makeup would differ across districts, and maybe districts with a larger proportion of Caucasians also tend to invoke the death penalty more often).&lt;/p&gt;"><sup>32</sup></a></p>
+<p>Since these are <em>observational data</em>, confounding variables are most likely present. Recall, a confounding variable is one that is associated with both the response variable (sentence) and the explanatory variable (race of the defendant). What confounding variables could be present?<a href="#fn32" class="footnote-ref" id="fnref32"><sup>32</sup></a></p>
 </div>
 <p>If we subset the data by the race of the victim, we see a different picture. Table <a href="eda.html#tab:DP2">2.9</a> and Figure <a href="eda.html#fig:DPbarplot2">2.7</a> summarize the same data, but separately for Caucasian and African American homicide victims.</p>
-<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:DP2">Table 2.9: </span>Contingency table of homicide cases in Florida from 1976 through 1987; sentences classified by defendant’s race and victim’s race.
 </caption>
@@ -974,18 +1368,18 @@ African American
 </td>
 </tr>
 </tbody>
-</table></div>
-<div class="figure" style="text-align: center">
-<span id="fig:DPbarplot2"></span>
-<img src="02-eda_files/figure-html/DPbarplot2-1.png" alt="Segmented bar plots comparing the proportion of Caucasian and African American defendants who received the death penalty; separate plots for Caucasian victims and African American victims." width="50%"><img src="02-eda_files/figure-html/DPbarplot2-2.png" alt="Segmented bar plots comparing the proportion of Caucasian and African American defendants who received the death penalty; separate plots for Caucasian victims and African American victims." width="50%"><p class="caption">
+</table>
+<div class="figure" style="text-align: center"><span id="fig:DPbarplot2"></span>
+<img src="02-eda_files/figure-html/DPbarplot2-1.png" alt="Segmented bar plots comparing the proportion of Caucasian and African American defendants who received the death penalty; separate plots for Caucasian victims and African American victims." width="50%" /><img src="02-eda_files/figure-html/DPbarplot2-2.png" alt="Segmented bar plots comparing the proportion of Caucasian and African American defendants who received the death penalty; separate plots for Caucasian victims and African American victims." width="50%" />
+<p class="caption">
 Figure 2.7: Segmented bar plots comparing the proportion of Caucasian and African American defendants who received the death penalty; separate plots for Caucasian victims and African American victims.
 </p>
 </div>
 <p>If we compare Figures <a href="eda.html#fig:DPbarplot">2.6</a> and <a href="eda.html#fig:DPbarplot2">2.7</a>, we see that the direction of the association between the race of the defendant and the sentence is <em>reversed</em> if we subgroup by the race of the victim. Overall, a larger proportion of Caucasians were sentenced to the death penalty than African Americans. However, when we only compare cases with the same victim’s race, a larger proportion of African Americans were sentenced to the death penalty than Caucasians!</p>
 <p>How did this happen? The answer has to do with the race of the victim being a confounding variable. Figure <a href="eda.html#fig:DPconfound">2.8</a> shows two segmented barplots examining the relationship between the race of the victim and the sentence (the response variable), and the relationship between the race of the victim and the race of the defendant (the explanatory variable). We see that the race of the victim is associated with both the response and the explanatory variables: defendants are more likely to involve a victim of the same race, and cases with African American victims are less likely to result in the death penalty.</p>
-<div class="figure" style="text-align: center">
-<span id="fig:DPconfound"></span>
-<img src="02-eda_files/figure-html/DPconfound-1.png" alt="The race of the victim is associated both with the sentence (death penalty or no death penalty) and with the race of the defendant. Defendants are more likely to involve a victim of the same race, and cases with African American victims are less likely to result in the death penalty." width="50%"><img src="02-eda_files/figure-html/DPconfound-2.png" alt="The race of the victim is associated both with the sentence (death penalty or no death penalty) and with the race of the defendant. Defendants are more likely to involve a victim of the same race, and cases with African American victims are less likely to result in the death penalty." width="50%"><p class="caption">
+<div class="figure" style="text-align: center"><span id="fig:DPconfound"></span>
+<img src="02-eda_files/figure-html/DPconfound-1.png" alt="The race of the victim is associated both with the sentence (death penalty or no death penalty) and with the race of the defendant. Defendants are more likely to involve a victim of the same race, and cases with African American victims are less likely to result in the death penalty." width="50%" /><img src="02-eda_files/figure-html/DPconfound-2.png" alt="The race of the victim is associated both with the sentence (death penalty or no death penalty) and with the race of the defendant. Defendants are more likely to involve a victim of the same race, and cases with African American victims are less likely to result in the death penalty." width="50%" />
+<p class="caption">
 Figure 2.8: The race of the victim is associated both with the sentence (death penalty or no death penalty) and with the race of the defendant. Defendants are more likely to involve a victim of the same race, and cases with African American victims are less likely to result in the death penalty.
 </p>
 </div>
@@ -998,42 +1392,38 @@ Figure 2.8: The race of the victim is associated both with the sentence (death p
 </div>
 </div>
 <div id="probability-with-tables" class="section level2" number="2.2">
-<h2>
-<span class="header-section-number">2.2</span> Probability with tables<a class="anchor" aria-label="anchor" href="#probability-with-tables"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">2.2</span> Probability with tables</h2>
 <div id="defining-probability" class="section level3" number="2.2.1">
-<h3>
-<span class="header-section-number">2.2.1</span> Defining probability<a class="anchor" aria-label="anchor" href="#defining-probability"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">2.2.1</span> Defining probability</h3>
 <p>A <strong>random process</strong> is one in which the outcome is unpredictable. We encounter random processes every day: will it rain today? how many minutes will pass until receiving your next text message? will the Seahawks win the Super Bowl? Though the outcome of one particular random process is unpredictable, if we observe the process many many times, the pattern of outcomes, or its probability distribution, can often be modeled mathematically. Though there are several philosophical definitions of probability, we will use the “frequentist” definition of probability—a long-run relative frequency.</p>
 <div class="onebox">
 <p><strong>Probability.</strong></p>
 <p>The <strong>probability</strong> of an event is the long-run proportion of times the event would occur if the random process were repeated indefinitely (under identical conditions).</p>
 </div>
 <p>Consider the simple example of flipping a fair coin once. What is the probability the coin lands on heads. From its physical properties, we assume the probability of heads is 0.5, but let’s use simulation to examine the probability. Figure <a href="eda.html#fig:coinflip">2.9</a> shows the long-run proportion of times a simulated coin flip lands on heads on the y-axis, and the number of tosses on the x-axis. Notice how the long-run proportion starts converging to 0.5 as the number of tosses increases.</p>
-<div class="figure" style="text-align: center">
-<span id="fig:coinflip"></span>
-<img src="02/figures/CoinFlip/Coinflip.png" alt="One simulation of flipping a fair coin, tracking the long-run proportion of times the coin lands on heads." width="75%"><p class="caption">
+<div class="figure" style="text-align: center"><span id="fig:coinflip"></span>
+<img src="02/figures/CoinFlip/Coinflip.png" alt="One simulation of flipping a fair coin, tracking the long-run proportion of times the coin lands on heads." width="75%" />
+<p class="caption">
 Figure 2.9: One simulation of flipping a fair coin, tracking the long-run proportion of times the coin lands on heads.
 </p>
 </div>
 </div>
 <div id="finding-probabilities-with-tables" class="section level3" number="2.2.2">
-<h3>
-<span class="header-section-number">2.2.2</span> Finding probabilities with tables<a class="anchor" aria-label="anchor" href="#finding-probabilities-with-tables"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">2.2.2</span> Finding probabilities with tables</h3>
 <p>We can solve many real-life probability problems without using any equations by creating a <strong>hypothetical two-way table</strong> of the scenario. This tool is best demonstrated by an example.</p>
 <div class="workedexample">
 <p>As a student at Montana State University, suppose your first class on Mondays is in Wilson Hall at 8:00am and you commute to school. You have a Bobcat parking permit. From past experience, you know that there is a 20% chance of finding an open parking spot in Lot 6 by Animal Bioscience. Otherwise, you have to park in Lot 18 by graduate housing. If you find a spot in Lot 6, you only have a 5% chance of being late to class. However, if you have to park in Lot 18, you have a 15% chance of being late to class. What is the probability that you will be late to class this Monday?</p>
-<hr>
+<hr />
 <p>There are two random variables in this scenario: whether you park in Lot 6 or Lot 18, and whether or not you are late to class. Since we know probability is a long-run relative frequency, let’s imagine 1000 hypothetical Mondays, and fill in a contingency table with the frequencies we’d expect in each cell.</p>
-<div class="inline-table"><table class="table table-sm">
-<thead><tr class="header">
+<table>
+<thead>
+<tr class="header">
 <th></th>
 <th align="left">Late to class</th>
 <th align="left">Not late to class</th>
 <th align="left">Total</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
 <td>Lot 6</td>
@@ -1054,20 +1444,22 @@ Figure 2.9: One simulation of flipping a fair coin, tracking the long-run propor
 <td align="left">1000</td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <p>Now we can find the probability of being late to class by reading it off the table: 130/1000 = 0.13.</p>
 </div>
 <p>How did we create the table in the last Example? Let’s work through it step-by-step.</p>
 <ol style="list-style-type: decimal">
 <li>Identify the <em>unconditional</em> probabilities given in the problem: 20% chance of parking in Lot 6, which means an 80% chance of parking in Lot 18. Take 20% and 80% of 1000 to fill in the row totals:</li>
 </ol>
-<div class="inline-table"><table class="table table-sm">
-<thead><tr class="header">
+<table>
+<thead>
+<tr class="header">
 <th></th>
 <th align="left">Late to class</th>
 <th align="left">Not late to class</th>
 <th align="left">Total</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
 <td>Lot 6</td>
@@ -1088,17 +1480,19 @@ Figure 2.9: One simulation of flipping a fair coin, tracking the long-run propor
 <td align="left">1000</td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <ol start="2" style="list-style-type: decimal">
 <li>Identify the <em>conditional</em> probabilities given in the problem: <em>if</em> you park in Lot 6, the probability of being late to class is 5%; <em>if</em> you park in Log 18, the probability of being late to class is 15%. Fill in the corresponding cells in the table by taking 5% of the times you parked in Lot 6, and 15% of the times you parked in Lot 18:</li>
 </ol>
-<div class="inline-table"><table class="table table-sm">
-<thead><tr class="header">
+<table>
+<thead>
+<tr class="header">
 <th></th>
 <th align="left">Late to class</th>
 <th align="left">Not late to class</th>
 <th align="left">Total</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
 <td>Lot 6</td>
@@ -1119,7 +1513,7 @@ Figure 2.9: One simulation of flipping a fair coin, tracking the long-run propor
 <td align="left">1000</td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <ol start="3" style="list-style-type: decimal">
 <li>Use subtraction to fill in the remaining cells for the column “Not late to class.” Use addition to find the column totals.</li>
 </ol>
@@ -1128,28 +1522,23 @@ Figure 2.9: One simulation of flipping a fair coin, tracking the long-run propor
 <ol style="list-style-type: decimal">
 <li>What is the probability you are not late to class?</li>
 <li>What is the probability that you park in Lot 6 and you are not late to class?</li>
-<li>Given that you were late to class, what is the probability you parked in Lot 18?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;1. &lt;span class="math inline"&gt;\(870/1000 = 0.87\)&lt;/span&gt;; 2. &lt;span class="math inline"&gt;\(190/1000 = 0.19\)&lt;/span&gt;; 3. &lt;span class="math inline"&gt;\(120/130 = 0.923\)&lt;/span&gt;&lt;/p&gt;'><sup>33</sup></a>
-</li>
+<li>Given that you were late to class, what is the probability you parked in Lot 18?<a href="#fn33" class="footnote-ref" id="fnref33"><sup>33</sup></a></li>
 </ol>
 </div>
 <p>Carefully read how each of the probabilities is described in the Guided Practice—note the subtle difference between “the probability of being late to class, <em>given</em> that you parked in Lot 18” (<span class="math inline">\(120/800 = 0.15\)</span>) and “the probability of parking in Lot 18, given that you were late to class” (<span class="math inline">\(120/130 = 0.923\)</span>). When we are given extra information, this is called a <strong>conditional probability</strong>, and the denominator in the probability calculation is a row total (e.g., 800) or column total (e.g., 130) rather than the overall total in the hypothetical two-way table.</p>
 <div class="guidedpractice">
-<p>In the previous Guided Practice, which of the probabilities are conditional probabilities? which are unconditional?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Probabilities in (1) and (2) are unconditional; the probability asked for in (3) is conditional.&lt;/p&gt;"><sup>34</sup></a></p>
+<p>In the previous Guided Practice, which of the probabilities are conditional probabilities? which are unconditional?<a href="#fn34" class="footnote-ref" id="fnref34"><sup>34</sup></a></p>
 </div>
 </div>
 <div id="probability-notation" class="section level3" number="2.2.3">
-<h3>
-<span class="header-section-number">2.2.3</span> Probability notation<a class="anchor" aria-label="anchor" href="#probability-notation"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">2.2.3</span> Probability notation</h3>
 <p>For ease of translating probability problems into calculations, let’s define some notation. We will denote “<strong>events</strong>” (e.g., being late to class) by upper case letters near the beginning of the alphabet, e.g., <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span>. The <strong>probability of an event</strong> <span class="math inline">\(A\)</span> will be denoted by <span class="math inline">\(P(A)\)</span>, so <span class="math inline">\(P(A)\)</span> is a number between 0 and 1. The event that <span class="math inline">\(A\)</span> does <em>not</em> happen is called the <em>complement</em> of <span class="math inline">\(A\)</span> and is denoted by <span class="math inline">\(P(A^C)\)</span>. Sometimes we have additional information that we would like to condition on, and we denote the <strong>conditional probability of <span class="math inline">\(A\)</span> <em>given</em> <span class="math inline">\(B\)</span></strong> by <span class="math inline">\(P(A | B)\)</span>—the probability that <span class="math inline">\(A\)</span> happens given that <span class="math inline">\(B\)</span> has already happened.</p>
 <div class="workedexample">
 <p>In our coin flip example, we could let <span class="math inline">\(A\)</span> be the event that the coin lands on heads. Then we can denote the probability that the coin lands on heads by <span class="math inline">\(P(A) = 0.5\)</span>. We could flip the coin twice and let <span class="math inline">\(H_1\)</span> be the event that the first flip lands on heads, and <span class="math inline">\(H_2\)</span> be the event that the second flip lands on heads. Since the coin does not remember its last flip, if the first flip lands on heads, the second flip still has a 50% chance of landing on heads. That is, <span class="math inline">\(P(H_2 | H_1) = 0.5\)</span>.</p>
 </div>
 </div>
 <div id="diagnostic-testing" class="section level3" number="2.2.4">
-<h3>
-<span class="header-section-number">2.2.4</span> Diagnostic testing<a class="anchor" aria-label="anchor" href="#diagnostic-testing"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">2.2.4</span> Diagnostic testing</h3>
 <p>Medical diagnostic tests for diseases spend years in development. Through clinical trials, developers of the diagnostic test are able to determine two important properties of the test:</p>
 <ul>
 <li>The <strong>sensitivity</strong> of a diagnostic test is the probability the test yields a positive result, given the individual has the disease. In other words, what proportion of the diseased population would test positive?</li>
@@ -1164,23 +1553,23 @@ Figure 2.9: One simulation of flipping a fair coin, tracking the long-run propor
 <ol style="list-style-type: decimal">
 <li>sensitivity</li>
 <li>specificity</li>
-<li>prevalence<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;1. sensitivity = &lt;span class="math inline"&gt;\(P(T | D)\)&lt;/span&gt;; 2. specificity = &lt;span class="math inline"&gt;\(P(T^C | D^C)\)&lt;/span&gt;; 3. prevalence = &lt;span class="math inline"&gt;\(P(D)\)&lt;/span&gt;&lt;/p&gt;'><sup>35</sup></a>
-</li>
+<li>prevalence<a href="#fn35" class="footnote-ref" id="fnref35"><sup>35</sup></a></li>
 </ol>
 </div>
 <p>Note that sensitivity and specificity are conditional probabilities, while prevalence is an unconditional probability. While the above probabilities are useful information, if you test positive on a diagnostic test, none of these quantities is the probability you really want to know: the conditional probability of having the disease, given you tested positive, <span class="math inline">\(P(D | T)\)</span>.</p>
 <div id="the-case-of-baby-jeff" class="section level4 unnumbered">
-<h4>The case of Baby Jeff<a class="anchor" aria-label="anchor" href="#the-case-of-baby-jeff"><i class="fas fa-link"></i></a>
-</h4>
-<p>The following case study was presented by <span class="citation"><a href="references.html#ref-bayes2002" role="doc-biblioref">Slawson and Shaughnessy</a> (<a href="references.html#ref-bayes2002" role="doc-biblioref">2002</a>)</span>. A poster in a hospital’s newborn nursery announced that all male newborns would be screened for muscular dystrophy using a heel stick blood test for creatinine phosphokinase (CPK). The test characteristics of the screening tests were nearly perfect: a sensitivity of 100% and a specificity of 99.98%. The prevalence of muscular dystrophy in male newborns ranges from 1 in 3,500 to 1 in 15,000. Baby Jeff had an abnormal CPK test. The parents of the baby wanted to know, “What is the chance that our son has muscular dystrophy?” Doctors informed the parents that though not 100% likely, it was highly probable. First, take a minute and predict this probability – what do you think? 80% chance? 99% chance? Let’s investigate using a two-way table of a hypothetical population of 100,000 male newborns.</p>
+<h4>The case of Baby Jeff</h4>
+<p>The following case study was presented by <span class="citation"><a href="#ref-bayes2002" role="doc-biblioref">Slawson and Shaughnessy</a> (<a href="#ref-bayes2002" role="doc-biblioref">2002</a>)</span>. A poster in a hospital’s newborn nursery announced that all male newborns would be screened for muscular dystrophy using a heel stick blood test for creatinine phosphokinase (CPK). The test characteristics of the screening tests were nearly perfect: a sensitivity of 100% and a specificity of 99.98%. The prevalence of muscular dystrophy in male newborns ranges from 1 in 3,500 to 1 in 15,000. Baby Jeff had an abnormal CPK test. The parents of the baby wanted to know, “What is the chance that our son has muscular dystrophy?” Doctors informed the parents that though not 100% likely, it was highly probable. First, take a minute and predict this probability – what do you think? 80% chance? 99% chance? Let’s investigate using a two-way table of a hypothetical population of 100,000 male newborns.</p>
 <p>For our calculations, let’s use a prevalence of 1 in 10,000. Then out of 100,000 hypothetical male newborns, we would expect 1 in 10,000 to have muscular dystrophy, or 10: <span class="math inline">\((1/10000)\times 100000 = 10\)</span>. The sensitivity of the test is perfect, so all 10 of the male newborns with muscular dystrophy will test positive. Of the <span class="math inline">\(100000-10 = 99,990\)</span> male newborns that do not have muscular dystrophy, 99.98% will test negative: <span class="math inline">\((0.9998)\times 99990 = 99,970\)</span> infants. That leaves <span class="math inline">\(99990 - 99970 = 20\)</span> male newborns that test positive even though they do not have muscular dystrophy. This allows us to fill in the counts in our hypothetical two-way table:</p>
-<div class="inline-table"><table class="table table-sm">
-<thead><tr class="header">
+<table>
+<thead>
+<tr class="header">
 <th></th>
 <th align="left">Tests positive</th>
 <th align="left">Tests negative</th>
 <th align="left">Total</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
 <td>Has muscular dystrophy</td>
@@ -1201,19 +1590,17 @@ Figure 2.9: One simulation of flipping a fair coin, tracking the long-run propor
 <td align="left">100,000</td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <p>Now we can read off the desired probability from the table: of the 30 male newborns we’d expect to test positive, only 10 of them actually have muscular dystrophy. This means the chance Baby Jeff has muscular dystrophy is only about 33%!</p>
 <div class="guidedpractice">
-<p>How would this probability change if the prevalence were 1/3500? 1/15000? Try it.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;If the prevalence were 1/3500, the probability of actually having muscular dystrophy given that the baby tests positive is 0.588 (slightly better than just flipping a coin for a test!). With prevalence of 1/15000, this probability decreases to 0.250.&lt;/p&gt;"><sup>36</sup></a></p>
+<p>How would this probability change if the prevalence were 1/3500? 1/15000? Try it.<a href="#fn36" class="footnote-ref" id="fnref36"><sup>36</sup></a></p>
 </div>
 <p>Why did this counter-intuitive result occur? With such high sensitivity and specificity, why does this test perform so poorly? The answer has to do with the prevalence of the disease. For a rare disease, the very small proportion that test positive out of the very large group of people without the disease will overwhelm the very large proportion that test positive out of the very small group of people with the disease. The number of false positives can be much higher than the number of true positives.</p>
 </div>
 </div>
 </div>
 <div id="quantitative-data" class="section level2" number="2.3">
-<h2>
-<span class="header-section-number">2.3</span> Exploring quantitative data<a class="anchor" aria-label="anchor" href="#quantitative-data"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">2.3</span> Exploring quantitative data</h2>
 <p>In this section we will explore techniques for summarizing quantitative variables.
 For example, consider the <code>loan_amount</code> variable from the <code>loan50</code> data set, which represents the loan size for all 50 loans in the data set.
 This variable is quantitative since we can sensibly discuss the numerical difference of the size of two loans.
@@ -1225,9 +1612,7 @@ If you’d like to review the variables from either data set, see Tables <a href
 The <code>county</code> data can be found in the <a href="https://openintrostat.github.io/usdata/">usdata</a> package.</p>
 </div>
 <div id="scatterplots" class="section level3" number="2.3.1">
-<h3>
-<span class="header-section-number">2.3.1</span> Scatterplots for paired data<a class="anchor" aria-label="anchor" href="#scatterplots"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">2.3.1</span> Scatterplots for paired data</h3>
 <p></p>
 <p>A <strong>scatterplot</strong> provides a case-by-case view of data for two quantitative variables.
 In Figure <a href="intro-to-data.html#fig:county-multi-unit-homeownership">1.4</a>, a scatterplot was used to examine the homeownership rate against the fraction of housing units that were part of multi-unit properties (e.g. apartments) in the <code>county</code> data set.
@@ -1236,21 +1621,17 @@ In any scatterplot, each point represents a single case.
 Since there are 50 cases in <code>loan50</code>, there are 50 points in Figure <a href="eda.html#fig:loan50-amount-income">2.10</a>.</p>
 <p>When examining scatterplots, we describe four features:</p>
 <ol style="list-style-type: decimal">
-<li>
-<strong>Form</strong> - If you were to trace the trend of the points,
+<li><strong>Form</strong> - If you were to trace the trend of the points,
 would the trend be <em>linear</em> or <em>nonlinear</em>?</li>
-<li>
-<strong>Direction</strong> - As values on the <em>x</em>-axis increase, do the <em>y</em>-values
+<li><strong>Direction</strong> - As values on the <em>x</em>-axis increase, do the <em>y</em>-values
 tend to increase (<em>positive direction</em>) or do they decrease (<em>negative direction</em>)?</li>
-<li>
-<strong>Strength</strong> - How closely do the points follow a trend?</li>
-<li>
-<strong>Unusual observations</strong> or <strong>outliers</strong>- Are there any unusual observations
+<li><strong>Strength</strong> - How closely do the points follow a trend?</li>
+<li><strong>Unusual observations</strong> or <strong>outliers</strong>- Are there any unusual observations
 that do not seem to match the overall pattern of the scatterplot?</li>
 </ol>
-<div class="figure" style="text-align: center">
-<span id="fig:loan50-amount-income"></span>
-<img src="02-eda_files/figure-html/loan50-amount-income-1.png" alt="A scatterplot of `loan_amount` versus `total_income` for the `loan50` data set." width="70%"><p class="caption">
+<div class="figure" style="text-align: center"><span id="fig:loan50-amount-income"></span>
+<img src="02-eda_files/figure-html/loan50-amount-income-1.png" alt="A scatterplot of `loan_amount` versus `total_income` for the `loan50` data set." width="70%" />
+<p class="caption">
 Figure 2.10: A scatterplot of <code>loan_amount</code> versus <code>total_income</code> for the <code>loan50</code> data set.
 </p>
 </div>
@@ -1261,37 +1642,35 @@ below $10,000 to around $40,000. The data seem to have a <em>linear</em> form, t
 the relationship between the two variables is quite <em>weak</em>. The direction is
 <em>positive</em>—as total income increases, the loan amount also tends to increase—and there may be a few unusual observations in the higher income range,
 though since the relationship is weak, it is hard to tell.</p>
-<div class="figure" style="text-align: center">
-<span id="fig:median-hh-income-poverty"></span>
-<img src="02-eda_files/figure-html/median-hh-income-poverty-1.png" alt="A scatterplot of the median household income against the poverty rate for the `county` data set. Data are from 2017. A statistical model has also been fit to the data and is shown as a dashed line." width="70%"><p class="caption">
+<div class="figure" style="text-align: center"><span id="fig:median-hh-income-poverty"></span>
+<img src="02-eda_files/figure-html/median-hh-income-poverty-1.png" alt="A scatterplot of the median household income against the poverty rate for the `county` data set. Data are from 2017. A statistical model has also been fit to the data and is shown as a dashed line." width="70%" />
+<p class="caption">
 Figure 2.11: A scatterplot of the median household income against the poverty rate for the <code>county</code> data set. Data are from 2017. A statistical model has also been fit to the data and is shown as a dashed line.
 </p>
 </div>
 <div class="workedexample">
 <p>Figure <a href="eda.html#fig:median-hh-income-poverty">2.11</a> shows a plot of median household income against the poverty rate for 3,142 counties.
 What can be said about the relationship between these variables?</p>
-<hr>
+<hr />
 <p>The relationship is evidently <strong>nonlinear</strong>, as highlighted by the dashed line. This is different from previous scatterplots we have seen, which show relationships that do not show much, if any, curvature in the trend.
 The relationship is moderate to strong, the direction is negative,
 and there does not appear to be any unusual observations.</p>
 </div>
 <div class="guidedpractice">
-<p>What do scatterplots reveal about the data, and how are they useful?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Answers may vary. Scatterplots are helpful in quickly spotting associations relating variables, whether those associations come in the form of simple trends or whether those relationships are more complex.&lt;/p&gt;"><sup>37</sup></a></p>
+<p>What do scatterplots reveal about the data, and how are they useful?<a href="#fn37" class="footnote-ref" id="fnref37"><sup>37</sup></a></p>
 </div>
 <div class="guidedpractice">
-<p>Describe two variables that would have a horseshoe-shaped association in a scatterplot (<span class="math inline">\(\cap\)</span> or <span class="math inline">\(\frown\)</span>)<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Consider the case where your vertical axis represents something “good” and your horizontal axis represents something that is only good in moderation. Health and water consumption fit this description: we require some water to survive, but consume too much and it become toxic and can kill a person.&lt;/p&gt;"><sup>38</sup></a></p>
+<p>Describe two variables that would have a horseshoe-shaped association in a scatterplot (<span class="math inline">\(\cap\)</span> or <span class="math inline">\(\frown\)</span>)<a href="#fn38" class="footnote-ref" id="fnref38"><sup>38</sup></a></p>
 </div>
 </div>
 <div id="dotplots" class="section level3" number="2.3.2">
-<h3>
-<span class="header-section-number">2.3.2</span> Dot plots and the mean<a class="anchor" aria-label="anchor" href="#dotplots"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">2.3.2</span> Dot plots and the mean</h3>
 <p>Sometimes we are interested in the distribution of a single variable.
 In these cases, a dot plot provides the most basic of displays.
 A <strong>dot plot</strong> is a one-variable scatterplot; an example using the interest rate of 50 loans is shown in Figure <a href="eda.html#fig:loan-int-rate-dotplot">2.12</a>.</p>
-<div class="figure" style="text-align: center">
-<span id="fig:loan-int-rate-dotplot"></span>
-<img src="02-eda_files/figure-html/loan-int-rate-dotplot-1.png" alt="A dot plot of `interest_rate` for the `loan50` data set. The rates have been rounded to the nearest percent in this plot, and the distribution's mean is shown as a red triangle." width="70%"><p class="caption">
+<div class="figure" style="text-align: center"><span id="fig:loan-int-rate-dotplot"></span>
+<img src="02-eda_files/figure-html/loan-int-rate-dotplot-1.png" alt="A dot plot of `interest_rate` for the `loan50` data set. The rates have been rounded to the nearest percent in this plot, and the distribution's mean is shown as a red triangle." width="70%" />
+<p class="caption">
 Figure 2.12: A dot plot of <code>interest_rate</code> for the <code>loan50</code> data set. The rates have been rounded to the nearest percent in this plot, and the distribution’s mean is shown as a red triangle.
 </p>
 </div>
@@ -1300,18 +1679,17 @@ it takes and how frequently each value occurs. The <strong>mean</strong>, often 
 To compute the mean interest rate of the 50 loans above, we add up all the interest rates and divide by the number of observations.</p>
 <p>The sample mean is often labeled <span class="math inline">\(\bar{x}\)</span>.
 The letter <span class="math inline">\(x\)</span> is being used as a generic placeholder for the variable and the bar over the <span class="math inline">\(x\)</span> communicates we’re looking at the average of that variable. In our example <span class="math inline">\(x\)</span> would represent interest rate, and <span class="math inline">\(\bar{x}\)</span> = 11.57%.
-It is useful to think of the mean as the balancing point of the distribution<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;For
-more practice with this concept of the mean as a balancing point, see this &lt;a href="https://www.khanacademy.org/math/ap-statistics/summarizing-quantitative-data-ap/mean-median-more/a/mean-as-the-balancing-point"&gt;Khan Academy article&lt;/a&gt;.&lt;/p&gt;'><sup>39</sup></a>, and it’s shown as a triangle in Figure <a href="eda.html#fig:loan-int-rate-dotplot">2.12</a>.</p>
+It is useful to think of the mean as the balancing point of the distribution<a href="#fn39" class="footnote-ref" id="fnref39"><sup>39</sup></a>, and it’s shown as a triangle in Figure <a href="eda.html#fig:loan-int-rate-dotplot">2.12</a>.</p>
 <div class="onebox">
 <p><strong>Mean.</strong></p>
 <p>The sample mean can be calculated as the sum of the observed values divided by the number of observations:</p>
 <p><span class="math display">\[ \bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n} \]</span></p>
 </div>
 <div class="guidedpractice">
-<p>Examine the equation for the mean. What does <span class="math inline">\(x_1\)</span> correspond to? And <span class="math inline">\(x_2\)</span> Can you infer a general meaning to what <span class="math inline">\(x_i\)</span> might represent?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="math inline"&gt;\(x_1\)&lt;/span&gt; corresponds to the interest rate for the first loan in the sample, &lt;span class="math inline"&gt;\(x_2\)&lt;/span&gt; to the second loan’s interest rate, and &lt;span class="math inline"&gt;\(x_i\)&lt;/span&gt; corresponds to the interest rate for the &lt;span class="math inline"&gt;\(i^{th}\)&lt;/span&gt; loan in the data set. For example, if &lt;span class="math inline"&gt;\(i = 4\)&lt;/span&gt;, then we’re examining &lt;span class="math inline"&gt;\(x_4\)&lt;/span&gt;, which refers to the fourth observation in the data set.&lt;/p&gt;'><sup>40</sup></a></p>
+<p>Examine the equation for the mean. What does <span class="math inline">\(x_1\)</span> correspond to? And <span class="math inline">\(x_2\)</span> Can you infer a general meaning to what <span class="math inline">\(x_i\)</span> might represent?<a href="#fn40" class="footnote-ref" id="fnref40"><sup>40</sup></a></p>
 </div>
 <div class="guidedpractice">
-<p>What was <span class="math inline">\(n\)</span> in this sample of loans?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;The sample size was &lt;span class="math inline"&gt;\(n = 50\)&lt;/span&gt;.&lt;/p&gt;'><sup>41</sup></a></p>
+<p>What was <span class="math inline">\(n\)</span> in this sample of loans?<a href="#fn41" class="footnote-ref" id="fnref41"><sup>41</sup></a></p>
 </div>
 <p>The <code>loan50</code> data set represents a sample from a larger population of loans made through Lending Club.
 We could compute a mean for this population in the same way as the sample mean.
@@ -1324,14 +1702,15 @@ Often times it is too expensive or time consuming to measure the population mean
 </div>
 <div class="workedexample">
 <p>The average interest rate across all loans in the population can be estimated using the sample data. Based on the sample of 50 loans, what would be a reasonable estimate of <span class="math inline">\(\mu_x\)</span>, the mean interest rate for all loans in the full data set?</p>
-<hr>
+<hr />
 <p>The sample mean, 11.57%, provides a rough estimate of <span class="math inline">\(\mu_x\)</span>. While it is not perfect, this statistic our single best guess <strong>point estimate</strong> of the average interest rate of all the loans in the population under study, the parameter. In Chapter <a href="inference-cat.html#inference-cat">5</a> and beyond, we will develop tools to characterize the accuracy of point estimates, like the sample mean. As you might have guessed, point estimates based on larger samples tend to be more accurate than those based on smaller samples.</p>
 </div>
 <p>The mean is useful for making comparisons across different samples that may have different sample sizes because it allows us to rescale or standardize a metric into something more easily interpretable and comparable.</p>
 <p>Suppose we would like to understand if a new drug is more effective at treating asthma attacks than the standard drug.
 A trial of 1500 adults is set up, where 500 receive the new drug, and 1000 receive a standard drug in the control group:</p>
-<div class="inline-table"><table class="table table-sm">
-<thead><tr>
+<table>
+<thead>
+<tr>
 <th style="text-align:left;">
 </th>
 <th style="text-align:center;">
@@ -1340,7 +1719,8 @@ New drug
 <th style="text-align:center;">
 Standard drug
 </th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
@@ -1365,7 +1745,7 @@ Total asthma attacks
 </td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <p>Comparing the raw counts of 200 to 300 asthma attacks would make it appear that the new drug is better, but this is an artifact of the imbalanced group sizes.
 Instead, we should look at the average number of asthma attacks per patient in each group:</p>
 <ul>
@@ -1377,7 +1757,7 @@ Instead, we should look at the average number of asthma attacks per patient in e
 <p>Emilio opened a food truck last year where he sells burritos, and his business has stabilized over the last 4 months.
 Over that 4 month period, he has made $11,000 while working 625 hours.
 Emilio’s competition, Francis, has made $13,000 over the last 4 months while working 800 hours. Francis brags to Emilio that her business is more profitable. Is Francis’ claim warranted?</p>
-<hr>
+<hr />
 <p>Emilio’s average hourly earnings provide a useful statistic for evaluating how much his venture is, at least from a financial perspective, worth:</p>
 <p><span class="math display">\[ \frac{\$11000}{625\text{ hours}} = \$17.60\text{ per hour} \]</span></p>
 <p>By knowing his average hourly wage,
@@ -1388,7 +1768,7 @@ Emilio now has put his earnings into a standard unit that is easier to compare w
 </div>
 <div class="workedexample">
 <p>Suppose we want to compute the average income per person in the US. To do so, we might first think to take the mean of the per capita incomes across the 3,142 counties in the  data set. What would be a better approach?</p>
-<hr>
+<hr />
 <p>The <code>county</code> data set is special in that each county actually represents many individual people.
 If we were to simply average across the <code>income</code> variable, we would be treating counties with 5,000 and 5,000,000 residents equally in the calculations.
 Instead, we should compute the total income for each county, add up all the counties’ totals, and then divide by the number of people in all the counties.
@@ -1399,15 +1779,14 @@ For more information on this topic, check out the following online supplement re
 </div>
 </div>
 <div id="histograms" class="section level3" number="2.3.3">
-<h3>
-<span class="header-section-number">2.3.3</span> Histograms and shape<a class="anchor" aria-label="anchor" href="#histograms"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">2.3.3</span> Histograms and shape</h3>
 <p>Dot plots show the exact value for each observation. This is useful for small data sets, but they can become hard to read with larger samples. Rather than showing the value of each observation, we prefer to think of the value as belonging to a <em>bin</em>. For example, in the <code>loan50</code> data set, we created a table of counts for the number of loans with interest rates between 5.0% and 7.5%, then the number of loans with rates between 7.5% and 10.0%, and so on. Observations that fall on the boundary of a bin (e.g., 10.00%) are allocated to the lower bin. This tabulation is shown in Table <a href="eda.html#tab:binnedIntRateAmountTable">2.10</a>. These binned counts are plotted as bars in Figure <a href="eda.html#fig:loan50IntRateHist">2.13</a> into what is called a <strong>histogram</strong>, which resembles a more heavily binned version of the stacked dot plot shown in Figure <a href="eda.html#fig:loan-int-rate-dotplot">2.12</a>.</p>
-<div class="inline-table"><table class="table table-sm">
+<table>
 <caption>
 <span id="tab:binnedIntRateAmountTable">Table 2.10: </span>Counts for the binned <code>interest_rate</code> data.
 </caption>
-<thead><tr>
+<thead>
+<tr>
 <th style="text-align:left;">
 Interest rate
 </th>
@@ -1438,8 +1817,10 @@ Interest rate
 <th style="text-align:center;">
 25% - 27.5%
 </th>
-</tr></thead>
-<tbody><tr>
+</tr>
+</thead>
+<tbody>
+<tr>
 <td style="text-align:left;">
 n
 </td>
@@ -1470,17 +1851,18 @@ n
 <td style="text-align:center;">
 1
 </td>
-</tr></tbody>
-</table></div>
-<div class="figure" style="text-align: center">
-<span id="fig:loan50IntRateHist"></span>
-<img src="02-eda_files/figure-html/loan50IntRateHist-1.png" alt="A histogram of `interest_rate`. This distribution is strongly skewed to the right." width="70%"><p class="caption">
+</tr>
+</tbody>
+</table>
+<div class="figure" style="text-align: center"><span id="fig:loan50IntRateHist"></span>
+<img src="02-eda_files/figure-html/loan50IntRateHist-1.png" alt="A histogram of `interest_rate`. This distribution is strongly skewed to the right." width="70%" />
+<p class="caption">
 Figure 2.13: A histogram of <code>interest_rate</code>. This distribution is strongly skewed to the right.
 </p>
 </div>
 <p>Histograms provide a view of the <strong>data density</strong>. Higher bars represent where the data are relatively more common, or
 “dense.” For instance, there are many more loans with rates between 5% and 10% than loans with rates between 20% and 25% in the data set. The bars make it easy to see how the density of the data changes relative to the interest rate.</p>
-<p>Histograms are especially convenient for understanding the shape of the data distribution. Figure <a href="eda.html#fig:loan50IntRateHist">2.13</a> suggests that most loans have rates under 15%, while only a handful of loans have rates above 20%. When data trail off to the right in this way and has a longer right <strong>tail</strong>, the shape is said to be <strong>right skewed</strong><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Other ways to describe data that are right skewed: skewed to the right, skewed to the high end, or skewed to the positive end.&lt;/p&gt;"><sup>42</sup></a></p>
+<p>Histograms are especially convenient for understanding the shape of the data distribution. Figure <a href="eda.html#fig:loan50IntRateHist">2.13</a> suggests that most loans have rates under 15%, while only a handful of loans have rates above 20%. When data trail off to the right in this way and has a longer right <strong>tail</strong>, the shape is said to be <strong>right skewed</strong><a href="#fn42" class="footnote-ref" id="fnref42"><sup>42</sup></a></p>
 <p>Data sets with the reverse characteristic—a long, thinner tail to the left—are said to be <strong>left skewed</strong>. We also say that such a distribution has a long left tail. Data sets that show roughly equal trailing off in both directions are called <strong>symmetric</strong>.</p>
 <div class="onebox">
 <p>When data trail off in one direction, the distribution has a <strong>long tail</strong>.
@@ -1488,37 +1870,35 @@ If a distribution has a long left tail, it is <strong>left skewed</strong> or <s
 If a distribution has a long right tail, it is <strong>right skewed</strong> or <strong>positively skewed</strong>.</p>
 </div>
 <div class="guidedpractice">
-<p>Besides the mean (since it was labeled), what can you see in the dot plot in Figure <a href="eda.html#fig:loan-int-rate-dotplot">2.12</a> that you cannot see in the histogram in Figure <a href="eda.html#fig:loan50IntRateHist">2.13</a>?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The interest rates for individual loans.&lt;/p&gt;"><sup>43</sup></a></p>
+<p>Besides the mean (since it was labeled), what can you see in the dot plot in Figure <a href="eda.html#fig:loan-int-rate-dotplot">2.12</a> that you cannot see in the histogram in Figure <a href="eda.html#fig:loan50IntRateHist">2.13</a>?<a href="#fn43" class="footnote-ref" id="fnref43"><sup>43</sup></a></p>
 </div>
 <p>In addition to looking at whether a distribution is skewed or symmetric, histograms can be used to identify modes. A <strong>mode</strong> is represented by a prominent peak in the distribution. There is only one prominent peak in the histogram of <code>interest_rate</code>.</p>
 <p>A definition of <em>mode</em> sometimes taught in math classes is the value with the most occurrences in the data set. However, for many real-world data sets, it is common to have <em>no</em> observations with the same value in a data set, making this definition impractical in data analysis.</p>
 <p>Figure <a href="eda.html#fig:singleBiMultiModalPlots">2.14</a> shows histograms that have one, two, or three prominent peaks. Such distributions are called <strong>unimodal</strong>, <strong>bimodal</strong>, and <strong>multimodal</strong>, respectively. Any distribution with more than two prominent peaks is called multimodal. Notice that there was one prominent peak in the unimodal distribution with a second less prominent peak that was not counted since it only differs from its neighboring bins by a few observations.</p>
-<div class="figure" style="text-align: center">
-<span id="fig:singleBiMultiModalPlots"></span>
-<img src="02-eda_files/figure-html/singleBiMultiModalPlots-1.png" alt="Counting only prominent peaks, the distributions are (left to right) unimodal, bimodal, and multimodal. Note that the left plot is unimodal because we are counting prominent peaks, not just any peak." width="90%"><p class="caption">
+<div class="figure" style="text-align: center"><span id="fig:singleBiMultiModalPlots"></span>
+<img src="02-eda_files/figure-html/singleBiMultiModalPlots-1.png" alt="Counting only prominent peaks, the distributions are (left to right) unimodal, bimodal, and multimodal. Note that the left plot is unimodal because we are counting prominent peaks, not just any peak." width="90%" />
+<p class="caption">
 Figure 2.14: Counting only prominent peaks, the distributions are (left to right) unimodal, bimodal, and multimodal. Note that the left plot is unimodal because we are counting prominent peaks, not just any peak.
 </p>
 </div>
 <div class="guidedpractice">
-<p>Figure <a href="eda.html#fig:loan50IntRateHist">2.13</a> reveals only one prominent mode in the interest rate. Is the distribution unimodal, bimodal, or multimodal?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Unimodal Remember that &lt;em&gt;uni&lt;/em&gt; stands for 1 (think &lt;em&gt;uni&lt;/em&gt;cycles). Similarly, &lt;em&gt;bi&lt;/em&gt; stands for 2 (think &lt;em&gt;bi&lt;/em&gt;cycles). We are hoping a &lt;em&gt;multi&lt;/em&gt;cycle will be invented to complete this analogy.&lt;/p&gt;"><sup>44</sup></a></p>
+<p>Figure <a href="eda.html#fig:loan50IntRateHist">2.13</a> reveals only one prominent mode in the interest rate. Is the distribution unimodal, bimodal, or multimodal?<a href="#fn44" class="footnote-ref" id="fnref44"><sup>44</sup></a></p>
 </div>
 <div class="guidedpractice">
 <p>Height measurements of young students and adult teachers at a K-3 elementary school were taken.
-How many modes would you expect in this height data set?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;There might be two height groups visible in the data set: one of the students and one of the adults. That is, the data are probably bimodal.&lt;/p&gt;"><sup>45</sup></a>.</p>
+How many modes would you expect in this height data set?<a href="#fn45" class="footnote-ref" id="fnref45"><sup>45</sup></a>.</p>
 </div>
 <p>Looking for modes isn’t about finding a clear and correct answer about the number of modes in a distribution, which is why <em>prominent</em> is not rigorously defined in this book. The most important part of this examination is to better understand your data.</p>
 <p>Another type of plot that is helpful for exploring the shape of a distribution is a smoothed histogram, called a <strong>density plot</strong>. A density plot will scale the <span class="math inline">\(y\)</span>-axis so that the total area under the density curve is equal to one. This allows us to get a sense of what <em>proportion</em> of the data lie in a certain interval, rather than the <em>frequency</em> of data in the interval. We can change the scale of a histogram to plot proportions rather than frequencies, then overlay a density curve on this rescaled histogram, as seen in Figure <a href="eda.html#fig:loan50IntRateDens">2.15</a>.</p>
-<div class="figure" style="text-align: center">
-<span id="fig:loan50IntRateDens"></span>
-<img src="02-eda_files/figure-html/loan50IntRateDens-1.png" alt="A density plot of `interest_rate` overlayed on a histogram using density scale." width="70%"><p class="caption">
+<div class="figure" style="text-align: center"><span id="fig:loan50IntRateDens"></span>
+<img src="02-eda_files/figure-html/loan50IntRateDens-1.png" alt="A density plot of `interest_rate` overlayed on a histogram using density scale." width="70%" />
+<p class="caption">
 Figure 2.15: A density plot of <code>interest_rate</code> overlayed on a histogram using density scale.
 </p>
 </div>
 </div>
 <div id="variance-sd" class="section level3" number="2.3.4">
-<h3>
-<span class="header-section-number">2.3.4</span> Variance and standard deviation<a class="anchor" aria-label="anchor" href="#variance-sd"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">2.3.4</span> Variance and standard deviation</h3>
 <p>The mean was introduced as a method to describe the center of a data set, and <strong>variability</strong> in the data is also important. Here, we introduce two measures of variability: the variance and the standard deviation. Both of these are very useful in data analysis, even though their formulas are a bit tedious to calculate by hand. The standard deviation is the easier of the two to comprehend, and it roughly describes how far away the typical observation is from the mean.</p>
 <p>We call the distance of an observation from its mean its <strong>deviation</strong>. Below are the deviations for the <span class="math inline">\(1^{st}\)</span>, <span class="math inline">\(2^{nd}\)</span>, <span class="math inline">\(3^{rd}\)</span>, and <span class="math inline">\(50^{th}\)</span> observations in the <code>interest_rate</code> variable:</p>
 <p><span class="math display">\[ x_1 - \bar{x} = 10.9 - 11.57 = -0.67 \]</span> <span class="math display">\[ x_2 - \bar{x} = 9.92 - 11.57 = -1.65 \]</span> <span class="math display">\[ x_3 - \bar{x} = 26.3 - 11.57 = 14.73 \]</span> <span class="math display">\[ \vdots \]</span> <span class="math display">\[ x_{50} - \bar{x} = 6.08 - 11.57 = -5.49 \]</span></p>
@@ -1549,43 +1929,41 @@ However, these percentages do not necessarily hold for other shaped distribution
 <div class="pronunciation">
 <p>The Greek letter <span class="math inline">\(\sigma\)</span> is pronounced <em>sigma</em>, listen to the pronunciation <a href="https://youtu.be/PStgY5AcEIw?t=72">here</a>.</p>
 </div>
-<div class="figure" style="text-align: center">
-<span id="fig:sdRuleForIntRate"></span>
-<img src="02-eda_files/figure-html/sdRuleForIntRate-1.png" alt="For the `interest_rate` variable, 34 of the 50 loans (68%) had interest rates within 1 standard deviation of the mean, and 48 of the 50 loans (96%) had rates within 2 standard deviations. Usually about 70% of the data are within 1 standard deviation of the mean and 95% within 2 standard deviations, though this is far from a hard rule." width="70%"><p class="caption">
+<div class="figure" style="text-align: center"><span id="fig:sdRuleForIntRate"></span>
+<img src="02-eda_files/figure-html/sdRuleForIntRate-1.png" alt="For the `interest_rate` variable, 34 of the 50 loans (68%) had interest rates within 1 standard deviation of the mean, and 48 of the 50 loans (96%) had rates within 2 standard deviations. Usually about 70% of the data are within 1 standard deviation of the mean and 95% within 2 standard deviations, though this is far from a hard rule." width="70%" />
+<p class="caption">
 Figure 2.16: For the <code>interest_rate</code> variable, 34 of the 50 loans (68%) had interest rates within 1 standard deviation of the mean, and 48 of the 50 loans (96%) had rates within 2 standard deviations. Usually about 70% of the data are within 1 standard deviation of the mean and 95% within 2 standard deviations, though this is far from a hard rule.
 </p>
 </div>
-<div class="figure" style="text-align: center">
-<span id="fig:severalDiffDistWithSdOf1"></span>
-<img src="02-eda_files/figure-html/severalDiffDistWithSdOf1-1.png" alt="Three very different population distributions with the same mean (0) and standard deviation (1)." width="70%"><p class="caption">
+<div class="figure" style="text-align: center"><span id="fig:severalDiffDistWithSdOf1"></span>
+<img src="02-eda_files/figure-html/severalDiffDistWithSdOf1-1.png" alt="Three very different population distributions with the same mean (0) and standard deviation (1)." width="70%" />
+<p class="caption">
 Figure 2.17: Three very different population distributions with the same mean (0) and standard deviation (1).
 </p>
 </div>
 <div class="guidedpractice">
 <p>A good description of the shape of a distribution should include modality and whether the distribution is symmetric or skewed to one side.
-Using Figure <a href="eda.html#fig:severalDiffDistWithSdOf1">2.17</a> as an example, explain why such a description is important.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Figure &lt;a href="eda.html#fig:severalDiffDistWithSdOf1"&gt;2.17&lt;/a&gt; shows three distributions that look quite different, but all have the same mean, variance, and standard deviation. Using modality, we can distinguish between the first plot (bimodal) and the last two (unimodal). Using skewness, we can distinguish between the last plot (right skewed) and the first two. While a picture, like a histogram, tells a more complete story, we can use modality and shape (symmetry/skew) to characterize basic information about a distribution.&lt;/p&gt;'><sup>46</sup></a></p>
+Using Figure <a href="eda.html#fig:severalDiffDistWithSdOf1">2.17</a> as an example, explain why such a description is important.<a href="#fn46" class="footnote-ref" id="fnref46"><sup>46</sup></a></p>
 </div>
 <div class="workedexample">
 <p>Describe the distribution of the <code>interest_rate</code> variable using the histogram in Figure <a href="eda.html#fig:loan50IntRateHist">2.13</a>.
 The description should incorporate the center, variability, and shape of the distribution, and it should also be placed in context.
 Also note any especially unusual cases.</p>
-<hr>
+<hr />
 <p>The distribution of interest rates is unimodal and skewed to the high end. Many of the rates fall near the mean at 11.57%, and most fall within one standard deviation (5.05%) of the mean.
 There are a few exceptionally large interest rates in the sample that are above 20%.</p>
 </div>
 <p>In practice, the variance and standard deviation are sometimes used as a means to an end, where the “end” is being able to accurately estimate the uncertainty associated with a sample statistic. For example, in Chapter <a href="inference-num.html#inference-num">6</a> the standard deviation is used in calculations that help us understand how much a sample mean varies from one sample to the next.</p>
 </div>
 <div id="box-plots-quartiles-and-the-median" class="section level3" number="2.3.5">
-<h3>
-<span class="header-section-number">2.3.5</span> Box plots, quartiles, and the median<a class="anchor" aria-label="anchor" href="#box-plots-quartiles-and-the-median"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">2.3.5</span> Box plots, quartiles, and the median</h3>
 <p>A <strong>box plot</strong> (or box-and-whisker plot) summarizes a data set using five statistics while
 also identifying unusual observations. The five statistics—minimum, first quartile,
 median, third quartile, maximum—together are called the <strong>five number summary</strong>.
 Figure <a href="eda.html#fig:loan-int-rate-boxplot-dotplot">2.18</a> provides a dot plot alongside a box plot of the <code>interest_rate</code> variable from the <code>loan50</code> data set.</p>
-<div class="figure" style="text-align: center">
-<span id="fig:loan-int-rate-boxplot-dotplot"></span>
-<img src="02-eda_files/figure-html/loan-int-rate-boxplot-dotplot-1.png" alt="Plot A shows a dot plot and Plot B shows a box plot of the distribution of interest rates from the `loan50` dataset." width="70%"><p class="caption">
+<div class="figure" style="text-align: center"><span id="fig:loan-int-rate-boxplot-dotplot"></span>
+<img src="02-eda_files/figure-html/loan-int-rate-boxplot-dotplot-1.png" alt="Plot A shows a dot plot and Plot B shows a box plot of the distribution of interest rates from the `loan50` dataset." width="70%" />
+<p class="caption">
 Figure 2.18: Plot A shows a dot plot and Plot B shows a box plot of the distribution of interest rates from the <code>loan50</code> dataset.
 </p>
 </div>
@@ -1593,11 +1971,12 @@ Figure 2.18: Plot A shows a dot plot and Plot B shows a box plot of the distribu
 50% of the data fall below this value and 50% fall above it.
 Since in the <code>loan50</code> dataset there are 50 observations (an even number), the median is defined as the average of the two observations closest to the <span class="math inline">\(50^{th}\)</span> percentile. Table @ref(tab:loan50_int_rate_sorted) shows all interest rates, arranged in ascending order.
 We can see that the <span class="math inline">\(25^{th}\)</span> and the <span class="math inline">\(26^{th}\)</span> values are both 9.93, which corresponds to the dark line in the box plot in Figure <a href="eda.html#fig:loan-int-rate-boxplot-dotplot">2.18</a>.</p>
-<div class="inline-table"><table class="table table-sm">
+<table>
 <caption>
 (#tab:loan50_int_rate_sorted)Interest rates from the <code>loan50</code> dataset, arranged in ascending order.
 </caption>
-<thead><tr>
+<thead>
+<tr>
 <th style="text-align:left;">
 </th>
 <th style="text-align:right;">
@@ -1630,7 +2009,8 @@ We can see that the <span class="math inline">\(25^{th}\)</span> and the <span c
 <th style="text-align:right;">
 10
 </th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
@@ -1808,7 +2188,7 @@ We can see that the <span class="math inline">\(25^{th}\)</span> and the <span c
 </td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <p>When there are an odd number of observations, there will be exactly one observation that splits the data into two halves, and in such a case that observation is the median (no average needed).</p>
 <div class="onebox">
 <p><strong>Median: the number in the middle.</strong></p>
@@ -1824,7 +2204,7 @@ If there are an even number of observations, there will be two values in the mid
 The length of the the box is called the <strong>interquartile range</strong>, or <strong>IQR</strong> for short.
 It, like the standard deviation, is a measure of variability in data.
 The more variable the data, the larger the standard deviation and IQR tend to be.
-The two boundaries of the box are called the <strong>first quartile</strong> (the <span class="math inline">\(25^{th}\)</span> percentile, i.e., 25% of the data fall below this value) and the <strong>third quartile</strong> (the <span class="math inline">\(75^{th}\)</span> percentile, i.e., 75% of the data fall below this value)  , and these are often labeled <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span>, respectively<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The first and third quartiles are called quartiles because, together with the median (the second quartile), these three values break the data into four groups of equal size–the lowest 25%, next lowest 25%, next lowest 25%, and highest 25%.&lt;/p&gt;"><sup>47</sup></a></p>
+The two boundaries of the box are called the <strong>first quartile</strong> (the <span class="math inline">\(25^{th}\)</span> percentile, i.e., 25% of the data fall below this value) and the <strong>third quartile</strong> (the <span class="math inline">\(75^{th}\)</span> percentile, i.e., 75% of the data fall below this value)  , and these are often labeled <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span>, respectively<a href="#fn47" class="footnote-ref" id="fnref47"><sup>47</sup></a></p>
 <div class="onebox">
 <p><strong>Interquartile range (IQR).</strong></p>
 <p>The IQR interquartile range is the length of the box in a box plot.
@@ -1836,7 +2216,7 @@ where <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q
 </div>
 <div class="guidedpractice">
 <p>What percent of the data fall between <span class="math inline">\(Q_1\)</span> and the median?
-What percent is between the median and <span class="math inline">\(Q_3\)</span>?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Since &lt;span class="math inline"&gt;\(Q_1\)&lt;/span&gt; and &lt;span class="math inline"&gt;\(Q_3\)&lt;/span&gt; capture the middle 50% of the data and the median splits the data in the middle, 25% of the data fall between &lt;span class="math inline"&gt;\(Q_1\)&lt;/span&gt; and the median, and another 25% falls between the median and &lt;span class="math inline"&gt;\(Q_3\)&lt;/span&gt;.&lt;/p&gt;'><sup>48</sup></a></p>
+What percent is between the median and <span class="math inline">\(Q_3\)</span>?<a href="#fn48" class="footnote-ref" id="fnref48"><sup>48</sup></a></p>
 </div>
 <p>Extending out from the box, the <strong>whiskers</strong> attempt to capture the data outside of the box.
 The whiskers of a box plot reach to the minimum and the maximum values in the data, unless there are points that are considered unusually high or unusually low, which are identified as potential <strong>outliers</strong> by the box plot.
@@ -1865,13 +2245,11 @@ Examining data for outliers serves many useful purposes, including</p>
 </ul>
 </div>
 <div class="guidedpractice">
-<p>Using the box plot in Figure <a href="eda.html#fig:loan-int-rate-boxplot-dotplot">2.18</a>, estimate the values of the <span class="math inline">\(Q_1\)</span>, <span class="math inline">\(Q_3\)</span>, and IQR for <code>interest_rate</code> in the <code>loan50</code> data set.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;These visual estimates will vary a little from one person to the next: &lt;span class="math inline"&gt;\(Q_1 \approx\)&lt;/span&gt; 8%, &lt;span class="math inline"&gt;\(Q_3 \approx\)&lt;/span&gt; 14%, IQR &lt;span class="math inline"&gt;\(\approx\)&lt;/span&gt; 14 - 8 = 6%.&lt;/p&gt;'><sup>49</sup></a></p>
+<p>Using the box plot in Figure <a href="eda.html#fig:loan-int-rate-boxplot-dotplot">2.18</a>, estimate the values of the <span class="math inline">\(Q_1\)</span>, <span class="math inline">\(Q_3\)</span>, and IQR for <code>interest_rate</code> in the <code>loan50</code> data set.<a href="#fn49" class="footnote-ref" id="fnref49"><sup>49</sup></a></p>
 </div>
 </div>
 <div id="describing-and-comparing-quantitative-distributions" class="section level3" number="2.3.6">
-<h3>
-<span class="header-section-number">2.3.6</span> Describing and comparing quantitative distributions<a class="anchor" aria-label="anchor" href="#describing-and-comparing-quantitative-distributions"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">2.3.6</span> Describing and comparing quantitative distributions</h3>
 <p>As a review, when describing a scatterplot—the association between
 two quantitative variables, we look for the four features:</p>
 <ol style="list-style-type: decimal">
@@ -1891,9 +2269,9 @@ two quantitative variables, we look for the four features:</p>
 or stacked histograms or dot plots. Recall that the <code>loan50</code> data set represents a sample from a larger loan data set called <code>loans</code>.
 This larger data set contains information on 10,000 loans made through Lending Club. Figure <a href="eda.html#fig:homeownership-interest-boxplots">2.19</a> examines the relationship between <code>homeownership</code>, which for the <code>loans</code> data can take a value of <code>rent</code>, <code>mortgage</code> (owns but has a mortgage), or <code>own</code>, and <code>interest_rate</code>. Note that <code>homeownership</code>
 is a categorical variable and <code>interest_rate</code> is a quantitative variable.</p>
-<div class="figure" style="text-align: center">
-<span id="fig:homeownership-interest-boxplots"></span>
-<img src="02-eda_files/figure-html/homeownership-interest-boxplots-1.png" alt="Side-by-side box plots of loan interest rates by homeownership category." width="70%"><p class="caption">
+<div class="figure" style="text-align: center"><span id="fig:homeownership-interest-boxplots"></span>
+<img src="02-eda_files/figure-html/homeownership-interest-boxplots-1.png" alt="Side-by-side box plots of loan interest rates by homeownership category." width="70%" />
+<p class="caption">
 Figure 2.19: Side-by-side box plots of loan interest rates by homeownership category.
 </p>
 </div>
@@ -1901,26 +2279,24 @@ Figure 2.19: Side-by-side box plots of loan interest rates by homeownership cate
 <div class="workedexample">
 <p>Using Figure <a href="eda.html#fig:homeownership-interest-boxplots">2.19</a> write a few sentences comparing the distributions of loan amount
 across the different homeownership categories.</p>
-<hr>
+<hr />
 <p>The median loan amount is higher for those with a mortgage (around $16,000) than for those who own or rent (around $12,000-$13,000). However, variability in loan amounts is similar across homeownership categories, with an IQR of around $15,000 and loans ranging from a few hundred dollars to $40,000. We see from the histograms that the distribution of loan amounts is skewed right for all three homeownership categories, which means the mean loan amount will be higher than the median loan amount. There are no apparent outliers in the mortgage category, but both the rent and own categories have outliers at $40,000.</p>
 <p>Besides center, variability, shape, and outliers, another interesting feature in these distributions is the result of rounding. Loan amounts in the data set are often rounded to the nearest 100, so we see spikes on these values in the histogram—something that is not evident in the box plots.</p>
 </div>
 </div>
 <div id="robust-statistics" class="section level3" number="2.3.7">
-<h3>
-<span class="header-section-number">2.3.7</span> Robust statistics<a class="anchor" aria-label="anchor" href="#robust-statistics"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">2.3.7</span> Robust statistics</h3>
 <p>How are the <strong>sample statistics</strong>  of the <code>interest_rate</code> data set affected by the observation, 26.3%?
 What would have happened if this loan had instead been only 15%?
 What would happen to these summary statistics  if the observation at 26.3% had been even larger, say 35%?
 These scenarios are plotted alongside the original data in Figure <a href="eda.html#fig:loan-int-rate-robust-ex">2.20</a>, and sample statistics are computed under each scenario in Table <a href="eda.html#tab:robustOrNotTable">2.11</a>.</p>
-<div class="figure" style="text-align: center">
-<span id="fig:loan-int-rate-robust-ex"></span>
-<img src="02-eda_files/figure-html/loan-int-rate-robust-ex-1.png" alt="Dot plots of the original interest rate data and two modified data sets." width="70%"><p class="caption">
+<div class="figure" style="text-align: center"><span id="fig:loan-int-rate-robust-ex"></span>
+<img src="02-eda_files/figure-html/loan-int-rate-robust-ex-1.png" alt="Dot plots of the original interest rate data and two modified data sets." width="70%" />
+<p class="caption">
 Figure 2.20: Dot plots of the original interest rate data and two modified data sets.
 </p>
 </div>
-<div class="inline-table"><table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:robustOrNotTable">Table 2.11: </span>A comparison of how the median, IQR, mean, and standard deviation change as the value of an extereme observation from the original interest data changes.
 </caption>
@@ -2010,13 +2386,12 @@ Move 26.3% to 35%
 </td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <div class="guidedpractice">
 <ol style="list-style-type: lower-alpha">
-<li>Which is more affected by extreme observations, the mean or median?<br>
+<li>Which is more affected by extreme observations, the mean or median?<br />
 </li>
-<li>Is the standard deviation or IQR more affected by extreme observations?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;(a) Mean is affected more. (b) Standard deviation is affected more.&lt;/p&gt;"><sup>50</sup></a>
-</li>
+<li>Is the standard deviation or IQR more affected by extreme observations?<a href="#fn50" class="footnote-ref" id="fnref50"><sup>50</sup></a></li>
 </ol>
 </div>
 <p>The median and IQR are called <strong>robust statistics</strong> because extreme observations have little effect on their values—moving the most extreme value generally has little influence on these statistics.
@@ -2024,29 +2399,27 @@ On the other hand, the mean and standard deviation are more heavily influenced b
 <div class="workedexample">
 <p>The median and IQR did not change under the three scenarios in Table <a href="eda.html#tab:robustOrNotTable">2.11</a>.
 Why might this be the case?</p>
-<hr>
+<hr />
 <p>The median and IQR are only sensitive to numbers near <span class="math inline">\(Q_1\)</span>, the median, and <span class="math inline">\(Q_3\)</span>.
 Since values in these regions are stable in the three data sets, the median and IQR estimates are also stable.</p>
 </div>
 <div class="guidedpractice">
 <p>The distribution of loan amounts in the <code>loan50</code> data set is right skewed, with a few large loans lingering out into the right tail.
-If you were wanting to understand the typical loan size, should you be more interested in the mean or median?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;If we are looking to simply understand what a typical individual loan looks like, the median is probably more useful. However, if the goal is to understand something that scales well, such as the total amount of money we might need to have on hand if we were to offer 1,000 loans, then the mean would be more useful.&lt;/p&gt;"><sup>51</sup></a></p>
+If you were wanting to understand the typical loan size, should you be more interested in the mean or median?<a href="#fn51" class="footnote-ref" id="fnref51"><sup>51</sup></a></p>
 </div>
 </div>
 <div id="transforming-data-special-topic" class="section level3" number="2.3.8">
-<h3>
-<span class="header-section-number">2.3.8</span> Transforming data (special topic)<a class="anchor" aria-label="anchor" href="#transforming-data-special-topic"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">2.3.8</span> Transforming data (special topic)</h3>
 <p>When data are very strongly skewed, we sometimes transform them so they are easier to model. A <strong>transformation</strong> is a rescaling of the data using a function.</p>
-<div class="figure" style="text-align: center">
-<span id="fig:county-pop-transform"></span>
-<img src="02-eda_files/figure-html/county-pop-transform-1.png" alt="Plot A: A histogram of the populations of all US counties. Plot B: A histogram of log$_{10}$-transformed county populations. For this plot, the x-value corresponds to the power of 10, e.g. 4 on the x-axis corresponds to $10^4 =$ 10,000. Data are from 2017." width="70%"><p class="caption">
+<div class="figure" style="text-align: center"><span id="fig:county-pop-transform"></span>
+<img src="02-eda_files/figure-html/county-pop-transform-1.png" alt="Plot A: A histogram of the populations of all US counties. Plot B: A histogram of log$_{10}$-transformed county populations. For this plot, the x-value corresponds to the power of 10, e.g. 4 on the x-axis corresponds to $10^4 =$ 10,000. Data are from 2017." width="70%" />
+<p class="caption">
 Figure 2.21: Plot A: A histogram of the populations of all US counties. Plot B: A histogram of log<span class="math inline">\(_{10}\)</span>-transformed county populations. For this plot, the x-value corresponds to the power of 10, e.g. 4 on the x-axis corresponds to <span class="math inline">\(10^4 =\)</span> 10,000. Data are from 2017.
 </p>
 </div>
 <div class="workedexample">
 <p>Consider the histogram of county populations shown in the left of Figure <a href="eda.html#fig:county-pop-transform">2.21</a>, which shows extreme skew. What is not so useful about this plot?</p>
-<hr>
+<hr />
 <p>Nearly all of the data fall into the left-most bin, and the extreme skew obscures many of the potentially interesting details in the data.</p>
 </div>
 <p>There are some standard transformations that may be useful for strongly right skewed data where much of the data is positive but clustered near zero.
@@ -2059,9 +2432,9 @@ In this first scatterplot, it’s hard to decipher any interesting patterns beca
 However, if we apply a log<span class="math inline">\(_{10}\)</span> transformation to the population variable, as shown in
 Figure <a href="eda.html#fig:county-pop-change-transform">2.22</a>, a positive association between the variables is revealed.
 In fact, we may be interested in fitting a trend line to the data when we explore methods around fitting regression lines in Chapter <a href="cor-reg.html#cor-reg">3</a>.</p>
-<div class="figure" style="text-align: center">
-<span id="fig:county-pop-change-transform"></span>
-<img src="02-eda_files/figure-html/county-pop-change-transform-1.png" alt="Plot A: Scatterplot of population change against the population before the change. Plot B: A~scatterplot of the same data but where the population size has been log-transformed." width="70%"><p class="caption">
+<div class="figure" style="text-align: center"><span id="fig:county-pop-change-transform"></span>
+<img src="02-eda_files/figure-html/county-pop-change-transform-1.png" alt="Plot A: Scatterplot of population change against the population before the change. Plot B: A~scatterplot of the same data but where the population size has been log-transformed." width="70%" />
+<p class="caption">
 Figure 2.22: Plot A: Scatterplot of population change against the population before the change. Plot B: A~scatterplot of the same data but where the population size has been log-transformed.
 </p>
 </div>
@@ -2070,9 +2443,7 @@ For instance, the square root (<span class="math inline">\(\sqrt{\text{original 
 Common goals in transforming data are to see the data structure differently, reduce skew, assist in modeling, or straighten a nonlinear relationship in a scatterplot.</p>
 </div>
 <div id="mapping-data-special-topic" class="section level3" number="2.3.9">
-<h3>
-<span class="header-section-number">2.3.9</span> Mapping data (special topic)<a class="anchor" aria-label="anchor" href="#mapping-data-special-topic"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">2.3.9</span> Mapping data (special topic)</h3>
 <p></p>
 <p>The <code>county</code> data set offers many numerical variables that we could plot using dot plots, scatterplots, or box plots, but these miss the true nature of the data.
 Rather, when we encounter geographic data, we should create an <strong>intensity map</strong>, where colors are used to show higher and lower values of a variable.
@@ -2081,7 +2452,7 @@ The color key indicates which colors correspond to which values.
 The intensity maps are not generally very helpful for getting precise values in any given county, but they are very helpful for seeing geographic trends and generating interesting research questions or hypotheses.</p>
 <div class="workedexample">
 <p>What interesting features are evident in the poverty and unemployment rate intensity maps?</p>
-<hr>
+<hr />
 <p>Poverty rates are evidently higher in a few locations.
 Notably, the deep south shows higher poverty rates, as does much of Arizona and New Mexico.
 High poverty rates are evident in the Mississippi flood plains a little north of New Orleans and also in a large section of Kentucky.
@@ -2091,30 +2462,26 @@ In fact, it makes sense for higher rates of unemployment to be closely related t
 One observation that stands out when comparing the two maps: the poverty rate is much higher than the unemployment rate, meaning while many people may be working, they are not making enough to break out of poverty.</p>
 </div>
 <div class="guidedpractice">
-<p>What interesting features are evident in the median household income intensity map in Figure <a href="eda.html#fig:county-intensity-map-homeownership-median-income">2.24</a>?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Note: answers will vary. There is some correspondence between high earning and metropolitan areas, where we can see darker spots (higher median household income), though there are several exceptions. You might look for large cities you are familiar with and try to spot them on the map as dark spots.&lt;/p&gt;"><sup>52</sup></a></p>
+<p>What interesting features are evident in the median household income intensity map in Figure <a href="eda.html#fig:county-intensity-map-homeownership-median-income">2.24</a>?<a href="#fn52" class="footnote-ref" id="fnref52"><sup>52</sup></a></p>
 </div>
-<div class="figure" style="text-align: center">
-<span id="fig:county-intensity-map-poverty-unemp"></span>
-<img src="02-eda_files/figure-html/county-intensity-map-poverty-unemp-1.png" alt="Plot A: Intensity map of poverty rate (percent). Plot B: Intensity map of the unemployment rate (percent)." width="70%"><p class="caption">
+<div class="figure" style="text-align: center"><span id="fig:county-intensity-map-poverty-unemp"></span>
+<img src="02-eda_files/figure-html/county-intensity-map-poverty-unemp-1.png" alt="Plot A: Intensity map of poverty rate (percent). Plot B: Intensity map of the unemployment rate (percent)." width="70%" />
+<p class="caption">
 Figure 2.23: Plot A: Intensity map of poverty rate (percent). Plot B: Intensity map of the unemployment rate (percent).
 </p>
 </div>
-<div class="figure" style="text-align: center">
-<span id="fig:county-intensity-map-homeownership-median-income"></span>
-<img src="02-eda_files/figure-html/county-intensity-map-homeownership-median-income-1.png" alt="Plot A: Intensity map of homeownership rate (percent). Plot B: Intensity map of median household income ($1000s)." width="70%"><p class="caption">
+<div class="figure" style="text-align: center"><span id="fig:county-intensity-map-homeownership-median-income"></span>
+<img src="02-eda_files/figure-html/county-intensity-map-homeownership-median-income-1.png" alt="Plot A: Intensity map of homeownership rate (percent). Plot B: Intensity map of median household income ($1000s)." width="70%" />
+<p class="caption">
 Figure 2.24: Plot A: Intensity map of homeownership rate (percent). Plot B: Intensity map of median household income ($1000s).
 </p>
 </div>
 </div>
 </div>
 <div id="r-exploratory-data-analysis" class="section level2" number="2.4">
-<h2>
-<span class="header-section-number">2.4</span> <code>R</code>: Exploratory data analysis<a class="anchor" aria-label="anchor" href="#r-exploratory-data-analysis"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">2.4</span> <code>R</code>: Exploratory data analysis</h2>
 <div id="interactive-r-tutorials-1" class="section level3" number="2.4.1">
-<h3>
-<span class="header-section-number">2.4.1</span> Interactive R tutorials<a class="anchor" aria-label="anchor" href="#interactive-r-tutorials-1"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">2.4.1</span> Interactive R tutorials</h3>
 <p>Navigate the concepts you’ve learned in this chapter in R using the following self-paced tutorials.
 All you need is your browser to get started!</p>
 <div class="alltutorials">
@@ -2135,9 +2502,7 @@ All you need is your browser to get started!</p>
 <p>You can also access the full list of tutorials supporting this book <a href="https://openintrostat.github.io/ims-tutorials/">here</a>.</p>
 </div>
 <div id="r-labs-1" class="section level3" number="2.4.2">
-<h3>
-<span class="header-section-number">2.4.2</span> R labs<a class="anchor" aria-label="anchor" href="#r-labs-1"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">2.4.2</span> R labs</h3>
 <p>Further apply the concepts you’ve learned in this chapter in R with computational labs that walk you through a data analysis case study.</p>
 <div class="singlelab">
 <p><a href="http://openintrostat.github.io/oilabs-tidy/02_intro_to_data/intro_to_data.html">Intro to data - Flight delays</a></p>
@@ -2148,18 +2513,15 @@ All you need is your browser to get started!</p>
 </div>
 </div>
 <div id="chp2-review" class="section level2" number="2.5">
-<h2>
-<span class="header-section-number">2.5</span> Chapter 2 review<a class="anchor" aria-label="anchor" href="#chp2-review"><i class="fas fa-link"></i></a>
-</h2>
+<h2><span class="header-section-number">2.5</span> Chapter 2 review</h2>
 <div id="terms-1" class="section level3" number="2.5.1">
-<h3>
-<span class="header-section-number">2.5.1</span> Terms<a class="anchor" aria-label="anchor" href="#terms-1"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">2.5.1</span> Terms</h3>
 <p>We introduced the following terms in the chapter.
 If you’re not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
 We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate.
 However you should be able to easily spot them as <strong>bolded text</strong>.</p>
-<div class="inline-table"><table class="table table-sm"><tbody>
+<table>
+<tbody>
 <tr>
 <td style="text-align:left;">
 average
@@ -2341,16 +2703,15 @@ standard deviation
 <td style="text-align:left;">
 </td>
 </tr>
-</tbody></table></div>
+</tbody>
+</table>
 </div>
 <div id="data-visualization-summary" class="section level3" number="2.5.2">
-<h3>
-<span class="header-section-number">2.5.2</span> Data visualization summary<a class="anchor" aria-label="anchor" href="#data-visualization-summary"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">2.5.2</span> Data visualization summary</h3>
 <p>Figure <a href="eda.html#fig:decision-tree-plots">2.25</a> presents a decision tree for deciding which type of plot is most appropriate for a given number and types of variables. In the next chapter, we’ll further explore how to model the association between two quantitative variables, called regression. In Chapter <a href="mult-reg.html#mult-reg">4</a>, we’ll look at exploratory data analysis methods for more than two variables.</p>
-<div class="figure" style="text-align: center">
-<span id="fig:decision-tree-plots"></span>
-<img src="02-eda_files/figure-html/decision-tree-plots-1.png" alt="Decision tree for determining an appropriate plot  given a number of variables and their types." width="70%"><p class="caption">
+<div class="figure" style="text-align: center"><span id="fig:decision-tree-plots"></span>
+<img src="02-eda_files/figure-html/decision-tree-plots-1.png" alt="Decision tree for determining an appropriate plot  given a number of variables and their types." width="70%" />
+<p class="caption">
 Figure 2.25: Decision tree for determining an appropriate plot given a number of variables and their types.
 </p>
 </div>
@@ -2371,15 +2732,14 @@ Figure 2.25: Decision tree for determining an appropriate plot given a number of
 <!--     )  -->
 </div>
 <div id="summary-measures" class="section level3" number="2.5.3">
-<h3>
-<span class="header-section-number">2.5.3</span> Summary measures<a class="anchor" aria-label="anchor" href="#summary-measures"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">2.5.3</span> Summary measures</h3>
 <p>Though some of these summary measures will be covered in later chapters, Table <a href="eda.html#summary-measures">2.5.3</a> provides a comprehensive summary of these measures according to the type(s) of variable(s) which they summarize.</p>
-<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:summary-measures">Table 2.12: </span>Summary measures for different types of variables covered in this textbook and Sections where they appear. A binary variable is a categorical variable with only two categories.
 </caption>
-<thead><tr>
+<thead>
+<tr>
 <th style="text-align:left;">
 Sections
 </th>
@@ -2392,7 +2752,8 @@ Explanatory Variable
 <th style="text-align:left;">
 Summary Measure(s)
 </th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
@@ -2479,24 +2840,25 @@ Correlation, R-squared, regression slope
 </td>
 </tr>
 </tbody>
-</table></div>
+</table>
 </div>
 <div id="notation-summary" class="section level3" number="2.5.4">
-<h3>
-<span class="header-section-number">2.5.4</span> Notation summary<a class="anchor" aria-label="anchor" href="#notation-summary"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">2.5.4</span> Notation summary</h3>
 <p>In the field of statistics, summary measures that summarize a sample of data are called <strong>statistics</strong>. Numbers that summarize an entire population are called <strong>parameters</strong>. You can remember
 this distinction by looking at the first letter of each term:</p>
 <blockquote>
-<p><strong><em>S</em></strong>tatistics summarize <strong><em>S</em></strong>amples.<br><strong><em>P</em></strong>arameters summarize <strong><em>P</em></strong>opulations.</p>
+<p><strong><em>S</em></strong>tatistics summarize <strong><em>S</em></strong>amples.<br />
+<strong><em>P</em></strong>arameters summarize <strong><em>P</em></strong>opulations.</p>
 </blockquote>
 <p>We typically use Roman letters to symbolize statistics (e.g., <span class="math inline">\(\bar{x}\)</span>, <span class="math inline">\(\hat{p}\)</span>), and Greek letters to symbolize parameters (e.g., <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\pi\)</span>).</p>
-<div class="inline-table"><table class="table table-sm">
-<thead><tr class="header">
+<table>
+<thead>
+<tr class="header">
 <th align="left">Summary Measure</th>
 <th align="center">Statistic</th>
 <th align="center">Parameter</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr class="odd">
 <td align="left">Sample size</td>
@@ -2529,12 +2891,10 @@ this distinction by looking at the first letter of each term:</p>
 <td align="center"><span class="math inline">\(\beta_0\)</span></td>
 </tr>
 </tbody>
-</table></div>
+</table>
 </div>
 <div id="key-ideas-1" class="section level3" number="2.5.5">
-<h3>
-<span class="header-section-number">2.5.5</span> Key ideas<a class="anchor" aria-label="anchor" href="#key-ideas-1"><i class="fas fa-link"></i></a>
-</h3>
+<h3><span class="header-section-number">2.5.5</span> Key ideas</h3>
 <p>We’ve encountered a variety of univariate (one variable) and bivariate (two variable) summary statistics and data visualization methods in this chapter. In addition to the notation, summary statistics, and data visualization method summaries above, here are the key ideas from this chapter.</p>
 <ul>
 <li><p>Probabilities and sample proportions can be either <strong>unconditional</strong> or <strong>conditional</strong>. An unconditional probability or proportion is a proportion measured on the entire population; whereas a conditional probability or proportion is a proportion measured on a subgroup of the population. When computing probabilities using a contingency table, unconditional probabilities are computed by dividing a cell total by the overall total; conditional probabilities are computed by dividing a cell total by a row or column total.</p></li>
@@ -2542,87 +2902,106 @@ this distinction by looking at the first letter of each term:</p>
 <li><p>When describing the <strong>distribution</strong> of a single quantitative variable on a histogram, dot plot, or box plot, we look for (1) center, (2) variability, (3) shape, and (4) outliers.</p></li>
 <li><p>When describing the relationship shown between two quantitative variables in a scatterplot, we look for (1) form, (2) direction, (3) strength, and (4) outliers.</p></li>
 </ul>
-</div>
-</div>
-</div>
-
-  <div class="chapter-nav">
-<div class="prev"><a href="intro-to-data.html"><span class="header-section-number">1</span> Introduction to data</a></div>
-<div class="next"><a href="cor-reg.html"><span class="header-section-number">3</span> Correlation and regression</a></div>
-</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#eda"><span class="header-section-number">2</span> Exploratory data analysis</a></li>
-<li>
-<a class="nav-link" href="#categorical-data"><span class="header-section-number">2.1</span> Exploring categorical data</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#contingency-tables-and-conditional-proportions"><span class="header-section-number">2.1.1</span> Contingency tables and conditional proportions</a></li>
-<li><a class="nav-link" href="#bar-plots-and-mosaic-plots"><span class="header-section-number">2.1.2</span> Bar plots and mosaic plots</a></li>
-<li><a class="nav-link" href="#why-not-pie-charts"><span class="header-section-number">2.1.3</span> Why not pie charts?</a></li>
-<li><a class="nav-link" href="#simpson"><span class="header-section-number">2.1.4</span> Simpson’s paradox</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#probability-with-tables"><span class="header-section-number">2.2</span> Probability with tables</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#defining-probability"><span class="header-section-number">2.2.1</span> Defining probability</a></li>
-<li><a class="nav-link" href="#finding-probabilities-with-tables"><span class="header-section-number">2.2.2</span> Finding probabilities with tables</a></li>
-<li><a class="nav-link" href="#probability-notation"><span class="header-section-number">2.2.3</span> Probability notation</a></li>
-<li><a class="nav-link" href="#diagnostic-testing"><span class="header-section-number">2.2.4</span> Diagnostic testing</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#quantitative-data"><span class="header-section-number">2.3</span> Exploring quantitative data</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#scatterplots"><span class="header-section-number">2.3.1</span> Scatterplots for paired data</a></li>
-<li><a class="nav-link" href="#dotplots"><span class="header-section-number">2.3.2</span> Dot plots and the mean</a></li>
-<li><a class="nav-link" href="#histograms"><span class="header-section-number">2.3.3</span> Histograms and shape</a></li>
-<li><a class="nav-link" href="#variance-sd"><span class="header-section-number">2.3.4</span> Variance and standard deviation</a></li>
-<li><a class="nav-link" href="#box-plots-quartiles-and-the-median"><span class="header-section-number">2.3.5</span> Box plots, quartiles, and the median</a></li>
-<li><a class="nav-link" href="#describing-and-comparing-quantitative-distributions"><span class="header-section-number">2.3.6</span> Describing and comparing quantitative distributions</a></li>
-<li><a class="nav-link" href="#robust-statistics"><span class="header-section-number">2.3.7</span> Robust statistics</a></li>
-<li><a class="nav-link" href="#transforming-data-special-topic"><span class="header-section-number">2.3.8</span> Transforming data (special topic)</a></li>
-<li><a class="nav-link" href="#mapping-data-special-topic"><span class="header-section-number">2.3.9</span> Mapping data (special topic)</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#r-exploratory-data-analysis"><span class="header-section-number">2.4</span> R: Exploratory data analysis</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#interactive-r-tutorials-1"><span class="header-section-number">2.4.1</span> Interactive R tutorials</a></li>
-<li><a class="nav-link" href="#r-labs-1"><span class="header-section-number">2.4.2</span> R labs</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#chp2-review"><span class="header-section-number">2.5</span> Chapter 2 review</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#terms-1"><span class="header-section-number">2.5.1</span> Terms</a></li>
-<li><a class="nav-link" href="#data-visualization-summary"><span class="header-section-number">2.5.2</span> Data visualization summary</a></li>
-<li><a class="nav-link" href="#summary-measures"><span class="header-section-number">2.5.3</span> Summary measures</a></li>
-<li><a class="nav-link" href="#notation-summary"><span class="header-section-number">2.5.4</span> Notation summary</a></li>
-<li><a class="nav-link" href="#key-ideas-1"><span class="header-section-number">2.5.5</span> Key ideas</a></li>
-</ul>
-</li>
-</ul>
-
-      <div class="book-extra">
-        <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/MTstateIntroStats/IntroStatTextbook/blob/master/02-eda.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/MTstateIntroStats/IntroStatTextbook/edit/master/02-eda.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
-        </ul>
-</div>
-    </nav>
-</div>
 
 </div>
-</div> <!-- .container -->
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Agresti2007" class="csl-entry">
+Agresti, Alan. 2007. <em>An Introduction to Categorical Data Analysis</em>. 2nd ed. Wiley.
+</div>
+<div id="ref-bayes2002" class="csl-entry">
+Slawson, D C, and A F Shaughnessy. 2002. <span>“Teaching Information Mastery: The Case of Baby Jeff and the Importance of Bayes’ Theorem.”</span> <em>Family Medicine</em> 34 (2): 140–42.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="23">
+<li id="fn23"><p>The <code>email</code> data set found in the <code>openintro</code> package defines the variable <code>spam</code> as 0 (not spam) or 1 (spam), and <code>format</code> as 0 (not HTML) or 1 (HTML). When variables are defined in this way—coded as the numbers 0 and 1 rather than the category names—they are called <strong>indicator variables</strong>* or <strong>dummy variables</strong>. In this section of the textbook, we have re-coded <code>spam</code> to be the variable <code>type</code>, which takes on values “not spam” or “spam,” and we have re-coded the variable <code>format</code> to take on values “not HTML” or “HTML.”<a href="eda.html#fnref23" class="footnote-back">↩︎</a></p></li>
+<li id="fn24"><p>Since the sample sizes in the three <code>number</code> categories differ (549 emails with no numbers; 2827 emails with a small number; 545 emails with a big number), we need to compare the <em>proportion</em> of spam emails across categories rather than the count.<a href="eda.html#fnref24" class="footnote-back">↩︎</a></p></li>
+<li id="fn25"><p>0.458 represents the proportion of spam emails that had a small number. 0.058 represents the fraction of emails with small numbers that are spam.<a href="eda.html#fnref25" class="footnote-back">↩︎</a></p></li>
+<li id="fn26"><p>0.139 represents the fraction of non-spam email that had a big number. 0.908 represents the fraction of emails with big numbers that are non-spam emails.<a href="eda.html#fnref26" class="footnote-back">↩︎</a></p></li>
+<li id="fn27"><p>The column proportions in Table <a href="#colPropSpamNumber"><strong>??</strong></a> will probably be most useful, which makes it easier to see that emails with small numbers are spam about 5.9% of the time (relatively rare). We would also see that about 27.1% of emails with no numbers are spam, and 9.2% of emails with big numbers are spam.<a href="eda.html#fnref27" class="footnote-back">↩︎</a></p></li>
+<li id="fn28"><p>The numbers found in emails (<code>number</code>) is the explanatory variable; whether the email is spam or not spam is the response variable.<a href="eda.html#fnref28" class="footnote-back">↩︎</a></p></li>
+<li id="fn29"><p>R code from User:Schutz for Wikipedia on 28 August 2007<a href="eda.html#fnref29" class="footnote-back">↩︎</a></p></li>
+<li id="fn30"><p>This example is adapted from <span class="citation"><a href="#ref-Agresti2007" role="doc-biblioref">Agresti</a> (<a href="#ref-Agresti2007" role="doc-biblioref">2007</a>)</span> (p. 49-52).<a href="eda.html#fnref30" class="footnote-back">↩︎</a></p></li>
+<li id="fn31"><p>Yes. The conditional proportions of receiving the death penalty given race differ: 11% of Caucasian defendants received the death penalty, versus 8% of African American defendants received the death penalty.<a href="eda.html#fnref31" class="footnote-back">↩︎</a></p></li>
+<li id="fn32"><p>The confounding variable we will consider here is race of the victim. Other confounding variables may include socioeconomic status (since SES is related to race, and a higher SES may allow you to hire a better lawyer—though this explanation is opposite of the association we see in the data) or district (the racial makeup would differ across districts, and maybe districts with a larger proportion of Caucasians also tend to invoke the death penalty more often).<a href="eda.html#fnref32" class="footnote-back">↩︎</a></p></li>
+<li id="fn33"><p>1. <span class="math inline">\(870/1000 = 0.87\)</span>; 2. <span class="math inline">\(190/1000 = 0.19\)</span>; 3. <span class="math inline">\(120/130 = 0.923\)</span><a href="eda.html#fnref33" class="footnote-back">↩︎</a></p></li>
+<li id="fn34"><p>Probabilities in (1) and (2) are unconditional; the probability asked for in (3) is conditional.<a href="eda.html#fnref34" class="footnote-back">↩︎</a></p></li>
+<li id="fn35"><p>1. sensitivity = <span class="math inline">\(P(T | D)\)</span>; 2. specificity = <span class="math inline">\(P(T^C | D^C)\)</span>; 3. prevalence = <span class="math inline">\(P(D)\)</span><a href="eda.html#fnref35" class="footnote-back">↩︎</a></p></li>
+<li id="fn36"><p>If the prevalence were 1/3500, the probability of actually having muscular dystrophy given that the baby tests positive is 0.588 (slightly better than just flipping a coin for a test!). With prevalence of 1/15000, this probability decreases to 0.250.<a href="eda.html#fnref36" class="footnote-back">↩︎</a></p></li>
+<li id="fn37"><p>Answers may vary. Scatterplots are helpful in quickly spotting associations relating variables, whether those associations come in the form of simple trends or whether those relationships are more complex.<a href="eda.html#fnref37" class="footnote-back">↩︎</a></p></li>
+<li id="fn38"><p>Consider the case where your vertical axis represents something “good” and your horizontal axis represents something that is only good in moderation. Health and water consumption fit this description: we require some water to survive, but consume too much and it become toxic and can kill a person.<a href="eda.html#fnref38" class="footnote-back">↩︎</a></p></li>
+<li id="fn39"><p>For
+more practice with this concept of the mean as a balancing point, see this <a href="https://www.khanacademy.org/math/ap-statistics/summarizing-quantitative-data-ap/mean-median-more/a/mean-as-the-balancing-point">Khan Academy article</a>.<a href="eda.html#fnref39" class="footnote-back">↩︎</a></p></li>
+<li id="fn40"><p><span class="math inline">\(x_1\)</span> corresponds to the interest rate for the first loan in the sample, <span class="math inline">\(x_2\)</span> to the second loan’s interest rate, and <span class="math inline">\(x_i\)</span> corresponds to the interest rate for the <span class="math inline">\(i^{th}\)</span> loan in the data set. For example, if <span class="math inline">\(i = 4\)</span>, then we’re examining <span class="math inline">\(x_4\)</span>, which refers to the fourth observation in the data set.<a href="eda.html#fnref40" class="footnote-back">↩︎</a></p></li>
+<li id="fn41"><p>The sample size was <span class="math inline">\(n = 50\)</span>.<a href="eda.html#fnref41" class="footnote-back">↩︎</a></p></li>
+<li id="fn42"><p>Other ways to describe data that are right skewed: skewed to the right, skewed to the high end, or skewed to the positive end.<a href="eda.html#fnref42" class="footnote-back">↩︎</a></p></li>
+<li id="fn43"><p>The interest rates for individual loans.<a href="eda.html#fnref43" class="footnote-back">↩︎</a></p></li>
+<li id="fn44"><p>Unimodal Remember that <em>uni</em> stands for 1 (think <em>uni</em>cycles). Similarly, <em>bi</em> stands for 2 (think <em>bi</em>cycles). We are hoping a <em>multi</em>cycle will be invented to complete this analogy.<a href="eda.html#fnref44" class="footnote-back">↩︎</a></p></li>
+<li id="fn45"><p>There might be two height groups visible in the data set: one of the students and one of the adults. That is, the data are probably bimodal.<a href="eda.html#fnref45" class="footnote-back">↩︎</a></p></li>
+<li id="fn46"><p>Figure <a href="eda.html#fig:severalDiffDistWithSdOf1">2.17</a> shows three distributions that look quite different, but all have the same mean, variance, and standard deviation. Using modality, we can distinguish between the first plot (bimodal) and the last two (unimodal). Using skewness, we can distinguish between the last plot (right skewed) and the first two. While a picture, like a histogram, tells a more complete story, we can use modality and shape (symmetry/skew) to characterize basic information about a distribution.<a href="eda.html#fnref46" class="footnote-back">↩︎</a></p></li>
+<li id="fn47"><p>The first and third quartiles are called quartiles because, together with the median (the second quartile), these three values break the data into four groups of equal size–the lowest 25%, next lowest 25%, next lowest 25%, and highest 25%.<a href="eda.html#fnref47" class="footnote-back">↩︎</a></p></li>
+<li id="fn48"><p>Since <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span> capture the middle 50% of the data and the median splits the data in the middle, 25% of the data fall between <span class="math inline">\(Q_1\)</span> and the median, and another 25% falls between the median and <span class="math inline">\(Q_3\)</span>.<a href="eda.html#fnref48" class="footnote-back">↩︎</a></p></li>
+<li id="fn49"><p>These visual estimates will vary a little from one person to the next: <span class="math inline">\(Q_1 \approx\)</span> 8%, <span class="math inline">\(Q_3 \approx\)</span> 14%, IQR <span class="math inline">\(\approx\)</span> 14 - 8 = 6%.<a href="eda.html#fnref49" class="footnote-back">↩︎</a></p></li>
+<li id="fn50"><p>(a) Mean is affected more. (b) Standard deviation is affected more.<a href="eda.html#fnref50" class="footnote-back">↩︎</a></p></li>
+<li id="fn51"><p>If we are looking to simply understand what a typical individual loan looks like, the median is probably more useful. However, if the goal is to understand something that scales well, such as the total amount of money we might need to have on hand if we were to offer 1,000 loans, then the mean would be more useful.<a href="eda.html#fnref51" class="footnote-back">↩︎</a></p></li>
+<li id="fn52"><p>Note: answers will vary. There is some correspondence between high earning and metropolitan areas, where we can see darker spots (higher median household income), though there are several exceptions. You might look for large cities you are familiar with and try to spot them on the map as dark spots.<a href="eda.html#fnref52" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
 
-<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
-
-  <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Montana State Introductory Statistics with R</strong>: Spring 2021" was written by Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager. </p>
+          </div>
+        </div>
+      </div>
+<a href="intro-to-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="cor-reg.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
   </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": false,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/MTstateIntroStats/IntroStatTextbook/edit/master/02-eda.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["stat216-textbook.pdf"],
+"toc": {
+"collapse": "subsection",
+"toc_depth": 4,
+"toc_float": true
+}
+});
+});
+</script>
 
-  <div class="col-12 col-md-6 mt-3">
-    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
-  </div>
-
-</div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -2636,4 +3015,5 @@ this distinction by looking at the first letter of each term:</p>
   })();
 </script>
 </body>
+
 </html>
