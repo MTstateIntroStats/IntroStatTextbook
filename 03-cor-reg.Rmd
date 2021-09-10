@@ -1093,36 +1093,36 @@ For instance, if a financial firm ignored the largest market swings -- the "outl
 
 ## `R`: Correlation and regression
 
-### Interactive R tutorials {#intro-linear-models-r-tutorial}
+<!-- ### Interactive R tutorials {#intro-linear-models-r-tutorial} -->
 
-Navigate the concepts you've learned in this chapter in R using the following self-paced tutorials. 
-All you need is your browser to get started!
+<!-- Navigate the concepts you've learned in this chapter in R using the following self-paced tutorials.  -->
+<!-- All you need is your browser to get started! -->
 
-::: {.alltutorials}
-[Tutorial 3: Introduction to linear models](https://openintrostat.github.io/ims-tutorials/03-introduction-to-linear-models/)
-:::
+<!-- ::: {.alltutorials} -->
+<!-- [Tutorial 3: Introduction to linear models](https://openintrostat.github.io/ims-tutorials/03-introduction-to-linear-models/) -->
+<!-- ::: -->
 
-::: {.singletutorial}
-[Tutorial 3 - Lesson 1: Visualizing two variables](https://openintro.shinyapps.io/ims-03-introduction-to-linear-models-01/)
-:::
+<!-- ::: {.singletutorial} -->
+<!-- [Tutorial 3 - Lesson 1: Visualizing two variables](https://openintro.shinyapps.io/ims-03-introduction-to-linear-models-01/) -->
+<!-- ::: -->
 
-::: {.singletutorial}
-[Tutorial 2 - Lesson 2: Correlation](https://openintro.shinyapps.io/ims-03-introduction-to-linear-models-02/)
-:::
+<!-- ::: {.singletutorial} -->
+<!-- [Tutorial 2 - Lesson 2: Correlation](https://openintro.shinyapps.io/ims-03-introduction-to-linear-models-02/) -->
+<!-- ::: -->
 
-::: {.singletutorial}
-[Tutorial 2 - Lesson 3: Simple linear regression](https://openintro.shinyapps.io/ims-03-introduction-to-linear-models-03/)
-:::
+<!-- ::: {.singletutorial} -->
+<!-- [Tutorial 2 - Lesson 3: Simple linear regression](https://openintro.shinyapps.io/ims-03-introduction-to-linear-models-03/) -->
+<!-- ::: -->
 
-::: {.singletutorial}
-[Tutorial 2 - Lesson 4: Interpreting regression models](https://openintro.shinyapps.io/ims-03-introduction-to-linear-models-04/)
-:::
+<!-- ::: {.singletutorial} -->
+<!-- [Tutorial 2 - Lesson 4: Interpreting regression models](https://openintro.shinyapps.io/ims-03-introduction-to-linear-models-04/) -->
+<!-- ::: -->
 
-::: {.singletutorial}
-[Tutorial 2 - Lesson 5: Model fit](https://openintro.shinyapps.io/ims-03-introduction-to-linear-models-05/)
-:::
+<!-- ::: {.singletutorial} -->
+<!-- [Tutorial 2 - Lesson 5: Model fit](https://openintro.shinyapps.io/ims-03-introduction-to-linear-models-05/) -->
+<!-- ::: -->
 
-You can also access the full list of tutorials supporting this book [here](https://openintrostat.github.io/ims-tutorials/).
+<!-- You can also access the full list of tutorials supporting this book [here](https://openintrostat.github.io/ims-tutorials/). -->
 
 ### R labs
 

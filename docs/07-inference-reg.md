@@ -814,36 +814,36 @@ help file for the `regression_test` function.
 <br>
 
 
-### Interactive `R` tutorials
+<!-- ### Interactive `R` tutorials -->
 
-Navigate the concepts you've learned in this chapter in `R` using the following self-paced tutorials. 
-All you need is your browser to get started!
+<!-- Navigate the concepts you've learned in this chapter in `R` using the following self-paced tutorials.  -->
+<!-- All you need is your browser to get started! -->
 
-::: {.alltutorials}
-[Tutorial 8: Inference for regression](https://openintrostat.github.io/ims-tutorials/08-inference-for-regression/)
-:::
+<!-- ::: {.alltutorials} -->
+<!-- [Tutorial 8: Inference for regression](https://openintrostat.github.io/ims-tutorials/08-inference-for-regression/) -->
+<!-- ::: -->
 
-::: {.singletutorial}
-[Tutorial 8 - Lesson 1: Inference in regression](https://openintro.shinyapps.io/ims-08-inference-for-regression-01/)
-:::
+<!-- ::: {.singletutorial} -->
+<!-- [Tutorial 8 - Lesson 1: Inference in regression](https://openintro.shinyapps.io/ims-08-inference-for-regression-01/) -->
+<!-- ::: -->
 
-::: {.singletutorial}
-[Tutorial 8 - Lesson 2: Randomization test for slope](https://openintro.shinyapps.io/ims-08-inference-for-regression-02/)
-:::
+<!-- ::: {.singletutorial} -->
+<!-- [Tutorial 8 - Lesson 2: Randomization test for slope](https://openintro.shinyapps.io/ims-08-inference-for-regression-02/) -->
+<!-- ::: -->
 
-::: {.singletutorial}
-[Tutorial 8 - Lesson 3: t-test for slope](https://openintro.shinyapps.io/ims-08-inference-for-regression-03/)
-:::
+<!-- ::: {.singletutorial} -->
+<!-- [Tutorial 8 - Lesson 3: t-test for slope](https://openintro.shinyapps.io/ims-08-inference-for-regression-03/) -->
+<!-- ::: -->
 
-::: {.singletutorial}
-[Tutorial 8 - Lesson 4: Checking technical conditions for slope inference](https://openintro.shinyapps.io/ims-08-inference-for-regression-04/)
-:::
+<!-- ::: {.singletutorial} -->
+<!-- [Tutorial 8 - Lesson 4: Checking technical conditions for slope inference](https://openintro.shinyapps.io/ims-08-inference-for-regression-04/) -->
+<!-- ::: -->
 
-::: {.singletutorial}
-[Tutorial 8 - Lesson 5: Inference beyond the simple linear regression model](https://openintro.shinyapps.io/ims-08-inference-for-regression-05/)
-:::
+<!-- ::: {.singletutorial} -->
+<!-- [Tutorial 8 - Lesson 5: Inference beyond the simple linear regression model](https://openintro.shinyapps.io/ims-08-inference-for-regression-05/) -->
+<!-- ::: -->
 
-You can also access the full list of tutorials supporting this book [here](https://openintrostat.github.io/ims-tutorials/).
+<!-- You can also access the full list of tutorials supporting this book [here](https://openintrostat.github.io/ims-tutorials/). -->
 
 ### `R` labs
 

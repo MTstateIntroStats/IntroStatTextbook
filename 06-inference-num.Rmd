@@ -2943,32 +2943,32 @@ help file for the `paired_test` function.
 
 
 
-### Interactive R tutorials
+<!-- ### Interactive R tutorials -->
 
-Navigate the concepts you've learned in this chapter in R using the following self-paced tutorials. 
-All you need is your browser to get started!
+<!-- Navigate the concepts you've learned in this chapter in R using the following self-paced tutorials.  -->
+<!-- All you need is your browser to get started! -->
 
-::: {.alltutorials}
-[Tutorial 7: Inference for categorical responses](https://openintrostat.github.io/ims-tutorials/07-inference-for-numerical-responses/)
-:::
+<!-- ::: {.alltutorials} -->
+<!-- [Tutorial 7: Inference for categorical responses](https://openintrostat.github.io/ims-tutorials/07-inference-for-numerical-responses/) -->
+<!-- ::: -->
 
-::: {.singletutorial}
-[Tutorial 7 - Lesson 1: Bootstrapping for estimating a parameter](https://openintro.shinyapps.io/ims-07-inference-for-numerical-responses-01/)
-:::
+<!-- ::: {.singletutorial} -->
+<!-- [Tutorial 7 - Lesson 1: Bootstrapping for estimating a parameter](https://openintro.shinyapps.io/ims-07-inference-for-numerical-responses-01/) -->
+<!-- ::: -->
 
-::: {.singletutorial}
-[Tutorial 7 - Lesson 2: Introducing the t-distribution](https://openintro.shinyapps.io/ims-07-inference-for-numerical-responses-02/)
-:::
+<!-- ::: {.singletutorial} -->
+<!-- [Tutorial 7 - Lesson 2: Introducing the t-distribution](https://openintro.shinyapps.io/ims-07-inference-for-numerical-responses-02/) -->
+<!-- ::: -->
 
-::: {.singletutorial}
-[Tutorial 7 - Lesson 3: Inference for difference in two means](https://openintro.shinyapps.io/ims-07-inference-for-numerical-responses-03/)
-:::
+<!-- ::: {.singletutorial} -->
+<!-- [Tutorial 7 - Lesson 3: Inference for difference in two means](https://openintro.shinyapps.io/ims-07-inference-for-numerical-responses-03/) -->
+<!-- ::: -->
 
-::: {.singletutorial}
-[Tutorial 7 - Lesson 4: Comparing many means](https://openintro.shinyapps.io/ims-07-inference-for-numerical-responses-04/)
-:::
+<!-- ::: {.singletutorial} -->
+<!-- [Tutorial 7 - Lesson 4: Comparing many means](https://openintro.shinyapps.io/ims-07-inference-for-numerical-responses-04/) -->
+<!-- ::: -->
 
-You can also access the full list of tutorials supporting this book [here](https://openintrostat.github.io/ims-tutorials/).
+<!-- You can also access the full list of tutorials supporting this book [here](https://openintrostat.github.io/ims-tutorials/). -->
 
 ### R labs
 

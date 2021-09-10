@@ -251,7 +251,6 @@ dataframes-in-r
 datastruc
 using-the-pipe-to-chain
 a-data-wrangling-example
-interactive-r-tutorials
 r-labs
 chp1-review
 terms
@@ -278,7 +277,6 @@ robust-statistics
 transforming-data-special-topic
 mapping-data-special-topic
 r-exploratory-data-analysis
-interactive-r-tutorials-1
 r-labs-1
 chp2-review
 terms-1
@@ -303,7 +301,6 @@ categprical-predictor-two-levels
 outliers-in-regression
 types-of-outliers
 r-correlation-and-regression
-intro-linear-models-r-tutorial
 r-labs-2
 chp3-review
 terms-2
@@ -314,7 +311,6 @@ simpsons-paradox-revisited
 regression-multiple-predictors
 ind-and-cat-predictors
 many-predictors-in-a-model
-interactive-r-tutorials-2
 r-labs-3
 chp4-review
 terms-3
@@ -354,7 +350,6 @@ summary-of-z-procedures
 r-inference-for-categorical-data
 inference-using-r-and-catstats
 catstats-function-summary
-interactive-r-tutorials-3
 r-labs-4
 chp5-review
 terms-4
@@ -376,7 +371,6 @@ summary-of-t-procedures
 r-inference-for-quantitative-data
 inference-using-r-and-catstats-1
 catstats-function-summary-1
-interactive-r-tutorials-4
 r-labs-5
 chp6-review
 terms-5
@@ -389,7 +383,6 @@ tech-cond-linmod
 r-inference-for-regression
 inference-using-r-and-catstats-2
 catstats-function-summary-2
-interactive-r-tutorials-5
 r-labs-6
 chp7-review
 terms-6

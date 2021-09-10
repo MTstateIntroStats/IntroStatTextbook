@@ -4700,45 +4700,45 @@ In the previous section, you were introduced to four new `R` functions in the `c
 <!--  kable_styling() -->
 <!-- ``` -->
 
-### Interactive R tutorials
+<!-- ### Interactive R tutorials -->
 
-Navigate the concepts you've learned in this chapter in R using the following self-paced tutorials. 
-All you need is your browser to get started!
+<!-- Navigate the concepts you've learned in this chapter in R using the following self-paced tutorials.  -->
+<!-- All you need is your browser to get started! -->
 
-::: {.alltutorials}
-[Tutorial 5: Introduction to statistical inference](https://openintrostat.github.io/ims-tutorials/05-introduction-to-statistical-inference/)
-:::
+<!-- ::: {.alltutorials} -->
+<!-- [Tutorial 5: Introduction to statistical inference](https://openintrostat.github.io/ims-tutorials/05-introduction-to-statistical-inference/) -->
+<!-- ::: -->
 
-::: {.singletutorial}
-[Tutorial 5 - Lesson 1: Sampling variability](https://openintro.shinyapps.io/ims-05-introduction-to-statistical-inference-01/)
-:::
+<!-- ::: {.singletutorial} -->
+<!-- [Tutorial 5 - Lesson 1: Sampling variability](https://openintro.shinyapps.io/ims-05-introduction-to-statistical-inference-01/) -->
+<!-- ::: -->
 
-::: {.singletutorial}
-[Tutorial 5 - Lesson 2: Randomization test](https://openintro.shinyapps.io/ims-05-introduction-to-statistical-inference-02/)
-:::
+<!-- ::: {.singletutorial} -->
+<!-- [Tutorial 5 - Lesson 2: Randomization test](https://openintro.shinyapps.io/ims-05-introduction-to-statistical-inference-02/) -->
+<!-- ::: -->
 
-::: {.singletutorial}
-[Tutorial 5 - Lesson 3: Errors in hypothesis testing](https://openintro.shinyapps.io/ims-05-introduction-to-statistical-inference-03/)
-:::
+<!-- ::: {.singletutorial} -->
+<!-- [Tutorial 5 - Lesson 3: Errors in hypothesis testing](https://openintro.shinyapps.io/ims-05-introduction-to-statistical-inference-03/) -->
+<!-- ::: -->
 
-::: {.singletutorial}
-[Tutorial 5 - Lesson 4: Parameters and confidence intervals](https://openintro.shinyapps.io/ims-05-introduction-to-statistical-inference-04/)
-:::
+<!-- ::: {.singletutorial} -->
+<!-- [Tutorial 5 - Lesson 4: Parameters and confidence intervals](https://openintro.shinyapps.io/ims-05-introduction-to-statistical-inference-04/) -->
+<!-- ::: -->
 
 
-::: {.alltutorials}
-[Tutorial 6: Inference for categorical responses](https://openintrostat.github.io/ims-tutorials/06-inference-for-categorical-responses/)
-:::
+<!-- ::: {.alltutorials} -->
+<!-- [Tutorial 6: Inference for categorical responses](https://openintrostat.github.io/ims-tutorials/06-inference-for-categorical-responses/) -->
+<!-- ::: -->
 
-::: {.singletutorial}
-[Tutorial 6 - Lesson 1: Inference for a single proportion](https://openintro.shinyapps.io/ims-06-inference-for-categorical-responses-01/)
-:::
+<!-- ::: {.singletutorial} -->
+<!-- [Tutorial 6 - Lesson 1: Inference for a single proportion](https://openintro.shinyapps.io/ims-06-inference-for-categorical-responses-01/) -->
+<!-- ::: -->
 
-::: {.singletutorial}
-[Tutorial 6 - Lesson 2: Hypothesis tests to compare proportions](https://openintro.shinyapps.io/ims-06-inference-for-categorical-responses-02/)
-:::
+<!-- ::: {.singletutorial} -->
+<!-- [Tutorial 6 - Lesson 2: Hypothesis tests to compare proportions](https://openintro.shinyapps.io/ims-06-inference-for-categorical-responses-02/) -->
+<!-- ::: -->
 
-You can also access the full list of tutorials supporting this book [here](https://openintrostat.github.io/ims-tutorials/).
+<!-- You can also access the full list of tutorials supporting this book [here](https://openintrostat.github.io/ims-tutorials/). -->
 
 ### R labs
 

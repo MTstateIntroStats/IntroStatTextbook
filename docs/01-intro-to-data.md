@@ -1400,32 +1400,32 @@ This can be accomplished using the `ifelse()` function in `R`. Look at its helpf
 
 
 
-### Interactive R tutorials
+<!-- ### Interactive R tutorials -->
 
-Navigate the concepts you've learned in this chapter in R using the following self-paced tutorials. 
-All you need is your browser to get started!
+<!-- Navigate the concepts you've learned in this chapter in R using the following self-paced tutorials.  -->
+<!-- All you need is your browser to get started! -->
 
-::: {.alltutorials}
-[Tutorial 1: Getting Started with Data](https://openintrostat.github.io/ims-tutorials/01-getting-started-with-data/)
-:::
+<!-- ::: {.alltutorials} -->
+<!-- [Tutorial 1: Getting Started with Data](https://openintrostat.github.io/ims-tutorials/01-getting-started-with-data/) -->
+<!-- ::: -->
 
-::: {.singletutorial}
-[Tutorial 1 - Lesson 1: Language of data](https://openintro.shinyapps.io/ims-01-getting-started-with-data-01/)
-:::
+<!-- ::: {.singletutorial} -->
+<!-- [Tutorial 1 - Lesson 1: Language of data](https://openintro.shinyapps.io/ims-01-getting-started-with-data-01/) -->
+<!-- ::: -->
 
-::: {.singletutorial}
-[Tutorial 1 - Lesson 2: Types of studies](https://openintro.shinyapps.io/ims-01-getting-started-with-data-02/)
-:::
+<!-- ::: {.singletutorial} -->
+<!-- [Tutorial 1 - Lesson 2: Types of studies](https://openintro.shinyapps.io/ims-01-getting-started-with-data-02/) -->
+<!-- ::: -->
 
-::: {.singletutorial}
-[Tutorial 1 - Lesson 3: Sampling strategies and Experimental design](https://openintro.shinyapps.io/ims-01-getting-started-with-data-03/)
-:::
+<!-- ::: {.singletutorial} -->
+<!-- [Tutorial 1 - Lesson 3: Sampling strategies and Experimental design](https://openintro.shinyapps.io/ims-01-getting-started-with-data-03/) -->
+<!-- ::: -->
 
-::: {.singletutorial}
-[Tutorial 1 - Lesson 4: Case study](https://openintro.shinyapps.io/ims-01-getting-started-with-data-04/)
-:::
+<!-- ::: {.singletutorial} -->
+<!-- [Tutorial 1 - Lesson 4: Case study](https://openintro.shinyapps.io/ims-01-getting-started-with-data-04/) -->
+<!-- ::: -->
 
-You can also access the full list of tutorials supporting this book [here](https://openintrostat.github.io/ims-tutorials/).
+<!-- You can also access the full list of tutorials supporting this book [here](https://openintrostat.github.io/ims-tutorials/). -->
 
 ### R labs
 
