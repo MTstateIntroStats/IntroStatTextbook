@@ -319,6 +319,11 @@ large, the normal model will describe the variability in sample means quite well
       then we typically assume the sampling distribution
       of $\bar{x}$ is nearly normal, even if the underlying
       distribution of individual observations is not.
+* $\mathbf{n > 100}$: If the sample size $n$ is at least 100
+      (regardless of the presence of skew or outliers), 
+      we typically assume the sampling distribution
+      of $\bar{x}$ is nearly normal, even if the underlying
+      distribution of individual observations is not.
 :::
 
 
@@ -870,7 +875,7 @@ When the null hypothesis is true and the conditions are met, T has a $t$-distrib
 Conditions:   
   
   * independently observed data    
-  * large samples and no extreme outliers   
+  * large enough sample to satisfy normality   
 ::: 
 
 <!--
