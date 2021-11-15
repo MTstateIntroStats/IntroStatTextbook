@@ -2504,7 +2504,7 @@ smoke.^[You can watch an episode of John Oliver
   \begin{align*}
   \text{point estimate} \ &\pm\  t^{\star}_{df} \times SE(\text{point estimate}) \\
   &\to \\
-  \bar{x}_1 - \bar{x}_2 \ &\pm\  t^{\star}_{df} \times \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_1}}
+  \bar{x}_1 - \bar{x}_2 \ &\pm\  t^{\star}_{df} \times \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}
   \end{align*}
   where $\bar{x}_1$ and $\bar{x}_2$ are the two sample means, $t^{\star}_{df}$
   corresponds to the confidence level and degrees of freedom
