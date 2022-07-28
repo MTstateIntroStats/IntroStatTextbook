@@ -46,6 +46,7 @@ fig:loan50IntRateDens
 fig:sdRuleForIntRate
 fig:severalDiffDistWithSdOf1
 fig:loan-int-rate-boxplot-dotplot
+tab:loan50-int-rate-sorted
 fig:homeownership-interest-boxplots
 fig:loan-int-rate-robust-ex
 tab:robustOrNotTable

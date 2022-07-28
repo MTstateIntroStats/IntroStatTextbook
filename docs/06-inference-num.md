@@ -2517,12 +2517,12 @@ t.test(x = ucla_textbooks_f18$bookstore_new, #Outcomes for first in order of sub
 #> 
 #> data:  ucla_textbooks_f18$bookstore_new and ucla_textbooks_f18$amazon_new
 #> t = 2, df = 67, p-value = 0.02
-#> alternative hypothesis: true difference in means is greater than 0
+#> alternative hypothesis: true mean difference is greater than 0
 #> 95 percent confidence interval:
 #>  0.868   Inf
 #> sample estimates:
-#> mean of the differences 
-#>                    3.58
+#> mean difference 
+#>            3.58
 ```
 
 The output tells you right on top that this is a paired test - if it doesn't, check that you have `paired = TRUE` in your function call.  The next line gives the t-statistic of 2.20, the degrees of freedom df = 67, and the p-value of 0.0156 (You can look back at Section \@ref(paired-mean-math) to see that these are the same values obtained in the example). The point estimate for the mean difference is the final entry: on average, new bookstore books cost $3.58 more than the same books new from Amazon.
@@ -2535,12 +2535,12 @@ The confidence interval given is a one-sided confidence interval, since we have 
 #> 
 #> data:  ucla_textbooks_f18$bookstore_new and ucla_textbooks_f18$amazon_new
 #> t = 2, df = 67, p-value = 0.03
-#> alternative hypothesis: true difference in means is not equal to 0
+#> alternative hypothesis: true mean difference is not equal to 0
 #> 95 percent confidence interval:
 #>  0.334 6.832
 #> sample estimates:
-#> mean of the differences 
-#>                    3.58
+#> mean difference 
+#>            3.58
 ```
 
 You might also have a single variable in your dataset that contains the differences within pairs: we will create this for the textbook data in a variable called `price_diff`.  This format is also usable with the `t.test()` function:
@@ -2788,13 +2788,13 @@ However you should be able to easily spot them as **bolded text**.
   <tr>
    <td style="text-align:left;"> Central Limit Theorem </td>
    <td style="text-align:left;"> paired $t$-test </td>
-   <td style="text-align:left;"> t-distribution </td>
+   <td style="text-align:left;"> T score </td>
    <td style="text-align:left;">  </td>
   </tr>
   <tr>
    <td style="text-align:left;"> degrees of freedom </td>
    <td style="text-align:left;"> paired data </td>
-   <td style="text-align:left;"> T score </td>
+   <td style="text-align:left;"> t-distribution </td>
    <td style="text-align:left;">  </td>
   </tr>
 </tbody>

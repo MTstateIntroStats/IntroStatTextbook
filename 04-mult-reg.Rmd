@@ -346,7 +346,12 @@ How would we write an equation for this regression model?
 
 The equation for the regression model may be written as a model with two predictors: 
 
-$$\widehat{\texttt{interest_rate}} = 11.10 + 1.42 \times \text{verified_income}_{\text{Source Verified}} + 3.25 \times \text{verified_income}_{\text{Verified}}$$ 
+$$
+\begin{align*}
+\widehat{\texttt{interest_rate}} &= 11.10 + 1.42 \times \text{verified_income}_{\text{Source Verified}}\\
+&\qquad\ + 3.25 \times \text{verified_income}_{\text{Verified}}
+\end{align*}
+$$ 
 
 We use the notation $\text{variable}_{\text{level}}$ to represent indicator variables for when the categorical variable takes a particular value. 
 For example, $\text{verified_income}_{\text{Source Verified}}$ would take a value of 1 if
@@ -365,7 +370,11 @@ Using the model for predicting interest rate from income verification type, comp
 
 When `verified_income` takes a value of `Not Verified`, then both indicator functions in the equation for the linear model are set to 0:
 
-$$\widehat{\texttt{interest_rate}} = 11.10 + 1.42 \times 0 + 3.25 \times 0 = 11.10$$
+$$\begin{align*}
+\widehat{\texttt{interest_rate}} &= 1.10 + 1.42 \times 0 \\
+&\qquad\ + 3.25 \times 0 \\
+&= 11.10
+\end{align*}$$
 
 The average interest rate for these borrowers is 11.1%. 
 Because the level does not have its own coefficient and it is the reference value, the indicators for the other levels for this variable all drop out.
@@ -379,7 +388,7 @@ Using the model for predicting interest rate from income verification type, comp
 
 When `verified_income` takes a value of `Source Verified`, then the corresponding variable takes a value of 1 while the other ($\text{verified_income}_{\text{Verified}}$) is 0:
 
-$$\widehat{\texttt{interest_rate}} = = 11.10 + 1.42 \times 1 + 3.25 \times 0 = 12.52$$
+$$\widehat{\texttt{interest_rate}} = 11.10 + 1.42 \times 1 + 3.25 \times 0 = 12.52$$
 
 The average interest rate for these borrowers is 12.52%.
 :::
@@ -427,33 +436,34 @@ While we remain cautious about making any causal interpretations using multiple 
 terms_chp_4 <- c(terms_chp_4, "multiple regression")
 ```
 
-We want to construct a model that accounts for not only for any past bankruptcy or whether the borrower had their income source or amount verified, but simultaneously accounts for all the variables in the `loans` data set: `verified_income`, `debt_to_income`, `credit_util`, `bankruptcy`, `term`, `issue_month`, and `credit_checks`.
+We want to fit a model that accounts for not only for any past bankruptcy or whether the borrower had their income source or amount verified, but simultaneously accounts for all the variables in the `loans` data set: `verified_income`, `debt_to_income`, `credit_util`, `bankruptcy`, `term`, `issue_month`, and `credit_checks`.
 
 $$\begin{align*}
 \widehat{\texttt{interest_rate}}
-    &= \beta_0 +
-        \beta_1\times \texttt{verified_income}_{\texttt{Source Verified}} +
-        \beta_2\times \texttt{verified_income}_{\texttt{Verified}} \\
+    &= b_0 +
+        b_1\times \texttt{verified_income}_{\texttt{Source Verified}} \\
     &\qquad\  +
-        \beta_3\times \texttt{debt_to_income} \\
+        b_2\times \texttt{verified_income}_{\texttt{Verified}} \\
     &\qquad\  +
-        \beta_4 \times \texttt{credit_util} \\
+        b_3\times \texttt{debt_to_income} \\
     &\qquad\  +
-        \beta_5 \times \texttt{bankruptcy} \\
+        b_4 \times \texttt{credit_util} \\
     &\qquad\  +
-        \beta_6 \times \texttt{term} \\
+        b_5 \times \texttt{bankruptcy} \\
     &\qquad\  +
-        \beta_7 \times \texttt{issue_month}_{\texttt{Jan-2018}} +
-        \beta_8 \times \texttt{issue_month}_{\texttt{Mar-2018}} \\
+        b_6 \times \texttt{term} \\
     &\qquad\  +
-        \beta_9 \times \texttt{credit_checks}
+        b_7 \times \texttt{issue_month}_{\texttt{Jan-2018}} \\
+    &\qquad\ +
+        b_8 \times \texttt{issue_month}_{\texttt{Mar-2018}} \\
+    &\qquad\  +
+        b_9 \times \texttt{credit_checks}
 \end{align*}$$ 
 
 This equation represents a holistic approach for modeling all of the variables simultaneously. 
 Notice that there are two coefficients for `verified_income` and also two coefficients for `issue_month`, since both are 3-level categorical variables.
 
-We estimate the parameters $\beta_0$, $\beta_1$, $\beta_2$, $\cdots$, $\beta_9$ in the same way as we did in the case of a single predictor.
-We select $b_0$, $b_1$, $b_2$, $\cdots$, $b_9$ that minimize the sum of the squared residuals: 
+We estimate the coefficients in the same way as we did in the case of a single predictor---we select $b_0$, $b_1$, $b_2$, $\cdots$, $b_9$ that minimize the sum of the squared residuals: 
 
 $$SSE = e_1^2 + e_2^2 + \dots + e_{10000}^2 = \sum_{i=1}^{10000} e_i^2 = \sum_{i=1}^{10000} \left(y_i - \hat{y}_i\right)^2$$
 
@@ -461,7 +471,7 @@ where $y_i$ and $\hat{y}_i$ represent the observed interest rates and their esti
 10,000 residuals are calculated, one for each observation. 
 We typically use a computer to minimize the sum of squares and compute point estimates, as shown in the sample output in
 Table \@ref(tab:loansFullModelOutput). 
-Using this output, we identify the point estimates $b_i$ of each $\beta_i$, just as we did in the one-predictor case.
+Using this output, we identify the point estimates $b_i$ just as we did in the one-predictor case.
 
 ```{r loansFullModelOutput}
 m_full <- lm(interest_rate ~ ., data = loans)
@@ -478,12 +488,13 @@ tidy(m_full) %>%
 ::: {.onebox}
 **Multiple regression model.** 
 
-A multiple regression model is a linear model with many predictors. In general, we write the model as
+A multiple regression model is a linear model with many predictors. In general,
+we write the fitted model as
 
-$$\hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_k x_k$$
+$$\hat{y} = b_0 + b_1 x_1 + b_2 x_2 + \cdots + b_k x_k$$
 
-when there are $k$ predictors. 
-We always estimate the $\beta_i$ parameters using statistical software.
+when there are $k$ predictor variables. The coefficient estimates, $b_0,\ldots, b_k$,
+are easily found using statistical software.
 :::
 
 
@@ -524,7 +535,10 @@ In general, a categorical predictor with $p$ different levels will be represente
 
 
 ::: {.guidedpractice}
-What does $\beta_4$, the coefficient of variable , represent? What is the point estimate of $\beta_4$?^[$\beta_4$ represents the change in interest rate we would expect if someone's credit utilization was 0 and went to 1, all other factors held even. The point estimate is $b_4 = 4.90%$.]
+What does $b_4$, the estimated coefficient of variable `credit_util`, represent?
+What is its value?^[$b_4$ represents the estimated change in interest rate we
+would expect if someone's credit utilization was 0 and went to 1,
+all other factors held even. The point estimate is $b_4 = 4.90%$.]
 :::
 
 

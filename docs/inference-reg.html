@@ -6,14 +6,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 7 Inference for regression | Montana State Introductory Statistics with R</title>
 <meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="We now bring together ideas of inferential analyses from Chapters 5 and 6 with the descriptive models seen in Chapter 3. The setting is now focused on predicting a quantitative response variable,...">
+<meta name="generator" content="bookdown 0.27 with bs4_book()">
+<meta property="og:title" content="Chapter 7 Inference for regression | Montana State Introductory Statistics with R">
+<meta property="og:type" content="book">
+<meta property="og:description" content="We now bring together ideas of inferential analyses from Chapters 5 and 6 with the descriptive models seen in Chapter 3. The setting is now focused on predicting a quantitative response variable,...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 7 Inference for regression | Montana State Introductory Statistics with R">
+<meta name="twitter:description" content="We now bring together ideas of inferential analyses from Chapters 5 and 6 with the descriptive models seen in Chapter 3. The setting is now focused on predicting a quantitative response variable,...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="libs/plotly-binding-4.9.4.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script><script type="text/x-mathjax-config">
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><script type="text/x-mathjax-config">
     const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
     for (let popover of popovers){
       const div = document.createElement('div');
@@ -30,7 +38,33 @@
       	})
       }
     }
-    </script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="css/oistyle.css">
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="css/oistyle.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -40,8 +74,8 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="Spring 2021">Montana State Introductory Statistics with R</a>:
-        <small class="text-muted">Spring 2021</small>
+        <a href="index.html" title="Fall 2022">Montana State Introductory Statistics with R</a>:
+        <small class="text-muted">Fall 2022</small>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -95,7 +129,7 @@ In this made-up world, the CEO actually has all the relevant data, which is why 
 The CEO is omniscient and can write down the population model which describes the true population relationship between the advertising dollars and revenue.
 There appears to be linear relationship between advertising dollars and revenue (both in $1000).</p>
 <div class="figure" style="text-align: center">
-<span id="fig:sandpop"></span>
+<span style="display:block;" id="fig:sandpop"></span>
 <img src="07-inference-reg_files/figure-html/sandpop-1.png" alt="Revenue as a linear model of advertising dollars for a population of sandwich stores, in $1000." width="70%"><p class="caption">
 Figure 7.1: Revenue as a linear model of advertising dollars for a population of sandwich stores, in $1000.
 </p>
@@ -114,28 +148,28 @@ Consider the linear model which describes revenue (in $1000) based on advertisin
 <p>where <span class="math inline">\(y\)</span> represents the actual revenue, <span class="math inline">\(\hat{y}\)</span> represents the <em>predicted</em> revenue from the model, and <span class="math inline">\(x\)</span> represents the advertising dollars. A random sample of 20 stores shows a different least square regression line depending on which observations are selected.
 A subset of size 20 stores shows a similar positive trend between advertising and revenue (to what we saw in Figure <a href="inference-reg.html#fig:sandpop">7.1</a>, which described the population) despite having fewer observations on the plot.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:unnamed-chunk-2"></span>
+<span style="display:block;" id="fig:unnamed-chunk-2"></span>
 <img src="07-inference-reg_files/figure-html/unnamed-chunk-2-1.png" alt="A random sample of 20 stores from the entire population. A positive linear trend between advertising and revenue continues to be observed." width="70%"><p class="caption">
 Figure 7.2: A random sample of 20 stores from the entire population. A positive linear trend between advertising and revenue continues to be observed.
 </p>
 </div>
 <p>A second sample of size 20 also shows a positive trend!</p>
 <div class="figure" style="text-align: center">
-<span id="fig:unnamed-chunk-3"></span>
+<span style="display:block;" id="fig:unnamed-chunk-3"></span>
 <img src="07-inference-reg_files/figure-html/unnamed-chunk-3-1.png" alt="A different random sample of 20 stores from the entire population. Again, a positive linear trend between advertising and revenue is observed." width="70%"><p class="caption">
 Figure 7.3: A different random sample of 20 stores from the entire population. Again, a positive linear trend between advertising and revenue is observed.
 </p>
 </div>
 <p>But the line is slightly different!</p>
 <div class="figure" style="text-align: center">
-<span id="fig:unnamed-chunk-4"></span>
+<span style="display:block;" id="fig:unnamed-chunk-4"></span>
 <img src="07-inference-reg_files/figure-html/unnamed-chunk-4-1.png" alt="The linear models from the two different random samples are quite similar, but they are not the same line." width="70%"><p class="caption">
 Figure 7.4: The linear models from the two different random samples are quite similar, but they are not the same line.
 </p>
 </div>
 <p>That is, there is <strong>variability</strong> in the regression line from sample to sample. The concept of the sampling variability is something you’ve seen before, but in this lesson, you will focus on the variability of the line often measured through the variability of a single statistic: <strong>the slope of the line</strong>.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:slopes"></span>
+<span style="display:block;" id="fig:slopes"></span>
 <img src="07-inference-reg_files/figure-html/slopes-1.png" alt="If repeated samples of size 20 are taken from the entire population, each linear model will be slightly different. The red line provides the linear fit to the entire population, shown in Figure ??." width="70%"><p class="caption">
 Figure 7.5: If repeated samples of size 20 are taken from the entire population, each linear model will be slightly different. The red line provides the linear fit to the entire population, shown in Figure <a href="#sandpop"><strong>??</strong></a>.
 </p>
@@ -144,7 +178,7 @@ Figure 7.5: If repeated samples of size 20 are taken from the entire population,
 <p>You might notice in Figure <a href="inference-reg.html#fig:slopes">7.5</a> that the <span class="math inline">\(\hat{y}\)</span> values given by the lines are much more consistent in the middle of the dataset than at the ends. The reason is that the data itself anchors the lines in such a way that the line must pass through the center of the data cloud. The effect of the fan-shaped lines is that predicted revenue for advertising close to $4,000 will be much more precise than the revenue predictions made for $1,000 or $7,000 of advertising.</p>
 <p>The distribution of slopes (for samples of size <span class="math inline">\(n=20\)</span>) can be seen in a histogram, as in Figure <a href="inference-reg.html#fig:sand20lm">7.6</a>.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:sand20lm"></span>
+<span style="display:block;" id="fig:sand20lm"></span>
 <img src="07-inference-reg_files/figure-html/sand20lm-1.png" alt="Variability of slope estimates taken from many different samples of stores, each of size 20." width="70%"><p class="caption">
 Figure 7.6: Variability of slope estimates taken from many different samples of stores, each of size 20.
 </p>
@@ -167,7 +201,7 @@ And last (in Section <a href="inference-reg.html#mathslope">7.1.3</a>), we use m
 </h3>
 <p>Consider the data on Global Crop Yields compiled by <a href="https://ourworldindata.org/crop-yields">Our World in Data</a> and presented as part of the <a href="https://github.com/rfordatascience/tidytuesday/trunk/data/2020/2020-09-01">TidyTuesday</a> series seen in Figure <a href="inference-reg.html#fig:allcrops">7.7</a>. The scientific research interest at hand will be in determining the linear relationship between wheat yield (for a country-year) and other crop yields. The dataset is quite rich and deserves exploring, but for this example, we will focus only on the annual crop yield in the United States.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:allcrops"></span>
+<span style="display:block;" id="fig:allcrops"></span>
 <img src="07-inference-reg_files/figure-html/allcrops-1.png" alt="Yield (in tonnes per hectare) for six different crops in the US.  The color of the dot indicates the year." width="70%"><p class="caption">
 Figure 7.7: Yield (in tonnes per hectare) for six different crops in the US. The color of the dot indicates the year.
 </p>
@@ -183,7 +217,7 @@ Figure 7.7: Yield (in tonnes per hectare) for six different crops in the US. The
 </ul>
 <p>Recall that for the randomization test, we shuffle one variable to eliminate any existing relationship between the variables. That is, we set the null hypothesis to be true, and we measure the natural variability in the data due to sampling but <strong>not</strong> due to variables being correlated. Figure <a href="inference-reg.html#fig:permwheatScatter">7.8</a> shows the observed data and a scatterplot of one permutation of the <code>wheat</code> variable. The careful observer can see that each of the observed the values for <code>wheat</code> (and for <code>maize</code>) exist in both the original data plot as well as the permuted <code>wheat</code> plot, but the given <code>wheat</code> and <code>maize</code> yields are no longer matched for a given year. That is, each <code>wheat</code> yield is randomly assigned to a new <code>maize</code> yield.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:permwheatScatter"></span>
+<span style="display:block;" id="fig:permwheatScatter"></span>
 <img src="07-inference-reg_files/figure-html/permwheatScatter-1.png" alt="Original (left) and permuted (right) data.  The permutation removes the linear relationship between `wheat` and `maize`.  Repeated permutations allow for quantifying the variability in the slope under the condition that there is no linear relationship (i.e., that the null hypothesis is true)." width="47%"><img src="07-inference-reg_files/figure-html/permwheatScatter-2.png" alt="Original (left) and permuted (right) data.  The permutation removes the linear relationship between `wheat` and `maize`.  Repeated permutations allow for quantifying the variability in the slope under the condition that there is no linear relationship (i.e., that the null hypothesis is true)." width="47%"><p class="caption">
 Figure 7.8: Original (left) and permuted (right) data. The permutation removes the linear relationship between <code>wheat</code> and <code>maize</code>. Repeated permutations allow for quantifying the variability in the slope under the condition that there is no linear relationship (i.e., that the null hypothesis is true).
 </p>
@@ -263,7 +297,7 @@ where <span class="math inline">\(\hat{y}\)</span> is the predicted wheat yield,
 </h4>
 <p>After permuting the data, the least squares estimate of the line can be computed. Repeated permutations and slope calculations describe the variability in the line (i.e., in the slope) due only to the natural variability and not due to a relationship between <code>wheat</code> and <code>maize</code>. Figure <a href="inference-reg.html#fig:permwheatlm">7.9</a> shows two different permutations of <code>wheat</code> and the resulting linear models.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:permwheatlm"></span>
+<span style="display:block;" id="fig:permwheatlm"></span>
 <img src="07-inference-reg_files/figure-html/permwheatlm-1.png" alt="Two different permutations of the wheat variable with slightly different least squares regression lines." width="47%"><img src="07-inference-reg_files/figure-html/permwheatlm-2.png" alt="Two different permutations of the wheat variable with slightly different least squares regression lines." width="47%"><p class="caption">
 Figure 7.9: Two different permutations of the wheat variable with slightly different least squares regression lines.
 </p>
@@ -274,7 +308,7 @@ Figure 7.9: Two different permutations of the wheat variable with slightly diffe
 <h4>Observed statistic vs. null value<a class="anchor" aria-label="anchor" href="#observed-statistic-vs.-null-value-5"><i class="fas fa-link"></i></a>
 </h4>
 <div class="figure" style="text-align: center">
-<span id="fig:nulldistCrop"></span>
+<span style="display:block;" id="fig:nulldistCrop"></span>
 <img src="07-inference-reg_files/figure-html/nulldistCrop-1.png" alt="Histogram of slopes given different permutations of the wheat variable.  The vertical red line is at the observed value of the slope, $b_1$ = 0.195." width="70%"><p class="caption">
 Figure 7.10: Histogram of slopes given different permutations of the wheat variable. The vertical red line is at the observed value of the slope, <span class="math inline">\(b_1\)</span> = 0.195.
 </p>
@@ -294,7 +328,7 @@ Therefore, we believe that the slope observed on the original data is not just d
 </h4>
 <p>Returning to the crop data, we may want to consider the relationship between yields in <code>peas</code> and <code>wheat</code>. Are <code>peas</code> a good predictor of <code>wheat</code>? And if so, what is their relationship? That is, what is the slope that models the average wheat yield as a function of peas yield (both in tonnes per hectare)?</p>
 <div class="figure" style="text-align: center">
-<span id="fig:peasPlot"></span>
+<span style="display:block;" id="fig:peasPlot"></span>
 <img src="07-inference-reg_files/figure-html/peasPlot-1.png" alt="Original data: wheat yield as a linear model of peas yield, in tonnes per hectare.  Notice that the relationship between `peas` and `wheat` is not as strong as the relationship we saw previously between `maize` and `wheat`." width="70%"><p class="caption">
 Figure 7.11: Original data: wheat yield as a linear model of peas yield, in tonnes per hectare. Notice that the relationship between <code>peas</code> and <code>wheat</code> is not as strong as the relationship we saw previously between <code>maize</code> and <code>wheat</code>.
 </p>
@@ -305,7 +339,7 @@ Figure 7.11: Original data: wheat yield as a linear model of peas yield, in tonn
 </h4>
 <p>Because we are not focused on a null distribution, we sample with replacement <span class="math inline">\(n=58\)</span> <span class="math inline">\((x,y)\)</span>-pairs from the original dataset. Recall that with bootstrapping, we always resample the same number of observations as we start with in order to mimic the process of taking a sample from the population. When sampling in the linear model case, consider each observation to be a single dot on the scatterplot. If the dot is resampled, both the <code>wheat</code> and the <code>peas</code> measurement are observed. The measurements are linked to the dot (i.e., to the year in which the measurements were taken).</p>
 <div class="figure" style="text-align: center">
-<span id="fig:crop2BS"></span>
+<span style="display:block;" id="fig:crop2BS"></span>
 <img src="07-inference-reg_files/figure-html/crop2BS-1.png" alt="Original and one bootstrap sample of the crop data.  Note that it is difficult to differentiate the two plots, as (within a single bootstrap sample) the observations which have been resampled twice are plotted as points on top of one another.  The orange circle represent points in the original data which were not included in the bootstrap sample.  The blue circle represents a point that was repeatedly resampled (and is therefore darker) in the bootstrap sample.  The green circle represents a particular structure to the data which is observed in both the original and bootstrap samples." width="47%"><img src="07-inference-reg_files/figure-html/crop2BS-2.png" alt="Original and one bootstrap sample of the crop data.  Note that it is difficult to differentiate the two plots, as (within a single bootstrap sample) the observations which have been resampled twice are plotted as points on top of one another.  The orange circle represent points in the original data which were not included in the bootstrap sample.  The blue circle represents a point that was repeatedly resampled (and is therefore darker) in the bootstrap sample.  The green circle represents a particular structure to the data which is observed in both the original and bootstrap samples." width="47%"><p class="caption">
 Figure 7.12: Original and one bootstrap sample of the crop data. Note that it is difficult to differentiate the two plots, as (within a single bootstrap sample) the observations which have been resampled twice are plotted as points on top of one another. The orange circle represent points in the original data which were not included in the bootstrap sample. The blue circle represents a point that was repeatedly resampled (and is therefore darker) in the bootstrap sample. The green circle represents a particular structure to the data which is observed in both the original and bootstrap samples.
 </p>
@@ -316,7 +350,7 @@ The blue circle represents a point that was repeatedly resampled (and is therefo
 The green circle represents a particular structure to the data which is observed in both the original and bootstrap samples.
 By repeatedly resampling, we can see dozens of bootstrapped slopes on the same plot in Figure <a href="inference-reg.html#fig:cropBS">7.13</a>.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:cropBS"></span>
+<span style="display:block;" id="fig:cropBS"></span>
 <img src="07-inference-reg_files/figure-html/cropBS-1.png" alt="Repeated bootstrap resamples of size 58 are taken from the original data.  Each of the bootstrapped linear model is slightly different." width="70%"><p class="caption">
 Figure 7.13: Repeated bootstrap resamples of size 58 are taken from the original data. Each of the bootstrapped linear model is slightly different.
 </p>
@@ -326,7 +360,7 @@ Figure <a href="inference-reg.html#fig:peasBSslopes">7.14</a> is a histogram of 
 We can see that a 95% bootstrap percentile interval for the true population slope is given by (0.061, 0.52).
 We are 95% confident that for the model describing the population of crops of <code>peas</code> and <code>wheat</code>, a one ton per hectare increase in <code>peas</code> yield will be associated with an increase in predicted average <code>wheat</code> yield of between 0.061 and 0.52 tonnes per hectare.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:peasBSslopes"></span>
+<span style="display:block;" id="fig:peasBSslopes"></span>
 <img src="07-inference-reg_files/figure-html/peasBSslopes-1.png" alt="The original crop data on wheat and peas is bootstrapped 1,000 times. The histogram provides a sense for the variability of the standard deviation of the linear model slope from sample to sample." width="70%"><p class="caption">
 Figure 7.14: The original crop data on wheat and peas is bootstrapped 1,000 times. The histogram provides a sense for the variability of the standard deviation of the linear model slope from sample to sample.
 </p>
@@ -372,7 +406,7 @@ party (e.g., percent change in the number of seats for Republicans in
 <p>Examining the data, there are no clear deviations from linearity or substantial outliers (see Section <a href="inference-reg.html#tech-cond-linmod">7.2</a> for a discussion on using residuals to visualize how well a linear model fits the data).
 While the data are collected sequentially, a separate analysis was used to check for any apparent correlation between successive observations in time; no such correlation was found.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:unemploymentAndChangeInHouse"></span>
+<span style="display:block;" id="fig:unemploymentAndChangeInHouse"></span>
 <img src="07-inference-reg_files/figure-html/unemploymentAndChangeInHouse-1.png" alt="The percent change in House seats for the President's party in each midterm election from 1898 to 2010 plotted against the unemployment rate. The two points for the Great Depression have been removed, and a least squares regression line has been fit to the data." width="70%"><p class="caption">
 Figure 7.15: The percent change in House seats for the President’s party in each midterm election from 1898 to 2010 plotted against the unemployment rate. The two points for the Great Depression have been removed, and a least squares regression line has been fit to the data.
 </p>
@@ -522,7 +556,7 @@ line should be zero?</p>
 This suggests the hypothesis test will reject the null claim that the slope is zero.</p>
 </div>
 <div class="figure" style="text-align: center">
-<span id="fig:elmhurstScatterWLSROnly-CLTsection"></span>
+<span style="display:block;" id="fig:elmhurstScatterWLSROnly-CLTsection"></span>
 <img src="07-inference-reg_files/figure-html/elmhurstScatterWLSROnly-CLTsection-1.png" alt="Gift aid and family income for a random sample of 50 first-year students from Elmhurst College, shown with a regression line." width="70%"><p class="caption">
 Figure 7.16: Gift aid and family income for a random sample of 50 first-year students from Elmhurst College, shown with a regression line.
 </p>
@@ -696,7 +730,7 @@ most common pattern observed when this condition fails: the
 variability of <span class="math inline">\(y\)</span> is larger when <span class="math inline">\(x\)</span> is larger.</p></li>
 </ul>
 <div class="figure" style="text-align: center">
-<span id="fig:whatCanGoWrongWithLinearModel"></span>
+<span style="display:block;" id="fig:whatCanGoWrongWithLinearModel"></span>
 <img src="07-inference-reg_files/figure-html/whatCanGoWrongWithLinearModel-1.png" alt="Four examples showing when the methods in this chapter are insufficient to apply to the data. The top set of graphs represents the $x$ and $y$ relationship.  The bottom set of graphs is a residual plot.  First panel: linearity fails. Second panel: there are outliers, most especially one point that is very far away from the line. Third panel: the variability of the errors is related to the value of $x$. Fourth panel: a time series data set is shown, where successive observations are highly correlated." width="100%"><p class="caption">
 Figure 7.17: Four examples showing when the methods in this chapter are insufficient to apply to the data. The top set of graphs represents the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> relationship. The bottom set of graphs is a residual plot. First panel: linearity fails. Second panel: there are outliers, most especially one point that is very far away from the line. Third panel: the variability of the errors is related to the value of <span class="math inline">\(x\)</span>. Fourth panel: a time series data set is shown, where successive observations are highly correlated.
 </p>
@@ -770,35 +804,35 @@ However, data that exhibit non-equal variance across the range of <span class="m
 </h4>
 <p>As a demonstration, we will apply the simulation-based inference functions for regression in the <code>catstats</code> package to our data on the change in House seats in the President’s party at midterm elections as a function of national unemployment rate. We need to drop the Great Depression years before we perform our simulations:</p>
 <div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#load data</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">midterms_house</span><span class="op">)</span>
-<span class="co">#Drop Great Depression years</span>
-<span class="va">d</span> <span class="op">&lt;-</span> <span class="va">midterms_house</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="op">(</span><span class="va">year</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1935</span>, <span class="fl">1939</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">#load data</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">midterms_house</span><span class="op">)</span></span>
+<span><span class="co">#Drop Great Depression years</span></span>
+<span><span class="va">d</span> <span class="op">&lt;-</span> <span class="va">midterms_house</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1935</span>, <span class="fl">1939</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Now that we have the correct data, we can perform a randomization test of the slope in the simple linear regression.</p>
 <div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">catstats</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">621311</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/catstats/man/regression_test.html">regression_test</a></span><span class="op">(</span>
-  formula <span class="op">=</span> <span class="va">house_change</span> <span class="op">~</span> <span class="va">unemp</span>,  <span class="co">#Always use response ~ explanatory</span>
-  data <span class="op">=</span> <span class="va">d</span>,  <span class="co">#name of data set</span>
-  statistic <span class="op">=</span> <span class="st">"slope"</span>, <span class="co">#Can also test correlation</span>
-  direction <span class="op">=</span> <span class="st">"less"</span>, <span class="co">#Direction of alternative hypothesis</span>
-  as_extreme_as <span class="op">=</span> <span class="op">-</span><span class="fl">0.89</span>, <span class="co">#Observed slope</span>
-  number_repetitions <span class="op">=</span> <span class="fl">1000</span>  <span class="co">#Number of simulations</span>
-<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">catstats</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">621311</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/regression_test.html">regression_test</a></span><span class="op">(</span></span>
+<span>  formula <span class="op">=</span> <span class="va">house_change</span> <span class="op">~</span> <span class="va">unemp</span>,  <span class="co">#Always use response ~ explanatory</span></span>
+<span>  data <span class="op">=</span> <span class="va">d</span>,  <span class="co">#name of data set</span></span>
+<span>  summary_measure <span class="op">=</span> <span class="st">"slope"</span>, <span class="co">#Can also test correlation</span></span>
+<span>  direction <span class="op">=</span> <span class="st">"less"</span>, <span class="co">#Direction of alternative hypothesis</span></span>
+<span>  as_extreme_as <span class="op">=</span> <span class="op">-</span><span class="fl">0.89</span>, <span class="co">#Observed slope</span></span>
+<span>  number_repetitions <span class="op">=</span> <span class="fl">1000</span>  <span class="co">#Number of simulations</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="07-inference-reg_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>The results give a scatterplot of the observed data with the regression line superimposed, and gives the observed slope (this should match what you put in for <code>as_extreme_as</code>). Next to the scatterplot, we have the null distribution of the slope coefficient, with the observed slope indicated by a vertical line and all values more extreme highlighted in red. The caption gives the number of simulations resulting in a slope more extreme than the observed: in this simulation we have 118/1000, for an approximate p-value of 0.118.</p>
 <p>To obtain a confidence interval for the slope, we use <code><a href="https://rdrr.io/pkg/catstats/man/regression_bootstrap_CI.html">regression_bootstrap_CI()</a></code>, with the same core arguments as <code><a href="https://rdrr.io/pkg/catstats/man/regression_test.html">regression_test()</a></code>.</p>
 <div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">31143518</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/catstats/man/regression_bootstrap_CI.html">regression_bootstrap_CI</a></span><span class="op">(</span>
-  formula <span class="op">=</span> <span class="va">house_change</span> <span class="op">~</span> <span class="va">unemp</span>,  <span class="co">#Always use response ~ explanatory</span>
-  data <span class="op">=</span> <span class="va">d</span>,  <span class="co">#name of data set</span>
-  statistic <span class="op">=</span> <span class="st">"slope"</span>, <span class="co">#Can also test correlation</span>
-  confidence_level <span class="op">=</span> <span class="fl">0.95</span>, <span class="co">#confidence level as a proportion</span>
-  number_repetitions <span class="op">=</span> <span class="fl">1000</span>  <span class="co">#Number of simulations</span>
-<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">31143518</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/regression_bootstrap_CI.html">regression_bootstrap_CI</a></span><span class="op">(</span></span>
+<span>  formula <span class="op">=</span> <span class="va">house_change</span> <span class="op">~</span> <span class="va">unemp</span>,  <span class="co">#Always use response ~ explanatory</span></span>
+<span>  data <span class="op">=</span> <span class="va">d</span>,  <span class="co">#name of data set</span></span>
+<span>  summary_measure <span class="op">=</span> <span class="st">"slope"</span>, <span class="co">#Can also test correlation</span></span>
+<span>  confidence_level <span class="op">=</span> <span class="fl">0.95</span>, <span class="co">#confidence level as a proportion</span></span>
+<span>  number_repetitions <span class="op">=</span> <span class="fl">1000</span>  <span class="co">#Number of simulations</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="07-inference-reg_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>Here we have the bootstrap distribution of the slope based on the observed data, with the upper and lower bounds of the confidence interval highlighted in red. The confidence interval is also given in the caption of the figure. Here, we are 95% confident that the true change in the number of seats in the House of Representatives for each additional percentage point in unemployment is between a decrease of 2.6 percent of seats and an increase of 0.3 percent of seats.</p>
 <p>Notice that the bootstrap distribution is not symmetric for this example! Because of this, the bootstrap confidence interval is different from what we would obtain from theory-based methods: (-2.6, 0.8). This is because the LINE technical conditions are not all satisfactorily met, though this is hard to see from the scatterplot for these data.</p>
@@ -816,48 +850,48 @@ However, data that exhibit non-equal variance across the range of <span class="m
 #&gt;       24.3193        -0.0431</code></pre>
 <p>Instead, when doing linear regression, we want to save the regression results so we can get complete output using <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code>:</p>
 <div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gift_reg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">gift_aid</span><span class="op">~</span><span class="va">family_income</span>, <span class="co">#Always use reponse ~ explanatory</span>
-               data <span class="op">=</span> <span class="va">elmhurst</span><span class="op">)</span>  <span class="co">#Name of data set</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">gift_reg</span><span class="op">)</span>  <span class="co">#Obtain full results for regression</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Call:</span>
-<span class="co">#&gt; lm(formula = gift_aid ~ family_income, data = elmhurst)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Residuals:</span>
-<span class="co">#&gt;     Min      1Q  Median      3Q     Max </span>
-<span class="co">#&gt; -10.113  -3.623  -0.216   3.159  11.571 </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Coefficients:</span>
-<span class="co">#&gt;               Estimate Std. Error t value Pr(&gt;|t|)    </span>
-<span class="co">#&gt; (Intercept)    24.3193     1.2915   18.83  &lt; 2e-16 ***</span>
-<span class="co">#&gt; family_income  -0.0431     0.0108   -3.98  0.00023 ***</span>
-<span class="co">#&gt; ---</span>
-<span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Residual standard error: 4.78 on 48 degrees of freedom</span>
-<span class="co">#&gt; Multiple R-squared:  0.249,  Adjusted R-squared:  0.233 </span>
-<span class="co">#&gt; F-statistic: 15.9 on 1 and 48 DF,  p-value: 0.000229</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">gift_reg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">gift_aid</span><span class="op">~</span><span class="va">family_income</span>, <span class="co">#Always use reponse ~ explanatory</span></span>
+<span>               data <span class="op">=</span> <span class="va">elmhurst</span><span class="op">)</span>  <span class="co">#Name of data set</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">gift_reg</span><span class="op">)</span>  <span class="co">#Obtain full results for regression</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; lm(formula = gift_aid ~ family_income, data = elmhurst)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residuals:</span></span>
+<span><span class="co">#&gt;     Min      1Q  Median      3Q     Max </span></span>
+<span><span class="co">#&gt; -10.113  -3.623  -0.216   3.159  11.571 </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Coefficients:</span></span>
+<span><span class="co">#&gt;               Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span><span class="co">#&gt; (Intercept)    24.3193     1.2915   18.83  &lt; 2e-16 ***</span></span>
+<span><span class="co">#&gt; family_income  -0.0431     0.0108   -3.98  0.00023 ***</span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residual standard error: 4.78 on 48 degrees of freedom</span></span>
+<span><span class="co">#&gt; Multiple R-squared:  0.249,  Adjusted R-squared:  0.233 </span></span>
+<span><span class="co">#&gt; F-statistic: 15.9 on 1 and 48 DF,  p-value: 0.000229</span></span></code></pre></div>
 <p>This produces a lot of output; we will focus on the <em>Coefficients</em> section. This gives us the estimated value for the slope, the standard error of the estimate, the t-statistic, and the p-value. We want the row labeled with the name of our explanatory variable, <code>family_income</code>. We estimate the slope to be -0.043 thousand dollars per additional thousand dollars in family income, and we have strong evidence against the null hypothesis that the slope is 0.</p>
 <p>We can compute confidence intervals by hand using the reported estimate, standard error, and df. We will need to compute a t-value as in Chapter <a href="inference-num.html#inference-num">6</a>:</p>
 <div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#Get t-star for 90% confidence interval</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">.95</span>, df <span class="op">=</span> <span class="fl">48</span><span class="op">)</span>
-<span class="co">#&gt; [1] 1.68</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">#Get t-star for 90% confidence interval</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">.95</span>, df <span class="op">=</span> <span class="fl">48</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 1.68</span></span></code></pre></div>
 <div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#Lower confidence bound</span>
-<span class="op">-</span><span class="fl">0.04307</span> <span class="op">-</span> <span class="fl">1.677224</span><span class="op">*</span><span class="fl">0.01081</span>
-<span class="co">#&gt; [1] -0.0612</span>
-
-<span class="co">#Upper confidence bound</span>
-<span class="op">-</span><span class="fl">0.04307</span> <span class="op">+</span> <span class="fl">1.677224</span><span class="op">*</span><span class="fl">0.01081</span>
-<span class="co">#&gt; [1] -0.0249</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">#Lower confidence bound</span></span>
+<span><span class="op">-</span><span class="fl">0.04307</span> <span class="op">-</span> <span class="fl">1.677224</span><span class="op">*</span><span class="fl">0.01081</span></span>
+<span><span class="co">#&gt; [1] -0.0612</span></span>
+<span></span>
+<span><span class="co">#Upper confidence bound</span></span>
+<span><span class="op">-</span><span class="fl">0.04307</span> <span class="op">+</span> <span class="fl">1.677224</span><span class="op">*</span><span class="fl">0.01081</span></span>
+<span><span class="co">#&gt; [1] -0.0249</span></span></code></pre></div>
 <p>We can also use the <code><a href="https://rdrr.io/r/stats/confint.html">confint()</a></code> function in <code>R</code> to compute confidence intervals for regression coefficients.</p>
 <div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="va">gift_reg</span>,   <span class="co">#name of regression results</span>
-        level <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span>  <span class="co">#confidence level as a proportion</span>
-<span class="co">#&gt;                   5 %    95 %</span>
-<span class="co">#&gt; (Intercept)   22.1533 26.4854</span>
-<span class="co">#&gt; family_income -0.0612 -0.0249</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="va">gift_reg</span>,   <span class="co">#name of regression results</span></span>
+<span>        level <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span>  <span class="co">#confidence level as a proportion</span></span>
+<span><span class="co">#&gt;                   5 %    95 %</span></span>
+<span><span class="co">#&gt; (Intercept)   22.1533 26.4854</span></span>
+<span><span class="co">#&gt; family_income -0.0612 -0.0249</span></span></code></pre></div>
 <p>In either case, we are 90% confident that gift aid will be $24.90 to $61.20 less per $1000 increase in family income.</p>
 </div>
 </div>
@@ -868,7 +902,7 @@ However, data that exhibit non-equal variance across the range of <span class="m
 <p>In the previous section, you were introduced to two new <code>R</code>
 functions in the <code>catstats</code> library. Here we provide a summary of
 these functions. You can also access
-the help files for these functions using the <code><a href="https://rdrr.io/r/utils/Question.html">?</a></code> command. For
+the help files for these functions using the <code>?</code> command. For
 example, type <code><a href="https://rdrr.io/pkg/catstats/man/regression_test.html">?regression_test</a></code> into your <code>R</code> console to bring up the
 help file for the <code>regression_test</code> function.
 <br></p>
@@ -881,7 +915,7 @@ help file for the <code>regression_test</code> function.
 <li>
 <code>data</code> = data frame, with columns of each variable</li>
 <li>
-<code>statistic</code> = one of <code>"slope"</code> or <code>"correlation"</code> (quotations are important here!)</li>
+<code>summary_measure</code> = one of <code>"slope"</code> or <code>"correlation"</code> (quotations are important here!)</li>
 <li>
 <code>direction</code> = one of <code>"greater"</code>, <code>"less"</code>, or <code>"two-sided"</code> (quotations are important here!) to match the sign in <span class="math inline">\(H_A\)</span>
 </li>
@@ -901,7 +935,7 @@ help file for the <code>regression_test</code> function.
 <li>
 <code>data</code> = data frame, with columns of each variable</li>
 <li>
-<code>statistic</code> = one of <code>"slope"</code> or <code>"correlation"</code> (quotations are important here!)</li>
+<code>summary_measure</code> = one of <code>"slope"</code> or <code>"correlation"</code> (quotations are important here!)</li>
 <li>
 <code>confidence_level</code> = confidence level as a decimal (e.g., 0.90, 0.95, etc)</li>
 <li>
@@ -985,7 +1019,7 @@ However you should be able to easily spot them as <strong>bolded text</strong>.<
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Montana State Introductory Statistics with R</strong>: Spring 2021" was written by Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager. </p>
+    <p>"<strong>Montana State Introductory Statistics with R</strong>: Fall 2022" was written by Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager. </p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -1005,6 +1039,22 @@ However you should be able to easily spot them as <strong>bolded text</strong>.<
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
 </html>

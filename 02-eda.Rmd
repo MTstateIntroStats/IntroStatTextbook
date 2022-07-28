@@ -731,11 +731,11 @@ terms_chp_2 <- c(terms_chp_2, "mean", "average", "distribution")
 ```
 
 ```{r}
-loan50_mean_intrest_rate <- mean(loan50$interest_rate)
+loan50_mean_interest_rate <- mean(loan50$interest_rate)
 ```
 
 The sample mean is often labeled $\bar{x}$.
-The letter $x$ is being used as a generic placeholder for the variable and the bar over the $x$ communicates we're looking at the average of that variable. In our example $x$ would represent interest rate, and $\bar{x}$ = `r round(loan50_mean_intrest_rate, 2)`%.
+The letter $x$ is being used as a generic placeholder for the variable and the bar over the $x$ communicates we're looking at the average of that variable. In our example $x$ would represent interest rate, and $\bar{x}$ = `r round(loan50_mean_interest_rate, 2)`%.
 It is useful to think of the mean as the balancing point of the distribution^[For
 more practice with this concept of the mean as a balancing point, see this [Khan Academy article](https://www.khanacademy.org/math/ap-statistics/summarizing-quantitative-data-ap/mean-median-more/a/mean-as-the-balancing-point).], and it's shown as a triangle in Figure \@ref(fig:loan-int-rate-dotplot).
 
@@ -773,7 +773,7 @@ The average interest rate across all loans in the population can be estimated us
 
 ---
   
-The sample mean, 11.57%, provides a rough estimate of $\mu_x$. While it is not perfect, this statistic our single best guess **point estimate**\index{point estimate} of the average interest rate of all the loans in the population under study, the parameter. In Chapter \@ref(inference-cat) and beyond, we will develop tools to characterize the accuracy of point estimates, like the sample mean. As you might have guessed, point estimates based on larger samples tend to be more accurate than those based on smaller samples.
+The sample mean, `r round(loan50_mean_interest_rate,2)`\%, provides a rough estimate of $\mu_x$. While it is not perfect, this statistic our single best guess **point estimate**\index{point estimate} of the average interest rate of all the loans in the population under study, the parameter. In Chapter \@ref(inference-cat) and beyond, we will develop tools to characterize the accuracy of point estimates, like the sample mean. As you might have guessed, point estimates based on larger samples tend to be more accurate than those based on smaller samples.
 :::
 
 The mean is useful for making comparisons across different samples that may have different sample sizes because it allows us to rescale or standardize a metric into something more easily interpretable and comparable. 
@@ -1148,28 +1148,40 @@ p_dotplot /
 
 The dark line inside the box represents the **median**, which splits the data in half: 
 50% of the data fall below this value and 50% fall above it. 
-Since in the `loan50` dataset there are `r nrow(loan50)` observations (an even number), the median is defined as the average of the two observations closest to the $50^{th}$ percentile. Table \@ref(tab:loan50_int_rate_sorted) shows all interest rates, arranged in ascending order. 
-We can see that the $25^{th}$ and the $26^{th}$ values are both `r sort(loan50$interest_rate)[25]`, which corresponds to the dark line in the box plot in Figure \@ref(fig:loan-int-rate-boxplot-dotplot).
+Since in the `loan50` dataset there are `r nrow(loan50)` observations (an even number),
+the median is defined as the average of the two observations closest to the
+$50^{th}$ percentile. Table \@ref(tab:loan50-int-rate-sorted) shows all
+interest rates, arranged in ascending order. 
+We can see that the $25^{th}$ and the $26^{th}$ values are both
+`r sort(loan50$interest_rate)[25]`, which corresponds to the dark line in
+the box plot in Figure \@ref(fig:loan-int-rate-boxplot-dotplot).
 
-```{r loan50_int_rate_sorted, comment=""}
+```{r loan50-int-rate-sorted}
 loan50_interest_rate_sorted <- sort(loan50$interest_rate)
+
 matrix(
- c(loan50_interest_rate_sorted[1:10],
- loan50_interest_rate_sorted[11:20],
- loan50_interest_rate_sorted[21:30],
- loan50_interest_rate_sorted[31:40],
- loan50_interest_rate_sorted[41:50]),
- byrow = TRUE,
- ncol = 10
+  c(
+    loan50_interest_rate_sorted[1:10],
+    loan50_interest_rate_sorted[11:20],
+    loan50_interest_rate_sorted[21:30],
+    loan50_interest_rate_sorted[31:40],
+    loan50_interest_rate_sorted[41:50]
+  ),
+  byrow = TRUE,
+  ncol = 10
 ) %>%
   data.frame(row.names = c("1", "10", "20", "30", "40")) %>%
-  kable(
+  kbl(linesep = "", booktabs = TRUE, 
     col.names = as.character(1:10),
-    caption = "Interest rates from the `loan50` dataset, arranged in ascending order."
-  )
+    caption = caption_helper("Interest rates from the `loan50` dataset, arranged in ascending order.")
+  ) %>%
+  kable_styling(bootstrap_options = c("striped", "condensed"), 
+                latex_options = c("striped", "hold_position")) 
 ```
 
-When there are an odd number of observations, there will be exactly one observation that splits the data into two halves, and in such a case that observation is the median (no average needed).
+When there are an odd number of observations, there will be exactly one
+observation that splits the data into two halves, and in such a case that
+observation is the median (no average needed).
 
 ```{r include=FALSE}
 terms_chp_2 <- c(terms_chp_2, "median")
@@ -1178,8 +1190,10 @@ terms_chp_2 <- c(terms_chp_2, "median")
 ::: {.onebox}
 **Median: the number in the middle.**  
   
-If the data are ordered from smallest to largest, the **median** is the observation right in the middle.
-If there are an even number of observations, there will be two values in the middle, and the median is taken as their average.
+If the data are ordered from smallest to largest, the **median** is the observation
+right in the middle.
+If there are an even number of observations, there will be two values in the
+middle, and the median is taken as their average.
 
 Mathematically, if we denote the sample size by $n$, then
 
@@ -1187,14 +1201,31 @@ Mathematically, if we denote the sample size by $n$, then
 * if $n$ is even, the median is the average of the $(n/2)^{th}$ and $(n/2+1)^{th}$ smallest values in the data set.
 :::
 
-The second step in building a box plot is drawing a rectangle to represent the middle 50% of the data.
+The median is an example of a **percentile**. Since 50\% of the data fall _below_
+the median, the median is the $50^{th}$ percentile.
+
+```{r loan-25-percentile, echo=FALSE, eval=TRUE}
+loan_25_percentile <- as.vector(quantile(loan50_interest_rate_sorted, 0.25))
+```
+
+::: {.onebox}
+**Percentiles.**  
+
+The **$p^{th}$ percentile** is a value such that $p$\% of the data fall _below_
+that value. For example, `r loan_25_percentile`
+is the $25^{th}$ percentile of the interest rates shown in Table \@ref(tab:loan50-int-rate-sorted) since 25\% of the data fall below
+`r loan_25_percentile` (and 75\% fall above).
+:::
+
+The second step in building a box plot is drawing a rectangle to represent the
+middle 50% of the data.
 The length of the the box is called the **interquartile range**, or **IQR** for short.
 It, like the standard deviation, is a measure of \index{variability}variability in data.
 The more variable the data, the larger the standard deviation and IQR tend to be.
-The two boundaries of the box are called the **first quartile** (the $25^{th}$ percentile, i.e., 25\% of the data fall below this value) and the **third quartile** (the $75^{th}$ percentile, i.e., 75\% of the data fall below this value) \index{quartile!first quartile} \index{quartile!third quartile}, and these are often labeled $Q_1$ and $Q_3$, respectively^[The first and third quartiles are called quartiles because, together with the median (the second quartile), these three values break the data into four groups of equal size--the lowest 25%, next lowest 25%, next lowest 25%, and highest 25%.]
+The two boundaries of the box are called the **first quartile** (the $25^{th}$ percentile) and the **third quartile** (the $75^{th}$ percentile) \index{quartile!first quartile} \index{quartile!third quartile}, and these are often labeled $Q_1$ and $Q_3$, respectively^[The first and third quartiles are called quartiles because, together with the median (the second quartile), these three values break the data into four groups of equal size--the lowest 25%, next lowest 25%, next lowest 25%, and highest 25%.]
 
 ```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "interquartile range", "IQR", "first quartile", "third quartile")
+terms_chp_2 <- c(terms_chp_2, "percentile", "interquartile range", "IQR", "first quartile", "third quartile")
 ```
 
 ::: {.onebox}

@@ -52,14 +52,14 @@ drawnormal = function(m=0, s=1, xlabel="Z", maintitle="",shade=FALSE,dir="lower"
   }
 }
 
-# extra packages ---------------------------------------------------------------------
-suppressMessages(library(gridExtra))
+# extra packages (add alphabetically) ------------------------------------------
+suppressMessages(library(catstats))
+suppressMessages(library(gapminder))
 suppressMessages(library(ggraph))
 suppressMessages(library(igraph))
-suppressMessages(library(RColorBrewer))
-suppressMessages(library(plotly))
-suppressMessages(library(gapminder))
 suppressMessages(library(mosaic))
+suppressMessages(library(plotly))
+suppressMessages(library(RColorBrewer))
 
 ################## Update from ims repo from here down -
 # _common.R based on R4DS: https://github.com/hadley/r4ds/blob/master/_common.R
@@ -69,22 +69,29 @@ options(digits = 3)
 # packages ---------------------------------------------------------------------
 
 suppressMessages(library(broom))
+suppressMessages(library(caret)) # new
 suppressMessages(library(gghighlight))
 suppressMessages(library(ggmosaic))
+suppressMessages(library(ggpubr))
+suppressMessages(library(ggrepel)) # new
 suppressMessages(library(ggridges))
+suppressMessages(library(glue)) # new
 suppressMessages(library(gridExtra))
 suppressMessages(library(infer))
 suppressMessages(library(janitor))
-suppressMessages(library(knitr))
 suppressMessages(library(kableExtra))
+suppressMessages(library(knitr))
 suppressMessages(library(maps))
 suppressMessages(library(openintro))
+suppressMessages(library(palmerpenguins)) # new
 suppressMessages(library(patchwork))
-suppressMessages(library(tidyverse))
+suppressMessages(library(quantreg)) # new
 suppressMessages(library(scales))
 suppressMessages(library(skimr))
-#suppressMessages(library(threed))
-#suppressMessages(library(ggthreed))
+suppressMessages(library(survival)) # new
+suppressMessages(library(tidymodels)) # new
+suppressMessages(library(tidyverse))
+suppressMessages(library(waffle)) # new
 
 # knitr chunk options ----------------------------------------------------------
 
@@ -125,3 +132,14 @@ make_terms_table <- function(x, n_cols = 4){
   matrix(x_updated, nrow = n_rows) %>%
     kable()
 }
+
+# function: caption helper -----------------------------------------------------
+
+caption_helper <- function(txt) {
+  if (knitr::is_latex_output())
+    stringr::str_replace_all(txt, "([^`]*)`(.*?)`", "\\1\\\\texttt{\\2}") %>%
+    stringr::str_replace_all("_", "\\\\_")
+  else
+    txt
+}
+

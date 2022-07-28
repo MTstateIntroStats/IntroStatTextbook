@@ -681,7 +681,7 @@ set.seed(621311)
 regression_test(
   formula = house_change ~ unemp,  #Always use response ~ explanatory
   data = d,  #name of data set
-  statistic = "slope", #Can also test correlation
+  summary_measure = "slope", #Can also test correlation
   direction = "less", #Direction of alternative hypothesis
   as_extreme_as = -0.89, #Observed slope
   number_repetitions = 1000  #Number of simulations
@@ -699,7 +699,7 @@ set.seed(31143518)
 regression_bootstrap_CI(
   formula = house_change ~ unemp,  #Always use response ~ explanatory
   data = d,  #name of data set
-  statistic = "slope", #Can also test correlation
+  summary_measure = "slope", #Can also test correlation
   confidence_level = 0.95, #confidence level as a proportion
   number_repetitions = 1000  #Number of simulations
 )
@@ -798,7 +798,7 @@ help file for the `regression_test` function.
 
     * `formula` = `y ~ x` where `y` is the name of the quantitative response variable in the data set and `x` is the name of the quantitative explanatory variable
     * `data` = data frame, with columns of each variable
-    * `statistic` = one of `"slope"` or `"correlation"` (quotations are important here!) 
+    * `summary_measure` = one of `"slope"` or `"correlation"` (quotations are important here!) 
     * `direction` = one of `"greater"`, `"less"`, or `"two-sided"` (quotations are important here!) to match the sign in $H_A$
     * `as_extreme_as` = value of observed slope or correlation
     * `number_repetitions` = number of simulated samples to generate (should be at least 1000!)
@@ -808,7 +808,7 @@ help file for the `regression_test` function.
 
     * `formula` = `y ~ x` where `y` is the name of the quantitative response variable in the data set and `x` is the name of the quantitative explanatory variable
     * `data` = data frame, with columns of each variable
-    * `statistic` = one of `"slope"` or `"correlation"` (quotations are important here!) 
+    * `summary_measure` = one of `"slope"` or `"correlation"` (quotations are important here!) 
     * `confidence_level` = confidence level as a decimal (e.g., 0.90, 0.95, etc)
     * `number_repetitions` = number of simulated samples to generate (should be at least 1000!)
 <br>

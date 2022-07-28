@@ -6,14 +6,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 6 Inference for quantitative data | Montana State Introductory Statistics with R</title>
 <meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Focusing now on statistical inference for quantitative data, we will revisit and expand upon the foundational aspects of hypothesis testing from Section 5.1. The important data structure for this...">
+<meta name="generator" content="bookdown 0.27 with bs4_book()">
+<meta property="og:title" content="Chapter 6 Inference for quantitative data | Montana State Introductory Statistics with R">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Focusing now on statistical inference for quantitative data, we will revisit and expand upon the foundational aspects of hypothesis testing from Section 5.1. The important data structure for this...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 6 Inference for quantitative data | Montana State Introductory Statistics with R">
+<meta name="twitter:description" content="Focusing now on statistical inference for quantitative data, we will revisit and expand upon the foundational aspects of hypothesis testing from Section 5.1. The important data structure for this...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><script src="libs/plotly-binding-4.9.4.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet">
-<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script><script type="text/x-mathjax-config">
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><script type="text/x-mathjax-config">
     const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
     for (let popover of popovers){
       const div = document.createElement('div');
@@ -30,7 +38,33 @@
       	})
       }
     }
-    </script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="css/oistyle.css">
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="css/oistyle.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -40,8 +74,8 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="Spring 2021">Montana State Introductory Statistics with R</a>:
-        <small class="text-muted">Spring 2021</small>
+        <a href="index.html" title="Fall 2022">Montana State Introductory Statistics with R</a>:
+        <small class="text-muted">Fall 2022</small>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -122,7 +156,7 @@ The techniques described for each setting will vary slightly, but you will be we
 In order to walk through the example more clearly, let’s say that you are only able to randomly sample five Edinburgh flats (if this were a real example, you would surely be able to take a much larger sample size, possibly even being able to measure the entire population!).</p>
 <p>Figure <a href="inference-num.html#fig:5flats">6.1</a> presents the details of the random sample of observations where the monthly rent of five flats has been recorded.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:5flats"></span>
+<span style="display:block;" id="fig:5flats"></span>
 <img src="06/figures/5flats.png" alt="Five randomly sampled flats in Edinburgh." width="75%"><p class="caption">
 Figure 6.1: Five randomly sampled flats in Edinburgh.
 </p>
@@ -137,7 +171,7 @@ Fortunately, we can use bootstrapping to approximate the variability of the samp
 <p>As with the inferential ideas covered in Chapter <a href="inference-cat.html#inference-cat">5</a>, the inferential analysis methods in this chapter are grounded in quantifying how one data set differs from another when they are both taken from the same population.</p>
 <p>Figure <a href="inference-num.html#fig:bootstrapping">6.2</a> shows how the unknown original population of all three bedroom flats in Edinburgh can be estimated by using many duplicates of the sample. This estimated population—consisting of infinitely many copies of the original sample—can then be used to generate bootstrapped resamples.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:bootstrapping"></span>
+<span style="display:block;" id="fig:bootstrapping"></span>
 <img src="06/figures/bootstrapping.png" alt="Using the original sample of five Edinburgh flats to generate an estimated population, which is then used to generate bootstrapped resamples. This process of generating a bootstrapped sample is equivalent to sampling five flats from the original sample, with replacement." width="75%"><p class="caption">
 Figure 6.2: Using the original sample of five Edinburgh flats to generate an estimated population, which is then used to generate bootstrapped resamples. This process of generating a bootstrapped sample is equivalent to sampling five flats from the original sample, with replacement.
 </p>
@@ -147,7 +181,7 @@ Since the bootstrap resamples are taken from the same (estimated) population, th
 By summarizing each of the bootstrap resamples (here, using the sample mean), we see, directly, the variability of the sample mean from sample to sample.
 The distribution of <span class="math inline">\(\bar{x}_{boot}\)</span>, the bootstrapped sample means, for the Edinburgh flats is shown in Figure <a href="inference-num.html#fig:flatsbsmean">6.3</a>.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:flatsbsmean"></span>
+<span style="display:block;" id="fig:flatsbsmean"></span>
 <img src="06-inference-num_files/figure-html/flatsbsmean-1.png" alt="Distribution of bootstrapped means from 1,000 simulated bootstrapped samples generated by sampling with replacement from our original sample of five Edinburgh flats. The histogram provides a sense for the variability of the average rent values from sample to sample for samples of size 5." width="70%"><p class="caption">
 Figure 6.3: Distribution of bootstrapped means from 1,000 simulated bootstrapped samples generated by sampling with replacement from our original sample of five Edinburgh flats. The histogram provides a sense for the variability of the average rent values from sample to sample for samples of size 5.
 </p>
@@ -197,7 +231,7 @@ But even without the mathematical model, bootstrapping can be used to find a con
 <p>Using Figure <a href="inference-num.html#fig:flatsbssd">6.4</a>, find <em>and interpret</em> a 90% confidence interval for the population standard deviation for three bedroom flat prices in Edinburgh.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;By looking at the percentile values in Figure &lt;a href="inference-num.html#fig:flatsbssd"&gt;6.4&lt;/a&gt;, the middle 90% of the bootstrap standard deviations are given by the 5&lt;sup&gt;th&lt;/sup&gt; percentile (£153.9) and 95&lt;sup&gt;th&lt;/sup&gt; percentile (£385.6). That is, we are 90% confident that the true standard deviation of rent prices is between £153.9 and £385.6; or that, on average, rent prices tend to be somewhere between £153.9 and £385.6 away from the mean rent price. Note, the problem was set up as 90% to indicate that there was not a need for a high level of confidence (such a 95% or 99%). A lower degree of confidence increases potential for error, but it also produces a more narrow interval.&lt;/p&gt;'><sup>151</sup></a></p>
 </div>
 <div class="figure" style="text-align: center">
-<span id="fig:flatsbssd"></span>
+<span style="display:block;" id="fig:flatsbssd"></span>
 <img src="06-inference-num_files/figure-html/flatsbssd-1.png" alt="The original Edinburgh data is bootstrapped 1,000 times. The histogram provides a sense for the variability of the standard deviation of the rent values from sample to sample." width="70%"><p class="caption">
 Figure 6.4: The original Edinburgh data is bootstrapped 1,000 times. The histogram provides a sense for the variability of the standard deviation of the rent values from sample to sample.
 </p>
@@ -223,11 +257,11 @@ As you might guess, the larger the random sample, the more accurately that sampl
 </h4>
 <p>Curious if average body temperature has decreased since 1851, you decided to collect data on a random sample of twenty Montana State University students. The mean body temperature in your sample is <span class="math inline">\(\bar{x}\)</span> = 97.47<span class="math inline">\(^{\circ}\)</span>F, and the standard deviation is <span class="math inline">\(s\)</span> = 0.35<span class="math inline">\(^{\circ}\)</span>F. A dot plot of the data is shown in Figure <a href="inference-num.html#fig:body-temp-hist">6.5</a>, with summary statistics displayed below.</p>
 <div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">favstats</span><span class="op">(</span><span class="va">temperatures</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">favstats</span><span class="op">(</span><span class="va">temperatures</span><span class="op">)</span></span></code></pre></div>
 <pre><code>#&gt;   min   Q1 median   Q3  max mean    sd  n missing
 #&gt;  96.7 97.3   97.5 97.7 98.1 97.5 0.353 20       0</code></pre>
 <div class="figure" style="text-align: center">
-<span id="fig:body-temp-hist"></span>
+<span style="display:block;" id="fig:body-temp-hist"></span>
 <img src="06-inference-num_files/figure-html/body-temp-hist-1.png" alt="Distribution of body temperatures in a random sample of twenty Montana State University students." width="75%"><p class="caption">
 Figure 6.5: Distribution of body temperatures in a random sample of twenty Montana State University students.
 </p>
@@ -239,14 +273,14 @@ Figure 6.5: Distribution of body temperatures in a random sample of twenty Monta
 <p>We would like to test the set of hypotheses <span class="math inline">\(H_0: \mu = 98.6\)</span> versus <span class="math inline">\(H_A: \mu &lt; 98.6\)</span>, where <span class="math inline">\(\mu\)</span> is the true mean body temperature among all adults (in degrees F). If we were to simulate sample mean body temperatures under <span class="math inline">\(H_0\)</span>, we would expect the null distribution to be centered at <span class="math inline">\(\mu_0\)</span> = 98.6<span class="math inline">\(^\circ\)</span>F. However, if we bootstrap sample means from our observed sample, the bootstrap distribution will be centered at the sample mean body temperature <span class="math inline">\(\bar{x}\)</span> = 97.5<span class="math inline">\(^\circ\)</span>F.</p>
 <p>To use bootstrapping to generate a null distribution of sample means, we first have to <strong>shift the data</strong> to be centered at the null value. We do this by adding <span class="math inline">\(\mu_0 - \bar{x} = 98.6 - 97.5 = 1.1^\circ\)</span>F to each body temperature in the sample. This process is displayed in Figure <a href="inference-num.html#fig:shift-boot-dat">6.6</a>.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:shift-boot-dat"></span>
+<span style="display:block;" id="fig:shift-boot-dat"></span>
 <img src="06-inference-num_files/figure-html/shift-boot-dat-1.png" alt="Distribution of body temperatures in a random sample of twenty Montana State University students (blue) and the shifted body temperatures (red), found by adding 1.1 degree F to each original body temperature." width="75%"><p class="caption">
 Figure 6.6: Distribution of body temperatures in a random sample of twenty Montana State University students (blue) and the shifted body temperatures (red), found by adding 1.1 degree F to each original body temperature.
 </p>
 </div>
 <p>A bootstrapped null distribution generated from sampling 20 shifted temperatures, with replacement, from the shifted data 1,000 times is shown in Figure <a href="inference-num.html#fig:shifted-boot-null">6.7</a>.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:shifted-boot-null"></span>
+<span style="display:block;" id="fig:shifted-boot-null"></span>
 <img src="06-inference-num_files/figure-html/shifted-boot-null-1.png" alt="Bootstrapped null distribution of sample mean temperatures assuming the true mean temperature is 98.6 degrees F." width="75%"><p class="caption">
 Figure 6.7: Bootstrapped null distribution of sample mean temperatures assuming the true mean temperature is 98.6 degrees F.
 </p>
@@ -257,7 +291,7 @@ Figure 6.7: Bootstrapped null distribution of sample mean temperatures assuming 
 <ol style="list-style-type: decimal">
 <li>Add <span class="math inline">\(\mu_0 - \bar{x}\)</span> to each value in the original sample:
 <span class="math display">\[
- x_1 + \mu_0 - \bar{x}, \hspace{2.5mm} x_2 + \mu_0 - \bar{x}, \hspace{2.5mm}  x_3 + \mu_0 - \bar{x}, \hspace{2.5mm}  \ldots, \hspace{2.5mm}  x_n + \mu_0 - \bar{x}.
+x_1 + \mu_0 - \bar{x}, \hspace{2.5mm} x_2 + \mu_0 - \bar{x}, \hspace{2.5mm}  x_3 + \mu_0 - \bar{x}, \hspace{2.5mm}  \ldots, \hspace{2.5mm}  x_n + \mu_0 - \bar{x}.
   \]</span>
 Note that if <span class="math inline">\(\bar{x}\)</span> is larger than <span class="math inline">\(\mu\)</span>, then the quantity <span class="math inline">\(\mu_0 - \bar{x}\)</span> will be negative, and you will be <em>subtracting</em> the distance between <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\bar{x}\)</span> from each value.</li>
 <li>Generate 1000s of bootstrap resamples from this shifted distribution, plotting the shifted bootstrap sample mean each time.</li>
@@ -463,7 +497,7 @@ distribution.</p>
 the correction needed to resolve the problem (due to extra variability of the test statistic) of using <span class="math inline">\(s\)</span>
 in place of <span class="math inline">\(\sigma\)</span> in the <span class="math inline">\(SE(\bar{x})\)</span> calculation.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:tDistCompareToNormalDist"></span>
+<span style="display:block;" id="fig:tDistCompareToNormalDist"></span>
 <img src="06-inference-num_files/figure-html/tDistCompareToNormalDist-1.png" alt="Comparison of a $t$-distribution and a normal distribution." width="70%"><p class="caption">
 Figure 6.8: Comparison of a <span class="math inline">\(t\)</span>-distribution and a normal distribution.
 </p>
@@ -486,7 +520,7 @@ when the degrees of freedom is about 30 or more,
 the <span class="math inline">\(t\)</span>-distribution is nearly indistinguishable
 from the normal distribution.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:tDistConvergeToNormalDist"></span>
+<span style="display:block;" id="fig:tDistConvergeToNormalDist"></span>
 <img src="06-inference-num_files/figure-html/tDistConvergeToNormalDist-1.png" alt="The larger the degrees of freedom, the more closely the $t$-distribution resembles the standard normal distribution." width="70%"><p class="caption">
 Figure 6.9: The larger the degrees of freedom, the more closely the <span class="math inline">\(t\)</span>-distribution resembles the standard normal distribution.
 </p>
@@ -504,7 +538,7 @@ use <span class="math inline">\(df = n - 1\)</span>.</p>
 the normal distribution when analyzing numerical data.
 In practice, it’s common to use statistical software,
 such as <code>R</code>, Python, or SAS for these analyses.
-In <code>R</code>, the function used for calculating probabilities under a <span class="math inline">\(t\)</span>-distribution is <code><a href="https://rdrr.io/pkg/catstats/man/pt.html">pt()</a></code> (which should seem similar to the previous <code>R</code> function <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code>).
+In <code>R</code>, the function used for calculating probabilities under a <span class="math inline">\(t\)</span>-distribution is <code><a href="https://rdrr.io/r/stats/TDist.html">pt()</a></code> (which should seem similar to the previous <code>R</code> function <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code>).
 Don’t forget that with the <span class="math inline">\(t\)</span>-distribution, the degrees of freedom must always be specified!</p>
 <!--
 Alternatively, a graphing calculator or a
@@ -527,11 +561,11 @@ and shade the area below -2.10.</p>
 value: 0.0250.</p>
 </div>
 <div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># using pt() to find probability under the $t$-distribution</span>
-<span class="fu"><a href="https://rdrr.io/pkg/catstats/man/pt.html">pt</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2.10</span>, df <span class="op">=</span> <span class="fl">18</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.025</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># using pt() to find probability under the $t$-distribution</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2.10</span>, df <span class="op">=</span> <span class="fl">18</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.025</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
-<span id="fig:tDistDF18LeftTail2Point10"></span>
+<span style="display:block;" id="fig:tDistDF18LeftTail2Point10"></span>
 <img src="06-inference-num_files/figure-html/tDistDF18LeftTail2Point10-1.png" alt="The $t$-distribution with 18 degrees of freedom. The area below -2.10 has been shaded." width="70%"><p class="caption">
 Figure 6.10: The <span class="math inline">\(t\)</span>-distribution with 18 degrees of freedom. The area below -2.10 has been shaded.
 </p>
@@ -550,14 +584,14 @@ to give us a value in this neighborhood.
 Using statistical software: 0.0573.</p>
 </div>
 <div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># using pt() to find probability under the $t$-distribution</span>
-<span class="fu"><a href="https://rdrr.io/pkg/catstats/man/pt.html">pt</a></span><span class="op">(</span><span class="fl">1.65</span>, df <span class="op">=</span> <span class="fl">20</span>, lower.tail<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.0573</span>
-<span class="co"># or</span>
-<span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/pkg/catstats/man/pt.html">pt</a></span><span class="op">(</span><span class="fl">1.65</span>, df <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.0573</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># using pt() to find probability under the $t$-distribution</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fl">1.65</span>, df <span class="op">=</span> <span class="fl">20</span>, lower.tail<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.0573</span></span>
+<span><span class="co"># or</span></span>
+<span><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fl">1.65</span>, df <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.0573</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
-<span id="fig:tDistDF20RightTail1Point65"></span>
+<span style="display:block;" id="fig:tDistDF20RightTail1Point65"></span>
 <img src="06-inference-num_files/figure-html/tDistDF20RightTail1Point65-1.png" alt="Top: The $t$-distribution with 20 degrees of freedom, with the area above 1.65 shaded. Bottom: The $t$-distribution with 2 degrees of freedom, with the area further than 3 units from 0 shaded." width="70%"><img src="06-inference-num_files/figure-html/tDistDF20RightTail1Point65-2.png" alt="Top: The $t$-distribution with 20 degrees of freedom, with the area above 1.65 shaded. Bottom: The $t$-distribution with 2 degrees of freedom, with the area further than 3 units from 0 shaded." width="70%"><p class="caption">
 Figure 6.11: Top: The <span class="math inline">\(t\)</span>-distribution with 20 degrees of freedom, with the area above 1.65 shaded. Bottom: The <span class="math inline">\(t\)</span>-distribution with 2 degrees of freedom, with the area further than 3 units from 0 shaded.
 </p>
@@ -580,9 +614,9 @@ This area is dramatically different than what
 we obtain from the normal distribution.</p>
 </div>
 <div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># using pt() to find probability under the $t$-distribution</span>
-<span class="fl">2</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/pkg/catstats/man/pt.html">pt</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span>, df <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.0955</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># using pt() to find probability under the $t$-distribution</span></span>
+<span><span class="fl">2</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span>, df <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.0955</span></span></code></pre></div>
 <div class="guidedpractice">
 <p>What proportion of the <span class="math inline">\(t\)</span>-distribution with 19 degrees
 of freedom falls above -1.79 units?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;We want to find the shaded area &lt;em&gt;above&lt;/em&gt; -1.79 (we leave the picture to you). The lower tail area has an area of 0.0447, so the upper area would have an area of &lt;span class="math inline"&gt;\(1 - 0.0447 = 0.9553\)&lt;/span&gt;.&lt;/p&gt;'><sup>154</sup></a></p>
@@ -601,7 +635,7 @@ Elevated mercury concentrations are an important problem
 for both dolphins
 and other animals, like humans, who occasionally eat them.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:rissosDolphin"></span>
+<span style="display:block;" id="fig:rissosDolphin"></span>
 <img src="06/figures/rissosDolphin.jpg" alt="A Risso's dolphin. Photo by Mike Baird, www.bairdphotos.com." width="75%"><p class="caption">
 Figure 6.12: A Risso’s dolphin. Photo by Mike Baird, www.bairdphotos.com.
 </p>
@@ -705,11 +739,11 @@ That is, 95% of the <span class="math inline">\(t\)</span>-distribution with <sp
 lies within 2.10 units of 0.</p>
 </div>
 <div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># use qt() to find the t-cutoff (with 95% in the middle)</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.025</span>, df <span class="op">=</span> <span class="fl">18</span><span class="op">)</span>
-<span class="co">#&gt; [1] -2.1</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.975</span>, df <span class="op">=</span> <span class="fl">18</span><span class="op">)</span>
-<span class="co">#&gt; [1] 2.1</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># use qt() to find the t-cutoff (with 95% in the middle)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.025</span>, df <span class="op">=</span> <span class="fl">18</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] -2.1</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.975</span>, df <span class="op">=</span> <span class="fl">18</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 2.1</span></span></code></pre></div>
 <div class="example">
 <p><span id="exm:unlabeled-div-8" class="example"><strong>Example 6.8  </strong></span>Compute and interpret the 95% confidence interval
 for the average mercury content in Risso’s dolphins.</p>
@@ -762,11 +796,11 @@ is 0.1:
 <span class="math inline">\(t^{\star}_{14} = 1.76\)</span>.</p>
 </div>
 <div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># use qt() to find the t-cutoff (with 90% in the middle)</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.05</span>, df <span class="op">=</span> <span class="fl">14</span><span class="op">)</span>
-<span class="co">#&gt; [1] -1.76</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.95</span>, df <span class="op">=</span> <span class="fl">14</span><span class="op">)</span>
-<span class="co">#&gt; [1] 1.76</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># use qt() to find the t-cutoff (with 90% in the middle)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.05</span>, df <span class="op">=</span> <span class="fl">14</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] -1.76</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.95</span>, df <span class="op">=</span> <span class="fl">14</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 1.76</span></span></code></pre></div>
 <!--
 \begin{important}{Confidence interval for a single mean}
   Once you've determined a one-mean confidence interval
@@ -901,9 +935,9 @@ run time for the Cherry Blossom Run in 2017 is different
 than the 2006 average.</p>
 </div>
 <div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># using pt() to find the p-value</span>
-<span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/pkg/catstats/man/pt.html">pt</a></span><span class="op">(</span><span class="fl">2.37</span>, df <span class="op">=</span> <span class="fl">99</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.00986</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># using pt() to find the p-value</span></span>
+<span><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fl">2.37</span>, df <span class="op">=</span> <span class="fl">99</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.00986</span></span></code></pre></div>
 <div class="protip">
 <p><strong>When using a <span class="math inline">\(t\)</span>-distribution, we use a T score (similar to a Z score).</strong></p>
 <p>To help us remember to use the <span class="math inline">\(t\)</span>-distribution,
@@ -1051,18 +1085,18 @@ The Smooth Turn manufacturer looks at the box plot below and says:</p>
 </blockquote>
 <p>We’d like to be able to systematically distinguish between what the Smooth Turn manufacturer sees in the plot and what the Quick Spin manufacturer sees in the plot. Fortunately for us, we have an excellent way to simulate the natural variability (from road conditions, etc.) that can lead to tires being worn at different rates: bootstrapping.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:tiredata"></span>
+<span style="display:block;" id="fig:tiredata"></span>
 <img src="06-inference-num_files/figure-html/tiredata-1.png" alt="Boxplots of the tire tread remaining after 1,000 miles by the brand of tire from which the original measurements came. Gray lines connect the same cars." width="70%"><p class="caption">
 Figure 6.13: Boxplots of the tire tread remaining after 1,000 miles by the brand of tire from which the original measurements came. Gray lines connect the same cars.
 </p>
 </div>
 <p>Since these are paired data, we are only interested in the <em>differences</em> in tire tread between the two brands on each car. The dotplot in Figure <a href="inference-num.html#fig:tiredata-diff">6.14</a> displays these differences, with summary statistics displayed below.</p>
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">favstats</span><span class="op">(</span><span class="va">differences</span><span class="op">)</span>
-<span class="co">#&gt;       min        Q1  median     Q3    max    mean      sd  n missing</span>
-<span class="co">#&gt;  -0.00506 -0.000972 0.00205 0.0042 0.0107 0.00196 0.00431 25       0</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">favstats</span><span class="op">(</span><span class="va">differences</span><span class="op">)</span></span>
+<span><span class="co">#&gt;       min        Q1  median     Q3    max    mean      sd  n missing</span></span>
+<span><span class="co">#&gt;  -0.00506 -0.000972 0.00205 0.0042 0.0107 0.00196 0.00431 25       0</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
-<span id="fig:tiredata-diff"></span>
+<span style="display:block;" id="fig:tiredata-diff"></span>
 <img src="06-inference-num_files/figure-html/tiredata-diff-1.png" alt="Difference in tire tread (in inches) remaining after 1,000 miles between the two brands (Smooth Turn -- Quick Spin)." width="75%"><p class="caption">
 Figure 6.14: Difference in tire tread (in inches) remaining after 1,000 miles between the two brands (Smooth Turn – Quick Spin).
 </p>
@@ -1087,7 +1121,7 @@ In this study, the null hypothesis is that average difference in tire tread wear
 <p>To simulate a null distribution of sample mean differences under the null hypothesis <span class="math inline">\(H_0: \mu_d = 0\)</span>,</p>
 <ol style="list-style-type: decimal">
 <li>Subtract <span class="math inline">\(\bar{x}_d\)</span> from each difference in the original sample:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Subtracting the sample mean is equivalent to adding &lt;span class="math inline"&gt;\(\mu_0 - \bar{x}_d\)&lt;/span&gt; when the null value is &lt;span class="math inline"&gt;\(\mu_d = 0\)&lt;/span&gt;. Thus, we are using the same process as that described in Section &lt;a href="inference-num.html#one-mean-null-boot"&gt;6.1.2&lt;/a&gt;.&lt;/p&gt;'><sup>161</sup></a><br><span class="math display">\[
- x_1 - \bar{x}_d , \hspace{2.5mm} x_2 - \bar{x}_d, \hspace{2.5mm}  x_3 - \bar{x}_d, \hspace{2.5mm}  \ldots, \hspace{2.5mm}  x_n - \bar{x}_d.
+x_1 - \bar{x}_d , \hspace{2.5mm} x_2 - \bar{x}_d, \hspace{2.5mm}  x_3 - \bar{x}_d, \hspace{2.5mm}  \ldots, \hspace{2.5mm}  x_n - \bar{x}_d.
   \]</span>
 Note that if <span class="math inline">\(\bar{x}_d\)</span> is a negative number, then you will be <em>adding</em> the distance between <span class="math inline">\(0\)</span> and <span class="math inline">\(\bar{x}_d\)</span> to each value.</li>
 <li>Generate 1000s of bootstrap resamples from this shifted distribution, plotting the shifted bootstrap sample mean difference each time.</li>
@@ -1095,7 +1129,7 @@ Note that if <span class="math inline">\(\bar{x}_d\)</span> is a negative number
 </div>
 <p>To use bootstrapping to generate a null distribution of sample mean differences in tire tread, we first have to <strong>shift the data</strong> to be centered at the null value of zero. We shift the data by subtracting <span class="math inline">\(\bar{x}_d\)</span> = 0.00196 from each tire tread difference in the sample. This process is displayed in Figure <a href="inference-num.html#fig:tiredata-diff-shift">6.15</a>.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:tiredata-diff-shift"></span>
+<span style="display:block;" id="fig:tiredata-diff-shift"></span>
 <img src="06-inference-num_files/figure-html/tiredata-diff-shift-1.png" alt="Mean difference in tire tread (in inches) remaining after 1,000 miles between the two brands (Smooth Turn -- Quick Spin) (blue), and the shifted mean differences in tire tread (red), found by subtracting 0.00196 to each original difference." width="75%"><p class="caption">
 Figure 6.15: Mean difference in tire tread (in inches) remaining after 1,000 miles between the two brands (Smooth Turn – Quick Spin) (blue), and the shifted mean differences in tire tread (red), found by subtracting 0.00196 to each original difference.
 </p>
@@ -1111,7 +1145,7 @@ Because the observed mean difference in tire tread is so far away from the natur
 <p>To be precise, the proportion of simulated <span class="math inline">\(\bar{x}_d\)</span>’s that are 0.00196 inches or further away from zero is 0.023. This p-value gives us strong evidence in favor of our alternative <span class="math inline">\(H_A: \mu_d \neq 0\)</span>.
 Our conclusion is that the extra amount of tire tread remaining in Smooth Turn brand tires after 1,000 miles, on average, is due to more than just natural variability. Data from this experiment suggest that, on average, Smooth Turn tires differ in tread wear compared to Quick Spin tires.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:pairRandomiz"></span>
+<span style="display:block;" id="fig:pairRandomiz"></span>
 <img src="06-inference-num_files/figure-html/pairRandomiz-1.png" alt="Histogram of 1000 simulated mean differences in tire tread, assuming that the two brands perform equally, on average." width="70%"><p class="caption">
 Figure 6.16: Histogram of 1000 simulated mean differences in tire tread, assuming that the two brands perform equally, on average.
 </p>
@@ -1246,11 +1280,11 @@ M60W
 </table></div>
 <p>A dot plot of the data is shown in Figure <a href="inference-num.html#fig:text-price-hist">6.17</a>, with summary statistics displayed below.</p>
 <div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">favstats</span><span class="op">(</span><span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">price_diff</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">favstats</span><span class="op">(</span><span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">price_diff</span><span class="op">)</span></span></code></pre></div>
 <pre><code>#&gt;    min     Q1 median   Q3  max mean   sd  n missing
 #&gt;  -12.2 -0.992  0.625 2.99 75.2 3.58 13.4 68       0</code></pre>
 <div class="figure" style="text-align: center">
-<span id="fig:text-price-hist"></span>
+<span style="display:block;" id="fig:text-price-hist"></span>
 <img src="06-inference-num_files/figure-html/text-price-hist-1.png" alt="Distribution of differences in new textbook price (UCLA Bookstore -- Amazon) in US dollars for 68 required textbooks at UCLA." width="75%"><p class="caption">
 Figure 6.17: Distribution of differences in new textbook price (UCLA Bookstore – Amazon) in US dollars for 68 required textbooks at UCLA.
 </p>
@@ -1278,7 +1312,7 @@ in textbook price between the two suppliers.</p>
 The bootstrap percentile interval is computing using the 0.5<sup>th</sup> percentile and 99.5<sup>th</sup> percentile of the bootstrapped mean differences and is found to be (-0.044, 8.138).
 Since this confidence interval contains zero, it does not support the hypothesis that the UCLA Bookstore price is, on average, higher than the Amazon price. That is, since the interval contains both negative and positive values, it is plausible that the prices of UCLA textbooks are lower, on average, than Amazon, and it is also plausible that the prices of UCLA textbooks are higher, on average, than Amazon. We would interpret the interval as follows: We are 99% confident that, on average, new textbook prices at the UCLA Bookstore are between $0.04 lower to $8.14 higher than the same textbook on Amazon.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:pairboot"></span>
+<span style="display:block;" id="fig:pairboot"></span>
 <img src="06-inference-num_files/figure-html/pairboot-1.png" alt="Bootstrap distribution for the average difference in new book price at the UCLA Bookstore versus Amazon (UCLA -- Amazon). The bounds for a 99% bootstrap percentile confidence interval are superimposed in red, and the observed mean difference in new book price is superimposed in blue." width="70%"><p class="caption">
 Figure 6.18: Bootstrap distribution for the average difference in new book price at the UCLA Bookstore versus Amazon (UCLA – Amazon). The bounds for a 99% bootstrap percentile confidence interval are superimposed in red, and the observed mean difference in new book price is superimposed in blue.
 </p>
@@ -1359,7 +1393,7 @@ $13.42
 </tr></tbody>
 </table></div>
 <div class="figure" style="text-align: center">
-<span id="fig:diffInTextbookPricesF18"></span>
+<span style="display:block;" id="fig:diffInTextbookPricesF18"></span>
 <img src="06-inference-num_files/figure-html/diffInTextbookPricesF18-1.png" alt="Histogram of the difference in price for each book sampled." width="70%"><p class="caption">
 Figure 6.19: Histogram of the difference in price for each book sampled.
 </p>
@@ -1447,7 +1481,7 @@ Amazon prices are, on average, lower than the
 UCLA Bookstore prices for UCLA courses.</p>
 </div>
 <div class="figure" style="text-align: center">
-<span id="fig:textbooksF18HTTails"></span>
+<span style="display:block;" id="fig:textbooksF18HTTails"></span>
 <img src="06-inference-num_files/figure-html/textbooksF18HTTails-1.png" alt="Distribution of $\bar{x}_{d}$ under the null hypothesis of no difference.  The observed average difference of 2.98 is marked with the shaded areas more extreme than the observed difference given as the p-value." width="70%"><p class="caption">
 Figure 6.20: Distribution of <span class="math inline">\(\bar{x}_{d}\)</span> under the null hypothesis of no difference. The observed average difference of 2.98 is marked with the shaded areas more extreme than the observed difference given as the p-value.
 </p>
@@ -1460,7 +1494,7 @@ Figure 6.20: Distribution of <span class="math inline">\(\bar{x}_{d}\)</span> un
 for using theory-based methods have already been verified and the standard error
 computed in the previous Example.</p>
 <p>To find the confidence interval,
-identify <span class="math inline">\(t^{\star}_{67}\)</span> using the <code>R</code> command: <code><a href="https://rdrr.io/r/stats/TDist.html">qt(0.975, 67)</a></code> = 2.00,
+identify <span class="math inline">\(t^{\star}_{67}\)</span> using the <code>R</code> command: <code>qt(0.975, 67)</code> = 2.00,
 and plug it, the point estimate,
 and the standard error into the confidence
 interval formula:
@@ -1629,7 +1663,7 @@ B
 </tbody>
 </table></div>
 <div class="figure" style="text-align: center">
-<span id="fig:boxplotTwoVersionsOfExams"></span>
+<span style="display:block;" id="fig:boxplotTwoVersionsOfExams"></span>
 <img src="06-inference-num_files/figure-html/boxplotTwoVersionsOfExams-1.png" alt="Exam scores for students given one of three different exams." width="70%"><p class="caption">
 Figure 6.21: Exam scores for students given one of three different exams.
 </p>
@@ -1664,7 +1698,7 @@ It shouldn’t matter whether they were given exam A or exam B.
 By reallocating which student got which exam, we are able to understand how the difference in average exam scores changes due only to natural variability.
 There is only one iteration of the randomization process in Figure <a href="inference-num.html#fig:rand2means">6.22</a>, leading to one simulated difference in average scores.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:rand2means"></span>
+<span style="display:block;" id="fig:rand2means"></span>
 <img src="06/figures/rand2means.png" alt="The version of the test (A or B) is randomly allocated to the test scores, under the null assumption that the tests are equally difficult." width="75%"><p class="caption">
 Figure 6.22: The version of the test (A or B) is randomly allocated to the test scores, under the null assumption that the tests are equally difficult.
 </p>
@@ -1672,7 +1706,7 @@ Figure 6.22: The version of the test (A or B) is randomly allocated to the test 
 <p>Building on Figure <a href="inference-num.html#fig:rand2means">6.22</a>, Figure <a href="inference-num.html#fig:randexams">6.23</a> shows the values of the simulated statistics <span class="math inline">\(\bar{x}_{1, sim} - \bar{x}_{2, sim}\)</span> over 1000 random simulations.
 We see that, just by chance, the difference in scores can range anywhere from -10 points to +10 points.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:randexams"></span>
+<span style="display:block;" id="fig:randexams"></span>
 <img src="06-inference-num_files/figure-html/randexams-1.png" alt="Histogram of differences in means, calculated from 1000 different randomizations of the exam types." width="70%"><p class="caption">
 Figure 6.23: Histogram of differences in means, calculated from 1000 different randomizations of the exam types.
 </p>
@@ -1685,7 +1719,7 @@ Figure 6.23: Histogram of differences in means, calculated from 1000 different r
 The randomization distribution allows us to identify whether a difference of 3.1 points is more than one would expect by natural variability.
 By plotting the value of 3.1 on Figure <a href="inference-num.html#fig:randexamspval">6.24</a>, we can measure how different or similar 3.1 is to the randomized differences which were generated under the null hypothesis.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:randexamspval"></span>
+<span style="display:block;" id="fig:randexamspval"></span>
 <img src="06-inference-num_files/figure-html/randexamspval-1.png" alt="Histogram of differences in means, calculated from 1000 different randomizations of the exam types.  The observed difference of 3.1 points is plotted as a vertical line, and the area more extreme than 3.1 is shaded to represent the p-value." width="70%"><p class="caption">
 Figure 6.24: Histogram of differences in means, calculated from 1000 different randomizations of the exam types. The observed difference of 3.1 points is plotted as a vertical line, and the area more extreme than 3.1 is shaded to represent the p-value.
 </p>
@@ -1773,7 +1807,7 @@ Otherwise we use the smaller of $n_1-1$ and $n_2-1$: $df=26$.
 </p>
 <p>Before providing a full example working through a bootstrap analysis on actual data, consider a fictional situation where you would like to compare the average price of a car at one Awesome Auto franchise (Group 1) to the average price of a car at a different Awesome Auto franchise (Group 2). You are only able to randomly sample five cars from each Awesome Auto franchise, and you measure the selling price of each car in the sample. The process of bootstrapping can be applied to <em>each</em> Group separately, and the differences of means recalculated each time. Figure <a href="inference-num.html#fig:bootmeans2means">6.25</a> visually describes the bootstrap process when interest is in a statistic computed on two separate samples. The analysis proceeds as in the one sample case, but now the (single) statistic of interest is the <em>difference in sample means</em>. That is, a bootstrap resample is done on each of the groups separately, but the results are combined to have a single bootstrapped difference in means. Repetition will produce 1000s of bootstrapped differences in means, and the histogram will describe the natural sampling variability associated with the difference in means.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:bootmeans2means"></span>
+<span style="display:block;" id="fig:bootmeans2means"></span>
 <img src="06/figures/bootmeans2means.png" alt="For the two group comparison, 1000 bootstrap resamples are taken  separately on each group, and the difference in sample means is calculated for each pair of bootstrap resamples.  The set of 1000 differences is then analyzed as the distribution of the statistic of interest, with conclusions drawn on the parameter of interest." width="75%"><p class="caption">
 Figure 6.25: For the two group comparison, 1000 bootstrap resamples are taken separately on each group, and the difference in sample means is calculated for each pair of bootstrap resamples. The set of 1000 differences is then analyzed as the distribution of the statistic of interest, with conclusions drawn on the parameter of interest.
 </p>
@@ -1844,7 +1878,7 @@ control
 </tbody>
 </table></div>
 <div class="figure" style="text-align: center">
-<span id="fig:stemCellTherapyForHearts"></span>
+<span style="display:block;" id="fig:stemCellTherapyForHearts"></span>
 <img src="06-inference-num_files/figure-html/stemCellTherapyForHearts-1.png" alt="Histograms for both the embryonic stem cell and control group." width="70%"><img src="06-inference-num_files/figure-html/stemCellTherapyForHearts-2.png" alt="Histograms for both the embryonic stem cell and control group." width="70%"><p class="caption">
 Figure 6.26: Histograms for both the embryonic stem cell and control group.
 </p>
@@ -1852,10 +1886,12 @@ Figure 6.26: Histograms for both the embryonic stem cell and control group.
 <p>The point estimate of the true difference in the mean heart pumping variable
 is straightforward to find: it is the difference in the sample means.
 <span class="math display">\[\begin{align*}
-\bar{x}_{esc} - \bar{x}_{control}\ 
-  =\ 3.50 - (-4.33)\ 
+\bar{x}_{esc} - \bar{x}_{control}\
+  =\ 3.50 - (-4.33)\
   =\ 7.83
-\end{align*}\]</span></p>
+\end{align*}\]</span>(-4.33) 
+= 7.83
+\end{align*}</p>
 <div class="guidedpractice">
 <p>Identify the roles of the two variables in this study — which variable is the explanatory variable and which is the response? What is the scope of inference for this study?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Since the research question asks if ESCs help improve heart function, the explanatory variable is the treatment (ESC or control), and the response variable is the change in heart pumping capacity. Since sheep were randomly assigned to treatment groups, this study is a randomized experiment, and any changes in the mean response can be attributed to the treatment — cause-and-effect conclusions can be made. However, since it is not clear if the sheep were a random sample from a larger population of sheep, we can only generalize to sheep similar to those seen in the sample.&lt;/p&gt;"><sup>165</sup></a></p>
 </div>
@@ -1866,7 +1902,7 @@ is straightforward to find: it is the difference in the sample means.
 <p>As we saw in Section <a href="inference-cat.html#two-prop-boot-ci">5.5.2</a>, we will use bootstrapping to estimate the variability associated with the difference in sample means when taking repeated samples. In a method akin to two proportions, a <em>separate</em> sample is taken with replacement from each group (here ESCs and control), the sample means are calculated, and their difference is taken. The entire process is repeated multiple times to produce a bootstrap distribution of the difference in sample means (<em>without</em> the null hypothesis assumption).</p>
 <p>Figure <a href="inference-num.html#fig:bootexamsci">6.27</a> displays the variability of the differences in sample means with the percentile bootstrap 90% confidence interval super imposed.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:bootexamsci"></span>
+<span style="display:block;" id="fig:bootexamsci"></span>
 <img src="06-inference-num_files/figure-html/bootexamsci-1.png" alt="Histogram of differences in means after 1000 bootstrap resamples are taken from each of the two groups.  The observed difference in means from the original data is plotted as a black vertical line at 7.83.  The blue lines provide the percentile bootstrap 90% confidence interval for the difference in true population means." width="70%"><p class="caption">
 Figure 6.27: Histogram of differences in means after 1000 bootstrap resamples are taken from each of the two groups. The observed difference in means from the original data is plotted as a black vertical line at 7.83. The blue lines provide the percentile bootstrap 90% confidence interval for the difference in true population means.
 </p>
@@ -2131,7 +2167,7 @@ and find none.</li>
 <p>Since both conditions are satisfied, the difference
 in sample means may be modeled using a <span class="math inline">\(t\)</span>-distribution.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:babySmokePlotOfTwoGroupsToExamineSkew"></span>
+<span style="display:block;" id="fig:babySmokePlotOfTwoGroupsToExamineSkew"></span>
 <img src="06-inference-num_files/figure-html/babySmokePlotOfTwoGroupsToExamineSkew-1.png" alt="The top panel represents birth weights for infants whose mothers smoked. The bottom panel represents the birth weights for infants whose mothers who did not smoke." width="70%"><img src="06-inference-num_files/figure-html/babySmokePlotOfTwoGroupsToExamineSkew-2.png" alt="The top panel represents birth weights for infants whose mothers smoked. The bottom panel represents the birth weights for infants whose mothers who did not smoke." width="70%"><p class="caption">
 Figure 6.28: The top panel represents birth weights for infants whose mothers smoked. The bottom panel represents the birth weights for infants whose mothers who did not smoke.
 </p>
@@ -2249,10 +2285,10 @@ who did smoke during pregnancy and newborns from North Carolina
 mothers who did not smoke during pregnancy.</p>
 </div>
 <div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/pt.html">pt</a></span><span class="op">(</span><span class="fl">1.54</span>, df <span class="op">=</span> <span class="fl">49</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.065</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fl">1.54</span>, df <span class="op">=</span> <span class="fl">49</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.065</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
-<span id="fig:distOfDiffOfSampleMeansForBWOfBabySmokeData"></span>
+<span style="display:block;" id="fig:distOfDiffOfSampleMeansForBWOfBabySmokeData"></span>
 <img src="06-inference-num_files/figure-html/distOfDiffOfSampleMeansForBWOfBabySmokeData-1.png" alt="The mathematical model for the T statistic when the null hypothesis is true: a $t$-distribution with $min(100-1, 50-1) = 49$ degrees of freedom.  As expected, the curve is centered at zero (the null value).  The T score is also plotted with the area more extreme than the observed T score plotted to indicate the p-value." width="70%"><p class="caption">
 Figure 6.29: The mathematical model for the T statistic when the null hypothesis is true: a <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(min(100-1, 50-1) = 49\)</span> degrees of freedom. As expected, the curve is centered at zero (the null value). The T score is also plotted with the area more extreme than the observed T score plotted to indicate the p-value.
 </p>
@@ -2363,8 +2399,8 @@ the mean change in heart’s pumping function in sheep that have suffered
 a heart attack by 3.32% to 12.34%.</p>
 </div>
 <div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.975</span>, df <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>
-<span class="co">#&gt; [1] 2.31</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.975</span>, df <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 2.31</span></span></code></pre></div>
 <p></p>
 </div>
 </div>
@@ -2541,8 +2577,8 @@ then we can apply the <span class="math inline">\(t\)</span>-distribution for a 
 </li>
 <li>Compute the T-score using the general formula:
 <span class="math display">\[
- T = \frac{\mbox{statistic} - \mbox{null value}}{\mbox{standard error of the statistic}} = \frac{\mbox{statistic} - \mbox{null value}}{SE(\mbox{statistic})}
- \]</span>
+T = \frac{\mbox{statistic} - \mbox{null value}}{\mbox{standard error of the statistic}} = \frac{\mbox{statistic} - \mbox{null value}}{SE(\mbox{statistic})}
+\]</span>
 </li>
 <li>Use the statistical software to find the p-value using the appropriate <span class="math inline">\(t\)</span>-distribution:
 <ul>
@@ -2558,11 +2594,11 @@ then we can apply the <span class="math inline">\(t\)</span>-distribution for a 
 <ol style="list-style-type: decimal">
 <li>Verify conditions for using the <span class="math inline">\(t\)</span>-distribution. (See above.)<br>
 </li>
-<li>Compute the point estimate of interest, the standard error, the degrees of freedom, and <span class="math inline">\(t^{\star}_{df}\)</span>. The multiplier for a <span class="math inline">\((1-\alpha)\times100\)</span>% confidence interval can be found in <code>R</code> by: <code><a href="https://rdrr.io/r/stats/TDist.html">qt(1-(alpha/2), df)</a></code>. For example, <span class="math inline">\(t^{\star}_{10}\)</span> with 95% confidence is <code><a href="https://rdrr.io/r/stats/TDist.html">qt(0.975, 10)</a></code> = 2.228.</li>
+<li>Compute the point estimate of interest, the standard error, the degrees of freedom, and <span class="math inline">\(t^{\star}_{df}\)</span>. The multiplier for a <span class="math inline">\((1-\alpha)\times100\)</span>% confidence interval can be found in <code>R</code> by: <code>qt(1-(alpha/2), df)</code>. For example, <span class="math inline">\(t^{\star}_{10}\)</span> with 95% confidence is <code>qt(0.975, 10)</code> = 2.228.</li>
 <li>Calculate the confidence interval using the general formula:
 <span class="math display">\[
- \mbox{statistic} \pm\ t_{df}^{\star} SE(\mbox{statistic}).
- \]</span>
+\mbox{statistic} \pm\ t_{df}^{\star} SE(\mbox{statistic}).
+\]</span>
 </li>
 <li>Put the conclusions in context and in plain language so even non-data scientists can understand the results.</li>
 </ol>
@@ -2583,33 +2619,33 @@ then we can apply the <span class="math inline">\(t\)</span>-distribution for a 
 <div id="using-the-t-distribution" class="section level4 unnumbered">
 <h4>Using the <span class="math inline">\(t\)</span>-distribution<a class="anchor" aria-label="anchor" href="#using-the-t-distribution"><i class="fas fa-link"></i></a>
 </h4>
-<p>First, we’ll review how to obtain probabilities and critical values for the <span class="math inline">\(t\)</span>-distribution using <code>R</code>. If you have a <span class="math inline">\(t\)</span>-statistic and degrees of freedom, you can find the probability under the <span class="math inline">\(t\)</span>-distribution corresponding to a one- or two-tailed hypothesis test using <code><a href="https://rdrr.io/pkg/catstats/man/pt.html">pt()</a></code> (short for “probability from <span class="math inline">\(t\)</span>-distribution”).</p>
+<p>First, we’ll review how to obtain probabilities and critical values for the <span class="math inline">\(t\)</span>-distribution using <code>R</code>. If you have a <span class="math inline">\(t\)</span>-statistic and degrees of freedom, you can find the probability under the <span class="math inline">\(t\)</span>-distribution corresponding to a one- or two-tailed hypothesis test using <code><a href="https://rdrr.io/r/stats/TDist.html">pt()</a></code> (short for “probability from <span class="math inline">\(t\)</span>-distribution”).</p>
 <p>The tricky part is making sure you get the correct area under the distribution. For our example, assume we have 12 degrees of freedom. If your <span class="math inline">\(t\)</span>-statistic is positive, say <span class="math inline">\(t = 1.33\)</span>:</p>
 <div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#Area less than observed:</span>
-<span class="fu"><a href="https://rdrr.io/pkg/catstats/man/pt.html">pt</a></span><span class="op">(</span><span class="fl">1.33</span>, df <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.896</span>
-
-<span class="co">#Area greater than observed:</span>
-<span class="fl">1</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/pt.html">pt</a></span><span class="op">(</span><span class="fl">1.33</span>, df <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.104</span>
-
-<span class="co">#Area at least as large as observed:</span>
-<span class="fl">2</span><span class="op">*</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/pt.html">pt</a></span><span class="op">(</span><span class="fl">1.33</span>, df <span class="op">=</span> <span class="fl">12</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.208</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">#Area less than observed:</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fl">1.33</span>, df <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.896</span></span>
+<span></span>
+<span><span class="co">#Area greater than observed:</span></span>
+<span><span class="fl">1</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fl">1.33</span>, df <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.104</span></span>
+<span></span>
+<span><span class="co">#Area at least as large as observed:</span></span>
+<span><span class="fl">2</span><span class="op">*</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fl">1.33</span>, df <span class="op">=</span> <span class="fl">12</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.208</span></span></code></pre></div>
 <p>If your <span class="math inline">\(t\)</span>-statistic is negative, say <span class="math inline">\(t = -2.75\)</span>:</p>
 <div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#Area less than observed:</span>
-<span class="fu"><a href="https://rdrr.io/pkg/catstats/man/pt.html">pt</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2.75</span>, df <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.0088</span>
-
-<span class="co">#Area greater than observed:</span>
-<span class="fl">1</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/pt.html">pt</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2.75</span>, df <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.991</span>
-
-<span class="co">#Area at least as large as observed:</span>
-<span class="fl">2</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/pt.html">pt</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2.75</span>, df <span class="op">=</span> <span class="fl">12</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.0176</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">#Area less than observed:</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2.75</span>, df <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.0088</span></span>
+<span></span>
+<span><span class="co">#Area greater than observed:</span></span>
+<span><span class="fl">1</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2.75</span>, df <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.991</span></span>
+<span></span>
+<span><span class="co">#Area at least as large as observed:</span></span>
+<span><span class="fl">2</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2.75</span>, df <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.0176</span></span></code></pre></div>
 <p>The difference comes in when you want the area further than <span class="math inline">\(t\)</span> units from 0: if <span class="math inline">\(t\)</span> is positive, then “further” is greater than <span class="math inline">\(t\)</span> and less than negative <span class="math inline">\(t\)</span>, or double the area greater than <span class="math inline">\(t\)</span>, since the <span class="math inline">\(t\)</span>-distribution is symmetric. If <span class="math inline">\(t\)</span> is negative, then “further” is less than <span class="math inline">\(t\)</span> and greater than positive <span class="math inline">\(t\)</span>, or double the area less than <span class="math inline">\(t\)</span>.</p>
 <p>To find <span class="math inline">\(t^*_{df}\)</span> using <code>R</code>, we use the <code><a href="https://rdrr.io/r/stats/TDist.html">qt()</a></code> function (short for “quantile of <span class="math inline">\(t\)</span>-distribution”). You will need the degrees of freedom and the confidence level for your confidence interval. Suppose we have 27 degrees of freedom and want a 99% confidence interval. To get the middle 99% of the <span class="math inline">\(t\)</span>-distribution, we need to have the cutoff at 0.5% and 99.5%:</p>
 <pre><code>#&gt; [1] -2.77
@@ -2620,51 +2656,51 @@ then we can apply the <span class="math inline">\(t\)</span>-distribution for a 
 </h4>
 <p>Simulation-based inference for quantitative data will use functions in the <code>catstats</code> package, as we did for categorical data.</p>
 <div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">catstats</span><span class="op">)</span></code></pre></div>
-<p>The <code>catstats</code> functions for paired data assume that the values for the two groups are in separate columns in a data frame. We’ll work through an example using the tire wear data, which is currently stored in “long format,” with one variable for brand and another for tread depth. First, we’ll convert it to “wide format,” with a column for each brand.</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">catstats</span><span class="op">)</span></span></code></pre></div>
+<p>The <code>catstats</code> functions for paired data assume that the values for the two groups are in separate columns in a data frame. We’ll work through an example using the tire wear data, which is currently stored in “long format”, with one variable for brand and another for tread depth. First, we’ll convert it to “wide format”, with a column for each brand.</p>
 <div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">tiresWide</span> <span class="op">&lt;-</span> <span class="va">tires</span> <span class="op">%&gt;%</span> 
-  <span class="fu">select</span><span class="op">(</span><span class="va">brand</span>, <span class="va">tread</span>, <span class="va">car</span><span class="op">)</span> <span class="op">%&gt;%</span>   <span class="co">#select only ID, group, and outcome vars</span>
-  <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">brand</span>,   <span class="co">#name of variable for group</span>
-              values_from <span class="op">=</span> <span class="va">tread</span><span class="op">)</span>  <span class="co">#name of variable for outcome</span>
-<span class="va">tiresWide</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">tiresWide</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">tiresWide</span> <span class="op">&lt;-</span> <span class="va">tires</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">brand</span>, <span class="va">tread</span>, <span class="va">car</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>   <span class="co">#select only ID, group, and outcome vars</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">brand</span>,   <span class="co">#name of variable for group</span></span>
+<span>              values_from <span class="op">=</span> <span class="va">tread</span><span class="op">)</span>  <span class="co">#name of variable for outcome</span></span>
+<span><span class="va">tiresWide</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">tiresWide</span><span class="op">)</span></span></code></pre></div>
 <p>Once we have this format, all the paired data functions in <code>catstats</code> should be able to handle the data. First, we can get a look at the pairs of observations:</p>
 <div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/paired_observed_plot.html">paired_observed_plot</a></span><span class="op">(</span><span class="va">tiresWide</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/paired_observed_plot.html">paired_observed_plot</a></span><span class="op">(</span><span class="va">tiresWide</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="06-inference-num_files/figure-html/observedPlotPaired-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>This gives us an idea of the distributions within groups and the differences within pairs. To perform the hypothesis test for a difference in tread depth after 1000 miles, we use the <code><a href="https://rdrr.io/pkg/catstats/man/paired_test.html">paired_test()</a></code> function:</p>
 <div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/paired_test.html">paired_test</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">tiresWide</span>,  <span class="co">#data frame with observed values in groups</span>
-  shift <span class="op">=</span> <span class="op">-</span><span class="fl">0.002</span>,  <span class="co">#amount to shift differences to bootstrap null distribution</span>
-  direction <span class="op">=</span> <span class="st">"two-sided"</span>,  <span class="co">#Direction of hypothesis test</span>
-  as_extreme_as <span class="op">=</span> <span class="fl">0.002</span>, <span class="co">#Observed statistic</span>
-  number_repetitions <span class="op">=</span> <span class="fl">1000</span>,  <span class="co">#number of bootstrap draws for null distribution</span>
-  which_first <span class="op">=</span> <span class="fl">1</span>  <span class="co">#Which column is first in order of subtraction: 1 or 2?</span>
-<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/paired_test.html">paired_test</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">tiresWide</span>,  <span class="co">#data frame with observed values in groups</span></span>
+<span>  shift <span class="op">=</span> <span class="op">-</span><span class="fl">0.002</span>,  <span class="co">#amount to shift differences to bootstrap null distribution</span></span>
+<span>  direction <span class="op">=</span> <span class="st">"two-sided"</span>,  <span class="co">#Direction of hypothesis test</span></span>
+<span>  as_extreme_as <span class="op">=</span> <span class="fl">0.002</span>, <span class="co">#Observed statistic</span></span>
+<span>  number_repetitions <span class="op">=</span> <span class="fl">1000</span>,  <span class="co">#number of bootstrap draws for null distribution</span></span>
+<span>  which_first <span class="op">=</span> <span class="fl">1</span>  <span class="co">#Which column is first in order of subtraction: 1 or 2?</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p>Note that <code>data</code> could also be a vector of differences. If this is all you have, you can do hypothesis testing and generate a confidence interval, but won’t be able to use <code><a href="https://rdrr.io/pkg/catstats/man/paired_observed_plot.html">paired_observed_plot()</a></code>. Now let’s take a look at the output of the function:</p>
 <div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1054</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/catstats/man/paired_test.html">paired_test</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">tiresWide</span>,  <span class="co">#data frame with observed values in groups</span>
-  shift <span class="op">=</span> <span class="op">-</span><span class="fl">0.002</span>,  <span class="co">#amount to shift differences to bootstrap null distribution</span>
-  direction <span class="op">=</span> <span class="st">"two-sided"</span>,  <span class="co">#Direction of hypothesis test</span>
-  as_extreme_as <span class="op">=</span> <span class="fl">0.002</span>, <span class="co">#Observed statistic</span>
-  number_repetitions <span class="op">=</span> <span class="fl">1000</span>,  <span class="co">#number of bootstrap draws for null distribution</span>
-  which_first <span class="op">=</span> <span class="fl">1</span>  <span class="co">#Which column is first in order of subtraction: 1 or 2?</span>
-<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1054</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/paired_test.html">paired_test</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">tiresWide</span>,  <span class="co">#data frame with observed values in groups</span></span>
+<span>  shift <span class="op">=</span> <span class="op">-</span><span class="fl">0.002</span>,  <span class="co">#amount to shift differences to bootstrap null distribution</span></span>
+<span>  direction <span class="op">=</span> <span class="st">"two-sided"</span>,  <span class="co">#Direction of hypothesis test</span></span>
+<span>  as_extreme_as <span class="op">=</span> <span class="fl">0.002</span>, <span class="co">#Observed statistic</span></span>
+<span>  number_repetitions <span class="op">=</span> <span class="fl">1000</span>,  <span class="co">#number of bootstrap draws for null distribution</span></span>
+<span>  which_first <span class="op">=</span> <span class="fl">1</span>  <span class="co">#Which column is first in order of subtraction: 1 or 2?</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="06-inference-num_files/figure-html/pairedSimTest-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>This figure displays the bootstrapped null distribution, with the mean and standard deviation of the draws in the upper right corner. We want to see that the mean is close to the null value (almost always zero). If it isn’t, check the value of the <code>shift</code> input, and/or increase the <code>number_repetitions</code> if the shift is correct.</p>
 <p>The red lines give the cutoffs based on the observed statistic, and values as or more extreme are colored red. If you are doing a one-sided test, there will only be one line. The caption of the figure gives the number and proportion of bootstrapped mean differences that are as or more extreme than the observed statistic. In this case, 20 out of 1000, for a p-value of 0.02.</p>
 <p>Finally, we will want to generate a confidence interval for the true mean difference using the <code><a href="https://rdrr.io/pkg/catstats/man/paired_bootstrap_CI.html">paired_bootstrap_CI()</a></code> function.</p>
 <div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2374</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/catstats/man/paired_bootstrap_CI.html">paired_bootstrap_CI</a></span><span class="op">(</span>
-  data <span class="op">=</span> <span class="va">tiresWide</span>,   <span class="co">#Wide-form data set or vector of differences</span>
-  number_repetitions <span class="op">=</span> <span class="fl">1000</span>,   <span class="co">#number of draws for bootstrap distribution</span>
-  confidence_level <span class="op">=</span> <span class="fl">0.99</span>,  <span class="co">#Confidence level as a proportion</span>
-  which_first <span class="op">=</span> <span class="fl">1</span>  <span class="co">#Order of subtraction: 1st or 2nd set of values come first?</span>
-<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2374</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/paired_bootstrap_CI.html">paired_bootstrap_CI</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">tiresWide</span>,   <span class="co">#Wide-form data set or vector of differences</span></span>
+<span>  number_repetitions <span class="op">=</span> <span class="fl">1000</span>,   <span class="co">#number of draws for bootstrap distribution</span></span>
+<span>  confidence_level <span class="op">=</span> <span class="fl">0.99</span>,  <span class="co">#Confidence level as a proportion</span></span>
+<span>  which_first <span class="op">=</span> <span class="fl">1</span>  <span class="co">#Order of subtraction: 1st or 2nd set of values come first?</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="06-inference-num_files/figure-html/pairedBootstrapCI-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>Here we again have a bootstrap distribution, but now it is the bootstrap distribution of the mean difference itself, rather than a bootstrapped null distribution for the mean difference. We’ve requested a 99% confidence interval, so the relevant percentiles of the bootstrap distribution are highlighted, and the interval itself is given in the caption. In this case, we are 99% confident that the true mean difference in tire tread is between 0 and 0.004 inches greater for Smooth Turn.</p>
 </div>
@@ -2673,12 +2709,12 @@ then we can apply the <span class="math inline">\(t\)</span>-distribution for a 
 </h4>
 <p>To implement theory-based inference for a paired mean difference in <code>R</code>, we use the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> function. As an example, we’ll use the textbook cost data from Section <a href="inference-num.html#paired-data">6.2</a>. There are two ways to put in paired data for a t-test using <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code>. First, we could have the prices of the two groups in two separate variables (in this case, <code>bookstore_new</code> and <code>amazon_new</code>):</p>
 <div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">bookstore_new</span>, <span class="co">#Outcomes for one of each pair</span>
-       y <span class="op">=</span> <span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">amazon_new</span>,  <span class="co">#Outcomes for other of each pair</span>
-       paired <span class="op">=</span> <span class="cn">TRUE</span>,  <span class="co">#Tell it to do a paired t-test!!</span>
-       alternative <span class="op">=</span> <span class="st">"greater"</span>,  <span class="co">#Direction of alternative </span>
-       conf.level <span class="op">=</span> <span class="fl">0.95</span>  <span class="co">#confidence level for interval as a proportion</span>
-<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">bookstore_new</span>, <span class="co">#Outcomes for one of each pair</span></span>
+<span>       y <span class="op">=</span> <span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">amazon_new</span>,  <span class="co">#Outcomes for other of each pair</span></span>
+<span>       paired <span class="op">=</span> <span class="cn">TRUE</span>,  <span class="co">#Tell it to do a paired t-test!!</span></span>
+<span>       alternative <span class="op">=</span> <span class="st">"greater"</span>,  <span class="co">#Direction of alternative </span></span>
+<span>       conf.level <span class="op">=</span> <span class="fl">0.95</span>  <span class="co">#confidence level for interval as a proportion</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p>Important things to note here:</p>
 <ul>
 <li>You must include <code>paired = TRUE</code> in your options, or it will do a two-sample t-test.</li>
@@ -2686,23 +2722,23 @@ then we can apply the <span class="math inline">\(t\)</span>-distribution for a 
 </ul>
 <p>Now let’s take a look at the output of the call:</p>
 <div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">bookstore_new</span>, <span class="co">#Outcomes for first in order of subtraction</span>
-       y <span class="op">=</span> <span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">amazon_new</span>,  <span class="co">#Outcomes for second in order of subtraction</span>
-       paired <span class="op">=</span> <span class="cn">TRUE</span>,  <span class="co">#Tell it to do a paired t-test!!</span>
-       alternative <span class="op">=</span> <span class="st">"greater"</span>,  <span class="co">#Direction of alternative </span>
-       conf.level <span class="op">=</span> <span class="fl">0.95</span>  <span class="co">#confidence level for interval as a proportion</span>
-<span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;  Paired t-test</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; data:  ucla_textbooks_f18$bookstore_new and ucla_textbooks_f18$amazon_new</span>
-<span class="co">#&gt; t = 2, df = 67, p-value = 0.02</span>
-<span class="co">#&gt; alternative hypothesis: true difference in means is greater than 0</span>
-<span class="co">#&gt; 95 percent confidence interval:</span>
-<span class="co">#&gt;  0.868   Inf</span>
-<span class="co">#&gt; sample estimates:</span>
-<span class="co">#&gt; mean of the differences </span>
-<span class="co">#&gt;                    3.58</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">bookstore_new</span>, <span class="co">#Outcomes for first in order of subtraction</span></span>
+<span>       y <span class="op">=</span> <span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">amazon_new</span>,  <span class="co">#Outcomes for second in order of subtraction</span></span>
+<span>       paired <span class="op">=</span> <span class="cn">TRUE</span>,  <span class="co">#Tell it to do a paired t-test!!</span></span>
+<span>       alternative <span class="op">=</span> <span class="st">"greater"</span>,  <span class="co">#Direction of alternative </span></span>
+<span>       conf.level <span class="op">=</span> <span class="fl">0.95</span>  <span class="co">#confidence level for interval as a proportion</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Paired t-test</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; data:  ucla_textbooks_f18$bookstore_new and ucla_textbooks_f18$amazon_new</span></span>
+<span><span class="co">#&gt; t = 2, df = 67, p-value = 0.02</span></span>
+<span><span class="co">#&gt; alternative hypothesis: true mean difference is greater than 0</span></span>
+<span><span class="co">#&gt; 95 percent confidence interval:</span></span>
+<span><span class="co">#&gt;  0.868   Inf</span></span>
+<span><span class="co">#&gt; sample estimates:</span></span>
+<span><span class="co">#&gt; mean difference </span></span>
+<span><span class="co">#&gt;            3.58</span></span></code></pre></div>
 <p>The output tells you right on top that this is a paired test - if it doesn’t, check that you have <code>paired = TRUE</code> in your function call. The next line gives the t-statistic of 2.20, the degrees of freedom df = 67, and the p-value of 0.0156 (You can look back at Section <a href="inference-num.html#paired-mean-math">6.2.3</a> to see that these are the same values obtained in the example). The point estimate for the mean difference is the final entry: on average, new bookstore books cost $3.58 more than the same books new from Amazon.</p>
 <p>The confidence interval given is a one-sided confidence interval, since we have a one-sided alternative. We need to re-run with <code>alternative = "two.sided"</code> to get the correct interval for the true mean difference in price of $0.33 to $6.83 greater cost when buying from the UCLA Bookstore compared to buying from Amazon.</p>
 <pre><code>#&gt; 
@@ -2710,20 +2746,20 @@ then we can apply the <span class="math inline">\(t\)</span>-distribution for a 
 #&gt; 
 #&gt; data:  ucla_textbooks_f18$bookstore_new and ucla_textbooks_f18$amazon_new
 #&gt; t = 2, df = 67, p-value = 0.03
-#&gt; alternative hypothesis: true difference in means is not equal to 0
+#&gt; alternative hypothesis: true mean difference is not equal to 0
 #&gt; 95 percent confidence interval:
 #&gt;  0.334 6.832
 #&gt; sample estimates:
-#&gt; mean of the differences 
-#&gt;                    3.58</code></pre>
+#&gt; mean difference 
+#&gt;            3.58</code></pre>
 <p>You might also have a single variable in your dataset that contains the differences within pairs: we will create this for the textbook data in a variable called <code>price_diff</code>. This format is also usable with the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> function:</p>
 <div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ucla_textbooks_f18</span> <span class="op">%&gt;%</span> 
-  <span class="fu">mutate</span><span class="op">(</span>price_diff <span class="op">=</span> <span class="va">bookstore_new</span><span class="op">-</span><span class="va">amazon_new</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">price_diff</span>,   <span class="co">#variable with differences</span>
-       alternative <span class="op">=</span> <span class="st">"greater"</span>,  <span class="co">#direction of alternative hypothesis</span>
-       conf.level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>  <span class="co">#confidence level as a proportion</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">ucla_textbooks_f18</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>price_diff <span class="op">=</span> <span class="va">bookstore_new</span><span class="op">-</span><span class="va">amazon_new</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">price_diff</span>,   <span class="co">#variable with differences</span></span>
+<span>       alternative <span class="op">=</span> <span class="st">"greater"</span>,  <span class="co">#direction of alternative hypothesis</span></span>
+<span>       conf.level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>  <span class="co">#confidence level as a proportion</span></span></code></pre></div>
 <p>This requires two fewer arguments:</p>
 <ul>
 <li>No <code>y</code> input, since the differences are contained in a single variable</li>
@@ -2731,23 +2767,23 @@ then we can apply the <span class="math inline">\(t\)</span>-distribution for a 
 </ul>
 <p>The output for this will look almost identical to the two-variable version above:</p>
 <div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ucla_textbooks_f18</span> <span class="op">&lt;-</span> <span class="va">ucla_textbooks_f18</span> <span class="op">%&gt;%</span> 
-  <span class="fu">mutate</span><span class="op">(</span>price_diff <span class="op">=</span> <span class="va">bookstore_new</span><span class="op">-</span><span class="va">amazon_new</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">price_diff</span>,   <span class="co">#variable with differences</span>
-       alternative <span class="op">=</span> <span class="st">"greater"</span>,  <span class="co">#direction of alternative hypothesis</span>
-       conf.level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>  <span class="co">#confidence level as a proportion</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;  One Sample t-test</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; data:  ucla_textbooks_f18$price_diff</span>
-<span class="co">#&gt; t = 2, df = 67, p-value = 0.02</span>
-<span class="co">#&gt; alternative hypothesis: true mean is greater than 0</span>
-<span class="co">#&gt; 95 percent confidence interval:</span>
-<span class="co">#&gt;  0.868   Inf</span>
-<span class="co">#&gt; sample estimates:</span>
-<span class="co">#&gt; mean of x </span>
-<span class="co">#&gt;      3.58</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">ucla_textbooks_f18</span> <span class="op">&lt;-</span> <span class="va">ucla_textbooks_f18</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>price_diff <span class="op">=</span> <span class="va">bookstore_new</span><span class="op">-</span><span class="va">amazon_new</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">price_diff</span>,   <span class="co">#variable with differences</span></span>
+<span>       alternative <span class="op">=</span> <span class="st">"greater"</span>,  <span class="co">#direction of alternative hypothesis</span></span>
+<span>       conf.level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>  <span class="co">#confidence level as a proportion</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  One Sample t-test</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; data:  ucla_textbooks_f18$price_diff</span></span>
+<span><span class="co">#&gt; t = 2, df = 67, p-value = 0.02</span></span>
+<span><span class="co">#&gt; alternative hypothesis: true mean is greater than 0</span></span>
+<span><span class="co">#&gt; 95 percent confidence interval:</span></span>
+<span><span class="co">#&gt;  0.868   Inf</span></span>
+<span><span class="co">#&gt; sample estimates:</span></span>
+<span><span class="co">#&gt; mean of x </span></span>
+<span><span class="co">#&gt;      3.58</span></span></code></pre></div>
 <p>Since we only input one variable, <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> treats it as a one-sample t-test, but note that this works just fine: the t-statistic, df, p-value, confidence interval, and estimated mean are all the same as when we put in the two groups separately and indicated they were paired.</p>
 </div>
 <div id="simulation-based-inference-for-the-difference-of-two-means" class="section level4 unnumbered">
@@ -2755,23 +2791,23 @@ then we can apply the <span class="math inline">\(t\)</span>-distribution for a 
 </h4>
 <p>We can perform simulation-based inference for a difference in means using the <code><a href="https://rdrr.io/pkg/catstats/man/two_mean_test.html">two_mean_test()</a></code> and <code><a href="https://rdrr.io/pkg/catstats/man/two_mean_bootstrap_CI.html">two_mean_bootstrap_CI()</a></code> functions in the <code>catstats</code> package. As a working example, let’s look at the embryonic stem cell data from Section <a href="inference-num.html#rand2mean">6.3.1</a>.</p>
 <div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#load data from openintro package</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span> <span class="op">(</span><span class="va">stem_cell</span><span class="op">)</span>
-
-<span class="co">#Compute change in pumping capacity</span>
-<span class="va">stem_cell</span> <span class="op">&lt;-</span> <span class="va">stem_cell</span> <span class="op">%&gt;%</span>
-  <span class="fu">mutate</span><span class="op">(</span>change <span class="op">=</span> <span class="va">after</span> <span class="op">-</span> <span class="va">before</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">#load data from openintro package</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span> <span class="op">(</span><span class="va">stem_cell</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#Compute change in pumping capacity</span></span>
+<span><span class="va">stem_cell</span> <span class="op">&lt;-</span> <span class="va">stem_cell</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>change <span class="op">=</span> <span class="va">after</span> <span class="op">-</span> <span class="va">before</span><span class="op">)</span></span></code></pre></div>
 <p>To perform the simulation-based test for the difference in the mean change in heart pumping capacity, we will use the <code><a href="https://rdrr.io/pkg/catstats/man/two_mean_test.html">two_mean_test()</a></code> function in the <code>catstats</code> package, which is very similar to the use of the <code><a href="https://rdrr.io/pkg/catstats/man/two_proportion_test.html">two_proportion_test()</a></code> function in Chapter <a href="inference-cat.html#inference-cat">5</a>:</p>
 <div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">4750</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/catstats/man/two_mean_test.html">two_mean_test</a></span><span class="op">(</span>
-  formula <span class="op">=</span> <span class="va">change</span> <span class="op">~</span> <span class="va">trmt</span>,  <span class="co">#Always use response ~ explanatory</span>
-  data <span class="op">=</span> <span class="va">stem_cell</span>,  <span class="co"># name of data set</span>
-  first_in_subtraction <span class="op">=</span> <span class="st">"esc"</span>,  <span class="co">#value of group variable to be 1st in subtraction</span>
-  direction <span class="op">=</span> <span class="st">"two-sided"</span>,  <span class="co">#direction of alternative</span>
-  as_extreme_as <span class="op">=</span> <span class="fl">7.833</span>,  <span class="co">#observed statistic</span>
-  number_repetitions <span class="op">=</span> <span class="fl">1000</span>  <span class="co">#number of simulations</span>
-<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">4750</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/two_mean_test.html">two_mean_test</a></span><span class="op">(</span></span>
+<span>  formula <span class="op">=</span> <span class="va">change</span> <span class="op">~</span> <span class="va">trmt</span>,  <span class="co">#Always use response ~ explanatory</span></span>
+<span>  data <span class="op">=</span> <span class="va">stem_cell</span>,  <span class="co"># name of data set</span></span>
+<span>  first_in_subtraction <span class="op">=</span> <span class="st">"esc"</span>,  <span class="co">#value of group variable to be 1st in subtraction</span></span>
+<span>  direction <span class="op">=</span> <span class="st">"two-sided"</span>,  <span class="co">#direction of alternative</span></span>
+<span>  as_extreme_as <span class="op">=</span> <span class="fl">7.833</span>,  <span class="co">#observed statistic</span></span>
+<span>  number_repetitions <span class="op">=</span> <span class="fl">1000</span>  <span class="co">#number of simulations</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="06-inference-num_files/figure-html/unnamed-chunk-32-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>The results give a side-by-side boxplot of the observed data with the observed difference and order of subtraction at the top. Check that you had the right value for the observed difference! Next to the box plot, we have the null distribution of simulated differences in means, with the observed statistic marked with a vertical red line, and all values as or more extreme than the observed statistic colored red. The figure caption gives the approximate p-value: for this set of 1000 simulations, we have only 1/1000 = 0.001.</p>
 <div class="importantbox">
@@ -2783,14 +2819,14 @@ then we can apply the <span class="math inline">\(t\)</span>-distribution for a 
 </div>
 <p>We use bootstrapping to find a confidence interval for the true difference in means with the <code><a href="https://rdrr.io/pkg/catstats/man/two_mean_bootstrap_CI.html">two_mean_bootstrap_CI()</a></code> function. The arguments will be very similar to <code><a href="https://rdrr.io/pkg/catstats/man/two_mean_test.html">two_mean_test()</a></code>, with the addition of the confidence level.</p>
 <div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">450</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/catstats/man/two_mean_bootstrap_CI.html">two_mean_bootstrap_CI</a></span><span class="op">(</span>
-  formula <span class="op">=</span> <span class="va">change</span> <span class="op">~</span> <span class="va">trmt</span>,  <span class="co">#Always use response ~ explanatory</span>
-  data <span class="op">=</span> <span class="va">stem_cell</span>,  <span class="co"># name of data set</span>
-  first_in_subtraction <span class="op">=</span> <span class="st">"esc"</span>,  <span class="co">#value of group variable to be 1st in subtraction</span>
-  confidence_level <span class="op">=</span> <span class="fl">0.9</span>, <span class="co">#confidence level as a proportion</span>
-  number_repetitions <span class="op">=</span> <span class="fl">1000</span>  <span class="co">#number of bootstrap samples</span>
-<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">450</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/two_mean_bootstrap_CI.html">two_mean_bootstrap_CI</a></span><span class="op">(</span></span>
+<span>  formula <span class="op">=</span> <span class="va">change</span> <span class="op">~</span> <span class="va">trmt</span>,  <span class="co">#Always use response ~ explanatory</span></span>
+<span>  data <span class="op">=</span> <span class="va">stem_cell</span>,  <span class="co"># name of data set</span></span>
+<span>  first_in_subtraction <span class="op">=</span> <span class="st">"esc"</span>,  <span class="co">#value of group variable to be 1st in subtraction</span></span>
+<span>  confidence_level <span class="op">=</span> <span class="fl">0.9</span>, <span class="co">#confidence level as a proportion</span></span>
+<span>  number_repetitions <span class="op">=</span> <span class="fl">1000</span>  <span class="co">#number of bootstrap samples</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="06-inference-num_files/figure-html/unnamed-chunk-33-1.png" width="70%" style="display: block; margin: auto;"></div>
 <p>The function produces the bootstrap distribution of the difference in means, with the upper and lower percentiles of the confidence range marked with vertical lines. The figure caption gives the estimated confidence interval. In this case, we are 90% confidence that ESCs increase the change in heart pumping capacity by between 4.72 and 11.09 percentage points on average.</p>
 </div>
@@ -2800,23 +2836,23 @@ then we can apply the <span class="math inline">\(t\)</span>-distribution for a 
 <p>To demonstrate theory-based methods in <code>R</code> for a difference in means, we will continue use the embryonic stem cell data. Something to keep in mind as we work through the example: are theory-based methods appropriate here? Are the results different than the results from the simulation-based methods?</p>
 <p>To perform theory-based inference, we will again use the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> function in <code>R</code>. Remember that we sometimes need to change the reference category of the explanatory variable to have the correct order of subtraction - in this case, the default is <code>ctrl - esc</code>, since <code>ctrl</code> is first alphabetically. We can get our preferred order of subtracation of <code>esc-ctrl</code> this way:</p>
 <div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">stem_cell</span><span class="op">$</span><span class="va">trmt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/relevel.html">relevel</a></span><span class="op">(</span><span class="va">stem_cell</span><span class="op">$</span><span class="va">trmt</span>, ref <span class="op">=</span> <span class="st">"esc"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">stem_cell</span><span class="op">$</span><span class="va">trmt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/relevel.html">relevel</a></span><span class="op">(</span><span class="va">stem_cell</span><span class="op">$</span><span class="va">trmt</span>, ref <span class="op">=</span> <span class="st">"esc"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">stem_cell</span><span class="op">$</span><span class="va">change</span> <span class="op">~</span> <span class="va">stem_cell</span><span class="op">$</span><span class="va">trmt</span>, <span class="co">#Always use response ~ explanatory</span>
-       alternative <span class="op">=</span> <span class="st">"two.sided"</span>, <span class="co"># Direction of alternative</span>
-       conf.level <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span>  <span class="co">#confidence level as a proportion</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;  Welch Two Sample t-test</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; data:  stem_cell$change by stem_cell$trmt</span>
-<span class="co">#&gt; t = 4, df = 12, p-value = 0.002</span>
-<span class="co">#&gt; alternative hypothesis: true difference in means between group esc and group ctrl is not equal to 0</span>
-<span class="co">#&gt; 90 percent confidence interval:</span>
-<span class="co">#&gt;   4.35 11.31</span>
-<span class="co">#&gt; sample estimates:</span>
-<span class="co">#&gt;  mean in group esc mean in group ctrl </span>
-<span class="co">#&gt;               3.50              -4.33</span></code></pre></div>
-<p>The results here should look familiar from the paired t-test above. We have the t-statistic, degrees of freedom, p-values, confidence interval, and group-specific means. The degrees of freedom may look a little strange - remember that the correct formula is very complex! - here we obtain 12.225 df. If you were computing the results by hand using <code><a href="https://rdrr.io/pkg/catstats/man/pt.html">pt()</a></code> and <code><a href="https://rdrr.io/r/stats/TDist.html">qt()</a></code> as we saw earlier in this section, you would use 8 df, since <span class="math inline">\(n_1 -1 = n_2 -1 = 8\)</span>. In the end, we conclude that there is strong evidence against the null hypothesis of no difference in the mean change in heart pumping capacity (p = 0.002).</p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">stem_cell</span><span class="op">$</span><span class="va">change</span> <span class="op">~</span> <span class="va">stem_cell</span><span class="op">$</span><span class="va">trmt</span>, <span class="co">#Always use response ~ explanatory</span></span>
+<span>       alternative <span class="op">=</span> <span class="st">"two.sided"</span>, <span class="co"># Direction of alternative</span></span>
+<span>       conf.level <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span>  <span class="co">#confidence level as a proportion</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Welch Two Sample t-test</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; data:  stem_cell$change by stem_cell$trmt</span></span>
+<span><span class="co">#&gt; t = 4, df = 12, p-value = 0.002</span></span>
+<span><span class="co">#&gt; alternative hypothesis: true difference in means between group esc and group ctrl is not equal to 0</span></span>
+<span><span class="co">#&gt; 90 percent confidence interval:</span></span>
+<span><span class="co">#&gt;   4.35 11.31</span></span>
+<span><span class="co">#&gt; sample estimates:</span></span>
+<span><span class="co">#&gt;  mean in group esc mean in group ctrl </span></span>
+<span><span class="co">#&gt;               3.50              -4.33</span></span></code></pre></div>
+<p>The results here should look familiar from the paired t-test above. We have the t-statistic, degrees of freedom, p-values, confidence interval, and group-specific means. The degrees of freedom may look a little strange - remember that the correct formula is very complex! - here we obtain 12.225 df. If you were computing the results by hand using <code><a href="https://rdrr.io/r/stats/TDist.html">pt()</a></code> and <code><a href="https://rdrr.io/r/stats/TDist.html">qt()</a></code> as we saw earlier in this section, you would use 8 df, since <span class="math inline">\(n_1 -1 = n_2 -1 = 8\)</span>. In the end, we conclude that there is strong evidence against the null hypothesis of no difference in the mean change in heart pumping capacity (p = 0.002).</p>
 <p>Remember that if you have a one-sided alternative, you will need to run <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> with a two-sided alternative to get the correct confidence interval! Your reminder will be an <code>Inf</code> in the confidence interval results, which means <code>R</code> is computing a one-sided confidence interval. Here, we have a two-sided alternative, so we can use the CI as reported: we are 90% confident that the true average improvement in heart pumping capacity due to ESCs is between 4.35 and 11.31 percentage points.</p>
 </div>
 </div>
@@ -2828,7 +2864,7 @@ then we can apply the <span class="math inline">\(t\)</span>-distribution for a 
 functions in the <code>catstats</code> library. Here we provide a summary of
 these functions, plus a summary of the <code>paired_observed_plot</code>
 function that can be used to plot paired data. You can also access
-the help files for these functions using the <code><a href="https://rdrr.io/r/utils/Question.html">?</a></code> command. For
+the help files for these functions using the <code>?</code> command. For
 example, type <code><a href="https://rdrr.io/pkg/catstats/man/paired_test.html">?paired_test</a></code> into your <code>R</code> console to bring up the
 help file for the <code>paired_test</code> function.
 <br></p>
@@ -2963,7 +2999,7 @@ Central Limit Theorem
 paired <span class="math inline">\(t\)</span>-test
 </td>
 <td style="text-align:left;">
-t-distribution
+T score
 </td>
 <td style="text-align:left;">
 </td>
@@ -2976,7 +3012,7 @@ degrees of freedom
 paired data
 </td>
 <td style="text-align:left;">
-T score
+t-distribution
 </td>
 <td style="text-align:left;">
 </td>
@@ -3042,7 +3078,7 @@ T score
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Montana State Introductory Statistics with R</strong>: Spring 2021" was written by Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager. </p>
+    <p>"<strong>Montana State Introductory Statistics with R</strong>: Fall 2022" was written by Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager. </p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -3062,6 +3098,22 @@ T score
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
 </html>

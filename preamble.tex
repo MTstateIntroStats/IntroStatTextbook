@@ -1,0 +1,34 @@
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage[none]{hyphenat}
+\usepackage{titlesec}
+\usepackage{longtable}
+\usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{pdfpages}
+
+\pagestyle{plain}
+
+%%%% Set margins
+\setlength{\topmargin}{-1cm}
+\addtolength{\evensidemargin}{-1cm}
+\addtolength{\oddsidemargin}{-1cm}
+\addtolength{\textheight}{3cm}
+\addtolength{\textwidth}{2cm}
+
+% Spacing for reading guides
+\newcommand{\rgs}{\vspace{12pt}} % Vertical space
+\newcommand{\rgi}{\hspace{24pt}}  % Indent
+
+\newcommand\latexcode[1]{#1}
+
+\titleformat{\chapter}[display]
+{\bfseries\Large}
+{\filleft\MakeUppercase{\chaptertitlename} \Huge\thechapter}
+{3ex}
+{\titlerule
+\vspace{1.5ex}%
+\filright}
+[\vspace{1.5ex}%
+\titlerule]
+\titlespacing*{\chapter}{0pt}{-40pt}{20pt}

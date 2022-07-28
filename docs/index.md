@@ -1,6 +1,6 @@
 --- 
 title: "Montana State Introductory Statistics with R"
-subtitle: "Spring 2021"
+subtitle: "Fall 2022"
 author: "Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager"
 site: bookdown::bookdown_site
 documentclass: book
@@ -92,7 +92,7 @@ We recommend using RStudio through the MSU RStudio server, but there are other o
     b. Download and install [RStudio Desktop](https://rstudio.com/products/rstudio/).
     c. Install the `catstats` package.
 
-View this [tutorial video on installing R and RStudio](https://greenwood-stat.shinyapps.io/InstallDemo/) if you would
+View this [tutorial video on installing R and RStudio](https://rconnect.math.montana.edu/InstallDemo/) if you would
 like additional installation instructions.
 
 

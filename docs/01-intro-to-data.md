@@ -1172,45 +1172,46 @@ data(email50)
 glimpse(email50)
 #> Rows: 50
 #> Columns: 21
-#> $ spam         <fct> 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, ~
-#> $ to_multiple  <fct> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, ~
-#> $ from         <fct> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ~
-#> $ cc           <int> 0, 0, 4, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, ~
-#> $ sent_email   <fct> 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, ~
-#> $ time         <dttm> 2012-01-04 06:19:16, 2012-02-16 13:10:06, 2012-01-04 08:~
-#> $ image        <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ~
-#> $ attach       <dbl> 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 0, ~
-#> $ dollar       <dbl> 0, 0, 0, 0, 9, 0, 0, 0, 0, 23, 4, 0, 3, 2, 0, 0, 0, 0, 0,~
-#> $ winner       <fct> no, no, no, no, no, no, no, no, no, no, no, no, yes, no, ~
-#> $ inherit      <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ~
-#> $ viagra       <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ~
-#> $ password     <dbl> 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 8, ~
-#> $ num_char     <dbl> 21.705, 7.011, 0.631, 2.454, 41.623, 0.057, 0.809, 5.229,~
-#> $ line_breaks  <int> 551, 183, 28, 61, 1088, 5, 17, 88, 242, 578, 1167, 198, 7~
-#> $ format       <fct> 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, ~
-#> $ re_subj      <fct> 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, ~
-#> $ exclaim_subj <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ~
-#> $ urgent_subj  <fct> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ~
-#> $ exclaim_mess <dbl> 8, 1, 2, 1, 43, 0, 0, 2, 22, 3, 13, 1, 2, 2, 21, 10, 0, 0~
-#> $ number       <fct> small, big, none, small, small, small, small, small, smal~
+#> $ spam         <fct> 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, …
+#> $ to_multiple  <fct> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, …
+#> $ from         <fct> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+#> $ cc           <int> 0, 0, 4, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, …
+#> $ sent_email   <fct> 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, …
+#> $ time         <dttm> 2012-01-04 06:19:16, 2012-02-16 13:10:06, 2012-01-04 08:…
+#> $ image        <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+#> $ attach       <dbl> 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 0, …
+#> $ dollar       <dbl> 0, 0, 0, 0, 9, 0, 0, 0, 0, 23, 4, 0, 3, 2, 0, 0, 0, 0, 0,…
+#> $ winner       <fct> no, no, no, no, no, no, no, no, no, no, no, no, yes, no, …
+#> $ inherit      <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+#> $ viagra       <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+#> $ password     <dbl> 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 8, …
+#> $ num_char     <dbl> 21.705, 7.011, 0.631, 2.454, 41.623, 0.057, 0.809, 5.229,…
+#> $ line_breaks  <int> 551, 183, 28, 61, 1088, 5, 17, 88, 242, 578, 1167, 198, 7…
+#> $ format       <fct> 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, …
+#> $ re_subj      <fct> 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, …
+#> $ exclaim_subj <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+#> $ urgent_subj  <fct> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+#> $ exclaim_mess <dbl> 8, 1, 2, 1, 43, 0, 0, 2, 22, 3, 13, 1, 2, 2, 21, 10, 0, 0…
+#> $ number       <fct> small, big, none, small, small, small, small, small, smal…
 ```
 
 
 ```r
 head(email50) 
-#> # A tibble: 6 x 21
-#>   spam  to_multiple from     cc sent_email time                image attach
-#>   <fct> <fct>       <fct> <int> <fct>      <dttm>              <dbl>  <dbl>
-#> 1 0     0           1         0 1          2012-01-04 06:19:16     0      0
-#> 2 0     0           1         0 0          2012-02-16 13:10:06     0      0
-#> 3 1     0           1         4 0          2012-01-04 08:36:23     0      2
-#> 4 0     0           1         0 0          2012-01-04 10:49:52     0      0
-#> 5 0     0           1         0 0          2012-01-27 02:34:45     0      0
-#> 6 0     0           1         0 0          2012-01-17 10:31:57     0      0
-#> # ... with 13 more variables: dollar <dbl>, winner <fct>, inherit <dbl>,
-#> #   viagra <dbl>, password <dbl>, num_char <dbl>, line_breaks <int>,
-#> #   format <fct>, re_subj <fct>, exclaim_subj <dbl>, urgent_subj <fct>,
-#> #   exclaim_mess <dbl>, number <fct>
+#> # A tibble: 6 × 21
+#>   spam  to_multiple from     cc sent_e…¹ time                image attach dollar
+#>   <fct> <fct>       <fct> <int> <fct>    <dttm>              <dbl>  <dbl>  <dbl>
+#> 1 0     0           1         0 1        2012-01-04 06:19:16     0      0      0
+#> 2 0     0           1         0 0        2012-02-16 13:10:06     0      0      0
+#> 3 1     0           1         4 0        2012-01-04 08:36:23     0      2      0
+#> 4 0     0           1         0 0        2012-01-04 10:49:52     0      0      0
+#> 5 0     0           1         0 0        2012-01-27 02:34:45     0      0      9
+#> 6 0     0           1         0 0        2012-01-17 10:31:57     0      0      0
+#> # … with 12 more variables: winner <fct>, inherit <dbl>, viagra <dbl>,
+#> #   password <dbl>, num_char <dbl>, line_breaks <int>, format <fct>,
+#> #   re_subj <fct>, exclaim_subj <dbl>, urgent_subj <fct>, exclaim_mess <dbl>,
+#> #   number <fct>, and abbreviated variable name ¹​sent_email
+#> # ℹ Use `colnames()` to see all variable names
 ```
 
 Sometimes it is necessary to extract a column or a row from a data set. 
@@ -1231,19 +1232,20 @@ email50$num_char # The num_char variable column
 #> [31] 25.209  6.563 24.599 25.757  0.409 11.223  3.778  1.493 10.613  0.493
 #> [41]  4.415 14.156  9.491 24.837  0.684 13.502  2.789  1.169  8.937 15.829
 email50[47,3] # The entry in the 47th row and 3rd column
-#> # A tibble: 1 x 1
+#> # A tibble: 1 × 1
 #>   from 
 #>   <fct>
 #> 1 1
 email50[47,] # The 47th row
-#> # A tibble: 1 x 21
-#>   spam  to_multiple from     cc sent_email time                image attach
-#>   <fct> <fct>       <fct> <int> <fct>      <dttm>              <dbl>  <dbl>
-#> 1 0     1           1         0 0          2012-03-06 07:10:00     0      0
-#> # ... with 13 more variables: dollar <dbl>, winner <fct>, inherit <dbl>,
-#> #   viagra <dbl>, password <dbl>, num_char <dbl>, line_breaks <int>,
-#> #   format <fct>, re_subj <fct>, exclaim_subj <dbl>, urgent_subj <fct>,
-#> #   exclaim_mess <dbl>, number <fct>
+#> # A tibble: 1 × 21
+#>   spam  to_multiple from     cc sent_e…¹ time                image attach dollar
+#>   <fct> <fct>       <fct> <int> <fct>    <dttm>              <dbl>  <dbl>  <dbl>
+#> 1 0     1           1         0 0        2012-03-06 07:10:00     0      0      0
+#> # … with 12 more variables: winner <fct>, inherit <dbl>, viagra <dbl>,
+#> #   password <dbl>, num_char <dbl>, line_breaks <int>, format <fct>,
+#> #   re_subj <fct>, exclaim_subj <dbl>, urgent_subj <fct>, exclaim_mess <dbl>,
+#> #   number <fct>, and abbreviated variable name ¹​sent_email
+#> # ℹ Use `colnames()` to see all variable names
 ```
 
 
@@ -1325,7 +1327,7 @@ is equivalent to
 hsb2 %>% 
   select(schtyp) %>%
   table()
-#> .
+#> schtyp
 #>  public private 
 #>     168      32
 ```

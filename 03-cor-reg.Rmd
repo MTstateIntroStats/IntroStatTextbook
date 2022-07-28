@@ -383,7 +383,7 @@ and like with other statistics, we generally perform the calculations on a compu
 Figure \@ref(fig:posNegCorPlots) shows eight plots and their corresponding correlations. Only when the relationship is perfectly linear is the correlation either -1 or 1. If the relationship is strong and positive, the correlation will be near +1. If it is strong and negative, it will be near -1. If there is no apparent linear relationship between the variables, then the correlation will be near zero.
 
 ```{r posNegCorPlots, fig.cap="Sample scatterplots and their correlations. The first row shows variables with a positive relationshiop, represented by the trend up and to the right. The second row shows variables with a negative trend, where a large value in one variable is associated with a low value in the other.", out.width="100%", fig.asp=0.5}
-library(ggpubr) # Adding here instead of _common.R to avoid collision with ggimage
+#library(ggpubr) # Adding here instead of _common.R to avoid collision with ggimage
 
 simulated_scatter %>%
   filter(group %in% 9:16) %>%
