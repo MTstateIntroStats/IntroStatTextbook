@@ -1,5 +1,9 @@
 # Inference for categorical data {#inference-cat}
 
+```{r, include = FALSE}
+source("_common.R")
+```
+
 ::: chapterintro
 Statistical inference is primarily concerned with understanding and quantifying the *uncertainty* of parameter estimates---that is, how variable is a sample statistic from sample to sample? While the equations and details change depending on the setting, the foundations for inference are the same throughout all of statistics. We will begin this chapter with a discussion of the foundations of inference, and introduce the two primary vehicles of inference: the **hypothesis test** and **confidence interval**.
 

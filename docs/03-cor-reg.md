@@ -20,7 +20,7 @@ For example, if we took family income ($x$), this value would provide some usefu
 However, the prediction would be far from perfect, since other factors play a role in financial support beyond a family's finances.
 
 <div class="figure" style="text-align: center">
-<img src="03-cor-reg_files/figure-html/perfLinearModel-1.png" alt="Requests from twelve separate buyers were simultaneously placed with a trading company to purchase Target Corporation stock (ticker `TGT`, December 28th, 2018), and the total cost of the shares were reported. Because the cost is computed using a linear formula, the linear fit is perfect." width="70%" />
+<img src="03-cor-reg_files/figure-html/perfLinearModel-1.png" alt="Requests from twelve separate buyers were simultaneously placed with a trading company to purchase Target Corporation stock (ticker `TGT`, December 28th, 2018), and the total cost of the shares were reported. Because the cost is computed using a linear formula, the linear fit is perfect." width="672" />
 <p class="caption">(\#fig:perfLinearModel)Requests from twelve separate buyers were simultaneously placed with a trading company to purchase Target Corporation stock (ticker `TGT`, December 28th, 2018), and the total cost of the shares were reported. Because the cost is computed using a linear formula, the linear fit is perfect.</p>
 </div>
 
@@ -54,7 +54,7 @@ One such case is shown in Figure \@ref(fig:notGoodAtAllForALinearModel) where th
 We discuss nonlinear trends in this chapter and the next, but details of fitting nonlinear models are saved for a later course.
 
 <div class="figure" style="text-align: center">
-<img src="03-cor-reg_files/figure-html/notGoodAtAllForALinearModel-1.png" alt="The best fitting line for these data is flat, which is not useful in this nonlinear case. These data are from a physics experiment." width="70%" />
+<img src="03-cor-reg_files/figure-html/notGoodAtAllForALinearModel-1.png" alt="The best fitting line for these data is flat, which is not useful in this nonlinear case. These data are from a physics experiment." width="672" />
 <p class="caption">(\#fig:notGoodAtAllForALinearModel)The best fitting line for these data is flat, which is not useful in this nonlinear case. These data are from a physics experiment.</p>
 </div>
 
@@ -66,7 +66,7 @@ Researchers captured 104 of these animals and took body measurements before rele
 We consider two of these measurements: the total length of each possum, from head to tail, and the length of each possum's head.
 
 <div class="figure" style="text-align: center">
-<img src="03/figures/brushtail-possum/brushtail-possum.jpg" alt="The common brushtail possum of Australia. Photo by Greg Schecter, [flic.kr/p/9BAFbR](https://flic.kr/p/9BAFbR), CC BY 2.0 license. " width="70%" />
+<img src="03/figures/brushtail-possum/brushtail-possum.jpg" alt="The common brushtail possum of Australia. Photo by Greg Schecter, [flic.kr/p/9BAFbR](https://flic.kr/p/9BAFbR), CC BY 2.0 license. " width="2592" />
 <p class="caption">(\#fig:brushtail-possum)The common brushtail possum of Australia. Photo by Greg Schecter, [flic.kr/p/9BAFbR](https://flic.kr/p/9BAFbR), CC BY 2.0 license. </p>
 </div>
 
@@ -80,7 +80,7 @@ The head and total length variables are associated: possums with an above averag
 While the relationship is not perfectly linear, it could be helpful to partially explain the connection between these variables with a straight line.
 
 <div class="figure" style="text-align: center">
-<img src="03-cor-reg_files/figure-html/scattHeadLTotalL-1.png" alt="A scatterplot showing head length against total length for 104 brushtail possums. A point representing a possum with head length 86.7 mm and total length 84 cm is highlighted." width="70%" />
+<img src="03-cor-reg_files/figure-html/scattHeadLTotalL-1.png" alt="A scatterplot showing head length against total length for 104 brushtail possums. A point representing a possum with head length 86.7 mm and total length 84 cm is highlighted." width="672" />
 <p class="caption">(\#fig:scattHeadLTotalL)A scatterplot showing head length against total length for 104 brushtail possums. A point representing a possum with head length 86.7 mm and total length 84 cm is highlighted.</p>
 </div>
 
@@ -89,7 +89,7 @@ In this example, we will use the total length as the predictor variable, $x$, to
 We could fit the linear relationship using technology (criteria to be discussed in Section \@ref(least-squares-regression)), as in Figure \@ref(fig:scattHeadLTotalLLine). 
 
 <div class="figure" style="text-align: center">
-<img src="03-cor-reg_files/figure-html/scattHeadLTotalLLine-1.png" alt="A reasonable linear model was fit to represent the relationship between head length and total length." width="70%" />
+<img src="03-cor-reg_files/figure-html/scattHeadLTotalLLine-1.png" alt="A reasonable linear model was fit to represent the relationship between head length and total length." width="672" />
 <p class="caption">(\#fig:scattHeadLTotalLLine)A reasonable linear model was fit to represent the relationship between head length and total length.</p>
 </div>
 
@@ -114,7 +114,7 @@ Plot B in Figure \@ref(fig:scattHeadLTotalL-sex-age) shows the same relationship
 It's harder to tell if age changes the relationship between total length and head length for these possums. 
 
 <div class="figure" style="text-align: center">
-<img src="03-cor-reg_files/figure-html/scattHeadLTotalL-sex-age-1.png" alt="Relationship between total length and head lentgh of brushtail possums, taking into consideration their sex (Plot A) or age (Plot B)." width="70%" />
+<img src="03-cor-reg_files/figure-html/scattHeadLTotalL-sex-age-1.png" alt="Relationship between total length and head lentgh of brushtail possums, taking into consideration their sex (Plot A) or age (Plot B)." width="672" />
 <p class="caption">(\#fig:scattHeadLTotalL-sex-age)Relationship between total length and head lentgh of brushtail possums, taking into consideration their sex (Plot A) or age (Plot B).</p>
 </div>
 
@@ -140,7 +140,7 @@ The size of a residual is usually discussed in terms of its absolute value.
 For example, the residual for the observation marked by a yellow triangle is larger than that of the observation marked by a red circle because $|-4|$ is larger than $|-1|$.
 
 <div class="figure" style="text-align: center">
-<img src="03-cor-reg_files/figure-html/scattHeadLTotalLLine-highlighted-1.png" alt="A reasonable linear model was fit to represent the relationship between head length and total length, with three points and their residuals highlighted." width="70%" />
+<img src="03-cor-reg_files/figure-html/scattHeadLTotalLLine-highlighted-1.png" alt="A reasonable linear model was fit to represent the relationship between head length and total length, with three points and their residuals highlighted." width="672" />
 <p class="caption">(\#fig:scattHeadLTotalLLine-highlighted)A reasonable linear model was fit to represent the relationship between head length and total length, with three points and their residuals highlighted.</p>
 </div>
 
@@ -194,7 +194,7 @@ For instance, the point $(85.0, 98.6)$ (marked by the green diamond) had a predi
 Creating a residual plot is sort of like tipping the scatterplot over so the regression line is horizontal. 
 
 <div class="figure" style="text-align: center">
-<img src="03-cor-reg_files/figure-html/scattHeadLTotalLResidualPlot-1.png" alt="Residual plot for the model predicting head length from total length for brushtail possums." width="70%" />
+<img src="03-cor-reg_files/figure-html/scattHeadLTotalLResidualPlot-1.png" alt="Residual plot for the model predicting head length from total length for brushtail possums." width="672" />
 <p class="caption">(\#fig:scattHeadLTotalLResidualPlot)Residual plot for the model predicting head length from total length for brushtail possums.</p>
 </div>
 
@@ -275,7 +275,7 @@ A scatterplot of the data is shown in Figure \@ref(fig:elmhurstScatterW2Lines) 
 The lines follow a negative trend in the data; students who have higher family incomes tended to have lower gift aid from the university.
 
 <div class="figure" style="text-align: center">
-<img src="03-cor-reg_files/figure-html/elmhurstScatterW2Lines-1.png" alt="Gift aid and family income for a random sample of 50 freshman students from Elmhurst College, shown with the least squares line (solid line) and line fit by minimizing the sum of the residual magnitudes (dashed line)." width="70%" />
+<img src="03-cor-reg_files/figure-html/elmhurstScatterW2Lines-1.png" alt="Gift aid and family income for a random sample of 50 freshman students from Elmhurst College, shown with the least squares line (solid line) and line fit by minimizing the sum of the residual magnitudes (dashed line)." width="672" />
 <p class="caption">(\#fig:elmhurstScatterW2Lines)Gift aid and family income for a random sample of 50 freshman students from Elmhurst College, shown with the least squares line (solid line) and line fit by minimizing the sum of the residual magnitudes (dashed line).</p>
 </div>
 
@@ -629,7 +629,7 @@ This is visualized in Figure \@ref(fig:r-squared-explanation).
 ::: 
 
 <div class="figure" style="text-align: center">
-<img src="03-cor-reg_files/figure-html/r-squared-explanation-1.png" alt="For these 104 possums, the range of head lengths is about 103 $-$ 83 = 20 mm. However, among possums of the same total length (e.g., 85 cm), the range in head lengths is reduced to about 10 mm, or about a 50% reduction, which matches $R^2 = 0.48$, or 48%." width="70%" />
+<img src="03-cor-reg_files/figure-html/r-squared-explanation-1.png" alt="For these 104 possums, the range of head lengths is about 103 $-$ 83 = 20 mm. However, among possums of the same total length (e.g., 85 cm), the range in head lengths is reduced to about 10 mm, or about a 50% reduction, which matches $R^2 = 0.48$, or 48%." width="672" />
 <p class="caption">(\#fig:r-squared-explanation)For these 104 possums, the range of head lengths is about 103 $-$ 83 = 20 mm. However, among possums of the same total length (e.g., 85 cm), the range in head lengths is reduced to about 10 mm, or about a 50% reduction, which matches $R^2 = 0.48$, or 48%.</p>
 </div>
 
@@ -692,7 +692,7 @@ A plot of the auction data is shown in Figure \@ref(fig:marioKartNewUsed).
 Note that the original dataset contains some Mario Kart games being sold at prices above \$100 but for this analysis we have limited our focus to the 141 Mario Kart games that are sold below \$100.
 
 <div class="figure" style="text-align: center">
-<img src="03-cor-reg_files/figure-html/marioKartNewUsed-1.png" alt="Total auction prices for the video game Mario Kart, divided into used ($x = 0$) and new ($x = 1$) condition games. The least squares regression line is also shown." width="70%" />
+<img src="03-cor-reg_files/figure-html/marioKartNewUsed-1.png" alt="Total auction prices for the video game Mario Kart, divided into used ($x = 0$) and new ($x = 1$) condition games. The least squares regression line is also shown." width="672" />
 <p class="caption">(\#fig:marioKartNewUsed)Total auction prices for the video game Mario Kart, divided into used ($x = 0$) and new ($x = 1$) condition games. The least squares regression line is also shown.</p>
 </div>
 
@@ -890,30 +890,31 @@ If you're not sure what some of these terms mean, we recommend you go back in th
 We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. 
 However you should be able to easily spot them as **bolded text**.
 
-<table>
+<table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
 <tbody>
   <tr>
    <td style="text-align:left;"> coefficient of determination </td>
-   <td style="text-align:left;"> indicator variable </td>
-   <td style="text-align:left;"> predictor </td>
-   <td style="text-align:left;"> total sum of squares </td>
+   <td style="text-align:left;"> influential point </td>
+   <td style="text-align:left;"> residuals </td>
   </tr>
   <tr>
    <td style="text-align:left;"> correlation </td>
-   <td style="text-align:left;"> influential point </td>
-   <td style="text-align:left;"> R-squared </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> least squares criterion </td>
+   <td style="text-align:left;"> sum of squared error </td>
   </tr>
   <tr>
    <td style="text-align:left;"> extrapolation </td>
-   <td style="text-align:left;"> least squares criterion </td>
-   <td style="text-align:left;"> residuals </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> least squares line </td>
+   <td style="text-align:left;"> total sum of squares </td>
   </tr>
   <tr>
    <td style="text-align:left;"> high leverage </td>
-   <td style="text-align:left;"> least squares line </td>
-   <td style="text-align:left;"> sum of squared error </td>
+   <td style="text-align:left;"> predictor </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> indicator variable </td>
+   <td style="text-align:left;"> R-squared </td>
    <td style="text-align:left;">  </td>
   </tr>
 </tbody>

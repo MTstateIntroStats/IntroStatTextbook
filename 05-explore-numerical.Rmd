@@ -1,608 +1,21 @@
-# Exploratory data analysis {#eda}
+# Exploring quantitative data {#quantitative-data}
+<!-- TODO - change reference to #explore-numerical -->
+
+```{r, include = FALSE}
+source("_common.R")
+```
 
 ::: {.chapterintro}
-This chapter focuses on the mechanics and construction of summary statistics and graphs.
-We use statistical software for generating the summaries and graphs presented in this chapter and book.
-However, since this might be your first exposure to these concepts, we take our time in this chapter to detail how to create them.
-Mastery of the content presented in this chapter will be crucial for understanding the methods and techniques introduced in rest of the book.
+This chapter focuses on exploring **quantitative** data using summary statistics and visualizations.
+The summaries and graphs presented in this chapter are created using statistical software; however, since this might be your first exposure to the concepts, we take our time in this chapter to detail how to create them.
+Mastery of the content presented in this chapter will be crucial for understanding the methods and techniques introduced in the rest of the book.
 :::
 
-## Exploring categorical data {#categorical-data}
-
-In this section, we will introduce tables and other basic tools for organizing and analyzing categorical data that are used throughout this book. Table \@ref(tab:emailDF) displays the first six rows of the `email` data set containing information on 3,921 emails sent to David Diez's Gmail account (one of the authors of the _OpenIntro_ textbooks). In this section we will examine whether the presence of numbers, small or large, in an email provides any useful value in classifying email as spam or not spam.
-Descriptions of all five email variables are given in Table \@ref(tab:emailVariables).
-
-::: {.data}
-The `email` data can be found in the [openintro](http://openintrostat.github.io/openintro/reference/index.html) package.^[The `email` data set found in the `openintro` package defines the variable `spam` as 0 (not spam) or 1 (spam), and `format` as 0 (not HTML) or 1 (HTML). When variables are defined in this way---coded as the numbers 0 and 1 rather than the category names---they are called **indicator variables*** or **dummy variables**. In this section of the textbook, we have re-coded `spam` to be the variable `type`, which takes on values "not spam" or "spam", and we have re-coded the variable `format` to take on values "not HTML" or "HTML".]
-:::
-
-```{r emailDF}
-data(email)
-email <- email %>%
-  mutate(type = factor(spam, levels=c(0,1), labels=c("not spam","spam")),
-        format = factor(format, levels=c(0,1), labels=c("not HTML","HTML")))
-
-email %>% 
-  select("type", "num_char", "line_breaks", "format", "number") %>%
-  slice_head(n = 6) %>%
-  kable(caption = "Six rows from the `email` data set.",
-        row.names = TRUE)
-```
-
-```{r emailVariables}
-email_var_def <- tribble(
-  ~variable,       ~description,
-  "type", "Whether the email was spam or not spam.",
-  "num_char", "The number of characters in the email, in thousands.",
-  "line_breaks", "The number of line breaks in the email (does not count text wrapping).",
-  "format", "Whether the email was written using HTML (e.g., may have included bolding or active links) or not.",
-  "number", "Categorical variable saying whether there was no number, a small number (under 1 million), or a big number."
-)
-
-email_var_def %>%
-  kable(caption = "Variables and their descriptions for the `email` data set.")
-```
-### Contingency tables and conditional proportions
-
-A summary table for a single categorical variable that reports the number of observations (frequency) in each category is called a **frequency table**. Table
-\@ref(tab:emailTableNumber) is a frequency table for the `number` variable.
-If we replaced the counts with percentages or proportions (relative frequencies),
-the table would be called a **relative frequency table**.
-
-
-```{r emailTableNumber}
-tab <- as.numeric(table(email[,c("number")]))
-names(tab) <- c("none","small","big")
-kable(data.frame(t(tab)), caption = "Frequency table of `Number` variable.")
-```
-
-
-Table \@ref(tab:emailTable) summarizes two variables:
-`type` (spam or not spam) and `number`. A table that summarizes data for two categorical variables
-in this way is called a **contingency table** or **two-way table**.
-Each value in the table represents the number of times, or **frequency**
-a particular combination of variable outcomes occurred.
-For example, the value 149 corresponds to the number of emails
-in the data set that are not spam _and_ had no number listed in the email.
-Row and column totals are also included.
-The **row totals** provide the total counts across each row
-(e.g., there are $149 + 168 + 50 = 367$ emails classified as not spam), and **column totals** are total
-counts down each column.
-
-In this textbook, we generally take the convention of putting the categories of the explanatory variable as the columns and the categories of the response variable as the rows (if there exists and explanatory-response relationship between the two variables).
-
-```{r include=FALSE}
-terms_chp_2 <- c("contingency table", "two-way table",
-                 "row totals", "column totals", "frequency",
-                 "relative frequency")
-```
-
-```{r emailTable}
-temptbl <- tribble(
- ~variable,    ~col1, ~col2, ~col3, ~col4, ~col5,
- "", "spam", "400", "2659", "495", "3554",
- "type", "not spam", "149", "168", "50", "367",
- "", "Total", "549", "2827", "545", "3921"
-)
-
-temptbl %>%
- kable(caption = "Contingency table of `number` (cols) and `type` (rows) variables.",
-    col.names = c("", "", "none", "small", "big", "Total")) %>%
- add_header_above(c(" ", " ", "`number`" = 3, " ")) %>%
-  kable_styling()  
-```
-
-We would like to examine whether the presence of numbers---none, small or large---in an email provides any useful value in classifying email as spam or not spam---that is, is there an **association** between the variables `number` and `type`? 
-
-::: {.guidedpractice}
-To determine if a relationship exists between whether an email is spam or not, and whether the email has no numbers, a small number, or a big number, why isn't it helpful to compare the _number_ of spam emails across the `number` categories?^[Since the sample sizes in the three `number` categories differ (549 emails with no numbers; 2827 emails with a small number; 545 emails with a big number), we need to compare the _proportion_ of spam emails across categories rather than the count.]
-:::
-
-The proportion of emails that were classified as spam in the data set is $3554/3921 = 0.906$, or about 91%. Let's compare this **unconditional proportion** to the **conditional proportions** of spam _within_ each `number` category: $400/549 \approx 73\%$ of emails with no numbers are spam; $2659/2827 \approx 94\%$ of emails with small numbers are spam; and $495/545 \approx 91\%$ of emails with big numbers are spam. Since these three conditional proportions differ, we say the variables `number` and `type` are _associated_ in this data set. Note that some differ from the overall, or unconditional, proportion of spam emails in the data set---91%.
-
-::: {.onebox}
-**Association between two categorical variables.**
-  
-An **unconditional** proportion is a proportion measured out of the total sample size. A **conditional** proportion is a proportion measured out of a subgroup in the sample.
-
-If the conditional proportions of a particular outcome (e.g., spam email) within levels of a categorical variable (e.g., whether no number, a small number, or a big number appears in the email) differ across levels, we say those two variables are **associated**. We can also determine if two categorical variables are associated by checking if any of the conditional proportions of the outcome within categories differ from the overall, or **unconditional** proportion.
-:::
-
-#### Row and column proportions {-}
-
-Conditional proportions that condition on a row category are called **row proportions**; conditional proportions that condition on a column category
-are called **column proportions**. 
-
-```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "row proportions", "column proportions")
-```
-
-Table \@ref(tab:rowPropSpamNumber) shows the row proportions for Table \@ref(tab:emailTable). The row proportions are computed as the counts divided by their row totals. The frequnecy 149 at the intersection of `not spam` and `none` is replaced by $149/367=0.406$, i.e., 149 divided by its row total, 367. So what does 0.406 represent? It corresponds to the conditional proportion of non-spam emails in the sample that do not have any numbers.
-
-```{r rowPropSpamNumber}
-g <- table(email$spam, email$number)[1:2,]
-g.prop <- round(g / rep(rowSums(g), 3), 3)
-dimnames(g.prop)[[1]] <- c("spam", "not spam")
-
-g.prop %>%
- kable(caption = "A contingency table with row proportions for the `type` and `number` variables.") %>%
-  kable_styling()  
-```
-
-A contingency table of the column proportions is computed in a similar way, where each column proportion is computed as the count divided by the corresponding column total. Table \@ref(tab:colPropSpamNumber) shows such a table, and here the value 0.729 indicates that 72.9% of emails with no numbers were spam. This rate of spam is much lower than emails with only small numbers (94.1%) or big numbers (90.8%). Because these spam rates vary between the three levels of `number` (`none`, `small`, `big`), this provides evidence that the `spam` and `number` variables are associated in this data set.
-
-```{r colPropSpamNumber}
-g <- table(email$spam, email$number)[1:2,]
-g.prop <- round(g / rep(colSums(g), rep(2,3)), 3)
-dimnames(g.prop)[[1]] <- c("spam", "not spam")
-
-g.prop %>%
- kable(caption = "A contingency table with column proportions for the `type` and `number` variables.") %>%
-  kable_styling()  
-```
-
-
-::: {.guidedpractice}
-What does 0.458 represent in Table \@ref(tab:rowPropSpamNumber)? What does 0.059 represent in Table \@ref(tab:colPropSpamNumber)?^[0.458 represents the proportion of spam emails that had a small number. 0.058 represents the fraction of emails with small numbers that are spam.]
-:::
-
-::: {.guidedpractice}
-What does 0.139 at the intersection of `not~spam` and `big` represent in Table \@ref(tab:rowPropSpamNumber)? What does 0.908 represent in the Table \@ref(tab:colPropSpamNumber)?^[0.139 represents the fraction of non-spam email that had a big number. 0.908 represents the fraction of emails with big numbers that are non-spam emails.]
-:::
-
-::: {.workedexample}
-Data scientists use statistics to filter spam from incoming email messages. By noting specific characteristics of an email, a data scientist may be able to classify some emails as spam or not spam with high accuracy.
-One of those characteristics is whether the email contains no numbers, small numbers, or big numbers. Another characteristic is whether or not an email has any HTML content. A contingency table `type` and `format` variables from the `email` data set are shown in Table \@ref(tab:emailSpamHTMLTableTotals). Recall that an HTML email is an email with the capacity for special formatting, e.g., bold text. In Table~ \@ref(tab:emailSpamHTMLTableTotals), which would be more helpful to someone hoping to classify email as spam or regular email: row or column proportions?
-  
----
-  
-Such a person would be interested in how the proportion of spam changes within each email format. This corresponds to column proportions: the proportion of spam in plain text emails and the proportion of spam in HTML emails.
-
-If we generate the column proportions, we can see that a higher fraction of plain text emails are spam ($209/1195 = 17.5\%$) than compared to HTML emails ($158/2726 = 5.8\%$). This information on its own is insufficient to classify an email as spam or not spam, as over 80\% of plain text emails are not spam. Yet, when we carefully combine this information with many other characteristics, such as \var{number} and other variables, we stand a reasonable chance of being able to classify some email as spam or not spam. \GLMSection{This is a topic we will return to in Chapter~\ref{multipleRegressionAndANOVA}.}{}
-:::
-
-```{r emailSpamHTMLTableTotals}
-g <- table(email$spam, email$format)[2:1,]
-g <- rbind(g, colSums(g))
-g <- cbind(g, rowSums(g))
-dimnames(g)[[1]] <- c("spam", "not spam", "Total")
-dimnames(g)[[2]] <- c("not HTML", "HTML", "Total")
-
-g %>%
- kable(caption = "A contingency table for `type` and `format`.") %>%
-  kable_styling()  
-```
-
-The previous Example points out that row and column proportions are not equivalent. Before settling on one form for a table, it is important to consider each to ensure that the most useful table is constructed.
-
-::: {.guidedpractice}
-Look back to Tables \@ref(rowPropSpamNumber) and \@ref(colPropSpamNumber). Which would be more useful to someone hoping to identify spam emails using the `number` variable?^[The column proportions in Table \@ref(colPropSpamNumber) will probably be most useful, which makes it easier to see that emails with small numbers are spam about 5.9% of the time (relatively rare). We would also see that about 27.1% of emails with no numbers are spam, and 9.2% of emails with big numbers are spam.]
-:::
-
-
-#### Sample proportions and population proportions {-}
-
-In the field of statistics, summary measures that summarize a sample of data are called **statistics**\index{statistic}. Numbers that summarize an entire population are called **parameters**\index{parameter}. You can remember
-this distinction by looking at the first letter of each term: 
-
-> **_S_**tatistics summarize **_S_**amples.  
-> **_P_**arameters summarize **_P_**opulations.
-
-Proportions calculated from a sample of data are denoted by $\hat{p}$.
-In our example, we were interested in the proportion of spam emails in our data set, so we could denote this by $\hat{p} = 0.91$. If there are different groups we want to summarize with a proportion, we can add subscripts: $\hat{p}_{none} = 0.73$, $\hat{p}_{small} = 0.94$, and $\hat{p}_{big} = 0.91$. Each of these values is a statistic since it is computed from a sample of data.
-
-These 3921 emails were a sample from a larger group of emails---all emails that are sent to David Diez, either in the past or in the future. This larger group of emails is the population. There is some unknown value for the proportion of _all_ emails in the population that would be classified as spam, which we denote by $\pi$. Similarly, there are unknown values for the proportion of all emails with no numbers in the population that would be classified as spam, denoted by $\pi_{none}$. Each of these unknown values are called parameters. 
-
-We typically use Roman letters to symbolize statistics (e.g., $\bar{x}$, $\hat{p}$), and Greek letters to symbolize parameters (e.g., $\mu$, $\pi$).
-Since we rarely can measure the entire population, and thus rarely know
-the actual parameter values, we like to say, "We don't know Greek,
-and we don't know parameters!"
-
-
-```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "statistic", "parameter","point estimate")
-```
-
-### Bar plots and mosaic plots
-
-A bar plot is a common way to display a single categorical variable. The left panel of Figure \@ref(fig:emailNumberBarPlot) shows a **bar plot** for the `number` variable. 
-In the right panel, the counts are converted into proportions (e.g., $549/3921=0.140$ for `none`).
-
-```{r emailNumberBarPlot, fig.cap="Two bar plots of `number`. The left panel shows the counts on the $y$-axis, and the right panel shows the proportions in each group on the $y$-axis.", fig.show="hold", out.width="50%"}
-email %>% ggplot(aes(x = number)) +
-  geom_bar(col="seagreen", fill="seagreen") + theme_light() +
-  ylab("Frequency")
-email %>% ggplot(aes(x = number)) +
-  geom_bar(aes(y = ..prop.., group=1), col="seagreen", fill="seagreen") +
-  theme_light() + ylab("Relative Frequency")
-```
-
-Bar plots are also used to display the relationship between two categorical variables.
-When the bars are stacked such that each bar totals 100% and is segmented by
-another categorical variable, it is called a **segmented bar plot**.
-
-```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "bar plot", "segmented bar plot")
-```
-
-A segmented bar plot is a graphical display of contingency table information. For example, segmented bar plots representing Table \@ref(tab:colPropSpamNumber) is shown in Figure \@ref(fig:emailSpamNumberSegBar), where we have first created a non-standardized segmented bar plot using the `number` variable and then separated each group by the levels of `type`. The standardized segmented bar plot using the column proportions of Table \@ref(tab:colPropSpamNumber) is a helpful visualization of the fraction of spam emails in each level of `number`.
-
-::: {.importantbox}
-In a segmented bar plot, the explanatory variable is plotted on the $x$-axis, while the response variable is displayed by different colors within each bar, defined by the legend.
-:::
-
-```{r emailSpamNumberSegBar, fig.cap="(a) Segmented bar plot for numbers found in emails, where the counts have been further broken down by `type`. (b) Segmented bar plot using column proportions of each type within each `number` category.", fig.show="hold", out.width="50%"}
-email %>%
-  ggplot(aes(x = number, fill = type)) +
-  geom_bar() + xlab("(a)") + ylab("Count")
-email %>%
-  ggplot(aes(x = number, fill = type)) +
-  geom_bar(stat = "count", position = "fill") +
-  xlab("(b)") + ylab("Proportion")
-```
-
-::: {.guidedpractice}
-In the segmented bar plots in Figure \@ref(fig:emailSpamNumberSegBar), which variable is the explanatory variable? the response variable?^[The numbers found in emails (`number`) is the explanatory variable; whether the email is spam or not spam is the response variable.]
-:::
-
-::: {.workedexample}
-Examine both of the segmented bar plots in Figure \@ref(fig:emailSpamNumberSegBar). Which is more useful?
-  
----
-
-Plot (a) contains more information, but plot (b) presents the information more clearly. Plot (b) makes it clear that emails with no number have a relatively high rate of spam email---about 27%! On the other hand, less than 10% of email with small or big numbers are spam.
-:::
-
-Since the proportion of spam changes across the groups in Figure \@ref(fig:emailSpamNumberSegBar) (seen in plot (b)), we can conclude the variables are dependent, which is something we were also able to discern using the column proportions in Table \@ref(tab:colPropSpamNumber). Because both the `none` and `big` groups have relatively few observations compared to the `small` group, the association is more difficult to see in plot (a) of Figure \@ref(fig:emailSpamNumberSegBar).
-
-In some other cases, a segmented bar plot that is not standardized will be more useful in communicating important information. Before settling on a particular segmented bar plot, create standardized and non-standardized forms and decide which is more effective at communicating features of the data.
-
-#### Mosaic plots {-}
-
-A **mosaic plot** is a graphical display of contingency table information that is similar to a bar plot for one variable or a segmented bar plot when using two variables. Figure \@ref(fig:emailNumberMosaic) plot (a) shows a mosaic plot for the `number` variable. Each column represents a level of `number`, and the column widths correspond to the proportion of emails of each number type. For instance, there are fewer emails with no numbers than emails with only small numbers, so the no number email column is slimmer. In general, mosaic plots use box *areas* to represent the number of observations.
-
-```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "mosaic plot")
-```
-
-```{r emailNumberMosaic, fig.cap="(a) Mosaic plot for numbers found in emails. (b) Mosaic plot where the `number` counts have been further broken down by `type`.", fig.show="hold", out.width="50%"}
-mosaicplot(table(email$number), xlab="(a)", main="", cex.axis=1)
-mosaicplot(number ~ factor(spam, levels=c(0,1), labels=c("not spam","spam")), data=email, xlab="(b)", ylab="", main="", cex.axis=1, color = c("palegreen2","tomato"))
-```
-This one-variable mosaic plot is further divided into pieces in Figure \@ref(fig:emailNumberMosaic) plot (b) using the `type` variable. Each column is split proportionally according to the fraction of emails that were spam in each number category. For example, the second column, representing emails with only small numbers, was divided into emails that were spam (lower) and not spam (upper). 
-As another example, the bottom of the third column represents spam emails that had big numbers, and the upper part of the third column represents regular emails that had big numbers. We can again use this plot to see that the `type` and `number` variables are associated since some columns are divided in different vertical locations than others, which was the same technique used for checking an association in the standardized version of the segmented bar plot.
-
-::: {.importantbox}
-As in a segmented bar plot, the explanatory variable is plotted on the $x$-axis of a mosaic plot, i.e., the explanatory variable is represented by columns, while the response variable is displayed by different colors within each column, defined by the legend.
-:::
-
-### Why not pie charts?
-
-```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "pie chart")
-```
-While pie charts are well known, they are not typically as useful as other charts in a data analysis. A **pie chart** is shown in Figure \@ref(fig:emailNumberPieChart) alongside a bar plot. It is generally more difficult to compare group sizes in a pie chart (comparing angles) than in a bar plot (comparing heights), especially when categories have nearly identical counts or proportions. In the case of the `none` and `big` categories, the difference is so slight you may be unable to distinguish any difference in group sizes for either plot!
-
-```{r emailNumberPieChart, fig.cap="A pie chart and bar plot of `number` for the `email` data set. This is the only pie chart you will see in this book!", fig.show="hold", out.width="50%"}
-my.col <- brewer.pal(3, name = "Accent")
-pie(table(email$number), col = my.col)
-email %>% ggplot(aes(x = number)) +
-  geom_bar(aes(y = ..prop.., group=1), col=my.col, fill=my.col) +
-  theme_light() + ylab("Relative Frequency")
-```
-
-Pie charts are nearly useless when trying to compare two categorical variables, as is shown in Figure \@ref(fig:worst-pie-chart).
-
-```{r worst-pie-chart, fig.cap="Try comparing the distributions of colors across pie charts A, B, and C---it's impossible!^[R code from User:Schutz for Wikipedia on 28 August 2007]", out.width="75%"}
-a <- matrix(c(17, 18, 20, 22, 23,
-                20, 20, 19, 21, 20,
-                23, 22, 20, 18, 17), nrow=3, byrow=T)
-  titles <- c("A", "B", "C")
-  cols <- brewer.pal(5,"Accent")
-  
-  defaultmar <- par()$mar
-  layout(matrix(c(1,3,5,
-                  2,4,6), nrow=2, byrow=T), height=c(1,1))       
-  par(cex=1)
-  par(font=1)
-  par(las=1)
-  par(font.axis=1)
-  par(mgp=c(1,1,0))
-  
-  for (i in 1:nrow(a)) {
-    par(mar=c(0,0,2,0))
-    pie(a[i,], init=90, clockwise=T, col=cols, radius=0.8)
-    title(main=titles[i], line=0)
-    par(mar=defaultmar+c(-2,-1.5,-4,-0.5))
-    par(mgp=c(0,0.5,0))
-    barplot(a[i,], horiz=F, xlim=c(0,10), ylim=c(0,25), col=cols, border=0,
-            names.arg=1:5, space=0.8, axes=F)
-    par(mgp=c(0,1,0))
-  
-    abline(h=5*1:5, col="white")
-    axis(2)
-  }
-  par(mar=defaultmar)
-```
-
-If you're still not convinced that you shouldn't use pie charts, read ["The Issue with Pie Chart"](https://www.data-to-viz.com/caveat/pie.html) on the "from Data to Viz" blog, and ["The Worst Chart in the World"](https://www.businessinsider.com/pie-charts-are-the-worst-2013-6) article on Business Insider.
-
-### Simpson's paradox {#simpson}
-
-#### Race and capital punishment {-}
-
-A 1991 study by Radelet and Pierce examined whether race was associated with whether the death penalty was invoked in homicide cases^[This example is adapted from @Agresti2007 (p. 49-52).]. Table \@ref(tab:DP) and Figure \@ref(fig:DPbarplot) summarize data on 674 defendants in indictments involving cases with multiple murders in Florida from 1976 through 1987.
-
-```{r DP}
-temptbl <- tribble(
- ~variable,    ~col1, ~col2, ~col3, ~col4,
- "","Death penalty", "53", "15", "68",
- "Sentence", "No death penalty", "430", "176", "606",
- "","Total", "483", "191", "674"
-)
-
-temptbl %>%
- kable(caption = "Contingency table of homicide cases in Florida from 1976 through 1987.",
-    col.names = c("", "", "Caucasian", "African American", "Total")) %>%
- add_header_above(c(" ", "", "Defendant's race" = 2, " ")) %>%
-  kable_styling()  
-```
-
-```{r DPbarplot, fig.cap="Segmented bar plot comparing the proportion of defendants who received the death penalty between Caucasians and African Americans."}
-temptbl <- tribble(
- ~variable,    ~col1, ~col2 ,
- "Caucasian", 0.890, "No DP",
- "Caucasian", 0.110, "DP",
- "African American", 0.921, "No DP",
- "African American", 0.079, "DP"
-)
-temptbl %>% ggplot(aes(x = variable, y=col1, fill=factor(col2, levels=c("No DP", "DP")))) + geom_col() +
-  xlab("Race") + ylab("Proportion") + 
-  scale_fill_discrete(name="Sentence") 
-```
-
-
-::: {.guidedpractice}
-Is the race of the defendant associated with the sentence of the trial?^[Yes. The conditional proportions of receiving the death penalty given race differ: 11% of Caucasian defendants received the death penalty, versus 8% of African American defendants received the death penalty.]
-:::
-
-Overall, a lower percentage of African American defendants received the death penalty than Caucasian defendants (8% compared to 11%). Given studies have shown racial bias in sentencing, this may be surprising. Let's look at the data more closely.
-
-::: {.guidedpractice}
-Since these are _observational data_, confounding variables are most likely present. Recall, a confounding variable is one that is associated with both the response variable (sentence) and the explanatory variable (race of the defendant). What confounding variables could be present?^[The confounding variable we will consider here is race of the victim. Other confounding variables may include socioeconomic status (since SES is related to race, and a higher SES may allow you to hire a better lawyer---though this explanation is opposite of the association we see in the data) or district (the racial makeup would differ across districts, and maybe districts with a larger proportion of Caucasians also tend to invoke the death penalty more often).]
-:::
-
-If we subset the data by the race of the victim, we see a different picture. Table \@ref(tab:DP2) and Figure \@ref(fig:DPbarplot2) summarize the same data, but separately for Caucasian and African American homicide victims.
-
-```{r DP2}
-temptbl <- tribble(
- ~variable,    ~col1, ~col2, ~col3, ~col4,
- "Caucasian","Caucasian", "53", "414", "11.3%",
- "", "African American", "11", "37", "22.9%",
-  "African American","Caucasian", "0", "16", "0.0%",
- "", "African American", "4", "139", "2.8%",
- "", " ", " ", " ", " ",
- "Total","Caucasian", "53", "430", "11.0%",
-  "", "African American", "15", "176", "7.9%"
-)
-
-temptbl %>%
- kable(caption = "Contingency table of homicide cases in Florida from 1976 through 1987; sentences classified by defendant's race and victim's race.",
-    col.names = c("Victim's race", "Defendant's race", "Yes", "No", "Percent Yes")) %>%
- add_header_above(c(" ", "", "Death Penalty?" = 2, " ")) %>%
-  kable_styling()  
-```
-
-```{r DPbarplot2, fig.cap="Segmented bar plots comparing the proportion of Caucasian and African American defendants who received the death penalty; separate plots for Caucasian victims and African American victims.", out.width="50%", fig.show="hold"}
-temptbl1 <- tribble(
- ~variable,    ~col1, ~col2 ,
- "Caucasian", .887, "No DP",
- "Caucasian", .113, "DP",
- "African American", .771, "No DP",
- "African American", .229, "DP"
-)
-temptbl1 %>% ggplot(aes(x = variable, y=col1, 
-                        fill=factor(col2, levels=c("No DP", "DP")))) + geom_col() +
-  xlab("Defendant's Race") + ylab("Proportion") + 
-  scale_fill_discrete(name="Sentence") +
-  ggtitle("Caucasian Victims")
-
-temptbl2 <- tribble(
- ~variable,    ~col1, ~col2 ,
- "Caucasian", 1, "No DP",
- "Caucasian", 0, "DP",
- "African American", .972, "No DP",
- "African American", .028, "DP"
-)
-temptbl2 %>% ggplot(aes(x = variable, y=col1, fill=factor(col2, levels=c("No DP", "DP")))) + geom_col() +
-  xlab("Defendant's Race") + ylab("Proportion") + 
-  scale_fill_discrete(name="Sentence") +
-  ggtitle("African American Victims")
-```
-
-If we compare Figures \@ref(fig:DPbarplot) and \@ref(fig:DPbarplot2), we see that the direction of the association between the race of the defendant and the sentence is _reversed_ if we subgroup by the race of the victim. Overall, a larger proportion of Caucasians were sentenced to the death penalty than African Americans. However, when we only compare cases with the same victim's race, a larger proportion of African Americans were sentenced to the death penalty than Caucasians!
-
-How did this happen? The answer has to do with the race of the victim being a confounding variable. Figure \@ref(fig:DPconfound) shows two segmented barplots examining the relationship between the race of the victim and the sentence (the response variable), and the relationship between the race of the victim and the race of the defendant (the explanatory variable). We see that the race of the victim is associated with both the response and the explanatory variables: defendants are more likely to involve a victim of the same race, and cases with African American victims are less likely to result in the death penalty.
-
-```{r DPconfound, fig.cap="The race of the victim is associated both with the sentence (death penalty or no death penalty) and with the race of the defendant. Defendants are more likely to involve a victim of the same race, and cases with African American victims are less likely to result in the death penalty.", out.width="50%", fig.show="hold"}
-temptbl1 <- tribble(
- ~variable,    ~col1, ~col2 ,
- "Caucasian", .907, "Caucasian",
- "Caucasian", .093, "African American",
- "African American", .101, "Caucasian",
- "African American", .899, "African American"
-)
-temptbl1 %>% ggplot(aes(x = variable, y=col1, 
-                        fill=col2)) + geom_col() +
-  xlab("Victim's Race") + ylab("Proportion") + 
-  scale_fill_discrete(name="Defendant's Race") +
-  ggtitle("Victim's Race vs Defendant's Race")
-
-temptbl2 <- tribble(
- ~variable,    ~col1, ~col2 ,
- "Caucasian", .876, "No DP",
- "Caucasian", .124, "DP",
- "African American", .975, "No DP",
- "African American", .025, "DP"
-)
-temptbl2 %>% ggplot(aes(x = variable, y=col1, fill=factor(col2, levels=c("No DP", "DP")))) + geom_col() +
-  xlab("Victim's Race") + ylab("Proportion") + 
-  scale_fill_discrete(name="Sentence") +
-  ggtitle("Victim's Race vs Sentence")
-```
-
-Thus, the extremely low chance of a homicide case resulting in the death penalty for African Americans combined with the fact that most cases with African American defendants also had an African American victim results in an overall lower rate of death penalty sentences for African American defendants than for Caucasian defendants. The overall results in Figure \@ref(fig:DPbarplot) and the results in each subgroup of Figure \@ref(fig:DPbarplot2) are both valid---they are not the result of any "bad statistics"---but they suggest opposite conclusions. Data such as these, where an observed effect _reverses_ itself when you examine the variables within subgroups, exhibit **Simpson's Paradox**.
-
-::: {.onebox}
-**Simpson's Paradox.**
-
-When the association between an explanatory variable and a response variable reverses itself when we examine the association within different levels of a confounding variable, we say that these data exhibit **Simpson's Paradox**.
-:::
-
-```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "Simpson's Paradox")
-```
-
-
-
-
-
-## Probability with tables
-
-### Defining probability
-
-A **random process** is  one in which the outcome is unpredictable. We encounter random processes every day: will it rain today? how many minutes will pass until receiving your next text message? will the Seahawks win the Super Bowl? Though the outcome of one particular random process is unpredictable, if we observe the process many many times, the pattern of outcomes, or its probability distribution, can often be modeled mathematically. Though there are several philosophical definitions of probability, we will use the "frequentist" definition of probability---a long-run relative frequency.
-
-::: {.onebox}
-**Probability.**
-
-The **probability** of an event is the long-run proportion of times the event would occur if the random process were repeated indefinitely (under identical conditions).
-:::
-
-Consider the simple example of flipping a fair coin once. What is the probability the coin lands on heads. From its physical properties, we assume the probability of heads is 0.5, but let's use simulation to examine the probability. Figure \@ref(fig:coinflip) shows the long-run proportion of times a simulated coin flip lands on heads on the y-axis, and the number of tosses on the x-axis. Notice how the long-run proportion starts converging to 0.5 as the number of tosses increases.
-
-```{r coinflip, fig.cap = "One simulation of flipping a fair coin, tracking the long-run proportion of times the coin lands on heads.", warning = FALSE,  out.width="75%"}
-include_graphics("02/figures/CoinFlip/Coinflip.png")
-```
-
-
-### Finding probabilities with tables
-
-We can solve many real-life probability problems without using any equations by creating a **hypothetical two-way table** of the scenario. This tool is best demonstrated by an example.
-
-::: {.workedexample}
-As a student at Montana State University, suppose your first class on Mondays is in Wilson Hall at 8:00am and you commute to school. You have a Bobcat parking permit. From past experience, you know that there is a 20% chance of finding an open parking spot in Lot 6 by Animal Bioscience. Otherwise, you have to park in Lot 18 by graduate housing. If you find a spot in Lot 6, you only have a 5\% chance of being late to class. However, if you have to park in Lot 18, you have a 15\% chance of being late to class. What is the probability that you will be late to class this Monday?
-  
----
-  
-There are two random variables in this scenario: whether you park in Lot 6 or Lot 18, and whether or not you are late to class. Since we know probability is a long-run relative frequency, let's imagine 1000 hypothetical Mondays, and fill in a contingency table with the frequencies we'd expect in each cell.
-
-|        | Late to class | Not late to class |Total |
-|--------|:--|:--|:--|
-| Lot 6  | 10            | 190               | 200   |
-| Lot 18 | 120           | 680               | 800   |
-| Total  | 130           | 870               | 1000  |
-
-Now we can find the probability of being late to class by reading it off the table: 130/1000 = 0.13.
-:::
-
-How did we create the table in the last Example? Let's work through it step-by-step.
-
-1. Identify the _unconditional_ probabilities given in the problem: 20% chance of parking in Lot 6, which means an 80% chance of parking in Lot 18. Take 20% and 80% of 1000 to fill in the row totals:
-
-|        | Late to class | Not late to class |Total |
-|--------|:--|:--|:--|
-| Lot 6  |             |                | 1000 $\times$ 0.20 = 200   |
-| Lot 18 |            |                | 1000 $\times$ 0.80 = 800  |
-| Total  |            |                | 1000  |
-
-2. Identify the _conditional_ probabilities given in the problem: _if_ you park in Lot 6, the probability of being late to class is 5%; _if_ you park in Log 18, the probability of being late to class is 15%. Fill in the corresponding cells in the table by taking 5% of the times you parked in Lot 6, and 15% of the times you parked in Lot 18:
-
-|        | Late to class | Not late to class |Total |
-|--------|:--|:--|:--|
-| Lot 6  | 200 $\times$ 0.05 = 10            |                | 200   |
-| Lot 18 | 800 $\times$ 0.15 = 120           |                | 800   |
-| Total  |            |                | 1000  |
-
-3. Use subtraction to fill in the remaining cells for the column "Not late to class." Use addition to find the column totals.
-
-::: {.guidedpractice}
-Using the hypothetical two-way table given in the last Example, find the following probabilities:
-
-1. What is the probability you are not late to class?
-2. What is the probability that you park in Lot 6 and you are not late to class?
-3. Given that you were late to class, what is the probability you parked in Lot 18?^[1. $870/1000 = 0.87$; 2. $190/1000 = 0.19$; 3. $120/130 = 0.923$]
-:::
-
-
-Carefully read how each of the probabilities is described in the Guided Practice---note the subtle difference between "the probability of being late to class, _given_ that you parked in Lot 18" ($120/800 = 0.15$) and "the probability of parking in Lot 18, given that you were late to class" ($120/130 = 0.923$). When we are given extra information, this is called a **conditional probability**, and the denominator in the probability calculation is a row total (e.g., 800) or column total (e.g., 130) rather than the overall total in the hypothetical two-way table.
-
-::: {.guidedpractice}
-In the previous Guided Practice, which of the probabilities are conditional probabilities? which are unconditional?^[Probabilities in (1) and (2) are unconditional; the probability asked for in (3) is conditional.]
-:::
-
-### Probability notation
-
-For ease of translating probability problems into calculations, let's define some notation. We will denote "**events**" (e.g., being late to class) by upper case letters near the beginning of the alphabet, e.g., $A$, $B$, $C$. The **probability of an event** $A$ will be denoted by $P(A)$, so $P(A)$ is a number between 0 and 1. The event that $A$ does _not_ happen is called the _complement_ of $A$ and is denoted by $P(A^C)$. Sometimes we have additional information that we would like to condition on, and we denote the **conditional probability of $A$ _given_ $B$** by $P(A | B)$---the probability that $A$ happens given that $B$ has already happened.
-
-::: {.workedexample}
-In our coin flip example, we could let $A$ be the event that the coin lands on heads. Then we can denote the probability that the coin lands on heads by $P(A) = 0.5$. We could flip the coin twice and let $H_1$ be the event that the first flip lands on heads, and $H_2$ be the event that the second flip lands on heads. Since the coin does not remember its last flip, if the first flip lands on heads, the second flip still has a 50\% chance of landing on heads. That is, $P(H_2 | H_1) = 0.5$.
-:::
-
-
-### Diagnostic testing
-
-Medical diagnostic tests for diseases spend years in development. Through clinical trials, developers of the diagnostic test are able to determine two important properties of the test:
-
-* The **sensitivity** of a diagnostic test is the probability the test yields a positive result, given the individual has the disease. In other words, what proportion of the diseased population would test positive?
-* The **specificity** of the diagnostic test is the probability the test yields a negative result, given the individual does not have the disease. That is, what proportion of the non-diseased population would test negative?
-
-A good diagnostic test has very high (near 100\%) sensitivity and specificity. However, even for a near-perfect test, the probability that you have the disease given you test positive could still be quite low. To investigate this counter-intuitive result, we need another definition:
-
-* We will call the proportion of the population that has the disease---the probability of contracting the disease---the **prevalence** (incidence) of a disease.
-
-::: {.guidedpractice}
-Let $D$ be the event that an individual has the disease and $T$ be the event that an individual tests positive. How would you express each of the following quantities using probability notation?
-  
-  1. sensitivity
-  2. specificity
-  3. prevalence^[1. sensitivity = $P(T | D)$; 2. specificity = $P(T^C | D^C)$; 3. prevalence = $P(D)$]
-:::
-
-Note that sensitivity and specificity are conditional probabilities, while prevalence is an unconditional probability. While the above probabilities are useful information, if you test positive on a diagnostic test, none of these quantities is the probability you really want to know: the conditional probability of having the disease, given you tested positive, $P(D | T)$.
-
-
-#### The case of Baby Jeff {-}
-
-The following case study was presented by @bayes2002. A poster in a hospital's newborn nursery announced that all male newborns would be screened for muscular dystrophy using a heel stick blood test for creatinine phosphokinase (CPK). The test characteristics of the screening tests were nearly perfect: a sensitivity of 100% and a specificity of 99.98%. The prevalence of muscular dystrophy in male newborns ranges from 1 in 3,500 to 1 in 15,000. Baby Jeff had an abnormal CPK test. The parents of the baby wanted to know, "What is the chance that our son has muscular dystrophy?" Doctors informed the parents that though not 100% likely, it was highly probable. First, take a minute and predict this probability -- what do you think? 80% chance? 99% chance? Let's investigate using a two-way table of a hypothetical population of 100,000 male newborns.
-
-For our calculations, let's use a prevalence of 1 in 10,000. Then out of 100,000 hypothetical male newborns, we would expect 1 in 10,000 to have muscular dystrophy, or 10: $(1/10000)\times 100000 = 10$. The sensitivity of the test is perfect, so all 10 of the male newborns with muscular dystrophy will test positive. Of the $100000-10 = 99,990$ male newborns that do not have muscular dystrophy, 99.98\% will test negative: $(0.9998)\times 99990 = 99,970$ infants. That leaves $99990 - 99970 = 20$ male newborns that test positive even though they do not have muscular dystrophy. This allows us to fill in the counts in our hypothetical two-way table:
-
-|                                  | Tests positive | Tests negative | Total   |
-|----------------------------------|:--|:--|:--|
-| Has muscular dystrophy           | 10             | 0              | 10      |
-| Does not have muscular dystrophy | 20             | 99,970         | 99,990  |
-| Total                            | 30             | 99,970         | 100,000 |
-
-Now we can read off the desired probability from the table: of the 30 male newborns we'd expect to test positive, only 10 of them actually have muscular dystrophy. This means the chance Baby Jeff has muscular dystrophy is only about 33%! 
-
-::: {.guidedpractice}
-How would this probability change if the prevalence were 1/3500? 1/15000? Try it.^[If the prevalence were 1/3500, the probability of actually having muscular dystrophy given that the baby tests positive is 0.588 (slightly better than just flipping a coin for a test!). With  prevalence of 1/15000, this probability decreases to 0.250.]
-:::
-
-Why did this counter-intuitive result occur? With such high sensitivity and specificity, why does this test perform so poorly? The answer has to do with the prevalence of the disease. For a rare disease, the very small proportion that test positive out of the very large group of people without the disease will overwhelm the very large proportion that test positive out of the very small group of people with the disease. The number of false positives can be much higher than the number of true positives.
-
-
-
-
-## Exploring quantitative data {#quantitative-data}
-
-In this section we will explore techniques for summarizing quantitative variables.
-For example, consider the `loan_amount` variable from the `loan50` data set, which represents the loan size for all 50 loans in the data set.
-This variable is quantitative since we can sensibly discuss the numerical difference of the size of two loans.
+Consider the `loan_amount` variable from the `loan50` data set, which represents the loan size for all 50 loans in the data set.
+This variable is quantitative (or numerical) since we can sensibly discuss the numerical difference of the size of two loans.
 On the other hand, area codes and zip codes are not quantitative, but rather they are categorical variables.
 
-Throughout this section and the next, we will apply these methods using the `loan50`, `county`, and `email50` data sets, which were introduced in Section \@ref(data-basics).
+Throughout this chapter, we will apply these methods using the `loan50`, `county`, and `email50` data sets, which were introduced in Section \@ref(data-basics).
 If you'd like to review the variables from either data set, see Tables \@ref(tab:loan50Variables) and \@ref(tab:countyVariables).
 
 
@@ -614,7 +27,7 @@ The `county` data can be found in the [usdata](https://openintrostat.github.io/u
 
 
 
-### Scatterplots for paired data {#scatterplots}
+## Scatterplots for paired data {#scatterplots}
 
 \index{data!loan50|(}
 
@@ -625,7 +38,7 @@ In any scatterplot, each point represents a single case.
 Since there are `r nrow(loan50)` cases in `loan50`, there are `r nrow(loan50)` points in Figure \@ref(fig:loan50-amount-income).
 
 ```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "scatterplot")
+terms_chp_5 <- c("scatterplot")
 ```
 
 When examining scatterplots, we describe four features:
@@ -639,7 +52,7 @@ When examining scatterplots, we describe four features:
    that do not seem to match the overall pattern of the scatterplot?
 
 ```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "form", "direction", "strength",
+terms_chp_5 <- c(terms_chp_5, "form", "direction", "strength",
                  "outliers")
 ```
 
@@ -694,14 +107,14 @@ Describe two variables that would have a horseshoe-shaped association in a scatt
 :::
 
 
-### Dot plots and the mean {#dotplots}
+## Dot plots and the mean {#dotplots}
 
 Sometimes we are interested in the distribution of a single variable. 
 In these cases, a dot plot provides the most basic of displays.
 A **dot plot** is a one-variable scatterplot; an example using the interest rate of `r nrow(loan50)` loans is shown in Figure \@ref(fig:loan-int-rate-dotplot).
 
 ```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "dot plot")
+terms_chp_5 <- c(terms_chp_5, "dot plot")
 ```
 
 ```{r loan-int-rate-dotplot, fig.cap="A dot plot of `interest_rate` for the `loan50` data set. The rates have been rounded to the nearest percent in this plot, and the distribution's mean is shown as a red triangle."}
@@ -727,7 +140,7 @@ it takes and how frequently each value occurs. The **mean**, often called the **
 To compute the mean interest rate of the 50 loans above, we add up all the interest rates and divide by the number of observations.
 
 ```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "mean", "average", "distribution")
+terms_chp_5 <- c(terms_chp_5, "mean", "average", "distribution")
 ```
 
 ```{r}
@@ -840,15 +253,15 @@ For more information on this topic, check out the following online supplement re
 
 
 ```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "weighted mean")
+terms_chp_5 <- c(terms_chp_5, "weighted mean")
 ```
 
-### Histograms and shape {#histograms}
+## Histograms and shape {#histograms}
 
 Dot plots show the exact value for each observation. This is useful for small data sets, but they can become hard to read with larger samples. Rather than showing the value of each observation, we prefer to think of the value as belonging to a *bin*. For example, in the `loan50` data set, we created a table of counts for the number of loans with interest rates between 5.0% and 7.5%, then the number of loans with rates between 7.5% and 10.0%, and so on. Observations that fall on the boundary of a bin (e.g., 10.00%) are allocated to the lower bin. This tabulation is shown in Table \@ref(tab:binnedIntRateAmountTable). These binned counts are plotted as bars in Figure \@ref(fig:loan50IntRateHist) into what is called a **histogram**, which resembles a more heavily binned version of the stacked dot plot shown in Figure \@ref(fig:loan-int-rate-dotplot).
 
 ```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "histogram")
+terms_chp_5 <- c(terms_chp_5, "histogram")
 ```
 
 ```{r binnedIntRateAmountTable}
@@ -880,7 +293,7 @@ Histograms provide a view of the **data density**. Higher bars represent where t
 
 
 ```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "data density", "density plot")
+terms_chp_5 <- c(terms_chp_5, "data density", "density plot")
 ```
 
 Histograms are especially convenient for understanding the shape of the data distribution. Figure \@ref(fig:loan50IntRateHist) suggests that most loans have rates under 15%, while only a handful of loans have rates above 20%. When data trail off to the right in this way and has a longer right **tail**, the shape is said to be **right skewed**[^1]
@@ -890,7 +303,7 @@ Histograms are especially convenient for understanding the shape of the data dis
 Data sets with the reverse characteristic---a long, thinner tail to the left---are said to be **left skewed**. We also say that such a distribution has a long left tail. Data sets that show roughly equal trailing off in both directions are called **symmetric**.
 
 ```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "tail", "right skewed", "left skewed", "symmetric")
+terms_chp_5 <- c(terms_chp_5, "tail", "right skewed", "left skewed", "symmetric")
 ```
 
 ::: {.onebox}
@@ -910,7 +323,7 @@ A definition of *mode* sometimes taught in math classes is the value with the mo
 Figure \@ref(fig:singleBiMultiModalPlots) shows histograms that have one, two, or three prominent peaks. Such distributions are called **unimodal**, **bimodal**, and **multimodal**, respectively. Any distribution with more than two prominent peaks is called multimodal. Notice that there was one prominent peak in the unimodal distribution with a second less prominent peak that was not counted since it only differs from its neighboring bins by a few observations.
 
 ```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "unimodal", "bimodal", "multimodal")
+terms_chp_5 <- c(terms_chp_5, "unimodal", "bimodal", "multimodal")
 ```
 
 ```{r singleBiMultiModalPlots, fig.cap = "Counting only prominent peaks, the distributions are (left to right) unimodal, bimodal, and multimodal. Note that the left plot is unimodal because we are counting prominent peaks, not just any peak.", fig.asp=0.33, out.width = "90%", warning=FALSE}
@@ -961,18 +374,18 @@ ggplot(loan50, aes(x = interest_rate, after_stat(density))) +
 ```
 
 
-### Variance and standard deviation {#variance-sd}
+## Variance and standard deviation {#variance-sd}
 
 The mean was introduced as a method to describe the center of a data set, and **variability**\index{variability} in the data is also important. Here, we introduce two measures of variability: the variance and the standard deviation. Both of these are very useful in data analysis, even though their formulas are a bit tedious to calculate by hand. The standard deviation is the easier of the two to comprehend, and it roughly describes how far away the typical observation is from the mean.
 
 ```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "variability")
+terms_chp_5 <- c(terms_chp_5, "variability")
 ```
 
 We call the distance of an observation from its mean its **deviation**. Below are the deviations for the $1^{st}$, $2^{nd}$, $3^{rd}$, and $50^{th}$ observations in the `interest_rate` variable:
 
 ```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "deviation")
+terms_chp_5 <- c(terms_chp_5, "deviation")
 ```
 
 ```{r include=FALSE}
@@ -988,7 +401,7 @@ $$ x_1 - \bar{x} = `r round(loan50$interest_rate[1], 2)` - `r round(loan50_inter
 If we square these deviations and then take an average, the result is equal to the sample **variance**, denoted by $s^2$:
 
 ```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "variance")
+terms_chp_5 <- c(terms_chp_5, "variance")
 ```
 
 \begin{align*}
@@ -1008,7 +421,7 @@ $$ s = \sqrt{`r round(loan50_interest_rate_var, 2)`} = `r round(loan50_interest_
 While often omitted, a subscript of $_x$ may be added to the variance and standard deviation, i.e., $s_x^2$ and $s_x$, if it is useful as a reminder that these are the variance and standard deviation of the observations represented by $x_1$, $x_2$, ..., $x_n$.
 
 ```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "standard deviation")
+terms_chp_5 <- c(terms_chp_5, "standard deviation")
 ```
 
 ::: {.onebox}
@@ -1112,7 +525,7 @@ There are a few exceptionally large interest rates in the sample that are above 
 
 In practice, the variance and standard deviation are sometimes used as a means to an end, where the "end" is being able to accurately estimate the uncertainty associated with a sample statistic. For example, in Chapter \@ref(inference-num) the standard deviation is used in calculations that help us understand how much a sample mean varies from one sample to the next.
 
-### Box plots, quartiles, and the median
+## Box plots, quartiles, and the median
 
 A **box plot**\index{box plot} (or box-and-whisker plot) summarizes a data set using five statistics while
 also identifying unusual observations. The five statistics---minimum, first quartile, 
@@ -1120,7 +533,7 @@ median, third quartile, maximum---together are called the **five number summary*
 Figure \@ref(fig:loan-int-rate-boxplot-dotplot) provides a dot plot alongside a box plot of the `interest_rate` variable from the `loan50` data set.
 
 ```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "box plot")
+terms_chp_5 <- c(terms_chp_5, "box plot")
 ```
 
 ```{r loan-int-rate-boxplot-dotplot, fig.cap="Plot A shows a dot plot and Plot B shows a box plot of the distribution of interest rates from the `loan50` dataset."}
@@ -1184,7 +597,7 @@ observation that splits the data into two halves, and in such a case that
 observation is the median (no average needed).
 
 ```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "median")
+terms_chp_5 <- c(terms_chp_5, "median")
 ```
 
 ::: {.onebox}
@@ -1225,7 +638,7 @@ The more variable the data, the larger the standard deviation and IQR tend to be
 The two boundaries of the box are called the **first quartile** (the $25^{th}$ percentile) and the **third quartile** (the $75^{th}$ percentile) \index{quartile!first quartile} \index{quartile!third quartile}, and these are often labeled $Q_1$ and $Q_3$, respectively^[The first and third quartiles are called quartiles because, together with the median (the second quartile), these three values break the data into four groups of equal size--the lowest 25%, next lowest 25%, next lowest 25%, and highest 25%.]
 
 ```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "percentile", "interquartile range", "IQR", "first quartile", "third quartile")
+terms_chp_5 <- c(terms_chp_5, "percentile", "interquartile range", "IQR", "first quartile", "third quartile")
 ```
 
 ::: {.onebox}
@@ -1266,7 +679,7 @@ on the plot.
 
 
 ```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "outlier", "whiskers")
+terms_chp_5 <- c(terms_chp_5, "outlier", "whiskers")
 ```
 
 ::: {.onebox}
@@ -1284,7 +697,7 @@ Examining data for outliers serves many useful purposes, including
 Using the box plot in Figure \@ref(fig:loan-int-rate-boxplot-dotplot), estimate the values of the $Q_1$, $Q_3$, and IQR for `interest_rate` in the `loan50` data set.^[These visual estimates will vary a little from one person to the next: $Q_1 \approx$ 8%, $Q_3 \approx$ 14%, IQR $\approx$ 14 - 8 = 6%.]
 :::
 
-### Describing and comparing quantitative distributions
+## Describing and comparing quantitative distributions
 
 As a review, when describing a scatterplot---the association between
 two quantitative variables, we look for the four features:
@@ -1333,7 +746,7 @@ The median loan amount is higher for those with a mortgage (around $16,000) than
 Besides center, variability, shape, and outliers, another interesting feature in these distributions is the result of rounding. Loan amounts in the data set are often rounded to the nearest 100, so we see spikes on these values in the histogram---something that is not evident in the box plots.
 :::
 
-### Robust statistics
+## Robust statistics
 
 How are the **sample statistics** \index{sample statistic} of the `interest_rate` data set affected by the observation, 26.3%?
 What would have happened if this loan had instead been only 15%?
@@ -1436,7 +849,7 @@ The median and IQR are called **robust statistics** because extreme observations
 On the other hand, the mean and standard deviation are more heavily influenced by changes in extreme observations, which can be important in some situations. Additionally, the mean tends to get pulled in the direction of a distribution's skewness, while the skewness has little affect on the median.
 
 ```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "robust statistics")
+terms_chp_5 <- c(terms_chp_5, "robust statistics")
 ```
 
 ::: {.workedexample}
@@ -1454,7 +867,7 @@ The distribution of loan amounts in the `loan50` data set is right skewed, with 
 If you were wanting to understand the typical loan size, should you be more interested in the mean or median?^[If we are looking to simply understand what a typical individual loan looks like, the median is probably more useful. However, if the goal is to understand something that scales well, such as the total amount of money we might need to have on hand if we were to offer 1,000 loans, then the mean would be more useful.]
 :::
 
-### Transforming data (special topic)
+## Transforming data (special topic)
 
 When data are very strongly skewed, we sometimes transform them so they are easier to model. A **transformation** is a rescaling of the data using a function.
 
@@ -1489,7 +902,7 @@ This data is symmetric, and any potential outliers appear much less extreme than
 By reigning in the outliers and extreme skew, transformations like this often make it easier to build statistical models against the data.
 
 ```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "transformation")
+terms_chp_5 <- c(terms_chp_5, "transformation")
 ```
 
 Transformations can also be applied to one or both variables in a scatterplot.
@@ -1520,7 +933,7 @@ Transformations other than the logarithm can be useful, too.
 For instance, the square root ($\sqrt{\text{original observation}}$) and inverse ($\frac{1}{\text{original observation}}$) are commonly used by data scientists.
 Common goals in transforming data are to see the data structure differently, reduce skew, assist in modeling, or straighten a nonlinear relationship in a scatterplot.
 
-### Mapping data (special topic)
+## Mapping data (special topic)
 
 \index{intensity map}
 
@@ -1531,7 +944,7 @@ The color key indicates which colors correspond to which values.
 The intensity maps are not generally very helpful for getting precise values in any given county, but they are very helpful for seeing geographic trends and generating interesting research questions or hypotheses.
 
 ```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "intensity map")
+terms_chp_5 <- c(terms_chp_5, "intensity map")
 ```
 
 ::: {.workedexample}
@@ -1641,48 +1054,7 @@ map_howownership /
 
 
 
-## `R`: Exploratory data analysis
-
-<!-- ### Interactive R tutorials -->
-
-<!-- Navigate the concepts you've learned in this chapter in R using the following self-paced tutorials.  -->
-<!-- All you need is your browser to get started! -->
-
-<!-- ::: {.alltutorials} -->
-<!-- [Tutorial 2: Summarizing and visualizing data](https://openintrostat.github.io/ims-tutorials/02-summarizing-and-visualizing-data/) -->
-<!-- ::: -->
-
-<!-- ::: {.singletutorial} -->
-<!-- [Tutorial 2 - Lesson 1: Visualizing categorical data](https://openintro.shinyapps.io/ims-02-summarizing-and-visualizing-data-01/) -->
-<!-- ::: -->
-
-<!-- ::: {.singletutorial} -->
-<!-- [Tutorial 2 - Lesson 2: Visualizing numerical data](https://openintro.shinyapps.io/ims-02-summarizing-and-visualizing-data-02/) -->
-<!-- ::: -->
-
-<!-- ::: {.singletutorial} -->
-<!-- [Tutorial 2 - Lesson 3: Summarizing with statistics](https://openintro.shinyapps.io/ims-02-summarizing-and-visualizing-data-03/) -->
-<!-- ::: -->
-
-<!-- ::: {.singletutorial} -->
-<!-- [Tutorial 2 - Lesson 4: Case study](https://openintro.shinyapps.io/ims-02-summarizing-and-visualizing-data-04/) -->
-<!-- ::: -->
-
-<!-- You can also access the full list of tutorials supporting this book [here](https://openintrostat.github.io/ims-tutorials/). -->
-
-### R labs
-
-Further apply the concepts you've learned in this chapter in R with computational labs that walk you through a data analysis case study.
-
-::: {.singlelab}
-[Intro to data - Flight delays](http://openintrostat.github.io/oilabs-tidy/02_intro_to_data/intro_to_data.html)
-:::
-
-::: {.alllabs}
-[Full list of labs supporting OpenIntro::Introduction to Modern Statistics](http://openintrostat.github.io/oilabs-tidy/)
-:::
-
-## Chapter 2 review {#chp2-review}
+## Chapter review {#chp5-review}
 
 ### Terms
 
@@ -1692,7 +1064,7 @@ We are purposefully presenting them in alphabetical order, instead of in order o
 However you should be able to easily spot them as **bolded text**.
 
 ```{r}
-make_terms_table(terms_chp_2)
+make_terms_table(terms_chp_5)
 ```
 
 ### Data visualization summary

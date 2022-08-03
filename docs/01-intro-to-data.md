@@ -159,7 +159,7 @@ The data summarized in this table can also be visualized with a \index{barplot}*
 
 
 <div class="figure" style="text-align: center">
-<img src="01-intro-to-data_files/figure-html/stentStudyResultsDFbarplot-1.png" alt="Segmented barplot of outcomes in stent study by group and time." width="70%" />
+<img src="01-intro-to-data_files/figure-html/stentStudyResultsDFbarplot-1.png" alt="Segmented barplot of outcomes in stent study by group and time." width="672" />
 <p class="caption">(\#fig:stentStudyResultsDFbarplot)Segmented barplot of outcomes in stent study by group and time.</p>
 </div>
 
@@ -602,7 +602,7 @@ The scatterplot suggests a relationship between the two variables: counties with
 We might brainstorm as to why this relationship exists and investigate each idea to determine which are the most reasonable explanations.
 
 <div class="figure" style="text-align: center">
-<img src="01-intro-to-data_files/figure-html/county-multi-unit-homeownership-1.png" alt="A scatterplot of homeownership versus the percent of units that are in multi-unit structures for US counties. The highlighted dot represents Chattahoochee County, Georgia, which has a multi-unit rate of 39.4% and a homeownership rate of 31.3%." width="70%" />
+<img src="01-intro-to-data_files/figure-html/county-multi-unit-homeownership-1.png" alt="A scatterplot of homeownership versus the percent of units that are in multi-unit structures for US counties. The highlighted dot represents Chattahoochee County, Georgia, which has a multi-unit rate of 39.4% and a homeownership rate of 31.3%." width="672" />
 <p class="caption">(\#fig:county-multi-unit-homeownership)A scatterplot of homeownership versus the percent of units that are in multi-unit structures for US counties. The highlighted dot represents Chattahoochee County, Georgia, which has a multi-unit rate of 39.4% and a homeownership rate of 31.3%.</p>
 </div>
 
@@ -628,7 +628,7 @@ While this trend isn't true for every county, the trend in the plot is evident. 
 :::
 
 <div class="figure" style="text-align: center">
-<img src="01-intro-to-data_files/figure-html/county-pop-change-med-hh-income-1.png" alt="A scatterplot showing `pop_change` against `median_hh_income`. Owsley County of Kentucky, is highlighted, which lost 3.63% of its population from 2010 to 2017 and had median household income of $22,736." width="70%" />
+<img src="01-intro-to-data_files/figure-html/county-pop-change-med-hh-income-1.png" alt="A scatterplot showing `pop_change` against `median_hh_income`. Owsley County of Kentucky, is highlighted, which lost 3.63% of its population from 2010 to 2017 and had median household income of $22,736." width="672" />
 <p class="caption">(\#fig:county-pop-change-med-hh-income)A scatterplot showing `pop_change` against `median_hh_income`. Owsley County of Kentucky, is highlighted, which lost 3.63% of its population from 2010 to 2017 and had median household income of $22,736.</p>
 </div>
 
@@ -786,7 +786,7 @@ The selected names would represent a random sample of 100 graduates.
 We pick samples randomly to reduce the chance we introduce biases.
 
 <div class="figure" style="text-align: center">
-<img src="01-intro-to-data_files/figure-html/pop-to-sample-1.png" alt="In this graphic, five graduates are randomly selected from the population (all graduates in the last 5 years) to be included in the sample." width="70%" />
+<img src="01-intro-to-data_files/figure-html/pop-to-sample-1.png" alt="In this graphic, five graduates are randomly selected from the population (all graduates in the last 5 years) to be included in the sample." width="672" />
 <p class="caption">(\#fig:pop-to-sample)In this graphic, five graduates are randomly selected from the population (all graduates in the last 5 years) to be included in the sample.</p>
 </div>
 
@@ -804,7 +804,7 @@ When selecting samples by hand, we run the risk of picking a **biased** sample, 
 
 
 <div class="figure" style="text-align: center">
-<img src="01-intro-to-data_files/figure-html/pop-to-sub-sample-graduates-1.png" alt="Asked to pick a sample of graduates, a nutrition major might inadvertently pick a disproportionate number of graduates from health-related majors." width="70%" />
+<img src="01-intro-to-data_files/figure-html/pop-to-sub-sample-graduates-1.png" alt="Asked to pick a sample of graduates, a nutrition major might inadvertently pick a disproportionate number of graduates from health-related majors." width="672" />
 <p class="caption">(\#fig:pop-to-sub-sample-graduates)Asked to pick a sample of graduates, a nutrition major might inadvertently pick a disproportionate number of graduates from health-related majors.</p>
 </div>
 
@@ -844,7 +844,7 @@ This *non-response bias* can produce results in the sample that do not accuratel
 
 
 <div class="figure" style="text-align: center">
-<img src="01-intro-to-data_files/figure-html/survey-sample-1.png" alt="Due to the possibility of non-response, survey studies may only reach a certain group within the population. It is difficult, and often times impossible, to completely fix this problem." width="70%" />
+<img src="01-intro-to-data_files/figure-html/survey-sample-1.png" alt="Due to the possibility of non-response, survey studies may only reach a certain group within the population. It is difficult, and often times impossible, to completely fix this problem." width="672" />
 <p class="caption">(\#fig:survey-sample)Due to the possibility of non-response, survey studies may only reach a certain group within the population. It is difficult, and often times impossible, to completely fix this problem.</p>
 </div>
 
@@ -875,7 +875,7 @@ Here we consider four random sampling techniques: simple, stratified, cluster, a
 \index{sample!stratified sampling}
 
 <div class="figure" style="text-align: center">
-<img src="01-intro-to-data_files/figure-html/simple-stratified-1.png" alt="Examples of simple random and stratified sampling. In the top panel, simple random sampling was used to randomly select the 18 cases (denoted in red). In the bottom panel, stratified sampling was used: cases were grouped into strata, then simple random sampling was employed to randomly select 3 cases within each stratum." width="70%" />
+<img src="01-intro-to-data_files/figure-html/simple-stratified-1.png" alt="Examples of simple random and stratified sampling. In the top panel, simple random sampling was used to randomly select the 18 cases (denoted in red). In the bottom panel, stratified sampling was used: cases were grouped into strata, then simple random sampling was employed to randomly select 3 cases within each stratum." width="960" />
 <p class="caption">(\#fig:simple-stratified)Examples of simple random and stratified sampling. In the top panel, simple random sampling was used to randomly select the 18 cases (denoted in red). In the bottom panel, stratified sampling was used: cases were grouped into strata, then simple random sampling was employed to randomly select 3 cases within each stratum.</p>
 </div>
 
@@ -919,7 +919,7 @@ A **multistage sample** is like a cluster sample, but rather than keeping all ob
 \index{sample!cluster sampling}
 
 <div class="figure" style="text-align: center">
-<img src="01-intro-to-data_files/figure-html/cluster-multistage-1.png" alt="Examples of cluster and multistage sampling. In the top panel, cluster sampling was used: data were binned into nine clusters, three of these clusters were sampled, and all observations within these three cluster were included in the sample. In the bottom panel, multistage sampling was used, which differs from cluster sampling only in that we randomly select a subset of each cluster to be included in the sample rather than measuring every case in each sampled cluster." width="70%" />
+<img src="01-intro-to-data_files/figure-html/cluster-multistage-1.png" alt="Examples of cluster and multistage sampling. In the top panel, cluster sampling was used: data were binned into nine clusters, three of these clusters were sampled, and all observations within these three cluster were included in the sample. In the bottom panel, multistage sampling was used, which differs from cluster sampling only in that we randomly select a subset of each cluster to be included in the sample rather than measuring every case in each sampled cluster." width="960" />
 <p class="caption">(\#fig:cluster-multistage)Examples of cluster and multistage sampling. In the top panel, cluster sampling was used: data were binned into nine clusters, three of these clusters were sampled, and all observations within these three cluster were included in the sample. In the bottom panel, multistage sampling was used, which differs from cluster sampling only in that we randomly select a subset of each cluster to be included in the sample rather than measuring every case in each sampled cluster.</p>
 </div>
 
@@ -959,7 +959,7 @@ Suppose an observational study tracked sunscreen use and skin cancer, and it was
 Some previous research tells us that using sunscreen actually reduces skin cancer risk, so maybe there is another variable that can explain this hypothetical association between sunscreen usage and skin cancer. 
 One important piece of information that is absent is sun exposure. If someone is out in the sun all day, they are more likely to use sunscreen *and* more likely to get skin cancer. Exposure to the sun is unaccounted for in the simple investigation.
 
-<img src="01-intro-to-data_files/figure-html/sun-causes-cancer-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="01-intro-to-data_files/figure-html/sun-causes-cancer-1.png" width="672" style="display: block; margin: auto;" />
 
 <!--
 Some studies:
@@ -1041,7 +1041,7 @@ This strategy ensures each treatment group has an equal number of low-risk and h
 
 
 <div class="figure" style="text-align: center">
-<img src="01-intro-to-data_files/figure-html/blocking-1.png" alt="Blocking using a variable depicting patient risk. Patients are first divided into low-risk and high-risk blocks, then each block is evenly separated into the treatment groups using randomization. This strategy ensures an equal representation of patients in each treatment group from both the low-risk and high-risk categories." width="70%" />
+<img src="01-intro-to-data_files/figure-html/blocking-1.png" alt="Blocking using a variable depicting patient risk. Patients are first divided into low-risk and high-risk blocks, then each block is evenly separated into the treatment groups using randomization. This strategy ensures an equal representation of patients in each treatment group from both the low-risk and high-risk categories." width="1440" />
 <p class="caption">(\#fig:blocking)Blocking using a variable depicting patient risk. Patients are first divided into low-risk and high-risk blocks, then each block is evenly separated into the treatment groups using randomization. This strategy ensures an equal representation of patients in each treatment group from both the low-risk and high-risk categories.</p>
 </div>
 
@@ -1452,96 +1452,106 @@ If you're not sure what some of these terms mean, we recommend you go back in th
 We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. 
 However you should be able to easily spot them as **bolded text**.
 
-<table>
+<table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
 <tbody>
   <tr>
    <td style="text-align:left;"> anecdotal evidence </td>
-   <td style="text-align:left;"> convenience sample </td>
-   <td style="text-align:left;"> observational data </td>
-   <td style="text-align:left;"> retrospective study </td>
+   <td style="text-align:left;"> double-blind </td>
+   <td style="text-align:left;"> randomized experiment </td>
   </tr>
   <tr>
    <td style="text-align:left;"> associated </td>
-   <td style="text-align:left;"> data </td>
-   <td style="text-align:left;"> observational study </td>
-   <td style="text-align:left;"> sample </td>
+   <td style="text-align:left;"> experiment </td>
+   <td style="text-align:left;"> replicate </td>
   </tr>
   <tr>
    <td style="text-align:left;"> barplot </td>
-   <td style="text-align:left;"> data frame </td>
-   <td style="text-align:left;"> observational unit </td>
-   <td style="text-align:left;"> sample bias </td>
+   <td style="text-align:left;"> explanatory variable </td>
+   <td style="text-align:left;"> representative </td>
   </tr>
   <tr>
    <td style="text-align:left;"> binary </td>
-   <td style="text-align:left;"> dependent </td>
-   <td style="text-align:left;"> ordinal </td>
-   <td style="text-align:left;"> sample size </td>
+   <td style="text-align:left;"> independent </td>
+   <td style="text-align:left;"> response bias </td>
   </tr>
   <tr>
    <td style="text-align:left;"> blind </td>
-   <td style="text-align:left;"> discrete </td>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:left;"> sampling bias </td>
+   <td style="text-align:left;"> level </td>
+   <td style="text-align:left;"> response variable </td>
   </tr>
   <tr>
    <td style="text-align:left;"> blocking </td>
-   <td style="text-align:left;"> double-blind </td>
-   <td style="text-align:left;"> placebo effect </td>
-   <td style="text-align:left;"> selection bias </td>
+   <td style="text-align:left;"> multistage sample </td>
+   <td style="text-align:left;"> retrospective study </td>
   </tr>
   <tr>
    <td style="text-align:left;"> case </td>
-   <td style="text-align:left;"> experiment </td>
-   <td style="text-align:left;"> population </td>
-   <td style="text-align:left;"> simple random sample </td>
+   <td style="text-align:left;"> negative association </td>
+   <td style="text-align:left;"> sample </td>
   </tr>
   <tr>
    <td style="text-align:left;"> categorical </td>
-   <td style="text-align:left;"> explanatory variable </td>
-   <td style="text-align:left;"> positive association </td>
-   <td style="text-align:left;"> simple random sampling </td>
+   <td style="text-align:left;"> nominal </td>
+   <td style="text-align:left;"> sample bias </td>
   </tr>
   <tr>
    <td style="text-align:left;"> cluster </td>
-   <td style="text-align:left;"> independent </td>
-   <td style="text-align:left;"> prospective study </td>
-   <td style="text-align:left;"> statistical investigation process </td>
+   <td style="text-align:left;"> non-response bias </td>
+   <td style="text-align:left;"> sample size </td>
   </tr>
   <tr>
    <td style="text-align:left;"> cluster sampling </td>
-   <td style="text-align:left;"> level </td>
-   <td style="text-align:left;"> quantitative </td>
-   <td style="text-align:left;"> strata </td>
+   <td style="text-align:left;"> non-response rate </td>
+   <td style="text-align:left;"> sampling bias </td>
   </tr>
   <tr>
    <td style="text-align:left;"> cohort </td>
-   <td style="text-align:left;"> multistage sample </td>
-   <td style="text-align:left;"> randomized experiment </td>
-   <td style="text-align:left;"> stratified sampling </td>
+   <td style="text-align:left;"> observational data </td>
+   <td style="text-align:left;"> selection bias </td>
   </tr>
   <tr>
    <td style="text-align:left;"> confounding variable </td>
-   <td style="text-align:left;"> negative association </td>
-   <td style="text-align:left;"> replicate </td>
-   <td style="text-align:left;"> summary statistic </td>
+   <td style="text-align:left;"> observational study </td>
+   <td style="text-align:left;"> simple random sample </td>
   </tr>
   <tr>
    <td style="text-align:left;"> continuous </td>
-   <td style="text-align:left;"> nominal </td>
-   <td style="text-align:left;"> representative </td>
-   <td style="text-align:left;"> treatment group </td>
+   <td style="text-align:left;"> observational unit </td>
+   <td style="text-align:left;"> simple random sampling </td>
   </tr>
   <tr>
    <td style="text-align:left;"> control </td>
-   <td style="text-align:left;"> non-response bias </td>
-   <td style="text-align:left;"> response bias </td>
-   <td style="text-align:left;"> variable </td>
+   <td style="text-align:left;"> ordinal </td>
+   <td style="text-align:left;"> statistical investigation process </td>
   </tr>
   <tr>
    <td style="text-align:left;"> control group </td>
-   <td style="text-align:left;"> non-response rate </td>
-   <td style="text-align:left;"> response variable </td>
+   <td style="text-align:left;"> placebo </td>
+   <td style="text-align:left;"> strata </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> convenience sample </td>
+   <td style="text-align:left;"> placebo effect </td>
+   <td style="text-align:left;"> stratified sampling </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> data </td>
+   <td style="text-align:left;"> population </td>
+   <td style="text-align:left;"> summary statistic </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> data frame </td>
+   <td style="text-align:left;"> positive association </td>
+   <td style="text-align:left;"> treatment group </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> dependent </td>
+   <td style="text-align:left;"> prospective study </td>
+   <td style="text-align:left;"> variable </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> discrete </td>
+   <td style="text-align:left;"> quantitative </td>
    <td style="text-align:left;">  </td>
   </tr>
 </tbody>

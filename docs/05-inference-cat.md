@@ -76,7 +76,7 @@ How could you use a coin or cards to simulate the guesses of one sample of 38 st
 For this situation---since "just guessing" means you have a 50% chance of guessing correctly---we could simulate a sample of 38 students' guesses by flipping a coin 38 times and counting the number of times it lands on heads. Using a computer to repeat this process 1,000 times, we create the dot plot in Figure \@ref(fig:MartianDotPlot).
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/MartianDotPlot-1.png" alt="A dot plot of 1,000 sample proportions; each calculated by flipping a coin 38 times and calculating the proportion of times the coin landed on heads. None of the 1,000 simulations had sample proportion of at least 89%, which was the proportion observed in the study." width="70%" />
+<img src="05-inference-cat_files/figure-html/MartianDotPlot-1.png" alt="A dot plot of 1,000 sample proportions; each calculated by flipping a coin 38 times and calculating the proportion of times the coin landed on heads. None of the 1,000 simulations had sample proportion of at least 89%, which was the proportion observed in the study." width="960" />
 <p class="caption">(\#fig:MartianDotPlot)A dot plot of 1,000 sample proportions; each calculated by flipping a coin 38 times and calculating the proportion of times the coin landed on heads. None of the 1,000 simulations had sample proportion of at least 89%, which was the proportion observed in the study.</p>
 </div>
 
@@ -111,7 +111,7 @@ For large sample sizes, the **sampling distribution** of a sample proportion (or
 An example of a perfect normal distribution is shown in Figure \@ref(fig:simpleNormal). While the mean (center) and standard deviation (variability) may change for different scenarios, the general shape remains roughly intact.
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/simpleNormal-1.png" alt="A normal curve." width="70%" />
+<img src="05-inference-cat_files/figure-html/simpleNormal-1.png" alt="A normal curve." width="960" />
 <p class="caption">(\#fig:simpleNormal)A normal curve.</p>
 </div>
 
@@ -360,14 +360,14 @@ In this section, we will discuss the normal distribution in the context of data 
 The normal distribution always describes a symmetric, unimodal, bell-shaped curve. However, normal curves can look different depending on the details of the model. Specifically, the normal model can be adjusted using two parameters: mean and standard deviation. As you can probably guess, changing the mean shifts the bell curve to the left or right, while changing the standard deviation stretches or constricts the curve. Figure \@ref(fig:twoSampleNormals) shows the normal distribution with mean $0$ and standard deviation $1$ (which is commonly referred to as the **standard normal distribution**\index{standard normal distribution}) on top. A normal distribution with mean $19$ and standard deviation $4$ is shown on the bottom. Figure \@ref(fig:twoSampleNormalsStacked) shows the same two normal distributions on the same axis.
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/twoSampleNormals-1.png" alt="Both curves represent the normal distribution, however, they differ in their center and spread. The normal distribution with mean 0 and standard deviation 1 is called the **standard normal distribution**." width="70%" /><img src="05-inference-cat_files/figure-html/twoSampleNormals-2.png" alt="Both curves represent the normal distribution, however, they differ in their center and spread. The normal distribution with mean 0 and standard deviation 1 is called the **standard normal distribution**." width="70%" />
+<img src="05-inference-cat_files/figure-html/twoSampleNormals-1.png" alt="Both curves represent the normal distribution, however, they differ in their center and spread. The normal distribution with mean 0 and standard deviation 1 is called the **standard normal distribution**." width="960" /><img src="05-inference-cat_files/figure-html/twoSampleNormals-2.png" alt="Both curves represent the normal distribution, however, they differ in their center and spread. The normal distribution with mean 0 and standard deviation 1 is called the **standard normal distribution**." width="960" />
 <p class="caption">(\#fig:twoSampleNormals)Both curves represent the normal distribution, however, they differ in their center and spread. The normal distribution with mean 0 and standard deviation 1 is called the **standard normal distribution**.</p>
 </div>
 
 
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/twoSampleNormalsStacked-1.png" alt="The two normal models shown above and now plotted together on the same scale." width="70%" />
+<img src="05-inference-cat_files/figure-html/twoSampleNormalsStacked-1.png" alt="The two normal models shown above and now plotted together on the same scale." width="960" />
 <p class="caption">(\#fig:twoSampleNormalsStacked)The two normal models shown above and now plotted together on the same scale.</p>
 </div>
 
@@ -420,7 +420,7 @@ Table \@ref(tab:satACTstats) shows the mean and standard deviation for total sco
 </table>
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/satActNormals-1.png" alt="Ann's and Tom's scores shown with the distributions of SAT and ACT scores." width="70%" />
+<img src="05-inference-cat_files/figure-html/satActNormals-1.png" alt="Ann's and Tom's scores shown with the distributions of SAT and ACT scores." width="960" />
 <p class="caption">(\#fig:satActNormals)Ann's and Tom's scores shown with the distributions of SAT and ACT scores.</p>
 </div>
 
@@ -489,7 +489,7 @@ Ann's **percentile**\index{percentile} is the percentage of people who earned a 
 
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/satBelow1800-1.png" alt="The normal model for SAT scores, shading the area of those individuals who scored below Ann." width="70%" />
+<img src="05-inference-cat_files/figure-html/satBelow1800-1.png" alt="The normal model for SAT scores, shading the area of those individuals who scored below Ann." width="960" />
 <p class="caption">(\#fig:satBelow1800)The normal model for SAT scores, shading the area of those individuals who scored below Ann.</p>
 </div>
 
@@ -502,7 +502,7 @@ pnorm(0.43, m = 0, s = 1)
 openintro::normTail(0.43, m = 0, s = 1)
 ```
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-12-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" />
 
 We can also find the Z-score associated with a percentile. For example, to identify Z for the $80^{th}$ percentile, we use `qnorm()` which identifies the **quantile** for a given percentage. The quantile represents the cutoff value.[^05-inference-cat-20] We determine the Z-score for the $80^{th}$ percentile using `qnorm()`: 0.84.
 
@@ -515,7 +515,7 @@ qnorm(0.80, m = 0, s = 1)
 openintro::normTail(0.80, m = 0, s = 1)
 ```
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-13-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" />
 
 We can use these functions with other normal distributions than the standard normal distribution by specifying the mean as the argument for `m` and the standard deviation as the argument for `s`. Here we determine the proportion of ACT test takers who scored worse than Tom on the ACT: 0.73.
 
@@ -526,7 +526,7 @@ pnorm(24, m = 21, s = 5)
 openintro::normTail(24, m = 21, s = 5)
 ```
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" />
 
 ::: guidedpractice
 Determine the proportion of SAT test takers who scored better than Ann on the SAT.[^05-inference-cat-21]
@@ -552,9 +552,9 @@ Z = \frac{x - \mu}{\sigma} = \frac{1630 - 1500}{300} = \frac{130}{300} = 0.43
 The probability Shannon scores at least 1630 on the SAT is 0.3336.
 :::
 
-<img src="05-inference-cat_files/figure-html/satAbove1630-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/satAbove1630-1.png" width="960" style="display: block; margin: auto;" />
 
-<img src="05-inference-cat_files/figure-html/subtractingArea-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/subtractingArea-1.png" width="960" style="display: block; margin: auto;" />
 
 ::: protip
 **Always draw a picture first, and find the Z-score second.**
@@ -582,7 +582,7 @@ Z = \frac{x - \mu}{\sigma} = \frac{1400 - 1500}{300} = -0.3333
 \end{eqnarray*} Using the `pnorm()` function (either `pnorm(-1/3)` or `pnorm(1400, m=1500, s=300)` will give the desired result), the desired probability is $0.3694$. Edward is at the $37^{th}$ percentile.
 :::
 
-<img src="05-inference-cat_files/figure-html/satBelow1400-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/satBelow1400-1.png" width="960" style="display: block; margin: auto;" />
 
 ::: guidedpractice
 Use the results of the previous example to compute the proportion of SAT takers who did better than Edward. Also draw a new picture.[^05-inference-cat-23]
@@ -636,7 +636,7 @@ qnorm(0.4, m = 0, s = 1)
 #> [1] -0.253
 ```
 
-<img src="05-inference-cat_files/figure-html/height40Perc-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/height40Perc-1.png" width="960" style="display: block; margin: auto;" />
 
 ::: workedexample
 What is the adult male height at the $82^{nd}$ percentile?
@@ -656,7 +656,7 @@ qnorm(0.82, m = 0, s = 1)
 #> [1] 0.915
 ```
 
-<img src="05-inference-cat_files/figure-html/height82Perc-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/height82Perc-1.png" width="960" style="display: block; margin: auto;" />
 
 ::: guidedpractice
 (a) What is the $95^{th}$ percentile for SAT scores?\
@@ -684,9 +684,9 @@ The total area under the curve is 1. If we find the area of the two tails that a
 That is, the probability of being between 5'9'' and 6'2'' is 0.5048.
 :::
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" />
 
-<img src="05-inference-cat_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/unnamed-chunk-18-1.png" width="672" style="display: block; margin: auto;" />
 
 ::: guidedpractice
 What percent of SAT takers get between 1500 and 2000?[^05-inference-cat-29]
@@ -705,7 +705,7 @@ What percent of adult males are between 5'5'' and 5'7''?[^05-inference-cat-30]
 Here, we present a useful general rule for the probability of falling within 1, 2, and 3 standard deviations of the mean in the normal distribution. The rule will be useful in a wide range of practical settings, especially when trying to make a quick estimate without a calculator or Z table.
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/er6895997-1.png" alt="Probabilities for falling within 1, 2, and 3 standard deviations of the mean in a normal distribution." width="70%" />
+<img src="05-inference-cat_files/figure-html/er6895997-1.png" alt="Probabilities for falling within 1, 2, and 3 standard deviations of the mean in a normal distribution." width="960" />
 <p class="caption">(\#fig:er6895997)Probabilities for falling within 1, 2, and 3 standard deviations of the mean in a normal distribution.</p>
 </div>
 
@@ -871,7 +871,7 @@ Figure \@ref(fig:nullDistForPHatIfLiverTransplantConsultantIsNotHelpful) shows t
 \end{align} Of the 10,000 simulated $\hat{p}_{sim}$, 1222 were equal to or smaller than $\hat{p}$. Since the hypothesis test is one-sided, the estimated p-value is equal to this tail area: 0.1222.
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/nullDistForPHatIfLiverTransplantConsultantIsNotHelpful-1.png" alt="The null distribution for $\hat{p}$, created from 10,000 simulated studies. The left tail, representing the p-value for the hypothesis test, contains 12.22% of the simulations." width="70%" />
+<img src="05-inference-cat_files/figure-html/nullDistForPHatIfLiverTransplantConsultantIsNotHelpful-1.png" alt="The null distribution for $\hat{p}$, created from 10,000 simulated studies. The left tail, representing the p-value for the hypothesis test, contains 12.22% of the simulations." width="960" />
 <p class="caption">(\#fig:nullDistForPHatIfLiverTransplantConsultantIsNotHelpful)The null distribution for $\hat{p}$, created from 10,000 simulated studies. The left tail, representing the p-value for the hypothesis test, contains 12.22% of the simulations.</p>
 </div>
 
@@ -966,7 +966,7 @@ According to the point estimate, the complication rate for clients of this medic
 Recall previously in this chapter, we simulated what proportions we might see from chance alone under the null hypothesis. By using marbles, cards, or a spinner to reflect the null hypothesis, we can simulate what would happen to 62 'patients' *if the true complication rate is 10%*. After repeating this simulation 10,000 times, we can build a **null distribution**\index{null distribution} of the sample proportions shown in Figure \@ref(fig:nullDistForPHatIfLiverTransplantConsultantIsNotHelpful2).
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/nullDistForPHatIfLiverTransplantConsultantIsNotHelpful2-1.png" alt="The null distribution for $\hat{p}$, created from 10,000 simulated studies. " width="70%" />
+<img src="05-inference-cat_files/figure-html/nullDistForPHatIfLiverTransplantConsultantIsNotHelpful2-1.png" alt="The null distribution for $\hat{p}$, created from 10,000 simulated studies. " width="960" />
 <p class="caption">(\#fig:nullDistForPHatIfLiverTransplantConsultantIsNotHelpful2)The null distribution for $\hat{p}$, created from 10,000 simulated studies. </p>
 </div>
 
@@ -984,7 +984,7 @@ In Figure \@ref(fig:Medical-consultant-two-sided) we've also shaded these differ
 -->
 ```
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/Medical-consultant-two-sided-1.png" alt="The null distribution for $\hat{p}$, created from 10,000 simulated studies. All simulations that are at least as far from the null value of 0.10 as the observed proportion (i.e., those below 0.048 and those above 0.152) are shaded." width="70%" />
+<img src="05-inference-cat_files/figure-html/Medical-consultant-two-sided-1.png" alt="The null distribution for $\hat{p}$, created from 10,000 simulated studies. All simulations that are at least as far from the null value of 0.10 as the observed proportion (i.e., those below 0.048 and those above 0.152) are shaded." width="960" />
 <p class="caption">(\#fig:Medical-consultant-two-sided)The null distribution for $\hat{p}$, created from 10,000 simulated studies. All simulations that are at least as far from the null value of 0.10 as the observed proportion (i.e., those below 0.048 and those above 0.152) are shaded.</p>
 </div>
 
@@ -1072,7 +1072,7 @@ In a simulation of 62 patients conducted by sampling with replacement from the o
 One simulated bootstrap resample isn't enough to get a sense of the variability from one bootstrap proportion to another bootstrap proportion, so we repeated the simulation 10,000 times using a computer. Figure \@ref(fig:MedConsBSSim) shows the distribution from the 10,000 bootstrap simulations. The bootstrapped proportions vary from about zero to 0.15. By taking the range of the middle 95% of this distribution, we can construct a **95% bootstrapped confidence interval** for $\pi$. The 2.5^th^ percentile is 0, and the 97.5^th^ percentile is 0.113, so the middle 95% of the distribution is the range (0, 0.113). The variability in the bootstrapped proportions leads us to believe that the true risk of complication (the parameter, $\pi$) is somewhere between 0 and 11.3%.
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/MedConsBSSim-1.png" alt="The original medical consultant data is bootstrapped 10,000 times. Each simulation creates a sample from the original data where the probability of a complication is $\hat{p} = 3/62$. The bootstrap 2.5 percentile proportion is 0 and the 97.5 percentile is 0.113. The result is: we are confident that, in the population, the true probability of a complication is between 0% and 11.3%." width="70%" />
+<img src="05-inference-cat_files/figure-html/MedConsBSSim-1.png" alt="The original medical consultant data is bootstrapped 10,000 times. Each simulation creates a sample from the original data where the probability of a complication is $\hat{p} = 3/62$. The bootstrap 2.5 percentile proportion is 0 and the 97.5 percentile is 0.113. The result is: we are confident that, in the population, the true probability of a complication is between 0% and 11.3%." width="960" />
 <p class="caption">(\#fig:MedConsBSSim)The original medical consultant data is bootstrapped 10,000 times. Each simulation creates a sample from the original data where the probability of a complication is $\hat{p} = 3/62$. The bootstrap 2.5 percentile proportion is 0 and the 97.5 percentile is 0.113. The result is: we are confident that, in the population, the true probability of a complication is between 0% and 11.3%.</p>
 </div>
 
@@ -1215,7 +1215,7 @@ You'll note that this conclusion is somewhat unsatisfactory because there is no 
 :::
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/paydayCC-norm-pvalue-1.png" alt="Approximate sampling distribution of $\hat{p}$ across all possible samples assuming $\pi = 0.50$. The shaded area represents the p-value corresponding to an observed sample proportion of 0.51." width="70%" />
+<img src="05-inference-cat_files/figure-html/paydayCC-norm-pvalue-1.png" alt="Approximate sampling distribution of $\hat{p}$ across all possible samples assuming $\pi = 0.50$. The shaded area represents the p-value corresponding to an observed sample proportion of 0.51." width="960" />
 <p class="caption">(\#fig:paydayCC-norm-pvalue)Approximate sampling distribution of $\hat{p}$ across all possible samples assuming $\pi = 0.50$. The shaded area represents the p-value corresponding to an observed sample proportion of 0.51.</p>
 </div>
 
@@ -1255,7 +1255,7 @@ Shown in Figure \@ref(fig:paydayCC-stdnorm-pvalue), the p-value is the area abov
 :::
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/paydayCC-stdnorm-pvalue-1.png" alt="(ref:figname-cap)" width="70%" />
+<img src="05-inference-cat_files/figure-html/paydayCC-stdnorm-pvalue-1.png" alt="(ref:figname-cap)" width="960" />
 <p class="caption">(\#fig:paydayCC-stdnorm-pvalue)(ref:figname-cap)</p>
 </div>
 
@@ -1398,7 +1398,7 @@ If $X$ is a normally distributed random variable, how often will $X$ be within 2
 [^05-inference-cat-47]: This is equivalent to asking how often the $Z$ score will be larger than -2.58 but less than 2.58. (For a picture, see Figure \@ref(fig:choosingZForCI).) To determine this probability, look up -2.58 and 2.58 in the normal probability table (0.0049 and 0.9951). Thus, there is a $0.9951-0.0049 \approx 0.99$ probability that the unobserved random variable $X$ will be within 2.58 standard deviations of the mean.
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/choosingZForCI-1.png" alt="The area between -$z^{\star}$ and $z^{\star}$ increases as $|z^{\star}|$ becomes larger. If the confidence level is 99%, we choose $z^{\star}$ such that 99% of the normal curve is between -$z^{\star}$ and $z^{\star}$, which corresponds to 0.5% in the lower tail and 0.5% in the upper tail: $z^{\star}=2.58$." width="70%" />
+<img src="05-inference-cat_files/figure-html/choosingZForCI-1.png" alt="The area between -$z^{\star}$ and $z^{\star}$ increases as $|z^{\star}|$ becomes larger. If the confidence level is 99%, we choose $z^{\star}$ such that 99% of the normal curve is between -$z^{\star}$ and $z^{\star}$, which corresponds to 0.5% in the lower tail and 0.5% in the upper tail: $z^{\star}=2.58$." width="960" />
 <p class="caption">(\#fig:choosingZForCI)The area between -$z^{\star}$ and $z^{\star}$ increases as $|z^{\star}|$ becomes larger. If the confidence level is 99%, we choose $z^{\star}$ such that 99% of the normal curve is between -$z^{\star}$ and $z^{\star}$, which corresponds to 0.5% in the lower tail and 0.5% in the upper tail: $z^{\star}=2.58$.</p>
 </div>
 
@@ -1620,7 +1620,7 @@ By examining these two scenarios, we can determine that we will make a Type 1 Er
 :::
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/type1ErrorDoublingExampleFigure-1.png" alt="The shaded regions represent areas where we would reject $H_0$ under the bad practices considered in when $\alpha = 0.05$." width="70%" />
+<img src="05-inference-cat_files/figure-html/type1ErrorDoublingExampleFigure-1.png" alt="The shaded regions represent areas where we would reject $H_0$ under the bad practices considered in when $\alpha = 0.05$." width="960" />
 <p class="caption">(\#fig:type1ErrorDoublingExampleFigure)The shaded regions represent areas where we would reject $H_0$ under the bad practices considered in when $\alpha = 0.05$.</p>
 </div>
 
@@ -1951,7 +1951,7 @@ Figure \@ref(fig:genderrand4) shows that the difference in promotion rates is mu
 We computed one possible sample difference in proportions under the null hypothesis in the Guided Practice above, which represents one difference due to chance. While in this first simulation, we physically dealt out files, it is much more efficient to perform this simulation using a computer. Repeating the simulation on a computer, we get another difference due to chance: -0.042. And another: 0.208. And so on until we repeat the simulation enough times that we have a good idea of what represents the *distribution of differences in sample proportions from chance alone*. Figure \@ref(fig:discRandDotPlot) shows a plot of the differences found from 100 simulations, where each dot represents a simulated difference between the proportions of male and female files recommended for promotion.
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/discRandDotPlot-1.png" alt="A dot plot of differences from 100 simulations produced under the null hypothesis, $H_0$, where `gender_simulated` and `decision` are independent. Two of the 100 simulations had a difference of at least 29.2%, the difference observed in the study, and are shown as solid red dots." width="70%" />
+<img src="05-inference-cat_files/figure-html/discRandDotPlot-1.png" alt="A dot plot of differences from 100 simulations produced under the null hypothesis, $H_0$, where `gender_simulated` and `decision` are independent. Two of the 100 simulations had a difference of at least 29.2%, the difference observed in the study, and are shown as solid red dots." width="960" />
 <p class="caption">(\#fig:discRandDotPlot)A dot plot of differences from 100 simulations produced under the null hypothesis, $H_0$, where `gender_simulated` and `decision` are independent. Two of the 100 simulations had a difference of at least 29.2%, the difference observed in the study, and are shown as solid red dots.</p>
 </div>
 
@@ -2060,7 +2060,7 @@ According to the point estimate, for patients who have undergone CPR outside of 
 As we did in our past studies this chapter, we will simulate what type of differences we might see from chance alone under the null hypothesis. By randomly assigning "simulated treatment" and "simulated control" stickers to the patients' files, we get a new grouping. If we repeat this simulation 10,000 times, we can build a **null distribution**\index{null distribution} of the differences in sample proportions shown in Figure \@ref(fig:CPR-study-right-tail).
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/CPR-study-right-tail-1.png" alt="Null distribution of the point estimate for the difference in proportions, $\hat{p}_t - \hat{p}_c$. The shaded right tail shows observations that are at least as large as the observed difference, 0.13." width="70%" />
+<img src="05-inference-cat_files/figure-html/CPR-study-right-tail-1.png" alt="Null distribution of the point estimate for the difference in proportions, $\hat{p}_t - \hat{p}_c$. The shaded right tail shows observations that are at least as large as the observed difference, 0.13." width="960" />
 <p class="caption">(\#fig:CPR-study-right-tail)Null distribution of the point estimate for the difference in proportions, $\hat{p}_t - \hat{p}_c$. The shaded right tail shows observations that are at least as large as the observed difference, 0.13.</p>
 </div>
 
@@ -2078,7 +2078,7 @@ The p-value is defined as the chance we observe a result *at least as favorable 
 -->
 ```
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/CPR-study-p-value-1.png" alt="Null distribution of the point estimate for the difference in proportions, $\hat{p}_t - \hat{p}_c$. All values that are at least as extreme as +0.13 but in either direction away from 0 are shaded." width="70%" />
+<img src="05-inference-cat_files/figure-html/CPR-study-p-value-1.png" alt="Null distribution of the point estimate for the difference in proportions, $\hat{p}_t - \hat{p}_c$. All values that are at least as extreme as +0.13 but in either direction away from 0 are shaded." width="960" />
 <p class="caption">(\#fig:CPR-study-p-value)Null distribution of the point estimate for the difference in proportions, $\hat{p}_t - \hat{p}_c$. All values that are at least as extreme as +0.13 but in either direction away from 0 are shaded.</p>
 </div>
 
@@ -2218,7 +2218,7 @@ It might be a little easier to review the results using row proportions, specifi
 </table>
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/OpportunityCostBarplot-1.png" alt="Segmented bar plot comparing the proportion who bought and did not buy the DVD between the control and treatment groups." width="70%" />
+<img src="05-inference-cat_files/figure-html/OpportunityCostBarplot-1.png" alt="Segmented bar plot comparing the proportion who bought and did not buy the DVD between the control and treatment groups." width="672" />
 <p class="caption">(\#fig:OpportunityCostBarplot)Segmented bar plot comparing the proportion who bought and did not buy the DVD between the control and treatment groups.</p>
 </div>
 
@@ -2311,12 +2311,12 @@ The results of a single randomization from chance alone is shown in Table \@ref(
 Just one simulation will not be enough to get a sense of what sorts of differences would happen from chance alone. We'll simulate another set of simulated groups and compute the new difference: 0.013. And again: 0.067. And again: -0.173. We'll do this 1,000 times. The results are summarized in a dot plot in Figure \@ref(fig:OpportunityCostDiffsDotPlot), where each point represents a simulation. Since there are so many points, it is more convenient to summarize the results in a histogram such as the one in Figure \@ref(fig:OpportunityCostDiffs), where the height of each histogram bar represents the fraction of observations in that group.
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/OpportunityCostDiffsDotPlot-1.png" alt="A stacked dot plot of 1,000 chance differences produced under the null hypothesis, $H_0$. Six of the 1,000 simulations had a difference of at least 20% , which was the difference observed in the study." width="70%" />
+<img src="05-inference-cat_files/figure-html/OpportunityCostDiffsDotPlot-1.png" alt="A stacked dot plot of 1,000 chance differences produced under the null hypothesis, $H_0$. Six of the 1,000 simulations had a difference of at least 20% , which was the difference observed in the study." width="960" />
 <p class="caption">(\#fig:OpportunityCostDiffsDotPlot)A stacked dot plot of 1,000 chance differences produced under the null hypothesis, $H_0$. Six of the 1,000 simulations had a difference of at least 20% , which was the difference observed in the study.</p>
 </div>
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/OpportunityCostDiffs-1.png" alt="A histogram of 1,000 chance differences produced under the null hypothesis, $H_0$. Histograms like this one are a more convenient representation of data or results when there are a large number of observations." width="70%" />
+<img src="05-inference-cat_files/figure-html/OpportunityCostDiffs-1.png" alt="A histogram of 1,000 chance differences produced under the null hypothesis, $H_0$. Histograms like this one are a more convenient representation of data or results when there are a large number of observations." width="960" />
 <p class="caption">(\#fig:OpportunityCostDiffs)A histogram of 1,000 chance differences produced under the null hypothesis, $H_0$. Histograms like this one are a more convenient representation of data or results when there are a large number of observations.</p>
 </div>
 
@@ -2425,7 +2425,7 @@ How could you use cards to re-randomize one sample into groups? Remember, in thi
 Figure \@ref(fig:malaria-rand-dot-plot) shows a histogram of the relative risks found from 1,000 randomization simulations, where each dot represents a simulated relative risk of infection (treatment rate divided by control rate).
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/malaria-rand-dot-plot-1.png" alt="A histogram of relative risks of infection from 1,000 simulations produced under the independence model $H_0$, where in these simulations infections are unaffected by the vaccine. Seventeen of the 1,000 simulations (shaded in red) had a relative risk of at most 0.357, the relative risk observed in the study." width="70%" />
+<img src="05-inference-cat_files/figure-html/malaria-rand-dot-plot-1.png" alt="A histogram of relative risks of infection from 1,000 simulations produced under the independence model $H_0$, where in these simulations infections are unaffected by the vaccine. Seventeen of the 1,000 simulations (shaded in red) had a relative risk of at most 0.357, the relative risk observed in the study." width="960" />
 <p class="caption">(\#fig:malaria-rand-dot-plot)A histogram of relative risks of infection from 1,000 simulations produced under the independence model $H_0$, where in these simulations infections are unaffected by the vaccine. Seventeen of the 1,000 simulations (shaded in red) had a relative risk of at most 0.357, the relative risk observed in the study.</p>
 </div>
 
@@ -2503,14 +2503,14 @@ Repeated bootstrap simulations lead to a bootstrap sampling distribution of the 
 </div>
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/bootCPR1000-1.png" alt="A histogram of differences in proportions (treatment $-$ control) from 1000 bootstrap simulations using the CPR data." width="70%" />
+<img src="05-inference-cat_files/figure-html/bootCPR1000-1.png" alt="A histogram of differences in proportions (treatment $-$ control) from 1000 bootstrap simulations using the CPR data." width="960" />
 <p class="caption">(\#fig:bootCPR1000)A histogram of differences in proportions (treatment $-$ control) from 1000 bootstrap simulations using the CPR data.</p>
 </div>
 
 Figure \@ref(fig:bootCPR1000) provides an estimate for the variability of the difference in survival proportions from sample to sample. As in Section \@ref(boot-ci-prop), the bootstrap confidence interval can be calculated directly from the bootstrapped differences in Figure \@ref(fig:bootCPR1000) by finding the percentiles of the distribution that correspond to the confidence level. For example, here we calculate the 90% confidence interval by finding the 5^th^ and 95^th^ percentile values from the bootstrapped differences. The bootstrap 5^th^ percentile proportion is -0.03 and the 95^th^ percentile is 0.28. The result is: we are 90% confident that, in the population, the true difference in probability of survival (treatment $-$ control) is between -0.03 and 0.28. More clearly, we are 90% confident that the probability of survival for heart attack patients who underwent CPR on blood thinners is between 0.03 less to 0.28 more than that for patients who were not given blood thinners. The interval shows that we do not have much definitive evidence of the affect of blood thinners, one way or another.
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/bootCPR1000CI-1.png" alt="The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the proportion who survived in the treatment group is $\hat{p}_{t}  = 14/40$ and the proportion who survived in the control group is $\hat{p}_{c} = 11/50$. " width="70%" />
+<img src="05-inference-cat_files/figure-html/bootCPR1000CI-1.png" alt="The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the proportion who survived in the treatment group is $\hat{p}_{t}  = 14/40$ and the proportion who survived in the control group is $\hat{p}_{c} = 11/50$. " width="960" />
 <p class="caption">(\#fig:bootCPR1000CI)The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the proportion who survived in the treatment group is $\hat{p}_{t}  = 14/40$ and the proportion who survived in the control group is $\hat{p}_{c} = 11/50$. </p>
 </div>
 
@@ -2555,7 +2555,7 @@ Recall that the goal of a confidence interval is to find a plausible range of va
 Figure \@ref(fig:ci25ints) demonstrates a hypothetical situation in which 25 different studies are performed on the exact same population (with the same goal of estimating the true parameter value of $\pi_1 - \pi_2 = 0.47$). The study at hand represents one point estimate (a dot) and a corresponding interval. It is not possible to know whether the interval at hand is to the right of the unknown true parameter value (the black line) or to the left of that line. It is also impossible to know whether the interval captures the true parameter (is blue) or doesn't (is red). If we are making 95% intervals, then 5% of the intervals we create over our lifetime will *not* capture the parameter of interest (e.g., will be red as in Figure \@ref(fig:ci25ints) ). What we know is that over our lifetimes as scientists, 95% of the intervals created and reported on will capture the parameter value of interest: thus the language "95% confident."
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/ci25ints-1.png" alt="One hypothetical population, parameter value of: $\pi_1 - \pi_2 = 0.47$.  Twenty-five different studies all which led to a different point estimate, SE, and confidence interval.  The study at hand is one of the horizontal lines (hopefully a blue line!)." width="70%" />
+<img src="05-inference-cat_files/figure-html/ci25ints-1.png" alt="One hypothetical population, parameter value of: $\pi_1 - \pi_2 = 0.47$.  Twenty-five different studies all which led to a different point estimate, SE, and confidence interval.  The study at hand is one of the horizontal lines (hopefully a blue line!)." width="960" />
 <p class="caption">(\#fig:ci25ints)One hypothetical population, parameter value of: $\pi_1 - \pi_2 = 0.47$.  Twenty-five different studies all which led to a different point estimate, SE, and confidence interval.  The study at hand is one of the horizontal lines (hopefully a blue line!).</p>
 </div>
 
@@ -2923,7 +2923,7 @@ The lower tail area below -0.17 on a standard normal distribution is 0.4325, whi
 :::
 
 <div class="figure" style="text-align: center">
-<img src="05-inference-cat_files/figure-html/mamm-norm-1.png" alt="Standard normal distribution with the p-value shaded. The shaded area represents the probability of observing a difference in sample proportions of -0.17 or further away from zero, if the true proportions were equal." width="70%" />
+<img src="05-inference-cat_files/figure-html/mamm-norm-1.png" alt="Standard normal distribution with the p-value shaded. The shaded area represents the probability of observing a difference in sample proportions of -0.17 or further away from zero, if the true proportions were equal." width="672" />
 <p class="caption">(\#fig:mamm-norm)Standard normal distribution with the p-value shaded. The shaded area represents the probability of observing a difference in sample proportions of -0.17 or further away from zero, if the true proportions were equal.</p>
 </div>
 
@@ -3209,7 +3209,7 @@ one_proportion_test(
 )
 ```
 
-<img src="05-inference-cat_files/figure-html/onePropSimInf-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/onePropSimInf-1.png" width="672" style="display: block; margin: auto;" />
 
 ::: importantbox
 Note that the observed statistic (`as_extreme_as`) and the `summary_measure` input need to match; since we put in the observed statistic as a proportion, we need to tell the function to report the proportion of successes. If they don't match, you will almost certainly get a p-value of 0 or 1 -- this can happen when there is very strong evidence against the null, but it is always good to check your function inputs when you get an extreme outcome to make sure that is what you should be seeing.
@@ -3231,7 +3231,7 @@ one_proportion_bootstrap_CI(
 )
 ```
 
-<img src="05-inference-cat_files/figure-html/onePropBootCI-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/onePropBootCI-1.png" width="672" style="display: block; margin: auto;" />
 
 This produces a plot of the bootstrapped proportions with the upper and lower bounds of the confidence interval marked, and gives the interval itself in the figure caption: in this case, we are 95% confident that the true proportion of payday loan borrowers who support the proposed regulation is between 0.479 and 0.546.
 
@@ -3254,7 +3254,7 @@ two_proportion_test(
 )
 ```
 
-<img src="05-inference-cat_files/figure-html/twoPropSimInf-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/twoPropSimInf-1.png" width="672" style="display: block; margin: auto;" />
 
 The results give a segmented bar plot of the data --- you can check that your formula is correct by making sure the explanatory variable is on the $x$-axis and the response variable is on the $y$-axis. Look to the top right of the bar plot to check that you have the correct order of subtraction. Next to the bar plot, we have the null distribution of simulated differences in proportions, with the observed statistic marked with a vertical line and all values as or more extreme than the observed statistic colored red. The figure caption gives the approximate p-value: in this case 181/1000 = 0.181.
 
@@ -3282,7 +3282,7 @@ two_proportion_bootstrap_CI(
 )
 ```
 
-<img src="05-inference-cat_files/figure-html/twoPropBootCI-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="05-inference-cat_files/figure-html/twoPropBootCI-1.png" width="672" style="display: block; margin: auto;" />
 
 This produces the distribution of bootstrapped statistics with the bounds of the confidence interval marked, and the value included in the caption. Here, we are 99% confident that the true proportion of patients who survive after receiving CPR is between 0.1 lower and 0.35 higher when patients are given blood thinners compared to when they are not.
 
@@ -3636,73 +3636,77 @@ Further apply the concepts you've learned in this chapter in R with computationa
 
 We introduced the following terms in the chapter. If you're not sure what some of these terms mean, we recommend you go back in the text and review their definitions. We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. However you should be able to easily spot them as **bolded text**.
 
-<table>
+<table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
 <tbody>
   <tr>
    <td style="text-align:left;"> alternative hypothesis </td>
-   <td style="text-align:left;"> null distribution </td>
-   <td style="text-align:left;"> practical importance </td>
-   <td style="text-align:left;"> statistically significant </td>
+   <td style="text-align:left;"> one sample $z$-test </td>
+   <td style="text-align:left;"> standard error of single proportion </td>
   </tr>
   <tr>
    <td style="text-align:left;"> bootstrapping </td>
-   <td style="text-align:left;"> null hypothesis </td>
-   <td style="text-align:left;"> randomization </td>
-   <td style="text-align:left;"> success </td>
+   <td style="text-align:left;"> one-sided hypothesis test </td>
+   <td style="text-align:left;"> standard normal distribution </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Central Limit Theorem </td>
-   <td style="text-align:left;"> null value </td>
-   <td style="text-align:left;"> sampling distribution </td>
-   <td style="text-align:left;"> success-failure condition </td>
+   <td style="text-align:left;"> p-value </td>
+   <td style="text-align:left;"> statistic </td>
   </tr>
   <tr>
    <td style="text-align:left;"> confidence interval </td>
-   <td style="text-align:left;"> one sample $z$-test </td>
-   <td style="text-align:left;"> simulation </td>
-   <td style="text-align:left;"> test statistic </td>
+   <td style="text-align:left;"> parameter </td>
+   <td style="text-align:left;"> statistical inference </td>
   </tr>
   <tr>
    <td style="text-align:left;"> confidence level </td>
-   <td style="text-align:left;"> one-sided hypothesis test </td>
-   <td style="text-align:left;"> standard error </td>
-   <td style="text-align:left;"> two sample $z$-test </td>
+   <td style="text-align:left;"> percentile </td>
+   <td style="text-align:left;"> statistical significance </td>
   </tr>
   <tr>
    <td style="text-align:left;"> confirmation bias </td>
-   <td style="text-align:left;"> p-value </td>
-   <td style="text-align:left;"> standard error for difference in proportions </td>
-   <td style="text-align:left;"> two-sided hypothesis test </td>
+   <td style="text-align:left;"> permutation test </td>
+   <td style="text-align:left;"> statistically significant </td>
   </tr>
   <tr>
    <td style="text-align:left;"> hypothesis test </td>
-   <td style="text-align:left;"> parameter </td>
-   <td style="text-align:left;"> standard error of single proportion </td>
-   <td style="text-align:left;"> Type 1 Error </td>
+   <td style="text-align:left;"> point estimate </td>
+   <td style="text-align:left;"> success </td>
   </tr>
   <tr>
    <td style="text-align:left;"> margin of error </td>
-   <td style="text-align:left;"> percentile </td>
-   <td style="text-align:left;"> standard normal distribution </td>
-   <td style="text-align:left;"> Type 2 Error </td>
+   <td style="text-align:left;"> pooled proportion </td>
+   <td style="text-align:left;"> success-failure condition </td>
   </tr>
   <tr>
    <td style="text-align:left;"> normal curve </td>
-   <td style="text-align:left;"> permutation test </td>
-   <td style="text-align:left;"> statistic </td>
-   <td style="text-align:left;"> Z-score </td>
+   <td style="text-align:left;"> practical importance </td>
+   <td style="text-align:left;"> test statistic </td>
   </tr>
   <tr>
    <td style="text-align:left;"> normal distribution </td>
-   <td style="text-align:left;"> point estimate </td>
-   <td style="text-align:left;"> statistical inference </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> randomization </td>
+   <td style="text-align:left;"> two sample $z$-test </td>
   </tr>
   <tr>
    <td style="text-align:left;"> normal model </td>
-   <td style="text-align:left;"> pooled proportion </td>
-   <td style="text-align:left;"> statistical significance </td>
-   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> sampling distribution </td>
+   <td style="text-align:left;"> two-sided hypothesis test </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> null distribution </td>
+   <td style="text-align:left;"> simulation </td>
+   <td style="text-align:left;"> Type 1 Error </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> null hypothesis </td>
+   <td style="text-align:left;"> standard error </td>
+   <td style="text-align:left;"> Type 2 Error </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> null value </td>
+   <td style="text-align:left;"> standard error for difference in proportions </td>
+   <td style="text-align:left;"> Z-score </td>
   </tr>
 </tbody>
 </table>

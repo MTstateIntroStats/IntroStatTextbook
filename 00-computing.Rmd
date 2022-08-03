@@ -1,5 +1,10 @@
 # Preliminaries: Getting started in RStudio {.unnumbered #rstudio}
 
+```{r, include = FALSE}
+source("_common.R")
+```
+
+
 In STAT 216, we will use the statistical package `R` to analyze data through the IDE (integrated development environment) RStudio. 
 We recommend accessing this program through the MSU RStudio server: [rstudio.math.montana.edu/](https://rstudio.math.montana.edu/). Please reference the [Statistical computing](#stat-computing) section of the Welcome chapter for other options for accessing RStudio and for instructions on how to download and install `R` and RStudio on your own computer.
 

@@ -64,7 +64,7 @@
       margin-left: 2em;
     }
   </style>
-<link rel="stylesheet" href="css/oistyle.css">
+<link rel="stylesheet" href="css/ims-style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -130,7 +130,7 @@ The CEO is omniscient and can write down the population model which describes th
 There appears to be linear relationship between advertising dollars and revenue (both in $1000).</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:sandpop"></span>
-<img src="07-inference-reg_files/figure-html/sandpop-1.png" alt="Revenue as a linear model of advertising dollars for a population of sandwich stores, in $1000." width="70%"><p class="caption">
+<img src="07-inference-reg_files/figure-html/sandpop-1.png" alt="Revenue as a linear model of advertising dollars for a population of sandwich stores, in $1000." width="672"><p class="caption">
 Figure 7.1: Revenue as a linear model of advertising dollars for a population of sandwich stores, in $1000.
 </p>
 </div>
@@ -149,28 +149,28 @@ Consider the linear model which describes revenue (in $1000) based on advertisin
 A subset of size 20 stores shows a similar positive trend between advertising and revenue (to what we saw in Figure <a href="inference-reg.html#fig:sandpop">7.1</a>, which described the population) despite having fewer observations on the plot.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:unnamed-chunk-2"></span>
-<img src="07-inference-reg_files/figure-html/unnamed-chunk-2-1.png" alt="A random sample of 20 stores from the entire population. A positive linear trend between advertising and revenue continues to be observed." width="70%"><p class="caption">
+<img src="07-inference-reg_files/figure-html/unnamed-chunk-2-1.png" alt="A random sample of 20 stores from the entire population. A positive linear trend between advertising and revenue continues to be observed." width="672"><p class="caption">
 Figure 7.2: A random sample of 20 stores from the entire population. A positive linear trend between advertising and revenue continues to be observed.
 </p>
 </div>
 <p>A second sample of size 20 also shows a positive trend!</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:unnamed-chunk-3"></span>
-<img src="07-inference-reg_files/figure-html/unnamed-chunk-3-1.png" alt="A different random sample of 20 stores from the entire population. Again, a positive linear trend between advertising and revenue is observed." width="70%"><p class="caption">
+<img src="07-inference-reg_files/figure-html/unnamed-chunk-3-1.png" alt="A different random sample of 20 stores from the entire population. Again, a positive linear trend between advertising and revenue is observed." width="672"><p class="caption">
 Figure 7.3: A different random sample of 20 stores from the entire population. Again, a positive linear trend between advertising and revenue is observed.
 </p>
 </div>
 <p>But the line is slightly different!</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:unnamed-chunk-4"></span>
-<img src="07-inference-reg_files/figure-html/unnamed-chunk-4-1.png" alt="The linear models from the two different random samples are quite similar, but they are not the same line." width="70%"><p class="caption">
+<img src="07-inference-reg_files/figure-html/unnamed-chunk-4-1.png" alt="The linear models from the two different random samples are quite similar, but they are not the same line." width="672"><p class="caption">
 Figure 7.4: The linear models from the two different random samples are quite similar, but they are not the same line.
 </p>
 </div>
 <p>That is, there is <strong>variability</strong> in the regression line from sample to sample. The concept of the sampling variability is something you’ve seen before, but in this lesson, you will focus on the variability of the line often measured through the variability of a single statistic: <strong>the slope of the line</strong>.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:slopes"></span>
-<img src="07-inference-reg_files/figure-html/slopes-1.png" alt="If repeated samples of size 20 are taken from the entire population, each linear model will be slightly different. The red line provides the linear fit to the entire population, shown in Figure ??." width="70%"><p class="caption">
+<img src="07-inference-reg_files/figure-html/slopes-1.png" alt="If repeated samples of size 20 are taken from the entire population, each linear model will be slightly different. The red line provides the linear fit to the entire population, shown in Figure ??." width="672"><p class="caption">
 Figure 7.5: If repeated samples of size 20 are taken from the entire population, each linear model will be slightly different. The red line provides the linear fit to the entire population, shown in Figure <a href="#sandpop"><strong>??</strong></a>.
 </p>
 </div>
@@ -179,7 +179,7 @@ Figure 7.5: If repeated samples of size 20 are taken from the entire population,
 <p>The distribution of slopes (for samples of size <span class="math inline">\(n=20\)</span>) can be seen in a histogram, as in Figure <a href="inference-reg.html#fig:sand20lm">7.6</a>.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:sand20lm"></span>
-<img src="07-inference-reg_files/figure-html/sand20lm-1.png" alt="Variability of slope estimates taken from many different samples of stores, each of size 20." width="70%"><p class="caption">
+<img src="07-inference-reg_files/figure-html/sand20lm-1.png" alt="Variability of slope estimates taken from many different samples of stores, each of size 20." width="672"><p class="caption">
 Figure 7.6: Variability of slope estimates taken from many different samples of stores, each of size 20.
 </p>
 </div>
@@ -202,7 +202,7 @@ And last (in Section <a href="inference-reg.html#mathslope">7.1.3</a>), we use m
 <p>Consider the data on Global Crop Yields compiled by <a href="https://ourworldindata.org/crop-yields">Our World in Data</a> and presented as part of the <a href="https://github.com/rfordatascience/tidytuesday/trunk/data/2020/2020-09-01">TidyTuesday</a> series seen in Figure <a href="inference-reg.html#fig:allcrops">7.7</a>. The scientific research interest at hand will be in determining the linear relationship between wheat yield (for a country-year) and other crop yields. The dataset is quite rich and deserves exploring, but for this example, we will focus only on the annual crop yield in the United States.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:allcrops"></span>
-<img src="07-inference-reg_files/figure-html/allcrops-1.png" alt="Yield (in tonnes per hectare) for six different crops in the US.  The color of the dot indicates the year." width="70%"><p class="caption">
+<img src="07-inference-reg_files/figure-html/allcrops-1.png" alt="Yield (in tonnes per hectare) for six different crops in the US.  The color of the dot indicates the year." width="672"><p class="caption">
 Figure 7.7: Yield (in tonnes per hectare) for six different crops in the US. The color of the dot indicates the year.
 </p>
 </div>
@@ -309,7 +309,7 @@ Figure 7.9: Two different permutations of the wheat variable with slightly diffe
 </h4>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:nulldistCrop"></span>
-<img src="07-inference-reg_files/figure-html/nulldistCrop-1.png" alt="Histogram of slopes given different permutations of the wheat variable.  The vertical red line is at the observed value of the slope, $b_1$ = 0.195." width="70%"><p class="caption">
+<img src="07-inference-reg_files/figure-html/nulldistCrop-1.png" alt="Histogram of slopes given different permutations of the wheat variable.  The vertical red line is at the observed value of the slope, $b_1$ = 0.195." width="672"><p class="caption">
 Figure 7.10: Histogram of slopes given different permutations of the wheat variable. The vertical red line is at the observed value of the slope, <span class="math inline">\(b_1\)</span> = 0.195.
 </p>
 </div>
@@ -329,7 +329,7 @@ Therefore, we believe that the slope observed on the original data is not just d
 <p>Returning to the crop data, we may want to consider the relationship between yields in <code>peas</code> and <code>wheat</code>. Are <code>peas</code> a good predictor of <code>wheat</code>? And if so, what is their relationship? That is, what is the slope that models the average wheat yield as a function of peas yield (both in tonnes per hectare)?</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:peasPlot"></span>
-<img src="07-inference-reg_files/figure-html/peasPlot-1.png" alt="Original data: wheat yield as a linear model of peas yield, in tonnes per hectare.  Notice that the relationship between `peas` and `wheat` is not as strong as the relationship we saw previously between `maize` and `wheat`." width="70%"><p class="caption">
+<img src="07-inference-reg_files/figure-html/peasPlot-1.png" alt="Original data: wheat yield as a linear model of peas yield, in tonnes per hectare.  Notice that the relationship between `peas` and `wheat` is not as strong as the relationship we saw previously between `maize` and `wheat`." width="672"><p class="caption">
 Figure 7.11: Original data: wheat yield as a linear model of peas yield, in tonnes per hectare. Notice that the relationship between <code>peas</code> and <code>wheat</code> is not as strong as the relationship we saw previously between <code>maize</code> and <code>wheat</code>.
 </p>
 </div>
@@ -351,7 +351,7 @@ The green circle represents a particular structure to the data which is observed
 By repeatedly resampling, we can see dozens of bootstrapped slopes on the same plot in Figure <a href="inference-reg.html#fig:cropBS">7.13</a>.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:cropBS"></span>
-<img src="07-inference-reg_files/figure-html/cropBS-1.png" alt="Repeated bootstrap resamples of size 58 are taken from the original data.  Each of the bootstrapped linear model is slightly different." width="70%"><p class="caption">
+<img src="07-inference-reg_files/figure-html/cropBS-1.png" alt="Repeated bootstrap resamples of size 58 are taken from the original data.  Each of the bootstrapped linear model is slightly different." width="672"><p class="caption">
 Figure 7.13: Repeated bootstrap resamples of size 58 are taken from the original data. Each of the bootstrapped linear model is slightly different.
 </p>
 </div>
@@ -361,7 +361,7 @@ We can see that a 95% bootstrap percentile interval for the true population slop
 We are 95% confident that for the model describing the population of crops of <code>peas</code> and <code>wheat</code>, a one ton per hectare increase in <code>peas</code> yield will be associated with an increase in predicted average <code>wheat</code> yield of between 0.061 and 0.52 tonnes per hectare.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:peasBSslopes"></span>
-<img src="07-inference-reg_files/figure-html/peasBSslopes-1.png" alt="The original crop data on wheat and peas is bootstrapped 1,000 times. The histogram provides a sense for the variability of the standard deviation of the linear model slope from sample to sample." width="70%"><p class="caption">
+<img src="07-inference-reg_files/figure-html/peasBSslopes-1.png" alt="The original crop data on wheat and peas is bootstrapped 1,000 times. The histogram provides a sense for the variability of the standard deviation of the linear model slope from sample to sample." width="1440"><p class="caption">
 Figure 7.14: The original crop data on wheat and peas is bootstrapped 1,000 times. The histogram provides a sense for the variability of the standard deviation of the linear model slope from sample to sample.
 </p>
 </div>
@@ -407,7 +407,7 @@ party (e.g., percent change in the number of seats for Republicans in
 While the data are collected sequentially, a separate analysis was used to check for any apparent correlation between successive observations in time; no such correlation was found.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:unemploymentAndChangeInHouse"></span>
-<img src="07-inference-reg_files/figure-html/unemploymentAndChangeInHouse-1.png" alt="The percent change in House seats for the President's party in each midterm election from 1898 to 2010 plotted against the unemployment rate. The two points for the Great Depression have been removed, and a least squares regression line has been fit to the data." width="70%"><p class="caption">
+<img src="07-inference-reg_files/figure-html/unemploymentAndChangeInHouse-1.png" alt="The percent change in House seats for the President's party in each midterm election from 1898 to 2010 plotted against the unemployment rate. The two points for the Great Depression have been removed, and a least squares regression line has been fit to the data." width="672"><p class="caption">
 Figure 7.15: The percent change in House seats for the President’s party in each midterm election from 1898 to 2010 plotted against the unemployment rate. The two points for the Great Depression have been removed, and a least squares regression line has been fit to the data.
 </p>
 </div>
@@ -557,7 +557,7 @@ This suggests the hypothesis test will reject the null claim that the slope is z
 </div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:elmhurstScatterWLSROnly-CLTsection"></span>
-<img src="07-inference-reg_files/figure-html/elmhurstScatterWLSROnly-CLTsection-1.png" alt="Gift aid and family income for a random sample of 50 first-year students from Elmhurst College, shown with a regression line." width="70%"><p class="caption">
+<img src="07-inference-reg_files/figure-html/elmhurstScatterWLSROnly-CLTsection-1.png" alt="Gift aid and family income for a random sample of 50 first-year students from Elmhurst College, shown with a regression line." width="672"><p class="caption">
 Figure 7.16: Gift aid and family income for a random sample of 50 first-year students from Elmhurst College, shown with a regression line.
 </p>
 </div>
@@ -821,7 +821,7 @@ However, data that exhibit non-equal variance across the range of <span class="m
 <span>  as_extreme_as <span class="op">=</span> <span class="op">-</span><span class="fl">0.89</span>, <span class="co">#Observed slope</span></span>
 <span>  number_repetitions <span class="op">=</span> <span class="fl">1000</span>  <span class="co">#Number of simulations</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="07-inference-reg_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="07-inference-reg_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;"></div>
 <p>The results give a scatterplot of the observed data with the regression line superimposed, and gives the observed slope (this should match what you put in for <code>as_extreme_as</code>). Next to the scatterplot, we have the null distribution of the slope coefficient, with the observed slope indicated by a vertical line and all values more extreme highlighted in red. The caption gives the number of simulations resulting in a slope more extreme than the observed: in this simulation we have 118/1000, for an approximate p-value of 0.118.</p>
 <p>To obtain a confidence interval for the slope, we use <code><a href="https://rdrr.io/pkg/catstats/man/regression_bootstrap_CI.html">regression_bootstrap_CI()</a></code>, with the same core arguments as <code><a href="https://rdrr.io/pkg/catstats/man/regression_test.html">regression_test()</a></code>.</p>
 <div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
@@ -833,7 +833,7 @@ However, data that exhibit non-equal variance across the range of <span class="m
 <span>  confidence_level <span class="op">=</span> <span class="fl">0.95</span>, <span class="co">#confidence level as a proportion</span></span>
 <span>  number_repetitions <span class="op">=</span> <span class="fl">1000</span>  <span class="co">#Number of simulations</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="07-inference-reg_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="07-inference-reg_files/figure-html/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;"></div>
 <p>Here we have the bootstrap distribution of the slope based on the observed data, with the upper and lower bounds of the confidence interval highlighted in red. The confidence interval is also given in the caption of the figure. Here, we are 95% confident that the true change in the number of seats in the House of Representatives for each additional percentage point in unemployment is between a decrease of 2.6 percent of seats and an increase of 0.3 percent of seats.</p>
 <p>Notice that the bootstrap distribution is not symmetric for this example! Because of this, the bootstrap confidence interval is different from what we would obtain from theory-based methods: (-2.6, 0.8). This is because the LINE technical conditions are not all satisfactorily met, though this is hard to see from the scatterplot for these data.</p>
 </div>

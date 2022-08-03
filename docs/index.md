@@ -1,18 +1,25 @@
 --- 
+knit: bookdown::render_book
+site: bookdown::bookdown_site
 title: "Montana State Introductory Statistics with R"
 subtitle: "Fall 2022"
 author: "Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager"
-site: bookdown::bookdown_site
-documentclass: book
+description: "Open resources textbook for Stat 216 at Montana State University"
+github-repo: MTstateIntroStats/IntroStatTextbook
+url: 'https\://mtstateintrostats.github.io/IntroStatTextbook/'
+link-citations: yes
 bibliography: [book.bib, packages.bib, eoce.bib]
 biblio-style: apalike
-link-citations: yes
-github-repo: MTstateIntroStats/IntroStatTextbook
-description: "Open resources textbook for Stat 216 at Montana State University"
 monofont: "Source Code Pro"
-header-includes:
-- \usepackage{subfig}
+always_allow_html: true
+documentclass: book
+classoption: 
+  - 10pt
+  - openany
 ---
+
+
+
 
 # Welcome {-}
  
@@ -28,13 +35,13 @@ We hope readers will take away three ideas from this book in addition to forming
 This textbook accompanies the curriculum for STAT 216: Introduction to Statistics at Montana State University. The syllabus and other course information can be found
 on the [course webpage](https://math.montana.edu/courses/s216/index.html). Detailed learning outcomes for the course can be found [here](https://github.com/MTstateIntroStats/IntroStatTextbook/blob/master/learning_outcomes.md).
 
-1. **Introduction to data.** Data structures, variables, and basic data collection techniques.
-2. **Exploratory data analysis.** Data visualization and summarization for one and two variables, with a taste of probability.
-3. **Correlation and regression.** Visualizing, describing, and quantifying relationships between two quantitative variables.
-4. **Multivariable models.** Descriptive summaries for quantifying the relationship between many variables.
-5. **Inference for categorical data.** Inference for one or two proportions using simulation and randomization techniques as well as the normal distribution.
-6. **Inference for quantitative data.** Inference for one or two means using simulation and randomization techniques as well as the $t$-distribution.
-7. **Inference for regression.** Inference for a regression slope or correlation using simulation and randomization techniques as well as the $t$-distribution.
+- **Part 1: Introduction to data.** Data structures, variables, and basic data collection techniques.
+- **Part 2: Exploratory data analysis.** Data visualization and summarization for one and two variables, with a taste of probability.
+- **Part 3: Correlation and regression.** Visualizing, describing, and quantifying relationships between two quantitative variables.
+- **Part 4: Multivariable models.** Descriptive summaries for quantifying the relationship between many variables.
+- **Part 5: Inference for categorical data.** Inference for one or two proportions using simulation and randomization techniques as well as the normal distribution.
+- **Part 6: Inference for quantitative data.** Inference for one or two means using simulation and randomization techniques as well as the $t$-distribution.
+- **Part 7: Inference for regression.** Inference for a regression slope or correlation using simulation and randomization techniques as well as the $t$-distribution.
 
 ## STAT 216 Coursepack {-}
 

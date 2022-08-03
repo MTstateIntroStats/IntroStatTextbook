@@ -1,21 +1,25 @@
 book_filename: "stat216-textbook"
+delete_merged_file: true
+new_session: true
 language:
   ui:
     chapter_name: "Chapter "
-delete_merged_file: true
-new_session: yes
 rmd_files: [
   "index.Rmd",
   "00-computing.Rmd",
-  "01-intro-to-data.Rmd",
-  "02-eda.Rmd",
-  "03-cor-reg.Rmd",
-  "04-mult-reg.Rmd",
-  "05-inference-cat.Rmd",
-  "06-inference-num.Rmd",
-  "07-inference-reg.Rmd",
-  "08-references.Rmd"
+  "01-data-hello.Rmd",
+  "02-data-design.Rmd",
+  "03-data-applications.Rmd",
+  "04-explore-categorical.Rmd",
+  "05-explore-numerical.Rmd",
+  "06-explore-applications.Rmd"
+  # "01-intro-to-data.Rmd",
+  # "02-eda.Rmd",
+  # "03-cor-reg.Rmd",
+  # "04-mult-reg.Rmd",
+  # "05-inference-cat.Rmd",
+  # "06-inference-num.Rmd",
+  # "07-inference-reg.Rmd",
+  references.Rmd"
   ]
-before_chapter_script: "_common.R"
-output: bookdown::bs4_book
 output_dir: "docs"

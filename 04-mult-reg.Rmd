@@ -1,5 +1,9 @@
 # Multivariable models {#mult-reg}
 
+```{r, include = FALSE}
+source("_common.R")
+```
+
 ::: {.chapterintro}
 The principles of simple linear regression lay the foundation for more sophisticated regression models used in a wide range of challenging settings. 
 In this chapter, we explore the idea of "multivariable thinking" -- investigating how multiple variables interact with a response variable and with each other -- through a few examples. 

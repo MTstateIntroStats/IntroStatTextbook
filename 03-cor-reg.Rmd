@@ -1,5 +1,9 @@
 # Correlation and regression {#cor-reg}
 
+```{r, include = FALSE}
+source("_common.R")
+```
+
 ::: {.chapterintro}
 Linear regression is a very powerful statistical technique. 
 Many people have some familiarity with regression just from reading the news, where straight lines are overlaid on scatterplots. 

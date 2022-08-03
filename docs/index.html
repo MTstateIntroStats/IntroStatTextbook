@@ -10,6 +10,7 @@
 <meta name="generator" content="bookdown 0.27 with bs4_book()">
 <meta property="og:title" content="Welcome | Montana State Introductory Statistics with R">
 <meta property="og:type" content="book">
+<meta property="og:url" content="https://mtstateintrostats.github.io/IntroStatTextbook/">
 <meta property="og:description" content="Open resources textbook for Stat 216 at Montana State University">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Welcome | Montana State Introductory Statistics with R">
@@ -19,9 +20,7 @@
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><script type="text/x-mathjax-config">
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script type="text/x-mathjax-config">
     const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
     for (let popover of popovers){
       const div = document.createElement('div');
@@ -64,7 +63,7 @@
       margin-left: 2em;
     }
   </style>
-<link rel="stylesheet" href="css/oistyle.css">
+<link rel="stylesheet" href="css/ims-style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -89,14 +88,14 @@
         <ul class="book-toc list-unstyled">
 <li><a class="active" href="index.html">Welcome</a></li>
 <li><a class="" href="rstudio.html">Preliminaries: Getting started in RStudio</a></li>
-<li><a class="" href="intro-to-data.html"><span class="header-section-number">1</span> Introduction to data</a></li>
-<li><a class="" href="eda.html"><span class="header-section-number">2</span> Exploratory data analysis</a></li>
-<li><a class="" href="cor-reg.html"><span class="header-section-number">3</span> Correlation and regression</a></li>
-<li><a class="" href="mult-reg.html"><span class="header-section-number">4</span> Multivariable models</a></li>
-<li><a class="" href="inference-cat.html"><span class="header-section-number">5</span> Inference for categorical data</a></li>
-<li><a class="" href="inference-num.html"><span class="header-section-number">6</span> Inference for quantitative data</a></li>
-<li><a class="" href="inference-reg.html"><span class="header-section-number">7</span> Inference for regression</a></li>
-<li><a class="" href="references.html">References</a></li>
+<li class="book-part">Introduction to data</li>
+<li><a class="" href="intro-to-data.html"><span class="header-section-number">1</span> Hello data</a></li>
+<li><a class="" href="data-design.html"><span class="header-section-number">2</span> Study design</a></li>
+<li><a class="" href="data-applications.html"><span class="header-section-number">3</span> Applications: Data</a></li>
+<li class="book-part">Exploratory data analysis</li>
+<li><a class="" href="categorical-data.html"><span class="header-section-number">4</span> Exploring categorical data</a></li>
+<li><a class="" href="quantitative-data.html"><span class="header-section-number">5</span> Exploring quantitative data</a></li>
+<li><a class="" href="explore-applications.html"><span class="header-section-number">6</span> Applications: Explore</a></li>
 </ul>
 
         <div class="book-extra">
@@ -118,22 +117,22 @@
 </h2>
 <p>This textbook accompanies the curriculum for STAT 216: Introduction to Statistics at Montana State University. The syllabus and other course information can be found
 on the <a href="https://math.montana.edu/courses/s216/index.html">course webpage</a>. Detailed learning outcomes for the course can be found <a href="https://github.com/MTstateIntroStats/IntroStatTextbook/blob/master/learning_outcomes.md">here</a>.</p>
-<ol style="list-style-type: decimal">
+<ul>
 <li>
-<strong>Introduction to data.</strong> Data structures, variables, and basic data collection techniques.</li>
+<strong>Part 1: Introduction to data.</strong> Data structures, variables, and basic data collection techniques.</li>
 <li>
-<strong>Exploratory data analysis.</strong> Data visualization and summarization for one and two variables, with a taste of probability.</li>
+<strong>Part 2: Exploratory data analysis.</strong> Data visualization and summarization for one and two variables, with a taste of probability.</li>
 <li>
-<strong>Correlation and regression.</strong> Visualizing, describing, and quantifying relationships between two quantitative variables.</li>
+<strong>Part 3: Correlation and regression.</strong> Visualizing, describing, and quantifying relationships between two quantitative variables.</li>
 <li>
-<strong>Multivariable models.</strong> Descriptive summaries for quantifying the relationship between many variables.</li>
+<strong>Part 4: Multivariable models.</strong> Descriptive summaries for quantifying the relationship between many variables.</li>
 <li>
-<strong>Inference for categorical data.</strong> Inference for one or two proportions using simulation and randomization techniques as well as the normal distribution.</li>
+<strong>Part 5: Inference for categorical data.</strong> Inference for one or two proportions using simulation and randomization techniques as well as the normal distribution.</li>
 <li>
-<strong>Inference for quantitative data.</strong> Inference for one or two means using simulation and randomization techniques as well as the <span class="math inline">\(t\)</span>-distribution.</li>
+<strong>Part 6: Inference for quantitative data.</strong> Inference for one or two means using simulation and randomization techniques as well as the <span class="math inline">\(t\)</span>-distribution.</li>
 <li>
-<strong>Inference for regression.</strong> Inference for a regression slope or correlation using simulation and randomization techniques as well as the <span class="math inline">\(t\)</span>-distribution.</li>
-</ol>
+<strong>Part 7: Inference for regression.</strong> Inference for a regression slope or correlation using simulation and randomization techniques as well as the <span class="math inline">\(t\)</span>-distribution.</li>
+</ul>
 </div>
 <div id="stat-216-coursepack" class="section level2 unnumbered">
 <h2>STAT 216 Coursepack<a class="anchor" aria-label="anchor" href="#stat-216-coursepack"><i class="fas fa-link"></i></a>

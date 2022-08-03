@@ -1,5 +1,9 @@
 # Inference for regression {#inference-reg}
 
+```{r, include = FALSE}
+source("_common.R")
+```
+
 <!-- TODO: Add vocab words to this chapter. -->
 
 ::: {.chapterintro}
