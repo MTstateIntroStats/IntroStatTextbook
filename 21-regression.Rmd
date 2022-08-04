@@ -1,10 +1,12 @@
-# Inference for regression {#inference-reg}
+# (PART) Inference for regression {#inference-reg}
 
 ```{r, include = FALSE}
 source("_common.R")
 ```
 
 <!-- TODO: Add vocab words to this chapter. -->
+
+# Inference for correlation and slope
 
 ::: {.chapterintro}
 We now bring together ideas of inferential analyses from Chapters \@ref(inference-cat) and \@ref(inference-num) with the descriptive models seen in Chapter \@ref(cor-reg).  The setting is now focused on predicting a quantitative response variable, $y$, from a quantitative explanatory variable, $x$. We continue to ask questions about the variability of the model from sample to sample.  The sampling variability will inform the conclusions about the population that can be drawn.
@@ -999,9 +1001,9 @@ However, data that exhibit non-equal variance across the range of $x$-values wil
 
 When the equal variability condition is violated and a theory-based analysis (e.g., p-value from T-score) is needed, there are existing methods which can easily handle the unequal variance (e.g., weighted least squares analysis), but these are covered in a later course.
 
-## `R`: Inference for regression
+## R: Inference for regression
 
-### Inference using `R` and `catstats`
+### Inference using R and `catstats`
 
 #### Simulation-based inference for the regression slope {-} 
 
@@ -1048,7 +1050,7 @@ Notice that the bootstrap distribution is not symmetric for this example! Becaus
 
 #### Theory-based inference for the regression slope {-} 
 
-To demonstrate theory-based inference in `R`, we will revisit the gift aid and income data.  We want to know whether there is evidence to suggest that the slope of gift aid as a function of family income is non-zero.  The function for linear regression in `R` is `lm()`. Unlike `prob.test()` and `t.test()`, just running `lm()` doesn't print all the information we need.  This will produce only the coefficient estimates.
+To demonstrate theory-based inference in R, we will revisit the gift aid and income data.  We want to know whether there is evidence to suggest that the slope of gift aid as a function of family income is non-zero.  The function for linear regression in R is `lm()`. Unlike `prob.test()` and `t.test()`, just running `lm()` doesn't print all the information we need.  This will produce only the coefficient estimates.
 ```{r}
 data(elmhurst)
 lm(gift_aid~family_income, #Always use reponse ~ explanatory
@@ -1078,7 +1080,7 @@ qt(.95, df = 48)
 -0.04307 + 1.677224*0.01081
 ```
 
-We can also use the `confint()` function in `R` to compute confidence intervals for regression coefficients.
+We can also use the `confint()` function in R to compute confidence intervals for regression coefficients.
 ```{r, echo = TRUE}
 confint(gift_reg,   #name of regression results
         level = 0.9)  #confidence level as a proportion
@@ -1088,11 +1090,11 @@ In either case, we are 90% confident that gift aid will be \$24.90 to \$61.20 le
 
 ### `catstats` function summary
 
-In the previous section, you were introduced to two new `R` 
+In the previous section, you were introduced to two new R 
 functions in the `catstats` library. Here we provide a summary of 
 these functions. You can also access 
 the help files for these functions using the `?` command. For 
-example, type `?regression_test` into your `R` console to bring up the 
+example, type `?regression_test` into your R console to bring up the 
 help file for the `regression_test` function.
 <br>
     
@@ -1116,9 +1118,9 @@ help file for the `regression_test` function.
 <br>
 
 
-<!-- ### Interactive `R` tutorials -->
+<!-- ### Interactive R tutorials -->
 
-<!-- Navigate the concepts you've learned in this chapter in `R` using the following self-paced tutorials.  -->
+<!-- Navigate the concepts you've learned in this chapter in R using the following self-paced tutorials.  -->
 <!-- All you need is your browser to get started! -->
 
 <!-- ::: {.alltutorials} -->
@@ -1147,9 +1149,9 @@ help file for the `regression_test` function.
 
 <!-- You can also access the full list of tutorials supporting this book [here](https://openintrostat.github.io/ims-tutorials/). -->
 
-### `R` labs
+### R labs
 
-Further apply the concepts you've learned in this chapter in `R` with computational labs that walk you through a data analysis case study.
+Further apply the concepts you've learned in this chapter in R with computational labs that walk you through a data analysis case study.
 
 ::: {.singlelab}
 [Multiple linear regression - Grading the professor](http://openintrostat.github.io/oilabs-tidy/09_multiple_regression/multiple_regression.html)

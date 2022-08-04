@@ -4,31 +4,31 @@
 source("_common.R")
 ```
 
-## Data in `R` {#data-in-r}
+## Data in R {#data-in-r}
 
-`R` is a powerful and open source software tool for working with data. 
-Throughout this text, we provide some guidance on how to use `R` within the
+R is a powerful and open source software tool for working with data. 
+Throughout this text, we provide some guidance on how to use R within the
 context of the statistical content that is being covered.  
 
 As educators, we see the value of teaching with modern software to
 empower students to take optimal advantage of the concepts they are learning. 
-Generally, we will present the `R` techniques at the end
+Generally, we will present the R techniques at the end
 of each chapter. There are times in the text when the concepts are not
 distinguishable from the software, and in those cases, we have have provided the
-`R` code within the main body of the chapter.
+R code within the main body of the chapter.
 
-We start with an introduction to `R`, focused on how data sets are structured in
-`R` and how the user can work with a data object in `R`.
+We start with an introduction to R, focused on how data sets are structured in
+R and how the user can work with a data object in R.
 
-### Dataframes in `R`
+### Dataframes in R
 
 Throughout the text, we will work with many different data sets. Some data sets
-are pre-loaded into `R`, some get loaded through `R` packages, and some data sets
+are pre-loaded into R, some get loaded through R packages, and some data sets
 will be created by the student. Data sets can be viewed through the RStudio
-environment, and can also be investigated through various `R` **functions**.
+environment, and can also be investigated through various R **functions**.
 
 ::: {.onebox}
-Similar to the notation for a mathematical function, an `R` **function** takes the form:
+Similar to the notation for a mathematical function, an R **function** takes the form:
   
 > `function_name(arguments to the function)`
 
@@ -37,10 +37,10 @@ The `function_name` is the name of the function, such as `mean`, `read.csv`, or 
 The arguments to the function are the inputs to the function. These can be data sets, parameter values, or other options.
 :::
 
-In `R`, all functions take arguments in round parentheses (as opposed to subsetting observations or variables from data objects which happen with square parentheses).  
+In R, all functions take arguments in round parentheses (as opposed to subsetting observations or variables from data objects which happen with square parentheses).  
 
 ::: {.guidedpractice}
-In the `R` console, type `?read.csv`. This will bring up the help file for the `read.csv()` function. What are the first two arguments to this function?^[The first argument is the `file` --- the name of the file or website which the data are to be read from. The second argument is `header` --- a **logical** argument (`TRUE` or `FALSE`) for whether the file contains a header row of variables or not.]
+In the R console, type `?read.csv`. This will bring up the help file for the `read.csv()` function. What are the first two arguments to this function?^[The first argument is the `file` --- the name of the file or website which the data are to be read from. The second argument is `header` --- a **logical** argument (`TRUE` or `FALSE`) for whether the file contains a header row of variables or not.]
 :::
 
 
@@ -59,7 +59,7 @@ head(email50)
 ```
 
 Sometimes it is necessary to extract a column or a row from a data set. 
-In `R`, the `$` operator can be used to extract a column from a data set. 
+In R, the `$` operator can be used to extract a column from a data set. 
 For example, `data$variable` would extract the `variable` column from the `data` dataframe.
 When extracted, these columns can be thought of as vectors. With these vectors, if you desired to pull off a specific entry, you could use square brackets (`[ ]`), with the index (number) of the entry you wish to extract in the brackets. 
 For example, `data$variable[2]` would extract the second entry (row) of the `variable` column. 
@@ -93,9 +93,9 @@ Creating tidy data is often not trivial! However, data sets provided in this cou
 
 ### Using the pipe to chain
 
-Within `R` (really within any type of computing language, Python, SQL, Java, etc.), it is important to understand how to build data using the patterns of the language.  
+Within R (really within any type of computing language, Python, SQL, Java, etc.), it is important to understand how to build data using the patterns of the language.  
 
-In `R`, the syntax `<-` is called the **assignment** character; it is used to store the output of some function or set of operations in what we call an **object**. Some things to consider:
+In R, the syntax `<-` is called the **assignment** character; it is used to store the output of some function or set of operations in what we call an **object**. Some things to consider:
 
 * `object_name <- anything` is a way of *assigning* `anything` to the new `object_name`.
 * `object_name <- function_name(data_table, arguments)` is a way of using a function to create a new object.
@@ -127,7 +127,7 @@ Some properties of the pipe syntax (`%>%`) to keep in mind:
 * The pipe syntax should be read as *then*, `%>%`.
 
 
-Pipes are used commonly with functions in the `dplyr` package (see `R` examples in Chapter \@ref(eda)) and they allow us to sequentially build data wrangling operations.
+Pipes are used commonly with functions in the `dplyr` package (see R examples in Chapter \@ref(eda)) and they allow us to sequentially build data wrangling operations.
 Pipes are also helpful when creating data visualizations in the `ggplot2` package.
 
 ### A data wrangling example
@@ -152,7 +152,7 @@ hsb2 %>%
 
 #### Filtering {-}
 What if we are interested only in `public` schools?
-First, we should take note of another piece of `R` syntax: the double equal sign: `==`. 
+First, we should take note of another piece of R syntax: the double equal sign: `==`. 
 This is the logical test for "is equal to". 
 In other words, we first determine if school type is equal to public for each of the observations in the data set and `filter` for those where this is true.
 
@@ -204,7 +204,7 @@ hsb2 <- hsb2 %>% mutate(read_cat =
 
 The decision criteria for this new variable is based on a TRUE/FALSE question: if the reading score of the student is below the average reading score, label "below average", otherwise, label "at or above average".
 
-This can be accomplished using the `ifelse()` function in `R`. Look at its helpfile by typing `?ifelse` into the `R` console window.
+This can be accomplished using the `ifelse()` function in R. Look at its helpfile by typing `?ifelse` into the R console window.
 
 * The first argument of the function is the logical test.
 

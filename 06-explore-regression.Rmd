@@ -517,7 +517,7 @@ We can see that family income is recorded in a variable called `family_income` a
 For now, we won't worry about the `price_paid` variable. 
 We should also note that these data are from the 2011-2012 academic year, and all monetary amounts are given in \$1,000s, i.e., the family income of the first student in the data shown in Table \@ref(tab:elmhurst-data) is \$92,900 and they received a gift aid of $21,700. (The data source states that all numbers have been rounded to the nearest whole dollar.) 
 
-Using these data, we can estimate the linear regression line by fitting a `l`inear `m`odel to the data with the `lm()` function in `R`.
+Using these data, we can estimate the linear regression line by fitting a `l`inear `m`odel to the data with the `lm()` function in R.
 
 ```{r}
 m_ga_fi <- lm(gift_aid ~ family_income, data = elmhurst) %>% tidy()

@@ -75,8 +75,7 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="Fall 2022">Montana State Introductory Statistics with R</a>:
-        <small class="text-muted">Fall 2022</small>
+        <a href="index.html" title="">Montana State Introductory Statistics with R</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -89,6 +88,8 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="active" href="index.html">Welcome</a></li>
+<li><a class="" href="authors.html">Authors</a></li>
+<li><a class="" href="preface.html">Preface</a></li>
 <li><a class="" href="rstudio.html">Preliminaries: Getting started in RStudio</a></li>
 <li class="book-part">Introduction to data</li>
 <li><a class="" href="intro-to-data.html"><span class="header-section-number">1</span> Hello data</a></li>
@@ -100,8 +101,10 @@
 <li><a class="" href="cor-reg.html"><span class="header-section-number">6</span> Correlation and regression</a></li>
 <li><a class="" href="mult-reg.html"><span class="header-section-number">7</span> Multivariable models</a></li>
 <li><a class="" href="explore-applications.html"><span class="header-section-number">8</span> Applications: Explore</a></li>
+<li class="book-part">Foundations of inference</li>
+<li><a class="" href="foundations-randomization.html"><span class="header-section-number">9</span> Hypothesis testing with randomization</a></li>
 <li class="book-part">Probability</li>
-<li><a class="" href="probability.html"><span class="header-section-number">9</span> Probability with tables</a></li>
+<li><a class="" href="probability.html"><span class="header-section-number">10</span> Probability with tables</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -110,197 +113,30 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><!--bookdown:title:end--><!--bookdown:title:start--><div id="welcome" class="section level1 unnumbered">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><!--bookdown:title:end--><!--bookdown:title:start--><div id="welcome" class="section level1 unnumbered welcome">
 <h1>Welcome<a class="anchor" aria-label="anchor" href="#welcome"><i class="fas fa-link"></i></a>
 </h1>
-<p>We hope readers will take away three ideas from this book in addition to forming a foundation of statistical thinking and methods.</p>
-<ol style="list-style-type: decimal">
-<li>Statistics is an applied field with a wide range of practical applications.</li>
-<li>You don’t have to be a math guru to learn from interesting, real data.</li>
-<li>Data are messy, and statistical tools are imperfect. However, when you understand the strengths and weaknesses of these tools, you can use them to learn interesting things about the world.</li>
-</ol>
-<div id="textbook-overview" class="section level2 unnumbered">
-<h2>Textbook overview<a class="anchor" aria-label="anchor" href="#textbook-overview"><i class="fas fa-link"></i></a>
-</h2>
-<p>This textbook accompanies the curriculum for STAT 216: Introduction to Statistics at Montana State University. The syllabus and other course information can be found
-on the <a href="https://math.montana.edu/courses/s216/index.html">course webpage</a>. Detailed learning outcomes for the course can be found <a href="https://github.com/MTstateIntroStats/IntroStatTextbook/blob/master/learning_outcomes.md">here</a>.</p>
-<ul>
-<li>
-<strong>Part 1: Introduction to data.</strong> Data structures, variables, and basic data collection techniques.</li>
-<li>
-<strong>Part 2: Exploratory data analysis.</strong> Data visualization and summarization for one and two variables, with a taste of probability.</li>
-<li>
-<strong>Part 3: Correlation and regression.</strong> Visualizing, describing, and quantifying relationships between two quantitative variables.</li>
-<li>
-<strong>Part 4: Multivariable models.</strong> Descriptive summaries for quantifying the relationship between many variables.</li>
-<li>
-<strong>Part 5: Inference for categorical data.</strong> Inference for one or two proportions using simulation and randomization techniques as well as the normal distribution.</li>
-<li>
-<strong>Part 6: Inference for quantitative data.</strong> Inference for one or two means using simulation and randomization techniques as well as the <span class="math inline">\(t\)</span>-distribution.</li>
-<li>
-<strong>Part 7: Inference for regression.</strong> Inference for a regression slope or correlation using simulation and randomization techniques as well as the <span class="math inline">\(t\)</span>-distribution.</li>
-</ul>
-</div>
-<div id="stat-216-coursepack" class="section level2 unnumbered">
-<h2>STAT 216 Coursepack<a class="anchor" aria-label="anchor" href="#stat-216-coursepack"><i class="fas fa-link"></i></a>
-</h2>
-<p>Each week, you will work through an in-class activity with your team mates and the guidance of your instructor. These activities, as well as reading guides to guide you in taking notes on the required readings and videos, are included in the <em>STAT 216 Coursepack</em>. This course requires you to purchase a printed copy of the <em>STAT 216 Coursepack</em> and bring it with you to class each day.</p>
-<p>The coursepack is available for purchase through the <a href="https://www.msubookstore.org/">MSU Bookstore</a>. You may purchase the coursepack in person, or you may purchase online and have the coursepack shipped to you. The coursepack will be available in the MSU Bookstore on the first day of classes. Chapter 1 of the coursepack is provided here if you do not have the coursepack by your first day of class.</p>
-<ul>
-<li><a href="Coursepack-Ch1.pdf">STAT 216 Coursepack: Chapter 1</a></li>
-</ul>
-</div>
-<div id="stat-computing" class="section level2 unnumbered">
-<h2>Statistical computing<a class="anchor" aria-label="anchor" href="#stat-computing"><i class="fas fa-link"></i></a>
-</h2>
-<p>STAT 216 and this textbook use <a href="https://www.r-project.org/"><code>R</code></a> and <a href="https://rstudio.com/products/rstudio/">RStudio</a> for statistical computing. <code>R</code> and RStudio are free and open source. <code>R</code> is the programming language that runs computations, while RStudio is the interface in which you engage with <code>R</code> (called an “integrated development environment”, or IDE).</p>
-<p>Since <code>R</code> is open source, users can contribute “packages” — collections of <code>R</code> functions. There are over 16,000 available packages! In particular, we use
-the <a href="https://www.tidyverse.org/"><code>tidyverse</code></a> collection of packages designed for doing data science.
-STAT 216 also has its own <code>R</code> package called <a href="https://github.com/greenwood-stat/catstats"><code>catstats</code></a>, which contains all of the functions
-for running simulation-based inference in this course.</p>
-<div id="accessing-rstudio" class="section level3 unnumbered">
-<h3>Accessing RStudio<a class="anchor" aria-label="anchor" href="#accessing-rstudio"><i class="fas fa-link"></i></a>
-</h3>
-<p>MSU hosts its own web based version of RStudio, which can be found at: <a href="https://rstudio.math.montana.edu/">rstudio.math.montana.edu</a>.</p>
-<!-- The information below is repeated in computing chapter. -->
-<p>Your username is your 7-character NetID (in the form x##x###, where x is a letter and # is a number), and your password is the password associated with your NetID.</p>
-<p>All registered Stat 216 students should have access to this server. If you are enrolled in the course, but receive the error “Incorrect or invalid username/password” when attempting to log in, take the following steps:</p>
-<ol style="list-style-type: decimal">
-<li>Ensure that you are using your 7-character NetID as your username. This is of the form x##x###, where x is a letter and # is a number. Your email address will not work to log into the RStudio server.<br>
-</li>
-<li>Ensure that you are using the correct password that is associated with your NetID account. You can do this by logging into another site that requires your NetID (e.g., MyInfo) with the same credentials.</li>
-<li>Reset your NetID password at <a href="http://password.montana.edu/">password.montana.edu</a>. Your NetID password expires 180 days from the day you set it. If your password has expired, you will not be able to log into the RStudio server.</li>
-</ol>
-<p>After you have tried all the steps above, if you continue to have issues logging in, please email Stat 216 Faculty Course Supervisor <a href="mailto:stacey.hancock@montana.edu">Dr. Stacey Hancock</a>.
-You may also refer to the following section for other options for accessing RStudio.</p>
-<p><em>Note that any work you save on the server will be deleted, and your access will be removed after the semester ends. Thus, if you would like to save any files, export them to your own computer prior to the end of the semester.</em></p>
-</div>
-<div id="other-options-for-accessing-rstudio" class="section level3 unnumbered">
-<h3>Other options for accessing RStudio<a class="anchor" aria-label="anchor" href="#other-options-for-accessing-rstudio"><i class="fas fa-link"></i></a>
-</h3>
-<p>We recommend using RStudio through the MSU RStudio server, but there are other options for accessing this free software:</p>
-<ol style="list-style-type: decimal">
-<li>
-<p>Use RStudio through an MSU <a href="https://studentlabs.montana.edu/remotelabs/howto.html">virtual machine</a>. We <strong>highly recommend installing the VMware Horizon Client</strong> if you will be using the virtual machine regularly, as using it through a web browser runs the risk of losing your work if the browser disconnects from the system (which can happen for a number of reasons).</p>
-<ul>
-<li>Your log-in is your 7-character NetID and password.</li>
-<li>Select the “MSU” domain (<em>not</em> “GFCMSU” or “MSUNORTHERN”).</li>
-<li>Upon logging in, select the “CLS-STAT-REMOTE” virtual machine. You will then see an RStudio icon on the virtual desktop.</li>
-</ul>
-</li>
-<li><p>Use RStudio on an MSU on-campus computer lab.</p></li>
-<li><p>Use RStudio through the <a href="https://rstudio.cloud/">RStudio Cloud</a>. This resource allows you to use RStudio through a web browser. It is free for use, but it does limit you to a certain number of project hours per month.</p></li>
-<li>
-<p>Download <code>R</code> and RStudio to your own laptop. (Note: <code>R</code> and RStudio will not run on iPad, notebooks, or Chromebooks.)</p>
-<ol style="list-style-type: lower-alpha">
-<li>Download and install <a href="https://cloud.r-project.org/">R</a>.</li>
-<li>Download and install <a href="https://rstudio.com/products/rstudio/">RStudio Desktop</a>.</li>
-<li>Install the <code>catstats</code> package.</li>
-</ol>
-</li>
-</ol>
-<p>View this <a href="https://rconnect.math.montana.edu/InstallDemo/">tutorial video on installing R and RStudio</a> if you would
-like additional installation instructions.</p>
-</div>
-<div id="installing-catstats" class="section level3 unnumbered">
-<h3>Installing <code>catstats</code><a class="anchor" aria-label="anchor" href="#installing-catstats"><i class="fas fa-link"></i></a>
-</h3>
-<p><strong>You only need to read this section if you are running RStudio on your own laptop</strong>, in which case you need to install the <code>R</code> packages used in this course.</p>
-<p>To use the <code>R</code> functions in the <code>catstats</code> package, you need to first install the <code>remotes</code> package,
-and then install <code>catstats</code> from Github.</p>
-<p>In the RStudio console, run the following commands:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"greenwood-stat/catstats"</span><span class="op">)</span></span></code></pre></div>
-<p>If during the installation, it gives you an option to update the more
-recent versions of packages, type <code>1</code> (to choose to install All),
-then type Yes if it asks if you want to install.</p>
-<p>You only need to run the installation commands once, but you will need to load
-the <code>catstats</code> package each time you restart RStudio using the following command:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">catstats</span><span class="op">)</span></span></code></pre></div>
-<p>Note that the <code>catstats</code> package will install all of the packages needed to run code in this textbook,
-so you will not need to load other packages (e.g., <code>openintro</code>) once you load <code>catstats</code> into your <code>R</code> session.</p>
-</div>
-</div>
-<div id="about-the-authors" class="section level2 unnumbered">
-<h2>About the authors<a class="anchor" aria-label="anchor" href="#about-the-authors"><i class="fas fa-link"></i></a>
-</h2>
-<div id="montana-state-university-authors" class="section level3 unnumbered">
-<h3>Montana State University Authors<a class="anchor" aria-label="anchor" href="#montana-state-university-authors"><i class="fas fa-link"></i></a>
-</h3>
-<p><a href="https://math.montana.edu/directory/faculty/2040044/nicole-carnegie" target="_blank">Nicole Carnegie</a> <br>
-Associate Professor of Statistics <br><a href="mailto:nicole.carnegie@montana.edu" class="email">nicole.carnegie@montana.edu</a> <br></p>
-<p><br></p>
-<p><a href="http://www.math.montana.edu/shancock/" target="_blank">Stacey Hancock</a> <br>
-Assistant Professor of Statistics <br><a href="mailto:stacey.hancock@montana.edu" class="email">stacey.hancock@montana.edu</a> <br></p>
-<p><br></p>
-<p>Elijah Meyer <br>
-PhD Statistics Graduate Student <br><a href="mailto:elijah.meyer@montana.edu" class="email">elijah.meyer@montana.edu</a> <br></p>
-<p><br><a href="http://www.math.montana.edu/directory/faculty/1524571/jade-schmidt" target="_blank">Jade Schmidt</a> <br>
-Student Success Coordinator for Statistics <br><a href="mailto:jade.schmidt2@montana.edu" class="email">jade.schmidt2@montana.edu</a> <br></p>
-<p><br><a href="http://www.math.montana.edu/directory/faculty/1582830/melinda-yager" target="_blank">Melinda Yager</a> <br>
-Assistant Coordinator for Statistics <br><a href="mailto:melinda.yager@montana.edu" class="email">melinda.yager@montana.edu</a> <br></p>
-<p><br></p>
-</div>
-<div id="openintro-authors" class="section level3 unnumbered">
-<h3>OpenIntro Authors<a class="anchor" aria-label="anchor" href="#openintro-authors"><i class="fas fa-link"></i></a>
-</h3>
-<p><a href="http://mine-cr.com/">Mine Çetinkaya-Rundel</a> <br><a href="mailto:mine@openintro.org" class="email">mine@openintro.org</a> <br>
-University of Edinburgh, Duke University, RStudio <br></p>
-<p><br></p>
-<p><a href="https://research.pomona.edu/johardin/">Johanna Hardin</a> <br><a href="mailto:jo@openintro.org" class="email">jo@openintro.org</a> <br>
-Pomona College <br></p>
-</div>
-</div>
-<div id="acknowledgements" class="section level2 unnumbered">
-<h2>Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"><i class="fas fa-link"></i></a>
-</h2>
-<p>This resource is largely a derivative of the 1st and 2nd
-editions of the OpenIntro textbook
-<a href="https://www.openintro.org/"><em>Introductory Statistics with Randomization and Simulation</em></a>,
-without which this
-effort would not have been possible. The authors would
-also like to thank the Montana State University Library,
-who generously funded this project.</p>
-</div>
-<div id="licensing" class="section level2 unnumbered">
-<h2>Licensing<a class="anchor" aria-label="anchor" href="#licensing"><i class="fas fa-link"></i></a>
-</h2>
+<p>This is the website for <strong>Montana State Introductory Statistics with R</strong>.
+This textbook accompanies the curriculum for STAT 216: Introduction to Statistics at Montana State University. The syllabus and other course information can be found
+on the <a href="https://math.montana.edu/courses/s216/index.html">course webpage</a>.</p>
+<hr>
+<p>Copyright © 2021.</p>
+<p>Version date: August 04, 2022.</p>
 <p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a><br></p>
-<p>This resource is released under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 license</a> unless otherwise noted.</p>
-<p>Visit the following link for guidelines when the textbook’s source files are modified and/or shared, and for additional copyright information:</p>
-<p><a href="http://www.openintro.org/perm/stat2nd_v1.txt">http://www.openintro.org/perm/stat2nd_v1.txt</a></p>
+<p>This resource is largely a derivative of the <a href="https://www.openintro.org/">OpenIntro</a> project textbooks: <em>Introduction to Modern Statistics</em> 1st Edition by Çetinkaya-Rundel and Hardin, <em>OpenIntro Statistics</em> 4th Edition by Diez, Çetinkaya-Rundel, and Barr, and <em>Introduction to Statistics with Randomization and Simulation</em> 1st Edition by Diez, Barr, and Çetinkaya-Rundel.
+<em>Montana State Introductory Statistics with R</em> and its accompanying resources are available under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 license unless otherwise noted.
+License details are available at the Creative Commons website.</p>
+<p>Source files for this book may be found on GitHub at<br><a href="https://github.com/MTstateIntroStats/IntroStatTextbook"><strong>github.com/MTstateIntroStats/IntroStatTextbook</strong></a>.</p>
 <p>To cite this resource please use:</p>
 <p>Carnegie, N., Hancock, S., Meyer, E., Schmidt, J., and Yager, M. (2021). <em>Montana State Introductory Statistics with R</em>. Montana State University. <a href="https://mtstateintrostats.github.io/IntroStatTextbook/">https://mtstateintrostats.github.io/IntroStatTextbook/</a>. Adapted from Çetinkaya-Rundel, M. and Hardin, J. (2021). <em>Introduction to Modern Statistics</em>. OpenIntro. <a href="https://openintro-ims.netlify.app/">https://openintro-ims.netlify.app/</a>.</p>
+</div>
 
-</div>
-</div>
   <div class="chapter-nav">
 <div class="empty"></div>
-<div class="next"><a href="rstudio.html">Preliminaries: Getting started in RStudio</a></div>
+<div class="next"><a href="authors.html">Authors</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#welcome">Welcome</a></li>
-<li><a class="nav-link" href="#textbook-overview">Textbook overview</a></li>
-<li><a class="nav-link" href="#stat-216-coursepack">STAT 216 Coursepack</a></li>
-<li>
-<a class="nav-link" href="#stat-computing">Statistical computing</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#accessing-rstudio">Accessing RStudio</a></li>
-<li><a class="nav-link" href="#other-options-for-accessing-rstudio">Other options for accessing RStudio</a></li>
-<li><a class="nav-link" href="#installing-catstats">Installing catstats</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#about-the-authors">About the authors</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#montana-state-university-authors">Montana State University Authors</a></li>
-<li><a class="nav-link" href="#openintro-authors">OpenIntro Authors</a></li>
-</ul>
-</li>
-<li><a class="nav-link" href="#acknowledgements">Acknowledgements</a></li>
-<li><a class="nav-link" href="#licensing">Licensing</a></li>
-</ul>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#welcome">Welcome</a></li></ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
@@ -317,7 +153,7 @@ who generously funded this project.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Montana State Introductory Statistics with R</strong>: Fall 2022" was written by Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager. </p>
+    <p>"<strong>Montana State Introductory Statistics with R</strong>" was written by Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager. </p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

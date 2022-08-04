@@ -112,7 +112,7 @@
 ### 7. Multivariable models
 
 - 7.1 Gapminder world
-- 7.2 Simpson's paradox, revisited
+- 7.2 Simpson's paradox revisited
 - 7.3 Multiple regression (special topic)
 	* 7.3.1 Indicator and categorical predictors
 	* 7.3.2 Many predictors in a model
@@ -128,11 +128,11 @@
 
 Model after Chapter 11 in IMS: [https://openintro-ims.netlify.app/foundations-randomization.html]():
 
-- 9.1 Case study: Martian alphabet (change?)
+- 9.1 Motivating example: Martian alphabet
 	* _9.1.1 Observed data_
-	* 9.1.2 Variability of the statistic
+	* _9.1.2 Variability of the statistic_
 	* _9.1.3 Observed statistic vs. null statistics_
-- _9.2 Case study: (take from IMS)_
+- _9.2 Case study: (take from IMS - sex descrimination case study that is currently in our two-proportion section)_
 	* _9.1.1 Observed data_
 	* _9.1.2 Variability of the statistic_
 	* _9.1.3 Observed statistic vs. null statistics_
@@ -167,7 +167,7 @@ Model after Chapter 12 in IMS: [https://openintro-ims.netlify.app/foundations-bo
 	* 11.2.4 Normal probability examples
 	* 11.2.5 68-95-99.7 rule
 - _11.3 Quantifying the variability of a statistic_ (model after Section 13.3 of IMS: [https://openintro-ims.netlify.app/foundations-mathematical.html#quantifying-the-variability-of-a-statistic]()
-	* _11.3.1 68-95-99.7 rule, revisited_
+	* _11.3.1 68-95-99.7 rule revisited_
 	* _11.3.2 Standard error_
 	* _11.3.3 Margin of error_
 - _11.4 Conditions for applying the normal model_ (model after Section 13.5.4 of IMS: [https://openintro-ims.netlify.app/foundations-mathematical.html#conditions-for-applying-the-normal-model]()
@@ -261,4 +261,15 @@ Moved from old categorical EDA chapter:
 	* 23.4.1 The case of Baby Jeff
 - 23.5 Chapter review
 
+
+# TODO
+
+- Move all images into common "images" folder and change relative links throughout text
+- Add references to all images, data sets, R packages, studies, etc and inline text and to .bib file
+- Rename #references to chapter/section titles; currently just commenting out the old ones
+
+- Change `R` to R in coursepack
+- Change data set to dataset?
+- Replace figures pval-continuum in Chapter 9 (p-value continuum) with a scale from 0 to 1.
+- Change my "onebox" css to "important", and change my "important" to something else
 

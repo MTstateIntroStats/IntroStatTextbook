@@ -1,4 +1,4 @@
-# Inference for quantitative data {#inference-num}
+# (PART) Inference for quantitative data {#inference-num}
 
 ```{r, include = FALSE}
 source("_common.R")
@@ -6,6 +6,7 @@ source("_common.R")
 
 <!-- TODO: Add vocab words to this chapter. -->
 
+# Inference for a single mean
 
 ::: {.chapterintro}
 Focusing now on statistical inference for quantitative data, we will revisit and expand upon the foundational aspects of hypothesis testing from Section \@ref(inf-foundations).
@@ -706,8 +707,8 @@ legend(2.5, 0.4,
 The $t$-distribution allows us greater flexibility than
 the normal distribution when analyzing numerical data.
 In practice, it's common to use statistical software,
-such as `R`, Python, or SAS for these analyses.
-In `R`, the function used for calculating probabilities under a $t$-distribution is `pt()` (which should seem similar to the previous `R` function `pnorm()`).
+such as R, Python, or SAS for these analyses.
+In R, the function used for calculating probabilities under a $t$-distribution is `pt()` (which should seem similar to the previous R function `pnorm()`).
 Don't forget that with the $t$-distribution, the degrees of freedom must always be specified!
 
 <!--
@@ -718,7 +719,7 @@ and it may be found in Appendix \ref{tDistributionTable},
 which includes usage instructions and examples
 for those who wish to use this option.
 -->
-For the examples and guided practices below, use `R` to find the answers.  We recommend trying the problems so as to get a sense for how the $t$-distribution can vary in width depending on the degrees of freedom, and to confirm your working
+For the examples and guided practices below, use R to find the answers.  We recommend trying the problems so as to get a sense for how the $t$-distribution can vary in width depending on the degrees of freedom, and to confirm your working
 understanding of the $t$-distribution.
 
 ::: {.example}
@@ -1670,7 +1671,7 @@ To start, compute the standard error associated with
   and the p-value is represented by the shaded upper tail in Figure \@ref(fig:textbooksF18HTTails). This area is equivalent
   to the area above 2.20 on a $t$-distribution with $df = n - 1$ = 68 $-$ 1 = 67 degrees of freedom.
 
-  Using the `pt` function in `R`, we find the
+  Using the `pt` function in R, we find the
   upper tail area of 0.0156.
 
   In conclusion, we have strong evidence that
@@ -1711,7 +1712,7 @@ Conditions
   computed in the previous Example.
   
 To find the confidence interval,
-  identify $t^{\star}_{67}$ using the `R` command: `qt(0.975, 67)` = 2.00,
+  identify $t^{\star}_{67}$ using the R command: `qt(0.975, 67)` = 2.00,
   and plug it, the point estimate,
   and the standard error into the confidence
   interval formula:
@@ -2416,7 +2417,7 @@ We can find the test statistic for this test
   The p-value is represented by the two shaded tails
   in Figure \@ref(fig:distOfDiffOfSampleMeansForBWOfBabySmokeData)
 
-  We find the single tail area using software. (See `R` code below.) We'll use the
+  We find the single tail area using software. (See R code below.) We'll use the
   smaller of $n_n - 1 = 99$ and $n_s - 1 = 49$ as the
   degrees of freedom: $df = 49$.
   The one tail area is 0.065;
@@ -2559,7 +2560,7 @@ First, compute the point estimate and its standard error:
   \end{align*}
   Using $df = 8$, we can identify the
   critical value of $t^{\star}_{8} = 2.31$
-  for a 95%  confidence interval. (See `R` code below.)
+  for a 95%  confidence interval. (See R code below.)
   Finally, we can enter the values into the confidence
   interval formula:
   \begin{align*}
@@ -2638,7 +2639,7 @@ tsim_table %>%
 **Confidence intervals.** Similarly, the following is how we generally computed a confidence interval using a $t$-distribution:
 
 1. Verify conditions for using the $t$-distribution. (See above.)  
-2. Compute the point estimate of interest, the standard error, the degrees of freedom, and $t^{\star}_{df}$.  The multiplier for a $(1-\alpha)\times100$% confidence interval can be found in `R` by: `qt(1-(alpha/2), df)`. For example, $t^{\star}_{10}$ with 95% confidence is `qt(0.975, 10)` = `r qt(0.975, 10)`.
+2. Compute the point estimate of interest, the standard error, the degrees of freedom, and $t^{\star}_{df}$.  The multiplier for a $(1-\alpha)\times100$% confidence interval can be found in R by: `qt(1-(alpha/2), df)`. For example, $t^{\star}_{10}$ with 95% confidence is `qt(0.975, 10)` = `r qt(0.975, 10)`.
 3. Calculate the confidence interval using the general formula:
     \[
     \mbox{statistic} \pm\ t_{df}^{\star} SE(\mbox{statistic}).
@@ -2647,7 +2648,7 @@ tsim_table %>%
 
 
 
-## `R`: Inference for quantitative data
+## R: Inference for quantitative data
 
 <!-- ```{block2, type="todo", echo=TRUE} -->
 <!-- Section on doing inference for categorical data in R. -->
@@ -2657,11 +2658,11 @@ tsim_table %>%
 
 <!-- ``` -->
 
-### Inference using `R` and `catstats`
+### Inference using R and `catstats`
 
 #### Using the $t$-distribution {-} 
 
-First, we'll review how to obtain probabilities and critical values for the $t$-distribution using `R`.  If you have a $t$-statistic and degrees of freedom, you can find the probability under the $t$-distribution corresponding to a one- or two-tailed hypothesis test using `pt()` (short for "probability from $t$-distribution").
+First, we'll review how to obtain probabilities and critical values for the $t$-distribution using R.  If you have a $t$-statistic and degrees of freedom, you can find the probability under the $t$-distribution corresponding to a one- or two-tailed hypothesis test using `pt()` (short for "probability from $t$-distribution").
 
 The tricky part is making sure you get the correct area under the distribution.  For our example, assume we have 12 degrees of freedom.  If your $t$-statistic is positive, say $t = 1.33$:
 ```{r positiveTarea, echo = TRUE}
@@ -2689,7 +2690,7 @@ pt(-2.75, df = 12)
 
 The difference comes in when you want the area further than $t$ units from 0: if $t$ is positive, then "further" is greater than $t$ and less than negative $t$, or double the area greater than $t$, since the $t$-distribution is symmetric.  If $t$ is negative, then "further" is less than $t$ and greater than positive $t$, or double the area less than $t$.
 
-To find $t^*_{df}$ using `R`, we use the `qt()` function (short for "quantile of $t$-distribution").  You will need the degrees of freedom and the confidence level for your confidence interval.  Suppose we have 27 degrees of freedom and want a 99\% confidence interval.  To get the middle 99\% of the $t$-distribution, we need to have the cutoff at 0.5\% and 99.5\%:
+To find $t^*_{df}$ using R, we use the `qt()` function (short for "quantile of $t$-distribution").  You will need the degrees of freedom and the confidence level for your confidence interval.  Suppose we have 27 degrees of freedom and want a 99\% confidence interval.  To get the middle 99\% of the $t$-distribution, we need to have the cutoff at 0.5\% and 99.5\%:
 ```{r}
 qt(0.005, df = 27)
 
@@ -2764,7 +2765,7 @@ Here we again have a bootstrap distribution, but now it is the bootstrap distrib
 
 #### Theory-based inference for paired mean difference {-} 
 
-To implement theory-based inference for a paired mean difference in `R`, we use the `t.test()` function.  As an example, we'll use the textbook cost data from Section \@ref(paired-data).  There are two ways to put in paired data for a t-test using `t.test()`.  First, we could have the prices of the two groups in two separate variables (in this case, `bookstore_new` and `amazon_new`): 
+To implement theory-based inference for a paired mean difference in R, we use the `t.test()` function.  As an example, we'll use the textbook cost data from Section \@ref(paired-data).  There are two ways to put in paired data for a t-test using `t.test()`.  First, we could have the prices of the two groups in two separate variables (in this case, `bookstore_new` and `amazon_new`): 
 
 ```{r pairedTheoryCode, eval = FALSE, echo = TRUE}
 t.test(x = ucla_textbooks_f18$bookstore_new, #Outcomes for one of each pair
@@ -2880,9 +2881,9 @@ The function produces the bootstrap distribution of the difference in means, wit
 
 #### Theory-based inference for the difference of two means {-} 
 
-To demonstrate theory-based methods in `R` for a difference in means, we will continue use the embryonic stem cell data.  Something to keep in mind as we work through the example: are theory-based methods appropriate here?  Are the results different than the results from the simulation-based methods?
+To demonstrate theory-based methods in R for a difference in means, we will continue use the embryonic stem cell data.  Something to keep in mind as we work through the example: are theory-based methods appropriate here?  Are the results different than the results from the simulation-based methods?
 
-To perform theory-based inference, we will again use the `t.test()` function in `R`.  Remember that we sometimes need to change the reference category of the explanatory variable to have the correct order of subtraction - in this case, the default is `ctrl - esc`, since `ctrl` is first alphabetically.  We can get our preferred order of subtracation of `esc-ctrl` this way:
+To perform theory-based inference, we will again use the `t.test()` function in R.  Remember that we sometimes need to change the reference category of the explanatory variable to have the correct order of subtraction - in this case, the default is `ctrl - esc`, since `ctrl` is first alphabetically.  We can get our preferred order of subtracation of `esc-ctrl` this way:
 ```{r, echo = TRUE}
 stem_cell$trmt <- relevel(stem_cell$trmt, ref = "esc")
 ```
@@ -2896,17 +2897,17 @@ t.test(stem_cell$change ~ stem_cell$trmt, #Always use response ~ explanatory
 
 The results here should look familiar from the paired t-test above. We have the t-statistic, degrees of freedom, p-values, confidence interval, and group-specific means.  The degrees of freedom may look a little strange - remember that the correct formula is very complex! - here we obtain 12.225 df.  If you were computing the results by hand using `pt()` and `qt()` as we saw earlier in this section, you would use 8 df, since $n_1 -1 = n_2 -1 = 8$.  In the end, we conclude that there is strong evidence against the null hypothesis of no difference in the mean change in heart pumping capacity (p = 0.002).
 
-Remember that if you have a one-sided alternative, you will need to run `t.test()` with a two-sided alternative to get the correct confidence interval!  Your reminder will be an `Inf` in the confidence interval results, which means `R` is computing a one-sided confidence interval.  Here, we have a two-sided alternative, so we can use the CI as reported: we are 90% confident that the true average improvement in heart pumping capacity due to ESCs is between 4.35 and 11.31 percentage points.
+Remember that if you have a one-sided alternative, you will need to run `t.test()` with a two-sided alternative to get the correct confidence interval!  Your reminder will be an `Inf` in the confidence interval results, which means R is computing a one-sided confidence interval.  Here, we have a two-sided alternative, so we can use the CI as reported: we are 90% confident that the true average improvement in heart pumping capacity due to ESCs is between 4.35 and 11.31 percentage points.
 
 
 ### `catstats` function summary
 
-In the previous section, you were introduced to four new `R` 
+In the previous section, you were introduced to four new R 
 functions in the `catstats` library. Here we provide a summary of 
 these functions, plus a summary of the `paired_observed_plot` 
 function that can be used to plot paired data. You can also access 
 the help files for these functions using the `?` command. For 
-example, type `?paired_test` into your `R` console to bring up the 
+example, type `?paired_test` into your R console to bring up the 
 help file for the `paired_test` function.
 <br>
     
