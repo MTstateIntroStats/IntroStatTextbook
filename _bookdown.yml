@@ -12,7 +12,14 @@ rmd_files: [
   "03-data-applications.Rmd",
   "04-explore-categorical.Rmd",
   "05-explore-numerical.Rmd",
-  "06-explore-applications.Rmd"
+  "06-explore-regression.Rmd",
+  "07-explore-mult-reg.Rmd",
+  "08-explore-applications.Rmd",
+  "09-foundations-hyp-testing.Rmd",
+  #"10-foundations-math-models.Rmd",
+  #"11-foundations-errors.Rmd",
+  #"12-foundations-applications.Rmd",
+  "23-probability.Rmd",
   # "01-intro-to-data.Rmd",
   # "02-eda.Rmd",
   # "03-cor-reg.Rmd",
@@ -20,6 +27,6 @@ rmd_files: [
   # "05-inference-cat.Rmd",
   # "06-inference-num.Rmd",
   # "07-inference-reg.Rmd",
-  references.Rmd"
+  "references.Rmd"
   ]
 output_dir: "docs"

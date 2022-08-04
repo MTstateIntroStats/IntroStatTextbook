@@ -687,7 +687,7 @@ include_graphics("01/figures/ScopeOfInference/ScopeOfInference.png")
 
 ## Chapter review {#chp2-review}
 
-### Summary
+### Summary {-}
 
 A strong analyst will have a good sense of the types of data they are working with and how to visualize the data in order to gain a complete understanding of the variables.
 Equally important however, is an understanding of the data source.
@@ -703,7 +703,7 @@ knitr::include_graphics("images/randsampValloc.png")
 ```
 
 
-### Terms
+### Terms {-}
 
 We introduced the following terms in the chapter. 
 If you're not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
@@ -715,15 +715,13 @@ make_terms_table(terms_chp_2)
 ```
 
 
-### Key ideas
-
-This chapter introduced us to data --- how it is collected, how it is organized into a data frame, and the scope of inference allowed by the study design. 
-
-* A data set is comprised of measurements of **variables** on **observational units**.
-The type of variable can be **quantitative** or **categorical**, and a variable's role can be an **explanatory variable** or **response variable**.
+### Key ideas {-}
 
 * Statistical inference uses data from a **sample** to make inferences about a larger, target **population**.
-We can only generalize our results from the sample to the target population if the sampling methods were **unbiased**.
+
+* TODO: parameters and statistics
+
+* We can only generalize our results from the sample to the target population if the sampling methods were **unbiased**.
 One unbiased sampling method is a **simple random sample**, where you _randomly select_ your observational units for the sample from the complete list of observational units in the target population.
 
 * Various types of **bias** can arise in studies, particularly in surveys of individuals.

@@ -1,4 +1,5 @@
 # Correlation and regression {#cor-reg}
+<!-- TODO - change reference to #explore-regression -->
 
 ```{r, include = FALSE}
 source("_common.R")
@@ -46,7 +47,7 @@ The parameters are estimated using data, and we write their point estimates as $
 When we use $x$ to predict $y$, we usually call $x$ the explanatory or **predictor** variable, and we call $y$ the response. We also often drop the $\epsilon$ term when writing down the model since our main focus is often on the prediction of the average outcome. If the $\epsilon$ term is dropped, then we put a "hat" on $y$ ($\hat{y}$) to signal that the model yields a _prediction_ for $y$, and not the actual value.
 
 ```{r include=FALSE}
-terms_chp_3 <- c("predictor")
+terms_chp_6 <- c("predictor")
 ```
 
 It is rare for all of the data to fall perfectly on a straight line.
@@ -199,7 +200,7 @@ Observations below the line have negative residuals.
 One goal in picking the right linear model is for these residuals to be as small as possible. 
 
 ```{r include=FALSE}
-terms_chp_3 <- c(terms_chp_3, "residuals")
+terms_chp_6 <- c(terms_chp_6, "residuals")
 ```
 
 Figure \@ref(fig:scattHeadLTotalLLine-highlighted) is almost a replica of Figure \@ref(fig:scattHeadLTotalLLine), with three points from the data highlighted. 
@@ -378,7 +379,7 @@ It would be useful if we could quantify the strength of these linear relationshi
 :::
 
 ```{r include=FALSE}
-terms_chp_3 <- c(terms_chp_3, "correlation")
+terms_chp_6 <- c(terms_chp_6, "correlation")
 ```
 
 We can compute the correlation using a formula, just as we did with the sample mean and standard deviation. 
@@ -482,7 +483,7 @@ This is commonly called the **least squares line**.
 The following are three possible reasons to choose this option instead of trying to minimize the sum of residual magnitudes without any squaring:
 
 ```{r include=FALSE}
-terms_chp_3 <- c(terms_chp_3, "least squares criterion", "least squares line")
+terms_chp_6 <- c(terms_chp_6, "least squares criterion", "least squares line")
 ```
 
 1.  It is the most commonly used method.
@@ -702,7 +703,7 @@ Generally, a linear model is only an approximation of the real relationship betw
 If we extrapolate, we are making an unreliable bet that the approximate linear relationship will be valid in places where it has not been analyzed.
 
 ```{r include=FALSE}
-terms_chp_3 <- c(terms_chp_3, "extrapolation")
+terms_chp_6 <- c(terms_chp_6, "extrapolation")
 ```
 
 ### Describing the strength of a fit
@@ -711,7 +712,7 @@ We evaluated the strength of the linear relationship between two variables earli
 If provided with a linear model, we might like to describe how closely the data cluster around the linear fit. 
 
 ```{r include=FALSE}
-terms_chp_3 <- c(terms_chp_3, "R-squared")
+terms_chp_6 <- c(terms_chp_6, "R-squared")
 ```
 
 The $R^2$ of a linear model describes the amount of variation in the response that is explained by the least squares line. 
@@ -730,7 +731,7 @@ This corresponds exactly to the R-squared value:
 $$R = -0.499 \rightarrow R^2 = 0.25$$
 The squared correlation coefficient, $R^2$, is also called the **coefficient of determination**. 
 ```{r include=FALSE}
-terms_chp_3 <- c(terms_chp_3, "coefficient of determination")
+terms_chp_6 <- c(terms_chp_6, "coefficient of determination")
 ```
 
 ::: {.onebox}
@@ -805,7 +806,7 @@ $$
 :::
 
 ```{r include=FALSE}
-terms_chp_3 <- c(terms_chp_3, "total sum of squares", "sum of squared error")
+terms_chp_6 <- c(terms_chp_6, "total sum of squares", "sum of squared error")
 ```
 
 ::: {.workedexample}
@@ -867,7 +868,7 @@ $$\widehat{price} = \beta_0 + \beta_1 \times condnew$$
 The parameter estimates are given in Table \@ref(tab:marioKartNewUsedRegrSummary).
 
 ```{r include=FALSE}
-terms_chp_3 <- c(terms_chp_3, "indicator variable")
+terms_chp_6 <- c(terms_chp_6, "indicator variable")
 ```
 
 ```{r marioKartNewUsedRegrSummary}
@@ -1086,7 +1087,7 @@ Influential points tend to pull the slope of the line up or down from what we wo
 :::
 
 ```{r include=FALSE}
-terms_chp_3 <- c(terms_chp_3, "high leverage", "influential point")
+terms_chp_6 <- c(terms_chp_6, "high leverage", "influential point")
 ```
 
 ::: {.importantbox}
@@ -1095,54 +1096,118 @@ Models that ignore exceptional (and interesting) cases often perform poorly.
 For instance, if a financial firm ignored the largest market swings -- the "outliers" -- they would soon go bankrupt by making poorly thought-out investments.
 :::
 
-## `R`: Correlation and regression
+## Chapter review {#chp6-review}
 
-<!-- ### Interactive R tutorials {#intro-linear-models-r-tutorial} -->
+### Summary {-}
 
-<!-- Navigate the concepts you've learned in this chapter in R using the following self-paced tutorials.  -->
-<!-- All you need is your browser to get started! -->
+Throughout this chapter, the nuances of a simple linear regression model have been described.
+You have learned how to create a regression model between two quantitative variables.
+The residuals in a linear model are an important metric used to understand how well a model fits; high leverage points, influential points, and other types of outliers can impact the fit of a model.
+Correlation is a measure of the strength and direction of the linear relationship of two variables, without specifying which variable is the explanatory and which is the outcome.
+Future chapters will focus on generalizing the linear model from the sample of data to claims about the population of interest.
 
-<!-- ::: {.alltutorials} -->
-<!-- [Tutorial 3: Introduction to linear models](https://openintrostat.github.io/ims-tutorials/03-introduction-to-linear-models/) -->
-<!-- ::: -->
 
-<!-- ::: {.singletutorial} -->
-<!-- [Tutorial 3 - Lesson 1: Visualizing two variables](https://openintro.shinyapps.io/ims-03-introduction-to-linear-models-01/) -->
-<!-- ::: -->
+### Data visualization summary {-}
 
-<!-- ::: {.singletutorial} -->
-<!-- [Tutorial 2 - Lesson 2: Correlation](https://openintro.shinyapps.io/ims-03-introduction-to-linear-models-02/) -->
-<!-- ::: -->
+Now that we have looked at how to summarize and visualize one or two variables of either type (categorical or quantitative), we can organize all these visualization methods into a single decision tree.
+Figure \@ref(fig:decision-tree-plots) presents a decision tree for deciding which type of plot is most appropriate for a given number and types of variables. In the next chapter, we'll look at exploratory data analysis methods for more than two variables.
 
-<!-- ::: {.singletutorial} -->
-<!-- [Tutorial 2 - Lesson 3: Simple linear regression](https://openintro.shinyapps.io/ims-03-introduction-to-linear-models-03/) -->
-<!-- ::: -->
+```{r decision-tree-plots, fig.cap="Decision tree for determining an appropriate plot  given a number of variables and their types.", fig.fullwidth=TRUE}
+pal <- c("#000000",brewer.pal(8, 'Dark2'))
 
-<!-- ::: {.singletutorial} -->
-<!-- [Tutorial 2 - Lesson 4: Interpreting regression models](https://openintro.shinyapps.io/ims-03-introduction-to-linear-models-04/) -->
-<!-- ::: -->
+data <- data.frame(
+  level1 = "Resp",
+  level2 = c(rep("Quan0",7), rep("Cat0",5)),
+  level3 = c(rep(c("None","Cat","Quant"),c(1,2,4)),
+             rep(c("None2","Cat2","Quant2"),c(2,2,1))),
+  level4 = paste0("plot_", letters[1:12])
+)
 
-<!-- ::: {.singletutorial} -->
-<!-- [Tutorial 2 - Lesson 5: Model fit](https://openintro.shinyapps.io/ims-03-introduction-to-linear-models-05/) -->
-<!-- ::: -->
+# transform to edge list
+edges_level1_2 = data %>% select(level1, level2) %>% unique %>% rename(from=level1, to=level2)
+edges_level2_3 = data %>% select(level2, level3) %>% unique %>% rename(from=level2, to=level3)
+edges_level3_4 = data %>% select(level3, level4) %>% unique %>% rename(from=level3, to=level4)
+edge_list=rbind(edges_level1_2, edges_level2_3, edges_level3_4)
 
-<!-- You can also access the full list of tutorials supporting this book [here](https://openintrostat.github.io/ims-tutorials/). -->
+# decision tree
+mygraph <- graph_from_data_frame( edge_list )
+ggraph(mygraph, layout = 'dendrogram', circular = FALSE) + 
+  geom_edge_diagonal(arrow = arrow(length = unit(3, 'mm')), 
+                   end_cap = circle(2, 'mm')) +
+  geom_node_point(color="#69b3a2", size=1) +
+  geom_node_label(
+    aes(   label=c("Response variable",
+                   "Quantitative", "Categorical",
+                  rep(c("Quantitative","Categorical","None"),2),
+                  "Scatterplot",
+                  "Stacked histogram", 
+                  "Side-by-side boxplots", "Boxplot",
+                  "Density plot", "Histogram",
+                  "Dotplot", "Side-by-side boxplots",
+                  "Smoothed scatterplot", "Segmented bar plot", 
+                  "Mosaic plot", "Bar plot")),
+    label.padding = unit(0.3, "lines"),
+    color = pal[c(1:9,4,5,5,6,6,6,6,7,7,8,8,9)],
+    size = c(4,rep(3.5,20)),
+    fontface = c("bold",rep("plain",20)),
+    nudge_x = c(rep(.5,9),rep(0,12)),
+    nudge_y = c(rep(0,9),rep(.7,12))
+                # c(.6,.8,.9,.47,.6,.55,.45,.9,.9,.9, .6,.5))
+    ) +
+  theme(plot.margin = margin(t=20, r=20, b=20, l=20, unit="pt")) +
+  coord_flip() +
+  scale_y_reverse(expand = c(.2,.2)) +
+  scale_x_discrete() +
+  annotate("text",  x = 6.1, y = 1, label = "Explanatory variable",
+           fontface = "bold", size = 4)
+```
 
-### R labs
 
-Further apply the concepts you've learned in this chapter in R with computational labs that walk you through a data analysis case study.
+### Summary measures {-}
 
-::: {.singlelab}
-[Introduction to linear regression - Human Freedom Index](http://openintrostat.github.io/oilabs-tidy/08_simple_regression/simple_regression.html)
-:::
+Though some of these summary measures will be covered in later chapters, Table \@ref(tab:summary-measures) provides a comprehensive summary of these measures according to the type(s) of variable(s) which they summarize.
 
-::: {.alllabs}
-[Full list of labs supporting OpenIntro::Introduction to Modern Statistics](http://openintrostat.github.io/oilabs-tidy/)
-:::
 
-## Chapter review {#chp3-review}
+```{r summary-measures}
+temptbl <- tribble(
+ ~variable, ~col1, ~col2, 
+ "Binary", "(None)", "One proportion",
+ "Binary", "Binary", "Difference in proportions, relative risk",
+ "Quantitative", "(None)", "One mean",
+ "Quantitative", "Binary (Paired)", "Mean difference",
+ "Quantitative", "Binary (Independent)", "Difference in means",
+ "Quantitative", "Quantitative", "Correlation, R-squared, regression slope"
+)
 
-### Terms
+temptbl %>%
+ kable(caption = "Summary measures for different types of variables covered in this textbook and Sections where they appear. A binary variable is a categorical variable with only two categories.",
+  col.names = c("Response Variable", "Explanatory Variable", "Summary Measure(s)")) %>%
+ kable_styling() 
+```
+
+
+### Notation summary {-}
+
+In the field of statistics, summary measures that summarize a sample of data are called **statistics**\index{statistic}. Numbers that summarize an entire population are called **parameters**\index{parameter}. You can remember
+this distinction by looking at the first letter of each term: 
+
+> **_S_**tatistics summarize **_S_**amples.  
+> **_P_**arameters summarize **_P_**opulations.
+
+We typically use Roman letters to symbolize statistics (e.g., $\bar{x}$, $\hat{p}$), and Greek letters to symbolize parameters (e.g., $\mu$, $\pi$).
+
+
+|Summary Measure |Statistic |Parameter |
+|:---	|:---: |:---: |
+|Sample size   |$n$|$-$|
+|Proportion   |$\hat{p}$|$\pi$|
+|Mean   |$\bar{x}$|$\mu$|
+|Correlation   |$r$|$\rho$|
+|Regression line slope   |$b_1$|$\beta_1$|
+|Regression line $y$-intercept   |$b_0$|$\beta_0$|
+
+
+### Terms {-}
 
 We introduced the following terms in the chapter. 
 If you're not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
@@ -1150,12 +1215,10 @@ We are purposefully presenting them in alphabetical order, instead of in order o
 However you should be able to easily spot them as **bolded text**.
 
 ```{r}
-make_terms_table(terms_chp_3)
+make_terms_table(terms_chp_6)
 ```
 
-### Key ideas
-
-This chapter build upon the graphical methods for two quantitative variables discussed in Section \@ref(quantitative-data) and explored additional exploratory data analysis methods for examining the relationship between two quantitative variables: the least squares regression line, correlation, and R-squared.
+### Key ideas {-}
 
 * Two variables are **associated** when the behavior of one variable depends on the value of the other variable. For two quantitative variables, this occurs when a trend is apparent on a scatterplot. If this trend is linear with a non-zero slope, we say the two quantitative variables are **correlated**. Recall again from Chapter \@ref(intro-to-data), *association does not imply causation*!
 

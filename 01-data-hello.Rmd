@@ -151,8 +151,8 @@ For instance, the primary results of the study after 1 year could be described b
 terms_chp_1 <- c(terms_chp_1, "summary statistic")
 ```
 
-- Proportion who had a stroke in the treatment (stent) group: $45/224 = 0.20 = 20\%$.
-- Proportion who had a stroke in the control group: $28/227 = 0.12 = 12\%$.
+- Proportion who had a stroke in the treatment (stent) group: $45/224 = 0.20 = 20$\%.
+- Proportion who had a stroke in the control group: $28/227 = 0.12 = 12$\%.
 
 These two summary statistics are useful in looking for differences in the groups, and we are in for a surprise: an additional 8% of patients in the treatment group had a stroke! 
 This is important for two reasons. 
@@ -503,7 +503,7 @@ When we suspect one variable might causally affect another,
 we label the first variable the explanatory variable
 and the second the response variable. 
 The main reason for this is that observational studies do not control for confounding variables.
-We will revisit this idea when we discuss experiments later in the book.
+We will revisit this idea when we discuss experiments in the next chapter.
 
 <center>
 explanatory variable $\rightarrow$ *might affect* $\rightarrow$ response variable
@@ -551,14 +551,14 @@ In general, association does not imply causation, and causation can only be infe
 
 ## Chapter review {#chp1-review}
 
-### Summary
+### Summary {-}
 
 This chapter introduced you to the world of data.
 Data can be organized in many ways but tidy data, where each row represents an observation and each column represents a variable, lends itself most easily to statistical analysis.
 Many of the ideas from this chapter will be seen as we move on to doing full data analyses.
 In the next chapter you're going to learn about how we can design studies to collect the data we need to make conclusions with the desired scope of inference.
 
-### Terms
+### Terms {-}
 
 We introduced the following terms in the chapter. 
 If you're not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
@@ -570,23 +570,9 @@ make_terms_table(terms_chp_1)
 ```
 
 
-### Key ideas
+### Key ideas {-}
 
 * A data set is comprised of measurements of **variables** on **observational units**.
 The type of variable can be **quantitative** or **categorical**, and a variable's role can be an **explanatory variable** or **response variable**.
 
-* Statistical inference uses data from a **sample** to make inferences about a larger, target **population**.
-We can only generalize our results from the sample to the target population if the sampling methods were **unbiased**.
-One unbiased sampling method is a **simple random sample**, where you _randomly select_ your observational units for the sample from the complete list of observational units in the target population.
-
-* Various types of **bias** can arise in studies, particularly in surveys of individuals.
-A study is biased if the way it was conducted would _systematically_ under-represent or over-represent certain groups or responses.
-**Selection bias** occurs when the method of selecting the sample is biased (e.g., convenience sample);
-**non-response bias** occurs when individuals who were selected for the study do not respond or cannot be reached;
-**response bias** occurs when the responses of individuals do not reflect the truth (e.g., due to confidentiality concerns, question wording, or sensitive topics).
-
-* In an **observational study**, we merely _observe_ the behavior of the individuals in the study; we do not manipulate the variables on the individuals in any way. In a **randomized experiment**, we _randomly assign_ values of an explanatory variable to the observational units, then observe the response variable. Random assignment allows us to investigate causal relationships because it balances out any potential **confounding variables**, on average.
-
-* The **scope of inference** of a study answers two questions: (1) To which population can the results can be _generalized_?  (2) Can we assume any of the associations in the data are due to a _cause-and-effect relationship_?
-We can only generalize to the target population if the sampling method was unbiased (e.g., simple random sample).
-We can only conclude cause-and-effect if the study design was a randomized experiment.
+* In an **observational study**, we merely _observe_ the behavior of the individuals in the study; we do not manipulate the variables on the individuals in any way. In a **randomized experiment**, we _randomly assign_ values of an explanatory variable to the observational units, then observe the response variable. Random assignment allows us to investigate causal relationships because it balances out any potential **confounding variables**, on average. These ideas will be discussed in detail in the next chapter.

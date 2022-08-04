@@ -1056,7 +1056,15 @@ map_howownership /
 
 ## Chapter review {#chp5-review}
 
-### Terms
+### Summary {-}
+
+Fluently working with quantitaitve variables is an important skill for data analysts.
+In this chapter we have introduced different visualizations and numerical summaries applied to quantitative variables.
+The graphical visualizations are even more descriptive when two variables are presented simultaneously.
+We presented scatterplots, dot plots, histograms, and box plots.
+Quantitative variables can be summarized using the mean, median, quartiles, standard deviation, and variance.
+
+### Terms {-}
 
 We introduced the following terms in the chapter. 
 If you're not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
@@ -1067,126 +1075,9 @@ However you should be able to easily spot them as **bolded text**.
 make_terms_table(terms_chp_5)
 ```
 
-### Data visualization summary
+### Key ideas {-}
 
-Figure \@ref(fig:decision-tree-plots) presents a decision tree for deciding which type of plot is most appropriate for a given number and types of variables. In the next chapter, we'll further explore how to model the association between two quantitative variables, called regression. In Chapter \@ref(mult-reg), we'll look at exploratory data analysis methods for more than two variables.
-
-```{r decision-tree-plots, fig.cap="Decision tree for determining an appropriate plot  given a number of variables and their types.", fig.fullwidth=TRUE}
-pal <- c("#000000",brewer.pal(8, 'Dark2'))
-
-data <- data.frame(
-  level1 = "Resp",
-  level2 = c(rep("Quan0",7), rep("Cat0",5)),
-  level3 = c(rep(c("None","Cat","Quant"),c(1,2,4)),
-             rep(c("None2","Cat2","Quant2"),c(2,2,1))),
-  level4 = paste0("plot_", letters[1:12])
-)
-
-# transform to edge list
-edges_level1_2 = data %>% select(level1, level2) %>% unique %>% rename(from=level1, to=level2)
-edges_level2_3 = data %>% select(level2, level3) %>% unique %>% rename(from=level2, to=level3)
-edges_level3_4 = data %>% select(level3, level4) %>% unique %>% rename(from=level3, to=level4)
-edge_list=rbind(edges_level1_2, edges_level2_3, edges_level3_4)
-
-# decision tree
-mygraph <- graph_from_data_frame( edge_list )
-ggraph(mygraph, layout = 'dendrogram', circular = FALSE) + 
-  geom_edge_diagonal(arrow = arrow(length = unit(3, 'mm')), 
-                   end_cap = circle(2, 'mm')) +
-  geom_node_point(color="#69b3a2", size=1) +
-  geom_node_label(
-    aes(   label=c("Response variable",
-                   "Quantitative", "Categorical",
-                  rep(c("Quantitative","Categorical","None"),2),
-                  "Scatterplot",
-                  "Stacked histogram", 
-                  "Side-by-side boxplots", "Boxplot",
-                  "Density plot", "Histogram",
-                  "Dotplot", "Side-by-side boxplots",
-                  "Smoothed scatterplot", "Segmented bar plot", 
-                  "Mosaic plot", "Bar plot")),
-    label.padding = unit(0.3, "lines"),
-    color = pal[c(1:9,4,5,5,6,6,6,6,7,7,8,8,9)],
-    size = c(4,rep(3.5,20)),
-    fontface = c("bold",rep("plain",20)),
-    nudge_x = c(rep(.5,9),rep(0,12)),
-    nudge_y = c(rep(0,9),rep(.7,12))
-                # c(.6,.8,.9,.47,.6,.55,.45,.9,.9,.9, .6,.5))
-    ) +
-  theme(plot.margin = margin(t=20, r=20, b=20, l=20, unit="pt")) +
-  coord_flip() +
-  scale_y_reverse(expand = c(.2,.2)) +
-  scale_x_discrete() +
-  annotate("text",  x = 6.1, y = 1, label = "Explanatory variable",
-           fontface = "bold", size = 4)
-```
-
-<!-- geom_node_label( -->
-<!--     aes(   label=c("Response variable", -->
-<!--                    "Quantitative", "Categorical", -->
-<!--                   rep(c("Quantitative","Categorical","None"),2), -->
-<!--                   "Scatterplot", -->
-<!--                   "Stacked histogram",  -->
-<!--                   "Side-by-side boxplots", "Boxplot", -->
-<!--                   "Density plot", "Histogram", -->
-<!--                   "Dotplot", "Side-by-side boxplots", -->
-<!--                   "Smoothed scatterplot", "Segmented bar plot",  -->
-<!--                   "Mosaic plot", "Bar plot")), -->
-<!--     label.padding = unit(0.5, "lines"), -->
-<!--     color = pal[c(1:9,4,5,5,6,6,6,6,7,7,8,9,9)], -->
-<!--     size = 4#, repel = TRUE -->
-<!--     )  -->
-
-### Summary measures
-
-Though some of these summary measures will be covered in later chapters, Table \@ref(summary-measures) provides a comprehensive summary of these measures according to the type(s) of variable(s) which they summarize.
-
-
-```{r summary-measures}
-temptbl <- tribble(
- ~variable, ~col1, ~col2, ~col3,
- "2.1, 5.3", "Binary", "(None)", "One proportion",
- "2.1, 5.4", "Binary", "Binary", "Difference in proportions, relative risk",
- "2.3, 6.1", "Quantitative", "(None)", "One mean",
- "2.3, 6.2", "Quantitative", "Binary (Paired)", "Mean difference",
- "2.3, 6.3", "Quantitative", "Binary (Independent)", "Difference in means",
- "2.3, 7.1", "Quantitative", "Quantitative", "Correlation, R-squared, regression slope"
-)
-
-temptbl %>%
- kable(caption = "Summary measures for different types of variables covered in this textbook and Sections where they appear. A binary variable is a categorical variable with only two categories.",
-  col.names = c("Sections", "Response Variable", "Explanatory Variable", "Summary Measure(s)")) %>%
- kable_styling() 
-```
-
-
-### Notation summary
-
-In the field of statistics, summary measures that summarize a sample of data are called **statistics**\index{statistic}. Numbers that summarize an entire population are called **parameters**\index{parameter}. You can remember
-this distinction by looking at the first letter of each term: 
-
-> **_S_**tatistics summarize **_S_**amples.  
-> **_P_**arameters summarize **_P_**opulations.
-
-We typically use Roman letters to symbolize statistics (e.g., $\bar{x}$, $\hat{p}$), and Greek letters to symbolize parameters (e.g., $\mu$, $\pi$).
-
-
-|Summary Measure |Statistic |Parameter |
-|:---	|:---: |:---: |
-|Sample size   |$n$|$-$|
-|Proportion   |$\hat{p}$|$\pi$|
-|Mean   |$\bar{x}$|$\mu$|
-|Correlation   |$r$|$\rho$|
-|Regression line slope   |$b_1$|$\beta_1$|
-|Regression line $y$-intercept   |$b_0$|$\beta_0$|
-
-### Key ideas
-
-We've encountered a variety of univariate (one variable) and bivariate (two variable) summary statistics and data visualization methods in this chapter. In addition to the notation, summary statistics, and data visualization method summaries above, here are the key ideas from this chapter.
-
-* Probabilities and sample proportions can be either **unconditional** or **conditional**. An unconditional probability or proportion is a proportion measured on the entire population; whereas a conditional probability or proportion is a proportion measured on a subgroup of the population. When computing probabilities using a contingency table, unconditional probabilities are computed by dividing a cell total by the overall total; conditional probabilities are computed by dividing a cell total by a row or column total.
-
-* Two variables are **associated** when the behavior of one variable depends on the value of the other variable. For two categorical variables, this occurs when some or all of the conditional proportions in each category of one variable change across categories of the other variable. Two quantitative variables are associated when a trend is apparent on a scatterplot. Recall from Chapter \@ref(intro-to-data), *association does not imply causation*!
+* Two variables are **associated** when the behavior of one variable depends on the value of the other variable. Two quantitative variables are associated when a trend is apparent on a scatterplot. Recall from Chapter \@ref(intro-to-data), *association does not imply causation*!
 
 * When describing the **distribution** of a single quantitative variable on a histogram, dot plot, or box plot, we look for (1) center, (2) variability, (3) shape, and (4) outliers.
 

@@ -1,4 +1,5 @@
 # Multivariable models {#mult-reg}
+<!-- TODO - change reference to #explore-mult-reg -->
 
 ```{r, include = FALSE}
 source("_common.R")
@@ -58,7 +59,7 @@ If $x$ and $y$ are quantitative, and $z$ is categorical, as in Figure \@ref(fig:
 :::
 
 ```{r include=FALSE}
-terms_chp_4 <- c("interaction", "parallel slopes")
+terms_chp_7 <- c("interaction", "parallel slopes")
 ```
 
 ::: {.guidedpractice}
@@ -68,7 +69,7 @@ So far, we've explored relationships between three variables, how could we visua
 Let's add another variable to our plot -- population. An **aesthetic** is a visual property of the objects in your plot. Each variable is mapped to an aesthetic. Some possible aesthetics and whether they should be used for quantitative or categorical variables are listed in Table \@ref(tab:aesthetics).
 
 ```{r include=FALSE}
-terms_chp_4 <- c(terms_chp_4, "aesthetic")
+terms_chp_7 <- c(terms_chp_7, "aesthetic")
 ```
 
 ```{r aesthetics}
@@ -129,7 +130,7 @@ We can visualize relationships among four variables in the plots above (the thre
 " target="_blank"><img src="http://img.youtube.com/vi/Z8t4k0Q8e8Y/0.jpg" 
 alt="Hans Rosling 200 Years" width="480" height="360" border="10" /></a>
 
-## Simpson's Paradox, revisited
+## Simpson's paradox, revisited
 
 Simpson's Paradox was introduced in Section \@ref(simpson) through an example on race and capital punishment. In that example, all three variables of interest were categorical. In this section, we present another example of this paradox using three quantitative variables.
 
@@ -194,7 +195,7 @@ In order for `frac` to be confounding, it needs to be associated with our explan
 :::
 
 ```{r include=FALSE}
-terms_chp_4 <- c(terms_chp_4, "confounding variable")
+terms_chp_7 <- c(terms_chp_7, "confounding variable")
 ```
 
 Scatterplots of `expend` versus `frac` and `sat` versus `frac` are displayed in Figure \@ref(fig:expend-sat-frac). The correlation between `expend` and `frac` is `r round(cor(SAT$expend, SAT$frac),3)`, and the correlation between `sat` and `frac` is `r round(cor(SAT$frac, SAT$sat),3)`.
@@ -332,7 +333,7 @@ However, we are missing one of the levels: `Not Verified`.
 The missing level is called the **reference level** and it represents the default level that other levels are measured against.
 
 ```{r include=FALSE}
-terms_chp_4 <- c(terms_chp_4, "reference level")
+terms_chp_7 <- c(terms_chp_7, "reference level")
 ```
 
 ```{r intRateVsVerIncomeModel}
@@ -437,7 +438,7 @@ This is the strategy used in **multiple regression**.
 While we remain cautious about making any causal interpretations using multiple regression on observational data, such models are a common first step in gaining insights or providing some evidence of a causal connection.
 
 ```{r include=FALSE}
-terms_chp_4 <- c(terms_chp_4, "multiple regression")
+terms_chp_7 <- c(terms_chp_7, "multiple regression")
 ```
 
 We want to fit a model that accounts for not only for any past bankruptcy or whether the borrower had their income source or amount verified, but simultaneously accounts for all the variables in the `loans` data set: `verified_income`, `debt_to_income`, `credit_util`, `bankruptcy`, `term`, `issue_month`, and `credit_checks`.
@@ -578,56 +579,16 @@ Is this reasonable?
 Is there any value gained by making this interpretation?^[Many of the variables do take a value 0 for at least one data point, and for those variables, it is reasonable. However, one variable never takes a value of zero: \texttt{term}, which describes the length of the loan, in months. If \texttt{term} is set to zero, then the loan must be paid back immediately; the borrower must give the money back as soon as she receives it, which means it is not a real loan. Ultimately, the interpretation of the intercept in this setting is not insightful.]
 :::
 
-<!-- ### Adjusted R-squared -->
+## Chapter review {#chp7-review}
 
+### Summary {-}
 
-<!-- ### Interactive R tutorials -->
+With real data, there is often a need to describe and visualize how multiple variables can be modeled together.
+In this chapter, we have presented one approach using multiple linear regression.
+Each coefficient represents a one unit increase of that predictor variable on the response variable *given* the rest of the predictor variables in the model.
+Working with and interpreting multivariable models can be tricky, since the relationship between two variables may appear different overall than if we look at that relationship within a particular group. 
 
-<!-- Explore the additional topics of multiple regression and logistic regression in `R` using the following self-paced tutorials.  -->
-<!-- All you need is your browser to get started! -->
-
-<!-- ::: {.alltutorials} -->
-<!-- [Tutorial 4: Multiple and logistic regression](https://openintrostat.github.io/ims-tutorials/04-multivariable-and-logistic-models/) -->
-<!-- ::: -->
-
-<!-- ::: {.singletutorial} -->
-<!-- [Tutorial 4 - Lesson 1: Parallel slopes](https://openintro.shinyapps.io/ims-04-multivariable-and-logistic-models-01/) -->
-<!-- ::: -->
-
-<!-- ::: {.singletutorial} -->
-<!-- [Tutorial 4 - Lesson 2: Evaluating and extending parallel slopes model](https://openintro.shinyapps.io/ims-04-multivariable-and-logistic-models-02/) -->
-<!-- ::: -->
-
-<!-- ::: {.singletutorial} -->
-<!-- [Tutorial 4 - Lesson 3: Multiple regression](https://openintro.shinyapps.io/ims-04-multivariable-and-logistic-models-03/) -->
-<!-- ::: -->
-
-<!-- ::: {.singletutorial} -->
-<!-- [Tutorial 4 - Lesson 4: Logistic regression](https://openintro.shinyapps.io/ims-04-multivariable-and-logistic-models-04/) -->
-<!-- ::: -->
-
-<!-- ::: {.singletutorial} -->
-<!-- [Tutorial 4 - Lesson 5: Case study - Italian restaurants in NYC](https://openintro.shinyapps.io/ims-04-multivariable-and-logistic-models-05/) -->
-<!-- ::: -->
-
-<!-- You can also access the full list of tutorials supporting this book [here](https://openintrostat.github.io/ims-tutorials/). -->
-
-### R labs
-
-Further apply the concepts you've learned in this chapter in `R` with computational labs that walk you through a data analysis case study.
-
-::: {.singlelab}
-[Multiple linear regression - Grading the professor](http://openintrostat.github.io/oilabs-tidy/09_multiple_regression/multiple_regression.html)
-:::
-
-::: {.alllabs}
-[Full list of labs supporting OpenIntro::Introduction to Modern Statistics](http://openintrostat.github.io/oilabs-tidy/)
-:::
-
-
-## Chapter 4 review {#chp4-review}
-
-### Terms
+### Terms {-}
 
 We introduced the following terms in the chapter.
 If you're not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
@@ -635,12 +596,10 @@ We are purposefully presenting them in alphabetical order, instead of in order o
 However you should be able to easily spot them as **bolded text**.
 
 ```{r}
-make_terms_table(terms_chp_4)
+make_terms_table(terms_chp_7)
 ```
 
-### Key ideas
-
-In this chapter, we started to think about associations between more than two variables. 
+### Key ideas {-}
 
 * When building data visualizations, we map different variables to different **aesthetics**. For example, a quantitative explanatory variable is mapped to position on the $x$-axis, a quantitative response variable is mapped to position on the $y$-axis, and a categorical variable may be mapped to color or shape of the plotting character.
 
