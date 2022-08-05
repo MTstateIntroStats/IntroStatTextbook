@@ -9,6 +9,30 @@ TODO
 :::
 
 
+<!-- TO PUT SOMEWHERE IN THIS CHAPTER? COPIED AND PASTED FROM OLD CATEGORICAL INFERENCE CHAPTER -->
+We will explore both simulation-based methods (bootstrapping) and theory-based methods for creating confidence intervals in this text. Though the details change with different scenarios, theory-based confidence intervals will always take the form: 
+$$
+\mbox{statistic} \pm (\mbox{multiplier}) \times (\mbox{standard error of the statistic})
+$$
+The statistic is our best guess for the value of the parameter, so it makes sense to build the confidence interval around that value. The standard error, which is a measure of the uncertainty associated with the statistic, provides a guide for how large we should make the confidence interval. The multiplier is determined by how confident we'd like to be, and tells us how many standard errors we need to add and subtract from the statistic. The amount we add and subtract from the statistic is called the **margin of error**.
+
+::: onebox
+**General form of a confidence interval.**
+
+The general form of a **theory-based confidence interval** for an unknown parameter is
+$$
+\mbox{statistic} \pm (\mbox{multiplier}) \times (\mbox{standard error of the statistic})
+$$
+The amount we add and subtract to the statistic to calculate the confidence interval is called the **margin of error**.
+$$
+\mbox{margin of error} = (\mbox{multiplier}) \times (\mbox{standard error of the statistic})
+$$
+:::
+
+In Section \@ref(theory-prop) we will discuss different percentages for the confidence interval (e.g., 90% confidence interval or 99% confidence interval). Section \@ref(two-prop-boot-ci) provides a longer discussion on what "95% confidence" actually means.
+<!-- END COPIED SECTION -->
+
+
 ## Central Limit Theorem
 
 <!-- ### Variability in a statistic {#var-stat} -->
@@ -686,3 +710,54 @@ SAT scores closely follow the normal model with mean $\mu = 1500$ and standard d
 
 [^05-inference-cat-32]:
     (a) 900 and 2100 represent two standard deviations above and below the mean, which means about 95% of test takers will score between 900 and 2100. (b) Since the normal model is symmetric, then half of the test takers from part (a) ($\frac{95\%}{2} = 47.5\%$ of all test takers) will score 900 to 1500 while 47.5% score between 1500 and 2100.
+    
+## Quantifying the variability of a statistic
+
+
+### 68-95-99.7 rule revisited
+
+### Standard error {#se}
+
+### Margin of error {#moe}
+
+    
+## Martian alphabet revisited
+
+<!-- edit the following (copied from old categorical inference chapter) -->
+
+In Section \@ref(#Martian), through simulation under the assumption that students were just guessing, we found evidence that students tend to prefer Bumba on the left. But by how much? To answer this, we need a **confidence interval**---an interval of plausible values for the true probability humans will select Bumba as the left letter. The width of this interval is determined by how variable sample proportions are from sample to sample. It turns out, there is a mathematical model for this variability that we will explore later in this chapter. For now, let's take the standard deviation from our simulated sample proportions as an estimate for this variability: 0.08. Since the simulated distribution of proportions is bell-shaped, we know about 95% of sample proportions should fall within two standard deviations of the true proportion, so we can add and subtract this **margin of error**\index{margin of error} to our sample proportion to calculate an approximate 95% confidence interval[^05-inference-cat-5]: $$
+\frac{34}{38} \pm 2\times 0.08 = 0.89 \pm 0.16 = (0.73, 1)
+$$ Thus, based on this data, we are 95% confident that the probability a human guesses Bumba on the left is somewhere between 73% and 100%.
+
+[^05-inference-cat-5]: If you carry out the calculations, you'll note that the upper bound is actually $0.89 + 0.16 = 1.05$, but since a sample proportion cannot be greater than 1, we truncated the interval to 1.
+
+
+## Case study (test): Medical consultant_ (model after Section 13.5 of IMS: [https://openintro-ims.netlify.app/foundations-mathematical.html#casemed]()
+
+
+## Case study (interval): Stents_ (model after Section 13.6 of IMS: [https://openintro-ims.netlify.app/foundations-mathematical.html#casestent]()
+
+
+
+## Chapter review {#chp11-review}
+
+### Summary {-}
+
+::: {.underconstruction}
+TODO
+:::
+
+### Terms {-}
+
+We introduced the following terms in the chapter. If you're not sure what some of these terms mean, we recommend you go back in the text and review their definitions. We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. However you should be able to easily spot them as **bolded text**.
+
+```{r}
+make_terms_table(terms_chp_11)
+```
+
+### Key ideas {-}
+
+::: {.underconstruction}
+TODO
+:::
+

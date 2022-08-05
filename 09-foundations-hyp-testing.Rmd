@@ -140,7 +140,7 @@ terms_chp_9 <- c(terms_chp_9, "observed statistic", "null statistic")
 ```
 
 
-## Sex discrimination case study {#caseStudySexDiscrimination}
+## Case study: Sex discrimination {#caseStudySexDiscrimination}
 
 Before getting into the nuances of hypothesis testing, let’s work through another case study.
 We consider a study investigating sex discrimination in the 1970s, which is set in the context of personnel decisions within a bank.
@@ -605,6 +605,7 @@ Regardless of the data structure or analysis method, the hypothesis testing fram
 ::: {.underconstruction}
 Add more to this summary
 :::
+
 ### Terms {-}
 
 We introduced the following terms in the chapter. If you're not sure what some of these terms mean, we recommend you go back in the text and review their definitions. We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. However you should be able to easily spot them as **bolded text**.

@@ -2994,17 +2994,26 @@ Further apply the concepts you've learned in this chapter in R with computationa
 
 
 
-## Chapter 6 review {#chp6-review}
+## Chapter review {#chp17-review}
 
+### Summary {-}
 
-### Terms
+::: {.underconstruction}
+TODO
+:::
 
-We introduced the following terms in the chapter. 
-If you're not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
-We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. 
-However you should be able to easily spot them as **bolded text**.
+### Terms {-}
+
+We introduced the following terms in the chapter. If you're not sure what some of these terms mean, we recommend you go back in the text and review their definitions. We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. However you should be able to easily spot them as **bolded text**.
 
 ```{r}
-make_terms_table(terms_chp_6)
+make_terms_table(terms_chp_17)
 ```
+
+### Key ideas {-}
+
+::: {.underconstruction}
+TODO
+:::
+
 

@@ -326,3 +326,30 @@ text(x = 0.2, y = 3, paste("power = ", round(pnorm(qnorm(.975, 0.5, s), 0.65, s,
 
 *For small sample sizes, results may be practically important, but not statistically significant.* Since studies with small sample sizes tend to have very low power, it is difficult for a hypothesis test to result in a very small p-value, even if the observed effect is quite large.
 :::
+
+
+
+
+## Chapter review {#chp12-review}
+
+### Summary {-}
+
+::: {.underconstruction}
+TODO
+:::
+
+### Terms {-}
+
+We introduced the following terms in the chapter. If you're not sure what some of these terms mean, we recommend you go back in the text and review their definitions. We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. However you should be able to easily spot them as **bolded text**.
+
+```{r}
+make_terms_table(terms_chp_12)
+```
+
+### Key ideas {-}
+
+::: {.underconstruction}
+TODO
+:::
+
+

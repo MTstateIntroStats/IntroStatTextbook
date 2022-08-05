@@ -4,7 +4,7 @@
 source("_common.R")
 ```
 
-# Inference for a single proportion
+# Inference for a single proportion {#inference-one-prop}
 
 ::: {.chapterintro}
 TODO
@@ -27,6 +27,8 @@ A single proportion is used to summarize data when we measured a single categori
 [^05-inference-cat-34]: The terms "success" and "failure" may not actually represent outcomes we view as successful or not, but it is the typical generic way to referring to the possible outcomes of a binary variable. The "success" is whatever we count when calculating our sample proportion.
 
 ### Simulation-based test for $H_0: \pi = \pi_0$ {#one-prop-null-boot}
+
+<!-- Medical consultant case study was added to Chapter 10, so we need to change this example -->
 
 \index{data!medical consultant|(} In Section \@ref(HypothesisTesting), we introduced the general steps of a hypothesis test:
 
@@ -228,6 +230,8 @@ If it were plotted, the exact null distribution would look almost identical to t
 -->
 ```
 ### Two-sided hypotheses {#two-sided-tests}
+
+<!-- Move this section to Chapter 12 -->
 
 ```{=html}
 <!--
@@ -883,3 +887,28 @@ Previously, we found that implanting a stent in the brain of a patient at risk f
 We've spent a lot of time discussing conditions for when $\hat{p}$ can be reasonably modeled by a normal distribution. What happens when the success-failure condition fails? What about when the independence condition fails? In either case, the general ideas of confidence intervals and hypothesis tests remain the same, but the strategy or technique used to generate the interval or p-value change.
 
 When the success-failure condition isn't met for a hypothesis test, we can simulate the null distribution of $\hat{p}$ using the null value, $\pi_0$, as seen in Section \@ref(one-prop-null-boot). Unfortunately, methods for dealing with observations which are not independent are outside the scope of this book.
+
+
+
+## Chapter review {#chp14-review}
+
+### Summary {-}
+
+::: {.underconstruction}
+TODO
+:::
+
+### Terms {-}
+
+We introduced the following terms in the chapter. If you're not sure what some of these terms mean, we recommend you go back in the text and review their definitions. We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. However you should be able to easily spot them as **bolded text**.
+
+```{r}
+make_terms_table(terms_chp_14)
+```
+
+### Key ideas {-}
+
+::: {.underconstruction}
+TODO
+:::
+

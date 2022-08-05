@@ -126,13 +126,13 @@
 
 ### 9. Hypothesis testing with randomization
 
-Model after Chapter 11 in IMS: [https://openintro-ims.netlify.app/foundations-randomization.html]():
+Model after [Chapter 11](https://openintro-ims.netlify.app/foundations-randomization.html) in IMS
 
 - 9.1 Motivating example: Martian alphabet
 	* _9.1.1 Observed data_
 	* _9.1.2 Variability of the statistic_
 	* _9.1.3 Observed statistic vs. null statistics_
-- _9.2 Case study: (take from IMS - sex descrimination case study that is currently in our two-proportion section)_
+- _9.2 Case study: Sex discriminatinon (modeled after [Section 11.1](https://openintro-ims.netlify.app/foundations-randomization.html#caseStudySexDiscrimination) of IMS - currently in our two-proportion section)_
 	* _9.1.1 Observed data_
 	* _9.1.2 Variability of the statistic_
 	* _9.1.3 Observed statistic vs. null statistics_
@@ -143,12 +143,10 @@ Model after Chapter 11 in IMS: [https://openintro-ims.netlify.app/foundations-ra
 
 ### 10. Confidence intervals with bootstrapping
 
-Model after Chapter 12 in IMS: [https://openintro-ims.netlify.app/foundations-bootstrapping.html]()
+Model after [Chapter 12](https://openintro-ims.netlify.app/foundations-bootstrapping.html)
+ in IMS
 
-- 10.1 Case study: (Martian alphabet or take from IMS)
-	* _10.1.1 Observed data_
-	* _10.1.2 Variability of the statistic_
-- _10.2 Case study: (take from IMS)_
+- 10.1 _Case study: Medical consultant_ (model after [Section 12.1](https://openintro-ims.netlify.app/foundations-bootstrapping.html#case-study-med-consult) of IMS: )
 	* _10.2.1 Observed data_
 	* _10.2.2 Variability of the statistic_
 - 10.3 Confidence intervals
@@ -166,16 +164,25 @@ Model after Chapter 12 in IMS: [https://openintro-ims.netlify.app/foundations-bo
 	* 11.2.3 Normal probability calculations
 	* 11.2.4 Normal probability examples
 	* 11.2.5 68-95-99.7 rule
-- _11.3 Quantifying the variability of a statistic_ (model after Section 13.3 of IMS: [https://openintro-ims.netlify.app/foundations-mathematical.html#quantifying-the-variability-of-a-statistic]()
+- _11.3 Quantifying the variability of a statistic_ (model after [Section 13.3](https://openintro-ims.netlify.app/foundations-mathematical.html#quantifying-the-variability-of-a-statistic) of IMS)
 	* _11.3.1 68-95-99.7 rule revisited_
 	* _11.3.2 Standard error_
 	* _11.3.3 Margin of error_
-- _11.4 Conditions for applying the normal model_ (model after Section 13.5.4 of IMS: [https://openintro-ims.netlify.app/foundations-mathematical.html#conditions-for-applying-the-normal-model]()
-- 11.4 Chapter review
+- 11.3 _Martian alphabet revisited_
+- 11.4 _Case study (test): Medical consultant_ (model after [Section 13.5](https://openintro-ims.netlify.app/foundations-mathematical.html#casemed) of IMS)
+	* _11.4.1 Observed data_
+	* _11.4.2 Variability of the statistic_
+	* _11.4.3 Observed statistic vs. null statistics_
+	* _11.4.4 Conditions for applying the normal model_ 
+- _11.5 Case study (interval): Stents_ (model after [Section 13.6](https://openintro-ims.netlify.app/foundations-mathematical.html#casestent))
+	* _11.5.1 Observed data_
+	* _11.5.2 Variability of the statistic_
+	* _11.5.3 Interpreting confidence intervals_
+- 11.6 Chapter review
 
 ### 12. Errors, power, and practical importance
 
-Merge our material with Chapter 14 of IMS: [https://openintro-ims.netlify.app/decerr.html]()
+Merge our material with [Chapter 14](https://openintro-ims.netlify.app/decerr.html) of IMS
 
 - 12.1 Decision errors
 - _12.2 Significance level_
@@ -266,7 +273,7 @@ Moved from old categorical EDA chapter:
 
 - Move all images into common "images" folder and change relative links throughout text
 - Add references to all images, data sets, R packages, studies, etc and inline text and to .bib file
-- Rename #references to chapter/section titles; currently just commenting out the old ones
+- Rename #references to chapter/section titles; currently just commenting out the old ones; and make sure all links to sections are working
 
 - Change `R` to R in coursepack
 - Change data set to dataset?
