@@ -73,7 +73,7 @@ $$\hat{p} = 3 / 62 = 0.048\qquad\text{is used to estimate}\qquad \pi$$
 :::
 
 ```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "statistic")
+terms_chp_14 <- c("statistic")
 ```
 
 ::: protip
@@ -112,7 +112,7 @@ The **null value** is the reference value for the parameter in $H_0$, and it is 
 :::
 
 ```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "null value")
+terms_chp_14 <- c(terms_chp_14, "null value")
 ```
 
 The deviation of the sample statistic from the null hypothesized parameter is usually quantified with a p-value[^05-inference-cat-36]. The p-value is computed based on the null distribution, which is the distribution of the test statistic if the null hypothesis is true. Supposing the null hypothesis is true, we can compute the p-value by identifying the chance of observing a test statistic that favors the alternative hypothesis at least as strongly as the observed test statistic.
@@ -128,7 +128,7 @@ The null distribution can be estimated through simulation (simulation-based meth
 :::
 
 ```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "null distribution")
+terms_chp_14 <- c(terms_chp_14, "null distribution")
 ```
 
 We want to identify the sampling distribution of the test statistic ($\hat{p}$) if the null hypothesis was true. In other words, we want to see how the sample proportion changes due to chance alone. Then we plan to use this information to decide whether there is enough evidence to reject the null hypothesis.
@@ -246,7 +246,7 @@ Consider the situation of the [medical consultant](#one-prop-null-boot). The set
 But what if the consultant actually performed *worse* than the average? Would we care? More than ever! Since it turns out that we care about a finding in either direction, we should run a **two-sided hypothesis test**\index{two-sided hypothesis test}.
 
 ```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "confirmation bias", "one-sided hypothesis test", "two-sided hypothesis test")
+terms_chp_14 <- c(terms_chp_14, "confirmation bias", "one-sided hypothesis test", "two-sided hypothesis test")
 ```
 
 ::: workedexample
@@ -365,7 +365,7 @@ In the medical consultant case study, the parameter is $\pi$, the true probabili
 [^05-inference-cat-41]: If you're curious where the term "bootstrapping" comes from, it comes from the phrase "lift yourself up by your own bootstraps." Lifting yourself up by your own bootstraps is analogous to creating more samples from the single original sample.
 
 ```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "bootstrapping")
+terms_chp_14 <- c(terms_chp_14, "bootstrapping")
 ```
 
 Most of the inferential procedures covered in this text are grounded in quantifying how one data set would differ from another when they are both taken from the same population. It doesn't make sense to take repeated samples from the same population because if you have the means to take more samples, a larger sample size will benefit you more than the exact same sample twice. Instead, we measure how the samples behave under an estimate of the population. Figure \@ref(fig:boot1) shows how an unknown original population of red and white marbles can be estimated by using multiple copies of a sample of seven marbles.
@@ -520,7 +520,7 @@ The success-failure condition listed above is only necessary for the sampling di
 :::
 
 ```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "success-failure condition", "standard error of single proportion")
+terms_chp_14 <- c(terms_chp_14, "success-failure condition", "standard error of single proportion")
 ```
 
 Typically we don't know the true proportion $\pi$, so we substitute some value to check the success-failure condition and to estimate the standard deviation of the sampling distribution of $\hat{p}$. The independence condition is a more nuanced requirement. When it isn't met, it is important to understand how and why it isn't met. For example, *there exist no statistical methods available to truly correct the inherent biases of data from a convenience sample.* On the other hand, if we took a cluster random sample (see Section \@ref(samp-methods)), the observations wouldn't be independent, but suitable statistical methods are available for analyzing the data (but they are beyond the scope of even most second or third courses in statistics)[^05-inference-cat-44].
@@ -769,7 +769,7 @@ The 95% confidence interval structure provides guidance in how to make intervals
 \end{eqnarray} There are three components to this interval: the point estimate, "1.96", and the standard error. The choice of $1.96\times SE$ was based on capturing 95% of the sampling distribution of statistics since the point estimate is within 1.96 standard errors of the true parameter about 95% of the time. The choice of 1.96 corresponds to a 95% **confidence level**.
 
 ```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "confidence level")
+terms_chp_14 <- c(terms_chp_14, "confidence level")
 ```
 
 ::: guidedpractice

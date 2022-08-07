@@ -1,27 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 7 Inference for regression | Montana State Introductory Statistics with R</title>
-<meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager">
-<meta name="description" content="We now bring together ideas of inferential analyses from Chapters 5 and 6 with the descriptive models seen in Chapter 3. The setting is now focused on predicting a quantitative response variable,...">
-<meta name="generator" content="bookdown 0.27 with bs4_book()">
-<meta property="og:title" content="Chapter 7 Inference for regression | Montana State Introductory Statistics with R">
-<meta property="og:type" content="book">
-<meta property="og:description" content="We now bring together ideas of inferential analyses from Chapters 5 and 6 with the descriptive models seen in Chapter 3. The setting is now focused on predicting a quantitative response variable,...">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 7 Inference for regression | Montana State Introductory Statistics with R">
-<meta name="twitter:description" content="We now bring together ideas of inferential analyses from Chapters 5 and 6 with the descriptive models seen in Chapter 3. The setting is now focused on predicting a quantitative response variable,...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><script type="text/x-mathjax-config">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Chapter 23 (PART) Inference for regression | Montana State Introductory Statistics with R</title>
+
+    <meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager" />
+  
+   <meta name="description" content="Open resources textbook for Stat 216 at Montana State University" />
+   <meta name="generator" content="placeholder" />
+  <meta property="og:title" content="Chapter 23 (PART) Inference for regression | Montana State Introductory Statistics with R" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://mtstateintrostats.github.io/IntroStatTextbook/" />
+  
+  <meta property="og:description" content="Open resources textbook for Stat 216 at Montana State University" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 23 (PART) Inference for regression | Montana State Introductory Statistics with R" />
+  
+  <meta name="twitter:description" content="Open resources textbook for Stat 216 at Montana State University" />
+  
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+    <script src="libs/bs3compat-0.4.0/transition.js"></script>
+    <script src="libs/bs3compat-0.4.0/tabs.js"></script>
+    <script src="libs/bs3compat-0.4.0/bs3compat.js"></script>
+    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
+    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
+    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+    <link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+    <script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+    <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+    <script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+    <script src="libs/typedarray-0.1/typedarray.min.js"></script>
+    <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+    <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+    <link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+    <script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+    <script type="text/x-mathjax-config">
     const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
     for (let popover of popovers){
       const div = document.createElement('div');
@@ -38,11 +62,16 @@
       	})
       }
     }
-    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
+
+  <!-- CSS -->
+  <style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-<style type="text/css">
+    <style type="text/css">
     /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
     div.csl-bib-body { }
     div.csl-entry {
@@ -64,18 +93,20 @@
       margin-left: 2em;
     }
   </style>
-<link rel="stylesheet" href="css/ims-style.css">
+      <link rel="stylesheet" href="css/ims-style.css" />
+  
 </head>
+
 <body data-spy="scroll" data-target="#toc">
 
 <div class="container-fluid">
 <div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="Fall 2022">Montana State Introductory Statistics with R</a>:
-        <small class="text-muted">Fall 2022</small>
+        <a href="index.html" title="">Montana State Introductory Statistics with R</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -83,943 +114,48 @@
     <div id="main-nav" class="collapse-lg">
       <form role="search">
         <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-</form>
+      </form>
 
-      <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Welcome</a></li>
-<li><a class="" href="rstudio.html">Preliminaries: Getting started in RStudio</a></li>
-<li><a class="" href="intro-to-data.html"><span class="header-section-number">1</span> Introduction to data</a></li>
-<li><a class="" href="eda.html"><span class="header-section-number">2</span> Exploratory data analysis</a></li>
-<li><a class="" href="cor-reg.html"><span class="header-section-number">3</span> Correlation and regression</a></li>
-<li><a class="" href="mult-reg.html"><span class="header-section-number">4</span> Multivariable models</a></li>
-<li><a class="" href="inference-cat.html"><span class="header-section-number">5</span> Inference for categorical data</a></li>
-<li><a class="" href="inference-num.html"><span class="header-section-number">6</span> Inference for quantitative data</a></li>
-<li><a class="active" href="inference-reg.html"><span class="header-section-number">7</span> Inference for regression</a></li>
-<li><a class="" href="references.html">References</a></li>
-</ul>
+      <nav aria-label="Table of contents">
+        <h2>Table of contents</h2>
+        <div id="book-toc"></div>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/MTstateIntroStats/IntroStatTextbook">View book source <i class="fab fa-github"></i></a></p>
+          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
         </div>
       </nav>
-</div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="inference-reg" class="section level1" number="7">
-<h1>
-<span class="header-section-number">7</span> Inference for regression<a class="anchor" aria-label="anchor" href="#inference-reg"><i class="fas fa-link"></i></a>
-</h1>
+    </div>
+  </header>
+
+  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
+<div id="inference-reg" class="section level1" number="23">
+<h1><span class="header-section-number">Chapter 23</span> (PART) Inference for regression</h1>
 <!-- TODO: Add vocab words to this chapter. -->
-<div class="chapterintro">
-<p>We now bring together ideas of inferential analyses from Chapters <a href="inference-cat.html#inference-cat">5</a> and <a href="inference-num.html#inference-num">6</a> with the descriptive models seen in Chapter <a href="cor-reg.html#cor-reg">3</a>. The setting is now focused on predicting a quantitative response variable, <span class="math inline">\(y\)</span>, from a quantitative explanatory variable, <span class="math inline">\(x\)</span>. We continue to ask questions about the variability of the model from sample to sample. The sampling variability will inform the conclusions about the population that can be drawn.</p>
-<p>Many of the inferential ideas are remarkably similar to those covered in previous chapters. The technical conditions for simple linear regression are typically assessed graphically, although independence of observations continues to be of utmost importance.</p>
 </div>
-<div id="inferenceForLinearRegression" class="section level2" number="7.1">
-<h2>
-<span class="header-section-number">7.1</span> Inference for linear regression<a class="anchor" aria-label="anchor" href="#inferenceForLinearRegression"><i class="fas fa-link"></i></a>
-</h2>
-<p>In this chapter, we bring together the inferential ideas (see Chapters <a href="inference-cat.html#inference-cat">5</a> and <a href="inference-num.html#inference-num">6</a>) used to make claims about a population from information in a sample and the modeling ideas seen in Chapter <a href="cor-reg.html#cor-reg">3</a>.
-In particular, we will conduct inference on the slope of a least squares regression line to test whether or not there is a relationship between two quantitative variables.
-Additionally, we will build confidence intervals which quantify the slope of the linear regression line.</p>
-<div id="observed-data-13" class="section level4 unnumbered">
-<h4>Observed data<a class="anchor" aria-label="anchor" href="#observed-data-13"><i class="fas fa-link"></i></a>
-</h4>
-<p>We start the chapter with a hypothetical example describing the linear relationship between dollars spent advertising for a chain sandwich restaurant and monthly revenue. The hypothetical example serves the purpose of illustrating how a linear model varies from sample to sample. Because we have made up the example and the data (and the entire population), we can take many many samples from the population to visualize the variability. Note that in real life, we always have exactly one sample (that is, one dataset), and through the inference process, we imagine what might have happened had we taken a different sample. The change from sample to sample leads to an understanding of how the single observed dataset is different from the population of values, which is typically the fundamental goal of inference.</p>
-<p>Consider the following hypothetical population of all of the sandwich stores of a particular chain seen in Figure <a href="inference-reg.html#fig:sandpop">7.1</a>.
-In this made-up world, the CEO actually has all the relevant data, which is why they can plot it here.
-The CEO is omniscient and can write down the population model which describes the true population relationship between the advertising dollars and revenue.
-There appears to be linear relationship between advertising dollars and revenue (both in $1000).</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:sandpop"></span>
-<img src="07-inference-reg_files/figure-html/sandpop-1.png" alt="Revenue as a linear model of advertising dollars for a population of sandwich stores, in $1000." width="672"><p class="caption">
-Figure 7.1: Revenue as a linear model of advertising dollars for a population of sandwich stores, in $1000.
-</p>
-</div>
-<p>You may remember from Chapter <a href="cor-reg.html#cor-reg">3</a> that the population model is: <span class="math display">\[y = \beta_0 + \beta_1 x + \varepsilon.\]</span></p>
-<p>Again, the omniscient CEO (with the full population information) can write down the true population model as: <span class="math display">\[\mbox{expected revenue} = 11.23 + 4.8 \cdot \mbox{advertising}.\]</span></p>
-</div>
-<div id="variability-of-the-statistic-11" class="section level4 unnumbered">
-<h4>Variability of the statistic<a class="anchor" aria-label="anchor" href="#variability-of-the-statistic-11"><i class="fas fa-link"></i></a>
-</h4>
-<p>Unfortunately, in our scenario, the CEO is not willing to part with the full set of data, but they will allow potential franchise buyers to see a small sample of the data in order to help the potential buyer decide whether or not set up a new franchise.
-The CEO is willing to give each potential franchise buyer a random sample of data from 20 stores.</p>
-<p>As with any numerical characteristic which describes a subset of the population, the estimated slope of a sample will vary from sample to sample.
-Consider the linear model which describes revenue (in $1000) based on advertising dollars (in $1000).</p>
-<p>The least squares regression model uses the data to find a sample linear fit: <span class="math display">\[\hat{y} = b_0 + b_1 x,\]</span></p>
-<p>where <span class="math inline">\(y\)</span> represents the actual revenue, <span class="math inline">\(\hat{y}\)</span> represents the <em>predicted</em> revenue from the model, and <span class="math inline">\(x\)</span> represents the advertising dollars. A random sample of 20 stores shows a different least square regression line depending on which observations are selected.
-A subset of size 20 stores shows a similar positive trend between advertising and revenue (to what we saw in Figure <a href="inference-reg.html#fig:sandpop">7.1</a>, which described the population) despite having fewer observations on the plot.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-2"></span>
-<img src="07-inference-reg_files/figure-html/unnamed-chunk-2-1.png" alt="A random sample of 20 stores from the entire population. A positive linear trend between advertising and revenue continues to be observed." width="672"><p class="caption">
-Figure 7.2: A random sample of 20 stores from the entire population. A positive linear trend between advertising and revenue continues to be observed.
-</p>
-</div>
-<p>A second sample of size 20 also shows a positive trend!</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-3"></span>
-<img src="07-inference-reg_files/figure-html/unnamed-chunk-3-1.png" alt="A different random sample of 20 stores from the entire population. Again, a positive linear trend between advertising and revenue is observed." width="672"><p class="caption">
-Figure 7.3: A different random sample of 20 stores from the entire population. Again, a positive linear trend between advertising and revenue is observed.
-</p>
-</div>
-<p>But the line is slightly different!</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-4"></span>
-<img src="07-inference-reg_files/figure-html/unnamed-chunk-4-1.png" alt="The linear models from the two different random samples are quite similar, but they are not the same line." width="672"><p class="caption">
-Figure 7.4: The linear models from the two different random samples are quite similar, but they are not the same line.
-</p>
-</div>
-<p>That is, there is <strong>variability</strong> in the regression line from sample to sample. The concept of the sampling variability is something you’ve seen before, but in this lesson, you will focus on the variability of the line often measured through the variability of a single statistic: <strong>the slope of the line</strong>.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:slopes"></span>
-<img src="07-inference-reg_files/figure-html/slopes-1.png" alt="If repeated samples of size 20 are taken from the entire population, each linear model will be slightly different. The red line provides the linear fit to the entire population, shown in Figure ??." width="672"><p class="caption">
-Figure 7.5: If repeated samples of size 20 are taken from the entire population, each linear model will be slightly different. The red line provides the linear fit to the entire population, shown in Figure <a href="#sandpop"><strong>??</strong></a>.
-</p>
-</div>
+  </main>
 
-<p>You might notice in Figure <a href="inference-reg.html#fig:slopes">7.5</a> that the <span class="math inline">\(\hat{y}\)</span> values given by the lines are much more consistent in the middle of the dataset than at the ends. The reason is that the data itself anchors the lines in such a way that the line must pass through the center of the data cloud. The effect of the fan-shaped lines is that predicted revenue for advertising close to $4,000 will be much more precise than the revenue predictions made for $1,000 or $7,000 of advertising.</p>
-<p>The distribution of slopes (for samples of size <span class="math inline">\(n=20\)</span>) can be seen in a histogram, as in Figure <a href="inference-reg.html#fig:sand20lm">7.6</a>.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:sand20lm"></span>
-<img src="07-inference-reg_files/figure-html/sand20lm-1.png" alt="Variability of slope estimates taken from many different samples of stores, each of size 20." width="672"><p class="caption">
-Figure 7.6: Variability of slope estimates taken from many different samples of stores, each of size 20.
-</p>
-</div>
-<p>Recall, the example described in this introduction is hypothetical.
-That is, we created an entire population in order demonstrate how the slope of a line would vary from sample to sample.
-The tools in this textbook are designed to evaluate only one single sample of data.<br>
-With actual studies, we do not have repeated samples, so we are not able to use repeated samples to visualize the variability in slopes.
-We have seen variability in samples throughout this text, so it should not come as a surprise that different samples will produce different linear models.
-However, it is nice to visually consider the linear models produced by different slopes.
-Additionally, as with measuring the variability of previous statistics (e.g., <span class="math inline">\(\bar{x}_1 - \bar{x}_2\)</span> or <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span>), the histogram of the sample statistics can provide information related to inferential considerations.</p>
-<p>In the following sections, the distribution (i.e., histogram) of <span class="math inline">\(b_1\)</span> (the estimated slope coefficient) will be constructed in the same three ways that, by now, may be familiar to you.
-First (in Section <a href="inference-reg.html#randslope">7.1.1</a>), the distribution of <span class="math inline">\(b_1\)</span> when <span class="math inline">\(\beta_1 = 0\)</span> is constructed by randomizing (permuting) the response variable.
-Next (in Section <a href="inference-reg.html#bootbeta1">7.1.2</a>), we can bootstrap the data by taking random samples of size <span class="math inline">\(n\)</span> from the original dataset.
-And last (in Section <a href="inference-reg.html#mathslope">7.1.3</a>), we use mathematical tools to describe the variability using the <span class="math inline">\(t\)</span>-distribution that was first encountered in Section <a href="inference-num.html#one-mean-math">6.1.3</a>.</p>
-</div>
-<div id="randslope" class="section level3" number="7.1.1">
-<h3>
-<span class="header-section-number">7.1.1</span> Randomization test for <span class="math inline">\(H_0: \beta_1= 0\)</span><a class="anchor" aria-label="anchor" href="#randslope"><i class="fas fa-link"></i></a>
-</h3>
-<p>Consider the data on Global Crop Yields compiled by <a href="https://ourworldindata.org/crop-yields">Our World in Data</a> and presented as part of the <a href="https://github.com/rfordatascience/tidytuesday/trunk/data/2020/2020-09-01">TidyTuesday</a> series seen in Figure <a href="inference-reg.html#fig:allcrops">7.7</a>. The scientific research interest at hand will be in determining the linear relationship between wheat yield (for a country-year) and other crop yields. The dataset is quite rich and deserves exploring, but for this example, we will focus only on the annual crop yield in the United States.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:allcrops"></span>
-<img src="07-inference-reg_files/figure-html/allcrops-1.png" alt="Yield (in tonnes per hectare) for six different crops in the US.  The color of the dot indicates the year." width="672"><p class="caption">
-Figure 7.7: Yield (in tonnes per hectare) for six different crops in the US. The color of the dot indicates the year.
-</p>
-</div>
-<p>As you have seen previously, statistical inference typically relies on setting a null hypothesis which is hoped to be subsequently rejected. In the linear model setting, we might hope to have a linear relationship between <code>maize</code> and <code>wheat</code> in settings where <code>maize</code> production is known and <code>wheat</code> production needs to be predicted.</p>
-<p>The relevant hypotheses for the linear model setting can be written in terms of the population slope parameter. Here the population refers to a larger set of years where <code>maize</code> and <code>wheat</code> are both grown in the US.</p>
-<ul>
-<li>
-<span class="math inline">\(H_0: \beta_1= 0\)</span>, there is no linear relationship between <code>wheat</code> and <code>maize</code>.<br>
-</li>
-<li>
-<span class="math inline">\(H_A: \beta_1 \ne 0\)</span>, there is some linear relationship between <code>wheat</code> and <code>maize</code>.</li>
-</ul>
-<p>Recall that for the randomization test, we shuffle one variable to eliminate any existing relationship between the variables. That is, we set the null hypothesis to be true, and we measure the natural variability in the data due to sampling but <strong>not</strong> due to variables being correlated. Figure <a href="inference-reg.html#fig:permwheatScatter">7.8</a> shows the observed data and a scatterplot of one permutation of the <code>wheat</code> variable. The careful observer can see that each of the observed the values for <code>wheat</code> (and for <code>maize</code>) exist in both the original data plot as well as the permuted <code>wheat</code> plot, but the given <code>wheat</code> and <code>maize</code> yields are no longer matched for a given year. That is, each <code>wheat</code> yield is randomly assigned to a new <code>maize</code> yield.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:permwheatScatter"></span>
-<img src="07-inference-reg_files/figure-html/permwheatScatter-1.png" alt="Original (left) and permuted (right) data.  The permutation removes the linear relationship between `wheat` and `maize`.  Repeated permutations allow for quantifying the variability in the slope under the condition that there is no linear relationship (i.e., that the null hypothesis is true)." width="47%"><img src="07-inference-reg_files/figure-html/permwheatScatter-2.png" alt="Original (left) and permuted (right) data.  The permutation removes the linear relationship between `wheat` and `maize`.  Repeated permutations allow for quantifying the variability in the slope under the condition that there is no linear relationship (i.e., that the null hypothesis is true)." width="47%"><p class="caption">
-Figure 7.8: Original (left) and permuted (right) data. The permutation removes the linear relationship between <code>wheat</code> and <code>maize</code>. Repeated permutations allow for quantifying the variability in the slope under the condition that there is no linear relationship (i.e., that the null hypothesis is true).
-</p>
-</div>
-<p>By repeatedly permuting the response variable, any pattern in the linear model that is observed is due only to random chance (and not an underlying relationship). The randomization test compares the slopes calculated from the permuted response variable with the observed slope. If the observed slope is inconsistent with the slopes from permuting, we can conclude that there is some underlying relationship (and that the slope is not merely due to random chance).</p>
-<div id="observed-data-14" class="section level4 unnumbered">
-<h4>Observed data<a class="anchor" aria-label="anchor" href="#observed-data-14"><i class="fas fa-link"></i></a>
-</h4>
-<p>We will continue to use the crop data to investigate the linear relationship between <code>wheat</code> and <code>maize</code>. Note that the fitted least squares model (see Chapter <a href="cor-reg.html#cor-reg">3</a>) describing the relationship is given in Table <a href="inference-reg.html#tab:lsCrops">7.1</a>.</p>
-<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>
-<span id="tab:lsCrops">Table 7.1: </span>The least squares estimates of the intercept and slope are given in the <code>estimate</code> column. The observed slope is 0.195.
-</caption>
-<thead><tr>
-<th style="text-align:left;">
-term
-</th>
-<th style="text-align:right;">
-estimate
-</th>
-<th style="text-align:right;">
-std.error
-</th>
-<th style="text-align:right;">
-statistic
-</th>
-<th style="text-align:right;">
-p.value
-</th>
-</tr></thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-(Intercept)
-</td>
-<td style="text-align:right;">
-1.033
-</td>
-<td style="text-align:right;">
-0.091
-</td>
-<td style="text-align:right;">
-11.3
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-maize
-</td>
-<td style="text-align:right;">
-0.195
-</td>
-<td style="text-align:right;">
-0.012
-</td>
-<td style="text-align:right;">
-16.4
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-</tbody>
-</table></div>
-<p>From the “estimate” column, we can write our least squares regression line as
-<span class="math display">\[
-\hat{y} = 1.033 + 0.195x,
-\]</span>
-where <span class="math inline">\(\hat{y}\)</span> is the predicted wheat yield, and <span class="math inline">\(x\)</span> is the maize yield (both in tonnes per hectare).</p>
-<p>The other columns in Table <a href="inference-reg.html#tab:lsCrops">7.1</a> are further described in Section <a href="inference-reg.html#mathslope">7.1.3</a> when we introduce theory-based methods for inference on a regression slope.</p>
-</div>
-<div id="variability-of-the-statistic-12" class="section level4 unnumbered">
-<h4>Variability of the statistic<a class="anchor" aria-label="anchor" href="#variability-of-the-statistic-12"><i class="fas fa-link"></i></a>
-</h4>
-<p>After permuting the data, the least squares estimate of the line can be computed. Repeated permutations and slope calculations describe the variability in the line (i.e., in the slope) due only to the natural variability and not due to a relationship between <code>wheat</code> and <code>maize</code>. Figure <a href="inference-reg.html#fig:permwheatlm">7.9</a> shows two different permutations of <code>wheat</code> and the resulting linear models.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:permwheatlm"></span>
-<img src="07-inference-reg_files/figure-html/permwheatlm-1.png" alt="Two different permutations of the wheat variable with slightly different least squares regression lines." width="47%"><img src="07-inference-reg_files/figure-html/permwheatlm-2.png" alt="Two different permutations of the wheat variable with slightly different least squares regression lines." width="47%"><p class="caption">
-Figure 7.9: Two different permutations of the wheat variable with slightly different least squares regression lines.
-</p>
-</div>
-<p>As you can see, sometimes the slope of the permuted data is positive, sometimes it is negative. Because the randomization happens under the condition of no underlying relationship (because the response variable is completely mixed with the explanatory variable), we expect to see the center of the randomized slope distribution to be zero.</p>
-</div>
-<div id="observed-statistic-vs.-null-value-5" class="section level4 unnumbered">
-<h4>Observed statistic vs. null value<a class="anchor" aria-label="anchor" href="#observed-statistic-vs.-null-value-5"><i class="fas fa-link"></i></a>
-</h4>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:nulldistCrop"></span>
-<img src="07-inference-reg_files/figure-html/nulldistCrop-1.png" alt="Histogram of slopes given different permutations of the wheat variable.  The vertical red line is at the observed value of the slope, $b_1$ = 0.195." width="672"><p class="caption">
-Figure 7.10: Histogram of slopes given different permutations of the wheat variable. The vertical red line is at the observed value of the slope, <span class="math inline">\(b_1\)</span> = 0.195.
-</p>
-</div>
-<p>As we can see from Figure <a href="inference-reg.html#fig:nulldistCrop">7.10</a>, a slope estimate as extreme as the observed slope estimate (the red line) never happened in many repeated permutations of the <code>wheat</code> variable.
-That is, if indeed there were no linear relationship between <code>wheat</code> and <code>maize</code>, the natural variability of the slopes would produce estimates between approximately -0.1 and +0.1.
-Therefore, we believe that the slope observed on the original data is not just due to natural variability and indeed, there is a linear relationship between wheat and maize crop yield (in tonnes per hectare) in the US.</p>
-</div>
-</div>
-<div id="bootbeta1" class="section level3" number="7.1.2">
-<h3>
-<span class="header-section-number">7.1.2</span> Bootstrap confidence interval for <span class="math inline">\(\beta_1\)</span><a class="anchor" aria-label="anchor" href="#bootbeta1"><i class="fas fa-link"></i></a>
-</h3>
-<p>As we have seen in previous chapters, we can use bootstrapping to estimate the sampling distribution of the statistic of interest (here, the slope) without the null assumption of no relationship (which was the condition in the randomization test). Because interest is now in creating a CI, there is no null hypothesis, so there won’t be any reason to permute either of the variables.</p>
-<div id="observed-data-15" class="section level4 unnumbered">
-<h4>Observed data<a class="anchor" aria-label="anchor" href="#observed-data-15"><i class="fas fa-link"></i></a>
-</h4>
-<p>Returning to the crop data, we may want to consider the relationship between yields in <code>peas</code> and <code>wheat</code>. Are <code>peas</code> a good predictor of <code>wheat</code>? And if so, what is their relationship? That is, what is the slope that models the average wheat yield as a function of peas yield (both in tonnes per hectare)?</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:peasPlot"></span>
-<img src="07-inference-reg_files/figure-html/peasPlot-1.png" alt="Original data: wheat yield as a linear model of peas yield, in tonnes per hectare.  Notice that the relationship between `peas` and `wheat` is not as strong as the relationship we saw previously between `maize` and `wheat`." width="672"><p class="caption">
-Figure 7.11: Original data: wheat yield as a linear model of peas yield, in tonnes per hectare. Notice that the relationship between <code>peas</code> and <code>wheat</code> is not as strong as the relationship we saw previously between <code>maize</code> and <code>wheat</code>.
-</p>
-</div>
-</div>
-<div id="variability-of-the-statistic-13" class="section level4 unnumbered">
-<h4>Variability of the statistic<a class="anchor" aria-label="anchor" href="#variability-of-the-statistic-13"><i class="fas fa-link"></i></a>
-</h4>
-<p>Because we are not focused on a null distribution, we sample with replacement <span class="math inline">\(n=58\)</span> <span class="math inline">\((x,y)\)</span>-pairs from the original dataset. Recall that with bootstrapping, we always resample the same number of observations as we start with in order to mimic the process of taking a sample from the population. When sampling in the linear model case, consider each observation to be a single dot on the scatterplot. If the dot is resampled, both the <code>wheat</code> and the <code>peas</code> measurement are observed. The measurements are linked to the dot (i.e., to the year in which the measurements were taken).</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:crop2BS"></span>
-<img src="07-inference-reg_files/figure-html/crop2BS-1.png" alt="Original and one bootstrap sample of the crop data.  Note that it is difficult to differentiate the two plots, as (within a single bootstrap sample) the observations which have been resampled twice are plotted as points on top of one another.  The orange circle represent points in the original data which were not included in the bootstrap sample.  The blue circle represents a point that was repeatedly resampled (and is therefore darker) in the bootstrap sample.  The green circle represents a particular structure to the data which is observed in both the original and bootstrap samples." width="47%"><img src="07-inference-reg_files/figure-html/crop2BS-2.png" alt="Original and one bootstrap sample of the crop data.  Note that it is difficult to differentiate the two plots, as (within a single bootstrap sample) the observations which have been resampled twice are plotted as points on top of one another.  The orange circle represent points in the original data which were not included in the bootstrap sample.  The blue circle represents a point that was repeatedly resampled (and is therefore darker) in the bootstrap sample.  The green circle represents a particular structure to the data which is observed in both the original and bootstrap samples." width="47%"><p class="caption">
-Figure 7.12: Original and one bootstrap sample of the crop data. Note that it is difficult to differentiate the two plots, as (within a single bootstrap sample) the observations which have been resampled twice are plotted as points on top of one another. The orange circle represent points in the original data which were not included in the bootstrap sample. The blue circle represents a point that was repeatedly resampled (and is therefore darker) in the bootstrap sample. The green circle represents a particular structure to the data which is observed in both the original and bootstrap samples.
-</p>
-</div>
-<p>Figure <a href="inference-reg.html#fig:crop2BS">7.12</a> shows the original data as compared with a single bootstrap sample, resulting in (slightly) different linear models.
-The orange circle represent points in the original data which were not included in the bootstrap sample.
-The blue circle represents a point that was repeatedly resampled (and is therefore darker) in the bootstrap sample.
-The green circle represents a particular structure to the data which is observed in both the original and bootstrap samples.
-By repeatedly resampling, we can see dozens of bootstrapped slopes on the same plot in Figure <a href="inference-reg.html#fig:cropBS">7.13</a>.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:cropBS"></span>
-<img src="07-inference-reg_files/figure-html/cropBS-1.png" alt="Repeated bootstrap resamples of size 58 are taken from the original data.  Each of the bootstrapped linear model is slightly different." width="672"><p class="caption">
-Figure 7.13: Repeated bootstrap resamples of size 58 are taken from the original data. Each of the bootstrapped linear model is slightly different.
-</p>
-</div>
-<p>Recall that in order to create a confidence interval for the slope, we need to find the range of values that the statistic (here the slope) takes on from different bootstrap samples.
-Figure <a href="inference-reg.html#fig:peasBSslopes">7.14</a> is a histogram of the relevant bootstrapped slopes.
-We can see that a 95% bootstrap percentile interval for the true population slope is given by (0.061, 0.52).
-We are 95% confident that for the model describing the population of crops of <code>peas</code> and <code>wheat</code>, a one ton per hectare increase in <code>peas</code> yield will be associated with an increase in predicted average <code>wheat</code> yield of between 0.061 and 0.52 tonnes per hectare.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:peasBSslopes"></span>
-<img src="07-inference-reg_files/figure-html/peasBSslopes-1.png" alt="The original crop data on wheat and peas is bootstrapped 1,000 times. The histogram provides a sense for the variability of the standard deviation of the linear model slope from sample to sample." width="1440"><p class="caption">
-Figure 7.14: The original crop data on wheat and peas is bootstrapped 1,000 times. The histogram provides a sense for the variability of the standard deviation of the linear model slope from sample to sample.
-</p>
-</div>
-</div>
-</div>
-<div id="mathslope" class="section level3" number="7.1.3">
-<h3>
-<span class="header-section-number">7.1.3</span> Theory-based inferential methods for <span class="math inline">\(\beta_1\)</span><a class="anchor" aria-label="anchor" href="#mathslope"><i class="fas fa-link"></i></a>
-</h3>
-<p>When certain technical conditions apply, it is convenient to use mathematical approximations to test and estimate the slope parameter.
-The approximations will build on the <span class="math inline">\(t\)</span>-distribution which was described in Chapter <a href="inference-num.html#inference-num">6</a>.
-This mathematical model is often correct and is usually easy to implement computationally.
-The validity of the technical conditions will be considered in detail in Section <a href="inference-reg.html#tech-cond-linmod">7.2</a>.</p>
-<p>In this section, we discuss uncertainty in the estimates of the slope
-and <span class="math inline">\(y\)</span>-intercept for a regression line. Just as we identified standard
-errors for point estimates in previous chapters, we first discuss
-standard errors for these new estimates.</p>
-<div id="midterm-elections-and-unemployment" class="section level4 unnumbered">
-<h4>Midterm elections and unemployment<a class="anchor" aria-label="anchor" href="#midterm-elections-and-unemployment"><i class="fas fa-link"></i></a>
-</h4>
-<p></p>
-<p>Elections for members of the United States House of Representatives
-occur every two years, coinciding every four years with the U.S.
-Presidential election. The set of House elections occurring during the
-middle of a Presidential term are called midterm elections. In America’s two-party
-system (the vast majority of House members through history have been either Republicans or Democrats), one political theory suggests the higher the unemployment rate,
-the worse the President’s party will do in the midterm elections. In 2020, there were 232 Democrats, 198 Republicans, and 1 Libertarian in the House.</p>
-<p>To assess the validity of this claim, we can compile historical data and
-look for a connection. We consider every midterm election from 1898 to
-2018, with the exception of those elections during the Great Depression.
-The House of Representatives is made up of 435 voting members. Figure <a href="inference-reg.html#fig:unemploymentAndChangeInHouse">7.15</a> shows these data and the
-least-squares regression line:
-<span class="math display">\[\begin{aligned}
-&amp;\text{predicted % change in House seats for President's party}  \\
-&amp;\qquad\qquad= -7.36 - 0.89 \times \text{(unemployment rate)}\end{aligned}\]</span>
-We consider the percent change in the number of seats of the President’s
-party (e.g., percent change in the number of seats for Republicans in
-2018) against the unemployment rate.</p>
-<div class="guidedpractice">
-<p>What are the observational units in this data set?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;We measured the unemployment rate and percent change in House seats for the President’s party for each midterm election from 1898 to 2018, except those elections during the Great Depression. Thus, the observational unit is a single midterm election.&lt;/p&gt;"><sup>170</sup></a></p>
-</div>
-<p>Examining the data, there are no clear deviations from linearity or substantial outliers (see Section <a href="inference-reg.html#tech-cond-linmod">7.2</a> for a discussion on using residuals to visualize how well a linear model fits the data).
-While the data are collected sequentially, a separate analysis was used to check for any apparent correlation between successive observations in time; no such correlation was found.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unemploymentAndChangeInHouse"></span>
-<img src="07-inference-reg_files/figure-html/unemploymentAndChangeInHouse-1.png" alt="The percent change in House seats for the President's party in each midterm election from 1898 to 2010 plotted against the unemployment rate. The two points for the Great Depression have been removed, and a least squares regression line has been fit to the data." width="672"><p class="caption">
-Figure 7.15: The percent change in House seats for the President’s party in each midterm election from 1898 to 2010 plotted against the unemployment rate. The two points for the Great Depression have been removed, and a least squares regression line has been fit to the data.
-</p>
-</div>
-<div class="guidedpractice">
-<p>The data for the Great Depression (1934 and 1938) were removed because
-the unemployment rate was 21% and 18%, respectively. Do you agree that
-they should be removed for this investigation? Why or why not?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The answer to this question relies on the idea that statistical data analysis is somewhat of an art. That is, in many situations, there is no “right” answer. As you do more and more analyses on your own, you will come to recognize the nuanced understanding which is needed for a particular dataset. In terms of the Great Depression, we will provide two contrasting considerations.
-Each of these points would have very high leverage on any
-least-squares regression line, and years with such high
-unemployment may not help us understand what would happen
-in other years where the unemployment is only modestly high.
-On the other hand, these are exceptional cases, and we would
-be discarding important information if we exclude them from
-a final analysis.&lt;/p&gt;"><sup>171</sup></a></p>
-</div>
-<p>There is a negative slope in the line shown in Figure <a href="inference-reg.html#fig:unemploymentAndChangeInHouse">7.15</a>. However, this slope (and the
-y-intercept) are only estimates of the parameter values. We might
-wonder, is this convincing evidence that the “true” linear model has a
-negative slope? That is, do the data provide strong evidence that the
-political theory is accurate, where the unemployment rate is a useful
-predictor of the midterm election? We can frame this investigation into
-a statistical hypothesis test:</p>
-<ul>
-<li>
-<span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_1 = 0\)</span>. The true linear model has a zero slope.<br>
-</li>
-<li>
-<span class="math inline">\(H_A\)</span>: <span class="math inline">\(\beta_1 &lt; 0\)</span>. The true linear model has a negative slope. The percent change in House seats for the President’s party is negatively correlated with percent unemployment.</li>
-</ul>
-<p>To assess the hypotheses, we identify a standard error for the estimate, compute an appropriate test statistic, and identify the p-value.</p>
-</div>
-<div id="understanding-regression-output-from-software" class="section level4 unnumbered">
-<h4>Understanding regression output from software<a class="anchor" aria-label="anchor" href="#understanding-regression-output-from-software"><i class="fas fa-link"></i></a>
-</h4>
-<p>Just like other point estimates we have seen before, we can compute a
-standard error and test statistic for <span class="math inline">\(b_1\)</span>. We will generally label the
-test statistic using a <span class="math inline">\(T\)</span>, since it follows the <span class="math inline">\(t\)</span>-distribution.</p>
-<p>We will rely on statistical software to compute the standard error and
-leave the explanation of how this standard error is determined to a
-second or third statistics course.
-Table <a href="inference-reg.html#tab:midtermUnempRegTable">7.2</a> shows software output for the least
-squares regression line in Figure <a href="inference-reg.html#fig:unemploymentAndChangeInHouse">7.15</a>. The row labeled <code>unemp</code> includes all relevant information about the slope estimate (i.e., the coefficient of the unemployment variable).</p>
-<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>
-<span id="tab:midtermUnempRegTable">Table 7.2: </span>Output from statistical software for the regression
-line modeling the midterm election losses for the
-President’s party as a response to unemployment.
-</caption>
-<thead><tr>
-<th style="text-align:left;">
-term
-</th>
-<th style="text-align:right;">
-estimate
-</th>
-<th style="text-align:right;">
-std.error
-</th>
-<th style="text-align:right;">
-statistic
-</th>
-<th style="text-align:right;">
-p.value
-</th>
-</tr></thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-(Intercept)
-</td>
-<td style="text-align:right;">
--7.36
-</td>
-<td style="text-align:right;">
-5.155
-</td>
-<td style="text-align:right;">
--1.43
-</td>
-<td style="text-align:right;">
-0.165
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-unemp
-</td>
-<td style="text-align:right;">
--0.89
-</td>
-<td style="text-align:right;">
-0.835
-</td>
-<td style="text-align:right;">
--1.07
-</td>
-<td style="text-align:right;">
-0.296
-</td>
-</tr>
-</tbody>
-</table></div>
-<div class="workedexample">
-<p>What do the first and second columns of Table <a href="inference-reg.html#tab:midtermUnempRegTable">7.2</a> represent?</p>
-<hr>
-<p>The entries in the first column represent the least squares estimates, <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span>. Using the estimates, we could write the equation for the least
-square regression line as <span class="math display">\[\begin{aligned}
-  \hat{y} = -7.36 - 0.89 x
-  \end{aligned}\]</span> where <span class="math inline">\(\hat{y}\)</span> in this case represents the predicted
-change in the number of seats for the president’s party, and <span class="math inline">\(x\)</span>
-represents the unemployment rate.</p>
-<p>The values in the second column correspond to the standard errors of each
-estimate, <span class="math inline">\(SE(b_0)\)</span> and <span class="math inline">\(SE(b_1)\)</span>. We will use these values when computing a test statistic or confidence interval for <span class="math inline">\(\beta_0\)</span> or <span class="math inline">\(\beta_1\)</span>.</p>
-</div>
-<p>We previously used a <span class="math inline">\(t\)</span>-test statistic for hypothesis testing in the
-context of numerical data. Regression is very similar. In the hypotheses
-we consider, the null value for the slope is 0, so we can compute the
-test statistic using the T-score formula:
-<span class="math display">\[\begin{aligned}
-T
-  = \frac{\text{estimate} - \text{null value}}{\text{SE(estimate)}}
-  = \frac{-0.89 - 0}{0.835}
-  = -1.07\end{aligned}\]</span> This corresponds to the third column of
-Table <a href="inference-reg.html#tab:midtermUnempRegTable">7.2</a> .</p>
-<div class="workedexample">
-<p>Use Table <a href="inference-reg.html#tab:midtermUnempRegTable">7.2</a> to determine the p-value for the
-hypothesis test.</p>
-<hr>
-<p>The last column of the table gives the p-value for a
-<em>two-sided</em> hypothesis test for the coefficient of the unemployment rate:
-0.296. However, our test is <em>one-sided</em> — we are only interested in detecting if the true slope coefficient is negative. Since our estimated slope coefficient is negative, our one-sided p-value is just half of the two-sided p-value: 0.148.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Note that if our slope coefficient had been positive — the &lt;em&gt;opposite&lt;/em&gt; sign as &lt;span class="math inline"&gt;\(H_A\)&lt;/span&gt; — then the one-sided p-value would be the probability of observing that value or lower, or &lt;span class="math inline"&gt;\(1 - 0.296/2 = 1 - 0.148 = 0.852\)&lt;/span&gt;.&lt;/p&gt;'><sup>172</sup></a> With this p-value, the data do not provide convincing evidence that a
-higher unemployment rate has a negative correlation with percent of seats lost in the house. In other words, we do not have significant evidence for the political theory that the higher the unemployment rate, the worse the President’s party will do in the midterm elections.</p>
-</div>
-</div>
-<div id="intuition-vs.-formal-inference" class="section level4 unnumbered">
-<h4>Intuition vs. formal inference<a class="anchor" aria-label="anchor" href="#intuition-vs.-formal-inference"><i class="fas fa-link"></i></a>
-</h4>
-<p>As the final step in a mathematical hypothesis test for the slope, we use the information provided to make a conclusion about whether or not the data could have come from a population where the true slope was zero (i.e., <span class="math inline">\(\beta_1 = 0\)</span>). Before evaluating the formal hypothesis claim, sometimes it is important to check your intuition. Based on everything we’ve seen in the examples above describing the variability of a line from sample to sample, as yourself if the linear relationship given by the data could have come from a population in which the slope was truly zero.</p>
-<div class="workedexample">
-<p>Elmhurst College in Illinois released anonymized data for family income and financial support provided by the school for Elmhurst’s first-year students in 2011. Figure <a href="inference-reg.html#fig:elmhurstScatterWLSROnly-CLTsection">7.16</a> shows the least-squares regression line fit to a scatterplot of a sample of the data. How sure are you that the slope is
-statistically significantly different from zero? That is, do you think a
-formal hypothesis test would reject the claim that the true slope of the
-line should be zero?</p>
-<hr>
-<p>While the relationship between the variables is not perfect, there is an evident decreasing trend in the data.
-This suggests the hypothesis test will reject the null claim that the slope is zero.</p>
-</div>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:elmhurstScatterWLSROnly-CLTsection"></span>
-<img src="07-inference-reg_files/figure-html/elmhurstScatterWLSROnly-CLTsection-1.png" alt="Gift aid and family income for a random sample of 50 first-year students from Elmhurst College, shown with a regression line." width="672"><p class="caption">
-Figure 7.16: Gift aid and family income for a random sample of 50 first-year students from Elmhurst College, shown with a regression line.
-</p>
-</div>
-<p>The point of the tools in this section are to go beyond a visual interpretation of the linear relationship toward a formal mathematical claim about the statistical significance of the slope estimate.</p>
-<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>
-<span id="tab:rOutputForIncomeAidLSRLineInInferenceSection">Table 7.3: </span>Summary of least squares fit for the Elmhurst College data, where we are predicting the gift aid by the university based on the family income of students.
-</caption>
-<thead><tr>
-<th style="text-align:left;">
-term
-</th>
-<th style="text-align:right;">
-estimate
-</th>
-<th style="text-align:right;">
-std.error
-</th>
-<th style="text-align:right;">
-statistic
-</th>
-<th style="text-align:right;">
-p.value
-</th>
-</tr></thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-(Intercept)
-</td>
-<td style="text-align:right;">
-24319.329
-</td>
-<td style="text-align:right;">
-1291.450
-</td>
-<td style="text-align:right;">
-18.83
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-family_income
-</td>
-<td style="text-align:right;">
--0.043
-</td>
-<td style="text-align:right;">
-0.011
-</td>
-<td style="text-align:right;">
--3.98
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-</tbody>
-</table></div>
-<div class="guidedpractice">
-<p>Table <a href="inference-reg.html#tab:rOutputForIncomeAidLSRLineInInferenceSection">7.3</a> shows
-statistical software output from fitting the least squares regression
-line shown in Figure <a href="inference-reg.html#fig:elmhurstScatterWLSROnly-CLTsection">7.16</a>. Use the output to formally
-evaluate the following hypotheses.</p>
-<ul>
-<li>
-<span class="math inline">\(H_0\)</span>: The true coefficient for family income is zero.<br>
-</li>
-<li>
-<span class="math inline">\(H_A\)</span>: The true coefficient for family income is not zero.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;We look in the second row corresponding
-to the family income variable.
-We see the point estimate of the slope of the line is -0.0431,
-the standard error of this estimate is 0.0108, and the &lt;span class="math inline"&gt;\(t\)&lt;/span&gt;-test
-statistic is &lt;span class="math inline"&gt;\(T = -3.98\)&lt;/span&gt;.
-The p-value corresponds exactly to the two-sided test we are
-interested in: 0.0002.
-The p-value is so small that we have very strong evidence that family income and financial aid at Elmhurst
-College for freshman entering in the year 2011 are
-correlated and the true slope parameter differs from 0,
-just as we believed in our analysis of Figure &lt;a href="inference-reg.html#fig:elmhurstScatterWLSROnly-CLTsection"&gt;7.16&lt;/a&gt;.&lt;/p&gt;'><sup>173</sup></a>
-</li>
-</ul>
-</div>
-<div class="importantbox">
-<p><strong>Inference for regression.</strong></p>
-<p>We usually rely on statistical software to
-identify point estimates, standard errors, test statistics, and p-values
-in practice. However, be aware that software will not generally check
-whether the method is appropriate, meaning we must still verify
-conditions are met. See Section <a href="inference-reg.html#tech-cond-linmod">7.2</a>.</p>
-</div>
-<!-- TODO: Add section on how slope test is equivalent to testing correlation -->
-</div>
-<div id="theory-based-confidence-interval-for-a-regression-coefficient" class="section level4 unnumbered">
-<h4>Theory-based confidence interval for a regression coefficient<a class="anchor" aria-label="anchor" href="#theory-based-confidence-interval-for-a-regression-coefficient"><i class="fas fa-link"></i></a>
-</h4>
-<p>Similar to how we can conduct a hypothesis test for a model coefficient
-using regression output, we can also construct a confidence interval for
-that coefficient.</p>
-<div class="onebox">
-<p><strong>Confidence intervals for coefficients</strong></p>
-<p>Confidence intervals for model
-coefficients (e.g., the <span class="math inline">\(y\)</span>-intercept or the slope) can be computed using the <span class="math inline">\(t\)</span>-distribution:
-<span class="math display">\[\begin{aligned}
-  b_i \ \pm\ t_{df}^{\star} \times SE(b_{i})
-  \end{aligned}\]</span> where <span class="math inline">\(t_{df}^{\star}\)</span> is the appropriate <span class="math inline">\(t\)</span>-value
-corresponding to the confidence level with the model’s degrees of
-freedom. For simple linear regression, the model’s degrees of freedom are <span class="math inline">\(n-1\)</span>.</p>
-</div>
-<div class="workedexample">
-<p>Compute a 95% confidence interval for the slope coefficient using the
-regression output from Table <a href="inference-reg.html#tab:rOutputForIncomeAidLSRLineInInferenceSection">7.3</a>.</p>
-<hr>
-<p>The point estimate is <span class="math inline">\(b_1 = -0.0431\)</span> and the standard error is <span class="math inline">\(SE(b_1) = 0.0108\)</span>. The degrees of freedom for the distribution are <span class="math inline">\(df = n - 2 = 48\)</span>, and are typically noted in the regression output, allowing us to identify <span class="math inline">\(t_{48}^{\star} = 2.01\)</span> for use in the confidence interval.</p>
-<p>We can now construct the confidence interval in the usual way:
-<span class="math display">\[\begin{aligned}
-  \text{point estimate} &amp;\pm t_{48}^{\star} \times SE(\text{point estimate}) \\
-  &amp;\qquad\to\qquad \\
-    -0.0431  &amp;\pm 2.01 \times 0.0108 \\
-    &amp;\qquad\to\qquad\\
-    (-0.&amp;0648, -0.0214)
-  \end{aligned}\]</span>
-We are 95% confident that, with each $1000 increase in
-family income, the university’s gift aid is predicted to decrease on average by between $21.40 to $64.80.</p>
-</div>
-<p>On the topic of intervals in this book, we’ve focused exclusively on
-confidence intervals for model parameters. However, there are other
-types of intervals that may be of interest, including prediction
-intervals for a response value and also confidence intervals for a mean
-response value in the context of regression. These intervals are typically covered in a second course in statistics.</p>
-<!-- TODO: Edit from here to the end -->
-</div>
-</div>
-</div>
-<div id="tech-cond-linmod" class="section level2" number="7.2">
-<h2>
-<span class="header-section-number">7.2</span> Checking model conditions<a class="anchor" aria-label="anchor" href="#tech-cond-linmod"><i class="fas fa-link"></i></a>
-</h2>
-<p>In the previous sections, we used randomization and bootstrapping to perform inference when the mathematical model was not valid due to violations of the technical conditions. In this section, we’ll provide details for when the mathematical model is appropriate and a discussion of technical conditions needed for the randomization and bootstrapping procedures.</p>
-<div id="what-are-the-technical-conditions" class="section level4 unnumbered">
-<h4>What are the technical conditions?<a class="anchor" aria-label="anchor" href="#what-are-the-technical-conditions"><i class="fas fa-link"></i></a>
-</h4>
-<p>When fitting a least squares line, we generally require</p>
-<ul>
-<li><p><strong>Linearity.</strong> The data should show a linear trend. If there is a nonlinear trend
-(e.g., first panel of Figure <a href="inference-reg.html#fig:whatCanGoWrongWithLinearModel">7.17</a>, an advanced regression
-method from another book or later course should be applied.</p></li>
-<li><p><strong>Independent observations.</strong> Be cautious about applying regression to data, which are sequential
-observations in time such as a stock price each day. Such data may
-have an underlying structure that should be considered in a model
-and analysis. An example of a data set where successive observations
-are not independent is shown in the fourth panel of
-Figure <a href="inference-reg.html#fig:whatCanGoWrongWithLinearModel">7.17</a>. There are also other
-instances where correlations within the data are important, such as the paired data described in Section <a href="inference-num.html#paired-data">6.2</a>.</p></li>
-<li><p><strong>Nearly normal residuals.</strong> Generally, the residuals must be nearly normal. When this condition
-is found to be unreasonable, it is usually because of outliers or
-concerns about influential points, which were discussed in
-Section <a href="cor-reg.html#outliers-in-regression">3.3</a>. An example of a
-residual that would be a potentially concern is shown in
-Figure <a href="inference-reg.html#fig:whatCanGoWrongWithLinearModel">7.17</a>, where one observation is
-clearly much further from the regression line than the others.</p></li>
-<li><p><strong>Constant or equal variability.</strong> The variability of points around the least squares line remains
-roughly constant. An example of non-constant variability is shown in
-the third panel of
-Figure <a href="inference-reg.html#fig:whatCanGoWrongWithLinearModel">7.17</a>, which represents the
-most common pattern observed when this condition fails: the
-variability of <span class="math inline">\(y\)</span> is larger when <span class="math inline">\(x\)</span> is larger.</p></li>
-</ul>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:whatCanGoWrongWithLinearModel"></span>
-<img src="07-inference-reg_files/figure-html/whatCanGoWrongWithLinearModel-1.png" alt="Four examples showing when the methods in this chapter are insufficient to apply to the data. The top set of graphs represents the $x$ and $y$ relationship.  The bottom set of graphs is a residual plot.  First panel: linearity fails. Second panel: there are outliers, most especially one point that is very far away from the line. Third panel: the variability of the errors is related to the value of $x$. Fourth panel: a time series data set is shown, where successive observations are highly correlated." width="100%"><p class="caption">
-Figure 7.17: Four examples showing when the methods in this chapter are insufficient to apply to the data. The top set of graphs represents the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> relationship. The bottom set of graphs is a residual plot. First panel: linearity fails. Second panel: there are outliers, most especially one point that is very far away from the line. Third panel: the variability of the errors is related to the value of <span class="math inline">\(x\)</span>. Fourth panel: a time series data set is shown, where successive observations are highly correlated.
-</p>
-</div>
-<div class="guidedpractice">
-<p>Should we have concerns about applying least squares regression to the
-Elmhurst data in Figure <a href="cor-reg.html#fig:elmhurstScatterW2Lines">3.13</a>?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The trend appears to be linear, the data fall around the line with no obvious outliers, the variance is roughly constant. These are also not time series observations. Least squares regression can be applied to these data.&lt;/p&gt;"><sup>174</sup></a></p>
-</div>
-<p>The technical conditions are often remembered using the <strong>LINE</strong> mnemonic.
-The linearity, normality, and equality of variance conditions usually can be assessed through residual plots, as seen in Figure <a href="inference-reg.html#fig:whatCanGoWrongWithLinearModel">7.17</a>.
-A careful consideration of the experimental design should be undertaken to confirm that the observed values are indeed independent.</p>
-<ul>
-<li>L: <strong>linear</strong> model</li>
-<li>I: <strong>independent</strong> observations</li>
-<li>N: points are <strong>normally</strong> distributed around the line</li>
-<li>E: <strong>equal</strong> variability around the line for all values of the explanatory variable</li>
-</ul>
-</div>
-<div id="why-do-we-need-technical-conditions" class="section level4 unnumbered">
-<h4>Why do we need technical conditions?<a class="anchor" aria-label="anchor" href="#why-do-we-need-technical-conditions"><i class="fas fa-link"></i></a>
-</h4>
-<p>As with other inferential techniques we have covered in this text, if the technical conditions above don’t hold, then it is not possible to make concluding claims about the population.
-That is, without the technical conditions, the T-score (or Z-score) will not have the assumed t-distribution (or standard normal Z distribution).
-That said, it is almost always impossible to check the conditions precisely, so we look for large deviations from the conditions.
-If there are large deviations, we will be unable to trust the calculated p-value or the endpoints of the resulting confidence interval.</p>
-<div id="what-about-linearity" class="section level5 unnumbered">
-<h5>What about <strong>L</strong>inearity?<a class="anchor" aria-label="anchor" href="#what-about-linearity"><i class="fas fa-link"></i></a>
-</h5>
-<p>The linearity condition is among the most important if your goal is to understand a linear model between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>.
-For example, the value of the slope will not be at all meaningful if the true relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> is quadratic.
-Not only should we be cautious about the inference, but the model <em>itself</em> is also not an accurate portrayal of the relationship between the variables. An extended discussion on the different methods for modeling functional forms other than linear is outside the scope of this text.</p>
-</div>
-<div id="what-about-independence" class="section level5 unnumbered">
-<h5>What about <strong>I</strong>ndependence?<a class="anchor" aria-label="anchor" href="#what-about-independence"><i class="fas fa-link"></i></a>
-</h5>
-<p>The technical condition describing the independence of the observations is often the most crucial but also the most difficult to diagnose. It is also extremely difficult to gather a dataset which is a true random sample from the population of interest. (Note: a true randomized experiment from a fixed set of individuals is much easier to implement, and indeed, randomized experiments are done in most medical studies these days.)</p>
-<p>Dependent observations can bias results in ways that produce fundamentally flawed analyses. That is, if you hang out at the gym measuring height and weight, your linear model is surely not a representation of all students at your university. At best it is a model describing students who use the gym (but also who are willing to talk to you, that use the gym at the times you were there measuring, etc.).</p>
-<p>In lieu of trying to answer whether or not your observations are a true random sample, you might instead focus on whether or not you believe your observations are representative of the populations.
-Humans are notoriously bad at implementing random procedures, so you should be wary of any process that used human intuition to balance the data with respect to, for example, the demographics of the individuals in the sample.</p>
-</div>
-<div id="what-about-normality" class="section level5 unnumbered">
-<h5>What about <strong>N</strong>ormality?<a class="anchor" aria-label="anchor" href="#what-about-normality"><i class="fas fa-link"></i></a>
-</h5>
-<p>The normality condition requires that points vary symmetrically around the line, spreading out in a bell-shaped fashion. You should consider the “bell” of the normal distribution as sitting on top of the line (coming off the paper in a 3-D sense) so as to indicate that the points are dense close to the line and disperse gradually as they get farther from the line.</p>
-<p>The normality condition is less important than linearity or independence for a few reasons.
-First, the linear model fit with least squares will still be an unbiased estimate of the true population model.
-However, the standard errors associated with variability of the line will not be well estimated.
-Fortunately the Central Limit Theorem tells us that most of the inferential analyses (e.g., standard errors, p-values, confidence intervals) done using the mathematical model will still hold (even if the data are not normally distributed around the line) as long as the sample size is large enough.</p>
-<p>One analysis method that <em>does</em> require normality, regardless of sample size, is creating intervals which predict the response of individual outcomes at a given <span class="math inline">\(x\)</span> value, using the linear model, a topic covered in later courses.
-On additional reason to worry slightly less about normality is that neither the randomization test nor the bootstrapping procedures require the data to be normal around the line.</p>
-</div>
-<div id="what-about-equal-variability" class="section level5 unnumbered">
-<h5>What about <strong>E</strong>qual variability?<a class="anchor" aria-label="anchor" href="#what-about-equal-variability"><i class="fas fa-link"></i></a>
-</h5>
-<p>As with normality, the equal variability condition (that points are spread out in similar ways around the line for all values of <span class="math inline">\(x\)</span>) will not cause problems for the estimate of the linear model, for a randomization test, or for a bootstrap confidence interval.
-However, data that exhibit non-equal variance across the range of <span class="math inline">\(x\)</span>-values will have the potential to seriously mis-estimate the variability of the slope which will have consequences for the inference results (i.e., hypothesis tests and confidence intervals).</p>
-<p>When the equal variability condition is violated and a theory-based analysis (e.g., p-value from T-score) is needed, there are existing methods which can easily handle the unequal variance (e.g., weighted least squares analysis), but these are covered in a later course.</p>
-</div>
-</div>
-</div>
-<div id="r-inference-for-regression" class="section level2" number="7.3">
-<h2>
-<span class="header-section-number">7.3</span> <code>R</code>: Inference for regression<a class="anchor" aria-label="anchor" href="#r-inference-for-regression"><i class="fas fa-link"></i></a>
-</h2>
-<div id="inference-using-r-and-catstats-2" class="section level3" number="7.3.1">
-<h3>
-<span class="header-section-number">7.3.1</span> Inference using <code>R</code> and <code>catstats</code><a class="anchor" aria-label="anchor" href="#inference-using-r-and-catstats-2"><i class="fas fa-link"></i></a>
-</h3>
-<div id="simulation-based-inference-for-the-regression-slope" class="section level4 unnumbered">
-<h4>Simulation-based inference for the regression slope<a class="anchor" aria-label="anchor" href="#simulation-based-inference-for-the-regression-slope"><i class="fas fa-link"></i></a>
-</h4>
-<p>As a demonstration, we will apply the simulation-based inference functions for regression in the <code>catstats</code> package to our data on the change in House seats in the President’s party at midterm elections as a function of national unemployment rate. We need to drop the Great Depression years before we perform our simulations:</p>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#load data</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">midterms_house</span><span class="op">)</span></span>
-<span><span class="co">#Drop Great Depression years</span></span>
-<span><span class="va">d</span> <span class="op">&lt;-</span> <span class="va">midterms_house</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1935</span>, <span class="fl">1939</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p>Now that we have the correct data, we can perform a randomization test of the slope in the simple linear regression.</p>
-<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">catstats</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">621311</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/regression_test.html">regression_test</a></span><span class="op">(</span></span>
-<span>  formula <span class="op">=</span> <span class="va">house_change</span> <span class="op">~</span> <span class="va">unemp</span>,  <span class="co">#Always use response ~ explanatory</span></span>
-<span>  data <span class="op">=</span> <span class="va">d</span>,  <span class="co">#name of data set</span></span>
-<span>  summary_measure <span class="op">=</span> <span class="st">"slope"</span>, <span class="co">#Can also test correlation</span></span>
-<span>  direction <span class="op">=</span> <span class="st">"less"</span>, <span class="co">#Direction of alternative hypothesis</span></span>
-<span>  as_extreme_as <span class="op">=</span> <span class="op">-</span><span class="fl">0.89</span>, <span class="co">#Observed slope</span></span>
-<span>  number_repetitions <span class="op">=</span> <span class="fl">1000</span>  <span class="co">#Number of simulations</span></span>
-<span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="07-inference-reg_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;"></div>
-<p>The results give a scatterplot of the observed data with the regression line superimposed, and gives the observed slope (this should match what you put in for <code>as_extreme_as</code>). Next to the scatterplot, we have the null distribution of the slope coefficient, with the observed slope indicated by a vertical line and all values more extreme highlighted in red. The caption gives the number of simulations resulting in a slope more extreme than the observed: in this simulation we have 118/1000, for an approximate p-value of 0.118.</p>
-<p>To obtain a confidence interval for the slope, we use <code><a href="https://rdrr.io/pkg/catstats/man/regression_bootstrap_CI.html">regression_bootstrap_CI()</a></code>, with the same core arguments as <code><a href="https://rdrr.io/pkg/catstats/man/regression_test.html">regression_test()</a></code>.</p>
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">31143518</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/regression_bootstrap_CI.html">regression_bootstrap_CI</a></span><span class="op">(</span></span>
-<span>  formula <span class="op">=</span> <span class="va">house_change</span> <span class="op">~</span> <span class="va">unemp</span>,  <span class="co">#Always use response ~ explanatory</span></span>
-<span>  data <span class="op">=</span> <span class="va">d</span>,  <span class="co">#name of data set</span></span>
-<span>  summary_measure <span class="op">=</span> <span class="st">"slope"</span>, <span class="co">#Can also test correlation</span></span>
-<span>  confidence_level <span class="op">=</span> <span class="fl">0.95</span>, <span class="co">#confidence level as a proportion</span></span>
-<span>  number_repetitions <span class="op">=</span> <span class="fl">1000</span>  <span class="co">#Number of simulations</span></span>
-<span><span class="op">)</span></span></code></pre></div>
-<div class="inline-figure"><img src="07-inference-reg_files/figure-html/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;"></div>
-<p>Here we have the bootstrap distribution of the slope based on the observed data, with the upper and lower bounds of the confidence interval highlighted in red. The confidence interval is also given in the caption of the figure. Here, we are 95% confident that the true change in the number of seats in the House of Representatives for each additional percentage point in unemployment is between a decrease of 2.6 percent of seats and an increase of 0.3 percent of seats.</p>
-<p>Notice that the bootstrap distribution is not symmetric for this example! Because of this, the bootstrap confidence interval is different from what we would obtain from theory-based methods: (-2.6, 0.8). This is because the LINE technical conditions are not all satisfactorily met, though this is hard to see from the scatterplot for these data.</p>
-</div>
-<div id="theory-based-inference-for-the-regression-slope" class="section level4 unnumbered">
-<h4>Theory-based inference for the regression slope<a class="anchor" aria-label="anchor" href="#theory-based-inference-for-the-regression-slope"><i class="fas fa-link"></i></a>
-</h4>
-<p>To demonstrate theory-based inference in <code>R</code>, we will revisit the gift aid and income data. We want to know whether there is evidence to suggest that the slope of gift aid as a function of family income is non-zero. The function for linear regression in <code>R</code> is <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code>. Unlike <code>prob.test()</code> and <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code>, just running <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> doesn’t print all the information we need. This will produce only the coefficient estimates.</p>
-<pre><code>#&gt; 
-#&gt; Call:
-#&gt; lm(formula = gift_aid ~ family_income, data = elmhurst)
-#&gt; 
-#&gt; Coefficients:
-#&gt;   (Intercept)  family_income  
-#&gt;       24.3193        -0.0431</code></pre>
-<p>Instead, when doing linear regression, we want to save the regression results so we can get complete output using <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code>:</p>
-<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gift_reg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">gift_aid</span><span class="op">~</span><span class="va">family_income</span>, <span class="co">#Always use reponse ~ explanatory</span></span>
-<span>               data <span class="op">=</span> <span class="va">elmhurst</span><span class="op">)</span>  <span class="co">#Name of data set</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">gift_reg</span><span class="op">)</span>  <span class="co">#Obtain full results for regression</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Call:</span></span>
-<span><span class="co">#&gt; lm(formula = gift_aid ~ family_income, data = elmhurst)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Residuals:</span></span>
-<span><span class="co">#&gt;     Min      1Q  Median      3Q     Max </span></span>
-<span><span class="co">#&gt; -10.113  -3.623  -0.216   3.159  11.571 </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Coefficients:</span></span>
-<span><span class="co">#&gt;               Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
-<span><span class="co">#&gt; (Intercept)    24.3193     1.2915   18.83  &lt; 2e-16 ***</span></span>
-<span><span class="co">#&gt; family_income  -0.0431     0.0108   -3.98  0.00023 ***</span></span>
-<span><span class="co">#&gt; ---</span></span>
-<span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Residual standard error: 4.78 on 48 degrees of freedom</span></span>
-<span><span class="co">#&gt; Multiple R-squared:  0.249,  Adjusted R-squared:  0.233 </span></span>
-<span><span class="co">#&gt; F-statistic: 15.9 on 1 and 48 DF,  p-value: 0.000229</span></span></code></pre></div>
-<p>This produces a lot of output; we will focus on the <em>Coefficients</em> section. This gives us the estimated value for the slope, the standard error of the estimate, the t-statistic, and the p-value. We want the row labeled with the name of our explanatory variable, <code>family_income</code>. We estimate the slope to be -0.043 thousand dollars per additional thousand dollars in family income, and we have strong evidence against the null hypothesis that the slope is 0.</p>
-<p>We can compute confidence intervals by hand using the reported estimate, standard error, and df. We will need to compute a t-value as in Chapter <a href="inference-num.html#inference-num">6</a>:</p>
-<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#Get t-star for 90% confidence interval</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">.95</span>, df <span class="op">=</span> <span class="fl">48</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 1.68</span></span></code></pre></div>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#Lower confidence bound</span></span>
-<span><span class="op">-</span><span class="fl">0.04307</span> <span class="op">-</span> <span class="fl">1.677224</span><span class="op">*</span><span class="fl">0.01081</span></span>
-<span><span class="co">#&gt; [1] -0.0612</span></span>
-<span></span>
-<span><span class="co">#Upper confidence bound</span></span>
-<span><span class="op">-</span><span class="fl">0.04307</span> <span class="op">+</span> <span class="fl">1.677224</span><span class="op">*</span><span class="fl">0.01081</span></span>
-<span><span class="co">#&gt; [1] -0.0249</span></span></code></pre></div>
-<p>We can also use the <code><a href="https://rdrr.io/r/stats/confint.html">confint()</a></code> function in <code>R</code> to compute confidence intervals for regression coefficients.</p>
-<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="va">gift_reg</span>,   <span class="co">#name of regression results</span></span>
-<span>        level <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span>  <span class="co">#confidence level as a proportion</span></span>
-<span><span class="co">#&gt;                   5 %    95 %</span></span>
-<span><span class="co">#&gt; (Intercept)   22.1533 26.4854</span></span>
-<span><span class="co">#&gt; family_income -0.0612 -0.0249</span></span></code></pre></div>
-<p>In either case, we are 90% confident that gift aid will be $24.90 to $61.20 less per $1000 increase in family income.</p>
-</div>
-</div>
-<div id="catstats-function-summary-2" class="section level3" number="7.3.2">
-<h3>
-<span class="header-section-number">7.3.2</span> <code>catstats</code> function summary<a class="anchor" aria-label="anchor" href="#catstats-function-summary-2"><i class="fas fa-link"></i></a>
-</h3>
-<p>In the previous section, you were introduced to two new <code>R</code>
-functions in the <code>catstats</code> library. Here we provide a summary of
-these functions. You can also access
-the help files for these functions using the <code>?</code> command. For
-example, type <code><a href="https://rdrr.io/pkg/catstats/man/regression_test.html">?regression_test</a></code> into your <code>R</code> console to bring up the
-help file for the <code>regression_test</code> function.
-<br></p>
-<ol style="list-style-type: decimal">
-<li>
-<p><code>regression_test</code>: Simulation-based hypothesis test for a regression slope or correlation between two quantitative variables.</p>
-<ul>
-<li>
-<code>formula</code> = <code>y ~ x</code> where <code>y</code> is the name of the quantitative response variable in the data set and <code>x</code> is the name of the quantitative explanatory variable</li>
-<li>
-<code>data</code> = data frame, with columns of each variable</li>
-<li>
-<code>summary_measure</code> = one of <code>"slope"</code> or <code>"correlation"</code> (quotations are important here!)</li>
-<li>
-<code>direction</code> = one of <code>"greater"</code>, <code>"less"</code>, or <code>"two-sided"</code> (quotations are important here!) to match the sign in <span class="math inline">\(H_A\)</span>
-</li>
-<li>
-<code>as_extreme_as</code> = value of observed slope or correlation</li>
-<li>
-<code>number_repetitions</code> = number of simulated samples to generate (should be at least 1000!)
-<br>
-</li>
-</ul>
-</li>
-<li>
-<p><code>regression_bootstrap_CI</code>: Bootstrap confidence interval for a regression slope or correlation.</p>
-<ul>
-<li>
-<code>formula</code> = <code>y ~ x</code> where <code>y</code> is the name of the quantitative response variable in the data set and <code>x</code> is the name of the quantitative explanatory variable</li>
-<li>
-<code>data</code> = data frame, with columns of each variable</li>
-<li>
-<code>summary_measure</code> = one of <code>"slope"</code> or <code>"correlation"</code> (quotations are important here!)</li>
-<li>
-<code>confidence_level</code> = confidence level as a decimal (e.g., 0.90, 0.95, etc)</li>
-<li>
-<code>number_repetitions</code> = number of simulated samples to generate (should be at least 1000!)
-<br>
-</li>
-</ul>
-</li>
-</ol>
-<!-- ### Interactive `R` tutorials --><!-- Navigate the concepts you've learned in this chapter in `R` using the following self-paced tutorials.  --><!-- All you need is your browser to get started! --><!-- ::: {.alltutorials} --><!-- [Tutorial 8: Inference for regression](https://openintrostat.github.io/ims-tutorials/08-inference-for-regression/) --><!-- ::: --><!-- ::: {.singletutorial} --><!-- [Tutorial 8 - Lesson 1: Inference in regression](https://openintro.shinyapps.io/ims-08-inference-for-regression-01/) --><!-- ::: --><!-- ::: {.singletutorial} --><!-- [Tutorial 8 - Lesson 2: Randomization test for slope](https://openintro.shinyapps.io/ims-08-inference-for-regression-02/) --><!-- ::: --><!-- ::: {.singletutorial} --><!-- [Tutorial 8 - Lesson 3: t-test for slope](https://openintro.shinyapps.io/ims-08-inference-for-regression-03/) --><!-- ::: --><!-- ::: {.singletutorial} --><!-- [Tutorial 8 - Lesson 4: Checking technical conditions for slope inference](https://openintro.shinyapps.io/ims-08-inference-for-regression-04/) --><!-- ::: --><!-- ::: {.singletutorial} --><!-- [Tutorial 8 - Lesson 5: Inference beyond the simple linear regression model](https://openintro.shinyapps.io/ims-08-inference-for-regression-05/) --><!-- ::: --><!-- You can also access the full list of tutorials supporting this book [here](https://openintrostat.github.io/ims-tutorials/). -->
-</div>
-<div id="r-labs-6" class="section level3" number="7.3.3">
-<h3>
-<span class="header-section-number">7.3.3</span> <code>R</code> labs<a class="anchor" aria-label="anchor" href="#r-labs-6"><i class="fas fa-link"></i></a>
-</h3>
-<p>Further apply the concepts you’ve learned in this chapter in <code>R</code> with computational labs that walk you through a data analysis case study.</p>
-<div class="singlelab">
-<p><a href="http://openintrostat.github.io/oilabs-tidy/09_multiple_regression/multiple_regression.html">Multiple linear regression - Grading the professor</a></p>
-</div>
-<div class="alllabs">
-<p><a href="http://openintrostat.github.io/oilabs-tidy/">Full list of labs supporting OpenIntro::Introduction to Modern Statistics</a></p>
-</div>
-</div>
-</div>
-<div id="chp7-review" class="section level2" number="7.4">
-<h2>
-<span class="header-section-number">7.4</span> Chapter 7 review<a class="anchor" aria-label="anchor" href="#chp7-review"><i class="fas fa-link"></i></a>
-</h2>
-<div id="terms-6" class="section level3" number="7.4.1">
-<h3>
-<span class="header-section-number">7.4.1</span> Terms<a class="anchor" aria-label="anchor" href="#terms-6"><i class="fas fa-link"></i></a>
-</h3>
-<p>We introduced the following terms in the chapter.
-If you’re not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
-We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate.
-However you should be able to easily spot them as <strong>bolded text</strong>.</p>
-
-</div>
-</div>
-</div>
-
-  <div class="chapter-nav">
-<div class="prev"><a href="inference-num.html"><span class="header-section-number">6</span> Inference for quantitative data</a></div>
-<div class="next"><a href="references.html">References</a></div>
-</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#inference-reg"><span class="header-section-number">7</span> Inference for regression</a></li>
-<li>
-<a class="nav-link" href="#inferenceForLinearRegression"><span class="header-section-number">7.1</span> Inference for linear regression</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#randslope"><span class="header-section-number">7.1.1</span> Randomization test for \(H_0: \beta_1= 0\)</a></li>
-<li><a class="nav-link" href="#bootbeta1"><span class="header-section-number">7.1.2</span> Bootstrap confidence interval for \(\beta_1\)</a></li>
-<li><a class="nav-link" href="#mathslope"><span class="header-section-number">7.1.3</span> Theory-based inferential methods for \(\beta_1\)</a></li>
-</ul>
-</li>
-<li><a class="nav-link" href="#tech-cond-linmod"><span class="header-section-number">7.2</span> Checking model conditions</a></li>
-<li>
-<a class="nav-link" href="#r-inference-for-regression"><span class="header-section-number">7.3</span> R: Inference for regression</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#inference-using-r-and-catstats-2"><span class="header-section-number">7.3.1</span> Inference using R and catstats</a></li>
-<li><a class="nav-link" href="#catstats-function-summary-2"><span class="header-section-number">7.3.2</span> catstats function summary</a></li>
-<li><a class="nav-link" href="#r-labs-6"><span class="header-section-number">7.3.3</span> R labs</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#chp7-review"><span class="header-section-number">7.4</span> Chapter 7 review</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#terms-6"><span class="header-section-number">7.4.1</span> Terms</a></li></ul>
-</li>
-</ul>
+  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <div id="book-on-this-page"></div>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/MTstateIntroStats/IntroStatTextbook/blob/master/07-inference-reg.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/MTstateIntroStats/IntroStatTextbook/edit/master/07-inference-reg.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
-</div>
+      </div>
     </nav>
-</div>
+  </div>
 
 </div>
 </div> <!-- .container -->
 
-<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+<footer class="bg-primary text-light mt-5">
+  <div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Montana State Introductory Statistics with R</strong>: Fall 2022" was written by Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager. </p>
+    <p>"<strong>Montana State Introductory Statistics with R</strong>" was written by Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager. </p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -1027,7 +163,11 @@ However you should be able to easily spot them as <strong>bolded text</strong>.<
   </div>
 
 </div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+</footer>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -1039,7 +179,8 @@ However you should be able to easily spot them as <strong>bolded text</strong>.<
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+</script>
+<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
 for (let popover of popovers) {
   const div = document.createElement('div');
   div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
@@ -1057,4 +198,5 @@ for (let popover of popovers) {
 }
 </script>
 </body>
+
 </html>

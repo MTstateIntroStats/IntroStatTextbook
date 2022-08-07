@@ -5,6 +5,9 @@ source("_common.R")
 ```
 
 <!-- TODO: Add vocab words to this chapter. -->
+```{r include=FALSE}
+terms_chp_21 <- c("TODO")
+```
 
 # Inference for correlation and slope
 

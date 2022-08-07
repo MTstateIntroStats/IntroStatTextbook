@@ -5,7 +5,15 @@ source("_common.R")
 ```
 
 ::: {.chapterintro}
-TODO
+In Chapters \@ref(foundations-randomization) and \@ref(foundations-bootstrapping) questions about population parameters were addressed using computational techniques through simulation.
+With randomization tests, the data were permuted assuming the null hypothesis.
+With bootstrapping, the data were resampled in order to measure the variability.
+In many cases (indeed, with sample proportions), the variability of the statistic can be described by the computational method (as in previous chapters) or by a mathematical formula (as in this chapter).
+
+The normal distribution is presented here to describe the variability associated with sample proportions which are taken from either repeated samples or repeated experiments.
+The normal distribution is quite powerful in that it describes the variability of many different statistics, and we will encounter the normal distribution throughout the remainder of the book.
+
+For now, however, focus is on the parallels between how data can provide insight about a research question either through computational methods or through mathematical models.
 :::
 
 
@@ -30,16 +38,12 @@ $$
 :::
 
 In Section \@ref(theory-prop) we will discuss different percentages for the confidence interval (e.g., 90% confidence interval or 99% confidence interval). Section \@ref(two-prop-boot-ci) provides a longer discussion on what "95% confidence" actually means.
-<!-- END COPIED SECTION -->
 
 
-## Central Limit Theorem
-
+<!-- Old CLT section: -->
 <!-- ### Variability in a statistic {#var-stat} -->
 
-There are two approaches to modeling how a statistic, such as a sample proportion, may vary from sample to sample. In the [Martian alphabet example](#Martian), we used a **simulation-based approach** to model this variability, using the standard deviation of the simulated distribution of sample proportions as a quantitative measure of this sampling variability. Simulation-based methods include the randomization tests and bootstrapping methods we will use in this textbook. We can also use a **theory-based approach**---one which makes use of mathematical modeling---and involves the normal and $t$ probability distributions.
 
-All of the theory-based methods discussed in this book work (under certain conditions) because of a very important theorem in Statistics called the **Central Limit Theorem**.
 
 ::: onebox
 **Central Limit Theorem.**\index{Central Limit Theorem}
@@ -48,7 +52,7 @@ For large sample sizes, the **sampling distribution** of a sample proportion (or
 :::
 
 ```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "Central Limit Theorem", "sampling distribution")
+terms_chp_11 <- c("Central Limit Theorem", "sampling distribution")
 ```
 
 An example of a perfect normal distribution is shown in Figure \@ref(fig:simpleNormal). While the mean (center) and standard deviation (variability) may change for different scenarios, the general shape remains roughly intact.
@@ -78,8 +82,143 @@ Since the formulas for these standard deviations depend on unknown parameters, w
 :::
 
 ```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "standard error")
+terms_chp_11 <- c(terms_chp_11, "standard error")
 ```
+
+<!-- END COPIED SECTION -->
+
+There are two approaches to modeling how a statistic, such as a sample proportion, may vary from sample to sample.
+In the [Martian alphabet example](#Martian), we used a **simulation-based approach** to model this variability---simulating a distribution of sample proportions (Figure \@ref(fig:MartianDotPlot)). Simulation-based methods include the randomization tests and bootstrapping methods discussed in Chapters \@ref(foundations-randomization) and \@ref(foundations-bootstrapping). We can also use a **theory-based approach**---one which makes use of mathematical modeling---and involves the normal and $t$ probability distributions.
+We will introduce the normal distribution in this chapter, focusing on how we can use the normal distribution to model a distribution of statistics. The $t$ distribution will be introduced in later chapters.
+
+All of the theory-based methods discussed in this book work (under certain conditions) because of a very important theorem in Statistics called the **Central Limit Theorem**.
+
+## Central Limit Theorem {#CLTsection}
+
+In recent chapters, we encountered several case studies.
+While they differ in the settings, in their outcomes, and in the technique we have used to analyze the data, they all have something in common: the general shape of the distribution of the statistics (called the **sampling distribution**).\index{sampling distribution} You may have noticed that the distributions were mostly symmetric and bell-shaped.
+
+```{r include = FALSE}
+terms_chp_13 <- c("sampling distribution", "null distribution")
+```
+
+::: {.important data-latex=""}
+**Sampling distribution.**
+
+A sampling distribution is the distribution of all possible values of a *sample statistic* from samples of a given sample size from a given population.
+We can think about the sample distribution as describing as how sample statistics (e.g., the sample proportion $\hat{p}$ or the sample mean $\bar{x}$) varies from one study to another.
+A sampling distribution is contrasted with a *data distribution* which shows the variability of the *observed* data values.
+The data distribution can be visualized from the observations themselves.
+However, because a sampling distribution describes sample statistics computed from many studies, it cannot be visualized directly from a single data set.
+Instead, we use either computational or mathematical structures to estimate the sampling distribution and hence to describe the expected variability of the sample statistic in repeated studies.
+:::
+
+Figure \@ref(fig:TwoCaseStudies) shows the null distributions in each of the two case studies where we ran 10,000 simulations.
+Note that the **null distribution**\index{null distribution} is the sampling distribution of the statistic created under the setting where the null hypothesis is true.
+Therefore, the null distribution will always be centered at the value of the parameter given by the null hypothesis.
+
+
+```{r include = FALSE}
+sex_discrimination_sim_dist <- sex_discrimination %>%
+  specify(response = decision, explanatory = sex, success = "promoted") %>%
+  hypothesize(null = "independence") %>%
+  generate(reps = 10000, type = "permute") %>%
+  calculate(stat = "diff in props", order = c("male", "female"))  
+
+medical_consultant_sim_dist <- tibble(stat = rbinom(10000, 62, 0.1)/62)
+```
+
+```{r TwoCaseStudies, fig.cap = "The null distribution for each of the two case studies presented previously. Note that the center of each distribution is given by the value of the parameter set in the null hypothesis.", fig.asp = 0.7}
+
+# sex discrimination ----------------------------------------------------------
+
+p_gd <- ggplot(sex_discrimination_sim_dist, aes(x = stat)) +
+  geom_histogram(binwidth = 0.04, fill = IMSCOL["green", "full"]) +
+  scale_x_continuous(breaks = seq(-0.6, 0.6, 0.2), labels = label_number(accuracy = 0.1), limits = c(-0.6, 0.6)) +
+  theme(
+    axis.text.y = element_blank(),
+    panel.grid = element_blank()
+  ) +
+  labs(x = expression(H[0]:~p[M] - p[F] == 0), y = NULL) +
+  annotate("rect", xmin = -0.18, xmax = 0.18, ymin = 250, ymax = 750, fill = "white", alpha = 0.5) +
+  annotate("text", x = 0, y = 500, label = "Sex discrimination", size = 6)
+
+# medical consultant -----------------------------------------------------------
+
+p_mc <- ggplot(medical_consultant_sim_dist, aes(x = stat)) +
+  geom_histogram(binwidth = 0.016, fill = IMSCOL["red", "full"]) +
+  scale_x_continuous(breaks = seq(-0.1, 0.3, 0.05), labels = label_number(accuracy = 0.01), limits = c(-0.1, 0.30)) +
+  theme(
+    axis.text.y = element_blank(),
+    panel.grid = element_blank()
+  ) +
+  labs(x = expression(H[0]: ~ p == 0.1), y = NULL) +
+  annotate("rect", xmin = 0, xmax = 0.2, ymin = 200, ymax = 600, fill = "white", alpha = 0.5) +
+  annotate("text", x = 0.10, y = 400, label = "Medical consultant", size = 6)
+
+(p_gd + p_mc)
+```
+
+::: {.guidedpractice data-latex=""}
+Describe the shape of the distributions and note anything that you find interesting.[^foundations-mathematical-1]
+:::
+
+[^foundations-mathematical-1]: In general, the distributions are reasonably symmetric, though the case study for the medical consultant has a distribution that is slightly skewed right.
+.
+
+The case study for the medical consultant is the only distribution with any evident skew.
+As we observed in Chapter \@ref(data-hello), it's common for distributions to be skewed or contain outliers.
+However, the null distributions we have so far encountered have all looked somewhat similar and, for the most part, symmetric.
+They all resemble a bell-shaped curve.
+The bell-shaped curve similarity is not a coincidence, but rather, is guaranteed by mathematical theory.
+
+::: {.important data-latex=""}
+**Central Limit Theorem for proportions.**\index{Central Limit Theorem}
+
+If we look at a proportion (or difference in proportions) and the scenario satisfies certain conditions, then the sample proportion (or difference in proportions) will appear to follow a bell-shaped curve called the *normal distribution*.
+:::
+
+```{r include = FALSE}
+terms_chp_13 <- c(terms_chp_13, "Central Limit Theorem") 
+```
+
+An example of a perfect normal distribution is shown in Figure \@ref(fig:simpleNormal).
+Imagine laying a normal curve over each of the two null distributions in Figure \@ref(fig:TwoCaseStudies).
+While the mean (center) and standard deviation (width or spread) may change for each plot, the general shape remains roughly intact. It is quite amazing that something like a sample proportion, summarizing a categorical variable, will have a bell-shaped sampling distribution if we sample large enough samples!
+ 
+
+```{r simpleNormal, fig.cap = "A normal curve.", fig.asp = 0.5, out.width="60%"}
+normTail(axes = FALSE)
+```
+
+Mathematical theory guarantees that if repeated samples are taken a sample proportion or a difference in sample proportions will follow something that resembles a normal distribution when certain conditions are met.
+(Note: we typically only take **one** sample, but the mathematical model lets us know what to expect if we *had* taken repeated samples.) These conditions fall into two general categories describing the independence between observations and the need to take a sufficiently large sample size.
+
+1.  Observations in the sample are **independent**.
+    Independence can be guaranteed when we take a random sample from a large population.
+
+2.  The sample is **large enough**.
+    The sample size cannot be too small.
+    What qualifies as "small" differs from one context to the next, and we'll provide suitable guidelines for proportions in Chapters \@ref(inference-one-prop) and \@ref(inference-two-props).
+
+So far we have had no need for the normal distribution.
+We've been able to answer our questions somewhat easily using simulation techniques.
+However, soon this will change.
+Simulating data can be non-trivial.
+For example, some of the scenarios encountered in Chapter \@ref(mult-reg) where we introduced regression models with multiple predictors would require complex simulations in order to make inferential conclusions.
+Instead, the normal distribution and other distributions like it offer a general framework for statistical inference that applies to a very large number of settings.
+
+::: {.important data-latex=""}
+**Technical Conditions.**
+
+In order for the normal approximation to describe the sampling distribution of the sample proportion as it varies from sample to sample, two conditions must hold.
+If these conditions do not hold, it is unwise to use the normal distribution (and related concepts like Z scores, probabilities from the normal curve, etc.) for inferential analyses.
+
+1.  **Independent observations:** Measurements taken on one individual should give you no information about measurements taken on another.
+2.  **Large enough sample:** For proportions, at least 10 expected successes and 10 expected failures in the sample.
+:::
+
+
 
 
 ## The normal distribution {#normal}
@@ -91,7 +230,7 @@ Among all the distributions we see in statistics, one is overwhelmingly the most
 [^05-inference-cat-13]: It is also introduced as the Gaussian distribution after Frederic Gauss, the first person to formalize its mathematical expression.
 
 ```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "normal curve", "normal model", "normal distribution")
+terms_chp_11 <- c(terms_chp_11, "normal curve", "normal model", "normal distribution")
 ```
 
 ::: onebox
@@ -138,7 +277,7 @@ abline(h=0)
 ```
 
 ```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "standard normal distribution")
+terms_chp_11 <- c(terms_chp_11, "standard normal distribution")
 ```
 
 ```{r twoSampleNormalsStacked, fig.cap="The two normal models shown above and now plotted together on the same scale.", warning=FALSE, fig.width=10}
@@ -166,7 +305,7 @@ N(\mu=0,\sigma=1)\quad\text{and}\quad N(\mu=19,\sigma=4)
 \end{align*} Because the mean and standard deviation describe a normal distribution exactly, they are called the distribution's **parameters**\index{parameter}.
 
 ```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "parameter")
+terms_chp_11 <- c(terms_chp_11, "parameter")
 ```
 
 ::: guidedpractice
@@ -239,7 +378,7 @@ $Z$\vspace{1mm}\\\footnotesize Z-score, the\\standardized\\observation]{\raggedr
 $Z$\vspace{1mm}\\\footnotesize Z-score, the\\standardized\\observation}\index{Z@$Z$} of an observation is defined as the number of standard deviations it falls above or below the mean. If the observation is one standard deviation above the mean, its Z-score is 1. If it is 1.5 standard deviations *below* the mean, then its Z-score is -1.5. If $x$ is an observation from a distribution $N(\mu, \sigma)$, we define the Z-score mathematically as
 
 ```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "Z-score")
+terms_chp_11 <- c(terms_chp_11, "Z-score")
 ```
 
 \begin{eqnarray*}
@@ -296,7 +435,7 @@ Ann's **percentile**\index{percentile} is the percentage of people who earned a 
 :::
 
 ```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "percentile")
+terms_chp_11 <- c(terms_chp_11, "percentile")
 ```
 
 ```{r satBelow1800, fig.cap="The normal model for SAT scores, shading the area of those individuals who scored below Ann.", warning=FALSE, fig.width=10}

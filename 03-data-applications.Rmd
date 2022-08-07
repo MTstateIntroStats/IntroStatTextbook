@@ -149,6 +149,9 @@ hsb2 %>%
   table()
 ```
 
+::: {.underconstruction}
+This chapter is under construction.
+:::
 
 #### Filtering {-}
 What if we are interested only in `public` schools?

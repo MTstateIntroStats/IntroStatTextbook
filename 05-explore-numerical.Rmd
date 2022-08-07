@@ -719,18 +719,27 @@ or stacked histograms or dot plots. Recall that the `loan50` data set represents
 This larger data set contains information on 10,000 loans made through Lending Club. Figure \@ref(fig:homeownership-interest-boxplots) examines the relationship between `homeownership`, which for the `loans` data can take a value of `rent`, `mortgage` (owns but has a mortgage), or `own`, and `interest_rate`. Note that `homeownership`
 is a categorical variable and `interest_rate` is a quantitative variable.
 
-```{r homeownership-interest-boxplots, fig.cap="Side-by-side box plots of loan interest rates by homeownership category."}
+```{r homeownership-interest-boxplots, fig.height=2, fig.cap="Side-by-side box plots of loan interest rates by homeownership category and corresponding histograms."}
 plot1 <- ggplot(loans_full_schema, aes(x = homeownership, y = loan_amount, fill = homeownership)) + 
   geom_boxplot() +
-  labs(x = "Homeownership", y = "Loan Amount ($)")
+  labs(x = "Homeownership", y = "Loan Amount ($)")+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+        legend.position = "none")
 
-plot2 <- ggplot(loans_full_schema, aes(x = loan_amount, y = after_stat(density), color = homeownership, fill = homeownership)) +
+plot2 <- ggplot(loans_full_schema, aes(x = loan_amount,
+                                       y = after_stat(density), 
+                                       color = homeownership,
+                                       fill = homeownership)) +
   facet_grid(rows = vars(homeownership)) + 
   geom_histogram(binwidth = 2000) +
   geom_density(alpha = .2, fill = "#FF6666")+ 
-  labs(x = "Loan Amount ($)", y = "Density") 
-  
-grid.arrange(plot1, plot2, nrow=1)
+  labs(x = "Loan Amount ($)", y = "Density")+ 
+  theme(axis.text.y=element_blank(),
+      axis.ticks.y=element_blank(),
+      legend.position = "none")
+
+grid.arrange(plot1, plot2,
+             nrow = 1)
 ```
 
 We see immediately that some features are easier to discern in box plots, while others in histograms. Shape is shown more clearly in histograms, while center (as measured by the median) is easy to compare across groups in the side-by-side box plots.

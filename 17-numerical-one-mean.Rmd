@@ -44,7 +44,7 @@ The techniques described for each setting will vary slightly, but you will be we
 A single mean is used to summarize data when we measured a single quantitative variable on each observational unit, e.g., GPA, age, salary. Aside from slight differences in notation, the inferential methods presented in this section will be identical to those for a paired mean difference, as we will see in Section \@ref(paired-data).
 
 ```{r include=FALSE}
-terms_chp_6 <- c("bootstrapping")
+terms_chp_17 <- c("bootstrapping")
 ```
 
 
@@ -185,7 +185,7 @@ Although there is a mathematical model which describes how $s$ varies from sampl
 But even without the mathematical model, bootstrapping can be used to find a confidence interval for the parameter $\sigma$.
 
 ```{r include=FALSE}
-terms_chp_6 <- c(terms_chp_6, "point estimate")
+terms_chp_17 <- c(terms_chp_17, "point estimate")
 ```
 
 ::: {.workedexample}
@@ -382,7 +382,7 @@ tests using $\bar{x}$, we first need to cover two topics:
 
 
 ```{r include=FALSE}
-terms_chp_6 <- c(terms_chp_6, "t-distribution")
+terms_chp_17 <- c(terms_chp_17, "t-distribution")
 ```
 
 #### Evaluating the two conditions required for modeling $\bar{x}$ using theory-based methods {-}
@@ -450,7 +450,7 @@ large, the normal model will describe the variability in sample means quite well
 :::
 
 ```{r include=FALSE}
-terms_chp_6 <- c(terms_chp_6, "Central Limit Theorem")
+terms_chp_17 <- c(terms_chp_17, "Central Limit Theorem")
 ```
 
 
@@ -652,7 +652,7 @@ the $t$-distribution is nearly indistinguishable
 from the normal distribution.
 
 ```{r include=FALSE}
-terms_chp_6 <- c(terms_chp_6, "degrees of freedom")
+terms_chp_17 <- c(terms_chp_17, "degrees of freedom")
 ```
 
 
@@ -1130,7 +1130,7 @@ Then we find the p-value using the same ideas we used
 previously: find the area under the $t$-distribution as or more extreme than our T score.
 
 ```{r include=FALSE}
-terms_chp_6 <- c(terms_chp_6, "T score")
+terms_chp_17 <- c(terms_chp_17, "T score")
 ```
 
 ::: {.example}
@@ -1246,7 +1246,7 @@ temptbl %>%
 :::
 
 ```{r include=FALSE}
-terms_chp_6 <- c(terms_chp_6, "paired data")
+terms_chp_17 <- c(terms_chp_17, "paired data")
 ```
 
 
@@ -2583,7 +2583,7 @@ qt(0.975, df = 8)
 So far in this chapter, we have seen the $t$-distribution applied as the appropriate mathematical model in three distinct settings.  Although the three data structures are different, their similarities and differences are worth pointing out.  We provide Table \@ref(tab:tcompare) partly as a mechanism for understanding $t$-procedures and partly to highlight the extremely common usage of the $t$-distribution in practice. You will often hear the following three $t$-procedures referred to as a **one sample $t$-test** ($t$-interval), **paired $t$-test** ($t$-interval), and **two sample $t$-test** ($t$-interval).
 
 ```{r include=FALSE}
-terms_chp_6 <- c(terms_chp_6, "one sample $t$-test", "two sample $t$-test", "paired $t$-test")
+terms_chp_17 <- c(terms_chp_17, "one sample $t$-test", "two sample $t$-test", "paired $t$-test")
 ```
 
 ```{r tcompare}

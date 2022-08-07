@@ -28,13 +28,17 @@ This is the website for **Montana State Introductory Statistics with R**.
 This textbook accompanies the curriculum for STAT 216: Introduction to Statistics at Montana State University. The syllabus and other course information can be found
 on the [course webpage](https://math.montana.edu/courses/s216/index.html).
 
+::: {.underconstruction}
+Excuse our dust. This book is currently under revision for fall 2022 semester.
+:::
+
 ---
 
 Copyright &#169; 2021.
 
 
 
-Version date: August 04, 2022.
+Version date: August 05, 2022.
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />
 

@@ -1,4 +1,4 @@
-# Inference for comparing two proportions
+# Inference for comparing two proportions  {#inference-two-props}
 
 ```{r, include = FALSE}
 source("_common.R")
@@ -15,7 +15,7 @@ Sex discrimination case study now in chapter 11
 
 
 
-## Difference of two proportions {#diff-two-prop}
+<!-- ## Difference of two proportions {#diff-two-prop} -->
 
 ::: onebox
 **Notation.**
@@ -30,7 +30,7 @@ We now extend the methods from Section \@ref(single-prop) to apply confidence in
 In our investigations, we'll identify a reasonable point estimate of $\pi_1 - \pi_2$ based on the sample, and you may have already guessed its form: $\hat{p}_1 - \hat{p}_2$. \index{point estimate!difference of proportions} We'll look at statistical inference for a difference in proportions in two ways: simulation-based methods through a randomization test and bootstrap confidence interval, and theory-based methods through a two sample $z$-test and $z$-interval.
 
 ```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "point estimate")
+terms_chp_15 <- c("point estimate")
 ```
 
 ### Randomization test for $H_0: \pi_1 - \pi_2 = 0$ {#two-prop-errors}
@@ -38,7 +38,7 @@ terms_chp_5 <- c(terms_chp_5, "point estimate")
 As you learned in Chapter \@ref(intro-to-data), a **randomized experiment** is done to assess whether or not one variable (the **explanatory** variable) causes changes in a second variable (the **response** variable). Every data set has some variability in it, so to decide whether the variability in the data is due to (1) the causal mechanism (the randomized explanatory variable in the experiment) or instead (2) natural variability inherent to the data, we set up a sham randomized experiment as a comparison. That is, we assume that each observational unit would have gotten the exact same response value regardless of the treatment level. By reassigning the treatments many many times, we can compare the actual experiment to the sham experiment. If the actual experiment has more extreme results than any of the sham experiments, we are led to believe that it is the explanatory variable which is causing the result and not inherent data variability. Using a few different studies, let's look more carefully at this idea of a **randomization test**\index{randomization}.
 
 ```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "randomization")
+terms_chp_15 <- c(terms_chp_15, "randomization")
 ```
 
 #### Case study: Gender discrimination {#caseStudyGenderDiscrimination}
@@ -119,7 +119,7 @@ Table \@ref(tab:discriminationResults) shows that 35 bank supervisors recommende
 [^05-inference-cat-55]: The test procedure we employ in this section is sometimes referred to as a **permutation test**\index{permutation test}.
 
 ```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "permutation test")
+terms_chp_15 <- c(terms_chp_15, "permutation test")
 ```
 
 In this **simulation**\index{simulation}, we thoroughly shuffle 48 personnel files, 35 labeled `promoted` and 13 labeled `not promoted`, and we deal these files into two stacks. Note that by keeping 35 promoted and 13 not promoted, we are assuming that 35 of the bank managers would have promoted the individual whose content is contained in the file (**independent** of gender). We will deal 24 files into the first stack, which will represent the 24 "female" files. The second stack will also have 24 files, and it will represent the 24 "male" files. Figure \@ref(fig:genderrand3) highlights both the shuffle and the reallocation to the sham gender groups.
@@ -131,7 +131,7 @@ include_graphics("05/figures/genderrand3b.png")
 Then, as we did with the original data, we tabulate the results and determine the fraction of `male` and `female` who were promoted.
 
 ```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "simulation")
+terms_chp_15 <- c(terms_chp_15, "simulation")
 ```
 
 Since the randomization of files in this simulation is independent of the promotion decisions, any difference in the two promotion rates is entirely due to chance. Table \@ref(tab:discriminationRand1) show the results of one such simulation.
@@ -476,7 +476,7 @@ We will define a **success**\index{success} in this study as a student who choos
 [^05-inference-cat-65]: Success is often defined in a study as the outcome of interest, and a "success" may or may not actually be a positive outcome. For example, researchers working on a study on HIV prevalence might define a "success" in the statistical sense as a patient who is HIV+. A more complete discussion of the term **success** will be given in Chapter \@ref(inference-cat).
 
 ```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "success")
+terms_chp_15 <- c(terms_chp_15, "success")
 ```
 
 ```{=html}
@@ -492,7 +492,7 @@ We can construct a point estimate for this difference as \begin{align*}
 \end{align*} The proportion of students who chose not to buy the DVD was 20% higher in the treatment group than the control group. However, is this result **statistically significant**\index{statistically significant}? In other words, is a 20% difference between the two groups so prominent that it is unlikely to have occurred from chance alone?
 
 ```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "statistically significant")
+terms_chp_15 <- c(terms_chp_15, "statistically significant")
 ```
 
 #### Variability of the statistic {.unnumbered}
@@ -939,7 +939,7 @@ mtext("Bootstrapped Difference in Proportion Surviving (Treatment - Control)", 1
 
 <!-- ```{r include=FALSE} -->
 
-<!-- terms_chp_5 <- c(terms_chp_5, "SE interval") -->
+<!-- terms_chp_15 <- c(terms_chp_15, "SE interval") -->
 
 <!-- ``` -->
 
@@ -1050,7 +1050,7 @@ The success-failure condition listed above is only necessary for the sampling di
 :::
 
 ```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "standard error for difference in proportions")
+terms_chp_15 <- c(terms_chp_15, "standard error for difference in proportions")
 ```
 
 As in the case of one proportion, we typically don't know the true proportions $\pi_1$ and $\pi_2$, so we will substitute some value to check the success-failure condition and to estimate the standard deviation of the sampling distribution of $\hat{p}_1 - \hat{p}_2$.
@@ -1244,7 +1244,7 @@ The research question describing mammograms is set up to address specific hypoth
 \end{align*} This proportion is an estimate of the breast cancer death rate across the entire study, and it's our best estimate of the death rates $\pi_{mgm}$ and $\pi_{ctrl}$ *if the null hypothesis is true that* $\pi_{mgm} = \pi_{ctrl}$.
 
 ```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "pooled proportion")
+terms_chp_15 <- c(terms_chp_15, "pooled proportion")
 ```
 
 ::: onebox
@@ -1403,7 +1403,7 @@ TODO
 So far in this chapter, we have seen the normal distribution applied as the appropriate mathematical model in two distinct settings. Although the two data structures are different, their similarities and differences are worth pointing out. We provide Table \@ref(tab:zcompare) partly as a mechanism for understanding $z$-procedures and partly to highlight the extremely common usage of the normal distribution in practice. You will often hear the following two $z$-procedures referred to as a **one sample** $z$-test ($z$-interval) and **two sample** $z$-test ($z$-interval).
 
 ```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "one sample $z$-test", "two sample $z$-test")
+terms_chp_15 <- c(terms_chp_15, "one sample $z$-test", "two sample $z$-test")
 ```
 
 ```{r zcompare}

@@ -78,7 +78,7 @@ A **Type 1 Error**\index{Type 1 Error} is rejecting the null hypothesis when $H_
 A **Type 2 Error**\index{Type 2 Error} is failing to reject the null hypothesis when the alternative is actually true. Since we failed to reject the null hypothesis in the [medical consultant](#one-prop-null-boot) and [payday lenders](#payday-lenders) studies, it is possible that we made a Type 2 Error in one or both of those studies.
 
 ```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "Type 1 Error", "Type 2 Error")
+terms_chp_12 <- c("Type 1 Error", "Type 2 Error")
 ```
 
 ::: workedexample
@@ -270,7 +270,7 @@ No, these results don't mean much in this context -- a difference in average hei
 :::
 
 ```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "practical importance", "statistical significance")
+terms_chp_12 <- c(terms_chp_12, "practical importance", "statistical significance")
 ```
 
 In the previous example, we saw two groups of men that differed in average height, and that difference was **statistically significant** -- that is, the observed difference in sample means of 0.6 cm is very unlikely to occur *if the true difference in average height was zero*. But, a difference of 0.6 cm in height is not meaningful -- not **practically important**.

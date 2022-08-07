@@ -8,7 +8,9 @@ source("_common.R")
 TODO
 :::
 
-
+```{r include=FALSE}
+terms_chp_18 <- c("TODO")
+```
 
 ## Chapter review {#chp18-review}
 
