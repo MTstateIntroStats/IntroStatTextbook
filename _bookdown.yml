@@ -1,21 +1,37 @@
 book_filename: "stat216-textbook"
+delete_merged_file: true
+new_session: true
 language:
   ui:
     chapter_name: "Chapter "
-delete_merged_file: true
-new_session: yes
 rmd_files: [
   "index.Rmd",
+  "00-authors.Rmd",
+  "00-preface.Rmd",
   "00-computing.Rmd",
-  "01-intro-to-data.Rmd",
-  "02-eda.Rmd",
-  "03-cor-reg.Rmd",
-  "04-mult-reg.Rmd",
-  "05-inference-cat.Rmd",
-  "06-inference-num.Rmd",
-  "07-inference-reg.Rmd",
-  "08-references.Rmd"
+  "01-data-hello.Rmd",
+  "02-data-design.Rmd",
+  "03-data-applications.Rmd",
+  "04-explore-categorical.Rmd",
+  "05-explore-numerical.Rmd",
+  "06-explore-regression.Rmd",
+  "07-explore-mult-reg.Rmd",
+  "08-explore-applications.Rmd",
+  "09-foundations-hyp-testing.Rmd",
+  "10-foundations-conf-int.Rmd",
+  "11-foundations-math-models.Rmd",
+  "12-foundations-errors.Rmd",
+  "13-foundations-applications.Rmd",
+  "14-categorical-one-prop.Rmd",
+  "15-categorical-two-props.Rmd",
+  "16-categorical-applications.Rmd",
+  "17-numerical-one-mean.Rmd",
+  "18-numerical-paired-means.Rmd",
+  "19-numerical-two-means.Rmd",
+  "20-numerical-applications.Rmd",
+  "21-regression.Rmd",
+  "22-regression-applications.Rmd",
+  "23-probability.Rmd",
+  "references.Rmd"
   ]
-before_chapter_script: "_common.R"
-output: bookdown::bs4_book
 output_dir: "docs"

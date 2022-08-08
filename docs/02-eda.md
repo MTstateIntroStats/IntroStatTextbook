@@ -487,7 +487,7 @@ A 1991 study by Radelet and Pierce examined whether race was associated with whe
 </table>
 
 <div class="figure" style="text-align: center">
-<img src="02-eda_files/figure-html/DPbarplot-1.png" alt="Segmented bar plot comparing the proportion of defendants who received the death penalty between Caucasians and African Americans." width="70%" />
+<img src="02-eda_files/figure-html/DPbarplot-1.png" alt="Segmented bar plot comparing the proportion of defendants who received the death penalty between Caucasians and African Americans." width="672" />
 <p class="caption">(\#fig:DPbarplot)Segmented bar plot comparing the proportion of defendants who received the death penalty between Caucasians and African Americans.</p>
 </div>
 
@@ -776,7 +776,7 @@ When examining scatterplots, we describe four features:
 
 
 <div class="figure" style="text-align: center">
-<img src="02-eda_files/figure-html/loan50-amount-income-1.png" alt="A scatterplot of `loan_amount` versus `total_income` for the `loan50` data set." width="70%" />
+<img src="02-eda_files/figure-html/loan50-amount-income-1.png" alt="A scatterplot of `loan_amount` versus `total_income` for the `loan50` data set." width="672" />
 <p class="caption">(\#fig:loan50-amount-income)A scatterplot of `loan_amount` versus `total_income` for the `loan50` data set.</p>
 </div>
 
@@ -789,7 +789,7 @@ _positive_---as total income increases, the loan amount also tends to increase--
 though since the relationship is weak, it is hard to tell.
 
 <div class="figure" style="text-align: center">
-<img src="02-eda_files/figure-html/median-hh-income-poverty-1.png" alt="A scatterplot of the median household income against the poverty rate for the `county` data set. Data are from 2017. A statistical model has also been fit to the data and is shown as a dashed line." width="70%" />
+<img src="02-eda_files/figure-html/median-hh-income-poverty-1.png" alt="A scatterplot of the median household income against the poverty rate for the `county` data set. Data are from 2017. A statistical model has also been fit to the data and is shown as a dashed line." width="672" />
 <p class="caption">(\#fig:median-hh-income-poverty)A scatterplot of the median household income against the poverty rate for the `county` data set. Data are from 2017. A statistical model has also been fit to the data and is shown as a dashed line.</p>
 </div>
 
@@ -825,7 +825,7 @@ A **dot plot** is a one-variable scatterplot; an example using the interest rate
 
 
 <div class="figure" style="text-align: center">
-<img src="02-eda_files/figure-html/loan-int-rate-dotplot-1.png" alt="A dot plot of `interest_rate` for the `loan50` data set. The rates have been rounded to the nearest percent in this plot, and the distribution's mean is shown as a red triangle." width="70%" />
+<img src="02-eda_files/figure-html/loan-int-rate-dotplot-1.png" alt="A dot plot of `interest_rate` for the `loan50` data set. The rates have been rounded to the nearest percent in this plot, and the distribution's mean is shown as a red triangle." width="672" />
 <p class="caption">(\#fig:loan-int-rate-dotplot)A dot plot of `interest_rate` for the `loan50` data set. The rates have been rounded to the nearest percent in this plot, and the distribution's mean is shown as a red triangle.</p>
 </div>
 
@@ -994,7 +994,7 @@ Dot plots show the exact value for each observation. This is useful for small da
 </table>
 
 <div class="figure" style="text-align: center">
-<img src="02-eda_files/figure-html/loan50IntRateHist-1.png" alt="A histogram of `interest_rate`. This distribution is strongly skewed to the right." width="70%" />
+<img src="02-eda_files/figure-html/loan50IntRateHist-1.png" alt="A histogram of `interest_rate`. This distribution is strongly skewed to the right." width="672" />
 <p class="caption">(\#fig:loan50IntRateHist)A histogram of `interest_rate`. This distribution is strongly skewed to the right.</p>
 </div>
 
@@ -1049,7 +1049,7 @@ Looking for modes isn't about finding a clear and correct answer about the numbe
 Another type of plot that is helpful for exploring the shape of a distribution is a smoothed histogram, called a **density plot**. A density plot will scale the $y$-axis so that the total area under the density curve is equal to one. This allows us to get a sense of what _proportion_ of the data lie in a certain interval, rather than the _frequency_ of data in the interval. We can change the scale of a histogram to plot proportions rather than frequencies, then overlay a density curve on this rescaled histogram, as seen in Figure \@ref(fig:loan50IntRateDens).
 
 <div class="figure" style="text-align: center">
-<img src="02-eda_files/figure-html/loan50IntRateDens-1.png" alt="A density plot of `interest_rate` overlayed on a histogram using density scale." width="70%" />
+<img src="02-eda_files/figure-html/loan50IntRateDens-1.png" alt="A density plot of `interest_rate` overlayed on a histogram using density scale." width="672" />
 <p class="caption">(\#fig:loan50IntRateDens)A density plot of `interest_rate` overlayed on a histogram using density scale.</p>
 </div>
 
@@ -1112,12 +1112,12 @@ The Greek letter $\sigma$ is pronounced *sigma*, listen to the pronunciation [he
 :::
 
 <div class="figure" style="text-align: center">
-<img src="02-eda_files/figure-html/sdRuleForIntRate-1.png" alt="For the `interest_rate` variable, 34 of the 50 loans (68%) had interest rates within 1 standard deviation of the mean, and 48 of the 50 loans (96%) had rates within 2 standard deviations. Usually about 70% of the data are within 1 standard deviation of the mean and 95% within 2 standard deviations, though this is far from a hard rule." width="70%" />
+<img src="02-eda_files/figure-html/sdRuleForIntRate-1.png" alt="For the `interest_rate` variable, 34 of the 50 loans (68%) had interest rates within 1 standard deviation of the mean, and 48 of the 50 loans (96%) had rates within 2 standard deviations. Usually about 70% of the data are within 1 standard deviation of the mean and 95% within 2 standard deviations, though this is far from a hard rule." width="672" />
 <p class="caption">(\#fig:sdRuleForIntRate)For the `interest_rate` variable, 34 of the 50 loans (68%) had interest rates within 1 standard deviation of the mean, and 48 of the 50 loans (96%) had rates within 2 standard deviations. Usually about 70% of the data are within 1 standard deviation of the mean and 95% within 2 standard deviations, though this is far from a hard rule.</p>
 </div>
 
 <div class="figure" style="text-align: center">
-<img src="02-eda_files/figure-html/severalDiffDistWithSdOf1-1.png" alt="Three very different population distributions with the same mean (0) and standard deviation (1)." width="70%" />
+<img src="02-eda_files/figure-html/severalDiffDistWithSdOf1-1.png" alt="Three very different population distributions with the same mean (0) and standard deviation (1)." width="672" />
 <p class="caption">(\#fig:severalDiffDistWithSdOf1)Three very different population distributions with the same mean (0) and standard deviation (1).</p>
 </div>
 
@@ -1149,7 +1149,7 @@ Figure \@ref(fig:loan-int-rate-boxplot-dotplot) provides a dot plot alongside a 
 
 
 <div class="figure" style="text-align: center">
-<img src="02-eda_files/figure-html/loan-int-rate-boxplot-dotplot-1.png" alt="Plot A shows a dot plot and Plot B shows a box plot of the distribution of interest rates from the `loan50` dataset." width="70%" />
+<img src="02-eda_files/figure-html/loan-int-rate-boxplot-dotplot-1.png" alt="Plot A shows a dot plot and Plot B shows a box plot of the distribution of interest rates from the `loan50` dataset." width="672" />
 <p class="caption">(\#fig:loan-int-rate-boxplot-dotplot)Plot A shows a dot plot and Plot B shows a box plot of the distribution of interest rates from the `loan50` dataset.</p>
 </div>
 
@@ -1369,7 +1369,7 @@ This larger data set contains information on 10,000 loans made through Lending C
 is a categorical variable and `interest_rate` is a quantitative variable.
 
 <div class="figure" style="text-align: center">
-<img src="02-eda_files/figure-html/homeownership-interest-boxplots-1.png" alt="Side-by-side box plots of loan interest rates by homeownership category." width="70%" />
+<img src="02-eda_files/figure-html/homeownership-interest-boxplots-1.png" alt="Side-by-side box plots of loan interest rates by homeownership category." width="672" />
 <p class="caption">(\#fig:homeownership-interest-boxplots)Side-by-side box plots of loan interest rates by homeownership category.</p>
 </div>
 
@@ -1394,7 +1394,7 @@ What would happen to these summary statistics \index{summary statistic} if the o
 These scenarios are plotted alongside the original data in Figure \@ref(fig:loan-int-rate-robust-ex), and sample statistics are computed under each scenario in Table \@ref(tab:robustOrNotTable).
 
 <div class="figure" style="text-align: center">
-<img src="02-eda_files/figure-html/loan-int-rate-robust-ex-1.png" alt="Dot plots of the original interest rate data and two modified data sets." width="70%" />
+<img src="02-eda_files/figure-html/loan-int-rate-robust-ex-1.png" alt="Dot plots of the original interest rate data and two modified data sets." width="768" />
 <p class="caption">(\#fig:loan-int-rate-robust-ex)Dot plots of the original interest rate data and two modified data sets.</p>
 </div>
 
@@ -1469,7 +1469,7 @@ If you were wanting to understand the typical loan size, should you be more inte
 When data are very strongly skewed, we sometimes transform them so they are easier to model. A **transformation** is a rescaling of the data using a function.
 
 <div class="figure" style="text-align: center">
-<img src="02-eda_files/figure-html/county-pop-transform-1.png" alt="Plot A: A histogram of the populations of all US counties. Plot B: A histogram of log$_{10}$-transformed county populations. For this plot, the x-value corresponds to the power of 10, e.g. 4 on the x-axis corresponds to $10^4 =$ 10,000. Data are from 2017." width="70%" />
+<img src="02-eda_files/figure-html/county-pop-transform-1.png" alt="Plot A: A histogram of the populations of all US counties. Plot B: A histogram of log$_{10}$-transformed county populations. For this plot, the x-value corresponds to the power of 10, e.g. 4 on the x-axis corresponds to $10^4 =$ 10,000. Data are from 2017." width="672" />
 <p class="caption">(\#fig:county-pop-transform)Plot A: A histogram of the populations of all US counties. Plot B: A histogram of log$_{10}$-transformed county populations. For this plot, the x-value corresponds to the power of 10, e.g. 4 on the x-axis corresponds to $10^4 =$ 10,000. Data are from 2017.</p>
 </div>
 
@@ -1496,7 +1496,7 @@ Figure \@ref(fig:county-pop-change-transform), a positive association between th
 In fact, we may be interested in fitting a trend line to the data when we explore methods around fitting regression lines in Chapter \@ref(cor-reg).
 
 <div class="figure" style="text-align: center">
-<img src="02-eda_files/figure-html/county-pop-change-transform-1.png" alt="Plot A: Scatterplot of population change against the population before the change. Plot B: A~scatterplot of the same data but where the population size has been log-transformed." width="70%" />
+<img src="02-eda_files/figure-html/county-pop-change-transform-1.png" alt="Plot A: Scatterplot of population change against the population before the change. Plot B: A~scatterplot of the same data but where the population size has been log-transformed." width="672" />
 <p class="caption">(\#fig:county-pop-change-transform)Plot A: Scatterplot of population change against the population before the change. Plot B: A~scatterplot of the same data but where the population size has been log-transformed.</p>
 </div>
 
@@ -1537,12 +1537,12 @@ What interesting features are evident in the median household income intensity m
 
 
 <div class="figure" style="text-align: center">
-<img src="02-eda_files/figure-html/county-intensity-map-poverty-unemp-1.png" alt="Plot A: Intensity map of poverty rate (percent). Plot B: Intensity map of the unemployment rate (percent)." width="70%" />
+<img src="02-eda_files/figure-html/county-intensity-map-poverty-unemp-1.png" alt="Plot A: Intensity map of poverty rate (percent). Plot B: Intensity map of the unemployment rate (percent)." width="960" />
 <p class="caption">(\#fig:county-intensity-map-poverty-unemp)Plot A: Intensity map of poverty rate (percent). Plot B: Intensity map of the unemployment rate (percent).</p>
 </div>
 
 <div class="figure" style="text-align: center">
-<img src="02-eda_files/figure-html/county-intensity-map-homeownership-median-income-1.png" alt="Plot A: Intensity map of homeownership rate (percent). Plot B: Intensity map of median household income ($1000s)." width="70%" />
+<img src="02-eda_files/figure-html/county-intensity-map-homeownership-median-income-1.png" alt="Plot A: Intensity map of homeownership rate (percent). Plot B: Intensity map of median household income ($1000s)." width="960" />
 <p class="caption">(\#fig:county-intensity-map-homeownership-median-income)Plot A: Intensity map of homeownership rate (percent). Plot B: Intensity map of median household income ($1000s).</p>
 </div>
 
@@ -1598,85 +1598,97 @@ If you're not sure what some of these terms mean, we recommend you go back in th
 We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. 
 However you should be able to easily spot them as **bolded text**.
 
-<table>
+<table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
 <tbody>
   <tr>
    <td style="text-align:left;"> average </td>
-   <td style="text-align:left;"> first quartile </td>
-   <td style="text-align:left;"> outliers </td>
-   <td style="text-align:left;"> standard deviation </td>
+   <td style="text-align:left;"> interquartile range </td>
+   <td style="text-align:left;"> scatterplot </td>
   </tr>
   <tr>
    <td style="text-align:left;"> bar plot </td>
-   <td style="text-align:left;"> form </td>
-   <td style="text-align:left;"> parameter </td>
-   <td style="text-align:left;"> statistic </td>
+   <td style="text-align:left;"> IQR </td>
+   <td style="text-align:left;"> segmented bar plot </td>
   </tr>
   <tr>
    <td style="text-align:left;"> bimodal </td>
-   <td style="text-align:left;"> frequency </td>
-   <td style="text-align:left;"> percentile </td>
-   <td style="text-align:left;"> strength </td>
+   <td style="text-align:left;"> left skewed </td>
+   <td style="text-align:left;"> Simpson's Paradox </td>
   </tr>
   <tr>
    <td style="text-align:left;"> box plot </td>
-   <td style="text-align:left;"> histogram </td>
-   <td style="text-align:left;"> pie chart </td>
-   <td style="text-align:left;"> symmetric </td>
+   <td style="text-align:left;"> mean </td>
+   <td style="text-align:left;"> standard deviation </td>
   </tr>
   <tr>
    <td style="text-align:left;"> column proportions </td>
-   <td style="text-align:left;"> intensity map </td>
-   <td style="text-align:left;"> point estimate </td>
-   <td style="text-align:left;"> tail </td>
+   <td style="text-align:left;"> median </td>
+   <td style="text-align:left;"> statistic </td>
   </tr>
   <tr>
    <td style="text-align:left;"> column totals </td>
-   <td style="text-align:left;"> interquartile range </td>
-   <td style="text-align:left;"> relative frequency </td>
-   <td style="text-align:left;"> third quartile </td>
+   <td style="text-align:left;"> mosaic plot </td>
+   <td style="text-align:left;"> strength </td>
   </tr>
   <tr>
    <td style="text-align:left;"> contingency table </td>
-   <td style="text-align:left;"> IQR </td>
-   <td style="text-align:left;"> right skewed </td>
-   <td style="text-align:left;"> transformation </td>
+   <td style="text-align:left;"> multimodal </td>
+   <td style="text-align:left;"> symmetric </td>
   </tr>
   <tr>
    <td style="text-align:left;"> data density </td>
-   <td style="text-align:left;"> left skewed </td>
-   <td style="text-align:left;"> robust statistics </td>
-   <td style="text-align:left;"> two-way table </td>
+   <td style="text-align:left;"> outlier </td>
+   <td style="text-align:left;"> tail </td>
   </tr>
   <tr>
    <td style="text-align:left;"> density plot </td>
-   <td style="text-align:left;"> mean </td>
-   <td style="text-align:left;"> row proportions </td>
-   <td style="text-align:left;"> unimodal </td>
+   <td style="text-align:left;"> outliers </td>
+   <td style="text-align:left;"> third quartile </td>
   </tr>
   <tr>
    <td style="text-align:left;"> deviation </td>
-   <td style="text-align:left;"> median </td>
-   <td style="text-align:left;"> row totals </td>
-   <td style="text-align:left;"> variability </td>
+   <td style="text-align:left;"> parameter </td>
+   <td style="text-align:left;"> transformation </td>
   </tr>
   <tr>
    <td style="text-align:left;"> direction </td>
-   <td style="text-align:left;"> mosaic plot </td>
-   <td style="text-align:left;"> scatterplot </td>
-   <td style="text-align:left;"> variance </td>
+   <td style="text-align:left;"> percentile </td>
+   <td style="text-align:left;"> two-way table </td>
   </tr>
   <tr>
    <td style="text-align:left;"> distribution </td>
-   <td style="text-align:left;"> multimodal </td>
-   <td style="text-align:left;"> segmented bar plot </td>
-   <td style="text-align:left;"> weighted mean </td>
+   <td style="text-align:left;"> pie chart </td>
+   <td style="text-align:left;"> unimodal </td>
   </tr>
   <tr>
    <td style="text-align:left;"> dot plot </td>
-   <td style="text-align:left;"> outlier </td>
-   <td style="text-align:left;"> Simpson's Paradox </td>
+   <td style="text-align:left;"> point estimate </td>
+   <td style="text-align:left;"> variability </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> first quartile </td>
+   <td style="text-align:left;"> relative frequency </td>
+   <td style="text-align:left;"> variance </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> form </td>
+   <td style="text-align:left;"> right skewed </td>
+   <td style="text-align:left;"> weighted mean </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> frequency </td>
+   <td style="text-align:left;"> robust statistics </td>
    <td style="text-align:left;"> whiskers </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> histogram </td>
+   <td style="text-align:left;"> row proportions </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> intensity map </td>
+   <td style="text-align:left;"> row totals </td>
+   <td style="text-align:left;">  </td>
   </tr>
 </tbody>
 </table>
@@ -1686,7 +1698,7 @@ However you should be able to easily spot them as **bolded text**.
 Figure \@ref(fig:decision-tree-plots) presents a decision tree for deciding which type of plot is most appropriate for a given number and types of variables. In the next chapter, we'll further explore how to model the association between two quantitative variables, called regression. In Chapter \@ref(mult-reg), we'll look at exploratory data analysis methods for more than two variables.
 
 <div class="figure" style="text-align: center">
-<img src="02-eda_files/figure-html/decision-tree-plots-1.png" alt="Decision tree for determining an appropriate plot  given a number of variables and their types." width="70%" />
+<img src="02-eda_files/figure-html/decision-tree-plots-1.png" alt="Decision tree for determining an appropriate plot  given a number of variables and their types." width="672" />
 <p class="caption">(\#fig:decision-tree-plots)Decision tree for determining an appropriate plot  given a number of variables and their types.</p>
 </div>
 

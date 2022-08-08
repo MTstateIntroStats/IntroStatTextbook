@@ -1,0 +1,14 @@
+# Applications: Foundations  {#foundations-applications}
+
+```{r, include = FALSE}
+source("_common.R")
+```
+
+::: {.chapterintro}
+TODO
+:::
+
+::: {.underconstruction}
+TODO
+:::
+

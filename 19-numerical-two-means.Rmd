@@ -1,0 +1,36 @@
+# Inference for comparing two independent means
+
+```{r, include = FALSE}
+source("_common.R")
+```
+
+::: chapterintro
+TODO
+:::
+
+```{r include=FALSE}
+terms_chp_19 <- c("TODO")
+```
+
+## Chapter review {#chp19-review}
+
+### Summary {-}
+
+::: {.underconstruction}
+TODO
+:::
+
+### Terms {-}
+
+We introduced the following terms in the chapter. If you're not sure what some of these terms mean, we recommend you go back in the text and review their definitions. We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. However you should be able to easily spot them as **bolded text**.
+
+```{r}
+make_terms_table(terms_chp_19)
+```
+
+### Key ideas {-}
+
+::: {.underconstruction}
+TODO
+:::
+
