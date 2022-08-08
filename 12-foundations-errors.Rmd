@@ -19,63 +19,51 @@ source("_common.R")
 <!-- ``` -->
 
 ::: {.chapterintro}
-TODO
+Using data to make inferential decisions about larger populations is not a perfect process.
+As seen in Chapter \@ref(foundations-randomization), a small p-value typically leads the researcher to a decision to reject the null claim or hypothesis.
+Sometimes, however, data can produce a small p-value when the null hypothesis is actually true and the data are just inherently variable.
+Here we describe the errors which can arise in hypothesis testing, how to define and quantify the different errors, and suggestions for mitigating errors if possible.
 :::
 
+## Decision errors
 
-## Decision errors {#types-of-errors}
-
-
-
-<!-- COPIED FROM OLD CHAPTER ON FOUNDATIONS - REPEATS SOME OF WHAT IS SAID IN "P-VALUE AND STATISTICAL SIGNIFICANCE" SECTION OF CHAPTER 9 -->
-### Decisions and statistical significance {.unnumbered}
-
-In some cases, a **decision** to the hypothesis test is needed, with the two possible decisions as follows:
+In Chapter \@ref(foundations-randomization), we explored the concept of a p-value as a continuum of strength of evidence against a null hypothesis, from 0 (extremely strong evidence against the null) to 1 (no evidence against the null). In some cases, however, a **decision** to the hypothesis test is needed, with the two possible decisions as follows:
 
 -   Reject the null hypothesis
 -   Fail to reject the null hypothesis
 
-::: guidedpractice
-For which values of the p-value should you "reject" a null hypothesis? "fail to reject" a null hypothesis?[^05-inference-cat-9]
+::: {.workedexample}
+For which values of the p-value should you "reject" a null hypothesis? "fail to reject" a null hypothesis?
+
+-------------------------------------------
+
+Since a smaller p-value gives you stronger evidence *against* the null hypothesis, we reject $H_0$ when the p-value is very small, and fail to reject $H_0$ when the p-value is not small.
 :::
-
-[^05-inference-cat-9]: Since a smaller p-value gives you stronger evidence *against* the null hypothesis, we reject $H_0$ when the p-value is very small, and fail to reject $H_0$ when the p-value is not small.
-
-In order to decide between these two options, we need a previously set threshold for our p-value: when the p-value is less than a previously set threshold, we reject $H_0$; otherwise, we fail to reject $H_0$. This threshold is called the **significance level**\index{hypothesis testing!significance level}\index{significance level}, and when the p-value is less than the significance level, we say the results are **statistically significant**. This means the data provide such strong evidence against $H_0$ that we reject the null hypothesis in favor of the alternative hypothesis. The significance level, often represented by $\alpha$ (the Greek letter *alpha*), is typically set to $\alpha = 0.05$, but can vary depending on the field or the application and the real-life consequences of an incorrect decision. Using a significance level of $\alpha = 0.05$ in the Martian alphabet study, we can say that the data provided statistically significant evidence against the null hypothesis.
-
-::: onebox
-**Statistical significance.**
-
-We say that the data provide **statistically significant**\index{hypothesis testing!statistically significant|textbf} evidence against the null hypothesis if the p-value is less than some reference value called the **significance level**\index{significance level}, denoted by $\alpha$.
-:::
-
-<!-- END OF COPY -->
-
-
-\index{hypothesis testing!decision errors|(}
 
 Hypothesis tests are not flawless. Just think of the court system: innocent people are sometimes wrongly convicted and the guilty sometimes walk free. Similarly, data can point to the wrong conclusion. However, what distinguishes statistical hypothesis tests from a court system is that our framework allows us to quantify and control how often the data lead us to the incorrect conclusion.
 
-In a hypothesis test, there are two competing hypotheses: the null and the alternative. We make a statement about which one might be true, but we might choose incorrectly. There are four possible scenarios in a hypothesis test, which are summarized in Table \@ref(tab:fourHTScenarios).
+In a hypothesis test, there are two competing hypotheses: the null and the alternative. We make a statement about which one might be true, but we might choose incorrectly.
+There are four possible scenarios in a hypothesis test, which are summarized in Table \@ref(tab:fourHTScenarios).
 
 ```{r fourHTScenarios}
-temptbl <- tribble(
-  ~variable,    ~col1, ~col2, ~col3,
- "", "", "Fail to reject $H_0$", "Reject $H_0$",
- "", "$H_0$ true", "good decision", "Type 1 Error",
- "**Truth**", "$H_A$ true", "Type 2 Error", "good decision"
+ht_scenarios <- tribble(
+  ~Truth,       ~`Reject null hypothesis`, ~`Fail to reject null hypothesis`,
+  "Null hypothesis is true", "Type 1 Error",           "Good decision", 
+  "Alternative hypothesis is true", "Good decision",          "Type 2 Error"
 )
 
-temptbl %>%
- kable(caption = "Four different scenarios for hypothesis tests.", 
-    col.names = c("", "", "", "")) %>%
- add_header_above( c("", "", "**Test conclusion**" = 2)) %>%
- kable_styling()
+ht_scenarios %>%
+  kbl(linesep = "", booktabs = TRUE, caption = "Four different scenarios for hypothesis tests.") %>%
+  add_header_above(c("", "Test conclusion" = 2)) %>%
+  kable_styling(bootstrap_options = c("striped", "condensed"), latex_options = c("striped", "hold_position"), full_width = FALSE) %>%
+  column_spec(1, width = "15em") %>%
+  column_spec(2:3, width = "8em")
 ```
 
-A **Type 1 Error**\index{Type 1 Error} is rejecting the null hypothesis when $H_0$ is actually true. Since we rejected the null hypothesis in the [Martian alphabet example](#Martian), it is possible that we made a Type I Error in that study.
+A **Type 1 Error**\index{Type 1 Error} is rejecting the null hypothesis when $H_0$ is actually true.
+Since we rejected the null hypothesis in the [Martian alphabet example](#Martian) and [sex discrimination case study](#caseStudySexDiscrimination), it is possible that we made a Type 1 Error in one or both of those studies.
 
-A **Type 2 Error**\index{Type 2 Error} is failing to reject the null hypothesis when the alternative is actually true. Since we failed to reject the null hypothesis in the [medical consultant](#one-prop-null-boot) and [payday lenders](#payday-lenders) studies, it is possible that we made a Type 2 Error in one or both of those studies.
+A **Type 2 Error**\index{Type 2 Error} is failing to reject the null hypothesis when the alternative is actually true. Since we failed to reject the null hypothesis in the [medical consultant](##case-study-med-consult-test), it is possible that we made a Type 2 Error in that study.
 
 ```{r include=FALSE}
 terms_chp_12 <- c("Type 1 Error", "Type 2 Error")
@@ -90,10 +78,10 @@ If the court makes a Type 1 Error, this means the defendant is innocent ($H_0$ t
 :::
 
 ::: guidedpractice
-Consider the Martian alphabet study where we concluded students were more likely to say that Bumba was the figure on the left. What would a Type 1 Error represent in this context?[^05-inference-cat-50]
+Consider the Martian alphabet study where we concluded students were more likely to say that Bumba was the figure on the left. What would a Type 1 Error represent in this context?[^foundations-errors-1]
 :::
 
-[^05-inference-cat-50]: Making a Type 1 Error in this context would mean that students are equally likely to associate Bumba with the figure on the left as the figure on the right, despite the strong evidence (the data suggesting otherwise) found in the experiment. Notice that this does *not* necessarily mean something was wrong with the data or that we made a computational mistake. Sometimes data simply point us to the wrong conclusion, which is why scientific studies are often repeated to check initial findings.
+[^foundations-errors-1]: Making a Type 1 Error in this context would mean that students are equally likely to associate Bumba with the figure on the left as the figure on the right, despite the strong evidence (the data suggesting otherwise) found in the experiment. Notice that this does *not* necessarily mean something was wrong with the data or that we made a computational mistake. Sometimes data simply point us to the wrong conclusion, which is why scientific studies are often repeated to check initial findings.
 
 ::: workedexample
 How could we reduce the Type 1 Error rate in US courts? What influence would this have on the Type 2 Error rate?
@@ -103,97 +91,266 @@ How could we reduce the Type 1 Error rate in US courts? What influence would thi
 To lower the Type 1 Error rate, we might raise our standard for conviction from "beyond a reasonable doubt" to "beyond a conceivable doubt" so fewer people would be wrongly convicted. However, this would also make it more difficult to convict the people who are actually guilty, so we would make more Type 2 Errors.
 :::
 
-::: guidedpractice
-How could we reduce the Type 2 Error rate in US courts? What influence would this have on the Type 1 Error rate?[^05-inference-cat-51]
+::: {.workedexample data-latex=""}
+How could we reduce the Type 1 Error rate in US courts?
+What influence would this have on the Type 2 Error rate?
+
+------------------------------------------------------------------------
+
+To lower the Type 1 Error rate, we might raise our standard for conviction from "beyond a reasonable doubt" to "beyond a conceivable doubt" so fewer people would be wrongly convicted.
+However, this would also make it more difficult to convict the people who are actually guilty, so we would make more Type 2 Errors.
 :::
 
-[^05-inference-cat-51]: To lower the Type 2 Error rate, we want to convict more guilty people. We could lower the standards for conviction from "beyond a reasonable doubt" to "beyond a little doubt". Lowering the bar for guilt will also result in more wrongful convictions, raising the Type 1 Error rate.
+::: {.guidedpractice data-latex=""}
+How could we reduce the Type 2 Error rate in US courts?
+What influence would this have on the Type 1 Error rate?[^foundations-errors-2]
+:::
 
-\index{hypothesis testing!decision errors|)}
+[^foundations-errors-2]: To lower the Type 2 Error rate, we want to convict more guilty people.
+    We could lower the standards for conviction from "beyond a reasonable doubt" to "beyond a little doubt".
+    Lowering the bar for guilt will also result in more wrongful convictions, raising the Type 1 Error rate.
 
 The example and guided practice above provide an important lesson: if we reduce how often we make one type of error, we generally make more of the other type.
 
-```{=html}
-<!--
-%Hypothesis testing is built around rejecting or failing to reject the null hypothesis. That is, we do not reject $H_0$ unless the data provide strong evidence against it. But what precisely does *strong evidence* mean? As a general rule of thumb, for those cases where the null hypothesis is actually true, we do not want to incorrectly reject $H_0$ more than 5% of the time. This corresponds to our default significance level of $\alpha = 0.05$, which we use as a comparison with the p-value. In the next section, we discuss the appropriateness of different significance levels.
--->
-```
-## Controlling the Type I error rate
+## Significance level
 
-\index{hypothesis testing!significance level|(} \index{significance level|(}
-
-Choosing a significance level for a test is important in many contexts, and the traditional level is 0.05. However, it is sometimes helpful to adjust the significance level based on the application. We may select a level that is smaller or larger than 0.05 depending on the consequences of any conclusions reached from the test.
+The **significance level** provides the cutoff for the p-value which will lead to a decision of "reject the null hypothesis".
+When the p-value is less than the significance level, we say the results are **statistically significant**. 
+This means the data provide such strong evidence against $H_0$ that we reject the null hypothesis in favor of the alternative hypothesis.
 
 ::: onebox
 **Significance level = probability of making a Type 1 error.**
 
-We reject a null hypothesis if the p-value is less than a chosen significance level, $\alpha$. Therefore, if the null hypothesis is true, but we end up with really unusual data just by chance -- a p-value less than $\alpha$ -- then we mistakenly reject the null hypothesis, making a Type 1 error.
+We reject a null hypothesis if the p-value is less than a chosen significance level, $\alpha$. Therefore, if the null hypothesis is true, but we end up with really unusual data just by chance---a p-value less than $\alpha$---then we mistakenly reject the null hypothesis, making a Type 1 error.
 :::
 
-If making a Type 1 Error is dangerous or especially costly, we should choose a small significance level (e.g., 0.01 or 0.001). If we want to be very cautious about rejecting the null hypothesis, we demand very strong evidence favoring the alternative $H_A$ before we would reject $H_0$.
+The significance level should be chosen depending on the field or the application and the real-life consequences of an incorrect decision.
+The traditional level is 0.05, but, as discussed in Section \@ref(foundations-errors), this choice is somewhat arbitrary---there is nothing special about this particular value. 
+We should select a level that is smaller or larger than 0.05 depending on the consequences of any conclusions reached from the test.
 
-If a Type 2 Error is relatively more dangerous or much more costly than a Type 1 Error, then we should choose a higher significance level (e.g., 0.10). Here we want to be cautious about failing to reject $H_0$ when the null is actually false.
+If making a Type 1 Error is dangerous or especially costly, we should choose a small significance level (e.g., 0.01 or 0.001).
+If we want to be very cautious about rejecting the null hypothesis, we demand very strong evidence favoring the alternative $H_A$ before we would reject $H_0.$
 
-::: importantbox
+If a Type 2 Error is relatively more dangerous or much more costly than a Type 1 Error, then we should choose a higher significance level (e.g., 0.10).
+Here we want to be cautious about failing to reject $H_0$ when the null is actually false.
+
+```{r include=FALSE}
+terms_chp_12 <- c(terms_chp_12, "significance level")
+```
+
+::: {.tip data-latex=""}
 **Significance levels should reflect consequences of errors.**
 
-The significance level selected for a test should reflect the real-world consequences associated with making a Type 1 or Type 2 error.
+The significance level selected for a test should reflect the real-world consequences associated with making a Type 1 or Type 2 Error.
 :::
 
-Because of the result of increased error rates, it is never okay to change two-sided tests to one-sided tests after observing the data. There are two dangers if we ignore possibilities that disagree with our data or that conflict with our world view:
+## Two-sided hypotheses {#two-sided-tests}
 
-1.  Framing an alternative hypothesis simply to match the direction that the data point will generally inflate the Type 1 Error rate. After all the work we've done (and will continue to do) to rigorously control the error rates in hypothesis tests, careless construction of the alternative hypotheses can disrupt that hard work.
+\index{hypothesis testing}
 
-2.  If we only use alternative hypotheses that agree with our worldview, then we're going to be subjecting ourselves to **confirmation bias**\index{confirmation bias}, which means we are looking for data that supports our ideas. That's not very scientific, and we can do better!
+In Chapter \@ref(foundations-randomization) we explored whether women were discriminated against.
+In this case study, however, we have ignored the possibility that *men* are actually discriminated against. This possibility wasn't considered in our original hypotheses or analyses.
+The disregard of the extra alternatives may have seemed natural since we expected the data to point in the direction in which we framed the problem.
+However, there are two dangers if we ignore possibilities that disagree with prior beliefs or that conflict with our world view:
 
-We explore the consequences of ignoring this advice in the next example.
+1.  Framing an alternative hypothesis simply to match the direction that the data are expected to point will generally inflate the Type 1 Error rate.
+    After all the work we have done (and will continue to do) to rigorously control the error rates in hypothesis tests, careless construction of the alternative hypotheses can disrupt that hard work.
+
+2.  If we only use alternative hypotheses that agree with our worldview, then we are going to be subjecting ourselves to **confirmation bias**\index{confirmation bias}, which means we are looking for data that supports our ideas.
+    That's not very scientific, and we can do better!
+
+The hypotheses we have seen in the past two chapters are called **one-sided hypothesis tests**\index{one-sided hypothesis test} because they only explored one direction of possibilities.
+Such hypotheses are appropriate when we are exclusively interested in the single direction, but usually we want to consider all possibilities.
+
+Consider the situation of the [medical consultant](#case-study-med-consult-test). The setting has been framed in the context of the consultant being helpful. This original hypothesis is a one-sided hypothesis test because it only explored whether the consultant's patients had a complication rate *below* 10%.
+
+But what if the consultant actually performed *worse* than the average? Would we care? More than ever! Since it turns out that we care about a finding in either direction, we should run a two-sided hypothesis test.
+
+```{r include=FALSE}
+terms_chp_12 <- c(terms_chp_12, "confirmation bias", "one-sided hypothesis test", "two-sided hypothesis test")
+```
 
 ::: workedexample
-Using $\alpha=0.05$, we show that freely switching from two-sided tests to one-sided tests will lead us to make twice as many Type 1 Errors as intended.
+Form hypotheses to conduct a two-sided test for the medical consultant case study in plain and statistical language. Let $\pi$ represent the true complication rate of organ donors who work with this medical consultant.
 
 ------------------------------------------------------------------------
 
-Suppose we are interested in finding if a proportion differs from 0.5. We've created a smooth-looking **null distribution** representing proportions due to chance in Figure \@ref(fig:type1ErrorDoublingExampleFigure).
+We want to understand whether the medical consultant is helpful or harmful. We'll consider both of these possibilities using a two-sided hypothesis test.
 
-Suppose the sample proportion was larger than 0.5. Then if we can flip to a one-sided test, we would use $H_A$: proportion $> 0.5$. Now if we obtain any observation in the upper 5% of the distribution, we would reject $H_0$ since the p-value would just be a the single tail. Thus, if the null hypothesis is true, we incorrectly reject the null hypothesis about 5% of the time when the sample proportion is above the null value, as shown in Figure \@ref(fig:type1ErrorDoublingExampleFigure).
+-   $H_0$: There is no association between the consultant's contributions and the clients' complication rate, i.e., $\pi = 0.10$
 
-Suppose the sample proportion was smaller than 0.5. Then if we change to a one-sided test, we would use $H_A$: proportion $< 0.5$. If the observed difference falls in the lower 5% of the figure, we would reject $H_0$. That is, if the null hypothesis is true, then we would observe this situation about 5% of the time.
+-   $H_A$: There is an association, either positive or negative, between the consultant's contributions and the clients' complication rate, i.e., $\pi \neq 0.10$.
 
-By examining these two scenarios, we can determine that we will make a Type 1 Error $5\%+5\%=10\%$ of the time if we are allowed to swap to the "best" one-sided test for the data. This is twice the error rate we prescribed with our significance level: $\alpha=0.05$ (!).
+Compare this to the one-sided hypothesis test, when the hypotheses were:
+
+-   $H_0$: There is no association between the consultant's contributions and the clients' complication rate, i.e., $\pi = 0.10$.
+
+-   $H_A$: Patients who work with the consultant tend to have a complication rate lower than 10%, i.e., $\pi < 0.10$.
 :::
 
-```{r type1ErrorDoublingExampleFigure, fig.cap="The shaded regions represent areas where we would reject $H_0$ under the bad practices considered in when $\\alpha = 0.05$.", warning=FALSE, fig.width=10}
-par(las=1, mar=c(2,0,0.5,0), mgp=c(3,0.9,0))
-X <- seq(-4,4,0.01)
-Y <- dnorm(X)
-plot(X, Y, type='l', axes=F, xlim=c(-4,4))
-axis(1, at=c(-5,0,5), label=expression(0, 0.5, 1), cex.axis=1.2)
-these <- which(X >= 1.65)
-polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col=COL[1])
-these <- which(X <= -1.65)
-polygon(c(X[these[1]], X[these],X[rev(these)[1]]), c(0,Y[these],0), col=COL[1])
+There were 62 patients who worked with this medical consultant, 3 of which developed complications from their organ donation, for a point estimate of $\hat{p} = \frac{3}{62} = 0.048$.
 
-arrows(-2,0.17, -1.9, 0.08, length=0.07, col=COL[1], lwd=1.5)
-text(-1.92, 0.21, '5%', cex=1.2, col=COL[1])
-arrows(2,0.17, 1.9, 0.08, length=0.07, col=COL[1], lwd=1.5)
-text(2.08, 0.21, '5%', cex=1.2, col=COL[1])
+According to the point estimate, the complication rate for clients of this medical consultant is 5.2% below the expected complication rate of 10%. However, we wonder if this difference could be easily explainable by chance.
 
-lines(X, Y, lwd=1.5)
-abline(h=0)
+Recall in Section \@ref(case-study-med-consult-test), we simulated what proportions we might see from chance alone under the null hypothesis. By using marbles, cards, or a spinner to reflect the null hypothesis, we can simulate what would happen to 62 'patients' *if the true complication rate is 10%*. After repeating this simulation 10,000 times, we can build a **null distribution** of the sample proportions shown in Figure \@ref(fig:nullDistForPHatIfLiverTransplantConsultantIsNotHelpful2).
+
+```{r nullDistForPHatIfLiverTransplantConsultantIsNotHelpful2, fig.cap="The null distribution for $\\hat{p}$, created from 10,000 simulated studies. ", warning=FALSE, fig.width=10}
+
+pHat <- rbinom(10^4, 62, 0.1) / 62
+M    <- max(pHat) * 62
+histPlot(pHat,
+         breaks = (-1:(2 * M) + 0.75) / 2 / 62,
+         xlab = expression(hat(p)[sim]*"    "),
+         col = COL[7, 3],
+         ylab = "")
+histPlot(pHat[pHat < 0.05],
+         breaks = (-1:(2 * M) + 0.75) / 2 / 62,
+         col = COL[1],
+         add = TRUE)
+par(las = 0)
+mtext("Number of simulations", 2, 3.3)
 ```
 
-::: importantbox
-**Hypothesis tests should be set up *before* seeing the data.**
+The original hypothesis, investigating if the medical consultant was helpful, was a one-sided hypothesis test ($H_A: \pi < 0.10$) so we only counted the simulations *below* our observed proportion of 0.048 in order to calculate the p-value of 0.1222 or 12.22%. However, the p-value of this two-sided hypothesis test investigating if the medical consultant is helpful or harmful is not 0.1222!
 
-After observing data, it is tempting to turn a two-sided test into a one-sided test. Avoid this temptation. Hypotheses should be set up *before* observing the data.
-:::
+The p-value is defined as the chance we observe a result *at least as favorable to the alternative hypothesis as the result* (i.e., the proportion) we observe. For a two-sided hypothesis test, that means finding the proportion of simulations *further in either tail* than the observed result, or beyond a point that is *equi-distant from the null hypothesis* as the observed result.
+
+In this case, the observed proportion of 0.048 is 0.052 below the null hypothesized value of 0.10. So while we will continue to count the 0.1222 simulations at or below 0.048, we must add to that the proportion of simulations that are **at or above** $0.10 + 0.052 = 0.152$ in order to obtain the p-value.
+
+In Figure \@ref(fig:Medical-consultant-two-sided) we've also shaded these differences in the right tail of the distribution. These two shaded tails provide a visual representation of the p-value for a two-sided test.
 
 ```{=html}
 <!--
-%\Comment{Should we scrap this subsection and example and just leave the caution box? Downside: weakens item 1 near the start of Section \@ref(IntroducingTwoSidedHypotheses).}
+%There is something different in this study than in the past studies: in this study, we are particularly interested in whether blood thinners increase *or* decrease the risk of death in patients who undergo CPR before arriving at the hospital.\footnote{Realistically, we probably are interested in either direction in the past studies as well, and so we should have used the approach we now discuss in this section. However, for simplicity and the sake of not introducing too many concepts at once, we skipped over these details in earlier sections.} For example, there are chance differences of $\hat{p}_t - \hat{p}_c = -0.14$, that would have been stronger evidence against the null hypothesis as our observed difference of +0.13. Likewise, anything less than or equal -0.13 would provide as much evidence against the null hypothesis as +0.13, and for this reason, we must count both tails towards the p-value, as shown in Figure \ref{CPR-study-p-value}.
 -->
 ```
+```{r Medical-consultant-two-sided, fig.cap="The null distribution for $\\hat{p}$, created from 10,000 simulated studies. All simulations that are at least as far from the null value of 0.10 as the observed proportion (i.e., those below 0.048 and those above 0.152) are shaded.", warning=FALSE, fig.width=10}
+
+pHat <- rbinom(10^4, 62, 0.1) / 62
+M    <- max(pHat) * 62
+histPlot(pHat,
+         breaks = (-1:(2 * M) + 0.75) / 2 / 62,
+         xlab = expression(hat(p)[sim]*"    "),
+         col = COL[7, 3],
+         ylab = "")
+histPlot(pHat[pHat < 0.05],
+         breaks = (-1:(2 * M) + 0.75) / 2 / 62,
+         col = COL[1],
+         add = TRUE)
+histPlot(pHat[pHat > 0.15],
+         breaks = (-1:(2 * M) + 0.75) / 2 / 62,
+         col = COL[1],
+         add = TRUE)
+par(las = 0)
+mtext("Number of simulations", 2, 3.3)
+```
+
+From our previous simulation, we know that 12.22% of the simulations lie at or below the observed proportion of 0.048. Figure \@ref(fig:Medical-consultant-two-sided) shows that an additional 0.0811 or 8.11% of simulations fall at or above 0.152. This indicates the p-value for this two-sided test is $0.1222 + 0.0811 = 0.2033$. With this large p-value, we do not find statistically significant evidence that the medical consultant's patients had a complication rate different from 10%.
+
+In Section \@ref(theory-prop), you will learn that the null distribution will be symmetric under certain conditions. When the null distribution is symmetric, we can find a two-sided p-value by merely taking the single tail (in this case, 0.1222) and double it to get the two-sided p-value: 0.2444. Note that the example here does not satisfy the conditions and the null distribution in Figure \@ref(fig:Medical-consultant-two-sided) is not symmetric. Thus, the result of a 'doubled' one-sided p-value of 0.2444 is not a good estimate of the actual two-sided p-value of 0.2033.
+
+\index{data!medical consultant|(}
+
+::: onebox
+**Default to a two-sided test.**
+
+We want to be rigorous and keep an open mind when we analyze data and evidence. Use a one-sided hypothesis test only if you truly have interest in only one direction.
+:::
+
+::: onebox
+**Computing a p-value for a two-sided test.**
+
+If your null distribution is symmetric, first compute the p-value for one tail of the distribution, then double that value to get the two-sided p-value. That's it![^foundations-errors-two-sided-pvalue]
+:::
+
+[^foundations-errors-two-sided-pvalue]: If the null distribution is not symmetric, then the computer will have to count the proportions in each tail separately, since the two tail proportions may differ.
+
+Generally, to find a two-sided p-value we double the single tail area, which remains a reasonable approach even when the sampling distribution is asymmetric. However, the approach can result in p-values larger than 1 when the point estimate is very near the mean in the null distribution; in such cases, we write that the p-value is 1. Also, very large p-values computed in this way (e.g., 0.85), may also be slightly inflated. Typically, we do not worry too much about the precision of very large p-values because they lead to the same analysis conclusion, even if the value is slightly off.
+
+## Controlling the Type 1 error rate
+
+Now that we understand the difference between one-sided and two-sided tests, we must recognize when to use each type of test.
+Because of the result of increased error rates, it is never okay to change two-sided tests to one-sided tests after observing the data.
+We explore the consequences of ignoring this advice in the next example.
+
+::: {.workedexample data-latex=""}
+Using $\alpha=0.05,$ we show that freely switching from two-sided tests to one-sided tests will lead us to make twice as many Type 1 Errors as intended.
+
+------------------------------------------------------------------------
+
+Suppose we are interested in finding any difference from 0.
+We've created a smooth-looking **null distribution** representing differences due to chance in Figure \@ref(fig:type1ErrorDoublingExampleFigure).
+
+Suppose the sample difference was larger than 0.
+Then if we can flip to a one-sided test, we would use $H_A:$ difference $> 0.$ Now if we obtain any observation in the upper 5% of the distribution, we would reject $H_0$ since the p-value would just be a the single tail.
+Thus, if the null hypothesis is true, we incorrectly reject the null hypothesis about 5% of the time when the sample mean is above the null value, as shown in Figure \@ref(fig:type1ErrorDoublingExampleFigure).
+
+Suppose the sample difference was smaller than 0.
+Then if we change to a one-sided test, we would use $H_A:$ difference $< 0.$ If the observed difference falls in the lower 5% of the figure, we would reject $H_0.$ That is, if the null hypothesis is true, then we would observe this situation about 5% of the time.
+
+By examining these two scenarios, we can determine that we will make a Type 1 Error $5\%+5\%=10\%$ of the time if we are allowed to swap to the "best" one-sided test for the data.
+This is twice the error rate we prescribed with our significance level: $\alpha=0.05$ (!).
+:::
+
+```{r type1ErrorDoublingExampleFigure, fig.cap="The shaded regions represent areas where we would reject $H_0$ under the bad practices considered in when $\\alpha = 0.05.$", fig.asp = 0.5}
+normTail(U = 1.65, L = -1.65, col = IMSCOL["blue", "full"])
+arrows(-2, 0.17, -1.9, 0.08, length = 0.07, lwd = 1.5)
+text(-1.92, 0.21, "5%", cex = 1.2)
+arrows(2, 0.17, 1.9, 0.08, length = 0.07, lwd = 1.5)
+text(2.08, 0.21, "5%", cex = 1.2)
+```
+
+::: {.caution}
+**Hypothesis tests should be set up *before* seeing the data.**
+
+After observing data, it is tempting to turn a two-sided test into a one-sided test.
+Avoid this temptation.
+Hypotheses should be set up *before* observing the data.
+:::
+
+
+
+
 ## Power
+
+Although we won't go into extensive detail here, power is an important topic for follow-up consideration after understanding the basics of hypothesis testing.
+A good power analysis is a vital preliminary step to any study as it will inform whether the data you collect are sufficient for being able to conclude your research broadly.
+
+Often times in experiment planning, there are two competing considerations:
+
+-   We want to collect enough data that we can detect important effects.
+-   Collecting data can be expensive, and, in experiments involving people, there may be some risk to patients.
+
+When planning a study, we want to know how likely we are to detect an effect we care about.
+In other words, if there is a real effect, and that effect is large enough that it has practical value, then what is the probability that we detect that effect?
+This probability is called the **power**\index{power}, and we can compute it for different sample sizes or different effect sizes.
+
+::: {.important data-latex=""}
+**Power.**
+
+The power of the test is the probability of rejecting the null claim when the alternative claim is true.
+
+How easy it is to detect the effect depends on both how big the effect is (e.g., how good the medical treatment is) as well as the sample size.
+:::
+
+We think of power as the probability that you will become rich and famous from your science.
+In order for your science to make a splash, you need to have good ideas!
+That is, you won't become famous if you happen to find a single Type 1 error which rejects the null hypothesis.
+Instead, you'll become famous if your science is very good and important (that is, if the alternative hypothesis is true).
+The better your science is (i.e., the better the medical treatment), the larger the *effect size* and the easier it will be for you to convince people of your work.
+
+Not only does your science need to be solid, but you also need to have evidence (i.e., data) that shows the effect.
+A few observations (e.g., $n = 2)$ is unlikely to be convincing because of well known ideas of natural variability.
+Indeed, the larger the data set which provides evidence for your scientific claim, the more likely you are to convince the community that your idea is correct.
+
+```{r include=FALSE}
+terms_chp_12 <- c(terms_chp_12, "power")
+```
+
+
+::: {.underconstruction}
+TODO - sections below are from old Chapter 5 - go through and cut/move
+:::
 
 When the null hypothesis is true, the probability of a Type 1 error is our chosen significance level, $\alpha$, which means the probability of a correct decision is $1 - \alpha$.
 

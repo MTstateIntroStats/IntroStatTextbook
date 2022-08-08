@@ -10,6 +10,10 @@ source("_common.R")
 TODO
 :::
 
+::: {.underconstruction}
+Old content - revise as needed
+:::
+
 ## One proportion {#single-prop}
 
 ::: onebox
@@ -229,122 +233,6 @@ If it were plotted, the exact null distribution would look almost identical to t
 
 -->
 ```
-### Two-sided hypotheses {#two-sided-tests}
-
-<!-- Move this section to Chapter 12 -->
-
-```{=html}
-<!--
-%_________________
-%\section[Case study: CPR and blood thinner (randomization)]
--->
-```
-\index{hypothesis testing!two tails|(}
-
-Consider the situation of the [medical consultant](#one-prop-null-boot). The setting has been framed in the context of the consultant being helpful (which is what led us to consider whether the consultant's patients had a complication rate *below* 10%). This original hypothesis is called a **one-sided hypothesis test**\index{one-sided hypothesis test} because it only explored one direction of possibilities.
-
-But what if the consultant actually performed *worse* than the average? Would we care? More than ever! Since it turns out that we care about a finding in either direction, we should run a **two-sided hypothesis test**\index{two-sided hypothesis test}.
-
-```{r include=FALSE}
-terms_chp_14 <- c(terms_chp_14, "confirmation bias", "one-sided hypothesis test", "two-sided hypothesis test")
-```
-
-::: workedexample
-Form hypotheses for this study in plain and statistical language. Let $\pi$ represent the true complication rate of organ donors who work with this medical consultant.
-
-------------------------------------------------------------------------
-
-We want to understand whether the medical consultant is helpful or harmful. We'll consider both of these possibilities using a two-sided hypothesis test.
-
--   $H_0$: There is no association between the consultant's contributions and the clients' complication rate, i.e., $\pi = 0.10$
-
--   $H_A$: There is an association, either positive or negative, between the consultant's contributions and the clients' complication rate, i.e., $\pi \neq 0.10$.
-
-Compare this to the one-sided hypothesis test, when the hypotheses were:
-
--   $H_0$: There is no association between the consultant's contributions and the clients' complication rate, i.e., $\pi = 0.10$.
-
--   $H_A$: Patients who work with the consultant tend to have a complication rate lower than 10%, i.e., $\pi < 0.10$.
-:::
-
-There were 62 patients who worked with this medical consultant, 3 of which developed complications from their organ donation, for a point estimate of $\hat{p} = \frac{3}{62} = 0.048$.
-
-According to the point estimate, the complication rate for clients of this medical consultant is 5.2% below the expected complication rate of 10%. However, we wonder if this difference could be easily explainable by chance.
-
-Recall previously in this chapter, we simulated what proportions we might see from chance alone under the null hypothesis. By using marbles, cards, or a spinner to reflect the null hypothesis, we can simulate what would happen to 62 'patients' *if the true complication rate is 10%*. After repeating this simulation 10,000 times, we can build a **null distribution**\index{null distribution} of the sample proportions shown in Figure \@ref(fig:nullDistForPHatIfLiverTransplantConsultantIsNotHelpful2).
-
-```{r nullDistForPHatIfLiverTransplantConsultantIsNotHelpful2, fig.cap="The null distribution for $\\hat{p}$, created from 10,000 simulated studies. ", warning=FALSE, fig.width=10}
-
-pHat <- rbinom(10^4, 62, 0.1) / 62
-M    <- max(pHat) * 62
-histPlot(pHat,
-         breaks = (-1:(2 * M) + 0.75) / 2 / 62,
-         xlab = expression(hat(p)[sim]*"    "),
-         col = COL[7, 3],
-         ylab = "")
-histPlot(pHat[pHat < 0.05],
-         breaks = (-1:(2 * M) + 0.75) / 2 / 62,
-         col = COL[1],
-         add = TRUE)
-par(las = 0)
-mtext("Number of simulations", 2, 3.3)
-```
-
-The original hypothesis, investigating if the medical consultant was helpful, was a one-sided hypothesis test ($H_A: \pi < 0.10$) so we only counted the simulations *below* our observed proportion of 0.048 in order to calculate the p-value of 0.1222 or 12.22%. However, the p-value of this two-sided hypothesis test investigating if the medical consultant is helpful or harmful is not 0.1222!
-
-The p-value is defined as the chance we observe a result *at least as favorable to the alternative hypothesis as the result* (i.e., the proportion) we observe. For a two-sided hypothesis test, that means finding the proportion of simulations *further in either tail* than the observed result, or beyond a point that is *equi-distant from the null hypothesis* as the observed result.
-
-In this case, the observed proportion of 0.048 is 0.052 below the null hypothesized value of 0.10. So while we will continue to count the 0.1222 simulations at or below 0.048, we must add to that the proportion of simulations that are **at or above** $0.10 + 0.052 = 0.152$ in order to obtain the p-value.
-
-In Figure \@ref(fig:Medical-consultant-two-sided) we've also shaded these differences in the right tail of the distribution. These two shaded tails provide a visual representation of the p-value for a two-sided test.
-
-```{=html}
-<!--
-%There is something different in this study than in the past studies: in this study, we are particularly interested in whether blood thinners increase *or* decrease the risk of death in patients who undergo CPR before arriving at the hospital.\footnote{Realistically, we probably are interested in either direction in the past studies as well, and so we should have used the approach we now discuss in this section. However, for simplicity and the sake of not introducing too many concepts at once, we skipped over these details in earlier sections.} For example, there are chance differences of $\hat{p}_t - \hat{p}_c = -0.14$, that would have been stronger evidence against the null hypothesis as our observed difference of +0.13. Likewise, anything less than or equal -0.13 would provide as much evidence against the null hypothesis as +0.13, and for this reason, we must count both tails towards the p-value, as shown in Figure \ref{CPR-study-p-value}.
--->
-```
-```{r Medical-consultant-two-sided, fig.cap="The null distribution for $\\hat{p}$, created from 10,000 simulated studies. All simulations that are at least as far from the null value of 0.10 as the observed proportion (i.e., those below 0.048 and those above 0.152) are shaded.", warning=FALSE, fig.width=10}
-
-pHat <- rbinom(10^4, 62, 0.1) / 62
-M    <- max(pHat) * 62
-histPlot(pHat,
-         breaks = (-1:(2 * M) + 0.75) / 2 / 62,
-         xlab = expression(hat(p)[sim]*"    "),
-         col = COL[7, 3],
-         ylab = "")
-histPlot(pHat[pHat < 0.05],
-         breaks = (-1:(2 * M) + 0.75) / 2 / 62,
-         col = COL[1],
-         add = TRUE)
-histPlot(pHat[pHat > 0.15],
-         breaks = (-1:(2 * M) + 0.75) / 2 / 62,
-         col = COL[1],
-         add = TRUE)
-par(las = 0)
-mtext("Number of simulations", 2, 3.3)
-```
-
-From our previous simulation, we know that 12.22% of the simulations lie at or below the observed proportion of 0.048. Figure \@ref(fig:Medical-consultant-two-sided) shows that an additional 0.0811 or 8.11% of simulations fall at or above 0.152. This indicates the p-value for this two-sided test is $0.1222 + 0.0811 = 0.2033$. With this large p-value, we do not find statistically significant evidence that the medical consultant's patients had a complication rate different from 10%.
-
-In Section \@ref(theory-prop), you will learn that the null distribution will be symmetric under certain conditions. When the null distribution is symmetric, we can find a two-sided p-value by merely taking the single tail (in this case, 0.1222) and double it to get the two-sided p-value: 0.2444. Note that the example here does not satisfy the conditions and the null distribution in Figure \@ref(fig:Medical-consultant-two-sided) is not symmetric. This results in the 'doubled' p-value of 0.2444 not being a good estimate of the calculated two-sided p-value of 0.2033.
-
-\index{data!medical consultant|(}
-
-::: onebox
-**Default to a two-sided test.**
-
-We want to be rigorous and keep an open mind when we analyze data and evidence. Use a one-sided hypothesis test only if you truly have interest in only one direction.
-:::
-
-::: onebox
-**Computing a p-value for a two-sided test.**
-
-If your null distribution is symmetric, first compute the p-value for one tail of the distribution, then double that value to get the two-sided p-value. That's it![^05-inference-cat-40]
-:::
-
-[^05-inference-cat-40]: If the null distribution is not symmetric, then the computer will have to count the proportions in each tail separately, since the two tail proportions may differ.
-
-Generally, to find a two-sided p-value we double the single tail area, which remains a reasonable approach even when the sampling distribution is asymmetric. However, the approach can result in p-values larger than 1 when the point estimate is very near the mean in the null distribution; in such cases, we write that the p-value is 1. Also, very large p-values computed in this way (e.g. 0.85), may also be slightly inflated. Typically, we do not worry too much about the precision of very large p-values because they lead to the same analysis conclusion, even if the value is slightly off.
 
 ### Bootstrap confidence interval for $\pi$ {#boot-ci-prop}
 

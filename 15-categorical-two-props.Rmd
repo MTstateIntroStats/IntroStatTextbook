@@ -10,10 +10,12 @@ TODO
 :::
 
 ::: {.underconstruction}
-Sex discrimination case study now in chapter 11
+Sex discrimination case study now in chapter 11.
 :::
 
-
+::: {.underconstruction}
+Old content - revise as needed
+:::
 
 <!-- ## Difference of two proportions {#diff-two-prop} -->
 

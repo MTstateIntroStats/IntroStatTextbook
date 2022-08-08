@@ -443,7 +443,7 @@ In the Martian alphabet example, which of the two competing possibilities was th
 
 The hypothesis testing framework is a very general tool, and we often use it without a second thought. If a person makes a somewhat unbelievable claim, we are initially skeptical. However, if there is sufficient evidence that supports the claim, we set aside our skepticism. The hallmarks of hypothesis testing are also found in the US court system.
 
-### The US court system {.unnumbered}
+### The US court system
 
 In the US course system, jurors evaluate the evidence to see whether it convincingly shows a defendant is guilty.
 Defendants are considered to be innocent until proven otherwise.
@@ -467,7 +467,7 @@ This is also the case with hypothesis testing: *even if we fail to reject the nu
 Failing to find evidence in favor of the alternative hypothesis is not equivalent to finding evidence that the null hypothesis is true^[This idea is succinctly expressed by the saying, "the absence of evidence is not evidence of absence."].
 We will see this idea in greater detail in Section \@ref(decerr).
 
-### p-value and statistical significance {.unnumbered}
+### p-value and statistical significance {#p-value-stat-signif}
 
 In the [Martian alphabet example](#Martian), the research question---can humans read Martian?---was framed in the context of hypotheses:
 
@@ -573,7 +573,7 @@ We often use a threshold of 0.05 to determine whether a result is statistically 
 
 <center><https://www.openintro.org/book/stat/why05/></center>
 
-<br> Sometimes it's also a good idea to deviate from the standard. We'll discuss when to choose a threshold different than 0.05 in Section \@ref(two-prop-errors).
+<br> Sometimes it's also a good idea to deviate from the standard. We'll discuss when to choose a threshold different than 0.05 in Section \@ref(foundations-errors).
 :::
 
 Statistical significance has been a hot topic in the news, related to the "reproducibility crisis" in some scientific fields. We encourage you to read more about the debate on the use of p-values and statistical significance. A good place to start would be the *Nature* article, "[Scientists rise up against statistical significance](https://www.nature.com/articles/d41586-019-00857-9)," from March 20, 2019.

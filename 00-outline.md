@@ -185,9 +185,9 @@ Model after [Chapter 12](https://openintro-ims.netlify.app/foundations-bootstrap
 Merge our material with [Chapter 14](https://openintro-ims.netlify.app/decerr.html) of IMS
 
 - 12.1 Decision errors
-- _12.2 Significance level_
+- 12.2 Significance level
 - 12.3 Two-sided hypotheses
-- 12.4 Controlling the Type I error rate
+- 12.4 Controlling the Type 1 error rate
 - 12.5 Power
 - 12.6 Statistical significance vs. practical importance
 - 12.7 Chapter review
@@ -274,8 +274,6 @@ Moved from old categorical EDA chapter:
 - Move all images into common "images" folder and change relative links throughout text
 - Add references to all images, data sets, R packages, studies, etc and inline text and to .bib file
 - Rename #references to chapter/section titles; currently just commenting out the old ones; and make sure all links to sections are working
-
-- Change `R` to R in coursepack
 - Change data set to dataset?
 - Replace figures pval-continuum in Chapter 9 (p-value continuum) with a scale from 0 to 1.
 - Change my "onebox" css to "important", and change my "important" to something else

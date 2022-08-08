@@ -137,7 +137,8 @@ How would this probability change if the prevalence were 1/3500? 1/15000? Try it
 
 Why did this counter-intuitive result occur? With such high sensitivity and specificity, why does this test perform so poorly? The answer has to do with the prevalence of the disease. For a rare disease, the very small proportion that test positive out of the very large group of people without the disease will overwhelm the very large proportion that test positive out of the very small group of people with the disease. The number of false positives can be much higher than the number of true positives.
 
-
+<!-- TODO Someday: -->
+<!-- Add a Chapter 24: Applications: Simulating Probabilities and show R code for simulating probabilities -->
 
 ## Chapter review {#chp23-review}
 
