@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 4 Exploring categorical data | Montana State Introductory Statistics with R</title>
+<meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager">
+<meta name="description" content="This chapter focuses on exploring categorical data using summary statistics and visualizations. The summaries and graphs presented in this chapter are created using statistical software; however,...">
+<meta name="generator" content="bookdown 0.27 with bs4_book()">
+<meta property="og:title" content="Chapter 4 Exploring categorical data | Montana State Introductory Statistics with R">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://mtstateintrostats.github.io/IntroStatTextbook/categorical-data.html">
+<meta property="og:description" content="This chapter focuses on exploring categorical data using summary statistics and visualizations. The summaries and graphs presented in this chapter are created using statistical software; however,...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 4 Exploring categorical data | Montana State Introductory Statistics with R">
+<meta name="twitter:description" content="This chapter focuses on exploring categorical data using summary statistics and visualizations. The summaries and graphs presented in this chapter are created using statistical software; however,...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><script type="text/x-mathjax-config">
+    const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+    for (let popover of popovers){
+      const div = document.createElement('div');
+      div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+      div.innerHTML = popover.getAttribute('data-content');
+      
+      // Will this work with TeX on its own line?
+      var has_math = div.querySelector("span.math");
+      if (has_math) {
+        document.body.appendChild(div);
+      	MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+      	MathJax.Hub.Queue(function(){
+          popover.setAttribute('data-content', div.innerHTML);
+      	})
+      }
+    }
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="css/ims-style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Montana State Introductory Statistics with R</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="authors.html">Authors</a></li>
+<li><a class="" href="preface.html">Preface</a></li>
+<li><a class="" href="rstudio.html">Preliminaries: Getting started in RStudio</a></li>
+<li class="book-part">Introduction to data</li>
+<li><a class="" href="intro-to-data.html"><span class="header-section-number">1</span> Hello data</a></li>
+<li><a class="" href="data-design.html"><span class="header-section-number">2</span> Study design</a></li>
+<li><a class="" href="data-applications.html"><span class="header-section-number">3</span> Applications: Data</a></li>
+<li class="book-part">Exploratory data analysis</li>
+<li><a class="active" href="categorical-data.html"><span class="header-section-number">4</span> Exploring categorical data</a></li>
+<li><a class="" href="quantitative-data.html"><span class="header-section-number">5</span> Exploring quantitative data</a></li>
+<li><a class="" href="cor-reg.html"><span class="header-section-number">6</span> Correlation and regression</a></li>
+<li><a class="" href="mult-reg.html"><span class="header-section-number">7</span> Multivariable models</a></li>
+<li><a class="" href="explore-applications.html"><span class="header-section-number">8</span> Applications: Explore</a></li>
+<li class="book-part">Foundations of inference</li>
+<li><a class="" href="foundations-randomization.html"><span class="header-section-number">9</span> Hypothesis testing with randomization</a></li>
+<li><a class="" href="foundations-bootstrapping.html"><span class="header-section-number">10</span> Confidence intervals with bootstrapping</a></li>
+<li><a class="" href="foundations-mathematical.html"><span class="header-section-number">11</span> Inference with mathematical models</a></li>
+<li><a class="" href="foundations-errors.html"><span class="header-section-number">12</span> Errors, power, and practical importance</a></li>
+<li><a class="" href="foundations-applications.html"><span class="header-section-number">13</span> Applications: Foundations</a></li>
+<li class="book-part">Inference for categorical data</li>
+<li><a class="" href="inference-one-prop.html"><span class="header-section-number">15</span> Inference for a single proportion</a></li>
+<li><a class="" href="inference-two-props.html"><span class="header-section-number">16</span> Inference for comparing two proportions</a></li>
+<li><a class="" href="applications-infer-categorical.html"><span class="header-section-number">17</span> Applications: Infer categorical</a></li>
+<li class="book-part">Inference for quantitative data</li>
+<li><a class="" href="inference-for-a-single-mean.html"><span class="header-section-number">19</span> Inference for a single mean</a></li>
+<li><a class="" href="inference-for-comparing-paired-means.html"><span class="header-section-number">20</span> Inference for comparing paired means</a></li>
+<li><a class="" href="inference-for-comparing-two-independent-means.html"><span class="header-section-number">21</span> Inference for comparing two independent means</a></li>
+<li><a class="" href="applications-infer-quantitative.html"><span class="header-section-number">22</span> Applications: Infer quantitative</a></li>
+<li class="book-part">Inference for regression</li>
+<li><a class="" href="inference-for-correlation-and-slope.html"><span class="header-section-number">24</span> Inference for correlation and slope</a></li>
+<li><a class="" href="applications-infer-regression.html"><span class="header-section-number">25</span> Applications: Infer regression</a></li>
+<li class="book-part">Probability</li>
+<li><a class="" href="probability.html"><span class="header-section-number">26</span> Probability with tables</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/MTstateIntroStats/IntroStatTextbook">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="categorical-data" class="section level1" number="4">
+<h1>
+<span class="header-section-number">4</span> Exploring categorical data<a class="anchor" aria-label="anchor" href="#categorical-data"><i class="fas fa-link"></i></a>
+</h1>
+<!-- TODO - change reference to #explore-categorical -->
+<div class="chapterintro">
+<p>This chapter focuses on exploring <strong>categorical</strong> data using summary statistics and visualizations.
+The summaries and graphs presented in this chapter are created using statistical software; however, since this might be your first exposure to the concepts, we take our time in this chapter to detail how to create them.
+Where possible, we present multivariate plots; plots that visualize the relationship between multiple variables.
+Mastery of the content presented in this chapter will be crucial for understanding the methods and techniques introduced in the rest of the book.</p>
+</div>
+<p>In this chapter, we will introduce tables and other basic tools for organizing and analyzing categorical data that are used throughout this book. Table <a href="categorical-data.html#tab:emailDF">4.1</a> displays the first six rows of the <code>email</code> data set containing information on 3,921 emails sent to David Diez’s Gmail account (one of the authors of the <em>OpenIntro</em> textbooks). In this section we will examine whether the presence of numbers, small or large, in an email provides any useful value in classifying email as spam or not spam.
+Descriptions of all five email variables are given in Table <a href="categorical-data.html#tab:emailVariables">4.2</a>.</p>
+<div class="data">
+<p>The <code>email</code> data can be found in the <a href="http://openintrostat.github.io/openintro/reference/index.html">openintro</a> package.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The &lt;code&gt;email&lt;/code&gt; data set found in the &lt;code&gt;openintro&lt;/code&gt; package defines the variable &lt;code&gt;spam&lt;/code&gt; as 0 (not spam) or 1 (spam), and &lt;code&gt;format&lt;/code&gt; as 0 (not HTML) or 1 (HTML). When variables are defined in this way—coded as the numbers 0 and 1 rather than the category names—they are called &lt;strong&gt;indicator variables&lt;/strong&gt;* or &lt;strong&gt;dummy variables&lt;/strong&gt;. In this section of the textbook, we have re-coded &lt;code&gt;spam&lt;/code&gt; to be the variable &lt;code&gt;type&lt;/code&gt;, which takes on values “not spam” or “spam”, and we have re-coded the variable &lt;code&gt;format&lt;/code&gt; to take on values “not HTML” or “HTML”.&lt;/p&gt;"><sup>27</sup></a></p>
+</div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:emailDF">Table 4.1: </span>Six rows from the <code>email</code> data set.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+type
+</th>
+<th style="text-align:right;">
+num_char
+</th>
+<th style="text-align:right;">
+line_breaks
+</th>
+<th style="text-align:left;">
+format
+</th>
+<th style="text-align:left;">
+number
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+not spam
+</td>
+<td style="text-align:right;">
+11.37
+</td>
+<td style="text-align:right;">
+202
+</td>
+<td style="text-align:left;">
+HTML
+</td>
+<td style="text-align:left;">
+big
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+not spam
+</td>
+<td style="text-align:right;">
+10.50
+</td>
+<td style="text-align:right;">
+202
+</td>
+<td style="text-align:left;">
+HTML
+</td>
+<td style="text-align:left;">
+small
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+not spam
+</td>
+<td style="text-align:right;">
+7.77
+</td>
+<td style="text-align:right;">
+192
+</td>
+<td style="text-align:left;">
+HTML
+</td>
+<td style="text-align:left;">
+small
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+not spam
+</td>
+<td style="text-align:right;">
+13.26
+</td>
+<td style="text-align:right;">
+255
+</td>
+<td style="text-align:left;">
+HTML
+</td>
+<td style="text-align:left;">
+small
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+not spam
+</td>
+<td style="text-align:right;">
+1.23
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+not HTML
+</td>
+<td style="text-align:left;">
+none
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+not spam
+</td>
+<td style="text-align:right;">
+1.09
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+not HTML
+</td>
+<td style="text-align:left;">
+none
+</td>
+</tr>
+</tbody>
+</table></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:emailVariables">Table 4.2: </span>Variables and their descriptions for the <code>email</code> data set.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+variable
+</th>
+<th style="text-align:left;">
+description
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+type
+</td>
+<td style="text-align:left;">
+Whether the email was spam or not spam.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+num_char
+</td>
+<td style="text-align:left;">
+The number of characters in the email, in thousands.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+line_breaks
+</td>
+<td style="text-align:left;">
+The number of line breaks in the email (does not count text wrapping).
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+format
+</td>
+<td style="text-align:left;">
+Whether the email was written using HTML (e.g., may have included bolding or active links) or not.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+number
+</td>
+<td style="text-align:left;">
+Categorical variable saying whether there was no number, a small number (under 1 million), or a big number.
+</td>
+</tr>
+</tbody>
+</table></div>
+<div id="contingency-tables-and-conditional-proportions" class="section level2" number="4.1">
+<h2>
+<span class="header-section-number">4.1</span> Contingency tables and conditional proportions<a class="anchor" aria-label="anchor" href="#contingency-tables-and-conditional-proportions"><i class="fas fa-link"></i></a>
+</h2>
+<p>A summary table for a single categorical variable that reports the number of observations (frequency) in each category is called a <strong>frequency table</strong>. Table
+<a href="categorical-data.html#tab:emailTableNumber">4.3</a> is a frequency table for the <code>number</code> variable.
+If we replaced the counts with percentages or proportions (relative frequencies),
+the table would be called a <strong>relative frequency table</strong>.</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:emailTableNumber">Table 4.3: </span>Frequency table of <code>Number</code> variable.
+</caption>
+<thead><tr>
+<th style="text-align:right;">
+none
+</th>
+<th style="text-align:right;">
+small
+</th>
+<th style="text-align:right;">
+big
+</th>
+</tr></thead>
+<tbody><tr>
+<td style="text-align:right;">
+549
+</td>
+<td style="text-align:right;">
+2827
+</td>
+<td style="text-align:right;">
+545
+</td>
+</tr></tbody>
+</table></div>
+<p>Table <a href="categorical-data.html#tab:emailTable">4.4</a> summarizes two variables:
+<code>type</code> (spam or not spam) and <code>number</code>. A table that summarizes data for two categorical variables
+in this way is called a <strong>contingency table</strong> or <strong>two-way table</strong>.
+Each value in the table represents the number of times, or <strong>frequency</strong>
+a particular combination of variable outcomes occurred.
+For example, the value 149 corresponds to the number of emails
+in the data set that are not spam <em>and</em> had no number listed in the email.
+Row and column totals are also included.
+The <strong>row totals</strong> provide the total counts across each row
+(e.g., there are <span class="math inline">\(149 + 168 + 50 = 367\)</span> emails classified as not spam), and <strong>column totals</strong> are total
+counts down each column.</p>
+<p>In this textbook, we generally take the convention of putting the categories of the explanatory variable as the columns and the categories of the response variable as the rows (if there exists and explanatory-response relationship between the two variables).</p>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:emailTable">Table 4.4: </span>Contingency table of <code>number</code> (cols) and <code>type</code> (rows) variables.
+</caption>
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+<code>number</code>
+</div>
+</th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+none
+</th>
+<th style="text-align:left;">
+small
+</th>
+<th style="text-align:left;">
+big
+</th>
+<th style="text-align:left;">
+Total
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+spam
+</td>
+<td style="text-align:left;">
+400
+</td>
+<td style="text-align:left;">
+2659
+</td>
+<td style="text-align:left;">
+495
+</td>
+<td style="text-align:left;">
+3554
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+type
+</td>
+<td style="text-align:left;">
+not spam
+</td>
+<td style="text-align:left;">
+149
+</td>
+<td style="text-align:left;">
+168
+</td>
+<td style="text-align:left;">
+50
+</td>
+<td style="text-align:left;">
+367
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:left;">
+549
+</td>
+<td style="text-align:left;">
+2827
+</td>
+<td style="text-align:left;">
+545
+</td>
+<td style="text-align:left;">
+3921
+</td>
+</tr>
+</tbody>
+</table></div>
+<p>We would like to examine whether the presence of numbers—none, small or large—in an email provides any useful value in classifying email as spam or not spam—that is, is there an <strong>association</strong> between the variables <code>number</code> and <code>type</code>?</p>
+<div class="guidedpractice">
+<p>To determine if a relationship exists between whether an email is spam or not, and whether the email has no numbers, a small number, or a big number, why isn’t it helpful to compare the <em>number</em> of spam emails across the <code>number</code> categories?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Since the sample sizes in the three &lt;code&gt;number&lt;/code&gt; categories differ (549 emails with no numbers; 2827 emails with a small number; 545 emails with a big number), we need to compare the &lt;em&gt;proportion&lt;/em&gt; of spam emails across categories rather than the count.&lt;/p&gt;"><sup>28</sup></a></p>
+</div>
+<p>The proportion of emails that were classified as spam in the data set is <span class="math inline">\(3554/3921 = 0.906\)</span>, or about 91%. Let’s compare this <strong>unconditional proportion</strong> to the <strong>conditional proportions</strong> of spam <em>within</em> each <code>number</code> category: <span class="math inline">\(400/549 \approx 73\%\)</span> of emails with no numbers are spam; <span class="math inline">\(2659/2827 \approx 94\%\)</span> of emails with small numbers are spam; and <span class="math inline">\(495/545 \approx 91\%\)</span> of emails with big numbers are spam. Since these three conditional proportions differ, we say the variables <code>number</code> and <code>type</code> are <em>associated</em> in this data set. Note that some differ from the overall, or unconditional, proportion of spam emails in the data set—91%.</p>
+<div class="onebox">
+<p><strong>Association between two categorical variables.</strong></p>
+<p>An <strong>unconditional</strong> proportion is a proportion measured out of the total sample size. A <strong>conditional</strong> proportion is a proportion measured out of a subgroup in the sample.</p>
+<p>If the conditional proportions of a particular outcome (e.g., spam email) within levels of a categorical variable (e.g., whether no number, a small number, or a big number appears in the email) differ across levels, we say those two variables are <strong>associated</strong>. We can also determine if two categorical variables are associated by checking if any of the conditional proportions of the outcome within categories differ from the overall, or <strong>unconditional</strong> proportion.</p>
+</div>
+<div id="row-and-column-proportions" class="section level3" number="4.1.1">
+<h3>
+<span class="header-section-number">4.1.1</span> Row and column proportions<a class="anchor" aria-label="anchor" href="#row-and-column-proportions"><i class="fas fa-link"></i></a>
+</h3>
+<p>Conditional proportions that condition on a row category are called <strong>row proportions</strong>; conditional proportions that condition on a column category
+are called <strong>column proportions</strong>.</p>
+<p>Table <a href="categorical-data.html#tab:rowPropSpamNumber">4.5</a> shows the row proportions for Table <a href="categorical-data.html#tab:emailTable">4.4</a>. The row proportions are computed as the counts divided by their row totals. The frequnecy 149 at the intersection of <code>not spam</code> and <code>none</code> is replaced by <span class="math inline">\(149/367=0.406\)</span>, i.e., 149 divided by its row total, 367. So what does 0.406 represent? It corresponds to the conditional proportion of non-spam emails in the sample that do not have any numbers.</p>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:rowPropSpamNumber">Table 4.5: </span>A contingency table with row proportions for the <code>type</code> and <code>number</code> variables.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+none
+</th>
+<th style="text-align:right;">
+small
+</th>
+<th style="text-align:right;">
+big
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+spam
+</td>
+<td style="text-align:right;">
+0.113
+</td>
+<td style="text-align:right;">
+0.748
+</td>
+<td style="text-align:right;">
+0.139
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not spam
+</td>
+<td style="text-align:right;">
+0.406
+</td>
+<td style="text-align:right;">
+0.458
+</td>
+<td style="text-align:right;">
+0.136
+</td>
+</tr>
+</tbody>
+</table></div>
+<p>A contingency table of the column proportions is computed in a similar way, where each column proportion is computed as the count divided by the corresponding column total. Table <a href="categorical-data.html#tab:colPropSpamNumber">4.6</a> shows such a table, and here the value 0.729 indicates that 72.9% of emails with no numbers were spam. This rate of spam is much lower than emails with only small numbers (94.1%) or big numbers (90.8%). Because these spam rates vary between the three levels of <code>number</code> (<code>none</code>, <code>small</code>, <code>big</code>), this provides evidence that the <code>spam</code> and <code>number</code> variables are associated in this data set.</p>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:colPropSpamNumber">Table 4.6: </span>A contingency table with column proportions for the <code>type</code> and <code>number</code> variables.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+none
+</th>
+<th style="text-align:right;">
+small
+</th>
+<th style="text-align:right;">
+big
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+spam
+</td>
+<td style="text-align:right;">
+0.729
+</td>
+<td style="text-align:right;">
+0.941
+</td>
+<td style="text-align:right;">
+0.908
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not spam
+</td>
+<td style="text-align:right;">
+0.271
+</td>
+<td style="text-align:right;">
+0.059
+</td>
+<td style="text-align:right;">
+0.092
+</td>
+</tr>
+</tbody>
+</table></div>
+<div class="guidedpractice">
+<p>What does 0.458 represent in Table <a href="categorical-data.html#tab:rowPropSpamNumber">4.5</a>? What does 0.059 represent in Table <a href="categorical-data.html#tab:colPropSpamNumber">4.6</a>?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;0.458 represents the proportion of spam emails that had a small number. 0.058 represents the fraction of emails with small numbers that are spam.&lt;/p&gt;"><sup>29</sup></a></p>
+</div>
+<div class="guidedpractice">
+<p>What does 0.139 at the intersection of <code>not~spam</code> and <code>big</code> represent in Table <a href="categorical-data.html#tab:rowPropSpamNumber">4.5</a>? What does 0.908 represent in the Table <a href="categorical-data.html#tab:colPropSpamNumber">4.6</a>?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;0.139 represents the fraction of non-spam email that had a big number. 0.908 represents the fraction of emails with big numbers that are non-spam emails.&lt;/p&gt;"><sup>30</sup></a></p>
+</div>
+<div class="workedexample">
+<p>Data scientists use statistics to filter spam from incoming email messages. By noting specific characteristics of an email, a data scientist may be able to classify some emails as spam or not spam with high accuracy.
+One of those characteristics is whether the email contains no numbers, small numbers, or big numbers. Another characteristic is whether or not an email has any HTML content. A contingency table <code>type</code> and <code>format</code> variables from the <code>email</code> data set are shown in Table <a href="categorical-data.html#tab:emailSpamHTMLTableTotals">4.7</a>. Recall that an HTML email is an email with the capacity for special formatting, e.g., bold text. In Table~ <a href="categorical-data.html#tab:emailSpamHTMLTableTotals">4.7</a>, which would be more helpful to someone hoping to classify email as spam or regular email: row or column proportions?</p>
+<hr>
+<p>Such a person would be interested in how the proportion of spam changes within each email format. This corresponds to column proportions: the proportion of spam in plain text emails and the proportion of spam in HTML emails.</p>
+<p>If we generate the column proportions, we can see that a higher fraction of plain text emails are spam (<span class="math inline">\(209/1195 = 17.5\%\)</span>) than compared to HTML emails (<span class="math inline">\(158/2726 = 5.8\%\)</span>). This information on its own is insufficient to classify an email as spam or not spam, as over 80% of plain text emails are not spam. Yet, when we carefully combine this information with many other characteristics, such as and other variables, we stand a reasonable chance of being able to classify some email as spam or not spam. </p>
+</div>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:emailSpamHTMLTableTotals">Table 4.7: </span>A contingency table for <code>type</code> and <code>format</code>.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+not HTML
+</th>
+<th style="text-align:right;">
+HTML
+</th>
+<th style="text-align:right;">
+Total
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+spam
+</td>
+<td style="text-align:right;">
+209
+</td>
+<td style="text-align:right;">
+158
+</td>
+<td style="text-align:right;">
+367
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not spam
+</td>
+<td style="text-align:right;">
+986
+</td>
+<td style="text-align:right;">
+2568
+</td>
+<td style="text-align:right;">
+3554
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:right;">
+1195
+</td>
+<td style="text-align:right;">
+2726
+</td>
+<td style="text-align:right;">
+3921
+</td>
+</tr>
+</tbody>
+</table></div>
+<p>The previous Example points out that row and column proportions are not equivalent. Before settling on one form for a table, it is important to consider each to ensure that the most useful table is constructed.</p>
+<div class="guidedpractice">
+<p>Look back to Tables <a href="#rowPropSpamNumber"><strong>??</strong></a> and <a href="#colPropSpamNumber"><strong>??</strong></a>. Which would be more useful to someone hoping to identify spam emails using the <code>number</code> variable?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;The column proportions in Table &lt;a href="#colPropSpamNumber"&gt;&lt;strong&gt;??&lt;/strong&gt;&lt;/a&gt; will probably be most useful, which makes it easier to see that emails with small numbers are spam about 5.9% of the time (relatively rare). We would also see that about 27.1% of emails with no numbers are spam, and 9.2% of emails with big numbers are spam.&lt;/p&gt;'><sup>31</sup></a></p>
+</div>
+</div>
+<div id="sample-proportions-and-population-proportions" class="section level3" number="4.1.2">
+<h3>
+<span class="header-section-number">4.1.2</span> Sample proportions and population proportions<a class="anchor" aria-label="anchor" href="#sample-proportions-and-population-proportions"><i class="fas fa-link"></i></a>
+</h3>
+<p>In the field of statistics, summary measures that summarize a sample of data are called <strong>statistics</strong>. Numbers that summarize an entire population are called <strong>parameters</strong>. You can remember
+this distinction by looking at the first letter of each term:</p>
+<blockquote>
+<p><strong><em>S</em></strong>tatistics summarize <strong><em>S</em></strong>amples.<br><strong><em>P</em></strong>arameters summarize <strong><em>P</em></strong>opulations.</p>
+</blockquote>
+<p>Proportions calculated from a sample of data are denoted by <span class="math inline">\(\hat{p}\)</span>.
+In our example, we were interested in the proportion of spam emails in our data set, so we could denote this by <span class="math inline">\(\hat{p} = 0.91\)</span>. If there are different groups we want to summarize with a proportion, we can add subscripts: <span class="math inline">\(\hat{p}_{none} = 0.73\)</span>, <span class="math inline">\(\hat{p}_{small} = 0.94\)</span>, and <span class="math inline">\(\hat{p}_{big} = 0.91\)</span>. Each of these values is a statistic since it is computed from a sample of data.</p>
+<p>These 3921 emails were a sample from a larger group of emails—all emails that are sent to David Diez, either in the past or in the future. This larger group of emails is the population. There is some unknown value for the proportion of <em>all</em> emails in the population that would be classified as spam, which we denote by <span class="math inline">\(\pi\)</span>. Similarly, there are unknown values for the proportion of all emails with no numbers in the population that would be classified as spam, denoted by <span class="math inline">\(\pi_{none}\)</span>. Each of these unknown values are called parameters.</p>
+<p>We typically use Roman letters to symbolize statistics (e.g., <span class="math inline">\(\bar{x}\)</span>, <span class="math inline">\(\hat{p}\)</span>), and Greek letters to symbolize parameters (e.g., <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\pi\)</span>).
+Since we rarely can measure the entire population, and thus rarely know
+the actual parameter values, we like to say, “We don’t know Greek,
+and we don’t know parameters!”</p>
+</div>
+</div>
+<div id="bar-plots-and-mosaic-plots" class="section level2" number="4.2">
+<h2>
+<span class="header-section-number">4.2</span> Bar plots and mosaic plots<a class="anchor" aria-label="anchor" href="#bar-plots-and-mosaic-plots"><i class="fas fa-link"></i></a>
+</h2>
+<p>A bar plot is a common way to display a single categorical variable. The left panel of Figure <a href="categorical-data.html#fig:emailNumberBarPlot">4.1</a> shows a <strong>bar plot</strong> for the <code>number</code> variable.
+In the right panel, the counts are converted into proportions (e.g., <span class="math inline">\(549/3921=0.140\)</span> for <code>none</code>).</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:emailNumberBarPlot"></span>
+<img src="04-explore-categorical_files/figure-html/emailNumberBarPlot-1.png" alt="Two bar plots of `number`. The left panel shows the counts on the $y$-axis, and the right panel shows the proportions in each group on the $y$-axis." width="50%"><img src="04-explore-categorical_files/figure-html/emailNumberBarPlot-2.png" alt="Two bar plots of `number`. The left panel shows the counts on the $y$-axis, and the right panel shows the proportions in each group on the $y$-axis." width="50%"><p class="caption">
+Figure 4.1: Two bar plots of <code>number</code>. The left panel shows the counts on the <span class="math inline">\(y\)</span>-axis, and the right panel shows the proportions in each group on the <span class="math inline">\(y\)</span>-axis.
+</p>
+</div>
+<p>Bar plots are also used to display the relationship between two categorical variables.
+When the bars are stacked such that each bar totals 100% and is segmented by
+another categorical variable, it is called a <strong>segmented bar plot</strong>.</p>
+<p>A segmented bar plot is a graphical display of contingency table information. For example, segmented bar plots representing Table <a href="categorical-data.html#tab:colPropSpamNumber">4.6</a> is shown in Figure <a href="categorical-data.html#fig:emailSpamNumberSegBar">4.2</a>, where we have first created a non-standardized segmented bar plot using the <code>number</code> variable and then separated each group by the levels of <code>type</code>. The standardized segmented bar plot using the column proportions of Table <a href="categorical-data.html#tab:colPropSpamNumber">4.6</a> is a helpful visualization of the fraction of spam emails in each level of <code>number</code>.</p>
+<div class="importantbox">
+<p>In a segmented bar plot, the explanatory variable is plotted on the <span class="math inline">\(x\)</span>-axis, while the response variable is displayed by different colors within each bar, defined by the legend.</p>
+</div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:emailSpamNumberSegBar"></span>
+<img src="04-explore-categorical_files/figure-html/emailSpamNumberSegBar-1.png" alt="(a) Segmented bar plot for numbers found in emails, where the counts have been further broken down by `type`. (b) Segmented bar plot using column proportions of each type within each `number` category." width="50%"><img src="04-explore-categorical_files/figure-html/emailSpamNumberSegBar-2.png" alt="(a) Segmented bar plot for numbers found in emails, where the counts have been further broken down by `type`. (b) Segmented bar plot using column proportions of each type within each `number` category." width="50%"><p class="caption">
+Figure 4.2: (a) Segmented bar plot for numbers found in emails, where the counts have been further broken down by <code>type</code>. (b) Segmented bar plot using column proportions of each type within each <code>number</code> category.
+</p>
+</div>
+<div class="guidedpractice">
+<p>In the segmented bar plots in Figure <a href="categorical-data.html#fig:emailSpamNumberSegBar">4.2</a>, which variable is the explanatory variable? the response variable?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The numbers found in emails (&lt;code&gt;number&lt;/code&gt;) is the explanatory variable; whether the email is spam or not spam is the response variable.&lt;/p&gt;"><sup>32</sup></a></p>
+</div>
+<div class="workedexample">
+<p>Examine both of the segmented bar plots in Figure <a href="categorical-data.html#fig:emailSpamNumberSegBar">4.2</a>. Which is more useful?</p>
+<hr>
+<p>Plot (a) contains more information, but plot (b) presents the information more clearly. Plot (b) makes it clear that emails with no number have a relatively high rate of spam email—about 27%! On the other hand, less than 10% of email with small or big numbers are spam.</p>
+</div>
+<p>Since the proportion of spam changes across the groups in Figure <a href="categorical-data.html#fig:emailSpamNumberSegBar">4.2</a> (seen in plot (b)), we can conclude the variables are dependent, which is something we were also able to discern using the column proportions in Table <a href="categorical-data.html#tab:colPropSpamNumber">4.6</a>. Because both the <code>none</code> and <code>big</code> groups have relatively few observations compared to the <code>small</code> group, the association is more difficult to see in plot (a) of Figure <a href="categorical-data.html#fig:emailSpamNumberSegBar">4.2</a>.</p>
+<p>In some other cases, a segmented bar plot that is not standardized will be more useful in communicating important information. Before settling on a particular segmented bar plot, create standardized and non-standardized forms and decide which is more effective at communicating features of the data.</p>
+<div id="mosaic-plots" class="section level3" number="4.2.1">
+<h3>
+<span class="header-section-number">4.2.1</span> Mosaic plots<a class="anchor" aria-label="anchor" href="#mosaic-plots"><i class="fas fa-link"></i></a>
+</h3>
+<p>A <strong>mosaic plot</strong> is a graphical display of contingency table information that is similar to a bar plot for one variable or a segmented bar plot when using two variables. Figure <a href="categorical-data.html#fig:emailNumberMosaic">4.3</a> plot (a) shows a mosaic plot for the <code>number</code> variable. Each column represents a level of <code>number</code>, and the column widths correspond to the proportion of emails of each number type. For instance, there are fewer emails with no numbers than emails with only small numbers, so the no number email column is slimmer. In general, mosaic plots use box <em>areas</em> to represent the number of observations.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:emailNumberMosaic"></span>
+<img src="04-explore-categorical_files/figure-html/emailNumberMosaic-1.png" alt="(a) Mosaic plot for numbers found in emails. (b) Mosaic plot where the `number` counts have been further broken down by `type`." width="50%"><img src="04-explore-categorical_files/figure-html/emailNumberMosaic-2.png" alt="(a) Mosaic plot for numbers found in emails. (b) Mosaic plot where the `number` counts have been further broken down by `type`." width="50%"><p class="caption">
+Figure 4.3: (a) Mosaic plot for numbers found in emails. (b) Mosaic plot where the <code>number</code> counts have been further broken down by <code>type</code>.
+</p>
+</div>
+<p>This one-variable mosaic plot is further divided into pieces in Figure <a href="categorical-data.html#fig:emailNumberMosaic">4.3</a> plot (b) using the <code>type</code> variable. Each column is split proportionally according to the fraction of emails that were spam in each number category. For example, the second column, representing emails with only small numbers, was divided into emails that were spam (lower) and not spam (upper).
+As another example, the bottom of the third column represents spam emails that had big numbers, and the upper part of the third column represents regular emails that had big numbers. We can again use this plot to see that the <code>type</code> and <code>number</code> variables are associated since some columns are divided in different vertical locations than others, which was the same technique used for checking an association in the standardized version of the segmented bar plot.</p>
+<div class="importantbox">
+<p>As in a segmented bar plot, the explanatory variable is plotted on the <span class="math inline">\(x\)</span>-axis of a mosaic plot, i.e., the explanatory variable is represented by columns, while the response variable is displayed by different colors within each column, defined by the legend.</p>
+</div>
+</div>
+</div>
+<div id="why-not-pie-charts" class="section level2" number="4.3">
+<h2>
+<span class="header-section-number">4.3</span> Why not pie charts?<a class="anchor" aria-label="anchor" href="#why-not-pie-charts"><i class="fas fa-link"></i></a>
+</h2>
+<p>While pie charts are well known, they are not typically as useful as other charts in a data analysis. A <strong>pie chart</strong> is shown in Figure <a href="categorical-data.html#fig:emailNumberPieChart">4.4</a> alongside a bar plot. It is generally more difficult to compare group sizes in a pie chart (comparing angles) than in a bar plot (comparing heights), especially when categories have nearly identical counts or proportions. In the case of the <code>none</code> and <code>big</code> categories, the difference is so slight you may be unable to distinguish any difference in group sizes for either plot!</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:emailNumberPieChart"></span>
+<img src="04-explore-categorical_files/figure-html/emailNumberPieChart-1.png" alt="A pie chart and bar plot of `number` for the `email` data set. This is the only pie chart you will see in this book!" width="50%"><img src="04-explore-categorical_files/figure-html/emailNumberPieChart-2.png" alt="A pie chart and bar plot of `number` for the `email` data set. This is the only pie chart you will see in this book!" width="50%"><p class="caption">
+Figure 4.4: A pie chart and bar plot of <code>number</code> for the <code>email</code> data set. This is the only pie chart you will see in this book!
+</p>
+</div>
+<p>Pie charts are nearly useless when trying to compare two categorical variables, as is shown in Figure <a href="categorical-data.html#fig:worst-pie-chart">4.5</a>.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:worst-pie-chart"></span>
+<img src="04-explore-categorical_files/figure-html/worst-pie-chart-1.png" alt="Try comparing the distributions of colors across pie charts A, B, and C---it's impossible!^[R code from User:Schutz for Wikipedia on 28 August 2007]" width="75%"><p class="caption">
+Figure 4.5: Try comparing the distributions of colors across pie charts A, B, and C—it’s impossible!<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;R code from User:Schutz for Wikipedia on 28 August 2007&lt;/p&gt;"><sup>33</sup></a>
+</p>
+</div>
+<p>If you’re still not convinced that you shouldn’t use pie charts, read <a href="https://www.data-to-viz.com/caveat/pie.html">“The Issue with Pie Chart”</a> on the “from Data to Viz” blog, and <a href="https://www.businessinsider.com/pie-charts-are-the-worst-2013-6">“The Worst Chart in the World”</a> article on Business Insider.</p>
+</div>
+<div id="simpson" class="section level2" number="4.4">
+<h2>
+<span class="header-section-number">4.4</span> Simpson’s paradox<a class="anchor" aria-label="anchor" href="#simpson"><i class="fas fa-link"></i></a>
+</h2>
+<p>A 1991 study by Radelet and Pierce examined whether race was associated with whether the death penalty was invoked in homicide cases<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;This example is adapted from &lt;span class="citation"&gt;Agresti (&lt;a href="references.html#ref-Agresti2007" role="doc-biblioref"&gt;2007&lt;/a&gt;)&lt;/span&gt; (p. 49-52).&lt;/p&gt;'><sup>34</sup></a>. Table <a href="categorical-data.html#tab:DP">4.8</a> and Figure <a href="categorical-data.html#fig:DPbarplot">4.6</a> summarize data on 674 defendants in indictments involving cases with multiple murders in Florida from 1976 through 1987.</p>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:DP">Table 4.8: </span>Contingency table of homicide cases in Florida from 1976 through 1987.
+</caption>
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Defendant’s race
+</div>
+</th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Caucasian
+</th>
+<th style="text-align:left;">
+African American
+</th>
+<th style="text-align:left;">
+Total
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Death penalty
+</td>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+68
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sentence
+</td>
+<td style="text-align:left;">
+No death penalty
+</td>
+<td style="text-align:left;">
+430
+</td>
+<td style="text-align:left;">
+176
+</td>
+<td style="text-align:left;">
+606
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:left;">
+483
+</td>
+<td style="text-align:left;">
+191
+</td>
+<td style="text-align:left;">
+674
+</td>
+</tr>
+</tbody>
+</table></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:DPbarplot"></span>
+<img src="04-explore-categorical_files/figure-html/DPbarplot-1.png" alt="Segmented bar plot comparing the proportion of defendants who received the death penalty between Caucasians and African Americans." width="90%"><p class="caption">
+Figure 4.6: Segmented bar plot comparing the proportion of defendants who received the death penalty between Caucasians and African Americans.
+</p>
+</div>
+<div class="guidedpractice">
+<p>Is the race of the defendant associated with the sentence of the trial?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Yes. The conditional proportions of receiving the death penalty given race differ: 11% of Caucasian defendants received the death penalty, versus 8% of African American defendants received the death penalty.&lt;/p&gt;"><sup>35</sup></a></p>
+</div>
+<p>Overall, a lower percentage of African American defendants received the death penalty than Caucasian defendants (8% compared to 11%). Given studies have shown racial bias in sentencing, this may be surprising. Let’s look at the data more closely.</p>
+<div class="guidedpractice">
+<p>Since these are <em>observational data</em>, confounding variables are most likely present. Recall, a confounding variable is one that is associated with both the response variable (sentence) and the explanatory variable (race of the defendant). What confounding variables could be present?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The confounding variable we will consider here is race of the victim. Other confounding variables may include socioeconomic status (since SES is related to race, and a higher SES may allow you to hire a better lawyer—though this explanation is opposite of the association we see in the data) or district (the racial makeup would differ across districts, and maybe districts with a larger proportion of Caucasians also tend to invoke the death penalty more often).&lt;/p&gt;"><sup>36</sup></a></p>
+</div>
+<p>If we subset the data by the race of the victim, we see a different picture. Table <a href="categorical-data.html#tab:DP2">4.9</a> and Figure <a href="categorical-data.html#fig:DPbarplot2">4.7</a> summarize the same data, but separately for Caucasian and African American homicide victims.</p>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:DP2">Table 4.9: </span>Contingency table of homicide cases in Florida from 1976 through 1987; sentences classified by defendant’s race and victim’s race.
+</caption>
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Death Penalty?
+</div>
+</th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+Victim’s race
+</th>
+<th style="text-align:left;">
+Defendant’s race
+</th>
+<th style="text-align:left;">
+Yes
+</th>
+<th style="text-align:left;">
+No
+</th>
+<th style="text-align:left;">
+Percent Yes
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Caucasian
+</td>
+<td style="text-align:left;">
+Caucasian
+</td>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+414
+</td>
+<td style="text-align:left;">
+11.3%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+African American
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+37
+</td>
+<td style="text-align:left;">
+22.9%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+African American
+</td>
+<td style="text-align:left;">
+Caucasian
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+16
+</td>
+<td style="text-align:left;">
+0.0%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+African American
+</td>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:left;">
+139
+</td>
+<td style="text-align:left;">
+2.8%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:left;">
+Caucasian
+</td>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+430
+</td>
+<td style="text-align:left;">
+11.0%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+African American
+</td>
+<td style="text-align:left;">
+15
+</td>
+<td style="text-align:left;">
+176
+</td>
+<td style="text-align:left;">
+7.9%
+</td>
+</tr>
+</tbody>
+</table></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:DPbarplot2"></span>
+<img src="04-explore-categorical_files/figure-html/DPbarplot2-1.png" alt="Segmented bar plots comparing the proportion of Caucasian and African American defendants who received the death penalty; separate plots for Caucasian victims and African American victims." width="50%"><img src="04-explore-categorical_files/figure-html/DPbarplot2-2.png" alt="Segmented bar plots comparing the proportion of Caucasian and African American defendants who received the death penalty; separate plots for Caucasian victims and African American victims." width="50%"><p class="caption">
+Figure 4.7: Segmented bar plots comparing the proportion of Caucasian and African American defendants who received the death penalty; separate plots for Caucasian victims and African American victims.
+</p>
+</div>
+<p>If we compare Figures <a href="categorical-data.html#fig:DPbarplot">4.6</a> and <a href="categorical-data.html#fig:DPbarplot2">4.7</a>, we see that the direction of the association between the race of the defendant and the sentence is <em>reversed</em> if we subgroup by the race of the victim. Overall, a larger proportion of Caucasians were sentenced to the death penalty than African Americans. However, when we only compare cases with the same victim’s race, a larger proportion of African Americans were sentenced to the death penalty than Caucasians!</p>
+<p>How did this happen? The answer has to do with the race of the victim being a confounding variable. Figure <a href="categorical-data.html#fig:DPconfound">4.8</a> shows two segmented barplots examining the relationship between the race of the victim and the sentence (the response variable), and the relationship between the race of the victim and the race of the defendant (the explanatory variable). We see that the race of the victim is associated with both the response and the explanatory variables: defendants are more likely to involve a victim of the same race, and cases with African American victims are less likely to result in the death penalty.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:DPconfound"></span>
+<img src="04-explore-categorical_files/figure-html/DPconfound-1.png" alt="The race of the victim is associated both with the sentence (death penalty or no death penalty) and with the race of the defendant. Defendants are more likely to involve a victim of the same race, and cases with African American victims are less likely to result in the death penalty." width="50%"><img src="04-explore-categorical_files/figure-html/DPconfound-2.png" alt="The race of the victim is associated both with the sentence (death penalty or no death penalty) and with the race of the defendant. Defendants are more likely to involve a victim of the same race, and cases with African American victims are less likely to result in the death penalty." width="50%"><p class="caption">
+Figure 4.8: The race of the victim is associated both with the sentence (death penalty or no death penalty) and with the race of the defendant. Defendants are more likely to involve a victim of the same race, and cases with African American victims are less likely to result in the death penalty.
+</p>
+</div>
+<p>Thus, the extremely low chance of a homicide case resulting in the death penalty for African Americans combined with the fact that most cases with African American defendants also had an African American victim results in an overall lower rate of death penalty sentences for African American defendants than for Caucasian defendants. The overall results in Figure <a href="categorical-data.html#fig:DPbarplot">4.6</a> and the results in each subgroup of Figure <a href="categorical-data.html#fig:DPbarplot2">4.7</a> are both valid—they are not the result of any “bad statistics”—but they suggest opposite conclusions. Data such as these, where an observed effect <em>reverses</em> itself when you examine the variables within subgroups, exhibit <strong>Simpson’s Paradox</strong>.</p>
+<div class="onebox">
+<p><strong>Simpson’s Paradox.</strong></p>
+<p>When the association between an explanatory variable and a response variable reverses itself when we examine the association within different levels of a confounding variable, we say that these data exhibit <strong>Simpson’s Paradox</strong>.</p>
+</div>
+</div>
+<div id="chp4-review" class="section level2" number="4.5">
+<h2>
+<span class="header-section-number">4.5</span> Chapter review<a class="anchor" aria-label="anchor" href="#chp4-review"><i class="fas fa-link"></i></a>
+</h2>
+<div id="summary-2" class="section level3 unnumbered">
+<h3>Summary<a class="anchor" aria-label="anchor" href="#summary-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>Fluently working with categorical variables is an important skill for data analysts.
+In this chapter we have introduced different visualizations and numerical summaries applied to categorical variables.
+The graphical visualizations are even more descriptive when two variables are presented simultaneously.
+We presented bar plots, mosaic plots, pie charts (and their downfalls), and estimations of conditional proportions.</p>
+</div>
+<div id="terms-2" class="section level3 unnumbered">
+<h3>Terms<a class="anchor" aria-label="anchor" href="#terms-2"><i class="fas fa-link"></i></a>
+</h3>
+<p>We introduced the following terms in the chapter.
+If you’re not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
+We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate.
+However you should be able to easily spot them as <strong>bolded text</strong>.</p>
+<div class="inline-table"><table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;"><tbody>
+<tr>
+<td style="text-align:left;">
+association
+</td>
+<td style="text-align:left;">
+frequency
+</td>
+<td style="text-align:left;">
+row proportions
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+bar plot
+</td>
+<td style="text-align:left;">
+indicator variable
+</td>
+<td style="text-align:left;">
+row total
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+column proportions
+</td>
+<td style="text-align:left;">
+mosaic plot
+</td>
+<td style="text-align:left;">
+segmented bar plot
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+column total
+</td>
+<td style="text-align:left;">
+parameter
+</td>
+<td style="text-align:left;">
+Simpson’s Paradox
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+conditional proportion
+</td>
+<td style="text-align:left;">
+pie chart
+</td>
+<td style="text-align:left;">
+statistic
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+contingency table
+</td>
+<td style="text-align:left;">
+point estimate
+</td>
+<td style="text-align:left;">
+two-way table
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dummy variable
+</td>
+<td style="text-align:left;">
+relative frequency
+</td>
+<td style="text-align:left;">
+unconditional proportion
+</td>
+</tr>
+</tbody></table></div>
+</div>
+<div id="key-ideas-2" class="section level3 unnumbered">
+<h3>Key ideas<a class="anchor" aria-label="anchor" href="#key-ideas-2"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li><p>Proportions can be either <strong>unconditional</strong> or <strong>conditional</strong>. An unconditional proportion is a proportion of the entire sample that shares some characteristic; whereas a conditional proportion is a proportion of a subgroup of the sample that shares that characteristic. When computing proportions using a contingency table, unconditional proportions are computed by dividing a cell total by the overall total sample size; conditional proportions are computed by dividing a cell total by a row or column total.</p></li>
+<li><p>The <strong>distribution</strong> of a single categorical variable can be described by examining the proportions of observations in each category.</p></li>
+<li><p>Two variables are <strong>associated</strong> when the behavior of one variable changes with the value of the other variable. For two categorical variables, this occurs when some or all of the proportions in each category of one variable change across categories of the other variable. Recall from Chapter <a href="intro-to-data.html#intro-to-data">1</a>, <em>association does not imply causation</em>!</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+  <div class="chapter-nav">
+<div class="prev"><a href="data-applications.html"><span class="header-section-number">3</span> Applications: Data</a></div>
+<div class="next"><a href="quantitative-data.html"><span class="header-section-number">5</span> Exploring quantitative data</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#categorical-data"><span class="header-section-number">4</span> Exploring categorical data</a></li>
+<li>
+<a class="nav-link" href="#contingency-tables-and-conditional-proportions"><span class="header-section-number">4.1</span> Contingency tables and conditional proportions</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#row-and-column-proportions"><span class="header-section-number">4.1.1</span> Row and column proportions</a></li>
+<li><a class="nav-link" href="#sample-proportions-and-population-proportions"><span class="header-section-number">4.1.2</span> Sample proportions and population proportions</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#bar-plots-and-mosaic-plots"><span class="header-section-number">4.2</span> Bar plots and mosaic plots</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#mosaic-plots"><span class="header-section-number">4.2.1</span> Mosaic plots</a></li></ul>
+</li>
+<li><a class="nav-link" href="#why-not-pie-charts"><span class="header-section-number">4.3</span> Why not pie charts?</a></li>
+<li><a class="nav-link" href="#simpson"><span class="header-section-number">4.4</span> Simpson’s paradox</a></li>
+<li>
+<a class="nav-link" href="#chp4-review"><span class="header-section-number">4.5</span> Chapter review</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#summary-2">Summary</a></li>
+<li><a class="nav-link" href="#terms-2">Terms</a></li>
+<li><a class="nav-link" href="#key-ideas-2">Key ideas</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/MTstateIntroStats/IntroStatTextbook/blob/master/04-explore-categorical.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/MTstateIntroStats/IntroStatTextbook/edit/master/04-explore-categorical.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Montana State Introductory Statistics with R</strong>" was written by Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

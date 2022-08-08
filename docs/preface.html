@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Preface | Montana State Introductory Statistics with R</title>
+<meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager">
+<meta name="description" content="We hope readers will take away three ideas from this book in addition to forming a foundation of statistical thinking and methods. Statistics is an applied field with a wide range of practical...">
+<meta name="generator" content="bookdown 0.27 with bs4_book()">
+<meta property="og:title" content="Preface | Montana State Introductory Statistics with R">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://mtstateintrostats.github.io/IntroStatTextbook/preface.html">
+<meta property="og:description" content="We hope readers will take away three ideas from this book in addition to forming a foundation of statistical thinking and methods. Statistics is an applied field with a wide range of practical...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Preface | Montana State Introductory Statistics with R">
+<meta name="twitter:description" content="We hope readers will take away three ideas from this book in addition to forming a foundation of statistical thinking and methods. Statistics is an applied field with a wide range of practical...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><script type="text/x-mathjax-config">
+    const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+    for (let popover of popovers){
+      const div = document.createElement('div');
+      div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+      div.innerHTML = popover.getAttribute('data-content');
+      
+      // Will this work with TeX on its own line?
+      var has_math = div.querySelector("span.math");
+      if (has_math) {
+        document.body.appendChild(div);
+      	MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+      	MathJax.Hub.Queue(function(){
+          popover.setAttribute('data-content', div.innerHTML);
+      	})
+      }
+    }
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="css/ims-style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Montana State Introductory Statistics with R</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="authors.html">Authors</a></li>
+<li><a class="active" href="preface.html">Preface</a></li>
+<li><a class="" href="rstudio.html">Preliminaries: Getting started in RStudio</a></li>
+<li class="book-part">Introduction to data</li>
+<li><a class="" href="intro-to-data.html"><span class="header-section-number">1</span> Hello data</a></li>
+<li><a class="" href="data-design.html"><span class="header-section-number">2</span> Study design</a></li>
+<li><a class="" href="data-applications.html"><span class="header-section-number">3</span> Applications: Data</a></li>
+<li class="book-part">Exploratory data analysis</li>
+<li><a class="" href="categorical-data.html"><span class="header-section-number">4</span> Exploring categorical data</a></li>
+<li><a class="" href="quantitative-data.html"><span class="header-section-number">5</span> Exploring quantitative data</a></li>
+<li><a class="" href="cor-reg.html"><span class="header-section-number">6</span> Correlation and regression</a></li>
+<li><a class="" href="mult-reg.html"><span class="header-section-number">7</span> Multivariable models</a></li>
+<li><a class="" href="explore-applications.html"><span class="header-section-number">8</span> Applications: Explore</a></li>
+<li class="book-part">Foundations of inference</li>
+<li><a class="" href="foundations-randomization.html"><span class="header-section-number">9</span> Hypothesis testing with randomization</a></li>
+<li><a class="" href="foundations-bootstrapping.html"><span class="header-section-number">10</span> Confidence intervals with bootstrapping</a></li>
+<li><a class="" href="foundations-mathematical.html"><span class="header-section-number">11</span> Inference with mathematical models</a></li>
+<li><a class="" href="foundations-errors.html"><span class="header-section-number">12</span> Errors, power, and practical importance</a></li>
+<li><a class="" href="foundations-applications.html"><span class="header-section-number">13</span> Applications: Foundations</a></li>
+<li class="book-part">Inference for categorical data</li>
+<li><a class="" href="inference-one-prop.html"><span class="header-section-number">15</span> Inference for a single proportion</a></li>
+<li><a class="" href="inference-two-props.html"><span class="header-section-number">16</span> Inference for comparing two proportions</a></li>
+<li><a class="" href="applications-infer-categorical.html"><span class="header-section-number">17</span> Applications: Infer categorical</a></li>
+<li class="book-part">Inference for quantitative data</li>
+<li><a class="" href="inference-for-a-single-mean.html"><span class="header-section-number">19</span> Inference for a single mean</a></li>
+<li><a class="" href="inference-for-comparing-paired-means.html"><span class="header-section-number">20</span> Inference for comparing paired means</a></li>
+<li><a class="" href="inference-for-comparing-two-independent-means.html"><span class="header-section-number">21</span> Inference for comparing two independent means</a></li>
+<li><a class="" href="applications-infer-quantitative.html"><span class="header-section-number">22</span> Applications: Infer quantitative</a></li>
+<li class="book-part">Inference for regression</li>
+<li><a class="" href="inference-for-correlation-and-slope.html"><span class="header-section-number">24</span> Inference for correlation and slope</a></li>
+<li><a class="" href="applications-infer-regression.html"><span class="header-section-number">25</span> Applications: Infer regression</a></li>
+<li class="book-part">Probability</li>
+<li><a class="" href="probability.html"><span class="header-section-number">26</span> Probability with tables</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/MTstateIntroStats/IntroStatTextbook">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="preface" class="section level1 unnumbered">
+<h1>Preface<a class="anchor" aria-label="anchor" href="#preface"><i class="fas fa-link"></i></a>
+</h1>
+<p>We hope readers will take away three ideas from this book in addition to forming a foundation of statistical thinking and methods.</p>
+<ol style="list-style-type: decimal">
+<li>Statistics is an applied field with a wide range of practical applications.</li>
+<li>You don’t have to be a math guru to learn from interesting, real data.</li>
+<li>Data are messy, and statistical tools are imperfect. However, when you understand the strengths and weaknesses of these tools, you can use them to learn interesting things about the world.</li>
+</ol>
+<div id="textbook-overview" class="section level2 unnumbered">
+<h2>Textbook overview<a class="anchor" aria-label="anchor" href="#textbook-overview"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>
+<strong>Part 1: Introduction to data.</strong> Data structures, variables, and basic data collection techniques.</li>
+<li>
+<strong>Part 2: Exploratory data analysis.</strong> Data visualization and summarization for one variable, the relationship between two variables, and exploring relationships among many variables.</li>
+<li>
+<strong>Part 3: Foundations of inference.</strong> An introduction to the ideas of statistical inference with randomization tests, bootstrap intervals, and mathematical models.</li>
+<li>
+<strong>Part 4: Inference for categorical data.</strong> Inference for one or two proportions using simulation and randomization techniques as well as the normal distribution.</li>
+<li>
+<strong>Part 5: Inference for quantitative data.</strong> Inference for one or two means using simulation and randomization techniques as well as the <span class="math inline">\(t\)</span>-distribution.</li>
+<li>
+<strong>Part 6: Inference for regression.</strong> Inference for a regression slope or correlation using simulation and randomization techniques as well as the <span class="math inline">\(t\)</span>-distribution.</li>
+<li>
+<strong>Part 7: Probability.</strong> A taste of probability theory through hypothetical two-way tables and tree diagrams.</li>
+</ul>
+<p>Each part contains multiple chapters and ends with a chapter demonstrating how to apply the methods using the RStudio software.</p>
+<p>Each chapter ends with a review section which contains a chapter summary as well as a list of key terms and key ideas introduced in the chapter.
+If you’re not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
+We purposefully present them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate.
+However, you should be able to easily spot them as <strong>bolded text</strong>.</p>
+<div id="examples-and-exercises" class="section level3 unnumbered">
+<h3>Examples and exercises<a class="anchor" aria-label="anchor" href="#examples-and-exercises"><i class="fas fa-link"></i></a>
+</h3>
+<p>Examples are provided to establish an understanding of how to apply methods.</p>
+<div class="workedexample">
+<p>This is an example.
+When a question is asked here, where can the answer be found?</p>
+<hr>
+<p>The answer can be found here, in the solution section of the example!</p>
+</div>
+<p>When we think the reader is ready to try determining a solution on their own, we frame it as Guided Practice.</p>
+<div class="guidedpractice">
+<p>The reader may check or learn the answer to any Guided Practice problem by reviewing the full solution in a footnote.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Guided Practice problems are intended to stretch your thinking, and you can check yourself by reviewing the footnote solution for any Guided Practice.&lt;/p&gt;"><sup>1</sup></a></p>
+</div>
+</div>
+<div id="datasets-and-their-sources" class="section level3 unnumbered">
+<h3>Datasets and their sources<a class="anchor" aria-label="anchor" href="#datasets-and-their-sources"><i class="fas fa-link"></i></a>
+</h3>
+<p>A large majority of the datasets used in the book can be found in various R packages.
+Each time a new dataset is introduced in the narrative, a reference to the package like the one below is provided.
+Many of these datasets are in the <a href="http://openintrostat.github.io/openintro"><strong>openintro</strong></a> R package that contains datasets used in <a href="https://www.openintro.org/">OpenIntro</a>’s open-source textbooks.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Mine Çetinkaya-Rundel, David Diez, Andrew Bray, Albert Kim, Ben Baumer, Chester Ismay and Christopher Barr (2020).
+openintro: Data Sets and Supplemental Functions from ‘OpenIntro’ Textbooks and Labs.
+R package version 2.0.0.
+&lt;a href="https://github.com/OpenIntroStat/openintro" class="uri"&gt;https://github.com/OpenIntroStat/openintro&lt;/a&gt;.&lt;/p&gt;'><sup>2</sup></a></p>
+<div class="data">
+<p>The <a href="http://openintrostat.github.io/openintro/reference/textbooks.html"><code>textbooks</code></a> data can be found in the <a href="http://openintrostat.github.io/openintro"><strong>openintro</strong></a> R package.</p>
+</div>
+<p>The datasets used throughout the book come from real sources like opinion polls and scientific articles, except for a handful of cases where we use toy data to highlight a particular feature or explain a particular concept.
+References for the sources of the real data are provided at the end of the book.</p>
+</div>
+</div>
+<div id="stat-216-coursepack" class="section level2 unnumbered">
+<h2>STAT 216 Coursepack<a class="anchor" aria-label="anchor" href="#stat-216-coursepack"><i class="fas fa-link"></i></a>
+</h2>
+<p>Each week, you will work through in-class activities with your team mates and the guidance of your instructor. These activities, as well as reading guides to guide you in taking notes on the required readings and videos, are included in the <em>STAT 216 Coursepack</em>. This course requires you to purchase a printed copy of the <em>STAT 216 Coursepack</em> and bring it with you to class each day.</p>
+<p>The coursepack is available for purchase through the <a href="https://www.msubookstore.org/">MSU Bookstore</a>. You may purchase the coursepack in person, or you may purchase online and have the coursepack shipped to you. The coursepack will be available in the MSU Bookstore on the first day of classes. Chapter 1 of the coursepack is provided here if you do not have the coursepack by your first day of class.</p>
+<ul>
+<li><a href="Coursepack-Ch1.pdf">STAT 216 Coursepack: Chapter 1</a></li>
+</ul>
+</div>
+<div id="acknowledgements" class="section level2 unnumbered">
+<h2>Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"><i class="fas fa-link"></i></a>
+</h2>
+<p>This project would not have been possible without the talented authors
+of the <a href="https://www.openintro.org/"><em>OpenIntro</em></a> open resource textbooks and all those who volunteer with OpenIntro.
+The authors would
+also like to thank the Montana State University Library,
+who generously funded this project.</p>
+
+</div>
+</div>
+
+  <div class="chapter-nav">
+<div class="prev"><a href="authors.html">Authors</a></div>
+<div class="next"><a href="rstudio.html">Preliminaries: Getting started in RStudio</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#preface">Preface</a></li>
+<li>
+<a class="nav-link" href="#textbook-overview">Textbook overview</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#examples-and-exercises">Examples and exercises</a></li>
+<li><a class="nav-link" href="#datasets-and-their-sources">Datasets and their sources</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#stat-216-coursepack">STAT 216 Coursepack</a></li>
+<li><a class="nav-link" href="#acknowledgements">Acknowledgements</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/MTstateIntroStats/IntroStatTextbook/blob/master/00-preface.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/MTstateIntroStats/IntroStatTextbook/edit/master/00-preface.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Montana State Introductory Statistics with R</strong>" was written by Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

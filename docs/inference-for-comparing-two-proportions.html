@@ -1,0 +1,1795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 16 Inference for comparing two proportions | Montana State Introductory Statistics with R</title>
+<meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager">
+<meta name="description" content="TODO  Sex discrimination case study now in chapter 11  16.1 Difference of two proportions  Notation. \(n_1\), \(n_2\) = sample sizes of two independent samples \(\hat{p}_1\), \(\hat{p}_2\) =...">
+<meta name="generator" content="bookdown 0.27 with bs4_book()">
+<meta property="og:title" content="Chapter 16 Inference for comparing two proportions | Montana State Introductory Statistics with R">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://mtstateintrostats.github.io/IntroStatTextbook/inference-for-comparing-two-proportions.html">
+<meta property="og:description" content="TODO  Sex discrimination case study now in chapter 11  16.1 Difference of two proportions  Notation. \(n_1\), \(n_2\) = sample sizes of two independent samples \(\hat{p}_1\), \(\hat{p}_2\) =...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 16 Inference for comparing two proportions | Montana State Introductory Statistics with R">
+<meta name="twitter:description" content="TODO  Sex discrimination case study now in chapter 11  16.1 Difference of two proportions  Notation. \(n_1\), \(n_2\) = sample sizes of two independent samples \(\hat{p}_1\), \(\hat{p}_2\) =...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><script type="text/x-mathjax-config">
+    const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+    for (let popover of popovers){
+      const div = document.createElement('div');
+      div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+      div.innerHTML = popover.getAttribute('data-content');
+      
+      // Will this work with TeX on its own line?
+      var has_math = div.querySelector("span.math");
+      if (has_math) {
+        document.body.appendChild(div);
+      	MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+      	MathJax.Hub.Queue(function(){
+          popover.setAttribute('data-content', div.innerHTML);
+      	})
+      }
+    }
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="css/ims-style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Montana State Introductory Statistics with R</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="authors.html">Authors</a></li>
+<li><a class="" href="preface.html">Preface</a></li>
+<li><a class="" href="rstudio.html">Preliminaries: Getting started in RStudio</a></li>
+<li class="book-part">Introduction to data</li>
+<li><a class="" href="intro-to-data.html"><span class="header-section-number">1</span> Hello data</a></li>
+<li><a class="" href="data-design.html"><span class="header-section-number">2</span> Study design</a></li>
+<li><a class="" href="data-applications.html"><span class="header-section-number">3</span> Applications: Data</a></li>
+<li class="book-part">Exploratory data analysis</li>
+<li><a class="" href="categorical-data.html"><span class="header-section-number">4</span> Exploring categorical data</a></li>
+<li><a class="" href="quantitative-data.html"><span class="header-section-number">5</span> Exploring quantitative data</a></li>
+<li><a class="" href="cor-reg.html"><span class="header-section-number">6</span> Correlation and regression</a></li>
+<li><a class="" href="mult-reg.html"><span class="header-section-number">7</span> Multivariable models</a></li>
+<li><a class="" href="explore-applications.html"><span class="header-section-number">8</span> Applications: Explore</a></li>
+<li class="book-part">Foundations of inference</li>
+<li><a class="" href="foundations-randomization.html"><span class="header-section-number">9</span> Hypothesis testing with randomization</a></li>
+<li><a class="" href="foundations-bootstrapping.html"><span class="header-section-number">10</span> Confidence intervals with bootstrapping</a></li>
+<li><a class="" href="foundations-mathematical.html"><span class="header-section-number">11</span> Inference with mathematical models</a></li>
+<li><a class="" href="foundations-errors.html"><span class="header-section-number">12</span> Errors, power, and practical importance</a></li>
+<li><a class="" href="foundations-applications.html"><span class="header-section-number">13</span> Applications: Foundations</a></li>
+<li class="book-part">Inference for categorical data</li>
+<li><a class="" href="inference-one-prop.html"><span class="header-section-number">15</span> Inference for a single proportion</a></li>
+<li><a class="active" href="inference-for-comparing-two-proportions.html"><span class="header-section-number">16</span> Inference for comparing two proportions</a></li>
+<li><a class="" href="applications-infer-categorical.html"><span class="header-section-number">17</span> Applications: Infer categorical</a></li>
+<li class="book-part">Inference for quantitative data</li>
+<li><a class="" href="inference-for-a-single-mean.html"><span class="header-section-number">19</span> Inference for a single mean</a></li>
+<li><a class="" href="inference-for-comparing-paired-means.html"><span class="header-section-number">20</span> Inference for comparing paired means</a></li>
+<li><a class="" href="inference-for-comparing-two-independent-means.html"><span class="header-section-number">21</span> Inference for comparing two independent means</a></li>
+<li><a class="" href="applications-infer-quantitative.html"><span class="header-section-number">22</span> Applications: Infer quantitative</a></li>
+<li class="book-part">Inference for regression</li>
+<li><a class="" href="inference-for-correlation-and-slope.html"><span class="header-section-number">24</span> Inference for correlation and slope</a></li>
+<li><a class="" href="applications-infer-regression.html"><span class="header-section-number">25</span> Applications: Infer regression</a></li>
+<li class="book-part">Probability</li>
+<li><a class="" href="probability.html"><span class="header-section-number">26</span> Probability with tables</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/MTstateIntroStats/IntroStatTextbook">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="inference-for-comparing-two-proportions" class="section level1" number="16">
+<h1>
+<span class="header-section-number">16</span> Inference for comparing two proportions<a class="anchor" aria-label="anchor" href="#inference-for-comparing-two-proportions"><i class="fas fa-link"></i></a>
+</h1>
+<div class="chapterintro">
+<p>TODO</p>
+</div>
+<div class="underconstruction">
+<p>Sex discrimination case study now in chapter 11</p>
+</div>
+<div id="diff-two-prop" class="section level2" number="16.1">
+<h2>
+<span class="header-section-number">16.1</span> Difference of two proportions<a class="anchor" aria-label="anchor" href="#diff-two-prop"><i class="fas fa-link"></i></a>
+</h2>
+<div class="onebox">
+<p><strong>Notation.</strong></p>
+<ul>
+<li>
+<span class="math inline">\(n_1\)</span>, <span class="math inline">\(n_2\)</span> = sample sizes of two independent samples</li>
+<li>
+<span class="math inline">\(\hat{p}_1\)</span>, <span class="math inline">\(\hat{p}_2\)</span> = sample proportions of two independent samples</li>
+<li>
+<span class="math inline">\(\pi_1\)</span>, <span class="math inline">\(\pi_2\)</span> = population proportions of two independent samples</li>
+</ul>
+</div>
+<p>We now extend the methods from Section <a href="inference-one-prop.html#single-prop">15.1</a> to apply confidence intervals and hypothesis tests to differences in population proportions that come from two groups: <span class="math inline">\(\pi_1 - \pi_2\)</span>.</p>
+<p>In our investigations, we’ll identify a reasonable point estimate of <span class="math inline">\(\pi_1 - \pi_2\)</span> based on the sample, and you may have already guessed its form: <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span>. We’ll look at statistical inference for a difference in proportions in two ways: simulation-based methods through a randomization test and bootstrap confidence interval, and theory-based methods through a two sample <span class="math inline">\(z\)</span>-test and <span class="math inline">\(z\)</span>-interval.</p>
+<div id="two-prop-errors" class="section level3" number="16.1.1">
+<h3>
+<span class="header-section-number">16.1.1</span> Randomization test for <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span><a class="anchor" aria-label="anchor" href="#two-prop-errors"><i class="fas fa-link"></i></a>
+</h3>
+<p>As you learned in Chapter <a href="intro-to-data.html#intro-to-data">1</a>, a <strong>randomized experiment</strong> is done to assess whether or not one variable (the <strong>explanatory</strong> variable) causes changes in a second variable (the <strong>response</strong> variable). Every data set has some variability in it, so to decide whether the variability in the data is due to (1) the causal mechanism (the randomized explanatory variable in the experiment) or instead (2) natural variability inherent to the data, we set up a sham randomized experiment as a comparison. That is, we assume that each observational unit would have gotten the exact same response value regardless of the treatment level. By reassigning the treatments many many times, we can compare the actual experiment to the sham experiment. If the actual experiment has more extreme results than any of the sham experiments, we are led to believe that it is the explanatory variable which is causing the result and not inherent data variability. Using a few different studies, let’s look more carefully at this idea of a <strong>randomization test</strong>.</p>
+<div id="caseStudyGenderDiscrimination" class="section level4" number="16.1.1.1">
+<h4>
+<span class="header-section-number">16.1.1.1</span> Case study: Gender discrimination<a class="anchor" aria-label="anchor" href="#caseStudyGenderDiscrimination"><i class="fas fa-link"></i></a>
+</h4>
+<p></p>
+<p>We consider a study investigating gender discrimination in the 1970s, which is set in the context of personnel decisions within a bank.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Rosen B and Jerdee T. 1974. “Influence of sex role stereotypes on personnel decisions.” Journal of Applied Psychology 59(1):9-14.&lt;/p&gt;"><sup>133</sup></a> The research question we hope to answer is, “Are females discriminated against in promotion decisions made by male managers?”</p>
+</div>
+<div id="observed-data-3" class="section level4 unnumbered">
+<h4>Observed data<a class="anchor" aria-label="anchor" href="#observed-data-3"><i class="fas fa-link"></i></a>
+</h4>
+<p>The participants in this study were 48 male bank supervisors attending a management institute at the University of North Carolina in 1972. They were asked to assume the role of the personnel director of a bank and were given a personnel file to judge whether the person should be promoted to a branch manager position. The files given to the participants were identical, except that half of them indicated the candidate was male and the other half indicated the candidate was female. These files were randomly assigned to the subjects.</p>
+<div class="guidedpractice">
+<p>Is this an observational study or an experiment? How does the type of study impact what can be inferred from the results?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The study is an experiment, as subjects were randomly assigned a “male” file or a “female” file (remember, all the files were actually identical in content). Since this is an experiment, the results can be used to evaluate a causal relationship between gender of a candidate and the promotion decision.&lt;/p&gt;"><sup>134</sup></a></p>
+</div>
+<p>For each supervisor we recorded the gender associated with the assigned file and the promotion decision. Using the results of the study summarized in Table <a href="inference-for-comparing-two-proportions.html#tab:discriminationResults">16.1</a>, we would like to evaluate if females are unfairly discriminated against in promotion decisions. In this study, a smaller proportion of females are promoted than males (0.583 versus 0.875), but it is unclear whether the difference provides <em>convincing evidence</em> that females are unfairly discriminated against.</p>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:discriminationResults">Table 16.1: </span>Summary results for the gender discrimination study.
+</caption>
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+<code>gender</code>
+</div>
+</th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+male
+</th>
+<th style="text-align:left;">
+female
+</th>
+<th style="text-align:left;">
+Total
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+promoted
+</td>
+<td style="text-align:left;">
+21
+</td>
+<td style="text-align:left;">
+14
+</td>
+<td style="text-align:left;">
+35
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>decision</code>
+</td>
+<td style="text-align:left;">
+not promoted
+</td>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:left;">
+24
+</td>
+<td style="text-align:left;">
+24
+</td>
+<td style="text-align:left;">
+48
+</td>
+</tr>
+</tbody>
+</table></div>
+<p>The data are visualized in Figure <a href="inference-for-comparing-two-proportions.html#fig:genderrand1">16.1</a>. Note that the promoted decision is colored in red (promoted) and white(not promoted). Additionally, the observations are broken up into the male and female groups.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:genderrand1"></span>
+<img src="05/figures/genderrand1b.png" alt="The gender descrimination study can be thought of as 48 red and black cards." width="50%"><p class="caption">
+Figure 16.1: The gender descrimination study can be thought of as 48 red and black cards.
+</p>
+</div>
+<div class="workedexample">
+<p>Statisticians are sometimes called upon to evaluate the strength of evidence. When looking at the rates of promotion for males and females in this study, why might we be tempted to immediately conclude that females are being discriminated against?</p>
+<hr>
+<p>The large difference in promotion rates (58.3% for females versus 87.5% for males) suggest there might be discrimination against women in promotion decisions. However, we cannot yet be sure if the observed difference represents discrimination or is just from random chance. Generally there is a little bit of fluctuation in sample data, and we wouldn’t expect the sample proportions to be <em>exactly</em> equal, even if the truth was that the promotion decisions were independent of gender.</p>
+<p>Additionally, the researchers used a <strong>convenience sample</strong>—48 male bank supervisors attending a management institute—so we will need to think carefully about to which population we can generalize these results.</p>
+</div>
+<p>The previous example is a reminder that the observed outcomes in the sample may not perfectly reflect the true relationships between variables in the underlying population. Table <a href="inference-for-comparing-two-proportions.html#tab:discriminationResults">16.1</a> shows there were 7 fewer promotions in the female group than in the male group, a difference in promotion rates of 29.2%: <span class="math display">\[
+\hat{p}_M - \hat{p}_F = \frac{21}{24} - \frac{14}{24} = 0.292.
+\]</span> This point estimate of the true difference is large, but the sample size for the study is small, making it unclear if this observed difference represents discrimination or whether it is simply due to chance. These two competing claims are our null and alternative hypotheses:</p>
+<ul>
+<li><p><span class="math inline">\(H_0\)</span>: <strong>Null hypothesis</strong>. The variables <code>gender</code> and <code>decision</code> are independent. They have no relationship, and the observed difference between the proportion of males and females who were promoted, 29.2%, was due to chance.</p></li>
+<li><p><span class="math inline">\(H_A\)</span>: <strong>Alternative hypothesis</strong>. The variables <code>gender</code> and <code>decision</code> are <em>not</em> independent. The difference in promotion rates of 29.2% was not due to chance, and equally qualified females are less likely to be promoted than males.</p></li>
+</ul>
+<p>In statistical notation:</p>
+<ul>
+<li><p><span class="math inline">\(H_0: \pi_M - \pi_F = 0\)</span></p></li>
+<li><p><span class="math inline">\(H_A: \pi_M - \pi_F &gt; 0\)</span></p></li>
+</ul>
+<p>What would it mean if the null hypothesis, which says the variables <code>gender</code> and <code>decision</code> are unrelated, is true? It would mean each banker would decide whether to promote the candidate without regard to the gender indicated on the file. That is, the difference in the promotion percentages would be due to the way the files were randomly divided to the bankers, and the randomization just happened to give rise to a relatively large difference of 29.2%.</p>
+<p>Consider the alternative hypothesis: bankers were influenced by which gender was listed on the personnel file. If this was true, and especially if this influence was substantial, we would expect to see some difference in the promotion rates of male and female candidates. If this gender bias was against females, we would expect a smaller fraction of promotion recommendations for female personnel files relative to the male files.</p>
+<p>We will choose between these two competing claims by assessing if the data conflict so much with <span class="math inline">\(H_0\)</span> that the null hypothesis cannot be deemed reasonable. If this is the case, and the data support <span class="math inline">\(H_A\)</span>, then we will reject the notion of independence and conclude that these data provide strong evidence of discrimination.</p>
+</div>
+<div id="variability-of-the-statistic-2" class="section level4 unnumbered">
+<h4>Variability of the statistic<a class="anchor" aria-label="anchor" href="#variability-of-the-statistic-2"><i class="fas fa-link"></i></a>
+</h4>
+<p>Table <a href="inference-for-comparing-two-proportions.html#tab:discriminationResults">16.1</a> shows that 35 bank supervisors recommended promotion and 13 did not. Now, suppose the bankers’ decisions were independent of gender. Then, if we conducted the experiment again with a different random assignment of gender to the files, differences in promotion rates would be based only on random fluctuation. We can actually perform this <strong>randomization</strong>, which simulates what would have happened if the bankers’ decisions had been independent of gender but we had distributed the file genders differently.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The test procedure we employ in this section is sometimes referred to as a &lt;strong&gt;permutation test&lt;/strong&gt;.&lt;/p&gt;"><sup>135</sup></a></p>
+<p>In this <strong>simulation</strong>, we thoroughly shuffle 48 personnel files, 35 labeled <code>promoted</code> and 13 labeled <code>not promoted</code>, and we deal these files into two stacks. Note that by keeping 35 promoted and 13 not promoted, we are assuming that 35 of the bank managers would have promoted the individual whose content is contained in the file (<strong>independent</strong> of gender). We will deal 24 files into the first stack, which will represent the 24 “female” files. The second stack will also have 24 files, and it will represent the 24 “male” files. Figure <a href="inference-for-comparing-two-proportions.html#fig:genderrand3">16.2</a> highlights both the shuffle and the reallocation to the sham gender groups.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:genderrand3"></span>
+<img src="05/figures/genderrand3b.png" alt="The gender descrimination data is shuffled and reallocated to the gender groups." width="80%"><p class="caption">
+Figure 16.2: The gender descrimination data is shuffled and reallocated to the gender groups.
+</p>
+</div>
+<p>Then, as we did with the original data, we tabulate the results and determine the fraction of <code>male</code> and <code>female</code> who were promoted.</p>
+<p>Since the randomization of files in this simulation is independent of the promotion decisions, any difference in the two promotion rates is entirely due to chance. Table <a href="inference-for-comparing-two-proportions.html#tab:discriminationRand1">16.2</a> show the results of one such simulation.</p>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:discriminationRand1">Table 16.2: </span>Simulation results, where the difference in promotion rates between <code>male</code> and <code>female</code> is purely due to chance.
+</caption>
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+<code>gender</code>
+</div>
+</th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+male
+</th>
+<th style="text-align:left;">
+female
+</th>
+<th style="text-align:left;">
+Total
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+promoted
+</td>
+<td style="text-align:left;">
+18
+</td>
+<td style="text-align:left;">
+17
+</td>
+<td style="text-align:left;">
+35
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>decision</code>
+</td>
+<td style="text-align:left;">
+not promoted
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:left;">
+24
+</td>
+<td style="text-align:left;">
+24
+</td>
+<td style="text-align:left;">
+48
+</td>
+</tr>
+</tbody>
+</table></div>
+<div class="guidedpractice">
+<p>What is the difference in promotion rates between the two simulated groups in Table <a href="inference-for-comparing-two-proportions.html#tab:discriminationRand1">16.2</a> ? How does this compare to the observed difference 29.2% from the actual study?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="math inline"&gt;\(18/24 - 17/24=0.042\)&lt;/span&gt; or about 4.2% in favor of the men. This difference due to chance is much smaller than the difference observed in the actual groups.&lt;/p&gt;'><sup>136</sup></a></p>
+</div>
+<p>Figure <a href="inference-for-comparing-two-proportions.html#fig:genderrand4">16.3</a> shows that the difference in promotion rates is much larger in the original data than it is in the simulated groups (0.292 &gt;&gt;&gt; 0.042). The quantity of interest throughout this case study has been the difference in promotion rates. This summary value is the <strong>statistic</strong> of interest (or often the <strong>test statistic</strong>).</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:genderrand4"></span>
+<img src="05/figures/genderrand4c.png" alt="We summarize the randomized data to produce one estimate of the difference in proportions given no gender discrimination." width="100%"><p class="caption">
+Figure 16.3: We summarize the randomized data to produce one estimate of the difference in proportions given no gender discrimination.
+</p>
+</div>
+</div>
+<div id="observed-statistic-vs.-null-value" class="section level4 unnumbered">
+<h4>Observed statistic vs. null value<a class="anchor" aria-label="anchor" href="#observed-statistic-vs.-null-value"><i class="fas fa-link"></i></a>
+</h4>
+<p>We computed one possible sample difference in proportions under the null hypothesis in the Guided Practice above, which represents one difference due to chance. While in this first simulation, we physically dealt out files, it is much more efficient to perform this simulation using a computer. Repeating the simulation on a computer, we get another difference due to chance: -0.042. And another: 0.208. And so on until we repeat the simulation enough times that we have a good idea of what represents the <em>distribution of differences in sample proportions from chance alone</em>. Figure <a href="inference-for-comparing-two-proportions.html#fig:discRandDotPlot">16.4</a> shows a plot of the differences found from 100 simulations, where each dot represents a simulated difference between the proportions of male and female files recommended for promotion.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:discRandDotPlot"></span>
+<img src="15-categorical-two-props_files/figure-html/discRandDotPlot-1.png" alt="A dot plot of differences from 100 simulations produced under the null hypothesis, $H_0$, where `gender_simulated` and `decision` are independent. Two of the 100 simulations had a difference of at least 29.2%, the difference observed in the study, and are shown as solid red dots." width="90%"><p class="caption">
+Figure 16.4: A dot plot of differences from 100 simulations produced under the null hypothesis, <span class="math inline">\(H_0\)</span>, where <code>gender_simulated</code> and <code>decision</code> are independent. Two of the 100 simulations had a difference of at least 29.2%, the difference observed in the study, and are shown as solid red dots.
+</p>
+</div>
+<p>Note that the distribution of these simulated differences in proportions is centered around 0. Because we simulated differences in a way that made no distinction between men and women, this makes sense: we should expect differences from chance alone to fall around zero with some random fluctuation for each simulation.</p>
+<div class="workedexample">
+<p>How often would you observe a difference of at least 29.2% (0.292) according to Figure <a href="inference-for-comparing-two-proportions.html#fig:discRandDotPlot">16.4</a>? Often, sometimes, rarely, or never?</p>
+<hr>
+<p>It appears that a difference of at least 29.2% due to chance alone would only happen about 2% of the time according to Figure <a href="inference-for-comparing-two-proportions.html#fig:discRandDotPlot">16.4</a>. Such a low probability indicates that observing such a large difference from chance is rare.</p>
+</div>
+<p>The difference of 29.2% is a rare event if there really is no impact from listing gender in the candidates’ files, which provides us with two possible interpretations of the study results:</p>
+<ul>
+<li><p><span class="math inline">\(H_0\)</span>: <strong>Null hypothesis</strong>. Gender has no effect on promotion decision, and we observed a difference that is so large that it would only happen rarely.</p></li>
+<li><p><span class="math inline">\(H_A\)</span>: <strong>Alternative hypothesis</strong>. Gender has an effect on promotion decision, and what we observed was actually due to equally qualified women being discriminated against in promotion decisions, which explains the large difference of 29.2%.</p></li>
+</ul>
+<p>When we conduct formal studies, we reject a null position (the idea that the data are a result of chance only) if the data strongly conflict with that null position.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;This reasoning does not generally extend to anecdotal observations. Each of us observes incredibly rare events every day, events we could not possibly hope to predict. However, in the non-rigorous setting of anecdotal evidence, almost anything may appear to be a rare event, so the idea of looking for rare events in day-to-day activities is treacherous. For example, we might look at the lottery: there was only a 1 in 176 million chance that the Mega Millions numbers for the largest jackpot in history (March 30, 2012) would be (2, 4, 23, 38, 46) with a Mega ball of (23), but nonetheless those numbers came up! However, no matter what numbers had turned up, they would have had the same incredibly rare odds. That is, &lt;em&gt;any set of numbers we could have observed would ultimately be incredibly rare&lt;/em&gt;. This type of situation is typical of our daily lives: each possible event in itself seems incredibly rare, but if we consider every alternative, those outcomes are also incredibly rare. We should be cautious not to misinterpret such anecdotal evidence.&lt;/p&gt;"><sup>137</sup></a> In our analysis, we determined that there was only a <span class="math inline">\(\approx\)</span> 2% probability of obtaining a sample where <span class="math inline">\(\geq\)</span> 29.2% more males than females get promoted by chance alone, so we conclude that the data provide strong evidence of gender discrimination against women by the supervisors.</p>
+<div class="guidedpractice">
+<p>What statistical term is given to the 2% probability of obtaining a sample where <span class="math inline">\(\geq\)</span> 29.2% more males than females get promoted by chance alone?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;This probability of the results we see in our study, under the assumption of no discrimination, is the &lt;strong&gt;p-value&lt;/strong&gt;.&lt;/p&gt;"><sup>138</sup></a></p>
+</div>
+</div>
+<div id="scope-of-inference-1" class="section level4 unnumbered">
+<h4>Scope of inference<a class="anchor" aria-label="anchor" href="#scope-of-inference-1"><i class="fas fa-link"></i></a>
+</h4>
+<p>Since the study was a randomized experiment, we can conclude that the effect was due to gender discrimination—the gender of the application <em>caused</em> the lower rate of promotion. However, since this study was a convenience sample, we can only generalize this result to individuals similar to those in the study. Thus, we have evidence of gender discrimination, but only among male bank supervisors attending a management institute at the University of North Carolina in 1972 that are similar to those in the study.</p>
+<p></p>
+</div>
+<div id="cpr" class="section level4" number="16.1.1.2">
+<h4>
+<span class="header-section-number">16.1.1.2</span> Case study: CPR and blood thinner<a class="anchor" aria-label="anchor" href="#cpr"><i class="fas fa-link"></i></a>
+</h4>
+<p></p>
+<p>Cardiopulmonary resuscitation (CPR) is a procedure used on individuals suffering a heart attack when other emergency resources are unavailable. This procedure is helpful in providing some blood circulation to keep a person alive, but CPR chest compressions can also cause internal injuries. Internal bleeding and other injuries that can result from CPR complicate additional treatment efforts. For instance, blood thinners may be used to help release a clot that is causing the heart attack once a patient arrives in the hospital. However, blood thinners negatively affect internal injuries.</p>
+<p>Here we consider an experiment with patients who underwent CPR for a heart attack and were subsequently admitted to a hospital.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;B&lt;span class="math inline"&gt;\(\ddot{\text{o}}\)&lt;/span&gt;ttiger et al. “Efficacy and safety of thrombolytic therapy after initially unsuccessful cardiopulmonary resuscitation: a prospective clinical trial.” The Lancet, 2001.&lt;/p&gt;'><sup>139</sup></a> Each patient was randomly assigned to either receive a blood thinner (treatment group) or not receive a blood thinner (control group). The outcome variable of interest was whether the patient survived for at least 24 hours.</p>
+<div class="workedexample">
+<p>Form hypotheses for this study in plain and statistical language. Let <span class="math inline">\(\pi_c\)</span> represent the true survival rate of people who do not receive a blood thinner (corresponding to the control group) and <span class="math inline">\(\pi_t\)</span> represent the true survival rate for people receiving a blood thinner (corresponding to the treatment group).</p>
+<hr>
+<p>We want to understand whether blood thinners are helpful or harmful. We’ll consider both of these possibilities using a two-sided hypothesis test.</p>
+<ul>
+<li><p><span class="math inline">\(H_0\)</span>: Blood thinners do not have an overall survival effect, i.e., <span class="math inline">\(\pi_t - \pi_c = 0\)</span>.</p></li>
+<li><p><span class="math inline">\(H_A\)</span>: Blood thinners have an impact on survival, either positive or negative, but not zero, i.e., <span class="math inline">\(\pi_t - \pi_c \neq 0\)</span>.</p></li>
+</ul>
+<p>Note that if we had done a one-sided hypothesis test, the resulting hypotheses would have been:</p>
+<ul>
+<li><p><span class="math inline">\(H_0\)</span>: Blood thinners do not have a positive overall survival effect, i.e., <span class="math inline">\(\pi_t - \pi_c = 0\)</span>.</p></li>
+<li><p><span class="math inline">\(H_A\)</span>: Blood thinners have a positive impact on survival, i.e., <span class="math inline">\(\pi_t - \pi_c &gt; 0\)</span>.</p></li>
+</ul>
+</div>
+<p>There were 50 patients in the experiment who did not receive a blood thinner and 40 patients who did. The study results are shown in Table <a href="inference-for-comparing-two-proportions.html#tab:resultsForCPRStudyInSmallSampleSection">16.3</a>.</p>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:resultsForCPRStudyInSmallSampleSection">Table 16.3: </span>Results for the CPR study. Patients in the treatment group were given a blood thinner, and patients in the control group were not.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Treatment
+</th>
+<th style="text-align:left;">
+Control
+</th>
+<th style="text-align:left;">
+Total
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Survived
+</td>
+<td style="text-align:left;">
+14
+</td>
+<td style="text-align:left;">
+11
+</td>
+<td style="text-align:left;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Died
+</td>
+<td style="text-align:left;">
+26
+</td>
+<td style="text-align:left;">
+39
+</td>
+<td style="text-align:left;">
+65
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:left;">
+40
+</td>
+<td style="text-align:left;">
+50
+</td>
+<td style="text-align:left;">
+90
+</td>
+</tr>
+</tbody>
+</table></div>
+<div class="guidedpractice">
+<p>What is the observed survival rate in the control group? And in the treatment group? Also, provide a point estimate of the difference in survival proportions of the two groups (<span class="math inline">\(\hat{p}_t - \hat{p}_c\)</span>) and the relative “risk” of survival (<span class="math inline">\(\hat{p}_t/\hat{p}_c\)</span>).<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Observed control survival rate: &lt;span class="math inline"&gt;\(\hat{p}_c = \frac{11}{50} = 0.22\)&lt;/span&gt;. Treatment survival rate: &lt;span class="math inline"&gt;\(\hat{p}_t = \frac{14}{40} = 0.35\)&lt;/span&gt;. Observed difference: &lt;span class="math inline"&gt;\(\hat{p}_t - \hat{p}_c = 0.35 - 0.22 = 0.13\)&lt;/span&gt;. Relative risk: &lt;span class="math inline"&gt;\(\hat{p}_t/\hat{p}_c = 0.35/0.22 = 1.59\)&lt;/span&gt;&lt;/p&gt;'><sup>140</sup></a></p>
+</div>
+<p>According to the point estimate, for patients who have undergone CPR outside of the hospital, an additional 13% of these patients survive when they are treated with blood thinners. Interpreting the relative risk, patients in this sample who had undergone CPR outside of the hospital had a 59% higher survival rate when they were treated with blood thinners. However, we wonder if this difference could be easily explainable by chance.</p>
+<p>As we did in our past studies this chapter, we will simulate what type of differences we might see from chance alone under the null hypothesis. By randomly assigning “simulated treatment” and “simulated control” stickers to the patients’ files, we get a new grouping. If we repeat this simulation 10,000 times, we can build a <strong>null distribution</strong> of the differences in sample proportions shown in Figure <a href="inference-for-comparing-two-proportions.html#fig:CPR-study-right-tail">16.5</a>.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:CPR-study-right-tail"></span>
+<img src="15-categorical-two-props_files/figure-html/CPR-study-right-tail-1.png" alt="Null distribution of the point estimate for the difference in proportions, $\hat{p}_t - \hat{p}_c$. The shaded right tail shows observations that are at least as large as the observed difference, 0.13." width="90%"><p class="caption">
+Figure 16.5: Null distribution of the point estimate for the difference in proportions, <span class="math inline">\(\hat{p}_t - \hat{p}_c\)</span>. The shaded right tail shows observations that are at least as large as the observed difference, 0.13.
+</p>
+</div>
+<p>The right tail area is 0.131.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Note: it is only a coincidence that we also have &lt;span class="math inline"&gt;\(\hat{p}_t - \hat{p}_c=0.13\)&lt;/span&gt;!&lt;/p&gt;'><sup>141</sup></a> However, contrary to how we calculated the p-value in previous studies, the p-value of this test is not 0.131!</p>
+<p>The p-value is defined as the chance we observe a result <em>at least as favorable to the alternative hypothesis as the result</em> (i.e., the difference) we observe. In this case, any differences less than or equal to <span class="math inline">\(-0.13\)</span> would also provide equally strong evidence favoring the alternative hypothesis as a difference of <span class="math inline">\(+0.13\)</span> did. A difference of <span class="math inline">\(-0.13\)</span> would correspond to the survival rate in the <em>control group</em> being 0.13 higher than the treatment group.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Note that the relative risk in the opposite direction is not a &lt;em&gt;decrease&lt;/em&gt; of 59%! When comparing control to treatment, the relative risk would be &lt;span class="math inline"&gt;\(0.22/0.35 = 0.63\)&lt;/span&gt;, or a decrease of 37%. These values differ because the quantity we’re comparing to (the “100%” quantity) differs.&lt;/p&gt;'><sup>142</sup></a> In Figure <a href="inference-for-comparing-two-proportions.html#fig:CPR-study-p-value">16.6</a> we’ve also shaded these differences in the left tail of the distribution. These two shaded tails provide a visual representation of the p-value for a two-sided test.</p>
+<!--
+%There is something different in this study than in the past studies: in this study, we are particularly interested in whether blood thinners increase *or* decrease the risk of death in patients who undergo CPR before arriving at the hospital.\footnote{Realistically, we probably are interested in either direction in the past studies as well, and so we should have used the approach we now discuss in this section. However, for simplicity and the sake of not introducing too many concepts at once, we skipped over these details in earlier sections.} For example, there are chance differences of $\hat{p}_t - \hat{p}_c = -0.14$, that would have been stronger evidence against the null hypothesis as our observed difference of +0.13. Likewise, anything less than or equal -0.13 would provide as much evidence against the null hypothesis as +0.13, and for this reason, we must count both tails towards the p-value, as shown in Figure \ref{CPR-study-p-value}.
+-->
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:CPR-study-p-value"></span>
+<img src="15-categorical-two-props_files/figure-html/CPR-study-p-value-1.png" alt="Null distribution of the point estimate for the difference in proportions, $\hat{p}_t - \hat{p}_c$. All values that are at least as extreme as +0.13 but in either direction away from 0 are shaded." width="90%"><p class="caption">
+Figure 16.6: Null distribution of the point estimate for the difference in proportions, <span class="math inline">\(\hat{p}_t - \hat{p}_c\)</span>. All values that are at least as extreme as +0.13 but in either direction away from 0 are shaded.
+</p>
+</div>
+<p>For a two-sided test, since the null distribution is symmetric, take the single tail (in this case, 0.131) and double it to get the p-value: 0.262. With this large p-value, we do not find statistically significant evidence that the blood thinner has any influence on survival of patients who undergo CPR prior to arriving at the hospital.</p>
+<!--%Once again, we can discuss the causal conclusion since this is an experiment.
+-->
+<p></p>
+</div>
+<div id="caseStudyOpportunityCost" class="section level4" number="16.1.1.3">
+<h4>
+<span class="header-section-number">16.1.1.3</span> Case study: Opportunity cost<a class="anchor" aria-label="anchor" href="#caseStudyOpportunityCost"><i class="fas fa-link"></i></a>
+</h4>
+<p>How rational and consistent is the behavior of the typical American college student? In this section, we’ll explore whether college student consumers always consider the following: money not spent now can be spent later.</p>
+<p>In particular, we are interested in whether reminding students about this well-known fact about money causes them to be a little thriftier. A skeptic might think that such a reminder would have no impact. We can summarize the two different perspectives using the null and alternative hypothesis framework.</p>
+<ul>
+<li><p><span class="math inline">\(H_0\)</span>: <strong>Null hypothesis</strong>. Reminding students that they can save money for later purchases will not have any impact on students’ spending decisions.</p></li>
+<li><p><span class="math inline">\(H_A\)</span>: <strong>Alternative hypothesis</strong>. Reminding students that they can save money for later purchases will reduce the chance they will continue with a purchase.</p></li>
+</ul>
+<div class="guidedpractice">
+<p>How could you design a randomized experiment to test these two hypotheses?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;With a sample of students, randomly assign half of them to the control condition, and the other half to the treatment condition. For those in the control condition, present them with a situation where an item is on sale and ask if they would like to buy the item. For those in the treatment condition, present them with the same situation, but also remind them that they can save money for later purchases, then ask if they would like to buy the item. Compute and compare the proportions who refrained from purchasing the item in each group.&lt;/p&gt;"><sup>143</sup></a></p>
+</div>
+<p>In statistical notation, we can define parameters <span class="math inline">\(\pi_{ctrl}\)</span> = the probability a student under a control condition (not reminding them that they can save money for later purchases) refrains from making a purchase, and <span class="math inline">\(\pi_{trmt}\)</span> = the probability a student under a treatment condition (reminding them that they can save money for later purchases) refrains from makes a purchase. Our hypotheses are then</p>
+<ul>
+<li><p><span class="math inline">\(H_0: \pi_{trmt} - \pi_{ctrl} = 0\)</span></p></li>
+<li><p><span class="math inline">\(H_A: \pi_{trmt} - \pi_{ctrl} &gt; 0\)</span></p></li>
+</ul>
+<p>In this section, we’ll explore an experiment conducted by researchers that investigates this very question for students at a university in the southwestern United States.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Frederick S, Novemsky N, Wang J, Dhar R, Nowlis S. 2009. Opportunity Cost Neglect. Journal of Consumer Research 36: 553-561.&lt;/p&gt;"><sup>144</sup></a></p>
+</div>
+<div id="observed-data-4" class="section level4 unnumbered">
+<h4>Observed data<a class="anchor" aria-label="anchor" href="#observed-data-4"><i class="fas fa-link"></i></a>
+</h4>
+<!--Shane Frederick of Yale School of Management and his collaborators conducted an experiment exploring the rational behavior of consumers. 
+
+% Suppose when a person is about to spend money, we simply reminded them that they could spend the money on something else. Would it have any impact on the likelihood that they would continue with the purchase?
+%What would you do in this situation? Please circle one of the options below.
+
+-->
+<p>One-hundred and fifty students were recruited for the study, and each was given the following statement:</p>
+<blockquote>
+<p>Imagine that you have been saving some extra money on the side to make some purchases, and on your most recent visit to the video store you come across a special sale on a new video. This video is one with your favorite actor or actress, and your favorite type of movie (such as a comedy, drama, thriller, etc.). This particular video that you are considering is one you have been thinking about buying for a long time. It is available for a special sale price of $14.99.</p>
+</blockquote>
+<blockquote>
+<p>What would you do in this situation? Please circle one of the options below.</p>
+</blockquote>
+<p>Half of the 150 students were randomized into a control group and were given the following two options:</p>
+<blockquote>
+<ol style="list-style-type: upper-alpha">
+<li>Buy this entertaining video.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2" style="list-style-type: upper-alpha">
+<li>Not buy this entertaining video.</li>
+</ol>
+</blockquote>
+<p>The remaining 75 students were placed in the treatment group, and they saw a slightly modified option (B):</p>
+<blockquote>
+<ol style="list-style-type: upper-alpha">
+<li>Buy this entertaining video.</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2" style="list-style-type: upper-alpha">
+<li>Not buy this entertaining video. Keep the $14.99 for other purchases.</li>
+</ol>
+</blockquote>
+<p>Would the extra statement reminding students of an obvious fact impact the purchasing decision? Table <a href="inference-for-comparing-two-proportions.html#tab:OpportunityCostTable">16.4</a> summarizes the study results.</p>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:OpportunityCostTable">Table 16.4: </span>Summary of student choices in the opportunity cost study.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+control group
+</th>
+<th style="text-align:left;">
+treatment group
+</th>
+<th style="text-align:left;">
+Total
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+buy DVD
+</td>
+<td style="text-align:left;">
+56
+</td>
+<td style="text-align:left;">
+41
+</td>
+<td style="text-align:left;">
+97
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not buy DVD
+</td>
+<td style="text-align:left;">
+19
+</td>
+<td style="text-align:left;">
+34
+</td>
+<td style="text-align:left;">
+53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:left;">
+75
+</td>
+<td style="text-align:left;">
+75
+</td>
+<td style="text-align:left;">
+150
+</td>
+</tr>
+</tbody>
+</table></div>
+<!--
+%150 participants were asked whether they would buy a DVD under a particular circumstance. Participants in the control group were given two options, and participants in the treatment group were given the same options, except in the *not buy* option they were reminded that not spending the money meant the money could be used for a later purchase. This table summarizes the results from the study.}
+--><p>It might be a little easier to review the results using row proportions, specifically considering the proportion of participants in each group who said they would buy or not buy the DVD. These summaries are given in Table <a href="inference-for-comparing-two-proportions.html#tab:OpportunityCostTableRowProp">16.5</a>, and a segmented bar plot is provided in Figure <a href="inference-for-comparing-two-proportions.html#fig:OpportunityCostBarplot">16.7</a>.</p>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:OpportunityCostTableRowProp">Table 16.5: </span>The data above are now summarized using row proportions. Row proportions are particularly useful here since we can view the proportion of <em>buy</em> and <em>not buy</em> decisions in each group.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+control group
+</th>
+<th style="text-align:left;">
+treatment group
+</th>
+<th style="text-align:left;">
+Total
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+buy DVD
+</td>
+<td style="text-align:left;">
+0.747
+</td>
+<td style="text-align:left;">
+0.547
+</td>
+<td style="text-align:left;">
+0.647
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not buy DVD
+</td>
+<td style="text-align:left;">
+0.253
+</td>
+<td style="text-align:left;">
+0.453
+</td>
+<td style="text-align:left;">
+0.353
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:left;">
+1.00
+</td>
+<td style="text-align:left;">
+1.00
+</td>
+<td style="text-align:left;">
+1.00
+</td>
+</tr>
+</tbody>
+</table></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:OpportunityCostBarplot"></span>
+<img src="15-categorical-two-props_files/figure-html/OpportunityCostBarplot-1.png" alt="Segmented bar plot comparing the proportion who bought and did not buy the DVD between the control and treatment groups." width="90%"><p class="caption">
+Figure 16.7: Segmented bar plot comparing the proportion who bought and did not buy the DVD between the control and treatment groups.
+</p>
+</div>
+<p>We will define a <strong>success</strong> in this study as a student who chooses not to buy the DVD.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Success is often defined in a study as the outcome of interest, and a “success” may or may not actually be a positive outcome. For example, researchers working on a study on HIV prevalence might define a “success” in the statistical sense as a patient who is HIV+. A more complete discussion of the term &lt;strong&gt;success&lt;/strong&gt; will be given in Chapter &lt;a href="#inference-cat"&gt;&lt;strong&gt;??&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;'><sup>145</sup></a> Then, the value of interest is the change in DVD purchase rates that results by reminding students that not spending money now means they can spend the money later.</p>
+<!--
+%A first look at the data suggests that reminding students that not spending money means they can spend the money later has an impact. 
+-->
+<p>We can construct a point estimate for this difference as <span class="math display">\[\begin{align*}
+\hat{p}_{trmt} - \hat{p}_{ctrl}
+= \frac{34}{75} - \frac{19}{75}
+= 0.453 - 0.253
+= 0.200
+\end{align*}\]</span> The proportion of students who chose not to buy the DVD was 20% higher in the treatment group than the control group. However, is this result <strong>statistically significant</strong>? In other words, is a 20% difference between the two groups so prominent that it is unlikely to have occurred from chance alone?</p>
+</div>
+<div id="variability-of-the-statistic-3" class="section level4 unnumbered">
+<h4>Variability of the statistic<a class="anchor" aria-label="anchor" href="#variability-of-the-statistic-3"><i class="fas fa-link"></i></a>
+</h4>
+<p>The primary goal in this data analysis is to understand what sort of differences we might see if the null hypothesis were true, i.e., the treatment had no effect on students. For this, we’ll use the same procedure we applied in Section <a href="inference-for-comparing-two-proportions.html#caseStudyGenderDiscrimination">16.1.1.1</a>: randomization.</p>
+<p>Let’s think about the data in the context of the hypotheses. If the null hypothesis (<span class="math inline">\(H_0\)</span>) was true and the treatment had no impact on student decisions, then the observed difference between the two groups of 20% could be attributed entirely to chance. If, on the other hand, the alternative hypothesis (<span class="math inline">\(H_A\)</span>) is true, then the difference indicates that reminding students about saving for later purchases actually impacts their buying decisions.</p>
+</div>
+<div id="observed-statistic-vs.-null-value-1" class="section level4 unnumbered">
+<h4>Observed statistic vs. null value<a class="anchor" aria-label="anchor" href="#observed-statistic-vs.-null-value-1"><i class="fas fa-link"></i></a>
+</h4>
+<p>Just like with the gender discrimination study, we can perform a statistical analysis. Using the same randomization technique from the last section, let’s see what happens when we simulate the experiment under the scenario where there is no effect from the treatment.</p>
+<p>While we would in reality do this simulation on a computer, it might be useful to think about how we would go about carrying out the simulation without a computer. We start with 150 index cards and label each card to indicate the distribution of our response variable: <code>decision</code>. That is, 53 cards will be labeled “not buy DVD” to represent the 53 students who opted not to buy, and 97 will be labeled “buy DVD” for the other 97 students. Then we shuffle these cards thoroughly and divide them into two stacks of size 75, representing the simulated treatment and control groups. Any observed difference between the proportions of “not buy DVD” cards (what we earlier defined as <em>success</em>) can be attributed entirely to chance.</p>
+<div class="workedexample">
+<p>If we are randomly assigning the cards into the simulated treatment and control groups, how many “not buy DVD” cards would we expect to end up with in each simulated group? What would be the expected difference between the proportions of “not buy DVD” cards in each group?</p>
+<hr>
+<p>Since the simulated groups are of equal size, we would expect <span class="math inline">\(53 / 2 = 26.5\)</span>, i.e., 26 or 27, “not buy DVD” cards in each simulated group, yielding a simulated point estimate of 0% . However, due to random fluctuations, we might actually observe a number a little above or below 26 and 27.</p>
+</div>
+<!--
+%We'll take the students and randomize them into two new groups, simulated-control and simulated-treatment groups, and then we'll look at the difference in the two groups. 
+-->
+<p>The results of a single randomization from chance alone is shown in Table <a href="inference-for-comparing-two-proportions.html#tab:OpportunityCostTableSimulated">16.6</a>. From this table, we can compute a difference that occurred from chance alone: <span class="math display">\[\begin{align*}
+\hat{p}_{trmt, simulated} - \hat{p}_{ctrl, simulated}
+= \frac{24}{75} - \frac{29}{75}
+= 0.32 - 0.387
+= - 0.067
+\end{align*}\]</span> <!--
+%This difference of -6.7% is entirely due to chance.
+--></p>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:OpportunityCostTableSimulated">Table 16.6: </span>Summary of student choices against their simulated groups. The group assignment had no connection to the student decisions, so any difference between the two groups is due to chance.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+control group
+</th>
+<th style="text-align:left;">
+treatment group
+</th>
+<th style="text-align:left;">
+Total
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+buy DVD
+</td>
+<td style="text-align:left;">
+46
+</td>
+<td style="text-align:left;">
+51
+</td>
+<td style="text-align:left;">
+97
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not buy DVD
+</td>
+<td style="text-align:left;">
+29
+</td>
+<td style="text-align:left;">
+24
+</td>
+<td style="text-align:left;">
+53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:left;">
+75
+</td>
+<td style="text-align:left;">
+75
+</td>
+<td style="text-align:left;">
+150
+</td>
+</tr>
+</tbody>
+</table></div>
+<p>Just one simulation will not be enough to get a sense of what sorts of differences would happen from chance alone. We’ll simulate another set of simulated groups and compute the new difference: 0.013. And again: 0.067. And again: -0.173. We’ll do this 1,000 times. The results are summarized in a dot plot in Figure <a href="inference-for-comparing-two-proportions.html#fig:OpportunityCostDiffsDotPlot">16.8</a>, where each point represents a simulation. Since there are so many points, it is more convenient to summarize the results in a histogram such as the one in Figure <a href="inference-for-comparing-two-proportions.html#fig:OpportunityCostDiffs">16.9</a>, where the height of each histogram bar represents the fraction of observations in that group.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:OpportunityCostDiffsDotPlot"></span>
+<img src="15-categorical-two-props_files/figure-html/OpportunityCostDiffsDotPlot-1.png" alt="A stacked dot plot of 1,000 chance differences produced under the null hypothesis, $H_0$. Six of the 1,000 simulations had a difference of at least 20% , which was the difference observed in the study." width="90%"><p class="caption">
+Figure 16.8: A stacked dot plot of 1,000 chance differences produced under the null hypothesis, <span class="math inline">\(H_0\)</span>. Six of the 1,000 simulations had a difference of at least 20% , which was the difference observed in the study.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:OpportunityCostDiffs"></span>
+<img src="15-categorical-two-props_files/figure-html/OpportunityCostDiffs-1.png" alt="A histogram of 1,000 chance differences produced under the null hypothesis, $H_0$. Histograms like this one are a more convenient representation of data or results when there are a large number of observations." width="90%"><p class="caption">
+Figure 16.9: A histogram of 1,000 chance differences produced under the null hypothesis, <span class="math inline">\(H_0\)</span>. Histograms like this one are a more convenient representation of data or results when there are a large number of observations.
+</p>
+</div>
+<p>If there was no treatment effect, then we’d only observe a difference of at least +20% about 0.6% of the time, or about 1-in-150 times. That is really rare! Instead, we will conclude the data provide strong evidence there is a treatment effect: reminding students before a purchase that they could instead spend the money later on something else lowers the chance that they will continue with the purchase. Notice that we are able to make a causal statement for this study since the study is an experiment.</p>
+</div>
+<div id="scope-of-inference-2" class="section level4 unnumbered">
+<h4>Scope of inference<a class="anchor" aria-label="anchor" href="#scope-of-inference-2"><i class="fas fa-link"></i></a>
+</h4>
+<p>Since the study was a randomized experiment, we can conclude that the effect was due to the reminder about saving money for other purchases—the reminder <em>caused</em> the lower rate of purchase. However, since this study used a volunteer sample (students were “recruited”), we can only generalize this result to individuals similar to those in the study. Thus, we have evidence that reminding students that they can save money for later purchases will reduce the chance they will continue with a purchase, but only among students are similar to those in the study.</p>
+</div>
+<div id="caseStudyMalaria" class="section level4" number="16.1.1.4">
+<h4>
+<span class="header-section-number">16.1.1.4</span> Case study: Malaria vaccine<a class="anchor" aria-label="anchor" href="#caseStudyMalaria"><i class="fas fa-link"></i></a>
+</h4>
+</div>
+<div id="observed-data-5" class="section level4 unnumbered">
+<h4>Observed data<a class="anchor" aria-label="anchor" href="#observed-data-5"><i class="fas fa-link"></i></a>
+</h4>
+<p>We consider a study on a new malaria vaccine called PfSPZ. In this study, volunteer patients were randomized into one of two experiment groups: 14 patients received an experimental vaccine and 6 patients received a placebo vaccine. Nineteen weeks later, all 20 patients were exposed to a drug-sensitive malaria virus strain; the motivation of using a drug-sensitive strain of virus here is for ethical considerations, allowing any infections to be treated effectively. The results are summarized in Table <a href="inference-for-comparing-two-proportions.html#tab:malaria-vaccine-20-exp-summary">16.7</a>, where 9 of the 14 treatment patients remained free of signs of infection while all of the 6 patients in the control group patients showed some baseline signs of infection.</p>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:malaria-vaccine-20-exp-summary">Table 16.7: </span>Summary results for the malaria vaccine experiment.
+</caption>
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+<code>treatment</code>
+</div>
+</th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+vaccine
+</th>
+<th style="text-align:left;">
+placebo
+</th>
+<th style="text-align:left;">
+Total
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+infection
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<code>no infection</code>
+</td>
+<td style="text-align:left;">
+placebo
+</td>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:left;">
+0
+</td>
+<td style="text-align:left;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:left;">
+14
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+20
+</td>
+</tr>
+</tbody>
+</table></div>
+<div class="guidedpractice">
+<p>Is this an observational study or an experiment? What implications does the study type have on what can be inferred from the results?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The study is an experiment, as patients were randomly assigned an experiment group. Since this is an experiment, the results can be used to evaluate a causal relationship between the malaria vaccine and whether patients showed signs of an infection.&lt;/p&gt;"><sup>146</sup></a></p>
+</div>
+<p>In this study, a smaller proportion of patients who received the vaccine showed signs of an infection (35.7% versus 100%). However, the sample is very small, and it is unclear whether the difference provides <em>convincing evidence</em> that the vaccine is effective. To determine this, we need to perform statistical inference.</p>
+<p>Instead of using the <em>difference in proportion</em> infected as our summary measure, let’s use the <em>relative risk</em> of infection for this case study. Thus, the parameter of interest is <span class="math inline">\(\pi_{Vac} / \pi_{Pla}\)</span>, and our point estimate of this parameter is</p>
+<p><span class="math display">\[
+\frac{\hat{p}_{Vac}}{\hat{p}_{Pla}} = \frac{5/14}{6/6} = 0.357.
+\]</span></p>
+<p>Converting this to a percent decrease<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="math inline"&gt;\((0.357 - 1)\times 100\)&lt;/span&gt;% = -64.3%&lt;/p&gt;'><sup>147</sup></a>, we see that the patients in the vaccine group had a 64.3% reduced risk of infection compared to the placebo group.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;With small sample sizes, researchers often add 0.5 to each of the four cells prior to calculating the sample relative risk in order to avoid dividing by zero. With this adjustment, the sample relative risk is: &lt;span class="math inline"&gt;\(\frac{5.5/15}{6.5/7} = 0.395\)&lt;/span&gt;. We will use this adjustment when simulating relative risks as well.&lt;/p&gt;'><sup>148</sup></a></p>
+<p>In terms of relative risk, our null and alternative hypotheses are</p>
+<p><strong>Independence model</strong> <span class="math inline">\(H_0: \dfrac{\pi_{Vac}}{\pi_{Pla}} = 1\)</span> <br></p>
+<p><strong>Alternative model</strong> <span class="math inline">\(H_A: \dfrac{\pi_{Vac}}{\pi_{Pla}} &lt; 1\)</span></p>
+<div class="protip">
+<p>Whether we write our hypotheses in terms of a difference in proportions or a ratio of proportions (relative risk), the hypotheses still have the same interpretation. For example, the three null hypotheses <span class="math inline">\(H_0: \pi_{Vac} = \pi_{Pla}\)</span>, <span class="math inline">\(H_0: \pi_{Vac} - \pi_{Pla} = 0\)</span>, and <span class="math inline">\(H_0: \pi_{Vac}/\pi_{Pla} = 1\)</span>, are all algebraically equivalent.</p>
+</div>
+<p>What would it mean if the independence model, which says the vaccine had no influence on the rate of infection, is true? It would mean 11 patients were going to develop an infection <em>no matter which group they were randomized into</em>, and 9 patients would not develop an infection <em>no matter which group they were randomized into</em>. That is, if the vaccine did not affect the rate of infection, the difference in the infection rates was due to chance alone in how the patients were randomized.</p>
+<p>Now consider the alternative model: infection rates were influenced by whether a patient received the vaccine or not. If this was true, and especially if this influence was substantial, we would expect to see some difference in the infection rates of patients in the groups.</p>
+<p>We choose between these two competing claims by assessing if the data conflict so much with <span class="math inline">\(H_0\)</span> that the independence model cannot be deemed reasonable. If this is the case, and the data support <span class="math inline">\(H_A\)</span>, then we will reject the notion of independence and conclude the vaccine is effective.</p>
+</div>
+<div id="variability-of-the-statistic-4" class="section level4 unnumbered">
+<h4>Variability of the statistic<a class="anchor" aria-label="anchor" href="#variability-of-the-statistic-4"><i class="fas fa-link"></i></a>
+</h4>
+<p>We’re going to implement simulation, where we will pretend we know that the malaria vaccine being tested does work. Ultimately, we want to understand if the large difference we observed is common in these simulations. If it is common, then maybe the difference we observed was purely due to chance. If it is very uncommon, then the possibility that the vaccine was helpful seems more plausible.</p>
+<p>We can again randomize the responses (<code>infection</code> or <code>no infection</code>) to the treatment conditions under the null hypothesis of independence, but this time, we’ll compute sample relative risks with each simulated sample.</p>
+<div class="guidedpractice">
+<p>How could you use cards to re-randomize one sample into groups? Remember, in this hypothetical world, we believe each patient that got an infection was going to get it regardless of which group they were in, and we would like to see what happens if we randomly assign these patients to the treatment and control groups again.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;1. Take 20 notecards to represent the 20 patients, where we write down “infection” on 11 cards and “no infection” on 9 cards. 2. Thoroughly shuffle the notecards and deal 14 into a “vaccine” pile and 6 into a “placebo” pile. 3. Compute the proportion of “infection” cards in the “vaccine” pile and divide it by the proportion of “infection” cards in the “placebo” pile to get the simulated sample relative risk.&lt;/p&gt;"><sup>149</sup></a></p>
+</div>
+<p>Figure <a href="inference-for-comparing-two-proportions.html#fig:malaria-rand-dot-plot">16.10</a> shows a histogram of the relative risks found from 1,000 randomization simulations, where each dot represents a simulated relative risk of infection (treatment rate divided by control rate).</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:malaria-rand-dot-plot"></span>
+<img src="15-categorical-two-props_files/figure-html/malaria-rand-dot-plot-1.png" alt="A histogram of relative risks of infection from 1,000 simulations produced under the independence model $H_0$, where in these simulations infections are unaffected by the vaccine. Seventeen of the 1,000 simulations (shaded in red) had a relative risk of at most 0.357, the relative risk observed in the study." width="90%"><p class="caption">
+Figure 16.10: A histogram of relative risks of infection from 1,000 simulations produced under the independence model <span class="math inline">\(H_0\)</span>, where in these simulations infections are unaffected by the vaccine. Seventeen of the 1,000 simulations (shaded in red) had a relative risk of at most 0.357, the relative risk observed in the study.
+</p>
+</div>
+</div>
+<div id="observed-statistic-vs-null-value" class="section level4 unnumbered">
+<h4>Observed statistic vs null value<a class="anchor" aria-label="anchor" href="#observed-statistic-vs-null-value"><i class="fas fa-link"></i></a>
+</h4>
+<p>Note that the distribution of these simulated differences is centered around 1. We simulated the relative risks assuming that the independence model was true, and under this condition, we expect the difference to be near one with some random fluctuation, where <em>near</em> is pretty generous in this case since the sample sizes are so small in this study.</p>
+<div class="workedexample">
+<p>How often would you observe a sample relative risk of at most 0.357 (at least a 64.3% reduction in risk on vaccine) according to Figure <a href="inference-for-comparing-two-proportions.html#fig:malaria-rand-dot-plot">16.10</a>? Often, sometimes, rarely, or never?</p>
+<hr>
+<p>It appears that a 64.3% reduction in risk due to chance alone would only happen about 2% of the time according to Figure <a href="inference-for-comparing-two-proportions.html#fig:malaria-rand-dot-plot">16.10</a>. Such a low probability indicates a rare event.</p>
+</div>
+<p>Based on the simulations, we have two options:</p>
+<ol style="list-style-type: decimal">
+<li><p>We conclude that the study results do not provide strong evidence against the independence model. That is, we do not have sufficiently strong evidence to conclude the vaccine had an effect in this clinical setting.</p></li>
+<li><p>We conclude the evidence is sufficiently strong to reject <span class="math inline">\(H_0\)</span> and assert that the vaccine was useful. When we conduct formal studies, usually we reject the notion that we just happened to observe a rare event.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;This reasoning does not generally extend to anecdotal observations. Each of us observes incredibly rare events every day, events we could not possibly hope to predict. However, in the non-rigorous setting of anecdotal evidence, almost anything may appear to be a rare event, so the idea of looking for rare events in day-to-day activities is treacherous. For example, we might look at the lottery: there was only a 1 in 292 million chance that the Powerball numbers for the largest jackpot in history (January 13th, 2016) would be (04, 08, 19, 27, 34) with a Powerball of (10), but nonetheless those numbers came up! However, no matter what numbers had turned up, they would have had the same incredibly rare odds. That is, &lt;em&gt;any set of numbers we could have observed would ultimately be incredibly rare&lt;/em&gt;. This type of situation is typical of our daily lives: each possible event in itself seems incredibly rare, but if we consider every alternative, those outcomes are also incredibly rare. We should be cautious not to misinterpret such anecdotal evidence.&lt;/p&gt;"><sup>150</sup></a></p></li>
+</ol>
+<p>In this case, we reject the independence model in favor of the alternative. That is, we are concluding the data provide strong evidence that the vaccine provides some protection against malaria in this clinical setting.</p>
+<p></p>
+<p>Statistical inference is built on evaluating whether such differences are due to chance. In statistical inference, data scientists evaluate which model is most reasonable given the data. Errors do occur, just like rare events, and we might choose the wrong model. While we do not always choose correctly, statistical inference gives us tools to control and evaluate how often these errors occur.</p>
+</div>
+</div>
+<div id="two-prop-boot-ci" class="section level3" number="16.1.2">
+<h3>
+<span class="header-section-number">16.1.2</span> Bootstrap confidence interval for <span class="math inline">\(\pi_1 - \pi_2\)</span><a class="anchor" aria-label="anchor" href="#two-prop-boot-ci"><i class="fas fa-link"></i></a>
+</h3>
+<p>In Section <a href="inference-for-comparing-two-proportions.html#two-prop-errors">16.1.1</a>, we worked with the randomization distribution to understand the distribution of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> when the null hypothesis <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span> is true. Now, through bootstrapping, we study the variability of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> without the null assumption.</p>
+<div id="observed-data-6" class="section level4 unnumbered">
+<h4>Observed data<a class="anchor" aria-label="anchor" href="#observed-data-6"><i class="fas fa-link"></i></a>
+</h4>
+<p>Reconsider the CPR data from Section <a href="inference-for-comparing-two-proportions.html#two-prop-errors">16.1.1</a> which is provided in Table <a href="inference-for-comparing-two-proportions.html#tab:resultsForCPRStudyInSmallSampleSection">16.3</a>. The experiment consisted of two treatments on patients who underwent CPR for a heart attack and were subsequently admitted to a hospital. Each patient was randomly assigned to either receive a blood thinner (treatment group) or not receive a blood thinner (control group). The outcome variable of interest was whether the patient survived for at least 24 hours.</p>
+<p>Again, we use the difference in sample proportions as the observed statistic of interest. Here, the value of the statistic is: <span class="math inline">\(\hat{p}_t - \hat{p}_c = 0.35 - 0.22 = 0.13\)</span>.</p>
+</div>
+<div id="variability-of-the-statistic-5" class="section level4 unnumbered">
+<h4>Variability of the statistic<a class="anchor" aria-label="anchor" href="#variability-of-the-statistic-5"><i class="fas fa-link"></i></a>
+</h4>
+<p>The bootstrap method applied to two samples is an extension of the method described in Section <a href="inference-one-prop.html#boot-ci-prop">15.1.3</a>. Now, we have two samples, so each sample estimates the population from which they came. In the CPR setting, the <code>treatment</code> sample estimates the population of all individuals who have gotten (or will get) the treatment; the <code>control</code> sample estimate the population of all individuals who do not get the treatment and are controls. Figure <a href="inference-for-comparing-two-proportions.html#fig:boot2proppops">16.11</a> extends Figure <a href="foundations-bootstrapping.html#fig:boot1">10.1</a> to show the bootstrapping process from two samples simultaneously.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:boot2proppops"></span>
+<img src="05/figures/boot2proppops.png" alt="Creating two estimated populations from two different samples from different populations." width="100%"><p class="caption">
+Figure 16.11: Creating two estimated populations from two different samples from different populations.
+</p>
+</div>
+<p>As before, once the population is estimated, we can randomly resample observations to create bootstrap samples, as seen in Figure <a href="inference-for-comparing-two-proportions.html#fig:boot2propresamps">16.12</a>. Computationally, each bootstrap resample is created by randomly sampling with replacement from the original sample.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:boot2propresamps"></span>
+<img src="05/figures/boot2propresamps.png" alt="Bootstrapped resamples from two separate estimated populations." width="100%"><p class="caption">
+Figure 16.12: Bootstrapped resamples from two separate estimated populations.
+</p>
+</div>
+<p>The variability of the statistic (the difference in sample proportions) can be calculated by taking one treatment bootstrap sample and one control bootstrap sample and calculating the difference of the bootstrap survival proportions. Figure <a href="#boot2samp2"><strong>??</strong></a> displays one bootstrap resample from each of the estimated populations, with the difference in sample proportions calculated between the treatment bootstrap sample and the control bootstrap sample.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:boot2samp2"></span>
+<img src="05/figures/boot2prop3.png" alt="The bootstrap resample on the left is from the first estimated population; the one on the right from the second. In this case, the value of the simulated bootstrap statistic would be $\hat{p}_1 - \hat{p}_2 = \frac{2}{7}-\frac{1}{7}$." width="75%"><p class="caption">
+Figure 16.13: The bootstrap resample on the left is from the first estimated population; the one on the right from the second. In this case, the value of the simulated bootstrap statistic would be <span class="math inline">\(\hat{p}_1 - \hat{p}_2 = \frac{2}{7}-\frac{1}{7}\)</span>.
+</p>
+</div>
+<p>As always, the variability of the difference in proportions can only be estimated by repeated simulations, in this case, repeated bootstrap samples. Figure <a href="inference-for-comparing-two-proportions.html#fig:boot2samp3">16.14</a> shows multiple bootstrap differences calculated for each of the repeated bootstrap samples.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:boot2samp3"></span>
+<img src="05/figures/boot2prop2.png" alt="For each pair of bootstrap samples, we calculate the difference in sample proportions." width="75%"><p class="caption">
+Figure 16.14: For each pair of bootstrap samples, we calculate the difference in sample proportions.
+</p>
+</div>
+<p>Repeated bootstrap simulations lead to a bootstrap sampling distribution of the statistic of interest, here the difference in sample proportions. Figure <a href="inference-for-comparing-two-proportions.html#fig:boot2samp1">16.15</a> visualizes the process in the toy example, and Figure <a href="inference-for-comparing-two-proportions.html#fig:bootCPR1000">16.16</a> shows 1000 bootstrap differences in proportions for the CPR data. Note that the CPR data includes 40 and 50 people in the respective groups, and the toy example includes 7 and 9 people in the two groups. Accordingly, the variability in the distribution of sample proportions is higher for the toy example. When using the mathematical model (see Section <a href="inference-for-comparing-two-proportions.html#math-2prop">16.1.3</a>), the standard error for the difference in proportions is inversely related to the sample size.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:boot2samp1"></span>
+<img src="05/figures/boot2prop1.png" alt="The process of repeatedly resampling from the estimated population (sampling with replacement from the original sample), computing a difference in sample proportions from each pair of samples, then plotting this distribution." width="100%"><p class="caption">
+Figure 16.15: The process of repeatedly resampling from the estimated population (sampling with replacement from the original sample), computing a difference in sample proportions from each pair of samples, then plotting this distribution.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:bootCPR1000"></span>
+<img src="15-categorical-two-props_files/figure-html/bootCPR1000-1.png" alt="A histogram of differences in proportions (treatment $-$ control) from 1000 bootstrap simulations using the CPR data." width="90%"><p class="caption">
+Figure 16.16: A histogram of differences in proportions (treatment <span class="math inline">\(-\)</span> control) from 1000 bootstrap simulations using the CPR data.
+</p>
+</div>
+<p>Figure <a href="inference-for-comparing-two-proportions.html#fig:bootCPR1000">16.16</a> provides an estimate for the variability of the difference in survival proportions from sample to sample. As in Section <a href="inference-one-prop.html#boot-ci-prop">15.1.3</a>, the bootstrap confidence interval can be calculated directly from the bootstrapped differences in Figure <a href="inference-for-comparing-two-proportions.html#fig:bootCPR1000">16.16</a> by finding the percentiles of the distribution that correspond to the confidence level. For example, here we calculate the 90% confidence interval by finding the 5<sup>th</sup> and 95<sup>th</sup> percentile values from the bootstrapped differences. The bootstrap 5<sup>th</sup> percentile proportion is -0.03 and the 95<sup>th</sup> percentile is 0.28. The result is: we are 90% confident that, in the population, the true difference in probability of survival (treatment <span class="math inline">\(-\)</span> control) is between -0.03 and 0.28. More clearly, we are 90% confident that the probability of survival for heart attack patients who underwent CPR on blood thinners is between 0.03 less to 0.28 more than that for patients who were not given blood thinners. The interval shows that we do not have much definitive evidence of the affect of blood thinners, one way or another.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:bootCPR1000CI"></span>
+<img src="15-categorical-two-props_files/figure-html/bootCPR1000CI-1.png" alt="The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the proportion who survived in the treatment group is $\hat{p}_{t}  = 14/40$ and the proportion who survived in the control group is $\hat{p}_{c} = 11/50$. " width="90%"><p class="caption">
+Figure 16.17: The CPR data is bootstrapped 1000 times. Each simulation creates a sample from the original data where the proportion who survived in the treatment group is <span class="math inline">\(\hat{p}_{t} = 14/40\)</span> and the proportion who survived in the control group is <span class="math inline">\(\hat{p}_{c} = 11/50\)</span>.
+</p>
+</div>
+<!-- ##### SE bootstrap interval {-} -->
+<!-- Alternatively, we can use the variability in the bootstrapped differences to calculate a standard error of the difference. -->
+<!-- The resulting interval is called the **SE interval**. -->
+<!-- Section <a href="inference-for-comparing-two-proportions.html#math-2prop">16.1.3</a> details the mathematical model for the standard error of the difference in sample proportions, but the bootstrap distribution typically does an excellent job of estimating the variability. -->
+<!-- ```{r include=FALSE} -->
+<!-- terms_chp_15 <- c(terms_chp_15, "SE interval") -->
+<!-- ``` -->
+<!-- $$SE(\hat{p}_t - \hat{p}_c) \approx SD(\hat{p}_{bs,t} - \hat{p}_{bs,c}) = 0.0975$$ -->
+<!-- The variability of the bootstrapped difference in proportions was calculated in R using the `sd()` function, but any statistical software will calculate the standard deviation of the differences, here, the exact quantity we hope to approximate. -->
+<!-- Note that we do not know know the true distribution of $\hat{p}_t - \hat{p}_c$, so we will use a rough approximation to find a confidence interval for $\pi_t - \pi_c$.  As seen in the bootstrap histograms, the shape of the distribution is roughly symmetric and bell-shaped.  So for a rough approximation, we will apply the 68-95-99.7 rule which tells us that 95% of observed differences should be roughly no farther than 2 SE from the true parameter difference.  An approximate 95% confidence interval for $\pi_t - \pi_c$ is given by: -->
+<!-- \begin{align*} -->
+<!-- \hat{p}_t - \hat{p}_c \pm 2 \cdot SE \ \ \ \rightarrow \ \ \ 14/40 - 11/50 \pm 2 \cdot 0.0975 \ \ \  \rightarrow \ \ \  (-0.065, 0.325) -->
+<!-- \end{align*} -->
+<!-- We are 95% confident that the true value of $\pi_t - \pi_c$ is between -0.065 and 0.325.  Again, the wide confidence interval that overlaps zero indicates that the study provides very little evidence about the effectiveness of blood thinners. -->
+<!-- ```{block2, type="important", echo=TRUE} -->
+<!-- Since the multiplier "2" in the SE bootstrap interval comes from the 68-95-99.7 rule for normal distributions, these intervals are only valid when the bootstrap sampling distribution is approximately normal. -->
+<!-- ``` -->
+</div>
+<div id="what-does-95-mean" class="section level4 unnumbered">
+<h4>What does 95% mean?<a class="anchor" aria-label="anchor" href="#what-does-95-mean"><i class="fas fa-link"></i></a>
+</h4>
+<p>Recall that the goal of a confidence interval is to find a plausible range of values for a <em>parameter</em> of interest. The estimated statistic is not the value of interest, but it is typically the best guess for the unknown parameter. The confidence level (often 95%) is a number that takes a while to get used to. Surprisingly, the percentage doesn’t describe the data set at hand, it describes many possible data sets. One way to understand a confidence interval is to think about all the confidence intervals that you have ever made or that you will ever make as a scientist, the confidence level describes <strong>those</strong> intervals.</p>
+<p>Figure <a href="inference-for-comparing-two-proportions.html#fig:ci25ints">16.18</a> demonstrates a hypothetical situation in which 25 different studies are performed on the exact same population (with the same goal of estimating the true parameter value of <span class="math inline">\(\pi_1 - \pi_2 = 0.47\)</span>). The study at hand represents one point estimate (a dot) and a corresponding interval. It is not possible to know whether the interval at hand is to the right of the unknown true parameter value (the black line) or to the left of that line. It is also impossible to know whether the interval captures the true parameter (is blue) or doesn’t (is red). If we are making 95% intervals, then 5% of the intervals we create over our lifetime will <em>not</em> capture the parameter of interest (e.g., will be red as in Figure <a href="inference-for-comparing-two-proportions.html#fig:ci25ints">16.18</a> ). What we know is that over our lifetimes as scientists, 95% of the intervals created and reported on will capture the parameter value of interest: thus the language “95% confident.”</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:ci25ints"></span>
+<img src="15-categorical-two-props_files/figure-html/ci25ints-1.png" alt="One hypothetical population, parameter value of: $\pi_1 - \pi_2 = 0.47$.  Twenty-five different studies all which led to a different point estimate, SE, and confidence interval.  The study at hand is one of the horizontal lines (hopefully a blue line!)." width="90%"><p class="caption">
+Figure 16.18: One hypothetical population, parameter value of: <span class="math inline">\(\pi_1 - \pi_2 = 0.47\)</span>. Twenty-five different studies all which led to a different point estimate, SE, and confidence interval. The study at hand is one of the horizontal lines (hopefully a blue line!).
+</p>
+</div>
+<p>The choice of 95% or 90% or even 99% as a confidence level is admittedly somewhat arbitrary; however, it is related to the logic we used when deciding that a p-value should be declared as significant if it is lower than 0.05 (or 0.10 or 0.01, respectively). Indeed, one can show mathematically, that a 95% confidence interval and a two-sided hypothesis test at a cutoff of 0.05 will provide the same conclusion when the same data and mathematical tools are applied for the analysis. A full derivation of the explicit connection between confidence intervals and hypothesis tests is beyond the scope of this text.</p>
+</div>
+</div>
+<div id="math-2prop" class="section level3" number="16.1.3">
+<h3>
+<span class="header-section-number">16.1.3</span> Theory-based inferential methods for <span class="math inline">\(\pi_1 - \pi_2\)</span><a class="anchor" aria-label="anchor" href="#math-2prop"><i class="fas fa-link"></i></a>
+</h3>
+<p>Like with <span class="math inline">\(\hat{p}\)</span>, the difference of two sample proportions <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> can be modeled using a normal distribution when certain conditions are met.</p>
+<div id="evaluating-the-two-conditions-required-for-modeling-pi_1---pi_2-using-theory-based-methods" class="section level4 unnumbered">
+<h4>Evaluating the two conditions required for modeling <span class="math inline">\(\pi_1 - \pi_2\)</span> using theory-based methods<a class="anchor" aria-label="anchor" href="#evaluating-the-two-conditions-required-for-modeling-pi_1---pi_2-using-theory-based-methods"><i class="fas fa-link"></i></a>
+</h4>
+<p>First, we require a broader independence condition, and secondly, the success-failure condition must be met by both groups.</p>
+<div class="onebox">
+<p><strong>Conditions for the sampling distribution of</strong> <span class="math inline">\(\hat{p}_1 -\hat{p}_2\)</span> to be normal.</p>
+<p>The difference <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> can be modeled using a normal distribution when</p>
+<ol style="list-style-type: decimal">
+<li>
+<strong>Independence</strong> (extended). The data are independent within and between the two groups. Generally this is satisfied if the data come from two independent random samples or if the data come from a randomized experiment.</li>
+<li>
+<strong>Success-failure condition.</strong> The success-failure condition holds for both groups, where we check successes and failures in each group separately. This condition is met if we have at least 10 successes and 10 failures in each sample. If data are displayed in a two-way table, this is equivalent to checking that all cells in the table have at least 10 observations.</li>
+</ol>
+<p>When these conditions are satisfied, then the sampling distribution of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> is approximately normal with mean <span class="math inline">\(\pi_1 - \pi_2\)</span> and standard deviation</p>
+<p><span class="math display">\[\begin{eqnarray*}
+  SD(\hat{p}_1 - \hat{p}_2) = \sqrt{\frac{\pi_1(1-\pi_1)}{n_1} + \frac{\pi_2(1-\pi_2)}{n_2}}
+  \end{eqnarray*}\]</span> where <span class="math inline">\(\pi_1\)</span> and <span class="math inline">\(\pi_2\)</span> represent the population proportions, and <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> represent the sample sizes.</p>
+</div>
+<p></p>
+<!--
+SE reference above?
+    \label{seForDiffOfProp}
+-->
+<div class="protip">
+<p>The success-failure condition listed above is only necessary for the sampling distribution of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> to be approximately normal. The mean of the sampling distribution of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> is <span class="math inline">\(\pi_1 - \pi_2\)</span>, and the standard deviation is <span class="math inline">\(\sqrt{\frac{\pi_1(1-\pi_1)}{n_1}+\frac{\pi_2(1-\pi_2)}{n_2}}\)</span>, regardless of the two sample sizes.</p>
+</div>
+<p>As in the case of one proportion, we typically don’t know the true proportions <span class="math inline">\(\pi_1\)</span> and <span class="math inline">\(\pi_2\)</span>, so we will substitute some value to check the success-failure condition and to estimate the standard deviation of the sampling distribution of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span>.</p>
+</div>
+<div id="confidence-interval-for-pi_1---pi_2" class="section level4 unnumbered">
+<h4>Confidence interval for <span class="math inline">\(\pi_1 - \pi_2\)</span><a class="anchor" aria-label="anchor" href="#confidence-interval-for-pi_1---pi_2"><i class="fas fa-link"></i></a>
+</h4>
+<p></p>
+<div class="onebox">
+<p><strong>Standard error of the difference in two proportions,</strong> <span class="math inline">\(\hat{p}_1 -\hat{p}_2\)</span>: confidence intervals.</p>
+<p>When computing a theory-based confidence interval for <span class="math inline">\(\pi_1 - \pi_2\)</span>, we substitute <span class="math inline">\(\hat{p}_1\)</span> for <span class="math inline">\(\pi_1\)</span> and <span class="math inline">\(\hat{p}_2\)</span> for <span class="math inline">\(\pi_2\)</span> in the expression for the standard deviation of the statistic, resulting in its standard error:</p>
+<span class="math display">\[\begin{eqnarray*}
+  SE(\hat{p}_1 -\hat{p}_2) = \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}
+  \end{eqnarray*}\]</span>
+<p>This is the standard error formula we will use when computing confidence intervals for the difference in two proportions.</p>
+</div>
+<p>If the conditions for the sampling distribution of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> to be normal are met, we can apply the generic confidence interval formula for a difference of two proportions, where we use <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span> as the point estimate and substitute the <span class="math inline">\(SE\)</span> formula above: <span class="math display">\[\begin{align*}
+\text{point estimate} \ &amp;\pm\  z^{\star} \times SE  \quad\to\\
+\hat{p}_1 - \hat{p}_2 \ &amp;\pm\
+    z^{\star} \times
+   \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}
+\end{align*}\]</span>ac{_1(1-_1)}{n_1} + }
+\end{align*}ac{_1(1-_1)}{n_1} + } \end{align*}ac{_1(1-_1)}{n_1} + } \end{align*}</p>
+<!--
+We can also follow the same
+Prepare, Check, Calculate, Conclude steps for
+computing a confidence interval
+or completing a hypothesis test.
+The details change a little,
+but the general approach remain the same.
+Think about these steps when you apply statistical methods.
+-->
+<!--
+\BeginKnitrBlock{onebox}<div class="onebox">**Confidence interval for a difference of two proportions**
+  Once you've determined a confidence interval for the
+  difference of two proportions would be helpful for an
+  application, there are four steps to constructing the interval:
+
+* **Prepare.**
+      Identify the sample proportions and sample sizes
+      for each of the two groups,
+      determine what confidence level you wish to use.
+* **Check.**
+      Verify the conditions to ensure each sample
+      proportion is nearly normal.
+      The success-failure condition should be checked
+      for each group.
+* **Calculate.**
+      If the conditions hold, compute $SE$,
+      find $z^{\star}$, and construct the interval.
+* **Conclude.**
+      Interpret the confidence interval in the context
+      of the problem.</div>\EndKnitrBlock{onebox}
+-->
+<div class="workedexample">
+<p>We reconsider the experiment for patients who underwent cardiopulmonary resuscitation (CPR) for a heart attack and were subsequently admitted to a hospital. These patients were randomly divided into a treatment group where they received a blood thinner or the control group where they did not receive a blood thinner. The outcome variable of interest was whether the patients survived for at least 24 hours. The results are shown in Table <a href="inference-for-comparing-two-proportions.html#tab:resultsForCPRStudyInSmallSampleSection">16.3</a>. Check whether we can model the difference in sample proportions using the normal distribution.</p>
+<hr>
+<p>We first check for independence: since this is a randomized experiment, this condition is satisfied.</p>
+<p>Next, we check the success-failure condition for each group. We have at least 10 successes and 10 failures in each experiment arm (11, 14, 39, 26), so this condition is also satisfied.</p>
+<p>With both conditions satisfied, the difference in sample proportions can be reasonably modeled using a normal distribution for these data.</p>
+</div>
+<!--
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>(\#tab:resultsForCPRStudyInSmallSampleSectionDup)Results for the CPR study.
+    Patients in the treatment group were given
+    a blood thinner, and patients in the control
+    group were not.</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;">  </th>
+   <th style="text-align:left;"> Survived </th>
+   <th style="text-align:left;"> Died </th>
+   <th style="text-align:left;"> Total </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Control </td>
+   <td style="text-align:left;"> 11 </td>
+   <td style="text-align:left;"> 39 </td>
+   <td style="text-align:left;"> 50 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Treatment </td>
+   <td style="text-align:left;"> 14 </td>
+   <td style="text-align:left;"> 26 </td>
+   <td style="text-align:left;"> 40 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Total </td>
+   <td style="text-align:left;"> 25 </td>
+   <td style="text-align:left;"> 65 </td>
+   <td style="text-align:left;"> 90 </td>
+  </tr>
+</tbody>
+</table>
+-->
+<div class="workedexample">
+<p>Create and interpret a 90% confidence interval of the difference for the survival rates in the CPR study.</p>
+<hr>
+<p>We’ll use <span class="math inline">\(\pi_t\)</span> for the true survival rate in the treatment group and <span class="math inline">\(\pi_c\)</span> for the control group. Our point estimate of <span class="math inline">\(\pi_t - \pi_c\)</span> is: <span class="math display">\[\begin{align*}
+  \hat{p}_{t} - \hat{p}_{c}
+    = \frac{14}{40} - \frac{11}{50}
+    = 0.35 - 0.22
+    = 0.13
+  \end{align*}\]</span> We use the standard error formula previously provided. As with the one-sample proportion case, we use the sample estimates of each proportion in the formula in the confidence interval context: <span class="math display">\[\begin{align*}
+  SE \approx \sqrt{\frac{0.35 (1 - 0.35)}{40} +
+      \frac{0.22 (1 - 0.22)}{50}}
+    = 0.095
+  \end{align*}\]</span> For a 90% confidence interval, we use <span class="math inline">\(z^{\star} = 1.65\)</span>: <span class="math display">\[\begin{align*}
+  \text{point estimate} &amp;\pm\ z^{\star} \times SE \quad \to\\
+   0.13 \ &amp;\pm\ 1.65 \times  0.095 \quad = \quad (-0.027, 0.287)
+  \end{align*}\]</span> We are 90% confident that the survival probability for those patients given blood thinners is between 0.027 lower to 0.287 higher than that of patients not given blood thinners, among patients like those in the study. Because 0% is contained in the interval, we do not have enough information to say whether blood thinners help or harm heart attack patients who have been admitted after they have undergone CPR.</p>
+<p>Note, the problem was set up as 90% to indicate that there was not a need for a high level of confidence (such a 95% or 99%). A lower degree of confidence increases potential for error, but it also produces a more narrow interval.</p>
+</div>
+<p></p>
+<div class="guidedpractice">
+<p>A 5-year experiment was conducted to evaluate the effectiveness of fish oils on reducing cardiovascular events, where each subject was randomized into one of two treatment groups. We will consider heart attack outcomes in the patients listed in Table <a href="inference-for-comparing-two-proportions.html#tab:fish-oil-data">16.8</a>.</p>
+<p>Create a 95% confidence interval for the effect of fish oils on heart attacks for patients who are well-represented by those in the study. Also interpret the interval in the context of the study.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Because the patients were randomized, the subjects are independent, both within and between the two groups. The success-failure condition is also met for both groups as all counts are at least 10. This satisfies the conditions necessary to model the difference in proportions using a normal distribution. Compute the sample proportions (&lt;span class="math inline"&gt;\(\hat{p}_{\text{fish oil}} = 0.0112\)&lt;/span&gt;, &lt;span class="math inline"&gt;\(\hat{p}_{\text{placebo}} = 0.0155\)&lt;/span&gt;), point estimate of the difference (&lt;span class="math inline"&gt;\(0.0112 - 0.0155 = -0.0043\)&lt;/span&gt;), and standard error &lt;span class="math inline"&gt;\(SE = \sqrt{\frac{0.0112 \times 0.9888}{12933} + \frac{0.0155 \times 0.9845}{12938}} = 0.00145\)&lt;/span&gt;. Next, plug the values into the general formula for a confidence interval, where &lt;span class="math inline"&gt;\(z^{\star} = 1.96\)&lt;/span&gt; for a 95% confidence level: &lt;span class="math inline"&gt;\(-0.0043 \pm 1.96 \times 0.00145 \rightarrow (-0.0071, -0.0015)\)&lt;/span&gt;. We are 95% confident that fish oils decreases heart attacks by 0.15 to 0.71 percentage points (off of a baseline of about 1.55%) over a 5-year period for subjects who are similar to those in the study. Because the interval is entirely below 0, and the treatment was randomly assigned, the data provide strong evidence that fish oil supplements reduce heart attacks in patients like those in the study.&lt;/p&gt;'><sup>151</sup></a></p>
+</div>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:fish-oil-data">Table 16.8: </span>Results for the study on n-3 fatty acid supplement and related health benefits.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+fish oil
+</th>
+<th style="text-align:right;">
+placebo
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+heart attack
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+200
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+no event
+</td>
+<td style="text-align:right;">
+12788
+</td>
+<td style="text-align:right;">
+12738
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Total
+</td>
+<td style="text-align:right;">
+12933
+</td>
+<td style="text-align:right;">
+12938
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div id="hypothesis-test-for-h_0-pi_1---pi_2-0" class="section level4 unnumbered">
+<h4>Hypothesis test for <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span><a class="anchor" aria-label="anchor" href="#hypothesis-test-for-h_0-pi_1---pi_2-0"><i class="fas fa-link"></i></a>
+</h4>
+<p> </p>
+<p>A mammogram is an X-ray procedure used to check for breast cancer. Whether mammograms should be used is part of a controversial discussion, and it’s the topic of our next example where we learn about two proportion hypothesis tests when <span class="math inline">\(H_0\)</span> is <span class="math inline">\(\pi_1 - \pi_2 = 0\)</span> (or equivalently, <span class="math inline">\(\pi_1 = \pi_2\)</span>).</p>
+<p>A 30-year study was conducted with nearly 90,000 female participants. During a 5-year screening period, each woman was randomized to one of two groups: in the first group, women received regular mammograms to screen for breast cancer, and in the second group, women received regular non-mammogram breast cancer exams. No intervention was made during the following 25 years of the study, and we’ll consider death resulting from breast cancer over the full 30-year period. Results from the study are summarized in Figure <a href="inference-for-comparing-two-proportions.html#tab:mammogramStudySummaryTable">16.9</a>.</p>
+<p>If mammograms are much more effective than non-mammogram breast cancer exams, then we would expect to see additional deaths from breast cancer in the control group. On the other hand, if mammograms are not as effective as regular breast cancer exams, we would expect to see an increase in breast cancer deaths in the mammogram group.</p>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:mammogramStudySummaryTable">Table 16.9: </span>Summary results for breast cancer study.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Mammogram
+</th>
+<th style="text-align:left;">
+Control
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Death from breast cancer?
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+500
+</td>
+<td style="text-align:left;">
+505
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:left;">
+44,425
+</td>
+<td style="text-align:left;">
+44,405
+</td>
+</tr>
+</tbody>
+</table></div>
+<div class="guidedpractice">
+<p>Is this study an experiment or an observational study?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;This is an experiment. Patients were randomized to receive mammograms or a standard breast cancer exam. We will be able to make causal conclusions based on this study.&lt;/p&gt;"><sup>152</sup></a></p>
+</div>
+<div class="guidedpractice">
+<p>Set up hypotheses to test whether there was a difference in breast cancer deaths in the mammogram and control groups.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="math inline"&gt;\(H_0\)&lt;/span&gt;: the breast cancer death rate for patients screened using mammograms is the same as the breast cancer death rate for patients in the control, &lt;span class="math inline"&gt;\(\pi_{mgm} - \pi_{ctrl} = 0\)&lt;/span&gt;.&lt;br&gt;&lt;span class="math inline"&gt;\(H_A\)&lt;/span&gt;: the breast cancer death rate for patients screened using mammograms is different than the breast cancer death rate for patients in the control, &lt;span class="math inline"&gt;\(\pi_{mgm} - \pi_{ctrl} \neq 0\)&lt;/span&gt;.&lt;/p&gt;'><sup>153</sup></a></p>
+</div>
+<p>The research question describing mammograms is set up to address specific hypotheses (in contrast to a confidence interval for a parameter). In order to fully take advantage of the hypothesis testing structure, we assess the randomness under the condition that the null hypothesis is true (as we always do for hypothesis testing). Using the data from Table <a href="inference-for-comparing-two-proportions.html#tab:mammogramStudySummaryTable">16.9</a>, we will check the conditions for using a normal distribution to analyze the results of the study using a hypothesis test. The details for checking conditions are very similar to that of confidence intervals. However, when the null hypothesis is that <span class="math inline">\(\pi_1 - \pi_2 = 0\)</span>, we use a special proportion called the <strong>pooled proportion</strong> to check the success-failure condition and when computing the standard error: <span class="math display">\[\begin{align*}
+\hat{p}_{\textit{pool}}
+    &amp;= \frac
+        {\text{# of patients who died from breast cancer in the entire study}}
+        {\text{# of patients in the entire study}} \\
+        &amp;\\
+    &amp;= \frac{500 + 505}{500 + \text{44,425} + 505 + \text{44,405}} \\
+    &amp;\\
+    &amp;= 0.0112
+\end{align*}\]</span> This proportion is an estimate of the breast cancer death rate across the entire study, and it’s our best estimate of the death rates <span class="math inline">\(\pi_{mgm}\)</span> and <span class="math inline">\(\pi_{ctrl}\)</span> <em>if the null hypothesis is true that</em> <span class="math inline">\(\pi_{mgm} = \pi_{ctrl}\)</span>.</p>
+<div class="onebox">
+<p><strong>Use the pooled proportion when</strong> <span class="math inline">\(H_0\)</span> is <span class="math inline">\(\pi_1 - \pi_2 = 0\)</span>.</p>
+<p>When the null hypothesis is that the proportions are equal, use the pooled proportion (<span class="math inline">\(\hat{p}_{\textit{pool}}\)</span>) to verify the success-failure condition and estimate the standard error: <span class="math display">\[\begin{eqnarray*}
+  \hat{p}_{\textit{pool}}
+    = \frac{\text{total number of successes}}
+      {\text{total number of cases}}
+    = \frac{\hat{p}_1 n_1 + \hat{p}_2 n_2}{n_1 + n_2}
+  \end{eqnarray*}\]</span> Here <span class="math inline">\(\hat{p}_1 n_1\)</span> represents the number of successes in sample 1 since <span class="math display">\[\begin{eqnarray*}
+  \hat{p}_1
+    = \frac{\text{number of successes in sample 1}}{n_1}
+  \end{eqnarray*}\]</span> Similarly, <span class="math inline">\(\hat{p}_2 n_2\)</span> represents the number of successes in sample 2.</p>
+</div>
+<div class="workedexample">
+<p>Is it reasonable to model the difference in proportions using a normal distribution in this study?</p>
+<hr>
+<p>Because the patients are randomized, they can be treated as independent, both within and between groups. We also must check the success-failure condition for each group. Under the null hypothesis, the proportions <span class="math inline">\(\pi_{mgm}\)</span> and <span class="math inline">\(\pi_{ctrl}\)</span> are equal, so we check the success-failure condition with our best estimate of these values under <span class="math inline">\(H_0\)</span>, the pooled proportion from the two samples, <span class="math inline">\(\hat{p}_{\textit{pool}} = 0.0112\)</span>: <span class="math display">\[\begin{align*}
+  \hat{p}_{\textit{pool}} \times n_{mgm}
+      &amp;= 0.0112 \times \text{44,925} = 503 \\
+   (1 - \hat{p}_{\textit{pool}}) \times n_{mgm}
+      &amp;= 0.9888 \times \text{44,925} = \text{44,422} \\
+  &amp; \\
+  \hat{p}_{\textit{pool}} \times n_{ctrl}
+      &amp;= 0.0112 \times \text{44,910} = 503 \\
+   (1 - \hat{p}_{\textit{pool}}) \times n_{ctrl}
+      &amp;= 0.9888 \times \text{44,910} = \text{44,407}
+  \end{align*}\]</span> The success-failure condition is satisfied since all values are at least 10. With both conditions satisfied, we can safely model the difference in proportions using a normal distribution.</p>
+</div>
+<p>We used the pooled proportion to check the success-failure condition<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;For an example of a two proportion hypothesis test that does not require the success-failure condition to be met, see Section &lt;a href="inference-for-comparing-two-proportions.html#two-prop-errors"&gt;16.1.1&lt;/a&gt;.&lt;/p&gt;'><sup>154</sup></a>. We next use it again in the standard error calculation.</p>
+<div class="onebox">
+<p><strong>Standard error of the difference in two proportions,</strong> <span class="math inline">\(\hat{p}_1 -\hat{p}_2\)</span>: hypothesis tests.</p>
+<p>Since we assume <span class="math inline">\(\pi_1 = \pi_2\)</span> when we conduct a theory-based hypothesis test for <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span>, we substitute the <strong>pooled sample proportion</strong>, <span class="math inline">\(\hat{p}_{pool}\)</span> in for both <span class="math inline">\(\pi_1\)</span> and <span class="math inline">\(\pi_2\)</span> in the expression for the standard deviation of the statistic, resulting in its <strong>null standard error</strong>:</p>
+<span class="math display">\[\begin{align*}
+  SE_0(\hat{p}_1 -\hat{p}_2) &amp;= \sqrt{\frac{\hat{p}_{pool}(1-\hat{p}_{pool})}{n_1} + \frac{\hat{p}_{pool}(1-\hat{p}_{pool})}{n_2}} \\
+  &amp;= \sqrt{\hat{p}_{pool}(1-\hat{p}_{pool})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}
+  \end{align*}\]</span>
+<p>This is the standard error formula we will use when computing the test statistic for a hypothesis test of <span class="math inline">\(H_0: \pi_1 - \pi_2 = 0\)</span>.</p>
+</div>
+<div class="workedexample">
+<p>Compute the point estimate of the difference in breast cancer death rates in the two groups, and use the pooled proportion <span class="math inline">\(\hat{p}_{\textit{pool}} = 0.0112\)</span> to calculate the standard error.</p>
+<hr>
+<p>The point estimate of the difference in breast cancer death rates is <span class="math display">\[\begin{align*}
+  \hat{p}_{mgm} - \hat{p}_{ctrl}
+    &amp;= \frac{500}{500 + 44,425} - \frac{505}{505 + 44,405} \\
+  &amp; \\
+    &amp;= 0.01113 - 0.01125 \\
+  &amp; \\
+    &amp;= -0.00012
+  \end{align*}\]</span> The breast cancer death rate in the mammogram group was 0.00012 less than in the control group.</p>
+<p>Next, the standard error of <span class="math inline">\(\hat{p}_{mgm} - \hat{p}_{ctrl}\)</span> is calculated <em>using the pooled proportion</em>, <span class="math inline">\(\hat{p}_{\textit{pool}}\)</span>: <span class="math display">\[\begin{align*}
+SE_0 = \sqrt{
+      \frac{\hat{p}_{\textit{pool}}(1-\hat{p}_{\textit{pool}})}
+          {n_{mgm}}
+      + \frac{\hat{p}_{\textit{pool}}(1-\hat{p}_{\textit{pool}})}
+          {n_{ctrl}}
+    }
+    = 0.00070
+\end{align*}\]</span></p>
+</div>
+<div class="workedexample">
+<p>Using the point estimate <span class="math inline">\(\hat{p}_{mgm} - \hat{p}_{ctrl} = -0.00012\)</span> and standard error <span class="math inline">\(SE = 0.00070\)</span>, calculate a p-value for the hypothesis test and write a conclusion.</p>
+<hr>
+<p>Just like in past tests, we first compute a test statistic and draw a picture: <span class="math display">\[\begin{align*}
+Z = \frac{\text{point estimate} - \text{null value}}{\mbox{Null }SE}
+    = \frac{-0.00012 - 0}{0.00070}
+    = -0.17
+\end{align*}\]</span></p>
+<p>The lower tail area below -0.17 on a standard normal distribution is 0.4325, which we double to get the p-value: 0.8650 (see Figure <a href="inference-for-comparing-two-proportions.html#fig:mamm-norm">16.19</a>). With this very large p-value, the difference in breast cancer death rates is reasonably explained by chance, and we have no significant evidence that mammograms either decrease or increase the risk of death by breast cancer compared to regular breast exams, among women similar to those in the study.</p>
+</div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:mamm-norm"></span>
+<img src="15-categorical-two-props_files/figure-html/mamm-norm-1.png" alt="Standard normal distribution with the p-value shaded. The shaded area represents the probability of observing a difference in sample proportions of -0.17 or further away from zero, if the true proportions were equal." width="90%"><p class="caption">
+Figure 16.19: Standard normal distribution with the p-value shaded. The shaded area represents the probability of observing a difference in sample proportions of -0.17 or further away from zero, if the true proportions were equal.
+</p>
+</div>
+<p>Can we conclude that mammograms have no benefits or harm? Here are a few considerations to keep in mind when reviewing the mammogram study as well as any other medical study:</p>
+<ul>
+<li>We do not accept the null hypothesis. We can only say we don’t have sufficient evidence to conclude that mammograms reduce breast cancer deaths, and we don’t have sufficient evidence to conclude that mammograms increase breast cancer deaths.</li>
+<li>If mammograms are helpful or harmful, the data suggest the effect isn’t very large.</li>
+<li>Are mammograms more or less expensive than a non-mammogram breast exam? If one option is much more expensive than the other and doesn’t offer clear benefits, then we should lean towards the less expensive option.</li>
+<li>The study’s authors also found that mammograms led to over-diagnosis of breast cancer, which means some breast cancers were found (or thought to be found) but that these cancers would not cause symptoms during patients’ lifetimes. That is, something else would kill the patient before breast cancer symptoms appeared. This means some patients may have been treated for breast cancer unnecessarily, and this treatment is another cost to consider. It is also important to recognize that over-diagnosis can cause unnecessary physical or emotional harm to patients.</li>
+</ul>
+<p>These considerations highlight the complexity around medical care and treatment recommendations. Experts and medical boards who study medical treatments use considerations like those above to provide their best recommendation based on the current evidence.</p>
+<p> </p>
+<!--
+\BeginKnitrBlock{onebox}<div class="onebox">**Hypothesis testing when ${H_0}$ is $\pi_1 - \pi_2 = 0$.**
+  
+  Once you've determined a hypothesis test for the difference
+  of two proportions is the correct procedure, there are four
+  steps to completing the test:
+
+* **Prepare.**
+      Identify the parameter of interest,
+      list out hypotheses,
+      identify the significance level,
+      and compute summary statistics for each group.
+* **Check.**
+      Verify the conditions to ensure
+      $\hat{p}_1 - \hat{p}_2$ is nearly normal under $H_0$.
+      When the null hypothesis is that the difference is 0,
+      use a pooled proportion to check the success-failure
+      condition for each group.
+* **Calculate.**
+      If the conditions hold, compute the standard
+      error, again using the pooled proportion,
+      compute the Z-score, and identify the p-value.
+* **Conclude.**
+      Evaluate the hypothesis test by comparing the p-value
+      to $\alpha$, and provide a conclusion in the context
+      of the problem.</div>\EndKnitrBlock{onebox}
+-->
+</div>
+</div>
+</div>
+<div id="chp15-review" class="section level2" number="16.2">
+<h2>
+<span class="header-section-number">16.2</span> Chapter review<a class="anchor" aria-label="anchor" href="#chp15-review"><i class="fas fa-link"></i></a>
+</h2>
+<div id="summary-11" class="section level3 unnumbered">
+<h3>Summary<a class="anchor" aria-label="anchor" href="#summary-11"><i class="fas fa-link"></i></a>
+</h3>
+<div class="underconstruction">
+<p>TODO</p>
+</div>
+</div>
+<div id="summary-of-z-procedures" class="section level3" number="16.2.1">
+<h3>
+<span class="header-section-number">16.2.1</span> Summary of Z-procedures<a class="anchor" aria-label="anchor" href="#summary-of-z-procedures"><i class="fas fa-link"></i></a>
+</h3>
+<p>So far in this chapter, we have seen the normal distribution applied as the appropriate mathematical model in two distinct settings. Although the two data structures are different, their similarities and differences are worth pointing out. We provide Table <a href="inference-for-comparing-two-proportions.html#tab:zcompare">16.10</a> partly as a mechanism for understanding <span class="math inline">\(z\)</span>-procedures and partly to highlight the extremely common usage of the normal distribution in practice. You will often hear the following two <span class="math inline">\(z\)</span>-procedures referred to as a <strong>one sample</strong> <span class="math inline">\(z\)</span>-test (<span class="math inline">\(z\)</span>-interval) and <strong>two sample</strong> <span class="math inline">\(z\)</span>-test (<span class="math inline">\(z\)</span>-interval).</p>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:zcompare">Table 16.10: </span>Similarities of <span class="math inline">\(z\)</span>-methods across one sample and two independent samples analysis of a categorical response variable.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+one sample
+</th>
+<th style="text-align:left;">
+two indep. samples
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+response variable
+</td>
+<td style="text-align:left;">
+binary
+</td>
+<td style="text-align:left;">
+binary
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+explanatory variable
+</td>
+<td style="text-align:left;">
+none
+</td>
+<td style="text-align:left;">
+binary
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+parameter of interest
+</td>
+<td style="text-align:left;">
+proportion: <span class="math inline">\(\pi\)</span>
+</td>
+<td style="text-align:left;">
+diff in props:<span class="math inline">\(\pi_1 - \pi_2\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+statistic of interest
+</td>
+<td style="text-align:left;">
+proportion: <span class="math inline">\(\hat{p}\)</span>
+</td>
+<td style="text-align:left;">
+diff in props: <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+null standard error of the statistic
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\sqrt{\frac{\pi_0(1-\pi_0)}{n}}\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\sqrt{\hat{p}_{pool}(1-\hat{p}_{pool})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+standard error of the statistic
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+conditions
+</td>
+<td style="text-align:left;">
+<ol style="list-style-type: decimal"><li>independence, 2. large samples (at least 10 successes and 10 failures)
+</li></ol>
+</td>
+<td style="text-align:left;">
+<ol style="list-style-type: decimal"><li>independence, 2. large samples (at least 10 successes and 10 failures in each sample)
+</li></ol>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Theory-based R functions
+</td>
+<td style="text-align:left;">
+prop.test
+</td>
+<td style="text-align:left;">
+prop.test
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Simulation-based R catstats functions
+</td>
+<td style="text-align:left;">
+one_proportion_test, one_proportion_bootstrap_CI
+</td>
+<td style="text-align:left;">
+two_proportion_test, two_proportion_bootstrap_CI
+</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Hypothesis tests.</strong> When applying the normal distribution for a hypothesis test, we proceed as follows:</p>
+<ol style="list-style-type: decimal">
+<li>Write appropriate hypotheses.<br>
+</li>
+<li>Verify conditions for using the normal distribution.
+<ul>
+<li>One-sample: the observations must be independent, and you must have at least 10 successes and 10 failures.<br>
+</li>
+<li>For a difference of proportions: each sample must separately satisfy the one-sample conditions for the normal distribution, and the data in the groups must also be independent.</li>
+</ul>
+</li>
+<li>Compute the statistic of interest, the null standard error, and the degrees of freedom. For <span class="math inline">\(df\)</span>, use <span class="math inline">\(n-1\)</span> for one sample, and for two samples use either statistical software or the smaller of <span class="math inline">\(n_1 - 1\)</span> and <span class="math inline">\(n_2 - 1\)</span>.<br>
+</li>
+<li>Compute the Z-score using the general formula: <span class="math display">\[
+Z = \frac{\mbox{statistic} - \mbox{null value}}{\mbox{null standard error of the statistic}} = \frac{\mbox{statistic} - \mbox{null value}}{SE_0(\mbox{statistic})}
+\]</span>
+</li>
+<li>Use the statistical software to find the p-value using the standard normal distribution:
+<ul>
+<li>Sign in <span class="math inline">\(H_A\)</span> is <span class="math inline">\(&lt;\)</span>: p-value = area below Z-score</li>
+<li>Sign in <span class="math inline">\(H_A\)</span> is <span class="math inline">\(&gt;\)</span>: p-value = area above Z-score</li>
+<li>Sign in <span class="math inline">\(H_A\)</span> is <span class="math inline">\(\neq\)</span>: p-value = 2 <span class="math inline">\(\times\)</span> area below <span class="math inline">\(-|\mbox{Z-score}|\)</span>
+</li>
+</ul>
+</li>
+<li>Make a conclusion based on the p-value, and write a conclusion in context, in plain language, and in terms of the alternative hypothesis.</li>
+</ol>
+<p><strong>Confidence intervals.</strong> Similarly, the following is how we generally compute a confidence interval using a normal distribution:</p>
+<ol style="list-style-type: decimal">
+<li>Verify conditions for using the normal distribution. (See above.)<br>
+</li>
+<li>Compute the statistic of interest, the standard error, and <span class="math inline">\(z^{\star}\)</span>.<br>
+</li>
+<li>Calculate the confidence interval using the general formula: <span class="math display">\[
+\mbox{statistic} \pm\ z^{\star} SE(\mbox{statistic}).
+\]</span>
+</li>
+<li>Put the conclusions in context and in plain language so even non-data scientists can understand the results.</li>
+</ol>
+</div>
+<div id="terms-11" class="section level3 unnumbered">
+<h3>Terms<a class="anchor" aria-label="anchor" href="#terms-11"><i class="fas fa-link"></i></a>
+</h3>
+<p>We introduced the following terms in the chapter. If you’re not sure what some of these terms mean, we recommend you go back in the text and review their definitions. We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. However you should be able to easily spot them as <strong>bolded text</strong>.</p>
+<div class="inline-table"><table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;"><tbody>
+<tr>
+<td style="text-align:left;">
+one sample <span class="math inline">\(z\)</span>-test
+</td>
+<td style="text-align:left;">
+randomization
+</td>
+<td style="text-align:left;">
+success
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+permutation test
+</td>
+<td style="text-align:left;">
+simulation
+</td>
+<td style="text-align:left;">
+two sample <span class="math inline">\(z\)</span>-test
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+point estimate
+</td>
+<td style="text-align:left;">
+standard error for difference in proportions
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+pooled proportion
+</td>
+<td style="text-align:left;">
+statistically significant
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+</tbody></table></div>
+</div>
+<div id="key-ideas-11" class="section level3 unnumbered">
+<h3>Key ideas<a class="anchor" aria-label="anchor" href="#key-ideas-11"><i class="fas fa-link"></i></a>
+</h3>
+<div class="underconstruction">
+<p>TODO</p>
+</div>
+
+</div>
+</div>
+</div>
+
+  <div class="chapter-nav">
+<div class="prev"><a href="inference-one-prop.html"><span class="header-section-number">15</span> Inference for a single proportion</a></div>
+<div class="next"><a href="applications-infer-categorical.html"><span class="header-section-number">17</span> Applications: Infer categorical</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#inference-for-comparing-two-proportions"><span class="header-section-number">16</span> Inference for comparing two proportions</a></li>
+<li>
+<a class="nav-link" href="#diff-two-prop"><span class="header-section-number">16.1</span> Difference of two proportions</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#two-prop-errors"><span class="header-section-number">16.1.1</span> Randomization test for \(H_0: \pi_1 - \pi_2 = 0\)</a></li>
+<li><a class="nav-link" href="#two-prop-boot-ci"><span class="header-section-number">16.1.2</span> Bootstrap confidence interval for \(\pi_1 - \pi_2\)</a></li>
+<li><a class="nav-link" href="#math-2prop"><span class="header-section-number">16.1.3</span> Theory-based inferential methods for \(\pi_1 - \pi_2\)</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#chp15-review"><span class="header-section-number">16.2</span> Chapter review</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#summary-11">Summary</a></li>
+<li><a class="nav-link" href="#summary-of-z-procedures"><span class="header-section-number">16.2.1</span> Summary of Z-procedures</a></li>
+<li><a class="nav-link" href="#terms-11">Terms</a></li>
+<li><a class="nav-link" href="#key-ideas-11">Key ideas</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/MTstateIntroStats/IntroStatTextbook/blob/master/15-categorical-two-props.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/MTstateIntroStats/IntroStatTextbook/edit/master/15-categorical-two-props.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Montana State Introductory Statistics with R</strong>" was written by Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
