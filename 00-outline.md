@@ -121,7 +121,7 @@
 	* 6.2.3 Finding and interpreting the least squares line
 	* 6.2.4 Extrapolation is treacherous
 	* 6.2.5 Describing the strength of a fit
-	* 6.2.6 Categorical predictors with two levels (special topic){#categprical-predictor-two-levels}
+	* 6.2.6 Categorical predictors with two levels (special topic){#categorical-predictor-two-levels}
 - 6.3 Outliers in linear regression {#outliers-in-regression}
 	* 6.3.1 Types of outliers
 - 6.4 Chapter review {#chp6-review} - Additional sections after Summary subsection:
@@ -275,7 +275,7 @@ These sections are quite different from [IMS Ch. 17](https://openintro-ims.netli
 
 ## Part 5: Inference for quantitative data
 
-### 17. Inference for a single mean
+### 17. Inference for a single mean {#inference-one-mean}
 
 - 17.1 Bootstrap confidence interval for $\mu$
 	* 17.1.1 Observed data

@@ -439,7 +439,7 @@ They are simply not convinced of the alternative, that the person is guilty.
 This is also the case with hypothesis testing: *even if we fail to reject the null hypothesis, we do not accept the null hypothesis as truth*.
 
 Failing to find evidence in favor of the alternative hypothesis is not equivalent to finding evidence that the null hypothesis is true^[This idea is succinctly expressed by the saying, "the absence of evidence is not evidence of absence."].
-We will see this idea in greater detail in Section \@ref(decerr).
+We will see this idea in greater detail in Section \@ref(ConfidenceIntervals).
 
 ### p-value and statistical significance {#p-value-stat-signif}
 

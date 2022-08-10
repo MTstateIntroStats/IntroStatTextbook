@@ -217,7 +217,7 @@
 <span><span class="co">#&gt; Multiple R-squared:  0.249,  Adjusted R-squared:  0.233 </span></span>
 <span><span class="co">#&gt; F-statistic: 15.9 on 1 and 48 DF,  p-value: 0.000229</span></span></code></pre></div>
 <p>This produces a lot of output; we will focus on the <em>Coefficients</em> section. This gives us the estimated value for the slope, the standard error of the estimate, the t-statistic, and the p-value. We want the row labeled with the name of our explanatory variable, <code>family_income</code>. We estimate the slope to be -0.043 thousand dollars per additional thousand dollars in family income, and we have strong evidence against the null hypothesis that the slope is 0.</p>
-<p>We can compute confidence intervals by hand using the reported estimate, standard error, and df. We will need to compute a t-value as in Chapter <a href="#inference-num"><strong>??</strong></a>:</p>
+<p>We can compute confidence intervals by hand using the reported estimate, standard error, and df. We will need to compute a t-value as in Chapters <a href="inference-one-mean.html#inference-one-mean">17</a>, <a href="inference-paired-means.html#inference-paired-means">18</a>, and <a href="inference-two-means.html#inference-two-means">19</a>:</p>
 <div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Get t-star for 90% confidence interval</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">.95</span>, df <span class="op">=</span> <span class="fl">48</span><span class="op">)</span></span>

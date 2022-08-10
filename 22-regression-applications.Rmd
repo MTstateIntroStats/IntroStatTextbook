@@ -77,7 +77,7 @@ summary(gift_reg)  #Obtain full results for regression
 
 This produces a lot of output; we will focus on the *Coefficients* section.  This gives us the estimated value for the slope, the standard error of the estimate, the t-statistic, and the p-value.  We want the row labeled with the name of our explanatory variable, `family_income`.  We estimate the slope to be -0.043 thousand dollars per additional thousand dollars in family income, and we have strong evidence against the null hypothesis that the slope is 0.
 
-We can compute confidence intervals by hand using the reported estimate, standard error, and df.  We will need to compute a t-value as in Chapter \@ref(inference-num):
+We can compute confidence intervals by hand using the reported estimate, standard error, and df.  We will need to compute a t-value as in Chapters \@ref(inference-one-mean), \@ref(inference-paired-means), and \@ref(inference-two-means):
 ```{r, echo = TRUE}
 #Get t-star for 90% confidence interval
 qt(.95, df = 48)

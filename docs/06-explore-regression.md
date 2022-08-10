@@ -15,7 +15,7 @@ It's helpful to think deeply about the line fitting process. In this section, we
 
 ### Fitting a line to data
 
-Figure \@ref(fig:perfLinearModel) shows two variables whose relationship can be modeled perfectly with a straight line. 
+Figure \@ref(fig:perfLinearModel) shows two variables whose relationship can be modeled perfectly with a straight line. 
 The equation for the line is $y = 5 + 64.96 x$. 
 Consider what a perfect linear relationship means: we know the exact value of $y$ just by knowing the value of $x$. 
 This is unrealistic in almost any natural process. 
@@ -39,7 +39,7 @@ When we use $x$ to predict $y$, we usually call $x$ the explanatory or **predict
 
 It is rare for all of the data to fall perfectly on a straight line.
 Instead, it's more common for data to appear as a *cloud of points*,
-such as those examples shown in Figure \@ref(fig:imperfLinearModel). 
+such as those examples shown in Figure \@ref(fig:imperfLinearModel). 
 In each case, the data fall around a straight line, even if none of the observations fall exactly on the line. 
 The first plot shows a relatively strong downward linear trend, where the remaining variability in the data around the line is minor relative to the strength of the relationship between $x$ and $y$. 
 The second plot shows an upward trend that, while evident, is not as strong as the first. The last plot shows a very weak downward trend in the data, so slight we can hardly notice it. 
@@ -121,7 +121,7 @@ It's harder to tell if age changes the relationship between total length and hea
 <p class="caption">(\#fig:scattHeadLTotalL-sex-age)Relationship between total length and head lentgh of brushtail possums, taking into consideration their sex (Plot A) or age (Plot B).</p>
 </div>
 
-In Chapter \@ref(mult-reg), we'll learn about how we can include more than one predictor in our model. 
+In Chapter \@ref(explore-mult-reg), we'll learn about how we can include more than one predictor in our model. 
 Before we get there, we first need to better understand how to best build a simple linear model with one predictor.
 
 ### Residuals
@@ -460,9 +460,7 @@ In Chapter \@ref(inference-reg) we will dive deeper into the remaining columns w
 </tbody>
 </table>
 
-If you would like to learn more about using R to fit linear models, see Section \@ref(intro-linear-models-r-tutorial) for the interactive R tutorials. 
-
-#### Calculating the least squares regression line using summary statistics (special topic)
+### Calculating the least squares regression line using summary statistics (special topic)
 
 An alternative way of calculating the values of intercept and slope of a least squares line is manual calculations using formulas. 
 While this method is not commonly used by practicing statisticians and data scientists, it is useful to work through the first time you're learning about the least squares line and modeling in general. 
@@ -679,7 +677,7 @@ $$
 the same value we found when we squared the correlation: $R^2 = (0.69)^2 = 0.48$.
 ::: 
 
-### Categorical predictors with two levels (special topic) {#categprical-predictor-two-levels}
+### Categorical predictors with two levels (special topic) {#categorical-predictor-two-levels}
 
 Categorical variables are also useful in predicting outcomes. 
 Here we consider a categorical predictor with two levels (recall that a *level* is the same as a *category*). 
@@ -704,6 +702,10 @@ We will do so using an **indicator variable** called `condnew`, which takes valu
 Using this indicator variable, the linear model may be written as 
 
 $$\widehat{price} = \beta_0 + \beta_1 \times condnew$$
+
+::: {.underconstruction}
+Clean up population model equations - add error and remove hat.
+:::
 
 The parameter estimates are given in Table \@ref(tab:marioKartNewUsedRegrSummary).
 
@@ -761,7 +763,7 @@ The estimated intercept is the value of the response variable for the first cate
 The estimated slope is the average change in the response variable between the two categories.
 :::
 
-We'll elaborate further on this topic in Chapter \@ref(mult-reg), where we examine the influence of many predictor variables simultaneously using multiple regression.
+We'll elaborate further on this topic in Chapter \@ref(explore-mult-reg), where we examine the influence of many predictor variables simultaneously using multiple regression.
 
 	
 ## Outliers in linear regression {#outliers-in-regression}
@@ -970,7 +972,7 @@ However you should be able to easily spot them as **bolded text**.
 
 ### Key ideas {-}
 
-* Two variables are **associated** when the behavior of one variable depends on the value of the other variable. For two quantitative variables, this occurs when a trend is apparent on a scatterplot. If this trend is linear with a non-zero slope, we say the two quantitative variables are **correlated**. Recall again from Chapter \@ref(intro-to-data), *association does not imply causation*!
+* Two variables are **associated** when the behavior of one variable depends on the value of the other variable. For two quantitative variables, this occurs when a trend is apparent on a scatterplot. If this trend is linear with a non-zero slope, we say the two quantitative variables are **correlated**. Recall again from Chapter \@ref(data-hello), *association does not imply causation*!
 
 * A **least squares regression line** represents the _predicted_ value of the response variable, $y$, for a given $x$-value. Since the actual observed values of the response variable are denoted by $y$, we denote the predicted values by $\hat{y}$.
 

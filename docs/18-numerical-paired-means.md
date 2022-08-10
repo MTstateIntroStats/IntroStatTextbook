@@ -6,20 +6,7 @@
 TODO
 :::
 
-Below we summarize the notation used throughout this chapter.
-
-::: {.onebox}
-**Notation**.
-
-* $n$ = number of pairs in paired samples
-* $\bar{x}_{d}$ = sample mean of differences in paired samples
-* $s_{d}$ = sample standard deviation of differences in paired samples
-* $\mu_{d}$ = population mean of differences in paired samples
-* $\sigma_{d}$ = population standard deviation of differences in paired samples
-:::
-
-
-Paired data represent a particular type of experimental structure where the analysis is somewhat akin to a one-sample analysis (see Section \@ref(one-mean)) but has other features that resemble a two-sample analysis (which we will see in Section \@ref(differenceOfTwoMeans)).  Quantitative measurements are made on each of two different levels of an explanatory variable, but those measurements are **paired** --- each observational unit consists of two measurements, and the two measurements are subtracted such that only the difference is retained.  Table \@ref(tab:pairedexamples) presents some examples of studies where paired designs were implemented.
+Paired data represent a particular type of experimental structure where the analysis is somewhat akin to a one-sample analysis (see Chapter \@ref(inference-one-mean)) but has other features that resemble a two-sample analysis (which we will see in Chapter \@ref(inference-two-means)).  Quantitative measurements are made on each of two different levels of an explanatory variable, but those measurements are **paired** --- each observational unit consists of two measurements, and the two measurements are subtracted such that only the difference is retained.  Table \@ref(tab:pairedexamples) presents some examples of studies where paired designs were implemented.
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>(\#tab:pairedexamples)Examples of studies where a paired design is used to measure the difference in the measurement over two conditions.</caption>
@@ -82,9 +69,23 @@ Paired data represent a particular type of experimental structure where the anal
 <!-- Which of the examples in Table \@ref(tab:pairedexamples) are paired using repeated measures? paired using matching?^[The examples with cars and people are paired using repeated measures --- each car or person was measured twice (Smooth Turn tire and Quick Spin tire, or pre-score and post-score). Textbooks would need to be matched since they are not physically in the same location; married couples are matched since we measure the age on each member of the couple separately.] -->
 <!-- :::  -->
 
-For inferential methods applied to paired data, the analysis is virtually identical to the one-sample approach given in Section \@ref(one-mean).
+For inferential methods applied to paired data, the analysis is virtually identical to the one-sample approach given in Chapter \@ref(inference-one-mean).
 The key to working with paired data is to consider the measurement of interest to be the _difference_ in measured values across the pair of observations.
 Thinking about the differences as a single observation on an observational unit changes the paired setting into the one-sample setting. 
+
+A comparison of the notation used in Chapter \@ref(inference-one-mean) and the notation used in this chapter is shown below. The subscript "d" stands for "difference" since our variable is now a paired difference.
+
+|  | **One Mean** | **Paired Mean Difference** |
+|-|-|-|
+| Population mean | $\mu$ | $\mu_d$ |
+| Population standard deviation | $\sigma$ | $\sigma_d$ |
+| Sample mean | $\bar{x}$ | $\bar{x}_d$ |
+| Sample standard deviation | $s$ | $s_d$ |
+| Sample size | $n$ | $n$ |
+
+Instead of $n$ representing the number of observational units, with paired data, $n$ represents the number of *pairs* in paired samples.
+Similarly, $\mu_d$, $\sigma_d$, $\bar{x}_d$ and $s_d$ are all calculated
+using the differences in measured values within pairs.
 
 ## Shifted bootstrap test for $H_0: \mu_d = 0$
 
@@ -315,16 +316,9 @@ Since this confidence interval contains zero, it does not support the hypothesis
 
 ## Theory-based inferential methods for $\mu_d$ {#paired-mean-math}
 
-Thinking about the paired differences as a single observation on an observational unit, theory-based inferential methods for a paired mean difference are identical to theory-based methods for a single mean.  Theory-based methods for the one sample mean case are covered in Section \@ref(one-mean-math). The only difference between the methods in Section \@ref(one-mean) and the methods described in this section is notation, shown below. The subscript "d" stands for "difference" since our variable is a paired difference.
-
-|  | **One Mean** | **Paired Mean Difference** |
-|-|-|-|
-| Population mean | $\mu$ | $\mu_d$ |
-| Population standard deviation | $\sigma$ | $\sigma_d$ |
-| Sample mean | $\bar{x}$ | $\bar{x}_d$ |
-| Sample standard deviation | $s$ | $s_d$ |
-| Sample size | $n$ | $n$ |
-
+As with the simulation-based inferential methods for a paired mean difference,
+theory-based inferential methods for this scenario are identical
+to the theory-based inferential methods for a single mean---only the notation differs.
 
 ### Observed data
 
@@ -360,7 +354,7 @@ are displayed in Table \@ref(tab:textbooksSummaryStats).
 ### Variability of the statistic
 
 To analyze a paired data set,
-we simply analyze the differences using the same one sample $t$-distribution techniques
+we simply analyze the differences using the same one-sample $t$-distribution techniques
 we applied in
 Section \@ref(one-mean-math).
 

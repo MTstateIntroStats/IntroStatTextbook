@@ -133,7 +133,7 @@ We reject a null hypothesis if the p-value is less than a chosen significance le
 :::
 
 The significance level should be chosen depending on the field or the application and the real-life consequences of an incorrect decision.
-The traditional level is 0.05, but, as discussed in Section \@ref(foundations-errors), this choice is somewhat arbitrary---there is nothing special about this particular value. 
+The traditional level is 0.05, but, as discussed in Section \@ref(p-value-stat-signif), this choice is somewhat arbitrary---there is nothing special about this particular value. 
 We should select a level that is smaller or larger than 0.05 depending on the consequences of any conclusions reached from the test.
 
 If making a Type 1 Error is dangerous or especially costly, we should choose a small significance level (e.g., 0.01 or 0.001).
@@ -223,7 +223,7 @@ In Figure \@ref(fig:Medical-consultant-two-sided) we've also shaded these differ
 
 From our previous simulation, we know that 12.22% of the simulations lie at or below the observed proportion of 0.048. Figure \@ref(fig:Medical-consultant-two-sided) shows that an additional 0.0811 or 8.11% of simulations fall at or above 0.152. This indicates the p-value for this two-sided test is $0.1222 + 0.0811 = 0.2033$. With this large p-value, we do not find statistically significant evidence that the medical consultant's patients had a complication rate different from 10%.
 
-In Section \@ref(theory-prop), you will learn that the null distribution will be symmetric under certain conditions. When the null distribution is symmetric, we can find a two-sided p-value by merely taking the single tail (in this case, 0.1222) and double it to get the two-sided p-value: 0.2444. Note that the example here does not satisfy the conditions and the null distribution in Figure \@ref(fig:Medical-consultant-two-sided) is not symmetric. Thus, the result of a 'doubled' one-sided p-value of 0.2444 is not a good estimate of the actual two-sided p-value of 0.2033.
+In Section \@ref(CLTsection), we learned that the null distribution will be symmetric under certain conditions. When the null distribution is symmetric, we can find a two-sided p-value by merely taking the single tail (in this case, 0.1222) and double it to get the two-sided p-value: 0.2444. Note that the example here does not satisfy the conditions and the null distribution in Figure \@ref(fig:Medical-consultant-two-sided) is not symmetric. Thus, the result of a 'doubled' one-sided p-value of 0.2444 is not a good estimate of the actual two-sided p-value of 0.2033.
 
 \index{data!medical consultant|(}
 

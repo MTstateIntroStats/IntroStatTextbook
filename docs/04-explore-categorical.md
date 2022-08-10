@@ -345,7 +345,7 @@ If we generate the column proportions, we can see that a higher fraction of plai
 The previous Example points out that row and column proportions are not equivalent. Before settling on one form for a table, it is important to consider each to ensure that the most useful table is constructed.
 
 ::: {.guidedpractice}
-Look back to Tables \@ref(rowPropSpamNumber) and \@ref(colPropSpamNumber). Which would be more useful to someone hoping to identify spam emails using the `number` variable?^[The column proportions in Table \@ref(colPropSpamNumber) will probably be most useful, which makes it easier to see that emails with small numbers are spam about 5.9% of the time (relatively rare). We would also see that about 27.1% of emails with no numbers are spam, and 9.2% of emails with big numbers are spam.]
+Look back to Tables \@ref(tab:rowPropSpamNumber) and \@ref(tab:colPropSpamNumber). Which would be more useful to someone hoping to identify spam emails using the `number` variable?^[The column proportions in Table \@ref(tab:colPropSpamNumber) will probably be most useful, which makes it easier to see that emails with small numbers are spam about 5.9% of the time (relatively rare). We would also see that about 27.1% of emails with no numbers are spam, and 9.2% of emails with big numbers are spam.]
 :::
 
 
@@ -676,4 +676,4 @@ However you should be able to easily spot them as **bolded text**.
 
 * The **distribution** of a single categorical variable can be described by examining the proportions of observations in each category.
 
-* Two variables are **associated** when the behavior of one variable changes with the value of the other variable. For two categorical variables, this occurs when some or all of the proportions in each category of one variable change across categories of the other variable. Recall from Chapter \@ref(intro-to-data), *association does not imply causation*!
+* Two variables are **associated** when the behavior of one variable changes with the value of the other variable. For two categorical variables, this occurs when some or all of the proportions in each category of one variable change across categories of the other variable. Recall from Chapter \@ref(data-hello), *association does not imply causation*!

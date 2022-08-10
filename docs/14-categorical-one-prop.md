@@ -31,10 +31,10 @@ A single proportion is used to summarize data when we measured a single categori
 ## Simulation-based test for $H_0: \pi = \pi_0$ {#one-prop-null-boot}
 
 ::: {.underconstruction}
-Need revise this section - medical consultant case study introduced in Chapter 10
+Need revise this section - medical consultant case study introduced in Chapter 10. General steps of a hypothesis test introduced in Summary of Ch. 9. Move here?
 :::
 
-\index{data!medical consultant|(} In Section \@ref(HypothesisTesting), we introduced the general steps of a hypothesis test:
+\index{data!medical consultant|(} At the end of Chapter \@ref(foundations-randomization), we introduced the general steps of a hypothesis test:
 
 ::: onebox
 **General steps of a hypothesis test.** Every hypothesis test follows these same general steps:
@@ -319,7 +319,7 @@ No. Because the interval overlaps 10%, it might be that the consultant's work is
 
 ## Theory-based inferential methods for $\pi$ {#theory-prop}
 
-In Section \@ref(var-stat), we introduced the normal distribution and showed how it can be used as a mathematical model to describe the variability of a sample mean or sample proportion as a result of the Central Limit Theorem. We explored the normal distribution further in Section \@ref(normal). Theory-based hypothesis tests and confidence intervals for proportions use the normal distribution to calculate the p-value and to determine the width of the confidence interval.
+In Chapter \@ref(foundations-mathematical), we introduced the normal distribution and showed how it can be used as a mathematical model to describe the variability of a sample mean or sample proportion as a result of the Central Limit Theorem. Theory-based hypothesis tests and confidence intervals for proportions use the normal distribution to calculate the p-value and to determine the width of the confidence interval.
 
 ::: onebox
 **Central Limit Theorem for the sample proportion.**
@@ -510,7 +510,7 @@ Note that we almost never know the true value of $\pi$, but we can substitute ou
 
 $$SD(\hat{p}) \approx \hspace{3mm} SE(\hat{p}) = \sqrt{\frac{(\mbox{best guess of }\pi)(1 - \mbox{best guess of }\pi)}{n}}$$
 
-For hypothesis testing, we often use $\pi_0$ as the best guess of $\pi$, as seen in Section \@ref(theory-prop). For confidence intervals, we typically use $\hat{p}$ as the best guess of $\pi$.
+For hypothesis testing, we often use $\pi_0$ as the best guess of $\pi$. For confidence intervals, we typically use $\hat{p}$ as the best guess of $\pi$.
 :::
 
 \index{data!Payday regulation poll|(}

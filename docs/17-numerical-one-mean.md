@@ -83,7 +83,7 @@ Fortunately, we can use bootstrapping to approximate the variability of the samp
 
 ### Variability of the statistic
 
-As with the inferential ideas covered in Chapter \@ref(inference-cat), the inferential analysis methods in this chapter are grounded in quantifying how one data set differs from another when they are both taken from the same population.
+As with the inferential ideas covered in previous chapters, the inferential analysis methods in this chapter are grounded in quantifying how one data set differs from another when they are both taken from the same population.
 
 Figure \@ref(fig:bootstrapping) shows how the unknown original population of all three bedroom flats in Edinburgh can be estimated by using many duplicates of the sample. This estimated population---consisting of infinitely many copies of the original sample---can then be used to generate bootstrapped resamples.
 

@@ -22,7 +22,7 @@ Many of the inferential ideas are remarkably similar to those covered in previou
 Old content - revise as needed
 :::
 
-In this chapter, we bring together the inferential ideas (see Chapters \@ref(inference-cat) and \@ref(inference-num)) used to make claims about a population from information in a sample and the modeling ideas seen in Chapter \@ref(cor-reg). 
+In this chapter, we bring together the inferential methods used to make claims about a population from information in a sample and the modeling ideas seen in Chapter \@ref(explore-regression). 
 In particular, we will conduct inference on the slope of a least squares regression line to test whether or not there is a relationship between two quantitative variables. 
 Additionally, we will build confidence intervals which quantify the slope of the linear regression line.
 
@@ -62,7 +62,7 @@ ggplot(sandwich, aes(x = ad, y = rev)) +
   ylim(c(0,65))
 ```
 
-You may remember from Chapter \@ref(cor-reg) that the population model is: $$y = \beta_0 + \beta_1 x + \varepsilon.$$
+You may remember from Chapter \@ref(explore-regression) that the population model is: $$y = \beta_0 + \beta_1 x + \varepsilon.$$
 
 Again, the omniscient CEO (with the full population information) can write down the true population model as: $$\mbox{expected revenue} = 11.23 + 4.8 \cdot \mbox{advertising}.$$
 
@@ -145,7 +145,7 @@ ggplot() +
   ylim(c(0,65))
 ```  
 
-(ref:slopes-cap) If repeated samples of size 20 are taken from the entire population, each linear model will be slightly different. The red line provides the linear fit to the entire population, shown in Figure \@ref(sandpop).
+(ref:slopes-cap) If repeated samples of size 20 are taken from the entire population, each linear model will be slightly different. The red line provides the linear fit to the entire population, shown in Figure \@ref(fig:sandpop).
 
 
 You might notice in Figure \@ref(fig:slopes) that the $\hat{y}$ values given by the lines are much more consistent in the middle of the dataset than at the ends.  The reason is that the data itself anchors the lines in such a way that the line must pass through the center of the data cloud.  The effect of the fan-shaped lines is that predicted revenue for advertising close to \$4,000 will be much more precise than the revenue predictions made for \$1,000 or \$7,000 of advertising.
@@ -239,7 +239,7 @@ By repeatedly permuting the response variable, any pattern in the linear model t
 
 ### Observed data
 
-We will continue to use the crop data to investigate the linear relationship between `wheat` and `maize`.  Note that the fitted least squares model (see Chapter \@ref(cor-reg)) describing the relationship is given in Table \@ref(tab:lsCrops).  
+We will continue to use the crop data to investigate the linear relationship between `wheat` and `maize`.  Note that the fitted least squares model (see Chapter \@ref(explore-regression)) describing the relationship is given in Table \@ref(tab:lsCrops).  
 
 ```{r lsCrops}
 lm(wheat ~ maize, data = crops_USA) %>% 
@@ -441,7 +441,7 @@ mtext("Bootstrapped values of the slope statistic describing wheat and peas.", 1
 ## Theory-based inferential methods for $\beta_1$ {#mathslope}
 
 When certain technical conditions apply, it is convenient to use mathematical approximations to test and estimate the slope parameter. 
-The approximations will build on the $t$-distribution which was described in Chapter \@ref(inference-num). 
+The approximations will build on the $t$-distribution which was first encountered in Chapter \@ref(inference-one-mean). 
 This mathematical model is often correct and is usually easy to implement computationally.
 The validity of the technical conditions will be considered in detail in Section \@ref(tech-cond-linmod). 
 
@@ -798,7 +798,7 @@ When fitting a least squares line, we generally require
     and analysis. An example of a data set where successive observations
     are not independent is shown in the fourth panel of
     Figure \@ref(fig:whatCanGoWrongWithLinearModel). There are also other
-    instances where correlations within the data are important, such as the paired data described in Section \@ref(paired-data).
+    instances where correlations within the data are important, such as the paired data described in Section \@ref(inference-paired-means).
     
 * **Nearly normal residuals.**  Generally, the residuals must be nearly normal. When this condition
     is found to be unreasonable, it is usually because of outliers or

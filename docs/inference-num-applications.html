@@ -240,7 +240,7 @@
 <div id="theory-based-inference-for-paired-mean-difference" class="section level3 unnumbered">
 <h3>Theory-based inference for paired mean difference<a class="anchor" aria-label="anchor" href="#theory-based-inference-for-paired-mean-difference"><i class="fas fa-link"></i></a>
 </h3>
-<p>To implement theory-based inference for a paired mean difference in R, we use the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> function. As an example, we’ll use the textbook cost data from Section <a href="#paired-data"><strong>??</strong></a>. There are two ways to put in paired data for a t-test using <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code>. First, we could have the prices of the two groups in two separate variables (in this case, <code>bookstore_new</code> and <code>amazon_new</code>):</p>
+<p>To implement theory-based inference for a paired mean difference in R, we use the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> function. As an example, we’ll use the textbook cost data from Chapter <a href="inference-paired-means.html#inference-paired-means">18</a>. There are two ways to put in paired data for a t-test using <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code>. First, we could have the prices of the two groups in two separate variables (in this case, <code>bookstore_new</code> and <code>amazon_new</code>):</p>
 <div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">bookstore_new</span>, <span class="co">#Outcomes for one of each pair</span></span>
 <span>       y <span class="op">=</span> <span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">amazon_new</span>,  <span class="co">#Outcomes for other of each pair</span></span>
@@ -251,7 +251,7 @@
 <p>Important things to note here:</p>
 <ul>
 <li>You must include <code>paired = TRUE</code> in your options, or it will do a two-sample t-test.</li>
-<li>As with categorical data in Chapter <a href="#inference-cat"><strong>??</strong></a>, if you have a one-sided alternative, you will need to re-run the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> with a two-sided alternative to get the correct confidence interval</li>
+<li>As with categorical data in Chapters <a href="inference-one-prop.html#inference-one-prop">14</a> and <a href="inference-two-props.html#inference-two-props">15</a>, if you have a one-sided alternative, you will need to re-run the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> with a two-sided alternative to get the correct confidence interval</li>
 </ul>
 <p>Now let’s take a look at the output of the call:</p>
 <div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
@@ -330,7 +330,7 @@
 <span><span class="co">#Compute change in pumping capacity</span></span>
 <span><span class="va">stem_cell</span> <span class="op">&lt;-</span> <span class="va">stem_cell</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>change <span class="op">=</span> <span class="va">after</span> <span class="op">-</span> <span class="va">before</span><span class="op">)</span></span></code></pre></div>
-<p>To perform the simulation-based test for the difference in the mean change in heart pumping capacity, we will use the <code><a href="https://rdrr.io/pkg/catstats/man/two_mean_test.html">two_mean_test()</a></code> function in the <code>catstats</code> package, which is very similar to the use of the <code><a href="https://rdrr.io/pkg/catstats/man/two_proportion_test.html">two_proportion_test()</a></code> function in Chapter <a href="#inference-cat"><strong>??</strong></a>:</p>
+<p>To perform the simulation-based test for the difference in the mean change in heart pumping capacity, we will use the <code><a href="https://rdrr.io/pkg/catstats/man/two_mean_test.html">two_mean_test()</a></code> function in the <code>catstats</code> package, which is very similar to the use of the <code><a href="https://rdrr.io/pkg/catstats/man/two_proportion_test.html">two_proportion_test()</a></code> function in Chapter <a href="inference-categ-applications.html#inference-categ-applications">16</a>:</p>
 <div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">4750</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/two_mean_test.html">two_mean_test</a></span><span class="op">(</span></span>

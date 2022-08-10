@@ -293,7 +293,7 @@ finding-and-interpreting-the-least-squares-line
 calculating-the-least-squares-regression-line-using-summary-statistics-special-topic
 extrapolation-is-treacherous
 describing-the-strength-of-a-fit
-categprical-predictor-two-levels
+categorical-predictor-two-levels
 outliers-in-regression
 types-of-outliers
 chp6-review

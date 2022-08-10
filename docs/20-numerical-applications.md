@@ -148,7 +148,7 @@ Here we again have a bootstrap distribution, but now it is the bootstrap distrib
 
 ### Theory-based inference for paired mean difference {-} 
 
-To implement theory-based inference for a paired mean difference in R, we use the `t.test()` function.  As an example, we'll use the textbook cost data from Section \@ref(paired-data).  There are two ways to put in paired data for a t-test using `t.test()`.  First, we could have the prices of the two groups in two separate variables (in this case, `bookstore_new` and `amazon_new`): 
+To implement theory-based inference for a paired mean difference in R, we use the `t.test()` function.  As an example, we'll use the textbook cost data from Chapter \@ref(inference-paired-means).  There are two ways to put in paired data for a t-test using `t.test()`.  First, we could have the prices of the two groups in two separate variables (in this case, `bookstore_new` and `amazon_new`): 
 
 
 ```r
@@ -163,7 +163,7 @@ t.test(x = ucla_textbooks_f18$bookstore_new, #Outcomes for one of each pair
 Important things to note here:
 
 * You must include `paired = TRUE` in your options, or it will do a two-sample t-test.
-* As with categorical data in Chapter \@ref(inference-cat), if you have a one-sided alternative, you will need to re-run the `t.test()` with a two-sided alternative to get the correct confidence interval
+* As with categorical data in Chapters \@ref(inference-one-prop) and \@ref(inference-two-props), if you have a one-sided alternative, you will need to re-run the `t.test()` with a two-sided alternative to get the correct confidence interval
 
 Now let's take a look at the output of the call:
 
@@ -258,7 +258,7 @@ stem_cell <- stem_cell %>%
   mutate(change = after - before)
 ```
 
-To perform the simulation-based test for the difference in the mean change in heart pumping capacity, we will use the `two_mean_test()` function in the `catstats` package, which is very similar to the use of the `two_proportion_test()` function in Chapter \@ref(inference-cat):
+To perform the simulation-based test for the difference in the mean change in heart pumping capacity, we will use the `two_mean_test()` function in the `catstats` package, which is very similar to the use of the `two_proportion_test()` function in Chapter \@ref(inference-categ-applications):
 
 ```r
 set.seed(4750)

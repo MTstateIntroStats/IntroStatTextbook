@@ -243,7 +243,7 @@ In this section, we explore multiple regression, which introduces the possibilit
 
 Multiple regression extends simple two-variable regression to the case that still has one response but many predictors (denoted $x_1$, $x_2$, $x_3$, \...). The method is motivated by scenarios where many variables may be simultaneously connected to an output.
 
-We will consider data about loans from the peer-to-peer lender, Lending Club, which is a data set we first encountered in Chapter \@ref(intro-to-data). 
+We will consider data about loans from the peer-to-peer lender, Lending Club, which is a data set we first encountered in Chapter \@ref(data-hello). 
 The loan data includes terms of the loan as well as information about the borrower. 
 The outcome variable we would like to better understand is the interest rate assigned to the loan. 
 For instance, all other characteristics held constant, does it matter how much debt someone already has? Does it matter if their income has been verified? 
@@ -321,7 +321,7 @@ Interpret the coefficient for the past bankruptcy variable in the model. Is this
 The variable takes one of two values: 1 when the borrower has a bankruptcy in their history and 0 otherwise. A slope of 0.74 means that the model predicts a 0.74%
 higher interest rate for those borrowers with a bankruptcy in their
 record. 
-(See Section \@ref(categprical-predictor-two-levels) for a review of the interpretation for two-level categorical predictor variables.) 
+(See Section \@ref(categorical-predictor-two-levels) for a review of the interpretation for two-level categorical predictor variables.) 
 Examining the regression output in Table \@ref(tab:intRateVsPastBankrModel), we can see that the p-value for is very close to zero, indicating there is strong evidence the coefficient is different from zero when using this simple one-predictor model.
 :::
 

@@ -27,7 +27,7 @@ Below we summarize the notation used throughout this chapter.
 -   $\pi_1$, $\pi_2$ = population proportions of two independent samples
 :::
 
-We now extend the methods from Section \@ref(single-prop) to apply confidence intervals and hypothesis tests to differences in population proportions that come from two groups: $\pi_1 - \pi_2$.
+We now extend the methods from Chapter \@ref(inference-one-prop) to apply confidence intervals and hypothesis tests to differences in population proportions that come from two groups: $\pi_1 - \pi_2$.
 
 In our investigations, we'll identify a reasonable point estimate of $\pi_1 - \pi_2$ based on the sample, and you may have already guessed its form: $\hat{p}_1 - \hat{p}_2$. \index{point estimate!difference of proportions} We'll look at statistical inference for a difference in proportions in two ways: simulation-based methods through a randomization test and bootstrap confidence interval, and theory-based methods through a two sample $z$-test and $z$-interval.
 
@@ -35,7 +35,7 @@ In our investigations, we'll identify a reasonable point estimate of $\pi_1 - \p
 
 ## Randomization test for $H_0: \pi_1 - \pi_2 = 0$ {#two-prop-errors}
 
-As you learned in Chapter \@ref(intro-to-data), a **randomized experiment** is done to assess whether or not one variable (the **explanatory** variable) causes changes in a second variable (the **response** variable). Every data set has some variability in it, so to decide whether the variability in the data is due to (1) the causal mechanism (the randomized explanatory variable in the experiment) or instead (2) natural variability inherent to the data, we set up a sham randomized experiment as a comparison. That is, we assume that each observational unit would have gotten the exact same response value regardless of the treatment level. By reassigning the treatments many many times, we can compare the actual experiment to the sham experiment. If the actual experiment has more extreme results than any of the sham experiments, we are led to believe that it is the explanatory variable which is causing the result and not inherent data variability. Using a few different studies, let's look more carefully at this idea of a **randomization test**\index{randomization}.
+As you learned in Chapter \@ref(data-hello), a **randomized experiment** is done to assess whether or not one variable (the **explanatory** variable) causes changes in a second variable (the **response** variable). Every data set has some variability in it, so to decide whether the variability in the data is due to (1) the causal mechanism (the randomized explanatory variable in the experiment) or instead (2) natural variability inherent to the data, we set up a sham randomized experiment as a comparison. That is, we assume that each observational unit would have gotten the exact same response value regardless of the treatment level. By reassigning the treatments many many times, we can compare the actual experiment to the sham experiment. If the actual experiment has more extreme results than any of the sham experiments, we are led to believe that it is the explanatory variable which is causing the result and not inherent data variability. Using a few different studies, let's look more carefully at this idea of a **randomization test**\index{randomization}.
 
 
 
@@ -504,7 +504,11 @@ It might be a little easier to review the results using row proportions, specifi
 
 We will define a **success**\index{success} in this study as a student who chooses not to buy the DVD.[^05-inference-cat-65] Then, the value of interest is the change in DVD purchase rates that results by reminding students that not spending money now means they can spend the money later.
 
-[^05-inference-cat-65]: Success is often defined in a study as the outcome of interest, and a "success" may or may not actually be a positive outcome. For example, researchers working on a study on HIV prevalence might define a "success" in the statistical sense as a patient who is HIV+. A more complete discussion of the term **success** will be given in Chapter \@ref(inference-cat).
+[^05-inference-cat-65]: Success is often defined in a study as the outcome of interest, and a "success" may or may not actually be a positive outcome. For example, researchers working on a study on HIV prevalence might define a "success" in the statistical sense as a patient who is HIV+.
+
+::: {.underconstruction}
+Check that we define success in previous chapter and then refer to it here.
+:::
 
 
 
@@ -524,7 +528,7 @@ We can construct a point estimate for this difference as \begin{align*}
 
 <!-- #### Variability of the statistic {.unnumbered} -->
 
-The primary goal in this data analysis is to understand what sort of differences we might see if the null hypothesis were true, i.e., the treatment had no effect on students. For this, we'll use the same procedure we applied in Section \@ref(caseStudyGenderDiscrimination): randomization.
+The primary goal in this data analysis is to understand what sort of differences we might see if the null hypothesis were true, i.e., the treatment had no effect on students. For this, we'll use the same procedure we applied in Section \@ref(caseStudySexDiscrimination): randomization.
 
 Let's think about the data in the context of the hypotheses. If the null hypothesis ($H_0$) was true and the treatment had no impact on student decisions, then the observed difference between the two groups of 20% could be attributed entirely to chance. If, on the other hand, the alternative hypothesis ($H_A$) is true, then the difference indicates that reminding students about saving for later purchases actually impacts their buying decisions.
 
@@ -761,7 +765,7 @@ As before, once the population is estimated, we can randomly resample observatio
 <p class="caption">(\#fig:boot2propresamps)Bootstrapped resamples from two separate estimated populations.</p>
 </div>
 
-The variability of the statistic (the difference in sample proportions) can be calculated by taking one treatment bootstrap sample and one control bootstrap sample and calculating the difference of the bootstrap survival proportions. Figure \@ref(boot2samp2) displays one bootstrap resample from each of the estimated populations, with the difference in sample proportions calculated between the treatment bootstrap sample and the control bootstrap sample.
+The variability of the statistic (the difference in sample proportions) can be calculated by taking one treatment bootstrap sample and one control bootstrap sample and calculating the difference of the bootstrap survival proportions. Figure \@ref(fig:boot2samp2) displays one bootstrap resample from each of the estimated populations, with the difference in sample proportions calculated between the treatment bootstrap sample and the control bootstrap sample.
 
 <div class="figure" style="text-align: center">
 <img src="05/figures/boot2prop3.png" alt="The bootstrap resample on the left is from the first estimated population; the one on the right from the second. In this case, the value of the simulated bootstrap statistic would be $\hat{p}_1 - \hat{p}_2 = \frac{2}{7}-\frac{1}{7}$." width="75%" />
@@ -775,7 +779,7 @@ As always, the variability of the difference in proportions can only be estimate
 <p class="caption">(\#fig:boot2samp3)For each pair of bootstrap samples, we calculate the difference in sample proportions.</p>
 </div>
 
-Repeated bootstrap simulations lead to a bootstrap sampling distribution of the statistic of interest, here the difference in sample proportions. Figure \@ref(fig:boot2samp1) visualizes the process in the toy example, and Figure \@ref(fig:bootCPR1000) shows 1000 bootstrap differences in proportions for the CPR data. Note that the CPR data includes 40 and 50 people in the respective groups, and the toy example includes 7 and 9 people in the two groups. Accordingly, the variability in the distribution of sample proportions is higher for the toy example. When using the mathematical model (see Section \@ref(math-2prop)), the standard error for the difference in proportions is inversely related to the sample size.
+Repeated bootstrap simulations lead to a bootstrap sampling distribution of the statistic of interest, here the difference in sample proportions. Figure \@ref(fig:boot2samp1) visualizes the process in the toy example, and Figure \@ref(fig:bootCPR1000) shows 1000 bootstrap differences in proportions for the CPR data. Note that the CPR data includes 40 and 50 people in the respective groups, and the toy example includes 7 and 9 people in the two groups. Accordingly, the variability in the distribution of sample proportions is higher for the toy example. It turns out that the standard error for the sample difference in proportions is inversely related to the sample sizes.
 
 <div class="figure" style="text-align: center">
 <img src="05/figures/boot2prop1.png" alt="The process of repeatedly resampling from the estimated population (sampling with replacement from the original sample), computing a difference in sample proportions from each pair of samples, then plotting this distribution." width="100%" />

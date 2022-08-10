@@ -141,7 +141,7 @@
 <div class="underconstruction">
 <p>Old content - revise as needed</p>
 </div>
-<p>In this chapter, we bring together the inferential ideas (see Chapters <a href="#inference-cat"><strong>??</strong></a> and <a href="#inference-num"><strong>??</strong></a>) used to make claims about a population from information in a sample and the modeling ideas seen in Chapter <a href="#cor-reg"><strong>??</strong></a>.
+<p>In this chapter, we bring together the inferential methods used to make claims about a population from information in a sample and the modeling ideas seen in Chapter <a href="explore-regression.html#explore-regression">6</a>.
 In particular, we will conduct inference on the slope of a least squares regression line to test whether or not there is a relationship between two quantitative variables.
 Additionally, we will build confidence intervals which quantify the slope of the linear regression line.</p>
 <p>Below we summarize the notation used throughout this chapter.</p>
@@ -167,7 +167,7 @@ There appears to be linear relationship between advertising dollars and revenue 
 Figure 21.1: Revenue as a linear model of advertising dollars for a population of sandwich stores, in $1000.
 </p>
 </div>
-<p>You may remember from Chapter <a href="#cor-reg"><strong>??</strong></a> that the population model is: <span class="math display">\[y = \beta_0 + \beta_1 x + \varepsilon.\]</span></p>
+<p>You may remember from Chapter <a href="explore-regression.html#explore-regression">6</a> that the population model is: <span class="math display">\[y = \beta_0 + \beta_1 x + \varepsilon.\]</span></p>
 <p>Again, the omniscient CEO (with the full population information) can write down the true population model as: <span class="math display">\[\mbox{expected revenue} = 11.23 + 4.8 \cdot \mbox{advertising}.\]</span></p>
 </div>
 <div id="variability-of-the-statistic-10" class="section level3" number="21.1.2">
@@ -204,8 +204,8 @@ Figure 21.4: The linear models from the two different random samples are quite s
 <p>That is, there is <strong>variability</strong> in the regression line from sample to sample. The concept of the sampling variability is something you’ve seen before, but in this lesson, you will focus on the variability of the line often measured through the variability of a single statistic: <strong>the slope of the line</strong>.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:slopes"></span>
-<img src="21-regression_files/figure-html/slopes-1.png" alt="If repeated samples of size 20 are taken from the entire population, each linear model will be slightly different. The red line provides the linear fit to the entire population, shown in Figure ??." width="90%"><p class="caption">
-Figure 21.5: If repeated samples of size 20 are taken from the entire population, each linear model will be slightly different. The red line provides the linear fit to the entire population, shown in Figure <a href="#sandpop"><strong>??</strong></a>.
+<img src="21-regression_files/figure-html/slopes-1.png" alt="If repeated samples of size 20 are taken from the entire population, each linear model will be slightly different. The red line provides the linear fit to the entire population, shown in Figure 21.1." width="90%"><p class="caption">
+Figure 21.5: If repeated samples of size 20 are taken from the entire population, each linear model will be slightly different. The red line provides the linear fit to the entire population, shown in Figure <a href="inference-reg.html#fig:sandpop">21.1</a>.
 </p>
 </div>
 
@@ -262,7 +262,7 @@ Figure 21.8: Original (left) and permuted (right) data. The permutation removes 
 <h3>
 <span class="header-section-number">21.2.1</span> Observed data<a class="anchor" aria-label="anchor" href="#observed-data-14"><i class="fas fa-link"></i></a>
 </h3>
-<p>We will continue to use the crop data to investigate the linear relationship between <code>wheat</code> and <code>maize</code>. Note that the fitted least squares model (see Chapter <a href="#cor-reg"><strong>??</strong></a>) describing the relationship is given in Table <a href="inference-reg.html#tab:lsCrops">21.1</a>.</p>
+<p>We will continue to use the crop data to investigate the linear relationship between <code>wheat</code> and <code>maize</code>. Note that the fitted least squares model (see Chapter <a href="explore-regression.html#explore-regression">6</a>) describing the relationship is given in Table <a href="inference-reg.html#tab:lsCrops">21.1</a>.</p>
 <div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:lsCrops">Table 21.1: </span>The least squares estimates of the intercept and slope are given in the <code>estimate</code> column. The observed slope is 0.195.
@@ -412,7 +412,7 @@ Figure 21.14: The original crop data on wheat and peas is bootstrapped 1,000 tim
 <span class="header-section-number">21.4</span> Theory-based inferential methods for <span class="math inline">\(\beta_1\)</span><a class="anchor" aria-label="anchor" href="#mathslope"><i class="fas fa-link"></i></a>
 </h2>
 <p>When certain technical conditions apply, it is convenient to use mathematical approximations to test and estimate the slope parameter.
-The approximations will build on the <span class="math inline">\(t\)</span>-distribution which was described in Chapter <a href="#inference-num"><strong>??</strong></a>.
+The approximations will build on the <span class="math inline">\(t\)</span>-distribution which was first encountered in Chapter <a href="inference-one-mean.html#inference-one-mean">17</a>.
 This mathematical model is often correct and is usually easy to implement computationally.
 The validity of the technical conditions will be considered in detail in Section <a href="inference-reg.html#tech-cond-linmod">21.5</a>.</p>
 <p>In this section, we discuss uncertainty in the estimates of the slope
@@ -757,7 +757,7 @@ have an underlying structure that should be considered in a model
 and analysis. An example of a data set where successive observations
 are not independent is shown in the fourth panel of
 Figure <a href="inference-reg.html#fig:whatCanGoWrongWithLinearModel">21.17</a>. There are also other
-instances where correlations within the data are important, such as the paired data described in Section <a href="#paired-data"><strong>??</strong></a>.</p></li>
+instances where correlations within the data are important, such as the paired data described in Section <a href="inference-paired-means.html#inference-paired-means">18</a>.</p></li>
 <li><p><strong>Nearly normal residuals.</strong> Generally, the residuals must be nearly normal. When this condition
 is found to be unreasonable, it is usually because of outliers or
 concerns about influential points, which were discussed in

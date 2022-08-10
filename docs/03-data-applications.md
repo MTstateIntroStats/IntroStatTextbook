@@ -193,7 +193,7 @@ Some properties of the pipe syntax (`%>%`) to keep in mind:
 * The pipe syntax should be read as *then*, `%>%`.
 
 
-Pipes are used commonly with functions in the `dplyr` package (see R examples in Chapter \@ref(eda)) and they allow us to sequentially build data wrangling operations.
+Pipes are used commonly with functions in the `dplyr` package and they allow us to sequentially build data wrangling operations.
 Pipes are also helpful when creating data visualizations in the `ggplot2` package.
 
 ### A data wrangling example

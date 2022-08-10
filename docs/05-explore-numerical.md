@@ -151,7 +151,7 @@ The average interest rate across all loans in the population can be estimated us
 
 ---
   
-The sample mean, 11.57\%, provides a rough estimate of $\mu_x$. While it is not perfect, this statistic our single best guess **point estimate**\index{point estimate} of the average interest rate of all the loans in the population under study, the parameter. In Chapter \@ref(inference-cat) and beyond, we will develop tools to characterize the accuracy of point estimates, like the sample mean. As you might have guessed, point estimates based on larger samples tend to be more accurate than those based on smaller samples.
+The sample mean, 11.57\%, provides a rough estimate of $\mu_x$. While it is not perfect, this statistic our single best guess **point estimate**\index{point estimate} of the average interest rate of all the loans in the population under study, the parameter. In Chapter \@ref(foundations-randomization) and beyond, we will develop tools to characterize the accuracy of point estimates, like the sample mean. As you might have guessed, point estimates based on larger samples tend to be more accurate than those based on smaller samples.
 :::
 
 The mean is useful for making comparisons across different samples that may have different sample sizes because it allows us to rescale or standardize a metric into something more easily interpretable and comparable. 
@@ -412,7 +412,7 @@ The distribution of interest rates is unimodal and skewed to the high end. Many 
 There are a few exceptionally large interest rates in the sample that are above 20%.
 :::
 
-In practice, the variance and standard deviation are sometimes used as a means to an end, where the "end" is being able to accurately estimate the uncertainty associated with a sample statistic. For example, in Chapter \@ref(inference-num) the standard deviation is used in calculations that help us understand how much a sample mean varies from one sample to the next.
+In practice, the variance and standard deviation are sometimes used as a means to an end, where the "end" is being able to accurately estimate the uncertainty associated with a sample statistic. For example, in Chapter \@ref(inference-one-mean) the standard deviation is used in calculations that help us understand how much a sample mean varies from one sample to the next.
 
 ## Box plots, quartiles, and the median
 
@@ -768,7 +768,7 @@ A scatterplot of the population change from 2010 to 2017 against the population 
 In this first scatterplot, it's hard to decipher any interesting patterns because the population variable is so strongly skewed.
 However, if we apply a log$_{10}$ transformation to the population variable, as shown in
 Figure \@ref(fig:county-pop-change-transform), a positive association between the variables is revealed.
-In fact, we may be interested in fitting a trend line to the data when we explore methods around fitting regression lines in Chapter \@ref(cor-reg).
+In fact, we may be interested in fitting a trend line to the data when we explore methods around fitting regression lines in Chapter \@ref(explore-regression).
 
 <div class="figure" style="text-align: center">
 <img src="05-explore-numerical_files/figure-html/county-pop-change-transform-1.png" alt="Plot A: Scatterplot of population change against the population before the change. Plot B: A~scatterplot of the same data but where the population size has been log-transformed." width="90%" />
@@ -907,7 +907,7 @@ However you should be able to easily spot them as **bolded text**.
 
 ### Key ideas {-}
 
-* Two variables are **associated** when the behavior of one variable depends on the value of the other variable. Two quantitative variables are associated when a trend is apparent on a scatterplot. Recall from Chapter \@ref(intro-to-data), *association does not imply causation*!
+* Two variables are **associated** when the behavior of one variable depends on the value of the other variable. Two quantitative variables are associated when a trend is apparent on a scatterplot. Recall from Chapter \@ref(data-hello), *association does not imply causation*!
 
 * When describing the **distribution** of a single quantitative variable on a histogram, dot plot, or box plot, we look for (1) center, (2) variability, (3) shape, and (4) outliers.
 
