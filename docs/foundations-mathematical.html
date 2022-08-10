@@ -92,14 +92,14 @@
 <li><a class="" href="preface.html">Preface</a></li>
 <li><a class="" href="rstudio.html">Preliminaries: Getting started in RStudio</a></li>
 <li class="book-part">Introduction to data</li>
-<li><a class="" href="intro-to-data.html"><span class="header-section-number">1</span> Hello data</a></li>
+<li><a class="" href="data-hello.html"><span class="header-section-number">1</span> Hello data</a></li>
 <li><a class="" href="data-design.html"><span class="header-section-number">2</span> Study design</a></li>
 <li><a class="" href="data-applications.html"><span class="header-section-number">3</span> Applications: Data</a></li>
 <li class="book-part">Exploratory data analysis</li>
-<li><a class="" href="categorical-data.html"><span class="header-section-number">4</span> Exploring categorical data</a></li>
-<li><a class="" href="quantitative-data.html"><span class="header-section-number">5</span> Exploring quantitative data</a></li>
-<li><a class="" href="cor-reg.html"><span class="header-section-number">6</span> Correlation and regression</a></li>
-<li><a class="" href="mult-reg.html"><span class="header-section-number">7</span> Multivariable models</a></li>
+<li><a class="" href="explore-categorical.html"><span class="header-section-number">4</span> Exploring categorical data</a></li>
+<li><a class="" href="explore-numerical.html"><span class="header-section-number">5</span> Exploring quantitative data</a></li>
+<li><a class="" href="explore-regression.html"><span class="header-section-number">6</span> Correlation and regression</a></li>
+<li><a class="" href="explore-mult-reg.html"><span class="header-section-number">7</span> Multivariable models</a></li>
 <li><a class="" href="explore-applications.html"><span class="header-section-number">8</span> Applications: Explore</a></li>
 <li class="book-part">Foundations of inference</li>
 <li><a class="" href="foundations-randomization.html"><span class="header-section-number">9</span> Hypothesis testing with randomization</a></li>
@@ -108,19 +108,19 @@
 <li><a class="" href="foundations-errors.html"><span class="header-section-number">12</span> Errors, power, and practical importance</a></li>
 <li><a class="" href="foundations-applications.html"><span class="header-section-number">13</span> Applications: Foundations</a></li>
 <li class="book-part">Inference for categorical data</li>
-<li><a class="" href="inference-one-prop.html"><span class="header-section-number">15</span> Inference for a single proportion</a></li>
-<li><a class="" href="inference-two-props.html"><span class="header-section-number">16</span> Inference for comparing two proportions</a></li>
-<li><a class="" href="applications-infer-categorical.html"><span class="header-section-number">17</span> Applications: Infer categorical</a></li>
+<li><a class="" href="inference-one-prop.html"><span class="header-section-number">14</span> Inference for a single proportion</a></li>
+<li><a class="" href="inference-two-props.html"><span class="header-section-number">15</span> Inference for comparing two proportions</a></li>
+<li><a class="" href="inference-categ-applications.html"><span class="header-section-number">16</span> Applications: Infer categorical</a></li>
 <li class="book-part">Inference for quantitative data</li>
-<li><a class="" href="inference-for-a-single-mean.html"><span class="header-section-number">19</span> Inference for a single mean</a></li>
-<li><a class="" href="inference-for-comparing-paired-means.html"><span class="header-section-number">20</span> Inference for comparing paired means</a></li>
-<li><a class="" href="inference-for-comparing-two-independent-means.html"><span class="header-section-number">21</span> Inference for comparing two independent means</a></li>
-<li><a class="" href="applications-infer-quantitative.html"><span class="header-section-number">22</span> Applications: Infer quantitative</a></li>
+<li><a class="" href="inference-one-mean.html"><span class="header-section-number">17</span> Inference for a single mean</a></li>
+<li><a class="" href="inference-paired-means.html"><span class="header-section-number">18</span> Inference for comparing paired means</a></li>
+<li><a class="" href="inference-two-means.html"><span class="header-section-number">19</span> Inference for comparing two independent means</a></li>
+<li><a class="" href="inference-num-applications.html"><span class="header-section-number">20</span> Applications: Infer quantitative</a></li>
 <li class="book-part">Inference for regression</li>
-<li><a class="" href="inference-for-correlation-and-slope.html"><span class="header-section-number">24</span> Inference for correlation and slope</a></li>
-<li><a class="" href="applications-infer-regression.html"><span class="header-section-number">25</span> Applications: Infer regression</a></li>
+<li><a class="" href="inference-reg.html"><span class="header-section-number">21</span> Inference for correlation and slope</a></li>
+<li><a class="" href="inference-reg-applications.html"><span class="header-section-number">22</span> Applications: Infer regression</a></li>
 <li class="book-part">Probability</li>
-<li><a class="" href="probability.html"><span class="header-section-number">26</span> Probability with tables</a></li>
+<li><a class="" href="probability.html"><span class="header-section-number">23</span> Probability with tables</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -177,7 +177,7 @@ Figure 11.1: The null distribution for each of the two case studies presented pr
 <p>Describe the shape of the distributions and note anything that you find interesting.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;In general, the distributions are reasonably symmetric, though the case study for the medical consultant has a distribution that is slightly skewed right.&lt;/p&gt;"><sup>88</sup></a></p>
 </div>
 <p>The case study for the medical consultant has a slight right skew, whereas the null distribution simulated in the sex discrimination case study is symmetric.
-As we observed in Chapter <a href="#data-hello"><strong>??</strong></a>, it’s common for distributions to be skewed or contain outliers.
+As we observed in Chapter <a href="data-hello.html#data-hello">1</a>, it’s common for distributions to be skewed or contain outliers.
 However, the null distributions we have so far encountered have all looked somewhat similar and, for the most part, symmetric.
 They all resemble a bell-shaped curve.
 The bell-shaped curve similarity is not a coincidence, but rather, is guaranteed by mathematical theory.</p>
@@ -201,14 +201,14 @@ Figure 11.2: A normal curve.
 Independence can be guaranteed when we take a random sample from a large population.</p></li>
 <li><p>The sample is <strong>large enough</strong>.
 The sample size cannot be too small.
-What qualifies as “small” differs from one context to the next, and we’ll provide suitable guidelines for proportions in Chapters <a href="inference-one-prop.html#inference-one-prop">15</a> and <a href="inference-two-props.html#inference-two-props">16</a>.</p></li>
+What qualifies as “small” differs from one context to the next, and we’ll provide suitable guidelines for proportions in Chapters <a href="inference-one-prop.html#inference-one-prop">14</a> and <a href="inference-two-props.html#inference-two-props">15</a>.</p></li>
 </ol>
 <p>It is quite amazing that, if the sample size is large enough, something like a sample proportion—a statistic that summarizes a categorical variable—will have a bell-shaped sampling distribution!</p>
 <p>So far we have had no need for the normal distribution.
 We’ve been able to answer our questions somewhat easily using simulation techniques.
 However, soon this will change.
 Simulating data can be non-trivial.
-For example, some of the scenarios encountered in Chapter <a href="mult-reg.html#mult-reg">7</a> where we introduced regression models with multiple predictors would require complex simulations in order to make inferential conclusions.
+For example, some of the scenarios encountered in Chapter <a href="#mult-reg"><strong>??</strong></a> where we introduced regression models with multiple predictors would require complex simulations in order to make inferential conclusions.
 Instead, the normal distribution and other distributions like it offer a general framework for statistical inference that applies to a very large number of settings.</p>
 <div class="onebox">
 <p><strong>Technical Conditions.</strong></p>
@@ -224,7 +224,7 @@ If these conditions do not hold, it is unwise to use the normal distribution (an
 </div>
 <div id="normal" class="section level2" number="11.2">
 <h2>
-<span class="header-section-number">11.2</span> The normal distribution<a class="anchor" aria-label="anchor" href="#normal"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.2</span> Normal distributions<a class="anchor" aria-label="anchor" href="#normal"><i class="fas fa-link"></i></a>
 </h2>
 <p></p>
 <p>Among all the distributions we see in statistics, one is overwhelmingly the most common. The symmetric, unimodal, bell curve is ubiquitous throughout statistics. It is so common that people know it as a variety of names including the <strong>normal curve</strong>, <strong>normal model</strong>, or <strong>normal distribution</strong>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;It is also introduced as the Gaussian distribution after Frederic Gauss, the first person to formalize its mathematical expression.&lt;/p&gt;"><sup>90</sup></a> Under certain conditions, sample proportions, sample means, and sample differences can be modeled using the normal distribution—the basis for our theory-based inference methods. Additionally, some variables such as SAT scores and heights of US adult males closely follow the normal distribution.</p>
@@ -578,7 +578,7 @@ For example, to describe where most (i.e., 95%) observations lie, we say that th
 That is, 95% of the sampled statistics are within one margin of error of their mean.
 Notice that if the spread of the observations goes from some lower bound to some upper bound, a rough approximation of the SE is to divide the range by 4.
 That is, if you notice the sample proportions go from 0.1 to 0.4, the SE can be approximated to be 0.075.</p>
-<p>In Section <a href="inference-one-prop.html#theory-prop">15.1.3</a> we will discuss different percentages for the confidence interval (e.g., 90% confidence interval or 99% confidence interval). Section <a href="inference-two-props.html#two-prop-boot-ci">16.0.2</a> provides a longer discussion on what “95% confidence” actually means.</p>
+<p>In Section <a href="inference-one-prop.html#theory-prop">14.3</a> we will discuss different percentages for the confidence interval (e.g., 90% confidence interval or 99% confidence interval). Section <a href="inference-two-props.html#two-prop-boot-ci">15.2</a> provides a longer discussion on what “95% confidence” actually means.</p>
 </div>
 </div>
 <div id="martian-alphabet-revisited" class="section level2" number="11.4">
@@ -699,7 +699,7 @@ sampling distribution
 <li><a class="nav-link" href="#foundations-mathematical"><span class="header-section-number">11</span> Inference with mathematical models</a></li>
 <li><a class="nav-link" href="#CLTsection"><span class="header-section-number">11.1</span> Central Limit Theorem</a></li>
 <li>
-<a class="nav-link" href="#normal"><span class="header-section-number">11.2</span> The normal distribution</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#normal"><span class="header-section-number">11.2</span> Normal distributions</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#normal-distribution-model"><span class="header-section-number">11.2.1</span> Normal distribution model</a></li>
 <li><a class="nav-link" href="#standardizing-with-z-scores"><span class="header-section-number">11.2.2</span> Standardizing with Z-scores</a></li>
 <li><a class="nav-link" href="#normal-probability-calculations-in-r"><span class="header-section-number">11.2.3</span> Normal probability calculations in R</a></li>

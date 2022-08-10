@@ -68,7 +68,7 @@ glimpse(email50)
 #> $ from         <fct> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
 #> $ cc           <int> 0, 0, 4, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, …
 #> $ sent_email   <fct> 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, …
-#> $ time         <dttm> 2012-01-04 07:19:16, 2012-02-16 14:10:06, 2012-01-04 09:…
+#> $ time         <dttm> 2012-01-04 08:19:16, 2012-02-16 15:10:06, 2012-01-04 10:…
 #> $ image        <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
 #> $ attach       <dbl> 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 0, …
 #> $ dollar       <dbl> 0, 0, 0, 0, 9, 0, 0, 0, 0, 23, 4, 0, 3, 2, 0, 0, 0, 0, 0,…
@@ -92,12 +92,12 @@ head(email50)
 #> # A tibble: 6 × 21
 #>   spam  to_multiple from     cc sent_e…¹ time                image attach dollar
 #>   <fct> <fct>       <fct> <int> <fct>    <dttm>              <dbl>  <dbl>  <dbl>
-#> 1 0     0           1         0 1        2012-01-04 07:19:16     0      0      0
-#> 2 0     0           1         0 0        2012-02-16 14:10:06     0      0      0
-#> 3 1     0           1         4 0        2012-01-04 09:36:23     0      2      0
-#> 4 0     0           1         0 0        2012-01-04 11:49:52     0      0      0
-#> 5 0     0           1         0 0        2012-01-27 03:34:45     0      0      9
-#> 6 0     0           1         0 0        2012-01-17 11:31:57     0      0      0
+#> 1 0     0           1         0 1        2012-01-04 08:19:16     0      0      0
+#> 2 0     0           1         0 0        2012-02-16 15:10:06     0      0      0
+#> 3 1     0           1         4 0        2012-01-04 10:36:23     0      2      0
+#> 4 0     0           1         0 0        2012-01-04 12:49:52     0      0      0
+#> 5 0     0           1         0 0        2012-01-27 04:34:45     0      0      9
+#> 6 0     0           1         0 0        2012-01-17 12:31:57     0      0      0
 #> # … with 12 more variables: winner <fct>, inherit <dbl>, viagra <dbl>,
 #> #   password <dbl>, num_char <dbl>, line_breaks <int>, format <fct>,
 #> #   re_subj <fct>, exclaim_subj <dbl>, urgent_subj <fct>, exclaim_mess <dbl>,
@@ -131,7 +131,7 @@ email50[47,] # The 47th row
 #> # A tibble: 1 × 21
 #>   spam  to_multiple from     cc sent_e…¹ time                image attach dollar
 #>   <fct> <fct>       <fct> <int> <fct>    <dttm>              <dbl>  <dbl>  <dbl>
-#> 1 0     1           1         0 0        2012-03-06 08:10:00     0      0      0
+#> 1 0     1           1         0 0        2012-03-06 09:10:00     0      0      0
 #> # … with 12 more variables: winner <fct>, inherit <dbl>, viagra <dbl>,
 #> #   password <dbl>, num_char <dbl>, line_breaks <int>, format <fct>,
 #> #   re_subj <fct>, exclaim_subj <dbl>, urgent_subj <fct>, exclaim_mess <dbl>,

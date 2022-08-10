@@ -1,4 +1,4 @@
-# Applications: Infer quantitative
+# Applications: Infer quantitative  {#inference-num-applications}
 
 
 

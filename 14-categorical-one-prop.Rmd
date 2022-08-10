@@ -1,4 +1,4 @@
-# (PART) Inference for categorical data
+# (PART) Inference for categorical data {.unnumbered}
 
 ```{r, include = FALSE}
 source("_common.R")
@@ -14,7 +14,7 @@ TODO
 Old content - revise as needed
 :::
 
-## One proportion {#single-prop}
+Below we summarize the notation used throughout this chapter.
 
 ::: onebox
 **Notation**.
@@ -30,9 +30,11 @@ A single proportion is used to summarize data when we measured a single categori
 
 [^05-inference-cat-34]: The terms "success" and "failure" may not actually represent outcomes we view as successful or not, but it is the typical generic way to referring to the possible outcomes of a binary variable. The "success" is whatever we count when calculating our sample proportion.
 
-### Simulation-based test for $H_0: \pi = \pi_0$ {#one-prop-null-boot}
+## Simulation-based test for $H_0: \pi = \pi_0$ {#one-prop-null-boot}
 
-<!-- Medical consultant case study was added to Chapter 10, so we need to change this example -->
+::: {.underconstruction}
+Need revise this section - medical consultant case study introduced in Chapter 10
+:::
 
 \index{data!medical consultant|(} In Section \@ref(HypothesisTesting), we introduced the general steps of a hypothesis test:
 
@@ -60,7 +62,7 @@ No. The claim is that there is a causal connection, but the data are observation
 While it is not possible to assess the causal claim, it is still possible to understand the consultant's true rate of complications.
 :::
 
-#### Steps 1 and 2: Hypotheses and test statistic {.unnumbered}
+### Steps 1 and 2: Hypotheses and test statistic {.unnumbered}
 
 Regardless of if we use simulation-based methods or theory-based methods, the first two steps of a hypothesis test start out the same: setting up hypotheses and summarizing data with a test statistic. We will let $\pi$ represent the true complication rate for liver donors working with this consultant. This "true" complication probability is called the **parameter** of interest[^05-inference-cat-35]. The sample proportion for the complication rate is 3 complications divided by the 62 surgeries the consultant has worked on: $\hat{p} = 3/62 = 0.048$. Since this value is estimated from sample data, it is called a **statistic**. The statistic $\hat{p}$ is also our point estimate, or "best guess," for $\pi$, and we will use is as our **test statistic**.
 
@@ -105,7 +107,7 @@ In statistical language:
 > $H_A: \pi<0.10$
 :::
 
-#### Steps 3 and 4: Null distribution and p-value {.unnumbered}
+### Steps 3 and 4: Null distribution and p-value {.unnumbered}
 
 To assess these hypotheses, we need to evaluate the possibility of getting a sample proportion as far below the null value, $0.10$, as what was observed ($0.048$), *if the null hypothesis were true*.
 
@@ -183,7 +185,7 @@ par(las = 0)
 mtext("Number of simulations", 2, 3.3)
 ```
 
-#### Step 5: Conclusion {.unnumbered}
+### Step 5: Conclusion and scope of inference {.unnumbered}
 
 ::: guidedpractice
 Because the estimated p-value is 0.1222, which is not small, we have little to no evidence against the null hypothesis. Explain what this means in plain language in the context of the problem.[^05-inference-cat-38]
@@ -198,6 +200,10 @@ Does the conclusion in the previous Guided Practice imply there is no real assoc
 :::
 
 [^05-inference-cat-39]: No. It might be that the consultant's work is associated with a reduction but that there isn't enough data to convincingly show this connection.
+
+::: {.underconstruction}
+Add scope of inference
+:::
 
 ```{=html}
 <!--
@@ -234,7 +240,7 @@ If it were plotted, the exact null distribution would look almost identical to t
 -->
 ```
 
-### Bootstrap confidence interval for $\pi$ {#boot-ci-prop}
+## Bootstrap confidence interval for $\pi$ {#boot-ci-prop}
 
 A confidence interval provides a range of plausible values for the parameter $\pi$. If the goal is to produce a range of possible values for a population value, then in an ideal world, we would sample data from the population again and recompute the sample proportion. Then we could do it again. And again. And so on until we have a good sense of the variability of our original estimate. The ideal world where sampling data is free or extremely cheap is almost never the case, and taking repeated samples from a population is usually impossible. So, instead of using a "resample from the population" approach, bootstrapping uses a "resample from the sample" approach.
 
@@ -372,7 +378,7 @@ No. Because the interval overlaps 10%, it might be that the consultant's work is
 ```
 \index{data!medical consultant|)}
 
-### Theory-based inferential methods for $\pi$ {#theory-prop}
+## Theory-based inferential methods for $\pi$ {#theory-prop}
 
 In Section \@ref(var-stat), we introduced the normal distribution and showed how it can be used as a mathematical model to describe the variability of a sample mean or sample proportion as a result of the Central Limit Theorem. We explored the normal distribution further in Section \@ref(normal). Theory-based hypothesis tests and confidence intervals for proportions use the normal distribution to calculate the p-value and to determine the width of the confidence interval.
 
@@ -385,7 +391,7 @@ When we collect a sufficiently large sample of $n$ independent observations of a
   \end{align*}
 :::
 
-#### Evaluating the two conditions required for modeling $\hat{p}$ using theory-based methods {.unnumbered}
+### Evaluating the two conditions required for modeling $\hat{p}$ using theory-based methods
 
 There are two conditions required to apply the Central Limit Theorem\index{Central Limit Theorem} for a sample proportion $\hat{p}$. When the sample observations are independent and the sample size is sufficiently large, the normal model will describe the variability in sample proportions quite well; when the observations violate the conditions, the normal model can be inaccurate.
 
@@ -425,7 +431,7 @@ The independence assumption may be reasonable if each of the surgeries is from a
 
 Since theory-based methods cannot be used on the medical consultant example, we'll turn to another example to demonstrate these methods, where conditions for approximating the distribution of $\hat{p}$ by a normal distribution are met.
 
-#### Hypothesis test for $H_0: \pi = \pi_0$ {#payday-lenders}
+### Hypothesis test for $H_0: \pi = \pi_0$ {#payday-lenders}
 
 One possible regulation for payday lenders is that they would be required to do a credit check and evaluate debt payments against the borrower's finances. We would like to know: would borrowers support this form of regulation?
 
@@ -546,7 +552,7 @@ Regardless of the statistical method chosen, the p-value is always derived by an
 
 \index{data!Payday regulation poll|)}
 
-#### Confidence interval for $\pi$ {.unnumbered}
+### Confidence interval for $\pi$
 
 \index{point estimate!single proportion}
 
@@ -770,7 +776,7 @@ Previously, we found that implanting a stent in the brain of a patient at risk f
 
 [^05-inference-cat-49]: We must find $z^{\star}$ such that 90% of the distribution falls between -$z^{\star}$ and $z^{\star}$ in the standard normal model, $N(\mu=0, \sigma=1)$. We can find -$z^{\star}$ from a standard normal distribution by looking for a lower tail of 5% (the other 5% is in the upper tail), thus $z^{\star}=1.645$. The 90% confidence interval can then be computed as $\text{point estimate}\ \pm\ 1.65\times SE \to (4.4\%, 13.6\%)$. (Note: The conditions for normality had earlier been confirmed for us.) That is, we are 90% confident that implanting a stent in a stroke patient's brain increased the risk of stroke within 30 days by 4.4% to 13.6%.
 
-#### Violating conditions {.unnumbered}
+### Violating conditions
 
 We've spent a lot of time discussing conditions for when $\hat{p}$ can be reasonably modeled by a normal distribution. What happens when the success-failure condition fails? What about when the independence condition fails? In either case, the general ideas of confidence intervals and hypothesis tests remain the same, but the strategy or technique used to generate the interval or p-value change.
 

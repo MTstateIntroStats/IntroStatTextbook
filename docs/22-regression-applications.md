@@ -1,4 +1,4 @@
-# Applications: Infer regression
+# Applications: Infer regression {#inference-reg-applications}
 
 
 

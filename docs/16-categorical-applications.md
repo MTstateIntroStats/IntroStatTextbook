@@ -1,4 +1,4 @@
-# Applications: Infer categorical
+# Applications: Infer categorical {#inference-categ-applications}
 
 
 

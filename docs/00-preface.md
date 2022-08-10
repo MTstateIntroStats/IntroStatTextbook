@@ -1,4 +1,4 @@
-# Preface {-}
+# Preface {.unnumbered}
 
 
 
@@ -47,7 +47,7 @@ The reader may check or learn the answer to any Guided Practice problem by revie
 [^preface-1]: Guided Practice problems are intended to stretch your thinking, and you can check yourself by reviewing the footnote solution for any Guided Practice.
 
 
-### Datasets and their sources {.unnumbered}
+### Data sets and their sources {.unnumbered}
 
 A large majority of the datasets used in the book can be found in various R packages.
 Each time a new dataset is introduced in the narrative, a reference to the package like the one below is provided.

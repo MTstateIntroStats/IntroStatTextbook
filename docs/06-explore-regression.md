@@ -1,5 +1,5 @@
-# Correlation and regression {#cor-reg}
-<!-- TODO - change reference to #explore-regression -->
+# Correlation and regression {#explore-regression}
+<!-- Old reference: #cor-reg -->
 
 
 

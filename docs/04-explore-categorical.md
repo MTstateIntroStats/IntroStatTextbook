@@ -2,8 +2,8 @@
 
 
 
-# Exploring categorical data {#categorical-data}
-<!-- TODO - change reference to #explore-categorical -->
+# Exploring categorical data {#explore-categorical}
+<!-- Old reference: #categorical-data} -->
 
 ::: {.chapterintro}
 This chapter focuses on exploring **categorical** data using summary statistics and visualizations.

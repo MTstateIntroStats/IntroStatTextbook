@@ -1,5 +1,5 @@
-# Exploring quantitative data {#quantitative-data}
-<!-- TODO - change reference to #explore-numerical -->
+# Exploring quantitative data {#explore-numerical}
+<!-- Old reference: #quantitative-data -->
 
 
 

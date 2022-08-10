@@ -1,14 +1,15 @@
-# (PART) Inference for regression {#inference-reg}
+# (PART) Inference for regression {.unnumbered}
 
 
 
 <!-- TODO: Add vocab words to this chapter. -->
 
 
-# Inference for correlation and slope
+# Inference for correlation and slope {#inference-reg}
+<!-- Old reference: #inferenceForLinearRegression -->
 
 ::: {.chapterintro}
-We now bring together ideas of inferential analyses from Chapters \@ref(inference-cat) and \@ref(inference-num) with the descriptive models seen in Chapter \@ref(cor-reg).  The setting is now focused on predicting a quantitative response variable, $y$, from a quantitative explanatory variable, $x$. We continue to ask questions about the variability of the model from sample to sample.  The sampling variability will inform the conclusions about the population that can be drawn.
+We now bring together ideas of inferential analyses with the descriptive models seen in Chapter \@ref(explore-regression).  The setting is now focused on predicting a quantitative response variable, $y$, from a quantitative explanatory variable, $x$. We continue to ask questions about the variability of the model from sample to sample.  The sampling variability will inform the conclusions about the population that can be drawn.
 
 Many of the inferential ideas are remarkably similar to those covered in previous chapters.  The technical conditions for simple linear regression are typically assessed graphically, although independence of observations continues to be of utmost importance.  
 :::
@@ -17,15 +18,19 @@ Many of the inferential ideas are remarkably similar to those covered in previou
 Old content - revise as needed
 :::
 
-## Inference for linear regression {#inferenceForLinearRegression}
-
-
 In this chapter, we bring together the inferential ideas (see Chapters \@ref(inference-cat) and \@ref(inference-num)) used to make claims about a population from information in a sample and the modeling ideas seen in Chapter \@ref(cor-reg). 
 In particular, we will conduct inference on the slope of a least squares regression line to test whether or not there is a relationship between two quantitative variables. 
 Additionally, we will build confidence intervals which quantify the slope of the linear regression line.
 
+Below we summarize the notation used throughout this chapter.
 
-#### Observed data {-}
+::: {.underconstruction}
+Add list of notation.
+:::
+
+## Case study: Sandwich store
+
+### Observed data
 
 We start the chapter with a hypothetical example describing the linear relationship between dollars spent advertising for a chain sandwich restaurant and monthly revenue.  The hypothetical example serves the purpose of illustrating how a linear model varies from sample to sample.  Because we have made up the example and the data (and the entire population), we can take many many samples from the population to visualize the variability.  Note that in real life, we always have exactly one sample (that is, one dataset), and through the inference process, we imagine what might have happened had we taken a different sample.  The change from sample to sample leads to an understanding of how the single observed dataset is different from the population of values, which is typically the fundamental goal of inference. 
 
@@ -44,7 +49,7 @@ You may remember from Chapter \@ref(cor-reg) that the population model is: $$y =
 Again, the omniscient CEO (with the full population information) can write down the true population model as: $$\mbox{expected revenue} = 11.23 + 4.8 \cdot \mbox{advertising}.$$
 
 
-#### Variability of the statistic {-}
+### Variability of the statistic
 
 Unfortunately, in our scenario, the CEO is not willing to part with the full set of data, but they will allow potential franchise buyers to see a small sample of the data in order to help the potential buyer decide whether or not set up a new franchise.
 The CEO is willing to give each potential franchise buyer a random sample of data from 20 stores.
@@ -116,7 +121,7 @@ First (in Section \@ref(randslope)), the distribution of $b_1$ when $\beta_1 = 0
 Next (in Section \@ref(bootbeta1)), we can bootstrap the data by taking random samples of size $n$ from the original dataset.
 And last (in Section \@ref(mathslope)), we use mathematical tools to describe the variability using the $t$-distribution that was first encountered in Section \@ref(one-mean-math).  
 
-### Randomization test for $H_0: \beta_1= 0$ {#randslope}
+## Randomization test for $H_0: \beta_1= 0$ {#randslope}
 
 Consider the data on Global Crop Yields compiled by [Our World in Data](https://ourworldindata.org/crop-yields) and presented as part of the [TidyTuesday](https://github.com/rfordatascience/tidytuesday/trunk/data/2020/2020-09-01) series seen in Figure \@ref(fig:allcrops).  The scientific research interest at hand will be in determining the linear relationship between wheat yield (for a country-year) and other crop yields.  The dataset is quite rich and deserves exploring, but for this example, we will focus only on the annual crop yield in the United States.  
 
@@ -143,7 +148,7 @@ Recall that for the randomization test, we shuffle one variable to eliminate any
 
 By repeatedly permuting the response variable, any pattern in the linear model that is observed is due only to random chance (and not an underlying relationship).  The randomization test compares the slopes calculated from the permuted response variable with the observed slope.  If the observed slope is inconsistent with the slopes from permuting, we can conclude that there is some underlying relationship (and that the slope is not merely due to random chance).
 
-#### Observed data {-}
+### Observed data
 
 We will continue to use the crop data to investigate the linear relationship between `wheat` and `maize`.  Note that the fitted least squares model (see Chapter \@ref(cor-reg)) describing the relationship is given in Table \@ref(tab:lsCrops).  
 
@@ -186,7 +191,7 @@ where $\hat{y}$ is the predicted wheat yield, and $x$ is the maize yield (both i
 The other columns in Table \@ref(tab:lsCrops) are further described in Section \@ref(mathslope) when we introduce theory-based methods for inference on a regression slope.
 
 
-#### Variability of the statistic {-}
+### Variability of the statistic
 
 After permuting the data, the least squares estimate of the line can be computed.  Repeated permutations and slope calculations describe the variability in the line (i.e., in the slope) due only to the natural variability and not due to a relationship between `wheat` and `maize`.  Figure \@ref(fig:permwheatlm) shows two different permutations of `wheat` and the resulting linear models.
 
@@ -198,7 +203,7 @@ After permuting the data, the least squares estimate of the line can be computed
 
 As you can see, sometimes the slope of the permuted data is positive, sometimes it is negative.  Because the randomization happens under the condition of no underlying relationship (because the response variable is completely mixed with the explanatory variable), we expect to see the center of the randomized slope distribution to be zero.
 
-#### Observed statistic vs. null value {-}
+### Observed statistic vs. null value
 
 <div class="figure" style="text-align: center">
 <img src="21-regression_files/figure-html/nulldistCrop-1.png" alt="Histogram of slopes given different permutations of the wheat variable.  The vertical red line is at the observed value of the slope, $b_1$ = 0.195." width="90%" />
@@ -211,13 +216,13 @@ Therefore, we believe that the slope observed on the original data is not just d
 
 
 
-### Bootstrap confidence interval for $\beta_1$ {#bootbeta1}
+## Bootstrap confidence interval for $\beta_1$ {#bootbeta1}
 
 
 As we have seen in previous chapters, we can use bootstrapping to estimate the sampling distribution of the statistic of interest (here, the slope) without the null assumption of no relationship (which was the condition in the randomization test).  Because interest is now in creating a CI, there is no null hypothesis, so there won't be any reason to permute either of the variables.
 
 
-#### Observed data {-}
+### Observed data
 
 Returning to the crop data, we may want to consider the relationship between yields in `peas` and `wheat`.  Are `peas` a good predictor of `wheat`?  And if so, what is their relationship?  That is, what is the slope that models the average wheat yield as a function of peas yield (both in tonnes per hectare)?
 
@@ -232,7 +237,7 @@ Returning to the crop data, we may want to consider the relationship between yie
 
 
 
-#### Variability of the statistic {-}
+### Variability of the statistic
 
 Because we are not focused on a null distribution, we sample with replacement $n=58$ $(x,y)$-pairs from the original dataset.  Recall that with bootstrapping, we always resample the same number of observations as we start with in order to mimic the process of taking a sample from the population.  When sampling in the linear model case, consider each observation to be a single dot on the scatterplot.  If the dot is resampled, both the `wheat` and the `peas` measurement are observed.  The measurements are linked to the dot (i.e., to the year in which the measurements were taken).
 
@@ -267,7 +272,7 @@ We are 95% confident that for the model describing the population of crops of `p
 
 
 
-### Theory-based inferential methods for $\beta_1$ {#mathslope}
+## Theory-based inferential methods for $\beta_1$ {#mathslope}
 
 When certain technical conditions apply, it is convenient to use mathematical approximations to test and estimate the slope parameter. 
 The approximations will build on the $t$-distribution which was described in Chapter \@ref(inference-num). 
@@ -280,7 +285,7 @@ and $y$-intercept for a regression line. Just as we identified standard
 errors for point estimates in previous chapters, we first discuss
 standard errors for these new estimates.
 
-#### Midterm elections and unemployment {-}
+### Case study: Midterm elections and unemployment
 
 \index{data!midterm elections|(}
 
@@ -344,7 +349,7 @@ a statistical hypothesis test:
 
 To assess the hypotheses, we identify a standard error for the estimate, compute an appropriate test statistic, and identify the p-value.
 
-#### Understanding regression output from software {-}
+### Understanding regression output from software
 
 Just like other point estimates we have seen before, we can compute a
 standard error and test statistic for $b_1$. We will generally label the
@@ -431,7 +436,7 @@ higher unemployment rate has a negative correlation with percent of seats lost i
 
 
 
-#### Intuition vs. formal inference {-}
+### Intuition vs. formal inference
 
 As the final step in a mathematical hypothesis test for the slope, we use the information provided to make a conclusion about whether or not the data could have come from a population where the true slope was zero (i.e., $\beta_1 = 0$). Before evaluating the formal hypothesis claim, sometimes it is important to check your intuition.  Based on everything we've seen in the examples above describing the variability of a line from sample to sample, as yourself if the linear relationship given by the data could have come from a population in which the slope was truly zero.
 
@@ -519,7 +524,7 @@ conditions are met.  See Section \@ref(tech-cond-linmod).
 
 <!-- TODO: Add section on how slope test is equivalent to testing correlation -->
 
-#### Theory-based confidence interval for a regression coefficient {-}
+### Theory-based confidence interval for a regression coefficient
 
 Similar to how we can conduct a hypothesis test for a model coefficient
 using regression output, we can also construct a confidence interval for
@@ -631,13 +636,13 @@ That is, without the technical conditions, the T-score (or Z-score) will not hav
 That said, it is almost always impossible to check the conditions precisely, so we look for large deviations from the conditions.
 If there are large deviations, we will be unable to trust the calculated p-value or the endpoints of the resulting confidence interval.
 
-##### What about **L**inearity? {-}
+### **L**inearity
 
 The linearity condition is among the most important if your goal is to understand a linear model between $x$ and $y$.
 For example, the value of the slope will not be at all meaningful if the true relationship between $x$ and $y$ is quadratic.
 Not only should we be cautious about the inference, but the model *itself* is also not an accurate portrayal of the relationship between the variables. An extended discussion on the different methods for modeling functional forms other than linear is outside the scope of this text.
 
-##### What about **I**ndependence? {-}
+### **I**ndependence
 
 The technical condition describing the independence of the observations is often the most crucial but also the most difficult to diagnose.  It is also extremely difficult to gather a dataset which is a true random sample from the population of interest.  (Note: a true randomized experiment from a fixed set of individuals is much easier to implement, and indeed, randomized experiments are done in most medical studies these days.)  
 
@@ -646,7 +651,7 @@ Dependent observations can bias results in ways that produce fundamentally flawe
 In lieu of trying to answer whether or not your observations are a true random sample, you might instead focus on whether or not you believe your observations are representative of the populations.
 Humans are notoriously bad at implementing random procedures, so you should be wary of any process that used human intuition to balance the data with respect to, for example, the demographics of the individuals in the sample.
 
-##### What about **N**ormality?  {-}
+### **N**ormality
 
 The normality condition requires that points vary symmetrically around the line, spreading out in a bell-shaped fashion.  You should consider the "bell" of the normal distribution as sitting on top of the line (coming off the paper in a 3-D sense) so as to indicate that the points are dense close to the line and disperse gradually as they get farther from the line.
 
@@ -658,7 +663,7 @@ Fortunately the Central Limit Theorem tells us that most of the inferential anal
 One analysis method that *does* require normality, regardless of sample size, is creating intervals which predict the response of individual outcomes at a given $x$ value, using the linear model, a topic covered in later courses.
 On additional reason to worry slightly less about normality is that neither the randomization test nor the bootstrapping procedures require the data to be normal around the line.
 
-##### What about **E**qual variability? {-}
+### **E**qual variability
 
 As with normality, the equal variability condition (that points are spread out in similar ways around the line for all values of $x$) will not cause problems for the estimate of the linear model, for a randomization test, or for a bootstrap confidence interval.
 However, data that exhibit non-equal variance across the range of $x$-values will have the potential to seriously mis-estimate the variability of the slope which will have consequences for the inference results (i.e., hypothesis tests and confidence intervals).

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 22 Applications: Infer regression | Montana State Introductory Statistics with R</title>
+<meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager">
+<meta name="description" content="TODO  Old content - revise as needed  22.1 Inference for regression using R and catstats  Simulation-based inference for the regression slope As a demonstration, we will apply the simulation-based...">
+<meta name="generator" content="bookdown 0.27 with bs4_book()">
+<meta property="og:title" content="Chapter 22 Applications: Infer regression | Montana State Introductory Statistics with R">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://mtstateintrostats.github.io/IntroStatTextbook/inference-reg-applications.html">
+<meta property="og:description" content="TODO  Old content - revise as needed  22.1 Inference for regression using R and catstats  Simulation-based inference for the regression slope As a demonstration, we will apply the simulation-based...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 22 Applications: Infer regression | Montana State Introductory Statistics with R">
+<meta name="twitter:description" content="TODO  Old content - revise as needed  22.1 Inference for regression using R and catstats  Simulation-based inference for the regression slope As a demonstration, we will apply the simulation-based...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><script type="text/x-mathjax-config">
+    const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+    for (let popover of popovers){
+      const div = document.createElement('div');
+      div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+      div.innerHTML = popover.getAttribute('data-content');
+      
+      // Will this work with TeX on its own line?
+      var has_math = div.querySelector("span.math");
+      if (has_math) {
+        document.body.appendChild(div);
+      	MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+      	MathJax.Hub.Queue(function(){
+          popover.setAttribute('data-content', div.innerHTML);
+      	})
+      }
+    }
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="css/ims-style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Montana State Introductory Statistics with R</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="authors.html">Authors</a></li>
+<li><a class="" href="preface.html">Preface</a></li>
+<li><a class="" href="rstudio.html">Preliminaries: Getting started in RStudio</a></li>
+<li class="book-part">Introduction to data</li>
+<li><a class="" href="data-hello.html"><span class="header-section-number">1</span> Hello data</a></li>
+<li><a class="" href="data-design.html"><span class="header-section-number">2</span> Study design</a></li>
+<li><a class="" href="data-applications.html"><span class="header-section-number">3</span> Applications: Data</a></li>
+<li class="book-part">Exploratory data analysis</li>
+<li><a class="" href="explore-categorical.html"><span class="header-section-number">4</span> Exploring categorical data</a></li>
+<li><a class="" href="explore-numerical.html"><span class="header-section-number">5</span> Exploring quantitative data</a></li>
+<li><a class="" href="explore-regression.html"><span class="header-section-number">6</span> Correlation and regression</a></li>
+<li><a class="" href="explore-mult-reg.html"><span class="header-section-number">7</span> Multivariable models</a></li>
+<li><a class="" href="explore-applications.html"><span class="header-section-number">8</span> Applications: Explore</a></li>
+<li class="book-part">Foundations of inference</li>
+<li><a class="" href="foundations-randomization.html"><span class="header-section-number">9</span> Hypothesis testing with randomization</a></li>
+<li><a class="" href="foundations-bootstrapping.html"><span class="header-section-number">10</span> Confidence intervals with bootstrapping</a></li>
+<li><a class="" href="foundations-mathematical.html"><span class="header-section-number">11</span> Inference with mathematical models</a></li>
+<li><a class="" href="foundations-errors.html"><span class="header-section-number">12</span> Errors, power, and practical importance</a></li>
+<li><a class="" href="foundations-applications.html"><span class="header-section-number">13</span> Applications: Foundations</a></li>
+<li class="book-part">Inference for categorical data</li>
+<li><a class="" href="inference-one-prop.html"><span class="header-section-number">14</span> Inference for a single proportion</a></li>
+<li><a class="" href="inference-two-props.html"><span class="header-section-number">15</span> Inference for comparing two proportions</a></li>
+<li><a class="" href="inference-categ-applications.html"><span class="header-section-number">16</span> Applications: Infer categorical</a></li>
+<li class="book-part">Inference for quantitative data</li>
+<li><a class="" href="inference-one-mean.html"><span class="header-section-number">17</span> Inference for a single mean</a></li>
+<li><a class="" href="inference-paired-means.html"><span class="header-section-number">18</span> Inference for comparing paired means</a></li>
+<li><a class="" href="inference-two-means.html"><span class="header-section-number">19</span> Inference for comparing two independent means</a></li>
+<li><a class="" href="inference-num-applications.html"><span class="header-section-number">20</span> Applications: Infer quantitative</a></li>
+<li class="book-part">Inference for regression</li>
+<li><a class="" href="inference-reg.html"><span class="header-section-number">21</span> Inference for correlation and slope</a></li>
+<li><a class="active" href="inference-reg-applications.html"><span class="header-section-number">22</span> Applications: Infer regression</a></li>
+<li class="book-part">Probability</li>
+<li><a class="" href="probability.html"><span class="header-section-number">23</span> Probability with tables</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/MTstateIntroStats/IntroStatTextbook">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="inference-reg-applications" class="section level1" number="22">
+<h1>
+<span class="header-section-number">22</span> Applications: Infer regression<a class="anchor" aria-label="anchor" href="#inference-reg-applications"><i class="fas fa-link"></i></a>
+</h1>
+<!-- TODO: Add vocab words to this chapter. -->
+<div class="chapterintro">
+<p>TODO</p>
+</div>
+<div class="underconstruction">
+<p>Old content - revise as needed</p>
+</div>
+<div id="inference-for-regression-using-r-and-catstats" class="section level2" number="22.1">
+<h2>
+<span class="header-section-number">22.1</span> Inference for regression using R and <code>catstats</code><a class="anchor" aria-label="anchor" href="#inference-for-regression-using-r-and-catstats"><i class="fas fa-link"></i></a>
+</h2>
+<div id="simulation-based-inference-for-the-regression-slope" class="section level3 unnumbered">
+<h3>Simulation-based inference for the regression slope<a class="anchor" aria-label="anchor" href="#simulation-based-inference-for-the-regression-slope"><i class="fas fa-link"></i></a>
+</h3>
+<p>As a demonstration, we will apply the simulation-based inference functions for regression in the <code>catstats</code> package to our data on the change in House seats in the President’s party at midterm elections as a function of national unemployment rate. We need to drop the Great Depression years before we perform our simulations:</p>
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#load data</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">midterms_house</span><span class="op">)</span></span>
+<span><span class="co">#Drop Great Depression years</span></span>
+<span><span class="va">d</span> <span class="op">&lt;-</span> <span class="va">midterms_house</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1935</span>, <span class="fl">1939</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>Now that we have the correct data, we can perform a randomization test of the slope in the simple linear regression.</p>
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">catstats</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">621311</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/regression_test.html">regression_test</a></span><span class="op">(</span></span>
+<span>  formula <span class="op">=</span> <span class="va">house_change</span> <span class="op">~</span> <span class="va">unemp</span>,  <span class="co">#Always use response ~ explanatory</span></span>
+<span>  data <span class="op">=</span> <span class="va">d</span>,  <span class="co">#name of data set</span></span>
+<span>  summary_measure <span class="op">=</span> <span class="st">"slope"</span>, <span class="co">#Can also test correlation</span></span>
+<span>  direction <span class="op">=</span> <span class="st">"less"</span>, <span class="co">#Direction of alternative hypothesis</span></span>
+<span>  as_extreme_as <span class="op">=</span> <span class="op">-</span><span class="fl">0.89</span>, <span class="co">#Observed slope</span></span>
+<span>  number_repetitions <span class="op">=</span> <span class="fl">1000</span>  <span class="co">#Number of simulations</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="22-regression-applications_files/figure-html/unnamed-chunk-3-1.png" width="90%" style="display: block; margin: auto;"></div>
+<p>The results give a scatterplot of the observed data with the regression line superimposed, and gives the observed slope (this should match what you put in for <code>as_extreme_as</code>). Next to the scatterplot, we have the null distribution of the slope coefficient, with the observed slope indicated by a vertical line and all values more extreme highlighted in red. The caption gives the number of simulations resulting in a slope more extreme than the observed: in this simulation we have 118/1000, for an approximate p-value of 0.118.</p>
+<p>To obtain a confidence interval for the slope, we use <code><a href="https://rdrr.io/pkg/catstats/man/regression_bootstrap_CI.html">regression_bootstrap_CI()</a></code>, with the same core arguments as <code><a href="https://rdrr.io/pkg/catstats/man/regression_test.html">regression_test()</a></code>.</p>
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">31143518</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/regression_bootstrap_CI.html">regression_bootstrap_CI</a></span><span class="op">(</span></span>
+<span>  formula <span class="op">=</span> <span class="va">house_change</span> <span class="op">~</span> <span class="va">unemp</span>,  <span class="co">#Always use response ~ explanatory</span></span>
+<span>  data <span class="op">=</span> <span class="va">d</span>,  <span class="co">#name of data set</span></span>
+<span>  summary_measure <span class="op">=</span> <span class="st">"slope"</span>, <span class="co">#Can also test correlation</span></span>
+<span>  confidence_level <span class="op">=</span> <span class="fl">0.95</span>, <span class="co">#confidence level as a proportion</span></span>
+<span>  number_repetitions <span class="op">=</span> <span class="fl">1000</span>  <span class="co">#Number of simulations</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="22-regression-applications_files/figure-html/unnamed-chunk-4-1.png" width="90%" style="display: block; margin: auto;"></div>
+<p>Here we have the bootstrap distribution of the slope based on the observed data, with the upper and lower bounds of the confidence interval highlighted in red. The confidence interval is also given in the caption of the figure. Here, we are 95% confident that the true change in the number of seats in the House of Representatives for each additional percentage point in unemployment is between a decrease of 2.6 percent of seats and an increase of 0.3 percent of seats.</p>
+<p>Notice that the bootstrap distribution is not symmetric for this example! Because of this, the bootstrap confidence interval is different from what we would obtain from theory-based methods: (-2.6, 0.8). This is because the LINE technical conditions are not all satisfactorily met, though this is hard to see from the scatterplot for these data.</p>
+</div>
+<div id="theory-based-inference-for-the-regression-slope" class="section level3 unnumbered">
+<h3>Theory-based inference for the regression slope<a class="anchor" aria-label="anchor" href="#theory-based-inference-for-the-regression-slope"><i class="fas fa-link"></i></a>
+</h3>
+<p>To demonstrate theory-based inference in R, we will revisit the gift aid and income data. We want to know whether there is evidence to suggest that the slope of gift aid as a function of family income is non-zero. The function for linear regression in R is <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code>. Unlike <code>prob.test()</code> and <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code>, just running <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> doesn’t print all the information we need. This will produce only the coefficient estimates.</p>
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; lm(formula = gift_aid ~ family_income, data = elmhurst)
+#&gt; 
+#&gt; Coefficients:
+#&gt;   (Intercept)  family_income  
+#&gt;       24.3193        -0.0431</code></pre>
+<p>Instead, when doing linear regression, we want to save the regression results so we can get complete output using <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code>:</p>
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gift_reg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">gift_aid</span><span class="op">~</span><span class="va">family_income</span>, <span class="co">#Always use reponse ~ explanatory</span></span>
+<span>               data <span class="op">=</span> <span class="va">elmhurst</span><span class="op">)</span>  <span class="co">#Name of data set</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">gift_reg</span><span class="op">)</span>  <span class="co">#Obtain full results for regression</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; lm(formula = gift_aid ~ family_income, data = elmhurst)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residuals:</span></span>
+<span><span class="co">#&gt;     Min      1Q  Median      3Q     Max </span></span>
+<span><span class="co">#&gt; -10.113  -3.623  -0.216   3.159  11.571 </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Coefficients:</span></span>
+<span><span class="co">#&gt;               Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span><span class="co">#&gt; (Intercept)    24.3193     1.2915   18.83  &lt; 2e-16 ***</span></span>
+<span><span class="co">#&gt; family_income  -0.0431     0.0108   -3.98  0.00023 ***</span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residual standard error: 4.78 on 48 degrees of freedom</span></span>
+<span><span class="co">#&gt; Multiple R-squared:  0.249,  Adjusted R-squared:  0.233 </span></span>
+<span><span class="co">#&gt; F-statistic: 15.9 on 1 and 48 DF,  p-value: 0.000229</span></span></code></pre></div>
+<p>This produces a lot of output; we will focus on the <em>Coefficients</em> section. This gives us the estimated value for the slope, the standard error of the estimate, the t-statistic, and the p-value. We want the row labeled with the name of our explanatory variable, <code>family_income</code>. We estimate the slope to be -0.043 thousand dollars per additional thousand dollars in family income, and we have strong evidence against the null hypothesis that the slope is 0.</p>
+<p>We can compute confidence intervals by hand using the reported estimate, standard error, and df. We will need to compute a t-value as in Chapter <a href="#inference-num"><strong>??</strong></a>:</p>
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#Get t-star for 90% confidence interval</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">.95</span>, df <span class="op">=</span> <span class="fl">48</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 1.68</span></span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#Lower confidence bound</span></span>
+<span><span class="op">-</span><span class="fl">0.04307</span> <span class="op">-</span> <span class="fl">1.677224</span><span class="op">*</span><span class="fl">0.01081</span></span>
+<span><span class="co">#&gt; [1] -0.0612</span></span>
+<span></span>
+<span><span class="co">#Upper confidence bound</span></span>
+<span><span class="op">-</span><span class="fl">0.04307</span> <span class="op">+</span> <span class="fl">1.677224</span><span class="op">*</span><span class="fl">0.01081</span></span>
+<span><span class="co">#&gt; [1] -0.0249</span></span></code></pre></div>
+<p>We can also use the <code><a href="https://rdrr.io/r/stats/confint.html">confint()</a></code> function in R to compute confidence intervals for regression coefficients.</p>
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="va">gift_reg</span>,   <span class="co">#name of regression results</span></span>
+<span>        level <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span>  <span class="co">#confidence level as a proportion</span></span>
+<span><span class="co">#&gt;                   5 %    95 %</span></span>
+<span><span class="co">#&gt; (Intercept)   22.1533 26.4854</span></span>
+<span><span class="co">#&gt; family_income -0.0612 -0.0249</span></span></code></pre></div>
+<p>In either case, we are 90% confident that gift aid will be $24.90 to $61.20 less per $1000 increase in family income.</p>
+</div>
+</div>
+<div id="catstats-function-summary-2" class="section level2" number="22.2">
+<h2>
+<span class="header-section-number">22.2</span> <code>catstats</code> function summary<a class="anchor" aria-label="anchor" href="#catstats-function-summary-2"><i class="fas fa-link"></i></a>
+</h2>
+<p>In the previous section, you were introduced to two new R
+functions in the <code>catstats</code> library. Here we provide a summary of
+these functions. You can also access
+the help files for these functions using the <code>?</code> command. For
+example, type <code><a href="https://rdrr.io/pkg/catstats/man/regression_test.html">?regression_test</a></code> into your R console to bring up the
+help file for the <code>regression_test</code> function.
+<br></p>
+<ol style="list-style-type: decimal">
+<li>
+<p><code>regression_test</code>: Simulation-based hypothesis test for a regression slope or correlation between two quantitative variables.</p>
+<ul>
+<li>
+<code>formula</code> = <code>y ~ x</code> where <code>y</code> is the name of the quantitative response variable in the data set and <code>x</code> is the name of the quantitative explanatory variable</li>
+<li>
+<code>data</code> = data frame, with columns of each variable</li>
+<li>
+<code>summary_measure</code> = one of <code>"slope"</code> or <code>"correlation"</code> (quotations are important here!)</li>
+<li>
+<code>direction</code> = one of <code>"greater"</code>, <code>"less"</code>, or <code>"two-sided"</code> (quotations are important here!) to match the sign in <span class="math inline">\(H_A\)</span>
+</li>
+<li>
+<code>as_extreme_as</code> = value of observed slope or correlation</li>
+<li>
+<code>number_repetitions</code> = number of simulated samples to generate (should be at least 1000!)
+<br>
+</li>
+</ul>
+</li>
+<li>
+<p><code>regression_bootstrap_CI</code>: Bootstrap confidence interval for a regression slope or correlation.</p>
+<ul>
+<li>
+<code>formula</code> = <code>y ~ x</code> where <code>y</code> is the name of the quantitative response variable in the data set and <code>x</code> is the name of the quantitative explanatory variable</li>
+<li>
+<code>data</code> = data frame, with columns of each variable</li>
+<li>
+<code>summary_measure</code> = one of <code>"slope"</code> or <code>"correlation"</code> (quotations are important here!)</li>
+<li>
+<code>confidence_level</code> = confidence level as a decimal (e.g., 0.90, 0.95, etc)</li>
+<li>
+<code>number_repetitions</code> = number of simulated samples to generate (should be at least 1000!)
+<br>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="inference-reg.html"><span class="header-section-number">21</span> Inference for correlation and slope</a></div>
+<div class="next"><a href="probability.html"><span class="header-section-number">23</span> Probability with tables</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#inference-reg-applications"><span class="header-section-number">22</span> Applications: Infer regression</a></li>
+<li>
+<a class="nav-link" href="#inference-for-regression-using-r-and-catstats"><span class="header-section-number">22.1</span> Inference for regression using R and catstats</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#simulation-based-inference-for-the-regression-slope">Simulation-based inference for the regression slope</a></li>
+<li><a class="nav-link" href="#theory-based-inference-for-the-regression-slope">Theory-based inference for the regression slope</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#catstats-function-summary-2"><span class="header-section-number">22.2</span> catstats function summary</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/MTstateIntroStats/IntroStatTextbook/blob/master/22-regression-applications.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/MTstateIntroStats/IntroStatTextbook/edit/master/22-regression-applications.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Montana State Introductory Statistics with R</strong>" was written by Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

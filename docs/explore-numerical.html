@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 5 Exploring quantitative data | Montana State Introductory Statistics with R</title>
+<meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager">
+<meta name="description" content="This chapter focuses on exploring quantitative data using summary statistics and visualizations. The summaries and graphs presented in this chapter are created using statistical software; however,...">
+<meta name="generator" content="bookdown 0.27 with bs4_book()">
+<meta property="og:title" content="Chapter 5 Exploring quantitative data | Montana State Introductory Statistics with R">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://mtstateintrostats.github.io/IntroStatTextbook/explore-numerical.html">
+<meta property="og:description" content="This chapter focuses on exploring quantitative data using summary statistics and visualizations. The summaries and graphs presented in this chapter are created using statistical software; however,...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 5 Exploring quantitative data | Montana State Introductory Statistics with R">
+<meta name="twitter:description" content="This chapter focuses on exploring quantitative data using summary statistics and visualizations. The summaries and graphs presented in this chapter are created using statistical software; however,...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><script type="text/x-mathjax-config">
+    const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+    for (let popover of popovers){
+      const div = document.createElement('div');
+      div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+      div.innerHTML = popover.getAttribute('data-content');
+      
+      // Will this work with TeX on its own line?
+      var has_math = div.querySelector("span.math");
+      if (has_math) {
+        document.body.appendChild(div);
+      	MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+      	MathJax.Hub.Queue(function(){
+          popover.setAttribute('data-content', div.innerHTML);
+      	})
+      }
+    }
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="css/ims-style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Montana State Introductory Statistics with R</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="authors.html">Authors</a></li>
+<li><a class="" href="preface.html">Preface</a></li>
+<li><a class="" href="rstudio.html">Preliminaries: Getting started in RStudio</a></li>
+<li class="book-part">Introduction to data</li>
+<li><a class="" href="data-hello.html"><span class="header-section-number">1</span> Hello data</a></li>
+<li><a class="" href="data-design.html"><span class="header-section-number">2</span> Study design</a></li>
+<li><a class="" href="data-applications.html"><span class="header-section-number">3</span> Applications: Data</a></li>
+<li class="book-part">Exploratory data analysis</li>
+<li><a class="" href="explore-categorical.html"><span class="header-section-number">4</span> Exploring categorical data</a></li>
+<li><a class="active" href="explore-numerical.html"><span class="header-section-number">5</span> Exploring quantitative data</a></li>
+<li><a class="" href="explore-regression.html"><span class="header-section-number">6</span> Correlation and regression</a></li>
+<li><a class="" href="explore-mult-reg.html"><span class="header-section-number">7</span> Multivariable models</a></li>
+<li><a class="" href="explore-applications.html"><span class="header-section-number">8</span> Applications: Explore</a></li>
+<li class="book-part">Foundations of inference</li>
+<li><a class="" href="foundations-randomization.html"><span class="header-section-number">9</span> Hypothesis testing with randomization</a></li>
+<li><a class="" href="foundations-bootstrapping.html"><span class="header-section-number">10</span> Confidence intervals with bootstrapping</a></li>
+<li><a class="" href="foundations-mathematical.html"><span class="header-section-number">11</span> Inference with mathematical models</a></li>
+<li><a class="" href="foundations-errors.html"><span class="header-section-number">12</span> Errors, power, and practical importance</a></li>
+<li><a class="" href="foundations-applications.html"><span class="header-section-number">13</span> Applications: Foundations</a></li>
+<li class="book-part">Inference for categorical data</li>
+<li><a class="" href="inference-one-prop.html"><span class="header-section-number">14</span> Inference for a single proportion</a></li>
+<li><a class="" href="inference-two-props.html"><span class="header-section-number">15</span> Inference for comparing two proportions</a></li>
+<li><a class="" href="inference-categ-applications.html"><span class="header-section-number">16</span> Applications: Infer categorical</a></li>
+<li class="book-part">Inference for quantitative data</li>
+<li><a class="" href="inference-one-mean.html"><span class="header-section-number">17</span> Inference for a single mean</a></li>
+<li><a class="" href="inference-paired-means.html"><span class="header-section-number">18</span> Inference for comparing paired means</a></li>
+<li><a class="" href="inference-two-means.html"><span class="header-section-number">19</span> Inference for comparing two independent means</a></li>
+<li><a class="" href="inference-num-applications.html"><span class="header-section-number">20</span> Applications: Infer quantitative</a></li>
+<li class="book-part">Inference for regression</li>
+<li><a class="" href="inference-reg.html"><span class="header-section-number">21</span> Inference for correlation and slope</a></li>
+<li><a class="" href="inference-reg-applications.html"><span class="header-section-number">22</span> Applications: Infer regression</a></li>
+<li class="book-part">Probability</li>
+<li><a class="" href="probability.html"><span class="header-section-number">23</span> Probability with tables</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/MTstateIntroStats/IntroStatTextbook">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="explore-numerical" class="section level1" number="5">
+<h1>
+<span class="header-section-number">5</span> Exploring quantitative data<a class="anchor" aria-label="anchor" href="#explore-numerical"><i class="fas fa-link"></i></a>
+</h1>
+<!-- Old reference: #quantitative-data -->
+<div class="chapterintro">
+<p>This chapter focuses on exploring <strong>quantitative</strong> data using summary statistics and visualizations.
+The summaries and graphs presented in this chapter are created using statistical software; however, since this might be your first exposure to the concepts, we take our time in this chapter to detail how to create them.
+Mastery of the content presented in this chapter will be crucial for understanding the methods and techniques introduced in the rest of the book.</p>
+</div>
+<p>Consider the <code>loan_amount</code> variable from the <code>loan50</code> data set, which represents the loan size for all 50 loans in the data set.
+This variable is quantitative (or numerical) since we can sensibly discuss the numerical difference of the size of two loans.
+On the other hand, area codes and zip codes are not quantitative, but rather they are categorical variables.</p>
+<p>Throughout this chapter, we will apply these methods using the <code>loan50</code>, <code>county</code>, and <code>email50</code> data sets, which were introduced in Section <a href="data-hello.html#data-basics">1.2</a>.
+If you’d like to review the variables from either data set, see Tables <a href="data-hello.html#tab:loan50Variables">1.4</a> and <a href="data-hello.html#tab:countyVariables">1.6</a>.</p>
+<div class="data">
+<p>The <code>loan50</code> and <code>email50</code> data sets can be found in the <a href="http://openintrostat.github.io/openintro">openintro</a> package.
+The <code>county</code> data can be found in the <a href="https://openintrostat.github.io/usdata/">usdata</a> package.</p>
+</div>
+<div id="scatterplots" class="section level2" number="5.1">
+<h2>
+<span class="header-section-number">5.1</span> Scatterplots for paired data<a class="anchor" aria-label="anchor" href="#scatterplots"><i class="fas fa-link"></i></a>
+</h2>
+<p></p>
+<p>A <strong>scatterplot</strong> provides a case-by-case view of data for two quantitative variables.
+In Figure <a href="data-hello.html#fig:county-multi-unit-homeownership">1.4</a>, a scatterplot was used to examine the homeownership rate against the fraction of housing units that were part of multi-unit properties (e.g. apartments) in the <code>county</code> data set.
+Another scatterplot is shown in Figure <a href="explore-numerical.html#fig:loan50-amount-income">5.1</a>, comparing the total income of a borrower <code>total_income</code> and the amount they borrowed <code>loan_amount</code> for the <code>loan50</code> data set.
+In any scatterplot, each point represents a single case.
+Since there are 50 cases in <code>loan50</code>, there are 50 points in Figure <a href="explore-numerical.html#fig:loan50-amount-income">5.1</a>.</p>
+<p>When examining scatterplots, we describe four features:</p>
+<ol style="list-style-type: decimal">
+<li>
+<strong>Form</strong> - If you were to trace the trend of the points,
+would the trend be <em>linear</em> or <em>nonlinear</em>?</li>
+<li>
+<strong>Direction</strong> - As values on the <em>x</em>-axis increase, do the <em>y</em>-values
+tend to increase (<em>positive direction</em>) or do they decrease (<em>negative direction</em>)?</li>
+<li>
+<strong>Strength</strong> - How closely do the points follow a trend?</li>
+<li>
+<strong>Unusual observations</strong> or <strong>outliers</strong>- Are there any unusual observations
+that do not seem to match the overall pattern of the scatterplot?</li>
+</ol>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:loan50-amount-income"></span>
+<img src="05-explore-numerical_files/figure-html/loan50-amount-income-1.png" alt="A scatterplot of `loan_amount` versus `total_income` for the `loan50` data set." width="90%"><p class="caption">
+Figure 5.1: A scatterplot of <code>loan_amount</code> versus <code>total_income</code> for the <code>loan50</code> data set.
+</p>
+</div>
+<p>Looking at Figure <a href="explore-numerical.html#fig:loan50-amount-income">5.1</a>, we see that there are many
+borrowers with income below $100,000 on the left side of the graph, while there
+are a handful of borrowers with income above $250,000. The loan amounts vary from
+below $10,000 to around $40,000. The data seem to have a <em>linear</em> form, though
+the relationship between the two variables is quite <em>weak</em>. The direction is
+<em>positive</em>—as total income increases, the loan amount also tends to increase—and there may be a few unusual observations in the higher income range,
+though since the relationship is weak, it is hard to tell.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:median-hh-income-poverty"></span>
+<img src="05-explore-numerical_files/figure-html/median-hh-income-poverty-1.png" alt="A scatterplot of the median household income against the poverty rate for the `county` data set. Data are from 2017. A statistical model has also been fit to the data and is shown as a dashed line." width="90%"><p class="caption">
+Figure 5.2: A scatterplot of the median household income against the poverty rate for the <code>county</code> data set. Data are from 2017. A statistical model has also been fit to the data and is shown as a dashed line.
+</p>
+</div>
+<div class="workedexample">
+<p>Figure <a href="explore-numerical.html#fig:median-hh-income-poverty">5.2</a> shows a plot of median household income against the poverty rate for 3,142 counties.
+What can be said about the relationship between these variables?</p>
+<hr>
+<p>The relationship is evidently <strong>nonlinear</strong>, as highlighted by the dashed line. This is different from previous scatterplots we have seen, which show relationships that do not show much, if any, curvature in the trend.
+The relationship is moderate to strong, the direction is negative,
+and there does not appear to be any unusual observations.</p>
+</div>
+<div class="guidedpractice">
+<p>What do scatterplots reveal about the data, and how are they useful?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Answers may vary. Scatterplots are helpful in quickly spotting associations relating variables, whether those associations come in the form of simple trends or whether those relationships are more complex.&lt;/p&gt;"><sup>37</sup></a></p>
+</div>
+<div class="guidedpractice">
+<p>Describe two variables that would have a horseshoe-shaped association in a scatterplot (<span class="math inline">\(\cap\)</span> or <span class="math inline">\(\frown\)</span>)<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Consider the case where your vertical axis represents something “good” and your horizontal axis represents something that is only good in moderation. Health and water consumption fit this description: we require some water to survive, but consume too much and it become toxic and can kill a person.&lt;/p&gt;"><sup>38</sup></a></p>
+</div>
+</div>
+<div id="dotplots" class="section level2" number="5.2">
+<h2>
+<span class="header-section-number">5.2</span> Dot plots and the mean<a class="anchor" aria-label="anchor" href="#dotplots"><i class="fas fa-link"></i></a>
+</h2>
+<p>Sometimes we are interested in the distribution of a single variable.
+In these cases, a dot plot provides the most basic of displays.
+A <strong>dot plot</strong> is a one-variable scatterplot; an example using the interest rate of 50 loans is shown in Figure <a href="explore-numerical.html#fig:loan-int-rate-dotplot">5.3</a>.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:loan-int-rate-dotplot"></span>
+<img src="05-explore-numerical_files/figure-html/loan-int-rate-dotplot-1.png" alt="A dot plot of `interest_rate` for the `loan50` data set. The rates have been rounded to the nearest percent in this plot, and the distribution's mean is shown as a red triangle." width="90%"><p class="caption">
+Figure 5.3: A dot plot of <code>interest_rate</code> for the <code>loan50</code> data set. The rates have been rounded to the nearest percent in this plot, and the distribution’s mean is shown as a red triangle.
+</p>
+</div>
+<p>The <strong>distribution</strong> of a variable is a description of the possible values
+it takes and how frequently each value occurs. The <strong>mean</strong>, often called the <strong>average</strong>, is a common way to measure the center of a distribution of data.
+To compute the mean interest rate of the 50 loans above, we add up all the interest rates and divide by the number of observations.</p>
+<p>The sample mean is often labeled <span class="math inline">\(\bar{x}\)</span>.
+The letter <span class="math inline">\(x\)</span> is being used as a generic placeholder for the variable and the bar over the <span class="math inline">\(x\)</span> communicates we’re looking at the average of that variable. In our example <span class="math inline">\(x\)</span> would represent interest rate, and <span class="math inline">\(\bar{x}\)</span> = 11.57%.
+It is useful to think of the mean as the balancing point of the distribution<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;For
+more practice with this concept of the mean as a balancing point, see this &lt;a href="https://www.khanacademy.org/math/ap-statistics/summarizing-quantitative-data-ap/mean-median-more/a/mean-as-the-balancing-point"&gt;Khan Academy article&lt;/a&gt;.&lt;/p&gt;'><sup>39</sup></a>, and it’s shown as a triangle in Figure <a href="explore-numerical.html#fig:loan-int-rate-dotplot">5.3</a>.</p>
+<div class="onebox">
+<p><strong>Mean.</strong></p>
+<p>The sample mean can be calculated as the sum of the observed values divided by the number of observations:</p>
+<p><span class="math display">\[ \bar{x} = \frac{x_1 + x_2 + \cdots + x_n}{n} \]</span></p>
+</div>
+<div class="guidedpractice">
+<p>Examine the equation for the mean. What does <span class="math inline">\(x_1\)</span> correspond to? And <span class="math inline">\(x_2\)</span> Can you infer a general meaning to what <span class="math inline">\(x_i\)</span> might represent?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="math inline"&gt;\(x_1\)&lt;/span&gt; corresponds to the interest rate for the first loan in the sample, &lt;span class="math inline"&gt;\(x_2\)&lt;/span&gt; to the second loan’s interest rate, and &lt;span class="math inline"&gt;\(x_i\)&lt;/span&gt; corresponds to the interest rate for the &lt;span class="math inline"&gt;\(i^{th}\)&lt;/span&gt; loan in the data set. For example, if &lt;span class="math inline"&gt;\(i = 4\)&lt;/span&gt;, then we’re examining &lt;span class="math inline"&gt;\(x_4\)&lt;/span&gt;, which refers to the fourth observation in the data set.&lt;/p&gt;'><sup>40</sup></a></p>
+</div>
+<div class="guidedpractice">
+<p>What was <span class="math inline">\(n\)</span> in this sample of loans?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;The sample size was &lt;span class="math inline"&gt;\(n = 50\)&lt;/span&gt;.&lt;/p&gt;'><sup>41</sup></a></p>
+</div>
+<p>The <code>loan50</code> data set represents a sample from a larger population of loans made through Lending Club.
+We could compute a mean for this population in the same way as the sample mean.
+However, the population mean has a special label: <span class="math inline">\(\mu\)</span>.
+The symbol <span class="math inline">\(\mu\)</span> is the Greek letter <em>mu</em> and represents the average of all observations in the population.
+Sometimes a subscript, such as <span class="math inline">\(_x\)</span>, is used to represent which variable the population mean refers to, e.g., <span class="math inline">\(\mu_x\)</span>.
+Often times it is too expensive or time consuming to measure the population mean precisely, so we often estimate <span class="math inline">\(\mu\)</span> using the sample mean, <span class="math inline">\(\bar{x}\)</span>.</p>
+<div class="pronunciation">
+<p>The Greek letter <span class="math inline">\(\mu\)</span> is pronounced <em>mu</em>, listen to the pronunciation <a href="https://youtu.be/PStgY5AcEIw?t=47">here</a>.</p>
+</div>
+<div class="workedexample">
+<p>The average interest rate across all loans in the population can be estimated using the sample data. Based on the sample of 50 loans, what would be a reasonable estimate of <span class="math inline">\(\mu_x\)</span>, the mean interest rate for all loans in the full data set?</p>
+<hr>
+<p>The sample mean, 11.57%, provides a rough estimate of <span class="math inline">\(\mu_x\)</span>. While it is not perfect, this statistic our single best guess <strong>point estimate</strong> of the average interest rate of all the loans in the population under study, the parameter. In Chapter <a href="#inference-cat"><strong>??</strong></a> and beyond, we will develop tools to characterize the accuracy of point estimates, like the sample mean. As you might have guessed, point estimates based on larger samples tend to be more accurate than those based on smaller samples.</p>
+</div>
+<p>The mean is useful for making comparisons across different samples that may have different sample sizes because it allows us to rescale or standardize a metric into something more easily interpretable and comparable.</p>
+<p>Suppose we would like to understand if a new drug is more effective at treating asthma attacks than the standard drug.
+A trial of 1500 adults is set up, where 500 receive the new drug, and 1000 receive a standard drug in the control group:</p>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+New drug
+</th>
+<th style="text-align:center;">
+Standard drug
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Number of patients
+</td>
+<td style="text-align:center;">
+500
+</td>
+<td style="text-align:center;">
+1000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Total asthma attacks
+</td>
+<td style="text-align:center;">
+200
+</td>
+<td style="text-align:center;">
+300
+</td>
+</tr>
+</tbody>
+</table></div>
+<p>Comparing the raw counts of 200 to 300 asthma attacks would make it appear that the new drug is better, but this is an artifact of the imbalanced group sizes.
+Instead, we should look at the average number of asthma attacks per patient in each group:</p>
+<ul>
+<li>New drug: <span class="math inline">\(200 / 500 = 0.4\)</span> asthma attacks per patient</li>
+<li>Standard drug: <span class="math inline">\(300 / 1000 = 0.3\)</span> asthma attacks per patient</li>
+</ul>
+<p>The standard drug has a lower average number of asthma attacks per patient than the average in the treatment group.</p>
+<div class="workedexample">
+<p>Emilio opened a food truck last year where he sells burritos, and his business has stabilized over the last 4 months.
+Over that 4 month period, he has made $11,000 while working 625 hours.
+Emilio’s competition, Francis, has made $13,000 over the last 4 months while working 800 hours. Francis brags to Emilio that her business is more profitable. Is Francis’ claim warranted?</p>
+<hr>
+<p>Emilio’s average hourly earnings provide a useful statistic for evaluating how much his venture is, at least from a financial perspective, worth:</p>
+<p><span class="math display">\[ \frac{\$11000}{625\text{ hours}} = \$17.60\text{ per hour} \]</span></p>
+<p>By knowing his average hourly wage,
+Emilio now has put his earnings into a standard unit that is easier to compare with many other jobs that he might consider.</p>
+<p>In comparison, Francis’ average hourly wage was</p>
+<p><span class="math display">\[ \frac{\$13000}{800\text{ hours}} = \$16.25\text{ per hour} \]</span></p>
+<p>Thus, while Francis’ total earnings were larger than Emilio’s, when standardizing by hour, Francis shouldn’t brag.</p>
+</div>
+<div class="workedexample">
+<p>Suppose we want to compute the average income per person in the US. To do so, we might first think to take the mean of the per capita incomes across the 3,142 counties in the data set. What would be a better approach?</p>
+<hr>
+<p>The <code>county</code> data set is special in that each county actually represents many individual people.
+If we were to simply average across the <code>income</code> variable, we would be treating counties with 5,000 and 5,000,000 residents equally in the calculations.
+Instead, we should compute the total income for each county, add up all the counties’ totals, and then divide by the number of people in all the counties.
+If we completed these steps with the data, we would find that the per capita income for the US is $30,861.
+Had we computed the <em>simple</em> mean of per capita income across counties, the result would have been just $26,093!</p>
+<p>This example used what is called a <strong>weighted mean</strong>.
+For more information on this topic, check out the following online supplement regarding <a href="https://www.openintro.org/go/?id=stat_extra_weighted_mean">weighted means</a>.</p>
+</div>
+</div>
+<div id="histograms" class="section level2" number="5.3">
+<h2>
+<span class="header-section-number">5.3</span> Histograms and shape<a class="anchor" aria-label="anchor" href="#histograms"><i class="fas fa-link"></i></a>
+</h2>
+<p>Dot plots show the exact value for each observation. This is useful for small data sets, but they can become hard to read with larger samples. Rather than showing the value of each observation, we prefer to think of the value as belonging to a <em>bin</em>. For example, in the <code>loan50</code> data set, we created a table of counts for the number of loans with interest rates between 5.0% and 7.5%, then the number of loans with rates between 7.5% and 10.0%, and so on. Observations that fall on the boundary of a bin (e.g., 10.00%) are allocated to the lower bin. This tabulation is shown in Table <a href="explore-numerical.html#tab:binnedIntRateAmountTable">5.1</a>. These binned counts are plotted as bars in Figure <a href="explore-numerical.html#fig:loan50IntRateHist">5.4</a> into what is called a <strong>histogram</strong>, which resembles a more heavily binned version of the stacked dot plot shown in Figure <a href="explore-numerical.html#fig:loan-int-rate-dotplot">5.3</a>.</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:binnedIntRateAmountTable">Table 5.1: </span>Counts for the binned <code>interest_rate</code> data.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+Interest rate
+</th>
+<th style="text-align:center;">
+5% - 7.5%
+</th>
+<th style="text-align:center;">
+7.5% - 10%
+</th>
+<th style="text-align:center;">
+10% - 12.5%
+</th>
+<th style="text-align:center;">
+12.5% - 15%
+</th>
+<th style="text-align:center;">
+15% - 17.5%
+</th>
+<th style="text-align:center;">
+17.5% - 20%
+</th>
+<th style="text-align:center;">
+20% - 22.5%
+</th>
+<th style="text-align:center;">
+22.5% - 25%
+</th>
+<th style="text-align:center;">
+25% - 27.5%
+</th>
+</tr></thead>
+<tbody><tr>
+<td style="text-align:left;">
+n
+</td>
+<td style="text-align:center;">
+11
+</td>
+<td style="text-align:center;">
+15
+</td>
+<td style="text-align:center;">
+8
+</td>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+1
+</td>
+</tr></tbody>
+</table></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:loan50IntRateHist"></span>
+<img src="05-explore-numerical_files/figure-html/loan50IntRateHist-1.png" alt="A histogram of `interest_rate`. This distribution is strongly skewed to the right." width="90%"><p class="caption">
+Figure 5.4: A histogram of <code>interest_rate</code>. This distribution is strongly skewed to the right.
+</p>
+</div>
+<p>Histograms provide a view of the <strong>data density</strong>. Higher bars represent where the data are relatively more common, or
+“dense.” For instance, there are many more loans with rates between 5% and 10% than loans with rates between 20% and 25% in the data set. The bars make it easy to see how the density of the data changes relative to the interest rate.</p>
+<p>Histograms are especially convenient for understanding the shape of the data distribution. Figure <a href="explore-numerical.html#fig:loan50IntRateHist">5.4</a> suggests that most loans have rates under 15%, while only a handful of loans have rates above 20%. When data trail off to the right in this way and has a longer right <strong>tail</strong>, the shape is said to be <strong>right skewed</strong><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Other ways to describe data that are right skewed: skewed to the right, skewed to the high end, or skewed to the positive end.&lt;/p&gt;"><sup>42</sup></a></p>
+<p>Data sets with the reverse characteristic—a long, thinner tail to the left—are said to be <strong>left skewed</strong>. We also say that such a distribution has a long left tail. Data sets that show roughly equal trailing off in both directions are called <strong>symmetric</strong>.</p>
+<div class="onebox">
+<p>When data trail off in one direction, the distribution has a <strong>long tail</strong>.
+If a distribution has a long left tail, it is <strong>left skewed</strong> or <strong>negatively skewed</strong>.
+If a distribution has a long right tail, it is <strong>right skewed</strong> or <strong>positively skewed</strong>.</p>
+</div>
+<div class="guidedpractice">
+<p>Besides the mean (since it was labeled), what can you see in the dot plot in Figure <a href="explore-numerical.html#fig:loan-int-rate-dotplot">5.3</a> that you cannot see in the histogram in Figure <a href="explore-numerical.html#fig:loan50IntRateHist">5.4</a>?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The interest rates for individual loans.&lt;/p&gt;"><sup>43</sup></a></p>
+</div>
+<p>In addition to looking at whether a distribution is skewed or symmetric, histograms can be used to identify modes. A <strong>mode</strong> is represented by a prominent peak in the distribution. There is only one prominent peak in the histogram of <code>interest_rate</code>.</p>
+<p>A definition of <em>mode</em> sometimes taught in math classes is the value with the most occurrences in the data set. However, for many real-world data sets, it is common to have <em>no</em> observations with the same value in a data set, making this definition impractical in data analysis.</p>
+<p>Figure <a href="explore-numerical.html#fig:singleBiMultiModalPlots">5.5</a> shows histograms that have one, two, or three prominent peaks. Such distributions are called <strong>unimodal</strong>, <strong>bimodal</strong>, and <strong>multimodal</strong>, respectively. Any distribution with more than two prominent peaks is called multimodal. Notice that there was one prominent peak in the unimodal distribution with a second less prominent peak that was not counted since it only differs from its neighboring bins by a few observations.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:singleBiMultiModalPlots"></span>
+<img src="05-explore-numerical_files/figure-html/singleBiMultiModalPlots-1.png" alt="Counting only prominent peaks, the distributions are (left to right) unimodal, bimodal, and multimodal. Note that the left plot is unimodal because we are counting prominent peaks, not just any peak." width="90%"><p class="caption">
+Figure 5.5: Counting only prominent peaks, the distributions are (left to right) unimodal, bimodal, and multimodal. Note that the left plot is unimodal because we are counting prominent peaks, not just any peak.
+</p>
+</div>
+<div class="guidedpractice">
+<p>Figure <a href="explore-numerical.html#fig:loan50IntRateHist">5.4</a> reveals only one prominent mode in the interest rate. Is the distribution unimodal, bimodal, or multimodal?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Unimodal Remember that &lt;em&gt;uni&lt;/em&gt; stands for 1 (think &lt;em&gt;uni&lt;/em&gt;cycles). Similarly, &lt;em&gt;bi&lt;/em&gt; stands for 2 (think &lt;em&gt;bi&lt;/em&gt;cycles). We are hoping a &lt;em&gt;multi&lt;/em&gt;cycle will be invented to complete this analogy.&lt;/p&gt;"><sup>44</sup></a></p>
+</div>
+<div class="guidedpractice">
+<p>Height measurements of young students and adult teachers at a K-3 elementary school were taken.
+How many modes would you expect in this height data set?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;There might be two height groups visible in the data set: one of the students and one of the adults. That is, the data are probably bimodal.&lt;/p&gt;"><sup>45</sup></a>.</p>
+</div>
+<p>Looking for modes isn’t about finding a clear and correct answer about the number of modes in a distribution, which is why <em>prominent</em> is not rigorously defined in this book. The most important part of this examination is to better understand your data.</p>
+<p>Another type of plot that is helpful for exploring the shape of a distribution is a smoothed histogram, called a <strong>density plot</strong>. A density plot will scale the <span class="math inline">\(y\)</span>-axis so that the total area under the density curve is equal to one. This allows us to get a sense of what <em>proportion</em> of the data lie in a certain interval, rather than the <em>frequency</em> of data in the interval. We can change the scale of a histogram to plot proportions rather than frequencies, then overlay a density curve on this rescaled histogram, as seen in Figure <a href="explore-numerical.html#fig:loan50IntRateDens">5.6</a>.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:loan50IntRateDens"></span>
+<img src="05-explore-numerical_files/figure-html/loan50IntRateDens-1.png" alt="A density plot of `interest_rate` overlayed on a histogram using density scale." width="90%"><p class="caption">
+Figure 5.6: A density plot of <code>interest_rate</code> overlayed on a histogram using density scale.
+</p>
+</div>
+</div>
+<div id="variance-sd" class="section level2" number="5.4">
+<h2>
+<span class="header-section-number">5.4</span> Variance and standard deviation<a class="anchor" aria-label="anchor" href="#variance-sd"><i class="fas fa-link"></i></a>
+</h2>
+<p>The mean was introduced as a method to describe the center of a data set, and <strong>variability</strong> in the data is also important. Here, we introduce two measures of variability: the variance and the standard deviation. Both of these are very useful in data analysis, even though their formulas are a bit tedious to calculate by hand. The standard deviation is the easier of the two to comprehend, and it roughly describes how far away the typical observation is from the mean.</p>
+<p>We call the distance of an observation from its mean its <strong>deviation</strong>. Below are the deviations for the <span class="math inline">\(1^{st}\)</span>, <span class="math inline">\(2^{nd}\)</span>, <span class="math inline">\(3^{rd}\)</span>, and <span class="math inline">\(50^{th}\)</span> observations in the <code>interest_rate</code> variable:</p>
+<p><span class="math display">\[ x_1 - \bar{x} = 10.9 - 11.57 = -0.67 \]</span> <span class="math display">\[ x_2 - \bar{x} = 9.92 - 11.57 = -1.65 \]</span> <span class="math display">\[ x_3 - \bar{x} = 26.3 - 11.57 = 14.73 \]</span> <span class="math display">\[ \vdots \]</span> <span class="math display">\[ x_{50} - \bar{x} = 6.08 - 11.57 = -5.49 \]</span></p>
+<p>If we square these deviations and then take an average, the result is equal to the sample <strong>variance</strong>, denoted by <span class="math inline">\(s^2\)</span>:</p>
+<p><span class="math display">\[\begin{align*}
+s^2 &amp;= \frac{(-0.67)^2 + (-1.65)^2 + (14.73)^2 + \cdots + (-5.49)^2}{50 - 1} \\
+&amp;= \frac{0.45 + 2.72 + \cdots + 30.14}{49} \\
+&amp;= 25.52
+\end{align*}\]</span></p>
+<p>We divide by <span class="math inline">\(n - 1\)</span>, rather than dividing by <span class="math inline">\(n\)</span>, when computing a sample’s variance; there’s some mathematical nuance here, but the end result is that doing this makes this statistic slightly more reliable and useful.</p>
+<p>Notice that squaring the deviations does two things. First, it makes large values relatively much larger. Second, it gets rid of any negative signs.</p>
+<p>The <strong>standard deviation</strong> is defined as the square root of the variance:</p>
+<p><span class="math display">\[ s = \sqrt{25.52} = 5.05 \]</span></p>
+<p>While often omitted, a subscript of <span class="math inline">\(_x\)</span> may be added to the variance and standard deviation, i.e., <span class="math inline">\(s_x^2\)</span> and <span class="math inline">\(s_x\)</span>, if it is useful as a reminder that these are the variance and standard deviation of the observations represented by <span class="math inline">\(x_1\)</span>, <span class="math inline">\(x_2\)</span>, …, <span class="math inline">\(x_n\)</span>.</p>
+<div class="onebox">
+<p><strong>Variance and standard deviation.</strong></p>
+<p>The sample variance is the (near) average squared distance from the mean:
+<span class="math display">\[
+  s^2 = \frac{((x_1 - \bar{x})^2 + (x_2 - \bar{x})^2 + \cdots + (x_n - \bar{x})^2)}{n-1}
+\]</span>
+The sample standard deviation is the square root of the variance: <span class="math inline">\(s = \sqrt{s^2}\)</span>.</p>
+<p>The standard deviation is useful when considering how far the data are distributed from the mean.
+<em>The standard deviation represents the typical deviation of observations from the mean.</em>
+If the distribution is bell-shaped, about 70% of the data will be within one standard deviation of the mean and about 95% will be within two standard deviations.
+However, these percentages do not necessarily hold for other shaped distributions!</p>
+</div>
+<p>Like the mean, the population values for variance and standard deviation have special symbols: <span class="math inline">\(\sigma^2\)</span> for the variance and <span class="math inline">\(\sigma\)</span> for the standard deviation.</p>
+<div class="pronunciation">
+<p>The Greek letter <span class="math inline">\(\sigma\)</span> is pronounced <em>sigma</em>, listen to the pronunciation <a href="https://youtu.be/PStgY5AcEIw?t=72">here</a>.</p>
+</div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:sdRuleForIntRate"></span>
+<img src="05-explore-numerical_files/figure-html/sdRuleForIntRate-1.png" alt="For the `interest_rate` variable, 34 of the 50 loans (68%) had interest rates within 1 standard deviation of the mean, and 48 of the 50 loans (96%) had rates within 2 standard deviations. Usually about 70% of the data are within 1 standard deviation of the mean and 95% within 2 standard deviations, though this is far from a hard rule." width="90%"><p class="caption">
+Figure 5.7: For the <code>interest_rate</code> variable, 34 of the 50 loans (68%) had interest rates within 1 standard deviation of the mean, and 48 of the 50 loans (96%) had rates within 2 standard deviations. Usually about 70% of the data are within 1 standard deviation of the mean and 95% within 2 standard deviations, though this is far from a hard rule.
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:severalDiffDistWithSdOf1"></span>
+<img src="05-explore-numerical_files/figure-html/severalDiffDistWithSdOf1-1.png" alt="Three very different population distributions with the same mean (0) and standard deviation (1)." width="90%"><p class="caption">
+Figure 5.8: Three very different population distributions with the same mean (0) and standard deviation (1).
+</p>
+</div>
+<div class="guidedpractice">
+<p>A good description of the shape of a distribution should include modality and whether the distribution is symmetric or skewed to one side.
+Using Figure <a href="explore-numerical.html#fig:severalDiffDistWithSdOf1">5.8</a> as an example, explain why such a description is important.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Figure &lt;a href="explore-numerical.html#fig:severalDiffDistWithSdOf1"&gt;5.8&lt;/a&gt; shows three distributions that look quite different, but all have the same mean, variance, and standard deviation. Using modality, we can distinguish between the first plot (bimodal) and the last two (unimodal). Using skewness, we can distinguish between the last plot (right skewed) and the first two. While a picture, like a histogram, tells a more complete story, we can use modality and shape (symmetry/skew) to characterize basic information about a distribution.&lt;/p&gt;'><sup>46</sup></a></p>
+</div>
+<div class="workedexample">
+<p>Describe the distribution of the <code>interest_rate</code> variable using the histogram in Figure <a href="explore-numerical.html#fig:loan50IntRateHist">5.4</a>.
+The description should incorporate the center, variability, and shape of the distribution, and it should also be placed in context.
+Also note any especially unusual cases.</p>
+<hr>
+<p>The distribution of interest rates is unimodal and skewed to the high end. Many of the rates fall near the mean at 11.57%, and most fall within one standard deviation (5.05%) of the mean.
+There are a few exceptionally large interest rates in the sample that are above 20%.</p>
+</div>
+<p>In practice, the variance and standard deviation are sometimes used as a means to an end, where the “end” is being able to accurately estimate the uncertainty associated with a sample statistic. For example, in Chapter <a href="#inference-num"><strong>??</strong></a> the standard deviation is used in calculations that help us understand how much a sample mean varies from one sample to the next.</p>
+</div>
+<div id="box-plots-quartiles-and-the-median" class="section level2" number="5.5">
+<h2>
+<span class="header-section-number">5.5</span> Box plots, quartiles, and the median<a class="anchor" aria-label="anchor" href="#box-plots-quartiles-and-the-median"><i class="fas fa-link"></i></a>
+</h2>
+<p>A <strong>box plot</strong> (or box-and-whisker plot) summarizes a data set using five statistics while
+also identifying unusual observations. The five statistics—minimum, first quartile,
+median, third quartile, maximum—together are called the <strong>five number summary</strong>.
+Figure <a href="explore-numerical.html#fig:loan-int-rate-boxplot-dotplot">5.9</a> provides a dot plot alongside a box plot of the <code>interest_rate</code> variable from the <code>loan50</code> data set.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:loan-int-rate-boxplot-dotplot"></span>
+<img src="05-explore-numerical_files/figure-html/loan-int-rate-boxplot-dotplot-1.png" alt="Plot A shows a dot plot and Plot B shows a box plot of the distribution of interest rates from the `loan50` dataset." width="90%"><p class="caption">
+Figure 5.9: Plot A shows a dot plot and Plot B shows a box plot of the distribution of interest rates from the <code>loan50</code> dataset.
+</p>
+</div>
+<p>The dark line inside the box represents the <strong>median</strong>, which splits the data in half:
+50% of the data fall below this value and 50% fall above it.
+Since in the <code>loan50</code> dataset there are 50 observations (an even number),
+the median is defined as the average of the two observations closest to the
+<span class="math inline">\(50^{th}\)</span> percentile. Table <a href="explore-numerical.html#tab:loan50-int-rate-sorted">5.2</a> shows all
+interest rates, arranged in ascending order.
+We can see that the <span class="math inline">\(25^{th}\)</span> and the <span class="math inline">\(26^{th}\)</span> values are both
+9.93, which corresponds to the dark line in
+the box plot in Figure <a href="explore-numerical.html#fig:loan-int-rate-boxplot-dotplot">5.9</a>.</p>
+<div class="inline-table"><table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:loan50-int-rate-sorted">Table 5.2: </span>Interest rates from the <code>loan50</code> dataset, arranged in ascending order.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+1
+</th>
+<th style="text-align:right;">
+2
+</th>
+<th style="text-align:right;">
+3
+</th>
+<th style="text-align:right;">
+4
+</th>
+<th style="text-align:right;">
+5
+</th>
+<th style="text-align:right;">
+6
+</th>
+<th style="text-align:right;">
+7
+</th>
+<th style="text-align:right;">
+8
+</th>
+<th style="text-align:right;">
+9
+</th>
+<th style="text-align:right;">
+10
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+5.31
+</td>
+<td style="text-align:right;">
+5.31
+</td>
+<td style="text-align:right;">
+5.32
+</td>
+<td style="text-align:right;">
+6.08
+</td>
+<td style="text-align:right;">
+6.08
+</td>
+<td style="text-align:right;">
+6.08
+</td>
+<td style="text-align:right;">
+6.71
+</td>
+<td style="text-align:right;">
+6.71
+</td>
+<td style="text-align:right;">
+7.34
+</td>
+<td style="text-align:right;">
+7.35
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:right;">
+7.35
+</td>
+<td style="text-align:right;">
+7.96
+</td>
+<td style="text-align:right;">
+7.96
+</td>
+<td style="text-align:right;">
+7.96
+</td>
+<td style="text-align:right;">
+7.97
+</td>
+<td style="text-align:right;">
+9.43
+</td>
+<td style="text-align:right;">
+9.43
+</td>
+<td style="text-align:right;">
+9.44
+</td>
+<td style="text-align:right;">
+9.44
+</td>
+<td style="text-align:right;">
+9.44
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+20
+</td>
+<td style="text-align:right;">
+9.92
+</td>
+<td style="text-align:right;">
+9.92
+</td>
+<td style="text-align:right;">
+9.92
+</td>
+<td style="text-align:right;">
+9.92
+</td>
+<td style="text-align:right;">
+9.93
+</td>
+<td style="text-align:right;">
+9.93
+</td>
+<td style="text-align:right;">
+10.42
+</td>
+<td style="text-align:right;">
+10.42
+</td>
+<td style="text-align:right;">
+10.90
+</td>
+<td style="text-align:right;">
+10.90
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+30
+</td>
+<td style="text-align:right;">
+10.91
+</td>
+<td style="text-align:right;">
+10.91
+</td>
+<td style="text-align:right;">
+10.91
+</td>
+<td style="text-align:right;">
+11.98
+</td>
+<td style="text-align:right;">
+12.62
+</td>
+<td style="text-align:right;">
+12.62
+</td>
+<td style="text-align:right;">
+12.62
+</td>
+<td style="text-align:right;">
+14.08
+</td>
+<td style="text-align:right;">
+15.04
+</td>
+<td style="text-align:right;">
+16.02
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+40
+</td>
+<td style="text-align:right;">
+17.09
+</td>
+<td style="text-align:right;">
+17.09
+</td>
+<td style="text-align:right;">
+17.09
+</td>
+<td style="text-align:right;">
+18.06
+</td>
+<td style="text-align:right;">
+18.45
+</td>
+<td style="text-align:right;">
+19.42
+</td>
+<td style="text-align:right;">
+20.00
+</td>
+<td style="text-align:right;">
+21.45
+</td>
+<td style="text-align:right;">
+24.85
+</td>
+<td style="text-align:right;">
+26.30
+</td>
+</tr>
+</tbody>
+</table></div>
+<p>When there are an odd number of observations, there will be exactly one
+observation that splits the data into two halves, and in such a case that
+observation is the median (no average needed).</p>
+<div class="onebox">
+<p><strong>Median: the number in the middle.</strong></p>
+<p>If the data are ordered from smallest to largest, the <strong>median</strong> is the observation
+right in the middle.
+If there are an even number of observations, there will be two values in the
+middle, and the median is taken as their average.</p>
+<p>Mathematically, if we denote the sample size by <span class="math inline">\(n\)</span>, then</p>
+<ul>
+<li>if <span class="math inline">\(n\)</span> is odd, the median is the <span class="math inline">\([(n+1)/2]^{th}\)</span> smallest value in the data set, and</li>
+<li>if <span class="math inline">\(n\)</span> is even, the median is the average of the <span class="math inline">\((n/2)^{th}\)</span> and <span class="math inline">\((n/2+1)^{th}\)</span> smallest values in the data set.</li>
+</ul>
+</div>
+<p>The median is an example of a <strong>percentile</strong>. Since 50% of the data fall <em>below</em>
+the median, the median is the <span class="math inline">\(50^{th}\)</span> percentile.</p>
+<div class="onebox">
+<p><strong>Percentiles.</strong></p>
+<p>The <strong><span class="math inline">\(p^{th}\)</span> percentile</strong> is a value such that <span class="math inline">\(p\)</span>% of the data fall <em>below</em>
+that value. For example, 7.96
+is the <span class="math inline">\(25^{th}\)</span> percentile of the interest rates shown in Table <a href="explore-numerical.html#tab:loan50-int-rate-sorted">5.2</a> since 25% of the data fall below
+7.96 (and 75% fall above).</p>
+</div>
+<p>The second step in building a box plot is drawing a rectangle to represent the
+middle 50% of the data.
+The length of the the box is called the <strong>interquartile range</strong>, or <strong>IQR</strong> for short.
+It, like the standard deviation, is a measure of variability in data.
+The more variable the data, the larger the standard deviation and IQR tend to be.
+The two boundaries of the box are called the <strong>first quartile</strong> (the <span class="math inline">\(25^{th}\)</span> percentile) and the <strong>third quartile</strong> (the <span class="math inline">\(75^{th}\)</span> percentile) , and these are often labeled <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span>, respectively<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The first and third quartiles are called quartiles because, together with the median (the second quartile), these three values break the data into four groups of equal size–the lowest 25%, next lowest 25%, next lowest 25%, and highest 25%.&lt;/p&gt;"><sup>47</sup></a></p>
+<div class="onebox">
+<p><strong>Interquartile range (IQR).</strong></p>
+<p>The IQR interquartile range is the length of the box in a box plot.
+It is computed as
+<span class="math display">\[
+  IQR = Q_3 - Q_1,
+\]</span>
+where <span class="math inline">\(Q_1\)</span> and <span class="math inline">\(Q_3\)</span> are the <span class="math inline">\(25^{th}\)</span> and <span class="math inline">\(75^{th}\)</span> percentiles, respectively.</p>
+</div>
+<div class="guidedpractice">
+<p>What percent of the data fall between <span class="math inline">\(Q_1\)</span> and the median?
+What percent is between the median and <span class="math inline">\(Q_3\)</span>?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Since &lt;span class="math inline"&gt;\(Q_1\)&lt;/span&gt; and &lt;span class="math inline"&gt;\(Q_3\)&lt;/span&gt; capture the middle 50% of the data and the median splits the data in the middle, 25% of the data fall between &lt;span class="math inline"&gt;\(Q_1\)&lt;/span&gt; and the median, and another 25% falls between the median and &lt;span class="math inline"&gt;\(Q_3\)&lt;/span&gt;.&lt;/p&gt;'><sup>48</sup></a></p>
+</div>
+<p>Extending out from the box, the <strong>whiskers</strong> attempt to capture the data outside of the box.
+The whiskers of a box plot reach to the minimum and the maximum values in the data, unless there are points that are considered unusually high or unusually low, which are identified as potential <strong>outliers</strong> by the box plot.
+These are labeled with a dot on the box plot.
+The purpose of labeling these points—instead of extending the whiskers to the minimum and maximum observed values—is to help identify any observations that appear to be unusually distant from the rest of the data.
+There are a variety of formulas for determining whether a particular data point is considered an outlier, and different statistical software use different formulas.
+A commonly used formula is that any value that is beyond <span class="math inline">\(1.5\times IQR\)</span>[While the choice of exactly 1.5 is arbitrary, it is the most commonly used value for box plots.] away from the box is considered an outlier.
+In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data, up to the outliers.</p>
+<p>In Figure <a href="explore-numerical.html#fig:loan-int-rate-boxplot-dotplot">5.9</a>,
+the upper whisker does not extend to the last two points, 24.85% and 26.3%, which are above
+<span class="math inline">\(Q_3 + 1.5\times IQR\)</span>, and so it extends only to the last point below this limit.
+The lower whisker stops at the minimum value in the data set, 5.31%, since there are no outliers on the lower end of the distribution.</p>
+<div class="protip">
+<p>The whiskers extend to actual data points—not the limits for outliers. That is,
+the values <span class="math inline">\(Q_1 - 1.5\times IQR\)</span> and <span class="math inline">\(Q_3 + 1.5\times IQR\)</span> should not be shown
+on the plot.</p>
+</div>
+<div class="onebox">
+<p><strong>Outliers are extreme.</strong></p>
+<p>An <strong>outlier</strong> is an observation that appears extreme relative to the rest of the data.
+Examining data for outliers serves many useful purposes, including</p>
+<ul>
+<li>identifying strong skew in the distribution,</li>
+<li>identifying possible data collection or data entry errors, and</li>
+<li>providing insight into interesting properties of the data.</li>
+</ul>
+</div>
+<div class="guidedpractice">
+<p>Using the box plot in Figure <a href="explore-numerical.html#fig:loan-int-rate-boxplot-dotplot">5.9</a>, estimate the values of the <span class="math inline">\(Q_1\)</span>, <span class="math inline">\(Q_3\)</span>, and IQR for <code>interest_rate</code> in the <code>loan50</code> data set.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;These visual estimates will vary a little from one person to the next: &lt;span class="math inline"&gt;\(Q_1 \approx\)&lt;/span&gt; 8%, &lt;span class="math inline"&gt;\(Q_3 \approx\)&lt;/span&gt; 14%, IQR &lt;span class="math inline"&gt;\(\approx\)&lt;/span&gt; 14 - 8 = 6%.&lt;/p&gt;'><sup>49</sup></a></p>
+</div>
+</div>
+<div id="describing-and-comparing-quantitative-distributions" class="section level2" number="5.6">
+<h2>
+<span class="header-section-number">5.6</span> Describing and comparing quantitative distributions<a class="anchor" aria-label="anchor" href="#describing-and-comparing-quantitative-distributions"><i class="fas fa-link"></i></a>
+</h2>
+<p>As a review, when describing a scatterplot—the association between
+two quantitative variables, we look for the four features:</p>
+<ol style="list-style-type: decimal">
+<li>Form</li>
+<li>Direction</li>
+<li>Strength</li>
+<li>Outliers</li>
+</ol>
+<p>When asked to describe or compare univariate (single variable) quantitative distributions, we look for four features:</p>
+<ol style="list-style-type: decimal">
+<li>Center</li>
+<li>Variability</li>
+<li>Shape</li>
+<li>Outliers</li>
+</ol>
+<p>We can compare quantitative distributions by using side-by-side box plots,
+or stacked histograms or dot plots. Recall that the <code>loan50</code> data set represents a sample from a larger loan data set called <code>loans</code>.
+This larger data set contains information on 10,000 loans made through Lending Club. Figure <a href="explore-numerical.html#fig:homeownership-interest-boxplots">5.10</a> examines the relationship between <code>homeownership</code>, which for the <code>loans</code> data can take a value of <code>rent</code>, <code>mortgage</code> (owns but has a mortgage), or <code>own</code>, and <code>interest_rate</code>. Note that <code>homeownership</code>
+is a categorical variable and <code>interest_rate</code> is a quantitative variable.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:homeownership-interest-boxplots"></span>
+<img src="05-explore-numerical_files/figure-html/homeownership-interest-boxplots-1.png" alt="Side-by-side box plots of loan interest rates by homeownership category and corresponding histograms." width="90%"><p class="caption">
+Figure 5.10: Side-by-side box plots of loan interest rates by homeownership category and corresponding histograms.
+</p>
+</div>
+<p>We see immediately that some features are easier to discern in box plots, while others in histograms. Shape is shown more clearly in histograms, while center (as measured by the median) is easy to compare across groups in the side-by-side box plots.</p>
+<div class="workedexample">
+<p>Using Figure <a href="explore-numerical.html#fig:homeownership-interest-boxplots">5.10</a> write a few sentences comparing the distributions of loan amount
+across the different homeownership categories.</p>
+<hr>
+<p>The median loan amount is higher for those with a mortgage (around $16,000) than for those who own or rent (around $12,000-$13,000). However, variability in loan amounts is similar across homeownership categories, with an IQR of around $15,000 and loans ranging from a few hundred dollars to $40,000. We see from the histograms that the distribution of loan amounts is skewed right for all three homeownership categories, which means the mean loan amount will be higher than the median loan amount. There are no apparent outliers in the mortgage category, but both the rent and own categories have outliers at $40,000.</p>
+<p>Besides center, variability, shape, and outliers, another interesting feature in these distributions is the result of rounding. Loan amounts in the data set are often rounded to the nearest 100, so we see spikes on these values in the histogram—something that is not evident in the box plots.</p>
+</div>
+</div>
+<div id="robust-statistics" class="section level2" number="5.7">
+<h2>
+<span class="header-section-number">5.7</span> Robust statistics<a class="anchor" aria-label="anchor" href="#robust-statistics"><i class="fas fa-link"></i></a>
+</h2>
+<p>How are the <strong>sample statistics</strong> of the <code>interest_rate</code> data set affected by the observation, 26.3%?
+What would have happened if this loan had instead been only 15%?
+What would happen to these summary statistics if the observation at 26.3% had been even larger, say 35%?
+These scenarios are plotted alongside the original data in Figure <a href="explore-numerical.html#fig:loan-int-rate-robust-ex">5.11</a>, and sample statistics are computed under each scenario in Table <a href="explore-numerical.html#tab:robustOrNotTable">5.3</a>.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:loan-int-rate-robust-ex"></span>
+<img src="05-explore-numerical_files/figure-html/loan-int-rate-robust-ex-1.png" alt="Dot plots of the original interest rate data and two modified data sets." width="90%"><p class="caption">
+Figure 5.11: Dot plots of the original interest rate data and two modified data sets.
+</p>
+</div>
+<div class="inline-table"><table class="table table-striped" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:robustOrNotTable">Table 5.3: </span>A comparison of how the median, IQR, mean, and standard deviation change as the value of an extereme observation from the original interest data changes.
+</caption>
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Robust
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Not robust
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+Scenario
+</th>
+<th style="text-align:center;">
+Median
+</th>
+<th style="text-align:center;">
+IQR
+</th>
+<th style="text-align:center;">
+Mean
+</th>
+<th style="text-align:center;">
+SD
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Original data
+</td>
+<td style="text-align:center;">
+9.93
+</td>
+<td style="text-align:center;">
+5.75
+</td>
+<td style="text-align:center;">
+11.6
+</td>
+<td style="text-align:center;">
+5.05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Move 26.3% to 15%
+</td>
+<td style="text-align:center;">
+9.93
+</td>
+<td style="text-align:center;">
+5.75
+</td>
+<td style="text-align:center;">
+11.3
+</td>
+<td style="text-align:center;">
+4.61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Move 26.3% to 35%
+</td>
+<td style="text-align:center;">
+9.93
+</td>
+<td style="text-align:center;">
+5.75
+</td>
+<td style="text-align:center;">
+11.7
+</td>
+<td style="text-align:center;">
+5.68
+</td>
+</tr>
+</tbody>
+</table></div>
+<div class="guidedpractice">
+<ol style="list-style-type: lower-alpha">
+<li>Which is more affected by extreme observations, the mean or median?<br>
+</li>
+<li>Is the standard deviation or IQR more affected by extreme observations?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;(a) Mean is affected more. (b) Standard deviation is affected more.&lt;/p&gt;"><sup>50</sup></a>
+</li>
+</ol>
+</div>
+<p>The median and IQR are called <strong>robust statistics</strong> because extreme observations have little effect on their values—moving the most extreme value generally has little influence on these statistics.
+On the other hand, the mean and standard deviation are more heavily influenced by changes in extreme observations, which can be important in some situations. Additionally, the mean tends to get pulled in the direction of a distribution’s skewness, while the skewness has little affect on the median.</p>
+<div class="workedexample">
+<p>The median and IQR did not change under the three scenarios in Table <a href="explore-numerical.html#tab:robustOrNotTable">5.3</a>.
+Why might this be the case?</p>
+<hr>
+<p>The median and IQR are only sensitive to numbers near <span class="math inline">\(Q_1\)</span>, the median, and <span class="math inline">\(Q_3\)</span>.
+Since values in these regions are stable in the three data sets, the median and IQR estimates are also stable.</p>
+</div>
+<div class="guidedpractice">
+<p>The distribution of loan amounts in the <code>loan50</code> data set is right skewed, with a few large loans lingering out into the right tail.
+If you were wanting to understand the typical loan size, should you be more interested in the mean or median?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;If we are looking to simply understand what a typical individual loan looks like, the median is probably more useful. However, if the goal is to understand something that scales well, such as the total amount of money we might need to have on hand if we were to offer 1,000 loans, then the mean would be more useful.&lt;/p&gt;"><sup>51</sup></a></p>
+</div>
+</div>
+<div id="transforming-data-special-topic" class="section level2" number="5.8">
+<h2>
+<span class="header-section-number">5.8</span> Transforming data (special topic)<a class="anchor" aria-label="anchor" href="#transforming-data-special-topic"><i class="fas fa-link"></i></a>
+</h2>
+<p>When data are very strongly skewed, we sometimes transform them so they are easier to model. A <strong>transformation</strong> is a rescaling of the data using a function.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:county-pop-transform"></span>
+<img src="05-explore-numerical_files/figure-html/county-pop-transform-1.png" alt="Plot A: A histogram of the populations of all US counties. Plot B: A histogram of log$_{10}$-transformed county populations. For this plot, the x-value corresponds to the power of 10, e.g. 4 on the x-axis corresponds to $10^4 =$ 10,000. Data are from 2017." width="90%"><p class="caption">
+Figure 5.12: Plot A: A histogram of the populations of all US counties. Plot B: A histogram of log<span class="math inline">\(_{10}\)</span>-transformed county populations. For this plot, the x-value corresponds to the power of 10, e.g. 4 on the x-axis corresponds to <span class="math inline">\(10^4 =\)</span> 10,000. Data are from 2017.
+</p>
+</div>
+<div class="workedexample">
+<p>Consider the histogram of county populations shown in the left of Figure <a href="explore-numerical.html#fig:county-pop-transform">5.12</a>, which shows extreme skew. What is not so useful about this plot?</p>
+<hr>
+<p>Nearly all of the data fall into the left-most bin, and the extreme skew obscures many of the potentially interesting details in the data.</p>
+</div>
+<p>There are some standard transformations that may be useful for strongly right skewed data where much of the data is positive but clustered near zero.
+For instance, a plot of the logarithm (base 10) of county populations results in the new histogram in Figure <a href="explore-numerical.html#fig:county-pop-transform">5.12</a>.
+This data is symmetric, and any potential outliers appear much less extreme than in the original data set.
+By reigning in the outliers and extreme skew, transformations like this often make it easier to build statistical models against the data.</p>
+<p>Transformations can also be applied to one or both variables in a scatterplot.
+A scatterplot of the population change from 2010 to 2017 against the population in 2010 is shown in Figure <a href="explore-numerical.html#fig:county-pop-change-transform">5.13</a>.
+In this first scatterplot, it’s hard to decipher any interesting patterns because the population variable is so strongly skewed.
+However, if we apply a log<span class="math inline">\(_{10}\)</span> transformation to the population variable, as shown in
+Figure <a href="explore-numerical.html#fig:county-pop-change-transform">5.13</a>, a positive association between the variables is revealed.
+In fact, we may be interested in fitting a trend line to the data when we explore methods around fitting regression lines in Chapter <a href="#cor-reg"><strong>??</strong></a>.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:county-pop-change-transform"></span>
+<img src="05-explore-numerical_files/figure-html/county-pop-change-transform-1.png" alt="Plot A: Scatterplot of population change against the population before the change. Plot B: A~scatterplot of the same data but where the population size has been log-transformed." width="90%"><p class="caption">
+Figure 5.13: Plot A: Scatterplot of population change against the population before the change. Plot B: A~scatterplot of the same data but where the population size has been log-transformed.
+</p>
+</div>
+<p>Transformations other than the logarithm can be useful, too.
+For instance, the square root (<span class="math inline">\(\sqrt{\text{original observation}}\)</span>) and inverse (<span class="math inline">\(\frac{1}{\text{original observation}}\)</span>) are commonly used by data scientists.
+Common goals in transforming data are to see the data structure differently, reduce skew, assist in modeling, or straighten a nonlinear relationship in a scatterplot.</p>
+</div>
+<div id="mapping-data-special-topic" class="section level2" number="5.9">
+<h2>
+<span class="header-section-number">5.9</span> Mapping data (special topic)<a class="anchor" aria-label="anchor" href="#mapping-data-special-topic"><i class="fas fa-link"></i></a>
+</h2>
+<p></p>
+<p>The <code>county</code> data set offers many numerical variables that we could plot using dot plots, scatterplots, or box plots, but these miss the true nature of the data.
+Rather, when we encounter geographic data, we should create an <strong>intensity map</strong>, where colors are used to show higher and lower values of a variable.
+Figures <a href="explore-numerical.html#fig:county-intensity-map-poverty-unemp">5.14</a> and <a href="explore-numerical.html#fig:county-intensity-map-homeownership-median-income">5.15</a> show intensity maps for poverty rate in percent (<code>poverty</code>), unemployment rate (<code>unemployment_rate</code>), homeownership rate in percent (<code>homeownership</code>), and median household income (<code>median_hh_income</code>).
+The color key indicates which colors correspond to which values.
+The intensity maps are not generally very helpful for getting precise values in any given county, but they are very helpful for seeing geographic trends and generating interesting research questions or hypotheses.</p>
+<div class="workedexample">
+<p>What interesting features are evident in the poverty and unemployment rate intensity maps?</p>
+<hr>
+<p>Poverty rates are evidently higher in a few locations.
+Notably, the deep south shows higher poverty rates, as does much of Arizona and New Mexico.
+High poverty rates are evident in the Mississippi flood plains a little north of New Orleans and also in a large section of Kentucky.
+The unemployment rate follows similar trends, and we can see correspondence between the two
+variables.
+In fact, it makes sense for higher rates of unemployment to be closely related to poverty rates.
+One observation that stands out when comparing the two maps: the poverty rate is much higher than the unemployment rate, meaning while many people may be working, they are not making enough to break out of poverty.</p>
+</div>
+<div class="guidedpractice">
+<p>What interesting features are evident in the median household income intensity map in Figure <a href="explore-numerical.html#fig:county-intensity-map-homeownership-median-income">5.15</a>?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Note: answers will vary. There is some correspondence between high earning and metropolitan areas, where we can see darker spots (higher median household income), though there are several exceptions. You might look for large cities you are familiar with and try to spot them on the map as dark spots.&lt;/p&gt;"><sup>52</sup></a></p>
+</div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:county-intensity-map-poverty-unemp"></span>
+<img src="05-explore-numerical_files/figure-html/county-intensity-map-poverty-unemp-1.png" alt="Plot A: Intensity map of poverty rate (percent). Plot B: Intensity map of the unemployment rate (percent)." width="90%"><p class="caption">
+Figure 5.14: Plot A: Intensity map of poverty rate (percent). Plot B: Intensity map of the unemployment rate (percent).
+</p>
+</div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:county-intensity-map-homeownership-median-income"></span>
+<img src="05-explore-numerical_files/figure-html/county-intensity-map-homeownership-median-income-1.png" alt="Plot A: Intensity map of homeownership rate (percent). Plot B: Intensity map of median household income ($1000s)." width="90%"><p class="caption">
+Figure 5.15: Plot A: Intensity map of homeownership rate (percent). Plot B: Intensity map of median household income ($1000s).
+</p>
+</div>
+</div>
+<div id="chp5-review" class="section level2" number="5.10">
+<h2>
+<span class="header-section-number">5.10</span> Chapter review<a class="anchor" aria-label="anchor" href="#chp5-review"><i class="fas fa-link"></i></a>
+</h2>
+<div id="summary-3" class="section level3 unnumbered">
+<h3>Summary<a class="anchor" aria-label="anchor" href="#summary-3"><i class="fas fa-link"></i></a>
+</h3>
+<p>Fluently working with quantitaitve variables is an important skill for data analysts.
+In this chapter we have introduced different visualizations and numerical summaries applied to quantitative variables.
+The graphical visualizations are even more descriptive when two variables are presented simultaneously.
+We presented scatterplots, dot plots, histograms, and box plots.
+Quantitative variables can be summarized using the mean, median, quartiles, standard deviation, and variance.</p>
+</div>
+<div id="terms-3" class="section level3 unnumbered">
+<h3>Terms<a class="anchor" aria-label="anchor" href="#terms-3"><i class="fas fa-link"></i></a>
+</h3>
+<p>We introduced the following terms in the chapter.
+If you’re not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
+We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate.
+However you should be able to easily spot them as <strong>bolded text</strong>.</p>
+<div class="inline-table"><table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;"><tbody>
+<tr>
+<td style="text-align:left;">
+average
+</td>
+<td style="text-align:left;">
+intensity map
+</td>
+<td style="text-align:left;">
+scatterplot
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+bimodal
+</td>
+<td style="text-align:left;">
+interquartile range
+</td>
+<td style="text-align:left;">
+standard deviation
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+box plot
+</td>
+<td style="text-align:left;">
+IQR
+</td>
+<td style="text-align:left;">
+strength
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+data density
+</td>
+<td style="text-align:left;">
+left skewed
+</td>
+<td style="text-align:left;">
+symmetric
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+density plot
+</td>
+<td style="text-align:left;">
+mean
+</td>
+<td style="text-align:left;">
+tail
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+deviation
+</td>
+<td style="text-align:left;">
+median
+</td>
+<td style="text-align:left;">
+third quartile
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+direction
+</td>
+<td style="text-align:left;">
+multimodal
+</td>
+<td style="text-align:left;">
+transformation
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+distribution
+</td>
+<td style="text-align:left;">
+outlier
+</td>
+<td style="text-align:left;">
+unimodal
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dot plot
+</td>
+<td style="text-align:left;">
+outliers
+</td>
+<td style="text-align:left;">
+variability
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+first quartile
+</td>
+<td style="text-align:left;">
+percentile
+</td>
+<td style="text-align:left;">
+variance
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+form
+</td>
+<td style="text-align:left;">
+right skewed
+</td>
+<td style="text-align:left;">
+weighted mean
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+histogram
+</td>
+<td style="text-align:left;">
+robust statistics
+</td>
+<td style="text-align:left;">
+whiskers
+</td>
+</tr>
+</tbody></table></div>
+</div>
+<div id="key-ideas-3" class="section level3 unnumbered">
+<h3>Key ideas<a class="anchor" aria-label="anchor" href="#key-ideas-3"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li><p>Two variables are <strong>associated</strong> when the behavior of one variable depends on the value of the other variable. Two quantitative variables are associated when a trend is apparent on a scatterplot. Recall from Chapter <a href="#intro-to-data"><strong>??</strong></a>, <em>association does not imply causation</em>!</p></li>
+<li><p>When describing the <strong>distribution</strong> of a single quantitative variable on a histogram, dot plot, or box plot, we look for (1) center, (2) variability, (3) shape, and (4) outliers.</p></li>
+<li><p>When describing the relationship shown between two quantitative variables in a scatterplot, we look for (1) form, (2) direction, (3) strength, and (4) outliers.</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+  <div class="chapter-nav">
+<div class="prev"><a href="explore-categorical.html"><span class="header-section-number">4</span> Exploring categorical data</a></div>
+<div class="next"><a href="explore-regression.html"><span class="header-section-number">6</span> Correlation and regression</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#explore-numerical"><span class="header-section-number">5</span> Exploring quantitative data</a></li>
+<li><a class="nav-link" href="#scatterplots"><span class="header-section-number">5.1</span> Scatterplots for paired data</a></li>
+<li><a class="nav-link" href="#dotplots"><span class="header-section-number">5.2</span> Dot plots and the mean</a></li>
+<li><a class="nav-link" href="#histograms"><span class="header-section-number">5.3</span> Histograms and shape</a></li>
+<li><a class="nav-link" href="#variance-sd"><span class="header-section-number">5.4</span> Variance and standard deviation</a></li>
+<li><a class="nav-link" href="#box-plots-quartiles-and-the-median"><span class="header-section-number">5.5</span> Box plots, quartiles, and the median</a></li>
+<li><a class="nav-link" href="#describing-and-comparing-quantitative-distributions"><span class="header-section-number">5.6</span> Describing and comparing quantitative distributions</a></li>
+<li><a class="nav-link" href="#robust-statistics"><span class="header-section-number">5.7</span> Robust statistics</a></li>
+<li><a class="nav-link" href="#transforming-data-special-topic"><span class="header-section-number">5.8</span> Transforming data (special topic)</a></li>
+<li><a class="nav-link" href="#mapping-data-special-topic"><span class="header-section-number">5.9</span> Mapping data (special topic)</a></li>
+<li>
+<a class="nav-link" href="#chp5-review"><span class="header-section-number">5.10</span> Chapter review</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#summary-3">Summary</a></li>
+<li><a class="nav-link" href="#terms-3">Terms</a></li>
+<li><a class="nav-link" href="#key-ideas-3">Key ideas</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/MTstateIntroStats/IntroStatTextbook/blob/master/05-explore-numerical.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/MTstateIntroStats/IntroStatTextbook/edit/master/05-explore-numerical.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Montana State Introductory Statistics with R</strong>" was written by Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

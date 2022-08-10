@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 1 Hello data | Montana State Introductory Statistics with R</title>
+<meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager">
+<meta name="description" content="Scientists seek to answer questions using rigorous methods and careful observations. These observations—collected from the likes of field notes, surveys, and experiments—form the backbone of a...">
+<meta name="generator" content="bookdown 0.27 with bs4_book()">
+<meta property="og:title" content="Chapter 1 Hello data | Montana State Introductory Statistics with R">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://mtstateintrostats.github.io/IntroStatTextbook/data-hello.html">
+<meta property="og:description" content="Scientists seek to answer questions using rigorous methods and careful observations. These observations—collected from the likes of field notes, surveys, and experiments—form the backbone of a...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 1 Hello data | Montana State Introductory Statistics with R">
+<meta name="twitter:description" content="Scientists seek to answer questions using rigorous methods and careful observations. These observations—collected from the likes of field notes, surveys, and experiments—form the backbone of a...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><script type="text/x-mathjax-config">
+    const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+    for (let popover of popovers){
+      const div = document.createElement('div');
+      div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+      div.innerHTML = popover.getAttribute('data-content');
+      
+      // Will this work with TeX on its own line?
+      var has_math = div.querySelector("span.math");
+      if (has_math) {
+        document.body.appendChild(div);
+      	MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+      	MathJax.Hub.Queue(function(){
+          popover.setAttribute('data-content', div.innerHTML);
+      	})
+      }
+    }
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="css/ims-style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Montana State Introductory Statistics with R</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="authors.html">Authors</a></li>
+<li><a class="" href="preface.html">Preface</a></li>
+<li><a class="" href="rstudio.html">Preliminaries: Getting started in RStudio</a></li>
+<li class="book-part">Introduction to data</li>
+<li><a class="active" href="data-hello.html"><span class="header-section-number">1</span> Hello data</a></li>
+<li><a class="" href="data-design.html"><span class="header-section-number">2</span> Study design</a></li>
+<li><a class="" href="data-applications.html"><span class="header-section-number">3</span> Applications: Data</a></li>
+<li class="book-part">Exploratory data analysis</li>
+<li><a class="" href="explore-categorical.html"><span class="header-section-number">4</span> Exploring categorical data</a></li>
+<li><a class="" href="explore-numerical.html"><span class="header-section-number">5</span> Exploring quantitative data</a></li>
+<li><a class="" href="explore-regression.html"><span class="header-section-number">6</span> Correlation and regression</a></li>
+<li><a class="" href="explore-mult-reg.html"><span class="header-section-number">7</span> Multivariable models</a></li>
+<li><a class="" href="explore-applications.html"><span class="header-section-number">8</span> Applications: Explore</a></li>
+<li class="book-part">Foundations of inference</li>
+<li><a class="" href="foundations-randomization.html"><span class="header-section-number">9</span> Hypothesis testing with randomization</a></li>
+<li><a class="" href="foundations-bootstrapping.html"><span class="header-section-number">10</span> Confidence intervals with bootstrapping</a></li>
+<li><a class="" href="foundations-mathematical.html"><span class="header-section-number">11</span> Inference with mathematical models</a></li>
+<li><a class="" href="foundations-errors.html"><span class="header-section-number">12</span> Errors, power, and practical importance</a></li>
+<li><a class="" href="foundations-applications.html"><span class="header-section-number">13</span> Applications: Foundations</a></li>
+<li class="book-part">Inference for categorical data</li>
+<li><a class="" href="inference-one-prop.html"><span class="header-section-number">14</span> Inference for a single proportion</a></li>
+<li><a class="" href="inference-two-props.html"><span class="header-section-number">15</span> Inference for comparing two proportions</a></li>
+<li><a class="" href="inference-categ-applications.html"><span class="header-section-number">16</span> Applications: Infer categorical</a></li>
+<li class="book-part">Inference for quantitative data</li>
+<li><a class="" href="inference-one-mean.html"><span class="header-section-number">17</span> Inference for a single mean</a></li>
+<li><a class="" href="inference-paired-means.html"><span class="header-section-number">18</span> Inference for comparing paired means</a></li>
+<li><a class="" href="inference-two-means.html"><span class="header-section-number">19</span> Inference for comparing two independent means</a></li>
+<li><a class="" href="inference-num-applications.html"><span class="header-section-number">20</span> Applications: Infer quantitative</a></li>
+<li class="book-part">Inference for regression</li>
+<li><a class="" href="inference-reg.html"><span class="header-section-number">21</span> Inference for correlation and slope</a></li>
+<li><a class="" href="inference-reg-applications.html"><span class="header-section-number">22</span> Applications: Infer regression</a></li>
+<li class="book-part">Probability</li>
+<li><a class="" href="probability.html"><span class="header-section-number">23</span> Probability with tables</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/MTstateIntroStats/IntroStatTextbook">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="data-hello" class="section level1" number="1">
+<h1>
+<span class="header-section-number">1</span> Hello data<a class="anchor" aria-label="anchor" href="#data-hello"><i class="fas fa-link"></i></a>
+</h1>
+<!-- Old reference: #intro-to-data -->
+<div class="chapterintro">
+<p>Scientists seek to answer questions using rigorous methods and careful observations.
+These observations—collected from the likes of field notes, surveys, and experiments—form the backbone of a statistical investigation and are called <strong>data</strong>.
+Statistics is the study of how best to collect, analyze, and draw conclusions from data, and in this first chapter, we focus on both the properties of data and on the collection of data.</p>
+</div>
+<p>Though we were calculating probabilities in the 16th century, and the first US Census was directed by Thomas Jefferson in 1790<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;a href="https://www.census.gov/history/www/through_the_decades/overview/1790.html" class="uri"&gt;https://www.census.gov/history/www/through_the_decades/overview/1790.html&lt;/a&gt;&lt;/p&gt;'><sup>4</sup></a>, the discipline of statistics as we know it came about in the 1800s. Up until the 21st century, the <strong>statistical investigation process</strong> looked something like this (adapted from <span class="citation">Tintle et al. (<a href="references.html#ref-ISI2016" role="doc-biblioref">2016</a>)</span>):</p>
+<ol style="list-style-type: decimal">
+<li>Ask a research question.</li>
+<li>Design a study and collect data.</li>
+<li>Summarize and visualize the data.</li>
+<li>Use statistical analysis methods to draw inferences from the data.</li>
+<li>Communicate the results and answer the research question.</li>
+<li>Revisit and look forward.</li>
+</ol>
+<p>With the rise of data science, however, we might not start with a research question,
+and instead start with a data set<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Data used in this context are called “found data.”&lt;/p&gt;"><sup>5</sup></a>.
+In this case, the statistical investigation process looks more like the data exploration cycle found in Figure <a href="data-hello.html#fig:data-science-explore">1.1</a> taken from <span class="citation">Wickham and Grolemund (<a href="references.html#ref-R4DS" role="doc-biblioref">2017</a>)</span>.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:data-science-explore"></span>
+<img src="images/data-science-explore.png" alt="Wickham and Grolemund's data exploration cycle (2017)." width="75%"><p class="caption">
+Figure 1.1: Wickham and Grolemund’s data exploration cycle (2017).
+</p>
+</div>
+<p>In either case, the ideas, concepts, and methods presented in this book will provide you with the tools to work through the statistical investigation process, whether starting with a research question or starting with data.</p>
+<div id="basic-stents-strokes" class="section level2" number="1.1">
+<h2>
+<span class="header-section-number">1.1</span> Case study: using stents to prevent strokes<a class="anchor" aria-label="anchor" href="#basic-stents-strokes"><i class="fas fa-link"></i></a>
+</h2>
+<p></p>
+<p>In this section, we introduce a classic challenge in statistics: evaluating the efficacy of a medical treatment.
+Terms in this section, and indeed much of this chapter, will all be revisited later in the text.
+The plan for now is simply to get a sense of the role statistics can play in practice.</p>
+<p>Here, we will consider an experiment that studies effectiveness of stents in treating patients at risk of stroke <span class="citation">(<a href="references.html#ref-chimowitz2011stenting" role="doc-biblioref">Chimowitz et al. 2011</a>)</span>.
+Stents are small mesh tubes that are placed inside narrow or weak arteries to assist in patient recovery after cardiac events and reduce the risk of an additional heart attack or death.</p>
+<p>Many doctors have hoped that there would be similar benefits for patients at risk of stroke. We start by writing the principal question the researchers hope to answer:</p>
+<blockquote>
+<p>Does the use of stents reduce the risk of stroke?</p>
+</blockquote>
+<p>The researchers who asked this question conducted an experiment with 451 at-risk patients. Each volunteer patient was randomly assigned to one of two groups:</p>
+<ul>
+<li>
+<strong>Treatment group</strong>. Patients in the treatment group received a stent and medical management.
+The medical management included medications, management of risk factors, and help in lifestyle modification.</li>
+<li>
+<strong>Control group</strong>. Patients in the control group received the same medical management as the treatment group, but they did not receive stents.</li>
+</ul>
+<p>Researchers randomly assigned 224 patients to the treatment group and 227 to the control group.
+In this study, the control group provides a reference point against which we can measure the medical impact of stents in the treatment group.</p>
+<p>Researchers studied the effect of stents at two time points: 30 days after enrollment and 365 days after enrollment.
+The data collected on 5 of these patients are summarized in Table <a href="data-hello.html#tab:stentStudyResultsDF">1.1</a>.
+Patient outcomes are recorded as <code>stroke</code> or <code>no event</code>, representing whether or not the patient had a stroke during that time period.</p>
+<div class="data">
+<p>The data from this study can be found in the <a href="http://openintrostat.github.io/openintro">openintro</a> package: <a href="http://openintrostat.github.io/openintro/reference/stent30.html"><code>stent30</code></a> and <a href="http://openintrostat.github.io/openintro/reference/stent365.html"><code>stent365</code></a>.</p>
+</div>
+<div class="inline-table"><table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:stentStudyResultsDF">Table 1.1: </span>Results for five patients from the stent study.
+</caption>
+<thead><tr>
+<th style="text-align:right;">
+patient
+</th>
+<th style="text-align:left;">
+group
+</th>
+<th style="text-align:left;">
+30 days
+</th>
+<th style="text-align:left;">
+365 days
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+treatment
+</td>
+<td style="text-align:left;">
+no event
+</td>
+<td style="text-align:left;">
+no event
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+treatment
+</td>
+<td style="text-align:left;">
+stroke
+</td>
+<td style="text-align:left;">
+stroke
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+treatment
+</td>
+<td style="text-align:left;">
+no event
+</td>
+<td style="text-align:left;">
+no event
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+treatment
+</td>
+<td style="text-align:left;">
+no event
+</td>
+<td style="text-align:left;">
+no event
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:left;">
+no event
+</td>
+<td style="text-align:left;">
+no event
+</td>
+</tr>
+</tbody>
+</table></div>
+<p>Considering data from each of the 451 patients individually would be a long, cumbersome path towards answering the original research question.
+Instead, performing a statistical data analysis allows us to consider all of the data at once.
+Table <a href="data-hello.html#tab:stentStudyResultsDFsummary">1.2</a> summarizes the raw data in a more helpful way.
+In this table, we can quickly see what happened over the entire study.
+For instance, to identify the number of patients in the treatment group who had a stroke within 30 days after the treatment, we look in the leftmost column (30 days), at the intersection of treatment and stroke: 33.
+To identify the number of control patients who did not have a stroke after 365 days after receiving treatment, we look at the rightmost column (365 days), at the intersection of control and no event: 199.</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:stentStudyResultsDFsummary">Table 1.2: </span>Descriptive statistics for the stent study.
+</caption>
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; border-bottom: 2px solid" colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+30 days
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; border-bottom: 2px solid" colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+365 days
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+stroke
+</th>
+<th style="text-align:right;">
+no event
+</th>
+<th style="text-align:right;">
+stroke
+</th>
+<th style="text-align:right;">
+no event
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;border-top: 2px solid">
+treatment
+</td>
+<td style="text-align:right;border-top: 2px solid">
+33
+</td>
+<td style="text-align:right;border-top: 2px solid">
+191
+</td>
+<td style="text-align:right;border-top: 2px solid">
+45
+</td>
+<td style="text-align:right;border-top: 2px solid">
+179
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+214
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+199
+</td>
+</tr>
+<tr>
+<td style="text-align:left;border-top: 2px solid">
+Total
+</td>
+<td style="text-align:right;border-top: 2px solid">
+46
+</td>
+<td style="text-align:right;border-top: 2px solid">
+405
+</td>
+<td style="text-align:right;border-top: 2px solid">
+73
+</td>
+<td style="text-align:right;border-top: 2px solid">
+378
+</td>
+</tr>
+</tbody>
+</table></div>
+<p>The data summarized in this table can also be visualized with a <strong>barplot</strong>, seen in Figure <a href="data-hello.html#fig:stentStudyResultsDFbarplot">1.2</a>:</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:stentStudyResultsDFbarplot"></span>
+<img src="01-data-hello_files/figure-html/stentStudyResultsDFbarplot-1.png" alt="Segmented barplot of outcomes in stent study by group and time." width="90%"><p class="caption">
+Figure 1.2: Segmented barplot of outcomes in stent study by group and time.
+</p>
+</div>
+<div class="guidedpractice">
+<p>Of the 224 patients in the treatment group, 45 had a stroke by the end of the first year.
+Using these two numbers, compute the proportion of patients in the treatment group who had a stroke by the end of their first year.
+(Note: answers to all Guided Practice exercises are provided in footnotes!)<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;The proportion of the 224 patients who had a stroke within 365 days: &lt;span class="math inline"&gt;\(45/224 = 0.20\)&lt;/span&gt;.&lt;/p&gt;'><sup>6</sup></a></p>
+</div>
+<p>We can compute summary statistics from the table to give us a better idea of how the impact of the stent treatment differed between the two groups.
+A <strong>summary statistic</strong> is a single number summarizing a large amount of data.
+For instance, the primary results of the study after 1 year could be described by two summary statistics: the proportion of people who had a stroke in the treatment and control groups.</p>
+<ul>
+<li>Proportion who had a stroke in the treatment (stent) group: <span class="math inline">\(45/224 = 0.20 = 20\)</span>%.</li>
+<li>Proportion who had a stroke in the control group: <span class="math inline">\(28/227 = 0.12 = 12\)</span>%.</li>
+</ul>
+<p>These two summary statistics are useful in looking for differences in the groups, and we are in for a surprise: an additional 8% of patients in the treatment group had a stroke!
+This is important for two reasons.
+First, it is contrary to what doctors expected, which was that stents would <em>reduce</em> the rate of strokes.
+Second, it leads to a statistical question: do the data show a “real” difference between the groups?</p>
+<p>This second question is subtle, and is the basis of what we call <strong>statistical inference</strong>.
+Suppose you flip a coin 100 times. While the chance a coin lands heads in any given coin flip is 50%, we probably won’t observe exactly 50 heads.
+This type of fluctuation is part of almost any type of data generating process.
+It is possible that the 8% difference in the stent study is due to this natural variation.
+However, the larger the difference we observe (for a particular sample size), the less believable it is that the difference is due to chance.
+So what we are really asking is the following: is the difference so large that we should reject the notion that it was due to chance?</p>
+<p>While we don’t yet have our statistical tools to fully address this question on our own, we can comprehend the conclusions of the published analysis: there was compelling evidence of harm by stents in this study of stroke patients.</p>
+<div class="importantbox">
+<p><strong>Be careful.</strong>
+Do not generalize the results of this study to all patients and all stents.
+This study looked at patients with very specific characteristics who volunteered to be a part of this study and who may not be representative of all stroke patients.
+In addition, there are many types of stents and this study only considered the self-expanding Wingspan stent (Boston Scientific).
+However, this study does leave us with an important lesson: we should keep our eyes open for surprises.</p>
+</div>
+<p></p>
+</div>
+<div id="data-basics" class="section level2" number="1.2">
+<h2>
+<span class="header-section-number">1.2</span> Data basics<a class="anchor" aria-label="anchor" href="#data-basics"><i class="fas fa-link"></i></a>
+</h2>
+<p>Effective presentation and description of data is a first step in most analyses. This section introduces one structure for organizing data as well as some terminology that will be used throughout this book.</p>
+<div id="observations-variables-and-data-frames" class="section level3" number="1.2.1">
+<h3>
+<span class="header-section-number">1.2.1</span> Observations, variables, and data frames<a class="anchor" aria-label="anchor" href="#observations-variables-and-data-frames"><i class="fas fa-link"></i></a>
+</h3>
+<p></p>
+<p>Here, we will consider loans offered through the Lending Club, a peer-to-peer lending company. Such data could be used to explore characteristics of people receiving loans from the platform, such as job titles, annual income, or home ownership. Table <a href="data-hello.html#tab:loan50DF">1.3</a> displays six rows of a data set for 50 randomly sampled loans. These observations will be referred to as the <code>loan50</code> data set.</p>
+<div class="data">
+<p>The data can be found in the <a href="http://openintrostat.github.io/openintro">openintro</a> package: <a href="http://openintrostat.github.io/openintro/reference/loan50.html"><code>loan50</code></a>.</p>
+</div>
+<p>Each row in the table represents a single loan.
+The formal name for a row is a <strong>case</strong> or <strong>observational unit</strong>. Since there are 50 observational units in our data set, the <strong>sample size</strong>, denoted by <span class="math inline">\(n\)</span>, is 50 (<span class="math inline">\(n = 50\)</span>).
+The columns represent characteristics of each loan, where each column is referred to as a <strong>variable</strong>. For example, the first row represents a loan of $7,500 with an interest rate of 7.34%, where the borrower is based in Maryland (MD) and has an income of $70,000.</p>
+<div class="protip">
+<p>A variable is something that can be measured on an individual observational unit.
+Be careful not to confuse summary statistics—calculated from a <em>group</em> of observational units—with variables.</p>
+</div>
+<div class="guidedpractice">
+<p>What is the grade of the first loan in Table <a href="data-hello.html#tab:loan50DF">1.3</a>?
+What is the home ownership status of the borrower for that first loan?
+Reminder: for these Guided Practice questions, you can check your answer in the footnote.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The loan’s grade is B, and the borrower rents their residence.&lt;/p&gt;"><sup>7</sup></a></p>
+</div>
+<p>In practice, it is especially important to ask clarifying questions to ensure important aspects of the data are understood.
+For instance, it is always important to be sure we know what each variable means and its units of measurement.
+Descriptions of the variables in the <code>loan50</code> data set are given in Table <a href="data-hello.html#tab:loan50Variables">1.4</a>.</p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:loan50DF">Table 1.3: </span>Six rows from the <code>loan50</code> data set.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+loan_amount
+</th>
+<th style="text-align:right;">
+interest_rate
+</th>
+<th style="text-align:right;">
+term
+</th>
+<th style="text-align:left;">
+grade
+</th>
+<th style="text-align:left;">
+state
+</th>
+<th style="text-align:right;">
+total_income
+</th>
+<th style="text-align:left;">
+homeownership
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+22000
+</td>
+<td style="text-align:right;">
+10.90
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+NJ
+</td>
+<td style="text-align:right;">
+59000
+</td>
+<td style="text-align:left;">
+rent
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+6000
+</td>
+<td style="text-align:right;">
+9.92
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+CA
+</td>
+<td style="text-align:right;">
+60000
+</td>
+<td style="text-align:left;">
+rent
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+25000
+</td>
+<td style="text-align:right;">
+26.30
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+E
+</td>
+<td style="text-align:left;">
+SC
+</td>
+<td style="text-align:right;">
+75000
+</td>
+<td style="text-align:left;">
+mortgage
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+6000
+</td>
+<td style="text-align:right;">
+9.92
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+CA
+</td>
+<td style="text-align:right;">
+75000
+</td>
+<td style="text-align:left;">
+rent
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:right;">
+25000
+</td>
+<td style="text-align:right;">
+9.43
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+OH
+</td>
+<td style="text-align:right;">
+254000
+</td>
+<td style="text-align:left;">
+mortgage
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:right;">
+6400
+</td>
+<td style="text-align:right;">
+9.92
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+IN
+</td>
+<td style="text-align:right;">
+67000
+</td>
+<td style="text-align:left;">
+mortgage
+</td>
+</tr>
+</tbody>
+</table></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:loan50Variables">Table 1.4: </span>Variables and their descriptions for the <code>loan50</code> data set.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+variable
+</th>
+<th style="text-align:left;">
+description
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+loan_amount
+</td>
+<td style="text-align:left;">
+Amount of the loan received, in US dollars.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+interest_rate
+</td>
+<td style="text-align:left;">
+Interest rate on the loan, in an annual percentage.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+term
+</td>
+<td style="text-align:left;">
+The length of the loan, which is always set as a whole number of months.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+grade
+</td>
+<td style="text-align:left;">
+Loan grade, which takes on values A through G and represents the quality of the loan and its likelihood of being repaid.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+US state where the borrower resides.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+total_income
+</td>
+<td style="text-align:left;">
+Borrower’s total income, including any second income, in US dollars.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+homeownership
+</td>
+<td style="text-align:left;">
+Indicates whether the person owns, owns but has a mortgage, or rents.
+</td>
+</tr>
+</tbody>
+</table></div>
+<p></p>
+<p>The data in Table <a href="data-hello.html#tab:loan50DF">1.3</a> represent a <strong>data frame</strong> (or data matrix), which is a convenient and common way to organize data, especially if collecting data in a spreadsheet.
+Each row of a data frame corresponds to a unique case (observational unit), and each column corresponds to a variable.</p>
+<p>When recording data, use a data frame unless you have a very good reason to use a different structure.
+This structure allows new cases to be added as rows or new variables as new columns.</p>
+<div class="guidedpractice">
+<p>The grades for assignments, quizzes, and exams in a course are often recorded in a gradebook that takes the form of a data frame.
+How might you organize a course’s grade data using a data frame?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;There are multiple strategies that can be followed. One common strategy is to have each student represented by a row, and then add a column for each assignment, quiz, or exam. Under this setup, it is easy to review a single line to understand the grade history of a student. There should also be columns to include student information, such as one column to list student names.&lt;/p&gt;"><sup>8</sup></a></p>
+</div>
+<p></p>
+<div class="guidedpractice">
+<p>We consider data for 3,142 counties in the United States,
+which include the name of each county, the state where it resides, its population in 2017, how its population changed from 2010 to 2017, poverty rate, and nine additional characteristics.
+How might these data be organized in a data frame?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Each county may be viewed as a case, and there are eleven pieces of information recorded for each case. A table with 3,142 rows and 14 columns could hold these data, where each row represents a county and each column represents a particular piece of information.&lt;/p&gt;"><sup>9</sup></a></p>
+</div>
+<p>The data described in the Guided Practice above represent the <strong>county</strong> data set, which is shown as a data frame in Table <a href="data-hello.html#tab:countyDF">1.5</a>.
+The variables as well as the variables in the data set that did not fit in Table <a href="data-hello.html#tab:countyDF">1.5</a> are described in Table <a href="data-hello.html#tab:countyVariables">1.6</a></p>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:countyDF">Table 1.5: </span>Six observations and six variables from the <code>county</code> data set.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+name
+</th>
+<th style="text-align:left;">
+state
+</th>
+<th style="text-align:right;">
+pop2017
+</th>
+<th style="text-align:right;">
+pop_change
+</th>
+<th style="text-align:right;">
+unemployment_rate
+</th>
+<th style="text-align:left;">
+median_edu
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Autauga County
+</td>
+<td style="text-align:left;">
+Alabama
+</td>
+<td style="text-align:right;">
+55504
+</td>
+<td style="text-align:right;">
+1.48
+</td>
+<td style="text-align:right;">
+3.86
+</td>
+<td style="text-align:left;">
+some_college
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Baldwin County
+</td>
+<td style="text-align:left;">
+Alabama
+</td>
+<td style="text-align:right;">
+212628
+</td>
+<td style="text-align:right;">
+9.19
+</td>
+<td style="text-align:right;">
+3.99
+</td>
+<td style="text-align:left;">
+some_college
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Barbour County
+</td>
+<td style="text-align:left;">
+Alabama
+</td>
+<td style="text-align:right;">
+25270
+</td>
+<td style="text-align:right;">
+-6.22
+</td>
+<td style="text-align:right;">
+5.90
+</td>
+<td style="text-align:left;">
+hs_diploma
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bibb County
+</td>
+<td style="text-align:left;">
+Alabama
+</td>
+<td style="text-align:right;">
+22668
+</td>
+<td style="text-align:right;">
+0.73
+</td>
+<td style="text-align:right;">
+4.39
+</td>
+<td style="text-align:left;">
+hs_diploma
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Blount County
+</td>
+<td style="text-align:left;">
+Alabama
+</td>
+<td style="text-align:right;">
+58013
+</td>
+<td style="text-align:right;">
+0.68
+</td>
+<td style="text-align:right;">
+4.02
+</td>
+<td style="text-align:left;">
+hs_diploma
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Bullock County
+</td>
+<td style="text-align:left;">
+Alabama
+</td>
+<td style="text-align:right;">
+10309
+</td>
+<td style="text-align:right;">
+-2.28
+</td>
+<td style="text-align:right;">
+4.93
+</td>
+<td style="text-align:left;">
+hs_diploma
+</td>
+</tr>
+</tbody>
+</table></div>
+<div class="inline-table"><table class="table table-sm">
+<caption>
+<span id="tab:countyVariables">Table 1.6: </span>Variables and their descriptions for the <code>county</code> data set.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+variable
+</th>
+<th style="text-align:left;">
+description
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+name
+</td>
+<td style="text-align:left;">
+Name of county.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+state
+</td>
+<td style="text-align:left;">
+Name of state.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+pop2000
+</td>
+<td style="text-align:left;">
+Population in 2000.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+pop2010
+</td>
+<td style="text-align:left;">
+Population in 2010.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+pop2017
+</td>
+<td style="text-align:left;">
+Population in 2017.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+pop_change
+</td>
+<td style="text-align:left;">
+Population change from 2010 to 2017.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+poverty
+</td>
+<td style="text-align:left;">
+Percent of population in poverty in 2017.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+homeownership
+</td>
+<td style="text-align:left;">
+Homeownership rate, 2006-2010.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+multi_unit
+</td>
+<td style="text-align:left;">
+Percent of housing units in multi-unit structures, 2006-2010.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+unemployment_rate
+</td>
+<td style="text-align:left;">
+Unemployment rate in 2017.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+metro
+</td>
+<td style="text-align:left;">
+Whether the county contains a metropolitan area, taking one of the values <code>yes</code> or <code>no</code>.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+median_edu
+</td>
+<td style="text-align:left;">
+Median education level (2013-2017), taking one of the values <code>below_hs</code>, <code>hs_diploma</code>, <code>some_college</code>, or <code>bachelors</code>.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+per_capita_income
+</td>
+<td style="text-align:left;">
+Per capita (per person) income (2013-2017).
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+median_hh_income
+</td>
+<td style="text-align:left;">
+Median household income.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+smoking_ban
+</td>
+<td style="text-align:left;">
+Describes whether the type of county-level smoking ban in place in 2010, taking one of the values <code>none</code>, <code>partial</code>, or <code>comprehensive</code>.
+</td>
+</tr>
+</tbody>
+</table></div>
+<div class="data">
+<p>These data can be found in the <a href="http://openintrostat.github.io/usdata">usdata</a> package: <a href="http://openintrostat.github.io/usdata/reference/county.html"><code>county</code></a>.</p>
+</div>
+</div>
+<div id="variable-types" class="section level3" number="1.2.2">
+<h3>
+<span class="header-section-number">1.2.2</span> Types of variables<a class="anchor" aria-label="anchor" href="#variable-types"><i class="fas fa-link"></i></a>
+</h3>
+<p>Examine the <code>unemployment_rate</code>, <code>pop2017</code>, <code>state</code>, <code>metro</code>, and <code>median_edu</code> variables in the <code>county</code> data set.
+Each of these variables is inherently different from the others, yet some share certain characteristics.</p>
+<p>First consider <code>unemployment_rate</code>, which is said to be a <strong>quantitative</strong> or <strong>numerical</strong> variable since it can take a wide range of numerical values, and it is sensible to add, subtract, or take averages with those values.
+On the other hand, we would not classify a variable reporting telephone area codes as quantitative since the average, sum, and difference of area codes doesn’t have any clear meaning.</p>
+<p>The <code>pop2017</code> variable is also quantitative, although it seems to be a little different than <code>unemployment_rate</code>.
+This variable of the population count can only take whole non-negative numbers (0, 1, 2, …).
+For this reason, the population variable is said to be <strong>discrete</strong> since it can only take numerical values with jumps.
+On the other hand, the unemployment rate variable is said to be <strong>continuous</strong>.</p>
+<p>The variable <code>state</code> can take up to 51 values after accounting for Washington, DC: AL, AK, …, and WY.
+Because the responses themselves are categories, <code>state</code> is called a <strong>categorical</strong> variable, and the possible values are called the variable’s <strong>levels</strong> . The variable <code>metro</code> is also categorical, but it only has two levels (yes or no). A categorical variable with only two levels is called a <strong>binary</strong> variable. When working with a generic binary variable, we often call the two possible levels “success” and “failure.”</p>
+<p>Finally, consider the <code>median_edu</code> variable, which describes the median education level of county residents and takes values <code>below_hs</code>, <code>hs_diploma</code>, <code>some_college</code>, or <code>bachelors</code> in each county.
+This variable seems to be a hybrid: it is a categorical variable but the levels have a natural ordering.
+A variable with these properties is called an <strong>ordinal</strong> variable, while a regular categorical variable without this type of special ordering is called a <strong>nominal</strong> variable.
+To simplify analyses, any ordinal variable in this book will be treated as a nominal (unordered) categorical variable.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:variables"></span>
+<img src="01/figures/variables/variables.png" alt="Breakdown of variables into their respective types." width="75%"><p class="caption">
+Figure 1.3: Breakdown of variables into their respective types.
+</p>
+</div>
+<div class="workedexample">
+<p>Data were collected about students in a statistics course.
+Three variables were recorded for each student: number of siblings, student height, and whether the student had previously taken a statistics course.
+Classify each of the variables as continuous quantitative, discrete quantitative, or categorical.</p>
+<hr>
+<p>The number of siblings and student height represent quantitative variables.
+Because the number of siblings is a count, it is discrete.
+Height varies continuously, so it is a continuous quantitative variable.
+The last variable classifies students into two categories—those who have and those who have not taken a statistics course—which makes this variable categorical.</p>
+</div>
+<p></p>
+<div class="guidedpractice">
+<p>An experiment is evaluating the effectiveness of a new drug in treating migraines.
+A <code>group</code> variable is used to indicate the experiment group for each patient: treatment or control.
+The <code>num_migraines</code> variable represents the number of migraines the patient experienced during a 3-month period. Classify each variable as either quantitative or categorical.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The &lt;code&gt;group&lt;/code&gt; variable can take just one of two group names, making it categorical. The &lt;code&gt;num_migraines&lt;/code&gt; variable describes a count of the number of migraines, which is an outcome where basic arithmetic is sensible, which means this is numerical outcome; more specifically, since it represents a count, &lt;code&gt;num_migraines&lt;/code&gt; is a discrete quantitative variable.&lt;/p&gt;"><sup>10</sup></a></p>
+</div>
+</div>
+<div id="variable-relations" class="section level3" number="1.2.3">
+<h3>
+<span class="header-section-number">1.2.3</span> Relationships between variables<a class="anchor" aria-label="anchor" href="#variable-relations"><i class="fas fa-link"></i></a>
+</h3>
+<p>Many analyses are motivated by a researcher looking for a relationship between two or more variables.
+A social scientist may like to answer some of the following questions:</p>
+<blockquote>
+<p>Does a higher than average increase in county population tend to correspond to counties with higher or lower median household incomes?</p>
+</blockquote>
+<blockquote>
+<p>If homeownership is lower than the national average in one county, will the percent of multi-unit structures in that county tend to be above or below the national average?</p>
+</blockquote>
+<blockquote>
+<p>How useful a predictor is median education level for the median household income for US counties?</p>
+</blockquote>
+<p>To answer these questions, data must be collected, such as the <code>county</code> data set shown in Table <a href="data-hello.html#tab:countyDF">1.5</a>.
+Examining <strong>summary statistics</strong> could provide insights for each of the three questions about counties.
+Additionally, graphs can be used to visually explore the data.</p>
+<p><strong>Scatterplots</strong> are one type of graph used to study the relationship between two quantitative variables.
+Figure <a href="data-hello.html#fig:county-multi-unit-homeownership">1.4</a> displays the relationship between the variables <code>homeownership</code> and <code>multi_unit</code>, which is the percent of units in multi-unit structures (e.g., apartments, condos).
+Each point on the plot represents a single county (a single observational unit).
+For instance, the highlighted dot corresponds to County 413 in the <code>county</code> data set: Chattahoochee County, Georgia, which has 39.4% of units in multi-unit structures and a homeownership rate of 31.3%.
+The scatterplot suggests a relationship between the two variables: counties with a higher rate of multi-units tend to have lower homeownership rates.
+We might brainstorm as to why this relationship exists and investigate each idea to determine which are the most reasonable explanations.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:county-multi-unit-homeownership"></span>
+<img src="01-data-hello_files/figure-html/county-multi-unit-homeownership-1.png" alt="A scatterplot of homeownership versus the percent of units that are in multi-unit structures for US counties. The highlighted dot represents Chattahoochee County, Georgia, which has a multi-unit rate of 39.4% and a homeownership rate of 31.3%." width="90%"><p class="caption">
+Figure 1.4: A scatterplot of homeownership versus the percent of units that are in multi-unit structures for US counties. The highlighted dot represents Chattahoochee County, Georgia, which has a multi-unit rate of 39.4% and a homeownership rate of 31.3%.
+</p>
+</div>
+<p>The multi-unit and homeownership rates are said to be associated because the plot shows a discernible pattern.
+When two variables show some connection with one another, they are called <strong>associated</strong> variables.
+Associated variables can also be called <strong>dependent</strong> variables and vice-versa.</p>
+<div class="guidedpractice">
+<p>Examine the variables in the <code>loan50</code> data set, which are described in Table <a href="data-hello.html#tab:loan50Variables">1.4</a>.
+Create two questions about possible relationships between variables in <code>loan50</code> that are of interest to you.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Two example questions: (1) What is the relationship between loan amount and total income? (2) If someone’s income is above the average, will their interest rate tend to be above or below the average?&lt;/p&gt;"><sup>11</sup></a></p>
+</div>
+<div class="workedexample">
+<p>This example examines the relationship between the change in population from 2010 to 2017 and median household income for counties, which is visualized as a scatterplot in Figure <a href="data-hello.html#fig:county-pop-change-med-hh-income">1.5</a>.
+Are these variables associated?</p>
+<hr>
+<p>The larger the median household income for a county, the higher the population growth observed for the county.
+While this trend isn’t true for every county, the trend in the plot is evident. Since there is some relationship between the variables, they are associated.</p>
+</div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:county-pop-change-med-hh-income"></span>
+<img src="01-data-hello_files/figure-html/county-pop-change-med-hh-income-1.png" alt="A scatterplot showing `pop_change` against `median_hh_income`. Owsley County of Kentucky, is highlighted, which lost 3.63% of its population from 2010 to 2017 and had median household income of $22,736." width="90%"><p class="caption">
+Figure 1.5: A scatterplot showing <code>pop_change</code> against <code>median_hh_income</code>. Owsley County of Kentucky, is highlighted, which lost 3.63% of its population from 2010 to 2017 and had median household income of $22,736.
+</p>
+</div>
+<p>Because there is a downward trend in Figure <a href="data-hello.html#fig:county-multi-unit-homeownership">1.4</a>—counties with more units in multi-unit structures are associated with lower homeownership—these variables are said to be <strong>negatively associated</strong>.
+A <strong>positive association</strong> is shown in the relationship between the <code>median_hh_income</code> and <code>pop_change</code> variables in Figure <a href="data-hello.html#fig:county-pop-change-med-hh-income">1.5</a>, where counties with higher median household income tend to have higher rates of population growth.</p>
+<p>If two variables are not associated, then they are said to be <strong>independent</strong>.
+That is, two variables are independent if there is no evident relationship between the two.</p>
+<div class="importantbox">
+<p><strong>Associated or independent, not both.</strong>
+A pair of variables are either related in some way (associated) or not (independent).
+No pair of variables is both associated and independent.</p>
+</div>
+</div>
+<div id="explanatory-and-response-variables" class="section level3" number="1.2.4">
+<h3>
+<span class="header-section-number">1.2.4</span> Explanatory and response variables<a class="anchor" aria-label="anchor" href="#explanatory-and-response-variables"><i class="fas fa-link"></i></a>
+</h3>
+<p>When we ask questions about the relationship between two variables, we sometimes also want to determine if the change in one variable causes a change in the other.
+Consider the following rephrasing of an earlier question about the <code>county</code> data set:</p>
+<blockquote>
+<p>If there is an increase in the median household income in a county, does this drive an increase in its population?</p>
+</blockquote>
+<p>In this question, we are asking whether one variable affects another.
+If this is our underlying belief, then <em>median household income</em> is the <strong>explanatory variable</strong> variable and the <em>population change</em> is the <strong>response variable</strong> variable in the hypothesized relationship.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Sometimes the explanatory variable is called the &lt;strong&gt;independent&lt;/strong&gt; variable and the response variable is called the &lt;strong&gt;dependent&lt;/strong&gt; variable. However, this becomes confusing since a &lt;em&gt;pair&lt;/em&gt; of variables might be independent or dependent, so we avoid this language.&lt;/p&gt;"><sup>12</sup></a></p>
+<p></p>
+<div class="onebox">
+<p><strong>Explanatory and response variables.</strong></p>
+<p>When we suspect one variable might causally affect another,
+we label the first variable the explanatory variable
+and the second the response variable.
+The main reason for this is that observational studies do not control for confounding variables.
+We will revisit this idea when we discuss experiments in the next chapter.</p>
+<center>
+explanatory variable <span class="math inline">\(\rightarrow\)</span> <em>might affect</em> <span class="math inline">\(\rightarrow\)</span> response variable
+</center>
+<p><br>
+For many pairs of variables, there is no hypothesized relationship, and these labels would not be applied to either variable in such cases.</p>
+</div>
+<p>Bear in mind that the act of labeling the variables in this way does nothing to guarantee that a causal relationship exists.
+A formal evaluation to check whether one variable causes a change in another requires an experiment.</p>
+</div>
+<div id="introducing-observational-studies-and-experiments" class="section level3" number="1.2.5">
+<h3>
+<span class="header-section-number">1.2.5</span> Introducing observational studies and experiments<a class="anchor" aria-label="anchor" href="#introducing-observational-studies-and-experiments"><i class="fas fa-link"></i></a>
+</h3>
+<p>There are two primary types of data collection: observational studies and experiments. We already encountered an experiment in the case study in Section <a href="data-hello.html#basic-stents-strokes">1.1</a>, and an observational study with the Lending Club data in this section.</p>
+<p>Researchers perform an <strong>observational study</strong> when they collect data in a way that does not directly interfere with how the data arise.
+For instance, researchers may collect information via surveys, review medical or company records, or follow a <strong>cohort</strong> of many similar individuals to form hypotheses about why certain diseases might develop.
+In each of these situations, researchers merely observe the data that arise.
+In general, observational studies can provide evidence of a naturally occurring association between variables, but they cannot by themselves show a causal connection.</p>
+<p>When researchers want to investigate the possibility of a causal connection, they conduct an <strong>experiment</strong>.
+Usually there will be both an explanatory and a response variable.
+For instance, we may suspect administering a drug will reduce mortality in heart attack patients over the following year.
+To check if there really is a causal connection between the explanatory variable and the response, researchers will collect a sample of individuals and split them into groups.
+The individuals in each group are <em>assigned</em> a treatment.
+When individuals are randomly assigned to a group, the experiment is called a <strong>randomized experiment</strong>.
+For example, each heart attack patient in the drug trial could be randomly assigned, perhaps by flipping a coin, into one of two groups: the first group receives a <strong>placebo</strong> (fake treatment) and the second group receives the drug.
+Note that the case study in Section <a href="data-hello.html#basic-stents-strokes">1.1</a> did not use a placebo.</p>
+<div class="importantbox">
+<p><strong>Association <span class="math inline">\(\neq\)</span> Causation.</strong>
+In general, association does not imply causation, and causation can only be inferred from a randomized experiment.</p>
+</div>
+</div>
+</div>
+<div id="chp1-review" class="section level2" number="1.3">
+<h2>
+<span class="header-section-number">1.3</span> Chapter review<a class="anchor" aria-label="anchor" href="#chp1-review"><i class="fas fa-link"></i></a>
+</h2>
+<div id="summary" class="section level3 unnumbered">
+<h3>Summary<a class="anchor" aria-label="anchor" href="#summary"><i class="fas fa-link"></i></a>
+</h3>
+<p>This chapter introduced you to the world of data.
+Data can be organized in many ways but tidy data, where each row represents an observation and each column represents a variable, lends itself most easily to statistical analysis.
+Many of the ideas from this chapter will be seen as we move on to doing full data analyses.
+In the next chapter you’re going to learn about how we can design studies to collect the data we need to make conclusions with the desired scope of inference.</p>
+</div>
+<div id="terms" class="section level3 unnumbered">
+<h3>Terms<a class="anchor" aria-label="anchor" href="#terms"><i class="fas fa-link"></i></a>
+</h3>
+<p>We introduced the following terms in the chapter.
+If you’re not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
+We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate.
+However you should be able to easily spot them as <strong>bolded text</strong>.</p>
+<div class="inline-table"><table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;"><tbody>
+<tr>
+<td style="text-align:left;">
+associated
+</td>
+<td style="text-align:left;">
+discrete
+</td>
+<td style="text-align:left;">
+placebo
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+barplot
+</td>
+<td style="text-align:left;">
+experiment
+</td>
+<td style="text-align:left;">
+positive association
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+binary
+</td>
+<td style="text-align:left;">
+explanatory variable
+</td>
+<td style="text-align:left;">
+quantitative
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+case
+</td>
+<td style="text-align:left;">
+independent
+</td>
+<td style="text-align:left;">
+randomized experiment
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+categorical
+</td>
+<td style="text-align:left;">
+level
+</td>
+<td style="text-align:left;">
+response variable
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cohort
+</td>
+<td style="text-align:left;">
+negative association
+</td>
+<td style="text-align:left;">
+sample size
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+continuous
+</td>
+<td style="text-align:left;">
+nominal
+</td>
+<td style="text-align:left;">
+statistical investigation process
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+data
+</td>
+<td style="text-align:left;">
+observational study
+</td>
+<td style="text-align:left;">
+summary statistic
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+data frame
+</td>
+<td style="text-align:left;">
+observational unit
+</td>
+<td style="text-align:left;">
+variable
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dependent
+</td>
+<td style="text-align:left;">
+ordinal
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+</tbody></table></div>
+</div>
+<div id="key-ideas" class="section level3 unnumbered">
+<h3>Key ideas<a class="anchor" aria-label="anchor" href="#key-ideas"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li><p>A data set is comprised of measurements of <strong>variables</strong> on <strong>observational units</strong>.
+The type of variable can be <strong>quantitative</strong> or <strong>categorical</strong>, and a variable’s role can be an <strong>explanatory variable</strong> or <strong>response variable</strong>.</p></li>
+<li><p>In an <strong>observational study</strong>, we merely <em>observe</em> the behavior of the individuals in the study; we do not manipulate the variables on the individuals in any way. In a <strong>randomized experiment</strong>, we <em>randomly assign</em> values of an explanatory variable to the observational units, then observe the response variable. Random assignment allows us to investigate causal relationships because it balances out any potential <strong>confounding variables</strong>, on average. These ideas will be discussed in detail in the next chapter.</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+  <div class="chapter-nav">
+<div class="prev"><a href="rstudio.html">Preliminaries: Getting started in RStudio</a></div>
+<div class="next"><a href="data-design.html"><span class="header-section-number">2</span> Study design</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#data-hello"><span class="header-section-number">1</span> Hello data</a></li>
+<li><a class="nav-link" href="#basic-stents-strokes"><span class="header-section-number">1.1</span> Case study: using stents to prevent strokes</a></li>
+<li>
+<a class="nav-link" href="#data-basics"><span class="header-section-number">1.2</span> Data basics</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#observations-variables-and-data-frames"><span class="header-section-number">1.2.1</span> Observations, variables, and data frames</a></li>
+<li><a class="nav-link" href="#variable-types"><span class="header-section-number">1.2.2</span> Types of variables</a></li>
+<li><a class="nav-link" href="#variable-relations"><span class="header-section-number">1.2.3</span> Relationships between variables</a></li>
+<li><a class="nav-link" href="#explanatory-and-response-variables"><span class="header-section-number">1.2.4</span> Explanatory and response variables</a></li>
+<li><a class="nav-link" href="#introducing-observational-studies-and-experiments"><span class="header-section-number">1.2.5</span> Introducing observational studies and experiments</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#chp1-review"><span class="header-section-number">1.3</span> Chapter review</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#summary">Summary</a></li>
+<li><a class="nav-link" href="#terms">Terms</a></li>
+<li><a class="nav-link" href="#key-ideas">Key ideas</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/MTstateIntroStats/IntroStatTextbook/blob/master/01-data-hello.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/MTstateIntroStats/IntroStatTextbook/edit/master/01-data-hello.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Montana State Introductory Statistics with R</strong>" was written by Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-# Applications: Infer quantitative
+# Applications: Infer quantitative  {#inference-num-applications}
 
 ```{r, include = FALSE}
 source("_common.R")

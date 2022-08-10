@@ -19,6 +19,8 @@ Old content - revise as needed
 
 <!-- ## Difference of two proportions {#diff-two-prop} -->
 
+Below we summarize the notation used throughout this chapter.
+
 ::: onebox
 **Notation.**
 
@@ -35,7 +37,7 @@ In our investigations, we'll identify a reasonable point estimate of $\pi_1 - \p
 terms_chp_15 <- c("point estimate")
 ```
 
-### Randomization test for $H_0: \pi_1 - \pi_2 = 0$ {#two-prop-errors}
+## Randomization test for $H_0: \pi_1 - \pi_2 = 0$ {#two-prop-errors}
 
 As you learned in Chapter \@ref(intro-to-data), a **randomized experiment** is done to assess whether or not one variable (the **explanatory** variable) causes changes in a second variable (the **response** variable). Every data set has some variability in it, so to decide whether the variability in the data is due to (1) the causal mechanism (the randomized explanatory variable in the experiment) or instead (2) natural variability inherent to the data, we set up a sham randomized experiment as a comparison. That is, we assume that each observational unit would have gotten the exact same response value regardless of the treatment level. By reassigning the treatments many many times, we can compare the actual experiment to the sham experiment. If the actual experiment has more extreme results than any of the sham experiments, we are led to believe that it is the explanatory variable which is causing the result and not inherent data variability. Using a few different studies, let's look more carefully at this idea of a **randomization test**\index{randomization}.
 
@@ -43,7 +45,11 @@ As you learned in Chapter \@ref(intro-to-data), a **randomized experiment** is d
 terms_chp_15 <- c(terms_chp_15, "randomization")
 ```
 
-#### Case study: Gender discrimination {#caseStudyGenderDiscrimination}
+### Case study: Sex discrimination revisited {#caseStudySexDiscrimination-revisited}
+
+::: {.underconstruction}
+Need revise this section - sex discrimination case study introduced in Chapter 9
+:::
 
 \index{data!discrimination|(}
 
@@ -51,7 +57,15 @@ We consider a study investigating gender discrimination in the 1970s, which is s
 
 [^05-inference-cat-53]: Rosen B and Jerdee T. 1974. "Influence of sex role stereotypes on personnel decisions." Journal of Applied Psychology 59(1):9-14.
 
-#### Observed data {.unnumbered}
+::: {.underconstruction}
+Add subsections of steps of hypotheses:
+
+- Steps 1 and 2: Hypotheses and test statistic
+- Steps 3 and 4: Null distribution and p-value
+- Step 5: Conclusion
+:::
+
+<!-- #### Observed data {.unnumbered} -->
 
 The participants in this study were 48 male bank supervisors attending a management institute at the University of North Carolina in 1972. They were asked to assume the role of the personnel director of a bank and were given a personnel file to judge whether the person should be promoted to a branch manager position. The files given to the participants were identical, except that half of them indicated the candidate was male and the other half indicated the candidate was female. These files were randomly assigned to the subjects.
 
@@ -114,7 +128,7 @@ Consider the alternative hypothesis: bankers were influenced by which gender was
 
 We will choose between these two competing claims by assessing if the data conflict so much with $H_0$ that the null hypothesis cannot be deemed reasonable. If this is the case, and the data support $H_A$, then we will reject the notion of independence and conclude that these data provide strong evidence of discrimination.
 
-#### Variability of the statistic {.unnumbered}
+<!-- #### Variability of the statistic {.unnumbered} -->
 
 Table \@ref(tab:discriminationResults) shows that 35 bank supervisors recommended promotion and 13 did not. Now, suppose the bankers' decisions were independent of gender. Then, if we conducted the experiment again with a different random assignment of gender to the files, differences in promotion rates would be based only on random fluctuation. We can actually perform this **randomization**, which simulates what would have happened if the bankers' decisions had been independent of gender but we had distributed the file genders differently.[^05-inference-cat-55]
 
@@ -165,7 +179,7 @@ Figure \@ref(fig:genderrand4) shows that the difference in promotion rates is mu
 include_graphics("05/figures/genderrand4c.png")
 ```
 
-#### Observed statistic vs. null value {.unnumbered}
+<!-- #### Observed statistic vs. null value {.unnumbered} -->
 
 We computed one possible sample difference in proportions under the null hypothesis in the Guided Practice above, which represents one difference due to chance. While in this first simulation, we physically dealt out files, it is much more efficient to perform this simulation using a computer. Repeating the simulation on a computer, we get another difference due to chance: -0.042. And another: 0.208. And so on until we repeat the simulation enough times that we have a good idea of what represents the *distribution of differences in sample proportions from chance alone*. Figure \@ref(fig:discRandDotPlot) shows a plot of the differences found from 100 simulations, where each dot represents a simulated difference between the proportions of male and female files recommended for promotion.
 
@@ -244,13 +258,13 @@ What statistical term is given to the 2% probability of obtaining a sample where
 
 [^05-inference-cat-58]: This probability of the results we see in our study, under the assumption of no discrimination, is the **p-value**.
 
-#### Scope of inference {.unnumbered}
+<!-- #### Scope of inference {.unnumbered} -->
 
 Since the study was a randomized experiment, we can conclude that the effect was due to gender discrimination---the gender of the application *caused* the lower rate of promotion. However, since this study was a convenience sample, we can only generalize this result to individuals similar to those in the study. Thus, we have evidence of gender discrimination, but only among male bank supervisors attending a management institute at the University of North Carolina in 1972 that are similar to those in the study.
 
 \index{data!discrimination|)}
 
-#### Case study: CPR and blood thinner {#cpr}
+### Case study: CPR and blood thinner {#cpr}
 
 \index{data!CPR and blood thinner|(}
 
@@ -367,7 +381,7 @@ For a two-sided test, since the null distribution is symmetric, take the single 
 ```
 \index{data!CPR and blood thinner|)}
 
-#### Case study: Opportunity cost {#caseStudyOpportunityCost}
+### Case study: Opportunity cost {#caseStudyOpportunityCost}
 
 How rational and consistent is the behavior of the typical American college student? In this section, we'll explore whether college student consumers always consider the following: money not spent now can be spent later.
 
@@ -393,7 +407,7 @@ In this section, we'll explore an experiment conducted by researchers that inves
 
 [^05-inference-cat-64]: Frederick S, Novemsky N, Wang J, Dhar R, Nowlis S. 2009. Opportunity Cost Neglect. Journal of Consumer Research 36: 553-561.
 
-#### Observed data {.unnumbered}
+<!-- #### Observed data {.unnumbered} -->
 
 ```{=html}
 <!--Shane Frederick of Yale School of Management and his collaborators conducted an experiment exploring the rational behavior of consumers. 
@@ -497,13 +511,13 @@ We can construct a point estimate for this difference as \begin{align*}
 terms_chp_15 <- c(terms_chp_15, "statistically significant")
 ```
 
-#### Variability of the statistic {.unnumbered}
+<!-- #### Variability of the statistic {.unnumbered} -->
 
 The primary goal in this data analysis is to understand what sort of differences we might see if the null hypothesis were true, i.e., the treatment had no effect on students. For this, we'll use the same procedure we applied in Section \@ref(caseStudyGenderDiscrimination): randomization.
 
 Let's think about the data in the context of the hypotheses. If the null hypothesis ($H_0$) was true and the treatment had no impact on student decisions, then the observed difference between the two groups of 20% could be attributed entirely to chance. If, on the other hand, the alternative hypothesis ($H_A$) is true, then the difference indicates that reminding students about saving for later purchases actually impacts their buying decisions.
 
-#### Observed statistic vs. null value {.unnumbered}
+<!-- #### Observed statistic vs. null value {.unnumbered} -->
 
 Just like with the gender discrimination study, we can perform a statistical analysis. Using the same randomization technique from the last section, let's see what happens when we simulate the experiment under the scenario where there is no effect from the treatment.
 
@@ -644,13 +658,13 @@ mtext(xlab, 1, 2.5)
 
 If there was no treatment effect, then we'd only observe a difference of at least +20% about 0.6% of the time, or about 1-in-150 times. That is really rare! Instead, we will conclude the data provide strong evidence there is a treatment effect: reminding students before a purchase that they could instead spend the money later on something else lowers the chance that they will continue with the purchase. Notice that we are able to make a causal statement for this study since the study is an experiment.
 
-#### Scope of inference {.unnumbered}
+<!-- #### Scope of inference {.unnumbered} -->
 
 Since the study was a randomized experiment, we can conclude that the effect was due to the reminder about saving money for other purchases---the reminder *caused* the lower rate of purchase. However, since this study used a volunteer sample (students were "recruited"), we can only generalize this result to individuals similar to those in the study. Thus, we have evidence that reminding students that they can save money for later purchases will reduce the chance they will continue with a purchase, but only among students are similar to those in the study.
 
-#### Case study: Malaria vaccine {#caseStudyMalaria}
+### Case study: Malaria vaccine {#caseStudyMalaria}
 
-#### Observed data {.unnumbered}
+<!-- #### Observed data {.unnumbered} -->
 
 We consider a study on a new malaria vaccine called PfSPZ. In this study, volunteer patients were randomized into one of two experiment groups: 14 patients received an experimental vaccine and 6 patients received a placebo vaccine. Nineteen weeks later, all 20 patients were exposed to a drug-sensitive malaria virus strain; the motivation of using a drug-sensitive strain of virus here is for ethical considerations, allowing any infections to be treated effectively. The results are summarized in Table \@ref(tab:malaria-vaccine-20-exp-summary), where 9 of the 14 treatment patients remained free of signs of infection while all of the 6 patients in the control group patients showed some baseline signs of infection.
 
@@ -705,7 +719,7 @@ Now consider the alternative model: infection rates were influenced by whether a
 
 We choose between these two competing claims by assessing if the data conflict so much with $H_0$ that the independence model cannot be deemed reasonable. If this is the case, and the data support $H_A$, then we will reject the notion of independence and conclude the vaccine is effective.
 
-#### Variability of the statistic {.unnumbered}
+<!-- #### Variability of the statistic {.unnumbered} -->
 
 We're going to implement simulation, where we will pretend we know that the malaria vaccine being tested does \emph{not} work. Ultimately, we want to understand if the large difference we observed is common in these simulations. If it is common, then maybe the difference we observed was purely due to chance. If it is very uncommon, then the possibility that the vaccine was helpful seems more plausible.
 
@@ -774,7 +788,7 @@ axis(1) #, at, labels)
 points(X[X <= (5.5/15)/(6.5/7)], Y[X<= (5.5/15)/(6.5/7)], lwd=3, col = COL[4], cex=0.4)
 ```
 
-#### Observed statistic vs null value {.unnumbered}
+<!-- #### Observed statistic vs null value {.unnumbered} -->
 
 Note that the distribution of these simulated differences is centered around 1. We simulated the relative risks assuming that the independence model was true, and under this condition, we expect the difference to be near one with some random fluctuation, where *near* is pretty generous in this case since the sample sizes are so small in this study.
 
@@ -800,17 +814,17 @@ In this case, we reject the independence model in favor of the alternative. That
 
 Statistical inference is built on evaluating whether such differences are due to chance. In statistical inference, data scientists evaluate which model is most reasonable given the data. Errors do occur, just like rare events, and we might choose the wrong model. While we do not always choose correctly, statistical inference gives us tools to control and evaluate how often these errors occur.
 
-### Bootstrap confidence interval for $\pi_1 - \pi_2$ {#two-prop-boot-ci}
+## Bootstrap confidence interval for $\pi_1 - \pi_2$ {#two-prop-boot-ci}
 
 In Section \@ref(two-prop-errors), we worked with the randomization distribution to understand the distribution of $\hat{p}_1 - \hat{p}_2$ when the null hypothesis $H_0: \pi_1 - \pi_2 = 0$ is true. Now, through bootstrapping, we study the variability of $\hat{p}_1 - \hat{p}_2$ without the null assumption.
 
-#### Observed data {.unnumbered}
+### Observed data
 
 Reconsider the CPR data from Section \@ref(two-prop-errors) which is provided in Table \@ref(tab:resultsForCPRStudyInSmallSampleSection). The experiment consisted of two treatments on patients who underwent CPR for a heart attack and were subsequently admitted to a hospital. Each patient was randomly assigned to either receive a blood thinner (treatment group) or not receive a blood thinner (control group). The outcome variable of interest was whether the patient survived for at least 24 hours.
 
 Again, we use the difference in sample proportions as the observed statistic of interest. Here, the value of the statistic is: $\hat{p}_t - \hat{p}_c = 0.35 - 0.22 = 0.13$.
 
-#### Variability of the statistic {.unnumbered}
+### Variability of the statistic
 
 The bootstrap method applied to two samples is an extension of the method described in Section \@ref(boot-ci-prop). Now, we have two samples, so each sample estimates the population from which they came. In the CPR setting, the `treatment` sample estimates the population of all individuals who have gotten (or will get) the treatment; the `control` sample estimate the population of all individuals who do not get the treatment and are controls. Figure \@ref(fig:boot2proppops) extends Figure \@ref(fig:boot1) to show the bootstrapping process from two samples simultaneously.
 
@@ -965,7 +979,7 @@ mtext("Bootstrapped Difference in Proportion Surviving (Treatment - Control)", 1
 
 <!-- ``` -->
 
-#### What does 95% mean? {.unnumbered}
+### What does 95% mean?
 
 Recall that the goal of a confidence interval is to find a plausible range of values for a *parameter* of interest. The estimated statistic is not the value of interest, but it is typically the best guess for the unknown parameter. The confidence level (often 95%) is a number that takes a while to get used to. Surprisingly, the percentage doesn't describe the data set at hand, it describes many possible data sets. One way to understand a confidence interval is to think about all the confidence intervals that you have ever made or that you will ever make as a scientist, the confidence level describes **those** intervals.
 
@@ -1016,11 +1030,11 @@ for(i in 1:k){
 
 The choice of 95% or 90% or even 99% as a confidence level is admittedly somewhat arbitrary; however, it is related to the logic we used when deciding that a p-value should be declared as significant if it is lower than 0.05 (or 0.10 or 0.01, respectively). Indeed, one can show mathematically, that a 95% confidence interval and a two-sided hypothesis test at a cutoff of 0.05 will provide the same conclusion when the same data and mathematical tools are applied for the analysis. A full derivation of the explicit connection between confidence intervals and hypothesis tests is beyond the scope of this text.
 
-### Theory-based inferential methods for $\pi_1 - \pi_2$ {#math-2prop}
+## Theory-based inferential methods for $\pi_1 - \pi_2$ {#math-2prop}
 
 Like with $\hat{p}$, the difference of two sample proportions $\hat{p}_1 - \hat{p}_2$ can be modeled using a normal distribution when certain conditions are met.
 
-#### Evaluating the two conditions required for modeling $\pi_1 - \pi_2$ using theory-based methods {.unnumbered}
+### Evaluating the two conditions required for modeling $\pi_1 - \pi_2$ using theory-based methods
 
 First, we require a broader independence condition, and secondly, the success-failure condition must be met by both groups.
 
@@ -1057,7 +1071,7 @@ terms_chp_15 <- c(terms_chp_15, "standard error for difference in proportions")
 
 As in the case of one proportion, we typically don't know the true proportions $\pi_1$ and $\pi_2$, so we will substitute some value to check the success-failure condition and to estimate the standard deviation of the sampling distribution of $\hat{p}_1 - \hat{p}_2$.
 
-#### Confidence interval for $\pi_1 - \pi_2$ {.unnumbered}
+### Confidence interval for $\pi_1 - \pi_2$
 
 \index{data!CPR and blood thinner|(}
 
@@ -1198,7 +1212,7 @@ kable(temptbl, caption = "Results for the study on n-3 fatty acid supplement and
  kable_styling()
 ```
 
-#### Hypothesis test for $H_0: \pi_1 - \pi_2 = 0$ {.unnumbered}
+### Hypothesis test for $H_0: \pi_1 - \pi_2 = 0$
 
 \index{data!mammography|(} \index{data!breast cancer|(}
 

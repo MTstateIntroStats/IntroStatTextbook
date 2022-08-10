@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 20 Applications: Infer quantitative | Montana State Introductory Statistics with R</title>
+<meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager">
+<meta name="description" content="TODO  Old content - revise as needed     20.1 Inference for quantitative data using R and catstats  Using the \(t\)-distribution First, we’ll review how to obtain probabilities and critical values...">
+<meta name="generator" content="bookdown 0.27 with bs4_book()">
+<meta property="og:title" content="Chapter 20 Applications: Infer quantitative | Montana State Introductory Statistics with R">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://mtstateintrostats.github.io/IntroStatTextbook/inference-num-applications.html">
+<meta property="og:description" content="TODO  Old content - revise as needed     20.1 Inference for quantitative data using R and catstats  Using the \(t\)-distribution First, we’ll review how to obtain probabilities and critical values...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 20 Applications: Infer quantitative | Montana State Introductory Statistics with R">
+<meta name="twitter:description" content="TODO  Old content - revise as needed     20.1 Inference for quantitative data using R and catstats  Using the \(t\)-distribution First, we’ll review how to obtain probabilities and critical values...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><script type="text/x-mathjax-config">
+    const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+    for (let popover of popovers){
+      const div = document.createElement('div');
+      div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+      div.innerHTML = popover.getAttribute('data-content');
+      
+      // Will this work with TeX on its own line?
+      var has_math = div.querySelector("span.math");
+      if (has_math) {
+        document.body.appendChild(div);
+      	MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+      	MathJax.Hub.Queue(function(){
+          popover.setAttribute('data-content', div.innerHTML);
+      	})
+      }
+    }
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="css/ims-style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Montana State Introductory Statistics with R</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="authors.html">Authors</a></li>
+<li><a class="" href="preface.html">Preface</a></li>
+<li><a class="" href="rstudio.html">Preliminaries: Getting started in RStudio</a></li>
+<li class="book-part">Introduction to data</li>
+<li><a class="" href="data-hello.html"><span class="header-section-number">1</span> Hello data</a></li>
+<li><a class="" href="data-design.html"><span class="header-section-number">2</span> Study design</a></li>
+<li><a class="" href="data-applications.html"><span class="header-section-number">3</span> Applications: Data</a></li>
+<li class="book-part">Exploratory data analysis</li>
+<li><a class="" href="explore-categorical.html"><span class="header-section-number">4</span> Exploring categorical data</a></li>
+<li><a class="" href="explore-numerical.html"><span class="header-section-number">5</span> Exploring quantitative data</a></li>
+<li><a class="" href="explore-regression.html"><span class="header-section-number">6</span> Correlation and regression</a></li>
+<li><a class="" href="explore-mult-reg.html"><span class="header-section-number">7</span> Multivariable models</a></li>
+<li><a class="" href="explore-applications.html"><span class="header-section-number">8</span> Applications: Explore</a></li>
+<li class="book-part">Foundations of inference</li>
+<li><a class="" href="foundations-randomization.html"><span class="header-section-number">9</span> Hypothesis testing with randomization</a></li>
+<li><a class="" href="foundations-bootstrapping.html"><span class="header-section-number">10</span> Confidence intervals with bootstrapping</a></li>
+<li><a class="" href="foundations-mathematical.html"><span class="header-section-number">11</span> Inference with mathematical models</a></li>
+<li><a class="" href="foundations-errors.html"><span class="header-section-number">12</span> Errors, power, and practical importance</a></li>
+<li><a class="" href="foundations-applications.html"><span class="header-section-number">13</span> Applications: Foundations</a></li>
+<li class="book-part">Inference for categorical data</li>
+<li><a class="" href="inference-one-prop.html"><span class="header-section-number">14</span> Inference for a single proportion</a></li>
+<li><a class="" href="inference-two-props.html"><span class="header-section-number">15</span> Inference for comparing two proportions</a></li>
+<li><a class="" href="inference-categ-applications.html"><span class="header-section-number">16</span> Applications: Infer categorical</a></li>
+<li class="book-part">Inference for quantitative data</li>
+<li><a class="" href="inference-one-mean.html"><span class="header-section-number">17</span> Inference for a single mean</a></li>
+<li><a class="" href="inference-paired-means.html"><span class="header-section-number">18</span> Inference for comparing paired means</a></li>
+<li><a class="" href="inference-two-means.html"><span class="header-section-number">19</span> Inference for comparing two independent means</a></li>
+<li><a class="active" href="inference-num-applications.html"><span class="header-section-number">20</span> Applications: Infer quantitative</a></li>
+<li class="book-part">Inference for regression</li>
+<li><a class="" href="inference-reg.html"><span class="header-section-number">21</span> Inference for correlation and slope</a></li>
+<li><a class="" href="inference-reg-applications.html"><span class="header-section-number">22</span> Applications: Infer regression</a></li>
+<li class="book-part">Probability</li>
+<li><a class="" href="probability.html"><span class="header-section-number">23</span> Probability with tables</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/MTstateIntroStats/IntroStatTextbook">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="inference-num-applications" class="section level1" number="20">
+<h1>
+<span class="header-section-number">20</span> Applications: Infer quantitative<a class="anchor" aria-label="anchor" href="#inference-num-applications"><i class="fas fa-link"></i></a>
+</h1>
+<div class="chapterintro">
+<p>TODO</p>
+</div>
+<div class="underconstruction">
+<p>Old content - revise as needed</p>
+</div>
+<!-- ```{block2, type="todo", echo=TRUE} -->
+<!-- Section on doing inference for categorical data in R. -->
+<!-- - Simulation functions in catstats -->
+<!-- - `t.test` -->
+<!-- ``` -->
+<div id="inference-for-quantitative-data-using-r-and-catstats" class="section level2" number="20.1">
+<h2>
+<span class="header-section-number">20.1</span> Inference for quantitative data using R and <code>catstats</code><a class="anchor" aria-label="anchor" href="#inference-for-quantitative-data-using-r-and-catstats"><i class="fas fa-link"></i></a>
+</h2>
+<div id="using-the-t-distribution" class="section level3 unnumbered">
+<h3>Using the <span class="math inline">\(t\)</span>-distribution<a class="anchor" aria-label="anchor" href="#using-the-t-distribution"><i class="fas fa-link"></i></a>
+</h3>
+<p>First, we’ll review how to obtain probabilities and critical values for the <span class="math inline">\(t\)</span>-distribution using R. If you have a <span class="math inline">\(t\)</span>-statistic and degrees of freedom, you can find the probability under the <span class="math inline">\(t\)</span>-distribution corresponding to a one- or two-tailed hypothesis test using <code><a href="https://rdrr.io/r/stats/TDist.html">pt()</a></code> (short for “probability from <span class="math inline">\(t\)</span>-distribution”).</p>
+<p>The tricky part is making sure you get the correct area under the distribution. For our example, assume we have 12 degrees of freedom. If your <span class="math inline">\(t\)</span>-statistic is positive, say <span class="math inline">\(t = 1.33\)</span>:</p>
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#Area less than observed:</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fl">1.33</span>, df <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.896</span></span>
+<span></span>
+<span><span class="co">#Area greater than observed:</span></span>
+<span><span class="fl">1</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fl">1.33</span>, df <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.104</span></span>
+<span></span>
+<span><span class="co">#Area at least as large as observed:</span></span>
+<span><span class="fl">2</span><span class="op">*</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fl">1.33</span>, df <span class="op">=</span> <span class="fl">12</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.208</span></span></code></pre></div>
+<p>If your <span class="math inline">\(t\)</span>-statistic is negative, say <span class="math inline">\(t = -2.75\)</span>:</p>
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#Area less than observed:</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2.75</span>, df <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.0088</span></span>
+<span></span>
+<span><span class="co">#Area greater than observed:</span></span>
+<span><span class="fl">1</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2.75</span>, df <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.991</span></span>
+<span></span>
+<span><span class="co">#Area at least as large as observed:</span></span>
+<span><span class="fl">2</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2.75</span>, df <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.0176</span></span></code></pre></div>
+<p>The difference comes in when you want the area further than <span class="math inline">\(t\)</span> units from 0: if <span class="math inline">\(t\)</span> is positive, then “further” is greater than <span class="math inline">\(t\)</span> and less than negative <span class="math inline">\(t\)</span>, or double the area greater than <span class="math inline">\(t\)</span>, since the <span class="math inline">\(t\)</span>-distribution is symmetric. If <span class="math inline">\(t\)</span> is negative, then “further” is less than <span class="math inline">\(t\)</span> and greater than positive <span class="math inline">\(t\)</span>, or double the area less than <span class="math inline">\(t\)</span>.</p>
+<p>To find <span class="math inline">\(t^*_{df}\)</span> using R, we use the <code><a href="https://rdrr.io/r/stats/TDist.html">qt()</a></code> function (short for “quantile of <span class="math inline">\(t\)</span>-distribution”). You will need the degrees of freedom and the confidence level for your confidence interval. Suppose we have 27 degrees of freedom and want a 99% confidence interval. To get the middle 99% of the <span class="math inline">\(t\)</span>-distribution, we need to have the cutoff at 0.5% and 99.5%:</p>
+<pre><code>#&gt; [1] -2.77
+#&gt; [1] 2.77</code></pre>
+</div>
+<div id="simulation-based-inference-for-paired-mean-difference" class="section level3 unnumbered">
+<h3>Simulation-based inference for paired mean difference<a class="anchor" aria-label="anchor" href="#simulation-based-inference-for-paired-mean-difference"><i class="fas fa-link"></i></a>
+</h3>
+<p>Simulation-based inference for quantitative data will use functions in the <code>catstats</code> package, as we did for categorical data.</p>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">catstats</span><span class="op">)</span></span></code></pre></div>
+<p>The <code>catstats</code> functions for paired data assume that the values for the two groups are in separate columns in a data frame. We’ll work through an example using the tire wear data, which is currently stored in “long format”, with one variable for brand and another for tread depth. First, we’ll convert it to “wide format”, with a column for each brand.
+<img src="20-numerical-applications_files/figure-html/unnamed-chunk-4-1.png" width="90%" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">tiresWide</span> <span class="op">&lt;-</span> <span class="va">tires</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">brand</span>, <span class="va">tread</span>, <span class="va">car</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>   <span class="co">#select only ID, group, and outcome vars</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">brand</span>,   <span class="co">#name of variable for group</span></span>
+<span>              values_from <span class="op">=</span> <span class="va">tread</span><span class="op">)</span>  <span class="co">#name of variable for outcome</span></span>
+<span><span class="va">tiresWide</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">tiresWide</span><span class="op">)</span></span></code></pre></div>
+<p>Once we have this format, all the paired data functions in <code>catstats</code> should be able to handle the data. First, we can get a look at the pairs of observations:</p>
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/paired_observed_plot.html">paired_observed_plot</a></span><span class="op">(</span><span class="va">tiresWide</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="20-numerical-applications_files/figure-html/observedPlotPaired-1.png" width="90%" style="display: block; margin: auto;"></div>
+<p>This gives us an idea of the distributions within groups and the differences within pairs. To perform the hypothesis test for a difference in tread depth after 1000 miles, we use the <code><a href="https://rdrr.io/pkg/catstats/man/paired_test.html">paired_test()</a></code> function:</p>
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/paired_test.html">paired_test</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">tiresWide</span>,  <span class="co">#data frame with observed values in groups</span></span>
+<span>  shift <span class="op">=</span> <span class="op">-</span><span class="fl">0.002</span>,  <span class="co">#amount to shift differences to bootstrap null distribution</span></span>
+<span>  direction <span class="op">=</span> <span class="st">"two-sided"</span>,  <span class="co">#Direction of hypothesis test</span></span>
+<span>  as_extreme_as <span class="op">=</span> <span class="fl">0.002</span>, <span class="co">#Observed statistic</span></span>
+<span>  number_repetitions <span class="op">=</span> <span class="fl">1000</span>,  <span class="co">#number of bootstrap draws for null distribution</span></span>
+<span>  which_first <span class="op">=</span> <span class="fl">1</span>  <span class="co">#Which column is first in order of subtraction: 1 or 2?</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>Note that <code>data</code> could also be a vector of differences. If this is all you have, you can do hypothesis testing and generate a confidence interval, but won’t be able to use <code><a href="https://rdrr.io/pkg/catstats/man/paired_observed_plot.html">paired_observed_plot()</a></code>. Now let’s take a look at the output of the function:</p>
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1054</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/paired_test.html">paired_test</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">tiresWide</span>,  <span class="co">#data frame with observed values in groups</span></span>
+<span>  shift <span class="op">=</span> <span class="op">-</span><span class="fl">0.002</span>,  <span class="co">#amount to shift differences to bootstrap null distribution</span></span>
+<span>  direction <span class="op">=</span> <span class="st">"two-sided"</span>,  <span class="co">#Direction of hypothesis test</span></span>
+<span>  as_extreme_as <span class="op">=</span> <span class="fl">0.002</span>, <span class="co">#Observed statistic</span></span>
+<span>  number_repetitions <span class="op">=</span> <span class="fl">1000</span>,  <span class="co">#number of bootstrap draws for null distribution</span></span>
+<span>  which_first <span class="op">=</span> <span class="fl">1</span>  <span class="co">#Which column is first in order of subtraction: 1 or 2?</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="20-numerical-applications_files/figure-html/pairedSimTest-1.png" width="90%" style="display: block; margin: auto;"></div>
+<p>This figure displays the bootstrapped null distribution, with the mean and standard deviation of the draws in the upper right corner. We want to see that the mean is close to the null value (almost always zero). If it isn’t, check the value of the <code>shift</code> input, and/or increase the <code>number_repetitions</code> if the shift is correct.</p>
+<p>The red lines give the cutoffs based on the observed statistic, and values as or more extreme are colored red. If you are doing a one-sided test, there will only be one line. The caption of the figure gives the number and proportion of bootstrapped mean differences that are as or more extreme than the observed statistic. In this case, 20 out of 1000, for a p-value of 0.02.</p>
+<p>Finally, we will want to generate a confidence interval for the true mean difference using the <code><a href="https://rdrr.io/pkg/catstats/man/paired_bootstrap_CI.html">paired_bootstrap_CI()</a></code> function.</p>
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2374</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/paired_bootstrap_CI.html">paired_bootstrap_CI</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">tiresWide</span>,   <span class="co">#Wide-form data set or vector of differences</span></span>
+<span>  number_repetitions <span class="op">=</span> <span class="fl">1000</span>,   <span class="co">#number of draws for bootstrap distribution</span></span>
+<span>  confidence_level <span class="op">=</span> <span class="fl">0.99</span>,  <span class="co">#Confidence level as a proportion</span></span>
+<span>  which_first <span class="op">=</span> <span class="fl">1</span>  <span class="co">#Order of subtraction: 1st or 2nd set of values come first?</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="20-numerical-applications_files/figure-html/pairedBootstrapCI-1.png" width="90%" style="display: block; margin: auto;"></div>
+<p>Here we again have a bootstrap distribution, but now it is the bootstrap distribution of the mean difference itself, rather than a bootstrapped null distribution for the mean difference. We’ve requested a 99% confidence interval, so the relevant percentiles of the bootstrap distribution are highlighted, and the interval itself is given in the caption. In this case, we are 99% confident that the true mean difference in tire tread is between 0 and 0.004 inches greater for Smooth Turn.</p>
+</div>
+<div id="theory-based-inference-for-paired-mean-difference" class="section level3 unnumbered">
+<h3>Theory-based inference for paired mean difference<a class="anchor" aria-label="anchor" href="#theory-based-inference-for-paired-mean-difference"><i class="fas fa-link"></i></a>
+</h3>
+<p>To implement theory-based inference for a paired mean difference in R, we use the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> function. As an example, we’ll use the textbook cost data from Section <a href="#paired-data"><strong>??</strong></a>. There are two ways to put in paired data for a t-test using <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code>. First, we could have the prices of the two groups in two separate variables (in this case, <code>bookstore_new</code> and <code>amazon_new</code>):</p>
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">bookstore_new</span>, <span class="co">#Outcomes for one of each pair</span></span>
+<span>       y <span class="op">=</span> <span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">amazon_new</span>,  <span class="co">#Outcomes for other of each pair</span></span>
+<span>       paired <span class="op">=</span> <span class="cn">TRUE</span>,  <span class="co">#Tell it to do a paired t-test!!</span></span>
+<span>       alternative <span class="op">=</span> <span class="st">"greater"</span>,  <span class="co">#Direction of alternative </span></span>
+<span>       conf.level <span class="op">=</span> <span class="fl">0.95</span>  <span class="co">#confidence level for interval as a proportion</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>Important things to note here:</p>
+<ul>
+<li>You must include <code>paired = TRUE</code> in your options, or it will do a two-sample t-test.</li>
+<li>As with categorical data in Chapter <a href="#inference-cat"><strong>??</strong></a>, if you have a one-sided alternative, you will need to re-run the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> with a two-sided alternative to get the correct confidence interval</li>
+</ul>
+<p>Now let’s take a look at the output of the call:</p>
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">bookstore_new</span>, <span class="co">#Outcomes for first in order of subtraction</span></span>
+<span>       y <span class="op">=</span> <span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">amazon_new</span>,  <span class="co">#Outcomes for second in order of subtraction</span></span>
+<span>       paired <span class="op">=</span> <span class="cn">TRUE</span>,  <span class="co">#Tell it to do a paired t-test!!</span></span>
+<span>       alternative <span class="op">=</span> <span class="st">"greater"</span>,  <span class="co">#Direction of alternative </span></span>
+<span>       conf.level <span class="op">=</span> <span class="fl">0.95</span>  <span class="co">#confidence level for interval as a proportion</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Paired t-test</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; data:  ucla_textbooks_f18$bookstore_new and ucla_textbooks_f18$amazon_new</span></span>
+<span><span class="co">#&gt; t = 2, df = 67, p-value = 0.02</span></span>
+<span><span class="co">#&gt; alternative hypothesis: true mean difference is greater than 0</span></span>
+<span><span class="co">#&gt; 95 percent confidence interval:</span></span>
+<span><span class="co">#&gt;  0.868   Inf</span></span>
+<span><span class="co">#&gt; sample estimates:</span></span>
+<span><span class="co">#&gt; mean difference </span></span>
+<span><span class="co">#&gt;            3.58</span></span></code></pre></div>
+<p>The output tells you right on top that this is a paired test - if it doesn’t, check that you have <code>paired = TRUE</code> in your function call. The next line gives the t-statistic of 2.20, the degrees of freedom df = 67, and the p-value of 0.0156 (You can look back at Section <a href="inference-paired-means.html#paired-mean-math">18.3</a> to see that these are the same values obtained in the example). The point estimate for the mean difference is the final entry: on average, new bookstore books cost $3.58 more than the same books new from Amazon.</p>
+<p>The confidence interval given is a one-sided confidence interval, since we have a one-sided alternative. We need to re-run with <code>alternative = "two.sided"</code> to get the correct interval for the true mean difference in price of $0.33 to $6.83 greater cost when buying from the UCLA Bookstore compared to buying from Amazon.</p>
+<pre><code>#&gt; 
+#&gt;  Paired t-test
+#&gt; 
+#&gt; data:  ucla_textbooks_f18$bookstore_new and ucla_textbooks_f18$amazon_new
+#&gt; t = 2, df = 67, p-value = 0.03
+#&gt; alternative hypothesis: true mean difference is not equal to 0
+#&gt; 95 percent confidence interval:
+#&gt;  0.334 6.832
+#&gt; sample estimates:
+#&gt; mean difference 
+#&gt;            3.58</code></pre>
+<p>You might also have a single variable in your dataset that contains the differences within pairs: we will create this for the textbook data in a variable called <code>price_diff</code>. This format is also usable with the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> function:</p>
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ucla_textbooks_f18</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>price_diff <span class="op">=</span> <span class="va">bookstore_new</span><span class="op">-</span><span class="va">amazon_new</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">price_diff</span>,   <span class="co">#variable with differences</span></span>
+<span>       alternative <span class="op">=</span> <span class="st">"greater"</span>,  <span class="co">#direction of alternative hypothesis</span></span>
+<span>       conf.level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>  <span class="co">#confidence level as a proportion</span></span></code></pre></div>
+<p>This requires two fewer arguments:</p>
+<ul>
+<li>No <code>y</code> input, since the differences are contained in a single variable</li>
+<li>No <code>paired = TRUE</code>, since we have already accounted for the pairing by taking the differences.</li>
+</ul>
+<p>The output for this will look almost identical to the two-variable version above:</p>
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ucla_textbooks_f18</span> <span class="op">&lt;-</span> <span class="va">ucla_textbooks_f18</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>price_diff <span class="op">=</span> <span class="va">bookstore_new</span><span class="op">-</span><span class="va">amazon_new</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">price_diff</span>,   <span class="co">#variable with differences</span></span>
+<span>       alternative <span class="op">=</span> <span class="st">"greater"</span>,  <span class="co">#direction of alternative hypothesis</span></span>
+<span>       conf.level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span>  <span class="co">#confidence level as a proportion</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  One Sample t-test</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; data:  ucla_textbooks_f18$price_diff</span></span>
+<span><span class="co">#&gt; t = 2, df = 67, p-value = 0.02</span></span>
+<span><span class="co">#&gt; alternative hypothesis: true mean is greater than 0</span></span>
+<span><span class="co">#&gt; 95 percent confidence interval:</span></span>
+<span><span class="co">#&gt;  0.868   Inf</span></span>
+<span><span class="co">#&gt; sample estimates:</span></span>
+<span><span class="co">#&gt; mean of x </span></span>
+<span><span class="co">#&gt;      3.58</span></span></code></pre></div>
+<p>Since we only input one variable, <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> treats it as a one-sample t-test, but note that this works just fine: the t-statistic, df, p-value, confidence interval, and estimated mean are all the same as when we put in the two groups separately and indicated they were paired.</p>
+</div>
+<div id="simulation-based-inference-for-the-difference-of-two-means" class="section level3 unnumbered">
+<h3>Simulation-based inference for the difference of two means<a class="anchor" aria-label="anchor" href="#simulation-based-inference-for-the-difference-of-two-means"><i class="fas fa-link"></i></a>
+</h3>
+<p>We can perform simulation-based inference for a difference in means using the <code><a href="https://rdrr.io/pkg/catstats/man/two_mean_test.html">two_mean_test()</a></code> and <code><a href="https://rdrr.io/pkg/catstats/man/two_mean_bootstrap_CI.html">two_mean_bootstrap_CI()</a></code> functions in the <code>catstats</code> package. As a working example, let’s look at the embryonic stem cell data from Section <a href="inference-two-means.html#rand2mean">19.1</a>.</p>
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#load data from openintro package</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span> <span class="op">(</span><span class="va">stem_cell</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#Compute change in pumping capacity</span></span>
+<span><span class="va">stem_cell</span> <span class="op">&lt;-</span> <span class="va">stem_cell</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>change <span class="op">=</span> <span class="va">after</span> <span class="op">-</span> <span class="va">before</span><span class="op">)</span></span></code></pre></div>
+<p>To perform the simulation-based test for the difference in the mean change in heart pumping capacity, we will use the <code><a href="https://rdrr.io/pkg/catstats/man/two_mean_test.html">two_mean_test()</a></code> function in the <code>catstats</code> package, which is very similar to the use of the <code><a href="https://rdrr.io/pkg/catstats/man/two_proportion_test.html">two_proportion_test()</a></code> function in Chapter <a href="#inference-cat"><strong>??</strong></a>:</p>
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">4750</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/two_mean_test.html">two_mean_test</a></span><span class="op">(</span></span>
+<span>  formula <span class="op">=</span> <span class="va">change</span> <span class="op">~</span> <span class="va">trmt</span>,  <span class="co">#Always use response ~ explanatory</span></span>
+<span>  data <span class="op">=</span> <span class="va">stem_cell</span>,  <span class="co"># name of data set</span></span>
+<span>  first_in_subtraction <span class="op">=</span> <span class="st">"esc"</span>,  <span class="co">#value of group variable to be 1st in subtraction</span></span>
+<span>  direction <span class="op">=</span> <span class="st">"two-sided"</span>,  <span class="co">#direction of alternative</span></span>
+<span>  as_extreme_as <span class="op">=</span> <span class="fl">7.833</span>,  <span class="co">#observed statistic</span></span>
+<span>  number_repetitions <span class="op">=</span> <span class="fl">1000</span>  <span class="co">#number of simulations</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="20-numerical-applications_files/figure-html/unnamed-chunk-7-1.png" width="90%" style="display: block; margin: auto;"></div>
+<p>The results give a side-by-side boxplot of the observed data with the observed difference and order of subtraction at the top. Check that you had the right value for the observed difference! Next to the box plot, we have the null distribution of simulated differences in means, with the observed statistic marked with a vertical red line, and all values as or more extreme than the observed statistic colored red. The figure caption gives the approximate p-value: for this set of 1000 simulations, we have only 1/1000 = 0.001.</p>
+<div class="importantbox">
+<p>There are a couple of things to note when using the <code>two_mean_test</code> function:</p>
+<ul>
+<li>You need to identify which variable is your response and which your explanatory variable using the <code>formula</code> argument.</li>
+<li>Specify order of subtraction using <code>first_in_subtraction</code> by putting in EXACTLY the category of the explanatory variable that you want to be first, in quotes — must match capitalization, spaces, etc. for text values!</li>
+</ul>
+</div>
+<p>We use bootstrapping to find a confidence interval for the true difference in means with the <code><a href="https://rdrr.io/pkg/catstats/man/two_mean_bootstrap_CI.html">two_mean_bootstrap_CI()</a></code> function. The arguments will be very similar to <code><a href="https://rdrr.io/pkg/catstats/man/two_mean_test.html">two_mean_test()</a></code>, with the addition of the confidence level.</p>
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">450</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/two_mean_bootstrap_CI.html">two_mean_bootstrap_CI</a></span><span class="op">(</span></span>
+<span>  formula <span class="op">=</span> <span class="va">change</span> <span class="op">~</span> <span class="va">trmt</span>,  <span class="co">#Always use response ~ explanatory</span></span>
+<span>  data <span class="op">=</span> <span class="va">stem_cell</span>,  <span class="co"># name of data set</span></span>
+<span>  first_in_subtraction <span class="op">=</span> <span class="st">"esc"</span>,  <span class="co">#value of group variable to be 1st in subtraction</span></span>
+<span>  confidence_level <span class="op">=</span> <span class="fl">0.9</span>, <span class="co">#confidence level as a proportion</span></span>
+<span>  number_repetitions <span class="op">=</span> <span class="fl">1000</span>  <span class="co">#number of bootstrap samples</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="20-numerical-applications_files/figure-html/unnamed-chunk-8-1.png" width="90%" style="display: block; margin: auto;"></div>
+<p>The function produces the bootstrap distribution of the difference in means, with the upper and lower percentiles of the confidence range marked with vertical lines. The figure caption gives the estimated confidence interval. In this case, we are 90% confidence that ESCs increase the change in heart pumping capacity by between 4.72 and 11.09 percentage points on average.</p>
+</div>
+<div id="theory-based-inference-for-the-difference-of-two-means" class="section level3 unnumbered">
+<h3>Theory-based inference for the difference of two means<a class="anchor" aria-label="anchor" href="#theory-based-inference-for-the-difference-of-two-means"><i class="fas fa-link"></i></a>
+</h3>
+<p>To demonstrate theory-based methods in R for a difference in means, we will continue use the embryonic stem cell data. Something to keep in mind as we work through the example: are theory-based methods appropriate here? Are the results different than the results from the simulation-based methods?</p>
+<p>To perform theory-based inference, we will again use the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> function in R. Remember that we sometimes need to change the reference category of the explanatory variable to have the correct order of subtraction - in this case, the default is <code>ctrl - esc</code>, since <code>ctrl</code> is first alphabetically. We can get our preferred order of subtracation of <code>esc-ctrl</code> this way:</p>
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">stem_cell</span><span class="op">$</span><span class="va">trmt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/relevel.html">relevel</a></span><span class="op">(</span><span class="va">stem_cell</span><span class="op">$</span><span class="va">trmt</span>, ref <span class="op">=</span> <span class="st">"esc"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">stem_cell</span><span class="op">$</span><span class="va">change</span> <span class="op">~</span> <span class="va">stem_cell</span><span class="op">$</span><span class="va">trmt</span>, <span class="co">#Always use response ~ explanatory</span></span>
+<span>       alternative <span class="op">=</span> <span class="st">"two.sided"</span>, <span class="co"># Direction of alternative</span></span>
+<span>       conf.level <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span>  <span class="co">#confidence level as a proportion</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Welch Two Sample t-test</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; data:  stem_cell$change by stem_cell$trmt</span></span>
+<span><span class="co">#&gt; t = 4, df = 12, p-value = 0.002</span></span>
+<span><span class="co">#&gt; alternative hypothesis: true difference in means between group esc and group ctrl is not equal to 0</span></span>
+<span><span class="co">#&gt; 90 percent confidence interval:</span></span>
+<span><span class="co">#&gt;   4.35 11.31</span></span>
+<span><span class="co">#&gt; sample estimates:</span></span>
+<span><span class="co">#&gt;  mean in group esc mean in group ctrl </span></span>
+<span><span class="co">#&gt;               3.50              -4.33</span></span></code></pre></div>
+<p>The results here should look familiar from the paired t-test above. We have the t-statistic, degrees of freedom, p-values, confidence interval, and group-specific means. The degrees of freedom may look a little strange - remember that the correct formula is very complex! - here we obtain 12.225 df. If you were computing the results by hand using <code><a href="https://rdrr.io/r/stats/TDist.html">pt()</a></code> and <code><a href="https://rdrr.io/r/stats/TDist.html">qt()</a></code> as we saw earlier in this section, you would use 8 df, since <span class="math inline">\(n_1 -1 = n_2 -1 = 8\)</span>. In the end, we conclude that there is strong evidence against the null hypothesis of no difference in the mean change in heart pumping capacity (p = 0.002).</p>
+<p>Remember that if you have a one-sided alternative, you will need to run <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> with a two-sided alternative to get the correct confidence interval! Your reminder will be an <code>Inf</code> in the confidence interval results, which means R is computing a one-sided confidence interval. Here, we have a two-sided alternative, so we can use the CI as reported: we are 90% confident that the true average improvement in heart pumping capacity due to ESCs is between 4.35 and 11.31 percentage points.</p>
+</div>
+</div>
+<div id="catstats-function-summary-1" class="section level2" number="20.2">
+<h2>
+<span class="header-section-number">20.2</span> <code>catstats</code> function summary<a class="anchor" aria-label="anchor" href="#catstats-function-summary-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>In the previous section, you were introduced to four new R
+functions in the <code>catstats</code> library. Here we provide a summary of
+these functions, plus a summary of the <code>paired_observed_plot</code>
+function that can be used to plot paired data. You can also access
+the help files for these functions using the <code>?</code> command. For
+example, type <code><a href="https://rdrr.io/pkg/catstats/man/paired_test.html">?paired_test</a></code> into your R console to bring up the
+help file for the <code>paired_test</code> function.
+<br></p>
+<ol style="list-style-type: decimal">
+<li>
+<p><code>paired_observed_plot</code>: Produce plot of observed matched pairs data. (Note: Input must be observed value for each member of the pair, not differences.)</p>
+<ul>
+<li>
+<code>data</code> = two-column data frame, with values for each group in the two columns</li>
+</ul>
+</li>
+<li>
+<p><code>paired_test</code>: Simulation-based hypothesis test for a paired mean difference.</p>
+<ul>
+<li>
+<code>data</code> = vector of observed differences; or two-column data frame, with values for each group in the two columns</li>
+<li>
+<code>which_first</code> = name of group which should be first in order of subtraction (if data is two-column data frame)<br>
+</li>
+<li>
+<code>shift</code> = amount to shift differences for bootstrapping of null distribution</li>
+<li>
+<code>direction</code> = one of <code>"greater"</code>, <code>"less"</code>, or <code>"two-sided"</code> (quotations are important here!) to match the sign in <span class="math inline">\(H_A\)</span>
+</li>
+<li>
+<code>as_extreme_as</code> = value of observed statistic</li>
+<li>
+<code>number_repetitions</code> = number of simulated samples to generate (should be at least 1000!)
+<br>
+</li>
+</ul>
+</li>
+<li>
+<p><code>paired_bootstrap_CI</code>: Bootstrap confidence interval for a paired mean difference.</p>
+<ul>
+<li>
+<code>data</code> = vector of observed differences; or two-column data frame, with values for each group in the two columns</li>
+<li>
+<code>which_first</code> = name of group which should be first in order of subtraction (if data is two-column data frame)<br>
+</li>
+<li>
+<code>confidence_level</code> = confidence level as a decimal (e.g., 0.90, 0.95, etc)</li>
+<li>
+<code>number_repetitions</code> = number of simulated samples to generate (should be at least 1000!)
+<br>
+</li>
+</ul>
+</li>
+<li>
+<p><code>two_mean_test</code>: Simulation-based hypothesis test for a difference in two means.</p>
+<ul>
+<li>
+<code>formula</code> = <code>y ~ x</code> where <code>y</code> is the name of the quantitative response variable in the data set and <code>x</code> is the name of the binary explanatory variable</li>
+<li>
+<code>data</code> = name of data set</li>
+<li>
+<code>first_in_subtraction</code> = category of the explanatory variable which should be first in subtraction, written in quotations</li>
+<li>
+<code>direction</code> = one of <code>"greater"</code>, <code>"less"</code>, or <code>"two-sided"</code> (quotations are important here!) to match the sign in <span class="math inline">\(H_A\)</span>
+</li>
+<li>
+<code>as_extreme_as</code> = value of observed difference in proportions</li>
+<li>
+<code>number_repetitions</code> = number of simulated samples to generate (should be at least 1000!)
+<br>
+</li>
+</ul>
+</li>
+<li>
+<p><code>two_mean_bootstrap_CI</code>: Bootstrap confidence interval for a difference in two means.</p>
+<ul>
+<li>
+<code>formula</code> = <code>y ~ x</code> where <code>y</code> is the name of the quantitative response variable in the data set and <code>x</code> is the name of the binary explanatory variable</li>
+<li>
+<code>data</code> = name of data set</li>
+<li>
+<code>first_in_subtraction</code> = category of the explanatory variable which should be first in subtraction, written in quotations</li>
+<li>
+<code>confidence_level</code> = confidence level as a decimal (e.g., 0.90, 0.95, etc)</li>
+<li>
+<code>number_repetitions</code> = number of simulated samples to generate (should be at least 1000!)</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+
+
+
+<div class="chapter-nav">
+<div class="prev"><a href="inference-two-means.html"><span class="header-section-number">19</span> Inference for comparing two independent means</a></div>
+<div class="next"><a href="inference-reg.html"><span class="header-section-number">21</span> Inference for correlation and slope</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#inference-num-applications"><span class="header-section-number">20</span> Applications: Infer quantitative</a></li>
+<li>
+<a class="nav-link" href="#inference-for-quantitative-data-using-r-and-catstats"><span class="header-section-number">20.1</span> Inference for quantitative data using R and catstats</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#using-the-t-distribution">Using the \(t\)-distribution</a></li>
+<li><a class="nav-link" href="#simulation-based-inference-for-paired-mean-difference">Simulation-based inference for paired mean difference</a></li>
+<li><a class="nav-link" href="#theory-based-inference-for-paired-mean-difference">Theory-based inference for paired mean difference</a></li>
+<li><a class="nav-link" href="#simulation-based-inference-for-the-difference-of-two-means">Simulation-based inference for the difference of two means</a></li>
+<li><a class="nav-link" href="#theory-based-inference-for-the-difference-of-two-means">Theory-based inference for the difference of two means</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#catstats-function-summary-1"><span class="header-section-number">20.2</span> catstats function summary</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/MTstateIntroStats/IntroStatTextbook/blob/master/20-numerical-applications.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/MTstateIntroStats/IntroStatTextbook/edit/master/20-numerical-applications.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+</div>
+  
+
+  
+
+</div>
+ <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Montana State Introductory Statistics with R</strong>" was written by Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

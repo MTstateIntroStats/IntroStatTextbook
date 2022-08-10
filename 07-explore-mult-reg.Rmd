@@ -1,5 +1,5 @@
-# Multivariable models {#mult-reg}
-<!-- TODO - change reference to #explore-mult-reg -->
+# Multivariable models {#explore-mult-reg}
+<!-- Old reference: #mult-reg -->
 
 ```{r, include = FALSE}
 source("_common.R")
@@ -130,7 +130,7 @@ We can visualize relationships among four variables in the plots above (the thre
 " target="_blank"><img src="http://img.youtube.com/vi/Z8t4k0Q8e8Y/0.jpg" 
 alt="Hans Rosling 200 Years" width="480" height="360" border="10" /></a>
 
-## Simpson's paradox, revisited
+## Simpson's paradox revisited
 
 Simpson's Paradox was introduced in Section \@ref(simpson) through an example on race and capital punishment. In that example, all three variables of interest were categorical. In this section, we present another example of this paradox using three quantitative variables.
 

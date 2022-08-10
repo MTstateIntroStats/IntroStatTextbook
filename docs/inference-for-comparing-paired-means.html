@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 20 Inference for comparing paired means | Montana State Introductory Statistics with R</title>
+<title>Chapter 19 Inference for comparing paired means | Montana State Introductory Statistics with R</title>
 <meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager">
-<meta name="description" content="TODO  20.1 Chapter review  Summary  TODO  Terms We introduced the following terms in the chapter. If you’re not sure what some of these terms mean, we recommend you go back in the text and review...">
+<meta name="description" content="TODO  19.1 Chapter review  Summary  TODO  Terms We introduced the following terms in the chapter. If you’re not sure what some of these terms mean, we recommend you go back in the text and review...">
 <meta name="generator" content="bookdown 0.27 with bs4_book()">
-<meta property="og:title" content="Chapter 20 Inference for comparing paired means | Montana State Introductory Statistics with R">
+<meta property="og:title" content="Chapter 19 Inference for comparing paired means | Montana State Introductory Statistics with R">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://mtstateintrostats.github.io/IntroStatTextbook/inference-for-comparing-paired-means.html">
-<meta property="og:description" content="TODO  20.1 Chapter review  Summary  TODO  Terms We introduced the following terms in the chapter. If you’re not sure what some of these terms mean, we recommend you go back in the text and review...">
+<meta property="og:description" content="TODO  19.1 Chapter review  Summary  TODO  Terms We introduced the following terms in the chapter. If you’re not sure what some of these terms mean, we recommend you go back in the text and review...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 20 Inference for comparing paired means | Montana State Introductory Statistics with R">
-<meta name="twitter:description" content="TODO  20.1 Chapter review  Summary  TODO  Terms We introduced the following terms in the chapter. If you’re not sure what some of these terms mean, we recommend you go back in the text and review...">
+<meta name="twitter:title" content="Chapter 19 Inference for comparing paired means | Montana State Introductory Statistics with R">
+<meta name="twitter:description" content="TODO  19.1 Chapter review  Summary  TODO  Terms We introduced the following terms in the chapter. If you’re not sure what some of these terms mean, we recommend you go back in the text and review...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -108,19 +108,19 @@
 <li><a class="" href="foundations-errors.html"><span class="header-section-number">12</span> Errors, power, and practical importance</a></li>
 <li><a class="" href="foundations-applications.html"><span class="header-section-number">13</span> Applications: Foundations</a></li>
 <li class="book-part">Inference for categorical data</li>
-<li><a class="" href="inference-one-prop.html"><span class="header-section-number">15</span> Inference for a single proportion</a></li>
-<li><a class="" href="inference-two-props.html"><span class="header-section-number">16</span> Inference for comparing two proportions</a></li>
-<li><a class="" href="applications-infer-categorical.html"><span class="header-section-number">17</span> Applications: Infer categorical</a></li>
+<li><a class="" href="inference-one-prop.html"><span class="header-section-number">14</span> Inference for a single proportion</a></li>
+<li><a class="" href="inference-two-props.html"><span class="header-section-number">15</span> Inference for comparing two proportions</a></li>
+<li><a class="" href="applications-infer-categorical.html"><span class="header-section-number">16</span> Applications: Infer categorical</a></li>
 <li class="book-part">Inference for quantitative data</li>
-<li><a class="" href="inference-for-a-single-mean.html"><span class="header-section-number">19</span> Inference for a single mean</a></li>
-<li><a class="active" href="inference-for-comparing-paired-means.html"><span class="header-section-number">20</span> Inference for comparing paired means</a></li>
-<li><a class="" href="inference-for-comparing-two-independent-means.html"><span class="header-section-number">21</span> Inference for comparing two independent means</a></li>
-<li><a class="" href="applications-infer-quantitative.html"><span class="header-section-number">22</span> Applications: Infer quantitative</a></li>
+<li><a class="" href="inference-for-a-single-mean.html"><span class="header-section-number">18</span> Inference for a single mean</a></li>
+<li><a class="active" href="inference-for-comparing-paired-means.html"><span class="header-section-number">19</span> Inference for comparing paired means</a></li>
+<li><a class="" href="inference-for-comparing-two-independent-means.html"><span class="header-section-number">20</span> Inference for comparing two independent means</a></li>
+<li><a class="" href="applications-infer-quantitative.html"><span class="header-section-number">21</span> Applications: Infer quantitative</a></li>
 <li class="book-part">Inference for regression</li>
-<li><a class="" href="inference-for-correlation-and-slope.html"><span class="header-section-number">24</span> Inference for correlation and slope</a></li>
-<li><a class="" href="applications-infer-regression.html"><span class="header-section-number">25</span> Applications: Infer regression</a></li>
+<li><a class="" href="inference-reg.html"><span class="header-section-number">22</span> Inference for correlation and slope</a></li>
+<li><a class="" href="applications-infer-regression.html"><span class="header-section-number">23</span> Applications: Infer regression</a></li>
 <li class="book-part">Probability</li>
-<li><a class="" href="probability.html"><span class="header-section-number">26</span> Probability with tables</a></li>
+<li><a class="" href="probability.html"><span class="header-section-number">24</span> Probability with tables</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -129,16 +129,16 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="inference-for-comparing-paired-means" class="section level1" number="20">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="inference-for-comparing-paired-means" class="section level1" number="19">
 <h1>
-<span class="header-section-number">20</span> Inference for comparing paired means<a class="anchor" aria-label="anchor" href="#inference-for-comparing-paired-means"><i class="fas fa-link"></i></a>
+<span class="header-section-number">19</span> Inference for comparing paired means<a class="anchor" aria-label="anchor" href="#inference-for-comparing-paired-means"><i class="fas fa-link"></i></a>
 </h1>
 <div class="chapterintro">
 <p>TODO</p>
 </div>
-<div id="chp18-review" class="section level2" number="20.1">
+<div id="chp18-review" class="section level2" number="19.1">
 <h2>
-<span class="header-section-number">20.1</span> Chapter review<a class="anchor" aria-label="anchor" href="#chp18-review"><i class="fas fa-link"></i></a>
+<span class="header-section-number">19.1</span> Chapter review<a class="anchor" aria-label="anchor" href="#chp18-review"><i class="fas fa-link"></i></a>
 </h2>
 <div id="summary-13" class="section level3 unnumbered">
 <h3>Summary<a class="anchor" aria-label="anchor" href="#summary-13"><i class="fas fa-link"></i></a>
@@ -172,14 +172,14 @@ TODO
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="inference-for-a-single-mean.html"><span class="header-section-number">19</span> Inference for a single mean</a></div>
-<div class="next"><a href="inference-for-comparing-two-independent-means.html"><span class="header-section-number">21</span> Inference for comparing two independent means</a></div>
+<div class="prev"><a href="inference-for-a-single-mean.html"><span class="header-section-number">18</span> Inference for a single mean</a></div>
+<div class="next"><a href="inference-for-comparing-two-independent-means.html"><span class="header-section-number">20</span> Inference for comparing two independent means</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#inference-for-comparing-paired-means"><span class="header-section-number">20</span> Inference for comparing paired means</a></li>
+<li><a class="nav-link" href="#inference-for-comparing-paired-means"><span class="header-section-number">19</span> Inference for comparing paired means</a></li>
 <li>
-<a class="nav-link" href="#chp18-review"><span class="header-section-number">20.1</span> Chapter review</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#chp18-review"><span class="header-section-number">19.1</span> Chapter review</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#summary-13">Summary</a></li>
 <li><a class="nav-link" href="#terms-13">Terms</a></li>
 <li><a class="nav-link" href="#key-ideas-13">Key ideas</a></li>

@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 15 Inference for a single proportion | Montana State Introductory Statistics with R</title>
+<title>Chapter 14 Inference for a single proportion | Montana State Introductory Statistics with R</title>
 <meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager">
-<meta name="description" content="TODO  Old content - revise as needed  15.1 One proportion  Notation. \(n\) = sample size (number of observational units in the data set) \(\hat{p}\) = sample proportion (number of “successes”...">
+<meta name="description" content="TODO  Old content - revise as needed Below we summarize the notation used throughout this chapter. Notation. \(n\) = sample size (number of observational units in the data set) \(\hat{p}\) =...">
 <meta name="generator" content="bookdown 0.27 with bs4_book()">
-<meta property="og:title" content="Chapter 15 Inference for a single proportion | Montana State Introductory Statistics with R">
+<meta property="og:title" content="Chapter 14 Inference for a single proportion | Montana State Introductory Statistics with R">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://mtstateintrostats.github.io/IntroStatTextbook/inference-one-prop.html">
-<meta property="og:description" content="TODO  Old content - revise as needed  15.1 One proportion  Notation. \(n\) = sample size (number of observational units in the data set) \(\hat{p}\) = sample proportion (number of “successes”...">
+<meta property="og:description" content="TODO  Old content - revise as needed Below we summarize the notation used throughout this chapter. Notation. \(n\) = sample size (number of observational units in the data set) \(\hat{p}\) =...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 15 Inference for a single proportion | Montana State Introductory Statistics with R">
-<meta name="twitter:description" content="TODO  Old content - revise as needed  15.1 One proportion  Notation. \(n\) = sample size (number of observational units in the data set) \(\hat{p}\) = sample proportion (number of “successes”...">
+<meta name="twitter:title" content="Chapter 14 Inference for a single proportion | Montana State Introductory Statistics with R">
+<meta name="twitter:description" content="TODO  Old content - revise as needed Below we summarize the notation used throughout this chapter. Notation. \(n\) = sample size (number of observational units in the data set) \(\hat{p}\) =...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -92,14 +92,14 @@
 <li><a class="" href="preface.html">Preface</a></li>
 <li><a class="" href="rstudio.html">Preliminaries: Getting started in RStudio</a></li>
 <li class="book-part">Introduction to data</li>
-<li><a class="" href="intro-to-data.html"><span class="header-section-number">1</span> Hello data</a></li>
+<li><a class="" href="data-hello.html"><span class="header-section-number">1</span> Hello data</a></li>
 <li><a class="" href="data-design.html"><span class="header-section-number">2</span> Study design</a></li>
 <li><a class="" href="data-applications.html"><span class="header-section-number">3</span> Applications: Data</a></li>
 <li class="book-part">Exploratory data analysis</li>
-<li><a class="" href="categorical-data.html"><span class="header-section-number">4</span> Exploring categorical data</a></li>
-<li><a class="" href="quantitative-data.html"><span class="header-section-number">5</span> Exploring quantitative data</a></li>
-<li><a class="" href="cor-reg.html"><span class="header-section-number">6</span> Correlation and regression</a></li>
-<li><a class="" href="mult-reg.html"><span class="header-section-number">7</span> Multivariable models</a></li>
+<li><a class="" href="explore-categorical.html"><span class="header-section-number">4</span> Exploring categorical data</a></li>
+<li><a class="" href="explore-numerical.html"><span class="header-section-number">5</span> Exploring quantitative data</a></li>
+<li><a class="" href="explore-regression.html"><span class="header-section-number">6</span> Correlation and regression</a></li>
+<li><a class="" href="explore-mult-reg.html"><span class="header-section-number">7</span> Multivariable models</a></li>
 <li><a class="" href="explore-applications.html"><span class="header-section-number">8</span> Applications: Explore</a></li>
 <li class="book-part">Foundations of inference</li>
 <li><a class="" href="foundations-randomization.html"><span class="header-section-number">9</span> Hypothesis testing with randomization</a></li>
@@ -108,19 +108,19 @@
 <li><a class="" href="foundations-errors.html"><span class="header-section-number">12</span> Errors, power, and practical importance</a></li>
 <li><a class="" href="foundations-applications.html"><span class="header-section-number">13</span> Applications: Foundations</a></li>
 <li class="book-part">Inference for categorical data</li>
-<li><a class="active" href="inference-one-prop.html"><span class="header-section-number">15</span> Inference for a single proportion</a></li>
-<li><a class="" href="inference-two-props.html"><span class="header-section-number">16</span> Inference for comparing two proportions</a></li>
-<li><a class="" href="applications-infer-categorical.html"><span class="header-section-number">17</span> Applications: Infer categorical</a></li>
+<li><a class="active" href="inference-one-prop.html"><span class="header-section-number">14</span> Inference for a single proportion</a></li>
+<li><a class="" href="inference-two-props.html"><span class="header-section-number">15</span> Inference for comparing two proportions</a></li>
+<li><a class="" href="inference-categ-applications.html"><span class="header-section-number">16</span> Applications: Infer categorical</a></li>
 <li class="book-part">Inference for quantitative data</li>
-<li><a class="" href="inference-for-a-single-mean.html"><span class="header-section-number">19</span> Inference for a single mean</a></li>
-<li><a class="" href="inference-for-comparing-paired-means.html"><span class="header-section-number">20</span> Inference for comparing paired means</a></li>
-<li><a class="" href="inference-for-comparing-two-independent-means.html"><span class="header-section-number">21</span> Inference for comparing two independent means</a></li>
-<li><a class="" href="applications-infer-quantitative.html"><span class="header-section-number">22</span> Applications: Infer quantitative</a></li>
+<li><a class="" href="inference-one-mean.html"><span class="header-section-number">17</span> Inference for a single mean</a></li>
+<li><a class="" href="inference-paired-means.html"><span class="header-section-number">18</span> Inference for comparing paired means</a></li>
+<li><a class="" href="inference-two-means.html"><span class="header-section-number">19</span> Inference for comparing two independent means</a></li>
+<li><a class="" href="inference-num-applications.html"><span class="header-section-number">20</span> Applications: Infer quantitative</a></li>
 <li class="book-part">Inference for regression</li>
-<li><a class="" href="inference-for-correlation-and-slope.html"><span class="header-section-number">24</span> Inference for correlation and slope</a></li>
-<li><a class="" href="applications-infer-regression.html"><span class="header-section-number">25</span> Applications: Infer regression</a></li>
+<li><a class="" href="inference-reg.html"><span class="header-section-number">21</span> Inference for correlation and slope</a></li>
+<li><a class="" href="inference-reg-applications.html"><span class="header-section-number">22</span> Applications: Infer regression</a></li>
 <li class="book-part">Probability</li>
-<li><a class="" href="probability.html"><span class="header-section-number">26</span> Probability with tables</a></li>
+<li><a class="" href="probability.html"><span class="header-section-number">23</span> Probability with tables</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -129,9 +129,9 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="inference-one-prop" class="section level1" number="15">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="inference-one-prop" class="section level1" number="14">
 <h1>
-<span class="header-section-number">15</span> Inference for a single proportion<a class="anchor" aria-label="anchor" href="#inference-one-prop"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14</span> Inference for a single proportion<a class="anchor" aria-label="anchor" href="#inference-one-prop"><i class="fas fa-link"></i></a>
 </h1>
 <div class="chapterintro">
 <p>TODO</p>
@@ -139,10 +139,7 @@
 <div class="underconstruction">
 <p>Old content - revise as needed</p>
 </div>
-<div id="single-prop" class="section level2" number="15.1">
-<h2>
-<span class="header-section-number">15.1</span> One proportion<a class="anchor" aria-label="anchor" href="#single-prop"><i class="fas fa-link"></i></a>
-</h2>
+<p>Below we summarize the notation used throughout this chapter.</p>
 <div class="onebox">
 <p><strong>Notation</strong>.</p>
 <ul>
@@ -156,11 +153,13 @@
 </ul>
 </div>
 <p>A single proportion is used to summarize data when we measured a single categorical variable on each observational unit—the single variable is measured as either a success or failure (e.g., “surgical complication” vs. “no surgical complication”)<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The terms “success” and “failure” may not actually represent outcomes we view as successful or not, but it is the typical generic way to referring to the possible outcomes of a binary variable. The “success” is whatever we count when calculating our sample proportion.&lt;/p&gt;"><sup>113</sup></a>.</p>
-<div id="one-prop-null-boot" class="section level3" number="15.1.1">
-<h3>
-<span class="header-section-number">15.1.1</span> Simulation-based test for <span class="math inline">\(H_0: \pi = \pi_0\)</span><a class="anchor" aria-label="anchor" href="#one-prop-null-boot"><i class="fas fa-link"></i></a>
-</h3>
-<!-- Medical consultant case study was added to Chapter 10, so we need to change this example -->
+<div id="one-prop-null-boot" class="section level2" number="14.1">
+<h2>
+<span class="header-section-number">14.1</span> Simulation-based test for <span class="math inline">\(H_0: \pi = \pi_0\)</span><a class="anchor" aria-label="anchor" href="#one-prop-null-boot"><i class="fas fa-link"></i></a>
+</h2>
+<div class="underconstruction">
+<p>Need revise this section - medical consultant case study introduced in Chapter 10</p>
+</div>
 <p> In Section <a href="foundations-randomization.html#HypothesisTesting">9.3</a>, we introduced the general steps of a hypothesis test:</p>
 <div class="onebox">
 <p><strong>General steps of a hypothesis test.</strong> Every hypothesis test follows these same general steps:</p>
@@ -180,10 +179,10 @@
 <p>No. The claim is that there is a causal connection, but the data are observational, so we must be on the lookout for confounding variables. For example, maybe patients who can afford a medical consultant can afford better medical care, which can also lead to a lower complication rate.</p>
 <p>While it is not possible to assess the causal claim, it is still possible to understand the consultant’s true rate of complications.</p>
 </div>
-<div id="steps-1-and-2-hypotheses-and-test-statistic" class="section level4 unnumbered">
-<h4>Steps 1 and 2: Hypotheses and test statistic<a class="anchor" aria-label="anchor" href="#steps-1-and-2-hypotheses-and-test-statistic"><i class="fas fa-link"></i></a>
-</h4>
-<p>Regardless of if we use simulation-based methods or theory-based methods, the first two steps of a hypothesis test start out the same: setting up hypotheses and summarizing data with a test statistic. We will let <span class="math inline">\(\pi\)</span> represent the true complication rate for liver donors working with this consultant. This “true” complication probability is called the <strong>parameter</strong> of interest<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Parameters were first introduced in Section &lt;a href="quantitative-data.html#dotplots"&gt;5.2&lt;/a&gt;&lt;/p&gt;'><sup>114</sup></a>. The sample proportion for the complication rate is 3 complications divided by the 62 surgeries the consultant has worked on: <span class="math inline">\(\hat{p} = 3/62 = 0.048\)</span>. Since this value is estimated from sample data, it is called a <strong>statistic</strong>. The statistic <span class="math inline">\(\hat{p}\)</span> is also our point estimate, or “best guess,” for <span class="math inline">\(\pi\)</span>, and we will use is as our <strong>test statistic</strong>.</p>
+<div id="steps-1-and-2-hypotheses-and-test-statistic" class="section level3 unnumbered">
+<h3>Steps 1 and 2: Hypotheses and test statistic<a class="anchor" aria-label="anchor" href="#steps-1-and-2-hypotheses-and-test-statistic"><i class="fas fa-link"></i></a>
+</h3>
+<p>Regardless of if we use simulation-based methods or theory-based methods, the first two steps of a hypothesis test start out the same: setting up hypotheses and summarizing data with a test statistic. We will let <span class="math inline">\(\pi\)</span> represent the true complication rate for liver donors working with this consultant. This “true” complication probability is called the <strong>parameter</strong> of interest<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Parameters were first introduced in Section &lt;a href="explore-numerical.html#dotplots"&gt;5.2&lt;/a&gt;&lt;/p&gt;'><sup>114</sup></a>. The sample proportion for the complication rate is 3 complications divided by the 62 surgeries the consultant has worked on: <span class="math inline">\(\hat{p} = 3/62 = 0.048\)</span>. Since this value is estimated from sample data, it is called a <strong>statistic</strong>. The statistic <span class="math inline">\(\hat{p}\)</span> is also our point estimate, or “best guess,” for <span class="math inline">\(\pi\)</span>, and we will use is as our <strong>test statistic</strong>.</p>
 <div class="onebox">
 <p><strong>Parameters and statistics.</strong></p>
 <p>A <strong>parameter</strong> is the “true” value of interest. We typically estimate the parameter using a <strong>statistic</strong> from a sample of data. When a statistic is used as an estimate of a parameter, it is called a <strong>point estimate</strong>.</p>
@@ -210,9 +209,9 @@
 </blockquote>
 </div>
 </div>
-<div id="steps-3-and-4-null-distribution-and-p-value" class="section level4 unnumbered">
-<h4>Steps 3 and 4: Null distribution and p-value<a class="anchor" aria-label="anchor" href="#steps-3-and-4-null-distribution-and-p-value"><i class="fas fa-link"></i></a>
-</h4>
+<div id="steps-3-and-4-null-distribution-and-p-value" class="section level3 unnumbered">
+<h3>Steps 3 and 4: Null distribution and p-value<a class="anchor" aria-label="anchor" href="#steps-3-and-4-null-distribution-and-p-value"><i class="fas fa-link"></i></a>
+</h3>
 <p>To assess these hypotheses, we need to evaluate the possibility of getting a sample proportion as far below the null value, <span class="math inline">\(0.10\)</span>, as what was observed (<span class="math inline">\(0.048\)</span>), <em>if the null hypothesis were true</em>.</p>
 <div class="onebox">
 <p><strong>Null value of a hypothesis test.</strong></p>
@@ -222,7 +221,7 @@
 <div class="onebox">
 <p><strong>Null distribution.</strong></p>
 <p>The <strong>null distribution</strong> of a test statistic is the sampling distribution of that statistic <em>under the assumption of the null hypothesis</em>. It describes how that statistic would vary from sample to sample, if the null hypothesis were true.</p>
-<p>The null distribution can be estimated through simulation (simulation-based methods), as in this section, or can be modeled by a mathematical function (theory-based methods), as in Section <a href="inference-one-prop.html#theory-prop">15.1.3</a>.</p>
+<p>The null distribution can be estimated through simulation (simulation-based methods), as in this section, or can be modeled by a mathematical function (theory-based methods), as in Section <a href="inference-one-prop.html#theory-prop">14.3</a>.</p>
 </div>
 <p>We want to identify the sampling distribution of the test statistic (<span class="math inline">\(\hat{p}\)</span>) if the null hypothesis was true. In other words, we want to see how the sample proportion changes due to chance alone. Then we plan to use this information to decide whether there is enough evidence to reject the null hypothesis.</p>
 <p>Under the null hypothesis, 10% of liver donors have complications during or after surgery. Suppose this rate was really no different for the consultant’s clients (for <em>all</em> the consultant’s clients, not just the 62 previously measured). If this was the case, we could <em>simulate</em> 62 clients to get a sample proportion for the complication rate from the null distribution.</p>
@@ -238,26 +237,29 @@
 <p>No. To assess the hypotheses, we need to see a distribution of many <span class="math inline">\(\hat{p}_{sim}\)</span>, not just a <em>single</em> draw from this sampling distribution.</p>
 </div>
 <p>One simulation isn’t enough to get a sense of the null distribution; many simulation studies are needed. Roughly 10,000 seems sufficient. However, paying someone to simulate 10,000 studies by hand is a waste of time and money. Instead, simulations are typically programmed into a computer, which is much more efficient.</p>
-<p>Figure <a href="inference-one-prop.html#fig:nullDistForPHatIfLiverTransplantConsultantIsNotHelpful">15.1</a> shows the results of 10,000 simulated studies. The proportions that are equal to or less than <span class="math inline">\(\hat{p}=0.048\)</span> are shaded. The shaded areas represent sample proportions under the null distribution that provide at least as much evidence as <span class="math inline">\(\hat{p}\)</span> favoring the alternative hypothesis. There were 1222 simulated sample proportions with <span class="math inline">\(\hat{p}_{sim} \leq 0.048\)</span>. We use these to construct the null distribution’s left-tail area and find the p-value: <span class="math display">\[\begin{align}
+<p>Figure <a href="inference-one-prop.html#fig:nullDistForPHatIfLiverTransplantConsultantIsNotHelpful">14.1</a> shows the results of 10,000 simulated studies. The proportions that are equal to or less than <span class="math inline">\(\hat{p}=0.048\)</span> are shaded. The shaded areas represent sample proportions under the null distribution that provide at least as much evidence as <span class="math inline">\(\hat{p}\)</span> favoring the alternative hypothesis. There were 1222 simulated sample proportions with <span class="math inline">\(\hat{p}_{sim} \leq 0.048\)</span>. We use these to construct the null distribution’s left-tail area and find the p-value: <span class="math display">\[\begin{align}
 \text{left tail area }\label{estOfPValueBasedOnSimulatedNullForSingleProportion}
     &amp;= \frac{\text{Number of observed simulations with }\hat{p}_{sim}\leq\text{ 0.048}}{10000}
 \end{align}\]</span> Of the 10,000 simulated <span class="math inline">\(\hat{p}_{sim}\)</span>, 1222 were equal to or smaller than <span class="math inline">\(\hat{p}\)</span>. Since the hypothesis test is one-sided, the estimated p-value is equal to this tail area: 0.1222.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:nullDistForPHatIfLiverTransplantConsultantIsNotHelpful"></span>
 <img src="14-categorical-one-prop_files/figure-html/nullDistForPHatIfLiverTransplantConsultantIsNotHelpful-1.png" alt="The null distribution for $\hat{p}$, created from 10,000 simulated studies. The left tail, representing the p-value for the hypothesis test, contains 12.22% of the simulations." width="90%"><p class="caption">
-Figure 15.1: The null distribution for <span class="math inline">\(\hat{p}\)</span>, created from 10,000 simulated studies. The left tail, representing the p-value for the hypothesis test, contains 12.22% of the simulations.
+Figure 14.1: The null distribution for <span class="math inline">\(\hat{p}\)</span>, created from 10,000 simulated studies. The left tail, representing the p-value for the hypothesis test, contains 12.22% of the simulations.
 </p>
 </div>
 </div>
-<div id="step-5-conclusion" class="section level4 unnumbered">
-<h4>Step 5: Conclusion<a class="anchor" aria-label="anchor" href="#step-5-conclusion"><i class="fas fa-link"></i></a>
-</h4>
+<div id="step-5-conclusion-and-scope-of-inference" class="section level3 unnumbered">
+<h3>Step 5: Conclusion and scope of inference<a class="anchor" aria-label="anchor" href="#step-5-conclusion-and-scope-of-inference"><i class="fas fa-link"></i></a>
+</h3>
 <div class="guidedpractice">
 <p>Because the estimated p-value is 0.1222, which is not small, we have little to no evidence against the null hypothesis. Explain what this means in plain language in the context of the problem.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;There isn’t sufficiently strong evidence to support the claim that fewer than 10% of the consultant’s clients experience complications. That is, there isn’t sufficiently strong evidence to support an association between the consultant’s work and fewer surgery complications.&lt;/p&gt;"><sup>117</sup></a></p>
 </div>
 <p></p>
 <div class="guidedpractice">
 <p>Does the conclusion in the previous Guided Practice imply there is no real association between the surgical consultant’s work and the risk of complications? Explain.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;No. It might be that the consultant’s work is associated with a reduction but that there isn’t enough data to convincingly show this connection.&lt;/p&gt;"><sup>118</sup></a></p>
+</div>
+<div class="underconstruction">
+<p>Add scope of inference</p>
 </div>
 <!--
 Add this to an Appendix someday!
@@ -293,14 +295,14 @@ If it were plotted, the exact null distribution would look almost identical to t
 -->
 </div>
 </div>
-<div id="boot-ci-prop" class="section level3" number="15.1.2">
-<h3>
-<span class="header-section-number">15.1.2</span> Bootstrap confidence interval for <span class="math inline">\(\pi\)</span><a class="anchor" aria-label="anchor" href="#boot-ci-prop"><i class="fas fa-link"></i></a>
-</h3>
+<div id="boot-ci-prop" class="section level2" number="14.2">
+<h2>
+<span class="header-section-number">14.2</span> Bootstrap confidence interval for <span class="math inline">\(\pi\)</span><a class="anchor" aria-label="anchor" href="#boot-ci-prop"><i class="fas fa-link"></i></a>
+</h2>
 <p>A confidence interval provides a range of plausible values for the parameter <span class="math inline">\(\pi\)</span>. If the goal is to produce a range of possible values for a population value, then in an ideal world, we would sample data from the population again and recompute the sample proportion. Then we could do it again. And again. And so on until we have a good sense of the variability of our original estimate. The ideal world where sampling data is free or extremely cheap is almost never the case, and taking repeated samples from a population is usually impossible. So, instead of using a “resample from the population” approach, bootstrapping uses a “resample from the sample” approach.</p>
 <p></p>
 <div class="workedexample">
-<p>Let’s revisit our medical consultant example from Section <a href="inference-one-prop.html#one-prop-null-boot">15.1.1</a>. This consultant tried to attract patients by noting the average complication rate for liver donor surgeries in the US is about 10%, but her clients have had only 3 complications in the 62 liver donor surgeries she has facilitated. This data, however, did not provide sufficient evidence that the consultant’s complication rate was less than 10%, since the p-value was approximately 0.122. Does this mean we can conclude that the consultant’s complication rate was equal to 10%?</p>
+<p>Let’s revisit our medical consultant example from Section <a href="inference-one-prop.html#one-prop-null-boot">14.1</a>. This consultant tried to attract patients by noting the average complication rate for liver donor surgeries in the US is about 10%, but her clients have had only 3 complications in the 62 liver donor surgeries she has facilitated. This data, however, did not provide sufficient evidence that the consultant’s complication rate was less than 10%, since the p-value was approximately 0.122. Does this mean we can conclude that the consultant’s complication rate was equal to 10%?</p>
 <hr>
 <p>No! Though our decision was to fail to reject the null hypothesis, this does not mean we have evidence <em>for</em> the null hypothesis—we cannot “accept” the null. The sample proportion was <span class="math inline">\(\hat{p} = 3/62 = 0.048\)</span>, which is our point estimate—or “best guess”—of <span class="math inline">\(\pi\)</span>. It wouldn’t make sense that a sample complication rate of 4.8% gives us evidence that the true complication rate was exactly 10%. It’s plausible that the true complication rate is 10%, but there are a range of plausible values for <span class="math inline">\(\pi\)</span>. In this section, we will use a simulation-based method called <strong>bootstrapping</strong> to generate this range of plausible values for <span class="math inline">\(\pi\)</span> using the observed data.</p>
 </div>
@@ -367,10 +369,10 @@ Figure 10.6: The original medical consultant data is bootstrapped 10,000 times. 
 -->
 <p></p>
 </div>
-<div id="theory-prop" class="section level3" number="15.1.3">
-<h3>
-<span class="header-section-number">15.1.3</span> Theory-based inferential methods for <span class="math inline">\(\pi\)</span><a class="anchor" aria-label="anchor" href="#theory-prop"><i class="fas fa-link"></i></a>
-</h3>
+<div id="theory-prop" class="section level2" number="14.3">
+<h2>
+<span class="header-section-number">14.3</span> Theory-based inferential methods for <span class="math inline">\(\pi\)</span><a class="anchor" aria-label="anchor" href="#theory-prop"><i class="fas fa-link"></i></a>
+</h2>
 <p>In Section <a href="#var-stat"><strong>??</strong></a>, we introduced the normal distribution and showed how it can be used as a mathematical model to describe the variability of a sample mean or sample proportion as a result of the Central Limit Theorem. We explored the normal distribution further in Section <a href="foundations-mathematical.html#normal">11.2</a>. Theory-based hypothesis tests and confidence intervals for proportions use the normal distribution to calculate the p-value and to determine the width of the confidence interval.</p>
 <div class="onebox">
 <p><strong>Central Limit Theorem for the sample proportion.</strong></p>
@@ -379,9 +381,10 @@ Figure 10.6: The original medical consultant data is bootstrapped 10,000 times. 
   &amp;&amp;\text{Standard Deviation }(SD) = \sqrt{\frac{\pi(1-\pi)}{n}}
   \end{align*}\]</span></p>
 </div>
-<div id="evaluating-the-two-conditions-required-for-modeling-hatp-using-theory-based-methods" class="section level4 unnumbered">
-<h4>Evaluating the two conditions required for modeling <span class="math inline">\(\hat{p}\)</span> using theory-based methods<a class="anchor" aria-label="anchor" href="#evaluating-the-two-conditions-required-for-modeling-hatp-using-theory-based-methods"><i class="fas fa-link"></i></a>
-</h4>
+<div id="evaluating-the-two-conditions-required-for-modeling-hatp-using-theory-based-methods" class="section level3" number="14.3.1">
+<h3>
+<span class="header-section-number">14.3.1</span> Evaluating the two conditions required for modeling <span class="math inline">\(\hat{p}\)</span> using theory-based methods<a class="anchor" aria-label="anchor" href="#evaluating-the-two-conditions-required-for-modeling-hatp-using-theory-based-methods"><i class="fas fa-link"></i></a>
+</h3>
 <p>There are two conditions required to apply the Central Limit Theorem for a sample proportion <span class="math inline">\(\hat{p}\)</span>. When the sample observations are independent and the sample size is sufficiently large, the normal model will describe the variability in sample proportions quite well; when the observations violate the conditions, the normal model can be inaccurate.</p>
 <div class="onebox">
 <p><strong>Conditions for the sampling distribution of</strong> <span class="math inline">\(\hat{p}\)</span> to be approximately normal.</p>
@@ -404,10 +407,10 @@ Figure 10.6: The original medical consultant data is bootstrapped 10,000 times. 
 </div>
 <p>Since theory-based methods cannot be used on the medical consultant example, we’ll turn to another example to demonstrate these methods, where conditions for approximating the distribution of <span class="math inline">\(\hat{p}\)</span> by a normal distribution are met.</p>
 </div>
-<div id="payday-lenders" class="section level4" number="15.1.3.1">
-<h4>
-<span class="header-section-number">15.1.3.1</span> Hypothesis test for <span class="math inline">\(H_0: \pi = \pi_0\)</span><a class="anchor" aria-label="anchor" href="#payday-lenders"><i class="fas fa-link"></i></a>
-</h4>
+<div id="payday-lenders" class="section level3" number="14.3.2">
+<h3>
+<span class="header-section-number">14.3.2</span> Hypothesis test for <span class="math inline">\(H_0: \pi = \pi_0\)</span><a class="anchor" aria-label="anchor" href="#payday-lenders"><i class="fas fa-link"></i></a>
+</h3>
 <p>One possible regulation for payday lenders is that they would be required to do a credit check and evaluate debt payments against the borrower’s finances. We would like to know: would borrowers support this form of regulation?</p>
 <div class="workedexample">
 <p>Set up hypotheses to evaluate whether borrowers have a majority support for this type of regulation. We take “majority” to mean greater than 50% of the population.</p>
@@ -446,7 +449,7 @@ H_0: \mbox{ parameter } = \mbox{ null value}
   SE_0(\hat{p}) = \sqrt{\frac{\pi_0 (1 - \pi_0)}{n}}
       = \sqrt{\frac{0.5 (1 - 0.5)}{826}}
       = 0.017
-  \end{align*}\]</span> A picture of the normal model for the null distribution of sample proportions in this scenario is shown below in Figure <a href="inference-one-prop.html#fig:paydayCC-norm-pvalue">15.2</a>, with the p-value represented by the shaded region. Note that this null distribution is centered at 0.50, the null value, and has standard deviation 0.017.</p>
+  \end{align*}\]</span> A picture of the normal model for the null distribution of sample proportions in this scenario is shown below in Figure <a href="inference-one-prop.html#fig:paydayCC-norm-pvalue">14.2</a>, with the p-value represented by the shaded region. Note that this null distribution is centered at 0.50, the null value, and has standard deviation 0.017.</p>
 <p>Under <span class="math inline">\(H_0\)</span>, the probability of observing <span class="math inline">\(\hat{p} = 0.51\)</span> or higher is 0.278, the area above 0.51 on the null distribution.</p>
 <p>With a p-value of 0.278, the poll does not provide convincing evidence that a majority of payday loan borrowers support regulations around credit checks and evaluation of debt payments.</p>
 <p>You’ll note that this conclusion is somewhat unsatisfactory because there is no conclusion, as is the case with larger p-values. That is, there is no resolution one way or the other about public opinion. We cannot claim that exactly 50% of people support the regulation, but we cannot claim a majority support it either.</p>
@@ -454,7 +457,7 @@ H_0: \mbox{ parameter } = \mbox{ null value}
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:paydayCC-norm-pvalue"></span>
 <img src="14-categorical-one-prop_files/figure-html/paydayCC-norm-pvalue-1.png" alt="Approximate sampling distribution of $\hat{p}$ across all possible samples assuming $\pi = 0.50$. The shaded area represents the p-value corresponding to an observed sample proportion of 0.51." width="90%"><p class="caption">
-Figure 15.2: Approximate sampling distribution of <span class="math inline">\(\hat{p}\)</span> across all possible samples assuming <span class="math inline">\(\pi = 0.50\)</span>. The shaded area represents the p-value corresponding to an observed sample proportion of 0.51.
+Figure 14.2: Approximate sampling distribution of <span class="math inline">\(\hat{p}\)</span> across all possible samples assuming <span class="math inline">\(\pi = 0.50\)</span>. The shaded area represents the p-value corresponding to an observed sample proportion of 0.51.
 </p>
 </div>
 <p>Often, with theory-based methods, we use a <strong>standardized statistic</strong> rather than the original statistic as our test statistic. A standardized statistic is computed by subtracting the mean of the null distribution from the original statistic, then dividing by the standard error: <span class="math display">\[
@@ -480,12 +483,12 @@ the null standard error is <span class="math display">\[\begin{align*}
 Z = \frac{0.51 - 0.50}{0.017} = 0.59
 \end{align*}\]</span></p>
 <p>Interpreting this value, we can say that our sample proportion of 0.51 was only 0.59 standard errors above the null value of 0.50.</p>
-<p>Shown in Figure <a href="inference-one-prop.html#fig:paydayCC-stdnorm-pvalue">15.3</a>, the p-value is the area above <span class="math inline">\(Z = 0.59\)</span> on a standard normal distribution—0.278—the same p-value we would obtain by finding the area above <span class="math inline">\(\hat{p} = 0.51\)</span> on a normal distribution with mean 0.50 and standard deviation 0.017, as in Figure <a href="inference-one-prop.html#fig:paydayCC-norm-pvalue">15.2</a>.</p>
+<p>Shown in Figure <a href="inference-one-prop.html#fig:paydayCC-stdnorm-pvalue">14.3</a>, the p-value is the area above <span class="math inline">\(Z = 0.59\)</span> on a standard normal distribution—0.278—the same p-value we would obtain by finding the area above <span class="math inline">\(\hat{p} = 0.51\)</span> on a normal distribution with mean 0.50 and standard deviation 0.017, as in Figure <a href="inference-one-prop.html#fig:paydayCC-norm-pvalue">14.2</a>.</p>
 </div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:paydayCC-stdnorm-pvalue"></span>
-<img src="14-categorical-one-prop_files/figure-html/paydayCC-stdnorm-pvalue-1.png" alt="Approximate sampling distribution of \(Z\) across all possible samples assuming \(\pi = 0.50\). The shaded area represents the p-value corresponding to an observed standardized statistic of 0.59. Compare to Figure 15.2." width="90%"><p class="caption">
-Figure 15.3: Approximate sampling distribution of <span class="math inline">\(Z\)</span> across all possible samples assuming <span class="math inline">\(\pi = 0.50\)</span>. The shaded area represents the p-value corresponding to an observed standardized statistic of 0.59. Compare to Figure <a href="inference-one-prop.html#fig:paydayCC-norm-pvalue">15.2</a>.
+<img src="14-categorical-one-prop_files/figure-html/paydayCC-stdnorm-pvalue-1.png" alt="Approximate sampling distribution of \(Z\) across all possible samples assuming \(\pi = 0.50\). The shaded area represents the p-value corresponding to an observed standardized statistic of 0.59. Compare to Figure 14.2." width="90%"><p class="caption">
+Figure 14.3: Approximate sampling distribution of <span class="math inline">\(Z\)</span> across all possible samples assuming <span class="math inline">\(\pi = 0.50\)</span>. The shaded area represents the p-value corresponding to an observed standardized statistic of 0.59. Compare to Figure <a href="inference-one-prop.html#fig:paydayCC-norm-pvalue">14.2</a>.
 </p>
 </div>
 
@@ -506,9 +509,10 @@ Z = \frac{\hat{p} - \pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}} = \frac{\hat{p} - \p
 <p>Regardless of the statistical method chosen, the p-value is always derived by analyzing the null distribution of the test statistic. The normal model poorly approximates the null distribution for <span class="math inline">\(\hat{p}\)</span> when the success-failure condition is not satisfied. As a substitute, we can generate the null distribution using simulated sample proportions and use this distribution to compute the tail area, i.e., the p-value. Neither the p-value approximated by the normal distribution nor the simulated p-value are exact, because the normal distribution and simulated null distribution themselves are not exact, only a close approximation. An exact p-value can be generated using the binomial distribution, but that method will not be covered in this text.</p>
 <p></p>
 </div>
-<div id="confidence-interval-for-pi" class="section level4 unnumbered">
-<h4>Confidence interval for <span class="math inline">\(\pi\)</span><a class="anchor" aria-label="anchor" href="#confidence-interval-for-pi"><i class="fas fa-link"></i></a>
-</h4>
+<div id="confidence-interval-for-pi" class="section level3" number="14.3.3">
+<h3>
+<span class="header-section-number">14.3.3</span> Confidence interval for <span class="math inline">\(\pi\)</span><a class="anchor" aria-label="anchor" href="#confidence-interval-for-pi"><i class="fas fa-link"></i></a>
+</h3>
 <p></p>
 <p>A confidence interval provides a range of plausible values for the parameter <span class="math inline">\(\pi\)</span>. A point estimate is our best guess for the value of the parameter, so it makes sense to build the confidence interval around that value. The standard error, which is a measure of the uncertainty associated with the point estimate, provides a guide for how large we should make the confidence interval. When <span class="math inline">\(\hat{p}\)</span> can be modeled using a normal distribution, the 68-95-99.7 rule tells us that, in general, 95% of observations are within 2 standard errors of the mean. Here, we use the value 1.96 to be slightly more precise. The confidence interval for <span class="math inline">\(\pi\)</span> then takes the form <span class="math display">\[\begin{align*}
 \hat{p} \pm z^{\star} \times SE(\hat{p}).
@@ -520,7 +524,7 @@ Z = \frac{\hat{p} - \pi_0}{\sqrt{\frac{\pi_0(1-\pi_0)}{n}}} = \frac{\hat{p} - \p
 <p><span class="math display">\[SD(\hat{p}) = \sqrt{\frac{\pi(1-\pi)}{n}}\]</span></p>
 <p>Note that we almost never know the true value of <span class="math inline">\(\pi\)</span>, but we can substitute our best guess of <span class="math inline">\(\pi\)</span> to obtain an approximate standard deviation, called the <strong>standard error</strong> of <span class="math inline">\(\hat{p}\)</span>:</p>
 <p><span class="math display">\[SD(\hat{p}) \approx \hspace{3mm} SE(\hat{p}) = \sqrt{\frac{(\mbox{best guess of }\pi)(1 - \mbox{best guess of }\pi)}{n}}\]</span></p>
-<p>For hypothesis testing, we often use <span class="math inline">\(\pi_0\)</span> as the best guess of <span class="math inline">\(\pi\)</span>, as seen in Section <a href="inference-one-prop.html#theory-prop">15.1.3</a>. For confidence intervals, we typically use <span class="math inline">\(\hat{p}\)</span> as the best guess of <span class="math inline">\(\pi\)</span>.</p>
+<p>For hypothesis testing, we often use <span class="math inline">\(\pi_0\)</span> as the best guess of <span class="math inline">\(\pi\)</span>, as seen in Section <a href="inference-one-prop.html#theory-prop">14.3</a>. For confidence intervals, we typically use <span class="math inline">\(\hat{p}\)</span> as the best guess of <span class="math inline">\(\pi\)</span>.</p>
 </div>
 <p></p>
 <!--
@@ -587,7 +591,6 @@ SE(\hat{p}) = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
 </li>
 </ol>
 </div>
-</div>
 <div id="zstar-and-the-confidence-level" class="section level4 unnumbered">
 <h4>
 <span class="math inline">\(z^{\star}\)</span> and the confidence level<a class="anchor" aria-label="anchor" href="#zstar-and-the-confidence-level"><i class="fas fa-link"></i></a>
@@ -598,12 +601,12 @@ SE(\hat{p}) = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
 \text{point estimate}\ \pm\ 1.96\times SE
 \end{eqnarray}\]</span> There are three components to this interval: the point estimate, “1.96”, and the standard error. The choice of <span class="math inline">\(1.96\times SE\)</span> was based on capturing 95% of the sampling distribution of statistics since the point estimate is within 1.96 standard errors of the true parameter about 95% of the time. The choice of 1.96 corresponds to a 95% <strong>confidence level</strong>.</p>
 <div class="guidedpractice">
-<p>If <span class="math inline">\(X\)</span> is a normally distributed random variable, how often will <span class="math inline">\(X\)</span> be within 2.58 standard deviations of the mean?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;This is equivalent to asking how often the &lt;span class="math inline"&gt;\(Z\)&lt;/span&gt; score will be larger than -2.58 but less than 2.58. (For a picture, see Figure &lt;a href="inference-one-prop.html#fig:choosingZForCI"&gt;15.4&lt;/a&gt;.) To determine this probability, look up -2.58 and 2.58 in the normal probability table (0.0049 and 0.9951). Thus, there is a &lt;span class="math inline"&gt;\(0.9951-0.0049 \approx 0.99\)&lt;/span&gt; probability that the unobserved random variable &lt;span class="math inline"&gt;\(X\)&lt;/span&gt; will be within 2.58 standard deviations of the mean.&lt;/p&gt;'><sup>125</sup></a></p>
+<p>If <span class="math inline">\(X\)</span> is a normally distributed random variable, how often will <span class="math inline">\(X\)</span> be within 2.58 standard deviations of the mean?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;This is equivalent to asking how often the &lt;span class="math inline"&gt;\(Z\)&lt;/span&gt; score will be larger than -2.58 but less than 2.58. (For a picture, see Figure &lt;a href="inference-one-prop.html#fig:choosingZForCI"&gt;14.4&lt;/a&gt;.) To determine this probability, look up -2.58 and 2.58 in the normal probability table (0.0049 and 0.9951). Thus, there is a &lt;span class="math inline"&gt;\(0.9951-0.0049 \approx 0.99\)&lt;/span&gt; probability that the unobserved random variable &lt;span class="math inline"&gt;\(X\)&lt;/span&gt; will be within 2.58 standard deviations of the mean.&lt;/p&gt;'><sup>125</sup></a></p>
 </div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:choosingZForCI"></span>
 <img src="14-categorical-one-prop_files/figure-html/choosingZForCI-1.png" alt="The area between -$z^{\star}$ and $z^{\star}$ increases as $|z^{\star}|$ becomes larger. If the confidence level is 99%, we choose $z^{\star}$ such that 99% of the normal curve is between -$z^{\star}$ and $z^{\star}$, which corresponds to 0.5% in the lower tail and 0.5% in the upper tail: $z^{\star}=2.58$." width="90%"><p class="caption">
-Figure 15.4: The area between -<span class="math inline">\(z^{\star}\)</span> and <span class="math inline">\(z^{\star}\)</span> increases as <span class="math inline">\(|z^{\star}|\)</span> becomes larger. If the confidence level is 99%, we choose <span class="math inline">\(z^{\star}\)</span> such that 99% of the normal curve is between -<span class="math inline">\(z^{\star}\)</span> and <span class="math inline">\(z^{\star}\)</span>, which corresponds to 0.5% in the lower tail and 0.5% in the upper tail: <span class="math inline">\(z^{\star}=2.58\)</span>.
+Figure 14.4: The area between -<span class="math inline">\(z^{\star}\)</span> and <span class="math inline">\(z^{\star}\)</span> increases as <span class="math inline">\(|z^{\star}|\)</span> becomes larger. If the confidence level is 99%, we choose <span class="math inline">\(z^{\star}\)</span> such that 99% of the normal curve is between -<span class="math inline">\(z^{\star}\)</span> and <span class="math inline">\(z^{\star}\)</span>, which corresponds to 0.5% in the lower tail and 0.5% in the upper tail: <span class="math inline">\(z^{\star}=2.58\)</span>.
 </p>
 </div>
 <p></p>
@@ -620,7 +623,7 @@ label for previous equation?
 -->
 <p>The normal approximation is crucial to the precision of the <span class="math inline">\(z^\star\)</span> confidence intervals. When the normal model is not a good fit, we will use alternative distributions that better characterize the sampling distribution or we will use bootstrapping procedures.</p>
 <div class="guidedpractice">
-<p>Create a 99% confidence interval for the impact of the stent on the risk of stroke using the data from Section <a href="intro-to-data.html#basic-stents-strokes">1.1</a>. The point estimate is 0.090, and the standard error is <span class="math inline">\(SE = 0.028\)</span>. It has been verified for you that the point estimate can reasonably be modeled by a normal distribution.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Since the necessary conditions for applying the normal model have already been checked for us, we can go straight to the construction of the confidence interval: &lt;span class="math inline"&gt;\(\text{point estimate}\ \pm\ 2.58 \times SE \rightarrow (0.018, 0.162)\)&lt;/span&gt;. We are 99% confident that implanting a stent in the brain of a patient who is at risk of stroke increases the risk of stroke within 30 days by a rate of 0.018 to 0.162 (assuming the patients are representative of the population).&lt;/p&gt;'><sup>126</sup></a></p>
+<p>Create a 99% confidence interval for the impact of the stent on the risk of stroke using the data from Section <a href="data-hello.html#basic-stents-strokes">1.1</a>. The point estimate is 0.090, and the standard error is <span class="math inline">\(SE = 0.028\)</span>. It has been verified for you that the point estimate can reasonably be modeled by a normal distribution.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Since the necessary conditions for applying the normal model have already been checked for us, we can go straight to the construction of the confidence interval: &lt;span class="math inline"&gt;\(\text{point estimate}\ \pm\ 2.58 \times SE \rightarrow (0.018, 0.162)\)&lt;/span&gt;. We are 99% confident that implanting a stent in the brain of a patient who is at risk of stroke increases the risk of stroke within 30 days by a rate of 0.018 to 0.162 (assuming the patients are representative of the population).&lt;/p&gt;'><sup>126</sup></a></p>
 </div>
 <div class="onebox">
 <p><strong>Theory-based</strong> <span class="math inline">\((1-\alpha)\times 100\)</span>% confidence interval.</p>
@@ -632,7 +635,7 @@ label for previous equation?
 <div id="using-r-to-find-zstar" class="section level4 unnumbered">
 <h4>Using R to find <span class="math inline">\(z^{\star}\)</span><a class="anchor" aria-label="anchor" href="#using-r-to-find-zstar"><i class="fas fa-link"></i></a>
 </h4>
-<p>Figure <a href="inference-one-prop.html#fig:choosingZForCI">15.4</a> provides a picture of how to identify <span class="math inline">\(z^{\star}\)</span> based on a confidence level. We select <span class="math inline">\(z^{\star}\)</span> so that the area between -<span class="math inline">\(z^{\star}\)</span> and <span class="math inline">\(z^{\star}\)</span> in the normal model corresponds to the confidence level. In R, you can find <span class="math inline">\(z^{\star}\)</span> using the <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code> function:</p>
+<p>Figure <a href="inference-one-prop.html#fig:choosingZForCI">14.4</a> provides a picture of how to identify <span class="math inline">\(z^{\star}\)</span> based on a confidence level. We select <span class="math inline">\(z^{\star}\)</span> so that the area between -<span class="math inline">\(z^{\star}\)</span> and <span class="math inline">\(z^{\star}\)</span> in the normal model corresponds to the confidence level. In R, you can find <span class="math inline">\(z^{\star}\)</span> using the <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code> function:</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># z* for 90% --&gt; alpha = 0.15 --&gt; need 5% on each side:</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">.90</span> <span class="op">+</span> <span class="fl">.05</span><span class="op">)</span></span>
@@ -649,17 +652,18 @@ label for previous equation?
 <p>Previously, we found that implanting a stent in the brain of a patient at risk for a stroke <em>increased</em> the risk of a stroke. The study estimated a 9% increase in the number of patients who had a stroke, and the standard error of this estimate was about <span class="math inline">\(SE = 2.8%\)</span>. Compute a 90% confidence interval for the effect.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;We must find &lt;span class="math inline"&gt;\(z^{\star}\)&lt;/span&gt; such that 90% of the distribution falls between -&lt;span class="math inline"&gt;\(z^{\star}\)&lt;/span&gt; and &lt;span class="math inline"&gt;\(z^{\star}\)&lt;/span&gt; in the standard normal model, &lt;span class="math inline"&gt;\(N(\mu=0, \sigma=1)\)&lt;/span&gt;. We can find -&lt;span class="math inline"&gt;\(z^{\star}\)&lt;/span&gt; from a standard normal distribution by looking for a lower tail of 5% (the other 5% is in the upper tail), thus &lt;span class="math inline"&gt;\(z^{\star}=1.645\)&lt;/span&gt;. The 90% confidence interval can then be computed as &lt;span class="math inline"&gt;\(\text{point estimate}\ \pm\ 1.65\times SE \to (4.4\%, 13.6\%)\)&lt;/span&gt;. (Note: The conditions for normality had earlier been confirmed for us.) That is, we are 90% confident that implanting a stent in a stroke patient’s brain increased the risk of stroke within 30 days by 4.4% to 13.6%.&lt;/p&gt;'><sup>127</sup></a></p>
 </div>
 </div>
-<div id="violating-conditions" class="section level4 unnumbered">
-<h4>Violating conditions<a class="anchor" aria-label="anchor" href="#violating-conditions"><i class="fas fa-link"></i></a>
-</h4>
+</div>
+<div id="violating-conditions" class="section level3" number="14.3.4">
+<h3>
+<span class="header-section-number">14.3.4</span> Violating conditions<a class="anchor" aria-label="anchor" href="#violating-conditions"><i class="fas fa-link"></i></a>
+</h3>
 <p>We’ve spent a lot of time discussing conditions for when <span class="math inline">\(\hat{p}\)</span> can be reasonably modeled by a normal distribution. What happens when the success-failure condition fails? What about when the independence condition fails? In either case, the general ideas of confidence intervals and hypothesis tests remain the same, but the strategy or technique used to generate the interval or p-value change.</p>
-<p>When the success-failure condition isn’t met for a hypothesis test, we can simulate the null distribution of <span class="math inline">\(\hat{p}\)</span> using the null value, <span class="math inline">\(\pi_0\)</span>, as seen in Section <a href="inference-one-prop.html#one-prop-null-boot">15.1.1</a>. Unfortunately, methods for dealing with observations which are not independent are outside the scope of this book.</p>
+<p>When the success-failure condition isn’t met for a hypothesis test, we can simulate the null distribution of <span class="math inline">\(\hat{p}\)</span> using the null value, <span class="math inline">\(\pi_0\)</span>, as seen in Section <a href="inference-one-prop.html#one-prop-null-boot">14.1</a>. Unfortunately, methods for dealing with observations which are not independent are outside the scope of this book.</p>
 </div>
 </div>
-</div>
-<div id="chp14-review" class="section level2" number="15.2">
+<div id="chp14-review" class="section level2" number="14.4">
 <h2>
-<span class="header-section-number">15.2</span> Chapter review<a class="anchor" aria-label="anchor" href="#chp14-review"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4</span> Chapter review<a class="anchor" aria-label="anchor" href="#chp14-review"><i class="fas fa-link"></i></a>
 </h2>
 <div id="summary-10" class="section level3 unnumbered">
 <h3>Summary<a class="anchor" aria-label="anchor" href="#summary-10"><i class="fas fa-link"></i></a>
@@ -719,20 +723,29 @@ statistic
 
   <div class="chapter-nav">
 <div class="prev"><a href="foundations-applications.html"><span class="header-section-number">13</span> Applications: Foundations</a></div>
-<div class="next"><a href="inference-two-props.html"><span class="header-section-number">16</span> Inference for comparing two proportions</a></div>
+<div class="next"><a href="inference-two-props.html"><span class="header-section-number">15</span> Inference for comparing two proportions</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#inference-one-prop"><span class="header-section-number">15</span> Inference for a single proportion</a></li>
+<li><a class="nav-link" href="#inference-one-prop"><span class="header-section-number">14</span> Inference for a single proportion</a></li>
 <li>
-<a class="nav-link" href="#single-prop"><span class="header-section-number">15.1</span> One proportion</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#one-prop-null-boot"><span class="header-section-number">15.1.1</span> Simulation-based test for \(H_0: \pi = \pi_0\)</a></li>
-<li><a class="nav-link" href="#boot-ci-prop"><span class="header-section-number">15.1.2</span> Bootstrap confidence interval for \(\pi\)</a></li>
-<li><a class="nav-link" href="#theory-prop"><span class="header-section-number">15.1.3</span> Theory-based inferential methods for \(\pi\)</a></li>
+<a class="nav-link" href="#one-prop-null-boot"><span class="header-section-number">14.1</span> Simulation-based test for \(H_0: \pi = \pi_0\)</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#steps-1-and-2-hypotheses-and-test-statistic">Steps 1 and 2: Hypotheses and test statistic</a></li>
+<li><a class="nav-link" href="#steps-3-and-4-null-distribution-and-p-value">Steps 3 and 4: Null distribution and p-value</a></li>
+<li><a class="nav-link" href="#step-5-conclusion-and-scope-of-inference">Step 5: Conclusion and scope of inference</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#boot-ci-prop"><span class="header-section-number">14.2</span> Bootstrap confidence interval for \(\pi\)</a></li>
+<li>
+<a class="nav-link" href="#theory-prop"><span class="header-section-number">14.3</span> Theory-based inferential methods for \(\pi\)</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#evaluating-the-two-conditions-required-for-modeling-hatp-using-theory-based-methods"><span class="header-section-number">14.3.1</span> Evaluating the two conditions required for modeling \(\hat{p}\) using theory-based methods</a></li>
+<li><a class="nav-link" href="#payday-lenders"><span class="header-section-number">14.3.2</span> Hypothesis test for \(H_0: \pi = \pi_0\)</a></li>
+<li><a class="nav-link" href="#confidence-interval-for-pi"><span class="header-section-number">14.3.3</span> Confidence interval for \(\pi\)</a></li>
+<li><a class="nav-link" href="#violating-conditions"><span class="header-section-number">14.3.4</span> Violating conditions</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#chp14-review"><span class="header-section-number">15.2</span> Chapter review</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#chp14-review"><span class="header-section-number">14.4</span> Chapter review</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#summary-10">Summary</a></li>
 <li><a class="nav-link" href="#terms-10">Terms</a></li>
 <li><a class="nav-link" href="#key-ideas-10">Key ideas</a></li>

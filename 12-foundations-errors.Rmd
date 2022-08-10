@@ -25,7 +25,7 @@ Sometimes, however, data can produce a small p-value when the null hypothesis is
 Here we describe the errors which can arise in hypothesis testing, how to define and quantify the different errors, and suggestions for mitigating errors if possible.
 :::
 
-## Decision errors
+## Decision errors {#decerr}
 
 In Chapter \@ref(foundations-randomization), we explored the concept of a p-value as a continuum of strength of evidence against a null hypothesis, from 0 (extremely strong evidence against the null) to 1 (no evidence against the null). In some cases, however, a **decision** to the hypothesis test is needed, with the two possible decisions as follows:
 

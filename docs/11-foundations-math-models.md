@@ -121,7 +121,7 @@ If these conditions do not hold, it is unwise to use the normal distribution (an
 
 
 
-## The normal distribution {#normal}
+## Normal distributions {#normal}
 
 \index{normal distribution|(}
 

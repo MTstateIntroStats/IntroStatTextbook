@@ -4,17 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 26 Probability with tables | Montana State Introductory Statistics with R</title>
+<title>Chapter 23 Probability with tables | Montana State Introductory Statistics with R</title>
 <meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager">
-<meta name="description" content="TODO  26.1 Defining probability A random process is one in which the outcome is unpredictable. We encounter random processes every day: will it rain today? how many minutes will pass until...">
+<meta name="description" content="TODO  23.1 Defining probability A random process is one in which the outcome is unpredictable. We encounter random processes every day: will it rain today? how many minutes will pass until...">
 <meta name="generator" content="bookdown 0.27 with bs4_book()">
-<meta property="og:title" content="Chapter 26 Probability with tables | Montana State Introductory Statistics with R">
+<meta property="og:title" content="Chapter 23 Probability with tables | Montana State Introductory Statistics with R">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://mtstateintrostats.github.io/IntroStatTextbook/probability.html">
-<meta property="og:description" content="TODO  26.1 Defining probability A random process is one in which the outcome is unpredictable. We encounter random processes every day: will it rain today? how many minutes will pass until...">
+<meta property="og:description" content="TODO  23.1 Defining probability A random process is one in which the outcome is unpredictable. We encounter random processes every day: will it rain today? how many minutes will pass until...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 26 Probability with tables | Montana State Introductory Statistics with R">
-<meta name="twitter:description" content="TODO  26.1 Defining probability A random process is one in which the outcome is unpredictable. We encounter random processes every day: will it rain today? how many minutes will pass until...">
+<meta name="twitter:title" content="Chapter 23 Probability with tables | Montana State Introductory Statistics with R">
+<meta name="twitter:description" content="TODO  23.1 Defining probability A random process is one in which the outcome is unpredictable. We encounter random processes every day: will it rain today? how many minutes will pass until...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -92,14 +92,14 @@
 <li><a class="" href="preface.html">Preface</a></li>
 <li><a class="" href="rstudio.html">Preliminaries: Getting started in RStudio</a></li>
 <li class="book-part">Introduction to data</li>
-<li><a class="" href="intro-to-data.html"><span class="header-section-number">1</span> Hello data</a></li>
+<li><a class="" href="data-hello.html"><span class="header-section-number">1</span> Hello data</a></li>
 <li><a class="" href="data-design.html"><span class="header-section-number">2</span> Study design</a></li>
 <li><a class="" href="data-applications.html"><span class="header-section-number">3</span> Applications: Data</a></li>
 <li class="book-part">Exploratory data analysis</li>
-<li><a class="" href="categorical-data.html"><span class="header-section-number">4</span> Exploring categorical data</a></li>
-<li><a class="" href="quantitative-data.html"><span class="header-section-number">5</span> Exploring quantitative data</a></li>
-<li><a class="" href="cor-reg.html"><span class="header-section-number">6</span> Correlation and regression</a></li>
-<li><a class="" href="mult-reg.html"><span class="header-section-number">7</span> Multivariable models</a></li>
+<li><a class="" href="explore-categorical.html"><span class="header-section-number">4</span> Exploring categorical data</a></li>
+<li><a class="" href="explore-numerical.html"><span class="header-section-number">5</span> Exploring quantitative data</a></li>
+<li><a class="" href="explore-regression.html"><span class="header-section-number">6</span> Correlation and regression</a></li>
+<li><a class="" href="explore-mult-reg.html"><span class="header-section-number">7</span> Multivariable models</a></li>
 <li><a class="" href="explore-applications.html"><span class="header-section-number">8</span> Applications: Explore</a></li>
 <li class="book-part">Foundations of inference</li>
 <li><a class="" href="foundations-randomization.html"><span class="header-section-number">9</span> Hypothesis testing with randomization</a></li>
@@ -108,19 +108,19 @@
 <li><a class="" href="foundations-errors.html"><span class="header-section-number">12</span> Errors, power, and practical importance</a></li>
 <li><a class="" href="foundations-applications.html"><span class="header-section-number">13</span> Applications: Foundations</a></li>
 <li class="book-part">Inference for categorical data</li>
-<li><a class="" href="inference-one-prop.html"><span class="header-section-number">15</span> Inference for a single proportion</a></li>
-<li><a class="" href="inference-two-props.html"><span class="header-section-number">16</span> Inference for comparing two proportions</a></li>
-<li><a class="" href="applications-infer-categorical.html"><span class="header-section-number">17</span> Applications: Infer categorical</a></li>
+<li><a class="" href="inference-one-prop.html"><span class="header-section-number">14</span> Inference for a single proportion</a></li>
+<li><a class="" href="inference-two-props.html"><span class="header-section-number">15</span> Inference for comparing two proportions</a></li>
+<li><a class="" href="inference-categ-applications.html"><span class="header-section-number">16</span> Applications: Infer categorical</a></li>
 <li class="book-part">Inference for quantitative data</li>
-<li><a class="" href="inference-for-a-single-mean.html"><span class="header-section-number">19</span> Inference for a single mean</a></li>
-<li><a class="" href="inference-for-comparing-paired-means.html"><span class="header-section-number">20</span> Inference for comparing paired means</a></li>
-<li><a class="" href="inference-for-comparing-two-independent-means.html"><span class="header-section-number">21</span> Inference for comparing two independent means</a></li>
-<li><a class="" href="applications-infer-quantitative.html"><span class="header-section-number">22</span> Applications: Infer quantitative</a></li>
+<li><a class="" href="inference-one-mean.html"><span class="header-section-number">17</span> Inference for a single mean</a></li>
+<li><a class="" href="inference-paired-means.html"><span class="header-section-number">18</span> Inference for comparing paired means</a></li>
+<li><a class="" href="inference-two-means.html"><span class="header-section-number">19</span> Inference for comparing two independent means</a></li>
+<li><a class="" href="inference-num-applications.html"><span class="header-section-number">20</span> Applications: Infer quantitative</a></li>
 <li class="book-part">Inference for regression</li>
-<li><a class="" href="inference-for-correlation-and-slope.html"><span class="header-section-number">24</span> Inference for correlation and slope</a></li>
-<li><a class="" href="applications-infer-regression.html"><span class="header-section-number">25</span> Applications: Infer regression</a></li>
+<li><a class="" href="inference-reg.html"><span class="header-section-number">21</span> Inference for correlation and slope</a></li>
+<li><a class="" href="inference-reg-applications.html"><span class="header-section-number">22</span> Applications: Infer regression</a></li>
 <li class="book-part">Probability</li>
-<li><a class="active" href="probability.html"><span class="header-section-number">26</span> Probability with tables</a></li>
+<li><a class="active" href="probability.html"><span class="header-section-number">23</span> Probability with tables</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -129,33 +129,33 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="probability" class="section level1" number="26">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="probability" class="section level1" number="23">
 <h1>
-<span class="header-section-number">26</span> Probability with tables<a class="anchor" aria-label="anchor" href="#probability"><i class="fas fa-link"></i></a>
+<span class="header-section-number">23</span> Probability with tables<a class="anchor" aria-label="anchor" href="#probability"><i class="fas fa-link"></i></a>
 </h1>
 <div class="chapterintro">
 <p>TODO</p>
 </div>
-<div id="defining-probability" class="section level2" number="26.1">
+<div id="defining-probability" class="section level2" number="23.1">
 <h2>
-<span class="header-section-number">26.1</span> Defining probability<a class="anchor" aria-label="anchor" href="#defining-probability"><i class="fas fa-link"></i></a>
+<span class="header-section-number">23.1</span> Defining probability<a class="anchor" aria-label="anchor" href="#defining-probability"><i class="fas fa-link"></i></a>
 </h2>
 <p>A <strong>random process</strong> is one in which the outcome is unpredictable. We encounter random processes every day: will it rain today? how many minutes will pass until receiving your next text message? will the Seahawks win the Super Bowl? Though the outcome of one particular random process is unpredictable, if we observe the process many many times, the pattern of outcomes, or its probability distribution, can often be modeled mathematically. Though there are several philosophical definitions of probability, we will use the “frequentist” definition of probability—a long-run relative frequency.</p>
 <div class="onebox">
 <p><strong>Probability.</strong></p>
 <p>The <strong>probability</strong> of an event is the long-run proportion of times the event would occur if the random process were repeated indefinitely (under identical conditions).</p>
 </div>
-<p>Consider the simple example of flipping a fair coin once. What is the probability the coin lands on heads. From its physical properties, we assume the probability of heads is 0.5, but let’s use simulation to examine the probability. Figure <a href="probability.html#fig:coinflip">26.1</a> shows the long-run proportion of times a simulated coin flip lands on heads on the y-axis, and the number of tosses on the x-axis. Notice how the long-run proportion starts converging to 0.5 as the number of tosses increases.</p>
+<p>Consider the simple example of flipping a fair coin once. What is the probability the coin lands on heads. From its physical properties, we assume the probability of heads is 0.5, but let’s use simulation to examine the probability. Figure <a href="probability.html#fig:coinflip">23.1</a> shows the long-run proportion of times a simulated coin flip lands on heads on the y-axis, and the number of tosses on the x-axis. Notice how the long-run proportion starts converging to 0.5 as the number of tosses increases.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:coinflip"></span>
 <img src="02/figures/CoinFlip/Coinflip.png" alt="One simulation of flipping a fair coin, tracking the long-run proportion of times the coin lands on heads." width="75%"><p class="caption">
-Figure 26.1: One simulation of flipping a fair coin, tracking the long-run proportion of times the coin lands on heads.
+Figure 23.1: One simulation of flipping a fair coin, tracking the long-run proportion of times the coin lands on heads.
 </p>
 </div>
 </div>
-<div id="finding-probabilities-with-tables" class="section level2" number="26.2">
+<div id="finding-probabilities-with-tables" class="section level2" number="23.2">
 <h2>
-<span class="header-section-number">26.2</span> Finding probabilities with tables<a class="anchor" aria-label="anchor" href="#finding-probabilities-with-tables"><i class="fas fa-link"></i></a>
+<span class="header-section-number">23.2</span> Finding probabilities with tables<a class="anchor" aria-label="anchor" href="#finding-probabilities-with-tables"><i class="fas fa-link"></i></a>
 </h2>
 <p>We can solve many real-life probability problems without using any equations by creating a <strong>hypothetical two-way table</strong> of the scenario. This tool is best demonstrated by an example.</p>
 <div class="workedexample">
@@ -272,18 +272,18 @@ Figure 26.1: One simulation of flipping a fair coin, tracking the long-run propo
 <p>In the previous Guided Practice, which of the probabilities are conditional probabilities? which are unconditional?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Probabilities in (1) and (2) are unconditional; the probability asked for in (3) is conditional.&lt;/p&gt;"><sup>178</sup></a></p>
 </div>
 </div>
-<div id="probability-notation" class="section level2" number="26.3">
+<div id="probability-notation" class="section level2" number="23.3">
 <h2>
-<span class="header-section-number">26.3</span> Probability notation<a class="anchor" aria-label="anchor" href="#probability-notation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">23.3</span> Probability notation<a class="anchor" aria-label="anchor" href="#probability-notation"><i class="fas fa-link"></i></a>
 </h2>
 <p>For ease of translating probability problems into calculations, let’s define some notation. We will denote “<strong>events</strong>” (e.g., being late to class) by upper case letters near the beginning of the alphabet, e.g., <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span>. The <strong>probability of an event</strong> <span class="math inline">\(A\)</span> will be denoted by <span class="math inline">\(P(A)\)</span>, so <span class="math inline">\(P(A)\)</span> is a number between 0 and 1. The event that <span class="math inline">\(A\)</span> does <em>not</em> happen is called the <em>complement</em> of <span class="math inline">\(A\)</span> and is denoted by <span class="math inline">\(P(A^C)\)</span>. Sometimes we have additional information that we would like to condition on, and we denote the <strong>conditional probability of <span class="math inline">\(A\)</span> <em>given</em> <span class="math inline">\(B\)</span></strong> by <span class="math inline">\(P(A | B)\)</span>—the probability that <span class="math inline">\(A\)</span> happens given that <span class="math inline">\(B\)</span> has already happened.</p>
 <div class="workedexample">
 <p>In our coin flip example, we could let <span class="math inline">\(A\)</span> be the event that the coin lands on heads. Then we can denote the probability that the coin lands on heads by <span class="math inline">\(P(A) = 0.5\)</span>. We could flip the coin twice and let <span class="math inline">\(H_1\)</span> be the event that the first flip lands on heads, and <span class="math inline">\(H_2\)</span> be the event that the second flip lands on heads. Since the coin does not remember its last flip, if the first flip lands on heads, the second flip still has a 50% chance of landing on heads. That is, <span class="math inline">\(P(H_2 | H_1) = 0.5\)</span>.</p>
 </div>
 </div>
-<div id="diagnostic-testing" class="section level2" number="26.4">
+<div id="diagnostic-testing" class="section level2" number="23.4">
 <h2>
-<span class="header-section-number">26.4</span> Diagnostic testing<a class="anchor" aria-label="anchor" href="#diagnostic-testing"><i class="fas fa-link"></i></a>
+<span class="header-section-number">23.4</span> Diagnostic testing<a class="anchor" aria-label="anchor" href="#diagnostic-testing"><i class="fas fa-link"></i></a>
 </h2>
 <p>Medical diagnostic tests for diseases spend years in development. Through clinical trials, developers of the diagnostic test are able to determine two important properties of the test:</p>
 <ul>
@@ -304,9 +304,9 @@ Figure 26.1: One simulation of flipping a fair coin, tracking the long-run propo
 </ol>
 </div>
 <p>Note that sensitivity and specificity are conditional probabilities, while prevalence is an unconditional probability. While the above probabilities are useful information, if you test positive on a diagnostic test, none of these quantities is the probability you really want to know: the conditional probability of having the disease, given you tested positive, <span class="math inline">\(P(D | T)\)</span>.</p>
-<div id="the-case-of-baby-jeff" class="section level3" number="26.4.1">
+<div id="the-case-of-baby-jeff" class="section level3" number="23.4.1">
 <h3>
-<span class="header-section-number">26.4.1</span> The case of Baby Jeff<a class="anchor" aria-label="anchor" href="#the-case-of-baby-jeff"><i class="fas fa-link"></i></a>
+<span class="header-section-number">23.4.1</span> The case of Baby Jeff<a class="anchor" aria-label="anchor" href="#the-case-of-baby-jeff"><i class="fas fa-link"></i></a>
 </h3>
 <p>The following case study was presented by <span class="citation">Slawson and Shaughnessy (<a href="references.html#ref-bayes2002" role="doc-biblioref">2002</a>)</span>. A poster in a hospital’s newborn nursery announced that all male newborns would be screened for muscular dystrophy using a heel stick blood test for creatinine phosphokinase (CPK). The test characteristics of the screening tests were nearly perfect: a sensitivity of 100% and a specificity of 99.98%. The prevalence of muscular dystrophy in male newborns ranges from 1 in 3,500 to 1 in 15,000. Baby Jeff had an abnormal CPK test. The parents of the baby wanted to know, “What is the chance that our son has muscular dystrophy?” Doctors informed the parents that though not 100% likely, it was highly probable. First, take a minute and predict this probability – what do you think? 80% chance? 99% chance? Let’s investigate using a two-way table of a hypothetical population of 100,000 male newborns.</p>
 <p>For our calculations, let’s use a prevalence of 1 in 10,000. Then out of 100,000 hypothetical male newborns, we would expect 1 in 10,000 to have muscular dystrophy, or 10: <span class="math inline">\((1/10000)\times 100000 = 10\)</span>. The sensitivity of the test is perfect, so all 10 of the male newborns with muscular dystrophy will test positive. Of the <span class="math inline">\(100000-10 = 99,990\)</span> male newborns that do not have muscular dystrophy, 99.98% will test negative: <span class="math inline">\((0.9998)\times 99990 = 99,970\)</span> infants. That leaves <span class="math inline">\(99990 - 99970 = 20\)</span> male newborns that test positive even though they do not have muscular dystrophy. This allows us to fill in the counts in our hypothetical two-way table:</p>
@@ -353,9 +353,9 @@ Figure 26.1: One simulation of flipping a fair coin, tracking the long-run propo
 <!-- Add a Chapter 24: Applications: Simulating Probabilities and show R code for simulating probabilities -->
 </div>
 </div>
-<div id="chp23-review" class="section level2" number="26.5">
+<div id="chp23-review" class="section level2" number="23.5">
 <h2>
-<span class="header-section-number">26.5</span> Chapter review<a class="anchor" aria-label="anchor" href="#chp23-review"><i class="fas fa-link"></i></a>
+<span class="header-section-number">23.5</span> Chapter review<a class="anchor" aria-label="anchor" href="#chp23-review"><i class="fas fa-link"></i></a>
 </h2>
 <div id="summary-16" class="section level3 unnumbered">
 <h3>Summary<a class="anchor" aria-label="anchor" href="#summary-16"><i class="fas fa-link"></i></a>
@@ -394,20 +394,20 @@ random process
 </div>
 
   <div class="chapter-nav">
-<div class="prev"><a href="applications-infer-regression.html"><span class="header-section-number">25</span> Applications: Infer regression</a></div>
+<div class="prev"><a href="inference-reg-applications.html"><span class="header-section-number">22</span> Applications: Infer regression</a></div>
 <div class="next"><a href="references.html">References</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#probability"><span class="header-section-number">26</span> Probability with tables</a></li>
-<li><a class="nav-link" href="#defining-probability"><span class="header-section-number">26.1</span> Defining probability</a></li>
-<li><a class="nav-link" href="#finding-probabilities-with-tables"><span class="header-section-number">26.2</span> Finding probabilities with tables</a></li>
-<li><a class="nav-link" href="#probability-notation"><span class="header-section-number">26.3</span> Probability notation</a></li>
+<li><a class="nav-link" href="#probability"><span class="header-section-number">23</span> Probability with tables</a></li>
+<li><a class="nav-link" href="#defining-probability"><span class="header-section-number">23.1</span> Defining probability</a></li>
+<li><a class="nav-link" href="#finding-probabilities-with-tables"><span class="header-section-number">23.2</span> Finding probabilities with tables</a></li>
+<li><a class="nav-link" href="#probability-notation"><span class="header-section-number">23.3</span> Probability notation</a></li>
 <li>
-<a class="nav-link" href="#diagnostic-testing"><span class="header-section-number">26.4</span> Diagnostic testing</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#the-case-of-baby-jeff"><span class="header-section-number">26.4.1</span> The case of Baby Jeff</a></li></ul>
+<a class="nav-link" href="#diagnostic-testing"><span class="header-section-number">23.4</span> Diagnostic testing</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#the-case-of-baby-jeff"><span class="header-section-number">23.4.1</span> The case of Baby Jeff</a></li></ul>
 </li>
 <li>
-<a class="nav-link" href="#chp23-review"><span class="header-section-number">26.5</span> Chapter review</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#chp23-review"><span class="header-section-number">23.5</span> Chapter review</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#summary-16">Summary</a></li>
 <li><a class="nav-link" href="#terms-16">Terms</a></li>
 <li><a class="nav-link" href="#key-ideas-16">Key ideas</a></li>

@@ -92,14 +92,14 @@
 <li><a class="" href="preface.html">Preface</a></li>
 <li><a class="" href="rstudio.html">Preliminaries: Getting started in RStudio</a></li>
 <li class="book-part">Introduction to data</li>
-<li><a class="" href="intro-to-data.html"><span class="header-section-number">1</span> Hello data</a></li>
+<li><a class="" href="data-hello.html"><span class="header-section-number">1</span> Hello data</a></li>
 <li><a class="" href="data-design.html"><span class="header-section-number">2</span> Study design</a></li>
 <li><a class="active" href="data-applications.html"><span class="header-section-number">3</span> Applications: Data</a></li>
 <li class="book-part">Exploratory data analysis</li>
-<li><a class="" href="categorical-data.html"><span class="header-section-number">4</span> Exploring categorical data</a></li>
-<li><a class="" href="quantitative-data.html"><span class="header-section-number">5</span> Exploring quantitative data</a></li>
-<li><a class="" href="cor-reg.html"><span class="header-section-number">6</span> Correlation and regression</a></li>
-<li><a class="" href="mult-reg.html"><span class="header-section-number">7</span> Multivariable models</a></li>
+<li><a class="" href="explore-categorical.html"><span class="header-section-number">4</span> Exploring categorical data</a></li>
+<li><a class="" href="explore-numerical.html"><span class="header-section-number">5</span> Exploring quantitative data</a></li>
+<li><a class="" href="explore-regression.html"><span class="header-section-number">6</span> Correlation and regression</a></li>
+<li><a class="" href="explore-mult-reg.html"><span class="header-section-number">7</span> Multivariable models</a></li>
 <li><a class="" href="explore-applications.html"><span class="header-section-number">8</span> Applications: Explore</a></li>
 <li class="book-part">Foundations of inference</li>
 <li><a class="" href="foundations-randomization.html"><span class="header-section-number">9</span> Hypothesis testing with randomization</a></li>
@@ -108,19 +108,19 @@
 <li><a class="" href="foundations-errors.html"><span class="header-section-number">12</span> Errors, power, and practical importance</a></li>
 <li><a class="" href="foundations-applications.html"><span class="header-section-number">13</span> Applications: Foundations</a></li>
 <li class="book-part">Inference for categorical data</li>
-<li><a class="" href="inference-one-prop.html"><span class="header-section-number">15</span> Inference for a single proportion</a></li>
-<li><a class="" href="inference-two-props.html"><span class="header-section-number">16</span> Inference for comparing two proportions</a></li>
-<li><a class="" href="applications-infer-categorical.html"><span class="header-section-number">17</span> Applications: Infer categorical</a></li>
+<li><a class="" href="inference-one-prop.html"><span class="header-section-number">14</span> Inference for a single proportion</a></li>
+<li><a class="" href="inference-two-props.html"><span class="header-section-number">15</span> Inference for comparing two proportions</a></li>
+<li><a class="" href="inference-categ-applications.html"><span class="header-section-number">16</span> Applications: Infer categorical</a></li>
 <li class="book-part">Inference for quantitative data</li>
-<li><a class="" href="inference-for-a-single-mean.html"><span class="header-section-number">19</span> Inference for a single mean</a></li>
-<li><a class="" href="inference-for-comparing-paired-means.html"><span class="header-section-number">20</span> Inference for comparing paired means</a></li>
-<li><a class="" href="inference-for-comparing-two-independent-means.html"><span class="header-section-number">21</span> Inference for comparing two independent means</a></li>
-<li><a class="" href="applications-infer-quantitative.html"><span class="header-section-number">22</span> Applications: Infer quantitative</a></li>
+<li><a class="" href="inference-one-mean.html"><span class="header-section-number">17</span> Inference for a single mean</a></li>
+<li><a class="" href="inference-paired-means.html"><span class="header-section-number">18</span> Inference for comparing paired means</a></li>
+<li><a class="" href="inference-two-means.html"><span class="header-section-number">19</span> Inference for comparing two independent means</a></li>
+<li><a class="" href="inference-num-applications.html"><span class="header-section-number">20</span> Applications: Infer quantitative</a></li>
 <li class="book-part">Inference for regression</li>
-<li><a class="" href="inference-for-correlation-and-slope.html"><span class="header-section-number">24</span> Inference for correlation and slope</a></li>
-<li><a class="" href="applications-infer-regression.html"><span class="header-section-number">25</span> Applications: Infer regression</a></li>
+<li><a class="" href="inference-reg.html"><span class="header-section-number">21</span> Inference for correlation and slope</a></li>
+<li><a class="" href="inference-reg-applications.html"><span class="header-section-number">22</span> Applications: Infer regression</a></li>
 <li class="book-part">Probability</li>
-<li><a class="" href="probability.html"><span class="header-section-number">26</span> Probability with tables</a></li>
+<li><a class="" href="probability.html"><span class="header-section-number">23</span> Probability with tables</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -188,7 +188,7 @@ few rows of the data set.</p>
 <span><span class="co">#&gt; $ from         &lt;fct&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …</span></span>
 <span><span class="co">#&gt; $ cc           &lt;int&gt; 0, 0, 4, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, …</span></span>
 <span><span class="co">#&gt; $ sent_email   &lt;fct&gt; 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, …</span></span>
-<span><span class="co">#&gt; $ time         &lt;dttm&gt; 2012-01-04 07:19:16, 2012-02-16 14:10:06, 2012-01-04 09:…</span></span>
+<span><span class="co">#&gt; $ time         &lt;dttm&gt; 2012-01-04 08:19:16, 2012-02-16 15:10:06, 2012-01-04 10:…</span></span>
 <span><span class="co">#&gt; $ image        &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …</span></span>
 <span><span class="co">#&gt; $ attach       &lt;dbl&gt; 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 0, …</span></span>
 <span><span class="co">#&gt; $ dollar       &lt;dbl&gt; 0, 0, 0, 0, 9, 0, 0, 0, 0, 23, 4, 0, 3, 2, 0, 0, 0, 0, 0,…</span></span>
@@ -209,12 +209,12 @@ few rows of the data set.</p>
 <span><span class="co">#&gt; # A tibble: 6 × 21</span></span>
 <span><span class="co">#&gt;   spam  to_multiple from     cc sent_e…¹ time                image attach dollar</span></span>
 <span><span class="co">#&gt;   &lt;fct&gt; &lt;fct&gt;       &lt;fct&gt; &lt;int&gt; &lt;fct&gt;    &lt;dttm&gt;              &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 0     0           1         0 1        2012-01-04 07:19:16     0      0      0</span></span>
-<span><span class="co">#&gt; 2 0     0           1         0 0        2012-02-16 14:10:06     0      0      0</span></span>
-<span><span class="co">#&gt; 3 1     0           1         4 0        2012-01-04 09:36:23     0      2      0</span></span>
-<span><span class="co">#&gt; 4 0     0           1         0 0        2012-01-04 11:49:52     0      0      0</span></span>
-<span><span class="co">#&gt; 5 0     0           1         0 0        2012-01-27 03:34:45     0      0      9</span></span>
-<span><span class="co">#&gt; 6 0     0           1         0 0        2012-01-17 11:31:57     0      0      0</span></span>
+<span><span class="co">#&gt; 1 0     0           1         0 1        2012-01-04 08:19:16     0      0      0</span></span>
+<span><span class="co">#&gt; 2 0     0           1         0 0        2012-02-16 15:10:06     0      0      0</span></span>
+<span><span class="co">#&gt; 3 1     0           1         4 0        2012-01-04 10:36:23     0      2      0</span></span>
+<span><span class="co">#&gt; 4 0     0           1         0 0        2012-01-04 12:49:52     0      0      0</span></span>
+<span><span class="co">#&gt; 5 0     0           1         0 0        2012-01-27 04:34:45     0      0      9</span></span>
+<span><span class="co">#&gt; 6 0     0           1         0 0        2012-01-17 12:31:57     0      0      0</span></span>
 <span><span class="co">#&gt; # … with 12 more variables: winner &lt;fct&gt;, inherit &lt;dbl&gt;, viagra &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   password &lt;dbl&gt;, num_char &lt;dbl&gt;, line_breaks &lt;int&gt;, format &lt;fct&gt;,</span></span>
 <span><span class="co">#&gt; #   re_subj &lt;fct&gt;, exclaim_subj &lt;dbl&gt;, urgent_subj &lt;fct&gt;, exclaim_mess &lt;dbl&gt;,</span></span>
@@ -243,7 +243,7 @@ For example <code>data[i,j]</code> will extract the <span class="math inline">\(
 <span><span class="co">#&gt; # A tibble: 1 × 21</span></span>
 <span><span class="co">#&gt;   spam  to_multiple from     cc sent_e…¹ time                image attach dollar</span></span>
 <span><span class="co">#&gt;   &lt;fct&gt; &lt;fct&gt;       &lt;fct&gt; &lt;int&gt; &lt;fct&gt;    &lt;dttm&gt;              &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 0     1           1         0 0        2012-03-06 08:10:00     0      0      0</span></span>
+<span><span class="co">#&gt; 1 0     1           1         0 0        2012-03-06 09:10:00     0      0      0</span></span>
 <span><span class="co">#&gt; # … with 12 more variables: winner &lt;fct&gt;, inherit &lt;dbl&gt;, viagra &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   password &lt;dbl&gt;, num_char &lt;dbl&gt;, line_breaks &lt;int&gt;, format &lt;fct&gt;,</span></span>
 <span><span class="co">#&gt; #   re_subj &lt;fct&gt;, exclaim_subj &lt;dbl&gt;, urgent_subj &lt;fct&gt;, exclaim_mess &lt;dbl&gt;,</span></span>
@@ -379,7 +379,7 @@ The new variable <code>read_cat</code> will be a column in the existing data fra
 
   <div class="chapter-nav">
 <div class="prev"><a href="data-design.html"><span class="header-section-number">2</span> Study design</a></div>
-<div class="next"><a href="categorical-data.html"><span class="header-section-number">4</span> Exploring categorical data</a></div>
+<div class="next"><a href="explore-categorical.html"><span class="header-section-number">4</span> Exploring categorical data</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">

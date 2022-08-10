@@ -92,14 +92,14 @@
 <li><a class="" href="preface.html">Preface</a></li>
 <li><a class="" href="rstudio.html">Preliminaries: Getting started in RStudio</a></li>
 <li class="book-part">Introduction to data</li>
-<li><a class="" href="intro-to-data.html"><span class="header-section-number">1</span> Hello data</a></li>
+<li><a class="" href="data-hello.html"><span class="header-section-number">1</span> Hello data</a></li>
 <li><a class="" href="data-design.html"><span class="header-section-number">2</span> Study design</a></li>
 <li><a class="" href="data-applications.html"><span class="header-section-number">3</span> Applications: Data</a></li>
 <li class="book-part">Exploratory data analysis</li>
-<li><a class="" href="categorical-data.html"><span class="header-section-number">4</span> Exploring categorical data</a></li>
-<li><a class="" href="quantitative-data.html"><span class="header-section-number">5</span> Exploring quantitative data</a></li>
-<li><a class="" href="cor-reg.html"><span class="header-section-number">6</span> Correlation and regression</a></li>
-<li><a class="" href="mult-reg.html"><span class="header-section-number">7</span> Multivariable models</a></li>
+<li><a class="" href="explore-categorical.html"><span class="header-section-number">4</span> Exploring categorical data</a></li>
+<li><a class="" href="explore-numerical.html"><span class="header-section-number">5</span> Exploring quantitative data</a></li>
+<li><a class="" href="explore-regression.html"><span class="header-section-number">6</span> Correlation and regression</a></li>
+<li><a class="" href="explore-mult-reg.html"><span class="header-section-number">7</span> Multivariable models</a></li>
 <li><a class="" href="explore-applications.html"><span class="header-section-number">8</span> Applications: Explore</a></li>
 <li class="book-part">Foundations of inference</li>
 <li><a class="" href="foundations-randomization.html"><span class="header-section-number">9</span> Hypothesis testing with randomization</a></li>
@@ -108,19 +108,19 @@
 <li><a class="" href="foundations-errors.html"><span class="header-section-number">12</span> Errors, power, and practical importance</a></li>
 <li><a class="" href="foundations-applications.html"><span class="header-section-number">13</span> Applications: Foundations</a></li>
 <li class="book-part">Inference for categorical data</li>
-<li><a class="" href="inference-one-prop.html"><span class="header-section-number">15</span> Inference for a single proportion</a></li>
-<li><a class="" href="inference-two-props.html"><span class="header-section-number">16</span> Inference for comparing two proportions</a></li>
-<li><a class="" href="applications-infer-categorical.html"><span class="header-section-number">17</span> Applications: Infer categorical</a></li>
+<li><a class="" href="inference-one-prop.html"><span class="header-section-number">14</span> Inference for a single proportion</a></li>
+<li><a class="" href="inference-two-props.html"><span class="header-section-number">15</span> Inference for comparing two proportions</a></li>
+<li><a class="" href="inference-categ-applications.html"><span class="header-section-number">16</span> Applications: Infer categorical</a></li>
 <li class="book-part">Inference for quantitative data</li>
-<li><a class="" href="inference-for-a-single-mean.html"><span class="header-section-number">19</span> Inference for a single mean</a></li>
-<li><a class="" href="inference-for-comparing-paired-means.html"><span class="header-section-number">20</span> Inference for comparing paired means</a></li>
-<li><a class="" href="inference-for-comparing-two-independent-means.html"><span class="header-section-number">21</span> Inference for comparing two independent means</a></li>
-<li><a class="" href="applications-infer-quantitative.html"><span class="header-section-number">22</span> Applications: Infer quantitative</a></li>
+<li><a class="" href="inference-one-mean.html"><span class="header-section-number">17</span> Inference for a single mean</a></li>
+<li><a class="" href="inference-paired-means.html"><span class="header-section-number">18</span> Inference for comparing paired means</a></li>
+<li><a class="" href="inference-two-means.html"><span class="header-section-number">19</span> Inference for comparing two independent means</a></li>
+<li><a class="" href="inference-num-applications.html"><span class="header-section-number">20</span> Applications: Infer quantitative</a></li>
 <li class="book-part">Inference for regression</li>
-<li><a class="" href="inference-for-correlation-and-slope.html"><span class="header-section-number">24</span> Inference for correlation and slope</a></li>
-<li><a class="" href="applications-infer-regression.html"><span class="header-section-number">25</span> Applications: Infer regression</a></li>
+<li><a class="" href="inference-reg.html"><span class="header-section-number">21</span> Inference for correlation and slope</a></li>
+<li><a class="" href="inference-reg-applications.html"><span class="header-section-number">22</span> Applications: Infer regression</a></li>
 <li class="book-part">Probability</li>
-<li><a class="" href="probability.html"><span class="header-section-number">26</span> Probability with tables</a></li>
+<li><a class="" href="probability.html"><span class="header-section-number">23</span> Probability with tables</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -165,7 +165,7 @@ This will provide information about how different the statistic is from the para
 <p>Quantifying the variability of a statistic from sample to sample is a hard problem.</p>
 <p>Fortunately, sometimes the mathematical theory for how a statistic varies (across different samples) is well-known; this is the case for the sample proportion as seen in Chapter <a href="foundations-mathematical.html#foundations-mathematical">11</a>.</p>
 <p>However, some statistics do not have simple theory for how they vary, and bootstrapping provides a computational approach for providing interval estimates for almost any population parameter.
-In this chapter we will focus on bootstrapping to estimate a single proportion, and we will revisit bootstrapping in Chapters <a href="#inference-one-mean"><strong>??</strong></a> through <a href="#inference-paired-means"><strong>??</strong></a>, so you’ll get plenty of practice as well as exposure to bootstrapping in many different data settings.</p>
+In this chapter we will focus on bootstrapping to estimate a single proportion, and we will revisit bootstrapping in Chapters <a href="inference-one-mean.html#inference-one-mean">17</a> through <a href="inference-paired-means.html#inference-paired-means">18</a>, so you’ll get plenty of practice as well as exposure to bootstrapping in many different data settings.</p>
 <p>Our goal with bootstrapping will be to produce an interval estimate (a range of plausible values) for the population parameter.</p>
 <div id="case-study-med-consult" class="section level2" number="10.1">
 <h2>
@@ -295,7 +295,7 @@ Additionally, as previously mentioned, because this is an observational study, e
 <p>A plausible range of values for the population parameter is called a <strong>confidence interval</strong>. Using only a single point estimate is like fishing in a murky lake with a spear, and using a confidence interval is like fishing with a net. We can throw a spear where we saw a fish, but we will probably miss. On the other hand, if we toss a net in that area, we have a good chance of catching the fish.</p>
 <p>If we report a point estimate, we probably will not hit the exact population parameter. On the other hand, if we report a range of plausible values—a confidence interval—we have a good shot at capturing the parameter.</p>
 <p>This reasoning also explains why we can never prove a null hypothesis. Sample statistics will vary from sample to sample. While we can quantify this uncertainty (e.g., we are 95% sure the statistic will fall within 0.15 of the parameter), we can never be certain that the parameter is an exact value.
-For example, suppose you want to test whether a coin is a fair coin, i.e., <span class="math inline">\(H_0: \pi = 0.50\)</span> versus <span class="math inline">\(H_0: \pi \neq 0.50\)</span>, so you toss the coin 10 times to collect data. In those 10 tosses, 6 land on heads and 4 land on tails, resulting in a p-value of 0.754<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;You will get more practice calculating p-values such as these in Chapter &lt;a href="inference-one-prop.html#inference-one-prop"&gt;15&lt;/a&gt;.&lt;/p&gt;'><sup>85</sup></a>. We don’t have enough evidence to show that the coin is biased, but surely we wouldn’t say we just proved the coin is fair!</p>
+For example, suppose you want to test whether a coin is a fair coin, i.e., <span class="math inline">\(H_0: \pi = 0.50\)</span> versus <span class="math inline">\(H_0: \pi \neq 0.50\)</span>, so you toss the coin 10 times to collect data. In those 10 tosses, 6 land on heads and 4 land on tails, resulting in a p-value of 0.754<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;You will get more practice calculating p-values such as these in Chapter &lt;a href="inference-one-prop.html#inference-one-prop"&gt;14&lt;/a&gt;.&lt;/p&gt;'><sup>85</sup></a>. We don’t have enough evidence to show that the coin is biased, but surely we wouldn’t say we just proved the coin is fair!</p>
 <div class="guidedpractice">
 <p>If we want to be very certain we capture the population parameter, should we use a wider interval (e.g., 99%) or a smaller interval (e.g., 80%)?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;If we want to be more certain we will capture the fish, we might use a wider net.
 Likewise, we use a wider confidence interval if we want to be more certain that we capture the parameter.&lt;/p&gt;"><sup>86</sup></a></p>
@@ -327,8 +327,8 @@ Call the 2.5% bootstrapped proportion value “lower”, and call the 97.5% boot
 <div class="underconstruction">
 <p>Need to update these two section references once they’re ready:</p>
 </div>
-<p>In Section <a href="inference-one-prop.html#one-prop-null-boot">15.1.1</a> we will discuss different percentages for the confidence level (e.g., 90% confidence interval or 99% confidence interval).</p>
-<p>Section <a href="inference-one-prop.html#one-prop-null-boot">15.1.1</a> also provides a longer discussion on what “95% confidence” actually means.</p>
+<p>In Section <a href="inference-one-prop.html#one-prop-null-boot">14.1</a> we will discuss different percentages for the confidence level (e.g., 90% confidence interval or 99% confidence interval).</p>
+<p>Section <a href="inference-one-prop.html#one-prop-null-boot">14.1</a> also provides a longer discussion on what “95% confidence” actually means.</p>
 </div>
 </div>
 <div id="case-study-med-consult-test" class="section level2" number="10.3">

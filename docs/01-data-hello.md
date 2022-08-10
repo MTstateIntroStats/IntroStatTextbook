@@ -2,8 +2,8 @@
 
 
 
-# Hello data {#intro-to-data}
-<!-- TODO - change reference to #data-hello -->
+# Hello data {#data-hello}
+<!-- Old reference: #intro-to-data -->
 
 ::: {.chapterintro}
 Scientists seek to answer questions using rigorous methods and careful observations. 

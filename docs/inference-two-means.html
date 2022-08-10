@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 19 Inference for comparing two independent means | Montana State Introductory Statistics with R</title>
+<meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager">
+<meta name="description" content="TODO Below we summarize the notation used throughout this chapter. Notation. \(n_1\), \(n_2\) = sample sizes of two independent samples \(\bar{x}_1\), \(\bar{x}_2\) = sample means of two...">
+<meta name="generator" content="bookdown 0.27 with bs4_book()">
+<meta property="og:title" content="Chapter 19 Inference for comparing two independent means | Montana State Introductory Statistics with R">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://mtstateintrostats.github.io/IntroStatTextbook/inference-two-means.html">
+<meta property="og:description" content="TODO Below we summarize the notation used throughout this chapter. Notation. \(n_1\), \(n_2\) = sample sizes of two independent samples \(\bar{x}_1\), \(\bar{x}_2\) = sample means of two...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 19 Inference for comparing two independent means | Montana State Introductory Statistics with R">
+<meta name="twitter:description" content="TODO Below we summarize the notation used throughout this chapter. Notation. \(n_1\), \(n_2\) = sample sizes of two independent samples \(\bar{x}_1\), \(\bar{x}_2\) = sample means of two...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet">
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script><script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.0/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script><script type="text/x-mathjax-config">
+    const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+    for (let popover of popovers){
+      const div = document.createElement('div');
+      div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+      div.innerHTML = popover.getAttribute('data-content');
+      
+      // Will this work with TeX on its own line?
+      var has_math = div.querySelector("span.math");
+      if (has_math) {
+        document.body.appendChild(div);
+      	MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+      	MathJax.Hub.Queue(function(){
+          popover.setAttribute('data-content', div.innerHTML);
+      	})
+      }
+    }
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="css/ims-style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Montana State Introductory Statistics with R</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome</a></li>
+<li><a class="" href="authors.html">Authors</a></li>
+<li><a class="" href="preface.html">Preface</a></li>
+<li><a class="" href="rstudio.html">Preliminaries: Getting started in RStudio</a></li>
+<li class="book-part">Introduction to data</li>
+<li><a class="" href="data-hello.html"><span class="header-section-number">1</span> Hello data</a></li>
+<li><a class="" href="data-design.html"><span class="header-section-number">2</span> Study design</a></li>
+<li><a class="" href="data-applications.html"><span class="header-section-number">3</span> Applications: Data</a></li>
+<li class="book-part">Exploratory data analysis</li>
+<li><a class="" href="explore-categorical.html"><span class="header-section-number">4</span> Exploring categorical data</a></li>
+<li><a class="" href="explore-numerical.html"><span class="header-section-number">5</span> Exploring quantitative data</a></li>
+<li><a class="" href="explore-regression.html"><span class="header-section-number">6</span> Correlation and regression</a></li>
+<li><a class="" href="explore-mult-reg.html"><span class="header-section-number">7</span> Multivariable models</a></li>
+<li><a class="" href="explore-applications.html"><span class="header-section-number">8</span> Applications: Explore</a></li>
+<li class="book-part">Foundations of inference</li>
+<li><a class="" href="foundations-randomization.html"><span class="header-section-number">9</span> Hypothesis testing with randomization</a></li>
+<li><a class="" href="foundations-bootstrapping.html"><span class="header-section-number">10</span> Confidence intervals with bootstrapping</a></li>
+<li><a class="" href="foundations-mathematical.html"><span class="header-section-number">11</span> Inference with mathematical models</a></li>
+<li><a class="" href="foundations-errors.html"><span class="header-section-number">12</span> Errors, power, and practical importance</a></li>
+<li><a class="" href="foundations-applications.html"><span class="header-section-number">13</span> Applications: Foundations</a></li>
+<li class="book-part">Inference for categorical data</li>
+<li><a class="" href="inference-one-prop.html"><span class="header-section-number">14</span> Inference for a single proportion</a></li>
+<li><a class="" href="inference-two-props.html"><span class="header-section-number">15</span> Inference for comparing two proportions</a></li>
+<li><a class="" href="inference-categ-applications.html"><span class="header-section-number">16</span> Applications: Infer categorical</a></li>
+<li class="book-part">Inference for quantitative data</li>
+<li><a class="" href="inference-one-mean.html"><span class="header-section-number">17</span> Inference for a single mean</a></li>
+<li><a class="" href="inference-paired-means.html"><span class="header-section-number">18</span> Inference for comparing paired means</a></li>
+<li><a class="active" href="inference-two-means.html"><span class="header-section-number">19</span> Inference for comparing two independent means</a></li>
+<li><a class="" href="inference-num-applications.html"><span class="header-section-number">20</span> Applications: Infer quantitative</a></li>
+<li class="book-part">Inference for regression</li>
+<li><a class="" href="inference-reg.html"><span class="header-section-number">21</span> Inference for correlation and slope</a></li>
+<li><a class="" href="inference-reg-applications.html"><span class="header-section-number">22</span> Applications: Infer regression</a></li>
+<li class="book-part">Probability</li>
+<li><a class="" href="probability.html"><span class="header-section-number">23</span> Probability with tables</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/MTstateIntroStats/IntroStatTextbook">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="inference-two-means" class="section level1" number="19">
+<h1>
+<span class="header-section-number">19</span> Inference for comparing two independent means<a class="anchor" aria-label="anchor" href="#inference-two-means"><i class="fas fa-link"></i></a>
+</h1>
+<!-- Old reference: #differenceOfTwoMeans -->
+<div class="chapterintro">
+<p>TODO</p>
+</div>
+<p>Below we summarize the notation used throughout this chapter.</p>
+<div class="onebox">
+<p><strong>Notation.</strong></p>
+<ul>
+<li>
+<span class="math inline">\(n_1\)</span>, <span class="math inline">\(n_2\)</span> = sample sizes of two independent samples</li>
+<li>
+<span class="math inline">\(\bar{x}_1\)</span>, <span class="math inline">\(\bar{x}_2\)</span> = sample means of two independent samples</li>
+<li>
+<span class="math inline">\(s_1\)</span>, <span class="math inline">\(s_2\)</span> = sample standard deviations of two independent samples</li>
+<li>
+<span class="math inline">\(\mu_1\)</span>, <span class="math inline">\(\mu_2\)</span> = population means of two independent populations</li>
+<li>
+<span class="math inline">\(\sigma_1\)</span>, <span class="math inline">\(\sigma_2\)</span> = population standard deviations of two independent populations</li>
+</ul>
+</div>
+<p>In this section we consider a difference in
+two population means, <span class="math inline">\(\mu_1 - \mu_2\)</span>, under the condition
+that the data are not paired.
+Just as with a single sample, we identify conditions to ensure
+we can use the <span class="math inline">\(t\)</span>-distribution with a point estimate
+of the difference, <span class="math inline">\(\bar{x}_1 - \bar{x}_2\)</span>,
+and a new standard error formula.</p>
+<p>The details for working through inferential problems in the two independent means setting are strikingly similar to those applied to the two independent proportions setting.
+We first cover a randomization test where the observations are shuffled under the assumption that the null hypothesis is true.
+Then we bootstrap the data (with no imposed null hypothesis) to create a confidence interval for the true difference in population means, <span class="math inline">\(\mu_1 - \mu_2\)</span>.
+The mathematical model, here the <span class="math inline">\(t\)</span>-distribution, is able to describe both the randomization test and the boostrapping as long as the conditions are met.</p>
+<p>The inferential tools are applied to three different data contexts: determining whether
+stem cells can improve heart function,
+exploring the relationship between pregnant women’s smoking
+habits and birth weights of newborns,
+and exploring whether there is statistically significant
+evidence that one variation of an exam is harder than
+another variation.
+This section is motivated by questions like
+“Is there convincing evidence that newborns from mothers
+who smoke have a different average birth weight than newborns
+from mothers who don’t smoke?”</p>
+<div id="rand2mean" class="section level2" number="19.1">
+<h2>
+<span class="header-section-number">19.1</span> Randomization test for <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span><a class="anchor" aria-label="anchor" href="#rand2mean"><i class="fas fa-link"></i></a>
+</h2>
+<p></p>
+<p>An instructor decided to run two slight variations of the same exam. Prior to passing out the exams, she shuffled the exams together to ensure each student received a random version. Summary statistics for how students performed on these two exams are shown in Table <a href="inference-two-means.html#tab:summaryStatsForTwoVersionsOfExams">19.1</a> and plotted in Figure <a href="inference-two-means.html#fig:boxplotTwoVersionsOfExams">19.1</a>. Anticipating complaints from students who took Version B, she would like to evaluate whether the difference observed in the groups is so large that it provides convincing evidence that Version B was more difficult (on average) than Version A.</p>
+<div id="observed-data-10" class="section level3" number="19.1.1">
+<h3>
+<span class="header-section-number">19.1.1</span> Observed data<a class="anchor" aria-label="anchor" href="#observed-data-10"><i class="fas fa-link"></i></a>
+</h3>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:summaryStatsForTwoVersionsOfExams">Table 19.1: </span>Summary statistics of scores for each exam version.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(n\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(\bar{x}\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(s\)</span>
+</th>
+<th style="text-align:right;">
+minimum
+</th>
+<th style="text-align:right;">
+maximum
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:right;">
+58
+</td>
+<td style="text-align:right;">
+75.1
+</td>
+<td style="text-align:right;">
+13.9
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+55
+</td>
+<td style="text-align:right;">
+72.0
+</td>
+<td style="text-align:right;">
+13.8
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+</tbody>
+</table></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:boxplotTwoVersionsOfExams"></span>
+<img src="19-numerical-two-means_files/figure-html/boxplotTwoVersionsOfExams-1.png" alt="Exam scores for students given one of three different exams." width="90%"><p class="caption">
+Figure 19.1: Exam scores for students given one of three different exams.
+</p>
+</div>
+<div class="guidedpractice">
+<p>Construct hypotheses to evaluate whether the observed
+difference in sample means, <span class="math inline">\(\bar{x}_A - \bar{x}_B=3.1\)</span>,
+is due to chance. We will later evaluate these hypotheses
+by computing a p-value for the test.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="math inline"&gt;\(H_0\)&lt;/span&gt;: the exams are equally difficult, on average. &lt;span class="math inline"&gt;\(\mu_A - \mu_B = 0\)&lt;/span&gt;. &lt;span class="math inline"&gt;\(H_A\)&lt;/span&gt;: one exam was more difficult than the other, on average. &lt;span class="math inline"&gt;\(\mu_A - \mu_B \neq 0.\)&lt;/span&gt;&lt;/p&gt;'><sup>165</sup></a></p>
+</div>
+<div class="guidedpractice">
+<p>Before moving on to evaluate the hypotheses in the previous Guided Practice, let’s think carefully about the dataset. Are the observations across the two groups independent? Are there any concerns about outliers?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;
+(a) Since the exams were shuffled,
+the “treatment” in this case was randomly assigned,
+so independence within and between groups is satisfied.
+(b) The summary statistics suggest the data are roughly
+symmetric about the mean, and the min/max values don’t
+suggest any outliers of concern.&lt;/p&gt;"><sup>166</sup></a></p>
+</div>
+</div>
+<div id="variability-of-the-statistic-7" class="section level3" number="19.1.2">
+<h3>
+<span class="header-section-number">19.1.2</span> Variability of the statistic<a class="anchor" aria-label="anchor" href="#variability-of-the-statistic-7"><i class="fas fa-link"></i></a>
+</h3>
+<p>In Section <a href="#diff-two-prop"><strong>??</strong></a>, the variability of the statistic (previously: <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span>) was visualized after shuffling the observations across the two treatment groups many times.
+The shuffling process implements the null hypothesis model (that there is no effect of the treatment).
+In the exam example, the null hypothesis is that exam A and exam B are equally difficult, so the average scores across the two tests should be the same.
+If the exams were equally difficult, <em>due to natural variability</em>, we would sometimes expect students to do slightly better on exam A (<span class="math inline">\(\bar{x}_A &gt; \bar{x}_B\)</span>) and sometimes expect students to do slightly better on exam B (<span class="math inline">\(\bar{x}_B &gt; \bar{x}_A\)</span>).
+The question at hand is: Does <span class="math inline">\(\bar{x}_A - \bar{x}_B=3.1\)</span> indicate that exam A is easier than exam B?.</p>
+<p>Figure <a href="inference-two-means.html#fig:rand2means">19.2</a> shows the process of randomizing the exam to the observed exam scores.
+If the null hypothesis is true, then the score on each exam should represent the true student ability on that material.
+It shouldn’t matter whether they were given exam A or exam B.
+By reallocating which student got which exam, we are able to understand how the difference in average exam scores changes due only to natural variability.
+There is only one iteration of the randomization process in Figure <a href="inference-two-means.html#fig:rand2means">19.2</a>, leading to one simulated difference in average scores.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:rand2means"></span>
+<img src="06/figures/rand2means.png" alt="The version of the test (A or B) is randomly allocated to the test scores, under the null assumption that the tests are equally difficult." width="75%"><p class="caption">
+Figure 19.2: The version of the test (A or B) is randomly allocated to the test scores, under the null assumption that the tests are equally difficult.
+</p>
+</div>
+<p>Building on Figure <a href="inference-two-means.html#fig:rand2means">19.2</a>, Figure <a href="inference-two-means.html#fig:randexams">19.3</a> shows the values of the simulated statistics <span class="math inline">\(\bar{x}_{1, sim} - \bar{x}_{2, sim}\)</span> over 1000 random simulations.
+We see that, just by chance, the difference in scores can range anywhere from -10 points to +10 points.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:randexams"></span>
+<img src="19-numerical-two-means_files/figure-html/randexams-1.png" alt="Histogram of differences in means, calculated from 1000 different randomizations of the exam types." width="90%"><p class="caption">
+Figure 19.3: Histogram of differences in means, calculated from 1000 different randomizations of the exam types.
+</p>
+</div>
+</div>
+<div id="observed-statistic-vs.-null-value-1" class="section level3" number="19.1.3">
+<h3>
+<span class="header-section-number">19.1.3</span> Observed statistic vs. null value<a class="anchor" aria-label="anchor" href="#observed-statistic-vs.-null-value-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>The goal of the randomization test is to assess the observed data, here the statistic of interest is <span class="math inline">\(\bar{x}_A - \bar{x}_B = 3.1\)</span>.
+The randomization distribution allows us to identify whether a difference of 3.1 points is more than one would expect by natural variability.
+By plotting the value of 3.1 on Figure <a href="inference-two-means.html#fig:randexamspval">19.4</a>, we can measure how different or similar 3.1 is to the randomized differences which were generated under the null hypothesis.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:randexamspval"></span>
+<img src="19-numerical-two-means_files/figure-html/randexamspval-1.png" alt="Histogram of differences in means, calculated from 1000 different randomizations of the exam types.  The observed difference of 3.1 points is plotted as a vertical line, and the area more extreme than 3.1 is shaded to represent the p-value." width="90%"><p class="caption">
+Figure 19.4: Histogram of differences in means, calculated from 1000 different randomizations of the exam types. The observed difference of 3.1 points is plotted as a vertical line, and the area more extreme than 3.1 is shaded to represent the p-value.
+</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-11" class="example"><strong>Example 19.1  </strong></span>Approximate the p-value depicted in Figure <a href="inference-two-means.html#fig:randexamspval">19.4</a>, and provide a conclusion in the context of the case study.</p>
+<hr>
+<p>Using software, we find that 231 of the 1000 shuffled differences in means are as or further away from zero as our observed difference of 3.1. That is, 23.1% of the shuffled statistics lie in the shaded blue area in Figure <a href="inference-two-means.html#fig:randexamspval">19.4</a>. Thus, our p-value is 0.231.</p>
+<p>With this large of a p-value, the data do not convincingly show that one exam
+version is more difficult than the other, and the teacher
+should not be convinced that she should add points to the
+Version B exam scores.</p>
+</div>
+<p>The large p-value and consistency of <span class="math inline">\(\bar{x}_A - \bar{x}_B=3.1\)</span> with the randomized differences leads us to <em>not reject the null hypothesis</em>. Said differently, there is no evidence to think that one of the tests is easier than the other.</p>
+<p>One might be inclined to conclude that the tests have the same level of difficulty, but that conclusion would be wrong. Indeed, our best point estimate of the true average difference in means between the two tests is 3.1!
+The hypothesis testing framework is set up only to reject a null claim, it is not set up to validate a null claim.
+As we concluded, the data are consistent with exams A and B being equally difficult, but the data are also consistent with exam A being 3.1 points “easier” than exam B. In fact, as we’ll see in the next section, since a 95% confidence interval for <span class="math inline">\(\mu_A - \mu_B\)</span> is (-2.0, 8.3), these data are consistent with any difference between exam A being 2.0 points “harder” to exam A being 8.3 points “easier.”
+The data are not able to adjudicate on whether the exams are equally hard or whether one of them is slightly easier.</p>
+<p>Conclusions where the null hypothesis is not rejected often seem unsatisfactory.
+However, in this case, the teacher and class are probably all relieved that there is no evidence to demonstrate that one of the exams is more difficult than the other.</p>
+<!--
+Below is the t-test for the example above using a randomization test.  Doesn't seem like we need both.
+
+
+After verifying the conditions for each sample and confirming the samples are independent of each other, we are ready to conduct the test using the $t$-distribution. In this case, we are estimating the true difference in average test scores using the sample data, so the point estimate is $\bar{x}_A - \bar{x}_B = 3.1$. The standard error of the estimate can be calculated as
+\begin{align*}
+SE
+  = \sqrt{\frac{s_A^2}{n_A} + \frac{s_B^2}{n_B}}
+  = \sqrt{\frac{14^2}{30} + \frac{20^2}{27}}
+  = 4.62
+\end{align*}
+Finally, we construct the test statistic:
+\begin{align*}
+T
+  = \frac{\text{point estimate} - \text{null value}}{SE}
+  = \frac{(79.4-74.1) - 0}{4.62}
+  = 1.15
+\end{align*}
+If we have a computer handy, we can identify the degrees
+of freedom as 45.97.
+Otherwise we use the smaller of $n_1-1$ and $n_2-1$: $df=26$.
+
+\D{\newpage}
+
+\begin{figure}[h]
+  \centering
+  \Figure{0.63}{pValueOfTwoTailAreaOfExamVersionsWhereDFIs26}
+  \caption{The $t$-distribution with 26 degrees of freedom
+      and the p-value from exam example represented
+      as the shaded areas.}
+  \label{pValueOfTwoTailAreaOfExamVersionsWhereDFIs26}
+\end{figure}
+
+\begin{examplewrap}
+\begin{nexample}{Identify the p-value depicted in
+    Figure \ref{pValueOfTwoTailAreaOfExamVersionsWhereDFIs26}
+    using $df = 26$, and provide a conclusion in the
+    context of the case study.}
+  Using software, we can find the one-tail area (0.13)
+  and then double this value to get the two-tail area,
+  which is the p-value: 0.26.
+  (Alternatively, we could use the $t$-table in
+  Appendix \ref{tDistributionTable}.)
+
+  In Guided
+  Practice \ref{htSetupForEvaluatingTwoExamVersions},
+  we specified that we would use $\alpha = 0.01$.
+  Since the p-value is larger than $\alpha$,
+  we do not reject the null hypothesis.
+  That is, the data do not convincingly show that one exam
+  version is more difficult than the other, and the teacher
+  should not be convinced that she should add points to the
+  Version B exam scores.
+\end{nexample}
+\end{examplewrap}
+-->
+<p></p>
+</div>
+</div>
+<div id="boot-ci-diff-means" class="section level2" number="19.2">
+<h2>
+<span class="header-section-number">19.2</span> Bootstrap confidence interval for <span class="math inline">\(\mu_1 - \mu_2\)</span><a class="anchor" aria-label="anchor" href="#boot-ci-diff-means"><i class="fas fa-link"></i></a>
+</h2>
+<p>
+</p>
+<p>Before providing a full example working through a bootstrap analysis on actual data, consider a fictional situation where you would like to compare the average price of a car at one Awesome Auto franchise (Group 1) to the average price of a car at a different Awesome Auto franchise (Group 2). You are only able to randomly sample five cars from each Awesome Auto franchise, and you measure the selling price of each car in the sample. The process of bootstrapping can be applied to <em>each</em> Group separately, and the differences of means recalculated each time. Figure <a href="inference-two-means.html#fig:bootmeans2means">19.5</a> visually describes the bootstrap process when interest is in a statistic computed on two separate samples. The analysis proceeds as in the one sample case, but now the (single) statistic of interest is the <em>difference in sample means</em>. That is, a bootstrap resample is done on each of the groups separately, but the results are combined to have a single bootstrapped difference in means. Repetition will produce 1000s of bootstrapped differences in means, and the histogram will describe the natural sampling variability associated with the difference in means.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:bootmeans2means"></span>
+<img src="06/figures/bootmeans2means.png" alt="For the two group comparison, 1000 bootstrap resamples are taken  separately on each group, and the difference in sample means is calculated for each pair of bootstrap resamples.  The set of 1000 differences is then analyzed as the distribution of the statistic of interest, with conclusions drawn on the parameter of interest." width="75%"><p class="caption">
+Figure 19.5: For the two group comparison, 1000 bootstrap resamples are taken separately on each group, and the difference in sample means is calculated for each pair of bootstrap resamples. The set of 1000 differences is then analyzed as the distribution of the statistic of interest, with conclusions drawn on the parameter of interest.
+</p>
+</div>
+<div id="observed-data-11" class="section level3" number="19.2.1">
+<h3>
+<span class="header-section-number">19.2.1</span> Observed data<a class="anchor" aria-label="anchor" href="#observed-data-11"><i class="fas fa-link"></i></a>
+</h3>
+<p>Does treatment using embryonic stem cells (ESCs)
+help improve heart function following a heart attack?
+Table <a href="inference-two-means.html#tab:statsSheepEscStudy">19.2</a> contains summary statistics
+for an experiment to test ESCs in sheep that had a heart attack.
+Each of these sheep was randomly assigned to the ESC
+or control group, and the percent change in their hearts’ pumping
+capacity was measured in the study.
+Figure <a href="inference-two-means.html#fig:stemCellTherapyForHearts">19.6</a> provides
+histograms of the two data sets.
+A positive value corresponds to increased pumping capacity,
+which generally suggests a stronger recovery.
+Our goal will be to identify a 90% confidence interval
+for the effect of ESCs on the change in heart pumping
+capacity relative to the control group.</p>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:statsSheepEscStudy">Table 19.2: </span>Summary statistics of the embryonic stem cell study.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(n\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(\bar{x}\)</span>
+</th>
+<th style="text-align:right;">
+<span class="math inline">\(s\)</span>
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+ESCs
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3.50
+</td>
+<td style="text-align:right;">
+5.17
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+control
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+-4.33
+</td>
+<td style="text-align:right;">
+2.76
+</td>
+</tr>
+</tbody>
+</table></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:stemCellTherapyForHearts"></span>
+<img src="19-numerical-two-means_files/figure-html/stemCellTherapyForHearts-1.png" alt="Histograms for both the embryonic stem cell and control group." width="90%"><img src="19-numerical-two-means_files/figure-html/stemCellTherapyForHearts-2.png" alt="Histograms for both the embryonic stem cell and control group." width="90%"><p class="caption">
+Figure 19.6: Histograms for both the embryonic stem cell and control group.
+</p>
+</div>
+<p>The point estimate of the true difference in the mean heart pumping variable
+is straightforward to find: it is the difference in the sample means.
+<span class="math display">\[\begin{align*}
+\bar{x}_{esc} - \bar{x}_{control}\
+  =\ 3.50 - (-4.33)\
+  =\ 7.83
+\end{align*}\]</span>(-4.33) 
+= 7.83
+\end{align*}</p>
+<div class="guidedpractice">
+<p>Identify the roles of the two variables in this study — which variable is the explanatory variable and which is the response? What is the scope of inference for this study?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Since the research question asks if ESCs help improve heart function, the explanatory variable is the treatment (ESC or control), and the response variable is the change in heart pumping capacity. Since sheep were randomly assigned to treatment groups, this study is a randomized experiment, and any changes in the mean response can be attributed to the treatment — cause-and-effect conclusions can be made. However, since it is not clear if the sheep were a random sample from a larger population of sheep, we can only generalize to sheep similar to those seen in the sample.&lt;/p&gt;"><sup>167</sup></a></p>
+</div>
+</div>
+<div id="variability-of-the-statistic-8" class="section level3" number="19.2.2">
+<h3>
+<span class="header-section-number">19.2.2</span> Variability of the statistic<a class="anchor" aria-label="anchor" href="#variability-of-the-statistic-8"><i class="fas fa-link"></i></a>
+</h3>
+<p>As we saw in Section <a href="inference-two-props.html#two-prop-boot-ci">15.2</a>, we will use bootstrapping to estimate the variability associated with the difference in sample means when taking repeated samples. In a method akin to two proportions, a <em>separate</em> sample is taken with replacement from each group (here ESCs and control), the sample means are calculated, and their difference is taken. The entire process is repeated multiple times to produce a bootstrap distribution of the difference in sample means (<em>without</em> the null hypothesis assumption).</p>
+<p>Figure <a href="inference-two-means.html#fig:bootexamsci">19.7</a> displays the variability of the differences in sample means with the percentile bootstrap 90% confidence interval super imposed.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:bootexamsci"></span>
+<img src="19-numerical-two-means_files/figure-html/bootexamsci-1.png" alt="Histogram of differences in means after 1000 bootstrap resamples are taken from each of the two groups.  The observed difference in means from the original data is plotted as a black vertical line at 7.83.  The blue lines provide the percentile bootstrap 90% confidence interval for the difference in true population means." width="90%"><p class="caption">
+Figure 19.7: Histogram of differences in means after 1000 bootstrap resamples are taken from each of the two groups. The observed difference in means from the original data is plotted as a black vertical line at 7.83. The blue lines provide the percentile bootstrap 90% confidence interval for the difference in true population means.
+</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-12" class="example"><strong>Example 19.2  </strong></span>Does the bootstrap confidence interval for the true difference in average change in pumping capacity, <span class="math inline">\(\mu_{esc} - \mu_{control}\)</span>, show that there is a difference across the two treatments?</p>
+<hr>
+<p>Because the 90% interval displayed does not contain zero (note that zero is never one of the bootstrapped differences so 95% and 99% intervals would have given the same conclusion!), we conclude that the ESC treatment is significantly better with respect to heart pumping capacity than the treatment.</p>
+<p>Because the study is a randomized controlled experiment, we can conclude that it is the treatment (ESC) which is causing the change in pumping capacity.</p>
+</div>
+</div>
+</div>
+<div id="math2samp" class="section level2" number="19.3">
+<h2>
+<span class="header-section-number">19.3</span> Theory-based inferential methods for <span class="math inline">\(\mu_1 - \mu_2\)</span><a class="anchor" aria-label="anchor" href="#math2samp"><i class="fas fa-link"></i></a>
+</h2>
+<p>As in the one-mean and paired mean difference scenarios, a difference in sample means can be modeled by a <span class="math inline">\(t\)</span>-distribution under certain conditions. These conditions are the same as in the one-mean and paired mean difference scenarios, but now the conditions need to be met for <em>each sample</em>. Similarly, we will compute a test statistic and a theory-based confidence interval using the standard error formula for a difference in sample means.</p>
+<p></p>
+<div class="onebox">
+<p><strong>Using the <span class="math inline">\(t\)</span>-distribution for a difference in means.</strong></p>
+<p>The <span class="math inline">\(t\)</span>-distribution can be used for inference when working
+with the standardized difference of two means if</p>
+<ul>
+<li>
+<em>Independence</em> (extended).
+The data are independent within and between
+the two groups, e.g., the data come from
+independent random samples or from a
+randomized experiment.<br>
+</li>
+<li>
+<em>Normality</em>.
+We check the outliers for
+each group separately.</li>
+</ul>
+<p>The standard error may be computed as
+<span class="math display">\[
+SE(\bar{x}_1 - \bar{x}_2) = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}},
+\]</span></p>
+<p>The official formula for the degrees of freedom is quite
+complex and is generally computed using software,
+so instead you may use the smaller of
+<span class="math inline">\(n_1 - 1\)</span> and <span class="math inline">\(n_2 - 1\)</span> for the degrees of freedom
+if software isn’t readily available.</p>
+</div>
+<p></p>
+<div id="t-test-for-mu_1---mu_2" class="section level3" number="19.3.1">
+<h3>
+<span class="header-section-number">19.3.1</span> <span class="math inline">\(t\)</span>-test for <span class="math inline">\(\mu_1 - \mu_2\)</span><a class="anchor" aria-label="anchor" href="#t-test-for-mu_1---mu_2"><i class="fas fa-link"></i></a>
+</h3>
+<div id="observed-data-12" class="section level4 unnumbered">
+<h4>Observed data<a class="anchor" aria-label="anchor" href="#observed-data-12"><i class="fas fa-link"></i></a>
+</h4>
+<p></p>
+<p>A dataset called <code>ncbirths</code> represents a random sample of 150 cases of mothers and their newborns in North Carolina over a year. Four cases from this data set are represented in Table <a href="inference-two-means.html#tab:babySmokeDF">19.3</a>. We are particularly interested in two variables: <code>weight</code> and <code>smoke</code>. The <code>weight</code> variable represents the weights of the newborns and the <code>smoke</code> variable describes which mothers smoked during pregnancy. We would like to know, is there convincing evidence that newborns from mothers who smoke have a different average birth weight than newborns from mothers who don’t smoke? We will use the North Carolina sample to try to answer this question. The smoking group includes 50 cases and the nonsmoking group contains 100 cases.</p>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:babySmokeDF">Table 19.3: </span>Four cases from the <code>ncbirths</code> data set. The value <code>NA</code>, shown for the first two entries of the first variable, indicates that piece of data is missing.
+</caption>
+<thead><tr>
+<th style="text-align:right;">
+fage
+</th>
+<th style="text-align:right;">
+mage
+</th>
+<th style="text-align:right;">
+weeks
+</th>
+<th style="text-align:right;">
+visits
+</th>
+<th style="text-align:left;">
+marital
+</th>
+<th style="text-align:right;">
+gained
+</th>
+<th style="text-align:right;">
+weight
+</th>
+<th style="text-align:left;">
+gender
+</th>
+<th style="text-align:left;">
+habit
+</th>
+<th style="text-align:left;">
+whitemom
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+not married
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:right;">
+7.63
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+nonsmoker
+</td>
+<td style="text-align:left;">
+not white
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+42
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+not married
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+7.88
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+nonsmoker
+</td>
+<td style="text-align:left;">
+not white
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+not married
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:right;">
+6.63
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+nonsmoker
+</td>
+<td style="text-align:left;">
+white
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+not married
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:right;">
+8.00
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+nonsmoker
+</td>
+<td style="text-align:left;">
+white
+</td>
+</tr>
+</tbody>
+</table></div>
+<div class="example">
+<p><span id="exm:unlabeled-div-13" class="example"><strong>Example 19.3  </strong></span>Set up appropriate hypotheses to evaluate
+whether there is a relationship between a mother smoking
+and average birth weight.</p>
+<hr>
+<p>The null hypothesis represents the case of no difference
+between the groups.</p>
+<ul>
+<li>
+<span class="math inline">\(H_0\)</span>: There is no difference in average birth weight for
+newborns from mothers who did and did not smoke.<br>
+In statistical notation: <span class="math inline">\(H_0: \mu_{n} - \mu_{s} = 0\)</span>,
+where <span class="math inline">\(\mu_{n}\)</span> represents the true mean birth weight for babies of non-smoking mothers and
+<span class="math inline">\(\mu_s\)</span> represents the true mean birth weight for babies of mothers who smoked.</li>
+</ul>
+<p>The alternative hypothesis represents the research question.</p>
+<ul>
+<li>
+<span class="math inline">\(H_A\)</span>: There is some difference in average newborn weights
+from mothers who did and did not smoke (<span class="math inline">\(\mu_{n} - \mu_{s} \neq 0\)</span>).</li>
+</ul>
+</div>
+</div>
+<div id="variability-of-the-statistic-9" class="section level4 unnumbered">
+<h4>Variability of the statistic<a class="anchor" aria-label="anchor" href="#variability-of-the-statistic-9"><i class="fas fa-link"></i></a>
+</h4>
+<p>We check the two conditions necessary to model the difference
+in sample means using the <span class="math inline">\(t\)</span>-distribution: the <strong>independence</strong> and <strong>normality</strong> conditions <em>for each sample</em>.</p>
+<ul>
+<li>Because the data come from a simple random sample,
+the observations are independent,
+both within and between samples.<br>
+</li>
+<li>With both data sets over 30 observations,
+we inspect the data in
+Figure <a href="inference-two-means.html#fig:babySmokePlotOfTwoGroupsToExamineSkew">19.8</a>
+for any particularly extreme outliers
+and find none.</li>
+</ul>
+<p>Since both conditions are satisfied, the difference
+in sample means may be modeled using a <span class="math inline">\(t\)</span>-distribution.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:babySmokePlotOfTwoGroupsToExamineSkew"></span>
+<img src="19-numerical-two-means_files/figure-html/babySmokePlotOfTwoGroupsToExamineSkew-1.png" alt="The top panel represents birth weights for infants whose mothers smoked. The bottom panel represents the birth weights for infants whose mothers who did not smoke." width="90%"><img src="19-numerical-two-means_files/figure-html/babySmokePlotOfTwoGroupsToExamineSkew-2.png" alt="The top panel represents birth weights for infants whose mothers smoked. The bottom panel represents the birth weights for infants whose mothers who did not smoke." width="90%"><p class="caption">
+Figure 19.8: The top panel represents birth weights for infants whose mothers smoked. The bottom panel represents the birth weights for infants whose mothers who did not smoke.
+</p>
+</div>
+<div class="guidedpractice">
+<p>The summary statistics in Table <a href="inference-two-means.html#tab:SumStatsBirthWeightNewbornsSmoke">19.4</a> may be useful
+for this Guided Practice.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;(a) The difference in sample means is an
+appropriate point estimate: &lt;span class="math inline"&gt;\(\bar{x}_{n} - \bar{x}_{s} = 0.40\)&lt;/span&gt;.
+(b) The standard error of the estimate can be
+calculated using the standard error formula:
+&lt;span class="math display"&gt;\[\begin{align*}
+  SE
+    = \sqrt{\frac{s_n^2}{n_n} + \frac{s_s^2}{n_s}}
+    = \sqrt{\frac{1.60^2}{100} + \frac{1.43^2}{50}}
+    = 0.26
+  \end{align*}\]&lt;/span&gt;&lt;/p&gt;'><sup>168</sup></a></p>
+<ol style="list-style-type: lower-alpha">
+<li>What is the point estimate of the population difference,
+<span class="math inline">\(\mu_{n} - \mu_{s}\)</span>?</li>
+<li>Compute the standard error of the point estimate from
+part a.</li>
+</ol>
+</div>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:SumStatsBirthWeightNewbornsSmoke">Table 19.4: </span>Summary statistics for the <code>ncbirths</code> data set.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+smoker
+</th>
+<th style="text-align:left;">
+nonsmoker
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+mean
+</td>
+<td style="text-align:left;">
+6.78
+</td>
+<td style="text-align:left;">
+7.18
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+st. dev.
+</td>
+<td style="text-align:left;">
+1.43
+</td>
+<td style="text-align:left;">
+1.60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+samp. size
+</td>
+<td style="text-align:left;">
+50
+</td>
+<td style="text-align:left;">
+100
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div id="observed-statistic-vs.-null-value-2" class="section level4 unnumbered">
+<h4>Observed statistic vs. null value<a class="anchor" aria-label="anchor" href="#observed-statistic-vs.-null-value-2"><i class="fas fa-link"></i></a>
+</h4>
+<div class="onebox">
+<p><strong>The test statistic for comparing two means is a T.</strong></p>
+<p>The T score is a ratio of how the groups differ as compared to how the observations within a group vary.</p>
+<p><span class="math display">\[\begin{align*}
+T = \frac{\bar{x}_1 - \bar{x}_2 - 0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}
+\end{align*}\]</span></p>
+<p>When the null hypothesis is true and the conditions are met, T has a <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(df = min(n_1 - 1, n_2 -1)\)</span>.</p>
+<p>Conditions:</p>
+<ul>
+<li>independent observations within and across groups<br>
+</li>
+<li>large samples and no extreme outliers<br>
+</li>
+</ul>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-14" class="example"><strong>Example 19.4  </strong></span>Complete the hypothesis test started in the previous Example and Guided Practice on the <code>ncbirths</code> dataset and research question.<br>
+For reference, <span class="math inline">\(\bar{x}_{n} - \bar{x}_{s} = 0.40\)</span>,
+<span class="math inline">\(SE(\bar{x}_{n} - \bar{x}_{s}) = 0.26\)</span>, and the sample sizes were <span class="math inline">\(n_n = 100\)</span> and <span class="math inline">\(n_s = 50\)</span>.</p>
+<hr>
+<p>We can find the test statistic for this test
+using the previous information:
+<span class="math display">\[\begin{align*}
+  T = \frac{\ 0.40 - 0\ }{0.26} = 1.54
+  \end{align*}\]</span>
+The p-value is represented by the two shaded tails
+in Figure <a href="inference-two-means.html#fig:distOfDiffOfSampleMeansForBWOfBabySmokeData">19.9</a></p>
+<p>We find the single tail area using software. (See R code below.) We’ll use the
+smaller of <span class="math inline">\(n_n - 1 = 99\)</span> and <span class="math inline">\(n_s - 1 = 49\)</span> as the
+degrees of freedom: <span class="math inline">\(df = 49\)</span>.
+The one tail area is 0.065;
+doubling this value gives the two-tail area and p-value,
+0.135.</p>
+<p>A p-value of 0.135 provides little to no evidence against the null hypothesis.
+There is insufficient evidence to say there is a difference
+in average birth weight of newborns from North Carolina mothers
+who did smoke during pregnancy and newborns from North Carolina
+mothers who did not smoke during pregnancy.</p>
+</div>
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fl">1.54</span>, df <span class="op">=</span> <span class="fl">49</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.065</span></span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:distOfDiffOfSampleMeansForBWOfBabySmokeData"></span>
+<img src="19-numerical-two-means_files/figure-html/distOfDiffOfSampleMeansForBWOfBabySmokeData-1.png" alt="The mathematical model for the T statistic when the null hypothesis is true: a $t$-distribution with $min(100-1, 50-1) = 49$ degrees of freedom.  As expected, the curve is centered at zero (the null value).  The T score is also plotted with the area more extreme than the observed T score plotted to indicate the p-value." width="90%"><p class="caption">
+Figure 19.9: The mathematical model for the T statistic when the null hypothesis is true: a <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(min(100-1, 50-1) = 49\)</span> degrees of freedom. As expected, the curve is centered at zero (the null value). The T score is also plotted with the area more extreme than the observed T score plotted to indicate the p-value.
+</p>
+</div>
+<div class="guidedpractice">
+<p>We’ve seen much research suggesting smoking is harmful
+during pregnancy, so how could we fail to reject the null
+hypothesis in the previous Example?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;It is possible that there is a difference
+but we did not detect it.
+If there is a difference, we made a Type 2 Error.&lt;/p&gt;"><sup>169</sup></a></p>
+</div>
+<div class="guidedpractice">
+<p>If we made a Type 2 Error and there is a difference,
+what could we have done differently in data collection
+to be more likely to detect the difference?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;We could have collected more data.
+If the sample sizes are larger, we tend to have
+a better shot at finding a difference if one exists.
+In fact, this is exactly what we would find if we
+examined a larger data set!&lt;/p&gt;"><sup>170</sup></a></p>
+</div>
+<p>Public service announcement: while we have used this relatively
+small data set as an example, larger data sets show that women
+who smoke tend to have smaller newborns.
+In fact, some in the tobacco industry actually had the audacity
+to tout that as a <em>benefit</em> of smoking:</p>
+<blockquote>
+<p><em>It’s true.
+The babies born from women who smoke are smaller,
+but they’re just as healthy as the babies born from
+women who do not smoke.
+And some women would prefer having smaller babies.</em>
+- Joseph Cullman, Philip Morris’ Chairman of the Board on CBS’ <em>Face the Nation</em>, Jan 3, 1971</p>
+</blockquote>
+<p>Fact check: the babies from women who smoke are not actually
+as healthy as the babies from women who do not
+smoke.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;You can watch an episode of John Oliver
+on &lt;a href="youtu.be/6UsHHOCH4q8"&gt;&lt;em&gt;Last Week Tonight&lt;/em&gt;&lt;/a&gt; to explore the present day
+offenses of the tobacco industry.
+Please be aware that there is some adult language.&lt;/p&gt;'><sup>171</sup></a></p>
+<!--
+% Resource on this topic:
+% http://archive.tobacco.org/Documents/documentquotes.html
+-->
+<p></p>
+</div>
+</div>
+<div id="t-confidence-interval-for-mu_1---mu_2" class="section level3" number="19.3.2">
+<h3>
+<span class="header-section-number">19.3.2</span> <span class="math inline">\(t\)</span> confidence interval for <span class="math inline">\(\mu_1 - \mu_2\)</span><a class="anchor" aria-label="anchor" href="#t-confidence-interval-for-mu_1---mu_2"><i class="fas fa-link"></i></a>
+</h3>
+<div class="onebox">
+<p><strong>Finding a <span class="math inline">\(t\)</span>-confidence interval for a difference in population means, <span class="math inline">\(\mu_1 - \mu_2\)</span>.</strong></p>
+<p>Based on two independent samples of <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span> observational units, respectively, with no clear outliers, a confidence interval for a difference in population
+means is
+<span class="math display">\[\begin{align*}
+  \text{point estimate} \ &amp;\pm\  t^{\star}_{df} \times SE(\text{point estimate}) \\
+  &amp;\to \\
+  \bar{x}_1 - \bar{x}_2 \ &amp;\pm\  t^{\star}_{df} \times \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}
+  \end{align*}\]</span>
+where <span class="math inline">\(\bar{x}_1\)</span> and <span class="math inline">\(\bar{x}_2\)</span> are the two sample means, <span class="math inline">\(t^{\star}_{df}\)</span>
+corresponds to the confidence level and degrees of freedom
+<span class="math inline">\(df\)</span>, and <span class="math inline">\(SE\)</span> is the standard error as estimated by
+the sample.</p>
+</div>
+<div class="example">
+<p><span id="exm:unlabeled-div-15" class="example"><strong>Example 19.5  </strong></span>Consider again the data from Section <a href="inference-two-means.html#boot-ci-diff-means">19.2</a> on the use of embryonic stem cells (ESCs) to improve heart function. Can the <span class="math inline">\(t\)</span>-distribution be used to make
+inference on the true difference in average change in heart pumping function using the point estimate,
+<span class="math inline">\(\bar{x}_{esc} - \bar{x}_{control} = 7.83\)</span>?</p>
+<hr>
+<p>First, we check for independence.
+Because the sheep were randomized into
+the groups, independence within
+and between groups is satisfied.</p>
+<p>Figure <a href="inference-two-means.html#fig:stemCellTherapyForHearts">19.6</a>
+does not reveal any clear outliers
+in either group.
+(The ESC group does have a bit more variability,
+but this is not the same as having clear outliers.)</p>
+<p>With both conditions met, we can use the
+<span class="math inline">\(t\)</span>-distribution to model the difference of sample means.</p>
+</div>
+<p>Generally, we use statistical software to find the appropriate
+degrees of freedom using the raw data, or if software isn’t available,
+we can use the smaller
+of <span class="math inline">\(n_1 - 1\)</span> and <span class="math inline">\(n_2 - 1\)</span> for the degrees of freedom.
+In the case of the ESC example, this means we’ll use <span class="math inline">\(df = 8\)</span>.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-16" class="example"><strong>Example 19.6  </strong></span>Calculate a 95% confidence interval for the
+true difference in mean change in heart pumping capacity of
+sheep after they’ve suffered a heart attack between the ESC treatment and the control treatment.</p>
+<hr>
+<p>First, compute the point estimate and its standard error:
+<span class="math display">\[\begin{align*}
+  \bar{x}_{esc} - \bar{x}_{control} &amp;= 3.50 - (-4.33) = 7.83\\   
+  SE(\bar{x}_{esc} - \bar{x}_{control}) &amp;= \sqrt{\frac{5.17^2}{9} + \frac{2.76^2}{9}} = 1.95
+  \end{align*}\]</span>
+Using <span class="math inline">\(df = 8\)</span>, we can identify the
+critical value of <span class="math inline">\(t^{\star}_{8} = 2.31\)</span>
+for a 95% confidence interval. (See R code below.)
+Finally, we can enter the values into the confidence
+interval formula:
+<span class="math display">\[\begin{align*}
+   7.83 \ \pm\ 2.31\times 1.95
+    \quad\rightarrow\quad (3.32, 12.34)
+  \end{align*}\]</span>
+We are 95% confident that embryonic stem cells improve
+the mean change in heart’s pumping function in sheep that have suffered
+a heart attack by 3.32% to 12.34%.</p>
+</div>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.975</span>, df <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 2.31</span></span></code></pre></div>
+<p></p>
+</div>
+</div>
+<div id="chp19-review" class="section level2" number="19.4">
+<h2>
+<span class="header-section-number">19.4</span> Chapter review<a class="anchor" aria-label="anchor" href="#chp19-review"><i class="fas fa-link"></i></a>
+</h2>
+<div id="summary-14" class="section level3 unnumbered">
+<h3>Summary<a class="anchor" aria-label="anchor" href="#summary-14"><i class="fas fa-link"></i></a>
+</h3>
+<div class="underconstruction">
+<p>TODO</p>
+</div>
+</div>
+<div id="summary-of-t-procedures" class="section level3 unnumbered">
+<h3>Summary of t-procedures<a class="anchor" aria-label="anchor" href="#summary-of-t-procedures"><i class="fas fa-link"></i></a>
+</h3>
+<p>In the past three chapters, we have seen the <span class="math inline">\(t\)</span>-distribution applied as the appropriate mathematical model in three distinct settings. Although the three data structures are different, their similarities and differences are worth pointing out. We provide Table <a href="inference-two-means.html#tab:tcompare">19.5</a> partly as a mechanism for understanding <span class="math inline">\(t\)</span>-procedures and partly to highlight the extremely common usage of the <span class="math inline">\(t\)</span>-distribution in practice. You will often hear the following three <span class="math inline">\(t\)</span>-procedures referred to as a <strong>one sample <span class="math inline">\(t\)</span>-test</strong> (<span class="math inline">\(t\)</span>-interval), <strong>paired <span class="math inline">\(t\)</span>-test</strong> (<span class="math inline">\(t\)</span>-interval), and <strong>two sample <span class="math inline">\(t\)</span>-test</strong> (<span class="math inline">\(t\)</span>-interval).</p>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<caption>
+<span id="tab:tcompare">Table 19.5: </span>Similarities of <span class="math inline">\(t\)</span>-methods across one sample, paired sample, and two independent samples analysis of a numeric response variable.
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+one sample
+</th>
+<th style="text-align:left;">
+paired sample
+</th>
+<th style="text-align:left;">
+two indep. samples
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+response variable
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+explanatory variable
+</td>
+<td style="text-align:left;">
+none
+</td>
+<td style="text-align:left;">
+binary
+</td>
+<td style="text-align:left;">
+binary
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+parameter of interest
+</td>
+<td style="text-align:left;">
+mean: <span class="math inline">\(\mu\)</span>
+</td>
+<td style="text-align:left;">
+paired mean diff: <span class="math inline">\(\mu_d\)</span>
+</td>
+<td style="text-align:left;">
+diff in means: <span class="math inline">\(\mu_1 - \mu_2\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+statistic of interest
+</td>
+<td style="text-align:left;">
+mean: <span class="math inline">\(\bar{x}\)</span>
+</td>
+<td style="text-align:left;">
+paired mean diff: <span class="math inline">\(\bar{x}_d\)</span>
+</td>
+<td style="text-align:left;">
+diff in means: <span class="math inline">\(\bar{x}_1 - \bar{x}_2\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+standard error
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\frac{s}{\sqrt{n}}\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\frac{s_d}{\sqrt{n}}\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+degrees of freedom
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(n-1\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(n -1\)</span>
+</td>
+<td style="text-align:left;">
+<span class="math inline">\(\min(n_1 -1, n_2 - 1)\)</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+conditions
+</td>
+<td style="text-align:left;">
+<ol style="list-style-type: decimal"><li>independence, 2. normality or large samples
+</li></ol>
+</td>
+<td style="text-align:left;">
+<ol style="list-style-type: decimal"><li>independence, 2. normality or large samples
+</li></ol>
+</td>
+<td style="text-align:left;">
+<ol style="list-style-type: decimal"><li>independence, 2. normality or large samples
+</li></ol>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Theory-based R functions
+</td>
+<td style="text-align:left;">
+t.test
+</td>
+<td style="text-align:left;">
+t.test
+</td>
+<td style="text-align:left;">
+t.test
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Simulation-based R catstats functions
+</td>
+<td style="text-align:left;">
+paired_test, paired_bootstrap_CI
+</td>
+<td style="text-align:left;">
+paired_test, paired_bootstrap_CI
+</td>
+<td style="text-align:left;">
+two_mean_test, two_mean_bootstrap_CI
+</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Hypothesis tests.</strong> When applying the <span class="math inline">\(t\)</span>-distribution for a hypothesis test involving means, we proceed as follows:</p>
+<ol style="list-style-type: decimal">
+<li>Write appropriate hypotheses.<br>
+</li>
+<li>Verify conditions for using the <span class="math inline">\(t\)</span>-distribution.
+<ul>
+<li>
+<strong>Independence.</strong> Observational units must be independent. This is typically true if the data came from a random sample (or two random samples, or one random sample randomly assigned to two treatments).</li>
+<li>
+<strong>Normality.</strong> If the sample size is less than 30 and there are no clear outliers in the data, or if the sample size is at least 30
+and there are no <em>particularly extreme</em> outliers,
+then we can apply the <span class="math inline">\(t\)</span>-distribution for a hypothesis tests of means. For a difference of means when the data are not paired, this condition must be met for each of the two samples.</li>
+</ul>
+</li>
+<li>Compute the statistic of interest, the standard error, and the degrees of freedom. For <span class="math inline">\(df\)</span>, use <span class="math inline">\(n-1\)</span> for one sample, and for two samples use either statistical software or the smaller of <span class="math inline">\(n_1 - 1\)</span> and <span class="math inline">\(n_2 - 1\)</span>.<br>
+</li>
+<li>Compute the T-score using the general formula:
+<span class="math display">\[
+T = \frac{\mbox{statistic} - \mbox{null value}}{\mbox{standard error of the statistic}} = \frac{\mbox{statistic} - \mbox{null value}}{SE(\mbox{statistic})}
+\]</span>
+</li>
+<li>Use the statistical software to find the p-value using the appropriate <span class="math inline">\(t\)</span>-distribution:
+<ul>
+<li>Sign in <span class="math inline">\(H_A\)</span> is <span class="math inline">\(&lt;\)</span>: p-value = area below T-score</li>
+<li>Sign in <span class="math inline">\(H_A\)</span> is <span class="math inline">\(&gt;\)</span>: p-value = area above T-score</li>
+<li>Sign in <span class="math inline">\(H_A\)</span> is <span class="math inline">\(\neq\)</span>: p-value = 2 <span class="math inline">\(\times\)</span> area below <span class="math inline">\(-|\mbox{T-score}|\)</span>
+</li>
+</ul>
+</li>
+<li>Make a conclusion based on the p-value, and write a conclusion in context, in plain language, and in terms of the alternative hypothesis.</li>
+</ol>
+<p><strong>Confidence intervals.</strong> Similarly, the following is how we generally computed a confidence interval using a <span class="math inline">\(t\)</span>-distribution:</p>
+<ol style="list-style-type: decimal">
+<li>Verify conditions for using the <span class="math inline">\(t\)</span>-distribution. (See above.)<br>
+</li>
+<li>Compute the point estimate of interest, the standard error, the degrees of freedom, and <span class="math inline">\(t^{\star}_{df}\)</span>. The multiplier for a <span class="math inline">\((1-\alpha)\times100\)</span>% confidence interval can be found in R by: <code>qt(1-(alpha/2), df)</code>. For example, <span class="math inline">\(t^{\star}_{10}\)</span> with 95% confidence is <code>qt(0.975, 10)</code> = 2.228.</li>
+<li>Calculate the confidence interval using the general formula:
+<span class="math display">\[
+\mbox{statistic} \pm\ t_{df}^{\star} SE(\mbox{statistic}).
+\]</span>
+</li>
+<li>Put the conclusions in context and in plain language so even non-data scientists can understand the results.</li>
+</ol>
+</div>
+<div id="terms-14" class="section level3 unnumbered">
+<h3>Terms<a class="anchor" aria-label="anchor" href="#terms-14"><i class="fas fa-link"></i></a>
+</h3>
+<p>We introduced the following terms in the chapter. If you’re not sure what some of these terms mean, we recommend you go back in the text and review their definitions. We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. However you should be able to easily spot them as <strong>bolded text</strong>.</p>
+<div class="inline-table"><table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;"><tbody><tr>
+<td style="text-align:left;">
+one sample <span class="math inline">\(t\)</span>-test
+</td>
+<td style="text-align:left;">
+paired <span class="math inline">\(t\)</span>-test
+</td>
+<td style="text-align:left;">
+two sample <span class="math inline">\(t\)</span>-test
+</td>
+</tr></tbody></table></div>
+</div>
+<div id="key-ideas-14" class="section level3 unnumbered">
+<h3>Key ideas<a class="anchor" aria-label="anchor" href="#key-ideas-14"><i class="fas fa-link"></i></a>
+</h3>
+<div class="underconstruction">
+<p>TODO</p>
+</div>
+
+</div>
+</div>
+</div>
+
+  <div class="chapter-nav">
+<div class="prev"><a href="inference-paired-means.html"><span class="header-section-number">18</span> Inference for comparing paired means</a></div>
+<div class="next"><a href="inference-num-applications.html"><span class="header-section-number">20</span> Applications: Infer quantitative</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#inference-two-means"><span class="header-section-number">19</span> Inference for comparing two independent means</a></li>
+<li>
+<a class="nav-link" href="#rand2mean"><span class="header-section-number">19.1</span> Randomization test for \(H_0: \mu_1 - \mu_2 = 0\)</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#observed-data-10"><span class="header-section-number">19.1.1</span> Observed data</a></li>
+<li><a class="nav-link" href="#variability-of-the-statistic-7"><span class="header-section-number">19.1.2</span> Variability of the statistic</a></li>
+<li><a class="nav-link" href="#observed-statistic-vs.-null-value-1"><span class="header-section-number">19.1.3</span> Observed statistic vs. null value</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#boot-ci-diff-means"><span class="header-section-number">19.2</span> Bootstrap confidence interval for \(\mu_1 - \mu_2\)</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#observed-data-11"><span class="header-section-number">19.2.1</span> Observed data</a></li>
+<li><a class="nav-link" href="#variability-of-the-statistic-8"><span class="header-section-number">19.2.2</span> Variability of the statistic</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#math2samp"><span class="header-section-number">19.3</span> Theory-based inferential methods for \(\mu_1 - \mu_2\)</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#t-test-for-mu_1---mu_2"><span class="header-section-number">19.3.1</span> \(t\)-test for \(\mu_1 - \mu_2\)</a></li>
+<li><a class="nav-link" href="#t-confidence-interval-for-mu_1---mu_2"><span class="header-section-number">19.3.2</span> \(t\) confidence interval for \(\mu_1 - \mu_2\)</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#chp19-review"><span class="header-section-number">19.4</span> Chapter review</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#summary-14">Summary</a></li>
+<li><a class="nav-link" href="#summary-of-t-procedures">Summary of t-procedures</a></li>
+<li><a class="nav-link" href="#terms-14">Terms</a></li>
+<li><a class="nav-link" href="#key-ideas-14">Key ideas</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/MTstateIntroStats/IntroStatTextbook/blob/master/19-numerical-two-means.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/MTstateIntroStats/IntroStatTextbook/edit/master/19-numerical-two-means.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Montana State Introductory Statistics with R</strong>" was written by Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

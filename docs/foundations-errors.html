@@ -92,14 +92,14 @@
 <li><a class="" href="preface.html">Preface</a></li>
 <li><a class="" href="rstudio.html">Preliminaries: Getting started in RStudio</a></li>
 <li class="book-part">Introduction to data</li>
-<li><a class="" href="intro-to-data.html"><span class="header-section-number">1</span> Hello data</a></li>
+<li><a class="" href="data-hello.html"><span class="header-section-number">1</span> Hello data</a></li>
 <li><a class="" href="data-design.html"><span class="header-section-number">2</span> Study design</a></li>
 <li><a class="" href="data-applications.html"><span class="header-section-number">3</span> Applications: Data</a></li>
 <li class="book-part">Exploratory data analysis</li>
-<li><a class="" href="categorical-data.html"><span class="header-section-number">4</span> Exploring categorical data</a></li>
-<li><a class="" href="quantitative-data.html"><span class="header-section-number">5</span> Exploring quantitative data</a></li>
-<li><a class="" href="cor-reg.html"><span class="header-section-number">6</span> Correlation and regression</a></li>
-<li><a class="" href="mult-reg.html"><span class="header-section-number">7</span> Multivariable models</a></li>
+<li><a class="" href="explore-categorical.html"><span class="header-section-number">4</span> Exploring categorical data</a></li>
+<li><a class="" href="explore-numerical.html"><span class="header-section-number">5</span> Exploring quantitative data</a></li>
+<li><a class="" href="explore-regression.html"><span class="header-section-number">6</span> Correlation and regression</a></li>
+<li><a class="" href="explore-mult-reg.html"><span class="header-section-number">7</span> Multivariable models</a></li>
 <li><a class="" href="explore-applications.html"><span class="header-section-number">8</span> Applications: Explore</a></li>
 <li class="book-part">Foundations of inference</li>
 <li><a class="" href="foundations-randomization.html"><span class="header-section-number">9</span> Hypothesis testing with randomization</a></li>
@@ -108,19 +108,19 @@
 <li><a class="active" href="foundations-errors.html"><span class="header-section-number">12</span> Errors, power, and practical importance</a></li>
 <li><a class="" href="foundations-applications.html"><span class="header-section-number">13</span> Applications: Foundations</a></li>
 <li class="book-part">Inference for categorical data</li>
-<li><a class="" href="inference-one-prop.html"><span class="header-section-number">15</span> Inference for a single proportion</a></li>
-<li><a class="" href="inference-two-props.html"><span class="header-section-number">16</span> Inference for comparing two proportions</a></li>
-<li><a class="" href="applications-infer-categorical.html"><span class="header-section-number">17</span> Applications: Infer categorical</a></li>
+<li><a class="" href="inference-one-prop.html"><span class="header-section-number">14</span> Inference for a single proportion</a></li>
+<li><a class="" href="inference-two-props.html"><span class="header-section-number">15</span> Inference for comparing two proportions</a></li>
+<li><a class="" href="inference-categ-applications.html"><span class="header-section-number">16</span> Applications: Infer categorical</a></li>
 <li class="book-part">Inference for quantitative data</li>
-<li><a class="" href="inference-for-a-single-mean.html"><span class="header-section-number">19</span> Inference for a single mean</a></li>
-<li><a class="" href="inference-for-comparing-paired-means.html"><span class="header-section-number">20</span> Inference for comparing paired means</a></li>
-<li><a class="" href="inference-for-comparing-two-independent-means.html"><span class="header-section-number">21</span> Inference for comparing two independent means</a></li>
-<li><a class="" href="applications-infer-quantitative.html"><span class="header-section-number">22</span> Applications: Infer quantitative</a></li>
+<li><a class="" href="inference-one-mean.html"><span class="header-section-number">17</span> Inference for a single mean</a></li>
+<li><a class="" href="inference-paired-means.html"><span class="header-section-number">18</span> Inference for comparing paired means</a></li>
+<li><a class="" href="inference-two-means.html"><span class="header-section-number">19</span> Inference for comparing two independent means</a></li>
+<li><a class="" href="inference-num-applications.html"><span class="header-section-number">20</span> Applications: Infer quantitative</a></li>
 <li class="book-part">Inference for regression</li>
-<li><a class="" href="inference-for-correlation-and-slope.html"><span class="header-section-number">24</span> Inference for correlation and slope</a></li>
-<li><a class="" href="applications-infer-regression.html"><span class="header-section-number">25</span> Applications: Infer regression</a></li>
+<li><a class="" href="inference-reg.html"><span class="header-section-number">21</span> Inference for correlation and slope</a></li>
+<li><a class="" href="inference-reg-applications.html"><span class="header-section-number">22</span> Applications: Infer regression</a></li>
 <li class="book-part">Probability</li>
-<li><a class="" href="probability.html"><span class="header-section-number">26</span> Probability with tables</a></li>
+<li><a class="" href="probability.html"><span class="header-section-number">23</span> Probability with tables</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -146,9 +146,9 @@ As seen in Chapter <a href="foundations-randomization.html#foundations-randomiza
 Sometimes, however, data can produce a small p-value when the null hypothesis is actually true and the data are just inherently variable.
 Here we describe the errors which can arise in hypothesis testing, how to define and quantify the different errors, and suggestions for mitigating errors if possible.</p>
 </div>
-<div id="decision-errors" class="section level2" number="12.1">
+<div id="decerr" class="section level2" number="12.1">
 <h2>
-<span class="header-section-number">12.1</span> Decision errors<a class="anchor" aria-label="anchor" href="#decision-errors"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.1</span> Decision errors<a class="anchor" aria-label="anchor" href="#decerr"><i class="fas fa-link"></i></a>
 </h2>
 <p>In Chapter <a href="foundations-randomization.html#foundations-randomization">9</a>, we explored the concept of a p-value as a continuum of strength of evidence against a null hypothesis, from 0 (extremely strong evidence against the null) to 1 (no evidence against the null). In some cases, however, a <strong>decision</strong> to the hypothesis test is needed, with the two possible decisions as follows:</p>
 <ul>
@@ -324,7 +324,7 @@ Figure 12.2: The null distribution for <span class="math inline">\(\hat{p}\)</sp
 </p>
 </div>
 <p>From our previous simulation, we know that 12.22% of the simulations lie at or below the observed proportion of 0.048. Figure <a href="foundations-errors.html#fig:Medical-consultant-two-sided">12.2</a> shows that an additional 0.0811 or 8.11% of simulations fall at or above 0.152. This indicates the p-value for this two-sided test is <span class="math inline">\(0.1222 + 0.0811 = 0.2033\)</span>. With this large p-value, we do not find statistically significant evidence that the medical consultant’s patients had a complication rate different from 10%.</p>
-<p>In Section <a href="inference-one-prop.html#theory-prop">15.1.3</a>, you will learn that the null distribution will be symmetric under certain conditions. When the null distribution is symmetric, we can find a two-sided p-value by merely taking the single tail (in this case, 0.1222) and double it to get the two-sided p-value: 0.2444. Note that the example here does not satisfy the conditions and the null distribution in Figure <a href="foundations-errors.html#fig:Medical-consultant-two-sided">12.2</a> is not symmetric. Thus, the result of a ‘doubled’ one-sided p-value of 0.2444 is not a good estimate of the actual two-sided p-value of 0.2033.</p>
+<p>In Section <a href="inference-one-prop.html#theory-prop">14.3</a>, you will learn that the null distribution will be symmetric under certain conditions. When the null distribution is symmetric, we can find a two-sided p-value by merely taking the single tail (in this case, 0.1222) and double it to get the two-sided p-value: 0.2444. Note that the example here does not satisfy the conditions and the null distribution in Figure <a href="foundations-errors.html#fig:Medical-consultant-two-sided">12.2</a> is not symmetric. Thus, the result of a ‘doubled’ one-sided p-value of 0.2444 is not a good estimate of the actual two-sided p-value of 0.2033.</p>
 <p></p>
 <div class="onebox">
 <p><strong>Default to a two-sided test.</strong></p>
@@ -560,7 +560,7 @@ Type 2 Error
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#foundations-errors"><span class="header-section-number">12</span> Errors, power, and practical importance</a></li>
-<li><a class="nav-link" href="#decision-errors"><span class="header-section-number">12.1</span> Decision errors</a></li>
+<li><a class="nav-link" href="#decerr"><span class="header-section-number">12.1</span> Decision errors</a></li>
 <li><a class="nav-link" href="#significance-level"><span class="header-section-number">12.2</span> Significance level</a></li>
 <li><a class="nav-link" href="#two-sided-tests"><span class="header-section-number">12.3</span> Two-sided hypotheses</a></li>
 <li><a class="nav-link" href="#controlling-the-type-1-error-rate"><span class="header-section-number">12.4</span> Controlling the Type 1 error rate</a></li>
