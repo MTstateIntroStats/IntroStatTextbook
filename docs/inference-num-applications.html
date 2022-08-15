@@ -153,7 +153,7 @@
 </h3>
 <p>First, we’ll review how to obtain probabilities and critical values for the <span class="math inline">\(t\)</span>-distribution using R. If you have a <span class="math inline">\(t\)</span>-statistic and degrees of freedom, you can find the probability under the <span class="math inline">\(t\)</span>-distribution corresponding to a one- or two-tailed hypothesis test using <code><a href="https://rdrr.io/r/stats/TDist.html">pt()</a></code> (short for “probability from <span class="math inline">\(t\)</span>-distribution”).</p>
 <p>The tricky part is making sure you get the correct area under the distribution. For our example, assume we have 12 degrees of freedom. If your <span class="math inline">\(t\)</span>-statistic is positive, say <span class="math inline">\(t = 1.33\)</span>:</p>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Area less than observed:</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fl">1.33</span>, df <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.896</span></span>
@@ -166,7 +166,7 @@
 <span><span class="fl">2</span><span class="op">*</span><span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fl">1.33</span>, df <span class="op">=</span> <span class="fl">12</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.208</span></span></code></pre></div>
 <p>If your <span class="math inline">\(t\)</span>-statistic is negative, say <span class="math inline">\(t = -2.75\)</span>:</p>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Area less than observed:</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2.75</span>, df <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.0088</span></span>
@@ -187,22 +187,22 @@
 <h3>Simulation-based inference for paired mean difference<a class="anchor" aria-label="anchor" href="#simulation-based-inference-for-paired-mean-difference"><i class="fas fa-link"></i></a>
 </h3>
 <p>Simulation-based inference for quantitative data will use functions in the <code>catstats</code> package, as we did for categorical data.</p>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">catstats</span><span class="op">)</span></span></code></pre></div>
 <p>The <code>catstats</code> functions for paired data assume that the values for the two groups are in separate columns in a data frame. We’ll work through an example using the tire wear data, which is currently stored in “long format”, with one variable for brand and another for tread depth. First, we’ll convert it to “wide format”, with a column for each brand.
 <img src="20-numerical-applications_files/figure-html/unnamed-chunk-4-1.png" width="90%" style="display: block; margin: auto;"></p>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tiresWide</span> <span class="op">&lt;-</span> <span class="va">tires</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">brand</span>, <span class="va">tread</span>, <span class="va">car</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>   <span class="co">#select only ID, group, and outcome vars</span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">brand</span>,   <span class="co">#name of variable for group</span></span>
 <span>              values_from <span class="op">=</span> <span class="va">tread</span><span class="op">)</span>  <span class="co">#name of variable for outcome</span></span>
 <span><span class="va">tiresWide</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">tiresWide</span><span class="op">)</span></span></code></pre></div>
 <p>Once we have this format, all the paired data functions in <code>catstats</code> should be able to handle the data. First, we can get a look at the pairs of observations:</p>
-<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/paired_observed_plot.html">paired_observed_plot</a></span><span class="op">(</span><span class="va">tiresWide</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="20-numerical-applications_files/figure-html/observedPlotPaired-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>This gives us an idea of the distributions within groups and the differences within pairs. To perform the hypothesis test for a difference in tread depth after 1000 miles, we use the <code><a href="https://rdrr.io/pkg/catstats/man/paired_test.html">paired_test()</a></code> function:</p>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/paired_test.html">paired_test</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">tiresWide</span>,  <span class="co">#data frame with observed values in groups</span></span>
 <span>  shift <span class="op">=</span> <span class="op">-</span><span class="fl">0.002</span>,  <span class="co">#amount to shift differences to bootstrap null distribution</span></span>
@@ -212,7 +212,7 @@
 <span>  which_first <span class="op">=</span> <span class="fl">1</span>  <span class="co">#Which column is first in order of subtraction: 1 or 2?</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>Note that <code>data</code> could also be a vector of differences. If this is all you have, you can do hypothesis testing and generate a confidence interval, but won’t be able to use <code><a href="https://rdrr.io/pkg/catstats/man/paired_observed_plot.html">paired_observed_plot()</a></code>. Now let’s take a look at the output of the function:</p>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1054</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/paired_test.html">paired_test</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">tiresWide</span>,  <span class="co">#data frame with observed values in groups</span></span>
@@ -226,7 +226,7 @@
 <p>This figure displays the bootstrapped null distribution, with the mean and standard deviation of the draws in the upper right corner. We want to see that the mean is close to the null value (almost always zero). If it isn’t, check the value of the <code>shift</code> input, and/or increase the <code>number_repetitions</code> if the shift is correct.</p>
 <p>The red lines give the cutoffs based on the observed statistic, and values as or more extreme are colored red. If you are doing a one-sided test, there will only be one line. The caption of the figure gives the number and proportion of bootstrapped mean differences that are as or more extreme than the observed statistic. In this case, 20 out of 1000, for a p-value of 0.02.</p>
 <p>Finally, we will want to generate a confidence interval for the true mean difference using the <code><a href="https://rdrr.io/pkg/catstats/man/paired_bootstrap_CI.html">paired_bootstrap_CI()</a></code> function.</p>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">2374</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/paired_bootstrap_CI.html">paired_bootstrap_CI</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">tiresWide</span>,   <span class="co">#Wide-form data set or vector of differences</span></span>
@@ -241,7 +241,7 @@
 <h3>Theory-based inference for paired mean difference<a class="anchor" aria-label="anchor" href="#theory-based-inference-for-paired-mean-difference"><i class="fas fa-link"></i></a>
 </h3>
 <p>To implement theory-based inference for a paired mean difference in R, we use the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> function. As an example, we’ll use the textbook cost data from Chapter <a href="inference-paired-means.html#inference-paired-means">18</a>. There are two ways to put in paired data for a t-test using <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code>. First, we could have the prices of the two groups in two separate variables (in this case, <code>bookstore_new</code> and <code>amazon_new</code>):</p>
-<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">bookstore_new</span>, <span class="co">#Outcomes for one of each pair</span></span>
 <span>       y <span class="op">=</span> <span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">amazon_new</span>,  <span class="co">#Outcomes for other of each pair</span></span>
 <span>       paired <span class="op">=</span> <span class="cn">TRUE</span>,  <span class="co">#Tell it to do a paired t-test!!</span></span>
@@ -254,7 +254,7 @@
 <li>As with categorical data in Chapters <a href="inference-one-prop.html#inference-one-prop">14</a> and <a href="inference-two-props.html#inference-two-props">15</a>, if you have a one-sided alternative, you will need to re-run the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> with a two-sided alternative to get the correct confidence interval</li>
 </ul>
 <p>Now let’s take a look at the output of the call:</p>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">bookstore_new</span>, <span class="co">#Outcomes for first in order of subtraction</span></span>
 <span>       y <span class="op">=</span> <span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">amazon_new</span>,  <span class="co">#Outcomes for second in order of subtraction</span></span>
 <span>       paired <span class="op">=</span> <span class="cn">TRUE</span>,  <span class="co">#Tell it to do a paired t-test!!</span></span>
@@ -286,7 +286,7 @@
 #&gt; mean difference 
 #&gt;            3.58</code></pre>
 <p>You might also have a single variable in your dataset that contains the differences within pairs: we will create this for the textbook data in a variable called <code>price_diff</code>. This format is also usable with the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> function:</p>
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ucla_textbooks_f18</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>price_diff <span class="op">=</span> <span class="va">bookstore_new</span><span class="op">-</span><span class="va">amazon_new</span><span class="op">)</span></span>
 <span></span>
@@ -299,7 +299,7 @@
 <li>No <code>paired = TRUE</code>, since we have already accounted for the pairing by taking the differences.</li>
 </ul>
 <p>The output for this will look almost identical to the two-variable version above:</p>
-<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ucla_textbooks_f18</span> <span class="op">&lt;-</span> <span class="va">ucla_textbooks_f18</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>price_diff <span class="op">=</span> <span class="va">bookstore_new</span><span class="op">-</span><span class="va">amazon_new</span><span class="op">)</span></span>
 <span></span>
@@ -323,7 +323,7 @@
 <h3>Simulation-based inference for the difference of two means<a class="anchor" aria-label="anchor" href="#simulation-based-inference-for-the-difference-of-two-means"><i class="fas fa-link"></i></a>
 </h3>
 <p>We can perform simulation-based inference for a difference in means using the <code><a href="https://rdrr.io/pkg/catstats/man/two_mean_test.html">two_mean_test()</a></code> and <code><a href="https://rdrr.io/pkg/catstats/man/two_mean_bootstrap_CI.html">two_mean_bootstrap_CI()</a></code> functions in the <code>catstats</code> package. As a working example, let’s look at the embryonic stem cell data from Section <a href="inference-two-means.html#rand2mean">19.1</a>.</p>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#load data from openintro package</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span> <span class="op">(</span><span class="va">stem_cell</span><span class="op">)</span></span>
 <span></span>
@@ -331,7 +331,7 @@
 <span><span class="va">stem_cell</span> <span class="op">&lt;-</span> <span class="va">stem_cell</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>change <span class="op">=</span> <span class="va">after</span> <span class="op">-</span> <span class="va">before</span><span class="op">)</span></span></code></pre></div>
 <p>To perform the simulation-based test for the difference in the mean change in heart pumping capacity, we will use the <code><a href="https://rdrr.io/pkg/catstats/man/two_mean_test.html">two_mean_test()</a></code> function in the <code>catstats</code> package, which is very similar to the use of the <code><a href="https://rdrr.io/pkg/catstats/man/two_proportion_test.html">two_proportion_test()</a></code> function in Chapter <a href="inference-categ-applications.html#inference-categ-applications">16</a>:</p>
-<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">4750</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/two_mean_test.html">two_mean_test</a></span><span class="op">(</span></span>
 <span>  formula <span class="op">=</span> <span class="va">change</span> <span class="op">~</span> <span class="va">trmt</span>,  <span class="co">#Always use response ~ explanatory</span></span>
@@ -351,7 +351,7 @@
 </ul>
 </div>
 <p>We use bootstrapping to find a confidence interval for the true difference in means with the <code><a href="https://rdrr.io/pkg/catstats/man/two_mean_bootstrap_CI.html">two_mean_bootstrap_CI()</a></code> function. The arguments will be very similar to <code><a href="https://rdrr.io/pkg/catstats/man/two_mean_test.html">two_mean_test()</a></code>, with the addition of the confidence level.</p>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">450</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/two_mean_bootstrap_CI.html">two_mean_bootstrap_CI</a></span><span class="op">(</span></span>
 <span>  formula <span class="op">=</span> <span class="va">change</span> <span class="op">~</span> <span class="va">trmt</span>,  <span class="co">#Always use response ~ explanatory</span></span>
@@ -368,9 +368,9 @@
 </h3>
 <p>To demonstrate theory-based methods in R for a difference in means, we will continue use the embryonic stem cell data. Something to keep in mind as we work through the example: are theory-based methods appropriate here? Are the results different than the results from the simulation-based methods?</p>
 <p>To perform theory-based inference, we will again use the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> function in R. Remember that we sometimes need to change the reference category of the explanatory variable to have the correct order of subtraction - in this case, the default is <code>ctrl - esc</code>, since <code>ctrl</code> is first alphabetically. We can get our preferred order of subtracation of <code>esc-ctrl</code> this way:</p>
-<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">stem_cell</span><span class="op">$</span><span class="va">trmt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/relevel.html">relevel</a></span><span class="op">(</span><span class="va">stem_cell</span><span class="op">$</span><span class="va">trmt</span>, ref <span class="op">=</span> <span class="st">"esc"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">stem_cell</span><span class="op">$</span><span class="va">change</span> <span class="op">~</span> <span class="va">stem_cell</span><span class="op">$</span><span class="va">trmt</span>, <span class="co">#Always use response ~ explanatory</span></span>
 <span>       alternative <span class="op">=</span> <span class="st">"two.sided"</span>, <span class="co"># Direction of alternative</span></span>
 <span>       conf.level <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span>  <span class="co">#confidence level as a proportion</span></span>

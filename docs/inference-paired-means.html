@@ -296,7 +296,7 @@ Figure 18.1: Boxplots of the tire tread remaining after 1,000 miles by the brand
 </p>
 </div>
 <p>Since these are paired data, we are only interested in the <em>differences</em> in tire tread between the two brands on each car. The dotplot in Figure <a href="inference-paired-means.html#fig:tiredata-diff">18.2</a> displays these differences, with summary statistics displayed below.</p>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">favstats</span><span class="op">(</span><span class="va">differences</span><span class="op">)</span></span>
 <span><span class="co">#&gt;       min        Q1  median     Q3    max    mean      sd  n missing</span></span>
 <span><span class="co">#&gt;  -0.00506 -0.000972 0.00205 0.0042 0.0107 0.00196 0.00431 25       0</span></span></code></pre></div>
@@ -326,7 +326,7 @@ In this study, the null hypothesis is that average difference in tire tread wear
 <p><strong>Shifted bootstrap null distribution for a sample mean difference.</strong></p>
 <p>To simulate a null distribution of sample mean differences under the null hypothesis <span class="math inline">\(H_0: \mu_d = 0\)</span>,</p>
 <ol style="list-style-type: decimal">
-<li>Subtract <span class="math inline">\(\bar{x}_d\)</span> from each difference in the original sample:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Subtracting the sample mean is equivalent to adding &lt;span class="math inline"&gt;\(\mu_0 - \bar{x}_d\)&lt;/span&gt; when the null value is &lt;span class="math inline"&gt;\(\mu_d = 0\)&lt;/span&gt;. Thus, we are using the same process as that described in Section &lt;a href="inference-one-mean.html#one-mean-null-boot"&gt;17.2&lt;/a&gt;.&lt;/p&gt;'><sup>163</sup></a><br><span class="math display">\[
+<li>Subtract <span class="math inline">\(\bar{x}_d\)</span> from each difference in the original sample:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Subtracting the sample mean is equivalent to adding &lt;span class="math inline"&gt;\(\mu_0 - \bar{x}_d\)&lt;/span&gt; when the null value is &lt;span class="math inline"&gt;\(\mu_d = 0\)&lt;/span&gt;. Thus, we are using the same process as that described in Section &lt;a href="inference-one-mean.html#one-mean-null-boot"&gt;17.2&lt;/a&gt;.&lt;/p&gt;'><sup>162</sup></a><br><span class="math display">\[
 x_1 - \bar{x}_d , \hspace{2.5mm} x_2 - \bar{x}_d, \hspace{2.5mm}  x_3 - \bar{x}_d, \hspace{2.5mm}  \ldots, \hspace{2.5mm}  x_n - \bar{x}_d.
   \]</span>
 Note that if <span class="math inline">\(\bar{x}_d\)</span> is a negative number, then you will be <em>adding</em> the distance between <span class="math inline">\(0\)</span> and <span class="math inline">\(\bar{x}_d\)</span> to each value.</li>
@@ -487,7 +487,7 @@ M60W
 </tbody>
 </table></div>
 <p>A dot plot of the data is shown in Figure <a href="inference-paired-means.html#fig:text-price-hist">18.5</a>, with summary statistics displayed below.</p>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">favstats</span><span class="op">(</span><span class="va">ucla_textbooks_f18</span><span class="op">$</span><span class="va">price_diff</span><span class="op">)</span></span></code></pre></div>
 <pre><code>#&gt;    min     Q1 median   Q3  max mean   sd  n missing
 #&gt;  -12.2 -0.992  0.625 2.99 75.2 3.58 13.4 68       0</code></pre>
@@ -719,7 +719,7 @@ lower than those of the UCLA Bookstore’s and by
 a large margin, making the case to use Amazon over
 the UCLA Bookstore quite compelling at that time.
 Now we frequently check multiple websites
-to find the best price.&lt;/p&gt;'><sup>164</sup></a></p>
+to find the best price.&lt;/p&gt;'><sup>163</sup></a></p>
 </div>
 <p>
 </p>
@@ -736,8 +736,8 @@ to find the best price.&lt;/p&gt;'><sup>164</sup></a></p>
 <p>TODO</p>
 </div>
 </div>
-<div id="terms-13" class="section level3 unnumbered">
-<h3>Terms<a class="anchor" aria-label="anchor" href="#terms-13"><i class="fas fa-link"></i></a>
+<div id="terms-14" class="section level3 unnumbered">
+<h3>Terms<a class="anchor" aria-label="anchor" href="#terms-14"><i class="fas fa-link"></i></a>
 </h3>
 <p>We introduced the following terms in the chapter. If you’re not sure what some of these terms mean, we recommend you go back in the text and review their definitions. We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. However you should be able to easily spot them as <strong>bolded text</strong>.</p>
 <div class="inline-table"><table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;"><tbody><tr>
@@ -791,7 +791,7 @@ paired data
 <li>
 <a class="nav-link" href="#chp18-review"><span class="header-section-number">18.4</span> Chapter review</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#summary-13">Summary</a></li>
-<li><a class="nav-link" href="#terms-13">Terms</a></li>
+<li><a class="nav-link" href="#terms-14">Terms</a></li>
 <li><a class="nav-link" href="#key-ideas-13">Key ideas</a></li>
 </ul>
 </li>

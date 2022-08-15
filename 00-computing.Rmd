@@ -195,6 +195,16 @@ To save your script file, click the Save icon, or go to File -> Save. Browse to 
 include_graphics("00/images/save-script.png")
 ```
 
+Documenting your code is always a good practice. Your future self will thank you! You can include comments in R code by preceding the comment with `#`. The comment can be on its own line, or after the code itself.
+R knows to ignore anything that is typed after `#`.
+
+```{r, eval = TRUE}
+# This is a comment.
+3+5  # This is another comment.
+sqrt(10)
+```
+
+
 
 ## Loading data {-}
 

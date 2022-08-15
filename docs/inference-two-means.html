@@ -261,7 +261,7 @@ Figure 19.1: Exam scores for students given one of three different exams.
 <p>Construct hypotheses to evaluate whether the observed
 difference in sample means, <span class="math inline">\(\bar{x}_A - \bar{x}_B=3.1\)</span>,
 is due to chance. We will later evaluate these hypotheses
-by computing a p-value for the test.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="math inline"&gt;\(H_0\)&lt;/span&gt;: the exams are equally difficult, on average. &lt;span class="math inline"&gt;\(\mu_A - \mu_B = 0\)&lt;/span&gt;. &lt;span class="math inline"&gt;\(H_A\)&lt;/span&gt;: one exam was more difficult than the other, on average. &lt;span class="math inline"&gt;\(\mu_A - \mu_B \neq 0.\)&lt;/span&gt;&lt;/p&gt;'><sup>165</sup></a></p>
+by computing a p-value for the test.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="math inline"&gt;\(H_0\)&lt;/span&gt;: the exams are equally difficult, on average. &lt;span class="math inline"&gt;\(\mu_A - \mu_B = 0\)&lt;/span&gt;. &lt;span class="math inline"&gt;\(H_A\)&lt;/span&gt;: one exam was more difficult than the other, on average. &lt;span class="math inline"&gt;\(\mu_A - \mu_B \neq 0.\)&lt;/span&gt;&lt;/p&gt;'><sup>164</sup></a></p>
 </div>
 <div class="guidedpractice">
 <p>Before moving on to evaluate the hypotheses in the previous Guided Practice, let’s think carefully about the dataset. Are the observations across the two groups independent? Are there any concerns about outliers?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;
@@ -270,7 +270,7 @@ the “treatment” in this case was randomly assigned,
 so independence within and between groups is satisfied.
 (b) The summary statistics suggest the data are roughly
 symmetric about the mean, and the min/max values don’t
-suggest any outliers of concern.&lt;/p&gt;"><sup>166</sup></a></p>
+suggest any outliers of concern.&lt;/p&gt;"><sup>165</sup></a></p>
 </div>
 </div>
 <div id="variability-of-the-statistic-7" class="section level3" number="19.1.2">
@@ -485,7 +485,7 @@ is straightforward to find: it is the difference in the sample means.
 = 7.83
 \end{align*}</p>
 <div class="guidedpractice">
-<p>Identify the roles of the two variables in this study — which variable is the explanatory variable and which is the response? What is the scope of inference for this study?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Since the research question asks if ESCs help improve heart function, the explanatory variable is the treatment (ESC or control), and the response variable is the change in heart pumping capacity. Since sheep were randomly assigned to treatment groups, this study is a randomized experiment, and any changes in the mean response can be attributed to the treatment — cause-and-effect conclusions can be made. However, since it is not clear if the sheep were a random sample from a larger population of sheep, we can only generalize to sheep similar to those seen in the sample.&lt;/p&gt;"><sup>167</sup></a></p>
+<p>Identify the roles of the two variables in this study — which variable is the explanatory variable and which is the response? What is the scope of inference for this study?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Since the research question asks if ESCs help improve heart function, the explanatory variable is the treatment (ESC or control), and the response variable is the change in heart pumping capacity. Since sheep were randomly assigned to treatment groups, this study is a randomized experiment, and any changes in the mean response can be attributed to the treatment — cause-and-effect conclusions can be made. However, since it is not clear if the sheep were a random sample from a larger population of sheep, we can only generalize to sheep similar to those seen in the sample.&lt;/p&gt;"><sup>166</sup></a></p>
 </div>
 </div>
 <div id="variability-of-the-statistic-8" class="section level3" number="19.2.2">
@@ -774,7 +774,7 @@ calculated using the standard error formula:
     = \sqrt{\frac{s_n^2}{n_n} + \frac{s_s^2}{n_s}}
     = \sqrt{\frac{1.60^2}{100} + \frac{1.43^2}{50}}
     = 0.26
-  \end{align*}\]&lt;/span&gt;&lt;/p&gt;'><sup>168</sup></a></p>
+  \end{align*}\]&lt;/span&gt;&lt;/p&gt;'><sup>167</sup></a></p>
 <ol style="list-style-type: lower-alpha">
 <li>What is the point estimate of the population difference,
 <span class="math inline">\(\mu_{n} - \mu_{s}\)</span>?</li>
@@ -875,7 +875,7 @@ in average birth weight of newborns from North Carolina mothers
 who did smoke during pregnancy and newborns from North Carolina
 mothers who did not smoke during pregnancy.</p>
 </div>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fl">1.54</span>, df <span class="op">=</span> <span class="fl">49</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.065</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
@@ -889,7 +889,7 @@ Figure 19.9: The mathematical model for the T statistic when the null hypothesis
 during pregnancy, so how could we fail to reject the null
 hypothesis in the previous Example?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;It is possible that there is a difference
 but we did not detect it.
-If there is a difference, we made a Type 2 Error.&lt;/p&gt;"><sup>169</sup></a></p>
+If there is a difference, we made a Type 2 Error.&lt;/p&gt;"><sup>168</sup></a></p>
 </div>
 <div class="guidedpractice">
 <p>If we made a Type 2 Error and there is a difference,
@@ -898,7 +898,7 @@ to be more likely to detect the difference?<a class="footnote-ref" tabindex="0" 
 If the sample sizes are larger, we tend to have
 a better shot at finding a difference if one exists.
 In fact, this is exactly what we would find if we
-examined a larger data set!&lt;/p&gt;"><sup>170</sup></a></p>
+examined a larger data set!&lt;/p&gt;"><sup>169</sup></a></p>
 </div>
 <p>Public service announcement: while we have used this relatively
 small data set as an example, larger data sets show that women
@@ -918,7 +918,7 @@ as healthy as the babies from women who do not
 smoke.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;You can watch an episode of John Oliver
 on &lt;a href="youtu.be/6UsHHOCH4q8"&gt;&lt;em&gt;Last Week Tonight&lt;/em&gt;&lt;/a&gt; to explore the present day
 offenses of the tobacco industry.
-Please be aware that there is some adult language.&lt;/p&gt;'><sup>171</sup></a></p>
+Please be aware that there is some adult language.&lt;/p&gt;'><sup>170</sup></a></p>
 <!--
 % Resource on this topic:
 % http://archive.tobacco.org/Documents/documentquotes.html
@@ -989,7 +989,7 @@ We are 95% confident that embryonic stem cells improve
 the mean change in heart’s pumping function in sheep that have suffered
 a heart attack by 3.32% to 12.34%.</p>
 </div>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.975</span>, df <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 2.31</span></span></code></pre></div>
 <p></p>
@@ -1203,8 +1203,8 @@ T = \frac{\mbox{statistic} - \mbox{null value}}{\mbox{standard error of the stat
 <li>Put the conclusions in context and in plain language so even non-data scientists can understand the results.</li>
 </ol>
 </div>
-<div id="terms-14" class="section level3 unnumbered">
-<h3>Terms<a class="anchor" aria-label="anchor" href="#terms-14"><i class="fas fa-link"></i></a>
+<div id="terms-15" class="section level3 unnumbered">
+<h3>Terms<a class="anchor" aria-label="anchor" href="#terms-15"><i class="fas fa-link"></i></a>
 </h3>
 <p>We introduced the following terms in the chapter. If you’re not sure what some of these terms mean, we recommend you go back in the text and review their definitions. We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. However you should be able to easily spot them as <strong>bolded text</strong>.</p>
 <div class="inline-table"><table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;"><tbody><tr>
@@ -1260,7 +1260,7 @@ two sample <span class="math inline">\(t\)</span>-test
 <a class="nav-link" href="#chp19-review"><span class="header-section-number">19.4</span> Chapter review</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#summary-14">Summary</a></li>
 <li><a class="nav-link" href="#summary-of-t-procedures">Summary of t-procedures</a></li>
-<li><a class="nav-link" href="#terms-14">Terms</a></li>
+<li><a class="nav-link" href="#terms-15">Terms</a></li>
 <li><a class="nav-link" href="#key-ideas-14">Key ideas</a></li>
 </ul>
 </li>

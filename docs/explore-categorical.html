@@ -143,7 +143,7 @@ Mastery of the content presented in this chapter will be crucial for understandi
 <p>In this chapter, we will introduce tables and other basic tools for organizing and analyzing categorical data that are used throughout this book. Table <a href="explore-categorical.html#tab:emailDF">4.1</a> displays the first six rows of the <code>email</code> data set containing information on 3,921 emails sent to David Diez’s Gmail account (one of the authors of the <em>OpenIntro</em> textbooks). In this section we will examine whether the presence of numbers, small or large, in an email provides any useful value in classifying email as spam or not spam.
 Descriptions of all five email variables are given in Table <a href="explore-categorical.html#tab:emailVariables">4.2</a>.</p>
 <div class="data">
-<p>The <code>email</code> data can be found in the <a href="http://openintrostat.github.io/openintro/reference/index.html">openintro</a> package.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The &lt;code&gt;email&lt;/code&gt; data set found in the &lt;code&gt;openintro&lt;/code&gt; package defines the variable &lt;code&gt;spam&lt;/code&gt; as 0 (not spam) or 1 (spam), and &lt;code&gt;format&lt;/code&gt; as 0 (not HTML) or 1 (HTML). When variables are defined in this way—coded as the numbers 0 and 1 rather than the category names—they are called &lt;strong&gt;indicator variables&lt;/strong&gt;* or &lt;strong&gt;dummy variables&lt;/strong&gt;. In this section of the textbook, we have re-coded &lt;code&gt;spam&lt;/code&gt; to be the variable &lt;code&gt;type&lt;/code&gt;, which takes on values “not spam” or “spam”, and we have re-coded the variable &lt;code&gt;format&lt;/code&gt; to take on values “not HTML” or “HTML”.&lt;/p&gt;"><sup>27</sup></a></p>
+<p>The <code>email</code> data can be found in the <a href="http://openintrostat.github.io/openintro/reference/index.html">openintro</a> package.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The &lt;code&gt;email&lt;/code&gt; data set found in the &lt;code&gt;openintro&lt;/code&gt; package defines the variable &lt;code&gt;spam&lt;/code&gt; as 0 (not spam) or 1 (spam), and &lt;code&gt;format&lt;/code&gt; as 0 (not HTML) or 1 (HTML). When variables are defined in this way—coded as the numbers 0 and 1 rather than the category names—they are called &lt;strong&gt;indicator variables&lt;/strong&gt;* or &lt;strong&gt;dummy variables&lt;/strong&gt;. In this section of the textbook, we have re-coded &lt;code&gt;spam&lt;/code&gt; to be the variable &lt;code&gt;type&lt;/code&gt;, which takes on values “not spam” or “spam”, and we have re-coded the variable &lt;code&gt;format&lt;/code&gt; to take on values “not HTML” or “HTML”.&lt;/p&gt;"><sup>26</sup></a></p>
 </div>
 <div class="inline-table"><table class="table table-sm">
 <caption>
@@ -493,7 +493,7 @@ Total
 </table></div>
 <p>We would like to examine whether the presence of numbers—none, small or large—in an email provides any useful value in classifying email as spam or not spam—that is, is there an <strong>association</strong> between the variables <code>number</code> and <code>type</code>?</p>
 <div class="guidedpractice">
-<p>To determine if a relationship exists between whether an email is spam or not, and whether the email has no numbers, a small number, or a big number, why isn’t it helpful to compare the <em>number</em> of spam emails across the <code>number</code> categories?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Since the sample sizes in the three &lt;code&gt;number&lt;/code&gt; categories differ (549 emails with no numbers; 2827 emails with a small number; 545 emails with a big number), we need to compare the &lt;em&gt;proportion&lt;/em&gt; of spam emails across categories rather than the count.&lt;/p&gt;"><sup>28</sup></a></p>
+<p>To determine if a relationship exists between whether an email is spam or not, and whether the email has no numbers, a small number, or a big number, why isn’t it helpful to compare the <em>number</em> of spam emails across the <code>number</code> categories?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Since the sample sizes in the three &lt;code&gt;number&lt;/code&gt; categories differ (549 emails with no numbers; 2827 emails with a small number; 545 emails with a big number), we need to compare the &lt;em&gt;proportion&lt;/em&gt; of spam emails across categories rather than the count.&lt;/p&gt;"><sup>27</sup></a></p>
 </div>
 <p>The proportion of emails that were classified as spam in the data set is <span class="math inline">\(3554/3921 = 0.906\)</span>, or about 91%. Let’s compare this <strong>unconditional proportion</strong> to the <strong>conditional proportions</strong> of spam <em>within</em> each <code>number</code> category: <span class="math inline">\(400/549 \approx 73\%\)</span> of emails with no numbers are spam; <span class="math inline">\(2659/2827 \approx 94\%\)</span> of emails with small numbers are spam; and <span class="math inline">\(495/545 \approx 91\%\)</span> of emails with big numbers are spam. Since these three conditional proportions differ, we say the variables <code>number</code> and <code>type</code> are <em>associated</em> in this data set. Note that some differ from the overall, or unconditional, proportion of spam emails in the data set—91%.</p>
 <div class="onebox">
@@ -606,10 +606,10 @@ not spam
 </tbody>
 </table></div>
 <div class="guidedpractice">
-<p>What does 0.458 represent in Table <a href="explore-categorical.html#tab:rowPropSpamNumber">4.5</a>? What does 0.059 represent in Table <a href="explore-categorical.html#tab:colPropSpamNumber">4.6</a>?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;0.458 represents the proportion of spam emails that had a small number. 0.058 represents the fraction of emails with small numbers that are spam.&lt;/p&gt;"><sup>29</sup></a></p>
+<p>What does 0.458 represent in Table <a href="explore-categorical.html#tab:rowPropSpamNumber">4.5</a>? What does 0.059 represent in Table <a href="explore-categorical.html#tab:colPropSpamNumber">4.6</a>?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;0.458 represents the proportion of spam emails that had a small number. 0.058 represents the fraction of emails with small numbers that are spam.&lt;/p&gt;"><sup>28</sup></a></p>
 </div>
 <div class="guidedpractice">
-<p>What does 0.139 at the intersection of <code>not~spam</code> and <code>big</code> represent in Table <a href="explore-categorical.html#tab:rowPropSpamNumber">4.5</a>? What does 0.908 represent in the Table <a href="explore-categorical.html#tab:colPropSpamNumber">4.6</a>?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;0.139 represents the fraction of non-spam email that had a big number. 0.908 represents the fraction of emails with big numbers that are non-spam emails.&lt;/p&gt;"><sup>30</sup></a></p>
+<p>What does 0.139 at the intersection of <code>not~spam</code> and <code>big</code> represent in Table <a href="explore-categorical.html#tab:rowPropSpamNumber">4.5</a>? What does 0.908 represent in the Table <a href="explore-categorical.html#tab:colPropSpamNumber">4.6</a>?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;0.139 represents the fraction of non-spam email that had a big number. 0.908 represents the fraction of emails with big numbers that are non-spam emails.&lt;/p&gt;"><sup>29</sup></a></p>
 </div>
 <div class="workedexample">
 <p>Data scientists use statistics to filter spam from incoming email messages. By noting specific characteristics of an email, a data scientist may be able to classify some emails as spam or not spam with high accuracy.
@@ -682,7 +682,7 @@ Total
 </table></div>
 <p>The previous Example points out that row and column proportions are not equivalent. Before settling on one form for a table, it is important to consider each to ensure that the most useful table is constructed.</p>
 <div class="guidedpractice">
-<p>Look back to Tables <a href="explore-categorical.html#tab:rowPropSpamNumber">4.5</a> and <a href="explore-categorical.html#tab:colPropSpamNumber">4.6</a>. Which would be more useful to someone hoping to identify spam emails using the <code>number</code> variable?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;The column proportions in Table &lt;a href="explore-categorical.html#tab:colPropSpamNumber"&gt;4.6&lt;/a&gt; will probably be most useful, which makes it easier to see that emails with small numbers are spam about 5.9% of the time (relatively rare). We would also see that about 27.1% of emails with no numbers are spam, and 9.2% of emails with big numbers are spam.&lt;/p&gt;'><sup>31</sup></a></p>
+<p>Look back to Tables <a href="explore-categorical.html#tab:rowPropSpamNumber">4.5</a> and <a href="explore-categorical.html#tab:colPropSpamNumber">4.6</a>. Which would be more useful to someone hoping to identify spam emails using the <code>number</code> variable?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;The column proportions in Table &lt;a href="explore-categorical.html#tab:colPropSpamNumber"&gt;4.6&lt;/a&gt; will probably be most useful, which makes it easier to see that emails with small numbers are spam about 5.9% of the time (relatively rare). We would also see that about 27.1% of emails with no numbers are spam, and 9.2% of emails with big numbers are spam.&lt;/p&gt;'><sup>30</sup></a></p>
 </div>
 </div>
 <div id="sample-proportions-and-population-proportions" class="section level3" number="4.1.2">
@@ -729,7 +729,7 @@ Figure 4.2: (a) Segmented bar plot for numbers found in emails, where the counts
 </p>
 </div>
 <div class="guidedpractice">
-<p>In the segmented bar plots in Figure <a href="explore-categorical.html#fig:emailSpamNumberSegBar">4.2</a>, which variable is the explanatory variable? the response variable?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The numbers found in emails (&lt;code&gt;number&lt;/code&gt;) is the explanatory variable; whether the email is spam or not spam is the response variable.&lt;/p&gt;"><sup>32</sup></a></p>
+<p>In the segmented bar plots in Figure <a href="explore-categorical.html#fig:emailSpamNumberSegBar">4.2</a>, which variable is the explanatory variable? the response variable?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The numbers found in emails (&lt;code&gt;number&lt;/code&gt;) is the explanatory variable; whether the email is spam or not spam is the response variable.&lt;/p&gt;"><sup>31</sup></a></p>
 </div>
 <div class="workedexample">
 <p>Examine both of the segmented bar plots in Figure <a href="explore-categorical.html#fig:emailSpamNumberSegBar">4.2</a>. Which is more useful?</p>
@@ -771,7 +771,7 @@ Figure 4.4: A pie chart and bar plot of <code>number</code> for the <code>email<
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:worst-pie-chart"></span>
 <img src="04-explore-categorical_files/figure-html/worst-pie-chart-1.png" alt="Try comparing the distributions of colors across pie charts A, B, and C---it's impossible!^[R code from User:Schutz for Wikipedia on 28 August 2007]" width="75%"><p class="caption">
-Figure 4.5: Try comparing the distributions of colors across pie charts A, B, and C—it’s impossible!<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;R code from User:Schutz for Wikipedia on 28 August 2007&lt;/p&gt;"><sup>33</sup></a>
+Figure 4.5: Try comparing the distributions of colors across pie charts A, B, and C—it’s impossible!<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;R code from User:Schutz for Wikipedia on 28 August 2007&lt;/p&gt;"><sup>32</sup></a>
 </p>
 </div>
 <p>If you’re still not convinced that you shouldn’t use pie charts, read <a href="https://www.data-to-viz.com/caveat/pie.html">“The Issue with Pie Chart”</a> on the “from Data to Viz” blog, and <a href="https://www.businessinsider.com/pie-charts-are-the-worst-2013-6">“The Worst Chart in the World”</a> article on Business Insider.</p>
@@ -780,7 +780,7 @@ Figure 4.5: Try comparing the distributions of colors across pie charts A, B, an
 <h2>
 <span class="header-section-number">4.4</span> Simpson’s paradox<a class="anchor" aria-label="anchor" href="#simpson"><i class="fas fa-link"></i></a>
 </h2>
-<p>A 1991 study by Radelet and Pierce examined whether race was associated with whether the death penalty was invoked in homicide cases<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;This example is adapted from &lt;span class="citation"&gt;Agresti (&lt;a href="references.html#ref-Agresti2007" role="doc-biblioref"&gt;2007&lt;/a&gt;)&lt;/span&gt; (p. 49-52).&lt;/p&gt;'><sup>34</sup></a>. Table <a href="explore-categorical.html#tab:DP">4.8</a> and Figure <a href="explore-categorical.html#fig:DPbarplot">4.6</a> summarize data on 674 defendants in indictments involving cases with multiple murders in Florida from 1976 through 1987.</p>
+<p>A 1991 study by Radelet and Pierce examined whether race was associated with whether the death penalty was invoked in homicide cases<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;This example is adapted from &lt;span class="citation"&gt;Agresti (&lt;a href="references.html#ref-Agresti2007" role="doc-biblioref"&gt;2007&lt;/a&gt;)&lt;/span&gt; (p. 49-52).&lt;/p&gt;'><sup>33</sup></a>. Table <a href="explore-categorical.html#tab:DP">4.8</a> and Figure <a href="explore-categorical.html#fig:DPbarplot">4.6</a> summarize data on 674 defendants in indictments involving cases with multiple murders in Florida from 1976 through 1987.</p>
 <div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:DP">Table 4.8: </span>Contingency table of homicide cases in Florida from 1976 through 1987.
@@ -874,11 +874,11 @@ Figure 4.6: Segmented bar plot comparing the proportion of defendants who receiv
 </p>
 </div>
 <div class="guidedpractice">
-<p>Is the race of the defendant associated with the sentence of the trial?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Yes. The conditional proportions of receiving the death penalty given race differ: 11% of Caucasian defendants received the death penalty, versus 8% of African American defendants received the death penalty.&lt;/p&gt;"><sup>35</sup></a></p>
+<p>Is the race of the defendant associated with the sentence of the trial?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Yes. The conditional proportions of receiving the death penalty given race differ: 11% of Caucasian defendants received the death penalty, versus 8% of African American defendants received the death penalty.&lt;/p&gt;"><sup>34</sup></a></p>
 </div>
 <p>Overall, a lower percentage of African American defendants received the death penalty than Caucasian defendants (8% compared to 11%). Given studies have shown racial bias in sentencing, this may be surprising. Let’s look at the data more closely.</p>
 <div class="guidedpractice">
-<p>Since these are <em>observational data</em>, confounding variables are most likely present. Recall, a confounding variable is one that is associated with both the response variable (sentence) and the explanatory variable (race of the defendant). What confounding variables could be present?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The confounding variable we will consider here is race of the victim. Other confounding variables may include socioeconomic status (since SES is related to race, and a higher SES may allow you to hire a better lawyer—though this explanation is opposite of the association we see in the data) or district (the racial makeup would differ across districts, and maybe districts with a larger proportion of Caucasians also tend to invoke the death penalty more often).&lt;/p&gt;"><sup>36</sup></a></p>
+<p>Since these are <em>observational data</em>, confounding variables are most likely present. Recall, a confounding variable is one that is associated with both the response variable (sentence) and the explanatory variable (race of the defendant). What confounding variables could be present?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The confounding variable we will consider here is race of the victim. Other confounding variables may include socioeconomic status (since SES is related to race, and a higher SES may allow you to hire a better lawyer—though this explanation is opposite of the association we see in the data) or district (the racial makeup would differ across districts, and maybe districts with a larger proportion of Caucasians also tend to invoke the death penalty more often).&lt;/p&gt;"><sup>35</sup></a></p>
 </div>
 <p>If we subset the data by the race of the victim, we see a different picture. Table <a href="explore-categorical.html#tab:DP2">4.9</a> and Figure <a href="explore-categorical.html#fig:DPbarplot2">4.7</a> summarize the same data, but separately for Caucasian and African American homicide victims.</p>
 <div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
@@ -1063,8 +1063,8 @@ In this chapter we have introduced different visualizations and numerical summar
 The graphical visualizations are even more descriptive when two variables are presented simultaneously.
 We presented bar plots, mosaic plots, pie charts (and their downfalls), and estimations of conditional proportions.</p>
 </div>
-<div id="terms-2" class="section level3 unnumbered">
-<h3>Terms<a class="anchor" aria-label="anchor" href="#terms-2"><i class="fas fa-link"></i></a>
+<div id="terms-3" class="section level3 unnumbered">
+<h3>Terms<a class="anchor" aria-label="anchor" href="#terms-3"><i class="fas fa-link"></i></a>
 </h3>
 <p>We introduced the following terms in the chapter.
 If you’re not sure what some of these terms mean, we recommend you go back in the text and review their definitions.
@@ -1183,7 +1183,7 @@ unconditional proportion
 <li>
 <a class="nav-link" href="#chp4-review"><span class="header-section-number">4.5</span> Chapter review</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#summary-2">Summary</a></li>
-<li><a class="nav-link" href="#terms-2">Terms</a></li>
+<li><a class="nav-link" href="#terms-3">Terms</a></li>
 <li><a class="nav-link" href="#key-ideas-2">Key ideas</a></li>
 </ul>
 </li>

@@ -188,6 +188,16 @@ To save your script file, click the Save icon, or go to File -> Save. Browse to 
 
 <img src="00/images/save-script.png" width="100%" style="display: block; margin: auto;" />
 
+Documenting your code is always a good practice. Your future self will thank you! You can include comments in R code by preceding the comment with `#`. The comment can be on its own line, or after the code itself.
+R knows to ignore anything that is typed after `#`.
+
+
+```
+#> [1] 8
+#> [1] 3.16
+```
+
+
 
 ## Loading data {-}
 

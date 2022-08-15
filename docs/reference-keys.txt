@@ -255,7 +255,6 @@ reducing-bias-human-experiments
 scope-of-inference
 chp2-review
 data-applications
-data-in-r
 dataframes-in-r
 datastruc
 using-the-pipe-to-chain

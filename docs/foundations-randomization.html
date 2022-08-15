@@ -153,7 +153,7 @@ If <span class="math inline">\(\hat{p}_{L}\)</span> represents the proportion of
 We would probably observe a small difference due to <em>chance</em>.</p>
 </div>
 <div class="guidedpractice">
-<p>If we do not think the side of the room a person sits on in class is related to whether they prefer to read books on screen, what assumption are we making about the relationship between these two variables?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;We would be assuming that these two variables are &lt;strong&gt;independent&lt;/strong&gt;.&lt;/p&gt;"><sup>73</sup></a></p>
+<p>If we do not think the side of the room a person sits on in class is related to whether they prefer to read books on screen, what assumption are we making about the relationship between these two variables?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;We would be assuming that these two variables are &lt;strong&gt;independent&lt;/strong&gt;.&lt;/p&gt;"><sup>72</sup></a></p>
 </div>
 <p>Studying randomness of this form is a key focus of statistics. Throughout this chapter, and those that follow, we provide two different approaches for quantifying the variability inherent in data: simulation-based methods and theory-based methods (mathematical models). Using the methods provided in this and future chapters, we will be able to draw conclusions beyond the data set at hand to research questions about larger populations that the samples come from.</p>
 <!-- ## Foundations of inference {#inf-foundations} -->
@@ -172,7 +172,7 @@ We would probably observe a small difference due to <em>chance</em>.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:kiki-bumba"></span>
 <img src="05/images/bumBa-KiKi.png" alt="Two Martian letters: Bumba and Kiki. Do you think the letter Bumba is on the left or the right?^[Bumba is the Martian letter on the left!]" width="75%"><p class="caption">
-Figure 9.1: Two Martian letters: Bumba and Kiki. Do you think the letter Bumba is on the left or the right?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Bumba is the Martian letter on the left!&lt;/p&gt;"><sup>74</sup></a>
+Figure 9.1: Two Martian letters: Bumba and Kiki. Do you think the letter Bumba is on the left or the right?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Bumba is the Martian letter on the left!&lt;/p&gt;"><sup>73</sup></a>
 </p>
 </div>
 <div id="observed-data" class="section level3" number="9.1.1">
@@ -198,7 +198,7 @@ Figure 9.1: Two Martian letters: Bumba and Kiki. Do you think the letter Bumba i
 <span class="header-section-number">9.1.2</span> Variability in a statistic<a class="anchor" aria-label="anchor" href="#variability-in-a-statistic"><i class="fas fa-link"></i></a>
 </h3>
 <div class="guidedpractice">
-<p>How could you use a coin or cards to simulate the guesses of one sample of 38 students who cannot read Martian?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;A fair coin has a 50% chance of landing on heads, which is the chance a student would guess Bumba correctly if they were just guessing. Thus, toss a coin 38 times with heads representing “guess correctly”; then calculate the proportion of tosses that landed on heads. Another option would be to 10 black cards and 10 red cards, letting red represent “guess correctly”. Shuffle the cards and draw one card, record if it is red or black, then replace the card and shuffle again. Do this 38 times and calculate the proportion of red cards observed.&lt;/p&gt;"><sup>75</sup></a></p>
+<p>How could you use a coin or cards to simulate the guesses of one sample of 38 students who cannot read Martian?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;A fair coin has a 50% chance of landing on heads, which is the chance a student would guess Bumba correctly if they were just guessing. Thus, toss a coin 38 times with heads representing “guess correctly”; then calculate the proportion of tosses that landed on heads. Another option would be to 10 black cards and 10 red cards, letting red represent “guess correctly”. Shuffle the cards and draw one card, record if it is red or black, then replace the card and shuffle again. Do this 38 times and calculate the proportion of red cards observed.&lt;/p&gt;"><sup>74</sup></a></p>
 </div>
 <p>The observed data showed 34 students correctly identifying Bumba in a class of 38 students, or 90%. Now, suppose students were truly “just guessing”, meaning each student had a 50% chance of guessing correctly. Then, if we conducted the study again with a different sample of 38 students, we would expect about half (or 19 students) to guess correctly, and the other half to guess incorrectly. Any variation from 19 would be based only on random fluctuation in our sample selection process. We could actually perform this <strong>simulation</strong> of what would happen if we randomly chose another 38 students that were “just guessing” by flipping a coin 38 times and counting the number of times it lands on heads. Try it out—how many correctly guessed Bumba in your simulated class of 38 students? What proportion guessed correctly?</p>
 </div>
@@ -221,7 +221,7 @@ The simulated sample proportions plotted in blue represent <strong>null statisti
 None of the simulated null statistics got even close to our observed statistic!
 That is, if students were just guessing, it is nearly impossible to observe 34 or more students guessing correctly in a sample of 38 students.
 Given this low probability, the more plausible possibility is 2. <em>We can read Martian, and these results reflect this ability.</em> We’ve just completed our first hypothesis test!</p>
-<p>Now, obviously no one can read Martian, so a more realistic possibility is that humans tend to choose Bumba on the left more often than the right—there is a greater than 50% chance of choosing Bumba as the letter on the left. Even though we may think we’re guessing just by chance, we have a preference for Bumba on the left. It turns out that the explanation for this preference is called <em>synesthesia</em>, a tendency for humans to correlate sharp sounding noises (e.g., Kiki) with sharp looking images.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;To explore this further, watch this &lt;a href="https://www.ted.com/talks/vs_ramachandran_3_clues_to_understanding_your_brain"&gt;TED Talk&lt;/a&gt; by neurologist Vilayanur Ramachandran (The synesthesia part begins at roughly 17:40 minutes).&lt;/p&gt;'><sup>76</sup></a></p>
+<p>Now, obviously no one can read Martian, so a more realistic possibility is that humans tend to choose Bumba on the left more often than the right—there is a greater than 50% chance of choosing Bumba as the letter on the left. Even though we may think we’re guessing just by chance, we have a preference for Bumba on the left. It turns out that the explanation for this preference is called <em>synesthesia</em>, a tendency for humans to correlate sharp sounding noises (e.g., Kiki) with sharp looking images.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;To explore this further, watch this &lt;a href="https://www.ted.com/talks/vs_ramachandran_3_clues_to_understanding_your_brain"&gt;TED Talk&lt;/a&gt; by neurologist Vilayanur Ramachandran (The synesthesia part begins at roughly 17:40 minutes).&lt;/p&gt;'><sup>75</sup></a></p>
 </div>
 </div>
 <div id="caseStudySexDiscrimination" class="section level2" number="9.2">
@@ -247,7 +247,7 @@ These files were randomly assigned to the subjects.</p>
 <div class="guidedpractice">
 <p>Is this an observational study or an experiment?
 How does the type of study impact what can be inferred from the results?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The study is an experiment, as subjects were randomly assigned a “male” file or a “female” file (remember, all the files were actually identical in content).
-Since this is an experiment, the results can be used to evaluate a causal relationship between the sex of a candidate and the promotion decision.&lt;/p&gt;"><sup>77</sup></a></p>
+Since this is an experiment, the results can be used to evaluate a causal relationship between the sex of a candidate and the promotion decision.&lt;/p&gt;"><sup>76</sup></a></p>
 </div>
 <p>For each supervisor both the sex associated with the assigned file and the promotion decision were recorded.
 Using the results of the study summarized in Table <a href="foundations-randomization.html#tab:sex-discrimination-obs">9.1</a>, we would like to evaluate if individuals who identify as female are unfairly discriminated against in promotion decisions.
@@ -386,7 +386,7 @@ If data and the null claim seem to be at odds with one another, and the data see
 <p>Table <a href="foundations-randomization.html#tab:sex-discrimination-obs">9.1</a> shows that 35 bank supervisors recommended promotion and 13 did not.
 Now, suppose the bankers’ decisions were independent of the sex of the candidate.
 Then, if we conducted the experiment again with a different random assignment of sex to the files, differences in promotion rates would be based only on random fluctuation in promotion decisions.
-We can actually perform this <strong>randomization</strong>, which simulates what would have happened if the bankers’ decisions had been independent of <code>sex</code> but we had distributed the file sexes differently.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The test procedure we employ in this section is sometimes referred to as a &lt;strong&gt;randomization test&lt;/strong&gt;. If the explanatory variable had not been randomly assigned, as in an observational study, the procedure would be referred to as a &lt;strong&gt;permutation test&lt;/strong&gt;..&lt;/p&gt;"><sup>78</sup></a></p>
+We can actually perform this <strong>randomization</strong>, which simulates what would have happened if the bankers’ decisions had been independent of <code>sex</code> but we had distributed the file sexes differently.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The test procedure we employ in this section is sometimes referred to as a &lt;strong&gt;randomization test&lt;/strong&gt;. If the explanatory variable had not been randomly assigned, as in an observational study, the procedure would be referred to as a &lt;strong&gt;permutation test&lt;/strong&gt;..&lt;/p&gt;"><sup>77</sup></a></p>
 <p>In the <strong>simulation</strong>, we thoroughly shuffle the 48 personnel files, 35 labelled <code>promoted</code> and 13 labelled <code>not promoted</code>, together and we deal files into two new stacks.
 Note that by keeping 35 promoted and 13 not promoted, we are assuming that 35 of the bank managers would have promoted the individual whose content is contained in the file <strong>independent</strong> of the sex indicated on their file.
 We will deal 24 files into the first stack, which will represent the 24 “female” files.
@@ -480,7 +480,7 @@ Total
 <div class="guidedpractice">
 <p>What is the difference in promotion rates between the two simulated groups in Table <a href="foundations-randomization.html#tab:sex-discrimination-rand-1">9.2</a> ?
 How does this compare to the observed difference 29.2% from the actual study?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="math inline"&gt;\(18/24 - 17/24=0.042\)&lt;/span&gt; or about 4.2% in favor of the male personnel.
-This difference due to chance is much smaller than the difference observed in the actual groups.&lt;/p&gt;'><sup>79</sup></a></p>
+This difference due to chance is much smaller than the difference observed in the actual groups.&lt;/p&gt;'><sup>78</sup></a></p>
 </div>
 <p>Figure <a href="foundations-randomization.html#fig:sex-rand-shuffle-1-sort">9.5</a> shows that the difference in promotion rates is much larger in the original data than it is in the simulated groups (0.292 &gt; 0.042).
 The quantity of interest throughout this case study has been the difference in promotion rates.
@@ -532,7 +532,7 @@ For example, we might look at the lottery: there was only a 1 in 176 million cha
 However, no matter what numbers had turned up, they would have had the same incredibly rare odds.
 That is, &lt;em&gt;any set of numbers we could have observed would ultimately be incredibly rare&lt;/em&gt;.
 This type of situation is typical of our daily lives: each possible event in itself seems incredibly rare, but if we consider every alternative, those outcomes are also incredibly rare.
-We should be cautious not to misinterpret such anecdotal evidence.&lt;/p&gt;"><sup>80</sup></a>
+We should be cautious not to misinterpret such anecdotal evidence.&lt;/p&gt;"><sup>79</sup></a>
 In our analysis, we determined that there was only a <span class="math inline">\(\approx\)</span> 2% probability of obtaining a sample where <span class="math inline">\(\geq\)</span> 29.2% more male candidates than female candidates get promoted under the null hypothesis, so we conclude that the data provide strong evidence of sex discrimination against female candidates by the male supervisors.
 In this case, we reject the null hypothesis in favor of the alternative.</p>
 </div>
@@ -552,7 +552,7 @@ The alternative hypothesis is usually the reason the scientists set out to do th
 <p>The <strong>alternative hypothesis</strong> (<span class="math inline">\(H_A\)</span>) represents an alternative claim under consideration and is often represented by a range of possible values for the parameter of interest.</p>
 </div>
 <div class="guidedpractice">
-<p>In the Martian alphabet example, which of the two competing possibilities was the null hypothesis? the alternative hypothesis?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The first possibility (&lt;em&gt;We can’t read Martian, and these results just occurred by chance.&lt;/em&gt;) was the null hypothesis; the second possibility (&lt;em&gt;We can read Martian, and these results reflect this ability.&lt;/em&gt;) was the alternative hypothesis.&lt;/p&gt;"><sup>81</sup></a></p>
+<p>In the Martian alphabet example, which of the two competing possibilities was the null hypothesis? the alternative hypothesis?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The first possibility (&lt;em&gt;We can’t read Martian, and these results just occurred by chance.&lt;/em&gt;) was the null hypothesis; the second possibility (&lt;em&gt;We can read Martian, and these results reflect this ability.&lt;/em&gt;) was the alternative hypothesis.&lt;/p&gt;"><sup>80</sup></a></p>
 </div>
 <p>The hypothesis testing framework is a very general tool, and we often use it without a second thought. If a person makes a somewhat unbelievable claim, we are initially skeptical. However, if there is sufficient evidence that supports the claim, we set aside our skepticism. The hallmarks of hypothesis testing are also found in the US court system.</p>
 <div id="the-us-court-system" class="section level3" number="9.3.1">
@@ -572,7 +572,7 @@ That is, the skeptical perspective (null hypothesis) is that the person is innoc
 Notice that if a jury finds a defendant <em>not guilty</em>, this does not necessarily mean the jury is confident in the person’s innocence.
 They are simply not convinced of the alternative, that the person is guilty.
 This is also the case with hypothesis testing: <em>even if we fail to reject the null hypothesis, we do not accept the null hypothesis as truth</em>.</p>
-<p>Failing to find evidence in favor of the alternative hypothesis is not equivalent to finding evidence that the null hypothesis is true<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;This idea is succinctly expressed by the saying, “the absence of evidence is not evidence of absence.”&lt;/p&gt;"><sup>82</sup></a>.
+<p>Failing to find evidence in favor of the alternative hypothesis is not equivalent to finding evidence that the null hypothesis is true<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;This idea is succinctly expressed by the saying, “the absence of evidence is not evidence of absence.”&lt;/p&gt;"><sup>81</sup></a>.
 We will see this idea in greater detail in Section <a href="foundations-bootstrapping.html#ConfidenceIntervals">10.2</a>.</p>
 </div>
 <div id="p-value-stat-signif" class="section level3" number="9.3.2">
@@ -594,7 +594,7 @@ We will see this idea in greater detail in Section <a href="foundations-bootstra
 <p>When interpreting a p-value, remember that the definition of a p-value has three components. It is a (1) probability. What it is the probability of? It is the probability of (2) our observed sample statistic or one more extreme. Assuming what? It is the probability of our observed sample statistic or one more extreme, (3) assuming the null hypothesis is true:</p>
 <ol style="list-style-type: decimal">
 <li>probability</li>
-<li>data<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Technically, the observed sample statistic or one more extreme in the direction of our alternative. But it is helpful to just remember this as “the data”.&lt;/p&gt;"><sup>83</sup></a>
+<li>data<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Technically, the observed sample statistic or one more extreme in the direction of our alternative. But it is helpful to just remember this as “the data”.&lt;/p&gt;"><sup>82</sup></a>
 </li>
 <li>null hypothesis</li>
 </ol>
@@ -674,8 +674,8 @@ However, this conclusion gives us no information regarding the size of the diffe
 <p>Add more to this summary</p>
 </div>
 </div>
-<div id="terms-6" class="section level3 unnumbered">
-<h3>Terms<a class="anchor" aria-label="anchor" href="#terms-6"><i class="fas fa-link"></i></a>
+<div id="terms-7" class="section level3 unnumbered">
+<h3>Terms<a class="anchor" aria-label="anchor" href="#terms-7"><i class="fas fa-link"></i></a>
 </h3>
 <p>We introduced the following terms in the chapter. If you’re not sure what some of these terms mean, we recommend you go back in the text and review their definitions. We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. However you should be able to easily spot them as <strong>bolded text</strong>.</p>
 <div class="inline-table"><table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;"><tbody>
@@ -802,7 +802,7 @@ simulation
 <li>
 <a class="nav-link" href="#chp9-review"><span class="header-section-number">9.4</span> Chapter review</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#summary-6">Summary</a></li>
-<li><a class="nav-link" href="#terms-6">Terms</a></li>
+<li><a class="nav-link" href="#terms-7">Terms</a></li>
 <li><a class="nav-link" href="#key-ideas-6">Key ideas</a></li>
 </ul>
 </li>
