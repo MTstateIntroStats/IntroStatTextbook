@@ -4,16 +4,16 @@
 
 
 ::: {.chapterintro}
-TODO
+Coming soon!
 :::
 
-::: {.underconstruction}
-Sex discrimination case study now in chapter 11.
-:::
+<!-- ::: {.underconstruction} -->
+<!-- Sex discrimination case study now in chapter 11. -->
+<!-- ::: -->
 
-::: {.underconstruction}
-Old content - revise as needed
-:::
+<!-- ::: {.underconstruction} -->
+<!-- Old content - revise as needed -->
+<!-- ::: -->
 
 <!-- ## Difference of two proportions {#diff-two-prop} -->
 
@@ -41,9 +41,9 @@ As you learned in Chapter \@ref(data-hello), a **randomized experiment** is done
 
 ### Case study: Sex discrimination revisited {#caseStudySexDiscrimination-revisited}
 
-::: {.underconstruction}
-Need revise this section - sex discrimination case study introduced in Chapter 9
-:::
+<!-- ::: {.underconstruction} -->
+<!-- Need revise this section - sex discrimination case study introduced in Chapter 9 -->
+<!-- ::: -->
 
 \index{data!discrimination|(}
 
@@ -51,13 +51,13 @@ We consider a study investigating gender discrimination in the 1970s, which is s
 
 [^05-inference-cat-53]: Rosen B and Jerdee T. 1974. "Influence of sex role stereotypes on personnel decisions." Journal of Applied Psychology 59(1):9-14.
 
-::: {.underconstruction}
-Add subsections of steps of hypotheses:
+<!-- ::: {.underconstruction} -->
+<!-- Add subsections of steps of hypotheses: -->
 
-- Steps 1 and 2: Hypotheses and test statistic
-- Steps 3 and 4: Null distribution and p-value
-- Step 5: Conclusion
-:::
+<!-- - Steps 1 and 2: Hypotheses and test statistic -->
+<!-- - Steps 3 and 4: Null distribution and p-value -->
+<!-- - Step 5: Conclusion -->
+<!-- ::: -->
 
 <!-- #### Observed data {.unnumbered} -->
 
@@ -506,9 +506,9 @@ We will define a **success**\index{success} in this study as a student who choos
 
 [^05-inference-cat-65]: Success is often defined in a study as the outcome of interest, and a "success" may or may not actually be a positive outcome. For example, researchers working on a study on HIV prevalence might define a "success" in the statistical sense as a patient who is HIV+.
 
-::: {.underconstruction}
-Check that we define success in previous chapter and then refer to it here.
-:::
+<!-- ::: {.underconstruction} -->
+<!-- Check that we define success in previous chapter and then refer to it here. -->
+<!-- ::: -->
 
 
 
@@ -1254,11 +1254,11 @@ These considerations highlight the complexity around medical care and treatment 
 
 ## Chapter review {#chp15-review}
 
-### Summary {-}
+<!-- ### Summary {-} -->
 
-::: {.underconstruction}
-TODO
-:::
+<!-- ::: {.underconstruction} -->
+<!-- TODO -->
+<!-- ::: -->
 
 ### Summary of Z-procedures
 
@@ -1378,8 +1378,8 @@ We introduced the following terms in the chapter. If you're not sure what some o
 </tbody>
 </table>
 
-### Key ideas {-}
+<!-- ### Key ideas {-} -->
 
-::: {.underconstruction}
-TODO
-:::
+<!-- ::: {.underconstruction} -->
+<!-- TODO -->
+<!-- ::: -->

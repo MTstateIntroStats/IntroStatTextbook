@@ -32,9 +32,9 @@ While they differ in the settings, in their outcomes, and in the technique we ha
 terms_chp_11 <- c("sampling distribution", "null distribution")
 ```
 
-::: {.underconstruction}
-Not sure why LaTex code isn't working in definition below.
-:::
+<!-- ::: {.underconstruction} -->
+<!-- Not sure why LaTex code isn't working in definition below. -->
+<!-- ::: -->
 
 
 ::: {.onebox data-latex=""}
@@ -846,15 +846,15 @@ In Section \@ref(theory-prop) we will discuss different percentages for the conf
 
 ## Martian alphabet revisited
 
-::: {.underconstruction}
-Edit the following (copied from old categorical inference chapter):
+<!-- ::: {.underconstruction} -->
+<!-- Edit the following (copied from old categorical inference chapter): -->
 
-In Section \@ref(Martian), through simulation under the assumption that students were just guessing, we found evidence that students tend to prefer Bumba on the left. But by how much? To answer this, we need a **confidence interval**---an interval of plausible values for the true probability humans will select Bumba as the left letter. The width of this interval is determined by how variable sample proportions are from sample to sample. It turns out, there is a mathematical model for this variability that we will explore later in this chapter. For now, let's take the standard deviation from our simulated sample proportions as an estimate for this variability: 0.08. Since the simulated distribution of proportions is bell-shaped, we know about 95% of sample proportions should fall within two standard deviations of the true proportion, so we can add and subtract this **margin of error**\index{margin of error} to our sample proportion to calculate an approximate 95% confidence interval[^05-inference-cat-5]: $$
-\frac{34}{38} \pm 2\times 0.08 = 0.89 \pm 0.16 = (0.73, 1)
-$$ Thus, based on this data, we are 95% confident that the probability a human guesses Bumba on the left is somewhere between 73% and 100%.
+<!-- In Section \@ref(Martian), through simulation under the assumption that students were just guessing, we found evidence that students tend to prefer Bumba on the left. But by how much? To answer this, we need a **confidence interval**---an interval of plausible values for the true probability humans will select Bumba as the left letter. The width of this interval is determined by how variable sample proportions are from sample to sample. It turns out, there is a mathematical model for this variability that we will explore later in this chapter. For now, let's take the standard deviation from our simulated sample proportions as an estimate for this variability: 0.08. Since the simulated distribution of proportions is bell-shaped, we know about 95% of sample proportions should fall within two standard deviations of the true proportion, so we can add and subtract this **margin of error**\index{margin of error} to our sample proportion to calculate an approximate 95% confidence interval[^05-inference-cat-5]: $$ -->
+<!-- \frac{34}{38} \pm 2\times 0.08 = 0.89 \pm 0.16 = (0.73, 1) -->
+<!-- $$ Thus, based on this data, we are 95% confident that the probability a human guesses Bumba on the left is somewhere between 73% and 100%. -->
 
-[^05-inference-cat-5]: If you carry out the calculations, you'll note that the upper bound is actually $0.89 + 0.16 = 1.05$, but since a sample proportion cannot be greater than 1, we truncated the interval to 1.
-:::
+<!-- [^05-inference-cat-5]: If you carry out the calculations, you'll note that the upper bound is actually $0.89 + 0.16 = 1.05$, but since a sample proportion cannot be greater than 1, we truncated the interval to 1. -->
+<!-- ::: -->
 
 ## Case study (test): Medical consultant
 
@@ -870,11 +870,11 @@ Model after Section 13.6 of IMS: [https://openintro-ims.netlify.app/foundations-
 
 ## Chapter review {#chp11-review}
 
-### Summary {-}
+<!-- ### Summary {-} -->
 
-::: {.underconstruction}
-TODO
-:::
+<!-- ::: {.underconstruction} -->
+<!-- TODO -->
+<!-- ::: -->
 
 ### Terms {-}
 
@@ -884,9 +884,9 @@ We introduced the following terms in the chapter. If you're not sure what some o
 make_terms_table(terms_chp_11)
 ```
 
-### Key ideas {-}
+<!-- ### Key ideas {-} -->
 
-::: {.underconstruction}
-TODO
-:::
+<!-- ::: {.underconstruction} -->
+<!-- TODO -->
+<!-- ::: -->
 

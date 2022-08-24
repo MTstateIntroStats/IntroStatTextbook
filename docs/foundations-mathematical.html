@@ -152,9 +152,9 @@ We will introduce the normal distribution in this chapter, focusing on how we ca
 </h2>
 <p>In recent chapters, we encountered several case studies.
 While they differ in the settings, in their outcomes, and in the technique we have used to analyze the data, they all have something in common: the general shape of the distribution of the statistics (called the <strong>sampling distribution</strong>). You may have noticed that the distributions were mostly symmetric and bell-shaped.</p>
-<div class="underconstruction">
-<p>Not sure why LaTex code isn’t working in definition below.</p>
-</div>
+<!-- ::: {.underconstruction} -->
+<!-- Not sure why LaTex code isn't working in definition below. -->
+<!-- ::: -->
 <div class="onebox">
 <p><strong>Sampling distribution.</strong></p>
 <p>A sampling distribution is the distribution of all possible values of a <em>sample statistic</em> from samples of a given sample size from a given population.
@@ -585,12 +585,13 @@ That is, if you notice the sample proportions go from 0.1 to 0.4, the SE can be 
 <h2>
 <span class="header-section-number">11.4</span> Martian alphabet revisited<a class="anchor" aria-label="anchor" href="#martian-alphabet-revisited"><i class="fas fa-link"></i></a>
 </h2>
-<p>::: {.underconstruction}
-Edit the following (copied from old categorical inference chapter):</p>
-<p>In Section <a href="foundations-randomization.html#Martian">9.1</a>, through simulation under the assumption that students were just guessing, we found evidence that students tend to prefer Bumba on the left. But by how much? To answer this, we need a <strong>confidence interval</strong>—an interval of plausible values for the true probability humans will select Bumba as the left letter. The width of this interval is determined by how variable sample proportions are from sample to sample. It turns out, there is a mathematical model for this variability that we will explore later in this chapter. For now, let’s take the standard deviation from our simulated sample proportions as an estimate for this variability: 0.08. Since the simulated distribution of proportions is bell-shaped, we know about 95% of sample proportions should fall within two standard deviations of the true proportion, so we can add and subtract this <strong>margin of error</strong> to our sample proportion to calculate an approximate 95% confidence interval<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;If you carry out the calculations, you’ll note that the upper bound is actually &lt;span class="math inline"&gt;\(0.89 + 0.16 = 1.05\)&lt;/span&gt;, but since a sample proportion cannot be greater than 1, we truncated the interval to 1.
-:::&lt;/p&gt;'><sup>106</sup></a>: <span class="math display">\[
-\frac{34}{38} \pm 2\times 0.08 = 0.89 \pm 0.16 = (0.73, 1)
-\]</span> Thus, based on this data, we are 95% confident that the probability a human guesses Bumba on the left is somewhere between 73% and 100%.</p>
+<!-- ::: {.underconstruction} -->
+<!-- Edit the following (copied from old categorical inference chapter): -->
+<!-- In Section \@ref(Martian), through simulation under the assumption that students were just guessing, we found evidence that students tend to prefer Bumba on the left. But by how much? To answer this, we need a **confidence interval**---an interval of plausible values for the true probability humans will select Bumba as the left letter. The width of this interval is determined by how variable sample proportions are from sample to sample. It turns out, there is a mathematical model for this variability that we will explore later in this chapter. For now, let's take the standard deviation from our simulated sample proportions as an estimate for this variability: 0.08. Since the simulated distribution of proportions is bell-shaped, we know about 95% of sample proportions should fall within two standard deviations of the true proportion, so we can add and subtract this **margin of error**\index{margin of error} to our sample proportion to calculate an approximate 95% confidence interval[^05-inference-cat-5]: $$ -->
+<!-- \frac{34}{38} \pm 2\times 0.08 = 0.89 \pm 0.16 = (0.73, 1) -->
+<!-- $$ Thus, based on this data, we are 95% confident that the probability a human guesses Bumba on the left is somewhere between 73% and 100%. -->
+<!-- [^05-inference-cat-5]: If you carry out the calculations, you'll note that the upper bound is actually $0.89 + 0.16 = 1.05$, but since a sample proportion cannot be greater than 1, we truncated the interval to 1. -->
+<!-- ::: -->
 </div>
 <div id="case-study-test-medical-consultant" class="section level2" number="11.5">
 <h2>
@@ -612,13 +613,10 @@ Edit the following (copied from old categorical inference chapter):</p>
 <h2>
 <span class="header-section-number">11.7</span> Chapter review<a class="anchor" aria-label="anchor" href="#chp11-review"><i class="fas fa-link"></i></a>
 </h2>
-<div id="summary-8" class="section level3 unnumbered">
-<h3>Summary<a class="anchor" aria-label="anchor" href="#summary-8"><i class="fas fa-link"></i></a>
-</h3>
-<div class="underconstruction">
-<p>TODO</p>
-</div>
-</div>
+<!-- ### Summary {-} -->
+<!-- ::: {.underconstruction} -->
+<!-- TODO -->
+<!-- ::: -->
 <div id="terms-9" class="section level3 unnumbered">
 <h3>Terms<a class="anchor" aria-label="anchor" href="#terms-9"><i class="fas fa-link"></i></a>
 </h3>
@@ -678,14 +676,7 @@ sampling distribution
 </td>
 </tr>
 </tbody></table></div>
-</div>
-<div id="key-ideas-8" class="section level3 unnumbered">
-<h3>Key ideas<a class="anchor" aria-label="anchor" href="#key-ideas-8"><i class="fas fa-link"></i></a>
-</h3>
-<div class="underconstruction">
-<p>TODO</p>
-</div>
-
+<!-- ### Key ideas {-} --><!-- ::: {.underconstruction} --><!-- TODO --><!-- ::: -->
 </div>
 </div>
 </div>
@@ -717,11 +708,7 @@ sampling distribution
 <li><a class="nav-link" href="#case-study-test-medical-consultant"><span class="header-section-number">11.5</span> Case study (test): Medical consultant</a></li>
 <li><a class="nav-link" href="#case-study-interval-stents"><span class="header-section-number">11.6</span> Case study (interval): Stents</a></li>
 <li>
-<a class="nav-link" href="#chp11-review"><span class="header-section-number">11.7</span> Chapter review</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#summary-8">Summary</a></li>
-<li><a class="nav-link" href="#terms-9">Terms</a></li>
-<li><a class="nav-link" href="#key-ideas-8">Key ideas</a></li>
-</ul>
+<a class="nav-link" href="#chp11-review"><span class="header-section-number">11.7</span> Chapter review</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#terms-9">Terms</a></li></ul>
 </li>
 </ul>
 

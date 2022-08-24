@@ -4,16 +4,16 @@
 
 <!-- TODO: Add vocab words to this chapter. -->
 ::: chapterintro
-TODO
+Coming soon!
 :::
 
-::: {.underconstruction}
-Divide up the content in this chapter and move across Chapters 17-19
-:::
+<!-- ::: {.underconstruction} -->
+<!-- Divide up the content in this chapter and move across Chapters 17-19 -->
+<!-- ::: -->
 
-::: {.underconstruction}
-Old content - revise as needed
-:::
+<!-- ::: {.underconstruction} -->
+<!-- Old content - revise as needed -->
+<!-- ::: -->
 
 # Inference for a single mean {#inference-one-mean}
 <!-- Old reference: #one-mean -->
@@ -1016,11 +1016,11 @@ is from the null value.
 
 ## Chapter review {#chp17-review}
 
-### Summary {-}
+<!-- ### Summary {-} -->
 
-::: {.underconstruction}
-TODO
-:::
+<!-- ::: {.underconstruction} -->
+<!-- TODO -->
+<!-- ::: -->
 
 ### Terms {-}
 
@@ -1041,10 +1041,10 @@ We introduced the following terms in the chapter. If you're not sure what some o
 </tbody>
 </table>
 
-### Key ideas {-}
+<!-- ### Key ideas {-} -->
 
-::: {.underconstruction}
-TODO
-:::
+<!-- ::: {.underconstruction} -->
+<!-- TODO -->
+<!-- ::: -->
 
 

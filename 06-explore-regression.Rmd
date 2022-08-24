@@ -863,9 +863,9 @@ Using this indicator variable, the linear model may be written as
 
 $$\widehat{price} = \beta_0 + \beta_1 \times condnew$$
 
-::: {.underconstruction}
-Clean up population model equations - add error and remove hat.
-:::
+<!-- ::: {.underconstruction} -->
+<!-- Clean up population model equations - add error and remove hat. -->
+<!-- ::: -->
 
 The parameter estimates are given in Table \@ref(tab:marioKartNewUsedRegrSummary).
 

@@ -319,9 +319,9 @@ Indeed, the larger the data set which provides evidence for your scientific clai
 
 
 
-::: {.underconstruction}
-TODO - sections below are from old Chapter 5 - go through and cut/move
-:::
+<!-- ::: {.underconstruction} -->
+<!-- TODO - sections below are from old Chapter 5 - go through and cut/move -->
+<!-- ::: -->
 
 When the null hypothesis is true, the probability of a Type 1 error is our chosen significance level, $\alpha$, which means the probability of a correct decision is $1 - \alpha$.
 
@@ -440,11 +440,11 @@ Examine Figure \@ref(fig:prac-signif). The distribution of possible sample propo
 
 ## Chapter review {#chp12-review}
 
-### Summary {-}
+<!-- ### Summary {-} -->
 
-::: {.underconstruction}
-TODO
-:::
+<!-- ::: {.underconstruction} -->
+<!-- TODO -->
+<!-- ::: -->
 
 ### Terms {-}
 
@@ -470,10 +470,10 @@ We introduced the following terms in the chapter. If you're not sure what some o
 </tbody>
 </table>
 
-### Key ideas {-}
+<!-- ### Key ideas {-} -->
 
-::: {.underconstruction}
-TODO
-:::
+<!-- ::: {.underconstruction} -->
+<!-- TODO -->
+<!-- ::: -->
 
 

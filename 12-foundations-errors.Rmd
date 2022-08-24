@@ -348,9 +348,9 @@ terms_chp_12 <- c(terms_chp_12, "power")
 ```
 
 
-::: {.underconstruction}
-TODO - sections below are from old Chapter 5 - go through and cut/move
-:::
+<!-- ::: {.underconstruction} -->
+<!-- TODO - sections below are from old Chapter 5 - go through and cut/move -->
+<!-- ::: -->
 
 When the null hypothesis is true, the probability of a Type 1 error is our chosen significance level, $\alpha$, which means the probability of a correct decision is $1 - \alpha$.
 
@@ -489,11 +489,11 @@ text(x = 0.2, y = 3, paste("power = ", round(pnorm(qnorm(.975, 0.5, s), 0.65, s,
 
 ## Chapter review {#chp12-review}
 
-### Summary {-}
+<!-- ### Summary {-} -->
 
-::: {.underconstruction}
-TODO
-:::
+<!-- ::: {.underconstruction} -->
+<!-- TODO -->
+<!-- ::: -->
 
 ### Terms {-}
 
@@ -503,10 +503,10 @@ We introduced the following terms in the chapter. If you're not sure what some o
 make_terms_table(terms_chp_12)
 ```
 
-### Key ideas {-}
+<!-- ### Key ideas {-} -->
 
-::: {.underconstruction}
-TODO
-:::
+<!-- ::: {.underconstruction} -->
+<!-- TODO -->
+<!-- ::: -->
 
 

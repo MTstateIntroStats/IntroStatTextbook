@@ -573,9 +573,9 @@ Regardless of the data structure or analysis method, the hypothesis testing fram
 :::
 
 
-::: {.underconstruction}
-Add more to this summary
-:::
+<!-- ::: {.underconstruction} -->
+<!-- Add more to this summary -->
+<!-- ::: -->
 
 ### Terms {-}
 
@@ -613,9 +613,9 @@ We introduced the following terms in the chapter. If you're not sure what some o
 
 ### Key ideas {-}
 
-::: {.underconstruction}
-Need to update this list and distribute across chapters
-:::
+<!-- ::: {.underconstruction} -->
+<!-- Need to update this list and distribute across chapters -->
+<!-- ::: -->
 
 In this chapter, we introduced statistical inference methods --- both simulation-based and theory-based --- for scenarios involving one or two categorical variables.
 

@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 16 Applications: Infer categorical | Montana State Introductory Statistics with R</title>
 <meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager">
-<meta name="description" content="TODO  Old content - revise as needed  16.1 Inference for categorical data using R and catstats  Making tables from raw data If you are collecting your own data, then your analysis starts with the...">
+<meta name="description" content="Coming soon!    16.1 Inference for categorical data using R and catstats  Making tables from raw data If you are collecting your own data, then your analysis starts with the raw data frame, with...">
 <meta name="generator" content="bookdown 0.27 with bs4_book()">
 <meta property="og:title" content="Chapter 16 Applications: Infer categorical | Montana State Introductory Statistics with R">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://mtstateintrostats.github.io/IntroStatTextbook/inference-categ-applications.html">
-<meta property="og:description" content="TODO  Old content - revise as needed  16.1 Inference for categorical data using R and catstats  Making tables from raw data If you are collecting your own data, then your analysis starts with the...">
+<meta property="og:description" content="Coming soon!    16.1 Inference for categorical data using R and catstats  Making tables from raw data If you are collecting your own data, then your analysis starts with the raw data frame, with...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 16 Applications: Infer categorical | Montana State Introductory Statistics with R">
-<meta name="twitter:description" content="TODO  Old content - revise as needed  16.1 Inference for categorical data using R and catstats  Making tables from raw data If you are collecting your own data, then your analysis starts with the...">
+<meta name="twitter:description" content="Coming soon!    16.1 Inference for categorical data using R and catstats  Making tables from raw data If you are collecting your own data, then your analysis starts with the raw data frame, with...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -134,11 +134,11 @@
 <span class="header-section-number">16</span> Applications: Infer categorical<a class="anchor" aria-label="anchor" href="#inference-categ-applications"><i class="fas fa-link"></i></a>
 </h1>
 <div class="chapterintro">
-<p>TODO</p>
+<p>Coming soon!</p>
 </div>
-<div class="underconstruction">
-<p>Old content - revise as needed</p>
-</div>
+<!-- ::: {.underconstruction} -->
+<!-- Old content - revise as needed -->
+<!-- ::: -->
 <div id="inference-for-categorical-data-using-r-and-catstats" class="section level2" number="16.1">
 <h2>
 <span class="header-section-number">16.1</span> Inference for categorical data using R and <code>catstats</code><a class="anchor" aria-label="anchor" href="#inference-for-categorical-data-using-r-and-catstats"><i class="fas fa-link"></i></a>
@@ -277,7 +277,7 @@
 <div id="theory-based-inference-for-one-proportion" class="section level3 unnumbered">
 <h3>Theory-based inference for one proportion<a class="anchor" aria-label="anchor" href="#theory-based-inference-for-one-proportion"><i class="fas fa-link"></i></a>
 </h3>
-<p>For theory-based inference, we can use the built-in R function <code><a href="https://rdrr.io/r/stats/prop.test.html">prop.test()</a></code>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;By “built-in”, we mean that it is in the R “base” library, so no packages need to be loaded.&lt;/p&gt;"><sup>149</sup></a> For a one-proportion test, we need to tell it the number of successes, the number of trials (sample size), and the null value. Using the payday loan regulation example, a call would look like this:</p>
+<p>For theory-based inference, we can use the built-in R function <code><a href="https://rdrr.io/r/stats/prop.test.html">prop.test()</a></code>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;By “built-in”, we mean that it is in the R “base” library, so no packages need to be loaded.&lt;/p&gt;"><sup>148</sup></a> For a one-proportion test, we need to tell it the number of successes, the number of trials (sample size), and the null value. Using the payday loan regulation example, a call would look like this:</p>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/prop.test.html">prop.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">422</span>,  <span class="co">#Number of successes</span></span>
 <span>          n <span class="op">=</span> <span class="fl">826</span>, <span class="co">#Number of trials</span></span>
@@ -300,9 +300,9 @@
 <p>You might have noticed that the test statistic reported in the output is <code>X-squared</code> rather than our Z-statistic. This test statistic is equal to our Z-statistic squared, and the p-value is found from what is called a <span class="math inline">\(\chi^2\)</span> distribution (pronounced “kai squared”). To get the Z-statistic from the <code>X-squared</code> statistic, take the positive square root if <span class="math inline">\(\hat{p} &gt; \pi_0\)</span>, and the negative square root if <span class="math inline">\(\hat{p} &lt; \pi_0\)</span>.</p>
 </div>
 <div class="guidedpractice">
-<p>Use the R output to find the value of the Z-statistic.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Since our sample proportion &lt;span class="math inline"&gt;\(\hat{p} = 0.511\)&lt;/span&gt; is larger than the null value &lt;span class="math inline"&gt;\(\pi_0 = 0.5\)&lt;/span&gt;, we know our Z-statistic will be positive. Thus, &lt;span class="math inline"&gt;\(Z = +\sqrt{0.34988} = 0.592\)&lt;/span&gt;. Check these values using the formula for the Z-statistic presented in Section &lt;a href="inference-one-prop.html#theory-prop"&gt;14.3&lt;/a&gt;.&lt;/p&gt;'><sup>150</sup></a></p>
+<p>Use the R output to find the value of the Z-statistic.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Since our sample proportion &lt;span class="math inline"&gt;\(\hat{p} = 0.511\)&lt;/span&gt; is larger than the null value &lt;span class="math inline"&gt;\(\pi_0 = 0.5\)&lt;/span&gt;, we know our Z-statistic will be positive. Thus, &lt;span class="math inline"&gt;\(Z = +\sqrt{0.34988} = 0.592\)&lt;/span&gt;. Check these values using the formula for the Z-statistic presented in Section &lt;a href="inference-one-prop.html#theory-prop"&gt;14.3&lt;/a&gt;.&lt;/p&gt;'><sup>149</sup></a></p>
 </div>
-<p>The <code><a href="https://rdrr.io/r/stats/prop.test.html">prop.test()</a></code> function will also produce the theory-based confidence interval, but to get the correct confidence interval, <strong>we need to run the function with a two-sided alternative</strong>:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;If you run &lt;code&gt;prop.test&lt;/code&gt; with a one-sided alternative (&lt;code&gt;"greater"&lt;/code&gt; or &lt;code&gt;"less"&lt;/code&gt;), then R will report what is called a “one-sided confidence interval”, where one of the endpoints is either 0 (for a “less” alternative) or 1 (for a “greater” alternative). This is equivalent to only producing an upper bound or a lower bound, respectively, for the parameter of interest.&lt;/p&gt;'><sup>151</sup></a></p>
+<p>The <code><a href="https://rdrr.io/r/stats/prop.test.html">prop.test()</a></code> function will also produce the theory-based confidence interval, but to get the correct confidence interval, <strong>we need to run the function with a two-sided alternative</strong>:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;If you run &lt;code&gt;prop.test&lt;/code&gt; with a one-sided alternative (&lt;code&gt;"greater"&lt;/code&gt; or &lt;code&gt;"less"&lt;/code&gt;), then R will report what is called a “one-sided confidence interval”, where one of the endpoints is either 0 (for a “less” alternative) or 1 (for a “greater” alternative). This is equivalent to only producing an upper bound or a lower bound, respectively, for the parameter of interest.&lt;/p&gt;'><sup>150</sup></a></p>
 <div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/prop.test.html">prop.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">422</span>,  <span class="co">#Number of successes</span></span>
 <span>          n <span class="op">=</span> <span class="fl">826</span>, <span class="co">#Number of trials</span></span>
@@ -498,14 +498,14 @@
 
 
 <div class="chapterintro">
-<p>TODO</p>
+<p>Coming soon!</p>
 </div>
-<div class="underconstruction">
-<p>Divide up the content in this chapter and move across Chapters 17-19</p>
-</div>
-<div class="underconstruction">
-<p>Old content - revise as needed</p>
-</div>
+<!-- ::: {.underconstruction} -->
+<!-- Divide up the content in this chapter and move across Chapters 17-19 -->
+<!-- ::: -->
+<!-- ::: {.underconstruction} -->
+<!-- Old content - revise as needed -->
+<!-- ::: -->
 <div class="chapter-nav">
 <div class="prev"><a href="inference-two-props.html"><span class="header-section-number">15</span> Inference for comparing two proportions</a></div>
 <div class="next"><a href="inference-one-mean.html"><span class="header-section-number">17</span> Inference for a single mean</a></div>

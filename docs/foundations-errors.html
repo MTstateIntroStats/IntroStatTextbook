@@ -223,7 +223,7 @@ Since we rejected the null hypothesis in the <a href="foundations-randomization.
 <p>If the court makes a Type 1 Error, this means the defendant is innocent (<span class="math inline">\(H_0\)</span> true) but wrongly convicted. A Type 2 Error means the court failed to reject <span class="math inline">\(H_0\)</span> (i.e., failed to convict the person) when they were in fact guilty (<span class="math inline">\(H_A\)</span> true).</p>
 </div>
 <div class="guidedpractice">
-<p>Consider the Martian alphabet study where we concluded students were more likely to say that Bumba was the figure on the left. What would a Type 1 Error represent in this context?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Making a Type 1 Error in this context would mean that students are equally likely to associate Bumba with the figure on the left as the figure on the right, despite the strong evidence (the data suggesting otherwise) found in the experiment. Notice that this does &lt;em&gt;not&lt;/em&gt; necessarily mean something was wrong with the data or that we made a computational mistake. Sometimes data simply point us to the wrong conclusion, which is why scientific studies are often repeated to check initial findings.&lt;/p&gt;"><sup>107</sup></a></p>
+<p>Consider the Martian alphabet study where we concluded students were more likely to say that Bumba was the figure on the left. What would a Type 1 Error represent in this context?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Making a Type 1 Error in this context would mean that students are equally likely to associate Bumba with the figure on the left as the figure on the right, despite the strong evidence (the data suggesting otherwise) found in the experiment. Notice that this does &lt;em&gt;not&lt;/em&gt; necessarily mean something was wrong with the data or that we made a computational mistake. Sometimes data simply point us to the wrong conclusion, which is why scientific studies are often repeated to check initial findings.&lt;/p&gt;"><sup>106</sup></a></p>
 </div>
 <div class="workedexample">
 <p>How could we reduce the Type 1 Error rate in US courts? What influence would this have on the Type 2 Error rate?</p>
@@ -241,7 +241,7 @@ However, this would also make it more difficult to convict the people who are ac
 <p>How could we reduce the Type 2 Error rate in US courts?
 What influence would this have on the Type 1 Error rate?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;To lower the Type 2 Error rate, we want to convict more guilty people.
 We could lower the standards for conviction from “beyond a reasonable doubt” to “beyond a little doubt”.
-Lowering the bar for guilt will also result in more wrongful convictions, raising the Type 1 Error rate.&lt;/p&gt;"><sup>108</sup></a></p>
+Lowering the bar for guilt will also result in more wrongful convictions, raising the Type 1 Error rate.&lt;/p&gt;"><sup>107</sup></a></p>
 </div>
 <p>The example and guided practice above provide an important lesson: if we reduce how often we make one type of error, we generally make more of the other type.</p>
 </div>
@@ -332,7 +332,7 @@ Figure 12.2: The null distribution for <span class="math inline">\(\hat{p}\)</sp
 </div>
 <div class="onebox">
 <p><strong>Computing a p-value for a two-sided test.</strong></p>
-<p>If your null distribution is symmetric, first compute the p-value for one tail of the distribution, then double that value to get the two-sided p-value. That’s it!<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;If the null distribution is not symmetric, then the computer will have to count the proportions in each tail separately, since the two tail proportions may differ.&lt;/p&gt;"><sup>109</sup></a></p>
+<p>If your null distribution is symmetric, first compute the p-value for one tail of the distribution, then double that value to get the two-sided p-value. That’s it!<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;If the null distribution is not symmetric, then the computer will have to count the proportions in each tail separately, since the two tail proportions may differ.&lt;/p&gt;"><sup>108</sup></a></p>
 </div>
 <p>Generally, to find a two-sided p-value we double the single tail area, which remains a reasonable approach even when the sampling distribution is asymmetric. However, the approach can result in p-values larger than 1 when the point estimate is very near the mean in the null distribution; in such cases, we write that the p-value is 1. Also, very large p-values computed in this way (e.g., 0.85), may also be slightly inflated. Typically, we do not worry too much about the precision of very large p-values because they lead to the same analysis conclusion, even if the value is slightly off.</p>
 </div>
@@ -396,9 +396,9 @@ The better your science is (i.e., the better the medical treatment), the larger 
 <p>Not only does your science need to be solid, but you also need to have evidence (i.e., data) that shows the effect.
 A few observations (e.g., <span class="math inline">\(n = 2)\)</span> is unlikely to be convincing because of well known ideas of natural variability.
 Indeed, the larger the data set which provides evidence for your scientific claim, the more likely you are to convince the community that your idea is correct.</p>
-<div class="underconstruction">
-<p>TODO - sections below are from old Chapter 5 - go through and cut/move</p>
-</div>
+<!-- ::: {.underconstruction} -->
+<!-- TODO - sections below are from old Chapter 5 - go through and cut/move -->
+<!-- ::: -->
 <p>When the null hypothesis is true, the probability of a Type 1 error is our chosen significance level, <span class="math inline">\(\alpha\)</span>, which means the probability of a correct decision is <span class="math inline">\(1 - \alpha\)</span>.</p>
 <p>If an alternative hypothesis is true, the probability of a Type 2 error, which we denote by <span class="math inline">\(\beta\)</span>, depends on several components:</p>
 <ul>
@@ -475,7 +475,7 @@ Figure 12.6: Black curve: sampling distribution of sample proportions from sampl
 </div>
 <!-- Someday - annotate these plots better -->
 <div class="guidedpractice">
-<p>If p-values can be made arbitrarily small with large sample sizes, what might tend to happen with small sample sizes? Would small sample sizes be more likely to give practically important results that are not statistically significant? or statistically significant results that are not practically important?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Since hypothesis tests with small sample sizes typically have low power, small sample sizes can result in practically important results that are not statistically significant.&lt;/p&gt;"><sup>110</sup></a></p>
+<p>If p-values can be made arbitrarily small with large sample sizes, what might tend to happen with small sample sizes? Would small sample sizes be more likely to give practically important results that are not statistically significant? or statistically significant results that are not practically important?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Since hypothesis tests with small sample sizes typically have low power, small sample sizes can result in practically important results that are not statistically significant.&lt;/p&gt;"><sup>109</sup></a></p>
 </div>
 <p>Consider the opposite scenario – small sample sizes with a meaningful difference. Suppose again that you would like to determine if a majority of a population support a new ballot measure. However, you only have the time and money to survey 20 people in the community. Unknown to you, 65% of the population support the measure.</p>
 <p>Examine Figure <a href="foundations-errors.html#fig:prac-signif">12.7</a>. The distribution of possible sample proportions who support the new ballot measure in samples of size <span class="math inline">\(n = 20\)</span> when 65% of the population supports the measure is represented by the black normal curve. The dotted red normal curve is the null distribution of sample proportions for <span class="math inline">\(H_0: \pi = 0.5\)</span>. Even though 0.65 is quite a bit higher than 0.50, there is still a lot of overlap between the two distributions due to the small sample size. The shaded blue area represents the power of the test of <span class="math inline">\(H_0: \pi = 0.5\)</span> versus <span class="math inline">\(H_A: \pi &gt; 0.5\)</span> when <span class="math inline">\(\alpha = 0.05\)</span> – only 0.29! That is, even though 65% of the population supports the measure (much higher than 50%), we only have a 29% chance of detecting that difference with our small sample size.</p>
@@ -495,13 +495,10 @@ Figure 12.7: Black curve: approximate sampling distribution of sample proportion
 <h2>
 <span class="header-section-number">12.7</span> Chapter review<a class="anchor" aria-label="anchor" href="#chp12-review"><i class="fas fa-link"></i></a>
 </h2>
-<div id="summary-9" class="section level3 unnumbered">
-<h3>Summary<a class="anchor" aria-label="anchor" href="#summary-9"><i class="fas fa-link"></i></a>
-</h3>
-<div class="underconstruction">
-<p>TODO</p>
-</div>
-</div>
+<!-- ### Summary {-} -->
+<!-- ::: {.underconstruction} -->
+<!-- TODO -->
+<!-- ::: -->
 <div id="terms-10" class="section level3 unnumbered">
 <h3>Terms<a class="anchor" aria-label="anchor" href="#terms-10"><i class="fas fa-link"></i></a>
 </h3>
@@ -541,14 +538,7 @@ Type 2 Error
 </td>
 </tr>
 </tbody></table></div>
-</div>
-<div id="key-ideas-9" class="section level3 unnumbered">
-<h3>Key ideas<a class="anchor" aria-label="anchor" href="#key-ideas-9"><i class="fas fa-link"></i></a>
-</h3>
-<div class="underconstruction">
-<p>TODO</p>
-</div>
-
+<!-- ### Key ideas {-} --><!-- ::: {.underconstruction} --><!-- TODO --><!-- ::: -->
 </div>
 </div>
 </div>
@@ -567,11 +557,7 @@ Type 2 Error
 <li><a class="nav-link" href="#power"><span class="header-section-number">12.5</span> Power</a></li>
 <li><a class="nav-link" href="#statistical-significance-vs.-practical-importance"><span class="header-section-number">12.6</span> Statistical significance vs. practical importance</a></li>
 <li>
-<a class="nav-link" href="#chp12-review"><span class="header-section-number">12.7</span> Chapter review</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#summary-9">Summary</a></li>
-<li><a class="nav-link" href="#terms-10">Terms</a></li>
-<li><a class="nav-link" href="#key-ideas-9">Key ideas</a></li>
-</ul>
+<a class="nav-link" href="#chp12-review"><span class="header-section-number">12.7</span> Chapter review</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#terms-10">Terms</a></li></ul>
 </li>
 </ul>
 

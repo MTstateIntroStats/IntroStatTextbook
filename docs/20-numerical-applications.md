@@ -3,13 +3,13 @@
 
 
 ::: chapterintro
-TODO
+Coming soon!
 :::
 
 
-::: {.underconstruction}
-Old content - revise as needed
-:::
+<!-- ::: {.underconstruction} -->
+<!-- Old content - revise as needed -->
+<!-- ::: -->
 
 <!-- ```{block2, type="todo", echo=TRUE} -->
 <!-- Section on doing inference for categorical data in R. -->

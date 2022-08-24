@@ -5,7 +5,7 @@
 # Probability with tables {#probability}
 
 ::: {.chapterintro}
-TODO
+Coming soon!
 :::
 
 ## Defining probability
@@ -139,11 +139,11 @@ Why did this counter-intuitive result occur? With such high sensitivity and spec
 
 ## Chapter review {#chp23-review}
 
-### Summary {-}
+<!-- ### Summary {-} -->
 
-::: {.underconstruction}
-TODO
-:::
+<!-- ::: {.underconstruction} -->
+<!-- TODO -->
+<!-- ::: -->
 
 ### Terms {-}
 

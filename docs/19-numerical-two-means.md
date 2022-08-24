@@ -748,11 +748,11 @@ qt(0.975, df = 8)
 
 ## Chapter review {#chp19-review}
 
-### Summary {-}
+<!-- ### Summary {-} -->
 
-::: {.underconstruction}
-TODO
-:::
+<!-- ::: {.underconstruction} -->
+<!-- TODO -->
+<!-- ::: -->
 
 ### Summary of t-procedures {-}
 
@@ -874,9 +874,9 @@ We introduced the following terms in the chapter. If you're not sure what some o
 </tbody>
 </table>
 
-### Key ideas {-}
+<!-- ### Key ideas {-} -->
 
-::: {.underconstruction}
-TODO
-:::
+<!-- ::: {.underconstruction} -->
+<!-- TODO -->
+<!-- ::: -->
 

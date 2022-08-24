@@ -3,13 +3,13 @@
 
 
 ::: chapterintro
-TODO
+Coming soon!
 :::
 
 
-::: {.underconstruction}
-Old content - revise as needed
-:::
+<!-- ::: {.underconstruction} -->
+<!-- Old content - revise as needed -->
+<!-- ::: -->
 
 
 ## Inference for categorical data using R and `catstats`

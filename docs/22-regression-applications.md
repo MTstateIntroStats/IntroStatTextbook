@@ -5,12 +5,12 @@
 <!-- TODO: Add vocab words to this chapter. -->
 
 ::: {.chapterintro}
-TODO
+Coming soon!
 :::
 
-::: {.underconstruction}
-Old content - revise as needed
-:::
+<!-- ::: {.underconstruction} -->
+<!-- Old content - revise as needed -->
+<!-- ::: -->
 
 ## Inference for regression using R and `catstats`
 

@@ -5,12 +5,12 @@
 # Inference for a single proportion {#inference-one-prop}
 
 ::: {.chapterintro}
-TODO
+Coming soon!
 :::
 
-::: {.underconstruction}
-Old content - revise as needed
-:::
+<!-- ::: {.underconstruction} -->
+<!-- Old content - revise as needed -->
+<!-- ::: -->
 
 Below we summarize the notation used throughout this chapter.
 
@@ -30,9 +30,9 @@ A single proportion is used to summarize data when we measured a single categori
 
 ## Simulation-based test for $H_0: \pi = \pi_0$ {#one-prop-null-boot}
 
-::: {.underconstruction}
-Need revise this section - medical consultant case study introduced in Chapter 10. General steps of a hypothesis test introduced in Summary of Ch. 9. Move here?
-:::
+<!-- ::: {.underconstruction} -->
+<!-- Need revise this section - medical consultant case study introduced in Chapter 10. General steps of a hypothesis test introduced in Summary of Ch. 9. Move here? -->
+<!-- ::: -->
 
 \index{data!medical consultant|(} At the end of Chapter \@ref(foundations-randomization), we introduced the general steps of a hypothesis test:
 
@@ -181,9 +181,9 @@ Does the conclusion in the previous Guided Practice imply there is no real assoc
 
 [^05-inference-cat-39]: No. It might be that the consultant's work is associated with a reduction but that there isn't enough data to convincingly show this connection.
 
-::: {.underconstruction}
-Add scope of inference
-:::
+<!-- ::: {.underconstruction} -->
+<!-- Add scope of inference -->
+<!-- ::: -->
 
 ```{=html}
 <!--
@@ -685,11 +685,11 @@ When the success-failure condition isn't met for a hypothesis test, we can simul
 
 ## Chapter review {#chp14-review}
 
-### Summary {-}
+<!-- ### Summary {-} -->
 
-::: {.underconstruction}
-TODO
-:::
+<!-- ::: {.underconstruction} -->
+<!-- TODO -->
+<!-- ::: -->
 
 ### Terms {-}
 
@@ -715,9 +715,9 @@ We introduced the following terms in the chapter. If you're not sure what some o
 </tbody>
 </table>
 
-### Key ideas {-}
+<!-- ### Key ideas {-} -->
 
-::: {.underconstruction}
-TODO
-:::
+<!-- ::: {.underconstruction} -->
+<!-- TODO -->
+<!-- ::: -->
 

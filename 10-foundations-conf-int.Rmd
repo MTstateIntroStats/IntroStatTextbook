@@ -278,9 +278,9 @@ Call the 2.5% bootstrapped proportion value "lower", and call the 97.5% bootstra
 The 95% confidence interval is given by: (lower, upper)
 :::
 
-::: {.underconstruction}
-Need to update these two section references once they're ready:
-:::
+<!-- ::: {.underconstruction} -->
+<!-- Need to update these two section references once they're ready: -->
+<!-- ::: -->
 
 In Section \@ref(one-prop-null-boot) we will discuss different percentages for the confidence level (e.g., 90% confidence interval or 99% confidence interval).
 
@@ -288,17 +288,17 @@ Section \@ref(one-prop-null-boot) also provides a longer discussion on what "95%
 
 ## Case study: Medical consultant revisited {#case-study-med-consult-test}
 
-::: {.underconstruction}
-Add to the medical consultant example here to demonstrate a shifted bootstrap distribution in order to simulate a null distribution.
-:::
+<!-- ::: {.underconstruction} -->
+<!-- Add to the medical consultant example here to demonstrate a shifted bootstrap distribution in order to simulate a null distribution. -->
+<!-- ::: -->
 
 ## Chapter review {#chp10-review}
 
-### Summary {-}
+<!-- ### Summary {-} -->
 
-::: {.underconstruction}
-TODO
-:::
+<!-- ::: {.underconstruction} -->
+<!-- TODO -->
+<!-- ::: -->
 
 ### Terms {-}
 
@@ -308,9 +308,9 @@ We introduced the following terms in the chapter. If you're not sure what some o
 make_terms_table(terms_chp_10)
 ```
 
-### Key ideas {-}
+<!-- ### Key ideas {-} -->
 
-::: {.underconstruction}
-TODO
-:::
+<!-- ::: {.underconstruction} -->
+<!-- TODO -->
+<!-- ::: -->
 

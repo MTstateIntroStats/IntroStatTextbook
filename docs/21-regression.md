@@ -14,19 +14,19 @@ We now bring together ideas of inferential analyses with the descriptive models 
 Many of the inferential ideas are remarkably similar to those covered in previous chapters.  The technical conditions for simple linear regression are typically assessed graphically, although independence of observations continues to be of utmost importance.  
 :::
 
-::: {.underconstruction}
-Old content - revise as needed
-:::
+<!-- ::: {.underconstruction} -->
+<!-- Old content - revise as needed -->
+<!-- ::: -->
 
 In this chapter, we bring together the inferential methods used to make claims about a population from information in a sample and the modeling ideas seen in Chapter \@ref(explore-regression). 
 In particular, we will conduct inference on the slope of a least squares regression line to test whether or not there is a relationship between two quantitative variables. 
 Additionally, we will build confidence intervals which quantify the slope of the linear regression line.
 
-Below we summarize the notation used throughout this chapter.
+<!-- Below we summarize the notation used throughout this chapter. -->
 
-::: {.underconstruction}
-Add list of notation.
-:::
+<!-- ::: {.underconstruction} -->
+<!-- Add list of notation. -->
+<!-- ::: -->
 
 ## Case study: Sandwich store
 
@@ -673,11 +673,11 @@ When the equal variability condition is violated and a theory-based analysis (e.
 
 ## Chapter review {#chp21-review}
 
-### Summary {-}
+<!-- ### Summary {-} -->
 
-::: {.underconstruction}
-TODO
-:::
+<!-- ::: {.underconstruction} -->
+<!-- TODO -->
+<!-- ::: -->
 
 ### Terms {-}
 
@@ -693,9 +693,9 @@ We introduced the following terms in the chapter. If you're not sure what some o
 </tbody>
 </table>
 
-### Key ideas {-}
+<!-- ### Key ideas {-} -->
 
-::: {.underconstruction}
-TODO
-:::
+<!-- ::: {.underconstruction} -->
+<!-- TODO -->
+<!-- ::: -->
 

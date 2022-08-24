@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 14 Inference for a single proportion | Montana State Introductory Statistics with R</title>
 <meta name="author" content="Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager">
-<meta name="description" content="TODO  Old content - revise as needed Below we summarize the notation used throughout this chapter. Notation. \(n\) = sample size (number of observational units in the data set) \(\hat{p}\) =...">
+<meta name="description" content="Coming soon!   Below we summarize the notation used throughout this chapter. Notation. \(n\) = sample size (number of observational units in the data set) \(\hat{p}\) = sample proportion (number...">
 <meta name="generator" content="bookdown 0.27 with bs4_book()">
 <meta property="og:title" content="Chapter 14 Inference for a single proportion | Montana State Introductory Statistics with R">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://mtstateintrostats.github.io/IntroStatTextbook/inference-one-prop.html">
-<meta property="og:description" content="TODO  Old content - revise as needed Below we summarize the notation used throughout this chapter. Notation. \(n\) = sample size (number of observational units in the data set) \(\hat{p}\) =...">
+<meta property="og:description" content="Coming soon!   Below we summarize the notation used throughout this chapter. Notation. \(n\) = sample size (number of observational units in the data set) \(\hat{p}\) = sample proportion (number...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 14 Inference for a single proportion | Montana State Introductory Statistics with R">
-<meta name="twitter:description" content="TODO  Old content - revise as needed Below we summarize the notation used throughout this chapter. Notation. \(n\) = sample size (number of observational units in the data set) \(\hat{p}\) =...">
+<meta name="twitter:description" content="Coming soon!   Below we summarize the notation used throughout this chapter. Notation. \(n\) = sample size (number of observational units in the data set) \(\hat{p}\) = sample proportion (number...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -134,11 +134,11 @@
 <span class="header-section-number">14</span> Inference for a single proportion<a class="anchor" aria-label="anchor" href="#inference-one-prop"><i class="fas fa-link"></i></a>
 </h1>
 <div class="chapterintro">
-<p>TODO</p>
+<p>Coming soon!</p>
 </div>
-<div class="underconstruction">
-<p>Old content - revise as needed</p>
-</div>
+<!-- ::: {.underconstruction} -->
+<!-- Old content - revise as needed -->
+<!-- ::: -->
 <p>Below we summarize the notation used throughout this chapter.</p>
 <div class="onebox">
 <p><strong>Notation</strong>.</p>
@@ -148,18 +148,18 @@
 <li>
 <span class="math inline">\(\hat{p}\)</span> = sample proportion (number of “successes” divided by the sample size)</li>
 <li>
-<span class="math inline">\(\pi\)</span> = population proportion<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;When you see &lt;span class="math inline"&gt;\(\pi\)&lt;/span&gt; in this textbook, it will always symbolize a (typically unknown) population proportion, not the value 3.14….&lt;/p&gt;'><sup>111</sup></a>
+<span class="math inline">\(\pi\)</span> = population proportion<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;When you see &lt;span class="math inline"&gt;\(\pi\)&lt;/span&gt; in this textbook, it will always symbolize a (typically unknown) population proportion, not the value 3.14….&lt;/p&gt;'><sup>110</sup></a>
 </li>
 </ul>
 </div>
-<p>A single proportion is used to summarize data when we measured a single categorical variable on each observational unit—the single variable is measured as either a success or failure (e.g., “surgical complication” vs. “no surgical complication”)<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The terms “success” and “failure” may not actually represent outcomes we view as successful or not, but it is the typical generic way to referring to the possible outcomes of a binary variable. The “success” is whatever we count when calculating our sample proportion.&lt;/p&gt;"><sup>112</sup></a>.</p>
+<p>A single proportion is used to summarize data when we measured a single categorical variable on each observational unit—the single variable is measured as either a success or failure (e.g., “surgical complication” vs. “no surgical complication”)<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The terms “success” and “failure” may not actually represent outcomes we view as successful or not, but it is the typical generic way to referring to the possible outcomes of a binary variable. The “success” is whatever we count when calculating our sample proportion.&lt;/p&gt;"><sup>111</sup></a>.</p>
 <div id="one-prop-null-boot" class="section level2" number="14.1">
 <h2>
 <span class="header-section-number">14.1</span> Simulation-based test for <span class="math inline">\(H_0: \pi = \pi_0\)</span><a class="anchor" aria-label="anchor" href="#one-prop-null-boot"><i class="fas fa-link"></i></a>
 </h2>
-<div class="underconstruction">
-<p>Need revise this section - medical consultant case study introduced in Chapter 10. General steps of a hypothesis test introduced in Summary of Ch. 9. Move here?</p>
-</div>
+<!-- ::: {.underconstruction} -->
+<!-- Need revise this section - medical consultant case study introduced in Chapter 10. General steps of a hypothesis test introduced in Summary of Ch. 9. Move here? -->
+<!-- ::: -->
 <p> At the end of Chapter <a href="foundations-randomization.html#foundations-randomization">9</a>, we introduced the general steps of a hypothesis test:</p>
 <div class="onebox">
 <p><strong>General steps of a hypothesis test.</strong> Every hypothesis test follows these same general steps:</p>
@@ -182,7 +182,7 @@
 <div id="steps-1-and-2-hypotheses-and-test-statistic" class="section level3 unnumbered">
 <h3>Steps 1 and 2: Hypotheses and test statistic<a class="anchor" aria-label="anchor" href="#steps-1-and-2-hypotheses-and-test-statistic"><i class="fas fa-link"></i></a>
 </h3>
-<p>Regardless of if we use simulation-based methods or theory-based methods, the first two steps of a hypothesis test start out the same: setting up hypotheses and summarizing data with a test statistic. We will let <span class="math inline">\(\pi\)</span> represent the true complication rate for liver donors working with this consultant. This “true” complication probability is called the <strong>parameter</strong> of interest<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Parameters were first introduced in Section &lt;a href="explore-numerical.html#dotplots"&gt;5.2&lt;/a&gt;&lt;/p&gt;'><sup>113</sup></a>. The sample proportion for the complication rate is 3 complications divided by the 62 surgeries the consultant has worked on: <span class="math inline">\(\hat{p} = 3/62 = 0.048\)</span>. Since this value is estimated from sample data, it is called a <strong>statistic</strong>. The statistic <span class="math inline">\(\hat{p}\)</span> is also our point estimate, or “best guess,” for <span class="math inline">\(\pi\)</span>, and we will use is as our <strong>test statistic</strong>.</p>
+<p>Regardless of if we use simulation-based methods or theory-based methods, the first two steps of a hypothesis test start out the same: setting up hypotheses and summarizing data with a test statistic. We will let <span class="math inline">\(\pi\)</span> represent the true complication rate for liver donors working with this consultant. This “true” complication probability is called the <strong>parameter</strong> of interest<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Parameters were first introduced in Section &lt;a href="explore-numerical.html#dotplots"&gt;5.2&lt;/a&gt;&lt;/p&gt;'><sup>112</sup></a>. The sample proportion for the complication rate is 3 complications divided by the 62 surgeries the consultant has worked on: <span class="math inline">\(\hat{p} = 3/62 = 0.048\)</span>. Since this value is estimated from sample data, it is called a <strong>statistic</strong>. The statistic <span class="math inline">\(\hat{p}\)</span> is also our point estimate, or “best guess,” for <span class="math inline">\(\pi\)</span>, and we will use is as our <strong>test statistic</strong>.</p>
 <div class="onebox">
 <p><strong>Parameters and statistics.</strong></p>
 <p>A <strong>parameter</strong> is the “true” value of interest. We typically estimate the parameter using a <strong>statistic</strong> from a sample of data. When a statistic is used as an estimate of a parameter, it is called a <strong>point estimate</strong>.</p>
@@ -217,7 +217,7 @@
 <p><strong>Null value of a hypothesis test.</strong></p>
 <p>The <strong>null value</strong> is the reference value for the parameter in <span class="math inline">\(H_0\)</span>, and it is sometimes represented with the parameter’s label with a subscript 0 (or “null”), e.g., <span class="math inline">\(\pi_0\)</span> (just like <span class="math inline">\(H_0\)</span>).</p>
 </div>
-<p>The deviation of the sample statistic from the null hypothesized parameter is usually quantified with a p-value<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Now would be a good time to review the definition of a p-value in Section &lt;a href="foundations-randomization.html#HypothesisTesting"&gt;9.3&lt;/a&gt;!&lt;/p&gt;'><sup>114</sup></a>. The p-value is computed based on the null distribution, which is the distribution of the test statistic if the null hypothesis is true. Supposing the null hypothesis is true, we can compute the p-value by identifying the chance of observing a test statistic that favors the alternative hypothesis at least as strongly as the observed test statistic.</p>
+<p>The deviation of the sample statistic from the null hypothesized parameter is usually quantified with a p-value<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Now would be a good time to review the definition of a p-value in Section &lt;a href="foundations-randomization.html#HypothesisTesting"&gt;9.3&lt;/a&gt;!&lt;/p&gt;'><sup>113</sup></a>. The p-value is computed based on the null distribution, which is the distribution of the test statistic if the null hypothesis is true. Supposing the null hypothesis is true, we can compute the p-value by identifying the chance of observing a test statistic that favors the alternative hypothesis at least as strongly as the observed test statistic.</p>
 <div class="onebox">
 <p><strong>Null distribution.</strong></p>
 <p>The <strong>null distribution</strong> of a test statistic is the sampling distribution of that statistic <em>under the assumption of the null hypothesis</em>. It describes how that statistic would vary from sample to sample, if the null hypothesis were true.</p>
@@ -227,7 +227,7 @@
 <p>Under the null hypothesis, 10% of liver donors have complications during or after surgery. Suppose this rate was really no different for the consultant’s clients (for <em>all</em> the consultant’s clients, not just the 62 previously measured). If this was the case, we could <em>simulate</em> 62 clients to get a sample proportion for the complication rate from the null distribution.</p>
 <p>This is a similar scenario to the one we encountered in Section <a href="foundations-randomization.html#Martian">9.1</a>, with one important difference—the null value is 0.10, not 0.50. Thus, flipping a coin to simulate whether a client had complications would not be simulating under the correct null hypothesis.</p>
 <div class="guidedpractice">
-<p>What physical object could you use to simulate a random sample of 62 clients who had a 10% chance of complications? How would you use this object?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;One option would be to use a spinner with 10% shaded red, and the rest shaded green. Each spin of the spinner would represent one client. Spin the spinner 62 times and count the number of times the spinner lands on red. The proportion of times the spinner lands on red represents a simulated &lt;span class="math inline"&gt;\(\hat{p}\)&lt;/span&gt; under the assumption that &lt;span class="math inline"&gt;\(\pi = 0.10\)&lt;/span&gt;. Other objects include: a bag of marbles with 10% red marbles and 90% white marbles, or 10 cards where 1 is red and 9 are white. Sampling 62 times with replacement from these collections would simulate one sample of clients.&lt;/p&gt;'><sup>115</sup></a></p>
+<p>What physical object could you use to simulate a random sample of 62 clients who had a 10% chance of complications? How would you use this object?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;One option would be to use a spinner with 10% shaded red, and the rest shaded green. Each spin of the spinner would represent one client. Spin the spinner 62 times and count the number of times the spinner lands on red. The proportion of times the spinner lands on red represents a simulated &lt;span class="math inline"&gt;\(\hat{p}\)&lt;/span&gt; under the assumption that &lt;span class="math inline"&gt;\(\pi = 0.10\)&lt;/span&gt;. Other objects include: a bag of marbles with 10% red marbles and 90% white marbles, or 10 cards where 1 is red and 9 are white. Sampling 62 times with replacement from these collections would simulate one sample of clients.&lt;/p&gt;'><sup>114</sup></a></p>
 </div>
 <p>Assuming the true complication rate for the consultant’s clients is 10%, each client can be simulated using a bag of marbles with 10% red marbles and 90% white marbles. Sampling a marble from the bag (with 10% red marbles) is one way of simulating whether a patient has a complication <em>if the true complication rate is 10%</em> for the data. If we select 62 marbles and then compute the proportion of patients with complications in the simulation, <span class="math inline">\(\hat{p}_{sim}\)</span>, then the resulting sample proportion is calculated exactly from a sample from the null distribution.</p>
 <p>An undergraduate student was paid $2 to complete this simulation. There were 5 simulated cases with a complication and 57 simulated cases without a complication, i.e., <span class="math inline">\(\hat{p}_{sim} = 5/62 = 0.081\)</span>.</p>
@@ -252,15 +252,15 @@ Figure 14.1: The null distribution for <span class="math inline">\(\hat{p}\)</sp
 <h3>Step 5: Conclusion and scope of inference<a class="anchor" aria-label="anchor" href="#step-5-conclusion-and-scope-of-inference"><i class="fas fa-link"></i></a>
 </h3>
 <div class="guidedpractice">
-<p>Because the estimated p-value is 0.1222, which is not small, we have little to no evidence against the null hypothesis. Explain what this means in plain language in the context of the problem.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;There isn’t sufficiently strong evidence to support the claim that fewer than 10% of the consultant’s clients experience complications. That is, there isn’t sufficiently strong evidence to support an association between the consultant’s work and fewer surgery complications.&lt;/p&gt;"><sup>116</sup></a></p>
+<p>Because the estimated p-value is 0.1222, which is not small, we have little to no evidence against the null hypothesis. Explain what this means in plain language in the context of the problem.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;There isn’t sufficiently strong evidence to support the claim that fewer than 10% of the consultant’s clients experience complications. That is, there isn’t sufficiently strong evidence to support an association between the consultant’s work and fewer surgery complications.&lt;/p&gt;"><sup>115</sup></a></p>
 </div>
 <p></p>
 <div class="guidedpractice">
-<p>Does the conclusion in the previous Guided Practice imply there is no real association between the surgical consultant’s work and the risk of complications? Explain.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;No. It might be that the consultant’s work is associated with a reduction but that there isn’t enough data to convincingly show this connection.&lt;/p&gt;"><sup>117</sup></a></p>
+<p>Does the conclusion in the previous Guided Practice imply there is no real association between the surgical consultant’s work and the risk of complications? Explain.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;No. It might be that the consultant’s work is associated with a reduction but that there isn’t enough data to convincingly show this connection.&lt;/p&gt;"><sup>116</sup></a></p>
 </div>
-<div class="underconstruction">
-<p>Add scope of inference</p>
-</div>
+<!-- ::: {.underconstruction} -->
+<!-- Add scope of inference -->
+<!-- ::: -->
 <!--
 Add this to an Appendix someday!
 
@@ -306,7 +306,7 @@ If it were plotted, the exact null distribution would look almost identical to t
 <hr>
 <p>No! Though our decision was to fail to reject the null hypothesis, this does not mean we have evidence <em>for</em> the null hypothesis—we cannot “accept” the null. The sample proportion was <span class="math inline">\(\hat{p} = 3/62 = 0.048\)</span>, which is our point estimate—or “best guess”—of <span class="math inline">\(\pi\)</span>. It wouldn’t make sense that a sample complication rate of 4.8% gives us evidence that the true complication rate was exactly 10%. It’s plausible that the true complication rate is 10%, but there are a range of plausible values for <span class="math inline">\(\pi\)</span>. In this section, we will use a simulation-based method called <strong>bootstrapping</strong> to generate this range of plausible values for <span class="math inline">\(\pi\)</span> using the observed data.</p>
 </div>
-<p>In the medical consultant case study, the parameter is <span class="math inline">\(\pi\)</span>, the true probability of a complication for a client of the medical consultant. There is no reason to believe that <span class="math inline">\(\pi\)</span> is exactly <span class="math inline">\(\hat{p} = 3/62\)</span>, but there is also no reason to believe that <span class="math inline">\(\pi\)</span> is particularly far from <span class="math inline">\(\hat{p} = 3/62\)</span>. By sampling with replacement from the data set (a process called <strong>bootstrapping</strong>),<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;If you’re curious where the term “bootstrapping” comes from, it comes from the phrase “lift yourself up by your own bootstraps.” Lifting yourself up by your own bootstraps is analogous to creating more samples from the single original sample.&lt;/p&gt;"><sup>118</sup></a> the variability of the possible <span class="math inline">\(\hat{p}\)</span> values can be approximated, which will allow us to generate a range of plausible values for <span class="math inline">\(\pi\)</span>, i.e., a confidence interval.</p>
+<p>In the medical consultant case study, the parameter is <span class="math inline">\(\pi\)</span>, the true probability of a complication for a client of the medical consultant. There is no reason to believe that <span class="math inline">\(\pi\)</span> is exactly <span class="math inline">\(\hat{p} = 3/62\)</span>, but there is also no reason to believe that <span class="math inline">\(\pi\)</span> is particularly far from <span class="math inline">\(\hat{p} = 3/62\)</span>. By sampling with replacement from the data set (a process called <strong>bootstrapping</strong>),<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;If you’re curious where the term “bootstrapping” comes from, it comes from the phrase “lift yourself up by your own bootstraps.” Lifting yourself up by your own bootstraps is analogous to creating more samples from the single original sample.&lt;/p&gt;"><sup>117</sup></a> the variability of the possible <span class="math inline">\(\hat{p}\)</span> values can be approximated, which will allow us to generate a range of plausible values for <span class="math inline">\(\pi\)</span>, i.e., a confidence interval.</p>
 <p>Most of the inferential procedures covered in this text are grounded in quantifying how one data set would differ from another when they are both taken from the same population. It doesn’t make sense to take repeated samples from the same population because if you have the means to take more samples, a larger sample size will benefit you more than the exact same sample twice. Instead, we measure how the samples behave under an estimate of the population. Figure <a href="foundations-bootstrapping.html#fig:boot1">10.1</a> shows how an unknown original population of red and white marbles can be estimated by using multiple copies of a sample of seven marbles.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:boot1"></span>
@@ -339,7 +339,7 @@ Figure 10.3: Calculate the sample proportion of red marbles in each bootstrap re
 </div>
 <p>If we apply the bootstrap sampling process to the medical consultant example, we consider each client to be one of the marbles in the bag. There will be 59 white marbles (no complication) and 3 red marbles (complication). If we choose 62 marbles out of the bag (one at a time), replacing each chosen marble after its color is recorded, and compute the proportion of simulated patients with complications, <span class="math inline">\(\hat{p}_{bs}\)</span>, then this “bootstrap” proportion represents a single simulated proportion from the “resample from the sample” approach.</p>
 <div class="guidedpractice">
-<p>In a simulation of 62 patients conducted by sampling with replacement from the original sample, about how many would we expect to have had a complication?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Since in the original sample, 3 out of 62, or about 5% had complications, we could expect about 5% of the patients (6.2 on average) in the simulation will have a complication, though we will see a little variation from one simulation to the next.&lt;/p&gt;"><sup>119</sup></a></p>
+<p>In a simulation of 62 patients conducted by sampling with replacement from the original sample, about how many would we expect to have had a complication?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Since in the original sample, 3 out of 62, or about 5% had complications, we could expect about 5% of the patients (6.2 on average) in the simulation will have a complication, though we will see a little variation from one simulation to the next.&lt;/p&gt;"><sup>118</sup></a></p>
 </div>
 <p>One simulated bootstrap resample isn’t enough to get a sense of the variability from one bootstrap proportion to another bootstrap proportion, so we repeated the simulation 10,000 times using a computer. Figure <a href="foundations-bootstrapping.html#fig:MedConsBSSim">10.6</a> shows the distribution from the 10,000 bootstrap simulations. The bootstrapped proportions vary from about zero to 0.15. By taking the range of the middle 95% of this distribution, we can construct a <strong>95% bootstrapped confidence interval</strong> for <span class="math inline">\(\pi\)</span>. The 2.5<sup>th</sup> percentile is 0, and the 97.5<sup>th</sup> percentile is 0.113, so the middle 95% of the distribution is the range (0, 0.113). The variability in the bootstrapped proportions leads us to believe that the true risk of complication (the parameter, <span class="math inline">\(\pi\)</span>) is somewhere between 0 and 11.3%.</p>
 <div class="figure" style="text-align: center">
@@ -357,7 +357,7 @@ Figure 10.6: The original medical consultant data is bootstrapped 10,000 times. 
 </div>
 <p>You can find confidence intervals of difference confidence levels by changing the percent of the distribution you take, e.g., locate the middle 90% of the bootstrapped statistics for a 90% confidence interval.</p>
 <div class="guidedpractice">
-<p>To find the middle 90% of a distribution, which two percentiles would form its boundaries?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The the middle 95% of a distribution would range from the 5&lt;sup&gt;th&lt;/sup&gt; percentile (the value with 5% of the distribution below) to the 95&lt;sup&gt;th&lt;/sup&gt; percentile (the value with 5% of the distribution above).&lt;/p&gt;"><sup>120</sup></a></p>
+<p>To find the middle 90% of a distribution, which two percentiles would form its boundaries?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The the middle 95% of a distribution would range from the 5&lt;sup&gt;th&lt;/sup&gt; percentile (the value with 5% of the distribution below) to the 95&lt;sup&gt;th&lt;/sup&gt; percentile (the value with 5% of the distribution above).&lt;/p&gt;"><sup>119</sup></a></p>
 </div>
 <div class="workedexample">
 <p>The original claim was that the consultant’s true rate of complication was under the national rate of 10%. Does the interval estimate of 0 to 11.3% for the true probability of complication indicate that the surgical consultant has a lower rate of complications than the national average? Explain.</p>
@@ -399,7 +399,7 @@ Figure 10.6: The original medical consultant data is bootstrapped 10,000 times. 
 <div class="protip">
 <p>The success-failure condition listed above is only necessary for the sampling distribution of <span class="math inline">\(\hat{p}\)</span> to be approximately normal. The mean of the sampling distribution of <span class="math inline">\(\hat{p}\)</span> is <span class="math inline">\(\pi\)</span>, and the standard deviation is <span class="math inline">\(\sqrt{\frac{\ \pi(1-\pi)\ }{n}}\)</span>, regardless of the sample size.</p>
 </div>
-<p>Typically we don’t know the true proportion <span class="math inline">\(\pi\)</span>, so we substitute some value to check the success-failure condition and to estimate the standard deviation of the sampling distribution of <span class="math inline">\(\hat{p}\)</span>. The independence condition is a more nuanced requirement. When it isn’t met, it is important to understand how and why it isn’t met. For example, <em>there exist no statistical methods available to truly correct the inherent biases of data from a convenience sample.</em> On the other hand, if we took a cluster random sample (see Section <a href="data-design.html#samp-methods">2.1.5</a>), the observations wouldn’t be independent, but suitable statistical methods are available for analyzing the data (but they are beyond the scope of even most second or third courses in statistics)<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;While this book is scoped to well-constrained statistical problems, do remember that this is just the first book in what is a large library of statistical methods that are suitable for a very wide range of data and contexts.&lt;/p&gt;"><sup>121</sup></a>.</p>
+<p>Typically we don’t know the true proportion <span class="math inline">\(\pi\)</span>, so we substitute some value to check the success-failure condition and to estimate the standard deviation of the sampling distribution of <span class="math inline">\(\hat{p}\)</span>. The independence condition is a more nuanced requirement. When it isn’t met, it is important to understand how and why it isn’t met. For example, <em>there exist no statistical methods available to truly correct the inherent biases of data from a convenience sample.</em> On the other hand, if we took a cluster random sample (see Section <a href="data-design.html#samp-methods">2.1.5</a>), the observations wouldn’t be independent, but suitable statistical methods are available for analyzing the data (but they are beyond the scope of even most second or third courses in statistics)<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;While this book is scoped to well-constrained statistical problems, do remember that this is just the first book in what is a large library of statistical methods that are suitable for a very wide range of data and contexts.&lt;/p&gt;"><sup>120</sup></a>.</p>
 <div class="workedexample">
 <p>In the examples based on large sample theory, we modeled <span class="math inline">\(\hat{p}\)</span> using the normal distribution. Why is this not appropriate for the study on the medical consultant?</p>
 <hr>
@@ -440,7 +440,7 @@ H_0: \mbox{ parameter } = \mbox{ null value}
 </div>
 <p>To apply the normal distribution to model the null distribution, the independence and success-failure conditions must be satisfied. In a hypothesis test, the success-failure condition is checked using the null proportion: we verify <span class="math inline">\(n\pi_0\)</span> and <span class="math inline">\(n(1-\pi_0)\)</span> are at least 10, where <span class="math inline">\(\pi_0\)</span> is the null value.</p>
 <div class="guidedpractice">
-<p>Do payday loan borrowers support a regulation that would require lenders to pull their credit report and evaluate their debt payments? From a random sample of 826 borrowers, 51% said they would support such a regulation. Is it reasonable use a normal distribution to model <span class="math inline">\(\hat{p}\)</span> for a hypothesis test here?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Independence holds since the poll is based on a random sample. The success-failure condition also holds, which is checked using the null value (&lt;span class="math inline"&gt;\(p_0 = 0.5\)&lt;/span&gt;) from &lt;span class="math inline"&gt;\(H_0\)&lt;/span&gt;: &lt;span class="math inline"&gt;\(np_0 = 826 \times 0.5 = 413\)&lt;/span&gt;, &lt;span class="math inline"&gt;\(n(1 - p_0) = 826 \times 0.5 = 413\)&lt;/span&gt;. Recall that here, the best guess for &lt;span class="math inline"&gt;\(\pi\)&lt;/span&gt; is &lt;span class="math inline"&gt;\(p_0\)&lt;/span&gt; which comes from the null hypothesis (because we assume the null hypothesis is true when performing the testing procedure steps). &lt;span class="math inline"&gt;\(H_0\)&lt;/span&gt;: there is not support for the regulation; &lt;span class="math inline"&gt;\(H_0\)&lt;/span&gt;: &lt;span class="math inline"&gt;\(\pi \leq 0.50\)&lt;/span&gt;. &lt;span class="math inline"&gt;\(H_A\)&lt;/span&gt;: the majority of borrowers support the regulation; &lt;span class="math inline"&gt;\(H_A\)&lt;/span&gt;: &lt;span class="math inline"&gt;\(\pi &amp;gt; 0.50\)&lt;/span&gt;.&lt;/p&gt;'><sup>122</sup></a></p>
+<p>Do payday loan borrowers support a regulation that would require lenders to pull their credit report and evaluate their debt payments? From a random sample of 826 borrowers, 51% said they would support such a regulation. Is it reasonable use a normal distribution to model <span class="math inline">\(\hat{p}\)</span> for a hypothesis test here?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Independence holds since the poll is based on a random sample. The success-failure condition also holds, which is checked using the null value (&lt;span class="math inline"&gt;\(p_0 = 0.5\)&lt;/span&gt;) from &lt;span class="math inline"&gt;\(H_0\)&lt;/span&gt;: &lt;span class="math inline"&gt;\(np_0 = 826 \times 0.5 = 413\)&lt;/span&gt;, &lt;span class="math inline"&gt;\(n(1 - p_0) = 826 \times 0.5 = 413\)&lt;/span&gt;. Recall that here, the best guess for &lt;span class="math inline"&gt;\(\pi\)&lt;/span&gt; is &lt;span class="math inline"&gt;\(p_0\)&lt;/span&gt; which comes from the null hypothesis (because we assume the null hypothesis is true when performing the testing procedure steps). &lt;span class="math inline"&gt;\(H_0\)&lt;/span&gt;: there is not support for the regulation; &lt;span class="math inline"&gt;\(H_0\)&lt;/span&gt;: &lt;span class="math inline"&gt;\(\pi \leq 0.50\)&lt;/span&gt;. &lt;span class="math inline"&gt;\(H_A\)&lt;/span&gt;: the majority of borrowers support the regulation; &lt;span class="math inline"&gt;\(H_A\)&lt;/span&gt;: &lt;span class="math inline"&gt;\(\pi &amp;gt; 0.50\)&lt;/span&gt;.&lt;/p&gt;'><sup>121</sup></a></p>
 </div>
 <div class="workedexample">
 <p>Continuing the previous Example, evaluate whether the poll on lending regulations provides convincing evidence that a majority of payday loan borrowers support a new regulation that would require lenders to pull credit reports and evaluate debt payments.</p>
@@ -544,7 +544,7 @@ did search and replace for each term above.  for example 826 for 826
 
 -->
 <div class="guidedpractice">
-<p>Consider taking many polls of registered voters (i.e., random samples) of size 300 and asking them if they support legalized marijuana. It is suspected that about 2/3 of all voters support legalized marijuana. To understand how the sample proportion (<span class="math inline">\(\hat{p}\)</span>) would vary across the samples, calculate the standard error of <span class="math inline">\(\hat{p}\)</span>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Because the &lt;span class="math inline"&gt;\(\pi\)&lt;/span&gt; is unknown but expected to be around 2/3, we will use 2/3 in place of &lt;span class="math inline"&gt;\(\pi\)&lt;/span&gt; in the formula for the standard deviation of &lt;span class="math inline"&gt;\(\hat{p}\)&lt;/span&gt; and calculate&lt;br&gt;&lt;span class="math inline"&gt;\(SE(\hat{p}) = \sqrt{\frac{2/3 (1 - 2/3)} {300}} = 0.027\)&lt;/span&gt;.&lt;/p&gt;'><sup>123</sup></a></p>
+<p>Consider taking many polls of registered voters (i.e., random samples) of size 300 and asking them if they support legalized marijuana. It is suspected that about 2/3 of all voters support legalized marijuana. To understand how the sample proportion (<span class="math inline">\(\hat{p}\)</span>) would vary across the samples, calculate the standard error of <span class="math inline">\(\hat{p}\)</span>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Because the &lt;span class="math inline"&gt;\(\pi\)&lt;/span&gt; is unknown but expected to be around 2/3, we will use 2/3 in place of &lt;span class="math inline"&gt;\(\pi\)&lt;/span&gt; in the formula for the standard deviation of &lt;span class="math inline"&gt;\(\hat{p}\)&lt;/span&gt; and calculate&lt;br&gt;&lt;span class="math inline"&gt;\(SE(\hat{p}) = \sqrt{\frac{2/3 (1 - 2/3)} {300}} = 0.027\)&lt;/span&gt;.&lt;/p&gt;'><sup>122</sup></a></p>
 </div>
 <div class="workedexample">
 <p>A simple random sample of 826 payday loan borrowers was surveyed to better understand their interests around regulation and costs. 51% of the responses supported new regulations on payday lenders.</p>
@@ -601,7 +601,7 @@ SE(\hat{p}) = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
 \text{point estimate}\ \pm\ 1.96\times SE
 \end{eqnarray}\]</span> There are three components to this interval: the point estimate, “1.96”, and the standard error. The choice of <span class="math inline">\(1.96\times SE\)</span> was based on capturing 95% of the sampling distribution of statistics since the point estimate is within 1.96 standard errors of the true parameter about 95% of the time. The choice of 1.96 corresponds to a 95% <strong>confidence level</strong>.</p>
 <div class="guidedpractice">
-<p>If <span class="math inline">\(X\)</span> is a normally distributed random variable, how often will <span class="math inline">\(X\)</span> be within 2.58 standard deviations of the mean?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;This is equivalent to asking how often the &lt;span class="math inline"&gt;\(Z\)&lt;/span&gt; score will be larger than -2.58 but less than 2.58. (For a picture, see Figure &lt;a href="inference-one-prop.html#fig:choosingZForCI"&gt;14.4&lt;/a&gt;.) To determine this probability, look up -2.58 and 2.58 in the normal probability table (0.0049 and 0.9951). Thus, there is a &lt;span class="math inline"&gt;\(0.9951-0.0049 \approx 0.99\)&lt;/span&gt; probability that the unobserved random variable &lt;span class="math inline"&gt;\(X\)&lt;/span&gt; will be within 2.58 standard deviations of the mean.&lt;/p&gt;'><sup>124</sup></a></p>
+<p>If <span class="math inline">\(X\)</span> is a normally distributed random variable, how often will <span class="math inline">\(X\)</span> be within 2.58 standard deviations of the mean?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;This is equivalent to asking how often the &lt;span class="math inline"&gt;\(Z\)&lt;/span&gt; score will be larger than -2.58 but less than 2.58. (For a picture, see Figure &lt;a href="inference-one-prop.html#fig:choosingZForCI"&gt;14.4&lt;/a&gt;.) To determine this probability, look up -2.58 and 2.58 in the normal probability table (0.0049 and 0.9951). Thus, there is a &lt;span class="math inline"&gt;\(0.9951-0.0049 \approx 0.99\)&lt;/span&gt; probability that the unobserved random variable &lt;span class="math inline"&gt;\(X\)&lt;/span&gt; will be within 2.58 standard deviations of the mean.&lt;/p&gt;'><sup>123</sup></a></p>
 </div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:choosingZForCI"></span>
@@ -623,7 +623,7 @@ label for previous equation?
 -->
 <p>The normal approximation is crucial to the precision of the <span class="math inline">\(z^\star\)</span> confidence intervals. When the normal model is not a good fit, we will use alternative distributions that better characterize the sampling distribution or we will use bootstrapping procedures.</p>
 <div class="guidedpractice">
-<p>Create a 99% confidence interval for the impact of the stent on the risk of stroke using the data from Section <a href="data-hello.html#basic-stents-strokes">1.1</a>. The point estimate is 0.090, and the standard error is <span class="math inline">\(SE = 0.028\)</span>. It has been verified for you that the point estimate can reasonably be modeled by a normal distribution.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Since the necessary conditions for applying the normal model have already been checked for us, we can go straight to the construction of the confidence interval: &lt;span class="math inline"&gt;\(\text{point estimate}\ \pm\ 2.58 \times SE \rightarrow (0.018, 0.162)\)&lt;/span&gt;. We are 99% confident that implanting a stent in the brain of a patient who is at risk of stroke increases the risk of stroke within 30 days by a rate of 0.018 to 0.162 (assuming the patients are representative of the population).&lt;/p&gt;'><sup>125</sup></a></p>
+<p>Create a 99% confidence interval for the impact of the stent on the risk of stroke using the data from Section <a href="data-hello.html#basic-stents-strokes">1.1</a>. The point estimate is 0.090, and the standard error is <span class="math inline">\(SE = 0.028\)</span>. It has been verified for you that the point estimate can reasonably be modeled by a normal distribution.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Since the necessary conditions for applying the normal model have already been checked for us, we can go straight to the construction of the confidence interval: &lt;span class="math inline"&gt;\(\text{point estimate}\ \pm\ 2.58 \times SE \rightarrow (0.018, 0.162)\)&lt;/span&gt;. We are 99% confident that implanting a stent in the brain of a patient who is at risk of stroke increases the risk of stroke within 30 days by a rate of 0.018 to 0.162 (assuming the patients are representative of the population).&lt;/p&gt;'><sup>124</sup></a></p>
 </div>
 <div class="onebox">
 <p><strong>Theory-based</strong> <span class="math inline">\((1-\alpha)\times 100\)</span>% confidence interval.</p>
@@ -649,7 +649,7 @@ label for previous equation?
 <span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">.99</span> <span class="op">+</span> <span class="fl">.005</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 2.576</span></span></code></pre></div>
 <div class="guidedpractice">
-<p>Previously, we found that implanting a stent in the brain of a patient at risk for a stroke <em>increased</em> the risk of a stroke. The study estimated a 9% increase in the number of patients who had a stroke, and the standard error of this estimate was about <span class="math inline">\(SE = 2.8%\)</span>. Compute a 90% confidence interval for the effect.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;We must find &lt;span class="math inline"&gt;\(z^{\star}\)&lt;/span&gt; such that 90% of the distribution falls between -&lt;span class="math inline"&gt;\(z^{\star}\)&lt;/span&gt; and &lt;span class="math inline"&gt;\(z^{\star}\)&lt;/span&gt; in the standard normal model, &lt;span class="math inline"&gt;\(N(\mu=0, \sigma=1)\)&lt;/span&gt;. We can find -&lt;span class="math inline"&gt;\(z^{\star}\)&lt;/span&gt; from a standard normal distribution by looking for a lower tail of 5% (the other 5% is in the upper tail), thus &lt;span class="math inline"&gt;\(z^{\star}=1.645\)&lt;/span&gt;. The 90% confidence interval can then be computed as &lt;span class="math inline"&gt;\(\text{point estimate}\ \pm\ 1.65\times SE \to (4.4\%, 13.6\%)\)&lt;/span&gt;. (Note: The conditions for normality had earlier been confirmed for us.) That is, we are 90% confident that implanting a stent in a stroke patient’s brain increased the risk of stroke within 30 days by 4.4% to 13.6%.&lt;/p&gt;'><sup>126</sup></a></p>
+<p>Previously, we found that implanting a stent in the brain of a patient at risk for a stroke <em>increased</em> the risk of a stroke. The study estimated a 9% increase in the number of patients who had a stroke, and the standard error of this estimate was about <span class="math inline">\(SE = 2.8%\)</span>. Compute a 90% confidence interval for the effect.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;We must find &lt;span class="math inline"&gt;\(z^{\star}\)&lt;/span&gt; such that 90% of the distribution falls between -&lt;span class="math inline"&gt;\(z^{\star}\)&lt;/span&gt; and &lt;span class="math inline"&gt;\(z^{\star}\)&lt;/span&gt; in the standard normal model, &lt;span class="math inline"&gt;\(N(\mu=0, \sigma=1)\)&lt;/span&gt;. We can find -&lt;span class="math inline"&gt;\(z^{\star}\)&lt;/span&gt; from a standard normal distribution by looking for a lower tail of 5% (the other 5% is in the upper tail), thus &lt;span class="math inline"&gt;\(z^{\star}=1.645\)&lt;/span&gt;. The 90% confidence interval can then be computed as &lt;span class="math inline"&gt;\(\text{point estimate}\ \pm\ 1.65\times SE \to (4.4\%, 13.6\%)\)&lt;/span&gt;. (Note: The conditions for normality had earlier been confirmed for us.) That is, we are 90% confident that implanting a stent in a stroke patient’s brain increased the risk of stroke within 30 days by 4.4% to 13.6%.&lt;/p&gt;'><sup>125</sup></a></p>
 </div>
 </div>
 </div>
@@ -665,13 +665,10 @@ label for previous equation?
 <h2>
 <span class="header-section-number">14.4</span> Chapter review<a class="anchor" aria-label="anchor" href="#chp14-review"><i class="fas fa-link"></i></a>
 </h2>
-<div id="summary-10" class="section level3 unnumbered">
-<h3>Summary<a class="anchor" aria-label="anchor" href="#summary-10"><i class="fas fa-link"></i></a>
-</h3>
-<div class="underconstruction">
-<p>TODO</p>
-</div>
-</div>
+<!-- ### Summary {-} -->
+<!-- ::: {.underconstruction} -->
+<!-- TODO -->
+<!-- ::: -->
 <div id="terms-11" class="section level3 unnumbered">
 <h3>Terms<a class="anchor" aria-label="anchor" href="#terms-11"><i class="fas fa-link"></i></a>
 </h3>
@@ -709,14 +706,7 @@ statistic
 </td>
 </tr>
 </tbody></table></div>
-</div>
-<div id="key-ideas-10" class="section level3 unnumbered">
-<h3>Key ideas<a class="anchor" aria-label="anchor" href="#key-ideas-10"><i class="fas fa-link"></i></a>
-</h3>
-<div class="underconstruction">
-<p>TODO</p>
-</div>
-
+<!-- ### Key ideas {-} --><!-- ::: {.underconstruction} --><!-- TODO --><!-- ::: -->
 </div>
 </div>
 </div>
@@ -745,11 +735,7 @@ statistic
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#chp14-review"><span class="header-section-number">14.4</span> Chapter review</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#summary-10">Summary</a></li>
-<li><a class="nav-link" href="#terms-11">Terms</a></li>
-<li><a class="nav-link" href="#key-ideas-10">Key ideas</a></li>
-</ul>
+<a class="nav-link" href="#chp14-review"><span class="header-section-number">14.4</span> Chapter review</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#terms-11">Terms</a></li></ul>
 </li>
 </ul>
 
