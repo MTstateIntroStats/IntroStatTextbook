@@ -413,7 +413,7 @@ In the baseball salary example, each of the 30 teams could represent a strata, s
 Then we might randomly sample 4 players from each team for our sample of 120 players.
 
 ```{r include=FALSE}
-terms_chp_2 <- c(terms_chp_2, "simple random sampling", "stratified sampling", "strata")
+terms_chp_2 <- c(terms_chp_2, "stratified sampling", "strata")
 ```
 
 Stratified sampling is especially useful when the cases in each stratum are very similar with respect to the outcome of interest. 
