@@ -181,8 +181,8 @@ The number (or set of numbers) may be a quantity you are already familiar with (
 However, measuring every unit in the population is usually prohibitive (so the parameter is very rarely calculated).
 So, a “typical” numerical summary is calculated from a sample.
 Yet, we can still conceptualize calculating the average income of all adults in Argentina.</p>
-<p>We use specific terms in order to differentiate when a number is being calculated on a sample of data (<strong>statistic</strong>) and when it is being calculated or considered for calculation on the entire population (<strong>parameter</strong>).
-The terms statistic and parameter are useful for communicating claims and models and will be used extensively in later chapters which delve into making inference on populations.</p>
+<p>We use specific terms in order to differentiate when a number is being calculated on a sample of data (<strong>statistic</strong>) and when it is being calculated or considered for calculation on the entire population (<strong>parameter</strong>). The value of a parameter remains fixed (yet typically unknown). In contrast, a the value of a statistic will vary from sample to sample. This variability in the value of a statistic across different samples is called <strong>sampling variability</strong>.</p>
+<p>The terms statistic and parameter are useful for communicating claims and models and will be used extensively in later chapters which delve into making inference on populations.</p>
 </div>
 <div id="anecdotal-evidence" class="section level3" number="2.1.3">
 <h3>
@@ -271,8 +271,15 @@ way in which the sample is &lt;em&gt;selected&lt;/em&gt; is biased.&lt;/p&gt;"><
 <p>Sampling randomly helps resolve <em>selection bias</em>.
 The most basic random sample is called a <strong>simple random sample</strong>, and is equivalent to using a raffle to select cases.
 This means that each case in the population has an equal chance of being included and there is no implied connection between the cases in the sample.</p>
-<p>Even when people are picked at random, however, caution must be exercised if the <strong>non-response rate</strong> is high, or if <strong>response bias</strong> is present.
-For instance, if only 30% of the people randomly sampled for a survey actually respond, then it is unclear whether the results are <strong>representative</strong> of the entire population.
+<p>Even when people are picked at random, however, caution must be exercised if the <strong>sampling frame</strong> does not include the entire population.
+The <strong>sampling frame</strong> is the actual list of individuals or objects from which the sample is selected. For instance, if our sampling frame is the list of all the landline phone numbers in a city, individuals without a landline will be excluded from the study, even if we take a simple random sample from the sampling frame.</p>
+<div class="guidedpractice">
+<p>When our sampling frame is not the same as our population of interest, selecting a simple random sample from the sampling frame will still result in what type of bias—selection bias, non-response bias,
+or response bias?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Using the wrong sampling frame is an example of selection bias, because groups of individuals that are not included
+in the sampling frame have no opportunity to be selected for the study.&lt;/p&gt;"><sup>15</sup></a></p>
+</div>
+<p>Similarly, a simple random sample may still exhibit sampling bias if the <strong>non-response rate</strong> is high, or if <strong>response bias</strong> is present.
+For example, if only 30% of the people randomly sampled for a survey actually respond, then it is unclear whether the results are <strong>representative</strong> of the entire population.
 This <em>non-response bias</em> can produce results in the sample that do not accurately reflect the entire population.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:survey-sample"></span>
@@ -284,7 +291,7 @@ Figure 2.4: Due to the possibility of non-response, survey studies may only reac
 <p><strong>Asking the uninformed.</strong> Popular late night host Jimmy Kimmel has a segment on his show called “Lie Witness News,” where Kimmel’s staff take to the streets to ask pedestrians about recent stories in the news. However, these recent stories are not really stories at all—they’re fake. Without fail, those asked always express an opinion, unflinchingly. Why? People do not like to appear as if they don’t know what they’re talking about, so we make up answers. For an entertaining display of this fascinating psychological example of response bias, watch the <a href="https://www.youtube.com/watch?v=W_IzYUJANfk">Coachella 2013 episode of Lie Witness News</a>.</p>
 </div>
 <div class="guidedpractice">
-<p>We can easily access ratings for products, sellers, and companies through websites. These ratings are based only on those people who go out of their way to provide a rating. If 50% of online reviews for a product are negative, do you think this means that 50% of buyers are dissatisfied with the product? Why or why not?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Answers will vary. From our own anecdotal experiences, we believe people tend to rant more about products that fell below expectations than rave about those that perform as expected. For this reason, we suspect there is a negative bias in product ratings on sites like Amazon. Additionally, those with strong opinions (positive or negative) are more inclined to take the time to write a review. However, since our experiences may not be representative, we also keep an open mind.&lt;/p&gt;"><sup>15</sup></a></p>
+<p>We can easily access ratings for products, sellers, and companies through websites. These ratings are based only on those people who go out of their way to provide a rating. If 50% of online reviews for a product are negative, do you think this means that 50% of buyers are dissatisfied with the product? Why or why not?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Answers will vary. From our own anecdotal experiences, we believe people tend to rant more about products that fell below expectations than rave about those that perform as expected. For this reason, we suspect there is a negative bias in product ratings on sites like Amazon. Additionally, those with strong opinions (positive or negative) are more inclined to take the time to write a review. However, since our experiences may not be representative, we also keep an open mind.&lt;/p&gt;"><sup>16</sup></a></p>
 </div>
 <p>
 </p>
@@ -358,7 +365,7 @@ This would probably reduce our data collection costs substantially in comparison
 For instance, the loan data and county data described in Section <a href="data-hello.html#data-basics">1.2</a> are both examples of observational data.</p>
 <p>Observational studies are generally only sufficient to show associations or form hypotheses that can be later checked with experiments. Making causal conclusions based on experiments is often reasonable. However, making the same causal conclusions based on observational data can be treacherous and is not recommended. Indeed, making causal conclusions based on observational data is arguably the most common mistake in our news headlines and social media posts!</p>
 <div class="guidedpractice">
-<p>Suppose an observational study tracked sunscreen use and skin cancer, and it was found that the more sunscreen someone used, the more likely the person was to have skin cancer. Does this mean sunscreen <em>causes</em> skin cancer?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;No! See the paragraph following this guided practice for an explanation.&lt;/p&gt;"><sup>16</sup></a></p>
+<p>Suppose an observational study tracked sunscreen use and skin cancer, and it was found that the more sunscreen someone used, the more likely the person was to have skin cancer. Does this mean sunscreen <em>causes</em> skin cancer?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;No! See the paragraph following this guided practice for an explanation.&lt;/p&gt;"><sup>17</sup></a></p>
 </div>
 <p>Some previous research tells us that using sunscreen actually reduces skin cancer risk, so maybe there is another variable that can explain this hypothetical association between sunscreen usage and skin cancer.
 One important piece of information that is absent is sun exposure. If someone is out in the sun all day, they are more likely to use sunscreen <em>and</em> more likely to get skin cancer. Exposure to the sun is unaccounted for in the simple investigation.</p>
@@ -370,7 +377,7 @@ http://archderm.ama-assn.org/cgi/content/abstract/122/5/537
 Study with a similar scenario to that described here:
 http://onlinelibrary.wiley.com/doi/10.1002/ijc.22745/full
 -->
-<p>Sun exposure is what is called a <strong>confounding variable</strong><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Also called a &lt;strong&gt;lurking variable&lt;/strong&gt;, &lt;strong&gt;confounding factor&lt;/strong&gt;, or a &lt;strong&gt;confounder&lt;/strong&gt;.&lt;/p&gt;"><sup>17</sup></a>, which is a variable that is associated with both the explanatory and response variables.
+<p>Sun exposure is what is called a <strong>confounding variable</strong><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Also called a &lt;strong&gt;lurking variable&lt;/strong&gt;, &lt;strong&gt;confounding factor&lt;/strong&gt;, or a &lt;strong&gt;confounder&lt;/strong&gt;.&lt;/p&gt;"><sup>18</sup></a>, which is a variable that is associated with both the explanatory and response variables.
 While one method to justify making causal conclusions from observational studies is to exhaust the search for confounding variables, there is no guarantee that all confounding variables can be examined or measured.</p>
 <div class="onebox">
 <p>A <strong>confounding variable</strong> is a variable that is <em>both</em></p>
@@ -384,10 +391,10 @@ While one method to justify making causal conclusions from observational studies
 <div class="guidedpractice">
 <p>Figure <a href="data-hello.html#fig:county-multi-unit-homeownership">1.4</a> shows a negative association between the homeownership rate and the percentage of multi-unit structures in a county.
 However, it is unreasonable to conclude that there is a causal relationship between the two variables.
-Suggest a variable that might explain the negative relationship.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Answers will vary. Population density may be important. If a county is very dense, then this may require a larger fraction of residents to live in multi-unit structures. Additionally, the high density may contribute to increases in property value, making homeownership infeasible for many residents.&lt;/p&gt;"><sup>18</sup></a></p>
+Suggest a variable that might explain the negative relationship.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Answers will vary. Population density may be important. If a county is very dense, then this may require a larger fraction of residents to live in multi-unit structures. Additionally, the high density may contribute to increases in property value, making homeownership infeasible for many residents.&lt;/p&gt;"><sup>19</sup></a></p>
 </div>
 <div class="guidedpractice">
-<p>Houndstongue (a noxious weed) is found in abundance on private and public lands that have been grazed by cattle. Houndstongue is rarely found on lands that have been grazed by mountain goats. One investigator concluded that houndstongue infestations could be reduced by importing mountain goats to the infested areas. What is wrong with this conclusion?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Just because mountain goat grazing is associated with an absence of houndstongue doesn’t mean the mountain goats are the cause behind the houndstongue reduction! One obvious confounding variable is elevation—elevation is associated with the presence/absence of houndstongue (houndstongue tends to grow at lower elevation) and is also associated with the presence/absence of mountain goats (mountain goats prefer higher elevations).&lt;/p&gt;"><sup>19</sup></a></p>
+<p>Houndstongue (a noxious weed) is found in abundance on private and public lands that have been grazed by cattle. Houndstongue is rarely found on lands that have been grazed by mountain goats. One investigator concluded that houndstongue infestations could be reduced by importing mountain goats to the infested areas. What is wrong with this conclusion?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Just because mountain goat grazing is associated with an absence of houndstongue doesn’t mean the mountain goats are the cause behind the houndstongue reduction! One obvious confounding variable is elevation—elevation is associated with the presence/absence of houndstongue (houndstongue tends to grow at lower elevation) and is also associated with the presence/absence of mountain goats (mountain goats prefer higher elevations).&lt;/p&gt;"><sup>20</sup></a></p>
 </div>
 <p>Observational studies come in two forms: prospective and retrospective studies.
 A <strong>prospective study</strong> identifies individuals and collects information as events unfold.
@@ -411,7 +418,7 @@ Randomized experiments are fundamentally important when trying to show a causal 
 </h3>
 <p>Randomized experiments are generally built on four principles:</p>
 <ol style="list-style-type: decimal">
-<li><p><strong>Controlling.</strong> Researchers assign treatments to cases, and they do their best to <strong>control</strong> any other differences in the groups<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;This is a different concept than a &lt;em&gt;control group&lt;/em&gt;, which we discuss in the second principle and in Section &lt;a href="data-design.html#reducing-bias-human-experiments"&gt;2.3.2&lt;/a&gt;.&lt;/p&gt;'><sup>20</sup></a>.<br>
+<li><p><strong>Controlling.</strong> Researchers assign treatments to cases, and they do their best to <strong>control</strong> any other differences in the groups<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;This is a different concept than a &lt;em&gt;control group&lt;/em&gt;, which we discuss in the second principle and in Section &lt;a href="data-design.html#reducing-bias-human-experiments"&gt;2.3.2&lt;/a&gt;.&lt;/p&gt;'><sup>21</sup></a>.<br>
 For example, when patients take a drug in pill form, some patients take the pill with only a sip of water while others may have it with an entire glass of water.
 To control for the effect of water consumption, a doctor may instruct every patient to drink a 12 ounce glass of water with the pill.</p></li>
 <li><p><strong>Randomization.</strong> Researchers randomize patients into treatment groups to account for variables that cannot be controlled.
@@ -444,7 +451,7 @@ Human studies are perfect examples where bias can unintentionally arise.
 Here we reconsider a study where a new drug was used to treat heart attack patients.
 In particular, researchers wanted to know if the drug reduced deaths in patients.</p>
 <p>These researchers designed a randomized experiment because they wanted to draw causal conclusions about the drug’s effect.
-Study volunteers<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Human subjects are often called &lt;strong&gt;patients&lt;/strong&gt;, &lt;strong&gt;volunteers&lt;/strong&gt;, or &lt;strong&gt;study participants&lt;/strong&gt;.&lt;/p&gt;"><sup>21</sup></a> were randomly placed into two study groups.
+Study volunteers<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Human subjects are often called &lt;strong&gt;patients&lt;/strong&gt;, &lt;strong&gt;volunteers&lt;/strong&gt;, or &lt;strong&gt;study participants&lt;/strong&gt;.&lt;/p&gt;"><sup>22</sup></a> were randomly placed into two study groups.
 One group, the <strong>treatment group</strong>, received the drug.
 The other group, called the <strong>control group</strong>, did not receive any drug treatment.</p>
 <p>Put yourself in the place of a person in the study.
@@ -462,14 +469,14 @@ Often times, a placebo results in a slight but real improvement in patients.
 This effect has been dubbed the <strong>placebo effect</strong>.</p>
 <p>The patients are not the only ones who should be blinded: doctors and researchers can accidentally bias a study.
 When a doctor knows a patient has been given the real treatment, they might inadvertently give that patient more attention or care than a patient that they know is on the placebo.
-To guard against this bias, which again has been found to have a measurable effect in some instances, most modern studies employ a <strong>double-blind</strong> setup where doctors or researchers who interact with patients are, just like the patients, unaware of who is or is not receiving the treatment.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;There are always some researchers involved in the study who do know which patients are receiving which treatment. However, they do not interact with the study’s patients and do not tell the blinded health care professionals who is receiving which treatment.&lt;/p&gt;"><sup>22</sup></a></p>
+To guard against this bias, which again has been found to have a measurable effect in some instances, most modern studies employ a <strong>double-blind</strong> setup where doctors or researchers who interact with patients are, just like the patients, unaware of who is or is not receiving the treatment.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;There are always some researchers involved in the study who do know which patients are receiving which treatment. However, they do not interact with the study’s patients and do not tell the blinded health care professionals who is receiving which treatment.&lt;/p&gt;"><sup>23</sup></a></p>
 <div class="guidedpractice">
 <p>Look back to the study in Section <a href="data-hello.html#basic-stents-strokes">1.1</a> where researchers were testing whether stents were effective at reducing strokes in at-risk patients.
-Is this an experiment? Was the study blinded? Was it double-blinded?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The researchers assigned the patients into their treatment groups, so this study was an experiment. However, the patients could distinguish what treatment they received, so this study was not blind. The study could not be double-blind since it was not blind.&lt;/p&gt;"><sup>23</sup></a></p>
+Is this an experiment? Was the study blinded? Was it double-blinded?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The researchers assigned the patients into their treatment groups, so this study was an experiment. However, the patients could distinguish what treatment they received, so this study was not blind. The study could not be double-blind since it was not blind.&lt;/p&gt;"><sup>24</sup></a></p>
 </div>
 <div class="guidedpractice">
 <p>For the study in Section <a href="data-hello.html#basic-stents-strokes">1.1</a>, could the researchers have employed a placebo?
-If so, what would that placebo have looked like?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Ultimately, can we make patients think they got treated from a surgery? In fact, we can, and some experiments use a &lt;strong&gt;sham surgery&lt;/strong&gt;. In a sham surgery, the patient does undergo surgery, but the patient does not receive the full treatment, though they will still get a placebo effect.&lt;/p&gt;"><sup>24</sup></a></p>
+If so, what would that placebo have looked like?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Ultimately, can we make patients think they got treated from a surgery? In fact, we can, and some experiments use a &lt;strong&gt;sham surgery&lt;/strong&gt;. In a sham surgery, the patient does undergo surgery, but the patient does not receive the full treatment, though they will still get a placebo effect.&lt;/p&gt;"><sup>25</sup></a></p>
 </div>
 <p>You may have many questions about the ethics of sham surgeries to create a placebo.
 These questions may have even arisen in your mind when in the general experiment context, where a possibly helpful treatment was withheld from individuals in the control group; the main difference is that a sham surgery tends to create additional risk, while withholding a treatment only maintains a person’s risk.</p>
@@ -510,7 +517,7 @@ Figure 2.8: Determining scope of inference of a study.
 Equally important however, is an understanding of the data source.
 In this chapter, we have discussed randomized experiments and taking good, random, representative samples from a population.
 When we discuss inferential methods (starting in Chapter <a href="foundations-randomization.html#foundations-randomization">9</a>), the conclusions that can be drawn will be dependent on how the data were collected.
-Figure <a href="data-design.html#fig:randsampValloc">2.9</a> summarizes the differences between random assignment of treatments and random samples.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Derived from similar figures in &lt;span class="citation"&gt;Chance and Rossman (&lt;a href="references.html#ref-ISCAM" role="doc-biblioref"&gt;2018&lt;/a&gt;)&lt;/span&gt; and &lt;span class="citation"&gt;Ramsey and Schafer (&lt;a href="references.html#ref-sleuth" role="doc-biblioref"&gt;2012&lt;/a&gt;)&lt;/span&gt;.&lt;/p&gt;'><sup>25</sup></a>
+Figure <a href="data-design.html#fig:randsampValloc">2.9</a> summarizes the differences between random assignment of treatments and random samples.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Derived from similar figures in &lt;span class="citation"&gt;Chance and Rossman (&lt;a href="references.html#ref-ISCAM" role="doc-biblioref"&gt;2018&lt;/a&gt;)&lt;/span&gt; and &lt;span class="citation"&gt;Ramsey and Schafer (&lt;a href="references.html#ref-sleuth" role="doc-biblioref"&gt;2012&lt;/a&gt;)&lt;/span&gt;.&lt;/p&gt;'><sup>26</sup></a>
 Regularly revisiting Figure <a href="data-design.html#fig:randsampValloc">2.9</a> will be important when making conclusions from a given data analysis.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:randsampValloc"></span>
@@ -532,29 +539,7 @@ However you should be able to easily spot them as <strong>bolded text</strong>.<
 anecdotal evidence
 </td>
 <td style="text-align:left;">
-non-response bias
-</td>
-<td style="text-align:left;">
-retrospective study
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-blind
-</td>
-<td style="text-align:left;">
 non-response rate
-</td>
-<td style="text-align:left;">
-sample
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-blocking
-</td>
-<td style="text-align:left;">
-observational data
 </td>
 <td style="text-align:left;">
 sample bias
@@ -562,10 +547,10 @@ sample bias
 </tr>
 <tr>
 <td style="text-align:left;">
-cluster
+blind
 </td>
 <td style="text-align:left;">
-parameter
+observational data
 </td>
 <td style="text-align:left;">
 sampling bias
@@ -573,10 +558,32 @@ sampling bias
 </tr>
 <tr>
 <td style="text-align:left;">
-cluster sampling
+blocking
+</td>
+<td style="text-align:left;">
+parameter
+</td>
+<td style="text-align:left;">
+sampling frame
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cluster
 </td>
 <td style="text-align:left;">
 placebo
+</td>
+<td style="text-align:left;">
+sampling variability
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cluster sampling
+</td>
+<td style="text-align:left;">
+placebo effect
 </td>
 <td style="text-align:left;">
 selection bias
@@ -587,7 +594,7 @@ selection bias
 confounding variable
 </td>
 <td style="text-align:left;">
-placebo effect
+population
 </td>
 <td style="text-align:left;">
 simple random sample
@@ -598,7 +605,7 @@ simple random sample
 control
 </td>
 <td style="text-align:left;">
-population
+prospective study
 </td>
 <td style="text-align:left;">
 simple random sampling
@@ -609,7 +616,7 @@ simple random sampling
 control group
 </td>
 <td style="text-align:left;">
-prospective study
+randomized experiment
 </td>
 <td style="text-align:left;">
 statistic
@@ -620,7 +627,7 @@ statistic
 convenience sample
 </td>
 <td style="text-align:left;">
-randomized experiment
+replicate
 </td>
 <td style="text-align:left;">
 strata
@@ -631,7 +638,7 @@ strata
 double-blind
 </td>
 <td style="text-align:left;">
-replicate
+representative
 </td>
 <td style="text-align:left;">
 stratified sampling
@@ -642,7 +649,7 @@ stratified sampling
 experiment
 </td>
 <td style="text-align:left;">
-representative
+response bias
 </td>
 <td style="text-align:left;">
 treatment group
@@ -653,7 +660,17 @@ treatment group
 multistage sample
 </td>
 <td style="text-align:left;">
-response bias
+retrospective study
+</td>
+<td style="text-align:left;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+non-response bias
+</td>
+<td style="text-align:left;">
+sample
 </td>
 <td style="text-align:left;">
 </td>

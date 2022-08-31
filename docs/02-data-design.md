@@ -53,8 +53,12 @@ However, measuring every unit in the population is usually prohibitive (so the p
 So, a "typical" numerical summary is calculated from a sample.
 Yet, we can still conceptualize calculating the average income of all adults in Argentina.
 
-We use specific terms in order to differentiate when a number is being calculated on a sample of data (**statistic**) and when it is being calculated or considered for calculation on the entire population (**parameter**).
+We use specific terms in order to differentiate when a number is being calculated on a sample of data (**statistic**) and when it is being calculated or considered for calculation on the entire population (**parameter**). The value of a parameter remains fixed (yet typically unknown). In contrast, a the value of a statistic will vary from sample to sample. This variability in the value of a statistic across different samples is called **sampling variability**.
+
+
 The terms statistic and parameter are useful for communicating claims and models and will be used extensively in later chapters which delve into making inference on populations.
+
+
 
 
 
@@ -156,8 +160,17 @@ This means that each case in the population has an equal chance of being include
 
 
 
-Even when people are picked at random, however, caution must be exercised if the **non-response rate**\index{non-response rate} is high, or if **response bias** is present.
-For instance, if only 30\% of the people randomly sampled for a survey actually respond, then it is unclear whether the results are **representative** of the entire population.
+Even when people are picked at random, however, caution must be exercised if the **sampling frame** does not include the entire population.
+The **sampling frame** is the actual list of individuals or objects from which the sample is selected. For instance, if our sampling frame is the list of all the landline phone numbers in a city, individuals without a landline will be excluded from the study, even if we take a simple random sample from the sampling frame. 
+
+::: {.guidedpractice}
+When our sampling frame is not the same as our population of interest, selecting a simple random sample from the sampling frame will still result in what type of bias---selection bias, non-response bias,
+or response bias?^[Using the wrong sampling frame is an example of selection bias, because groups of individuals that are not included
+in the sampling frame have no opportunity to be selected for the study.]
+:::
+
+Similarly, a simple random sample may still exhibit sampling bias if the **non-response rate**\index{non-response rate} is high, or if **response bias** is present.
+For example, if only 30\% of the people randomly sampled for a survey actually respond, then it is unclear whether the results are **representative** of the entire population.
 This *non-response bias* can produce results in the sample that do not accurately reflect the entire population.
 
 
@@ -472,62 +485,67 @@ However you should be able to easily spot them as **bolded text**.
 <tbody>
   <tr>
    <td style="text-align:left;"> anecdotal evidence </td>
-   <td style="text-align:left;"> non-response bias </td>
-   <td style="text-align:left;"> retrospective study </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> blind </td>
    <td style="text-align:left;"> non-response rate </td>
-   <td style="text-align:left;"> sample </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> blocking </td>
-   <td style="text-align:left;"> observational data </td>
    <td style="text-align:left;"> sample bias </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> cluster </td>
-   <td style="text-align:left;"> parameter </td>
+   <td style="text-align:left;"> blind </td>
+   <td style="text-align:left;"> observational data </td>
    <td style="text-align:left;"> sampling bias </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> cluster sampling </td>
+   <td style="text-align:left;"> blocking </td>
+   <td style="text-align:left;"> parameter </td>
+   <td style="text-align:left;"> sampling frame </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> cluster </td>
    <td style="text-align:left;"> placebo </td>
+   <td style="text-align:left;"> sampling variability </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> cluster sampling </td>
+   <td style="text-align:left;"> placebo effect </td>
    <td style="text-align:left;"> selection bias </td>
   </tr>
   <tr>
    <td style="text-align:left;"> confounding variable </td>
-   <td style="text-align:left;"> placebo effect </td>
+   <td style="text-align:left;"> population </td>
    <td style="text-align:left;"> simple random sample </td>
   </tr>
   <tr>
    <td style="text-align:left;"> control </td>
-   <td style="text-align:left;"> population </td>
+   <td style="text-align:left;"> prospective study </td>
    <td style="text-align:left;"> simple random sampling </td>
   </tr>
   <tr>
    <td style="text-align:left;"> control group </td>
-   <td style="text-align:left;"> prospective study </td>
+   <td style="text-align:left;"> randomized experiment </td>
    <td style="text-align:left;"> statistic </td>
   </tr>
   <tr>
    <td style="text-align:left;"> convenience sample </td>
-   <td style="text-align:left;"> randomized experiment </td>
+   <td style="text-align:left;"> replicate </td>
    <td style="text-align:left;"> strata </td>
   </tr>
   <tr>
    <td style="text-align:left;"> double-blind </td>
-   <td style="text-align:left;"> replicate </td>
+   <td style="text-align:left;"> representative </td>
    <td style="text-align:left;"> stratified sampling </td>
   </tr>
   <tr>
    <td style="text-align:left;"> experiment </td>
-   <td style="text-align:left;"> representative </td>
+   <td style="text-align:left;"> response bias </td>
    <td style="text-align:left;"> treatment group </td>
   </tr>
   <tr>
    <td style="text-align:left;"> multistage sample </td>
-   <td style="text-align:left;"> response bias </td>
+   <td style="text-align:left;"> retrospective study </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> non-response bias </td>
+   <td style="text-align:left;"> sample </td>
    <td style="text-align:left;">  </td>
   </tr>
 </tbody>
