@@ -732,7 +732,7 @@ make_terms_table(terms_chp_2)
 
 * Statistical inference uses data from a **sample** to make inferences about a larger, target **population**.
 
-* TODO: parameters and statistics
+* A summary measure (e.g., mean, proportion) that is calculated on a sample of data is called a **statistic**; a summary measure calculated on the entire population is called a **parameter**. The value of a parameter remains fixed (yet typically unknown). In contrast, a the value of a statistic will vary from sample to sample. This variability in the value of a statistic across different samples is called **sampling variability**.
 
 * We can only generalize our results from the sample to the target population if the sampling methods were **unbiased**.
 One unbiased sampling method is a **simple random sample**, where you _randomly select_ your observational units for the sample from the complete list of observational units in the target population.
