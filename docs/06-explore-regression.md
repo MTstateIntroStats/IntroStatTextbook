@@ -148,7 +148,7 @@ For example, the residual for the observation marked by a yellow triangle is lar
 </div>
 
 ::: {.onebox}
-**Residual: Difference between observed and expected.**
+**Residual: Difference between observed and predicted.**
 
 The **residual** of the $i^{th}$ observation $(x_i, y_i)$ is the difference of the observed response ($y_i$) and the response we would predict based on the model fit ($\hat{y}_i$): 
 
@@ -274,6 +274,11 @@ Fitting linear models by eye is open to criticism since it is based on an indivi
 
 This section considers family income and gift aid data from a random sample of fifty students in the freshman class of Elmhurst College in Illinois. 
 Gift aid is financial aid that does not need to be paid back, as opposed to a loan. 
+
+::: {.data}
+The data from this study can be found in the [openintro](http://openintrostat.github.io/openintro) package: [`elmhurst`](http://openintrostat.github.io/openintro/reference/elmhurst.html).
+:::
+
 A scatterplot of the data is shown in Figure \@ref(fig:elmhurstScatterW2Lines) along with two linear fits. 
 The lines follow a negative trend in the data; students who have higher family incomes tended to have lower gift aid from the university.
 
@@ -316,14 +321,17 @@ The first two reasons are largely for tradition and convenience; the last reason
 For the Elmhurst data, we could write the equation of our linear regression model as
 $$aid = \beta_0 + \beta_{1}\times \textit{family_income} + \epsilon.$$
 Here the model equation is set up to predict gift aid based on a student's family income, which would be useful to students considering Elmhurst. 
-The two unknown values $\beta_0$ and $\beta_1$ are the parameters of the linear regression model. 
+The two unknown values $\beta_0$ and $\beta_1$ are the parameters of the linear regression model, and $\epsilon$ represents the random error. 
 
 The least squares regression line, computed based on the observed data, provides estimates of the parameters $\beta_0$ and $\beta_1$:
 $$\widehat{aid} = b_0 + b_{1}\times \textit{family_income}.$$
 In practice, this estimation is done using a computer in the same way that other estimates, like a sample mean, can be estimated using a computer or calculator. 
 
-The dataset where these data are stored is called `elmhurst`. 
-The first 5 rows of this dataset are given in Table \@ref(tab:elmhurst-data).
+The dataset where these data are stored is called `elmhurst` in the `openintro` package. Run the code below to load the data set into your RStudio session.
+
+
+
+The first five rows of this dataset are given in Table \@ref(tab:elmhurst-data).
 
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>(\#tab:elmhurst-data)First five rows of the `elmhurst` dataset.</caption>
@@ -394,8 +402,8 @@ What do these numbers really mean?
 
 ---
 
-Interpreting the slope parameter is helpful in almost any application. 
-For each additional \$1,000 of family income, we would expect a student to receive a net difference of 1,000 $\times$ (-0.0431) = -\$43.10 in aid on average, i.e., \$43.10 *less*. 
+Interpreting the estimated slope is helpful in almost any application. 
+For each additional \$1,000 of family income, we would predict a student to receive a net difference of 1,000 $\times$ (-0.0431) = -\$43.10 in aid on average, i.e., \$43.10 *less*. 
 Note that a higher family income corresponds to less aid because the coefficient of family income is negative in the model. 
 We must be cautious in this interpretation: while there is a real association, we cannot interpret a causal connection between the variables because these data are observational. 
 That is, increasing a student's family income may not cause the student's aid to drop. (It would be reasonable to contact the college and ask if the relationship is causal, i.e., if Elmhurst College's aid decisions are partially based on students' family income.) A more appropriate interpretation would then be: An additional \$1,000 of family income is associated with an estimated decrease of \$43.10 in aid on average.

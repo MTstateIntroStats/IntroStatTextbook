@@ -7,12 +7,23 @@ source("_common.R")
 # Inference for a single proportion {#inference-one-prop}
 
 ::: {.chapterintro}
-Coming soon!
+Focusing now on statistical inference for categorical data, we will revisit many of the foundational aspects of hypothesis testing from Chapter \@ref(foundations-randomization).
+
+The three data structures we detail are one binary variable, summarized using a single proportion, and two binary variables, summarized using a difference of two proportions.
+When appropriate, each of the data structures will be analyzed using the three methods from Chapters \@ref(foundations-randomization), \@ref(foundations-bootstrapping), and \@ref(foundations-mathematical): simulation-based inference, bootstrapping, and mathematical models, respectively.
+
+As we build on the inferential ideas, we will visit new foundational concepts in statistical inference.
+For example, we will cover the conditions for when a normal model is appropriate; the two different error rates in hypothesis testing; and choosing the confidence level for a confidence interval.
 :::
 
-<!-- ::: {.underconstruction} -->
-<!-- Old content - revise as needed -->
-<!-- ::: -->
+We encountered inference methods for a single proportion in the Martian alphabet example of Chapter \@ref(foundations-randomization),the  Medical consultant case study of Chapter \@ref(foundations-bootstrapping) exploring point estimates, confidence intervals, and hypothesis tests.
+In this section, we'll do a review of these topics and how to choose an appropriate sample size when collecting data for single proportion contexts.
+
+Note that there is only one variable being measured in a study which focuses on one proportion.
+For each observational unit, the single variable is measured as either a success or failure (e.g., "surgical complication" vs. "no surgical complication").
+Because the nature of the research question at hand focuses on only a single variable, there is not a way to randomize the variable across a different (explanatory) variable.
+For this reason, we will not use randomization as an analysis tool when focusing on a single proportion.
+Instead, we will apply bootstrapping techniques to test a given hypothesis, and we will also revisit the associated mathematical models.
 
 Below we summarize the notation used throughout this chapter.
 
@@ -48,38 +59,23 @@ A single proportion is used to summarize data when we measured a single categori
 5.  Make a conclusion based on the p-value, and write a conclusion in context, in plain language, and in terms of the alternative hypothesis.
 :::
 
-::: workedexample
-People providing an organ for donation sometimes seek the help of a special medical consultant. These consultants assist the patient in all aspects of the surgery, with the goal of reducing the possibility of complications during the medical procedure and recovery. Patients might choose a consultant based in part on the historical complication rate of the consultant's clients.
+In this section, we will demonstrate the steps of a hypothesis test in the context of the medical consultant case study from Section \@ref(case-study-med-consult).
+A medical consultant tried
+to attract patients by noting the average complication rate for liver donor surgeries in the US is about 10%, but her clients have had only 3 complications in the 62 liver donor surgeries she has facilitated.
+Do these data provide evidence that her rate of complications is _less_ than the average complication rate in the US of 10%?
 
-One consultant tried to attract patients by noting the average complication rate for liver donor surgeries in the US is about 10%, but her clients have had only 3 complications in the 62 liver donor surgeries she has facilitated. She claims this is strong evidence that her work meaningfully contributes to reducing complications (and therefore she should be hired!).
-
-Using these data, is it possible to assess the consultant's claim that her work meaningfully contributes to reducing complications?
-
-------------------------------------------------------------------------
-
-No. The claim is that there is a causal connection, but the data are observational, so we must be on the lookout for confounding variables. For example, maybe patients who can afford a medical consultant can afford better medical care, which can also lead to a lower complication rate.
-
-While it is not possible to assess the causal claim, it is still possible to understand the consultant's true rate of complications.
-:::
 
 ### Steps 1 and 2: Hypotheses and test statistic {.unnumbered}
 
-Regardless of if we use simulation-based methods or theory-based methods, the first two steps of a hypothesis test start out the same: setting up hypotheses and summarizing data with a test statistic. We will let $\pi$ represent the true complication rate for liver donors working with this consultant. This "true" complication probability is called the **parameter** of interest[^05-inference-cat-35]. The sample proportion for the complication rate is 3 complications divided by the 62 surgeries the consultant has worked on: $\hat{p} = 3/62 = 0.048$. Since this value is estimated from sample data, it is called a **statistic**. The statistic $\hat{p}$ is also our point estimate, or "best guess," for $\pi$, and we will use is as our **test statistic**.
+Regardless of if we use simulation-based methods or theory-based methods, the first two steps of a hypothesis test start out the same: setting up hypotheses and summarizing data with a test statistic.
 
-[^05-inference-cat-35]: Parameters were first introduced in Section \@ref(dotplots)
+Let $\pi$ represent the true complication rate for liver donors working with this consultant. This "true" complication probability is called the **parameter** of interest.
 
-::: onebox
-**Parameters and statistics.**\index{parameter}
+The sample proportion for the complication rate is 3 complications divided by the 62 surgeries the consultant has worked on: $\hat{p} = 3/62 = 0.048$. Since this value is estimated from sample data, it is called a **statistic**. The statistic $\hat{p}$ is also our point estimate, or "best guess," for $\pi$, and we will use it as our **test statistic**.
 
-A **parameter** is the "true" value of interest. We typically estimate the parameter using a **statistic** from a sample of data. When a statistic is used as an estimate of a parameter, it is called a **point estimate**.
-
-For example, we estimate the probability $\pi$ of a complication for a client of the medical consultant by examining the past complications rates of her clients:
-
-$$\hat{p} = 3 / 62 = 0.048\qquad\text{is used to estimate}\qquad \pi$$
-:::
 
 ```{r include=FALSE}
-terms_chp_14 <- c("statistic")
+terms_chp_14 <- c("statistic", "parameter", "test statistic")
 ```
 
 ::: protip
@@ -92,7 +88,7 @@ We typically use Roman letters to symbolize statistics (e.g., $\bar{x}$, $\hat{p
 :::
 
 ::: workedexample
-Write out hypotheses in both plain and statistical language to test for the association between the consultant's work and the true complication rate, $\pi$, for the consultant's clients.
+Write out hypotheses in both plain and statistical language to test whether the medical consultant's true rate of complications, $\pi$, is _less_ than the average complication rate in the US of 10%. 
 
 ------------------------------------------------------------------------
 
@@ -109,7 +105,7 @@ In statistical language:
 
 ### Steps 3 and 4: Null distribution and p-value {.unnumbered}
 
-To assess these hypotheses, we need to evaluate the possibility of getting a sample proportion as far below the null value, $0.10$, as what was observed ($0.048$), *if the null hypothesis were true*.
+To assess these hypotheses, we need to evaluate the possibility of getting a sample proportion as far below the **null value**, $0.10$, as what was observed ($0.048$), *if the null hypothesis were true*.
 
 ::: onebox
 **Null value of a hypothesis test.**
@@ -123,7 +119,7 @@ terms_chp_14 <- c(terms_chp_14, "null value")
 
 The deviation of the sample statistic from the null hypothesized parameter is usually quantified with a p-value[^05-inference-cat-36]. The p-value is computed based on the null distribution, which is the distribution of the test statistic if the null hypothesis is true. Supposing the null hypothesis is true, we can compute the p-value by identifying the chance of observing a test statistic that favors the alternative hypothesis at least as strongly as the observed test statistic.
 
-[^05-inference-cat-36]: Now would be a good time to review the definition of a p-value in Section \@ref(HypothesisTesting)!
+[^05-inference-cat-36]: Now would be a good time to review the definition of a p-value in Section \@ref(p-value-stat-signif)!
 
 ::: onebox
 **Null distribution.**
@@ -158,7 +154,7 @@ Is this one simulation enough to determine whether or not we should reject the n
 
 ------------------------------------------------------------------------
 
-No. To assess the hypotheses, we need to see a distribution of many $\hat{p}_{sim}$, not just a *single* draw from this sampling distribution.
+No. To assess the hypotheses, we need to see a distribution of many simulated sample proportions ($\hat{p}_{sim}$), not just a *single* draw from this sampling distribution.
 :::
 
 One simulation isn't enough to get a sense of the null distribution; many simulation studies are needed. Roughly 10,000 seems sufficient. However, paying someone to simulate 10,000 studies by hand is a waste of time and money. Instead, simulations are typically programmed into a computer, which is much more efficient.
@@ -247,11 +243,11 @@ A confidence interval provides a range of plausible values for the parameter $\p
 \index{data!medical consultant|(}
 
 ::: workedexample
-Let's revisit our medical consultant example from Section \@ref(one-prop-null-boot). This consultant tried to attract patients by noting the average complication rate for liver donor surgeries in the US is about 10%, but her clients have had only 3 complications in the 62 liver donor surgeries she has facilitated. This data, however, did not provide sufficient evidence that the consultant's complication rate was less than 10%, since the p-value was approximately 0.122. Does this mean we can conclude that the consultant's complication rate was equal to 10%?
+Let's revisit our medical consultant example from Section \@ref(one-prop-null-boot). This consultant tried to attract patients by noting the average complication rate for liver donor surgeries in the US is about 10%, but her clients have had only 3 complications in the 62 liver donor surgeries she has facilitated. These data, however, did not provide sufficient evidence that the consultant's complication rate was less than 10%, since the p-value was approximately 0.122. Does this mean we can conclude that the consultant's complication rate was equal to 10%?
 
 ------------------------------------------------------------------------
 
-No! Though our decision was to fail to reject the null hypothesis, this does not mean we have evidence *for* the null hypothesis---we cannot "accept" the null. The sample proportion was $\hat{p} = 3/62 = 0.048$, which is our point estimate---or "best guess"---of $\pi$. It wouldn't make sense that a sample complication rate of 4.8% gives us evidence that the true complication rate was exactly 10%. It's plausible that the true complication rate is 10%, but there are a range of plausible values for $\pi$. In this section, we will use a simulation-based method called **bootstrapping** to generate this range of plausible values for $\pi$ using the observed data.
+No! Though we did not find strong evidence against the null hypothesis, this does not mean we have evidence *for* the null hypothesis---we cannot "accept" the null. The sample proportion was $\hat{p} = 3/62 = 0.048$, which is our point estimate---or "best guess"---of $\pi$. It wouldn't make sense that a sample complication rate of 4.8% gives us evidence that the true complication rate was exactly 10%. It's plausible that the true complication rate is 10%, but there are a range of plausible values for $\pi$. In this section, we will use a simulation-based method called **bootstrapping** to generate this range of plausible values for $\pi$ using the observed data.
 :::
 
 In the medical consultant case study, the parameter is $\pi$, the true probability of a complication for a client of the medical consultant. There is no reason to believe that $\pi$ is exactly $\hat{p} = 3/62$, but there is also no reason to believe that $\pi$ is particularly far from $\hat{p} = 3/62$. By sampling with replacement from the data set (a process called **bootstrapping**\index{bootstrapping}),[^05-inference-cat-41] the variability of the possible $\hat{p}$ values can be approximated, which will allow us to generate a range of plausible values for $\pi$, i.e., a confidence interval.

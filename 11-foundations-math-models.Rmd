@@ -844,7 +844,7 @@ terms_chp_11 <- c(terms_chp_11, "margin of error")
 
 In Section \@ref(theory-prop) we will discuss different percentages for the confidence interval (e.g., 90% confidence interval or 99% confidence interval). Section \@ref(two-prop-boot-ci) provides a longer discussion on what "95% confidence" actually means.
 
-## Martian alphabet revisited
+<!-- ## Martian alphabet revisited -->
 
 <!-- ::: {.underconstruction} -->
 <!-- Edit the following (copied from old categorical inference chapter): -->
@@ -856,17 +856,17 @@ In Section \@ref(theory-prop) we will discuss different percentages for the conf
 <!-- [^05-inference-cat-5]: If you carry out the calculations, you'll note that the upper bound is actually $0.89 + 0.16 = 1.05$, but since a sample proportion cannot be greater than 1, we truncated the interval to 1. -->
 <!-- ::: -->
 
-## Case study (test): Medical consultant
+<!-- ## Case study (test): Medical consultant -->
 
-::: {.underconstruction}
-Model after Section 13.5 of IMS: [https://openintro-ims.netlify.app/foundations-mathematical.html#casemed]()
-:::
+<!-- ::: {.underconstruction} -->
+<!-- Model after Section 13.5 of IMS: [https://openintro-ims.netlify.app/foundations-mathematical.html#casemed]() -->
+<!-- ::: -->
 
-## Case study (interval): Stents
+<!-- ## Case study (interval): Stents -->
 
-::: {.underconstruction}
-Model after Section 13.6 of IMS: [https://openintro-ims.netlify.app/foundations-mathematical.html#casestent]()
-:::
+<!-- ::: {.underconstruction} -->
+<!-- Model after Section 13.6 of IMS: [https://openintro-ims.netlify.app/foundations-mathematical.html#casestent]() -->
+<!-- ::: -->
 
 ## Chapter review {#chp11-review}
 

@@ -298,7 +298,7 @@ When planning a study, we want to know how likely we are to detect an effect we 
 In other words, if there is a real effect, and that effect is large enough that it has practical value, then what is the probability that we detect that effect?
 This probability is called the **power**\index{power}, and we can compute it for different sample sizes or different effect sizes.
 
-::: {.important data-latex=""}
+::: {.onebox data-latex=""}
 **Power.**
 
 The power of the test is the probability of rejecting the null claim when the alternative claim is true.
@@ -323,69 +323,69 @@ Indeed, the larger the data set which provides evidence for your scientific clai
 <!-- TODO - sections below are from old Chapter 5 - go through and cut/move -->
 <!-- ::: -->
 
-When the null hypothesis is true, the probability of a Type 1 error is our chosen significance level, $\alpha$, which means the probability of a correct decision is $1 - \alpha$.
+<!-- When the null hypothesis is true, the probability of a Type 1 error is our chosen significance level, $\alpha$, which means the probability of a correct decision is $1 - \alpha$. -->
 
-If an alternative hypothesis is true, the probability of a Type 2 error, which we denote by $\beta$, depends on several components:
+<!-- If an alternative hypothesis is true, the probability of a Type 2 error, which we denote by $\beta$, depends on several components: -->
 
--   significance level
--   sample size
--   whether the alternative hypothesis is one-sided or two-sided
--   standard deviation of the statistic
--   how far the alternative parameter value is from the null value
+<!-- -   significance level -->
+<!-- -   sample size -->
+<!-- -   whether the alternative hypothesis is one-sided or two-sided -->
+<!-- -   standard deviation of the statistic -->
+<!-- -   how far the alternative parameter value is from the null value -->
 
-Only the first three of these components are within the control of the researcher.
+<!-- Only the first three of these components are within the control of the researcher. -->
 
-The probability of a correct decision when the alternative hypothesis is true, $1 - \beta$, is called the **power** of the test. Higher **power** means we are more likely to detect an effect that actually exists.
+<!-- The probability of a correct decision when the alternative hypothesis is true, $1 - \beta$, is called the **power** of the test. Higher **power** means we are more likely to detect an effect that actually exists. -->
 
-::: onebox
-**Power.**
+<!-- ::: onebox -->
+<!-- **Power.** -->
 
-The **power** of a test is the probability of rejecting a false null hypothesis.
-:::
+<!-- The **power** of a test is the probability of rejecting a false null hypothesis. -->
+<!-- ::: -->
 
-::: workedexample
-Suppose we would like to test whether less than 65% of a large population approves of a new law: $H_0: \pi = 0.65$ versus $H_A: \pi < 0.65$. We collect a random sample of $n = 200$ individuals from this population. For what values of the sample proportion, $\hat{p}$, would we reject $H_0$ using a significance level of $\alpha = 0.05$?
+<!-- ::: workedexample -->
+<!-- Suppose we would like to test whether less than 65% of a large population approves of a new law: $H_0: \pi = 0.65$ versus $H_A: \pi < 0.65$. We collect a random sample of $n = 200$ individuals from this population. For what values of the sample proportion, $\hat{p}$, would we reject $H_0$ using a significance level of $\alpha = 0.05$? -->
 
-------------------------------------------------------------------------
+<!-- ------------------------------------------------------------------------ -->
 
-Under the assumption of the null hypothesis, the standard deviation of $\hat{p}$ is $\sqrt{0.65(1-0.65)/200} = 0.0337$. Thus, by the Central Limit Theorem, sample proportions vary according to an approximate normal distribution with mean 0.65 and standard deviation 0.0337. We will reject the null hypothesis that the true proportion is 0.65 if the sample proportion is so low that its probability is less than 0.05, shown in Figure \@ref(fig:power-example).
+<!-- Under the assumption of the null hypothesis, the standard deviation of $\hat{p}$ is $\sqrt{0.65(1-0.65)/200} = 0.0337$. Thus, by the Central Limit Theorem, sample proportions vary according to an approximate normal distribution with mean 0.65 and standard deviation 0.0337. We will reject the null hypothesis that the true proportion is 0.65 if the sample proportion is so low that its probability is less than 0.05, shown in Figure \@ref(fig:power-example). -->
 
-To be precise, we will reject $H_0$ if $\hat{p}$ is less than the 5th percentile of the null distribution: `qnorm(0.05, 0.65, 0.0337)` = 0.59.
-:::
+<!-- To be precise, we will reject $H_0$ if $\hat{p}$ is less than the 5th percentile of the null distribution: `qnorm(0.05, 0.65, 0.0337)` = 0.59. -->
+<!-- ::: -->
 
-<div class="figure" style="text-align: center">
-<img src="05/figures/PowerExample.png" alt="Shaded area on a null distribution where we would reject the null hypothesis. This area is equal to the significance level." width="80%" />
-<p class="caption">(\#fig:power-example)Shaded area on a null distribution where we would reject the null hypothesis. This area is equal to the significance level.</p>
-</div>
+<!-- ```{r power-example, out.width = "80%", fig.cap = "Shaded area on a null distribution where we would reject the null hypothesis. This area is equal to the significance level."} -->
+<!-- include_graphics("05/figures/PowerExample.png") -->
+<!-- ``` -->
 
-To calculate power, we need to know the true value of the parameter. In the previous example, the alternative was $H_0: \pi < 0.65$, so if we just say the alternative hypothesis is true, we still do not know the value of $\pi$. Thus, power calculations are done for a specific value of the parameter, and the power changes if the value of the parameter changes.
+<!-- To calculate power, we need to know the true value of the parameter. In the previous example, the alternative was $H_0: \pi < 0.65$, so if we just say the alternative hypothesis is true, we still do not know the value of $\pi$. Thus, power calculations are done for a specific value of the parameter, and the power changes if the value of the parameter changes. -->
 
-::: workedexample
-Consider again the test of whether less than 65% of a large population approves of a new law: $H_0: \pi = 0.65$ versus $H_A: \pi < 0.65$. Suppose the population approval rate is actually $\pi = 0.58$. What is the probability that we will detect this effect?
+<!-- ::: workedexample -->
+<!-- Consider again the test of whether less than 65% of a large population approves of a new law: $H_0: \pi = 0.65$ versus $H_A: \pi < 0.65$. Suppose the population approval rate is actually $\pi = 0.58$. What is the probability that we will detect this effect? -->
 
-------------------------------------------------------------------------
+<!-- ------------------------------------------------------------------------ -->
 
-This example asks us to calculate the power -- the probability our test will provide evidence that $\pi < 0.65$ when the true value of $\pi$ is 0.58. Recall from the previous example that we will reject the null if $\hat{p} < 0.59$. Thus, the power is the probability that $\hat{p}$ will be less than 0.59 when the true proportion is 0.58: `pnorm(0.59, 0.58, 0.0337)` = 0.62. There is only a 62% chance that the data we collect will provide strong enough evidence to conclude $\pi < 0.65$. This probability is represented by the red area in Figure \@ref(fig:power-example-2).
-:::
+<!-- This example asks us to calculate the power -- the probability our test will provide evidence that $\pi < 0.65$ when the true value of $\pi$ is 0.58. Recall from the previous example that we will reject the null if $\hat{p} < 0.59$. Thus, the power is the probability that $\hat{p}$ will be less than 0.59 when the true proportion is 0.58: `pnorm(0.59, 0.58, 0.0337)` = 0.62. There is only a 62% chance that the data we collect will provide strong enough evidence to conclude $\pi < 0.65$. This probability is represented by the red area in Figure \@ref(fig:power-example-2). -->
+<!-- ::: -->
 
-<div class="figure" style="text-align: center">
-<img src="05/figures/PowerExample2.png" alt="The blue distribution is the distribution of sample proportions if the null hypothesis is true, $\pi = 0.65$ -- the blue shaded area represents the probability we reject a true null hypothesis. The red distribution is the distribution of sample proportions under a particular alternative hypothesis, that $\pi = 0.58$ -- the red shaded area represents the power." width="80%" />
-<p class="caption">(\#fig:power-example-2)The blue distribution is the distribution of sample proportions if the null hypothesis is true, $\pi = 0.65$ -- the blue shaded area represents the probability we reject a true null hypothesis. The red distribution is the distribution of sample proportions under a particular alternative hypothesis, that $\pi = 0.58$ -- the red shaded area represents the power.</p>
-</div>
+<!-- ```{r power-example-2, out.width = "80%", fig.cap = "The blue distribution is the distribution of sample proportions if the null hypothesis is true, $\\pi = 0.65$ -- the blue shaded area represents the probability we reject a true null hypothesis. The red distribution is the distribution of sample proportions under a particular alternative hypothesis, that $\\pi = 0.58$ -- the red shaded area represents the power."} -->
+<!-- include_graphics("05/figures/PowerExample2.png") -->
+<!-- ``` -->
 
-::: onebox
-**Increasing power.**
+<!-- ::: onebox -->
+<!-- **Increasing power.** -->
 
-The **power** of a test will *increase* when:
+<!-- The **power** of a test will *increase* when: -->
 
--   the significance level *increases*
--   the sample size *increases*
--   we change from a two-sided to a one-sided test
--   the standard deviation of the statistic *decreases*
--   how far the alternative parameter value is from the null value *increases*
-:::
+<!-- -   the significance level *increases* -->
+<!-- -   the sample size *increases* -->
+<!-- -   we change from a two-sided to a one-sided test -->
+<!-- -   the standard deviation of the statistic *decreases* -->
+<!-- -   how far the alternative parameter value is from the null value *increases* -->
+<!-- ::: -->
 
-<img src="05/images/Whalberg.png" width="40%" style="display: block; margin: auto;" />
+<!-- ```{r, out.width="40%"} -->
+<!-- include_graphics("05/images/Whalberg.png") -->
+<!-- ``` -->
 
 ## Statistical significance vs. practical importance
 

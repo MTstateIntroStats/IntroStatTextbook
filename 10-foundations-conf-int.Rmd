@@ -286,7 +286,7 @@ In Section \@ref(one-prop-null-boot) we will discuss different percentages for t
 
 Section \@ref(one-prop-null-boot) also provides a longer discussion on what "95% confidence" actually means.
 
-## Case study: Medical consultant revisited {#case-study-med-consult-test}
+<!-- ## Case study: Medical consultant revisited {#case-study-med-consult-test} -->
 
 <!-- ::: {.underconstruction} -->
 <!-- Add to the medical consultant example here to demonstrate a shifted bootstrap distribution in order to simulate a null distribution. -->

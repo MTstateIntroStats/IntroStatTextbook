@@ -153,7 +153,7 @@ Modeled after [Chapter 11](https://openintro-ims.netlify.app/foundations-randomi
 	* _9.1.1 Observed data_
 	* _9.1.2 Variability of the statistic_
 	* _9.1.3 Observed statistic vs. null statistics_
-- _9.2 Case study: Sex discriminatinon (modeled after [Section 11.1](https://openintro-ims.netlify.app/foundations-randomization.html#caseStudySexDiscrimination) of IMS - previously in our two-proportion section)_  {#caseStudySexDiscrimination}
+- _9.2 Case study: Sex discrimination (modeled after [Section 11.1](https://openintro-ims.netlify.app/foundations-randomization.html#caseStudySexDiscrimination) of IMS - previously in our two-proportion section)_  {#caseStudySexDiscrimination}
 	* _9.1.1 Observed data_
 	* _9.1.2 Variability of the statistic_
 	* _9.1.3 Observed statistic vs. null statistics_

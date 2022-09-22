@@ -5,10 +5,10 @@ source("_common.R")
 ```
 
 ::: {.chapterintro}
-TODO
+Coming soon!
 :::
 
 ::: {.underconstruction}
-TODO
+Coming soon!
 :::
 

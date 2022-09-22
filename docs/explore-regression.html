@@ -270,7 +270,7 @@ Figure 6.8: A reasonable linear model was fit to represent the relationship betw
 </p>
 </div>
 <div class="onebox">
-<p><strong>Residual: Difference between observed and expected.</strong></p>
+<p><strong>Residual: Difference between observed and predicted.</strong></p>
 <p>The <strong>residual</strong> of the <span class="math inline">\(i^{th}\)</span> observation <span class="math inline">\((x_i, y_i)\)</span> is the difference of the observed response (<span class="math inline">\(y_i\)</span>) and the response we would predict based on the model fit (<span class="math inline">\(\hat{y}_i\)</span>):</p>
 <p><span class="math display">\[e_i = y_i - \hat{y}_i\]</span></p>
 <p>We typically identify <span class="math inline">\(\hat{y}_i\)</span> by plugging <span class="math inline">\(x_i\)</span> into the model.</p>
@@ -374,8 +374,11 @@ Once you create a curve for each, describe what is important in your fit.<a cla
 <span class="header-section-number">6.2.1</span> Gift aid for freshman at Elmhurst College<a class="anchor" aria-label="anchor" href="#gift-aid-for-freshman-at-elmhurst-college"><i class="fas fa-link"></i></a>
 </h3>
 <p>This section considers family income and gift aid data from a random sample of fifty students in the freshman class of Elmhurst College in Illinois.
-Gift aid is financial aid that does not need to be paid back, as opposed to a loan.
-A scatterplot of the data is shown in Figure <a href="explore-regression.html#fig:elmhurstScatterW2Lines">6.13</a> along with two linear fits.
+Gift aid is financial aid that does not need to be paid back, as opposed to a loan.</p>
+<div class="data">
+<p>The data from this study can be found in the <a href="http://openintrostat.github.io/openintro">openintro</a> package: <a href="http://openintrostat.github.io/openintro/reference/elmhurst.html"><code>elmhurst</code></a>.</p>
+</div>
+<p>A scatterplot of the data is shown in Figure <a href="explore-regression.html#fig:elmhurstScatterW2Lines">6.13</a> along with two linear fits.
 The lines follow a negative trend in the data; students who have higher family incomes tended to have lower gift aid from the university.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:elmhurstScatterW2Lines"></span>
@@ -415,12 +418,12 @@ The following are three possible reasons to choose this option instead of trying
 <p>For the Elmhurst data, we could write the equation of our linear regression model as
 <span class="math display">\[aid = \beta_0 + \beta_{1}\times \textit{family_income} + \epsilon.\]</span>
 Here the model equation is set up to predict gift aid based on a student’s family income, which would be useful to students considering Elmhurst.
-The two unknown values <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> are the parameters of the linear regression model.</p>
+The two unknown values <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> are the parameters of the linear regression model, and <span class="math inline">\(\epsilon\)</span> represents the random error.</p>
 <p>The least squares regression line, computed based on the observed data, provides estimates of the parameters <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span>:
 <span class="math display">\[\widehat{aid} = b_0 + b_{1}\times \textit{family_income}.\]</span>
 In practice, this estimation is done using a computer in the same way that other estimates, like a sample mean, can be estimated using a computer or calculator.</p>
-<p>The dataset where these data are stored is called <code>elmhurst</code>.
-The first 5 rows of this dataset are given in Table <a href="explore-regression.html#tab:elmhurst-data">6.1</a>.</p>
+<p>The dataset where these data are stored is called <code>elmhurst</code> in the <code>openintro</code> package. Run the code below to load the data set into your RStudio session.</p>
+<p>The first five rows of this dataset are given in Table <a href="explore-regression.html#tab:elmhurst-data">6.1</a>.</p>
 <div class="inline-table"><table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:elmhurst-data">Table 6.1: </span>First five rows of the <code>elmhurst</code> dataset.
@@ -514,8 +517,8 @@ Interpreting parameters in a regression model is often one of the most important
 <p>The intercept and slope estimates for the Elmhurst data are <span class="math inline">\(b_0\)</span> = 24.319 and <span class="math inline">\(b_1\)</span> = -0.043.
 What do these numbers really mean?</p>
 <hr>
-<p>Interpreting the slope parameter is helpful in almost any application.
-For each additional $1,000 of family income, we would expect a student to receive a net difference of 1,000 <span class="math inline">\(\times\)</span> (-0.0431) = -$43.10 in aid on average, i.e., $43.10 <em>less</em>.
+<p>Interpreting the estimated slope is helpful in almost any application.
+For each additional $1,000 of family income, we would predict a student to receive a net difference of 1,000 <span class="math inline">\(\times\)</span> (-0.0431) = -$43.10 in aid on average, i.e., $43.10 <em>less</em>.
 Note that a higher family income corresponds to less aid because the coefficient of family income is negative in the model.
 We must be cautious in this interpretation: while there is a real association, we cannot interpret a causal connection between the variables because these data are observational.
 That is, increasing a student’s family income may not cause the student’s aid to drop. (It would be reasonable to contact the college and ask if the relationship is causal, i.e., if Elmhurst College’s aid decisions are partially based on students’ family income.) A more appropriate interpretation would then be: An additional $1,000 of family income is associated with an estimated decrease of $43.10 in aid on average.</p>

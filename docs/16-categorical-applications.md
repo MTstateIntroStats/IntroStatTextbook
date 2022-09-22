@@ -3,22 +3,21 @@
 
 
 ::: chapterintro
-Coming soon!
+In this chapter, we will explore how to conduct statistical inference for categorical variables using the `catstats` pacage in RStudio. Review the [Preliminaries](rstudio) Chapter for instructions for installing `catstats`.
+We encourage you to work through the code in this chapter in 
+your own RStudio session.
 :::
 
-
-<!-- ::: {.underconstruction} -->
-<!-- Old content - revise as needed -->
-<!-- ::: -->
+Much of the R code we use below is from the `tidyverse` R package. Load this package and the `catstats` package prior to running the code in this chapter.
 
 
-## Inference for categorical data using R and `catstats`
 
-### Making tables from raw data {.unnumbered}
 
-If you are collecting your own data, then your analysis starts with the raw data frame, with one observational unit per row and one variable per column. In this case, you first need to find counts (frequencies) of observations in each category prior to inference. We can use the `table()` function in R on the raw data to create a contingency table of the counts for each categorical variable.
+## Making tables from raw data {.unnumbered}
 
-In the one-proportion case, suppose we have a data frame called `loans` with a variable `regulate` that contains the Yes/No response of the 826 payday loan borrowers from Section \@ref(theory-prop) regarding their support for a regulation to require lenders to pull their credit report and evaluate their debt payments. We can obtain counts of borrowers for each response using the `table()` function in R:
+If you are collecting your own data, then your analysis starts with the raw data frame, with one observational unit per row and one variable per column. In this case, you first need to find counts (frequencies) of observations in each category prior to inference. We can use the `count()` function in R on the raw data to create a contingency table of the counts for each categorical variable.
+
+In the one-proportion case, suppose we have a data frame called `loans` with a variable `regulate` that contains the Yes/No response of the 826 payday loan borrowers from Section \@ref(theory-prop) regarding their support for a regulation to require lenders to pull their credit report and evaluate their debt payments. We can obtain counts of borrowers for each response using the `count()` function in R:
 
 
 

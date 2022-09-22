@@ -285,7 +285,7 @@ That’s not very scientific, and we can do better!</p></li>
 </ol>
 <p>The hypotheses we have seen in the past two chapters are called <strong>one-sided hypothesis tests</strong> because they only explored one direction of possibilities.
 Such hypotheses are appropriate when we are exclusively interested in the single direction, but usually we want to consider all possibilities.</p>
-<p>Consider the situation of the <a href="foundations-bootstrapping.html#case-study-med-consult-test">medical consultant</a>. The setting has been framed in the context of the consultant being helpful. This original hypothesis is a one-sided hypothesis test because it only explored whether the consultant’s patients had a complication rate <em>below</em> 10%.</p>
+<p>Consider the situation of the <a href="#case-study-med-consult-test">medical consultant</a>. The setting has been framed in the context of the consultant being helpful. This original hypothesis is a one-sided hypothesis test because it only explored whether the consultant’s patients had a complication rate <em>below</em> 10%.</p>
 <p>But what if the consultant actually performed <em>worse</em> than the average? Would we care? More than ever! Since it turns out that we care about a finding in either direction, we should run a two-sided hypothesis test.</p>
 <div class="workedexample">
 <p>Form hypotheses to conduct a two-sided test for the medical consultant case study in plain and statistical language. Let <span class="math inline">\(\pi\)</span> represent the true complication rate of organ donors who work with this medical consultant.</p>
@@ -303,7 +303,7 @@ Such hypotheses are appropriate when we are exclusively interested in the single
 </div>
 <p>There were 62 patients who worked with this medical consultant, 3 of which developed complications from their organ donation, for a point estimate of <span class="math inline">\(\hat{p} = \frac{3}{62} = 0.048\)</span>.</p>
 <p>According to the point estimate, the complication rate for clients of this medical consultant is 5.2% below the expected complication rate of 10%. However, we wonder if this difference could be easily explainable by chance.</p>
-<p>Recall in Section <a href="foundations-bootstrapping.html#case-study-med-consult-test">10.3</a>, we simulated what proportions we might see from chance alone under the null hypothesis. By using marbles, cards, or a spinner to reflect the null hypothesis, we can simulate what would happen to 62 ‘patients’ <em>if the true complication rate is 10%</em>. After repeating this simulation 10,000 times, we can build a <strong>null distribution</strong> of the sample proportions shown in Figure <a href="foundations-errors.html#fig:nullDistForPHatIfLiverTransplantConsultantIsNotHelpful2">12.1</a>.</p>
+<p>Recall in Section <a href="#case-study-med-consult-test"><strong>??</strong></a>, we simulated what proportions we might see from chance alone under the null hypothesis. By using marbles, cards, or a spinner to reflect the null hypothesis, we can simulate what would happen to 62 ‘patients’ <em>if the true complication rate is 10%</em>. After repeating this simulation 10,000 times, we can build a <strong>null distribution</strong> of the sample proportions shown in Figure <a href="foundations-errors.html#fig:nullDistForPHatIfLiverTransplantConsultantIsNotHelpful2">12.1</a>.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:nullDistForPHatIfLiverTransplantConsultantIsNotHelpful2"></span>
 <img src="12-foundations-errors_files/figure-html/nullDistForPHatIfLiverTransplantConsultantIsNotHelpful2-1.png" alt="The null distribution for $\hat{p}$, created from 10,000 simulated studies. " width="90%"><p class="caption">
@@ -383,7 +383,7 @@ A good power analysis is a vital preliminary step to any study as it will inform
 <p>When planning a study, we want to know how likely we are to detect an effect we care about.
 In other words, if there is a real effect, and that effect is large enough that it has practical value, then what is the probability that we detect that effect?
 This probability is called the <strong>power</strong>, and we can compute it for different sample sizes or different effect sizes.</p>
-<div class="important">
+<div class="onebox">
 <p><strong>Power.</strong></p>
 <p>The power of the test is the probability of rejecting the null claim when the alternative claim is true.</p>
 <p>How easy it is to detect the effect depends on both how big the effect is (e.g., how good the medical treatment is) as well as the sample size.</p>
@@ -399,61 +399,49 @@ Indeed, the larger the data set which provides evidence for your scientific clai
 <!-- ::: {.underconstruction} -->
 <!-- TODO - sections below are from old Chapter 5 - go through and cut/move -->
 <!-- ::: -->
-<p>When the null hypothesis is true, the probability of a Type 1 error is our chosen significance level, <span class="math inline">\(\alpha\)</span>, which means the probability of a correct decision is <span class="math inline">\(1 - \alpha\)</span>.</p>
-<p>If an alternative hypothesis is true, the probability of a Type 2 error, which we denote by <span class="math inline">\(\beta\)</span>, depends on several components:</p>
-<ul>
-<li>significance level</li>
-<li>sample size</li>
-<li>whether the alternative hypothesis is one-sided or two-sided</li>
-<li>standard deviation of the statistic</li>
-<li>how far the alternative parameter value is from the null value</li>
-</ul>
-<p>Only the first three of these components are within the control of the researcher.</p>
-<p>The probability of a correct decision when the alternative hypothesis is true, <span class="math inline">\(1 - \beta\)</span>, is called the <strong>power</strong> of the test. Higher <strong>power</strong> means we are more likely to detect an effect that actually exists.</p>
-<div class="onebox">
-<p><strong>Power.</strong></p>
-<p>The <strong>power</strong> of a test is the probability of rejecting a false null hypothesis.</p>
-</div>
-<div class="workedexample">
-<p>Suppose we would like to test whether less than 65% of a large population approves of a new law: <span class="math inline">\(H_0: \pi = 0.65\)</span> versus <span class="math inline">\(H_A: \pi &lt; 0.65\)</span>. We collect a random sample of <span class="math inline">\(n = 200\)</span> individuals from this population. For what values of the sample proportion, <span class="math inline">\(\hat{p}\)</span>, would we reject <span class="math inline">\(H_0\)</span> using a significance level of <span class="math inline">\(\alpha = 0.05\)</span>?</p>
-<hr>
-<p>Under the assumption of the null hypothesis, the standard deviation of <span class="math inline">\(\hat{p}\)</span> is <span class="math inline">\(\sqrt{0.65(1-0.65)/200} = 0.0337\)</span>. Thus, by the Central Limit Theorem, sample proportions vary according to an approximate normal distribution with mean 0.65 and standard deviation 0.0337. We will reject the null hypothesis that the true proportion is 0.65 if the sample proportion is so low that its probability is less than 0.05, shown in Figure <a href="foundations-errors.html#fig:power-example">12.4</a>.</p>
-<p>To be precise, we will reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\hat{p}\)</span> is less than the 5th percentile of the null distribution: <code>qnorm(0.05, 0.65, 0.0337)</code> = 0.59.</p>
-</div>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:power-example"></span>
-<img src="05/figures/PowerExample.png" alt="Shaded area on a null distribution where we would reject the null hypothesis. This area is equal to the significance level." width="80%"><p class="caption">
-Figure 12.4: Shaded area on a null distribution where we would reject the null hypothesis. This area is equal to the significance level.
-</p>
-</div>
-<p>To calculate power, we need to know the true value of the parameter. In the previous example, the alternative was <span class="math inline">\(H_0: \pi &lt; 0.65\)</span>, so if we just say the alternative hypothesis is true, we still do not know the value of <span class="math inline">\(\pi\)</span>. Thus, power calculations are done for a specific value of the parameter, and the power changes if the value of the parameter changes.</p>
-<div class="workedexample">
-<p>Consider again the test of whether less than 65% of a large population approves of a new law: <span class="math inline">\(H_0: \pi = 0.65\)</span> versus <span class="math inline">\(H_A: \pi &lt; 0.65\)</span>. Suppose the population approval rate is actually <span class="math inline">\(\pi = 0.58\)</span>. What is the probability that we will detect this effect?</p>
-<hr>
-<p>This example asks us to calculate the power – the probability our test will provide evidence that <span class="math inline">\(\pi &lt; 0.65\)</span> when the true value of <span class="math inline">\(\pi\)</span> is 0.58. Recall from the previous example that we will reject the null if <span class="math inline">\(\hat{p} &lt; 0.59\)</span>. Thus, the power is the probability that <span class="math inline">\(\hat{p}\)</span> will be less than 0.59 when the true proportion is 0.58: <code>pnorm(0.59, 0.58, 0.0337)</code> = 0.62. There is only a 62% chance that the data we collect will provide strong enough evidence to conclude <span class="math inline">\(\pi &lt; 0.65\)</span>. This probability is represented by the red area in Figure <a href="foundations-errors.html#fig:power-example-2">12.5</a>.</p>
-</div>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:power-example-2"></span>
-<img src="05/figures/PowerExample2.png" alt="The blue distribution is the distribution of sample proportions if the null hypothesis is true, $\pi = 0.65$ -- the blue shaded area represents the probability we reject a true null hypothesis. The red distribution is the distribution of sample proportions under a particular alternative hypothesis, that $\pi = 0.58$ -- the red shaded area represents the power." width="80%"><p class="caption">
-Figure 12.5: The blue distribution is the distribution of sample proportions if the null hypothesis is true, <span class="math inline">\(\pi = 0.65\)</span> – the blue shaded area represents the probability we reject a true null hypothesis. The red distribution is the distribution of sample proportions under a particular alternative hypothesis, that <span class="math inline">\(\pi = 0.58\)</span> – the red shaded area represents the power.
-</p>
-</div>
-<div class="onebox">
-<p><strong>Increasing power.</strong></p>
-<p>The <strong>power</strong> of a test will <em>increase</em> when:</p>
-<ul>
-<li>the significance level <em>increases</em>
-</li>
-<li>the sample size <em>increases</em>
-</li>
-<li>we change from a two-sided to a one-sided test</li>
-<li>the standard deviation of the statistic <em>decreases</em>
-</li>
-<li>how far the alternative parameter value is from the null value <em>increases</em>
-</li>
-</ul>
-</div>
-<div class="inline-figure"><img src="05/images/whalberg.png" width="40%" style="display: block; margin: auto;"></div>
+<!-- When the null hypothesis is true, the probability of a Type 1 error is our chosen significance level, $\alpha$, which means the probability of a correct decision is $1 - \alpha$. -->
+<!-- If an alternative hypothesis is true, the probability of a Type 2 error, which we denote by $\beta$, depends on several components: -->
+<!-- -   significance level -->
+<!-- -   sample size -->
+<!-- -   whether the alternative hypothesis is one-sided or two-sided -->
+<!-- -   standard deviation of the statistic -->
+<!-- -   how far the alternative parameter value is from the null value -->
+<!-- Only the first three of these components are within the control of the researcher. -->
+<!-- The probability of a correct decision when the alternative hypothesis is true, $1 - \beta$, is called the **power** of the test. Higher **power** means we are more likely to detect an effect that actually exists. -->
+<!-- ::: onebox -->
+<!-- **Power.** -->
+<!-- The **power** of a test is the probability of rejecting a false null hypothesis. -->
+<!-- ::: -->
+<!-- ::: workedexample -->
+<!-- Suppose we would like to test whether less than 65% of a large population approves of a new law: $H_0: \pi = 0.65$ versus $H_A: \pi < 0.65$. We collect a random sample of $n = 200$ individuals from this population. For what values of the sample proportion, $\hat{p}$, would we reject $H_0$ using a significance level of $\alpha = 0.05$? -->
+<!-- ------------------------------------------------------------------------ -->
+<!-- Under the assumption of the null hypothesis, the standard deviation of $\hat{p}$ is $\sqrt{0.65(1-0.65)/200} = 0.0337$. Thus, by the Central Limit Theorem, sample proportions vary according to an approximate normal distribution with mean 0.65 and standard deviation 0.0337. We will reject the null hypothesis that the true proportion is 0.65 if the sample proportion is so low that its probability is less than 0.05, shown in Figure \@ref(fig:power-example). -->
+<!-- To be precise, we will reject $H_0$ if $\hat{p}$ is less than the 5th percentile of the null distribution: `qnorm(0.05, 0.65, 0.0337)` = 0.59. -->
+<!-- ::: -->
+<!-- ```{r power-example, out.width = "80%", fig.cap = "Shaded area on a null distribution where we would reject the null hypothesis. This area is equal to the significance level."} -->
+<!-- include_graphics("05/figures/PowerExample.png") -->
+<!-- ``` -->
+<!-- To calculate power, we need to know the true value of the parameter. In the previous example, the alternative was $H_0: \pi < 0.65$, so if we just say the alternative hypothesis is true, we still do not know the value of $\pi$. Thus, power calculations are done for a specific value of the parameter, and the power changes if the value of the parameter changes. -->
+<!-- ::: workedexample -->
+<!-- Consider again the test of whether less than 65% of a large population approves of a new law: $H_0: \pi = 0.65$ versus $H_A: \pi < 0.65$. Suppose the population approval rate is actually $\pi = 0.58$. What is the probability that we will detect this effect? -->
+<!-- ------------------------------------------------------------------------ -->
+<!-- This example asks us to calculate the power -- the probability our test will provide evidence that $\pi < 0.65$ when the true value of $\pi$ is 0.58. Recall from the previous example that we will reject the null if $\hat{p} < 0.59$. Thus, the power is the probability that $\hat{p}$ will be less than 0.59 when the true proportion is 0.58: `pnorm(0.59, 0.58, 0.0337)` = 0.62. There is only a 62% chance that the data we collect will provide strong enough evidence to conclude $\pi < 0.65$. This probability is represented by the red area in Figure \@ref(fig:power-example-2). -->
+<!-- ::: -->
+<!-- ```{r power-example-2, out.width = "80%", fig.cap = "The blue distribution is the distribution of sample proportions if the null hypothesis is true, $\\pi = 0.65$ -- the blue shaded area represents the probability we reject a true null hypothesis. The red distribution is the distribution of sample proportions under a particular alternative hypothesis, that $\\pi = 0.58$ -- the red shaded area represents the power."} -->
+<!-- include_graphics("05/figures/PowerExample2.png") -->
+<!-- ``` -->
+<!-- ::: onebox -->
+<!-- **Increasing power.** -->
+<!-- The **power** of a test will *increase* when: -->
+<!-- -   the significance level *increases* -->
+<!-- -   the sample size *increases* -->
+<!-- -   we change from a two-sided to a one-sided test -->
+<!-- -   the standard deviation of the statistic *decreases* -->
+<!-- -   how far the alternative parameter value is from the null value *increases* -->
+<!-- ::: -->
+<!-- ```{r, out.width="40%"} -->
+<!-- include_graphics("05/images/Whalberg.png") -->
+<!-- ``` -->
 </div>
 <div id="statistical-significance-vs.-practical-importance" class="section level2" number="12.6">
 <h2>
@@ -466,11 +454,11 @@ Figure 12.5: The blue distribution is the distribution of sample proportions if 
 </div>
 <p>In the previous example, we saw two groups of men that differed in average height, and that difference was <strong>statistically significant</strong> – that is, the observed difference in sample means of 0.6 cm is very unlikely to occur <em>if the true difference in average height was zero</em>. But, a difference of 0.6 cm in height is not meaningful – not <strong>practically important</strong>.</p>
 <p>Why did this happen? Recall that the variability in sample statistics decreases as the sample size increases. For example, unknown to you, suppose a slight majority of a population, say 50.5%, support a new ballot measure. You want to test <span class="math inline">\(H_0: \pi = 0.50\)</span> versus <span class="math inline">\(H_0: \pi &gt; 0.50\)</span> for this population. Since the true proportion is not exactly 0.50, you can make your p-value smaller than any given significance level as long as you choose a large enough sample size!</p>
-<p>Figure <a href="foundations-errors.html#fig:stat-signif">12.6</a> displays this scenario. The distribution of possible sample proportions who support the new ballot measure in samples of size <span class="math inline">\(n = 100,000\)</span> when 50.5% of the population supports the measure is represented by the black normal curve. The dotted red normal curve is the null distribution of sample proportions for <span class="math inline">\(H_0: \pi = 0.5\)</span>. There is very little overlap between the two distributions due to the very large sample size. The shaded blue area represents the power of the test of <span class="math inline">\(H_0: \pi = 0.5\)</span> versus <span class="math inline">\(H_A: \pi &gt; 0.5\)</span> when <span class="math inline">\(\alpha = 0.05\)</span> – 0.885! That is, we have an 88.5% chance that our p-value will be less than 0.05, even though the true proportion is only 0.05 above 0.5!</p>
+<p>Figure <a href="foundations-errors.html#fig:stat-signif">12.4</a> displays this scenario. The distribution of possible sample proportions who support the new ballot measure in samples of size <span class="math inline">\(n = 100,000\)</span> when 50.5% of the population supports the measure is represented by the black normal curve. The dotted red normal curve is the null distribution of sample proportions for <span class="math inline">\(H_0: \pi = 0.5\)</span>. There is very little overlap between the two distributions due to the very large sample size. The shaded blue area represents the power of the test of <span class="math inline">\(H_0: \pi = 0.5\)</span> versus <span class="math inline">\(H_A: \pi &gt; 0.5\)</span> when <span class="math inline">\(\alpha = 0.05\)</span> – 0.885! That is, we have an 88.5% chance that our p-value will be less than 0.05, even though the true proportion is only 0.05 above 0.5!</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:stat-signif"></span>
 <img src="12-foundations-errors_files/figure-html/stat-signif-1.png" alt="Black curve: sampling distribution of sample proportions from samples of size 100,000 when the true proportion is 0.505. Red curve: null distribution of sample proportions for a null value of 0.50." width="100%"><p class="caption">
-Figure 12.6: Black curve: sampling distribution of sample proportions from samples of size 100,000 when the true proportion is 0.505. Red curve: null distribution of sample proportions for a null value of 0.50.
+Figure 12.4: Black curve: sampling distribution of sample proportions from samples of size 100,000 when the true proportion is 0.505. Red curve: null distribution of sample proportions for a null value of 0.50.
 </p>
 </div>
 <!-- Someday - annotate these plots better -->
@@ -478,11 +466,11 @@ Figure 12.6: Black curve: sampling distribution of sample proportions from sampl
 <p>If p-values can be made arbitrarily small with large sample sizes, what might tend to happen with small sample sizes? Would small sample sizes be more likely to give practically important results that are not statistically significant? or statistically significant results that are not practically important?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Since hypothesis tests with small sample sizes typically have low power, small sample sizes can result in practically important results that are not statistically significant.&lt;/p&gt;"><sup>110</sup></a></p>
 </div>
 <p>Consider the opposite scenario – small sample sizes with a meaningful difference. Suppose again that you would like to determine if a majority of a population support a new ballot measure. However, you only have the time and money to survey 20 people in the community. Unknown to you, 65% of the population support the measure.</p>
-<p>Examine Figure <a href="foundations-errors.html#fig:prac-signif">12.7</a>. The distribution of possible sample proportions who support the new ballot measure in samples of size <span class="math inline">\(n = 20\)</span> when 65% of the population supports the measure is represented by the black normal curve. The dotted red normal curve is the null distribution of sample proportions for <span class="math inline">\(H_0: \pi = 0.5\)</span>. Even though 0.65 is quite a bit higher than 0.50, there is still a lot of overlap between the two distributions due to the small sample size. The shaded blue area represents the power of the test of <span class="math inline">\(H_0: \pi = 0.5\)</span> versus <span class="math inline">\(H_A: \pi &gt; 0.5\)</span> when <span class="math inline">\(\alpha = 0.05\)</span> – only 0.29! That is, even though 65% of the population supports the measure (much higher than 50%), we only have a 29% chance of detecting that difference with our small sample size.</p>
+<p>Examine Figure <a href="foundations-errors.html#fig:prac-signif">12.5</a>. The distribution of possible sample proportions who support the new ballot measure in samples of size <span class="math inline">\(n = 20\)</span> when 65% of the population supports the measure is represented by the black normal curve. The dotted red normal curve is the null distribution of sample proportions for <span class="math inline">\(H_0: \pi = 0.5\)</span>. Even though 0.65 is quite a bit higher than 0.50, there is still a lot of overlap between the two distributions due to the small sample size. The shaded blue area represents the power of the test of <span class="math inline">\(H_0: \pi = 0.5\)</span> versus <span class="math inline">\(H_A: \pi &gt; 0.5\)</span> when <span class="math inline">\(\alpha = 0.05\)</span> – only 0.29! That is, even though 65% of the population supports the measure (much higher than 50%), we only have a 29% chance of detecting that difference with our small sample size.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:prac-signif"></span>
 <img src="12-foundations-errors_files/figure-html/prac-signif-1.png" alt="Black curve: approximate sampling distribution of sample proportions from samples of size 20 when the true proportion is 0.65. Red curve: approximate null distribution of sample proportions for a null value of 0.50." width="100%"><p class="caption">
-Figure 12.7: Black curve: approximate sampling distribution of sample proportions from samples of size 20 when the true proportion is 0.65. Red curve: approximate null distribution of sample proportions for a null value of 0.50.
+Figure 12.5: Black curve: approximate sampling distribution of sample proportions from samples of size 20 when the true proportion is 0.65. Red curve: approximate null distribution of sample proportions for a null value of 0.50.
 </p>
 </div>
 <div class="onebox">

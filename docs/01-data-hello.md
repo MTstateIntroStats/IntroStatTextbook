@@ -65,6 +65,12 @@ Patient outcomes are recorded as `stroke` or `no event`, representing whether or
 
 ::: {.data}
 The data from this study can be found in the [openintro](http://openintrostat.github.io/openintro) package: [`stent30`](http://openintrostat.github.io/openintro/reference/stent30.html) and [`stent365`](http://openintrostat.github.io/openintro/reference/stent365.html).
+
+Load these data into your RStudio session using the following commands:
+
+`library(openintro)`  
+`data(stent30)`  
+`data(stent365)`
 :::
 
 <table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;">
@@ -221,6 +227,11 @@ Here, we will consider loans offered through the Lending Club, a peer-to-peer le
 
 ::: {.data}
 The data can be found in the [openintro](http://openintrostat.github.io/openintro) package: [`loan50`](http://openintrostat.github.io/openintro/reference/loan50.html).
+
+Load these data into your RStudio session using the following commands:
+
+`library(openintro)`  
+`data(loan50)`  
 :::
 
 Each row in the table represents a single loan. 
@@ -527,6 +538,11 @@ The variables as well as the variables in the data set that did not fit in Table
 
 ::: {.data}
 These data can be found in the [usdata](http://openintrostat.github.io/usdata) package: [`county`](http://openintrostat.github.io/usdata/reference/county.html).
+
+Load these data into your RStudio session using the following commands:
+
+`library(usdata)`  
+`data(county)`  
 :::
 
 ### Types of variables {#variable-types}

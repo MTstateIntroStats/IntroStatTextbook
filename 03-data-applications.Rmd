@@ -88,7 +88,13 @@ data set that we'll see in Chapter \@ref(explore-categorical).
 Data sets that are built into R packages can be loaded using the `data()` function.
 
 ::: {.data}
-The `email50` data can be found in the [openintro](http://openintrostat.github.io/openintro/reference/index.html) package.
+The `email50` data can be found in the [openintro](http://openintrostat.github.io/openintro/reference/index.html) package: `email50`^[The `email` data set found in the `openintro` package defines the variable `spam` as 0 (not spam) or 1 (spam), and `format` as 0 (not HTML) or 1 (HTML). When variables are defined in this way---coded as the numbers 0 and 1 rather than the category names---they are called **indicator variables*** or **dummy variables**. In this section of the textbook, we have re-coded `spam` to be the variable `type`, which takes on values "not spam" or "spam", and we have re-coded the variable `format` to take on values "not HTML" or "HTML".].
+
+Load these data into your RStudio session using the following commands:
+
+`library(openintro)`  
+`data(email50)`  
+
 :::
 
 We can use the `glimpse()` function to see the variables included in the data set

@@ -120,8 +120,6 @@ tab:fourHTScenarios
 fig:nullDistForPHatIfLiverTransplantConsultantIsNotHelpful2
 fig:Medical-consultant-two-sided
 fig:type1ErrorDoublingExampleFigure
-fig:power-example
-fig:power-example-2
 fig:stat-signif
 fig:prac-signif
 fig:nullDistForPHatIfLiverTransplantConsultantIsNotHelpful
@@ -324,7 +322,6 @@ variability-of-the-statistic-1
 ConfidenceIntervals
 plausible-range-of-values-for-the-population-parameter
 bootstrap-confidence-interval
-case-study-med-consult-test
 chp10-review
 foundations-mathematical
 CLTsection
@@ -337,9 +334,6 @@ rule
 quantifying-the-variability-of-a-statistic
 standard-error
 moe
-martian-alphabet-revisited
-case-study-test-medical-consultant
-case-study-interval-stents
 chp11-review
 foundations-errors
 decerr
@@ -376,7 +370,6 @@ hypothesis-test-for-h_0-pi_1---pi_2-0
 chp15-review
 summary-of-z-procedures
 inference-categ-applications
-inference-for-categorical-data-using-r-and-catstats
 catstats-function-summary
 inference-one-mean
 bootstrap-confidence-interval-for-mu

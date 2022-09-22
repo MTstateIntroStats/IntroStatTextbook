@@ -18,7 +18,12 @@ In this chapter, we will introduce tables and other basic tools for organizing a
 Descriptions of all five email variables are given in Table \@ref(tab:emailVariables).
 
 ::: {.data}
-The `email` data can be found in the [openintro](http://openintrostat.github.io/openintro/reference/index.html) package.^[The `email` data set found in the `openintro` package defines the variable `spam` as 0 (not spam) or 1 (spam), and `format` as 0 (not HTML) or 1 (HTML). When variables are defined in this way---coded as the numbers 0 and 1 rather than the category names---they are called **indicator variables*** or **dummy variables**. In this section of the textbook, we have re-coded `spam` to be the variable `type`, which takes on values "not spam" or "spam", and we have re-coded the variable `format` to take on values "not HTML" or "HTML".]
+The `email` data can be found in the [openintro](http://openintrostat.github.io/openintro/reference/index.html) package: `email`.
+
+Load these data into your RStudio session using the following commands:
+
+`library(openintro)`  
+`data(email)`  
 :::
 
 ```{r include=FALSE}
