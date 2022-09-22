@@ -2,11 +2,11 @@
 
 
 
-::: {.chapterintro}
-Coming soon!
-:::
+<!-- ::: {.chapterintro} -->
+<!-- Coming soon! -->
+<!-- ::: -->
 
 ::: {.underconstruction}
-Coming soon!
+Future chapter addition
 :::
 
