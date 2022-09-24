@@ -574,9 +574,11 @@ The mathematical models are derived from the normal theory, but even the computa
 
 ### Standard error
 
-Theory-based methods also give us mathematical expressions for the standard deviation of a sampling distribution. For instance, if the true population proportion is $\pi$, then the standard deviation of the sampling distribution of sample proportions---how far away we would expect a sample proportion to be away from the population proportion---is[^05-inference-cat-6] $$
+Theory-based methods also give us mathematical expressions for the standard deviation of a sampling distribution. For instance, if the true population proportion is $\pi$, then the standard deviation of the sampling distribution of sample proportions---how far away we would expect a sample proportion to be away from the population proportion---is[^05-inference-cat-6] 
+$$
 SD(\hat{p}) = \sqrt{\frac{\pi(1-\pi)}{n}}.
-$$ Typically, values of parameters such as $\pi$ are unknown, so we are unable to calculate these standard deviations. In this case, we substitute our "best guess" for $\pi$ in the formulas, either from a hypothesis or from a point estimate.
+$$ 
+Typically, values of parameters such as $\pi$ are unknown, so we are unable to calculate these standard deviations. In this case, we substitute our "best guess" for $\pi$ in the formulas, either from a hypothesis or from a point estimate.
 
 [^05-inference-cat-6]: The notation $SD(\hat{p})$ is function notation --- we are applying the standard deviation function ($SD$) to the statistic $\hat{p}$. This notation does *not* mean to multiply $SD$ by $\hat{p}$.
 
@@ -586,6 +588,11 @@ $$ Typically, values of parameters such as $\pi$ are unknown, so we are unable t
 The **standard deviation** of a sampling distribution for a statistic, denoted by $SD$(statistic), represents how far away we would expect the statistic to land from the parameter.
 
 Since the formulas for these standard deviations depend on unknown parameters, we substitute our "best guess" for these unknown parameters (our observed statistics) in the formulas, either from a hypothesis or from a point estimate. The resulting *estimated* standard deviation is called the **standard error** of the statistic, denoted by $SE$(statistic).
+
+For example, the *standard error* of a sample proportion is
+$$
+SE(\hat{p}) = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}.
+$$ 
 :::
 
 

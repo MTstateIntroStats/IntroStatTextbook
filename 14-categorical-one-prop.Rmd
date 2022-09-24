@@ -16,11 +16,11 @@ As we build on the inferential ideas, we will visit new foundational concepts in
 For example, we will cover the conditions for when a normal model is appropriate; the two different error rates in hypothesis testing; and choosing the confidence level for a confidence interval.
 :::
 
-We encountered inference methods for a single proportion in the Martian alphabet example of Chapter \@ref(foundations-randomization),the  Medical consultant case study of Chapter \@ref(foundations-bootstrapping) exploring point estimates, confidence intervals, and hypothesis tests.
-In this section, we'll do a review of these topics and how to choose an appropriate sample size when collecting data for single proportion contexts.
+We encountered statistical inference methods for a single proportion in the Martian alphabet example of Section \@ref(Martian) and the Medical consultant case study of Section \@ref(case-study-med-consult), exploring point estimates, confidence intervals, and hypothesis tests.
+In this section, we'll do a review of these topics when collecting data for single proportion contexts.
 
 Note that there is only one variable being measured in a study which focuses on one proportion.
-For each observational unit, the single variable is measured as either a success or failure (e.g., "surgical complication" vs. "no surgical complication").
+For each observational unit, the single variable is measured as either a "success" or "failure" (e.g., "surgical complication" vs. "no surgical complication")[^05-inference-cat-34].
 Because the nature of the research question at hand focuses on only a single variable, there is not a way to randomize the variable across a different (explanatory) variable.
 For this reason, we will not use randomization as an analysis tool when focusing on a single proportion.
 Instead, we will apply bootstrapping techniques to test a given hypothesis, and we will also revisit the associated mathematical models.
@@ -37,17 +37,11 @@ Below we summarize the notation used throughout this chapter.
 
 [^05-inference-cat-33]: When you see $\pi$ in this textbook, it will always symbolize a (typically unknown) population proportion, not the value 3.14....
 
-A single proportion is used to summarize data when we measured a single categorical variable on each observational unit---the single variable is measured as either a success or failure (e.g., "surgical complication" vs. "no surgical complication")[^05-inference-cat-34].
-
 [^05-inference-cat-34]: The terms "success" and "failure" may not actually represent outcomes we view as successful or not, but it is the typical generic way to referring to the possible outcomes of a binary variable. The "success" is whatever we count when calculating our sample proportion.
 
 ## Simulation-based test for $H_0: \pi = \pi_0$ {#one-prop-null-boot}
 
-<!-- ::: {.underconstruction} -->
-<!-- Need revise this section - medical consultant case study introduced in Chapter 10. General steps of a hypothesis test introduced in Summary of Ch. 9. Move here? -->
-<!-- ::: -->
-
-\index{data!medical consultant|(} At the end of Chapter \@ref(foundations-randomization), we introduced the general steps of a hypothesis test:
+At the end of Chapter \@ref(foundations-randomization), we introduced the general steps of a hypothesis test:
 
 ::: onebox
 **General steps of a hypothesis test.** Every hypothesis test follows these same general steps:
@@ -59,8 +53,8 @@ A single proportion is used to summarize data when we measured a single categori
 5.  Make a conclusion based on the p-value, and write a conclusion in context, in plain language, and in terms of the alternative hypothesis.
 :::
 
-In this section, we will demonstrate the steps of a hypothesis test in the context of the medical consultant case study from Section \@ref(case-study-med-consult).
-A medical consultant tried
+In this section, we will demonstrate the steps of a hypothesis test for the medical consultant case study from Section \@ref(case-study-med-consult).
+Recall that in this case study, a medical consultant tried
 to attract patients by noting the average complication rate for liver donor surgeries in the US is about 10%, but her clients have had only 3 complications in the 62 liver donor surgeries she has facilitated.
 Do these data provide evidence that her rate of complications is _less_ than the average complication rate in the US of 10%?
 
@@ -71,11 +65,11 @@ Regardless of if we use simulation-based methods or theory-based methods, the fi
 
 Let $\pi$ represent the true complication rate for liver donors working with this consultant. This "true" complication probability is called the **parameter** of interest.
 
-The sample proportion for the complication rate is 3 complications divided by the 62 surgeries the consultant has worked on: $\hat{p} = 3/62 = 0.048$. Since this value is estimated from sample data, it is called a **statistic**. The statistic $\hat{p}$ is also our point estimate, or "best guess," for $\pi$, and we will use it as our **test statistic**.
+The sample proportion for the complication rate is 3 complications divided by the 62 surgeries the consultant has worked on: $\hat{p} = 3/62 = 0.048$. Since this value is estimated from sample data, it is called a **statistic**. The statistic $\hat{p}$ is also our **point estimate**, or "best guess," for $\pi$, and we will use it as our **test statistic**.
 
 
 ```{r include=FALSE}
-terms_chp_14 <- c("statistic", "parameter", "test statistic")
+terms_chp_14 <- c("statistic", "point estimate", "parameter", "test statistic")
 ```
 
 ::: protip
@@ -105,7 +99,7 @@ In statistical language:
 
 ### Steps 3 and 4: Null distribution and p-value {.unnumbered}
 
-To assess these hypotheses, we need to evaluate the possibility of getting a sample proportion as far below the **null value**, $0.10$, as what was observed ($0.048$), *if the null hypothesis were true*.
+To assess these hypotheses, we need to evaluate the possibility of getting a sample proportion as far below the **null value**, $0.10$, as what was observed ($\hat{p} = 0.048$), *if the null hypothesis were true*.
 
 ::: onebox
 **Null value of a hypothesis test.**
@@ -145,21 +139,9 @@ What physical object could you use to simulate a random sample of 62 clients who
 
 [^05-inference-cat-37]: One option would be to use a spinner with 10% shaded red, and the rest shaded green. Each spin of the spinner would represent one client. Spin the spinner 62 times and count the number of times the spinner lands on red. The proportion of times the spinner lands on red represents a simulated $\hat{p}$ under the assumption that $\pi = 0.10$. Other objects include: a bag of marbles with 10% red marbles and 90% white marbles, or 10 cards where 1 is red and 9 are white. Sampling 62 times with replacement from these collections would simulate one sample of clients.
 
-Assuming the true complication rate for the consultant's clients is 10%, each client can be simulated using a bag of marbles with 10% red marbles and 90% white marbles. Sampling a marble from the bag (with 10% red marbles) is one way of simulating whether a patient has a complication *if the true complication rate is 10%* for the data. If we select 62 marbles and then compute the proportion of patients with complications in the simulation, $\hat{p}_{sim}$, then the resulting sample proportion is calculated exactly from a sample from the null distribution.
+Assuming the true complication rate for the consultant's clients is 10%, each client can be simulated using a bag of marbles with 10% red marbles and 90% white marbles. Sampling a marble from the bag (with 10% red marbles) is one way of simulating whether a patient has a complication *if the true complication rate is 10%* for the data. If we select 62 marbles (with replacement) and then compute the proportion of patients with complications in the simulation, $\hat{p}_{sim}$, then the resulting sample proportion is calculated exactly from a sample from the null distribution.
 
-An undergraduate student was paid \$2 to complete this simulation. There were 5 simulated cases with a complication and 57 simulated cases without a complication, i.e., $\hat{p}_{sim} = 5/62 = 0.081$.
-
-::: workedexample
-Is this one simulation enough to determine whether or not we should reject the null hypothesis?
-
-------------------------------------------------------------------------
-
-No. To assess the hypotheses, we need to see a distribution of many simulated sample proportions ($\hat{p}_{sim}$), not just a *single* draw from this sampling distribution.
-:::
-
-One simulation isn't enough to get a sense of the null distribution; many simulation studies are needed. Roughly 10,000 seems sufficient. However, paying someone to simulate 10,000 studies by hand is a waste of time and money. Instead, simulations are typically programmed into a computer, which is much more efficient.
-
-Figure \@ref(fig:nullDistForPHatIfLiverTransplantConsultantIsNotHelpful) shows the results of 10,000 simulated studies. The proportions that are equal to or less than $\hat{p}=0.048$ are shaded. The shaded areas represent sample proportions under the null distribution that provide at least as much evidence as $\hat{p}$ favoring the alternative hypothesis. There were 1222 simulated sample proportions with $\hat{p}_{sim} \leq 0.048$. We use these to construct the null distribution's left-tail area and find the p-value: \begin{align}
+Many simulations are needed to get a sense of the variability of sample proportions in the null distribution. Figure \@ref(fig:nullDistForPHatIfLiverTransplantConsultantIsNotHelpful) shows the results of 10,000 simulated studies. The proportions that are equal to or less than $\hat{p}=0.048$ are shaded. The shaded areas represent sample proportions under the null distribution that provide at least as much evidence as $\hat{p}$ favoring the alternative hypothesis. There were 1222 simulated sample proportions with $\hat{p}_{sim} \leq 0.048$. We use these to construct the null distribution's left-tail area and find the p-value: \begin{align}
 \text{left tail area }\label{estOfPValueBasedOnSimulatedNullForSingleProportion}
     &= \frac{\text{Number of observed simulations with }\hat{p}_{sim}\leq\text{ 0.048}}{10000}
 \end{align} Of the 10,000 simulated $\hat{p}_{sim}$, 1222 were equal to or smaller than $\hat{p}$. Since the hypothesis test is one-sided, the estimated p-value is equal to this tail area: 0.1222.
@@ -183,24 +165,30 @@ mtext("Number of simulations", 2, 3.3)
 
 ### Step 5: Conclusion and scope of inference {.unnumbered}
 
-::: guidedpractice
-Because the estimated p-value is 0.1222, which is not small, we have little to no evidence against the null hypothesis. Explain what this means in plain language in the context of the problem.[^05-inference-cat-38]
+::: workedexample
+Because the estimated p-value is 0.1222, which is not small, we have little to no evidence against the null hypothesis. That is, our *decision* of the test is to fail to reject the null hypothesis.
+
+Based on this decision, what is the *conclusion* of the hypothesis test?
+
+------------------------------------------------------------------------
+
+There isn't sufficiently strong evidence to support the claim that fewer than 10% of the consultant's clients experience complications. That is, there isn't sufficiently strong evidence to support an association between the consultant's work and fewer surgery complications.
 :::
 
-[^05-inference-cat-38]: There isn't sufficiently strong evidence to support the claim that fewer than 10% of the consultant's clients experience complications. That is, there isn't sufficiently strong evidence to support an association between the consultant's work and fewer surgery complications.
 
-\index{data!medical consultant|)}
+Let's consider the *scope of inference* for this study---to which population can we generalize? Since these data come from a sample of the medical consultant's past clients, we can only generalize our results to clients similar to those the medical consultant has had in the past.
 
-::: guidedpractice
-Does the conclusion in the previous Guided Practice imply there is no real association between the surgical consultant's work and the risk of complications? Explain.[^05-inference-cat-39]
+Note that since this study only involves a single variable (whether a liver donor surgery patient experienced a complication), we do not consider the other component of scope of inference: whether we can conclude cause and effect, or only an association. This is because cause and effect or an association requires two variables. 
+
+
+
+::: workedexample
+This consultant tried to attract patients by noting the average complication rate for liver donor surgeries in the US is about 10%, but her clients have had only 3 complications in the 62 liver donor surgeries she has facilitated. These data, however, did not provide sufficient evidence that the consultant's complication rate was less than 10%, since the p-value was approximately 0.122. Does this mean we can conclude that the consultant's complication rate was equal to 10%?
+
+------------------------------------------------------------------------
+
+No! Though we did not find strong evidence against the null hypothesis, this does not mean we have evidence *for* the null hypothesis---we cannot "accept" the null. The sample proportion was $\hat{p} = 3/62 = 0.048$, which is our point estimate---or "best guess"---of $\pi$. It wouldn't make sense that a sample complication rate of 4.8% gives us evidence that the true complication rate was exactly 10%. It's plausible that the true complication rate is 10%, but there are a range of plausible values for $\pi$. In the next section, we will review the how to use **bootstrapping** to generate this range of plausible values for $\pi$ using the observed data.
 :::
-
-[^05-inference-cat-39]: No. It might be that the consultant's work is associated with a reduction but that there isn't enough data to convincingly show this connection.
-
-<!-- ::: {.underconstruction} -->
-<!-- Add scope of inference -->
-<!-- ::: -->
-
 ```{=html}
 <!--
 Add this to an Appendix someday!
@@ -240,69 +228,6 @@ If it were plotted, the exact null distribution would look almost identical to t
 
 A confidence interval provides a range of plausible values for the parameter $\pi$. If the goal is to produce a range of possible values for a population value, then in an ideal world, we would sample data from the population again and recompute the sample proportion. Then we could do it again. And again. And so on until we have a good sense of the variability of our original estimate. The ideal world where sampling data is free or extremely cheap is almost never the case, and taking repeated samples from a population is usually impossible. So, instead of using a "resample from the population" approach, bootstrapping uses a "resample from the sample" approach.
 
-\index{data!medical consultant|(}
-
-::: workedexample
-Let's revisit our medical consultant example from Section \@ref(one-prop-null-boot). This consultant tried to attract patients by noting the average complication rate for liver donor surgeries in the US is about 10%, but her clients have had only 3 complications in the 62 liver donor surgeries she has facilitated. These data, however, did not provide sufficient evidence that the consultant's complication rate was less than 10%, since the p-value was approximately 0.122. Does this mean we can conclude that the consultant's complication rate was equal to 10%?
-
-------------------------------------------------------------------------
-
-No! Though we did not find strong evidence against the null hypothesis, this does not mean we have evidence *for* the null hypothesis---we cannot "accept" the null. The sample proportion was $\hat{p} = 3/62 = 0.048$, which is our point estimate---or "best guess"---of $\pi$. It wouldn't make sense that a sample complication rate of 4.8% gives us evidence that the true complication rate was exactly 10%. It's plausible that the true complication rate is 10%, but there are a range of plausible values for $\pi$. In this section, we will use a simulation-based method called **bootstrapping** to generate this range of plausible values for $\pi$ using the observed data.
-:::
-
-In the medical consultant case study, the parameter is $\pi$, the true probability of a complication for a client of the medical consultant. There is no reason to believe that $\pi$ is exactly $\hat{p} = 3/62$, but there is also no reason to believe that $\pi$ is particularly far from $\hat{p} = 3/62$. By sampling with replacement from the data set (a process called **bootstrapping**\index{bootstrapping}),[^05-inference-cat-41] the variability of the possible $\hat{p}$ values can be approximated, which will allow us to generate a range of plausible values for $\pi$, i.e., a confidence interval.
-
-[^05-inference-cat-41]: If you're curious where the term "bootstrapping" comes from, it comes from the phrase "lift yourself up by your own bootstraps." Lifting yourself up by your own bootstraps is analogous to creating more samples from the single original sample.
-
-```{r include=FALSE}
-terms_chp_14 <- c(terms_chp_14, "bootstrapping")
-```
-
-Most of the inferential procedures covered in this text are grounded in quantifying how one data set would differ from another when they are both taken from the same population. It doesn't make sense to take repeated samples from the same population because if you have the means to take more samples, a larger sample size will benefit you more than the exact same sample twice. Instead, we measure how the samples behave under an estimate of the population. Figure \@ref(fig:boot1) shows how an unknown original population of red and white marbles can be estimated by using multiple copies of a sample of seven marbles.
-
-```{r boot1, fig.cap = "An unknown population of red and white marbles. The estimated population on the right is many copies of the observed sample.", warning = FALSE,  out.width="75%"}
-include_graphics("05/figures/boot1prop1.png")
-```
-
-By taking repeated samples from the estimated population, the variability from sample to sample can be observed. In Figure \@ref(fig:boot2) the repeated bootstrap samples are obviously different both from each other, from the original sample, and from the original population. Recall that the bootstrap samples were taken from the same (estimated) population, and so the differences are due entirely to natural variability in the sampling procedure.
-
-```{r boot2, fig.cap = "Selecting $k$ random samples from the estimated population created from copies of the observed sample.", warning = FALSE,  out.width="75%"}
-include_graphics("05/figures/boot1prop2.png")
-```
-
-By summarizing each of the bootstrap samples (here, using the sample proportion), we see, directly, the variability of the sample proportion of red marbles, $\hat{p}$, from sample to sample. The distribution of bootstrapped $\hat{p}$'s for the example scenario is shown in Figure \@ref(fig:boot3), and the bootstrap distribution for the medical consultant data is shown in Figure \@ref(fig:MedConsBSSim).
-
-```{r boot3, fig.cap = "Calculate the sample proportion of red marbles in each bootstrap resample, then plot these simulated sample proportions in a dot plot. The dot plot of sample proportion provides us a sense of how sample proportions would vary from sample to sample if we could take many samples from our original population.", warning = FALSE,  fig.show="hold", out.width="50%"}
-include_graphics("05/figures/boot1prop3.png")
-
-marbles <- c(rep('red', 3), rep('white', 4))
-
-set.seed(40)
-sim <- NULL
-nsim = 100
-n   = length(marbles)
-
-for(i in 1:nsim){
-	sim[i] = sum(sample(marbles, n, replace = TRUE) == 'red')/n
-}
-
-X <- c()
-Y <- c()
-for(i in 1:length(sim)){
-	x  <- sim[i]
-	rec <- sum(sim == x)
-	X  <- append(X, rep(x, rec))
-	Y  <- append(Y, 1:rec)
-}
-par(mar = c(5, .1, 5, .1))
-plot(X, Y, xlim=0:1+c(-1,1)*sd(sim)/4, xlab = "Bootstrapped sample proportion of red marbles", ylab = "", axes = FALSE, ylim=c(0,max(Y)), col=COL[1], cex=0.8, pch=1, lwd=1.5)
-axis(1, at = seq(0,1,0.1), labels = c(0,"",0.2,"",0.4,"",0.6,"",0.8,"",1))
-abline(h=0)
-#points(X[X > 0.25], Y[X > 0.25], lwd=3, col = COL[4], cex=0.4)
-```
-
-It turns out that in practice, it is very difficult for computers to work with an infinite population (with the same proportional breakdown as in the sample). However, there is a physical and computational model which produces an equivalent bootstrap distribution of the sample proportion in a computationally efficient manner. Consider the observed data to be a bag of marbles 3 of which are red and 4 of which are white. By drawing the marbles out of the bag *with replacement*, we depict the same sampling **process** as was done with the infinitely large estimated population. Note that when sampling the original observations with replacement, a particular marble may end up in the new sample one time, multiple times, or not at all.
-
 ::: onebox
 **Bootstrapping from one sample**.
 
@@ -311,45 +236,24 @@ It turns out that in practice, it is very difficult for computers to work with a
 3.  Repeat steps (1) and (2) 1000s of times to create a distribution of bootstrapped statistics.
 :::
 
-If we apply the bootstrap sampling process to the medical consultant example, we consider each client to be one of the marbles in the bag. There will be 59 white marbles (no complication) and 3 red marbles (complication). If we choose 62 marbles out of the bag (one at a time), replacing each chosen marble after its color is recorded, and compute the proportion of simulated patients with complications, $\hat{p}_{bs}$, then this "bootstrap" proportion represents a single simulated proportion from the "resample from the sample" approach.
 
-::: guidedpractice
-In a simulation of 62 patients conducted by sampling with replacement from the original sample, about how many would we expect to have had a complication?[^05-inference-cat-42]
+::: workedexample
+In Section \@ref(case-study-med-consult), we found a 95% bootstrapped confidence interval for the true complication rate of the consultant of (0%, 11.3%). How would we interpret this interval in context of the problem?
+
+-----------------
+
+Since this interval is a range of plausible values for $\pi$, the unknown true complication rate for this consultant, our interpretation of the interval is in terms of this parameter:
+
+> We are 95% confident that the true complication rate of this medical consultant is between 0% and 11.3%.
+
 :::
 
-[^05-inference-cat-42]: Since in the original sample, 3 out of 62, or about 5% had complications, we could expect about 5% of the patients (6.2 on average) in the simulation will have a complication, though we will see a little variation from one simulation to the next.
+As in the Example above, any _interpretation of a confidence interval_ should include the following three components:
 
-One simulated bootstrap resample isn't enough to get a sense of the variability from one bootstrap proportion to another bootstrap proportion, so we repeated the simulation 10,000 times using a computer. Figure \@ref(fig:MedConsBSSim) shows the distribution from the 10,000 bootstrap simulations. The bootstrapped proportions vary from about zero to 0.15. By taking the range of the middle 95% of this distribution, we can construct a **95% bootstrapped confidence interval** for $\pi$. The 2.5^th^ percentile is 0, and the 97.5^th^ percentile is 0.113, so the middle 95% of the distribution is the range (0, 0.113). The variability in the bootstrapped proportions leads us to believe that the true risk of complication (the parameter, $\pi$) is somewhere between 0 and 11.3%.
+* How confident are you? e.g., "We are 95% confident..."
+* What parameter are you estimating? e.g., "...the true complication rate of this medical consultant..."
+* What is the interval? e.g., "...between 0% and 11.3%"
 
-```{r MedConsBSSim, fig.cap="The original medical consultant data is bootstrapped 10,000 times. Each simulation creates a sample from the original data where the probability of a complication is $\\hat{p} = 3/62$. The bootstrap 2.5 percentile proportion is 0 and the 97.5 percentile is 0.113. The result is: we are confident that, in the population, the true probability of a complication is between 0% and 11.3%.", warning=FALSE, fig.width=10}
-bsprops <- rbinom(10000, size=62, prob=(3/62))/62
-bsq <- quantile(bsprops, probs = c(0.01, 0.025, 0.05, 0.1, 0.9, 0.95, 0.975, 0.99))
-bsprops_up <- bsprops[bsprops >= bsq[7]]
-bsprops_low <- bsprops[bsprops <= bsq[2]]
-uprops <- sort(unique(bsprops))
-bin.width <- diff(uprops)[1]
-breaks <- c(uprops - bin.width / 4, uprops + bin.width / 4)
-histPlot(bsprops, breaks = breaks, axes = FALSE, col = rgb(1,1,1),
-     xlab = "", ylab="")
-histPlot(bsprops_up, breaks = breaks, col = COL[1], add = TRUE)
-histPlot(bsprops_low, breaks = breaks, col = COL[1], add = TRUE)
-axis(1)
-#axis(2, at = seq(0, 100, 50), labels = format(seq(0, 50, 25) / nsim))
-lines(c(bsq[7], bsq[7]), c(0, 600), lty = 3, lwd = 3)
-lines(c(bsq[2], bsq[2]), c(0, 600), lty = 3, lwd = 3)
-text(bsq[7], 600, "97.5 percentile", pos = 3)
-text(bsq[2], 600, "2.5 percentile", pos = 3)
-par(las = 0)
-mtext("Bootstrapped values of the proportion of surgical complications", 1, 2.5)
-```
-
-::: onebox
-**95% Bootstrap confidence interval for a population proportion** $\pi$.
-
-The 95% bootstrap confidence interval for the parameter $\pi$ can be obtained directly using the ordered values $\hat{p}_{boot}$ values --- the bootstrapped sample proportions. Consider the sorted $\hat{p}_{boot}$ values, and let $\hat{p}_{boot, 0.025}$ be the 2.5^th^ percentile value and $\hat{p}_{boot, 0.975}$ be the 97.5^th^ percentile. The 95% confidence interval is given by:
-
-<center>($\hat{p}_{boot, 0.025}$, $\hat{p}_{boot, 0.975}$)</center>
-:::
 
 You can find confidence intervals of difference confidence levels by changing the percent of the distribution you take, e.g., locate the middle 90% of the bootstrapped statistics for a 90% confidence interval.
 
@@ -358,21 +262,6 @@ To find the middle 90% of a distribution, which two percentiles would form its b
 :::
 
 [^05-inference-cat-43]: The the middle 95% of a distribution would range from the 5^th^ percentile (the value with 5% of the distribution below) to the 95^th^ percentile (the value with 5% of the distribution above).
-
-::: workedexample
-The original claim was that the consultant's true rate of complication was under the national rate of 10%. Does the interval estimate of 0 to 11.3% for the true probability of complication indicate that the surgical consultant has a lower rate of complications than the national average? Explain.
-
-------------------------------------------------------------------------
-
-No. Because the interval overlaps 10%, it might be that the consultant's work is associated with a lower risk of complciations, or it might be that the consulant's work is associated with a higher risk (i.e., greater than 10%) of complications! Additionally, as previously mentioned, because this is an observational study, even if an association can be measured, there is no evidence that the consultant's work is the cause of the complication rate (being higher or lower).
-:::
-
-```{=html}
-<!--
-%However, we currently don't have enough data to say whether the corresponding complication rate is any different than 0.10.
--->
-```
-\index{data!medical consultant|)}
 
 ## Theory-based inferential methods for $\pi$ {#theory-prop}
 
@@ -396,24 +285,29 @@ There are two conditions required to apply the Central Limit Theorem\index{Centr
 
 The sampling distribution for $\hat{p}$ based on a sample of size $n$ from a population with a true proportion $\pi$ can be modeled using a normal distribution when:
 
-1.  **Independence.** The sample observations are independent, i.e., the outcome of one observation does not influence the outcome of another. This condition is met if data come from a simple random sample of the target population.
+1.  **Independence condition.** The sample observations are independent, i.e., the outcome of one observation does not influence the outcome of another. This condition is met if data come from a simple random sample of the target population.
 
-2.  **Success-failure condition.** We expected to see at least 10 successes and 10 failures in the sample, i.e., $n\pi\geq10$ and $n(1-\pi)\geq10$. This condition is met if we have at least 10 successes and 10 failures in the observed data.
+2.  **Success-failure condition.** We expected to see at least 10 successes and 10 failures in the sample, i.e., $n\pi\geq10$ and $n(1-\pi)\geq10$.
 
-When these conditions are satisfied, then the sampling distribution of $\hat{p}$ is approximately normal with mean $\pi$ and standard deviation $\sqrt{\frac{\ \pi(1-\pi)\ }{n}}$.
+    * Since $\pi$ is typically unknown, we consider this condition met if we have at least 10 successes and 10 failures in the observed data. That is, if $n\hat{p} \geq 10$ and $n(1-\hat{p}) \geq 10$.
+
 :::
-
-\index{success-failure condition} \index{standard error (SE)!single proportion}
 
 ::: protip
 The success-failure condition listed above is only necessary for the sampling distribution of $\hat{p}$ to be approximately normal. The mean of the sampling distribution of $\hat{p}$ is $\pi$, and the standard deviation is $\sqrt{\frac{\ \pi(1-\pi)\ }{n}}$, regardless of the sample size.
 :::
 
 ```{r include=FALSE}
-terms_chp_14 <- c(terms_chp_14, "success-failure condition", "standard error of single proportion")
+terms_chp_14 <- c(terms_chp_14, "success-failure condition", "independence condition", "standard error of the sample proportion")
 ```
 
-Typically we don't know the true proportion $\pi$, so we substitute some value to check the success-failure condition and to estimate the standard deviation of the sampling distribution of $\hat{p}$. The independence condition is a more nuanced requirement. When it isn't met, it is important to understand how and why it isn't met. For example, *there exist no statistical methods available to truly correct the inherent biases of data from a convenience sample.* On the other hand, if we took a cluster random sample (see Section \@ref(samp-methods)), the observations wouldn't be independent, but suitable statistical methods are available for analyzing the data (but they are beyond the scope of even most second or third courses in statistics)[^05-inference-cat-44].
+Typically we don't know the true proportion $\pi$, so we substitute some value to check the success-failure condition and to estimate the standard deviation of the sampling distribution of $\hat{p}$. When we plug in $\hat{p}$ for $\pi$ in the standard deviation of the sampling distribution, we call this the **standard error of the sample proportion**:
+$$
+SE(\hat{p}) = \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}.
+$$ 
+
+
+The independence condition is a more nuanced requirement. When it isn't met, it is important to understand how and why it isn't met. For example, *there exist no statistical methods available to truly correct the inherent biases of data from a convenience sample.* On the other hand, if we took a cluster random sample (see Section \@ref(samp-methods)), the observations wouldn't be independent, but suitable statistical methods are available for analyzing the data (but they are beyond the scope of even most second or third courses in statistics)[^05-inference-cat-44].
 
 [^05-inference-cat-44]: While this book is scoped to well-constrained statistical problems, do remember that this is just the first book in what is a large library of statistical methods that are suitable for a very wide range of data and contexts.
 
@@ -422,12 +316,12 @@ In the examples based on large sample theory, we modeled $\hat{p}$ using the nor
 
 ------------------------------------------------------------------------
 
-The independence assumption may be reasonable if each of the surgeries is from a different surgical team. However, the success-failure condition is not satisfied. Under the null hypothesis, we would anticipate seeing $62\times 0.10=6.2$ complications, not the 10 required for the normal approximation.
+The independence assumption may be reasonable if each of the surgeries is from a different surgical team. However, the success-failure condition is not satisfied. We only observed 3 complications in 62 patients. We would need to have observed at least 10 complications (and at least 10 without complications) in order to meet the success-failure condition required for the normal approximation.
 :::
 
 Since theory-based methods cannot be used on the medical consultant example, we'll turn to another example to demonstrate these methods, where conditions for approximating the distribution of $\hat{p}$ by a normal distribution are met.
 
-### Hypothesis test for $H_0: \pi = \pi_0$ {#payday-lenders}
+### Theory-based test for $H_0: \pi = \pi_0$ {#payday-lenders}
 
 One possible regulation for payday lenders is that they would be required to do a credit check and evaluate debt payments against the borrower's finances. We would like to know: would borrowers support this form of regulation?
 
@@ -457,13 +351,17 @@ H_0: \mbox{ parameter } = \mbox{ null value}
 $$
 :::
 
-To apply the normal distribution to model the null distribution, the independence and success-failure conditions must be satisfied. In a hypothesis test, the success-failure condition is checked using the null proportion: we verify $n\pi_0$ and $n(1-\pi_0)$ are at least 10, where $\pi_0$ is the null value.
+To apply the normal distribution to model the null distribution, the independence and success-failure conditions must be satisfied. 
 
-::: guidedpractice
-Do payday loan borrowers support a regulation that would require lenders to pull their credit report and evaluate their debt payments? From a random sample of 826 borrowers, 51% said they would support such a regulation. Is it reasonable use a normal distribution to model $\hat{p}$ for a hypothesis test here?[^05-inference-cat-45]
+::: workedexample
+Do payday loan borrowers support a regulation that would require lenders to pull their credit report and evaluate their debt payments? From a random sample of 826 borrowers, 51% said they would support such a regulation. Is it reasonable use a normal distribution to model $\hat{p}$ for a hypothesis test here?
+
+------------
+
+Independence holds since the poll is based on a random sample. Thus, we can assume that the response of one borrower does not influence the response of another.
+
+The success-failure condition also holds, since $n\hat{p} = 826(0.51) = 421.26 > 10$ and $n(1-\hat{p}) = 826(1-0.51) = 404.74 > 10$.
 :::
-
-[^05-inference-cat-45]: Independence holds since the poll is based on a random sample. The success-failure condition also holds, which is checked using the null value ($p_0 = 0.5$) from $H_0$: $np_0 = 826 \times 0.5 = 413$, $n(1 - p_0) = 826 \times 0.5 = 413$. Recall that here, the best guess for $\pi$ is $p_0$ which comes from the null hypothesis (because we assume the null hypothesis is true when performing the testing procedure steps). $H_0$: there is not support for the regulation; $H_0$: $\pi \leq 0.50$. $H_A$: the majority of borrowers support the regulation; $H_A$: $\pi > 0.50$.
 
 ::: workedexample
 Continuing the previous Example, evaluate whether the poll on lending regulations provides convincing evidence that a majority of payday loan borrowers support a new regulation that would require lenders to pull credit reports and evaluate debt payments.
@@ -542,15 +440,8 @@ normTail(0, 1, U = 0.59, col = COL[1], xlab =
 5.  Make a conclusion based on the p-value, and write a conclusion in context, in plain language, and in terms of the alternative hypothesis.
 :::
 
-<!-- Move this paragraph to the right place: -->
 
-Regardless of the statistical method chosen, the p-value is always derived by analyzing the null distribution of the test statistic. The normal model poorly approximates the null distribution for $\hat{p}$ when the success-failure condition is not satisfied. As a substitute, we can generate the null distribution using simulated sample proportions and use this distribution to compute the tail area, i.e., the p-value. Neither the p-value approximated by the normal distribution nor the simulated p-value are exact, because the normal distribution and simulated null distribution themselves are not exact, only a close approximation. An exact p-value can be generated using the binomial distribution, but that method will not be covered in this text.
-
-\index{data!Payday regulation poll|)}
-
-### Confidence interval for $\pi$
-
-\index{point estimate!single proportion}
+### Theory-based confidence interval for $\pi$
 
 A confidence interval provides a range of plausible values for the parameter $\pi$. A point estimate is our best guess for the value of the parameter, so it makes sense to build the confidence interval around that value. The standard error, which is a measure of the uncertainty associated with the point estimate, provides a guide for how large we should make the confidence interval. When $\hat{p}$ can be modeled using a normal distribution, the 68-95-99.7 rule tells us that, in general, 95% of observations are within 2 standard errors of the mean. Here, we use the value 1.96 to be slightly more precise. The confidence interval for $\pi$ then takes the form \begin{align*}
 \hat{p} \pm z^{\star} \times SE(\hat{p}).
@@ -558,7 +449,7 @@ A confidence interval provides a range of plausible values for the parameter $\p
 
 We have seen $\hat{p}$ to be the sample proportion. The value $z^{\star}$ comes from a standard normal distribution and is determined by the chosen confidence level. The value of the standard error of $\hat{p}$, $SE(\hat{p})$, approximates how far we would expect the sample proportion to fall from $\pi$, and depends heavily on the sample size.
 
-::: guidedpractice
+::: onebox
 **Standard error of one proportion,** $\hat{p}$.
 
 When the conditions are met so that the distribution for $\hat{p}$ is nearly normal, the **variability** of a single proportion, $\hat{p}$ is well described by its standard deviation:
@@ -776,8 +667,9 @@ Previously, we found that implanting a stent in the brain of a patient at risk f
 
 We've spent a lot of time discussing conditions for when $\hat{p}$ can be reasonably modeled by a normal distribution. What happens when the success-failure condition fails? What about when the independence condition fails? In either case, the general ideas of confidence intervals and hypothesis tests remain the same, but the strategy or technique used to generate the interval or p-value change.
 
-When the success-failure condition isn't met for a hypothesis test, we can simulate the null distribution of $\hat{p}$ using the null value, $\pi_0$, as seen in Section \@ref(one-prop-null-boot). Unfortunately, methods for dealing with observations which are not independent are outside the scope of this book.
+Regardless of the statistical method chosen, the p-value is always derived by analyzing the null distribution of the test statistic. The normal model poorly approximates the null distribution for $\hat{p}$ when the success-failure condition is not satisfied. When the success-failure condition isn't met, we can simulate the null distribution of $\hat{p}$ using the null value, $\pi_0$, as seen in Section \@ref(one-prop-null-boot), and use this distribution to compute the tail area, i.e., the p-value. Neither the p-value approximated by the normal distribution nor the simulated p-value are exact, because the normal distribution and simulated null distribution themselves are not exact, only a close approximation^[An exact p-value for hypothesis tests involving a single proportion can be generated using the binomial distribution, but that method will not be covered in this text.].
 
+Unfortunately, **the independence condition must also hold for simulation-based methods**. Methods for dealing with observations which are not independent are outside the scope of this book.
 
 
 ## Chapter review {#chp14-review}

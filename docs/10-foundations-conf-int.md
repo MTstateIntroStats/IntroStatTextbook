@@ -32,9 +32,11 @@ For example,
 -   How much faster (or slower) can a person tap their finger, on average, if they drink caffeine first?
 -   What proportion of the vote will go to candidate A?
 
-Here, we explore the situation where the focus is on a single proportion, and we introduce a new simulation method: **bootstrapping**.
+Here, we explore the situation where the focus is on a single proportion, and we introduce a new simulation method: **bootstrapping**[^05-inference-cat-41].
 
 
+
+[^05-inference-cat-41]: If you're curious where the term "bootstrapping" comes from, it comes from the phrase "lift yourself up by your own bootstraps." Lifting yourself up by your own bootstraps is analogous to creating more samples from the single original sample.
 
 Bootstrapping is best suited for modeling studies where the data have been generated through random sampling from a population.
 
@@ -239,21 +241,14 @@ Therefore, an interval estimate for $\pi$ can be produced using the $\hat{p}_{bo
 ::: {.onebox data-latex=""}
 **95% Bootstrap percentile confidence interval for a parameter** $\pi.$
 
-The 95% bootstrap confidence interval for the parameter $\pi$ can be obtained directly using the ordered $\hat{p}_{boot}$ values.
+The 95% bootstrap confidence interval for the parameter $\pi$ can be obtained directly using the ordered values $\hat{p}_{boot}$ values --- the bootstrapped sample proportions. Consider the sorted $\hat{p}_{boot}$ values, and let $\hat{p}_{boot, 0.025}$ be the 2.5^th^ percentile value and $\hat{p}_{boot, 0.975}$ be the 97.5^th^ percentile. The 95% confidence interval is given by:
 
-Consider the sorted $\hat{p}_{boot}$ values.
-Call the 2.5% bootstrapped proportion value "lower", and call the 97.5% bootstrapped proportion value "upper".
-
-The 95% confidence interval is given by: (lower, upper)
+<center>($\hat{p}_{boot, 0.025}$, $\hat{p}_{boot, 0.975}$)</center>
 :::
 
-<!-- ::: {.underconstruction} -->
-<!-- Need to update these two section references once they're ready: -->
-<!-- ::: -->
+In Section \@ref(theory-prop) we will discuss different percentages for the confidence level (e.g., 90% confidence interval or 99% confidence interval).
 
-In Section \@ref(one-prop-null-boot) we will discuss different percentages for the confidence level (e.g., 90% confidence interval or 99% confidence interval).
-
-Section \@ref(one-prop-null-boot) also provides a longer discussion on what "95% confidence" actually means.
+Section \@ref(theory-prop) also provides a longer discussion on what "95% confidence" actually means.
 
 <!-- ## Case study: Medical consultant revisited {#case-study-med-consult-test} -->
 

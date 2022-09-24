@@ -442,7 +442,7 @@ We consider the percent change in the number of seats of the President’s
 party (e.g., percent change in the number of seats for Republicans in
 2018) against the unemployment rate.</p>
 <div class="guidedpractice">
-<p>What are the observational units in this data set?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;We measured the unemployment rate and percent change in House seats for the President’s party for each midterm election from 1898 to 2018, except those elections during the Great Depression. Thus, the observational unit is a single midterm election.&lt;/p&gt;"><sup>170</sup></a></p>
+<p>What are the observational units in this data set?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;We measured the unemployment rate and percent change in House seats for the President’s party for each midterm election from 1898 to 2018, except those elections during the Great Depression. Thus, the observational unit is a single midterm election.&lt;/p&gt;"><sup>167</sup></a></p>
 </div>
 <p>Examining the data, there are no clear deviations from linearity or substantial outliers (see Section <a href="inference-reg.html#tech-cond-linmod">21.5</a> for a discussion on using residuals to visualize how well a linear model fits the data).
 While the data are collected sequentially, a separate analysis was used to check for any apparent correlation between successive observations in time; no such correlation was found.</p>
@@ -462,7 +462,7 @@ unemployment may not help us understand what would happen
 in other years where the unemployment is only modestly high.
 On the other hand, these are exceptional cases, and we would
 be discarding important information if we exclude them from
-a final analysis.&lt;/p&gt;"><sup>171</sup></a></p>
+a final analysis.&lt;/p&gt;"><sup>168</sup></a></p>
 </div>
 <p>There is a negative slope in the line shown in Figure <a href="inference-reg.html#fig:unemploymentAndChangeInHouse">21.15</a>. However, this slope (and the
 y-intercept) are only estimates of the parameter values. We might
@@ -580,7 +580,7 @@ hypothesis test.</p>
 <hr>
 <p>The last column of the table gives the p-value for a
 <em>two-sided</em> hypothesis test for the coefficient of the unemployment rate:
-0.296. However, our test is <em>one-sided</em> — we are only interested in detecting if the true slope coefficient is negative. Since our estimated slope coefficient is negative, our one-sided p-value is just half of the two-sided p-value: 0.148.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Note that if our slope coefficient had been positive — the &lt;em&gt;opposite&lt;/em&gt; sign as &lt;span class="math inline"&gt;\(H_A\)&lt;/span&gt; — then the one-sided p-value would be the probability of observing that value or lower, or &lt;span class="math inline"&gt;\(1 - 0.296/2 = 1 - 0.148 = 0.852\)&lt;/span&gt;.&lt;/p&gt;'><sup>172</sup></a> With this p-value, the data do not provide convincing evidence that a
+0.296. However, our test is <em>one-sided</em> — we are only interested in detecting if the true slope coefficient is negative. Since our estimated slope coefficient is negative, our one-sided p-value is just half of the two-sided p-value: 0.148.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Note that if our slope coefficient had been positive — the &lt;em&gt;opposite&lt;/em&gt; sign as &lt;span class="math inline"&gt;\(H_A\)&lt;/span&gt; — then the one-sided p-value would be the probability of observing that value or lower, or &lt;span class="math inline"&gt;\(1 - 0.296/2 = 1 - 0.148 = 0.852\)&lt;/span&gt;.&lt;/p&gt;'><sup>169</sup></a> With this p-value, the data do not provide convincing evidence that a
 higher unemployment rate has a negative correlation with percent of seats lost in the house. In other words, we do not have significant evidence for the political theory that the higher the unemployment rate, the worse the President’s party will do in the midterm elections.</p>
 </div>
 </div>
@@ -683,7 +683,7 @@ interested in: 0.0002.
 The p-value is so small that we have very strong evidence that family income and financial aid at Elmhurst
 College for freshman entering in the year 2011 are
 correlated and the true slope parameter differs from 0,
-just as we believed in our analysis of Figure &lt;a href="inference-reg.html#fig:elmhurstScatterWLSROnly-CLTsection"&gt;21.16&lt;/a&gt;.&lt;/p&gt;'><sup>173</sup></a>
+just as we believed in our analysis of Figure &lt;a href="inference-reg.html#fig:elmhurstScatterWLSROnly-CLTsection"&gt;21.16&lt;/a&gt;.&lt;/p&gt;'><sup>170</sup></a>
 </li>
 </ul>
 </div>
@@ -780,7 +780,7 @@ Figure 21.17: Four examples showing when the methods in this chapter are insuffi
 </div>
 <div class="guidedpractice">
 <p>Should we have concerns about applying least squares regression to the
-Elmhurst data in Figure <a href="explore-regression.html#fig:elmhurstScatterW2Lines">6.13</a>?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The trend appears to be linear, the data fall around the line with no obvious outliers, the variance is roughly constant. These are also not time series observations. Least squares regression can be applied to these data.&lt;/p&gt;"><sup>174</sup></a></p>
+Elmhurst data in Figure <a href="explore-regression.html#fig:elmhurstScatterW2Lines">6.13</a>?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The trend appears to be linear, the data fall around the line with no obvious outliers, the variance is roughly constant. These are also not time series observations. Least squares regression can be applied to these data.&lt;/p&gt;"><sup>171</sup></a></p>
 </div>
 <p>The technical conditions are often remembered using the <strong>LINE</strong> mnemonic.
 The linearity, normality, and equality of variance conditions usually can be assessed through residual plots, as seen in Figure <a href="inference-reg.html#fig:whatCanGoWrongWithLinearModel">21.17</a>.

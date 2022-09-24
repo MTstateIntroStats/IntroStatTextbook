@@ -350,7 +350,7 @@ boot-ci-prop
 theory-prop
 evaluating-the-two-conditions-required-for-modeling-hatp-using-theory-based-methods
 payday-lenders
-confidence-interval-for-pi
+theory-based-confidence-interval-for-pi
 violating-conditions
 chp14-review
 inference-two-props
