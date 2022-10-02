@@ -2,7 +2,7 @@
 knit: bookdown::render_book
 site: bookdown::bookdown_site
 title: "Montana State Introductory Statistics with R"
-author: "Nicole Carnegie, Stacey Hancock, Elijah Meyer, Jade Schmidt, Melinda Yager"
+author: "Stacey Hancock, Nicole Carnegie, Elijah Meyer, Jade Schmidt, Melinda Yager"
 description: "Open resources textbook for Stat 216 at Montana State University"
 github-repo: MTstateIntroStats/IntroStatTextbook
 url: 'https\://mtstateintrostats.github.io/IntroStatTextbook/'
@@ -34,7 +34,7 @@ Copyright &#169; 2021.
 
 
 
-Version date: September 24, 2022.
+Version date: October 02, 2022.
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />
 
@@ -47,6 +47,6 @@ Source files for this book may be found on GitHub at\
 
 To cite this resource please use:
  
-Carnegie, N., Hancock, S., Meyer, E., Schmidt, J., and Yager, M. (2021). *Montana State Introductory Statistics with R*. Montana State University. [https://mtstateintrostats.github.io/IntroStatTextbook/](https://mtstateintrostats.github.io/IntroStatTextbook/). Adapted from Çetinkaya-Rundel, M. and Hardin, J. (2021). _Introduction to Modern Statistics_. OpenIntro. [https://openintro-ims.netlify.app/](https://openintro-ims.netlify.app/).
+Hancock, S., Carnegie, N., Meyer, E., Schmidt, J., and Yager, M. (2021). *Montana State Introductory Statistics with R*. Montana State University. [https://mtstateintrostats.github.io/IntroStatTextbook/](https://mtstateintrostats.github.io/IntroStatTextbook/). Adapted from Çetinkaya-Rundel, M. and Hardin, J. (2021). _Introduction to Modern Statistics_. OpenIntro. [https://openintro-ims.netlify.app/](https://openintro-ims.netlify.app/).
 :::
 

@@ -4,14 +4,14 @@
 
 #### Montana State University Authors {-}
 
-[Nicole Carnegie](https://math.montana.edu/directory/faculty/2040044/nicole-carnegie){target="_blank"} <br>
-Former Associate Professor of Statistics <br>
-
-<br>
-
 [Stacey Hancock](http://www.math.montana.edu/shancock/){target="_blank"}  <br>
 Associate Professor of Statistics <br>
 stacey.hancock@montana.edu <br>
+
+<br>
+
+[Nicole Carnegie](https://math.montana.edu/directory/faculty/2040044/nicole-carnegie){target="_blank"} <br>
+Former Associate Professor of Statistics <br>
 
 <br>
 
