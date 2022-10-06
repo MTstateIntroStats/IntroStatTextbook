@@ -126,12 +126,6 @@ fig:nullDistForPHatIfLiverTransplantConsultantIsNotHelpful
 fig:paydayCC-norm-pvalue
 fig:paydayCC-stdnorm-pvalue
 fig:choosingZForCI
-tab:discriminationResults
-fig:genderrand1
-fig:genderrand3
-tab:discriminationRand1
-fig:genderrand4
-fig:discRandDotPlot
 tab:resultsForCPRStudyInSmallSampleSection
 fig:CPR-study-right-tail
 fig:CPR-study-p-value
@@ -355,7 +349,6 @@ violating-conditions
 chp14-review
 inference-two-props
 two-prop-errors
-caseStudySexDiscrimination-revisited
 cpr
 caseStudyOpportunityCost
 caseStudyMalaria

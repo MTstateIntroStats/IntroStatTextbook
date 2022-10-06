@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 16 Applications: Infer categorical | Montana State Introductory Statistics with R</title>
 <meta name="author" content="Stacey Hancock, Nicole Carnegie, Elijah Meyer, Jade Schmidt, Melinda Yager">
-<meta name="description" content="In this chapter, we will explore how to conduct statistical inference for categorical variables using the catstats pacage in RStudio. Review the Preliminaries Chapter for instructions for...">
+<meta name="description" content="In this chapter, we will explore how to conduct statistical inference for categorical variables using the catstats package in RStudio. Review the Preliminaries Chapter for instructions for...">
 <meta name="generator" content="bookdown 0.27 with bs4_book()">
 <meta property="og:title" content="Chapter 16 Applications: Infer categorical | Montana State Introductory Statistics with R">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://mtstateintrostats.github.io/IntroStatTextbook/inference-categ-applications.html">
-<meta property="og:description" content="In this chapter, we will explore how to conduct statistical inference for categorical variables using the catstats pacage in RStudio. Review the Preliminaries Chapter for instructions for...">
+<meta property="og:description" content="In this chapter, we will explore how to conduct statistical inference for categorical variables using the catstats package in RStudio. Review the Preliminaries Chapter for instructions for...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 16 Applications: Infer categorical | Montana State Introductory Statistics with R">
-<meta name="twitter:description" content="In this chapter, we will explore how to conduct statistical inference for categorical variables using the catstats pacage in RStudio. Review the Preliminaries Chapter for instructions for...">
+<meta name="twitter:description" content="In this chapter, we will explore how to conduct statistical inference for categorical variables using the catstats package in RStudio. Review the Preliminaries Chapter for instructions for...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -134,7 +134,7 @@
 <span class="header-section-number">16</span> Applications: Infer categorical<a class="anchor" aria-label="anchor" href="#inference-categ-applications"><i class="fas fa-link"></i></a>
 </h1>
 <div class="chapterintro">
-<p>In this chapter, we will explore how to conduct statistical inference for categorical variables using the <code>catstats</code> pacage in RStudio. Review the <a href="rstudio">Preliminaries</a> Chapter for instructions for installing <code>catstats</code>.
+<p>In this chapter, we will explore how to conduct statistical inference for categorical variables using the <code>catstats</code> package in RStudio. Review the <a href="rstudio">Preliminaries</a> Chapter for instructions for installing <code>catstats</code>.
 We encourage you to work through the code in this chapter in
 your own RStudio session.</p>
 </div>
@@ -143,55 +143,58 @@ your own RStudio session.</p>
 <h2>Making tables from raw data<a class="anchor" aria-label="anchor" href="#making-tables-from-raw-data"><i class="fas fa-link"></i></a>
 </h2>
 <p>If you are collecting your own data, then your analysis starts with the raw data frame, with one observational unit per row and one variable per column. In this case, you first need to find counts (frequencies) of observations in each category prior to inference. We can use the <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> function in R on the raw data to create a contingency table of the counts for each categorical variable.</p>
-<p>In the one-proportion case, suppose we have a data frame called <code>loans</code> with a variable <code>regulate</code> that contains the Yes/No response of the 826 payday loan borrowers from Section <a href="inference-one-prop.html#theory-prop">14.3</a> regarding their support for a regulation to require lenders to pull their credit report and evaluate their debt payments. We can obtain counts of borrowers for each response using the <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> function in R:</p>
+<p>In the one-proportion case, suppose we have a data frame called <code>loans</code> with a variable <code>regulate</code> that contains the Yes/No response of the 826 payday loan borrowers from Section <a href="inference-one-prop.html#theory-prop">14.3</a> regarding their support for a regulation to require lenders to pull their credit report and evaluate their debt payments. Run the following line of code to create this data set in RStudio.</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">loans</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>regulate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"Yes"</span>, <span class="fl">422</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"No"</span>, <span class="fl">404</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>We can obtain counts of borrowers for each response using the <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> function in R:</p>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">loans</span><span class="op">$</span><span class="va">regulate</span><span class="op">)</span></span></code></pre></div>
 <pre><code>#&gt; 
 #&gt;  No Yes 
 #&gt; 404 422</code></pre>
 <p>In the R code above, <code>loans</code> is the name of the data set in R, and <code>regulate</code> is the name of the variable. The <code>$</code> tells R to select the <code>regulate</code> variable from the <code>loans</code> data set. We could have also used the pipe command to generate the table:</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">loans</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">regulate</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>#&gt; regulate
 #&gt;  No Yes 
 #&gt; 404 422</code></pre>
 <p>We can also use <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> to compute the proportions in each group:</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#If we know the number of observations:</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">loans</span><span class="op">$</span><span class="va">regulate</span><span class="op">)</span><span class="op">/</span><span class="fl">826</span></span></code></pre></div>
 <pre><code>#&gt; 
 #&gt;    No   Yes 
 #&gt; 0.489 0.511</code></pre>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#If we don't know the number of observations:</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">loans</span><span class="op">$</span><span class="va">regulate</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">loans</span><span class="op">$</span><span class="va">regulate</span><span class="op">)</span></span></code></pre></div>
 <pre><code>#&gt; 
 #&gt;    No   Yes 
 #&gt; 0.489 0.511</code></pre>
 <p>For comparisons of two proportions, we get a two-way table. Consider the case study of the effect of blood thinners on survival after receiving CPR from Section <a href="inference-two-props.html#two-prop-errors">15.1</a>. Data from this study are stored in a data frame called <code>cpr</code>, with variables <code>survival</code> – giving each patient’s outcome decision – and <code>group</code> – indicating whether they were in the treatment (blood thinner) or control (no blood thinner) group. The <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> and <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> functions can help us see what variables are in our data set and the values they take on:</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">cpr</span><span class="op">)</span></span></code></pre></div>
 <pre><code>#&gt; Rows: 90
 #&gt; Columns: 2
 #&gt; $ survival &lt;fct&gt; Survived, Survived, Survived, Survived, Survived, Survived, S…
 #&gt; $ group    &lt;fct&gt; control, control, control, control, control, control, control…</code></pre>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">cpr</span><span class="op">)</span></span></code></pre></div>
 <pre><code>#&gt;      survival        group   
 #&gt;  Died    :65   control  :50  
 #&gt;  Survived:25   treatment:40</code></pre>
 <p>To obtain the two-way table of the choices by group, we again use the <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> function in R. The key thing to remember here is to put the response variable (outcome) as the first argument and the explanatory variable (grouping) as the second. In our example, <code>survival</code> is the response variable, and <code>group</code> is the explanatory variable.</p>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">cpr</span><span class="op">$</span><span class="va">survival</span>, <span class="va">cpr</span><span class="op">$</span><span class="va">group</span><span class="op">)</span></span></code></pre></div>
 <pre><code>#&gt;           
 #&gt;            control treatment
 #&gt;   Died          39        26
 #&gt;   Survived      11        14</code></pre>
 <p>This will set up the table to be useful for making segmented bar plots and using column percentages to compute test statistics. In order to do either of these things, we need to store the table in an R object so we can manipulate it further:</p>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data_tbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">cpr</span><span class="op">$</span><span class="va">survival</span>, <span class="va">cpr</span><span class="op">$</span><span class="va">group</span><span class="op">)</span></span></code></pre></div>
 <p>To get column percentages, we use the <code><a href="https://rdrr.io/r/base/proportions.html">prop.table()</a></code> function:</p>
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/proportions.html">prop.table</a></span><span class="op">(</span><span class="va">data_tbl</span>,  <span class="co">#Feed in your two-way table</span></span>
 <span>           margin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>  <span class="co">#Tell it to compute percentages for columns</span></span></code></pre></div>
 <pre><code>#&gt;           
@@ -204,10 +207,10 @@ your own RStudio session.</p>
 <h3>Simulation-based inference for one proportion<a class="anchor" aria-label="anchor" href="#simulation-based-inference-for-one-proportion"><i class="fas fa-link"></i></a>
 </h3>
 <p>For simulation-based inference, we will use functions included in the <code>catstats</code> package, created for MSU Statistics courses. See the <a href="#stat-computing">Statistical computing</a> section at the beginning of this textbook for instructions on how to install <code>catstats</code> if you haven’t already. If the package is installed, you can load it into an R session to make the functions available using the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> function:</p>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">catstats</span><span class="op">)</span></span></code></pre></div>
 <p>Once you have loaded the package, you will be able to use the functions for simulation-based inference. For one-proportion inference, this is the <code><a href="https://rdrr.io/pkg/catstats/man/one_proportion_test.html">one_proportion_test()</a></code> function and <code><a href="https://rdrr.io/pkg/catstats/man/one_proportion_bootstrap_CI.html">one_proportion_bootstrap_CI()</a></code> function. Returning to the payday loan regulation example, we can obtain a simulation distribution and p-value using the following function call:</p>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/one_proportion_test.html">one_proportion_test</a></span><span class="op">(</span></span>
 <span>  probability_success <span class="op">=</span> <span class="fl">0.5</span>, <span class="co">#null hypothesis probability of success</span></span>
 <span>  sample_size <span class="op">=</span> <span class="fl">826</span>,  <span class="co">#number of observations</span></span>
@@ -222,7 +225,7 @@ your own RStudio session.</p>
 </div>
 <p>In the resulting graph, we see the null distribution of simulated proportions, with those greater than the observed value of 0.51 highlighted in blue. In the figure caption, we see that 308 of our 1000 simulations resulted in a proportion of successes at least as large as the observed value, yielding an approximate p-value of 0.308.</p>
 <p>To find a confidence interval for the true proportion of payday loan borrowers who support the regulation, we use the <code><a href="https://rdrr.io/pkg/catstats/man/one_proportion_bootstrap_CI.html">one_proportion_bootstrap_CI()</a></code> function:</p>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/one_proportion_bootstrap_CI.html">one_proportion_bootstrap_CI</a></span><span class="op">(</span></span>
 <span>  sample_size <span class="op">=</span> <span class="fl">826</span>,  <span class="co">#Number of observations</span></span>
 <span>  number_successes <span class="op">=</span> <span class="fl">422</span>,  <span class="co">#Number of observed successes </span></span>
@@ -236,7 +239,7 @@ your own RStudio session.</p>
 <h3>Simulation-based inference for difference in two proportions<a class="anchor" aria-label="anchor" href="#simulation-based-inference-for-difference-in-two-proportions"><i class="fas fa-link"></i></a>
 </h3>
 <p>For inference about the difference between two proportions, we use the <code><a href="https://rdrr.io/pkg/catstats/man/two_proportion_test.html">two_proportion_test()</a></code> and <code><a href="https://rdrr.io/pkg/catstats/man/two_proportion_bootstrap_CI.html">two_proportion_bootstrap_CI()</a></code> functions. These functions assume you have a data frame with the group and outcome included as variables. Using the CPR and blood thinner study, a call to <code><a href="https://rdrr.io/pkg/catstats/man/two_proportion_test.html">two_proportion_test()</a></code> would look like this:</p>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/two_proportion_test.html">two_proportion_test</a></span><span class="op">(</span></span>
 <span>  formula <span class="op">=</span> <span class="va">survival</span> <span class="op">~</span> <span class="va">group</span>,  <span class="co">#Always do response ~ explanatory</span></span>
 <span>  data <span class="op">=</span> <span class="va">cpr</span>,   <span class="co">#Name of the data set</span></span>
@@ -257,7 +260,7 @@ your own RStudio session.</p>
 </ul>
 </div>
 <p>To produce a confidence interval for the true difference in the proportion of patients that survive after receiving CPR, we use <code><a href="https://rdrr.io/pkg/catstats/man/two_proportion_bootstrap_CI.html">two_proportion_bootstrap_CI()</a></code>, which uses most of the same arguments as the <code><a href="https://rdrr.io/pkg/catstats/man/two_proportion_test.html">two_proportion_test()</a></code> function:</p>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/two_proportion_bootstrap_CI.html">two_proportion_bootstrap_CI</a></span><span class="op">(</span></span>
 <span>  formula <span class="op">=</span> <span class="va">survival</span> <span class="op">~</span> <span class="va">group</span>,  <span class="co">#Always do response ~ explanatory</span></span>
 <span>  data <span class="op">=</span> <span class="va">cpr</span>,   <span class="co">#Name of the data set</span></span>
@@ -272,8 +275,8 @@ your own RStudio session.</p>
 <div id="theory-based-inference-for-one-proportion" class="section level3 unnumbered">
 <h3>Theory-based inference for one proportion<a class="anchor" aria-label="anchor" href="#theory-based-inference-for-one-proportion"><i class="fas fa-link"></i></a>
 </h3>
-<p>For theory-based inference, we can use the built-in R function <code><a href="https://rdrr.io/r/stats/prop.test.html">prop.test()</a></code>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;By “built-in”, we mean that it is in the R “base” library, so no packages need to be loaded.&lt;/p&gt;"><sup>145</sup></a> For a one-proportion test, we need to tell it the number of successes, the number of trials (sample size), and the null value. Using the payday loan regulation example, a call would look like this:</p>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<p>For theory-based inference, we can use the built-in R function <code><a href="https://rdrr.io/r/stats/prop.test.html">prop.test()</a></code>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;By “built-in”, we mean that it is in the R “base” library, so no packages need to be loaded.&lt;/p&gt;"><sup>139</sup></a> For a one-proportion test, we need to tell it the number of successes, the number of trials (sample size), and the null value. Using the payday loan regulation example, a call would look like this:</p>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/prop.test.html">prop.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">422</span>,  <span class="co">#Number of successes</span></span>
 <span>          n <span class="op">=</span> <span class="fl">826</span>, <span class="co">#Number of trials</span></span>
 <span>          p <span class="op">=</span> <span class="fl">.5</span>, <span class="co">#Null hypothesis value</span></span>
@@ -295,10 +298,10 @@ your own RStudio session.</p>
 <p>You might have noticed that the test statistic reported in the output is <code>X-squared</code> rather than our Z-statistic. This test statistic is equal to our Z-statistic squared, and the p-value is found from what is called a <span class="math inline">\(\chi^2\)</span> distribution (pronounced “kai squared”). To get the Z-statistic from the <code>X-squared</code> statistic, take the positive square root if <span class="math inline">\(\hat{p} &gt; \pi_0\)</span>, and the negative square root if <span class="math inline">\(\hat{p} &lt; \pi_0\)</span>.</p>
 </div>
 <div class="guidedpractice">
-<p>Use the R output to find the value of the Z-statistic.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Since our sample proportion &lt;span class="math inline"&gt;\(\hat{p} = 0.511\)&lt;/span&gt; is larger than the null value &lt;span class="math inline"&gt;\(\pi_0 = 0.5\)&lt;/span&gt;, we know our Z-statistic will be positive. Thus, &lt;span class="math inline"&gt;\(Z = +\sqrt{0.34988} = 0.592\)&lt;/span&gt;. Check these values using the formula for the Z-statistic presented in Section &lt;a href="inference-one-prop.html#theory-prop"&gt;14.3&lt;/a&gt;.&lt;/p&gt;'><sup>146</sup></a></p>
+<p>Use the R output to find the value of the Z-statistic.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Since our sample proportion &lt;span class="math inline"&gt;\(\hat{p} = 0.511\)&lt;/span&gt; is larger than the null value &lt;span class="math inline"&gt;\(\pi_0 = 0.5\)&lt;/span&gt;, we know our Z-statistic will be positive. Thus, &lt;span class="math inline"&gt;\(Z = +\sqrt{0.34988} = 0.592\)&lt;/span&gt;. Check these values using the formula for the Z-statistic presented in Section &lt;a href="inference-one-prop.html#theory-prop"&gt;14.3&lt;/a&gt;.&lt;/p&gt;'><sup>140</sup></a></p>
 </div>
-<p>The <code><a href="https://rdrr.io/r/stats/prop.test.html">prop.test()</a></code> function will also produce the theory-based confidence interval, but to get the correct confidence interval, <strong>we need to run the function with a two-sided alternative</strong>:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;If you run &lt;code&gt;prop.test&lt;/code&gt; with a one-sided alternative (&lt;code&gt;"greater"&lt;/code&gt; or &lt;code&gt;"less"&lt;/code&gt;), then R will report what is called a “one-sided confidence interval”, where one of the endpoints is either 0 (for a “less” alternative) or 1 (for a “greater” alternative). This is equivalent to only producing an upper bound or a lower bound, respectively, for the parameter of interest.&lt;/p&gt;'><sup>147</sup></a></p>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<p>The <code><a href="https://rdrr.io/r/stats/prop.test.html">prop.test()</a></code> function will also produce the theory-based confidence interval, but to get the correct confidence interval, <strong>we need to run the function with a two-sided alternative</strong>:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;If you run &lt;code&gt;prop.test&lt;/code&gt; with a one-sided alternative (&lt;code&gt;"greater"&lt;/code&gt; or &lt;code&gt;"less"&lt;/code&gt;), then R will report what is called a “one-sided confidence interval”, where one of the endpoints is either 0 (for a “less” alternative) or 1 (for a “greater” alternative). This is equivalent to only producing an upper bound or a lower bound, respectively, for the parameter of interest.&lt;/p&gt;'><sup>141</sup></a></p>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/prop.test.html">prop.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">422</span>,  <span class="co">#Number of successes</span></span>
 <span>          n <span class="op">=</span> <span class="fl">826</span>, <span class="co">#Number of trials</span></span>
 <span>          p <span class="op">=</span> <span class="fl">.5</span>, <span class="co">#Null hypothesis value</span></span>
@@ -323,7 +326,7 @@ your own RStudio session.</p>
 </h3>
 <p>When comparing two proportions, we use the same function, <code>prop.test</code>, but the inputs are now “vectors” rather than “scalars”. As an example, we will again use the CPR and blood thinner study from Section <a href="foundations-errors.html#two-sided-tests">12.3</a>.</p>
 <p>First, use the <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> function to determine the number of successes and the sample size in each category of the explanatory variable:</p>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">cpr</span><span class="op">$</span><span class="va">survival</span>, <span class="va">cpr</span><span class="op">$</span><span class="va">group</span><span class="op">)</span></span></code></pre></div>
 <pre><code>#&gt;           
 #&gt;            control treatment
@@ -339,7 +342,7 @@ your own RStudio session.</p>
 </li>
 </ul>
 <p>R creates a vector using the <code><a href="https://rdrr.io/r/base/c.html">c()</a></code> (or “combine”) function. R will take the order of subtraction to be group 1 <span class="math inline">\(-\)</span> group 2.</p>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/prop.test.html">prop.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">14</span>, <span class="fl">11</span><span class="op">)</span>, <span class="co">#Number successes in group 1 and group 2</span></span>
 <span>          n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">40</span>, <span class="fl">50</span><span class="op">)</span>, <span class="co">#Sample size of group 1 and group 2</span></span>
 <span>          alternative <span class="op">=</span> <span class="st">"two.sided"</span>, <span class="co">#Match sign of alternative</span></span>
@@ -362,7 +365,7 @@ your own RStudio session.</p>
 <p>Here, we obtain a p-value of 0.1712 — little to no evidence against the null hypothesis of no difference between the two groups.</p>
 <p>Since we used a two-sided alternative in <code>prop.test</code>c, this call also produces the correct confidence interval. Our 99% confidence interval for the true difference in the proportion of patients who survive is <span class="math inline">\((-0.116, 0.376)\)</span>. We are 99% confident that the true proportion of patients who survive under the treatment is between 0.116 lower and 0.376 higher than the true proportion of patients who survive under the control condition. The fact that this confidence interval contains zero also shows us that we have little to no evidence of a difference in probability of survival between the two groups.</p>
 <p>The function <code>prop.test</code> will also take a table created by the <code>table</code> function. First, we need to create our table of counts from the raw data, which then becomes our primary input to <code><a href="https://rdrr.io/r/stats/prop.test.html">prop.test()</a></code>. There is one important step to take before creating our table: R will always put the categories of a categorical variable in alphabetical order when building tables, unless told otherwise.</p>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data_tbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">cpr</span><span class="op">$</span><span class="va">survival</span>, <span class="va">cpr</span><span class="op">$</span><span class="va">group</span><span class="op">)</span></span>
 <span><span class="va">data_tbl</span></span></code></pre></div>
 <pre><code>#&gt;           
@@ -370,7 +373,7 @@ your own RStudio session.</p>
 #&gt;   Died          39        26
 #&gt;   Survived      11        14</code></pre>
 <p>However, <code><a href="https://rdrr.io/r/stats/prop.test.html">prop.test()</a></code> will assume that the top row is a “success” and the order of subtraction is (column 1 - column 2). Without re-arranging our table, we would get the wrong order of subtraction and/or the wrong proportion of successes in each group. To fix this, we need to <code><a href="https://rdrr.io/r/stats/relevel.html">relevel()</a></code> our inputs to tell R to put them in the order we want:</p>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Switch order of subtraction:</span></span>
 <span><span class="va">cpr</span><span class="op">$</span><span class="va">group</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/relevel.html">relevel</a></span><span class="op">(</span><span class="va">cpr</span><span class="op">$</span><span class="va">group</span>, ref <span class="op">=</span> <span class="st">"treatment"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">cpr</span><span class="op">$</span><span class="va">survival</span>, <span class="va">cpr</span><span class="op">$</span><span class="va">group</span><span class="op">)</span></span></code></pre></div>
@@ -378,7 +381,7 @@ your own RStudio session.</p>
 #&gt;            treatment control
 #&gt;   Died            26      39
 #&gt;   Survived        14      11</code></pre>
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Switch "success":</span></span>
 <span><span class="va">cpr</span><span class="op">$</span><span class="va">survival</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/relevel.html">relevel</a></span><span class="op">(</span><span class="va">cpr</span><span class="op">$</span><span class="va">survival</span>, ref <span class="op">=</span> <span class="st">"Survived"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">cpr</span><span class="op">$</span><span class="va">survival</span>, <span class="va">cpr</span><span class="op">$</span><span class="va">group</span><span class="op">)</span></span></code></pre></div>
@@ -387,7 +390,7 @@ your own RStudio session.</p>
 #&gt;   Survived        14      11
 #&gt;   Died            26      39</code></pre>
 <p>After re-arranging our table, we can use this <code>data_tbl</code> as the first argument in the <code><a href="https://rdrr.io/r/stats/prop.test.html">prop.test()</a></code> function:</p>
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data_tbl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">cpr</span><span class="op">$</span><span class="va">survival</span>, <span class="va">cpr</span><span class="op">$</span><span class="va">group</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/prop.test.html">prop.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">data_tbl</span>,</span>
