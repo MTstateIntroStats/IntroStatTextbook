@@ -17,13 +17,12 @@ Much of the R code we use below is from the `tidyverse` R package. Load this pac
 
 If you are collecting your own data, then your analysis starts with the raw data frame, with one observational unit per row and one variable per column. In this case, you first need to find counts (frequencies) of observations in each category prior to inference. We can use the `count()` function in R on the raw data to create a contingency table of the counts for each categorical variable.
 
-In the one-proportion case, suppose we have a data frame called `loans` with a variable `regulate` that contains the Yes/No response of the 826 payday loan borrowers from Section \@ref(theory-prop) regarding their support for a regulation to require lenders to pull their credit report and evaluate their debt payments. Run the following line of code to create this data set in RStudio.
+In the one-proportion case, suppose we have a data frame called `loans` with a variable `regulate` that contains the Yes/No response of the 826 payday loan borrowers from Section \@ref(payday-lenders) regarding their support for a regulation to require lenders to pull their credit report and evaluate their debt payments. Run the following line of code to create this data set in RStudio.
 
 
 ```r
 loans <- data.frame(regulate = sample(c(rep("Yes", 422), rep("No", 404))))
 ```
-
 
 We can obtain counts of borrowers for each response using the `count()` function in R:
 
@@ -78,7 +77,17 @@ table(loans$regulate)/length(loans$regulate)
 
 
 
-For comparisons of two proportions, we get a two-way table. Consider the case study of the effect of blood thinners on survival after receiving CPR from Section \@ref(two-prop-errors). Data from this study are stored in a data frame called `cpr`, with variables `survival` -- giving each patient's outcome decision -- and `group` -- indicating whether they were in the treatment (blood thinner) or control (no blood thinner) group. The `glimpse()` and `summary()` functions can help us see what variables are in our data set and the values they take on:
+For comparisons of two proportions, we get a two-way table. Consider the case study of the effect of blood thinners on survival after receiving CPR from Section \@ref(cpr). Data from this study are stored in a data frame called `cpr`, with variables `survival` -- giving each patient's outcome decision -- and `group` -- indicating whether they were in the treatment (blood thinner) or control (no blood thinner) group. Run the following lines of code to create this data set in RStudio.
+
+
+```r
+survival <- factor(c(rep("Survived", 25), rep("Died", 65)))
+group <- factor(rep.int(c("control", "treatment", "control", "treatment"), times = c(11, 14, 39, 26)))
+
+cpr <- data.frame(survival, group)
+```
+
+The `glimpse()` and `summary()` functions can help us see what variables are in our data set and the values they take on:
 
 
 ```r

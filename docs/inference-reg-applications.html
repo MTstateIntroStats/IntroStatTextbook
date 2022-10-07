@@ -148,14 +148,14 @@
 <h3>Simulation-based inference for the regression slope<a class="anchor" aria-label="anchor" href="#simulation-based-inference-for-the-regression-slope"><i class="fas fa-link"></i></a>
 </h3>
 <p>As a demonstration, we will apply the simulation-based inference functions for regression in the <code>catstats</code> package to our data on the change in House seats in the President’s party at midterm elections as a function of national unemployment rate. We need to drop the Great Depression years before we perform our simulations:</p>
-<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#load data</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">midterms_house</span><span class="op">)</span></span>
 <span><span class="co">#Drop Great Depression years</span></span>
 <span><span class="va">d</span> <span class="op">&lt;-</span> <span class="va">midterms_house</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1935</span>, <span class="fl">1939</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Now that we have the correct data, we can perform a randomization test of the slope in the simple linear regression.</p>
-<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">catstats</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">621311</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/regression_test.html">regression_test</a></span><span class="op">(</span></span>
@@ -169,7 +169,7 @@
 <div class="inline-figure"><img src="22-regression-applications_files/figure-html/unnamed-chunk-3-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>The results give a scatterplot of the observed data with the regression line superimposed, and gives the observed slope (this should match what you put in for <code>as_extreme_as</code>). Next to the scatterplot, we have the null distribution of the slope coefficient, with the observed slope indicated by a vertical line and all values more extreme highlighted in red. The caption gives the number of simulations resulting in a slope more extreme than the observed: in this simulation we have 118/1000, for an approximate p-value of 0.118.</p>
 <p>To obtain a confidence interval for the slope, we use <code><a href="https://rdrr.io/pkg/catstats/man/regression_bootstrap_CI.html">regression_bootstrap_CI()</a></code>, with the same core arguments as <code><a href="https://rdrr.io/pkg/catstats/man/regression_test.html">regression_test()</a></code>.</p>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">31143518</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/catstats/man/regression_bootstrap_CI.html">regression_bootstrap_CI</a></span><span class="op">(</span></span>
 <span>  formula <span class="op">=</span> <span class="va">house_change</span> <span class="op">~</span> <span class="va">unemp</span>,  <span class="co">#Always use response ~ explanatory</span></span>
@@ -194,7 +194,7 @@
 #&gt;   (Intercept)  family_income  
 #&gt;       24.3193        -0.0431</code></pre>
 <p>Instead, when doing linear regression, we want to save the regression results so we can get complete output using <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code>:</p>
-<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gift_reg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">gift_aid</span><span class="op">~</span><span class="va">family_income</span>, <span class="co">#Always use reponse ~ explanatory</span></span>
 <span>               data <span class="op">=</span> <span class="va">elmhurst</span><span class="op">)</span>  <span class="co">#Name of data set</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">gift_reg</span><span class="op">)</span>  <span class="co">#Obtain full results for regression</span></span>
@@ -218,11 +218,11 @@
 <span><span class="co">#&gt; F-statistic: 15.9 on 1 and 48 DF,  p-value: 0.000229</span></span></code></pre></div>
 <p>This produces a lot of output; we will focus on the <em>Coefficients</em> section. This gives us the estimated value for the slope, the standard error of the estimate, the t-statistic, and the p-value. We want the row labeled with the name of our explanatory variable, <code>family_income</code>. We estimate the slope to be -0.043 thousand dollars per additional thousand dollars in family income, and we have strong evidence against the null hypothesis that the slope is 0.</p>
 <p>We can compute confidence intervals by hand using the reported estimate, standard error, and df. We will need to compute a t-value as in Chapters <a href="inference-one-mean.html#inference-one-mean">17</a>, <a href="inference-paired-means.html#inference-paired-means">18</a>, and <a href="inference-two-means.html#inference-two-means">19</a>:</p>
-<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Get t-star for 90% confidence interval</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">.95</span>, df <span class="op">=</span> <span class="fl">48</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 1.68</span></span></code></pre></div>
-<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#Lower confidence bound</span></span>
 <span><span class="op">-</span><span class="fl">0.04307</span> <span class="op">-</span> <span class="fl">1.677224</span><span class="op">*</span><span class="fl">0.01081</span></span>
 <span><span class="co">#&gt; [1] -0.0612</span></span>
@@ -231,7 +231,7 @@
 <span><span class="op">-</span><span class="fl">0.04307</span> <span class="op">+</span> <span class="fl">1.677224</span><span class="op">*</span><span class="fl">0.01081</span></span>
 <span><span class="co">#&gt; [1] -0.0249</span></span></code></pre></div>
 <p>We can also use the <code><a href="https://rdrr.io/r/stats/confint.html">confint()</a></code> function in R to compute confidence intervals for regression coefficients.</p>
-<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="va">gift_reg</span>,   <span class="co">#name of regression results</span></span>
 <span>        level <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span>  <span class="co">#confidence level as a proportion</span></span>
 <span><span class="co">#&gt;                   5 %    95 %</span></span>

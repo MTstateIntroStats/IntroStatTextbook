@@ -286,7 +286,7 @@ As you might guess, the larger the random sample, the more accurately that sampl
 <span class="header-section-number">17.2.1</span> Observed data<a class="anchor" aria-label="anchor" href="#observed-data-5"><i class="fas fa-link"></i></a>
 </h3>
 <p>Curious if average body temperature has decreased since 1851, you decided to collect data on a random sample of twenty Montana State University students. The mean body temperature in your sample is <span class="math inline">\(\bar{x}\)</span> = 97.47<span class="math inline">\(^{\circ}\)</span>F, and the standard deviation is <span class="math inline">\(s\)</span> = 0.35<span class="math inline">\(^{\circ}\)</span>F. A dot plot of the data is shown in Figure <a href="inference-one-mean.html#fig:body-temp-hist">17.5</a>, with summary statistics displayed below.</p>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">favstats</span><span class="op">(</span><span class="va">temperatures</span><span class="op">)</span></span></code></pre></div>
 <pre><code>#&gt;   min   Q1 median   Q3  max mean    sd  n missing
 #&gt;  96.7 97.3   97.5 97.7 98.1 97.5 0.353 20       0</code></pre>
@@ -593,7 +593,7 @@ and shade the area below -2.10.</p>
 <p>Using statistical software, we can obtain a precise
 value: 0.0250.</p>
 </div>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># using pt() to find probability under the $t$-distribution</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="op">-</span><span class="fl">2.10</span>, df <span class="op">=</span> <span class="fl">18</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.025</span></span></code></pre></div>
@@ -616,7 +616,7 @@ about 0.05, so we should expect the <span class="math inline">\(t\)</span>-distr
 to give us a value in this neighborhood.
 Using statistical software: 0.0573.</p>
 </div>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># using pt() to find probability under the $t$-distribution</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fl">1.65</span>, df <span class="op">=</span> <span class="fl">20</span>, lower.tail<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.0573</span></span>
@@ -646,7 +646,7 @@ tails beyond 3 units totals 0.0955.
 This area is dramatically different than what
 we obtain from the normal distribution.</p>
 </div>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># using pt() to find probability under the $t$-distribution</span></span>
 <span><span class="fl">2</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span>, df <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.0955</span></span></code></pre></div>
@@ -771,7 +771,7 @@ The area below -2.10 will also be equal to 2.5%.
 That is, 95% of the <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(df = 18\)</span>
 lies within 2.10 units of 0.</p>
 </div>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># use qt() to find the t-cutoff (with 95% in the middle)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.025</span>, df <span class="op">=</span> <span class="fl">18</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] -2.1</span></span>
@@ -828,7 +828,7 @@ we choose <span class="math inline">\(t_{14}^{\star}\)</span> so that the two-ta
 is 0.1:
 <span class="math inline">\(t^{\star}_{14} = 1.76\)</span>.</p>
 </div>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># use qt() to find the t-cutoff (with 90% in the middle)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">qt</a></span><span class="op">(</span><span class="fl">0.05</span>, df <span class="op">=</span> <span class="fl">14</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] -1.76</span></span>
@@ -969,7 +969,7 @@ the data provide strong evidence that the average
 run time for the Cherry Blossom Run in 2017 is different
 than the 2006 average.</p>
 </div>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># using pt() to find the p-value</span></span>
 <span><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">pt</a></span><span class="op">(</span><span class="fl">2.37</span>, df <span class="op">=</span> <span class="fl">99</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.00986</span></span></code></pre></div>

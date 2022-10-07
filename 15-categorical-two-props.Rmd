@@ -1,22 +1,25 @@
-# Inference for comparing two proportions  {#inference-two-props}
+# Inference for comparing two proportions {#inference-two-props}
 
 ```{r, include = FALSE}
 source("_common.R")
 ```
 
-
-::: {.chapterintro}
+::: chapterintro
 We now extend the methods from Chapter \@ref(inference-one-prop) to apply confidence intervals and hypothesis tests to differences in population proportions that come from two groups, Group 1 and Group 2: $\pi_1 - \pi_2.$
 
 In our investigations, we'll identify a reasonable point estimate of $\pi_1 - \pi_2$ based on the sample, and you may have already guessed its form: $\hat{p}_1 - \hat{p}_2.$ \index{point estimate!difference of proportions} Then we'll look at the inferential analysis in two different ways: simulation-based methods of a randomization test and applying bootstrapping for interval estimates, and, if we verify that the point estimate can be modeled using a normal distribution, theory-based methods through a two sample $z$-test and $z$-interval.
 :::
 
 <!-- ::: {.underconstruction} -->
+
 <!-- Sex discrimination case study now in chapter 11. -->
+
 <!-- ::: -->
 
 <!-- ::: {.underconstruction} -->
+
 <!-- Old content - revise as needed -->
+
 <!-- ::: -->
 
 <!-- ## Difference of two proportions {#diff-two-prop} -->
@@ -31,7 +34,6 @@ Below we summarize the notation used throughout this chapter.
 -   $\pi_1$, $\pi_2$ = population proportions of two independent samples
 :::
 
-
 ```{r include=FALSE}
 terms_chp_15 <- c("point estimate")
 ```
@@ -44,16 +46,15 @@ As you learned in Chapter \@ref(data-hello), a **randomized experiment** is done
 terms_chp_15 <- c(terms_chp_15, "randomization")
 ```
 
-
 ### Case study: CPR and blood thinner {#cpr}
 
 \index{data!CPR and blood thinner|(}
 
 Cardiopulmonary resuscitation (CPR) is a procedure used on individuals suffering a heart attack when other emergency resources are unavailable. This procedure is helpful in providing some blood circulation to keep a person alive, but CPR chest compressions can also cause internal injuries. Internal bleeding and other injuries that can result from CPR complicate additional treatment efforts. For instance, blood thinners may be used to help release a clot that is causing the heart attack once a patient arrives in the hospital. However, blood thinners negatively affect internal injuries.
 
-Here we consider an experiment with patients who underwent CPR for a heart attack and were subsequently admitted to a hospital.[^05-inference-cat-59] Each patient was randomly assigned to either receive a blood thinner (treatment group) or not receive a blood thinner (control group). The outcome variable of interest was whether the patient survived for at least 24 hours.
+Here we consider an experiment with patients who underwent CPR for a heart attack and were subsequently admitted to a hospital.[^15-categorical-two-props-1] Each patient was randomly assigned to either receive a blood thinner (treatment group) or not receive a blood thinner (control group). The outcome variable of interest was whether the patient survived for at least 24 hours.
 
-[^05-inference-cat-59]: B$\ddot{\text{o}}$ttiger et al. "Efficacy and safety of thrombolytic therapy after initially unsuccessful cardiopulmonary resuscitation: a prospective clinical trial." The Lancet, 2001.
+[^15-categorical-two-props-1]: B$\ddot{\text{o}}$ttiger et al. "Efficacy and safety of thrombolytic therapy after initially unsuccessful cardiopulmonary resuscitation: a prospective clinical trial." The Lancet, 2001.
 
 ::: workedexample
 Form hypotheses for this study in plain and statistical language. Let $\pi_c$ represent the true survival rate of people who do not receive a blood thinner (corresponding to the control group) and $\pi_t$ represent the true survival rate for people receiving a blood thinner (corresponding to the treatment group).
@@ -90,10 +91,10 @@ temptbl %>%
 ```
 
 ::: guidedpractice
-What is the observed survival rate in the control group? And in the treatment group? Also, provide a point estimate of the difference in survival proportions of the two groups ($\hat{p}_t - \hat{p}_c$) and the relative "risk" of survival ($\hat{p}_t/\hat{p}_c$).[^05-inference-cat-60]
+What is the observed survival rate in the control group? And in the treatment group? Also, provide a point estimate of the difference in survival proportions of the two groups ($\hat{p}_t - \hat{p}_c$) and the relative "risk" of survival ($\hat{p}_t/\hat{p}_c$).[^15-categorical-two-props-2]
 :::
 
-[^05-inference-cat-60]: Observed control survival rate: $\hat{p}_c = \frac{11}{50} = 0.22$. Treatment survival rate: $\hat{p}_t = \frac{14}{40} = 0.35$. Observed difference: $\hat{p}_t - \hat{p}_c = 0.35 - 0.22 = 0.13$. Relative risk: $\hat{p}_t/\hat{p}_c = 0.35/0.22 = 1.59$
+[^15-categorical-two-props-2]: Observed control survival rate: $\hat{p}_c = \frac{11}{50} = 0.22$. Treatment survival rate: $\hat{p}_t = \frac{14}{40} = 0.35$. Observed difference: $\hat{p}_t - \hat{p}_c = 0.35 - 0.22 = 0.13$. Relative risk: $\hat{p}_t/\hat{p}_c = 0.35/0.22 = 1.59$
 
 According to the point estimate, for patients who have undergone CPR outside of the hospital, an additional 13% of these patients survive when they are treated with blood thinners. Interpreting the relative risk, patients in this sample who had undergone CPR outside of the hospital had a 59% higher survival rate when they were treated with blood thinners. However, we wonder if this difference could be easily explainable by chance.
 
@@ -128,13 +129,13 @@ text(0.13, 3*N/25, "0.13", pos=3, cex=0.7)
 
 ```
 
-The right tail area is 0.131.[^05-inference-cat-61] However, contrary to how we calculated the p-value in previous studies, the p-value of this test is not 0.131!
+The right tail area is 0.131.[^15-categorical-two-props-3] However, contrary to how we calculated the p-value in previous studies, the p-value of this test is not 0.131!
 
-[^05-inference-cat-61]: Note: it is only a coincidence that we also have $\hat{p}_t - \hat{p}_c=0.13$!
+[^15-categorical-two-props-3]: Note: it is only a coincidence that we also have $\hat{p}_t - \hat{p}_c=0.13$!
 
-The p-value is defined as the chance we observe a result *at least as favorable to the alternative hypothesis as the result* (i.e., the difference) we observe. In this case, any differences less than or equal to $-0.13$ would also provide equally strong evidence favoring the alternative hypothesis as a difference of $+0.13$ did. A difference of $-0.13$ would correspond to the survival rate in the *control group* being 0.13 higher than the treatment group.[^05-inference-cat-62] In Figure \@ref(fig:CPR-study-p-value) we've also shaded these differences in the left tail of the distribution. These two shaded tails provide a visual representation of the p-value for a two-sided test.
+The p-value is defined as the chance we observe a result *at least as favorable to the alternative hypothesis as the result* (i.e., the difference) we observe. In this case, any differences less than or equal to $-0.13$ would also provide equally strong evidence favoring the alternative hypothesis as a difference of $+0.13$ did. A difference of $-0.13$ would correspond to the survival rate in the *control group* being 0.13 higher than the treatment group.[^15-categorical-two-props-4] In Figure \@ref(fig:CPR-study-p-value) we've also shaded these differences in the left tail of the distribution. These two shaded tails provide a visual representation of the p-value for a two-sided test.
 
-[^05-inference-cat-62]: Note that the relative risk in the opposite direction is not a *decrease* of 59%! When comparing control to treatment, the relative risk would be $0.22/0.35 = 0.63$, or a decrease of 37%. These values differ because the quantity we're comparing to (the "100%" quantity) differs.
+[^15-categorical-two-props-4]: Note that the relative risk in the opposite direction is not a *decrease* of 59%! When comparing control to treatment, the relative risk would be $0.22/0.35 = 0.63$, or a decrease of 37%. These values differ because the quantity we're comparing to (the "100%" quantity) differs.
 
 ```{=html}
 <!--
@@ -173,10 +174,10 @@ In particular, we are interested in whether reminding students about this well-k
 -   $H_A$: **Alternative hypothesis**. Reminding students that they can save money for later purchases will reduce the chance they will continue with a purchase.
 
 ::: guidedpractice
-How could you design a randomized experiment to test these two hypotheses?[^05-inference-cat-63]
+How could you design a randomized experiment to test these two hypotheses?[^15-categorical-two-props-5]
 :::
 
-[^05-inference-cat-63]: With a sample of students, randomly assign half of them to the control condition, and the other half to the treatment condition. For those in the control condition, present them with a situation where an item is on sale and ask if they would like to buy the item. For those in the treatment condition, present them with the same situation, but also remind them that they can save money for later purchases, then ask if they would like to buy the item. Compute and compare the proportions who refrained from purchasing the item in each group.
+[^15-categorical-two-props-5]: With a sample of students, randomly assign half of them to the control condition, and the other half to the treatment condition. For those in the control condition, present them with a situation where an item is on sale and ask if they would like to buy the item. For those in the treatment condition, present them with the same situation, but also remind them that they can save money for later purchases, then ask if they would like to buy the item. Compute and compare the proportions who refrained from purchasing the item in each group.
 
 In statistical notation, we can define parameters $\pi_{ctrl}$ = the probability a student under a control condition (not reminding them that they can save money for later purchases) refrains from making a purchase, and $\pi_{trmt}$ = the probability a student under a treatment condition (reminding them that they can save money for later purchases) refrains from makes a purchase. Our hypotheses are then
 
@@ -184,9 +185,9 @@ In statistical notation, we can define parameters $\pi_{ctrl}$ = the probability
 
 -   $H_A: \pi_{trmt} - \pi_{ctrl} > 0$
 
-In this section, we'll explore an experiment conducted by researchers that investigates this very question for students at a university in the southwestern United States.[^05-inference-cat-64]
+In this section, we'll explore an experiment conducted by researchers that investigates this very question for students at a university in the southwestern United States.[^15-categorical-two-props-6]
 
-[^05-inference-cat-64]: Frederick S, Novemsky N, Wang J, Dhar R, Nowlis S. 2009. Opportunity Cost Neglect. Journal of Consumer Research 36: 553-561.
+[^15-categorical-two-props-6]: Frederick S, Novemsky N, Wang J, Dhar R, Nowlis S. 2009. Opportunity Cost Neglect. Journal of Consumer Research 36: 553-561.
 
 <!-- #### Observed data {.unnumbered} -->
 
@@ -268,12 +269,14 @@ temptbl %>% ggplot(aes(x = variable, y=col1, fill=col2)) + geom_col() +
   scale_fill_discrete(name="Decision")
 ```
 
-We will define a **success**\index{success} in this study as a student who chooses not to buy the DVD.[^05-inference-cat-65] Then, the value of interest is the change in DVD purchase rates that results by reminding students that not spending money now means they can spend the money later.
+We will define a **success**\index{success} in this study as a student who chooses not to buy the DVD.[^15-categorical-two-props-7] Then, the value of interest is the change in DVD purchase rates that results by reminding students that not spending money now means they can spend the money later.
 
-[^05-inference-cat-65]: Success is often defined in a study as the outcome of interest, and a "success" may or may not actually be a positive outcome. For example, researchers working on a study on HIV prevalence might define a "success" in the statistical sense as a patient who is HIV+.
+[^15-categorical-two-props-7]: Success is often defined in a study as the outcome of interest, and a "success" may or may not actually be a positive outcome. For example, researchers working on a study on HIV prevalence might define a "success" in the statistical sense as a patient who is HIV+.
 
 <!-- ::: {.underconstruction} -->
+
 <!-- Check that we define success in previous chapter and then refer to it here. -->
+
 <!-- ::: -->
 
 ```{r include=FALSE}
@@ -469,10 +472,10 @@ temptbl %>%
 ```
 
 ::: guidedpractice
-Is this an observational study or an experiment? What implications does the study type have on what can be inferred from the results?[^05-inference-cat-66]
+Is this an observational study or an experiment? What implications does the study type have on what can be inferred from the results?[^15-categorical-two-props-8]
 :::
 
-[^05-inference-cat-66]: The study is an experiment, as patients were randomly assigned an experiment group. Since this is an experiment, the results can be used to evaluate a causal relationship between the malaria vaccine and whether patients showed signs of an infection.
+[^15-categorical-two-props-8]: The study is an experiment, as patients were randomly assigned an experiment group. Since this is an experiment, the results can be used to evaluate a causal relationship between the malaria vaccine and whether patients showed signs of an infection.
 
 In this study, a smaller proportion of patients who received the vaccine showed signs of an infection (35.7% versus 100%). However, the sample is very small, and it is unclear whether the difference provides *convincing evidence* that the vaccine is effective. To determine this, we need to perform statistical inference.
 
@@ -482,11 +485,11 @@ $$
 \frac{\hat{p}_{Vac}}{\hat{p}_{Pla}} = \frac{5/14}{6/6} = 0.357.
 $$
 
-Converting this to a percent decrease[^05-inference-cat-67], we see that the patients in the vaccine group had a 64.3% reduced risk of infection compared to the placebo group.[^05-inference-cat-68]
+Converting this to a percent decrease[^15-categorical-two-props-9], we see that the patients in the vaccine group had a 64.3% reduced risk of infection compared to the placebo group.[^15-categorical-two-props-10]
 
-[^05-inference-cat-67]: $(0.357 - 1)\times 100$% = -64.3%
+[^15-categorical-two-props-9]: $(0.357 - 1)\times 100$% = -64.3%
 
-[^05-inference-cat-68]: With small sample sizes, researchers often add 0.5 to each of the four cells prior to calculating the sample relative risk in order to avoid dividing by zero. With this adjustment, the sample relative risk is: $\frac{5.5/15}{6.5/7} = 0.395$. We will use this adjustment when simulating relative risks as well.
+[^15-categorical-two-props-10]: With small sample sizes, researchers often add 0.5 to each of the four cells prior to calculating the sample relative risk in order to avoid dividing by zero. With this adjustment, the sample relative risk is: $\frac{5.5/15}{6.5/7} = 0.395$. We will use this adjustment when simulating relative risks as well.
 
 In terms of relative risk, our null and alternative hypotheses are
 
@@ -511,10 +514,10 @@ We're going to implement simulation, where we will pretend we know that the mala
 We can again randomize the responses (`infection` or `no infection`) to the treatment conditions under the null hypothesis of independence, but this time, we'll compute sample relative risks with each simulated sample.
 
 ::: guidedpractice
-How could you use cards to re-randomize one sample into groups? Remember, in this hypothetical world, we believe each patient that got an infection was going to get it regardless of which group they were in, and we would like to see what happens if we randomly assign these patients to the treatment and control groups again.[^05-inference-cat-69]
+How could you use cards to re-randomize one sample into groups? Remember, in this hypothetical world, we believe each patient that got an infection was going to get it regardless of which group they were in, and we would like to see what happens if we randomly assign these patients to the treatment and control groups again.[^15-categorical-two-props-11]
 :::
 
-[^05-inference-cat-69]: 1\. Take 20 notecards to represent the 20 patients, where we write down "infection" on 11 cards and "no infection" on 9 cards. 2. Thoroughly shuffle the notecards and deal 14 into a "vaccine" pile and 6 into a "placebo" pile. 3. Compute the proportion of "infection" cards in the "vaccine" pile and divide it by the proportion of "infection" cards in the "placebo" pile to get the simulated sample relative risk.
+[^15-categorical-two-props-11]: 1\. Take 20 notecards to represent the 20 patients, where we write down "infection" on 11 cards and "no infection" on 9 cards. 2. Thoroughly shuffle the notecards and deal 14 into a "vaccine" pile and 6 into a "placebo" pile. 3. Compute the proportion of "infection" cards in the "vaccine" pile and divide it by the proportion of "infection" cards in the "placebo" pile to get the simulated sample relative risk.
 
 Figure \@ref(fig:malaria-rand-dot-plot) shows a histogram of the relative risks found from 1,000 randomization simulations, where each dot represents a simulated relative risk of infection (treatment rate divided by control rate).
 
@@ -589,9 +592,9 @@ Based on the simulations, we have two options:
 
 1.  We conclude that the study results do not provide strong evidence against the independence model. That is, we do not have sufficiently strong evidence to conclude the vaccine had an effect in this clinical setting.
 
-2.  We conclude the evidence is sufficiently strong to reject $H_0$ and assert that the vaccine was useful. When we conduct formal studies, usually we reject the notion that we just happened to observe a rare event.[^05-inference-cat-70]
+2.  We conclude the evidence is sufficiently strong to reject $H_0$ and assert that the vaccine was useful. When we conduct formal studies, usually we reject the notion that we just happened to observe a rare event.[^15-categorical-two-props-12]
 
-[^05-inference-cat-70]: This reasoning does not generally extend to anecdotal observations. Each of us observes incredibly rare events every day, events we could not possibly hope to predict. However, in the non-rigorous setting of anecdotal evidence, almost anything may appear to be a rare event, so the idea of looking for rare events in day-to-day activities is treacherous. For example, we might look at the lottery: there was only a 1 in 292 million chance that the Powerball numbers for the largest jackpot in history (January 13th, 2016) would be (04, 08, 19, 27, 34) with a Powerball of (10), but nonetheless those numbers came up! However, no matter what numbers had turned up, they would have had the same incredibly rare odds. That is, *any set of numbers we could have observed would ultimately be incredibly rare*. This type of situation is typical of our daily lives: each possible event in itself seems incredibly rare, but if we consider every alternative, those outcomes are also incredibly rare. We should be cautious not to misinterpret such anecdotal evidence.
+[^15-categorical-two-props-12]: This reasoning does not generally extend to anecdotal observations. Each of us observes incredibly rare events every day, events we could not possibly hope to predict. However, in the non-rigorous setting of anecdotal evidence, almost anything may appear to be a rare event, so the idea of looking for rare events in day-to-day activities is treacherous. For example, we might look at the lottery: there was only a 1 in 292 million chance that the Powerball numbers for the largest jackpot in history (January 13th, 2016) would be (04, 08, 19, 27, 34) with a Powerball of (10), but nonetheless those numbers came up! However, no matter what numbers had turned up, they would have had the same incredibly rare odds. That is, *any set of numbers we could have observed would ultimately be incredibly rare*. This type of situation is typical of our daily lives: each possible event in itself seems incredibly rare, but if we consider every alternative, those outcomes are also incredibly rare. We should be cautious not to misinterpret such anecdotal evidence.
 
 In this case, we reject the independence model in favor of the alternative. That is, we are concluding the data provide strong evidence that the vaccine provides some protection against malaria in this clinical setting.
 
@@ -836,7 +839,7 @@ When these conditions are satisfied, then the sampling distribution of $\hat{p}_
 \begin{eqnarray*}
   SD(\hat{p}_1 - \hat{p}_2) = \sqrt{\frac{\pi_1(1-\pi_1)}{n_1} + \frac{\pi_2(1-\pi_2)}{n_2}}
   \end{eqnarray*} where $\pi_1$ and $\pi_2$ represent the population proportions, and $n_1$ and $n_2$ represent the sample sizes.
-  
+
 Note that in most cases, values for $\pi_1$ and $\pi_2$ are unknown, so the standard deviation is approximated using the observed data. Recall that the estimated standard deviation of a statistic is called its **standard error**.
 
 $$SE(\hat{p}_1 - \hat{p}_2) = \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}$$
@@ -879,11 +882,11 @@ When computing a theory-based confidence interval for $\pi_1 - \pi_2$, we substi
 This is the standard error formula we will use when computing confidence intervals for the difference in two proportions.
 :::
 
-If the conditions for the sampling distribution of $\hat{p}_1 - \hat{p}_2$ to be normal are met, we can apply the generic confidence interval formula for a difference of two proportions, where we use $\hat{p}_1 - \hat{p}_2$ as the point estimate and substitute the $SE$ formula above: \begin{align*}
+If the conditions for the sampling distribution of $\hat{p}_1 - \hat{p}_2$ to be normal are met, we can apply the generic confidence interval formula for a difference of two proportions, where we use $\hat{p}_1 - \hat{p}_2$ as the point estimate and substitute the $SE$ formula above:
+
+\begin{align*}
 \text{point estimate} \ &\pm\  z^{\star} \times SE  \quad\to\\
-\hat{p}_1 - \hat{p}_2 \ &\pm\ 
-    z^{\star} \times
-   \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}
+\hat{p}_1 - \hat{p}_2 \ &\pm\ z^{\star} \times \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1}+\frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}
 \end{align*}
 
 
@@ -947,10 +950,10 @@ Note, the problem was set up as 90% to indicate that there was not a need for a 
 ::: guidedpractice
 A 5-year experiment was conducted to evaluate the effectiveness of fish oils on reducing cardiovascular events, where each subject was randomized into one of two treatment groups. We will consider heart attack outcomes in the patients listed in Table \@ref(tab:fish-oil-data).
 
-Create a 95% confidence interval for the effect of fish oils on heart attacks for patients who are well-represented by those in the study. Also interpret the interval in the context of the study.[^05-inference-cat-71]
+Create a 95% confidence interval for the effect of fish oils on heart attacks for patients who are well-represented by those in the study. Also interpret the interval in the context of the study.[^15-categorical-two-props-13]
 :::
 
-[^05-inference-cat-71]: Because the patients were randomized, the subjects are independent, both within and between the two groups. The success-failure condition is also met for both groups as all counts are at least 10. This satisfies the conditions necessary to model the difference in proportions using a normal distribution. Compute the sample proportions ($\hat{p}_{\text{fish oil}} = 0.0112$, $\hat{p}_{\text{placebo}} = 0.0155$), point estimate of the difference ($0.0112 - 0.0155 = -0.0043$), and standard error $SE = \sqrt{\frac{0.0112 \times 0.9888}{12933} + \frac{0.0155 \times 0.9845}{12938}} = 0.00145$. Next, plug the values into the general formula for a confidence interval, where $z^{\star} = 1.96$ for a 95% confidence level: $-0.0043 \pm 1.96 \times 0.00145 \rightarrow (-0.0071, -0.0015)$. We are 95% confident that fish oils decreases heart attacks by 0.15 to 0.71 percentage points (off of a baseline of about 1.55%) over a 5-year period for subjects who are similar to those in the study. Because the interval is entirely below 0, and the treatment was randomly assigned, the data provide strong evidence that fish oil supplements reduce heart attacks in patients like those in the study.
+[^15-categorical-two-props-13]: Because the patients were randomized, the subjects are independent, both within and between the two groups. The success-failure condition is also met for both groups as all counts are at least 10. This satisfies the conditions necessary to model the difference in proportions using a normal distribution. Compute the sample proportions ($\hat{p}_{\text{fish oil}} = 0.0112$, $\hat{p}_{\text{placebo}} = 0.0155$), point estimate of the difference ($0.0112 - 0.0155 = -0.0043$), and standard error $SE = \sqrt{\frac{0.0112 \times 0.9888}{12933} + \frac{0.0155 \times 0.9845}{12938}} = 0.00145$. Next, plug the values into the general formula for a confidence interval, where $z^{\star} = 1.96$ for a 95% confidence level: $-0.0043 \pm 1.96 \times 0.00145 \rightarrow (-0.0071, -0.0015)$. We are 95% confident that fish oils decreases heart attacks by 0.15 to 0.71 percentage points (off of a baseline of about 1.55%) over a 5-year period for subjects who are similar to those in the study. Because the interval is entirely below 0, and the treatment was randomly assigned, the data provide strong evidence that fish oil supplements reduce heart attacks in patients like those in the study.
 
 ```{r fish-oil-data}
 temptbl <- fish_oil_18[[3]] %>% 
@@ -990,16 +993,16 @@ temptbl %>%
 ```
 
 ::: guidedpractice
-Is this study an experiment or an observational study?[^05-inference-cat-72]
+Is this study an experiment or an observational study?[^15-categorical-two-props-14]
 :::
 
-[^05-inference-cat-72]: This is an experiment. Patients were randomized to receive mammograms or a standard breast cancer exam. We will be able to make causal conclusions based on this study.
+[^15-categorical-two-props-14]: This is an experiment. Patients were randomized to receive mammograms or a standard breast cancer exam. We will be able to make causal conclusions based on this study.
 
 ::: guidedpractice
-Set up hypotheses to test whether there was a difference in breast cancer deaths in the mammogram and control groups.[^05-inference-cat-73]
+Set up hypotheses to test whether there was a difference in breast cancer deaths in the mammogram and control groups.[^15-categorical-two-props-15]
 :::
 
-[^05-inference-cat-73]: $H_0$: the breast cancer death rate for patients screened using mammograms is the same as the breast cancer death rate for patients in the control, $\pi_{mgm} - \pi_{ctrl} = 0$.\
+[^15-categorical-two-props-15]: $H_0$: the breast cancer death rate for patients screened using mammograms is the same as the breast cancer death rate for patients in the control, $\pi_{mgm} - \pi_{ctrl} = 0$.\
     $H_A$: the breast cancer death rate for patients screened using mammograms is different than the breast cancer death rate for patients in the control, $\pi_{mgm} - \pi_{ctrl} \neq 0$.
 
 The research question describing mammograms is set up to address specific hypotheses (in contrast to a confidence interval for a parameter). In order to fully take advantage of the hypothesis testing structure, we assess the randomness under the condition that the null hypothesis is true (as we always do for hypothesis testing). Using the data from Table \@ref(tab:mammogramStudySummaryTable), we will check the conditions for using a normal distribution to analyze the results of the study using a hypothesis test. The details for checking conditions are very similar to that of confidence intervals. However, when the null hypothesis is that $\pi_1 - \pi_2 = 0$, we use a special proportion called the **pooled proportion**\index{pooled proportion} to check the success-failure condition and when computing the standard error: \begin{align*}
@@ -1049,9 +1052,9 @@ Because the patients are randomized, they can be treated as independent, both wi
   \end{align*} The success-failure condition is satisfied since all values are at least 10. With both conditions satisfied, we can safely model the difference in proportions using a normal distribution.
 :::
 
-We used the pooled proportion to check the success-failure condition[^05-inference-cat-74]. We next use it again in the standard error calculation.
+We used the pooled proportion to check the success-failure condition[^15-categorical-two-props-16]. We next use it again in the standard error calculation.
 
-[^05-inference-cat-74]: For an example of a two proportion hypothesis test that does not require the success-failure condition to be met, see Section \@ref(two-prop-errors).
+[^15-categorical-two-props-16]: For an example of a two proportion hypothesis test that does not require the success-failure condition to be met, see Section \@ref(two-prop-errors).
 
 ::: onebox
 **Null standard error of the difference in two proportions,** $\hat{p}_1 -\hat{p}_2$: =
@@ -1165,7 +1168,9 @@ These considerations highlight the complexity around medical care and treatment 
 <!-- ### Summary {-} -->
 
 <!-- ::: {.underconstruction} -->
+
 <!-- TODO -->
+
 <!-- ::: -->
 
 ### Summary of Z-procedures
@@ -1230,7 +1235,7 @@ zsim_table %>%
      $$
 4.  Put the conclusions in context and in plain language so even non-data scientists can understand the results.
 
-### Terms {-}
+### Terms {.unnumbered}
 
 We introduced the following terms in the chapter. If you're not sure what some of these terms mean, we recommend you go back in the text and review their definitions. We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. However you should be able to easily spot them as **bolded text**.
 
@@ -1241,5 +1246,7 @@ make_terms_table(terms_chp_15)
 <!-- ### Key ideas {-} -->
 
 <!-- ::: {.underconstruction} -->
+
 <!-- TODO -->
+
 <!-- ::: -->
