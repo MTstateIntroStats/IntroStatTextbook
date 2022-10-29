@@ -8,7 +8,7 @@
 Focusing now on statistical inference for categorical data, we will revisit many of the foundational aspects of hypothesis testing from Chapter \@ref(foundations-randomization).
 
 The three data structures we detail are one binary variable, summarized using a single proportion, and two binary variables, summarized using a difference of two proportions.
-When appropriate, each of the data structures will be analyzed using the three methods from Chapters \@ref(foundations-randomization), \@ref(foundations-bootstrapping), and \@ref(foundations-mathematical): simulation-based inference, bootstrapping, and mathematical models, respectively.
+When appropriate, each of the data structures will be analyzed using the simulation-based inferential methods described in Chapters \@ref(foundations-randomization) and \@ref(foundations-bootstrapping), and the theory-based methods covered in Chapter \@ref(foundations-mathematical). 
 
 As we build on the inferential ideas, we will visit new foundational concepts in statistical inference.
 For example, we will cover the conditions for when a normal model is appropriate; the two different error rates in hypothesis testing; and choosing the confidence level for a confidence interval.
@@ -26,7 +26,7 @@ Instead, we will apply bootstrapping techniques to test a given hypothesis, and 
 Below we summarize the notation used throughout this chapter.
 
 ::: onebox
-**Notation**.
+**Notation for a single categorical variable**.
 
 -   $n$ = sample size (number of observational units in the data set)
 -   $\hat{p}$ = sample proportion (number of "successes" divided by the sample size)

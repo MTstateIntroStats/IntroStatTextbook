@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 17 Inference for a single mean | Montana State Introductory Statistics with R</title>
 <meta name="author" content="Stacey Hancock, Nicole Carnegie, Elijah Meyer, Jade Schmidt, Melinda Yager">
-<meta name="description" content="Focusing now on statistical inference for quantitative data, we will revisit and expand upon the foundational aspects of hypothesis testing from Chapter 9. The important data structure for this...">
+<meta name="description" content="Focusing now on statistical inference for quantitative data, again, we will revisit and expand upon the foundational aspects of hypothesis testing from Chapters 9 and 11. The important data...">
 <meta name="generator" content="bookdown 0.27 with bs4_book()">
 <meta property="og:title" content="Chapter 17 Inference for a single mean | Montana State Introductory Statistics with R">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://mtstateintrostats.github.io/IntroStatTextbook/inference-one-mean.html">
-<meta property="og:description" content="Focusing now on statistical inference for quantitative data, we will revisit and expand upon the foundational aspects of hypothesis testing from Chapter 9. The important data structure for this...">
+<meta property="og:description" content="Focusing now on statistical inference for quantitative data, again, we will revisit and expand upon the foundational aspects of hypothesis testing from Chapters 9 and 11. The important data...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 17 Inference for a single mean | Montana State Introductory Statistics with R">
-<meta name="twitter:description" content="Focusing now on statistical inference for quantitative data, we will revisit and expand upon the foundational aspects of hypothesis testing from Chapter 9. The important data structure for this...">
+<meta name="twitter:description" content="Focusing now on statistical inference for quantitative data, again, we will revisit and expand upon the foundational aspects of hypothesis testing from Chapters 9 and 11. The important data...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -135,26 +135,25 @@
 </h1>
 <!-- Old reference: #one-mean -->
 <div class="chapterintro">
-<p>Focusing now on statistical inference for quantitative data, we will revisit and expand upon the foundational aspects of hypothesis testing from Chapter <a href="foundations-randomization.html#foundations-randomization">9</a>.</p>
-<p>The important data structure for this chapter is a quantitative response variable (that is, the outcome is numerical).
-The three data structures we detail are:</p>
+<p>Focusing now on statistical inference for <strong>quantitative data</strong>, again, we will revisit and expand upon the foundational aspects of hypothesis testing from Chapters <a href="foundations-randomization.html#foundations-randomization">9</a> and <a href="foundations-mathematical.html#foundations-mathematical">11</a>.</p>
+<p>The important data structure for this chapter is a single quantitative response variable (that is, the outcome is numerical). In this and the next two chapters, the three data structures and their summary measures that we detail are:</p>
 <ul>
-<li>one quantitative response variable, summarized by a single mean,</li>
-<li>one quantitative response variable which is a difference across a pair of observations, summarized by a paired mean difference, and</li>
-<li>a quantitative response variable broken down by a binary explanatory variable, summarized by a difference in means.</li>
+<li>one quantitative response variable, summarized by a <strong>single mean</strong>,</li>
+<li>one quantitative response variable which is a difference across a pair of observations, summarized by a <strong>paired mean difference</strong>, and</li>
+<li>a quantitative response variable broken down by a binary explanatory variable, summarized by a <strong>difference in means</strong>.</li>
 </ul>
-<p>When appropriate, each of the data structures will be analyzed using the three methods from Chapters <a href="foundations-randomization.html#foundations-randomization">9</a>, <a href="foundations-bootstrapping.html#foundations-bootstrapping">10</a>, and <a href="foundations-mathematical.html#foundations-mathematical">11</a>: randomization test, bootstrapping, and mathematical models, respectively.</p>
-<p>As we build on the inferential ideas, we will visit new foundational concepts in statistical inference. One key new idea rests in estimating how the sample mean (as opposed to the sample proportion) varies from sample to sample; the resulting value is referred to as the standard error of the mean. We will also introduce a new important mathematical model, the <span class="math inline">\(t\)</span>-distribution (as the foundation for the <span class="math inline">\(t\)</span>-test).</p>
+<p>When appropriate, each of the data structures will be analyzed using simulation-based inferential methods similar to those described in Chapters <a href="foundations-randomization.html#foundations-randomization">9</a> and <a href="foundations-bootstrapping.html#foundations-bootstrapping">10</a>, and the theory-based methods introduced in Chapter <a href="foundations-mathematical.html#foundations-mathematical">11</a>.</p>
+<p>As we build on the inferential ideas, we will visit new foundational concepts in statistical inference. One key new idea rests in estimating how the sample mean (as opposed to the sample proportion) varies from sample to sample; the resulting value is referred to as the <strong>standard error of the mean</strong>. We will also introduce a new important mathematical model, the <span class="math inline">\(t\)</span>-distribution (as the foundation for the <span class="math inline">\(t\)</span>-test).</p>
 </div>
 <p>To summarize a quantitative response variable, we focus on the sample mean (instead of, for example, the sample median or the range of the observations) because of the well-studied mathematical model which describes the behavior of the sample mean.
-The sample mean will be calculated in one group, two paired groups, and two independent groups. We will not cover mathematical models which describe other statistics, but the bootstrap and randomization techniques described below are immediately extendable to any function of the observed data.
+The sample mean will be calculated in one group, two paired groups, and two independent groups. We will not cover mathematical models which describe other statistics, but the bootstrap and randomization techniques described below are immediately extendable to any summary measure of the observed data.
 The techniques described for each setting will vary slightly, but you will be well served to find the structural similarities across the different settings.</p>
 <p>Similar to how we can model the behavior of the sample proportion <span class="math inline">\(\hat{p}\)</span> using a normal distribution, the sample mean <span class="math inline">\(\bar{x}\)</span> can also be modeled using a normal distribution when certain conditions are met.
 However, we’ll soon learn that a new distribution, called the <span class="math inline">\(t\)</span>-distribution, tends to be more useful when working with the sample mean.
 We’ll first learn about this new distribution, then we’ll use it to construct confidence intervals and conduct hypothesis tests for the mean.</p>
 <p>Below we summarize the notation used throughout this chapter.</p>
 <div class="onebox">
-<p><strong>Notation.</strong></p>
+<p><strong>Notation for a single quantitative variable.</strong></p>
 <ul>
 <li>
 <span class="math inline">\(n\)</span> = sample size</li>
@@ -411,7 +410,7 @@ distribution of <span class="math inline">\(\bar{x}\)</span> is approximately no
 <div class="importantbox">
 <p><strong>General rule: how to perform the normality check.</strong></p>
 <p>There is no perfect way to check the normality condition,
-so instead we use two general rules:</p>
+so instead we use the following general rules:</p>
 <ul>
 <li>
 <span class="math inline">\(\mathbf{n &lt; 30}\)</span>: If the sample size <span class="math inline">\(n\)</span> is less than 30
@@ -437,11 +436,7 @@ distribution of individual observations is not.</li>
 <p>In this first course in statistics, you aren’t expected
 to develop perfect judgement on the normality condition.
 However, you are expected to be able to handle
-clear cut cases based on the rules of thumb.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;More
-nuanced guidelines would consider further relaxing
-the &lt;em&gt;particularly extreme outlier&lt;/em&gt; check when the
-sample size is very large.
-However, we’ll leave further discussion here to a future course.&lt;/p&gt;"><sup>144</sup></a></p>
+clear cut cases based on the rules of thumb above.</p>
 <div class="example">
 <p><span id="exm:unlabeled-div-1" class="example"><strong>Example 17.1  </strong></span>Consider the following two plots
 that come from simple random samples from
@@ -652,7 +647,7 @@ we obtain from the normal distribution.</p>
 <span><span class="co">#&gt; [1] 0.0955</span></span></code></pre></div>
 <div class="guidedpractice">
 <p>What proportion of the <span class="math inline">\(t\)</span>-distribution with 19 degrees
-of freedom falls above -1.79 units?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;We want to find the shaded area &lt;em&gt;above&lt;/em&gt; -1.79 (we leave the picture to you). The lower tail area has an area of 0.0447, so the upper area would have an area of &lt;span class="math inline"&gt;\(1 - 0.0447 = 0.9553\)&lt;/span&gt;.&lt;/p&gt;'><sup>145</sup></a></p>
+of freedom falls above -1.79 units?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;We want to find the shaded area &lt;em&gt;above&lt;/em&gt; -1.79 (we leave the picture to you). The lower tail area has an area of 0.0447, so the upper area would have an area of &lt;span class="math inline"&gt;\(1 - 0.0447 = 0.9553\)&lt;/span&gt;.&lt;/p&gt;'><sup>144</sup></a></p>
 </div>
 <p>
 </p>
@@ -798,9 +793,8 @@ which is considered extremely high.</p>
 observations, a confidence interval for the population
 mean is
 <span class="math display">\[\begin{align*}
-  &amp;\text{point estimate} \ \pm\  t^{\star}_{df} \times SE(\text{point estimate})
-  &amp;&amp;\to
-  &amp;&amp;\bar{x} \ \pm\  t^{\star}_{df} \times \frac{s}{\sqrt{n}}
+  \text{point estimate} \ &amp;\pm\&amp;  t^{\star}_{df} \times SE(\text{point estimate})\\
+  \bar{x} \ &amp;\pm\&amp;  t^{\star}_{df} \times \frac{s}{\sqrt{n}}
   \end{align*}\]</span>
 where <span class="math inline">\(\bar{x}\)</span> is the sample mean, <span class="math inline">\(t^{\star}_{df}\)</span>
 corresponds to the confidence level and degrees of freedom
@@ -811,7 +805,7 @@ the sample.</p>
 <p>The FDA’s webpage provides some data on mercury content of fish.
 Based on a sample of 15 croaker white fish (Pacific), a sample mean and standard deviation were computed as 0.287 and 0.069 ppm (parts per million), respectively.
 The 15 observations ranged from 0.18 to 0.41 ppm. We will assume these observations are independent.
-Based on the summary statistics of the data, do you have any objections to the normality condition of the individual observations?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The sample size is under 30, so we check for obvious outliers: since all observations are within 2 standard deviations of the mean, there are no such clear outliers.&lt;/p&gt;"><sup>146</sup></a></p>
+Based on the summary statistics of the data, do you have any objections to the normality condition of the individual observations?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;The sample size is under 30, so we check for obvious outliers: since all observations are within 2 standard deviations of the mean, there are no such clear outliers.&lt;/p&gt;"><sup>145</sup></a></p>
 </div>
 <p></p>
 <div class="example">
@@ -858,7 +852,7 @@ is 0.1:
 <div class="guidedpractice">
 <p>Using the information and results of the previous Guided Practice and Example, compute a 90% confidence interval for the average mercury content of croaker white fish (Pacific).<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="math inline"&gt;\(\bar{x} \ \pm\ t^{\star}_{14} \times SE(\bar{x})  \ \to\  0.287 \ \pm\  1.76 \times 0.0178  \ \to\ (0.256, 0.318)\)&lt;/span&gt;.
 We are 90% confident that the average mercury content
-of croaker white fish (Pacific) is between 0.256 and 0.318 ppm.&lt;/p&gt;'><sup>147</sup></a></p>
+of croaker white fish (Pacific) is between 0.256 and 0.318 ppm.&lt;/p&gt;'><sup>146</sup></a></p>
 </div>
 <div class="guidedpractice">
 <p>The 90% confidence interval from the previous
@@ -868,7 +862,7 @@ have mercury levels between 0.256 and 0.318 ppm?<a class="footnote-ref" tabindex
 of plausible values for a population parameter,
 in this case the population &lt;em&gt;mean&lt;/em&gt;.
 It does not describe what we might observe
-for &lt;em&gt;individual&lt;/em&gt; observations.&lt;/p&gt;"><sup>148</sup></a></p>
+for &lt;em&gt;individual&lt;/em&gt; observations.&lt;/p&gt;"><sup>147</sup></a></p>
 </div>
 <p></p>
 </div>
@@ -904,17 +898,17 @@ T = \frac{\bar{x} - \mbox{null value}}{s/\sqrt{n}}
 \newcommand{\cherryblossomz}{2.37}
 -->
 <div class="guidedpractice">
-<p>Compare the T score — the standardized sample mean — to the Z score — the standardized sample proportion — presented in Section <a href="inference-one-prop.html#theory-prop">14.3</a>. Why do we use a “Z” when standardizing proportions, but a “T” when standardizing means?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;The letter “Z” is typically used when its distribution follows a standard normal distribution. We use “T” when the test statistic follows a &lt;span class="math inline"&gt;\(t\)&lt;/span&gt;-distribution.&lt;/p&gt;'><sup>149</sup></a></p>
+<p>Compare the T score — the standardized sample mean — to the Z score — the standardized sample proportion — presented in Section <a href="inference-one-prop.html#theory-prop">14.3</a>. Why do we use a “Z” when standardizing proportions, but a “T” when standardizing means?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;The letter “Z” is typically used when its distribution follows a standard normal distribution. We use “T” when the test statistic follows a &lt;span class="math inline"&gt;\(t\)&lt;/span&gt;-distribution.&lt;/p&gt;'><sup>148</sup></a></p>
 </div>
 <p>Is the typical US runner getting faster or slower over time? We consider this question in the context of the Cherry Blossom Race, which is a 10-mile race in Washington, DC each spring.</p>
 <p>The average time for all runners who finished the Cherry Blossom Race in 2006 was 93.29 minutes (93 minutes and about 17 seconds). We want to determine using data from 100 participants in the 2017 Cherry Blossom Race whether runners in this race are getting faster or slower, versus the other possibility that there has been no change.</p>
 <div class="guidedpractice">
-<p>What are appropriate hypotheses for this context?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="math inline"&gt;\(H_0\)&lt;/span&gt;: The average 10-mile run time was the same for 2006 and 2017. &lt;span class="math inline"&gt;\(\mu = 93.29\)&lt;/span&gt; minutes. &lt;span class="math inline"&gt;\(H_A\)&lt;/span&gt;: The average 10-mile run time for 2017 was &lt;em&gt;different&lt;/em&gt; than that of 2006. &lt;span class="math inline"&gt;\(\mu \neq 93.29\)&lt;/span&gt; minutes.&lt;/p&gt;'><sup>150</sup></a></p>
+<p>What are appropriate hypotheses for this context?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="math inline"&gt;\(H_0\)&lt;/span&gt;: The average 10-mile run time was the same for 2006 and 2017. &lt;span class="math inline"&gt;\(\mu = 93.29\)&lt;/span&gt; minutes. &lt;span class="math inline"&gt;\(H_A\)&lt;/span&gt;: The average 10-mile run time for 2017 was &lt;em&gt;different&lt;/em&gt; than that of 2006. &lt;span class="math inline"&gt;\(\mu \neq 93.29\)&lt;/span&gt; minutes.&lt;/p&gt;'><sup>149</sup></a></p>
 </div>
 <div class="guidedpractice">
 <p>The data come from a simple random sample of all participants, so the observations are independent.
 <img src="17-numerical-one-mean_files/figure-html/unnamed-chunk-13-1.png" width="90%" style="display: block; margin: auto;">
-A histogram of the race times is given to evaluate if we can move forward with a t-test. Should we be worried about the normality condition?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;With a sample of 100, we should only be concerned if there is are particularly extreme outliers. The histogram of the data doesn’t show any outliers of concern (and arguably, no outliers at all).&lt;/p&gt;"><sup>151</sup></a></p>
+A histogram of the race times is given to evaluate if we can move forward with a t-test. Should we be worried about the normality condition?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;With a sample of 100, we should only be concerned if there is are particularly extreme outliers. The histogram of the data doesn’t show any outliers of concern (and arguably, no outliers at all).&lt;/p&gt;"><sup>150</sup></a></p>
 </div>
 <p>When completing a hypothesis test for the one-sample mean,
 the process is nearly identical to completing a hypothesis

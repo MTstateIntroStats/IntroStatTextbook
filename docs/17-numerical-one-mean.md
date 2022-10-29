@@ -3,9 +3,6 @@
 
 
 <!-- TODO: Add vocab words to this chapter. -->
-::: chapterintro
-Coming soon!
-:::
 
 <!-- ::: {.underconstruction} -->
 <!-- Divide up the content in this chapter and move across Chapters 17-19 -->
@@ -19,23 +16,22 @@ Coming soon!
 <!-- Old reference: #one-mean -->
 
 ::: {.chapterintro}
-Focusing now on statistical inference for quantitative data, we will revisit and expand upon the foundational aspects of hypothesis testing from Chapter \@ref(foundations-randomization).
+Focusing now on statistical inference for **quantitative data**, again, we will revisit and expand upon the foundational aspects of hypothesis testing from Chapters \@ref(foundations-randomization) and \@ref(foundations-mathematical).
 
-The important data structure for this chapter is a quantitative response variable (that is, the outcome is numerical).
-The three data structures we detail are: 
+The important data structure for this chapter is a single quantitative response variable (that is, the outcome is numerical). In this and the next two chapters, the three data structures and their summary measures that we detail are: 
   
-* one quantitative response variable, summarized by a single mean,
-* one quantitative response variable which is a difference across a pair of observations, summarized by a paired mean difference, and 
-* a quantitative response variable broken down by a binary explanatory variable, summarized by a difference in means.
+* one quantitative response variable, summarized by a **single mean**,
+* one quantitative response variable which is a difference across a pair of observations, summarized by a **paired mean difference**, and 
+* a quantitative response variable broken down by a binary explanatory variable, summarized by a **difference in means**.
 
-When appropriate, each of the data structures will be analyzed using the three methods from Chapters \@ref(foundations-randomization), \@ref(foundations-bootstrapping), and \@ref(foundations-mathematical): randomization test, bootstrapping, and mathematical models, respectively.
+When appropriate, each of the data structures will be analyzed using  simulation-based inferential methods similar to those described in Chapters \@ref(foundations-randomization) and \@ref(foundations-bootstrapping), and the theory-based methods introduced in Chapter \@ref(foundations-mathematical). 
 
-As we build on the inferential ideas, we will visit new foundational concepts in statistical inference.  One key new idea rests in estimating how the sample mean (as opposed to the sample proportion) varies from sample to sample; the resulting value is referred to as the standard error of the mean.  We will also introduce a new important mathematical model, the $t$-distribution (as the foundation for the $t$-test).
+As we build on the inferential ideas, we will visit new foundational concepts in statistical inference.  One key new idea rests in estimating how the sample mean (as opposed to the sample proportion) varies from sample to sample; the resulting value is referred to as the **standard error of the mean**.  We will also introduce a new important mathematical model, the $t$-distribution (as the foundation for the $t$-test).
 :::
 
 
 To summarize a quantitative response variable, we focus on the sample mean (instead of, for example, the sample median or the range of the observations) because of the well-studied mathematical model which describes the behavior of the sample mean.
-The sample mean will be calculated in one group, two paired groups, and two independent groups. We will not cover mathematical models which describe other statistics, but the bootstrap and randomization techniques described below are immediately extendable to any function of the observed data. 
+The sample mean will be calculated in one group, two paired groups, and two independent groups. We will not cover mathematical models which describe other statistics, but the bootstrap and randomization techniques described below are immediately extendable to any summary measure of the observed data. 
 The techniques described for each setting will vary slightly, but you will be well served to find the structural similarities across the different settings.
 
 Similar to how we can model the behavior of the sample proportion $\hat{p}$ using a normal distribution, the sample mean $\bar{x}$ can also be modeled using a normal distribution when certain conditions are met.
@@ -45,7 +41,7 @@ We'll first learn about this new distribution, then we'll use it to construct co
 Below we summarize the notation used throughout this chapter.
 
 ::: {.onebox}
-**Notation.**
+**Notation for a single quantitative variable.**
 
 * $n$ = sample size
 * $\bar{x}$ = sample mean
@@ -325,7 +321,7 @@ large, the normal model will describe the variability in sample means quite well
 **General rule: how to perform the normality check.**
   
   There is no perfect way to check the normality condition,
-  so instead we use two general rules: 
+  so instead we use the following general rules: 
 
 * $\mathbf{n < 30}$: If the sample size $n$ is less than 30
       and there are no clear outliers in the data,
@@ -351,11 +347,7 @@ large, the normal model will describe the variability in sample means quite well
 In this first course in statistics, you aren't expected
 to develop perfect judgement on the normality condition.
 However, you are expected to be able to handle
-clear cut cases based on the rules of thumb.^[More
-  nuanced guidelines would consider further relaxing
-  the *particularly extreme outlier* check when the
-  sample size is very large.
-  However, we'll leave further discussion here to a future course.]
+clear cut cases based on the rules of thumb above.
 
 
 ::: {.example}
@@ -778,9 +770,8 @@ We can construct the confidence interval as
   observations, a confidence interval for the population
   mean is
   \begin{align*}
-  &\text{point estimate} \ \pm\  t^{\star}_{df} \times SE(\text{point estimate})
-  &&\to
-  &&\bar{x} \ \pm\  t^{\star}_{df} \times \frac{s}{\sqrt{n}}
+  \text{point estimate} \ &\pm\&  t^{\star}_{df} \times SE(\text{point estimate})\\
+  \bar{x} \ &\pm\&  t^{\star}_{df} \times \frac{s}{\sqrt{n}}
   \end{align*}
   where $\bar{x}$ is the sample mean, $t^{\star}_{df}$
   corresponds to the confidence level and degrees of freedom

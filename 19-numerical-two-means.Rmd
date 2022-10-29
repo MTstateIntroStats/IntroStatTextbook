@@ -12,7 +12,7 @@ TODO
 Below we summarize the notation used throughout this chapter.
 
 ::: {.onebox}
-**Notation.**
+**Notation for a binary explanatory variable and quantitative response variable.**
 
 * $n_1$, $n_2$ = sample sizes of two independent samples
 * $\bar{x}_1$, $\bar{x}_2$ = sample means of two independent samples

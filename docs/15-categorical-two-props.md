@@ -25,7 +25,7 @@ In our investigations, we'll identify a reasonable point estimate of $\pi_1 - \p
 Below we summarize the notation used throughout this chapter.
 
 ::: onebox
-**Notation.**
+**Notation for a binary explanatory variable and a binary response variable.**
 
 -   $n_1$, $n_2$ = sample sizes of two independent samples
 -   $\hat{p}_1$, $\hat{p}_2$ = sample proportions of two independent samples
