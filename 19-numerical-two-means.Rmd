@@ -6,7 +6,11 @@ source("_common.R")
 ```
 
 ::: chapterintro
-TODO
+We now extend the methods from Chapters \@ref(inference-one-mean) and \@ref(inference-paired-means) to apply confidence intervals and hypothesis tests to differences in population means that come from two independent groups.
+Chapter \@ref(inference-paired-means) examined the case of **dependent** samples, where the two samples are paired. With paired data, we take the difference between two measurements on each observational unit, and then calculate the mean of those differences, $\mu_d$.
+In this chapter, the two groups of measurements are independent---knowledge of the observations in one group does not change what we would expect to happen in the other group. Our summary measure for independent groups first takes the mean of each group, and then the difference, a **difference in means** between Group 1 and Group 2: $\mu_1 - \mu_2.$ 
+
+In our investigations, we'll identify a reasonable point estimate of $\mu_1 - \mu_2$ based on the sample, and you may have already guessed its form: $\bar{x}_1 - \bar{x}_2.$ \index{point estimate!difference of means} Then we'll look at the inferential analysis in three different ways: using a randomization test, applying bootstrapping for interval estimates, and, if we verify that the point estimate can be modeled using a normal distribution, we compute the estimate's standard error and apply the mathematical framework.
 :::
 
 Below we summarize the notation used throughout this chapter.
@@ -465,7 +469,7 @@ Does the bootstrap confidence interval for the true difference in average change
   
 ---
   
-Because the 90% interval displayed does not contain zero (note that zero is never one of the bootstrapped differences so 95% and 99% intervals would have given the same conclusion!), we conclude that the ESC treatment is significantly better with respect to heart pumping capacity than the treatment.
+Because the 90% interval displayed does not contain zero (note that zero is never one of the bootstrapped differences so 95% and 99% intervals would have given the same conclusion!), we conclude that the ESC treatment is significantly better with respect to heart pumping capacity than the control.
 
 Because the study is a randomized controlled experiment, we can conclude that it is the treatment (ESC) which is causing the change in pumping capacity.
 :::

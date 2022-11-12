@@ -142,12 +142,50 @@
 <!-- Old content - revise as needed -->
 <!-- ::: -->
 <p>In this chapter, we bring together the inferential methods used to make claims about a population from information in a sample and the modeling ideas seen in Chapter <a href="explore-regression.html#explore-regression">6</a>.
-In particular, we will conduct inference on the slope of a least squares regression line to test whether or not there is a relationship between two quantitative variables.
-Additionally, we will build confidence intervals which quantify the slope of the linear regression line.</p>
-<!-- Below we summarize the notation used throughout this chapter. -->
-<!-- ::: {.underconstruction} -->
-<!-- Add list of notation. -->
-<!-- ::: -->
+In particular, we will conduct inference on the slope of a least squares regression line or the correlation to test whether or not there is a relationship between two quantitative variables.
+Additionally, we will build confidence intervals which quantify the slope of the linear regression line and correlation between two quantitative variables.</p>
+<p>Below we summarize the notation used throughout this chapter.</p>
+<div class="onebox">
+<p><strong>Notation for two quantitative variables.</strong></p>
+<ul>
+<li>
+<span class="math inline">\((x, y)\)</span> = two measurements taken on a single observational unit</li>
+<li>
+<span class="math inline">\(n\)</span> = sample size (number of <span class="math inline">\((x, y)\)</span> pairs)</li>
+<li>
+<span class="math inline">\(r\)</span> = sample <strong>correlation</strong> between two quantitative variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>
+</li>
+<li>
+<span class="math inline">\(\hat{y} = b_0 + b_1 x\)</span> = least-squares regression line
+<ul>
+<li>
+<span class="math inline">\(\hat{y}\)</span> = estimated or predicted response for a given value of <span class="math inline">\(x\)</span>
+</li>
+<li>
+<span class="math inline">\(b_0\)</span> = sample <strong>intercept</strong> (<span class="math inline">\(y\)</span>-intercept) of the least-squares regression line</li>
+<li>
+<span class="math inline">\(b_1\)</span> = sample <strong>slope</strong> of the least-squares regression line</li>
+</ul>
+</li>
+<li>
+<span class="math inline">\(\rho\)</span> = population <strong>correlation</strong> between two quantitative variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>
+</li>
+<li>
+<span class="math inline">\(y = \beta_0 + \beta_1 x + \epsilon\)</span> = population regression model
+<ul>
+<li>
+<span class="math inline">\(y\)</span> = observed value of the response for a given value of <span class="math inline">\(x\)</span>
+</li>
+<li>
+<span class="math inline">\(\beta_0\)</span> = <strong>intercept</strong> (<span class="math inline">\(y\)</span>-intercept) of the population regression line</li>
+<li>
+<span class="math inline">\(\beta_1\)</span> = <strong>slope</strong> of the population regression line</li>
+<li>
+<span class="math inline">\(\epsilon\)</span> = random error (the difference between the observed reponse and the population mean response for a given value of <span class="math inline">\(x\)</span>)</li>
+</ul>
+</li>
+</ul>
+</div>
 <div id="case-study-sandwich-store" class="section level2" number="21.1">
 <h2>
 <span class="header-section-number">21.1</span> Case study: Sandwich store<a class="anchor" aria-label="anchor" href="#case-study-sandwich-store"><i class="fas fa-link"></i></a>
@@ -178,7 +216,7 @@ Figure 21.1: Revenue as a linear model of advertising dollars for a population o
 The CEO is willing to give each potential franchise buyer a random sample of data from 20 stores.</p>
 <p>As with any numerical characteristic which describes a subset of the population, the estimated slope of a sample will vary from sample to sample.
 Consider the linear model which describes revenue (in $1000) based on advertising dollars (in $1000).</p>
-<p>The least squares regression model uses the data to find a sample linear fit: <span class="math display">\[\hat{y} = b_0 + b_1 x,\]</span></p>
+<p>The <strong>least squares regression model</strong> uses the data to find a sample linear fit: <span class="math display">\[\hat{y} = b_0 + b_1 x,\]</span></p>
 <p>where <span class="math inline">\(y\)</span> represents the actual revenue, <span class="math inline">\(\hat{y}\)</span> represents the <em>predicted</em> revenue from the model, and <span class="math inline">\(x\)</span> represents the advertising dollars. A random sample of 20 stores shows a different least square regression line depending on which observations are selected.
 A subset of size 20 stores shows a similar positive trend between advertising and revenue (to what we saw in Figure <a href="inference-reg.html#fig:sandpop">21.1</a>, which described the population) despite having fewer observations on the plot.</p>
 <div class="figure" style="text-align: center">
@@ -227,7 +265,7 @@ Additionally, as with measuring the variability of previous statistics (e.g., <s
 <p>In the following sections, the distribution (i.e., histogram) of <span class="math inline">\(b_1\)</span> (the estimated slope coefficient) will be constructed in the same three ways that, by now, may be familiar to you.
 First (in Section <a href="inference-reg.html#randslope">21.2</a>), the distribution of <span class="math inline">\(b_1\)</span> when <span class="math inline">\(\beta_1 = 0\)</span> is constructed by randomizing (permuting) the response variable.
 Next (in Section <a href="inference-reg.html#bootbeta1">21.3</a>), we can bootstrap the data by taking random samples of size <span class="math inline">\(n\)</span> from the original dataset.
-And last (in Section <a href="inference-reg.html#mathslope">21.4</a>), we use mathematical tools to describe the variability using the <span class="math inline">\(t\)</span>-distribution that was first encountered in Section <a href="inference-one-mean.html#one-mean-math">17.3</a>.</p>
+And last (in Section <a href="inference-reg.html#mathslope">21.5</a>), we use mathematical tools to describe the variability using the <span class="math inline">\(t\)</span>-distribution that was first encountered in Section <a href="inference-one-mean.html#one-mean-math">17.3</a>.</p>
 </div>
 </div>
 <div id="randslope" class="section level2" number="21.2">
@@ -326,7 +364,7 @@ maize
 \hat{y} = 1.033 + 0.195x,
 \]</span>
 where <span class="math inline">\(\hat{y}\)</span> is the predicted wheat yield, and <span class="math inline">\(x\)</span> is the maize yield (both in tonnes per hectare).</p>
-<p>The other columns in Table <a href="inference-reg.html#tab:lsCrops">21.1</a> are further described in Section <a href="inference-reg.html#mathslope">21.4</a> when we introduce theory-based methods for inference on a regression slope.</p>
+<p>The other columns in Table <a href="inference-reg.html#tab:lsCrops">21.1</a> are further described in Section <a href="inference-reg.html#mathslope">21.5</a> when we introduce theory-based methods for inference on a regression slope.</p>
 </div>
 <div id="variability-of-the-statistic-11" class="section level3" number="21.2.2">
 <h3>
@@ -407,21 +445,35 @@ Figure 21.14: The original crop data on wheat and peas is bootstrapped 1,000 tim
 </div>
 </div>
 </div>
-<div id="mathslope" class="section level2" number="21.4">
+<div id="inference-on-the-correlation-coefficient-rho" class="section level2" number="21.4">
 <h2>
-<span class="header-section-number">21.4</span> Theory-based inferential methods for <span class="math inline">\(\beta_1\)</span><a class="anchor" aria-label="anchor" href="#mathslope"><i class="fas fa-link"></i></a>
+<span class="header-section-number">21.4</span> Inference on the correlation coefficient <span class="math inline">\(\rho\)</span><a class="anchor" aria-label="anchor" href="#inference-on-the-correlation-coefficient-rho"><i class="fas fa-link"></i></a>
+</h2>
+<p>Both the randomization test and the bootstrap confidence interval methods can be used to simulate any sample summary measure, not just the sample slope, <span class="math inline">\(b_1\)</span>. For example, we could write the hypotheses from the example in Section <a href="inference-reg.html#randslope">21.2</a> in terms of the population correlation coefficient, <span class="math inline">\(\rho\)</span>:</p>
+<ul>
+<li>
+<span class="math inline">\(H_0: \rho= 0\)</span>, the true correlation between <code>wheat</code> and <code>maize</code> is equal to zero.<br>
+</li>
+<li>
+<span class="math inline">\(H_A: \rho \ne 0\)</span>, the true correlation between <code>wheat</code> and <code>maize</code> is not equal to zero.</li>
+</ul>
+<p>All simulation methods then proceed in the same way, but using the sample correlation, <span class="math inline">\(r\)</span>, as our statistic to simulate rather than the sample slope.</p>
+</div>
+<div id="mathslope" class="section level2" number="21.5">
+<h2>
+<span class="header-section-number">21.5</span> Theory-based inferential methods for <span class="math inline">\(\beta_1\)</span><a class="anchor" aria-label="anchor" href="#mathslope"><i class="fas fa-link"></i></a>
 </h2>
 <p>When certain technical conditions apply, it is convenient to use mathematical approximations to test and estimate the slope parameter.
 The approximations will build on the <span class="math inline">\(t\)</span>-distribution which was first encountered in Chapter <a href="inference-one-mean.html#inference-one-mean">17</a>.
 This mathematical model is often correct and is usually easy to implement computationally.
-The validity of the technical conditions will be considered in detail in Section <a href="inference-reg.html#tech-cond-linmod">21.5</a>.</p>
+The validity of the technical conditions will be considered in detail in Section <a href="inference-reg.html#tech-cond-linmod">21.6</a>.</p>
 <p>In this section, we discuss uncertainty in the estimates of the slope
 and <span class="math inline">\(y\)</span>-intercept for a regression line. Just as we identified standard
 errors for point estimates in previous chapters, we first discuss
 standard errors for these new estimates.</p>
-<div id="case-study-midterm-elections-and-unemployment" class="section level3" number="21.4.1">
+<div id="case-study-midterm-elections-and-unemployment" class="section level3" number="21.5.1">
 <h3>
-<span class="header-section-number">21.4.1</span> Case study: Midterm elections and unemployment<a class="anchor" aria-label="anchor" href="#case-study-midterm-elections-and-unemployment"><i class="fas fa-link"></i></a>
+<span class="header-section-number">21.5.1</span> Case study: Midterm elections and unemployment<a class="anchor" aria-label="anchor" href="#case-study-midterm-elections-and-unemployment"><i class="fas fa-link"></i></a>
 </h3>
 <p></p>
 <p>Elections for members of the United States House of Representatives
@@ -444,7 +496,7 @@ party (e.g., percent change in the number of seats for Republicans in
 <div class="guidedpractice">
 <p>What are the observational units in this data set?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;We measured the unemployment rate and percent change in House seats for the President’s party for each midterm election from 1898 to 2018, except those elections during the Great Depression. Thus, the observational unit is a single midterm election.&lt;/p&gt;"><sup>160</sup></a></p>
 </div>
-<p>Examining the data, there are no clear deviations from linearity or substantial outliers (see Section <a href="inference-reg.html#tech-cond-linmod">21.5</a> for a discussion on using residuals to visualize how well a linear model fits the data).
+<p>Examining the data, there are no clear deviations from linearity or substantial outliers (see Section <a href="inference-reg.html#tech-cond-linmod">21.6</a> for a discussion on using residuals to visualize how well a linear model fits the data).
 While the data are collected sequentially, a separate analysis was used to check for any apparent correlation between successive observations in time; no such correlation was found.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:unemploymentAndChangeInHouse"></span>
@@ -480,9 +532,9 @@ a statistical hypothesis test:</p>
 </ul>
 <p>To assess the hypotheses, we identify a standard error for the estimate, compute an appropriate test statistic, and identify the p-value.</p>
 </div>
-<div id="understanding-regression-output-from-software" class="section level3" number="21.4.2">
+<div id="understanding-regression-output-from-software" class="section level3" number="21.5.2">
 <h3>
-<span class="header-section-number">21.4.2</span> Understanding regression output from software<a class="anchor" aria-label="anchor" href="#understanding-regression-output-from-software"><i class="fas fa-link"></i></a>
+<span class="header-section-number">21.5.2</span> Understanding regression output from software<a class="anchor" aria-label="anchor" href="#understanding-regression-output-from-software"><i class="fas fa-link"></i></a>
 </h3>
 <p>Just like other point estimates we have seen before, we can compute a
 standard error and test statistic for <span class="math inline">\(b_1\)</span>. We will generally label the
@@ -584,9 +636,9 @@ hypothesis test.</p>
 higher unemployment rate has a negative correlation with percent of seats lost in the house. In other words, we do not have significant evidence for the political theory that the higher the unemployment rate, the worse the President’s party will do in the midterm elections.</p>
 </div>
 </div>
-<div id="intuition-vs.-formal-inference" class="section level3" number="21.4.3">
+<div id="intuition-vs.-formal-inference" class="section level3" number="21.5.3">
 <h3>
-<span class="header-section-number">21.4.3</span> Intuition vs. formal inference<a class="anchor" aria-label="anchor" href="#intuition-vs.-formal-inference"><i class="fas fa-link"></i></a>
+<span class="header-section-number">21.5.3</span> Intuition vs. formal inference<a class="anchor" aria-label="anchor" href="#intuition-vs.-formal-inference"><i class="fas fa-link"></i></a>
 </h3>
 <p>As the final step in a mathematical hypothesis test for the slope, we use the information provided to make a conclusion about whether or not the data could have come from a population where the true slope was zero (i.e., <span class="math inline">\(\beta_1 = 0\)</span>). Before evaluating the formal hypothesis claim, sometimes it is important to check your intuition. Based on everything we’ve seen in the examples above describing the variability of a line from sample to sample, as yourself if the linear relationship given by the data could have come from a population in which the slope was truly zero.</p>
 <div class="workedexample">
@@ -693,13 +745,13 @@ just as we believed in our analysis of Figure &lt;a href="inference-reg.html#fig
 identify point estimates, standard errors, test statistics, and p-values
 in practice. However, be aware that software will not generally check
 whether the method is appropriate, meaning we must still verify
-conditions are met. See Section <a href="inference-reg.html#tech-cond-linmod">21.5</a>.</p>
+conditions are met. See Section <a href="inference-reg.html#tech-cond-linmod">21.6</a>.</p>
 </div>
 <!-- TODO: Add section on how slope test is equivalent to testing correlation -->
 </div>
-<div id="theory-based-confidence-interval-for-a-regression-coefficient" class="section level3" number="21.4.4">
+<div id="theory-based-confidence-interval-for-a-regression-coefficient" class="section level3" number="21.5.4">
 <h3>
-<span class="header-section-number">21.4.4</span> Theory-based confidence interval for a regression coefficient<a class="anchor" aria-label="anchor" href="#theory-based-confidence-interval-for-a-regression-coefficient"><i class="fas fa-link"></i></a>
+<span class="header-section-number">21.5.4</span> Theory-based confidence interval for a regression coefficient<a class="anchor" aria-label="anchor" href="#theory-based-confidence-interval-for-a-regression-coefficient"><i class="fas fa-link"></i></a>
 </h3>
 <p>Similar to how we can conduct a hypothesis test for a model coefficient
 using regression output, we can also construct a confidence interval for
@@ -738,9 +790,9 @@ response value in the context of regression. These intervals are typically cover
 <!-- TODO: Edit from here to the end -->
 </div>
 </div>
-<div id="tech-cond-linmod" class="section level2" number="21.5">
+<div id="tech-cond-linmod" class="section level2" number="21.6">
 <h2>
-<span class="header-section-number">21.5</span> Checking model conditions<a class="anchor" aria-label="anchor" href="#tech-cond-linmod"><i class="fas fa-link"></i></a>
+<span class="header-section-number">21.6</span> Checking model conditions<a class="anchor" aria-label="anchor" href="#tech-cond-linmod"><i class="fas fa-link"></i></a>
 </h2>
 <p>In the previous sections, we used randomization and bootstrapping to perform inference when the mathematical model was not valid due to violations of the technical conditions. In this section, we’ll provide details for when the mathematical model is appropriate and a discussion of technical conditions needed for the randomization and bootstrapping procedures.</p>
 <div id="what-are-the-technical-conditions" class="section level4 unnumbered">
@@ -765,7 +817,7 @@ Section <a href="explore-regression.html#outliers-in-regression">6.3</a>. An exa
 residual that would be a potentially concern is shown in
 Figure <a href="inference-reg.html#fig:whatCanGoWrongWithLinearModel">21.17</a>, where one observation is
 clearly much further from the regression line than the others.</p></li>
-<li><p><strong>Constant or equal variability.</strong> The variability of points around the least squares line remains
+<li><p><strong>Constant or equal variability (variance).</strong> The variability of points around the least squares line remains
 roughly constant. An example of non-constant variability is shown in
 the third panel of
 Figure <a href="inference-reg.html#fig:whatCanGoWrongWithLinearModel">21.17</a>, which represents the
@@ -800,26 +852,26 @@ That is, without the technical conditions, the T-score (or Z-score) will not hav
 That said, it is almost always impossible to check the conditions precisely, so we look for large deviations from the conditions.
 If there are large deviations, we will be unable to trust the calculated p-value or the endpoints of the resulting confidence interval.</p>
 </div>
-<div id="linearity" class="section level3" number="21.5.1">
+<div id="linearity" class="section level3" number="21.6.1">
 <h3>
-<span class="header-section-number">21.5.1</span> <strong>L</strong>inearity<a class="anchor" aria-label="anchor" href="#linearity"><i class="fas fa-link"></i></a>
+<span class="header-section-number">21.6.1</span> <strong>L</strong>inearity<a class="anchor" aria-label="anchor" href="#linearity"><i class="fas fa-link"></i></a>
 </h3>
 <p>The linearity condition is among the most important if your goal is to understand a linear model between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>.
 For example, the value of the slope will not be at all meaningful if the true relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> is quadratic.
 Not only should we be cautious about the inference, but the model <em>itself</em> is also not an accurate portrayal of the relationship between the variables. An extended discussion on the different methods for modeling functional forms other than linear is outside the scope of this text.</p>
 </div>
-<div id="independence" class="section level3" number="21.5.2">
+<div id="independence" class="section level3" number="21.6.2">
 <h3>
-<span class="header-section-number">21.5.2</span> <strong>I</strong>ndependence<a class="anchor" aria-label="anchor" href="#independence"><i class="fas fa-link"></i></a>
+<span class="header-section-number">21.6.2</span> <strong>I</strong>ndependence<a class="anchor" aria-label="anchor" href="#independence"><i class="fas fa-link"></i></a>
 </h3>
 <p>The technical condition describing the independence of the observations is often the most crucial but also the most difficult to diagnose. It is also extremely difficult to gather a dataset which is a true random sample from the population of interest. (Note: a true randomized experiment from a fixed set of individuals is much easier to implement, and indeed, randomized experiments are done in most medical studies these days.)</p>
 <p>Dependent observations can bias results in ways that produce fundamentally flawed analyses. That is, if you hang out at the gym measuring height and weight, your linear model is surely not a representation of all students at your university. At best it is a model describing students who use the gym (but also who are willing to talk to you, that use the gym at the times you were there measuring, etc.).</p>
 <p>In lieu of trying to answer whether or not your observations are a true random sample, you might instead focus on whether or not you believe your observations are representative of the populations.
 Humans are notoriously bad at implementing random procedures, so you should be wary of any process that used human intuition to balance the data with respect to, for example, the demographics of the individuals in the sample.</p>
 </div>
-<div id="normality" class="section level3" number="21.5.3">
+<div id="normality" class="section level3" number="21.6.3">
 <h3>
-<span class="header-section-number">21.5.3</span> <strong>N</strong>ormality<a class="anchor" aria-label="anchor" href="#normality"><i class="fas fa-link"></i></a>
+<span class="header-section-number">21.6.3</span> <strong>N</strong>ormality<a class="anchor" aria-label="anchor" href="#normality"><i class="fas fa-link"></i></a>
 </h3>
 <p>The normality condition requires that points vary symmetrically around the line, spreading out in a bell-shaped fashion. You should consider the “bell” of the normal distribution as sitting on top of the line (coming off the paper in a 3-D sense) so as to indicate that the points are dense close to the line and disperse gradually as they get farther from the line.</p>
 <p>The normality condition is less important than linearity or independence for a few reasons.
@@ -829,18 +881,18 @@ Fortunately the Central Limit Theorem tells us that most of the inferential anal
 <p>One analysis method that <em>does</em> require normality, regardless of sample size, is creating intervals which predict the response of individual outcomes at a given <span class="math inline">\(x\)</span> value, using the linear model, a topic covered in later courses.
 On additional reason to worry slightly less about normality is that neither the randomization test nor the bootstrapping procedures require the data to be normal around the line.</p>
 </div>
-<div id="equal-variability" class="section level3" number="21.5.4">
+<div id="equal-variability" class="section level3" number="21.6.4">
 <h3>
-<span class="header-section-number">21.5.4</span> <strong>E</strong>qual variability<a class="anchor" aria-label="anchor" href="#equal-variability"><i class="fas fa-link"></i></a>
+<span class="header-section-number">21.6.4</span> <strong>E</strong>qual variability<a class="anchor" aria-label="anchor" href="#equal-variability"><i class="fas fa-link"></i></a>
 </h3>
 <p>As with normality, the equal variability condition (that points are spread out in similar ways around the line for all values of <span class="math inline">\(x\)</span>) will not cause problems for the estimate of the linear model, for a randomization test, or for a bootstrap confidence interval.
 However, data that exhibit non-equal variance across the range of <span class="math inline">\(x\)</span>-values will have the potential to seriously mis-estimate the variability of the slope which will have consequences for the inference results (i.e., hypothesis tests and confidence intervals).</p>
 <p>When the equal variability condition is violated and a theory-based analysis (e.g., p-value from T-score) is needed, there are existing methods which can easily handle the unequal variance (e.g., weighted least squares analysis), but these are covered in a later course.</p>
 </div>
 </div>
-<div id="chp21-review" class="section level2" number="21.6">
+<div id="chp21-review" class="section level2" number="21.7">
 <h2>
-<span class="header-section-number">21.6</span> Chapter review<a class="anchor" aria-label="anchor" href="#chp21-review"><i class="fas fa-link"></i></a>
+<span class="header-section-number">21.7</span> Chapter review<a class="anchor" aria-label="anchor" href="#chp21-review"><i class="fas fa-link"></i></a>
 </h2>
 <!-- ### Summary {-} -->
 <!-- ::: {.underconstruction} -->
@@ -850,15 +902,41 @@ However, data that exhibit non-equal variance across the range of <span class="m
 <h3>Terms<a class="anchor" aria-label="anchor" href="#terms-16"><i class="fas fa-link"></i></a>
 </h3>
 <p>We introduced the following terms in the chapter. If you’re not sure what some of these terms mean, we recommend you go back in the text and review their definitions. We are purposefully presenting them in alphabetical order, instead of in order of appearance, so they will be a little more challenging to locate. However you should be able to easily spot them as <strong>bolded text</strong>.</p>
-<div class="inline-table"><table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;"><tbody><tr>
+<div class="inline-table"><table class="table table-striped table-condensed" style="margin-left: auto; margin-right: auto;"><tbody>
+<tr>
 <td style="text-align:left;">
-TODO
+correlation
 </td>
 <td style="text-align:left;">
+intercept
 </td>
 <td style="text-align:left;">
+normality
 </td>
-</tr></tbody></table></div>
+</tr>
+<tr>
+<td style="text-align:left;">
+equal variability
+</td>
+<td style="text-align:left;">
+least-squares regression line
+</td>
+<td style="text-align:left;">
+predicted response
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+independence
+</td>
+<td style="text-align:left;">
+linearity
+</td>
+<td style="text-align:left;">
+slope
+</td>
+</tr>
+</tbody></table></div>
 <!-- ### Key ideas {-} --><!-- ::: {.underconstruction} --><!-- TODO --><!-- ::: -->
 </div>
 </div>
@@ -890,24 +968,25 @@ TODO
 <li><a class="nav-link" href="#variability-of-the-statistic-12"><span class="header-section-number">21.3.2</span> Variability of the statistic</a></li>
 </ul>
 </li>
+<li><a class="nav-link" href="#inference-on-the-correlation-coefficient-rho"><span class="header-section-number">21.4</span> Inference on the correlation coefficient \(\rho\)</a></li>
 <li>
-<a class="nav-link" href="#mathslope"><span class="header-section-number">21.4</span> Theory-based inferential methods for \(\beta_1\)</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#case-study-midterm-elections-and-unemployment"><span class="header-section-number">21.4.1</span> Case study: Midterm elections and unemployment</a></li>
-<li><a class="nav-link" href="#understanding-regression-output-from-software"><span class="header-section-number">21.4.2</span> Understanding regression output from software</a></li>
-<li><a class="nav-link" href="#intuition-vs.-formal-inference"><span class="header-section-number">21.4.3</span> Intuition vs. formal inference</a></li>
-<li><a class="nav-link" href="#theory-based-confidence-interval-for-a-regression-coefficient"><span class="header-section-number">21.4.4</span> Theory-based confidence interval for a regression coefficient</a></li>
+<a class="nav-link" href="#mathslope"><span class="header-section-number">21.5</span> Theory-based inferential methods for \(\beta_1\)</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#case-study-midterm-elections-and-unemployment"><span class="header-section-number">21.5.1</span> Case study: Midterm elections and unemployment</a></li>
+<li><a class="nav-link" href="#understanding-regression-output-from-software"><span class="header-section-number">21.5.2</span> Understanding regression output from software</a></li>
+<li><a class="nav-link" href="#intuition-vs.-formal-inference"><span class="header-section-number">21.5.3</span> Intuition vs. formal inference</a></li>
+<li><a class="nav-link" href="#theory-based-confidence-interval-for-a-regression-coefficient"><span class="header-section-number">21.5.4</span> Theory-based confidence interval for a regression coefficient</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#tech-cond-linmod"><span class="header-section-number">21.5</span> Checking model conditions</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#linearity"><span class="header-section-number">21.5.1</span> Linearity</a></li>
-<li><a class="nav-link" href="#independence"><span class="header-section-number">21.5.2</span> Independence</a></li>
-<li><a class="nav-link" href="#normality"><span class="header-section-number">21.5.3</span> Normality</a></li>
-<li><a class="nav-link" href="#equal-variability"><span class="header-section-number">21.5.4</span> Equal variability</a></li>
+<a class="nav-link" href="#tech-cond-linmod"><span class="header-section-number">21.6</span> Checking model conditions</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#linearity"><span class="header-section-number">21.6.1</span> Linearity</a></li>
+<li><a class="nav-link" href="#independence"><span class="header-section-number">21.6.2</span> Independence</a></li>
+<li><a class="nav-link" href="#normality"><span class="header-section-number">21.6.3</span> Normality</a></li>
+<li><a class="nav-link" href="#equal-variability"><span class="header-section-number">21.6.4</span> Equal variability</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#chp21-review"><span class="header-section-number">21.6</span> Chapter review</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#terms-16">Terms</a></li></ul>
+<a class="nav-link" href="#chp21-review"><span class="header-section-number">21.7</span> Chapter review</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#terms-16">Terms</a></li></ul>
 </li>
 </ul>
 

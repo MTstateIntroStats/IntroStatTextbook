@@ -4,10 +4,6 @@
 source("_common.R")
 ```
 
-<!-- TODO: Add vocab words to this chapter. -->
-```{r include=FALSE}
-terms_chp_21 <- c("TODO")
-```
 
 # Inference for correlation and slope {#inference-reg}
 <!-- Old reference: #inferenceForLinearRegression -->
@@ -23,14 +19,33 @@ Many of the inferential ideas are remarkably similar to those covered in previou
 <!-- ::: -->
 
 In this chapter, we bring together the inferential methods used to make claims about a population from information in a sample and the modeling ideas seen in Chapter \@ref(explore-regression). 
-In particular, we will conduct inference on the slope of a least squares regression line to test whether or not there is a relationship between two quantitative variables. 
-Additionally, we will build confidence intervals which quantify the slope of the linear regression line.
+In particular, we will conduct inference on the slope of a least squares regression line or the correlation to test whether or not there is a relationship between two quantitative variables. 
+Additionally, we will build confidence intervals which quantify the slope of the linear regression line and correlation between two quantitative variables.
 
-<!-- Below we summarize the notation used throughout this chapter. -->
+Below we summarize the notation used throughout this chapter.
 
-<!-- ::: {.underconstruction} -->
-<!-- Add list of notation. -->
-<!-- ::: -->
+::: {.onebox}
+**Notation for two quantitative variables.**
+
+* $(x, y)$ = two measurements taken on a single observational unit
+* $n$ = sample size (number of $(x, y)$ pairs)
+* $r$ = sample **correlation** between two quantitative variables $x$ and $y$
+* $\hat{y} = b_0 + b_1 x$ = least-squares regression line
+    - $\hat{y}$ = estimated or predicted response for a given value of $x$
+    - $b_0$ = sample **intercept** ($y$-intercept) of the least-squares regression line
+    - $b_1$ = sample **slope** of the least-squares regression line
+* $\rho$ = population **correlation** between two quantitative variables $x$ and $y$
+* $y = \beta_0 + \beta_1 x + \epsilon$ = population regression model
+    - $y$ = observed value of the response for a given value of $x$
+    - $\beta_0$ = **intercept** ($y$-intercept) of the population regression line
+    - $\beta_1$ = **slope** of the population regression line
+    - $\epsilon$ = random error (the difference between the observed reponse and the population mean response for a given value of $x$)
+:::
+
+
+```{r include=FALSE}
+terms_chp_21 <- c("least-squares regression line", "correlation", "intercept", "slope", "predicted response")
+```
 
 ## Case study: Sandwich store
 
@@ -75,7 +90,7 @@ The CEO is willing to give each potential franchise buyer a random sample of dat
 As with any numerical characteristic which describes a subset of the population, the estimated slope of a sample will vary from sample to sample.
 Consider the linear model which describes revenue (in \$1000) based on advertising dollars (in \$1000).  
 
-The least squares regression model uses the data to find a sample linear fit:  $$\hat{y} = b_0 + b_1 x,$$
+The **least squares regression model** uses the data to find a sample linear fit:  $$\hat{y} = b_0 + b_1 x,$$
 
 where $y$ represents the actual revenue, $\hat{y}$ represents the _predicted_ revenue from the model, and $x$ represents the advertising dollars. A random sample of 20 stores shows a different least square regression line depending on which observations are selected.
 A subset of size 20 stores shows a similar positive trend between advertising and revenue (to what we saw in Figure \@ref(fig:sandpop), which described the population) despite having fewer observations on the plot.
@@ -436,7 +451,14 @@ par(las = 0)
 mtext("Bootstrapped values of the slope statistic describing wheat and peas.", 1, 2.5)
 ```
 
+## Inference on the correlation coefficient $\rho$
 
+Both the randomization test and the bootstrap confidence interval methods can be used to simulate any sample summary measure, not just the sample slope, $b_1$. For example, we could write the hypotheses from the example in Section \@ref(randslope) in terms of the population correlation coefficient, $\rho$:
+
+* $H_0: \rho= 0$, the true correlation between `wheat` and `maize` is equal to zero.  
+* $H_A: \rho \ne 0$, the true correlation between `wheat` and `maize` is not equal to zero.
+
+All simulation methods then proceed in the same way, but using the sample correlation, $r$, as our statistic to simulate rather than the sample slope.
 
 ## Theory-based inferential methods for $\beta_1$ {#mathslope}
 
@@ -777,6 +799,8 @@ types of intervals that may be of interest, including prediction
 intervals for a response value and also confidence intervals for a mean
 response value in the context of regression. These intervals are typically covered in a second course in statistics.
 
+
+
 <!-- TODO: Edit from here to the end -->
 
 ## Checking model conditions {#tech-cond-linmod}
@@ -808,12 +832,16 @@ When fitting a least squares line, we generally require
     Figure \@ref(fig:whatCanGoWrongWithLinearModel), where one observation is
     clearly much further from the regression line than the others.
 
-* **Constant or equal variability.**  The variability of points around the least squares line remains
+* **Constant or equal variability (variance).**  The variability of points around the least squares line remains
     roughly constant. An example of non-constant variability is shown in
     the third panel of
     Figure \@ref(fig:whatCanGoWrongWithLinearModel), which represents the
     most common pattern observed when this condition fails: the
     variability of $y$ is larger when $x$ is larger.
+
+```{r include=FALSE}
+terms_chp_21 <- c(terms_chp_21, "linearity", "independence", "normality", "equal variability")
+```
 
 
 ```{r whatCanGoWrongWithLinearModel, fig.cap="Four examples showing when the methods in this chapter are insufficient to apply to the data. The top set of graphs represents the $x$ and $y$ relationship.  The bottom set of graphs is a residual plot.  First panel: linearity fails. Second panel: there are outliers, most especially one point that is very far away from the line. Third panel: the variability of the errors is related to the value of $x$. Fourth panel: a time series data set is shown, where successive observations are highly correlated.", warning=FALSE, out.width="100%"}

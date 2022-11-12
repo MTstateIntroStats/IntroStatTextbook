@@ -418,6 +418,7 @@ observed-statistic-vs.-null-value-3
 bootbeta1
 observed-data-15
 variability-of-the-statistic-12
+inference-on-the-correlation-coefficient-rho
 mathslope
 case-study-midterm-elections-and-unemployment
 understanding-regression-output-from-software

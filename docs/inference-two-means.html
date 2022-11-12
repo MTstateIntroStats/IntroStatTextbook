@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 19 Inference for comparing two independent means | Montana State Introductory Statistics with R</title>
 <meta name="author" content="Stacey Hancock, Nicole Carnegie, Elijah Meyer, Jade Schmidt, Melinda Yager">
-<meta name="description" content="TODO Below we summarize the notation used throughout this chapter. Notation for a binary explanatory variable and quantitative response variable. \(n_1\), \(n_2\) = sample sizes of two independent...">
+<meta name="description" content="We now extend the methods from Chapters 17 and 18 to apply confidence intervals and hypothesis tests to differences in population means that come from two independent groups. Chapter 18 examined...">
 <meta name="generator" content="bookdown 0.27 with bs4_book()">
 <meta property="og:title" content="Chapter 19 Inference for comparing two independent means | Montana State Introductory Statistics with R">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://mtstateintrostats.github.io/IntroStatTextbook/inference-two-means.html">
-<meta property="og:description" content="TODO Below we summarize the notation used throughout this chapter. Notation for a binary explanatory variable and quantitative response variable. \(n_1\), \(n_2\) = sample sizes of two independent...">
+<meta property="og:description" content="We now extend the methods from Chapters 17 and 18 to apply confidence intervals and hypothesis tests to differences in population means that come from two independent groups. Chapter 18 examined...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 19 Inference for comparing two independent means | Montana State Introductory Statistics with R">
-<meta name="twitter:description" content="TODO Below we summarize the notation used throughout this chapter. Notation for a binary explanatory variable and quantitative response variable. \(n_1\), \(n_2\) = sample sizes of two independent...">
+<meta name="twitter:description" content="We now extend the methods from Chapters 17 and 18 to apply confidence intervals and hypothesis tests to differences in population means that come from two independent groups. Chapter 18 examined...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -135,7 +135,10 @@
 </h1>
 <!-- Old reference: #differenceOfTwoMeans -->
 <div class="chapterintro">
-<p>TODO</p>
+<p>We now extend the methods from Chapters <a href="inference-one-mean.html#inference-one-mean">17</a> and <a href="inference-paired-means.html#inference-paired-means">18</a> to apply confidence intervals and hypothesis tests to differences in population means that come from two independent groups.
+Chapter <a href="inference-paired-means.html#inference-paired-means">18</a> examined the case of <strong>dependent</strong> samples, where the two samples are paired. With paired data, we take the difference between two measurements on each observational unit, and then calculate the mean of those differences, <span class="math inline">\(\mu_d\)</span>.
+In this chapter, the two groups of measurements are independent—knowledge of the observations in one group does not change what we would expect to happen in the other group. Our summary measure for independent groups first takes the mean of each group, and then the difference, a <strong>difference in means</strong> between Group 1 and Group 2: <span class="math inline">\(\mu_1 - \mu_2.\)</span></p>
+<p>In our investigations, we’ll identify a reasonable point estimate of <span class="math inline">\(\mu_1 - \mu_2\)</span> based on the sample, and you may have already guessed its form: <span class="math inline">\(\bar{x}_1 - \bar{x}_2.\)</span> Then we’ll look at the inferential analysis in three different ways: using a randomization test, applying bootstrapping for interval estimates, and, if we verify that the point estimate can be modeled using a normal distribution, we compute the estimate’s standard error and apply the mathematical framework.</p>
 </div>
 <p>Below we summarize the notation used throughout this chapter.</p>
 <div class="onebox">
@@ -503,7 +506,7 @@ Figure 19.7: Histogram of differences in means after 1000 bootstrap resamples ar
 <div class="example">
 <p><span id="exm:unlabeled-div-12" class="example"><strong>Example 19.2  </strong></span>Does the bootstrap confidence interval for the true difference in average change in pumping capacity, <span class="math inline">\(\mu_{esc} - \mu_{control}\)</span>, show that there is a difference across the two treatments?</p>
 <hr>
-<p>Because the 90% interval displayed does not contain zero (note that zero is never one of the bootstrapped differences so 95% and 99% intervals would have given the same conclusion!), we conclude that the ESC treatment is significantly better with respect to heart pumping capacity than the treatment.</p>
+<p>Because the 90% interval displayed does not contain zero (note that zero is never one of the bootstrapped differences so 95% and 99% intervals would have given the same conclusion!), we conclude that the ESC treatment is significantly better with respect to heart pumping capacity than the control.</p>
 <p>Because the study is a randomized controlled experiment, we can conclude that it is the treatment (ESC) which is causing the change in pumping capacity.</p>
 </div>
 </div>

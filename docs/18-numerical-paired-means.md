@@ -3,7 +3,11 @@
 
 
 ::: chapterintro
-Coming soon!
+In Chapter \@ref(inference-one-mean), analysis was done to summarize a quantitative variable measured on a single population.
+What if we were to measure that variable twice on the same observational unit? 
+In this case, the two measurements are **dependent**---knowledge of the observations in one group gives us information about what we would expect to happen in the other group.
+Sometimes dependency is not something that can be addressed through a statistical method.
+However, this particular dependency, **pairing**, can be modeled quite effectively by using the same tools for a single quantitative variable from Chapter \@ref(inference-one-mean) applied to the differences between two measurements on each pair.
 :::
 
 Paired data represent a particular type of experimental structure where the analysis is somewhat akin to a one-sample analysis (see Chapter \@ref(inference-one-mean)) but has other features that resemble a two-sample analysis (which we will see in Chapter \@ref(inference-two-means)).  Quantitative measurements are made on each of two different levels of an explanatory variable, but those measurements are **paired** --- each observational unit consists of two measurements, and the two measurements are subtracted such that only the difference is retained.  Table \@ref(tab:pairedexamples) presents some examples of studies where paired designs were implemented.
@@ -75,6 +79,9 @@ Thinking about the differences as a single observation on an observational unit 
 
 A comparison of the notation used in Chapter \@ref(inference-one-mean) and the notation used in this chapter is shown below. The subscript "d" stands for "difference" since our variable is now a paired difference.
 
+::: {.onebox}
+**Notation for a single quantitative variable (left) and paired differences (right).**
+
 |  | **One Mean** | **Paired Mean Difference** |
 |-|-|-|
 | Population mean | $\mu$ | $\mu_d$ |
@@ -82,6 +89,7 @@ A comparison of the notation used in Chapter \@ref(inference-one-mean) and the n
 | Sample mean | $\bar{x}$ | $\bar{x}_d$ |
 | Sample standard deviation | $s$ | $s_d$ |
 | Sample size | $n$ | $n$ |
+:::
 
 Instead of $n$ representing the number of observational units, with paired data, $n$ represents the number of *pairs* in paired samples.
 Similarly, $\mu_d$, $\sigma_d$, $\bar{x}_d$ and $s_d$ are all calculated

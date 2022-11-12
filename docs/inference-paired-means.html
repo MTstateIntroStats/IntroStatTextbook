@@ -6,15 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 18 Inference for comparing paired means | Montana State Introductory Statistics with R</title>
 <meta name="author" content="Stacey Hancock, Nicole Carnegie, Elijah Meyer, Jade Schmidt, Melinda Yager">
-<meta name="description" content="Coming soon! Paired data represent a particular type of experimental structure where the analysis is somewhat akin to a one-sample analysis (see Chapter 17) but has other features that resemble a...">
+<meta name="description" content="In Chapter 17, analysis was done to summarize a quantitative variable measured on a single population. What if we were to measure that variable twice on the same observational unit? In this case,...">
 <meta name="generator" content="bookdown 0.27 with bs4_book()">
 <meta property="og:title" content="Chapter 18 Inference for comparing paired means | Montana State Introductory Statistics with R">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://mtstateintrostats.github.io/IntroStatTextbook/inference-paired-means.html">
-<meta property="og:description" content="Coming soon! Paired data represent a particular type of experimental structure where the analysis is somewhat akin to a one-sample analysis (see Chapter 17) but has other features that resemble a...">
+<meta property="og:description" content="In Chapter 17, analysis was done to summarize a quantitative variable measured on a single population. What if we were to measure that variable twice on the same observational unit? In this case,...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 18 Inference for comparing paired means | Montana State Introductory Statistics with R">
-<meta name="twitter:description" content="Coming soon! Paired data represent a particular type of experimental structure where the analysis is somewhat akin to a one-sample analysis (see Chapter 17) but has other features that resemble a...">
+<meta name="twitter:description" content="In Chapter 17, analysis was done to summarize a quantitative variable measured on a single population. What if we were to measure that variable twice on the same observational unit? In this case,...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -134,7 +134,11 @@
 <span class="header-section-number">18</span> Inference for comparing paired means<a class="anchor" aria-label="anchor" href="#inference-paired-means"><i class="fas fa-link"></i></a>
 </h1>
 <div class="chapterintro">
-<p>Coming soon!</p>
+<p>In Chapter <a href="inference-one-mean.html#inference-one-mean">17</a>, analysis was done to summarize a quantitative variable measured on a single population.
+What if we were to measure that variable twice on the same observational unit?
+In this case, the two measurements are <strong>dependent</strong>—knowledge of the observations in one group gives us information about what we would expect to happen in the other group.
+Sometimes dependency is not something that can be addressed through a statistical method.
+However, this particular dependency, <strong>pairing</strong>, can be modeled quite effectively by using the same tools for a single quantitative variable from Chapter <a href="inference-one-mean.html#inference-one-mean">17</a> applied to the differences between two measurements on each pair.</p>
 </div>
 <p>Paired data represent a particular type of experimental structure where the analysis is somewhat akin to a one-sample analysis (see Chapter <a href="inference-one-mean.html#inference-one-mean">17</a>) but has other features that resemble a two-sample analysis (which we will see in Chapter <a href="inference-two-means.html#inference-two-means">19</a>). Quantitative measurements are made on each of two different levels of an explanatory variable, but those measurements are <strong>paired</strong> — each observational unit consists of two measurements, and the two measurements are subtracted such that only the difference is retained. Table <a href="inference-paired-means.html#tab:pairedexamples">18.1</a> presents some examples of studies where paired designs were implemented.</p>
 <div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
@@ -231,6 +235,8 @@ data set.</p>
 The key to working with paired data is to consider the measurement of interest to be the <em>difference</em> in measured values across the pair of observations.
 Thinking about the differences as a single observation on an observational unit changes the paired setting into the one-sample setting.</p>
 <p>A comparison of the notation used in Chapter <a href="inference-one-mean.html#inference-one-mean">17</a> and the notation used in this chapter is shown below. The subscript “d” stands for “difference” since our variable is now a paired difference.</p>
+<div class="onebox">
+<p><strong>Notation for a single quantitative variable (left) and paired differences (right).</strong></p>
 <div class="inline-table"><table class="table table-sm">
 <thead><tr class="header">
 <th></th>
@@ -265,6 +271,7 @@ Thinking about the differences as a single observation on an observational unit 
 </tr>
 </tbody>
 </table></div>
+</div>
 <p>Instead of <span class="math inline">\(n\)</span> representing the number of observational units, with paired data, <span class="math inline">\(n\)</span> represents the number of <em>pairs</em> in paired samples.
 Similarly, <span class="math inline">\(\mu_d\)</span>, <span class="math inline">\(\sigma_d\)</span>, <span class="math inline">\(\bar{x}_d\)</span> and <span class="math inline">\(s_d\)</span> are all calculated
 using the differences in measured values within pairs.</p>
