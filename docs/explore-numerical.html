@@ -786,16 +786,17 @@ The whiskers of a box plot reach to the minimum and the maximum values in the da
 These are labeled with a dot on the box plot.
 The purpose of labeling these points—instead of extending the whiskers to the minimum and maximum observed values—is to help identify any observations that appear to be unusually distant from the rest of the data.
 There are a variety of formulas for determining whether a particular data point is considered an outlier, and different statistical software use different formulas.
-A commonly used formula is that any value that is beyond <span class="math inline">\(1.5\times IQR\)</span>[While the choice of exactly 1.5 is arbitrary, it is the most commonly used value for box plots.] away from the box is considered an outlier.
+A commonly used formula is that any value that is beyond <span class="math inline">\(1.5\times IQR\)</span><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;While the choice of exactly 1.5 is arbitrary, it is the most commonly used value for box plots.&lt;/p&gt;"><sup>49</sup></a> away from the box is considered an outlier. These outlier cutoff values are sometimes called the <strong>fences</strong>.
 In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data, up to the outliers.</p>
 <p>In Figure <a href="explore-numerical.html#fig:loan-int-rate-boxplot-dotplot">5.9</a>,
 the upper whisker does not extend to the last two points, 24.85% and 26.3%, which are above
 <span class="math inline">\(Q_3 + 1.5\times IQR\)</span>, and so it extends only to the last point below this limit.
 The lower whisker stops at the minimum value in the data set, 5.31%, since there are no outliers on the lower end of the distribution.</p>
 <div class="protip">
-<p>The whiskers extend to actual data points—not the limits for outliers. That is,
-the values <span class="math inline">\(Q_1 - 1.5\times IQR\)</span> and <span class="math inline">\(Q_3 + 1.5\times IQR\)</span> should not be shown
-on the plot.</p>
+<p>Boxplots only display observed data values.
+The whiskers extend to actual data points—not the limits for outliers. That is,
+the fence values <span class="math inline">\(Q_1 - 1.5\times IQR\)</span> and <span class="math inline">\(Q_3 + 1.5\times IQR\)</span>
+should not be shown on the plot.</p>
 </div>
 <div class="onebox">
 <p><strong>Outliers are extreme.</strong></p>
@@ -808,7 +809,7 @@ Examining data for outliers serves many useful purposes, including</p>
 </ul>
 </div>
 <div class="guidedpractice">
-<p>Using the box plot in Figure <a href="explore-numerical.html#fig:loan-int-rate-boxplot-dotplot">5.9</a>, estimate the values of the <span class="math inline">\(Q_1\)</span>, <span class="math inline">\(Q_3\)</span>, and IQR for <code>interest_rate</code> in the <code>loan50</code> data set.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;These visual estimates will vary a little from one person to the next: &lt;span class="math inline"&gt;\(Q_1 \approx\)&lt;/span&gt; 8%, &lt;span class="math inline"&gt;\(Q_3 \approx\)&lt;/span&gt; 14%, IQR &lt;span class="math inline"&gt;\(\approx\)&lt;/span&gt; 14 - 8 = 6%.&lt;/p&gt;'><sup>49</sup></a></p>
+<p>Using the box plot in Figure <a href="explore-numerical.html#fig:loan-int-rate-boxplot-dotplot">5.9</a>, estimate the values of the <span class="math inline">\(Q_1\)</span>, <span class="math inline">\(Q_3\)</span>, and IQR for <code>interest_rate</code> in the <code>loan50</code> data set.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;These visual estimates will vary a little from one person to the next: &lt;span class="math inline"&gt;\(Q_1 \approx\)&lt;/span&gt; 8%, &lt;span class="math inline"&gt;\(Q_3 \approx\)&lt;/span&gt; 14%, IQR &lt;span class="math inline"&gt;\(\approx\)&lt;/span&gt; 14 - 8 = 6%.&lt;/p&gt;'><sup>50</sup></a></p>
 </div>
 </div>
 <div id="describing-and-comparing-quantitative-distributions" class="section level2" number="5.6">
@@ -958,7 +959,7 @@ Move 26.3% to 35%
 <ol style="list-style-type: lower-alpha">
 <li>Which is more affected by extreme observations, the mean or median?<br>
 </li>
-<li>Is the standard deviation or IQR more affected by extreme observations?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;(a) Mean is affected more. (b) Standard deviation is affected more.&lt;/p&gt;"><sup>50</sup></a>
+<li>Is the standard deviation or IQR more affected by extreme observations?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;(a) Mean is affected more. (b) Standard deviation is affected more.&lt;/p&gt;"><sup>51</sup></a>
 </li>
 </ol>
 </div>
@@ -973,7 +974,7 @@ Since values in these regions are stable in the three data sets, the median and 
 </div>
 <div class="guidedpractice">
 <p>The distribution of loan amounts in the <code>loan50</code> data set is right skewed, with a few large loans lingering out into the right tail.
-If you were wanting to understand the typical loan size, should you be more interested in the mean or median?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;If we are looking to simply understand what a typical individual loan looks like, the median is probably more useful. However, if the goal is to understand something that scales well, such as the total amount of money we might need to have on hand if we were to offer 1,000 loans, then the mean would be more useful.&lt;/p&gt;"><sup>51</sup></a></p>
+If you were wanting to understand the typical loan size, should you be more interested in the mean or median?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;If we are looking to simply understand what a typical individual loan looks like, the median is probably more useful. However, if the goal is to understand something that scales well, such as the total amount of money we might need to have on hand if we were to offer 1,000 loans, then the mean would be more useful.&lt;/p&gt;"><sup>52</sup></a></p>
 </div>
 </div>
 <div id="transforming-data-special-topic" class="section level2" number="5.8">
@@ -1034,7 +1035,7 @@ In fact, it makes sense for higher rates of unemployment to be closely related t
 One observation that stands out when comparing the two maps: the poverty rate is much higher than the unemployment rate, meaning while many people may be working, they are not making enough to break out of poverty.</p>
 </div>
 <div class="guidedpractice">
-<p>What interesting features are evident in the median household income intensity map in Figure <a href="explore-numerical.html#fig:county-intensity-map-homeownership-median-income">5.15</a>?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Note: answers will vary. There is some correspondence between high earning and metropolitan areas, where we can see darker spots (higher median household income), though there are several exceptions. You might look for large cities you are familiar with and try to spot them on the map as dark spots.&lt;/p&gt;"><sup>52</sup></a></p>
+<p>What interesting features are evident in the median household income intensity map in Figure <a href="explore-numerical.html#fig:county-intensity-map-homeownership-median-income">5.15</a>?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Note: answers will vary. There is some correspondence between high earning and metropolitan areas, where we can see darker spots (higher median household income), though there are several exceptions. You might look for large cities you are familiar with and try to spot them on the map as dark spots.&lt;/p&gt;"><sup>53</sup></a></p>
 </div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:county-intensity-map-poverty-unemp"></span>
@@ -1078,7 +1079,7 @@ average
 intensity map
 </td>
 <td style="text-align:left;">
-scatterplot
+standard deviation
 </td>
 </tr>
 <tr>
@@ -1089,7 +1090,7 @@ bimodal
 interquartile range
 </td>
 <td style="text-align:left;">
-standard deviation
+strength
 </td>
 </tr>
 <tr>
@@ -1100,7 +1101,7 @@ box plot
 IQR
 </td>
 <td style="text-align:left;">
-strength
+symmetric
 </td>
 </tr>
 <tr>
@@ -1111,7 +1112,7 @@ data density
 left skewed
 </td>
 <td style="text-align:left;">
-symmetric
+tail
 </td>
 </tr>
 <tr>
@@ -1122,7 +1123,7 @@ density plot
 mean
 </td>
 <td style="text-align:left;">
-tail
+third quartile
 </td>
 </tr>
 <tr>
@@ -1133,7 +1134,7 @@ deviation
 median
 </td>
 <td style="text-align:left;">
-third quartile
+transformation
 </td>
 </tr>
 <tr>
@@ -1144,7 +1145,7 @@ direction
 multimodal
 </td>
 <td style="text-align:left;">
-transformation
+unimodal
 </td>
 </tr>
 <tr>
@@ -1155,7 +1156,7 @@ distribution
 outlier
 </td>
 <td style="text-align:left;">
-unimodal
+variability
 </td>
 </tr>
 <tr>
@@ -1166,26 +1167,15 @@ dot plot
 outliers
 </td>
 <td style="text-align:left;">
-variability
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-first quartile
-</td>
-<td style="text-align:left;">
-percentile
-</td>
-<td style="text-align:left;">
 variance
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-form
+fences
 </td>
 <td style="text-align:left;">
-right skewed
+percentile
 </td>
 <td style="text-align:left;">
 weighted mean
@@ -1193,13 +1183,33 @@ weighted mean
 </tr>
 <tr>
 <td style="text-align:left;">
-histogram
+first quartile
+</td>
+<td style="text-align:left;">
+right skewed
+</td>
+<td style="text-align:left;">
+whiskers
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+form
 </td>
 <td style="text-align:left;">
 robust statistics
 </td>
 <td style="text-align:left;">
-whiskers
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+histogram
+</td>
+<td style="text-align:left;">
+scatterplot
+</td>
+<td style="text-align:left;">
 </td>
 </tr>
 </tbody></table></div>

@@ -159,7 +159,7 @@ While they differ in the settings, in their outcomes, and in the technique we ha
 <p><strong>Sampling distribution.</strong></p>
 <p>A sampling distribution is the distribution of all possible values of a <em>sample statistic</em> from samples of a given sample size from a given population.
 We can think about the sample distribution as describing as how sample statistics (e.g., the sample proportion <span class="math inline">\(\hat{p}\)</span> or the sample mean <span class="math inline">\(\bar{x}\)</span>) vary from one study to another.</p>
-<p>A sampling distribution is contrasted with a <em>data distribution</em><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Data distributions are also sometimes referred to as “sample distributions.” But since “sample distributions” and “sampling distributions” are very different concepts—one is a distribution of a variable measured on observational units (sample distribution), and the other is a distribution of a summary statistic measured on samples (sampling distribution)—we choose to use “data distribution” to further distinguish this difference.&lt;/p&gt;"><sup>88</sup></a> which shows the variability of the <em>observed</em> data values.
+<p>A sampling distribution is contrasted with a <em>data distribution</em><a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Data distributions are also sometimes referred to as “sample distributions.” But since “sample distributions” and “sampling distributions” are very different concepts—one is a distribution of a variable measured on observational units (sample distribution), and the other is a distribution of a summary statistic measured on samples (sampling distribution)—we choose to use “data distribution” to further distinguish this difference.&lt;/p&gt;"><sup>89</sup></a> which shows the variability of the <em>observed</em> data values.
 The data distribution can be visualized from the observations themselves.
 However, because a sampling distribution describes sample statistics computed from many studies, it cannot be visualized directly from a single data set.
 Instead, we use either computational or mathematical structures to estimate the sampling distribution and hence to describe the expected variability of the sample statistic in repeated studies.</p>
@@ -174,7 +174,7 @@ Figure 11.1: The null distribution for each of the two case studies presented pr
 </p>
 </div>
 <div class="guidedpractice">
-<p>Describe the shape of the distributions and note anything that you find interesting.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;In general, the distributions are reasonably symmetric, though the case study for the medical consultant has a distribution that is slightly skewed right.&lt;/p&gt;"><sup>89</sup></a></p>
+<p>Describe the shape of the distributions and note anything that you find interesting.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;In general, the distributions are reasonably symmetric, though the case study for the medical consultant has a distribution that is slightly skewed right.&lt;/p&gt;"><sup>90</sup></a></p>
 </div>
 <p>The case study for the medical consultant has a slight right skew, whereas the null distribution simulated in the sex discrimination case study is symmetric.
 As we observed in Chapter <a href="data-hello.html#data-hello">1</a>, it’s common for distributions to be skewed or contain outliers.
@@ -183,7 +183,7 @@ They all resemble a bell-shaped curve.
 The bell-shaped curve similarity is not a coincidence, but rather, is guaranteed by mathematical theory.</p>
 <div class="onebox">
 <p><strong>Central Limit Theorem for proportions.</strong></p>
-<p>If we look at a proportion<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;^foundations-mathematical-clt&lt;/p&gt;"><sup>90</sup></a> and the scenario satisfies certain conditions, then the sample proportion will appear to follow a bell-shaped curve called the <em>normal distribution</em>.</p>
+<p>If we look at a proportion<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;^foundations-mathematical-clt&lt;/p&gt;"><sup>91</sup></a> and the scenario satisfies certain conditions, then the sample proportion will appear to follow a bell-shaped curve called the <em>normal distribution</em>.</p>
 </div>
 <p>An example of a perfect normal distribution is shown in Figure <a href="foundations-mathematical.html#fig:simpleNormal">11.2</a>.
 Imagine laying a normal curve over each of the two null distributions in Figure <a href="foundations-mathematical.html#fig:TwoCaseStudies">11.1</a>.
@@ -227,7 +227,7 @@ If these conditions do not hold, it is unwise to use the normal distribution (an
 <span class="header-section-number">11.2</span> Normal distributions<a class="anchor" aria-label="anchor" href="#normal"><i class="fas fa-link"></i></a>
 </h2>
 <p></p>
-<p>Among all the distributions we see in statistics, one is overwhelmingly the most common. The symmetric, unimodal, bell curve is ubiquitous throughout statistics. It is so common that people know it as a variety of names including the <strong>normal curve</strong>, <strong>normal model</strong>, or <strong>normal distribution</strong>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;It is also introduced as the Gaussian distribution after Frederic Gauss, the first person to formalize its mathematical expression.&lt;/p&gt;"><sup>91</sup></a> Under certain conditions, sample proportions, sample means, and sample differences can be modeled using the normal distribution—the basis for our theory-based inference methods. Additionally, some variables such as SAT scores and heights of US adult males closely follow the normal distribution.</p>
+<p>Among all the distributions we see in statistics, one is overwhelmingly the most common. The symmetric, unimodal, bell curve is ubiquitous throughout statistics. It is so common that people know it as a variety of names including the <strong>normal curve</strong>, <strong>normal model</strong>, or <strong>normal distribution</strong>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;It is also introduced as the Gaussian distribution after Frederic Gauss, the first person to formalize its mathematical expression.&lt;/p&gt;"><sup>92</sup></a> Under certain conditions, sample proportions, sample means, and sample differences can be modeled using the normal distribution—the basis for our theory-based inference methods. Additionally, some variables such as SAT scores and heights of US adult males closely follow the normal distribution.</p>
 <div class="onebox">
 <p><strong>Normal distribution facts.</strong></p>
 <p>Many summary statistics and variables are nearly normal, but none are exactly normal. Thus the normal distribution, while not perfect for any single problem, is very useful for a variety of problems. We will use it in data exploration and to solve important problems in statistics.</p>
@@ -278,7 +278,7 @@ Figure 11.4: The two normal models shown in Figure <a href="foundations-mathemat
 ACT scores also follow a nearly normal distribution with mean of 21 points and a standard deviation of 5 points.
 Suppose Nel scored 1800 points on their SAT and Sian scored 24 points on their ACT.
 Who performed better?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;We use the standard deviation as a guide.
-Nel is 1 standard deviation above average on the SAT: &lt;span class="math inline"&gt;\(1500 + 300 = 1800.\)&lt;/span&gt; Sian is 0.6 standard deviations above the mean on the ACT: &lt;span class="math inline"&gt;\(21+0.6 \times 5 = 24.\)&lt;/span&gt; In Figure &lt;a href="foundations-mathematical.html#fig:satActNormals"&gt;11.5&lt;/a&gt;, we can see that Nel did better compared to other test takers than Sian did, so their score was better.&lt;/p&gt;'><sup>92</sup></a></p>
+Nel is 1 standard deviation above average on the SAT: &lt;span class="math inline"&gt;\(1500 + 300 = 1800.\)&lt;/span&gt; Sian is 0.6 standard deviations above the mean on the ACT: &lt;span class="math inline"&gt;\(21+0.6 \times 5 = 24.\)&lt;/span&gt; In Figure &lt;a href="foundations-mathematical.html#fig:satActNormals"&gt;11.5&lt;/a&gt;, we can see that Nel did better compared to other test takers than Sian did, so their score was better.&lt;/p&gt;'><sup>93</sup></a></p>
 </div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:satActNormals"></span>
@@ -303,7 +303,7 @@ If the observation <span class="math inline">\(x\)</span> comes from a <em>norma
 That is, the normality remains when transforming from <span class="math inline">\(x\)</span> to <span class="math inline">\(Z\)</span> with a shift in both the center as well as the spread.</p>
 </div>
 <div class="guidedpractice">
-<p>Use Sian’s ACT score, 24, along with the ACT mean and standard deviation to compute their Z score.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="math inline"&gt;\(Z_{Sian} = \frac{x_{Sian} - \mu_{ACT}}{\sigma_{ACT}} = \frac{24 - 21}{5} = 0.6\)&lt;/span&gt;&lt;/p&gt;'><sup>93</sup></a></p>
+<p>Use Sian’s ACT score, 24, along with the ACT mean and standard deviation to compute their Z score.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;&lt;span class="math inline"&gt;\(Z_{Sian} = \frac{x_{Sian} - \mu_{ACT}}{\sigma_{ACT}} = \frac{24 - 21}{5} = 0.6\)&lt;/span&gt;&lt;/p&gt;'><sup>94</sup></a></p>
 </div>
 <p>Observations above the mean always have positive Z-scores while those below the mean have negative Z-scores. If an observation is equal to the mean (e.g., SAT score of 1500), then the Z-score is <span class="math inline">\(0\)</span>.</p>
 <div class="workedexample">
@@ -314,11 +314,11 @@ We know it must be above the mean since <span class="math inline">\(Z\)</span> i
 </div>
 <div class="guidedpractice">
 <p>Head lengths of brushtail possums follow a nearly normal distribution with mean 92.6 mm and standard deviation 3.6 mm.
-Compute the Z scores for possums with head lengths of 95.4 mm and 85.8 mm.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;For &lt;span class="math inline"&gt;\(x_1=95.4\)&lt;/span&gt; mm: &lt;span class="math inline"&gt;\(Z_1 = \frac{x_1 - \mu}{\sigma} = \frac{95.4 - 92.6}{3.6} = 0.78.\)&lt;/span&gt; For &lt;span class="math inline"&gt;\(x_2=85.8\)&lt;/span&gt; mm: &lt;span class="math inline"&gt;\(Z_2 = \frac{85.8 - 92.6}{3.6} = -1.89.\)&lt;/span&gt;&lt;/p&gt;'><sup>94</sup></a></p>
+Compute the Z scores for possums with head lengths of 95.4 mm and 85.8 mm.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;For &lt;span class="math inline"&gt;\(x_1=95.4\)&lt;/span&gt; mm: &lt;span class="math inline"&gt;\(Z_1 = \frac{x_1 - \mu}{\sigma} = \frac{95.4 - 92.6}{3.6} = 0.78.\)&lt;/span&gt; For &lt;span class="math inline"&gt;\(x_2=85.8\)&lt;/span&gt; mm: &lt;span class="math inline"&gt;\(Z_2 = \frac{85.8 - 92.6}{3.6} = -1.89.\)&lt;/span&gt;&lt;/p&gt;'><sup>95</sup></a></p>
 </div>
 <p>We can use Z-scores to roughly identify which observations are more unusual than others. One observation <span class="math inline">\(x_1\)</span> is said to be more unusual than another observation <span class="math inline">\(x_2\)</span> if the absolute value of its Z-score is larger than the absolute value of the other observation’s Z-score: <span class="math inline">\(|Z_1| &gt; |Z_2|\)</span>. This technique is especially insightful when a distribution is symmetric.</p>
 <div class="guidedpractice">
-<p>Which of the two brushtail possum observations in the previous guided practice is more <em>unusual</em>?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Because the &lt;em&gt;absolute value&lt;/em&gt; of Z score for the second observation is larger than that of the first, the second observation has a more unusual head length.&lt;/p&gt;"><sup>95</sup></a></p>
+<p>Which of the two brushtail possum observations in the previous guided practice is more <em>unusual</em>?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Because the &lt;em&gt;absolute value&lt;/em&gt; of Z score for the second observation is larger than that of the first, the second observation has a more unusual head length.&lt;/p&gt;"><sup>96</sup></a></p>
 </div>
 </div>
 <div id="normal-probability-calculations-in-r" class="section level3" number="11.2.3">
@@ -353,7 +353,7 @@ In the code below, we find the percentile of <span class="math inline">\(Z=0.43\
 <span><span class="fu">openintro</span><span class="fu">::</span><span class="fu"><a href="https://openintrostat.github.io/openintro/reference/normTail.html">normTail</a></span><span class="op">(</span><span class="fl">0.43</span>, m <span class="op">=</span> <span class="fl">0</span>, s <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="11-foundations-math-models_files/figure-html/unnamed-chunk-11-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>We can also find the Z-score associated with a percentile. For example, to identify Z for the <span class="math inline">\(80^{th}\)</span> percentile, we use <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code> which identifies the <strong>quantile</strong> for a given percentage.
-The quantile represents the cutoff value.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;To remember the function &lt;code&gt;qnorm()&lt;/code&gt; as providing a cutoff, notice that both &lt;code&gt;qnorm()&lt;/code&gt; and “cutoff” start with the sound “kuh”. To remember the &lt;code&gt;pnorm()&lt;/code&gt; function as providing a probability from a given cutoff, notice that both &lt;code&gt;pnorm()&lt;/code&gt; and probability start with the sound “puh”.&lt;/p&gt;"><sup>96</sup></a> We determine the Z-score for the <span class="math inline">\(80^{th}\)</span> percentile using <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code>: 0.84.</p>
+The quantile represents the cutoff value.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;To remember the function &lt;code&gt;qnorm()&lt;/code&gt; as providing a cutoff, notice that both &lt;code&gt;qnorm()&lt;/code&gt; and “cutoff” start with the sound “kuh”. To remember the &lt;code&gt;pnorm()&lt;/code&gt; function as providing a probability from a given cutoff, notice that both &lt;code&gt;pnorm()&lt;/code&gt; and probability start with the sound “puh”.&lt;/p&gt;"><sup>97</sup></a> We determine the Z-score for the <span class="math inline">\(80^{th}\)</span> percentile using <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code>: 0.84.</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span><span class="fl">0.80</span>, m <span class="op">=</span> <span class="fl">0</span>, s <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.842</span></span>
@@ -367,7 +367,7 @@ The quantile represents the cutoff value.<a class="footnote-ref" tabindex="0" da
 <div class="inline-figure"><img src="11-foundations-math-models_files/figure-html/unnamed-chunk-13-1.png" width="90%" style="display: block; margin: auto;"></div>
 <div class="guidedpractice">
 <p>Determine the proportion of SAT test takers who scored better than Nel on the SAT.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;If 84% had lower scores than Nel, the number of people who had better scores must be 16%.
-(Generally ties are ignored when the normal model, or any other continuous distribution, is used.)&lt;/p&gt;"><sup>97</sup></a></p>
+(Generally ties are ignored when the normal model, or any other continuous distribution, is used.)&lt;/p&gt;"><sup>98</sup></a></p>
 </div>
 </div>
 <div id="normal-probability-examples" class="section level3" number="11.2.4">
@@ -401,7 +401,7 @@ Figure 11.7: Visual calculation of the probability that Shannon scores at least 
 </div>
 <div class="guidedpractice">
 <p>If the probability of Shannon scoring at least 1630 is 0.3336, then what is the probability she scores less than 1630?
-Draw the normal curve representing this exercise, shading the lower region instead of the upper one.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;We found the probability to be 0.6664. A picture for this exercise is represented by the shaded area below “0.6664”.&lt;/p&gt;"><sup>98</sup></a></p>
+Draw the normal curve representing this exercise, shading the lower region instead of the upper one.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;We found the probability to be 0.6664. A picture for this exercise is represented by the shaded area below “0.6664”.&lt;/p&gt;"><sup>99</sup></a></p>
 </div>
 <div class="workedexample">
 <p>Edward earned a 1400 on his SAT. What is his percentile?</p>
@@ -430,9 +430,9 @@ In R, you can also do this by setting the <code>lower.tail</code> argument to <c
 Draw a picture for each part.
 (a) What is their percentile?
 (b) What percent of SAT takers did better than Stuart?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Numerical answers: (a) 0.9772.
-(b) 0.0228.&lt;/p&gt;"><sup>99</sup></a></p>
+(b) 0.0228.&lt;/p&gt;"><sup>100</sup></a></p>
 </div>
-<p>Based on a sample of 100 men,<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;This sample was taken from the USDA Food Commodity Intake Database.&lt;/p&gt;"><sup>100</sup></a> the heights of adults who identify as male, between the ages 20 and 62 in the US is nearly normal with mean 70.0’’ and standard deviation 3.3’’.</p>
+<p>Based on a sample of 100 men,<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;This sample was taken from the USDA Food Commodity Intake Database.&lt;/p&gt;"><sup>101</sup></a> the heights of adults who identify as male, between the ages 20 and 62 in the US is nearly normal with mean 70.0’’ and standard deviation 3.3’’.</p>
 <div class="workedexample">
 <p>Kamron is 5’7’’ (67 inches) and Adrian is 6’4’’ (76 inches).
 (a) What is Kamron’s height percentile?
@@ -478,7 +478,7 @@ Using <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code>, th
 <ol style="list-style-type: lower-alpha">
 <li>What is the <span class="math inline">\(95^{th}\)</span> percentile for SAT scores?<br>
 </li>
-<li>What is the <span class="math inline">\(97.5^{th}\)</span> percentile of the male heights? As always with normal probability problems, first draw a picture.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Remember: draw a picture first, then find the Z-score. (We leave the pictures to you.) The Z-score can be found by using the percentiles and the normal probability table. (a) We look for 0.95 in the probability portion (middle part) of the normal probability table, which leads us to row 1.6 and (about) column 0.05, i.e., &lt;span class="math inline"&gt;\(Z_{95}=1.65\)&lt;/span&gt;. Knowing &lt;span class="math inline"&gt;\(Z_{95}=1.65\)&lt;/span&gt;, &lt;span class="math inline"&gt;\(\mu = 1500\)&lt;/span&gt;, and &lt;span class="math inline"&gt;\(\sigma = 300\)&lt;/span&gt;, we setup the Z-score formula: &lt;span class="math inline"&gt;\(1.65 = \frac{x_{95} - 1500}{300}\)&lt;/span&gt;. We solve for &lt;span class="math inline"&gt;\(x_{95}\)&lt;/span&gt;: &lt;span class="math inline"&gt;\(x_{95} = 1995\)&lt;/span&gt;. (b) Similarly, we find &lt;span class="math inline"&gt;\(Z_{97.5} = 1.96\)&lt;/span&gt;, again setup the Z-score formula for the heights, and calculate &lt;span class="math inline"&gt;\(x_{97.5} = 76.5\)&lt;/span&gt;.&lt;/p&gt;'><sup>101</sup></a>
+<li>What is the <span class="math inline">\(97.5^{th}\)</span> percentile of the male heights? As always with normal probability problems, first draw a picture.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;Remember: draw a picture first, then find the Z-score. (We leave the pictures to you.) The Z-score can be found by using the percentiles and the normal probability table. (a) We look for 0.95 in the probability portion (middle part) of the normal probability table, which leads us to row 1.6 and (about) column 0.05, i.e., &lt;span class="math inline"&gt;\(Z_{95}=1.65\)&lt;/span&gt;. Knowing &lt;span class="math inline"&gt;\(Z_{95}=1.65\)&lt;/span&gt;, &lt;span class="math inline"&gt;\(\mu = 1500\)&lt;/span&gt;, and &lt;span class="math inline"&gt;\(\sigma = 300\)&lt;/span&gt;, we setup the Z-score formula: &lt;span class="math inline"&gt;\(1.65 = \frac{x_{95} - 1500}{300}\)&lt;/span&gt;. We solve for &lt;span class="math inline"&gt;\(x_{95}\)&lt;/span&gt;: &lt;span class="math inline"&gt;\(x_{95} = 1995\)&lt;/span&gt;. (b) Similarly, we find &lt;span class="math inline"&gt;\(Z_{97.5} = 1.96\)&lt;/span&gt;, again setup the Z-score formula for the heights, and calculate &lt;span class="math inline"&gt;\(x_{97.5} = 76.5\)&lt;/span&gt;.&lt;/p&gt;'><sup>102</sup></a>
 </li>
 </ol>
 </div>
@@ -486,7 +486,7 @@ Using <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code>, th
 <li>What is the probability that a randomly selected male adult is at least 6’2’’ (74 inches)?<br>
 </li>
 <li>What is the probability that a male adult is shorter than 5’9’’ (69 inches)?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Numerical answers: (a) 0.1131.
-(b) 0.3821.&lt;/p&gt;"><sup>102</sup></a>
+(b) 0.3821.&lt;/p&gt;"><sup>103</sup></a>
 :::</li>
 </ol>
 <div class="workedexample">
@@ -504,12 +504,12 @@ If we find the area of the two tails that are not shaded (from the previous Guid
 <div class="guidedpractice">
 <p>What percent of SAT takers get between 1500 and 2000?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;This is an abbreviated solution.
 (Be sure to draw a figure!) First find the percent who get below 1500 and the percent that get above 2000: &lt;span class="math inline"&gt;\(Z_{1500} = 0.00 \to 0.5000\)&lt;/span&gt; (area below), &lt;span class="math inline"&gt;\(Z_{2000} = 1.67 \to 0.0475\)&lt;/span&gt; (area above).
-Final answer: &lt;span class="math inline"&gt;\(1.0000-0.5000 - 0.0475 = 0.4525.\)&lt;/span&gt;&lt;/p&gt;'><sup>103</sup></a></p>
+Final answer: &lt;span class="math inline"&gt;\(1.0000-0.5000 - 0.0475 = 0.4525.\)&lt;/span&gt;&lt;/p&gt;'><sup>104</sup></a></p>
 </div>
 <div class="guidedpractice">
 <p>What percent of adult males are between 5’5’’ and 5’7’’?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;5’5’’ is 65 inches.
 5’7’’ is 67 inches.
-Numerical solution: &lt;span class="math inline"&gt;\(1.000 - 0.0649 - 0.8183 = 0.1168,\)&lt;/span&gt; i.e., 11.68%.&lt;/p&gt;'><sup>104</sup></a></p>
+Numerical solution: &lt;span class="math inline"&gt;\(1.000 - 0.0649 - 0.8183 = 0.1168,\)&lt;/span&gt; i.e., 11.68%.&lt;/p&gt;'><sup>105</sup></a></p>
 </div>
 </div>
 <div id="rule" class="section level3" number="11.2.5">
@@ -524,13 +524,13 @@ Figure 11.8: Probabilities for falling within 1, 2, and 3 standard deviations of
 </p>
 </div>
 <div class="guidedpractice">
-<p>Use <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code> to confirm that about 68%, 95%, and 99.7% of observations fall within 1, 2, and 3, standard deviations of the mean in the normal distribution, respectively. For instance, first find the area that falls between <span class="math inline">\(Z=-1\)</span> and <span class="math inline">\(Z=1\)</span>, which should have an area of about 0.68. Similarly there should be an area of about 0.95 between <span class="math inline">\(Z=-2\)</span> and <span class="math inline">\(Z=2\)</span>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;First draw the pictures. To find the area between &lt;span class="math inline"&gt;\(Z=-1\)&lt;/span&gt; and &lt;span class="math inline"&gt;\(Z=1\)&lt;/span&gt;, use &lt;code&gt;pnorm()&lt;/code&gt; to determine the areas below &lt;span class="math inline"&gt;\(Z=-1\)&lt;/span&gt; and above &lt;span class="math inline"&gt;\(Z=1\)&lt;/span&gt;. Next verify the area between &lt;span class="math inline"&gt;\(Z=-1\)&lt;/span&gt; and &lt;span class="math inline"&gt;\(Z=1\)&lt;/span&gt; is about 0.68. Repeat this for &lt;span class="math inline"&gt;\(Z=-2\)&lt;/span&gt; to &lt;span class="math inline"&gt;\(Z=2\)&lt;/span&gt; and also for &lt;span class="math inline"&gt;\(Z=-3\)&lt;/span&gt; to &lt;span class="math inline"&gt;\(Z=3\)&lt;/span&gt;.&lt;/p&gt;'><sup>105</sup></a></p>
+<p>Use <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code> to confirm that about 68%, 95%, and 99.7% of observations fall within 1, 2, and 3, standard deviations of the mean in the normal distribution, respectively. For instance, first find the area that falls between <span class="math inline">\(Z=-1\)</span> and <span class="math inline">\(Z=1\)</span>, which should have an area of about 0.68. Similarly there should be an area of about 0.95 between <span class="math inline">\(Z=-2\)</span> and <span class="math inline">\(Z=2\)</span>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;First draw the pictures. To find the area between &lt;span class="math inline"&gt;\(Z=-1\)&lt;/span&gt; and &lt;span class="math inline"&gt;\(Z=1\)&lt;/span&gt;, use &lt;code&gt;pnorm()&lt;/code&gt; to determine the areas below &lt;span class="math inline"&gt;\(Z=-1\)&lt;/span&gt; and above &lt;span class="math inline"&gt;\(Z=1\)&lt;/span&gt;. Next verify the area between &lt;span class="math inline"&gt;\(Z=-1\)&lt;/span&gt; and &lt;span class="math inline"&gt;\(Z=1\)&lt;/span&gt; is about 0.68. Repeat this for &lt;span class="math inline"&gt;\(Z=-2\)&lt;/span&gt; to &lt;span class="math inline"&gt;\(Z=2\)&lt;/span&gt; and also for &lt;span class="math inline"&gt;\(Z=-3\)&lt;/span&gt; to &lt;span class="math inline"&gt;\(Z=3\)&lt;/span&gt;.&lt;/p&gt;'><sup>106</sup></a></p>
 </div>
 <p>It is possible for a normal random variable to fall 4, 5, or even more standard deviations from the mean. However, these occurrences are very rare if the data are nearly normal. The probability of being further than 4 standard deviations from the mean is about 1-in-30,000. For 5 and 6 standard deviations, it is about 1-in-3.5 million and 1-in-1 billion, respectively.</p>
 <div class="guidedpractice">
 <p>SAT scores closely follow the normal model with mean <span class="math inline">\(\mu = 1500\)</span> and standard deviation <span class="math inline">\(\sigma = 300.\)</span> About what percent of test takers score 900 to 2100?
 What percent score between 1500 and 2100 ?<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;900 and 2100 represent two standard deviations above and below the mean, which means about 95% of test takers will score between 900 and 2100.
-Since the normal model is symmetric, then half of the test takers from part (a) (&lt;span class="math inline"&gt;\(\frac{95\%}{2} = 47.5\%\)&lt;/span&gt; of all test takers) will score 900 to 1500 while 47.5% score between 1500 and 2100.&lt;/p&gt;'><sup>106</sup></a></p>
+Since the normal model is symmetric, then half of the test takers from part (a) (&lt;span class="math inline"&gt;\(\frac{95\%}{2} = 47.5\%\)&lt;/span&gt; of all test takers) will score 900 to 1500 while 47.5% score between 1500 and 2100.&lt;/p&gt;'><sup>107</sup></a></p>
 </div>
 </div>
 </div>
@@ -544,7 +544,7 @@ The mathematical models are derived from the normal theory, but even the computa
 <h3>
 <span class="header-section-number">11.3.1</span> Standard error<a class="anchor" aria-label="anchor" href="#standard-error"><i class="fas fa-link"></i></a>
 </h3>
-<p>Theory-based methods also give us mathematical expressions for the standard deviation of a sampling distribution. For instance, if the true population proportion is <span class="math inline">\(\pi\)</span>, then the standard deviation of the sampling distribution of sample proportions—how far away we would expect a sample proportion to be away from the population proportion—is<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;The notation &lt;span class="math inline"&gt;\(SD(\hat{p})\)&lt;/span&gt; is function notation — we are applying the standard deviation function (&lt;span class="math inline"&gt;\(SD\)&lt;/span&gt;) to the statistic &lt;span class="math inline"&gt;\(\hat{p}\)&lt;/span&gt;. This notation does &lt;em&gt;not&lt;/em&gt; mean to multiply &lt;span class="math inline"&gt;\(SD\)&lt;/span&gt; by &lt;span class="math inline"&gt;\(\hat{p}\)&lt;/span&gt;.&lt;/p&gt;'><sup>107</sup></a>
+<p>Theory-based methods also give us mathematical expressions for the standard deviation of a sampling distribution. For instance, if the true population proportion is <span class="math inline">\(\pi\)</span>, then the standard deviation of the sampling distribution of sample proportions—how far away we would expect a sample proportion to be away from the population proportion—is<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;The notation &lt;span class="math inline"&gt;\(SD(\hat{p})\)&lt;/span&gt; is function notation — we are applying the standard deviation function (&lt;span class="math inline"&gt;\(SD\)&lt;/span&gt;) to the statistic &lt;span class="math inline"&gt;\(\hat{p}\)&lt;/span&gt;. This notation does &lt;em&gt;not&lt;/em&gt; mean to multiply &lt;span class="math inline"&gt;\(SD\)&lt;/span&gt; by &lt;span class="math inline"&gt;\(\hat{p}\)&lt;/span&gt;.&lt;/p&gt;'><sup>108</sup></a>
 <span class="math display">\[
 SD(\hat{p}) = \sqrt{\frac{\pi(1-\pi)}{n}}.
 \]</span>

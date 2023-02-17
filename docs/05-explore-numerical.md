@@ -588,7 +588,7 @@ The whiskers of a box plot reach to the minimum and the maximum values in the da
 These are labeled with a dot on the box plot.
 The purpose of labeling these points---instead of extending the whiskers to the minimum and maximum observed values---is to help identify any observations that appear to be unusually distant from the rest of the data. 
 There are a variety of formulas for determining whether a particular data point is considered an outlier, and different statistical software use different formulas. 
-A commonly used formula is that any value that is beyond $1.5\times IQR$[While the choice of exactly 1.5 is arbitrary, it is the most commonly used value for box plots.] away from the box is considered an outlier. 
+A commonly used formula is that any value that is beyond $1.5\times IQR$^[While the choice of exactly 1.5 is arbitrary, it is the most commonly used value for box plots.] away from the box is considered an outlier. These outlier cutoff values are sometimes called the **fences**.
 In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data, up to the outliers.
 
 In Figure \@ref(fig:loan-int-rate-boxplot-dotplot), 
@@ -597,9 +597,10 @@ $Q_3 + 1.5\times IQR$, and so it extends only to the last point below this limit
 The lower whisker stops at the minimum value in the data set, 5.31%, since there are no outliers on the lower end of the distribution. 
 
 ::: {.protip}
+Boxplots only display observed data values.
 The whiskers extend to actual data points---not the limits for outliers. That is,
-the values $Q_1 - 1.5\times IQR$ and $Q_3 + 1.5\times IQR$ should not be shown
-on the plot.
+the fence values $Q_1 - 1.5\times IQR$ and $Q_3 + 1.5\times IQR$
+should not be shown on the plot.
 :::
 
 
@@ -845,62 +846,67 @@ However you should be able to easily spot them as **bolded text**.
   <tr>
    <td style="text-align:left;"> average </td>
    <td style="text-align:left;"> intensity map </td>
-   <td style="text-align:left;"> scatterplot </td>
+   <td style="text-align:left;"> standard deviation </td>
   </tr>
   <tr>
    <td style="text-align:left;"> bimodal </td>
    <td style="text-align:left;"> interquartile range </td>
-   <td style="text-align:left;"> standard deviation </td>
+   <td style="text-align:left;"> strength </td>
   </tr>
   <tr>
    <td style="text-align:left;"> box plot </td>
    <td style="text-align:left;"> IQR </td>
-   <td style="text-align:left;"> strength </td>
+   <td style="text-align:left;"> symmetric </td>
   </tr>
   <tr>
    <td style="text-align:left;"> data density </td>
    <td style="text-align:left;"> left skewed </td>
-   <td style="text-align:left;"> symmetric </td>
+   <td style="text-align:left;"> tail </td>
   </tr>
   <tr>
    <td style="text-align:left;"> density plot </td>
    <td style="text-align:left;"> mean </td>
-   <td style="text-align:left;"> tail </td>
+   <td style="text-align:left;"> third quartile </td>
   </tr>
   <tr>
    <td style="text-align:left;"> deviation </td>
    <td style="text-align:left;"> median </td>
-   <td style="text-align:left;"> third quartile </td>
+   <td style="text-align:left;"> transformation </td>
   </tr>
   <tr>
    <td style="text-align:left;"> direction </td>
    <td style="text-align:left;"> multimodal </td>
-   <td style="text-align:left;"> transformation </td>
+   <td style="text-align:left;"> unimodal </td>
   </tr>
   <tr>
    <td style="text-align:left;"> distribution </td>
    <td style="text-align:left;"> outlier </td>
-   <td style="text-align:left;"> unimodal </td>
+   <td style="text-align:left;"> variability </td>
   </tr>
   <tr>
    <td style="text-align:left;"> dot plot </td>
    <td style="text-align:left;"> outliers </td>
-   <td style="text-align:left;"> variability </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> first quartile </td>
-   <td style="text-align:left;"> percentile </td>
    <td style="text-align:left;"> variance </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> form </td>
-   <td style="text-align:left;"> right skewed </td>
+   <td style="text-align:left;"> fences </td>
+   <td style="text-align:left;"> percentile </td>
    <td style="text-align:left;"> weighted mean </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> histogram </td>
-   <td style="text-align:left;"> robust statistics </td>
+   <td style="text-align:left;"> first quartile </td>
+   <td style="text-align:left;"> right skewed </td>
    <td style="text-align:left;"> whiskers </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> form </td>
+   <td style="text-align:left;"> robust statistics </td>
+   <td style="text-align:left;">  </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> histogram </td>
+   <td style="text-align:left;"> scatterplot </td>
+   <td style="text-align:left;">  </td>
   </tr>
 </tbody>
 </table>

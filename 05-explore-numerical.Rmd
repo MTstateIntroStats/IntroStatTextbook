@@ -662,7 +662,7 @@ The whiskers of a box plot reach to the minimum and the maximum values in the da
 These are labeled with a dot on the box plot.
 The purpose of labeling these points---instead of extending the whiskers to the minimum and maximum observed values---is to help identify any observations that appear to be unusually distant from the rest of the data. 
 There are a variety of formulas for determining whether a particular data point is considered an outlier, and different statistical software use different formulas. 
-A commonly used formula is that any value that is beyond $1.5\times IQR$[While the choice of exactly 1.5 is arbitrary, it is the most commonly used value for box plots.] away from the box is considered an outlier. 
+A commonly used formula is that any value that is beyond $1.5\times IQR$^[While the choice of exactly 1.5 is arbitrary, it is the most commonly used value for box plots.] away from the box is considered an outlier. These outlier cutoff values are sometimes called the **fences**.
 In a sense, the box is like the body of the box plot and the whiskers are like its arms trying to reach the rest of the data, up to the outliers.
 
 In Figure \@ref(fig:loan-int-rate-boxplot-dotplot), 
@@ -671,15 +671,16 @@ $Q_3 + 1.5\times IQR$, and so it extends only to the last point below this limit
 The lower whisker stops at the minimum value in the data set, `r min(loan50$interest_rate)`%, since there are no outliers on the lower end of the distribution. 
 
 ::: {.protip}
+Boxplots only display observed data values.
 The whiskers extend to actual data points---not the limits for outliers. That is,
-the values $Q_1 - 1.5\times IQR$ and $Q_3 + 1.5\times IQR$ should not be shown
-on the plot.
+the fence values $Q_1 - 1.5\times IQR$ and $Q_3 + 1.5\times IQR$
+should not be shown on the plot.
 :::
 
 
 
 ```{r include=FALSE}
-terms_chp_5 <- c(terms_chp_5, "outlier", "whiskers")
+terms_chp_5 <- c(terms_chp_5, "outlier", "whiskers", "fences")
 ```
 
 ::: {.onebox}

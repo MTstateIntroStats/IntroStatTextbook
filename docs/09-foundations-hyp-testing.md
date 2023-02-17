@@ -484,7 +484,7 @@ Since the p-value is a probability, its value will always be between 0 and 1. Th
 Think of p-values as a continuum of strength of evidence against the null, from 0 (extremely strong evidence) to 1 (no evidence). Beyond around 10%, the data provide no evidence against the null hypothesis. Be careful not to equate this with evidence for the null hypothesis, which is incorrect.
 
 <div class="figure" style="text-align: center">
-<img src="05/figures/soe_gradient_gray.png" alt="Strength of evidence against the null for a continuum of p-values. Once the p-value is beyond around 0.10, the data provide no evidence against the null hypothesis." width="100%" />
+<img src="images/soe_gradient_gray.png" alt="Strength of evidence against the null for a continuum of p-values. Once the p-value is beyond around 0.10, the data provide no evidence against the null hypothesis." width="100%" />
 <p class="caption">(\#fig:pval-continuum)Strength of evidence against the null for a continuum of p-values. Once the p-value is beyond around 0.10, the data provide no evidence against the null hypothesis.</p>
 </div>
 

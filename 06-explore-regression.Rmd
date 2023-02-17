@@ -375,7 +375,7 @@ It would be useful if we could quantify the strength of these linear relationshi
 ::: {.onebox}
 **Correlation: strength and direction of a linear relationship.** 
 
-**Correlation** which always takes values between -1 and 1, is a summary statistic that describes the strength (by its magnitude) and direction (by its sign) of the linear relationship between two variables. We denote the correlation by $R$ or $r$.
+**Correlation** which always takes values between -1 and 1, is a summary statistic that describes the strength (by its magnitude) and direction (by its sign) of the linear relationship between two variables. We denote the correlation by $r$ or $R$.
 :::
 
 ```{r include=FALSE}
@@ -602,9 +602,9 @@ Calculating these values by hand leverages two properties of the least squares l
 
 - The slope of the least squares line can be estimated by
 
-$$b_1 = \frac{s_y}{s_x} R $$ 
+$$b_1 = \frac{s_y}{s_x} r $$ 
 
-where $R$ is the correlation between the two variables, and $s_x$ and $s_y$ are the sample standard deviations of the explanatory variable and response, respectively.
+where $r$ is the correlation between the two variables, and $s_x$ and $s_y$ are the sample standard deviations of the explanatory variable and response, respectively.
 
 - If $\bar{x}$ is the sample mean of the explanatory variable and $\bar{y}$ is the sample mean of the vertical variable, then the point $(\bar{x}, \bar{y})$ is on the least squares line.
 
@@ -717,14 +717,14 @@ terms_chp_6 <- c(terms_chp_6, "extrapolation")
 
 ### Describing the strength of a fit
 
-We evaluated the strength of the linear relationship between two variables earlier using the correlation, $R$. However, it is more common to explain the strength of a linear fit using $R^2$, called **R-squared**. 
+We evaluated the strength of the linear relationship between two variables earlier using the correlation, $r$. However, it is more common to explain the strength of a linear fit using $r^2$, called **r-squared**. 
 If provided with a linear model, we might like to describe how closely the data cluster around the linear fit. 
 
 ```{r include=FALSE}
-terms_chp_6 <- c(terms_chp_6, "R-squared")
+terms_chp_6 <- c(terms_chp_6, "r-squared")
 ```
 
-The $R^2$ of a linear model describes the amount of variation in the response that is explained by the least squares line. 
+The $r^2$ of a linear model describes the amount of variation in the response that is explained by the least squares line. 
 For example, consider the Elmhurst data, shown in Figure \@ref(fig:elmhurstScatterW2Lines). 
 The variance of the response variable, aid received, is about $s_{aid}^2 \approx 29.8$ million. 
 However, if we apply our least squares line, then this model reduces our uncertainty in predicting aid using a student's family income. 
@@ -735,10 +735,10 @@ $$\frac{s_{aid}^2 - s_{_{RES}}^2}{s_{aid}^2}
   = \frac{7500}{29800}
   \approx 0.25$$ 
 or about 25% in the data's variation by using information about family income for predicting aid using a linear model.
-This corresponds exactly to the R-squared value: 
+This corresponds exactly to the r-squared value: 
 
-$$R = -0.499 \rightarrow R^2 = 0.25$$
-The squared correlation coefficient, $R^2$, is also called the **coefficient of determination**. 
+$$r = -0.499 \rightarrow r^2 = 0.25$$
+The squared correlation coefficient, $r^2$ (or $R^2$), is also called the **coefficient of determination**. 
 ```{r include=FALSE}
 terms_chp_6 <- c(terms_chp_6, "coefficient of determination")
 ```
@@ -746,7 +746,7 @@ terms_chp_6 <- c(terms_chp_6, "coefficient of determination")
 ::: {.onebox}
 **Coefficient of determination: proportion of variability in the response explained by the model.**
 
-Since $R$ is always between $-1$ and $1$, $R^2$ will always be between $0$ and $1$. This statistic is called the **coefficient of determination** and measures the proportion of variation in the response variable, $y$, that can be explained by the linear model with predictor $x$.
+Since $r$ is always between $-1$ and $1$, $r^2$ will always be between $0$ and $1$. This statistic is called the **coefficient of determination** and measures the proportion of variation in the response variable, $y$, that can be explained by the linear model with predictor $x$.
 :::
 
 ::: {.workedexample}
@@ -756,12 +756,12 @@ Find and interpret the coefficient of determination.
 
 ---
 
-To find $R^2$, we square the correlation: $R^2 = (0.69)^2 = 0.48$. 
+To find $r^2$, we square the correlation: $r^2 = (0.69)^2 = 0.48$. 
 This tells us that about 48% of variation in possum head length can be explained by total length. 
 This is visualized in Figure \@ref(fig:r-squared-explanation).
 ::: 
 
-```{r r-squared-explanation, fig.cap = "For these 104 possums, the range of head lengths is about 103 $-$ 83 = 20 mm. However, among possums of the same total length (e.g., 85 cm), the range in head lengths is reduced to about 10 mm, or about a 50% reduction, which matches $R^2 = 0.48$, or 48%."}
+```{r r-squared-explanation, fig.cap = "For these 104 possums, the range of head lengths is about 103 $-$ 83 = 20 mm. However, among possums of the same total length (e.g., 85 cm), the range in head lengths is reduced to about 10 mm, or about a 50% reduction, which matches $r^2 = 0.48$, or 48%."}
 ggplot(possum, aes(x = total_l, y = head_l)) +
   geom_point(col = COL["blue", "full"], alpha = 0.7, size = 2) +
   labs(
@@ -787,10 +787,10 @@ ggplot(possum, aes(x = total_l, y = head_l)) +
 ```
 
 ::: {.guidedpractice}
-If a linear model has a very strong negative relationship with a correlation of -0.97, how much of the variation in the response is explained by the explanatory variable?^[About $R^2 = (-0.97)^2 = 0.94$ or 94% of the variation is explained by the linear model.]
+If a linear model has a very strong negative relationship with a correlation of -0.97, how much of the variation in the response is explained by the explanatory variable?^[About $r^2 = (-0.97)^2 = 0.94$ or 94% of the variation is explained by the linear model.]
 :::
 
-More generally, $R^2$ can be calculated as a ratio of a measure of variability around the line divided by a measure of total variability.
+More generally, $r^2$ can be calculated as a ratio of a measure of variability around the line divided by a measure of total variability.
 
 ::: {.onebox}
 **Sums of squares to measure variability in $y$.**
@@ -810,7 +810,7 @@ $$
 The **coefficient of determination** can then be calculated as
 
 $$
-R^2 = \frac{SST - SSE}{SST} = 1 - \frac{SSE}{SST}
+r^2 = \frac{SST - SSE}{SST} = 1 - \frac{SSE}{SST}
 $$
 :::
 
@@ -819,16 +819,16 @@ terms_chp_6 <- c(terms_chp_6, "total sum of squares", "sum of squared error")
 ```
 
 ::: {.workedexample}
-Among 104 possums, the total variability in head length (mm) is $SST = 1315.2$^[$SST$ can be calculated by finding the sample variance, $s^2$ and multiplying by $n-1$.]. The sum of squared residuals is $SSE = 687.0$. Find $R^2$.
+Among 104 possums, the total variability in head length (mm) is $SST = 1315.2$^[$SST$ can be calculated by finding the sample variance, $s^2$ and multiplying by $n-1$.]. The sum of squared residuals is $SSE = 687.0$. Find $r^2$.
 
 ---
 
-Since we know $SSE$ and $SST$, we can calculate $R^2$ as
+Since we know $SSE$ and $SST$, we can calculate $r^2$ as
 
 $$
-R^2 = 1 - \frac{SSE}{SST} = 1 - \frac{687.0}{1315.2} = 0.48,
+r^2 = 1 - \frac{SSE}{SST} = 1 - \frac{687.0}{1315.2} = 0.48,
 $$
-the same value we found when we squared the correlation: $R^2 = (0.69)^2 = 0.48$.
+the same value we found when we squared the correlation: $r^2 = (0.69)^2 = 0.48$.
 ::: 
 
 ### Categorical predictors with two levels (special topic) {#categorical-predictor-two-levels}
@@ -1189,7 +1189,7 @@ temptbl <- tribble(
  "Quantitative", "(None)", "One mean",
  "Quantitative", "Binary (Paired)", "Mean difference",
  "Quantitative", "Binary (Independent)", "Difference in means",
- "Quantitative", "Quantitative", "Correlation, R-squared, regression slope"
+ "Quantitative", "Quantitative", "Correlation, r-squared, regression slope"
 )
 
 temptbl %>%
@@ -1245,9 +1245,9 @@ make_terms_table(terms_chp_6)
 
 * The **correlation coefficient** (or just "correlation") between two quantitative variables, denoted by $r$ or $R$, is a number between $-1$ and $1$ that measures the _strength_ (by its magnitude) and _direction_ (by its sign) of the _linear_ relationship between the two variables. Correlation is only useful if the two quantitative variables are linearly associated.
 
-* The **coefficient of determination**, or **R-squared** is a number between $0$ and $1$ that measures the proportion of the variation in the response variable that can be explained by knowing the $x$-value. It can be computed by squaring the correlation coefficient ($r^2$), or by using sample variances:
+* The **coefficient of determination**, or **r-squared** is a number between $0$ and $1$ that measures the proportion of the variation in the response variable that can be explained by knowing the $x$-value. It can be computed by squaring the correlation coefficient ($r^2$), or by using sample variances:
 $$
-R^2 = \frac{s^2_{y}-s^2_{RES}}{s^2_{y}},
+r^2 = \frac{s^2_{y}-s^2_{RES}}{s^2_{y}},
 $$
 where $s^2_{y}$ is the sample variance of the observed $y$-values, and $s^2_{RES}$ is the sample variance of the residuals.
 
