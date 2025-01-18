@@ -61,7 +61,7 @@ How did we create the table in the last Example? Let's work through it step-by-s
 | Lot 18 |            |                | 1000 $\times$ 0.80 = 800  |
 | Total  |            |                | 1000  |
 
-2. Identify the _conditional_ probabilities given in the problem: _if_ you park in Lot 6, the probability of being late to class is 5%; _if_ you park in Log 18, the probability of being late to class is 15%. Fill in the corresponding cells in the table by taking 5% of the times you parked in Lot 6, and 15% of the times you parked in Lot 18:
+2. Identify the _conditional_ probabilities given in the problem: _if_ you park in Lot 6, the probability of being late to class is 5%; _if_ you park in Lot 18, the probability of being late to class is 15%. Fill in the corresponding cells in the table by taking 5% of the times you parked in Lot 6, and 15% of the times you parked in Lot 18:
 
 |        | Late to class | Not late to class |Total |
 |--------|:--|:--|:--|
