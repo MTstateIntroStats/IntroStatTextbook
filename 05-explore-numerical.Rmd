@@ -58,12 +58,13 @@ terms_chp_5 <- c(terms_chp_5, "form", "direction", "strength",
 
 
 ```{r loan50-amount-income, fig.cap = "A scatterplot of `loan_amount` versus `total_income` for the `loan50` data set.", warning=FALSE}
-ggplot(loan50, aes(x = total_income, y = loan_amount)) +
+p1 <- ggplot(loan50, aes(x = total_income, y = loan_amount)) +
   geom_point(alpha = 0.6, color = COL["blue", "full"], 
              fill = COL["blue", "full"], shape = 21, size = 3) +
   labs(x = "Total income", y = "Loan amount") +
   scale_x_continuous(labels = dollar_format(scale = 0.001, suffix = "K")) +
   scale_y_continuous(labels = dollar_format(scale = 0.001, suffix = "K"))
+ggplotly(p1)
 ```
 
 Looking at Figure \@ref(fig:loan50-amount-income), we see that there are many 

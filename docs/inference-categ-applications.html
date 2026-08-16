@@ -55,7 +55,6 @@
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
 <script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
-<link href="libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet" />
 <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.12.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
@@ -63,6 +62,7 @@
 <script src="libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
+<link href="libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -772,7 +772,8 @@ your own RStudio session.</p>
 <h3>Simulation-based inference for difference in two proportions<a href="inference-categ-applications.html#simulation-based-inference-for-difference-in-two-proportions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For inference about the difference between two proportions, we use the <code>two_proportion_test()</code> and <code>two_proportion_bootstrap_CI()</code> functions. Before doing doing inference to compare two proportions, you should create a mosaic plot to visualize the sample proportions being compared and to verify the names of the two groups. The response variable should be on the <span class="math inline">\(y\)</span>-axis and the predictor (grouping) variable should be on the <span class="math inline">\(x\)</span>-axis in the mosaic plot, which is accomplished with <code>x = product(group)</code> (for the predictor variable called <code>group</code>) and <code>fill = survival</code> (for the <span class="math inline">\(y\)</span>-axis variable to fill the bars based on the <code>survival</code> of the subjects) here.</p>
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="inference-categ-applications.html#cb50-1" tabindex="-1"></a>cpr <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb50-2"><a href="inference-categ-applications.html#cb50-2" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(group), <span class="at">fill =</span> survival))</span></code></pre></div>
+<span id="cb50-2"><a href="inference-categ-applications.html#cb50-2" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(group), <span class="at">fill =</span> survival)) <span class="sc">+</span></span>
+<span id="cb50-3"><a href="inference-categ-applications.html#cb50-3" tabindex="-1"></a>  <span class="fu">scale_fill_colorblind</span>()</span></code></pre></div>
 <p><img src="16-categorical-applications_files/figure-html/twopropmosaic-1.png" alt="" width="90%" style="display: block; margin: auto;" />
 In using the <code>two_proportion_test()</code> formula, it requires <code>response</code> <span class="math inline">\(\sim\)</span> <code>explanatory</code>. You can check that your formula is correct by using the explanatory (grouping) variable from the <span class="math inline">\(x\)</span>-axis and the response variable from the <span class="math inline">\(y\)</span>-axis in the mosaic plot. The function requires that you declare the order of subtraction between the predictor variable groups using <code>first_in_subtraction</code> to select a level of the grouping variable (“treatment” is selected here) to be first in the comparison on the proportions. The level of the response to use as the “success” (“Survived” is selected here) must also be specified. Additional required options are the <code>number_repetitions</code> (use 10000 unless that is computationally problematic), the value of the observed statistic (difference in proportions here) in <code>as_extreme_as</code>, and the direction of the alternative in <code>direction</code>(choices of <code>two-sided</code>, <code>greater</code>, or <code>less</code>) based on your desired alternative hypothesis. Note that the order of subtraction and success choices impact the direction used for one-sided tests.</p>
 <p>Using the CPR and blood thinner study for a two-sided test with an observed difference in proportions of 0.13, a call to <code>two_proportion_test()</code> would look like this:</p>

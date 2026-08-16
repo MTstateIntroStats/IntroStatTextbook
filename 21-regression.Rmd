@@ -68,13 +68,14 @@ sandwich <- data.frame(ad, rev)
 
 #lm(rev ~ ad, data = sandwich) %>% tidy()
 
-ggplot(sandwich, aes(x = ad, y = rev)) +
+p1 <- ggplot(sandwich, aes(x = ad, y = rev)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE, col = COL[4,1], fullrange = TRUE) + 
   xlab("Amount spent on advertising in thousands of dollars") +
   ylab("Revenue in thousands of dollars")+
   ggtitle("Hypothetical population, chain sandwich store") +
   ylim(c(0,65))
+p1 |> plotly::ggplotly(width = 800, height = 500)
 ```
 
 You may remember from Chapter \@ref(explore-regression) that the population model is: $$y = \beta_0 + \beta_1 x + \varepsilon.$$
@@ -109,13 +110,14 @@ sandwich_many <- sandwich %>%
 
 
 ```{r echo = FALSE, fig.cap = "A random sample of 20 stores from the entire population. A positive linear trend between advertising and revenue continues to be observed."}
-ggplot(sandwich2) +
+p1 <-   ggplot(sandwich2) +
   geom_point(aes(x = ad, y = rev)) +
   geom_smooth(aes(x = ad, y = rev), method = "lm", se = FALSE, 
               color = COL[1,1], fullrange = TRUE) +
   xlab("Amount spent on advertising in thousands of dollars") +
   ylab("Revenue in thousands of dollars") +
   ylim(c(0,65))
+p1 |> plotly::ggplotly(width = 800, height = 500)
 ```
 
 
@@ -123,26 +125,28 @@ A second sample of size 20 also shows a positive trend!
 
 ```{r echo = FALSE, fig.cap = "A different random sample of 20 stores from the entire population. Again, a positive linear trend between advertising and revenue is observed."}
 
-ggplot(sandwich3) +
+p1 <- ggplot(sandwich3) +
   geom_point(aes(x = ad, y = rev)) +
   geom_smooth(aes(x = ad, y = rev), method = "lm", se = FALSE, 
               color = COL[2,1], fullrange = TRUE) +
   xlab("Amount spent on advertising in thousands of dollars") +
   ylab("Revenue in thousands of dollars") +
   ylim(c(0,65))
+p1 |> plotly::ggplotly(width = 800, height = 500)
 ```
 
 
 But the line is slightly different!
 
 ```{r echo = FALSE, fig.cap = "The linear models from the two different random samples are quite similar, but they are not the same line."}
-ggplot(sandwich2, aes(x = ad, y = rev)) + geom_point(color=COL[1,1]) + 
+p1 <- ggplot(sandwich2, aes(x = ad, y = rev)) + geom_point(color=COL[1,1]) + 
   geom_smooth(method="lm", se=FALSE, color=COL[1,1], fullrange = TRUE) + 
   geom_point(data=sandwich3, color=COL[2,1])+#, shape=1) +
   geom_smooth(data=sandwich3, method="lm", se=FALSE, color=COL[2,1], fullrange = TRUE)+#, linetype = 2) +
   xlab("Amount spent on advertising in thousands of dollars") +
   ylab("Revenue in thousands of dollars") +
   ylim(c(0,65))
+p1 |> plotly::ggplotly(width = 800, height = 500)
 ```
 
 
@@ -152,7 +156,8 @@ That is, there is **variability** in the regression line from sample to sample. 
 ggplot() + 
  # geom_point() + 
   geom_smooth(data = sandwich_many, aes(x=ad, y=rev, group = replicate), 
-              method="lm", se=FALSE, color=COL[1,1], fullrange = TRUE) +
+              method="lm", se=FALSE, color = scales::alpha(COL[1, 1], 0.3),
+              fullrange = TRUE) +
   geom_smooth(data = sandwich, aes(x=ad, y=rev), method = "lm", se = FALSE, 
               fullrange = TRUE, col = COL[4,1]) + 
   xlab("Amount spent on advertising in thousands of dollars") +
@@ -217,12 +222,13 @@ crops_USA_long <- crops_USA %>%
   pivot_longer(rice:barley,
     names_to = "crop", values_to = "yield")
 
-ggplot(crops_USA_long)   +
+pf1 <- ggplot(crops_USA_long)   +
     geom_point(aes(x = yield, y = wheat, color = Year)) +
   facet_wrap(~crop) + 
   labs(xlab = "Crop yield in tonnes per hectare", # Need to figure out how to change overall x and y labels
        ylab = "Wheat yield in tonnes per hectare") +
   ylim(c(1.4, 3.6))
+pf1 |> plotly::ggplotly(width = 800, height = 500)
 ```
 
 
@@ -348,6 +354,7 @@ ggplot(crops_USA) +
   geom_smooth(aes(x = peas, y = wheat), method = "lm", se = FALSE,
               color=COL[1,1], fullrange = TRUE) + 
   ylim(c(1.4, 3.6))
+#p1 |> plotly::ggplotly(width = 800, height = 500)
 ```
 
 
@@ -391,7 +398,8 @@ By repeatedly resampling, we can see dozens of bootstrapped slopes on the same p
 ```{r cropBS, echo = FALSE, fig.cap = "Repeated bootstrap resamples of size 58 are taken from the original data.  Each of the bootstrapped linear model is slightly different."}
 ggplot(crops_many_BS, aes(x=peas, y=wheat, group=replicate)) + 
   #geom_point() + 
-  geom_smooth(method="lm", se=FALSE, color=COL[1,1], fullrange = TRUE) + 
+  geom_smooth(method="lm", se=FALSE, color=scales::alpha(COL[1, 1], 0.3), 
+              fullrange = TRUE) + 
   ylim(c(1.4, 3.6))
 ```  
 
@@ -810,7 +818,7 @@ In the previous sections, we used randomization and bootstrapping to perform inf
 #### What are the technical conditions? {-}
 
 
-When fitting a least squares line, we generally require
+When fitting a least squares line, we generally require:
 
 * **Linearity.**  The data should show a linear trend. If there is a nonlinear trend
     (e.g., first panel of Figure \@ref(fig:whatCanGoWrongWithLinearModel), an advanced regression
@@ -822,7 +830,7 @@ When fitting a least squares line, we generally require
     and analysis. An example of a data set where successive observations
     are not independent is shown in the fourth panel of
     Figure \@ref(fig:whatCanGoWrongWithLinearModel). There are also other
-    instances where correlations within the data are important, such as the paired data described in Section \@ref(inference-paired-means).
+    instances where correlations within the data are important, such as the paired data described in Chapter \@ref(inference-paired-means).
     
 * **Nearly normal residuals.**  Generally, the residuals must be nearly normal. When this condition
     is found to be unreasonable, it is usually because of outliers or

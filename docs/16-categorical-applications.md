@@ -209,7 +209,8 @@ For inference about the difference between two proportions, we use the `two_prop
 
 ``` r
 cpr %>% ggplot() +
-  geom_mosaic(aes(x = product(group), fill = survival))
+  geom_mosaic(aes(x = product(group), fill = survival)) +
+  scale_fill_colorblind()
 ```
 
 <img src="16-categorical-applications_files/figure-html/twopropmosaic-1.png" alt="" width="90%" style="display: block; margin: auto;" />

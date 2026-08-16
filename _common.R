@@ -65,6 +65,7 @@ suppressMessages(library(RColorBrewer))
 #remotes::install_github("hrbrmstr/waffle")
 suppressMessages(library(waffle))
 suppressMessages(library(tibble))
+suppressMessages(library(ggthemes))
 
 
 

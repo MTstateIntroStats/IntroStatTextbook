@@ -145,7 +145,8 @@ For inference about the difference between two proportions, we use the `two_prop
 
 ```{r twopropmosaic, echo = T}
 cpr %>% ggplot() +
-  geom_mosaic(aes(x = product(group), fill = survival))
+  geom_mosaic(aes(x = product(group), fill = survival)) +
+  scale_fill_colorblind()
 ```
 In using the `two_proportion_test()` formula, it requires `response` $\sim$ `explanatory`. You can check that your formula is correct by using the explanatory (grouping) variable from the $x$-axis and the response variable from the $y$-axis in the mosaic plot. The function requires that you declare the order of subtraction between the predictor variable groups using `first_in_subtraction` to select a level of the grouping variable ("treatment" is selected here) to be first in the comparison on the proportions. The level of the response to use as the "success" ("Survived" is selected here) must also be specified.  Additional required options are the `number_repetitions` (use 10000 unless that is computationally problematic), the value of the observed statistic (difference in proportions here) in `as_extreme_as`, and the direction of the alternative in `direction`(choices of `two-sided`, `greater`, or `less`) based on your desired alternative hypothesis. Note that the order of subtraction and success choices impact the direction used for one-sided tests.
 

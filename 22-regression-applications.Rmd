@@ -102,7 +102,7 @@ In either case, we are 90% confident that gift aid will be \$24.90 to \$61.20 le
 ## `catstats` function summary
 
 In the previous section, you were introduced to two new R 
-functions in the `catstats` library. Here we provide a summary of 
+functions in the `catstats` package. Here we provide a summary of 
 these functions. You can also access 
 the help files for these functions using the `?` command. For 
 example, type `?regression_test` into your R console to bring up the 

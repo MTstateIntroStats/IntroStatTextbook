@@ -266,7 +266,7 @@ temptbl <- tribble(
 )
 temptbl %>% ggplot(aes(x = variable, y=col1, fill=col2)) + geom_col() +
   xlab("Group") + ylab("Proportion") + 
-  scale_fill_discrete(name="Decision")
+  scale_fill_colorblind(name="Decision")
 ```
 
 We will define a **success**\index{success} in this study as a student who chooses not to buy the DVD.[^15-categorical-two-props-7] Then, the value of interest is the change in DVD purchase rates that results by reminding students that not spending money now means they can spend the money later.

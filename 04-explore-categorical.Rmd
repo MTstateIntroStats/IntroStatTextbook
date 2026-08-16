@@ -243,7 +243,7 @@ email %>% ggplot(aes(x = number)) +
   ylab("Frequency")
 email %>% ggplot(aes(x = number)) +
   geom_bar(aes(y = ..prop.., group=1), col="seagreen", fill="seagreen") +
-  theme_light() + ylab("Relative Frequency")
+  theme_light() + ylab("Relative Frequency") 
 ```
 
 Bar plots are also used to display the relationship between two categorical variables.
@@ -263,11 +263,13 @@ In a segmented bar plot, the explanatory variable is plotted on the $x$-axis, wh
 ```{r emailSpamNumberSegBar, fig.cap="(a) Segmented bar plot for numbers found in emails, where the counts have been further broken down by `type`. (b) Segmented bar plot using column proportions of each type within each `number` category.", fig.show="hold", out.width="50%"}
 email %>%
   ggplot(aes(x = number, fill = type)) +
-  geom_bar() + xlab("(a)") + ylab("Count")
+  geom_bar() + xlab("(a)") + ylab("Count") +
+  scale_fill_colorblind()
 email %>%
   ggplot(aes(x = number, fill = type)) +
   geom_bar(stat = "count", position = "fill") +
-  xlab("(b)") + ylab("Proportion")
+  xlab("(b)") + ylab("Proportion") +
+  scale_fill_colorblind()
 ```
 
 ::: {.guidedpractice}
@@ -384,8 +386,8 @@ temptbl <- tribble(
  "African American", 0.079, "DP"
 )
 temptbl %>% ggplot(aes(x = variable, y=col1, fill=factor(col2, levels=c("No DP", "DP")))) + geom_col() +
-  xlab("Race") + ylab("Proportion") + 
-  scale_fill_discrete(name="Sentence") 
+  xlab("Race") + ylab("Proportion") +
+  scale_fill_colorblind(name = "Sentence")
 ```
 
 
@@ -431,7 +433,7 @@ temptbl1 <- tribble(
 temptbl1 %>% ggplot(aes(x = variable, y=col1, 
                         fill=factor(col2, levels=c("No DP", "DP")))) + geom_col() +
   xlab("Defendant's Race") + ylab("Proportion") + 
-  scale_fill_discrete(name="Sentence") +
+  scale_fill_colorblind(name="Sentence") +
   ggtitle("Caucasian Victims")
 
 temptbl2 <- tribble(
@@ -443,7 +445,7 @@ temptbl2 <- tribble(
 )
 temptbl2 %>% ggplot(aes(x = variable, y=col1, fill=factor(col2, levels=c("No DP", "DP")))) + geom_col() +
   xlab("Defendant's Race") + ylab("Proportion") + 
-  scale_fill_discrete(name="Sentence") +
+  scale_fill_colorblind(name="Sentence") +
   ggtitle("African American Victims")
 ```
 
@@ -462,7 +464,7 @@ temptbl1 <- tribble(
 temptbl1 %>% ggplot(aes(x = variable, y=col1, 
                         fill=col2)) + geom_col() +
   xlab("Victim's Race") + ylab("Proportion") + 
-  scale_fill_discrete(name="Defendant's Race") +
+  scale_fill_colorblind(name="Defendant's Race") +
   ggtitle("Victim's Race vs Defendant's Race")
 
 temptbl2 <- tribble(
@@ -474,7 +476,7 @@ temptbl2 <- tribble(
 )
 temptbl2 %>% ggplot(aes(x = variable, y=col1, fill=factor(col2, levels=c("No DP", "DP")))) + geom_col() +
   xlab("Victim's Race") + ylab("Proportion") + 
-  scale_fill_discrete(name="Sentence") +
+  scale_fill_colorblind(name="Sentence") +
   ggtitle("Victim's Race vs Sentence")
 ```
 

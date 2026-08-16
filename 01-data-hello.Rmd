@@ -411,7 +411,7 @@ For instance, the highlighted dot corresponds to County 413 in the `county` data
 The scatterplot suggests a relationship between the two variables: counties with a higher rate of multi-units tend to have lower homeownership rates.
 We might brainstorm as to why this relationship exists and investigate each idea to determine which are the most reasonable explanations.
 
-```{r county-multi-unit-homeownership, fig.cap = "A scatterplot of homeownership versus the percent of units that are in multi-unit structures for US counties. The highlighted dot represents Chattahoochee County, Georgia, which has a multi-unit rate of 39.4% and a homeownership rate of 31.3%.", warning=FALSE}
+```{r county-multi-unit-homeownership, fig.cap = "A scatterplot of homeownership versus the percent of units that are in multi-unit structures for US counties. The highlighted dot represents Chattahoochee County, Georgia, which has a multi-unit rate of 39.4% and a homeownership rate of 31.3%.", out.width="100%", fig.height=5, warning=FALSE}
 p1 <- ggplot(county, aes(x = multi_unit, y = homeownership)) +
   geom_point(alpha = 0.3, color = COL["blue", "full"],
              fill = COL["black", "full"], shape = 21) +
@@ -433,7 +433,7 @@ p1 <- ggplot(county, aes(x = multi_unit, y = homeownership)) +
                    color = COL["red", "full"]), linetype = "dashed") +
   scale_x_continuous(labels = percent_format(scale = 1)) +
   scale_y_continuous(labels = percent_format(scale = 1)) 
-ggplotly(p1)
+p1 |> plotly::ggplotly(width = 800, height = 500)
 ```
 
 The multi-unit and homeownership rates are said to be associated because the plot shows a discernible pattern.
@@ -459,7 +459,7 @@ The larger the median household income for a county, the higher the population g
 While this trend isn't true for every county, the trend in the plot is evident. Since there is some relationship between the variables, they are associated.
 :::
 
-```{r county-pop-change-med-hh-income, fig.cap = "A scatterplot showing `pop_change` against `median_hh_income`. Owsley County of Kentucky, is highlighted, which lost 3.63% of its population from 2010 to 2017 and had median household income of $22,736.", warning=FALSE}
+```{r county-pop-change-med-hh-income, fig.cap = "A scatterplot showing `pop_change` against `median_hh_income`. Owsley County of Kentucky, is highlighted, which lost 3.63% of its population from 2010 to 2017 and had median household income of $22,736.", out.width="100%", fig.height=5, warning=FALSE}
 p2 <- ggplot(county, aes(x = median_hh_income, y = pop_change)) +
   geom_point(alpha = 0.3, color = COL["blue", "full"],
              fill = COL["black", "full"], shape = 21) +
@@ -480,7 +480,7 @@ p2 <- ggplot(county, aes(x = median_hh_income, y = pop_change)) +
                    color = COL["red", "full"]), linetype = "dashed") +
   scale_x_continuous(labels = dollar_format(scale = 0.001, suffix = "K")) +
   scale_y_continuous(labels = percent_format(scale = 1), limits = c(-40, 40))
-ggplotly(p2)
+p2 |> plotly::ggplotly(width = 800, height = 500)
 ```
 
 Because there is a downward trend in Figure \@ref(fig:county-multi-unit-homeownership)---counties with more units in multi-unit structures are associated with lower homeownership---these variables are said to be **negatively associated**.
