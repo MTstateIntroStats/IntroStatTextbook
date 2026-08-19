@@ -72,10 +72,9 @@ The bell-shaped curve similarity is not a coincidence, but rather, is guaranteed
 ::: {.onebox data-latex=""}
 **Central Limit Theorem for proportions.**\index{Central Limit Theorem}
 
-If we look at a proportion^[^foundations-mathematical-clt] and the scenario satisfies certain conditions, then the sample proportion will appear to follow a bell-shaped curve called the *normal distribution*.
+If we look at a proportion^[We will see in later chapters that the Central Limit Theorem is much more general than sample proportions. In fact, under certain conditions, the Central Limit Theorem guarantees that most of the statistics we encounter in this textbook will have an approximately normal sampling distribution: sample proportions, means, differences in proportions, differences in means, and paired mean differences.] and the scenario satisfies certain conditions, then the sample proportion will appear to follow a bell-shaped curve called the *normal distribution*.
 :::
 
-[^foundations-mathematical-clt]: We will see in later chapters that the Central Limit Theorem is much more general than sample proportions. In fact, under certain conditions, the Central Limit Theorem guarantees that most of the statistics we encounter in this textbook will have an approximately normal sampling distribution: sample proportions, means, differences in proportions, differences in means, and paired mean differences.
 
 
 

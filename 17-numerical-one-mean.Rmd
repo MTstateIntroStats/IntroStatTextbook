@@ -877,7 +877,7 @@ Are the independence and
       
 ---
       
-The observations are assumed to be a simple random sample and we do not have information dependencies that suggest a violation (such as sibling dolphins or different groups of sampling locations or dates that might relate to non-independent responses),
+If the observations are assumed to be from a simple random sample, so we can potentially generalize to the population of Risso's dolphins from the Taiji area in Japan at the time of this study. We do not have information on dependencies that suggest a violation (such as sibling dolphins or different groups of sampling locations or dates that might relate to non-independent responses),
   therefore independence is reasonable.
   The summary statistics in
   Table \@ref(tab:summaryStatsOfHgInMuscleOfRissosDolphins)
@@ -889,11 +889,15 @@ The observations are assumed to be a simple random sample and we do not have inf
 :::
 
 In the normal model, we used $z^{\star}$ and the standard error to determine the width of a confidence interval. We revise the confidence interval formula slightly when using the $t$-distribution:
-\begin{align*}
-&\text{point estimate} \ \pm\  t^{\star}_{df} \times SE(\text{point estimate})
-&&\to
-&&\bar{y} \ \pm\  t^{\star}_{df} \times \frac{s}{\sqrt{n}},
-\end{align*}
+$$
+\begin{aligned}
+\text{point estimate} \pm t^{\star}_{df}
+  \times SE(\text{point estimate})
+&\;\to\;
+\bar{y} \pm t^{\star}_{df}
+  \times \frac{s}{\sqrt{n}}
+\end{aligned}
+$$
 where $df = n - 1$ when computing a one-sample $t$-interval.
 
 ::: {.example}
@@ -973,8 +977,8 @@ We can construct the confidence interval as
   observations, a confidence interval for the population
   mean is
   \begin{align*}
-  \text{point estimate} \ &\pm\&  t^{\star}_{df} \times SE(\text{point estimate})\\
-  \bar{y} \ &\pm\&  t^{\star}_{df} \times \frac{s}{\sqrt{n}}
+  \text{point estimate} & \pm &  t^{\star}_{df} \times SE(\text{point estimate})\\
+  \bar{y} & \pm &  t^{\star}_{df} \times \frac{s}{\sqrt{n}}
   \end{align*}
   where $\bar{y}$ is the sample mean, $t^{\star}_{df}$
   corresponds to the confidence level and degrees of freedom

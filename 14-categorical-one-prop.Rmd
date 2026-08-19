@@ -285,7 +285,7 @@ There are two conditions required to apply the Central Limit Theorem\index{Centr
 
 The sampling distribution for $\hat{p}$ based on a sample of size $n$ from a population with a true proportion $\pi$ can be modeled using a normal distribution when:
 
-1.  **Independence condition.** The sample observations are independent, i.e., the outcome of one observation does not influence the outcome of another. This condition is met if data come from a simple random sample of the target population.
+1.  **Independence condition.** The sample observations are independent, i.e., the outcome of one observation does not influence the outcome of another. Carefully consider the source of the data to assess potential dependence among observations in the data set.
 
 2.  **Success-failure condition.** We expected to see at least 10 successes and 10 failures in the sample, i.e., $n\pi\geq10$ and $n(1-\pi)\geq10$.
 
@@ -358,7 +358,7 @@ Do payday loan borrowers support a regulation that would require lenders to pull
 
 ------------
 
-Independence holds since the poll is based on a random sample. Thus, we can assume that the response of one borrower does not influence the response of another.
+Independence holds since we can assume that the response of one borrower does not influence the response of another.
 
 The success-failure condition also holds, since $n\hat{p} = 826(0.51) = 421.26 > 10$ and $n(1-\hat{p}) = 826(1-0.51) = 404.74 > 10$.
 :::

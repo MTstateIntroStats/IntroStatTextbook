@@ -871,7 +871,7 @@ If it were plotted, the exact null distribution would look almost identical to t
 <p><strong>Conditions for the sampling distribution of</strong> <span class="math inline">\(\hat{p}\)</span> to be approximately normal.</p>
 <p>The sampling distribution for <span class="math inline">\(\hat{p}\)</span> based on a sample of size <span class="math inline">\(n\)</span> from a population with a true proportion <span class="math inline">\(\pi\)</span> can be modeled using a normal distribution when:</p>
 <ol style="list-style-type: decimal">
-<li><p><strong>Independence condition.</strong> The sample observations are independent, i.e., the outcome of one observation does not influence the outcome of another. This condition is met if data come from a simple random sample of the target population.</p></li>
+<li><p><strong>Independence condition.</strong> The sample observations are independent, i.e., the outcome of one observation does not influence the outcome of another. Carefully consider the source of the data to assess potential dependence among observations in the data set.</p></li>
 <li><p><strong>Success-failure condition.</strong> We expected to see at least 10 successes and 10 failures in the sample, i.e., <span class="math inline">\(n\pi\geq10\)</span> and <span class="math inline">\(n(1-\pi)\geq10\)</span>.</p>
 <ul>
 <li>Since <span class="math inline">\(\pi\)</span> is typically unknown, we consider this condition met if we have at least 10 successes and 10 failures in the observed data. That is, if <span class="math inline">\(n\hat{p} \geq 10\)</span> and <span class="math inline">\(n(1-\hat{p}) \geq 10\)</span>.</li>
@@ -921,7 +921,7 @@ H_0: \mbox{ parameter } = \mbox{ null value}
 <div class="workedexample">
 <p>Do payday loan borrowers support a regulation that would require lenders to pull their credit report and evaluate their debt payments? From a random sample of 826 borrowers, 51% said they would support such a regulation. Is it reasonable use a normal distribution to model <span class="math inline">\(\hat{p}\)</span> for a hypothesis test here?</p>
 <hr />
-<p>Independence holds since the poll is based on a random sample. Thus, we can assume that the response of one borrower does not influence the response of another.</p>
+<p>Independence holds since we can assume that the response of one borrower does not influence the response of another.</p>
 <p>The success-failure condition also holds, since <span class="math inline">\(n\hat{p} = 826(0.51) = 421.26 &gt; 10\)</span> and <span class="math inline">\(n(1-\hat{p}) = 826(1-0.51) = 404.74 &gt; 10\)</span>.</p>
 </div>
 <div class="workedexample">

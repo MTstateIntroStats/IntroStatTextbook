@@ -1225,7 +1225,7 @@ maximum
 <p><span id="exm:unlabeled-div-5" class="example"><strong>Example 17.5  </strong></span>Are the independence and
 normality conditions satisfied for this data set?</p>
 <hr />
-<p>The observations are assumed to be a simple random sample and we do not have information dependencies that suggest a violation (such as sibling dolphins or different groups of sampling locations or dates that might relate to non-independent responses),
+<p>If the observations are assumed to be from a simple random sample, so we can potentially generalize to the population of Risso’s dolphins from the Taiji area in Japan at the time of this study. We do not have information on dependencies that suggest a violation (such as sibling dolphins or different groups of sampling locations or dates that might relate to non-independent responses),
 therefore independence is reasonable.
 The summary statistics in
 Table <a href="inference-one-mean.html#tab:summaryStatsOfHgInMuscleOfRissosDolphins">17.1</a>
@@ -1236,11 +1236,15 @@ Based on this evidence, the normality condition
 seems reasonable.</p>
 </div>
 <p>In the normal model, we used <span class="math inline">\(z^{\star}\)</span> and the standard error to determine the width of a confidence interval. We revise the confidence interval formula slightly when using the <span class="math inline">\(t\)</span>-distribution:
-<span class="math display">\[\begin{align*}
-&amp;\text{point estimate} \ \pm\  t^{\star}_{df} \times SE(\text{point estimate})
-&amp;&amp;\to
-&amp;&amp;\bar{y} \ \pm\  t^{\star}_{df} \times \frac{s}{\sqrt{n}},
-\end{align*}\]</span>
+<span class="math display">\[
+\begin{aligned}
+\text{point estimate} \pm t^{\star}_{df}
+  \times SE(\text{point estimate})
+&amp;\;\to\;
+\bar{y} \pm t^{\star}_{df}
+  \times \frac{s}{\sqrt{n}}
+\end{aligned}
+\]</span>
 where <span class="math inline">\(df = n - 1\)</span> when computing a one-sample <span class="math inline">\(t\)</span>-interval.</p>
 <div class="example">
 <p><span id="exm:unlabeled-div-6" class="example"><strong>Example 17.6  </strong></span>Using the summary statistics in
@@ -1303,8 +1307,8 @@ which is considered extremely high.</p>
 observations, a confidence interval for the population
 mean is
 <span class="math display">\[\begin{align*}
-  \text{point estimate} \ &amp;\pm\&amp;  t^{\star}_{df} \times SE(\text{point estimate})\\
-  \bar{y} \ &amp;\pm\&amp;  t^{\star}_{df} \times \frac{s}{\sqrt{n}}
+  \text{point estimate} &amp; \pm &amp;  t^{\star}_{df} \times SE(\text{point estimate})\\
+  \bar{y} &amp; \pm &amp;  t^{\star}_{df} \times \frac{s}{\sqrt{n}}
   \end{align*}\]</span>
 where <span class="math inline">\(\bar{y}\)</span> is the sample mean, <span class="math inline">\(t^{\star}_{df}\)</span>
 corresponds to the confidence level and degrees of freedom
